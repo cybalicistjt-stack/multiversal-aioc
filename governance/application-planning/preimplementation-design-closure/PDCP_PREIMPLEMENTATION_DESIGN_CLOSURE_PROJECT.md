@@ -10,7 +10,7 @@
 
 ## Purpose
 
-PDCP moves research, architecture decisions, mechanics design, state modeling, operation semantics, UX behavior, edge-case resolution and acceptance-design work **out of future product-development tranches** wherever those obligations can be completed before software implementation begins.
+PDCP moves research, architecture decisions, mechanics design, state modeling, operation semantics, UX behavior, edge-case resolution and acceptance-design work out of future product-development tranches wherever those obligations can be completed before software implementation begins.
 
 The objective is not to reduce capability. The objective is to reduce future roadmap execution units by arriving at governed start with implementation-ready contracts, so retained tranches contain only work that materially requires product code, schema/migration, UI construction, runtime integration, automated proof, packaging or other repository-bound implementation.
 
@@ -18,7 +18,7 @@ PDCP is a design/planning project, not a product family. It does not appear as a
 
 ## Current phase
 
-The eight benchmark-derived capability packets are `design_closed`. PDCP is in the **family-by-family reduction and roadmap-reconciliation phase**.
+The eight benchmark-derived capability packets are `design_closed`. PDCP is in the family-by-family reduction and roadmap-reconciliation phase.
 
 Durable control surfaces:
 
@@ -54,8 +54,6 @@ The baseline count is immutable historical provenance. Effective counts change o
 
 `MAS` is excluded. PDCP must not reopen, redesign, renumber, merge, delay or otherwise interfere with MAS work.
 
-Completed programs and already-completed tranches elsewhere are out of scope unless a future in-scope family merely consumes their stable owner contracts.
-
 ## Design tracks
 
 ### Track A — Specialist Creator Systems
@@ -65,8 +63,6 @@ Completed programs and already-completed tranches elsewhere are out of scope unl
 ### Track B — Post-MAS Runtime/Creator Spine
 
 `MSAS → MRCS → GPR → MERA → MBES → MSLR → MSWI`
-
-MAS is a dependency/handoff context where required but is not a PDCP workstream.
 
 ## Closed cross-family capability packets
 
@@ -81,24 +77,11 @@ The eight closed packets are:
 7. creator/GM execution UX, preview/commit, intervention, debugging and live control;
 8. simulation/formal validation, route coverage, constraint solving, solvability and exploit diagnostics.
 
-No ninth benchmark packet is implied. New benchmark insights discovered during family reduction are first mapped to existing owners and only reopen a packet/family design boundary if they expose a genuine unresolved capability.
+No ninth benchmark packet is implied.
 
 ## Design Closure Package standard
 
-Before a baseline tranche may be merged, absorbed or removed as a standalone implementation unit, PDCP must close the tranche's non-code obligations in a durable DCP. A DCP contains, as applicable:
-
-1. benchmark/capability conclusions and clean-room boundaries;
-2. existing-owner and authority crosswalk;
-3. canonical versus proposed/projection/live-state distinctions;
-4. data/state contract and identity/provenance rules;
-5. operations, transitions, validation and conflict semantics;
-6. resolution-depth/abstraction rules and cross-scale behavior;
-7. GM/player/creator UX behavior including preview, commit and undo/recovery where relevant;
-8. permission, visibility, knowledge and hidden-information behavior;
-9. replay, Event attribution, recovery, versioning and migration expectations;
-10. failure cases, edge cases, accessibility requirements and unsupported/unknown behavior;
-11. concrete test vectors and golden scenarios with expected outcomes;
-12. an implementation mapping showing exactly what repository-bound work remains and where it will execute.
+Before a baseline tranche may be merged, absorbed or removed as a standalone implementation unit, PDCP closes its non-code obligations in a durable DCP covering, as applicable: benchmark conclusions; owner/authority crosswalk; canonical/proposed/projection distinctions; data/state identity/provenance; operations/transitions/validation; resolution depth; creator/GM/player UX; permissions/visibility; replay/recovery/version/migration; failure/accessibility/unknown behavior; golden vectors; and exact residual implementation mapping.
 
 Discussion alone is not closure.
 
@@ -113,7 +96,7 @@ Every baseline tranche receives exactly one final disposition:
 - `REMOVE_DUPLICATE`;
 - `RETAIN_OWNER_DECISION`.
 
-There is no predetermined reduction percentage or target count. A lower count is valid only when scope and proof are preserved.
+There is no predetermined reduction percentage or target count.
 
 ## Reduction invariants
 
@@ -122,76 +105,64 @@ There is no predetermined reduction percentage or target count. A lower count is
 3. PDCP never grants implementation authority.
 4. `operations/CURRENT.json` is never changed merely to perform PDCP design work.
 5. `ROADMAP_DEPENDENCY_GRAPH.json` remains cross-program activation authority.
-6. A tranche ID referenced by a DAG start/golden gate may be removed or renumbered only in the same atomic planning change that updates that gate to an equivalent surviving proof.
-7. Golden proof, migration, recovery, accessibility, permission/privacy, provenance and deterministic validation obligations may not be silently deleted to reduce count.
+6. A tranche ID referenced by a DAG start/golden gate may be removed or renumbered only with an atomic equivalent gate update.
+7. Golden proof, migration, recovery, accessibility, permission/privacy, provenance and deterministic validation obligations may not be silently deleted.
 8. Existing owner boundaries remain authoritative; PDCP prefers integration over duplicate ledgers/runtimes.
-9. Every family must perform both an intra-family overlap audit and a cross-family/shared-owner overlap audit before its receipt can mutate count.
-10. Generic engines/workflows should have one practical owner; specialist families implement only domain-specific schemas/adapters/UX/proof.
+9. Every family must perform both intra-family and cross-family/shared-owner overlap audits before count mutation.
+10. Generic engines/workflows should have one practical owner; specialist families implement domain-specific schemas/adapters/UX/proof.
 11. Prefer stable sparse IDs over gratuitous renumbering when start/golden milestone references can remain valid.
-12. Research/design closure is not software completion. Future implementation status remains `planned` until OPS3 grants product authority and implementation is verified.
+12. Research/design closure is not software completion.
 13. Reduction changes must be reviewable from a before/after coverage map.
 
 ## OPS3 coordination
 
-- `content-design` is the normal on-demand lane for PDCP design sessions.
-- Explicit owner requests to integrate PDCP results into the roadmap authorize bounded planning updates, not product implementation.
-- Product-development CURRENT state remains preserved while PDCP work occurs.
-- Family reduction changes reconcile the backlog, any affected DAG milestone references, program prose/new reduction amendment and control-plane tests atomically.
-- Historical roadmap amendments remain provenance; create new reduction amendments rather than rewriting historical facts where appropriate.
-- A future `Continue` in a product-development conversation follows `operations/CURRENT.json`, not this project.
-- This file is not a current-work selector and must never override OPS3.
-
-## Family reduction review
-
-A family is ready for roadmap reduction only when:
-
-- every baseline tranche has a final disposition;
-- every merged/absorbed/removed tranche has durable DCP or explicit existing-owner evidence;
-- every surviving tranche has bounded implementation-only scope;
-- intra-family overlap is resolved;
-- cross-family generic infrastructure is assigned to one practical owner and local work is reduced to adapters/semantics/proof;
-- the family golden proof covers the complete accepted capability set;
-- cross-family dependencies and DAG gate references remain valid;
-- before/after count and scope mapping are machine-readable;
-- no current OPS3 product work is disturbed.
+- `content-design` is the normal on-demand lane for PDCP sessions.
+- PDCP planning updates do not grant product authority.
+- Product-development CURRENT state remains preserved.
+- Family reductions reconcile backlog, affected DAG references when necessary, program prose/new reduction amendment and control-plane regressions atomically.
+- Historical roadmap amendments remain provenance.
+- Product-development `Continue` follows `operations/CURRENT.json`, not PDCP.
 
 ## Reduction progress
 
-Three family reductions are now resolved in planning sources.
+Four family reductions are now resolved in planning sources.
 
 ### MSLR
 
-- historical baseline: 18;
-- surviving tranches: 9;
-- removed standalone future tranches: 9;
-- stable gates: `MSLR-01` / `MSLR-18`;
-- DCP: `PDCP_MSLR_FAMILY_DESIGN_CLOSURE.md`;
-- receipt: `PDCP_MSLR_REDUCTION_RECEIPT.json`.
+- baseline 18 → 9;
+- removed 9;
+- stable gates `MSLR-01` / `MSLR-18`;
+- receipt `PDCP_MSLR_REDUCTION_RECEIPT.json`.
 
 ### MSWI
 
-- historical baseline: 18;
-- surviving tranches: 7;
-- removed standalone future tranches: 11;
-- stable gates: `MSWI-01` / `MSWI-18`;
-- DCP: `PDCP_MSWI_FAMILY_DESIGN_CLOSURE.md`;
-- receipt: `PDCP_MSWI_REDUCTION_RECEIPT.json`.
+- baseline 18 → 7;
+- removed 11;
+- stable gates `MSWI-01` / `MSWI-18`;
+- receipt `PDCP_MSWI_REDUCTION_RECEIPT.json`.
 
 ### MBES
 
-- historical baseline: 24;
-- surviving tranches: 9;
-- removed standalone future tranches: 15;
-- stable gates: `MBES-01` / `MBES-24`;
-- cross-owner absorbed historical tranches: `MBES-11`, `MBES-17`, `MBES-22`;
-- DCP: `PDCP_MBES_FAMILY_DESIGN_CLOSURE.md`;
-- receipt: `PDCP_MBES_REDUCTION_RECEIPT.json`.
+- baseline 24 → 9;
+- removed 15;
+- stable gates `MBES-01` / `MBES-24`;
+- cross-owner absorbed historical tranches `MBES-11`, `MBES-17`, `MBES-22`;
+- receipt `PDCP_MBES_REDUCTION_RECEIPT.json`.
+
+### MERA
+
+- baseline 24 → 10;
+- removed 14;
+- stable gates `MERA-01` / `MERA-24`;
+- cross-owner absorbed historical tranches `MERA-17`, `MERA-18`, `MERA-19`, `MERA-21`;
+- vehicle/mecha/starship historical tranches `13+14+15` consolidated over the completed PPIA-04 shared domain;
+- receipt `PDCP_MERA_REDUCTION_RECEIPT.json`.
 
 **Historical PDCP baseline:** 208.  
-**Current effective future count after three family receipts:** 173.  
-**Standalone future tranches removed so far:** 35.
+**Current effective future count after four family receipts:** 159.  
+**Standalone future tranches removed so far:** 49.
 
-The next selected PDCP family review is **MERA**, followed by the overlap-aware reverse-consumer order in `PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md`.
+The next selected PDCP family review is **GPR**, followed by MRCS, MSAS, MNCS, MCCS and MCS under the overlap-aware reverse-consumer order in `PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md`.
 
 ## Project completion
 

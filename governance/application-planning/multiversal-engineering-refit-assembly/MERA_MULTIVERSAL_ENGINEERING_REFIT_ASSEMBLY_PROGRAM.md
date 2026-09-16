@@ -1,8 +1,8 @@
 # MERA — Multiversal Engineering, Refit & Assembly
 
 **Program ID:** MERA  
-**Status:** OWNER-APPROVED — PLANNED FUTURE INTERSTITIAL  
-**Activation:** after MRCS-21  
+**Status:** OWNER-APPROVED — PLANNED; PDCP-REDUCED  
+**Activation:** after GPR effective golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MBES-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-11  
@@ -10,230 +10,145 @@
 
 ## Purpose
 
-MERA turns Multiversal's existing Asset, Item, crafting, salvage, vehicle, mecha, spacecraft, Project, Profession, economy and rules/content systems into one coherent player/GM engineering experience.
+MERA is the governed player/GM engineering orchestration layer for inspecting, diagnosing, proposing, disassembling, repairing, refitting, calibrating, testing and returning complex Assets to service. It composes existing Item/Asset, salvage, crafting, vehicle/mecha/starship, Project, Profession, economy, rules/content and built-environment owners; it does not replace them.
 
-The governing gameplay loop is:
+The core gameplay loop remains:
 
-**inspect → diagnose → design/propose → source/salvage/fabricate → isolate/disassemble → repair/replace/modify → install/reassemble → calibrate → test → accept/return to service**
+`inspect → diagnose → propose → source/recover → isolate/disassemble → repair/replace/modify → install/reassemble → calibrate → test/accept → return to service`
 
-MERA is not a second inventory ledger, crafting engine, salvage engine, vehicle engine, Profession system or rules database. It orchestrates owner-authorized operations across those systems.
+MERA does not require 3D rendering or a physics sandbox. Schematic and semantic operation is the blocking baseline.
 
-## Core product promise
+## PDCP reduction
 
-A Character can work on a complex Asset at the resolution the Asset actually supports. A rifle, suit of powered armor, magical device, industrial machine, robot, construct, car, tank, aircraft, mecha, spacecraft or starship may all use the same engineering workflow while exposing different governed systems, interfaces and constraints.
+Historical baseline: **24** planned tranches.  
+Effective implementation/proof plan: **10** tranches.  
+Standalone future tranches removed: **14**.  
+Capability loss detected: **no**.
 
-MERA does **not** require 3D rendering or a physics sandbox. Its authoritative engineering representation is schematic and semantic. Presentation may use diagrams, portraits, exploded views or future 3D renderers, but those are optional projections.
+Authoritative reduction artifacts:
+
+- `governance/application-planning/preimplementation-design-closure/PDCP_MERA_FAMILY_DESIGN_CLOSURE.md`
+- `governance/application-planning/preimplementation-design-closure/PDCP_MERA_REDUCTION_RECEIPT.json`
+
+The historical baseline remains provenance. Future governed execution uses only the reduced strict order in `MERA_PROGRAM_BACKLOG.json`.
 
 ## Engineering-resolution ladder
 
-MERA preserves a scalable semantic ladder:
+`Asset → system → assembly → subassembly → component → interface/connection → governed network`
 
-**Asset → system → assembly → subassembly → component → interface/connection → governed network**
+Definitions may stop at any supported level. Unknown lower-level detail is never invented to satisfy UI, diagnostics, compatibility or simulation.
 
-A definition may stop at any level. MERA must not invent lower-level detail merely to make an engineering UI look complete.
+## Existing authorities consumed
 
-Examples:
+- **PPIA-03 / D17:** Item/Asset identity, ownership, condition, installation/modification and history.
+- **LSS:** decomposition, salvage, partial stripping, donor components and cannibalization lineage.
+- **MIB-12:** repair/refurbishment/remanufacture/fabrication/transformation transactions.
+- **MIB-13:** prices, markets, trade and services.
+- **MIB-14 + PPIA-04/F014:** vehicle/platform/base/mecha/starship definitions, configuration and operational foundations.
+- **APW/D26:** Project/task/participant/prerequisite/time/cancellation truth.
+- **DPL/Profession:** Character engineering/mechanic capability and profession truth.
+- **MRCS:** reusable engineering/component/interface/compatibility/work-recipe definitions.
+- **GPR + Action/Event:** reusable gameplay execution, authoritative receipts and replay.
+- **ARI/PCA:** common identity, rights, provenance, review/version/import/export infrastructure.
+- **PCA-12 + PDCP Packet 08:** generic analysis/formal-validation machinery.
+- **PDCP Packet 07:** shared proposal/preview/dry-run/commit/explanation/intervention/recovery semantics.
+- **Reduced MBES:** workshop/garage/hangar/built-facility/infrastructure context.
 
-- a simple sword may expose blade, hilt and one enchantment interface;
-- a powered suit may expose armor sections, power, locomotion, life support and hardpoints;
-- a mecha may expose frame, motive systems, armor, weapons, sensors, power, heat, stations and internal subsystems;
-- a starship may expose hull sections, drives, power, fuel, atmosphere, sensors, weapons, cargo, carried craft and other governed systems.
+## Reduced implementation order
 
-Expanding or collapsing engineering detail never creates a second Asset identity and never discards authoritative condition, provenance or history.
+### MERA-01 — Engineering Workspace, Topology, Authority & Resolution Core
 
-## Existing authorities MERA consumes
+Absorbs historical `01+02`. Implements the engineering workspace, stable topology projections, resolution-depth behavior, permissions, proposal/live distinctions and owner-binding shell.
 
-- **LSS:** recoverable objects, decomposition, partial stripping, salvage, scavenging, donor components, cannibalization lineage and salvage provenance.
-- **PPIA-03 / D17:** Item/Asset identity, ownership, custody, location, containment, condition, durability, installation/modification and history.
-- **MIB-12:** crafting, modification, repair, refurbishment and transformation transactions.
-- **MIB-13:** prices, services, markets, trade and economic consequences.
-- **MIB-14:** vehicle/platform/base definitions, module/facility compatibility, capacity/loadout, resource hooks, maintenance, damage, repair and upgrade foundations.
-- **PPIA-04 / F014:** vehicle, mecha and starship configuration, systems, stations, resources, damage, repair, operational state, capture and salvage handoffs.
-- **APW/D26:** Projects, tasks, phases, prerequisites, participants, time, cancellation and long-running work.
-- **DPL / Profession owners:** engineer, mechanic, technician and other work capabilities, learning and life/profession context.
-- **MRCS:** reusable engineering definitions, component/interface profiles, compatibility rules, work recipes, blueprints and system-extension content.
-- **ARI:** imported/generated media/resource identity, rights and provenance.
+### MERA-03 — Configuration Proposal, Compatibility, Blueprint & Interchange Adapters
 
-## Benchmark lessons
+Absorbs historical `03+04+23`. Implements engineering-specific configuration diff/proposal, compatibility/interface/adapter/substitution evaluation, reusable blueprint/preset/loadout references and domain serializers over Packet-07 and ARI/PCA common infrastructure.
 
-The clean-room benchmark set includes Hardspace: Shipbreaker, BATTLETECH/MechWarrior-style refit and salvage loops, MegaMekLab/MekHQ/MekBay, Armored Core, Crossout, From the Depths, Space Engineers, TerraTech, Pacific Drive, My Summer Car, Ostranauts, Cosmoteer, EVE fitting/Pyfa, No Man's Sky ship salvage/building, Starfield ship construction, Kerbal Space Program, Stormworks and GearBlocks.
+### MERA-05 — Diagnostics, Calibration, Test & Acceptance Runtime
 
-Benchmark products are capability references only. MERA does not copy protected code, data, formulas, authored content, UI expression, save formats or proprietary protocols.
+Absorbs historical `05+09+22`. Implements permission-safe inspection/fault isolation, calibration/tuning, engineering test/shakedown/acceptance evidence and MERA interpretation of PCA-12/Packet-08 analyses.
 
-The strongest transferable lessons are:
+### MERA-06 — Isolation, Access, Safe Disassembly & Recovery Handoff
 
-1. **Simulation before commitment.** A user may design a proposed configuration and inspect requirements, conflicts and derived effects without mutating the real Asset.
-2. **Safe disassembly order can matter.** Energy, pressure, heat, hazardous materials, structural dependency and other governed hazards may require isolation or sequencing.
-3. **Damage affects recoverability.** The condition of an assembly can change whether it is repairable, reusable, salvageable or only material scrap under owner rules.
-4. **Configuration should change behavior.** Parts, systems and tuning should matter through governed capabilities and tradeoffs, not a universal upgrade-level abstraction.
-5. **Field repair and overhaul are distinct.** A temporary patch, normal repair, major service, restoration and rebuild may have different requirements and consequences.
-6. **Redundancy and dependency are meaningful.** A damaged subsystem may degrade, isolate or cascade according to the owning system definition rather than a universal formula.
-7. **Donor parts and substitution matter.** Compatible, adapted, refurbished, remanufactured or improvised parts can be legitimate governed choices.
-8. **Engineering can be deep without 3D.** Schematic topology, compatibility matrices, dependency graphs, configuration diffs, system status and test evidence are sufficient blocking workflows.
+Retains historical `06` and residual integration from `17/18/19`. Implements owner-defined access/isolation/de-energization/depressurization/support prerequisites, disassembly sequencing and typed handoff to LSS/MIB-12. MERA never invents salvage output.
 
-## Player/GM workflows
+### MERA-07 — Repair, Wear, Maintenance & Emergency Engineering
 
-### Inspect and diagnose
+Absorbs historical `07+08+20` plus residuals from `17/18/19/21`. Implements profile-driven repair classes, wear/service interpretation, maintenance, field patches, bypasses, substitutes and jury-rigs without universal penalties or bonuses.
 
-A Character or GM can inspect only authorized information. The system distinguishes known fault, suspected subsystem, isolated failure, unknown cause and hidden/unrevealed truth. Diagnostics never grant omniscience merely because a repair screen exists.
+### MERA-10 — Dependency, Network, Failure & Graceful-Degradation Runtime
 
-### Design and dry-run
+Absorbs historical `10+11`. Implements engineering-domain dependency/network/failure semantics for accepted power/fuel/heat/fluid/ammunition/data/control/magical interfaces. Generic graph/constraint machinery comes from PCA-12.
 
-A proposed configuration is non-authoritative. Users may add/remove/substitute components, compare current versus proposed state, inspect requirements, view unresolved compatibility, estimate owner-defined resource/time requirements and save a blueprint without changing the live Asset.
+### MERA-12 — Item, Weapon, Armor, Tool & Equipment Engineering Adapters
 
-### Isolate and disassemble
+Retains historical `12`. Implements Item/equipment engineering over PPIA-03/D17/MIB-12/MRCS without a second Item or crafting engine.
 
-Engineering work can require access, shutdown, depressurization, discharge, lockout, support, environmental protection or other owner-defined prerequisites. LSS governs what actually becomes recoverable; MERA governs the engineering work plan and sequencing around that operation.
+### MERA-13 — Vehicle, Mecha & Starship Engineering Adapter Pack
 
-### Repair, replace and rebuild
+Absorbs historical `13+14+15`. PPIA-04 already governs Vehicle/Mecha/Starship as one semantic experience family; MERA supplies one engineering adapter substrate with target-specific profile packs rather than three engines.
 
-MERA distinguishes owner-defined repair classes, including temporary field patch, service repair, replacement, overhaul, restoration and rebuild where supported. Repair changes current state and preserves prior damage/history.
+### MERA-16 — Machinery, Robotics, Constructs & Industrial-System Engineering Adapters
 
-### Substitute and jury-rig
+Retains historical `16`. This stays distinct because machinery/robotics/construct/industrial systems may bind owner, autonomy/control and facility contexts that are not PPIA-04 Vehicle semantics.
 
-If a correct component is unavailable, MERA may evaluate an owner-defined substitute, adapter, bypass or improvised replacement. Any degradation, instability, maintenance burden, incompatibility, risk or benefit comes from governed definitions—not a universal MERA penalty.
+### MERA-24 — Golden Cross-Domain Engineering Proof & MBES Handoff
 
-### Calibrate and tune
+Retains historical `24` and all removed-tranche proof obligations.
 
-Supported systems may expose alignment, calibration, tuning, configuration, power allocation, timing, control profile or other bounded adjustments. Tuning cannot invent capabilities the underlying system does not have.
+## Removed standalone runtimes
 
-### Test and acceptance
+### Historical MERA-17 / MERA-18
 
-A completed work order may require bench test, diagnostic test, static test, shakedown, inspection, certification or mission-readiness proof according to the active profile. A successful work transaction is not automatically proof that the Asset is fully operational if the governing profile requires further acceptance.
+Canonical salvageability, decomposition, donor lineage and cannibalization remain LSS responsibilities; refurbishment/remanufacture/fabrication/repair transactions remain MIB-12 responsibilities. MERA keeps only planning, compatibility, sequencing, handoff and proof in `06/07/24`.
 
-## Cross-domain data flow
+### Historical MERA-19 / MERA-21
 
-MERA carries stable IDs and authorized projections rather than copying mutable owner truth.
+Worker capability remains DPL/Profession; work Projects/time remain APW/D26; garage/hangar/fleet and vehicle/platform context remains MIB-14/PPIA-04; built workshop/facility context remains reduced MBES. MERA consumes these as prerequisites and work-order bindings in `06/07/13/16/24`.
 
-A representative flow is:
+## Engineering invariants
 
-1. inspect Asset/system state from the owning domain;
-2. create a non-authoritative engineering proposal;
-3. resolve compatibility, access, skill, tool, workstation and resource prerequisites;
-4. reserve or identify required materials/components through owner systems;
-5. submit authorized LSS/MIB-12/APW operations;
-6. collect committed receipts and updated owner state;
-7. perform any governed calibration/testing;
-8. publish a resulting authorized configuration/condition projection.
-
-No MERA preview or simulation proves a mutation occurred.
-
-## Damage, failure and dependency
-
-MERA may visualize dependencies and predicted consequences only where definitions support them. It does not create a universal real-world engineering simulator.
-
-Profiles may support:
-
-- functional dependency;
-- structural dependency;
-- power/fuel/resource dependency;
-- coolant/fluid dependency;
-- ammunition/feed dependency;
-- data/control dependency;
-- atmosphere/life-support dependency;
-- heat/stress dependency;
-- magical/supernatural dependency;
-- redundancy and alternate paths;
-- isolation and graceful degradation.
-
-Unknown topology remains unknown.
-
-## Resource and network boundary
-
-MERA may present governed networks such as power, fuel, coolant, hydraulics, pneumatics, atmosphere, ammunition, data, control, heat, magical energy or setting-specific equivalents. It must not infer detailed networks from a coarse source record that merely mentions a resource.
-
-## Profession, tools and time
-
-Engineering work may depend on Character skills/Knowledges/Professions, assistants, tools, facilities, workstations, environmental conditions, access permissions, parts and campaign time. MERA consumes those requirements from owner systems rather than creating a second Profession or Project model.
-
-A GM can override only through the governing rules/authority path; MERA does not silently waive requirements.
-
-## Blueprint and sharing model
-
-Engineering blueprints/presets are reusable plans, not live Assets. They can describe intended component identities, compatible alternatives, configuration roles, interfaces, work sequence and expected owner-defined outputs.
-
-Clone/fork, diff, review, provenance and sharing preserve source identity and rights. Installing a shared blueprint still revalidates every target Asset, component, permission and rules requirement.
-
-## Optional AI
-
-Optional AI may explain a fault report, suggest a diagnostic path, propose compatible alternatives, summarize a configuration difference or draft an engineering work plan using visibility-safe context. It has no authority to install, uninstall, dismantle, consume, fabricate, repair, spend, transfer ownership, change configuration, approve hazards or declare an Asset operational.
-
-All blocking workflows must remain usable locally/offline without a paid/cloud AI provider.
-
-## Twenty-four bounded tranches
-
-1. **MERA-01 — Engineering Workspace, Authority Contract & Engineering-Resolution Ladder**
-2. **MERA-02 — System / Assembly / Component / Interface Topology Model**
-3. **MERA-03 — Blueprint, Proposed Configuration, Dry-Run, Diff & Commit Workflow**
-4. **MERA-04 — Compatibility, Fit, Interface, Adapter & Substitution Resolver**
-5. **MERA-05 — Inspection, Diagnostics, Fault Isolation & Unknown-Fault Workflow**
-6. **MERA-06 — Safe Isolation, Access, De-Energization & Disassembly Sequencing**
-7. **MERA-07 — Repair Classes: Field Patch, Service Repair, Overhaul, Restoration & Rebuild**
-8. **MERA-08 — Wear, Reliability, Maintenance State & Service-Interval Profiles**
-9. **MERA-09 — Calibration, Tuning, Alignment & Performance-Envelope Adjustment**
-10. **MERA-10 — Dependency, Cascading Failure, Redundancy & Graceful-Degradation Model**
-11. **MERA-11 — Power, Fuel, Heat, Fluid, Data, Control & Setting-Specific Network Interfaces**
-12. **MERA-12 — Item, Weapon, Armor, Tool & Equipment Modular Engineering**
-13. **MERA-13 — Ground, Water, Air & General Vehicle Construction / Refit**
-14. **MERA-14 — Mecha, Walker, Frame, Motive-System, Hardpoint & Armor Engineering**
-15. **MERA-15 — Spacecraft, Starship, Hull, Module, Interior-System & Carried-Craft Engineering**
-16. **MERA-16 — Machinery, Robotics, Constructs, Industrial & Special-System Engineering**
-17. **MERA-17 — Damage-State → Salvageability / Recoverability / Donor-Part Integration**
-18. **MERA-18 — Cannibalization, Remanufacture, Refurbishment, Fabrication & Replacement**
-19. **MERA-19 — Engineering Skill, Tools, Workstations, Crew, Projects, Time & Assistance**
-20. **MERA-20 — Emergency Engineering, Jury-Rigging, Bypass, Temporary Replacement & Improvisation**
-21. **MERA-21 — Garage, Hangar, Workshop, Fleet Maintenance, Spares & Refit Queues**
-22. **MERA-22 — Test Bench, Simulation, Shakedown, Inspection, Acceptance & Certification**
-23. **MERA-23 — Blueprints, Presets, Loadout Roles, Import/Export, Sharing, Provenance & Optional AI Advice**
-24. **MERA-24 — Golden Cross-Domain Salvage → Engineering → Refit → Operational Proof**
-
-Every tranche targets no more than 24 active minutes. If a tranche cannot credibly fit that bound, it must be split before implementation begins rather than overrunning the execution contract.
+- Definition, blueprint/proposal, Asset instance, installed configuration, operational state, diagnostics, analysis and presentation remain distinct.
+- Unknown is not zero, absent, unlimited, compatible, safe or available.
+- Preview/simulation is not mutation.
+- A successful repair transaction does not automatically satisfy required acceptance testing.
+- LSS remains salvage/decomposition authority.
+- MIB-12 remains repair/refurbishment/remanufacture/fabrication authority.
+- PPIA-03/D17 remain Item/Asset identity and condition authority.
+- MIB-14/PPIA-04/F014 remain Vehicle/Mecha/Starship definition and live-operation authority.
+- APW/D26 remains Project/time authority.
+- DPL remains Character work/profession authority.
+- MRCS remains reusable engineering-definition authority.
+- PCA-12/Packet-08 own generic analysis machinery.
+- Packet-07 owns generic preview/dry-run/explanation/recovery semantics.
+- ARI/PCA own common provenance/version/review/interchange infrastructure.
+- No universal compatibility, reliability, wear, salvage-yield, repair-quality, jury-rig, failure or tuning formula may be invented.
+- No real-world engineering or safety claim is implied by game-rule simulation.
+- No 3D renderer or paid/cloud provider is required for blocking workflows.
+- Optional AI is advisory only.
+- No MERA implementation authority exists until OPS3 governed-start selects a surviving MERA work item.
 
 ## Golden proof
 
-MERA-24 must prove at minimum:
+`MERA-24` must prove at minimum:
 
-- a damaged ordinary Item inspected, diagnosed, repaired and returned to use;
-- a weapon or armor configuration modified through a saved non-authoritative blueprint before commit;
-- a vehicle repaired with a compatible donor component recovered through LSS;
-- a mecha refit that changes governed capability/loadout without replacing Asset identity;
-- a starship subsystem failure isolated, replaced/refurbished, calibrated and tested;
-- a jury-rigged repair that remains explicitly temporary/degraded only because the governing definition says so;
-- a partial teardown that preserves unrecovered components and provenance;
-- a destroyed/damaged component whose condition changes recoverability according to an owner-defined profile;
-- a proposed incompatible configuration that fails closed before consuming anything;
-- a configuration with unknown source data that remains unresolved rather than receiving fabricated capacity/topology;
-- Project/Profession/tool/workstation/time requirements routed through their owners;
-- exact input/output/lineage receipts across salvage, repair, fabrication and installation;
-- local/offline operation with optional AI disabled;
-- equivalent nonvisual engineering operation without requiring 3D manipulation;
-- handoff into MBES machinery/infrastructure use without MBES creating a second engineering engine.
+- a damaged ordinary Item inspected, diagnosed, repaired, tested and returned to use;
+- a weapon/armor proposal saved before commit and revalidated at commit;
+- a compatible donor component recovered through LSS and installed without duplicating provenance;
+- a vehicle/mecha/starship engineering flow over the shared PPIA-04 adapter family;
+- a machinery/robotics/construct flow proving the separate non-PPIA-04 adapter seam;
+- a temporary/jury-rigged repair whose effects come only from governed definitions;
+- partial teardown preserving unrecovered components and exact history;
+- incompatible and unknown-source configurations failing closed without fabricated facts;
+- DPL/Project/tool/workstation/facility prerequisites routed through their owners;
+- network/dependency/failure analysis bounded to declared topology;
+- PCA-12 analysis remaining noncanonical;
+- lost-response/idempotent recovery without duplicate consumption or installation;
+- provider-off local operation and equivalent nonvisual operation;
+- handoff into reduced MBES without MBES rebuilding the MERA engineering kernel.
 
-## Program-wide invariants
-
-- Definition, blueprint/proposal, Asset instance, installed configuration, live operational state and presentation remain distinct.
-- LSS remains salvage/decomposition authority.
-- MIB-12 remains crafting/repair/refurbishment transformation authority.
-- PPIA-03/D17 remain Item/Asset identity, ownership, containment, condition and lineage authority.
-- MIB-14/PPIA-04/F014 remain vehicle/mecha/starship definition and operational authority.
-- APW/D26 remains Project/time authority.
-- DPL/Profession owners remain work-skill and life/profession authority.
-- MRCS remains reusable rule/content-definition authority.
-- MBES consumes MERA engineering capabilities for machinery/infrastructure but does not replace them.
-- Unknown is not zero, absent, unlimited, compatible or safe.
-- Simulation/dry-run is not mutation.
-- A successful repair operation does not erase damage/provenance history.
-- No universal compatibility, reliability, failure, wear, salvage-yield, repair-quality, jury-rig penalty or tuning formula may be invented by MERA.
-- No real-world engineering or safety claim is implied by game-rule simulation.
-- No 3D renderer is required for blocking engineering workflows.
-- Optional AI is advisory only.
-- No paid/cloud provider is required for blocking workflows.
-- No MERA runtime preflight or implementation authority exists now.
+The family DCP records **48 golden validation vectors** (`MERA-PDCP-001..048`).
 
 ## Roadmap placement
 
-Owner-approved placement:
-
-**… → MSAS-01..21 → MRCS-01..21 → MERA-01..24 → MBES-01..24 → SMB-08 …**
-
-This placement lets MRCS author reusable components/interfaces/engineering rules before MERA productizes playable engineering, then lets MBES consume the finished engineering layer for workshops, machinery, utilities, infrastructure, garages, shipyards and similar built-environment systems.
+Cross-program activation remains governed by `ROADMAP_DEPENDENCY_GRAPH.json`. `MERA-01` remains the family start/rotation milestone and `MERA-24` remains the golden/MBES handoff milestone. Historical roadmap prose remains provenance only where it disagrees with the current DAG or PDCP-reduced strict order.
