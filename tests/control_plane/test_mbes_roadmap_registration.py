@@ -12,67 +12,105 @@ def t(path: str):
     return (ROOT / path).read_text(encoding="utf-8")
 
 
-def test_mbes_registered_as_future_interstitial_without_activation():
-    index = j("governance/ai/runtime/ROADMAP_INDEX.json")
-    registry = j("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
+SURVIVORS = ["MBES-01", "MBES-03", "MBES-05", "MBES-08", "MBES-12", "MBES-14", "MBES-18", "MBES-20", "MBES-24"]
+
+
+def test_mbes_is_pdcp_reduced_future_work_without_authority():
+    current = j("operations/CURRENT.json")
     backlog = j("governance/application-planning/multiversal-built-environment-settlement/MBES_PROGRAM_BACKLOG.json")
-    planned = {x["program_id"]: x for x in index["planned_programs"]}
-    assert planned["MBES"]["status"] == "owner_approved_planned"
-    assert planned["MBES"]["activation_after"] == "MERA-24"
-    assert planned["MBES"]["successor"] == "SMB-08"
-    assert planned["MBES"]["implementation_authority"] is False
-    assert planned["MBES"]["execution_units"] == 24
-    assert planned["MERA"]["successor"] == "MBES-01"
+    receipt = j("governance/application-planning/preimplementation-design-closure/PDCP_MBES_REDUCTION_RECEIPT.json")
+
+    assert backlog["status"] == "owner_approved_planned"
     assert backlog["implementation_authority"] is False
-    assert backlog["strict_order"] == [f"MBES-{i:02d}" for i in range(1, 25)]
-    assert all(x["estimated_active_minutes"] <= 24 for x in backlog["tranches"])
-    assert index["current"]["source_program"] == "ARI"
-    assert index["current"]["status"] == "selected_not_started"
-    assert index["current"]["implementation_authority"] is False
-    assert index["current"]["implementation_branch"] is None
-    assert registry["active_planning_work"]["work_item"] == index["current"]["work_item_id"]
-    assert registry["active_planning_work"]["implementation_authority"] is False
+    assert backlog["pdcp_reduction"]["baseline_tranche_count"] == 24
+    assert backlog["pdcp_reduction"]["reduced_tranche_count"] == 9
+    assert backlog["pdcp_reduction"]["capability_loss_detected"] is False
+    assert backlog["strict_order"] == SURVIVORS
+    assert [x["id"] for x in backlog["tranches"]] == SURVIVORS
+    assert all(x["estimated_active_minutes"] <= 16 for x in backlog["tranches"])
+
+    assert receipt["status"] == "family_reduction_resolved"
+    assert receipt["surviving_strict_order"] == SURVIVORS
+    assert len(receipt["baseline_rows"]) == 24
+    assert all(x["capability_loss_check"] == "pass" for x in receipt["baseline_rows"])
+
+    # This planning package must not itself be the selected product work.
+    assert current["lanes"]["product-development"]["selected_work_item"] != "MBES-01"
 
 
-def test_mbes_dependency_placement_and_successors():
-    index = j("governance/ai/runtime/ROADMAP_INDEX.json")
-    mera = j("governance/application-planning/multiversal-engineering-refit-assembly/MERA_PROGRAM_BACKLOG.json")
-    expected = "MSAS-01..21 → MRCS-01..21 → MERA-01..24 → MBES-01..24 → SMB-08 → SMB-09"
-    assert expected in index["effective_forward_order"]
-    assert index["mbes_execution_order"] == [f"MBES-{i:02d}" for i in range(1, 25)]
-    assert mera["successor"] == "MBES-01"
-    amendment = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MERA_AMENDMENT_2026-09-11.md")
-    predecessor = t("governance/application-planning/multiversal-built-environment-settlement/MBES_MERA_PREDECESSOR_AMENDMENT_2026-09-11.md")
-    for doc in (amendment, predecessor):
-        assert "MRCS-01..21 → MERA-01..24 → MBES-01..24" in doc
-
-
-def test_mbes_preserves_boundaries_and_world_reactivity():
+def test_mbes_preserves_current_dag_milestones():
+    graph = j("governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json")
     backlog = j("governance/application-planning/multiversal-built-environment-settlement/MBES_PROGRAM_BACKLOG.json")
-    boundaries = "\n".join(backlog["boundaries"]).lower()
+
+    assert graph["status"] == "CURRENT_PLANNING_AUTHORITY"
+    assert graph["nodes"]["MBES"]["implementation_authority"] is False
+    assert "MERA" in graph["program_edges"]["MBES"]["hard_requires"]
+    assert "MERA-04" in graph["program_edges"]["MBES"]["start_requires"]
+    assert "MRCS-14" in graph["program_edges"]["MBES"]["start_requires"]
+    assert graph["program_edges"]["MBES"]["golden_proof_requires"] == ["MERA-24", "reactive-world proof"]
+    assert graph["milestone_gates"]["rotation"]["MBES-01"] == ["MERA-04", "MRCS-14"]
+    assert "MBES-24" in graph["program_edges"]["MSLR"]["start_requires"]
+    assert graph["milestone_gates"]["rotation"]["MSLR-01"][0] == "MBES-24"
+
+    assert backlog["pdcp_reduction"]["stable_start_gate"] == "MBES-01"
+    assert backlog["pdcp_reduction"]["stable_golden_gate"] == "MBES-24"
+
+
+def test_mbes_cross_family_absorptions_and_overlap_folds_are_explicit():
+    receipt = j("governance/application-planning/preimplementation-design-closure/PDCP_MBES_REDUCTION_RECEIPT.json")
+    rows = {x["baseline_id"]: x for x in receipt["baseline_rows"]}
+
+    assert rows["MBES-11"]["disposition"] == "ABSORB_EXISTING_OWNER"
+    assert rows["MBES-17"]["disposition"] == "ABSORB_EXISTING_OWNER"
+    assert rows["MBES-22"]["disposition"] == "ABSORB_EXISTING_OWNER"
+
+    expected_clusters = {
+        ("MBES-01", "MBES-02"),
+        ("MBES-03", "MBES-04"),
+        ("MBES-05", "MBES-06", "MBES-07"),
+        ("MBES-08", "MBES-09", "MBES-10"),
+        ("MBES-12", "MBES-13"),
+        ("MBES-14", "MBES-15", "MBES-16"),
+        ("MBES-18", "MBES-19"),
+        ("MBES-20", "MBES-21", "MBES-23"),
+    }
+    assert {tuple(x) for x in receipt["intra_family_overlap_clusters"]} == expected_clusters
+
+    cross_text = json.dumps(receipt["cross_family_absorptions"]).lower()
+    for owner in ("mera", "gpr", "pca-12", "mcs", "mswi", "dpl", "odl", "mib-13", "icf"):
+        assert owner in cross_text
+
+
+def test_mbes_preserves_owner_boundaries_reactive_world_and_resolution():
+    backlog = j("governance/application-planning/multiversal-built-environment-settlement/MBES_PROGRAM_BACKLOG.json")
     program = t("governance/application-planning/multiversal-built-environment-settlement/MBES_MULTIVERSAL_BUILT_ENVIRONMENT_SETTLEMENT_PROGRAM.md").lower()
-    benchmark = t("governance/application-planning/multiversal-built-environment-settlement/MBES_BENCHMARK_CAPABILITY_MATRIX.md").lower()
-    for owner in ("mib-14", "mcs", "mrcs", "mera", "apw/d26", "mib-12", "mib-13", "icf", "odl", "scl", "world", "environment", "action/event"):
+    dcp = t("governance/application-planning/preimplementation-design-closure/PDCP_MBES_FAMILY_DESIGN_CLOSURE.md").lower()
+    boundaries = "\n".join(backlog["boundaries"]).lower()
+
+    for owner in ("mib-14", "mcs", "mrcs", "mera", "gpr", "pca-12", "apw/d26", "mib-12", "mib-13", "icf", "odl", "dpl", "world", "environment", "action/event", "mswi"):
         assert owner in boundaries
     for level in ("settlement/district", "site/parcel", "structure", "level/zone", "space/room", "component/fixture", "connection/network"):
         assert level in boundaries
-    assert "planetary sentience" in boundaries
-    assert "pollution and over-development" in boundaries
-    assert "generic reactive-world hooks" in boundaries
-    assert "different branches, realities, worlds and environments" in boundaries
-    assert "oara has planetary sentience" in program
+
+    assert "oara" in program
+    assert "planetary sentience" in program
     assert "equivalent development" in program
     assert "definition is not construction" in program
-    assert "geometry is not truth" in program
-    assert "clean-room" in benchmark
-    assert "not permission to copy" in benchmark
-    assert "no mbes runtime preflight or implementation authority exists now" in program
+    assert "geometry is not construction truth" in dcp
+    assert "no universal real-world structural formula" in dcp
+    assert "48" in dcp and "pdcp-mbes-048" in dcp
 
 
-def test_mbes_golden_proof_spans_personal_to_regional_scale():
-    program = t("governance/application-planning/multiversal-built-environment-settlement/MBES_MULTIVERSAL_BUILT_ENVIRONMENT_SETTLEMENT_PROGRAM.md").lower()
-    for case in ("personalized player home", "homestead/farm/workshop", "hostile-environment", "manufacturing facility", "settlement/city district", "underground or submerged", "hydrology engineering", "multi-settlement regional network", "oara"):
-        assert case in program
-    assert "summary↔detail" in program
-    assert "functional-space derivation" in program
-    assert "local/offline" in program
+def test_mbes_pdcp_count_and_next_family_are_reconciled():
+    ledger = j("governance/application-planning/preimplementation-design-closure/PDCP_REDUCTION_LEDGER.json")
+    families = {x["program_id"]: x for x in ledger["families"]}
+
+    assert ledger["baseline_snapshot"]["baseline_total_tranches"] == 208
+    assert ledger["baseline_snapshot"]["effective_reduced_total"] == 173
+    assert ledger["baseline_snapshot"]["approved_family_reductions"] == 3
+    assert ledger["baseline_snapshot"]["removed_standalone_future_tranches"] == 35
+
+    assert families["MBES"]["reduction_status"] == "resolved"
+    assert families["MBES"]["reduced_tranche_count"] == 9
+    assert families["MBES"]["surviving_tranche_ids"] == SURVIVORS
+    assert families["MERA"]["reduction_status"] == "next_selected_for_pdcp_review"

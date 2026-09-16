@@ -1,0 +1,136 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "PDCP",
+  "program_id": "MBES",
+  "program_name": "Multiversal Built Environment & Settlement",
+  "status": "family_reduction_resolved",
+  "baseline_tranche_count": 24,
+  "reduced_tranche_count": 9,
+  "tranches_removed_or_merged": 15,
+  "reduction_ratio": 0.625,
+  "implementation_authority": false,
+  "ops3_current_changed": false,
+  "capability_loss_detected": false,
+  "design_closure_packages": [
+    "governance/application-planning/preimplementation-design-closure/PDCP_MBES_FAMILY_DESIGN_CLOSURE.md",
+    "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_04_SEMANTIC_AFFORDANCES_DESIGN_CLOSURE.md",
+    "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_06_MULTIRES_SIMULATION_DESIGN_CLOSURE.md",
+    "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md",
+    "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_08_SIMULATION_FORMAL_VALIDATION_DESIGN_CLOSURE.md"
+  ],
+  "surviving_tranches": [
+    {
+      "id": "MBES-01",
+      "name": "Site, Project, Authority & Construction Core",
+      "absorbs": ["MBES-01", "MBES-02"],
+      "absorbed_owner_residuals": ["MBES-22"],
+      "purpose": "Implement the MBES workspace/resolution shell, site/parcel/permission bindings, construction Project linkage, proposal states, stale-version handling and construction-economy reference adapters without duplicating World, Project or Economy truth."
+    },
+    {
+      "id": "MBES-03",
+      "name": "Material Requirements & Structural Build Assembly",
+      "absorbs": ["MBES-03", "MBES-04"],
+      "purpose": "Implement definition-driven construction requirements and player/GM structure assembly proposals over MCS spatial bindings, with Project/resource/time requests and governed commits."
+    },
+    {
+      "id": "MBES-05",
+      "name": "Functional Spaces, Furnishing & Reusable Blueprint Assemblies",
+      "absorbs": ["MBES-05", "MBES-06", "MBES-07"],
+      "absorbed_owner_residuals": ["MBES-17"],
+      "purpose": "Implement capability-derived spaces, furnishing/fixture bindings, reusable assemblies/blueprints, requirement explanation, provenance/version handling and owner-backed staffing/access prerequisites."
+    },
+    {
+      "id": "MBES-08",
+      "name": "Facility Networks, Automation & Logistics Integration",
+      "absorbs": ["MBES-08", "MBES-09", "MBES-10"],
+      "absorbed_owner_residuals": ["MBES-11"],
+      "purpose": "Implement built-facility adapters over MERA/GPR/Inventory/PCA network, control, routing and analysis infrastructure plus production-facility capability bindings to existing production owners."
+    },
+    {
+      "id": "MBES-12",
+      "name": "Civil Terrain, Hydrology & Land-Transformation Runtime",
+      "absorbs": ["MBES-12", "MBES-13"],
+      "purpose": "Implement project-backed civil terrain and water transformation proposals, owner validation/commit, history/provenance and recovery/consequence handoffs."
+    },
+    {
+      "id": "MBES-14",
+      "name": "Environment Conditions, Externalities, Habitability & Reactive-World Integration",
+      "absorbs": ["MBES-14", "MBES-15", "MBES-16"],
+      "purpose": "Implement owner-condition adapters, externality observations, habitability/resilience evaluation and generic reactive-world routing including Oara proof without becoming World/Environment authority."
+    },
+    {
+      "id": "MBES-18",
+      "name": "Durability, Failure, Defense & Recovery Infrastructure",
+      "absorbs": ["MBES-18", "MBES-19"],
+      "purpose": "Implement built-asset condition/failure/repair/retrofit/security/emergency capability adapters over MERA, Combat, SCL and Hazard owners with deterministic recovery receipts."
+    },
+    {
+      "id": "MBES-20",
+      "name": "Settlement, Transport & Regional Development Integration",
+      "absorbs": ["MBES-20", "MBES-21", "MBES-23"],
+      "absorbed_owner_residuals": ["MBES-17", "MBES-22"],
+      "purpose": "Implement aggregate district/settlement/regional built-state projections, services/housing/transport capacity, community projects and inter-settlement dependencies using Packet-06/PCA analysis and owner-backed people/economy references."
+    },
+    {
+      "id": "MBES-24",
+      "name": "Golden Cross-Scale Building, Settlement & Reactive-World Proof",
+      "absorbs": ["MBES-24"],
+      "absorbed_owner_residuals": ["MBES-11", "MBES-17", "MBES-22"],
+      "purpose": "Automate/prove the complete family battery including cross-owner absorbed capabilities, provider-off/accessibility/permissions proof, Oara comparison and MSLR handoff."
+    }
+  ],
+  "baseline_rows": [
+    {"baseline_id":"MBES-01","baseline_name":"Built-Environment Workspace, Authority Contract & Construction-Resolution Ladder","disposition":"RETAIN_IMPLEMENTATION","surviving_target":"MBES-01","retained_implementation_obligations":["workspace/document shell","resolution bindings","proposal dispositions","owner boundaries"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_06_MULTIRES_SIMULATION_DESIGN_CLOSURE.md","PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-02","baseline_name":"Site, Parcel, Claim, Ownership, Permission & Construction-Project Foundation","disposition":"MERGE_IMPLEMENTATION","surviving_target":"MBES-01","retained_implementation_obligations":["site/parcel bindings","permission/claim projections","Project/time bindings","cancellation/recovery"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-03","baseline_name":"Construction Materials, Structural Properties, Cost, Labor & Time Model","disposition":"RETAIN_IMPLEMENTATION","surviving_target":"MBES-03","retained_implementation_obligations":["material/property references","requirement evaluation","cost/labor/time/resource request assembly"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_04_SEMANTIC_AFFORDANCES_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-04","baseline_name":"Player/GM Build Mode: Foundations, Walls, Floors, Roofs, Openings & Vertical Access","disposition":"MERGE_IMPLEMENTATION","surviving_target":"MBES-03","retained_implementation_obligations":["structural placement proposals","MCS geometry bindings","placement validation","accessible non-pointer paths"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-05","baseline_name":"Functional Space/Room Recognition, Capability Derivation & Requirement Inspection","disposition":"RETAIN_IMPLEMENTATION","surviving_target":"MBES-05","retained_implementation_obligations":["space capability derivation","requirement explanations","missing-capability diagnostics"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_08_SIMULATION_FORMAL_VALIDATION_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-06","baseline_name":"Furniture, Fixtures, Decoration, Comfort, Identity & Achievement Display","disposition":"MERGE_IMPLEMENTATION","surviving_target":"MBES-05","retained_implementation_obligations":["fixture/furniture/decor bindings","identity/display state","rule-owned comfort/privacy effects"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-07","baseline_name":"Blueprints, Prefabs, Modules, Templates, Clone/Fork, Sharing & Placement","disposition":"MERGE_IMPLEMENTATION","surviving_target":"MBES-05","retained_implementation_obligations":["reusable assembly definitions","dependency/substitution checks","placement adapters","provenance/version/collaboration bindings"],"absorbed_existing_owner_evidence":["ARI/PCA provenance and rights infrastructure","PDCP Packet 07 preview/review semantics"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-08","baseline_name":"Utility & Life-Support Networks: Power, Water, Waste, Fuel, Heat, Air, Magic & Communications","disposition":"RETAIN_IMPLEMENTATION","surviving_target":"MBES-08","retained_implementation_obligations":["built-facility network adapters","resource/signal capacity projections","network state explanations"],"absorbed_existing_owner_evidence":["MERA network interfaces","PCA-12 shared analysis"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_08_SIMULATION_FORMAL_VALIDATION_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-09","baseline_name":"Logic, Sensors, Switches, Controllers, Automation & Safe Condition→Action Networks","disposition":"MERGE_IMPLEMENTATION","surviving_target":"MBES-08","retained_implementation_obligations":["sensor/controller bindings","bounded condition→operation requests","stop/failure/permission handling"],"absorbed_existing_owner_evidence":["GPR execution substrate","MERA interfaces","PDCP Packet 07 authority semantics"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-10","baseline_name":"Storage, Conveyance, Routing, Inventory Interfaces & Logistics Networks","disposition":"MERGE_IMPLEMENTATION","surviving_target":"MBES-08","retained_implementation_obligations":["storage/inventory interface adapters","routing/conveyance projections","throughput/capacity/priority bindings"],"absorbed_existing_owner_evidence":["Inventory/Asset authority","MERA/GPR generic network/runtime substrate"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_08_SIMULATION_FORMAL_VALIDATION_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-11","baseline_name":"Extraction, Agriculture, Processing, Manufacturing & Production-Chain Facilities","disposition":"ABSORB_EXISTING_OWNER","surviving_target":"MBES-05/MBES-08/MBES-20/MBES-24","retained_implementation_obligations":["facility capability bindings","network/resource bindings","aggregate production-capacity projection","golden proof"],"absorbed_existing_owner_evidence":["ICF production/cultivation definitions","MIB-12 crafting/transformation authority","Inventory/Asset","MIB-13/Economy"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-12","baseline_name":"Terrain Shaping, Excavation, Fill, Tunneling, Grading & Civil Earthworks","disposition":"RETAIN_IMPLEMENTATION","surviving_target":"MBES-12","retained_implementation_obligations":["civil terrain operations","Project/resource/time bindings","World/Environment commit/recovery"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-13","baseline_name":"Hydrology, Irrigation, Drainage, Dams, Canals, Reservoirs & Land Reclamation","disposition":"MERGE_IMPLEMENTATION","surviving_target":"MBES-12","retained_implementation_obligations":["hydrology/water-management operations","PCA/MCS analysis bindings","World/Environment validation and history"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-14","baseline_name":"Pollution, Waste, Heat, Noise, Habitat, Resource Depletion & Ecological Externalities","disposition":"RETAIN_IMPLEMENTATION","surviving_target":"MBES-14","retained_implementation_obligations":["externality observation schema","source/scope/certainty/provenance","owner consequence handoff"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-15","baseline_name":"Branch, Reality, World & Environment Construction Conditions / Reactive-World Hooks","disposition":"MERGE_IMPLEMENTATION","surviving_target":"MBES-14","retained_implementation_obligations":["owner-condition profiles","reactive-world routing","Oara generic-interface proof"],"absorbed_existing_owner_evidence":["World/Environment/Reality/Branch authority","reduced MSWI consequence router"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-16","baseline_name":"Habitability, Shelter, Atmosphere, Pressure, Climate, Radiation & Environmental Resilience","disposition":"MERGE_IMPLEMENTATION","surviving_target":"MBES-14","retained_implementation_obligations":["habitability/resilience capability evaluation","life-support/shelter bindings","owner-defined threshold analysis"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_08_SIMULATION_FORMAL_VALIDATION_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-17","baseline_name":"Residents, Households, Crews, Staffing, Jobs, Access & Facility-Use Integration","disposition":"ABSORB_EXISTING_OWNER","surviving_target":"MBES-05/MBES-20/MBES-24","retained_implementation_obligations":["facility access/use/staffing prerequisite bindings","settlement capacity references","golden proof"],"absorbed_existing_owner_evidence":["Character/MNCS identity and population authority","ODL household/organization/crew roles","DPL jobs/profession/schedules","Project/Time"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_06_MULTIRES_SIMULATION_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-18","baseline_name":"Durability, Upkeep, Wear, Damage, Fire, Failure, Repair, Retrofit & Disaster Recovery","disposition":"RETAIN_IMPLEMENTATION","surviving_target":"MBES-18","retained_implementation_obligations":["condition/damage/upkeep adapters","repair/retrofit/recovery requests","failure/history receipts"],"absorbed_existing_owner_evidence":["MERA engineering/repair/dependency semantics","MIB-12 transformation authority"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_04_SEMANTIC_AFFORDANCES_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-19","baseline_name":"Defense, Security, Fortification, Siege, Emergency & Hazard-Response Infrastructure","disposition":"MERGE_IMPLEMENTATION","surviving_target":"MBES-18","retained_implementation_obligations":["defense/security/emergency capability projections","Combat/SCL/Hazard adapters","evacuation/shelter/suppression bindings"],"absorbed_existing_owner_evidence":["Combat/SCL/Hazard adjudication authority"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-20","baseline_name":"Settlement/District/City Growth, Land Use, Housing Capacity, Services & Public Works","disposition":"RETAIN_IMPLEMENTATION","surviving_target":"MBES-20","retained_implementation_obligations":["aggregate settlement built-state projections","housing/service/public-work capacity","resolution/refinement bindings"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_06_MULTIRES_SIMULATION_DESIGN_CLOSURE.md","PDCP_PACKET_08_SIMULATION_FORMAL_VALIDATION_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-21","baseline_name":"Transportation, Roads, Transit, Ports, Access, Traffic & Regional Infrastructure","disposition":"MERGE_IMPLEMENTATION","surviving_target":"MBES-20","retained_implementation_obligations":["transport/network bindings","capacity/routing projections","World/Exploration/MCS integration"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_08_SIMULATION_FORMAL_VALIDATION_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-22","baseline_name":"Property, Funding, Commerce, Markets, Taxes, Contracts, Trade & Construction Economy","disposition":"ABSORB_EXISTING_OWNER","surviving_target":"MBES-01/MBES-20/MBES-24","retained_implementation_obligations":["site/project funding/procurement references","settlement economy capacity references","golden proof"],"absorbed_existing_owner_evidence":["MIB-13/Economy market/trade/service authority","ODL organization/property/business seams","APW/D26 Project authority"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-23","baseline_name":"Neighborhoods, Community/Faction Projects, Multi-Settlement Networks, Specialization & Regional Development","disposition":"MERGE_IMPLEMENTATION","surviving_target":"MBES-20","retained_implementation_obligations":["community/faction project bindings","specialization/dependency projections","regional development and multi-settlement integration"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md","PDCP_PACKET_06_MULTIRES_SIMULATION_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"},
+    {"baseline_id":"MBES-24","baseline_name":"Golden Cross-Scale Building, Settlement, Environment-Reaction & Oara Sentience Proof","disposition":"RETAIN_IMPLEMENTATION","surviving_target":"MBES-24","retained_implementation_obligations":["family golden battery","cross-owner absorbed-capability proof","Oara/non-Oara comparison","provider-off/accessibility/permissions proof","exact-head closeout","MSLR handoff"],"affected_dag_refs":["MBES.golden_proof_requires","MSLR.start_requires","MSLR-01 rotation gate"],"design_closed_by":["PDCP_MBES_FAMILY_DESIGN_CLOSURE.md"],"capability_loss_check":"pass"}
+  ],
+  "intra_family_overlap_clusters": [
+    ["MBES-01", "MBES-02"],
+    ["MBES-03", "MBES-04"],
+    ["MBES-05", "MBES-06", "MBES-07"],
+    ["MBES-08", "MBES-09", "MBES-10"],
+    ["MBES-12", "MBES-13"],
+    ["MBES-14", "MBES-15", "MBES-16"],
+    ["MBES-18", "MBES-19"],
+    ["MBES-20", "MBES-21", "MBES-23"]
+  ],
+  "cross_family_absorptions": [
+    {"baseline_id":"MBES-11","generic_or_canonical_owners":["ICF","MIB-12","Inventory/Asset","MIB-13/Economy"],"mbes_residual_targets":["MBES-05","MBES-08","MBES-20","MBES-24"]},
+    {"baseline_id":"MBES-17","generic_or_canonical_owners":["Character/MNCS","ODL","DPL","APW/D26 Project/Time"],"mbes_residual_targets":["MBES-05","MBES-20","MBES-24"]},
+    {"baseline_id":"MBES-22","generic_or_canonical_owners":["MIB-13/Economy","ODL","APW/D26 Project/Time"],"mbes_residual_targets":["MBES-01","MBES-20","MBES-24"]},
+    {"concern":"generic engineering/network/dependency/repair kernel","owners":["MERA"],"mbes_consumers":["MBES-08","MBES-18"]},
+    {"concern":"generic gameplay execution/replay","owners":["GPR","Action/Event"],"mbes_consumers":["all surviving runtime tranches"]},
+    {"concern":"generic preview/debug/intervention/recovery","owners":["PDCP Packet 07"],"mbes_consumers":["MBES-01","MBES-03","MBES-05","MBES-08","MBES-12","MBES-14","MBES-18","MBES-20"]},
+    {"concern":"generic simulation/formal/flow/capacity analysis","owners":["PCA-12","PDCP Packet 08"],"mbes_consumers":["MBES-05","MBES-08","MBES-14","MBES-20","MBES-24"]},
+    {"concern":"cartographic/spatial authoring","owners":["MCS"],"mbes_consumers":["MBES-03","MBES-12","MBES-20"]},
+    {"concern":"cross-domain consequence propagation","owners":["reduced MSWI"],"mbes_consumers":["MBES-12","MBES-14","MBES-20","MBES-24"]}
+  ],
+  "surviving_strict_order": ["MBES-01","MBES-03","MBES-05","MBES-08","MBES-12","MBES-14","MBES-18","MBES-20","MBES-24"],
+  "stable_start_gate": "MBES-01",
+  "stable_golden_gate": "MBES-24",
+  "dag_update_required": false,
+  "dag_reason": "Existing DAG milestone IDs remain valid: MBES-01 survives as start gate and MBES-24 survives as golden/MSLR handoff gate.",
+  "golden_vector_count": 48,
+  "next_pdcp_family": "MERA"
+}
