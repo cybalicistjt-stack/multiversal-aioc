@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "project_id": "PDCP",
   "program_id": "MCCS",
   "status": "resolved",
@@ -8,7 +8,8 @@
   "removed_standalone_tranches": 10,
   "implementation_authority": false,
   "ops3_current_mutation": false,
-  "dag_mutation_required": false,
+  "dag_mutation_required": true,
+  "dag_gate_replacement": {"removed_milestone":"MCCS-02","replacement_milestone":"MCCS-01","consumer":"MNCS-01","reason":"Reduced MCCS-01 absorbs the complete historical MCCS-02 renderer-neutral projection/draft-overlay contract."},
   "stable_milestones": ["MCCS-01", "MCCS-21"],
   "surviving_tranche_ids": ["MCCS-01","MCCS-03","MCCS-05","MCCS-06","MCCS-09","MCCS-11","MCCS-13","MCCS-16","MCCS-18","MCCS-19","MCCS-21"],
   "capability_loss_detected": false,
