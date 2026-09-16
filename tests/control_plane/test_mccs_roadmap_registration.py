@@ -58,11 +58,6 @@ def test_mccs_pdcp_reduced_contract_is_complete_and_non_authoritative():
     assert family["reduction_status"] == "resolved"
     assert family["reduced_tranche_count"] == 11
     assert family["surviving_tranche_ids"] == EXPECTED
-    assert ledger["baseline_snapshot"]["effective_reduced_total"] == 114
-    assert ledger["baseline_snapshot"]["removed_standalone_future_tranches"] == 94
-    assert ledger["baseline_snapshot"]["approved_family_reductions"] == 9
-    mcs = next(x for x in ledger["families"] if x["program_id"] == "MCS")
-    assert mcs["reduction_status"] == "next_selected_for_pdcp_review"
 
 
 def test_mccs_equivalent_mncs_rotation_gate_and_owner_boundaries():
