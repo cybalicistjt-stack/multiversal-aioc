@@ -61,6 +61,7 @@ jobs:
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$CANDIDATE_HEAD"
           python3 --version
+          node --version
           git --version
 
       - name: Validate the canonical single door
@@ -83,6 +84,12 @@ jobs:
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_operations_v3_single_door.py
+
+      - name: Run canonical content pipeline reconciliation regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_canonical_content_pipeline_reconciliation.py
 
       - name: Upload compact Operations V3 evidence
         if: always()
