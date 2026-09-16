@@ -1,15 +1,18 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "project_id": "PDCP",
   "project_name": "Preimplementation Design Closure Project",
-  "status": "final_reconciliation_pending_publication",
+  "status": "completed_reconciled",
   "owner": "John Brandon Turner",
   "approved": "2026-09-16",
+  "closed": "2026-09-16",
   "implementation_authority": false,
   "ops3_current_mutation": false,
   "project_path": "governance/application-planning/preimplementation-design-closure/PDCP_PREIMPLEMENTATION_DESIGN_CLOSURE_PROJECT.md",
   "design_closure_contract": "governance/application-planning/preimplementation-design-closure/PDCP_DESIGN_CLOSURE_CONTRACT.md",
   "cross_family_overlap_register": "governance/application-planning/preimplementation-design-closure/PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md",
+  "final_closeout_markdown": "governance/application-planning/preimplementation-design-closure/PDCP_FINAL_CLOSEOUT_2026-09-16.md",
+  "final_closeout_record": "governance/application-planning/preimplementation-design-closure/PDCP_FINAL_CLOSEOUT_2026-09-16.json",
   "baseline_snapshot": {
     "aioc_main_sha": "1558bcd12e69c0e49290191199fe6ef111f1e80c",
     "date": "2026-09-16",
@@ -17,7 +20,7 @@
     "effective_reduced_total": 105,
     "approved_family_reductions": 10,
     "removed_standalone_future_tranches": 103,
-    "note": "Baseline remains immutable historical provenance. All ten family reductions now have complete receipts on the MCS candidate; final PDCP closeout requires publication to main and whole-project reconciliation."
+    "note": "Baseline is immutable historical provenance. All ten family reductions are resolved; effective total is final for PDCP closeout."
   },
   "excluded_programs": ["MAS"],
   "families": [
@@ -46,5 +49,16 @@
     "Prefer stable sparse IDs over gratuitous renumbering when start/rotation/golden milestones can remain valid.",
     "PDCP never grants implementation authority and does not mutate operations/CURRENT.json merely for design work."
   ],
-  "next_action": "Publish MCS reduction to main, then perform final whole-project reconciliation and PDCP closeout."
+  "final_reconciliation": {
+    "all_family_receipts_resolved": true,
+    "all_family_overlap_audits_complete": true,
+    "capability_loss_detected": false,
+    "live_retired_id_audit_required": true,
+    "live_gate_repairs": [
+      {"retired":"MERA-04","replacement":"MERA-03","consumer":"MBES","capability_intent_changed":false}
+    ],
+    "global_progress_assertions_owned_by_closeout_regression": true,
+    "product_lane_preserved": {"selected_work_item":"PCA-03","implementation_authority":false}
+  },
+  "next_action": null
 }

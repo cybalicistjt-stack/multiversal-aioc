@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.2",
+  "schema_version": "1.0.3",
   "status": "CURRENT_PLANNING_AUTHORITY",
   "graph_id": "MV-ROADMAP-DAG-001",
   "authority_rule": "This graph owns cross-program activation/dependency semantics. Historical roadmap amendments and legacy activation_after/successor fields remain provenance/compatibility projections and cannot override this graph.",
@@ -57,7 +57,7 @@
     "MAS": {"hard_requires":[],"start_requires":["CNI-11","CSW/Adventure/Scene/Session contracts","ARI"],"late_bind_requires":["MNCS cast","MCS maps","MCCS presentation","MSAS audio"],"golden_proof_requires":["relevant specialist proofs"]},
     "GPR": {"hard_requires":[],"start_requires":["MRCS-05","MAL completed_verified","core Action/Event/Character/World/Combat/Inventory owner contracts"],"late_bind_requires":["later MRCS domains","MCS/MCCS/MNCS/MAS/MSAS outputs"],"golden_proof_requires":["MRCS-21","relevant specialist golden proofs"]},
     "MERA": {"hard_requires":[],"start_requires":["GPR-05","MRCS-13","MIB-12","MIB-13","MIB-14","LSS","Project/Profession contracts"],"late_bind_requires":["specialist presentation outputs"],"golden_proof_requires":["GPR-16","MRCS engineering proof","LSS recovery proof"]},
-    "MBES": {"hard_requires":["MERA"],"start_requires":["MERA-04","MRCS-14","MIB-14","World/Environment/Project contracts"],"late_bind_requires":["MCS map/interior geometry","MNCS residents/populations","later MERA diagnostics/refit"],"golden_proof_requires":["MERA-24","reactive-world proof"]},
+    "MBES": {"hard_requires":["MERA"],"start_requires":["MERA-03","MRCS-14","MIB-14","World/Environment/Project contracts"],"late_bind_requires":["MCS map/interior geometry","MNCS residents/populations","later MERA diagnostics/refit"],"golden_proof_requires":["MERA-24","reactive-world proof"]},
     "MSLR": {"hard_requires":["MBES"],"start_requires":["MBES-24","GPR-16","MCS-21","SSA-10","ENV-16","World/Reality/Scene/Transition/Portal/Visibility/Knowledge/Action/Event owner contracts"],"late_bind_requires":["MSWI systemic consequence propagation","SAA presentation refinements"],"golden_proof_requires":["MSLR-18"]},
     "MSWI": {"hard_requires":["MBES","MSLR"],"start_requires":["MSLR-18","GPR-16","MNCS-24","DPL completed_verified","MIB-09","MIB-12","MIB-14","APW/D26","World/Environment/Organization owner contracts"],"late_bind_requires":["SAA presentation refinements","SMB-09 broader creator/runtime shell integration"],"golden_proof_requires":["MSWI-18"]},
     "SMB08": {"hard_requires":[],"start_requires":["required studio/runtime golden barriers","MSWI-18"],"late_bind_requires":[],"golden_proof_requires":[]},
@@ -86,7 +86,7 @@
       "MAS-01":["CNI-11"],
       "GPR-01":["MRCS-05"],
       "MERA-01":["GPR-05","MRCS-13"],
-      "MBES-01":["MERA-04","MRCS-14"],
+      "MBES-01":["MERA-03","MRCS-14"],
       "MSLR-01":["MBES-24","GPR-16","MCS-21"],
       "MSWI-01":["MSLR-18","GPR-16","MNCS-24"]
     }

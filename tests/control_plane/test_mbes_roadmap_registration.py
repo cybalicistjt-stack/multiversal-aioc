@@ -34,7 +34,6 @@ def test_mbes_is_pdcp_reduced_future_work_without_authority():
     assert len(receipt["baseline_rows"]) == 24
     assert all(x["capability_loss_check"] == "pass" for x in receipt["baseline_rows"])
 
-    # This planning package must not itself be the selected product work.
     assert current["lanes"]["product-development"]["selected_work_item"] != "MBES-01"
 
 
@@ -45,10 +44,11 @@ def test_mbes_preserves_current_dag_milestones():
     assert graph["status"] == "CURRENT_PLANNING_AUTHORITY"
     assert graph["nodes"]["MBES"]["implementation_authority"] is False
     assert "MERA" in graph["program_edges"]["MBES"]["hard_requires"]
-    assert "MERA-04" in graph["program_edges"]["MBES"]["start_requires"]
+    assert "MERA-03" in graph["program_edges"]["MBES"]["start_requires"]
+    assert "MERA-04" not in graph["program_edges"]["MBES"]["start_requires"]
     assert "MRCS-14" in graph["program_edges"]["MBES"]["start_requires"]
     assert graph["program_edges"]["MBES"]["golden_proof_requires"] == ["MERA-24", "reactive-world proof"]
-    assert graph["milestone_gates"]["rotation"]["MBES-01"] == ["MERA-04", "MRCS-14"]
+    assert graph["milestone_gates"]["rotation"]["MBES-01"] == ["MERA-03", "MRCS-14"]
     assert "MBES-24" in graph["program_edges"]["MSLR"]["start_requires"]
     assert graph["milestone_gates"]["rotation"]["MSLR-01"][0] == "MBES-24"
 
@@ -101,16 +101,7 @@ def test_mbes_preserves_owner_boundaries_reactive_world_and_resolution():
     assert "48" in dcp and "pdcp-mbes-048" in dcp
 
 
-def test_mbes_pdcp_count_and_next_family_are_reconciled():
-    ledger = j("governance/application-planning/preimplementation-design-closure/PDCP_REDUCTION_LEDGER.json")
-    families = {x["program_id"]: x for x in ledger["families"]}
-
-    assert ledger["baseline_snapshot"]["baseline_total_tranches"] == 208
-    assert ledger["baseline_snapshot"]["effective_reduced_total"] == 173
-    assert ledger["baseline_snapshot"]["approved_family_reductions"] == 3
-    assert ledger["baseline_snapshot"]["removed_standalone_future_tranches"] == 35
-
-    assert families["MBES"]["reduction_status"] == "resolved"
-    assert families["MBES"]["reduced_tranche_count"] == 9
-    assert families["MBES"]["surviving_tranche_ids"] == SURVIVORS
-    assert families["MERA"]["reduction_status"] == "next_selected_for_pdcp_review"
+def test_mbes_historical_count_snapshot_remains_provenance():
+    receipt = j("governance/application-planning/preimplementation-design-closure/PDCP_MBES_REDUCTION_RECEIPT.json")
+    assert receipt["baseline_tranche_count"] == 24
+    assert receipt["reduced_tranche_count"] == 9

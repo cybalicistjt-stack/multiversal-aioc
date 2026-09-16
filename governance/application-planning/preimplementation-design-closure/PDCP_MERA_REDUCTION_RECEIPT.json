@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.1.1",
   "project_id": "PDCP",
   "program_id": "MERA",
   "program_name": "Multiversal Engineering, Refit & Assembly",
@@ -82,9 +82,18 @@
   "golden_vector_count": 48,
   "golden_vector_prefix": "MERA-PDCP-",
   "dag_reconciliation": {
-    "required": false,
-    "reason": "MERA-01 and MERA-24 remain stable start/golden milestone IDs; MBES and ROADMAP_DEPENDENCY_GRAPH references remain semantically valid."
+    "required": true,
+    "discovered_during": "PDCP final whole-project reconciliation",
+    "removed_live_milestone": "MERA-04",
+    "replacement_live_milestone": "MERA-03",
+    "affected_surfaces": [
+      "ROADMAP_DEPENDENCY_GRAPH.json MBES start_requires",
+      "ROADMAP_DEPENDENCY_GRAPH.json rotation MBES-01",
+      "PARALLEL_PRODUCT_EXECUTION_MAP.md L9_BUILT_ENVIRONMENT"
+    ],
+    "reason": "Historical MERA-04 was merged into surviving MERA-03, but the MBES live gate still referenced MERA-04. Final PDCP reconciliation repaired the equivalent gate without changing capability intent."
   },
   "ops3_current_mutation": false,
-  "next_pdcp_family": "GPR"
+  "historical_next_pdcp_family": "GPR",
+  "next_pdcp_family": null
 }

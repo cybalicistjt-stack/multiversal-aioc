@@ -42,9 +42,6 @@ def test_mrcs_reduced_family_contract_and_no_authority():
     assert row["reduction_status"] == "resolved"
     assert row["reduced_tranche_count"] == 13
     assert row["surviving_tranche_ids"] == expected
-    assert ledger["baseline_snapshot"]["effective_reduced_total"] == 145
-    assert ledger["baseline_snapshot"]["removed_standalone_future_tranches"] == 63
-    assert {x["program_id"] for x in ledger["families"] if x["reduction_status"] == "next_selected_for_pdcp_review"} == {"MSAS"}
 
 
 def test_mrcs_preserves_stable_dag_milestones_and_owner_boundaries():
