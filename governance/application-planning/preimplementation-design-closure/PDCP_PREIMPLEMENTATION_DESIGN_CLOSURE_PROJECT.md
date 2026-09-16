@@ -45,13 +45,14 @@ Allowed dispositions: `RETAIN_IMPLEMENTATION`, `MERGE_IMPLEMENTATION`, `ABSORB_E
 - **MERA:** 24 → 10; removed 14; stable `MERA-01/MERA-24`.
 - **GPR:** 16 → 10; removed 6; stable `GPR-01/GPR-05/GPR-16`.
 - **MRCS:** 21 → 13; removed 8; stable `MRCS-05/MRCS-13/MRCS-14/MRCS-21`.
-- **MSAS:** 21 → 11; removed 10; stable `MSAS-01/MSAS-21`; generic generation absorbed to PCA-09/PCA-08 and generic lifecycle/provenance remains ARI/PCA-owned.
+- **MSAS:** 21 → 11; removed 10; stable `MSAS-01/MSAS-21`; generic generation remains PCA-owned and generic lifecycle/provenance remains ARI/PCA-owned.
+- **MNCS:** 24 → 13; removed 11; stable `MNCS-01/MNCS-24`; generic generation uses PCA, life simulation remains DPL/Economy/Project-owned, multi-resolution semantics remain Packet-06/domain-owned, and generic lifecycle/review/provenance remains ARI/PCA/Packet-07-owned.
 
-**Current effective future count:** 135.  
-**Standalone future tranches removed:** 73.  
-**Resolved family receipts:** 7 / 10.
+**Current effective future count:** 124.  
+**Standalone future tranches removed:** 84.  
+**Resolved family receipts:** 8 / 10.
 
-The next selected PDCP family review is **MNCS**, followed by MCCS and MCS under `PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md`.
+The next selected PDCP family review is **MCCS**, followed by MCS under `PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md`.
 
 ## Current durable control surfaces
 
