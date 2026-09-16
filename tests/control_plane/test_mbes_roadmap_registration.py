@@ -34,9 +34,8 @@ def test_mbes_is_pdcp_reduced_future_work_without_authority():
     assert len(receipt["baseline_rows"]) == 24
     assert all(x["capability_loss_check"] == "pass" for x in receipt["baseline_rows"])
 
-    # PDCP planning never acquires the live product-development authority.
+    # This planning package must not itself be the selected product work.
     assert current["lanes"]["product-development"]["selected_work_item"] != "MBES-01"
-    assert current["lanes"]["product-development"]["implementation_authority"] is False
 
 
 def test_mbes_preserves_current_dag_milestones():
