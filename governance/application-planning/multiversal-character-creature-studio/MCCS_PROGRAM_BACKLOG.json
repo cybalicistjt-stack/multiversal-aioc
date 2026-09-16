@@ -1,10 +1,10 @@
 {
-  "schema_version": "0.3.0",
+  "schema_version": "0.3.1",
   "program_id": "MCCS",
   "program_name": "Multiversal Character & Creature Studio",
   "status": "owner_approved_planned",
-  "activation_after": "MCS-21",
-  "successor": "MNCS-01",
+  "activation_after": "ROADMAP_DEPENDENCY_GRAPH typed MCCS start gates; parallel-safe with MCS/MRCS/MSAS",
+  "successor": "MNCS-01 via ROADMAP_DEPENDENCY_GRAPH rotation after reduced MCCS-01 plus MNCS prerequisites",
   "owner": "John Brandon Turner",
   "approved": "2026-09-11",
   "implementation_authority": false,
@@ -41,16 +41,15 @@
     {"id":"MCCS-21","name":"Golden Character & Creature Capability / Semantic-Integration Proof","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MCCS-21"],"absorbs_external_residuals":["MCCS-17 population-visualization proof","MCCS-19 generic provenance/review integration proof"]}
   ],
   "required_upstream": [
-    "ARI family completed_verified",
-    "MIB-18 completed_verified",
-    "SMB-01..07 completed_verified",
-    "CNI-01..13 completed_verified",
-    "PCA family completed_verified at its effective governed golden gate",
-    "MCS family completed_verified at its effective PDCP-reduced golden gate",
-    "completed CAPP/PPIA appearance contracts available",
-    "PAPT/PCA/ARI integration contracts available",
-    "PDCP Packet 07 design_closed"
+    "ROADMAP_DEPENDENCY_GRAPH FOUR_LANE_RELEASE_BARRIER",
+    "PCA-05",
+    "PCA-06",
+    "PCA-09",
+    "PCA-15",
+    "CAPP/PPIA/PAPT/ARI contracts"
   ],
+  "late_bind_requires": ["MCS map/scene bindings"],
+  "golden_proof_requires": ["PCA-16", "MCS-21 relevant presentation proof"],
   "integration_targets": ["Character","NPC","Creature","Species/Form","PPIA","CAPP","PAPT","Inventory/Asset","Mount/Familiar/Pet/Companion owners","ARI","PCA","Animation","Scene/Tabletop","Combat","Dialogue","P3D future handoff","MCS","MNCS","MAS","SMB-08","SMB-09","SAA"],
   "boundaries": [
     "MCCS is creator-facing appearance/presentation tooling and does not become canonical Character, NPC, Creature, Species, Form, Inventory, Asset or relationship authority",
@@ -64,7 +63,7 @@
     "Packet 07 retains generic preview/recovery/debug semantics; MCCS supplies appearance-domain operations/lenses",
     "generic DCC/sculpt/rig/image capabilities use lawful mature libraries/local tools or PCA/PAPT capabilities where practical rather than being rebuilt",
     "P3D remains deferred and separate; MCCS-19 preserves a handoff seam without activating physical/3D miniature implementation",
-    "MNCS is the planned successor after MCCS-21 and may consume MCCS presentation outputs without making MCCS an NPC/Creature identity/persona/mechanics/ecology/behavior owner",
+    "MNCS may rotate after reduced MCCS-01 only when the other MNCS DAG prerequisites are satisfied; MCCS-21 remains an MNCS golden-proof dependency",
     "no paid/cloud character provider is required for blocking workflows",
     "no MCCS implementation authority exists until a future OPS3 CURRENT.json governed start selects a surviving MCCS work item"
   ],
