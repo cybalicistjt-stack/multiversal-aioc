@@ -17,41 +17,40 @@ Every family reduction performs both an intra-family overlap audit and a cross-f
 | procedural DAG/recipe/cache/seed | PCA-02/PCA-03 | domain generator packs only |
 | identity/rights/derivative provenance/version/review/import-export | ARI + PCA | domain mapping/serialization/validation only |
 | generic gameplay execution/replay/delivery | reduced GPR + Action/Event | domain adapters only |
-| reusable rule/content definition authoring | reduced MRCS + owner-domain contracts | specialist studios retain their visual/domain creator UX |
-| semantic affordances/effect composition | reduced MRCS definitions + reduced GPR execution + Packet 04 | target/domain adapters only |
+| reusable rule/content definition authoring | reduced MRCS + owner-domain contracts | specialist studios retain domain creator UX |
+| semantic affordances/effect composition | reduced MRCS + reduced GPR + Packet 04 | target/domain adapters only |
+| audio semantic/runtime/interoperability | AAI | MSAS supplies integrated production/direction UX only |
+| adaptive-audio authoring primitives | PCA-07 + AAI | MSAS composes creator workflows and domain binding |
+| voice/speech/SFX production primitives | PCA-08 | MSAS owns audio-domain workflow/binding only |
+| generic generation orchestration | PCA-09 | audio families supply briefs/review/acceptance adapters |
+| generic localization production | PCA-13 | MSAS/MNCS/etc. bind domain localization context |
 | map/cartographic projection/editing | MCS | other families bind map projections only |
 | multi-resolution aggregate↔individual | Packet 06 + domain owners | lifecycle adapters only |
 | systemic consequence propagation | reduced MSWI | upstream systems emit typed Events/deltas |
 | engineering orchestration | reduced MERA + Asset/MIB owners | consumers bind engineering adapters only |
 | built environment/facilities | reduced MBES + underlying owners | consumers reference facility context |
-| salvage/decomposition/donor lineage | LSS | engineering consumers hand off |
-| repair/refurbish/remanufacture/fabrication transactions | MIB-12 | orchestration only |
 | work capability/project/time | DPL/Profession + APW/D26 | prerequisite bindings only |
 
 ## Repeated folding rules
 
 - opening workspace/authority and registry/schema tranches merge when they form one implementation shell;
-- generic creator/debug and simulation workbenches are not rebuilt per family;
-- generic interchange/version/review/provenance is not rebuilt per family;
+- generic creator/debug, simulation, generation, localization and lifecycle infrastructure are not rebuilt per family;
 - proof-only pre-golden tranches fold into final golden proof when no independent runtime remains;
 - sparse historical IDs are preferred over renumbering when DAG milestones can survive.
 
-## Next selected review — MSAS
+## Next selected review — MNCS
 
 Strong candidates to test:
 
-- `MSAS-18+19+20`: one rights-safe interchange/version/review/delivery/publication lifecycle;
-- `MSAS-17`: generated music/SFX/voice should use PCA/provider orchestration and stay inside the relevant audio workflows rather than create a separate generic generation engine;
-- `MSAS-15`: consume Packet-07 live-GM control semantics rather than implement another generic live-control framework;
-- audit whether acquisition/editing/mixing/mastering/export tranches form fewer bounded production kernels without erasing materially different audio workflows;
-- preserve whichever start/golden milestone IDs are referenced by the DAG.
+- `MNCS-15+16+17`: population/group/herd/ecosystem generation over shared aggregate/recipe machinery;
+- `MNCS-20+21`: continuity/change-over-time plus resolution promotion/demotion over one lifecycle state machine;
+- `MNCS-23`: slim to NPC/creature-specific batch/preset/import adapters, with generic lifecycle/provenance/version/review/import-export remaining ARI/PCA;
+- `MNCS-02`: consume PCA-02/PCA-03 procedural recipe/generation substrate rather than create a parallel generic generator;
+- Packet 03 owns generic autonomous-process orchestration; MNCS should keep NPC/creature policy bindings rather than another generic AI planner;
+- Packet 06 owns generic aggregate↔individual resolution semantics; MNCS retains domain identity/state adapters;
+- reduced MRCS owns reusable rule/content definition authoring; MNCS retains NPC/creature authoring and runtime-facing identity/behavior UX.
 
 ## Later family candidates
-
-### MNCS
-- `15+16+17`: population/group/herd/ecosystem generation over shared aggregate machinery;
-- `20+21`: continuity/change-over-time plus resolution promotion/demotion;
-- `23`: slim to domain batch/preset/import adapters.
 
 ### MCCS
 - `13+14+15`: output/derivative renderer substrate;
@@ -61,7 +60,7 @@ Strong candidates to test:
 ### MCS
 - `10+11+12`: shared world/map-generation substrate over PCA recipes;
 - `19+20`: interchange/version/review/publishing;
-- inspect `13+14+16` for a shared built/interior/multi-level projection kernel without collapsing distinct city/dungeon UX.
+- inspect `13+14+16` for shared built/interior/multi-level projection infrastructure without erasing materially different city/dungeon UX.
 
 ## Resolved families
 
@@ -83,18 +82,20 @@ Strong candidates to test:
 ### MRCS — 21 → 13
 `01+02→01`; `03`; `04`; `05+06+07→05`; `08+09→08`; `11`; `12`; `10+13→13`; `14+15→14`; `16`; `17+18→17`; `19+20→19`; `21`.
 
-MRCS-specific shared-owner result: PCA-12/Packet 08 own generic analysis; Packet 07 owns generic creator/debug semantics; ARI/PCA own generic provenance/version/review/import-export; reduced GPR executes accepted definitions; specialist studios remain specialist authoring owners.
+### MSAS — 21 → 11
+`01+02→01`; `03`; `04+16→04`; `05+06→05`; `07+08→07`; `09+10+11→09`; `12+13→12`; `14`; `15`; historical `17` absorbed to PCA-09/PCA-08 plus domain adapters; `18+19+20→18`; `21`.
+
+MSAS-specific result: AAI keeps semantic/runtime authority; PCA-07/08/09/13 keep generic audio authoring/generation/localization primitives; Packet 07 keeps generic live-control semantics; ARI/PCA keep generic rights/provenance/version/review; MSAS keeps the integrated audio-domain production UX.
 
 ## Reduction order
 
-Resolved: MSLR, MSWI, MBES, MERA, GPR, MRCS. Remaining preferred order:
+Resolved: MSLR, MSWI, MBES, MERA, GPR, MRCS, MSAS. Remaining preferred order:
 
-1. **MSAS** next;
-2. **MNCS**;
-3. **MCCS**;
-4. **MCS**.
+1. **MNCS** next;
+2. **MCCS**;
+3. **MCS**.
 
-Already-resolved receipts may be amended later only through explicit capability-preserving reconciliation if an upstream reduction reveals a safer owner fold.
+Already-resolved receipts may be amended only through explicit capability-preserving reconciliation if a later upstream reduction exposes a safer owner fold.
 
 ## Guardrails
 
