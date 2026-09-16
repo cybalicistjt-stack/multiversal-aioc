@@ -5,8 +5,8 @@
 **Approved:** 2026-09-16  
 **Owner and final authority:** John Brandon Turner  
 **Implementation authority:** none  
-**OPS3 lane:** `content-design` when this project is the user's explicit session intent  
-**Operational selector:** none; `operations/CURRENT.json` remains the only live selector
+**OPS3 lane:** `content-design` when explicitly requested  
+**Operational selector:** none; `operations/CURRENT.json` remains the live selector
 
 ## Purpose
 
@@ -44,13 +44,14 @@ Allowed dispositions: `RETAIN_IMPLEMENTATION`, `MERGE_IMPLEMENTATION`, `ABSORB_E
 - **MBES:** 24 → 9; removed 15; stable `MBES-01/MBES-24`.
 - **MERA:** 24 → 10; removed 14; stable `MERA-01/MERA-24`.
 - **GPR:** 16 → 10; removed 6; stable `GPR-01/GPR-05/GPR-16`.
-- **MRCS:** 21 → 13; removed 8; stable downstream milestones `MRCS-05/MRCS-13/MRCS-14/MRCS-21`; generic simulation is absorbed to PCA-12/Packet 08 and generic provenance/version/review/import-export to ARI/PCA.
+- **MRCS:** 21 → 13; removed 8; stable `MRCS-05/MRCS-13/MRCS-14/MRCS-21`.
+- **MSAS:** 21 → 11; removed 10; stable `MSAS-01/MSAS-21`; generic generation absorbed to PCA-09/PCA-08 and generic lifecycle/provenance remains ARI/PCA-owned.
 
-**Current effective future count:** 145.  
-**Standalone future tranches removed:** 63.  
-**Resolved family receipts:** 6 / 10.
+**Current effective future count:** 135.  
+**Standalone future tranches removed:** 73.  
+**Resolved family receipts:** 7 / 10.
 
-The next selected PDCP family review is **MSAS**, followed by MNCS, MCCS and MCS under `PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md`.
+The next selected PDCP family review is **MNCS**, followed by MCCS and MCS under `PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md`.
 
 ## Current durable control surfaces
 

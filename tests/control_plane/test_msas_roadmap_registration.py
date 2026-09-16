@@ -12,60 +12,117 @@ def t(path: str):
     return (ROOT / path).read_text(encoding="utf-8")
 
 
-def test_msas_registered_as_future_interstitial_without_activation():
-    index = j("governance/ai/runtime/ROADMAP_INDEX.json")
-    registry = j("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
-    backlog = j("governance/application-planning/multiversal-sound-audio-studio/MSAS_PROGRAM_BACKLOG.json")
+BACKLOG = "governance/application-planning/multiversal-sound-audio-studio/MSAS_PROGRAM_BACKLOG.json"
+RECEIPT = "governance/application-planning/preimplementation-design-closure/PDCP_MSAS_REDUCTION_RECEIPT.json"
+DCP = "governance/application-planning/preimplementation-design-closure/PDCP_MSAS_FAMILY_DESIGN_CLOSURE.md"
+LEDGER = "governance/application-planning/preimplementation-design-closure/PDCP_REDUCTION_LEDGER.json"
+DAG = "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json"
 
-    planned = {x["program_id"]: x for x in index["planned_programs"]}
-    assert planned["MSAS"]["status"] == "owner_approved_planned"
-    assert planned["MSAS"]["activation_after"] == "MAS-21"
-    assert planned["MSAS"]["successor"] == "MRCS-01"
-    assert planned["MSAS"]["implementation_authority"] is False
-    assert planned["MSAS"]["execution_units"] == 21
-    assert planned["MAS"]["successor"] == "MSAS-01"
+
+EXPECTED_ORDER = [
+    "MSAS-01", "MSAS-03", "MSAS-04", "MSAS-05", "MSAS-07", "MSAS-09",
+    "MSAS-12", "MSAS-14", "MSAS-15", "MSAS-18", "MSAS-21",
+]
+
+
+def test_msas_pdcp_reduction_is_complete_and_non_authoritative():
+    backlog = j(BACKLOG)
+    receipt = j(RECEIPT)
 
     assert backlog["implementation_authority"] is False
-    assert backlog["successor"] == "MRCS-01"
-    assert backlog["strict_order"] == [f"MSAS-{i:02d}" for i in range(1, 22)]
+    assert backlog["strict_order"] == EXPECTED_ORDER
+    assert len(backlog["tranches"]) == 11
     assert all(x["estimated_active_minutes"] <= 24 for x in backlog["tranches"])
+    assert backlog["pdcp_reduction"]["baseline_tranche_count"] == 21
+    assert backlog["pdcp_reduction"]["reduced_tranche_count"] == 11
+    assert backlog["pdcp_reduction"]["capability_loss_detected"] is False
 
-    assert index["current"]["source_program"] == "ARI"
-    assert index["current"]["status"] == "selected_not_started"
-    assert index["current"]["implementation_authority"] is False
-    assert index["current"]["implementation_branch"] is None
-    assert registry["active_planning_work"]["work_item"] == index["current"]["work_item_id"]
-    assert registry["active_planning_work"]["implementation_authority"] is False
-
-
-def test_msas_dependency_placement_and_successors():
-    index = j("governance/ai/runtime/ROADMAP_INDEX.json")
-    mas = j("governance/application-planning/multiversal-adventure-studio/MAS_PROGRAM_BACKLOG.json")
-    pca = j("governance/application-planning/production-capability-acceleration/PCA_PROGRAM_BACKLOG.json")
-
-    expected = "CNI-01..13 → PCA-01..16 → MCS-01..21 → MCCS-01..21 → MAS-01..21 → MSAS-01..21 → MRCS-01..21 → SMB-08 → SMB-09"
-    assert expected in index["effective_forward_order"]
-    assert index["msas_execution_order"] == [f"MSAS-{i:02d}" for i in range(1, 22)]
-    assert mas["successor"] == "MSAS-01"
-    assert pca["successor"] == "MCS-01"
-
-    successor = t("governance/application-planning/multiversal-sound-audio-studio/MSAS_MRCS_SUCCESSOR_AMENDMENT_2026-09-11.md")
-    roadmap = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MRCS_AMENDMENT_2026-09-11.md")
-    assert "MSAS-01..21 → MRCS-01..21 → SMB-08" in successor
-    assert "MSAS-01..21 → MRCS-01..21 → SMB-08" in roadmap
+    assert receipt["status"] == "resolved"
+    assert receipt["baseline_tranche_count"] == 21
+    assert receipt["reduced_tranche_count"] == 11
+    assert receipt["removed_standalone_tranches"] == 10
+    assert receipt["implementation_authority"] is False
+    assert receipt["ops3_current_mutation"] is False
+    assert receipt["dag_mutation_required"] is False
+    assert receipt["surviving_tranche_ids"] == EXPECTED_ORDER
+    assert receipt["capability_loss_detected"] is False
+    assert len(receipt["dispositions"]) == 21
+    assert {x["baseline_id"] for x in receipt["dispositions"]} == {f"MSAS-{i:02d}" for i in range(1, 22)}
 
 
-def test_msas_preserves_audio_owners_clean_room_and_live_truth_boundaries():
-    backlog = j("governance/application-planning/multiversal-sound-audio-studio/MSAS_PROGRAM_BACKLOG.json")
+def test_msas_fold_map_and_cross_owner_absorptions_are_explicit():
+    backlog = j(BACKLOG)
+    receipt = j(RECEIPT)
+    by_id = {x["id"]: x for x in backlog["tranches"]}
+
+    assert by_id["MSAS-01"]["absorbs_baseline"] == ["MSAS-01", "MSAS-02"]
+    assert by_id["MSAS-04"]["absorbs_baseline"] == ["MSAS-04", "MSAS-16"]
+    assert by_id["MSAS-05"]["absorbs_baseline"] == ["MSAS-05", "MSAS-06"]
+    assert by_id["MSAS-07"]["absorbs_baseline"] == ["MSAS-07", "MSAS-08"]
+    assert by_id["MSAS-09"]["absorbs_baseline"] == ["MSAS-09", "MSAS-10", "MSAS-11"]
+    assert by_id["MSAS-12"]["absorbs_baseline"] == ["MSAS-12", "MSAS-13"]
+    assert by_id["MSAS-18"]["absorbs_baseline"] == ["MSAS-18", "MSAS-19", "MSAS-20"]
+
+    disposition = {x["baseline_id"]: x for x in receipt["dispositions"]}
+    assert disposition["MSAS-17"]["disposition"] == "ABSORB_EXISTING_OWNER"
+    assert "PCA-09" in disposition["MSAS-17"]["residual_target"]
+    owners = "\n".join(x["owner"] for x in receipt["cross_family_absorptions"])
+    for owner in ("AAI", "PCA-07", "PCA-08", "PCA-09", "PCA-13", "ARI/PCA", "DWC speech"):
+        assert owner in owners
+
+
+def test_msas_preserves_audio_truth_rights_accessibility_and_local_first_boundaries():
+    backlog = j(BACKLOG)
     boundaries = "\n".join(backlog["boundaries"]).lower()
-    for owner in ("aai", "dwc", "ari", "pca", "world", "environment", "scene", "adventure", "combat", "dialogue", "action/event", "mrcs"):
-        assert owner in boundaries
+    dcp = t(DCP).lower()
 
-    benchmark = t("governance/application-planning/multiversal-sound-audio-studio/MSAS_BENCHMARK_CAPABILITY_MATRIX.md").lower()
+    for term in (
+        "aai", "dwc", "ari", "pca-07", "pca-08", "pca-09", "pca-13",
+        "action/event", "never prove", "consent", "caption", "non-audio", "paid/cloud",
+    ):
+        assert term in boundaries
+
+    for term in (
+        "prepared cue", "generated audio remains candidate", "voice identity", "local-first",
+        "unsupported import", "48 vectors",
+    ):
+        assert term in dcp
+
+
+def test_msas_dag_milestones_and_pdcp_totals_remain_consistent():
+    dag = j(DAG)
+    ledger = j(LEDGER)
+
+    assert dag["nodes"]["MSAS"]["implementation_authority"] is False
+    msas_edges = dag["program_edges"]["MSAS"]
+    for req in ("AAI completed_verified", "PCA-07", "PCA-08", "PCA-15", "ARI"):
+        assert req in msas_edges["start_requires"]
+
+    family = next(x for x in ledger["families"] if x["program_id"] == "MSAS")
+    assert family["reduction_status"] == "resolved"
+    assert family["reduced_tranche_count"] == 11
+    assert family["surviving_tranche_ids"] == EXPECTED_ORDER
+    assert family["capability_loss_detected"] is False
+
+    snapshot = ledger["baseline_snapshot"]
+    assert snapshot["baseline_total_tranches"] == 208
+    assert snapshot["effective_reduced_total"] == 135
+    assert snapshot["approved_family_reductions"] == 7
+    assert snapshot["removed_standalone_future_tranches"] == 73
+
+    mncs = next(x for x in ledger["families"] if x["program_id"] == "MNCS")
+    assert mncs["reduction_status"] == "next_selected_for_pdcp_review"
+
+
+def test_msas_golden_vectors_and_program_contract_are_present():
+    dcp = t(DCP)
     program = t("governance/application-planning/multiversal-sound-audio-studio/MSAS_MULTIVERSAL_SOUND_AUDIO_STUDIO_PROGRAM.md").lower()
-    assert "clean-room" in benchmark
-    assert "does not copy" in benchmark
-    assert "prepared cue" in program
-    assert "never proves" in program
-    assert "local-first" in program
-    assert "no msas implementation authority exists now" in program
+
+    assert dcp.count("\n1. create/open/save") == 1
+    for i in range(1, 49):
+        assert f"\n{i}. " in dcp
+    assert "pdcp-reduced" in program
+    assert "21 tranches" in program
+    assert "11 tranches" in program
+    assert "no dag milestone rewrite is required" not in program  # roadmap amendment owns that claim
+    assert "no msas implementation authority" not in program  # boundary is expressed without stale exact phrase
