@@ -1,6 +1,6 @@
 # PDCP — Preimplementation Design Closure Project
 
-**Status:** OWNER-APPROVED — ACTIVE FAMILY REDUCTION PROJECT  
+**Status:** OWNER-APPROVED — FINAL RECONCILIATION PENDING PUBLICATION  
 **Project ID:** `PDCP`  
 **Approved:** 2026-09-16  
 **Owner and final authority:** John Brandon Turner  
@@ -33,7 +33,7 @@ All eight benchmark-derived design packets are `design_closed`. No ninth packet 
 
 ## Reduction rules
 
-Every family receives a complete before/after receipt. Both intra-family overlap and cross-family/shared-owner overlap must be audited. Generic infrastructure has one practical owner; specialist families retain domain adapters, semantics, UX and proof. DAG milestone IDs are preserved where practical. Golden proof, migration/recovery, accessibility, permissions/privacy, provenance and deterministic validation cannot disappear. PDCP does not modify `operations/CURRENT.json` merely to do design work.
+Every family receives a complete before/after receipt. Both intra-family overlap and cross-family/shared-owner overlap are audited. Generic infrastructure has one practical owner; specialist families retain domain adapters, semantics, UX and proof. DAG milestone IDs are preserved where practical, and removed DAG-referenced IDs receive atomic equivalent-gate updates. Golden proof, migration/recovery, accessibility, permissions/privacy, provenance and deterministic validation cannot disappear. PDCP does not modify `operations/CURRENT.json` merely to do design work.
 
 Allowed dispositions: `RETAIN_IMPLEMENTATION`, `MERGE_IMPLEMENTATION`, `ABSORB_EXISTING_OWNER`, `DESIGN_CLOSED_NO_STANDALONE`, `REMOVE_DUPLICATE`, `RETAIN_OWNER_DECISION`.
 
@@ -47,13 +47,14 @@ Allowed dispositions: `RETAIN_IMPLEMENTATION`, `MERGE_IMPLEMENTATION`, `ABSORB_E
 - **MRCS:** 21 → 13; removed 8; stable `MRCS-05/MRCS-13/MRCS-14/MRCS-21`.
 - **MSAS:** 21 → 11; removed 10; stable `MSAS-01/MSAS-21`; generic generation remains PCA-owned and generic lifecycle/provenance remains ARI/PCA-owned.
 - **MNCS:** 24 → 13; removed 11; stable `MNCS-01/MNCS-24`; generic generation uses PCA, life simulation remains DPL/Economy/Project-owned, multi-resolution semantics remain Packet-06/domain-owned, and generic lifecycle/review/provenance remains ARI/PCA/Packet-07-owned.
-- **MCCS:** 21 → 11; removed 10; stable `MCCS-01/MCCS-21`; entity/population truth remains PPIA/MNCS-owned, generic production remains PAPT/PCA-owned, and generic provenance/review/interchange remains ARI/PCA-owned.
+- **MCCS:** 21 → 11; removed 10; stable `MCCS-01/MCCS-21`; historical `MCCS-02` MNCS gate was atomically replaced by reduced `MCCS-01`; entity/population truth remains PPIA/MNCS-owned and generic production/provenance stays PAPT/PCA/ARI-owned.
+- **MCS:** 21 → 12; removed 9; stable `MCS-01/MCS-21`; generic generation remains PCA-owned, generic lifecycle/provenance remains ARI/PCA/Packet-07-owned, and runtime/world/spatial truth remains MAI/ISE/SSA/World/MBES/MSLR-owned.
 
-**Current effective future count:** 114.  
-**Standalone future tranches removed:** 94.  
-**Resolved family receipts:** 9 / 10.
+**Current effective future count:** 105.  
+**Standalone future tranches removed:** 103.  
+**Resolved family receipts:** 10 / 10.
 
-The next selected PDCP family review is **MCS**, the final family review under `PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md`.
+No family review remains. The only remaining PDCP action is final whole-project reconciliation/publication closeout after the MCS receipt is merged to `main`.
 
 ## Current durable control surfaces
 
@@ -61,7 +62,7 @@ The next selected PDCP family review is **MCS**, the final family review under `
 - `PDCP_REDUCTION_LEDGER.json`;
 - `PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md`;
 - eight packet DCPs/closure records;
-- family DCPs and `PDCP_<PROGRAM>_REDUCTION_RECEIPT.json` receipts.
+- ten family DCPs and `PDCP_<PROGRAM>_REDUCTION_RECEIPT.json` receipts.
 
 ## OPS3 coordination
 
@@ -69,4 +70,4 @@ PDCP uses the on-demand content-design lane when explicitly requested. Product-d
 
 ## Completion
 
-PDCP completes when all ten in-scope families have reconciled receipts and the effective future roadmap reflects those receipts without capability loss or unauthorized product start. After MCCS, only MCS remains. The final count is evidence-driven, not preselected.
+The design/reduction work is complete when the MCS family receipt is published. PDCP itself closes only after a final reconciliation verifies all ten receipts on `main`, confirms the 105-tranche effective total, checks surviving inter-family boundaries/gates, records any required atomic DAG equivalences, confirms no capability loss, and publishes the final closeout record.
