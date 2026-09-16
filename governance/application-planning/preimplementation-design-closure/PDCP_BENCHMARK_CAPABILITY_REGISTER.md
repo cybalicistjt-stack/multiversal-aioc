@@ -19,7 +19,9 @@ Public benchmark products are capability/workflow references only. Protected cod
 | 5 — Persistent History, Legacy, Succession & Delayed Consequence | `design_closed` | `PDCP_PACKET_05_PERSISTENT_HISTORY_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 6 — Multi-Resolution Simulation & Autonomous World Evolution | `design_closed` | `PDCP_PACKET_06_MULTIRES_SIMULATION_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 7 — Creator/GM Execution UX & Debuggability | `design_closed` | `PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md` + machine-readable closure record |
-| 8 — Simulation & Formal Validation Laboratory | `open` | — |
+| 8 — Simulation & Formal Validation Laboratory | `design_closed` | `PDCP_PACKET_08_SIMULATION_FORMAL_VALIDATION_DESIGN_CLOSURE.md` + machine-readable closure record |
+
+The benchmark-derived packet series is now design-closed. No ninth benchmark packet is implied. The next PDCP phase is family-by-family reduction receipts and OPS3-safe roadmap reconciliation after each family's complete design obligations are reviewed against the closure contract.
 
 ## Packet 1 — Social Interaction Grammar, Cultural Norms & Indirect Influence
 
@@ -195,21 +197,32 @@ Public benchmark products are capability/workflow references only. Protected cod
 
 ## Packet 8 — Simulation & Formal Validation Laboratory
 
+**Status:** `design_closed` — 2026-09-16  
+**Closure:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_08_SIMULATION_FORMAL_VALIDATION_DESIGN_CLOSURE.md`  
+**Machine-readable record:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_08_SIMULATION_FORMAL_VALIDATION_CLOSURE.json`
+
 **Benchmark prompts:** Machinations-class systems simulation; Mesa/NetLogo/GAMA agent simulation; GraphWalker model traversal; OR-Tools constraint solving; Z3-style satisfiability; graph-analysis tooling.
 
-**Questions to close:**
+**Questions closed:**
 
-- which Multiversal artifacts can be simulated/analyzed without becoming canonical state;
-- economic/resource-flow stability and exploit detection;
-- quest/dialogue/state-machine/path coverage;
-- spatial reachability/solvability and impossible-space proof;
-- logistics/routing/scheduling feasibility;
-- prerequisite/rule satisfiability and contradiction detection;
-- Monte-Carlo/statistical analysis versus deterministic golden proof;
-- permission-safe diagnostic projections;
-- reproducible seeds, inputs and receipts.
+- separation of canonical owner state, permission-filtered analysis projections, normalized analysis models, run state and evidence;
+- PCA-12 as the reusable local-first deterministic/stochastic analysis workbench rather than a new simulation authority;
+- owner-specific model adapters and domain-specific interpretation/acceptance policies;
+- deterministic validation, bounded exhaustive traversal, graph analysis, SAT/SMT, optimization/routing/scheduling, seeded Monte Carlo, agent-based simulation, parameter sweeps/sensitivity and regression comparisons;
+- exact-within-model, bounded-exact, statistical, heuristic and inconclusive evidence strengths;
+- scoped formal-proof language tied to model/version/assumptions/bounds;
+- counterexample, feasibility-witness and unsat/conflict evidence without automatic source mutation;
+- economic/resource-flow and exploit-candidate analysis without automatic rebalance;
+- quest/dialogue/gameplay/investigation state/path reachability and coverage without invented routes;
+- spatial solvability proof while generated MSLR spaces remain proposed until authorized acceptance;
+- logistics/network/scheduling feasibility without invented objectives or silent hard-constraint relaxation;
+- permission filtering before graph/model/constraint/solver construction;
+- reproducible model/input/engine/seed/bound receipts and honest timeout/UNKNOWN handling;
+- accessible keyboard/screen-reader/textual equivalents for graph, distribution, route and counterexample review.
 
-**Likely owners/families:** MRCS, GPR, MERA, MBES, MSLR, MSWI plus development/creator diagnostics; analysis tools remain advisory/non-mutating.
+**Disposition:** no new family and no standalone implementation tranche. PCA-12 absorbs the reusable workbench/adapter envelope; PPIA-09 preserves its existing Investigation solvability semantics. Residual domain implementation is mapped into MRCS/GPR/MERA/MBES/MSLR/MSWI existing tranches, with 56 implementation-ready golden vectors. MCS/MCCS/MNCS/MSAS receive no direct Packet-08 obligations.
+
+**Owners/families:** PCA-12/PCA-14/PCA-16, PPIA-09, Visibility/Permission/Knowledge and canonical owner domains remain authoritative. MRCS, GPR, MERA, MBES, MSLR and MSWI consume the reusable analysis contracts through existing planned work. MAS remains outside PDCP and is not reopened.
 
 ## Packet closure rule
 
