@@ -18,7 +18,7 @@ Public benchmark products are capability/workflow references only. Protected cod
 | 4 — Semantic Affordances & Composable Effects | `design_closed` | `PDCP_PACKET_04_SEMANTIC_AFFORDANCES_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 5 — Persistent History, Legacy, Succession & Delayed Consequence | `design_closed` | `PDCP_PACKET_05_PERSISTENT_HISTORY_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 6 — Multi-Resolution Simulation & Autonomous World Evolution | `design_closed` | `PDCP_PACKET_06_MULTIRES_SIMULATION_DESIGN_CLOSURE.md` + machine-readable closure record |
-| 7 — Creator/GM Execution UX & Debuggability | `open` | — |
+| 7 — Creator/GM Execution UX & Debuggability | `design_closed` | `PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 8 — Simulation & Formal Validation Laboratory | `open` | — |
 
 ## Packet 1 — Social Interaction Grammar, Cultural Norms & Indirect Influence
@@ -168,19 +168,30 @@ Public benchmark products are capability/workflow references only. Protected cod
 
 ## Packet 7 — Creator/GM Execution UX & Debuggability
 
+**Status:** `design_closed` — 2026-09-16  
+**Closure:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md`  
+**Machine-readable record:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_07_CREATOR_GM_EXECUTION_CLOSURE.json`
+
 **Benchmark prompts:** Neverwinter Nights/Aurora DM workflow, Inform action/rulebook concepts, behavior-tree editors/debuggers.
 
-**Questions to close:**
+**Questions closed:**
 
-- shared semantic state between creator mode and live GM execution;
-- proposal → preview/dry-run → commit patterns;
-- reversible intervention where owner semantics permit;
-- rule/action explanation, step-through and event-trace diagnostics;
-- readable advanced authoring without unrestricted scripting;
-- live GM control that cannot bypass permissions or canonical owners;
-- collaboration/review and deterministic replay implications.
+- shared semantic owner state between creator mode and live GM execution without shared authority;
+- explicit draft/proposal/preview/dry-run/counterfactual/commit/result dispositions;
+- reusable preview/dry-run receipts with pinned owner/rule versions and uncertainty honesty;
+- role-safe explanation requests/receipts and ordered rule-evaluation traces;
+- diagnostic lenses and nonmutating step-through sessions;
+- typed GM interventions routed through canonical owner operations rather than wildcard field mutation;
+- owner-defined inverse/compensation/restore/irreversible classifications with immutable historical Events;
+- live-control classification separating presentation-only controls, prepared-content activation and canonical owner operations;
+- collaboration/review as workflow evidence rather than implicit publication/commit authority;
+- permission filtering before diagnostic counts/graphs/steps/exports/AI context;
+- local/offline creator work versus live authoritative commit boundaries;
+- keyboard/screen-reader/nonvisual parity for graph/trace/debug workflows.
 
-**Likely owners/families:** MCS, MCCS, MNCS, MSAS, MRCS, GPR, MERA, MBES, MSLR, MSWI according to domain; common UX contracts should be reused rather than forked.
+**Disposition:** no new family and no standalone implementation tranche. Existing MV-IA-F006, IA-D04-002, IA-D04-004, permission/recovery/diagnostic foundations and canonical owner operations absorb the shared authority/runtime foundations. The DCP closes the missing execution-inspection layer with 48 golden vectors. Residual implementation is mapped into existing MCS/MCCS/MNCS/MSAS/MRCS/GPR/MERA/MBES/MSLR/MSWI tranches.
+
+**Owners/families:** MV-IA-F006, IA-D04-002, IA-D04-004, MV-IA-F020/F021/F025, Action/Event and canonical owner domains remain authoritative. All ten in-scope PDCP families consume the reusable execution-inspection contracts through existing planned work. MAS remains outside PDCP and is not reopened.
 
 ## Packet 8 — Simulation & Formal Validation Laboratory
 
