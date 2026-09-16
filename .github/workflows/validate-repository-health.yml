@@ -15,6 +15,7 @@ on:
       - 'tools/**'
       - 'tests/**'
       - 'content-source/**'
+      - 'content-db/**'
       - 'content-database.js'
       - 'content-library-collections.js'
       - '.github/workflows/validate-repository-health.yml'
@@ -33,6 +34,7 @@ on:
       - 'tools/**'
       - 'tests/**'
       - 'content-source/**'
+      - 'content-db/**'
       - 'content-database.js'
       - 'content-library-collections.js'
       - '.github/workflows/validate-repository-health.yml'
@@ -103,6 +105,12 @@ jobs:
           set -euo pipefail
           node tests/control_plane/test_canonical_content_replacement.mjs
 
+      - name: Run Beacon Debt golden-test and Item-readiness diagnostics
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_beacon_debt_golden_diagnostics.py
+
       - name: Run Content Library collection regression
         shell: bash
         run: |
@@ -115,12 +123,9 @@ jobs:
         with:
           name: canonical-content-pipeline-${{ env.CANDIDATE_HEAD }}
           path: |
-            content-db/index.json
-            content-db/manifest.json
-            content-db/source-registry.json
-            content-db/certification.json
-            content-db/indexes/
+            content-db/**
             evidence/content-pipeline/latest-certificate.json
+            evidence/content-pipeline/beacon-debt-golden-diagnostics.json
           if-no-files-found: warn
           retention-days: 14
 
