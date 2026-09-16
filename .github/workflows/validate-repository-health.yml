@@ -11,6 +11,7 @@ on:
       - 'governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md'
       - 'governance/application-planning/dwc-speech/**'
       - 'bridge/**'
+      - 'operational/**'
       - 'scripts/**'
       - 'tools/**'
       - 'tests/**'
@@ -30,6 +31,7 @@ on:
       - 'governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md'
       - 'governance/application-planning/dwc-speech/**'
       - 'bridge/**'
+      - 'operational/**'
       - 'scripts/**'
       - 'tools/**'
       - 'tests/**'
@@ -92,6 +94,12 @@ jobs:
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_operations_v3_single_door.py
+
+      - name: Run dynamic certified-content consumer regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tests/control_plane/test_dynamic_certified_content_consumers.mjs
 
       - name: Run canonical content pipeline reconciliation regression
         shell: bash
