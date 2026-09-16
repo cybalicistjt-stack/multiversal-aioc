@@ -2,189 +2,194 @@
 
 **Program ID:** GPR  
 **Program name:** Gameplay Pattern Runtime & Loop Minis  
-**Version:** 0.1.0  
+**Version:** 0.2.0 — PDCP REDUCED  
 **Status:** OWNER-APPROVED — PLANNED FUTURE INTERSTITIAL; NOT STARTED  
-**Activation:** after MRCS-21  
+**Activation:** after MRCS effective governed golden gate  
 **Successor:** MERA-01  
 **Owner and final authority:** John Brandon Turner  
-**Approved:** 2026-09-11  
 **Implementation authority:** none
 
 ## Purpose
 
-GPR turns the completed MAL microgame foundation plus the later 175-game clean-room gameplay study into one reusable Multiversal gameplay-pattern runtime. It is the layer that lets accepted rules, characters, maps, assets, encounters and campaign state become playable loops without creating one bespoke engine per minigame, game genre or feature family.
+GPR turns the completed MAL microgame foundation plus the 175-game clean-room gameplay study into one reusable Multiversal gameplay-pattern runtime. It lets accepted rules, Characters, maps, Assets, encounters and campaign state become playable loops without one bespoke engine per minigame, genre or feature family.
 
-The governing flow is:
+The governing flow remains:
 
-`accepted owner-domain state + MRCS definitions + semantic pattern contract + rights-cleared presentation bindings → deterministic gameplay instance → typed events/outcome → owner-domain handoff`
+`accepted owner-domain state + accepted MRCS definitions + semantic pattern configuration + authorized presentation bindings → gameplay instance → typed Events/outcomes → owner-domain handoff`
 
-GPR is not a replacement for Character, World, Scene, Combat, Inventory, Economy, Project, Action/Event, map, audio, adventure or content-definition owners.
+GPR is an execution/composition layer, not a second Character, World, Scene, Combat, Inventory, Economy, Project, Action/Event, content-authoring, rights/provenance, map or audio owner.
 
-## Why this is separate from MAL
+## PDCP reduction
 
-MAL-01..10 are already `completed_verified` and remain frozen. MAL established original microgame primitives, small state machines, GM composition recipes, owner handoffs, accessibility/performance behavior and a starter/golden microgame library.
+The historical 16-tranche roadmap is preserved in `PDCP_GPR_REDUCTION_RECEIPT.json`. After intra-family and cross-family overlap closure, future repository-bound work is reduced to ten sparse tranches:
 
-The later research baseline is materially broader: 175 mined games, 168 reusable gameplay patterns, 461 primitives, 29 normalized mechanics modules, 169 catalog operations, 85 primitive-bound operations exercised in conformance, 129 presentation roles, seven delivery modes, versioned replay/snapshot behavior and 672 adaptation cases.
+`GPR-01 → GPR-03 → GPR-05 → GPR-06 → GPR-07 → GPR-08 → GPR-09 → GPR-10 → GPR-12 → GPR-16`
 
-GPR therefore **extends the product capability without reopening MAL**. MAL remains the small-loop substrate and prior proof. GPR productizes broad reusable gameplay execution and authoring.
+The reduction preserves `GPR-01` as the family start gate, `GPR-05` as the existing MERA rotation milestone and `GPR-16` as the family golden/downstream handoff gate. No DAG rewrite is required.
 
-## Roadmap placement
+## Existing owner boundaries
 
-Owner-approved placement:
-
-`… → MSAS-01..21 → MRCS-01..21 → GPR-01..16 → MERA-01..24 → MBES-01..24 → SMB-08 …`
-
-This is the best dependency point because:
-
-- MRCS must exist first so reusable Actions, Effects, Conditions, Resources, Abilities, items, creatures, vehicles, environments, encounters and scoped rules can be authored through governed definitions.
-- MCS/MCCS/MNCS/MAS/MSAS are already upstream, so maps, appearance/actors, NPC/creature continuity, adventure structure and audio can bind into loops through their owners.
-- MERA and MBES come afterward so engineering, construction and settlement gameplay can consume the shared gameplay runtime rather than creating their own parallel execution engines.
-- SMB-08/09 then produce first-party content and campaign material on top of one proven gameplay substrate.
-
-This insertion changes no current execution authority. ARI-16 remains the live selected work item until canonical execution advances normally.
+- **MAL-01..10** remain completed_verified and frozen. GPR extends broad pattern coverage without reopening MAL completion evidence.
+- **MRCS** remains reusable rule/content-definition authority. GPR imports and executes accepted definitions.
+- **Action/Event and domain owners** remain canonical mutation truth for Characters, Combat, Inventory/Assets, Economy, Progression, World/Scene/Map, Vehicles/Mounts, Projects/Time and other governed domains.
+- **ARI/PCA** retain generic resource identity, rights, derivative provenance, version/review/import-export infrastructure.
+- **MCS/MCCS/MNCS/MSAS** retain map, presentation/actor, NPC/creature and audio authoring ownership.
+- **Packet 07** owns common preview/commit/explanation/intervention/debug/recovery semantics.
+- **PCA-12/Packet 08** own generic simulation/formal-analysis machinery.
+- **Reduced MERA/MBES/MSLR/MSWI** consume GPR execution/composition but retain their own specialist state and semantics.
 
 ## Research baseline
 
-Planning provenance is frozen in `GPR_RESEARCH_BASELINE_v3.6.json`.
+`GPR_RESEARCH_BASELINE_v3.6.json` remains planning/conformance provenance. Its verified scope includes:
 
-Key verified reference results:
-
-- 175 / 175 games gameplay-mined;
-- 168 reusable gameplay patterns;
+- 175 mined games;
+- 168 reusable patterns;
 - 461 gameplay primitives;
 - 29 mechanics API modules;
-- 169 registered mechanics operations, with 85 primitive-bound operations exercised by canonical patterns;
-- 129 semantic gameplay asset roles across 9 original Multiversal asset families;
-- 168 / 168 success-path pattern conformance;
-- 672 / 672 failure/partial/cozy/GM adaptation cases;
-- deterministic replay and snapshot round-trip evidence;
-- snapshot migration 1.0 → 1.1;
-- zero generic-fallback hits in the primitive-bound operation set;
-- seven delivery modes proven on the reference vertical slices.
+- 169 registered mechanics operations, including 85 primitive-bound operations used by canonical patterns;
+- 129 semantic presentation roles;
+- seven delivery modes;
+- 168/168 success-path conformance;
+- 672/672 failure/partial/cozy/GM adaptation cases;
+- replay/snapshot round-trip evidence and snapshot migration evidence.
 
-The reference package identity is preserved by SHA-256 in the baseline manifest. The package is research/conformance provenance, not automatically a shipping artifact.
+The research package is not automatically shippable code or content.
 
 ## Core doctrines
 
-1. **Composition instead of game forks.** A playable loop is data/configuration over reusable operations, state, events and semantic presentation roles.
-2. **Owner-domain truth remains external.** Gameplay consumes governed projections and returns typed outcomes; it does not create parallel identity or canonical ledgers.
-3. **MAL remains frozen.** GPR consumes completed MAL contracts but does not rewrite its completion evidence or originality boundary.
-4. **Definition is not execution.** MRCS-authored content becomes playable only when a GPR instance binds accepted definitions and owner-domain state.
-5. **Reference is not production content.** ROM-derived and third-party commercial expression stays reference/evidence only.
-6. **Semantic assets are swappable.** Mechanics bind roles/states/anchors rather than filenames or one skin.
-7. **Direct/cozy/GM/TTRPG share one model.** Adaptation is governed configuration and outcome policy, not separate engines.
-8. **Replay and persistence are versioned.** Deterministic modules must reproduce state/event results from the same command stream and seed.
-9. **Multiplayer authority is explicit.** Shared/co-op state declares ownership/authority and synchronization gates.
-10. **User-authored loops are bounded.** Authoring validates safe caps for actors, projectiles, timers, recursion/procedural spawn and persistent objects.
+1. Composition instead of game forks.
+2. Owner-domain truth remains external.
+3. MAL remains frozen.
+4. Definition is not execution.
+5. Reference material is not production content.
+6. Mechanics bind semantic roles, not one presentation skin.
+7. Direct/cozy/GM/TTRPG/embedded/user-mini/roster modes share one mechanics model.
+8. Replay and persistence are versioned and explicit.
+9. Multiplayer authority is explicit.
+10. User-authored loops are bounded.
+11. Unsupported/unknown state fails closed rather than receiving invented fallback semantics.
+12. Blocking gameplay remains usable without paid/cloud providers or a mandatory 3D/twitch-only interface.
+
+## Runtime identity/state model
+
+GPR keeps separate:
+
+- accepted reusable Pattern/operation/primitive definitions and versions;
+- authored `PatternConfiguration` / loop-mini configuration;
+- live `GameplayInstance` identity;
+- stable owner-domain participant/Asset/World references;
+- delivery-mode configuration/projection;
+- authoritative GPR-local runtime state;
+- semantic command/input stream;
+- typed Event/outcome trace;
+- versioned replay/snapshot receipt;
+- presentation projection.
+
+A definition is not a live instance. A preview is not a committed owner mutation. A snapshot is not reusable source truth. A presentation role is not an Asset identity.
+
+## Ten bounded implementation/proof tranches
+
+### GPR-01 — Gameplay Runtime Authority, Contract Registry & MAL/MRCS Convergence
+
+Absorbs historical GPR-01 and GPR-02. Implement the GPR runtime authority shell, stable pattern/primitive/operation/asset-role registry projection, MAL/MRCS compatibility import, namespace/schema validation and explicit unsupported states. MRCS remains definition authority.
+
+### GPR-03 — Deterministic Entity, Input, Collision & State Kernel
+
+Implement gameplay-instance state, semantic input abstraction, collision/trigger handling, declared deterministic transition ordering, seed/configuration binding and safe runtime/authoring caps. Presentation frame order is never authoritative state order.
+
+### GPR-05 — Owner-Domain Gameplay Operation, Objective & Route Runtime
+
+Absorbs historical GPR-04 and GPR-05. Implement pattern-level execution adapters for traversal, combat/projectiles, abilities, Resources, interactions, Inventory/equipment, Economy/rewards, Progression/unlocks, objectives/missions and World/Scene routing. Canonical mutation remains with each owning domain.
+
+`GPR-05` remains the existing MERA rotation milestone.
+
+### GPR-06 — Specialist Puzzle, Sports, Vehicle, Party, Strategy, Social & Stealth Pattern Modules
+
+Implement reusable specialist adapters and fixtures for puzzles, sports/match possession, Vehicle/Mount play, parties/companions, tactical/strategy state, social/investigation and stealth/detection. These modules use shared operations and owner contracts rather than bespoke game forks.
+
+### GPR-07 — Encounter, Autonomy, Score/Timing, Loadout & Skill-Resolution Runtime
+
+Implement bounded encounter/autonomous selection, score/timing/rhythm resolution, loadout/build execution and skill-resolution adapters. NPC psychology, AI authority, Character build truth, skill definitions and authored audio remain external owner concerns.
+
+### GPR-08 — Loop-Mini Contract, Pattern Composer & Bounded Authoring Schema
+
+Productize the data-driven loop-mini configuration schema and composer: objectives, maps, participants/roles, operations, Resources, rules, rewards, limits, difficulty/configuration and declared delivery support. Authoring enforces safe caps and emits noncanonical configuration until execution/owner commit.
+
+### GPR-09 — Seven Delivery Modes, Creator/GM Control & World/Roster Binding
+
+Absorbs historical GPR-09 and GPR-14. Implement direct, cozy/low-pressure, GM-led, world-map/TTRPG bridge, embedded minigame, user-authored loop-mini and roster-injection delivery adapters over one state/outcome model. Provide GPR-specific creator/GM test/control surfaces, World/Map/Adventure binding and Character roster injection using Packet-07 shared execution-inspection semantics.
+
+### GPR-10 — Rights-Safe Semantic Presentation & Accessibility Projection
+
+Absorbs historical GPR-10 and GPR-11. Bind authorized semantic actor/world/object/UI/effect/audio roles to runtime presentation, with rights/use validation before production selection/export. Implement camera/HUD/menu/dialogue/reticle, semantic cue, accessibility and device projections without making presentation authoritative mechanics truth.
+
+### GPR-12 — Multiplayer, Replay, Persistence, Recovery & Version Continuity
+
+Absorbs historical GPR-12 and GPR-13. Implement player/controller-slot authority, synchronization gates, deterministic replay/Event traces where declared, versioned snapshots, restore/migration, reconnect, unsupported-version/corruption behavior and recovery boundaries. Owner-domain idempotency/version rules remain authoritative for owner mutations.
+
+### GPR-16 — Full Conformance, Golden Cross-System Runtime Proof & Downstream Handoff
+
+Absorbs historical GPR-15 and GPR-16. Run the full 168-pattern/85-operation/672-variant conformance/regression battery plus the original-content cross-system golden proof. GPR does not close until both conformance and downstream handoff are verified.
 
 ## Seven delivery modes
 
-Every reusable gameplay pattern must be able to declare support for:
+Every reusable pattern declares which of these it supports:
 
 1. direct play;
 2. cozy/low-pressure play;
 3. GM-led play;
-4. world-map / TTRPG bridge;
-5. embedded minigame inside a session/adventure;
+4. world-map/TTRPG bridge;
+5. embedded minigame;
 6. user-authored reusable loop mini;
 7. Multiversal roster injection.
 
-A pattern may expose different parameters in each mode, but mode support must not create a second mechanics truth.
+Mode support may change governed timer/aggression/resource/retry/hint/control/presentation policies. It cannot fork owner-domain mechanics truth.
 
-## Sixteen bounded tranches
+## Replay/persistence/multiplayer boundary
 
-### GPR-01 — Gameplay Runtime Authority, Research Baseline & MAL/MRCS Convergence
+GPR-12 records gameplay-instance continuity, including runtime version, pattern/configuration version, owner-reference versions when semantically necessary, command stream, seed/randomness contract where applicable, ordered Events/outcomes and snapshot/migration metadata.
 
-Register the authority map, v3.6 research baseline, MAL/MRCS relationship, clean-room boundary, semantic namespaces and completion evidence required before application implementation begins.
+A deterministic replay must reproduce governed semantic state/Event outcomes from the same declared inputs and versions. Rendering frames need not be bit-identical unless a separate engine contract promises that. Network arrival order cannot silently become gameplay authority.
 
-### GPR-02 — Semantic Gameplay Registry, Pattern/Primitive Contract Import & Namespace Lint
+## Rights, visibility and privacy
 
-Import the normalized module/operation/primitive/pattern/asset-role contracts into governed application schemas with stable IDs, namespace validation and explicit unsupported states.
+Visibility/permission filtering occurs before participant/target lists, counts, route choices, diagnostics, replay/export, optional-AI context and presentation-role binding are constructed for an audience.
 
-### GPR-03 — Entity, Input, Physics, Collision & Deterministic State Kernel
+Reference ROMs, screenshots, maps, sprites, music, distinctive source layouts/text and other protected benchmark expression remain evidence only. Production bindings must be original, user-created or otherwise rights-cleared under ARI/PCA authority.
 
-Implement the deterministic entity/state kernel, semantic input abstraction, collision/trigger model, fixed-step state transition rules and safe authoring caps.
+## Accessibility/provider independence
 
-### GPR-04 — Movement, Combat, Projectile, Ability, Resource & Interaction Core
+Semantic alternatives exist for blocking drag/twitch/visual-only operations where the governing pattern supports equivalent interaction. Camera/UI/audio/haptic presentation may vary without changing mechanics truth. GPR cannot require a paid/cloud provider or 3D renderer for blocking execution, authoring, replay, recovery or proof.
 
-Implement broad action execution for traversal, combat, projectiles, abilities, resources, pickups/interactions and the common state transitions used across the corpus.
-
-### GPR-05 — Inventory, Economy, Progression, Objective & World-Route Runtime
-
-Implement inventory/equipment interaction, economy/rewards, progression/unlocks, objectives/missions and room/zone/world routing over owner-domain contracts.
-
-### GPR-06 — Puzzle, Sports, Vehicle, Party, Strategy, Social & Stealth Specialist Modules
-
-Implement specialist reusable modules for puzzles, sports possession/match rules, vehicles/mounts, parties/companions, tactical/strategy state, social/investigation and stealth/detection.
-
-### GPR-07 — AI/Encounter, Score/Timing, Loadout & Skill-Resolution Runtime
-
-Implement AI/encounter pacing, score/timing/rhythm resolution and loadout/build configuration with deterministic bounded behavior and inspectable events.
-
-### GPR-08 — Loop-Mini Contract, Pattern Composer & Data-Driven Authoring Schema
-
-Productize the loop-mini schema and pattern composer so authors select objectives, maps, actors/roles, operations, resources, rules, rewards, limits and difficulty parameters without writing bespoke runtime code.
-
-### GPR-09 — Seven Delivery Modes: Direct, Cozy, GM, World/TTRPG, Embedded, User Mini & Roster Injection
-
-Implement the seven delivery adapters while preserving one state/outcome model: direct, cozy, GM-led, world/TTRPG, embedded, user-authored and roster-injected.
-
-### GPR-10 — Original Asset-Role Binding, Rights Filtering & Presentation Contract
-
-Bind mechanics to original/rights-cleared semantic asset roles, enforce rights/use capability before selection/export and preserve presentation-state/accessibility contracts without source-game dependencies.
-
-### GPR-11 — Camera, UI, Audio, Feedback, Accessibility & Device Projection
-
-Implement camera, HUD/menu/map/dialogue/reticle projections, semantic sound/music cues, accessibility alternatives and supported input/device presentation over authoritative gameplay state.
-
-### GPR-12 — Multiplayer/Co-op Authority, Replay, Determinism & Event Trace
-
-Implement multiplayer/co-op player-slot authority, synchronization gates, shared/competitive state, deterministic replay/trace receipts and explainable event logs.
-
-### GPR-13 — Persistence, Snapshot Migration, Recovery & Version Compatibility
-
-Implement versioned snapshots, restore, migration, replay compatibility, corruption/unsupported-version failure behavior and recovery boundaries.
-
-### GPR-14 — Creator/GM Loop Studio UX, World Binding & Character/Roster Injection
-
-Deliver creator/GM-facing loop authoring and test surfaces, character/roster injection, world/map/adventure binding, presets and governed GM override workflows.
-
-### GPR-15 — Full 168-Pattern / 85-Operation / 672-Variant Conformance & Regression Gate
-
-Run the full corpus-derived conformance gate: all 168 canonical patterns, all 85 primitive-bound operations, success paths, failure/partial/cozy/GM variants, replay/snapshot checks, rights checks and regression preservation.
-
-### GPR-16 — Golden Cross-System Gameplay Runtime Proof & MERA/MBES/SMB Handoff
-
-Run the golden cross-system application proof with original Multiversal content and hand the completed gameplay runtime to MERA, MBES, SMB-08/09 and later product UX/content families without ownership bleed.
+Optional AI is visibility-safe advisory only. It cannot grant permission, mutate owner state, canonize definitions or declare a conformance/golden proof passed.
 
 ## Golden proof
 
-GPR-16 must demonstrate, using original or otherwise rights-cleared Multiversal content:
+GPR-16 must prove at minimum:
 
-- at least one traversal/action loop, puzzle loop, sports/skill loop, tactical/strategy loop, vehicle loop, social/investigation loop and stealth loop;
-- the same semantic pattern executed in direct and cozy modes without a rules fork;
-- one GM-led resolution and one world/TTRPG bridge resolution with typed success/partial/failure consequences;
-- an embedded minigame inside an Adventure/session context;
-- a user-authored loop mini created through the governed authoring surface;
-- roster injection of an existing Multiversal Character without replacing Character identity or canonical equipment/ability ownership;
-- map/world binding through stable references;
-- original actor/world/object/UI/effect/audio bindings with reference-only/commercial asset rejection;
-- multiplayer/co-op authority and synchronization behavior where the selected proof pattern supports it;
-- snapshot/restore, deterministic replay, version migration and unsupported-version failure;
-- explainable event/outcome traces suitable for GM tools, support and later product diagnostics;
-- full 168-pattern / 85-operation / 672-variant conformance evidence;
-- successful operation with paid/cloud providers disabled.
+- original/right-cleared traversal/action, puzzle, sports/skill, tactical/strategy, Vehicle, social/investigation and stealth loops;
+- direct and cozy execution of the same semantic pattern without rules fork;
+- governed GM-led and World/TTRPG success/partial/failure outcomes;
+- an embedded Adventure/session minigame;
+- a user-authored loop mini;
+- Character roster injection without identity/ownership replacement;
+- stable World/Map binding;
+- rights-safe presentation binding and explicit rejection of reference-only/commercial content;
+- multiplayer/co-op authority where the proof pattern supports it;
+- deterministic replay where declared, snapshot/restore, migration and unsupported-version failure;
+- explainable Event/outcome traces;
+- the complete 168-pattern/85-operation/672-variant conformance battery;
+- provider-off local operation and an equivalent nonvisual flow;
+- successful reusable handoff to MERA, MBES, MSLR, MSWI and SMB without ownership bleed.
 
-## Rights and clean-room boundary
-
-The 175-game research corpus is capability evidence. GPR may preserve factual mechanical observations, normalized semantic taxonomies, test vectors and provenance records, but must not ship or depend on protected source-game art, music, maps, screenshots, sprite sheets, level layouts, distinctive authored text or proprietary code.
-
-Production presentation comes from original Multiversal assets, user-created/right-cleared assets, or other materials with appropriate rights. Rights/use capability is checked at binding/export boundaries rather than assumed from technical readability.
+The detailed 48-vector acceptance set is governed by `PDCP_GPR_FAMILY_DESIGN_CLOSURE.md`.
 
 ## Family execution rule
 
-Each GPR tranche targets **24 active minutes or less under a healthy governed environment**, preserving normal closeout reserve. Oversized work is split before governed start. No GPR runtime preflight, branch or implementation authority exists now.
+Each surviving tranche targets no more than 24 active minutes and reserves at least eight minutes for closeout. Preload only the selected tranche and dependency closure. Split before governed start if that bound is not credible. A single owner `Continue` carries a governed-started tranche through implementation, required validation, verified closeout and successor marking unless an OPS3 owner-only boundary or genuine external blocker is reached.
+
+No GPR runtime branch or implementation authority exists until a future OPS3 governed start selects a specific surviving work item.
 
 ## Completion standard
 
-GPR completes only when all 16 tranches are `completed_verified`, the application runtime has no game-specific core fork requirement for the 168 canonical patterns, the seven delivery modes are productized through one state/event/outcome model, production assets remain rights-safe and swappable, and the golden proof hands a reusable gameplay substrate to MERA/MBES and first-party content production.
+GPR completes only when the ten surviving tranches are `completed_verified`, `GPR-16` contains the full conformance and golden evidence, the seven delivery modes use one state/Event/outcome model, production presentation remains rights-safe/swappable, and downstream families can consume the runtime without creating parallel gameplay engines.

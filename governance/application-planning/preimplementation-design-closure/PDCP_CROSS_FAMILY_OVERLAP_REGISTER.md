@@ -21,16 +21,16 @@ A tranche does not survive merely because the historical roadmap numbered it sep
 | simulation, graph/SAT/SMT/optimization/Monte-Carlo/ABM | PCA-12 + Packet 08 | families provide model adapters and interpretation only |
 | procedural DAG/recipe/cache/seed | PCA-02/PCA-03 | domain generator packs only |
 | resource identity, rights, derivative provenance | ARI + PCA-01/PCA-15 | domain serializers/validation only |
-| generic gameplay execution/replay | GPR + Action/Event | specialist adapters only |
-| semantic affordances/effect composition | MRCS/GPR + Packet 04 | target/domain adapters only |
+| generic gameplay execution, replay and delivery | reduced GPR + Action/Event | specialist families provide domain adapters only |
+| semantic affordances/effect composition | MRCS + reduced GPR + Packet 04 | definitions remain MRCS/domain-owned; GPR executes accepted semantics |
 | map/cartographic projection/editing | MCS | domains bind semantic projections only |
 | multi-resolution aggregate↔individual | Packet 06 + domain owners | local lifecycle adapters only |
 | systemic consequence propagation | reduced MSWI | upstream systems emit typed Events/deltas |
 | engineering topology/interfaces/dependency/failure/repair orchestration | reduced MERA + underlying Asset/MIB owners | reduced MBES and later consumers bind building/infrastructure adapters only |
-| salvage/decomposition/donor lineage | LSS | MERA plans/hands off; does not duplicate salvage truth |
+| salvage/decomposition/donor lineage | LSS | MERA plans/hands off; no duplicate salvage truth |
 | repair/refurbishment/remanufacture/fabrication transaction | MIB-12 | MERA orchestrates engineering workflows only |
-| work capability/project/time | DPL/Profession + APW/D26 | MERA/MBES/etc. validate prerequisites; no parallel scheduler |
-| garage/hangar/workshop/built facility context | MIB-14/PPIA-04 + reduced MBES | MERA consumes facility context rather than owning it |
+| work capability/project/time | DPL/Profession + APW/D26 | consumers validate prerequisites; no parallel scheduler |
+| garage/hangar/workshop/built facility context | MIB-14/PPIA-04 + reduced MBES | MERA/GPR consumers bind facility context only |
 | production/cultivation truth | ICF + MIB-12 + Inventory/Asset + Economy | reduced MBES facility bindings only |
 | residents/households/jobs/staffing | Character/MNCS + ODL + DPL + Project/Time | reduced MBES capacity/use bindings only |
 | property/funding/markets/contracts/trade | MIB-13/Economy + ODL + Project/Time | reduced MBES references only |
@@ -39,12 +39,7 @@ A tranche does not survive merely because the historical roadmap numbered it sep
 
 ### Authority/workspace openings
 
-Future `-01` tranches survive only if material schema/workspace/runtime-shell work remains after PDCP design closure. Resolved examples:
-
-- MSLR `01+02 → 01`;
-- MSWI `01+02 → 01`;
-- MBES `01+02 → 01`;
-- MERA `01+02 → 01`.
+Future `-01` tranches survive only if material schema/workspace/runtime-shell work remains after PDCP design closure. Resolved examples include MSLR, MSWI, MBES, MERA and now GPR opening-tranche folds.
 
 ### Interchange/version/review/provenance
 
@@ -56,17 +51,11 @@ Remaining strong candidates:
 - `MSAS-18+19+20`;
 - `MRCS-19+20`.
 
-Resolved MERA: historical `MERA-23` merged into `MERA-03`; generic infrastructure stays ARI/PCA.
+Generic rights/provenance/version/review/import-export stays ARI/PCA.
 
 ### Creator/debug/simulation workbenches
 
-Remaining candidates:
-
-- `GPR-14` plus creator/GM portions of `GPR-12..16`;
-- MRCS dependency/balance analysis;
-- MCS/MCCS/MNCS creator diagnostics.
-
-Resolved families consume Packet 07 and PCA-12/Packet 08 rather than rebuilding workbenches. MERA historical `05+09+22 → MERA-05` is the engineering-specific diagnostic/calibration/acceptance interpretation surface.
+Remaining candidates are primarily MRCS and specialist creator diagnostics. Resolved GPR historical `09+14 → GPR-09`; Packet 07 owns generic Creator/GM execution-inspection semantics, while GPR keeps only gameplay-specific authoring/delivery/control integration.
 
 ### Procedural generation
 
@@ -77,24 +66,19 @@ Remaining candidates:
 
 ### Golden/conformance gates
 
-Proof-only pre-golden tranches should merge into the final gate when no distinct implementation work remains. `GPR-15+16` remains a strong candidate. Final family golden proof itself remains required.
+Proof-only pre-golden tranches merge into the final gate when no independent runtime remains. Resolved GPR historical `15+16 → GPR-16`; the entire 168-pattern/85-operation/672-variant battery remains mandatory final evidence.
 
 ## Remaining family candidates
 
-### GPR — next selected review
+### MRCS — next selected review
 
-- `GPR-12+13`: replay/determinism/Event trace plus persistence/snapshot/recovery/version compatibility share one state/history seam.
-- `GPR-15+16`: conformance/regression plus final golden proof may combine if no independent runtime remains after PDCP closure.
-- `GPR-14`: consume Packet 07 rather than build a generic creator/debug framework.
-- Reduced MSWI confirms GPR as the one reusable pursuit/race/chase/convoy/interception executor and reusable life/social/performance pattern executor where those patterns apply.
-- Reduced MERA confirms GPR should own generic gameplay execution/composition while MERA remains an engineering-domain consumer.
-- Check early GPR pattern-definition/execution tranches for overlap with MRCS rule-definition authority and Action/Event execution.
-
-### MRCS
-
-- `MRCS-18`: generic simulation engine absorbed by PCA-12; retain rule/content model adapters and interpretation only.
-- `MRCS-19+20`: migration/import/batch edit + pack/version/review/provenance/publication.
-- Check `MRCS-17 + slimmed MRCS-18` as one dependency/impact/balance diagnostics tranche.
+- `MRCS-18`: generic simulation engine must be absorbed by PCA-12/Packet 08; retain only rule/content model adapters and interpretation.
+- `MRCS-17 + slimmed MRCS-18`: inspect as one dependency/impact/balance diagnostics seam if bounded.
+- `MRCS-19+20`: strong migration/import/batch-edit + pack/version/review/provenance/publication consolidation candidate.
+- `MRCS-01+02`: inspect workspace/registry/form overlap after PDCP closure, but preserve a distinct opening implementation seam only if material shell/schema work remains.
+- `MRCS-03`: consume shared guided-creation/Packet-07 semantics rather than building a second generic creator framework.
+- `MRCS-04+05` must be checked carefully: expression/rule atoms and Action/Effect/Condition/Resource authoring share infrastructure but may remain separate if implementation payload would exceed tranche bounds.
+- Reduced GPR confirms MRCS owns reusable definition truth while GPR executes accepted definitions; MRCS must not retain runtime execution duplication.
 
 ### MSAS
 
@@ -142,31 +126,34 @@ Receipt: `PDCP_MBES_REDUCTION_RECEIPT.json`.
 
 ### MERA — 24 → 10
 
-- `01+02 → 01`;
-- `03+04+23 → 03`;
-- `05+09+22 → 05`;
-- `06` retained with recovery/work-context handoff residuals;
-- `07+08+20 → 07`;
-- `10+11 → 10`;
-- `12` retained;
-- `13+14+15 → 13` over the completed PPIA-04 Vehicle/Mecha/Starship shared domain;
-- `16` retained;
-- historical `17+18` absorbed to LSS/MIB-12 with MERA residuals in `06/07/24`;
-- historical `19+21` absorbed to DPL/APW/MIB-14/reduced MBES with MERA prerequisite/work-order residuals in `06/07/13/16/24`;
-- `24` retained.
+`01+02→01`; `03+04+23→03`; `05+09+22→05`; `06` retained; `07+08+20→07`; `10+11→10`; `12` retained; `13+14+15→13`; `16` retained; historical `17+18` absorbed to LSS/MIB-12; historical `19+21` absorbed to DPL/APW/MIB-14/reduced MBES; `24` retained.
 
 Receipt: `PDCP_MERA_REDUCTION_RECEIPT.json`.
 
+### GPR — 16 → 10
+
+- `01+02 → 01`;
+- `03` retained;
+- `04+05 → 05`, preserving the MERA rotation milestone;
+- `06` retained;
+- `07` retained;
+- `08` retained;
+- `09+14 → 09` over Packet-07 shared creator/GM semantics;
+- `10+11 → 10` with generic rights/provenance remaining ARI/PCA and creator assets remaining specialist-owned;
+- `12+13 → 12` as one multiplayer/replay/persistence/recovery/version-continuity seam;
+- `15+16 → 16`, making full conformance part of final golden proof.
+
+Receipt: `PDCP_GPR_REDUCTION_RECEIPT.json`.
+
 ## Reduction order
 
-With MSLR, MSWI, MBES and MERA resolved, the preferred reverse-consumer order is:
+With MSLR, MSWI, MBES, MERA and GPR resolved, the preferred reverse-consumer order is:
 
-1. **GPR** next;
-2. **MRCS**;
-3. **MSAS**;
-4. **MNCS**;
-5. **MCCS**;
-6. **MCS**.
+1. **MRCS** next;
+2. **MSAS**;
+3. **MNCS**;
+4. **MCCS**;
+5. **MCS**.
 
 If a later upstream reduction exposes a safer shared-owner consolidation, an already-resolved downstream receipt may be amended only with an explicit capability-preserving reconciliation receipt.
 
@@ -176,5 +163,5 @@ If a later upstream reduction exposes a safer shared-owner consolidation, an alr
 - Candidate folds do not alter counts until complete receipts merge.
 - Generic infrastructure is implemented once; domain semantics stay with domain owners.
 - PDCP does not mutate `operations/CURRENT.json` merely for design work.
-- Preserve start/golden DAG milestone IDs where possible; sparse stable IDs are preferred.
+- Preserve start/rotation/golden DAG milestone IDs where possible; sparse stable IDs are preferred.
 - Accessibility, permissions/privacy, provenance, replay/recovery, migration and deterministic proof obligations must survive every fold.
