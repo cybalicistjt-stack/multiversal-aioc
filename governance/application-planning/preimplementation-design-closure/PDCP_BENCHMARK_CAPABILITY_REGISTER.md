@@ -8,11 +8,28 @@ This register captures cross-family capability questions discovered through benc
 
 Public benchmark products are capability/workflow references only. Protected code, authored content, formulas, assets, maps, UI expression, save formats, private protocols and other protected expression are not production dependencies.
 
+## Packet status
+
+| Packet | Status | Durable closure |
+|---|---|---|
+| 1 — Social Interaction Grammar, Cultural Norms & Indirect Influence | `design_closed` | `PDCP_PACKET_01_SOCIAL_INTERACTION_DESIGN_CLOSURE.md` + machine-readable closure record |
+| 2 — Systemic Investigation & Evidence | `open` | — |
+| 3 — Autonomous Actors, Threats & Offscreen Action | `open` | — |
+| 4 — Semantic Affordances & Composable Effects | `open` | — |
+| 5 — Persistent History, Legacy, Succession & Delayed Consequence | `open` | — |
+| 6 — Multi-Resolution Simulation & Autonomous World Evolution | `open` | — |
+| 7 — Creator/GM Execution UX & Debuggability | `open` | — |
+| 8 — Simulation & Formal Validation Laboratory | `open` | — |
+
 ## Packet 1 — Social Interaction Grammar, Cultural Norms & Indirect Influence
+
+**Status:** `design_closed` — 2026-09-16  
+**Closure:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_01_SOCIAL_INTERACTION_DESIGN_CLOSURE.md`  
+**Machine-readable record:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_01_SOCIAL_INTERACTION_CLOSURE.json`
 
 **Benchmark prompts:** Prom Week / Comme il Faut, Versu, Majesty, Six Ages.
 
-**Questions to close:**
+**Questions closed:**
 
 - reusable social-action semantics above MIB-09 relationship/reputation state;
 - actor willingness/desire, initiation, target interpretation, response and witness reaction;
@@ -23,7 +40,9 @@ Public benchmark products are capability/workflow references only. Protected cod
 - Event attribution and secondary social consequences;
 - player/GM explanation surfaces and hidden-information filtering.
 
-**Likely owners/families:** MIB-09, ODL, MNCS, MRCS, GPR, MSWI; CNI/MAS only as consumers where applicable.
+**Disposition:** no new family and no standalone implementation tranche. Completed PPIA-10/MV-IA-F010, MIB-09 and ODL absorb the existing foundation; the DCP assigns the four missing reusable contracts and their 18 golden vectors to future MNCS/MRCS/GPR/MSWI implementation scopes.
+
+**Owners/families:** MIB-09, ODL, MNCS, MRCS, GPR, MSWI; CNI/MAS remain consumers only where applicable and MAS remains outside PDCP.
 
 ## Packet 2 — Systemic Investigation & Evidence
 
