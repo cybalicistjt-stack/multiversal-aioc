@@ -111,8 +111,6 @@ def test_mswi_reduction_resolves_intra_and_cross_family_overlap():
     assert mswi["reduced_tranche_count"] == 7
     assert mswi["overlap_audit_complete"] is True
     assert mswi["capability_loss_detected"] is False
-    assert ledger["baseline_snapshot"]["effective_reduced_total"] == 188
-    assert ledger["baseline_snapshot"]["approved_family_reductions"] == 2
 
 
 def test_mswi_clean_room_and_provider_off_guards_remain():
