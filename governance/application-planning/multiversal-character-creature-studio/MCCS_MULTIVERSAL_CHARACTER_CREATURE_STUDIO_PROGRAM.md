@@ -2,284 +2,117 @@
 
 **Program ID:** MCCS  
 **Program name:** Multiversal Character & Creature Studio  
-**Version:** 0.1.0  
+**Version:** 0.2.0 — PDCP reduced  
 **Status:** OWNER-APPROVED — PLANNED INTERSTITIAL; NOT STARTED  
-**Activation:** after MCS-21  
-**Successor:** SMB-08  
+**Activation:** after MCS effective golden gate  
+**Successor:** MNCS-01  
 **Owner and final authority:** John Brandon Turner  
-**Approved:** 2026-09-11  
 **Implementation authority:** none
 
 ## Purpose
 
-MCCS makes Multiversal capable of creating and refining the visual presentation of essentially any governed Character, NPC, intelligent species member, animal, mount, familiar, pet, monster, creature, construct or alternate Form inside the product, while preserving the distinction between canonical entity truth and presentation.
+MCCS is Multiversal's entity-centric **appearance/presentation creator** for governed Characters, NPCs, creatures, animals, mounts, familiars, pets, monsters, constructs and alternate Forms. It is not a second Character, Species, Form, Creature, Inventory, population or Asset database.
 
-MCCS is not a second Character, Species, Form, Creature, Inventory or Asset database. It is the creator-facing visual authoring, customization, composition, pose/expression, derivative-output and review layer over completed CAPP/PPIA appearance foundations plus PAPT/PCA production capabilities and ARI provenance/resource identity.
-
-The governing direction is:
+The governing flow remains:
 
 `canonical entity/body/equipment truth → renderer-neutral appearance projection → creator draft/override layer → renderer/output profile`
 
-Possible outputs include portraits, dialogue busts, reference cards, tokens, paper-doll views, top-down/isometric derivatives, sprites, stance sheets, animation-ready presentation packages and future physical/3D handoffs. Pixel art remains the current governed production-content art language unless a later owner-approved art-direction change supersedes it.
+Appearance authoring is **presentation-only unless an owning contract explicitly accepts a proposal**. Pixels, meshes, sliders, poses, textures, visual variants and renderer derivatives never silently become body, mechanics, equipment ownership, relationship, population or live-state truth.
 
-## Product target
+## PDCP reduction
 
-A creator should be able to visually author ordinary Multiversal people and nonhuman beings without leaving Multiversal for routine character/creature creation work. The creator must support both approachable preset/slider/component workflows and deeper bounded precision controls, without assuming that every being is humanoid.
+Historical baseline: **21 tranches**. Effective implementation/proof plan: **11 tranches**.
 
-The same semantic identity should be reusable across multiple visual outputs. Changing renderer/output format must not require rewriting Character truth or inventing new Species/Form facts.
+The authoritative family reduction receipt is `governance/application-planning/preimplementation-design-closure/PDCP_MCCS_REDUCTION_RECEIPT.json`; detailed closure is `PDCP_MCCS_FAMILY_DESIGN_CLOSURE.md`.
 
-Examples:
+The surviving order is:
 
-- a Character's equipped armor may be projected visually without MCCS changing item ownership or equipped state;
-- a dragon's wings, tail, scales and posture may be authored from eligible Species/Form features without MCCS inventing anatomy;
-- an intelligent Havalaea animal may use the same NPC/Character-linked appearance workflow while retaining its animal topology;
-- a shapeshifter may maintain multiple owner-approved Form appearances under one entity identity;
-- a scar, tattoo, hairstyle or presentation outfit may be an appearance-layer fact where the owning appearance contract allows it, while mechanical injury/equipment truth remains elsewhere;
-- an unsupported anatomy, attachment or renderer feature remains visibly unsupported/unresolved instead of being silently approximated as canon.
+`MCCS-01 → MCCS-03 → MCCS-05 → MCCS-06 → MCCS-09 → MCCS-11 → MCCS-13 → MCCS-16 → MCCS-18 → MCCS-19 → MCCS-21`
 
-## Placement
+Sparse historical IDs are intentional. `MCCS-01` and `MCCS-21` remain stable start/golden milestones.
 
-MCCS is a future interstitial program:
-
-`SMB-07 → CNI-01..13 → PCA-01..16 → MCS-01..21 → MCCS-01..21 → SMB-08 → SMB-09 → SAA-01..20 → SMB-10`
-
-Rationale:
-
-1. PCA supplies reusable production recipes, character asset/rig/garment/LOD tooling, motion/facial tooling and style-locked generation primitives.
-2. MCS closes the map/cartography creator surface first and hands off to MCCS rather than directly to first-party content production.
-3. MCCS then provides the entity-centric creator experience over CAPP/PPIA/PAPT/PCA before SMB-08/09 begin major library/campaign production.
-4. SAA can later consume consistent Character/creature portraits, sprites and reference assets rather than inventing a separate visual-identity pipeline.
-5. P3D remains a separately deferred future physicalization program; MCCS preserves a clean handoff seam but does not activate or absorb P3D.
-6. MCCS does not change the current ARI family, current work pointer or implementation authority.
-
-## Benchmark provenance and clean-room boundary
-
-Planning benchmark set:
-
-- Hero Forge
-- TitanCraft
-- Reallusion Character Creator
-- VRoid Studio
-- Daz Studio / Genesis workflows
-- MakeHuman Community / MPFB workflows
-- Adobe Mixamo
-- Cascadeur
-- Blender character/sculpt/rig workflows
-- ZBrush character/creature sculpting workflows
-
-The detailed benchmark is recorded in `MCCS_BENCHMARK_CAPABILITY_MATRIX.md`.
-
-MCCS follows the existing PCM clean-room rules. It studies public product documentation, lawful ordinary-use behavior, documented interchange formats and observable workflows to identify capability requirements. It does not copy proprietary source, protected assets, distinctive UI expression, private protocols, sample projects, vendor-specific implementation details or branded character styles.
-
-Vendor names are planning provenance only and do not become Multiversal product identity.
-
-## Local-first / non-reimplementation boundary
-
-MCCS owns the Multiversal-specific character/creature creator experience, topology-aware authoring, semantic appearance projection, deterministic variant recipes, review/provenance, accessibility and game-aware output workflows.
-
-It does **not** attempt to recreate a full Blender/ZBrush/Maya/3ds Max/Daz/Character Creator-class DCC suite. Generic mesh operations, image processing, rigging helpers, retargeting, texture processing, geometry kernels, codecs and similar commodity capabilities should use lawful mature libraries or local tools behind replaceable boundaries when practical.
-
-The in-app creator implements the bounded controls needed to finish ordinary Multiversal character/creature visual work without external software. External round-trip remains available for specialist sculpting, bespoke mesh construction, advanced cloth/hair simulation and other expert workflows.
-
-## Upstream ownership and reuse
+## Owner boundaries
 
 MCCS consumes rather than duplicates:
 
-- **Character / NPC / Creature owners:** canonical identity, mechanics, current state and entity relationships.
-- **Species / Form / PPIA-05:** body topology, eligible anatomy, current/persistent biology and form truth.
-- **CAPP / PPIA-06:** renderer-neutral appearance authority, deterministic appearance compilation, fit/coverage/version/accessibility contracts and Character Appearance Creator architecture.
-- **PAPT:** current pixel-art production language, Character/Creature forges, sprite assembly, equipment-fit QA, portrait/token derivatives, batch QA, regeneration and human-review workflow.
-- **Inventory / Asset / equipment owners:** ownership, equipped/install state and item mechanics.
-- **Mount / familiar / pet / companion owners:** relationship and gameplay truth where those systems apply.
-- **ARI:** resource identity, bytes/reference state, derivative lineage, rights/use capability, tagging, query, asset picking and reusable output registration.
-- **PCA:** production recipes, character asset/rig/garment/LOD tooling, motion/facial performance, style-locked generation, review/locking and local-first production primitives.
-- **Animation / Scene / Combat / dialogue owners:** runtime motion, placement, action, visibility and interaction authority.
-- **D29 authoring/provenance and current accessibility/design authorities:** governed publication, provenance, keyboard/touch/screen-reader and visual-accessibility requirements.
-- **P3D (future/deferred):** physical-pixel and detailed physical renderer/miniature pipeline when separately activated.
+- **Character/NPC/Creature + Species/Form/PPIA:** canonical identity, topology eligibility, Form/state, mechanics and live entity truth.
+- **CAPP/PPIA:** renderer-neutral appearance authority, compilation, fit/coverage/version/accessibility semantics.
+- **PAPT/PCA:** reusable character-asset, rig, garment, motion, image/sprite, style-generation and local-production primitives.
+- **Inventory/Asset/equipment owners:** ownership, equipped/install state and item mechanics.
+- **Mount/familiar/pet/companion owners:** relationship and gameplay truth.
+- **MNCS:** NPC/creature/group/population identity and progressive construction. MCCS may visually vary an owner-supplied group but never creates population truth.
+- **ARI/PCA:** generic resource identity, rights/provenance, derivative lineage, version/review and import/export infrastructure.
+- **Animation/Scene/Combat/Dialogue:** runtime pose/action/placement authority.
+- **PDCP Packet 07:** generic preview, draft, recovery, explanation and debug semantics.
+- **P3D:** future physical/3D implementation when separately activated.
 
-MCCS may create creator drafts, presentation-only overrides, appearance proposals, renderer-specific derivatives, output packages and future-renderer handoff packages. It cannot silently promote those outputs into canonical Character, Species, Form, Creature, Inventory or relationship state.
+MCCS remains topology-first, not humanoid-first. Unsupported anatomy or renderer features remain explicit `unsupported`/`unresolved` states rather than being forced into humanoid approximations.
 
-## Core architectural doctrine
+## Effective tranches
 
-### One entity appearance workspace, multiple outputs
+### MCCS-01 — Creator Workspace, Renderer-Neutral Projection, Draft/Rebase & Authority Contract
 
-Portrait, token, paper-doll, sprite, stance-sheet and future-renderer handoff workflows operate over one versioned creator workspace referencing the same owner-governed entity and renderer-neutral appearance projection. They are not independent character definitions.
+Implement one versioned appearance workspace over owner records and CAPP/PPIA renderer-neutral projection. Include stable draft IDs, authority dispositions, stale-owner detection, refresh/rebase, conflict reporting, history/recovery, output-profile references and ARI asset references. This tranche absorbs historical MCCS-01 and MCCS-02.
 
-The workspace supports:
+### MCCS-03 — Topology, Morphology, Silhouette, Appendage & Modular Anatomy Authoring
 
-- stable draft/component IDs;
-- owner-record/version references;
-- renderer-neutral appearance references from CAPP/PPIA;
-- topology/family and Form references;
-- parameter/component selections and eligible manual overrides;
-- surface/material/pattern and presentation layers;
-- wardrobe/equipment visual projection references;
-- pose/posture/expression intents;
-- renderer/output profiles;
-- deterministic variant seeds/recipes where claimed;
-- custom authorized asset references through ARI;
-- history/version/provenance;
-- unsupported/unresolved extension retention.
-
-### Appearance authoring is not canonical body/game truth
-
-Every creator mutation has an explicit authority disposition such as:
-
-- `owner-projected`;
-- `appearance-draft`;
-- `appearance-proposal`;
-- `presentation-only`;
-- `renderer-derived`;
-- `manual-presentation-override`;
-- `unsupported`;
-- `unresolved`.
-
-Sliders, generated geometry, pixels, textures, imported meshes or pose controls never silently create anatomy, Species/Form eligibility, equipment ownership, current injuries, mechanics, relationships or other canonical facts.
-
-### Topology-first, not humanoid-first
-
-MCCS must support extensible topology families rather than treating every nonhuman as a decorated human. Required family coverage includes at minimum humanoid/biped, quadruped, serpentine/elongate, winged/avian-style, multi-limbed, aquatic, composite, constructed/modular and extensible nonstandard families. Radial, amorphous, swarm/collective or other unusual beings must have explicit extension paths and unsupported states rather than forced humanoid mapping.
-
-### Deterministic where practical, artistic where appropriate
-
-Preset assembly, seeded variation and automated derivative production expose stable parameters/seeds and reproducible receipts. Freehand/manual presentation edits retain history/provenance but are not falsely presented as deterministic generation.
-
-## Program tranches
-
-### MCCS-01 — Creator Workspace, Document & Authority Contract
-
-Define the versioned entity-appearance workspace over CAPP/PPIA owner references, stable draft IDs, authority dispositions, history/undo, renderer/output profiles, ARI asset references, accessibility metadata and explicit unsupported/unresolved states. Do not mint a second Character or appearance authority.
-
-### MCCS-02 — Renderer-Neutral Appearance Projection & Draft Overlay
-
-Expose CAPP/PPIA renderer-neutral appearance as an editable creator projection with separate draft/override state. Define stale-owner detection, refresh/rebase behavior, draft conflict reporting, manual override provenance and proposal routing without rewriting owner records.
-
-### MCCS-03 — Topology-Family & Form Compatibility Studio
-
-Provide topology-aware creator navigation for humanoid/biped, quadruped, serpentine, winged, multi-limbed, aquatic, composite and constructed/modular families plus extension contracts for unusual anatomies. Consume Species/Form eligibility and expose unsupported combinations rather than guessing.
-
-### MCCS-04 — Morphology, Proportion, Silhouette & Body-Profile Authoring
-
-Implement governed size/proportion/silhouette/body-profile controls using eligible parameters/components. Support presets, bounded sliders, symmetry/asymmetry where permitted, comparative silhouette preview and renderer coverage diagnostics without converting visual morphology into mechanical stats.
+Implement the topology-aware component/parameter kernel for humanoid/biped, quadruped, serpentine, winged, multi-limbed, aquatic, composite, constructed/modular and extensible families. Include proportion/silhouette controls and eligible tails, wings, fins, extra limbs, tentacles and modular parts with compatibility/anchor validation. This tranche absorbs historical MCCS-03, MCCS-04 and MCCS-08.
 
 ### MCCS-05 — Head, Face, Sensory Feature & Expression Anatomy Authoring
 
-Implement topology-aware cranial/head modules, eyes/sensory organs, ears, mouths/beaks/mandibles, horns/antlers/tusks/crests and related eligible facial features. Human-face assumptions must not be required for creature families.
+Implement topology-aware head/sensory anatomy including eyes or other sensory organs, mouths/beaks/mandibles, ears, horns/antlers/tusks/crests and expression-capable structures without requiring a human face plan.
 
-### MCCS-06 — Hair, Fur, Feather, Scale, Shell & Surface-Covering Studio
+### MCCS-06 — Coverings, Color, Material, Pattern, Marking & Surface-Layer Studio
 
-Implement reusable covering systems for hair/facial hair, fur, feathers, scales, shell/plates, skin-like surfaces and extensible coverings. Support length/density/direction/style/pattern parameters where the renderer and owner contracts allow them, with explicit renderer limitations.
+Implement the shared layered-surface authoring substrate for hair, fur, feathers, scales, shell/plates, skin-like surfaces, palettes, materials, markings, stripes/spots, tattoos/scars where appearance-authorized, paint/makeup and renderer-supported emissive presentation. This tranche absorbs historical MCCS-06 and MCCS-07.
 
-### MCCS-07 — Color, Material, Pattern, Marking & Surface-Layer Studio
+### MCCS-09 — Wardrobe, Equipment Fit, Accessories, Props & Linked-Being Presentation Composition
 
-Implement palette/material/surface roles, markings, stripes/spots, tattoos, scars where appearance-authorized, makeup/paint, emissive/glow presentation and layered texture/pattern editing. Required state cannot be communicated by color alone; all generated/imported textures retain ARI provenance.
+Implement appearance projection of worn/carried equipment, presentation-only outfits, layer/occlusion/fit diagnostics, accessories/props and composition with separate mounts, familiars, pets or companions. Canonical ownership and relationships remain external. This tranche absorbs historical MCCS-09 and MCCS-10.
 
-### MCCS-08 — Appendage & Modular Anatomy Authoring
+### MCCS-11 — Pose, Gesture, Expression, Rig, Anchor, IK & Retarget Preview
 
-Implement eligible tails, wings, fins, extra limbs, tentacles, horns, antennae, modular construct parts and other topology-specific appendages with anchor/fit validation. Component assembly must respect Species/Form topology and cannot create unsupported anatomy silently.
+Implement topology-aware pose/expression authoring integrated with PAPT/PCA/local rig/anchor/IK/retarget preview helpers. Report incompatibilities explicitly. Pose state remains presentation unless an owning runtime explicitly projects current state. This tranche absorbs historical MCCS-11 and MCCS-12.
 
-### MCCS-09 — Wardrobe, Armor, Equipment Fit & Outfit Authoring
+### MCCS-13 — Multi-Profile Derivative Rendering
 
-Project eligible worn/carried equipment and presentation clothing through CAPP/PAPT fit/layer/occlusion rules. Support appearance-only outfits where permitted, outfit presets, layer ordering, masks, fit diagnostics and alternate display states while Inventory/Asset owners retain ownership/equipped truth.
+Produce portraits, dialogue busts, reference cards, transparent cutouts, tokens, paper-doll/inventory views, top-down/isometric derivatives, thumbnails, sprites, stance sheets and animation-ready presentation packages from the same semantic appearance workspace. Renderer/output differences are profiles/adapters rather than independent identity systems. This tranche absorbs historical MCCS-13, MCCS-14 and MCCS-15.
 
-### MCCS-10 — Accessories, Props, Mount, Familiar & Companion Composition
+### MCCS-16 — Style Packs, Templates, Renderer Profiles & Visual Variant Recipes
 
-Provide composition workflows for presentation accessories/props and linked mounts, familiars, pets or companions. Linked beings retain separate canonical identities unless the owning domain explicitly defines a composite entity. Composition never implies ownership or relationship state.
-
-### MCCS-11 — Pose, Posture, Gesture & Expression Authoring
-
-Provide topology-aware neutral, social, combat-presentation and reference poses; facial/expression intent where supported; mirrored/variant poses; ground/contact guides; and user-adjustable controls. Pose/expression state is presentation unless an owning runtime explicitly projects current state.
-
-### MCCS-12 — Rig, Anchor, IK & Retarget Preview Integration
-
-Integrate existing/future PAPT/PCA/local rigging and retarget helpers for preview and export preparation. Support topology-specific skeleton/anchor profiles, equipment anchors, IK/contact preview and explicit incompatibility reporting. MCCS does not become animation-runtime or canonical anatomy authority.
-
-### MCCS-13 — Portrait, Dialogue Bust & Reference-Card Renderer
-
-Produce deterministic/reviewable portraits, busts, profile/reference cards, transparent cutouts and approved framing/crop variants from the same appearance workspace, with style/output profiles, accessibility descriptions, stale-derivative invalidation and ARI registration.
-
-### MCCS-14 — Token, Paper-Doll, Top-Down & Isometric Derivative Renderer
-
-Produce tactical tokens, paper-doll/inventory views, top-down/isometric presentation derivatives, thumbnails and other game-facing identity views using the same semantic appearance source. Output geometry/style remains presentation and must not change map/scene/collision truth.
-
-### MCCS-15 — Sprite, Stance & Animation-Sheet Composition
-
-Consume PAPT sprite/animation assembly and PCA motion primitives to produce topology-aware idle/walk/presentation stance sheets and animation-ready sprite packages. Animation availability/coverage is reported explicitly; absence of a visual loop cannot invent or remove an action mechanic.
-
-### MCCS-16 — Style Packs, Templates & Renderer Profiles
-
-Provide reusable visual style packs, creator presets, outfit/look templates, palette/material sets and renderer/output profiles while preserving identity-defining appearance semantics. Current pixel-art authority remains default product language; later owner-approved renderers can be added without rewriting Character truth.
-
-### MCCS-17 — NPC, Crowd, Herd & Creature Variant Generator
-
-Create governed seeded variation recipes for NPC populations, crowds, herds, packs and creature families using owner-supplied eligibility/ranges. Preserve stable seed/receipt, exclusions, rarity/weight inputs and independent review; visual population diversity does not create demographic/world truth.
+Implement reusable style packs, appearance templates, palette/material sets, renderer/output profiles and deterministic visual-variation recipes. Historical MCCS-17 population generation is owner-absorbed: MNCS supplies NPC/crowd/herd/group identities and eligibility; PCA supplies generic procedural substrate; MCCS only produces visual variation and presentation derivatives.
 
 ### MCCS-18 — Multi-Form, Transformation, Lifecycle & Appearance-State Management
 
-Support one entity with multiple owner-approved Forms, lifecycle stages, disguises/presentation identities, temporary appearance states and transformations. Define shared-vs-form-specific appearance inheritance, stale derivative behavior and comparison/transition previews without changing the owning Form/state machine.
+Support one entity across owner-approved Forms, lifecycle stages, disguises/presentation identities and temporary appearance states. Define inheritance, stale-derivative behavior and comparison/transition previews without replacing the owning Form/state machine.
 
-### MCCS-19 — Structured Import/Export, Round-Trip, Review & Provenance
+### MCCS-19 — Appearance Interchange, Round-Trip, Cross-Renderer & Future-P3D Handoff
 
-Support authorized custom components/textures/reference assets, structured Multiversal appearance packages, documented model/image interchange where appropriate, external-specialist round-trip, review annotations, version comparison, approval/publish states and explicit import-loss reporting. Unsupported semantics are preserved/reported rather than silently flattened.
-
-### MCCS-20 — P3D / Future Renderer Handoff & Cross-Renderer Contract
-
-Produce a governed renderer-neutral handoff package for future P3D and later approved renderers: identity, topology family, eligible appearance parameters/components, equipment presentation, pose intent, source/provenance and unsupported coverage. This tranche does not activate P3D, create printable meshes or make 3D fields required Character truth.
+Implement appearance-schema import/export mapping, external-specialist round-trip, explicit loss reporting and renderer-neutral future-renderer/P3D handoff packages. ARI/PCA retain generic provenance/version/review/import-export infrastructure. This tranche absorbs historical MCCS-19 and MCCS-20 and **does not activate P3D**.
 
 ### MCCS-21 — Golden Character & Creature Capability / Semantic-Integration Proof
 
-Create an original Multiversal golden suite proving at least:
+Prove humanoid and nonhuman Characters, ordinary animal, companion/mount/familiar cases, nonhumanoid creature, visual group variants, multi-Form/transformation and constructed/modular examples. Prove cross-output identity consistency, topology-first authoring, owner-bound vs presentation-only distinctions, equipment projection, pose/rig preview, deterministic visual variants, import-loss reporting, ARI rights/provenance, accessibility, recovery, offline/local-first blocking workflows and paid/cloud-provider-off success.
 
-1. humanoid player Character;
-2. nonhuman intelligent species member;
-3. ordinary animal;
-4. mount or companion-capable animal;
-5. familiar/pet example;
-6. nonhumanoid monster/creature;
-7. NPC/crowd or herd variant family;
-8. multi-Form/transformation example;
-9. constructed/modular or otherwise non-organic being.
+## Cross-cutting invariants
 
-The proof must demonstrate preset-to-manual-edit continuity, topology-aware controls, wardrobe/equipment projection where applicable, pose/expression authoring, portrait/token/sprite or equivalent cross-output identity consistency, custom authorized assets, style/profile switching, deterministic variant receipts, rights/provenance, accessibility alternatives, import-loss reporting, offline/local-first blocking workflows and at least one explicit presentation-only vs owner-bound comparison.
+Every surviving MCCS tranche must preserve:
 
-## Cross-cutting requirements
+- definition/owner truth versus appearance draft/proposal/presentation derivative separation;
+- stable owner/version references and stale-projection detection;
+- no silent canonical mutation from creator controls or renderer output;
+- unsupported/unresolved states rather than fabricated compatibility;
+- keyboard/touch/screen-reader paths and non-color-only semantic indicators;
+- undo/recovery for creator draft state without deleting canonical owner history;
+- exact rights/provenance through ARI/PCA;
+- deterministic receipts wherever visual generation claims determinism;
+- local-first blocking workflows without a required paid/cloud provider;
+- bounded controls rather than rebuilding a general-purpose Blender/ZBrush/Maya/Daz-class DCC suite.
 
-Every MCCS tranche must preserve:
+## Clean-room boundary
 
-- undo/redo and recovery appropriate to its mutations;
-- keyboard/touch alternatives and non-pointer-only workflows;
-- structured/list/screen-reader alternatives for essential appearance state and selections;
-- high-contrast/non-color-only semantic indicators;
-- responsive review on smaller screens, with desktop/tablet as primary deep-authoring targets;
-- offline/local-first operation for blocking core authoring where practical;
-- exact rights/provenance through ARI;
-- deterministic receipts wherever generation claims determinism;
-- unsupported/unresolved states instead of silent approximation or invention;
-- performance budgets for large component libraries and rapid preview regeneration;
-- species/form/world-specific styles without allowing them to break core usability;
-- explicit owner-version references so stale projections can be detected and refreshed;
-- no sexualized or adult-only asset requirement for core creator completion.
+Benchmark products remain capability/workflow provenance only. MCCS does not copy proprietary source, protected assets, distinctive UI expression, private protocols, sample projects, vendor-specific implementation details or branded character styles.
 
-## Explicit non-goals
+## Execution rule
 
-MCCS does not:
-
-- replace Character, NPC, Creature, Species, Form, Inventory, Asset, mount/familiar/pet or other canonical owners;
-- make pixels, sliders, meshes, textures, poses or generated variants authoritative gameplay/body truth;
-- replace CAPP/PPIA renderer-neutral appearance authority or PAPT's pixel-production pipeline;
-- recreate a general Blender/ZBrush/Maya/3ds Max/Daz/Character Creator-class DCC suite;
-- activate P3D or require detailed/physical 3D output for MCCS completion;
-- copy proprietary vendor assets, character bases, styles, UI layouts or implementation;
-- require a paid/cloud character service for blocking workflows;
-- make external animation/rigging providers authoritative;
-- authorize provider credentials, paid spend, public release or tester distribution.
-
-## Family execution rule
-
-When MCCS is eventually selected, it receives its own sealed family preflight. Every execution unit must target 24 active minutes or less under a healthy governed environment with protected closeout reserve. Any unit that cannot credibly fit is split before governed start.
-
-No MCCS implementation authority exists now.
-
-## Completion standard
-
-MCCS is complete only when all 21 tranches are `completed_verified`, the golden suite proves broad topology coverage and cross-output identity consistency, blocking character/creature creation works without paid/cloud character providers, PAPT/CAPP/PCA/ARI authority boundaries remain intact, unsupported anatomy/renderer coverage fails visibly rather than being invented, accessibility alternatives exist for essential operations, rights/provenance remain exact, and SMB-08 can consume the studio without inventing a parallel character/creature visual-production system.
+No MCCS implementation authority exists now. When a surviving tranche is later governed-started by OPS3, one owner `Continue` carries the bounded tranche through implementation, validation, verified closeout and next-tranche selection unless an owner-only boundary or genuine external blocker is reached. Preload only the selected tranche's dependency closure and reserve closeout capacity before starting.
