@@ -59,11 +59,6 @@ def test_mncs_pdcp_reduced_contract_is_complete_and_non_authoritative():
     assert family["reduction_status"] == "resolved"
     assert family["reduced_tranche_count"] == 13
     assert family["surviving_tranche_ids"] == EXPECTED
-    assert ledger["baseline_snapshot"]["effective_reduced_total"] == 124
-    assert ledger["baseline_snapshot"]["removed_standalone_future_tranches"] == 84
-    assert ledger["baseline_snapshot"]["approved_family_reductions"] == 8
-    mccs = next(x for x in ledger["families"] if x["program_id"] == "MCCS")
-    assert mccs["reduction_status"] == "next_selected_for_pdcp_review"
 
 
 def test_mncs_stable_dag_milestones_and_progressive_resolution_contract():
@@ -71,7 +66,9 @@ def test_mncs_stable_dag_milestones_and_progressive_resolution_contract():
     program = t("governance/application-planning/multiversal-npc-creature-studio/MNCS_MULTIVERSAL_NPC_CREATURE_STUDIO_PROGRAM.md").lower()
     backlog = j("governance/application-planning/multiversal-npc-creature-studio/MNCS_PROGRAM_BACKLOG.json")
 
-    assert dag["milestone_gates"]["rotation"]["MNCS-01"] == ["MCCS-02"]
+    assert dag["milestone_gates"]["rotation"]["MNCS-01"] == ["MCCS-01"]
+    assert "MCCS-01" in dag["program_edges"]["MNCS"]["start_requires"]
+    assert "MCCS-02" not in dag["program_edges"]["MNCS"]["start_requires"]
     assert "MNCS-24" in dag["program_edges"]["MSWI"]["start_requires"]
 
     names = "\n".join(x["name"] for x in backlog["tranches"]).lower()

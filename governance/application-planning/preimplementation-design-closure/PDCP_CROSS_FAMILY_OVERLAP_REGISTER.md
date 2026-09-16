@@ -25,8 +25,8 @@ Every family reduction performs both an intra-family overlap audit and a cross-f
 | generic generation orchestration | PCA-02/PCA-03/PCA-09 as applicable | specialist families supply domain recipes/briefs/review/acceptance adapters |
 | generic localization production | PCA-13 | specialist families bind domain localization context |
 | map/cartographic projection/editing | MCS | other families bind map projections only |
-| character/creature appearance presentation | MCCS + CAPP/PPIA/PAPT/PCA | NPC/runtime families request or bind presentation only |
-| NPC/creature entity identity/placement/live instance | PPIA-02 + Character/NPC/Creature | MNCS supplies construction/progressive-resolution UX only |
+| character/creature appearance presentation | reduced MCCS + CAPP/PPIA/PAPT/PCA | NPC/runtime families request or bind presentation only |
+| NPC/creature entity identity/placement/live instance | PPIA-02 + Character/NPC/Creature | reduced MNCS supplies construction/progressive-resolution UX only |
 | profession/household/economy/schedule/project/life truth | DPL/Profession + Economy/Organization + Project/Time | MNCS binds projections only |
 | relationship/reputation mutation | MIB-09 | MNCS composes/visualizes scoped reputation and party-association behavior |
 | multi-resolution aggregate↔individual | Packet 06 + domain owners | specialist creator lifecycle adapters only |
@@ -42,25 +42,17 @@ Every family reduction performs both an intra-family overlap audit and a cross-f
 - sparse historical IDs are preferred over renumbering when DAG milestones can survive;
 - family-specific UI may survive even when its canonical data/runtime owner is elsewhere, but only as a bounded adapter/projection seam.
 
-## Next selected review — MCCS
+## Next selected review — MCS (final family)
 
 Strong candidates to test:
 
-- `MCCS-13+14+15`: portrait/bust/card, token/paper-doll/isometric and sprite/stance/animation-sheet outputs may share one derivative-rendering/export kernel while preserving format-specific adapters;
-- `MCCS-16`: inspect whether style packs/templates/renderer profiles are configuration inside the shared output/renderer substrate rather than a standalone runtime;
-- `MCCS-17`: NPC/crowd/herd/creature visual-variant generation must not duplicate MNCS identity/population generation or PCA generation orchestration;
-- `MCCS-18`: inspect whether multi-form/transformation/lifecycle appearance management is one appearance-state adapter over Character/Species/Form owners rather than a separate state engine;
-- `MCCS-19`: generic interchange/version/review/provenance stays ARI/PCA; retain only character/creature presentation mapping and round-trip validation;
-- preserve `MCCS-02` because it is an MNCS rotation milestone unless an equivalent DAG update is demonstrably safer;
-- preserve `MCCS-21` golden gate unless an equivalent gate update is required.
-
-## Later family candidates
-
-### MCS
-- `10+11+12`: shared world/map-generation substrate over PCA recipes;
-- `19+20`: interchange/version/review/publishing;
-- inspect `13+14+16` for shared built/interior/multi-level projection infrastructure without erasing materially different city/dungeon UX;
-- strip generic generation, analysis, provenance and creator-debug infrastructure to PCA/Packet-07/08/ARI owners.
+- `MCS-01+02`: creator workspace/authority and shared semantic map-document shell if they are one implementation boundary;
+- `MCS-10+11+12`: world/terrain/settlement/procedural map-generation surfaces over the same PCA recipe/seed/cache substrate;
+- `MCS-13+14+16`: inspect shared built/interior/multi-level projection infrastructure while preserving materially different city/interior/dungeon authoring UX if needed;
+- `MCS-17+18`: inspect live map interaction/GM authoring and preview/debug overlap under Packet 07;
+- `MCS-19+20`: generic interchange/version/review/publishing/provenance stays ARI/PCA; retain only map-specific serialization, loss reporting and publication adapters;
+- strip generic analysis/solvability/pathfinding/graph infrastructure to PCA-12/Packet 08 where MCS only needs cartographic/spatial model adapters;
+- preserve `MCS-01` and `MCS-21` unless an equivalent DAG update is demonstrably safer.
 
 ## Resolved families
 
@@ -88,16 +80,18 @@ Strong candidates to test:
 ### MNCS — 24 → 13
 `01+02+03→01`; `04`; `05`; `06+07→06`; `08`; historical `09` absorbed to DPL/Profession + Economy/Organization + Project/Time with MNCS bindings; `10+11→10`; `12+13→12`; `14`; `15+16+17→15`; `18+19→18`; `20+21→20`; `22`; historical `23` absorbed to ARI/PCA/Packet-07 generic infrastructure plus MNCS adapters; `24`.
 
-MNCS-specific result: PPIA-02/Character/NPC/Creature keep entity truth; MIB-09 keeps reputation mutation; DPL/Economy/Project keep life truth; Packet 06 keeps multi-resolution semantics; Packet 03 keeps generic autonomous orchestration; reduced MRCS/GPR keep reusable definitions/runtime execution; MNCS keeps progressive construction, group/population creator UX, privacy-safe roleplay prep and governed handoff.
+### MCCS — 21 → 11
+`01+02→01`; `03+04+08→03`; `05`; `06+07→06`; `09+10→09`; `11+12→11`; `13+14+15→13`; `16`; historical `17` absorbed to MNCS/PCA with visual-variant residual in `16`; `18`; `19+20→19`; `21`.
+
+MCCS-specific result: Character/NPC/Creature and Species/Form keep entity/body/Form truth; CAPP/PPIA keep renderer-neutral appearance semantics; PAPT/PCA keep generic production primitives; MNCS keeps group/population identity; ARI/PCA keep generic provenance/review/interchange; MCCS keeps topology-first appearance authoring, presentation composition, derivative render profiles, visual variation and appearance-state/interchange adapters.
 
 ## Reduction order
 
-Resolved: MSLR, MSWI, MBES, MERA, GPR, MRCS, MSAS, MNCS. Remaining preferred order:
+Resolved: MSLR, MSWI, MBES, MERA, GPR, MRCS, MSAS, MNCS, MCCS. Remaining:
 
-1. **MCCS** next;
-2. **MCS** final family review.
+1. **MCS** — final family review.
 
-Already-resolved receipts may be amended only through explicit capability-preserving reconciliation if a later upstream reduction exposes a safer owner fold.
+Already-resolved receipts may be amended only through explicit capability-preserving reconciliation if the final MCS reduction exposes a safer owner fold.
 
 ## Guardrails
 

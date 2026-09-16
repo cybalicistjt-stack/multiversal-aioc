@@ -8,7 +8,7 @@ Initial active cap: four. First simultaneous set: MCS, MCCS, MRCS, MSAS after ty
 | L2_CHARACTER_PRESENTATION | MCCS | PCA character/motion/style + appearance contracts | MCCS-21 |
 | L3_RULES_CONTENT | MRCS | Content Forge/CAB/CNI owner contracts | MRCS-21 |
 | L4_AUDIO | MSAS | AAI/DWC/PCA audio capabilities | MSAS-21 |
-| L5_NPC_CREATURE | MNCS | MCCS-02 + MIB-09/DPL | MNCS-24 |
+| L5_NPC_CREATURE | MNCS | reduced MCCS-01 + MIB-09/DPL | MNCS-24 |
 | L6_ADVENTURE | MAS | CNI-11 + Adventure/Scene/Session | MAS-21 |
 | L7_GAMEPLAY_RUNTIME | GPR | MRCS-05 + MAL/core owners | GPR-16 |
 | L8_ENGINEERING | MERA | GPR-05 + MRCS-13 + MIB12/13/14/LSS | MERA-24 |
