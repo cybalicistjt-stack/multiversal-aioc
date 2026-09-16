@@ -1,8 +1,8 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "project_id": "PDCP",
   "project_name": "Preimplementation Design Closure Project",
-  "status": "owner_approved_active_reduction",
+  "status": "final_reconciliation_pending_publication",
   "owner": "John Brandon Turner",
   "approved": "2026-09-16",
   "implementation_authority": false,
@@ -14,14 +14,14 @@
     "aioc_main_sha": "1558bcd12e69c0e49290191199fe6ef111f1e80c",
     "date": "2026-09-16",
     "baseline_total_tranches": 208,
-    "effective_reduced_total": 114,
-    "approved_family_reductions": 9,
-    "removed_standalone_future_tranches": 94,
-    "note": "Baseline remains immutable historical provenance. Effective total reflects only complete family receipts already reconciled into planning sources; unresolved families retain baseline counts."
+    "effective_reduced_total": 105,
+    "approved_family_reductions": 10,
+    "removed_standalone_future_tranches": 103,
+    "note": "Baseline remains immutable historical provenance. All ten family reductions now have complete receipts on the MCS candidate; final PDCP closeout requires publication to main and whole-project reconciliation."
   },
   "excluded_programs": ["MAS"],
   "families": [
-    {"program_id":"MCS","program_name":"Multiversal Cartography Studio","baseline_tranche_count":21,"backlog_path":"governance/application-planning/multiversal-cartography-studio/MCS_PROGRAM_BACKLOG.json","baseline_blob_sha":"5489f857c18a786b16bfab848784aedb46265efe","track":"specialist_creator","reduction_status":"next_selected_for_pdcp_review","reduced_tranche_count":null,"reduction_receipt":null},
+    {"program_id":"MCS","program_name":"Multiversal Cartography Studio","baseline_tranche_count":21,"backlog_path":"governance/application-planning/multiversal-cartography-studio/MCS_PROGRAM_BACKLOG.json","baseline_blob_sha":"5489f857c18a786b16bfab848784aedb46265efe","track":"specialist_creator","reduction_status":"resolved","reduced_tranche_count":12,"reduction_receipt":"governance/application-planning/preimplementation-design-closure/PDCP_MCS_REDUCTION_RECEIPT.json","family_design_closure":"governance/application-planning/preimplementation-design-closure/PDCP_MCS_FAMILY_DESIGN_CLOSURE.md","surviving_tranche_ids":["MCS-01","MCS-03","MCS-05","MCS-07","MCS-08","MCS-10","MCS-13","MCS-14","MCS-15","MCS-18","MCS-19","MCS-21"],"overlap_audit_complete":true,"capability_loss_detected":false},
     {"program_id":"MCCS","program_name":"Multiversal Character & Creature Studio","baseline_tranche_count":21,"backlog_path":"governance/application-planning/multiversal-character-creature-studio/MCCS_PROGRAM_BACKLOG.json","baseline_blob_sha":"6fc9a7d49f2fa95001feb6472aca00f9ba5e02bc","track":"specialist_creator","reduction_status":"resolved","reduced_tranche_count":11,"reduction_receipt":"governance/application-planning/preimplementation-design-closure/PDCP_MCCS_REDUCTION_RECEIPT.json","family_design_closure":"governance/application-planning/preimplementation-design-closure/PDCP_MCCS_FAMILY_DESIGN_CLOSURE.md","surviving_tranche_ids":["MCCS-01","MCCS-03","MCCS-05","MCCS-06","MCCS-09","MCCS-11","MCCS-13","MCCS-16","MCCS-18","MCCS-19","MCCS-21"],"overlap_audit_complete":true,"capability_loss_detected":false},
     {"program_id":"MNCS","program_name":"Multiversal NPC & Creature Studio","baseline_tranche_count":24,"backlog_path":"governance/application-planning/multiversal-npc-creature-studio/MNCS_PROGRAM_BACKLOG.json","baseline_blob_sha":"e285bf80835a023720e488fd53f295cd410d61c9","track":"specialist_creator","reduction_status":"resolved","reduced_tranche_count":13,"reduction_receipt":"governance/application-planning/preimplementation-design-closure/PDCP_MNCS_REDUCTION_RECEIPT.json","family_design_closure":"governance/application-planning/preimplementation-design-closure/PDCP_MNCS_FAMILY_DESIGN_CLOSURE.md","surviving_tranche_ids":["MNCS-01","MNCS-04","MNCS-05","MNCS-06","MNCS-08","MNCS-10","MNCS-12","MNCS-14","MNCS-15","MNCS-18","MNCS-20","MNCS-22","MNCS-24"],"overlap_audit_complete":true,"capability_loss_detected":false},
     {"program_id":"MSAS","program_name":"Multiversal Sound & Audio Studio","baseline_tranche_count":21,"backlog_path":"governance/application-planning/multiversal-sound-audio-studio/MSAS_PROGRAM_BACKLOG.json","baseline_blob_sha":"bd38bab172b7195d6e2c599758da634d1d748889","track":"post_mas_runtime_creator","reduction_status":"resolved","reduced_tranche_count":11,"reduction_receipt":"governance/application-planning/preimplementation-design-closure/PDCP_MSAS_REDUCTION_RECEIPT.json","family_design_closure":"governance/application-planning/preimplementation-design-closure/PDCP_MSAS_FAMILY_DESIGN_CLOSURE.md","surviving_tranche_ids":["MSAS-01","MSAS-03","MSAS-04","MSAS-05","MSAS-07","MSAS-09","MSAS-12","MSAS-14","MSAS-15","MSAS-18","MSAS-21"],"overlap_audit_complete":true,"capability_loss_detected":false},
@@ -45,5 +45,6 @@
     "A DAG-referenced tranche may be removed or renumbered only with an atomic equivalent gate update.",
     "Prefer stable sparse IDs over gratuitous renumbering when start/rotation/golden milestones can remain valid.",
     "PDCP never grants implementation authority and does not mutate operations/CURRENT.json merely for design work."
-  ]
+  ],
+  "next_action": "Publish MCS reduction to main, then perform final whole-project reconciliation and PDCP closeout."
 }
