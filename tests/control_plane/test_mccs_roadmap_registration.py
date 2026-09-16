@@ -12,61 +12,103 @@ def t(path: str):
     return (ROOT / path).read_text(encoding="utf-8")
 
 
-def test_mccs_registered_as_future_interstitial_without_activation():
-    index = j("governance/ai/runtime/ROADMAP_INDEX.json")
-    registry = j("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
-    backlog = j("governance/application-planning/multiversal-character-creature-studio/MCCS_PROGRAM_BACKLOG.json")
+EXPECTED = [
+    "MCCS-01",
+    "MCCS-03",
+    "MCCS-05",
+    "MCCS-06",
+    "MCCS-09",
+    "MCCS-11",
+    "MCCS-13",
+    "MCCS-16",
+    "MCCS-18",
+    "MCCS-19",
+    "MCCS-21",
+]
 
-    planned = {x["program_id"]: x for x in index["planned_programs"]}
-    assert planned["MCCS"]["status"] == "owner_approved_planned"
-    assert planned["MCCS"]["activation_after"] == "MCS-21"
-    assert planned["MCCS"]["successor"] == "MNCS-01"
-    assert planned["MCCS"]["implementation_authority"] is False
-    assert planned["MCCS"]["execution_units"] == 21
-    assert planned["MCS"]["successor"] == "MCCS-01"
+
+def test_mccs_pdcp_reduced_contract_is_complete_and_non_authoritative():
+    backlog = j("governance/application-planning/multiversal-character-creature-studio/MCCS_PROGRAM_BACKLOG.json")
+    receipt = j("governance/application-planning/preimplementation-design-closure/PDCP_MCCS_REDUCTION_RECEIPT.json")
+    ledger = j("governance/application-planning/preimplementation-design-closure/PDCP_REDUCTION_LEDGER.json")
 
     assert backlog["implementation_authority"] is False
-    assert backlog["strict_order"] == [f"MCCS-{i:02d}" for i in range(1, 22)]
+    assert backlog["strict_order"] == EXPECTED
+    assert [x["id"] for x in backlog["tranches"]] == EXPECTED
     assert all(x["estimated_active_minutes"] <= 24 for x in backlog["tranches"])
 
-    assert index["current"]["source_program"] == "ARI"
-    assert index["current"]["status"] == "selected_not_started"
-    assert index["current"]["implementation_authority"] is False
-    assert index["current"]["implementation_branch"] is None
-    assert registry["active_planning_work"]["work_item"] == index["current"]["work_item_id"]
-    assert registry["active_planning_work"]["implementation_authority"] is False
+    assert backlog["pdcp_reduction"]["baseline_tranche_count"] == 21
+    assert backlog["pdcp_reduction"]["reduced_tranche_count"] == 11
+    assert backlog["pdcp_reduction"]["capability_loss_detected"] is False
+
+    assert receipt["status"] == "resolved"
+    assert receipt["baseline_tranche_count"] == 21
+    assert receipt["reduced_tranche_count"] == 11
+    assert receipt["removed_standalone_tranches"] == 10
+    assert receipt["surviving_tranche_ids"] == EXPECTED
+    assert len(receipt["dispositions"]) == 21
+    assert {x["baseline_id"] for x in receipt["dispositions"]} == {f"MCCS-{i:02d}" for i in range(1, 22)}
+    assert receipt["golden_vector_count"] == 48
+    assert receipt["capability_loss_detected"] is False
+    assert receipt["implementation_authority"] is False
+    assert receipt["ops3_current_mutation"] is False
+    assert receipt["dag_mutation_required"] is True
+
+    family = next(x for x in ledger["families"] if x["program_id"] == "MCCS")
+    assert family["reduction_status"] == "resolved"
+    assert family["reduced_tranche_count"] == 11
+    assert family["surviving_tranche_ids"] == EXPECTED
+    assert ledger["baseline_snapshot"]["effective_reduced_total"] == 114
+    assert ledger["baseline_snapshot"]["removed_standalone_future_tranches"] == 94
+    assert ledger["baseline_snapshot"]["approved_family_reductions"] == 9
+    mcs = next(x for x in ledger["families"] if x["program_id"] == "MCS")
+    assert mcs["reduction_status"] == "next_selected_for_pdcp_review"
 
 
-def test_mccs_dependency_placement_and_successors():
-    index = j("governance/ai/runtime/ROADMAP_INDEX.json")
-    mcs = j("governance/application-planning/multiversal-cartography-studio/MCS_PROGRAM_BACKLOG.json")
-    pca = j("governance/application-planning/production-capability-acceleration/PCA_PROGRAM_BACKLOG.json")
-
-    expected = "CNI-01..13 → PCA-01..16 → MCS-01..21 → MCCS-01..21 → MNCS-01..24 → MAS-01..21"
-    assert expected in index["effective_forward_order"]
-    assert index["mccs_execution_order"] == [f"MCCS-{i:02d}" for i in range(1, 22)]
-    assert pca["successor"] == "MCS-01"
-    assert mcs["successor"] == "MCCS-01"
-
-    amendment = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MCCS_AMENDMENT_2026-09-11.md")
-    mcs_amendment = t("governance/application-planning/multiversal-cartography-studio/MCS_MCCS_SUCCESSOR_AMENDMENT_2026-09-11.md")
-    mncs_successor = t("governance/application-planning/multiversal-character-creature-studio/MCCS_MNCS_SUCCESSOR_AMENDMENT_2026-09-11.md")
-    assert "MCS-01..21 → MCCS-01..21" in amendment
-    assert "MCS-01..21 → MCCS-01..21" in mcs_amendment
-    assert "MCCS-01..21 → MNCS-01..24 → MAS-01..21" in mncs_successor
-
-
-def test_mccs_preserves_appearance_owner_and_clean_room_boundaries():
+def test_mccs_equivalent_mncs_rotation_gate_and_owner_boundaries():
+    dag = j("governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json")
+    receipt = j("governance/application-planning/preimplementation-design-closure/PDCP_MCCS_REDUCTION_RECEIPT.json")
     backlog = j("governance/application-planning/multiversal-character-creature-studio/MCCS_PROGRAM_BACKLOG.json")
     boundaries = "\n".join(backlog["boundaries"]).lower()
-    for owner in ("character", "species", "form", "capp", "papt", "pca", "ari", "p3d", "mncs"):
+
+    assert dag["milestone_gates"]["rotation"]["MNCS-01"] == ["MCCS-01"]
+    assert "MCCS-01" in dag["program_edges"]["MNCS"]["start_requires"]
+    assert "MCCS-02" not in dag["program_edges"]["MNCS"]["start_requires"]
+    assert receipt["dag_gate_replacement"]["removed_milestone"] == "MCCS-02"
+    assert receipt["dag_gate_replacement"]["replacement_milestone"] == "MCCS-01"
+
+    for owner in ("capp/ppia", "papt/pca", "mncs", "ari/pca", "animation/scene/combat/dialogue", "p3d"):
         assert owner in boundaries
 
-    benchmark = t("governance/application-planning/multiversal-character-creature-studio/MCCS_BENCHMARK_CAPABILITY_MATRIX.md").lower()
+
+def test_mccs_folded_seams_and_cross_family_absorptions_are_explicit():
+    receipt = j("governance/application-planning/preimplementation-design-closure/PDCP_MCCS_REDUCTION_RECEIPT.json")
+    dispositions = {x["baseline_id"]: x for x in receipt["dispositions"]}
+    absorption_text = "\n".join(
+        f"{x['concern']} {x['owner']} {x['mccs_residual']}" for x in receipt["cross_family_absorptions"]
+    ).lower()
+
+    assert dispositions["MCCS-02"]["residual_target"] == "MCCS-01"
+    assert dispositions["MCCS-14"]["residual_target"] == "MCCS-13"
+    assert dispositions["MCCS-15"]["residual_target"] == "MCCS-13"
+    assert dispositions["MCCS-17"]["disposition"] == "ABSORB_EXISTING_OWNER"
+    assert "mncs" in dispositions["MCCS-17"]["residual_target"].lower()
+    assert dispositions["MCCS-20"]["residual_target"] == "MCCS-19"
+
+    for term in ("character/npc/creature", "capp/ppia", "papt/pca", "mncs", "ari/pca", "packet 07", "p3d"):
+        assert term in absorption_text
+
+
+def test_mccs_preserves_topology_presentation_clean_room_and_p3d_boundaries():
     program = t("governance/application-planning/multiversal-character-creature-studio/MCCS_MULTIVERSAL_CHARACTER_CREATURE_STUDIO_PROGRAM.md").lower()
-    assert "clean-room" in benchmark
-    assert "does not copy" in benchmark
+    benchmark = t("governance/application-planning/multiversal-character-creature-studio/MCCS_BENCHMARK_CAPABILITY_MATRIX.md").lower()
+    dcp = t("governance/application-planning/preimplementation-design-closure/PDCP_MCCS_FAMILY_DESIGN_CLOSURE.md").lower()
+
     assert "topology-first" in program
     assert "presentation-only" in program
-    assert "no mccs implementation authority exists now" in program
     assert "does not activate p3d" in program
+    assert "no mccs implementation authority exists now" in program
+    assert "clean-room" in benchmark
+    assert "does not copy" in benchmark
+    assert "48 proof vectors" in dcp
+    assert "atomic equivalent gate rewrite" in dcp
