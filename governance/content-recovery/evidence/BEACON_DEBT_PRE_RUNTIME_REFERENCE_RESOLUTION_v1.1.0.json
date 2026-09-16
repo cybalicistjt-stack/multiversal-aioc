@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.1.0",
+  "artifact": "BEACON_DEBT_PRE_RUNTIME_REFERENCE_RESOLUTION",
+  "status": "candidate_exact_reference_manifest",
+  "supersedes": "BEACON_DEBT_PRE_RUNTIME_REFERENCE_RESOLUTION_v1.0.0.json",
+  "runtime_state_created": false,
+  "launch_snapshot_created": false,
+  "playtest_claim": false,
+  "setting": {
+    "world": {"ownerDomain":"D18/PPIA-12","objectId":"world:havalaea","objectVersion":"1.0.0"},
+    "setting": {"ownerDomain":"D18/PPIA-12","objectId":"setting:vertigon","objectVersion":"1.0.0"}
+  },
+  "external_identity_resolution": {
+    "administrative_syndicate": {
+      "ownerDomain": "PPIA-10/PPIA-12",
+      "objectId": "mv.setting.faction.administrative-syndicate",
+      "objectVersion": "1.0.0",
+      "identityPolicy": "existing stable identity version-materialized; not a second faction",
+      "sourcePackProvenanceVersion": "0.1.2",
+      "sourcePackVersionIsObjectVersion": false
+    }
+  },
+  "version_overrides_from_initial_beacon_bundle": {
+    "mv.setting.faction-relationship.administrative-syndicate-east-gate": "1.0.1",
+    "mv.setting.faction-relationship.lantern-compact-administrative-syndicate": "1.0.1",
+    "mv.adventure.beacon-debt.social-situation.east-gate-priority": "1.0.1",
+    "mv.adventure.beacon-debt.module": "1.0.1"
+  },
+  "default_beacon_debt_object_version": "1.0.0",
+  "versioning_reason": "Only definitions whose formerly-null Administrative Syndicate references changed were patch-versioned. All other Beacon Debt canonical definitions remain at 1.0.0.",
+  "investigation_redundancy": {
+    "R1": ["CF-01", "CF-02"],
+    "R2": ["CF-02", "CF-03"],
+    "R3": ["CF-03", "CF-04"],
+    "R4": ["CF-05", "CF-06"],
+    "R5_state": "omitted_first_golden_test"
+  },
+  "runtime_guardrails": [
+    "Campaign/Scene/Session instances are not created by this manifest.",
+    "Eastern Bridge damage remains a future synthetic Campaign-local starting state, not historical play evidence.",
+    "Clue discovery/reveal state is not instantiated here.",
+    "An immutable launch snapshot requires separate runtime authorization and completion of the mechanics-binding gate."
+  ]
+}
