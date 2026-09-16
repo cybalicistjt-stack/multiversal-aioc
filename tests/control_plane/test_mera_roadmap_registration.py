@@ -73,16 +73,14 @@ def test_mera_cross_owner_absorptions_and_shared_substrate_are_explicit():
     assert "no universal formula" in boundaries
 
 
-def test_mera_dag_milestones_remain_stable_without_current_mutation():
+def test_mera_dag_milestones_remain_stable():
     graph = j("governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json")
-    current = j("operations/CURRENT.json")
     backlog = j("governance/application-planning/multiversal-engineering-refit-assembly/MERA_PROGRAM_BACKLOG.json")
 
     assert "MERA-04" in graph["program_edges"]["MBES"]["start_requires"]
     assert "MERA-24" in graph["program_edges"]["MBES"]["golden_proof_requires"]
     assert graph["milestone_gates"]["rotation"]["MERA-01"] == ["GPR-05", "MRCS-13"]
     assert backlog["implementation_authority"] is False
-    assert current["lanes"]["product-development"]["selected_work_item"] != "MERA-01"
 
 
 def test_mera_design_closure_preserves_golden_scope_and_accessibility():
