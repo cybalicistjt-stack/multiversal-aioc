@@ -12,76 +12,38 @@
 
 MCCS remains the creator-facing **appearance/presentation authoring and derivative-output studio** over existing Character/NPC/Creature, Species/Form, CAPP/PPIA, PAPT/PCA and ARI authority. It is not a second entity database, Form state machine, population generator, asset-governance engine, animation runtime or general-purpose DCC application.
 
-The reduction preserves distinct implementation kernels where creator interaction or technical risk materially differs, while folding seams that shared one authoring/rendering substrate and returning generic infrastructure to its existing owner.
-
 ## Owner boundaries locked
 
-- Character/NPC/Creature and Species/Form owners retain identity, body topology eligibility, Form/state, mechanics and live state.
-- CAPP/PPIA retain renderer-neutral appearance authority and appearance compilation semantics.
-- PAPT/PCA retain reusable character-asset, rig, garment, motion, style-generation, image/sprite production and local-production primitives.
+- Character/NPC/Creature and Species/Form owners retain identity, topology eligibility, Form/state, mechanics and live state.
+- CAPP/PPIA retain renderer-neutral appearance authority and compilation semantics.
+- PAPT/PCA retain reusable character-asset, rig, garment, motion, image/sprite, style-generation and local-production primitives.
 - ARI/PCA retain generic resource identity, rights/provenance, derivative lineage, version/review and import/export infrastructure.
-- MNCS retains NPC/creature identity, population/group composition and progressive NPC/creature generation; MCCS may only provide visual-variation recipes and presentation outputs for those entities/groups.
-- Animation/Scene/Combat/Dialog owners retain runtime pose/action/placement authority.
+- MNCS retains NPC/creature/group/population identity and progressive construction. MCCS may only provide visual-variation recipes and presentation outputs for owner-supplied entities/groups.
+- Animation/Scene/Combat/Dialogue owners retain runtime pose/action/placement authority.
 - Packet 07 retains generic preview/dry-run/commit/explanation/recovery semantics; MCCS supplies appearance-domain lenses and operations.
-- P3D remains deferred and separate. MCCS may emit a future-renderer handoff package but cannot activate P3D or make physical-renderer fields canonical Character truth.
+- P3D remains deferred and separate.
 
-## Intra-family folding
+## Fold decisions
 
-### MCCS-01 absorbs MCCS-02
-Creator workspace, renderer-neutral projection, draft overlay, stale-owner detection, rebase/refresh and authority dispositions are one document/workspace implementation shell.
+- `MCCS-01 + MCCS-02 → MCCS-01`: workspace, renderer-neutral projection, draft overlay, stale-owner detection, rebase/refresh and authority dispositions are one document/workspace kernel.
+- `MCCS-03 + MCCS-04 + MCCS-08 → MCCS-03`: topology, morphology/proportion/silhouette and modular appendage/anatomy compatibility share one topology-aware component/parameter kernel.
+- `MCCS-05` stays distinct: face/sensory/expression anatomy has different topology specialization and preview/accessibility behavior.
+- `MCCS-06 + MCCS-07 → MCCS-06`: coverings and color/material/pattern/marking use one layered surface/material substrate.
+- `MCCS-09 + MCCS-10 → MCCS-09`: wardrobe/equipment fit and accessory/prop/linked-being presentation use one composition/attachment/layering shell.
+- `MCCS-11 + MCCS-12 → MCCS-11`: pose/expression and rig/anchor/IK/retarget preview are one pose/rig preview kernel.
+- `MCCS-13 + MCCS-14 + MCCS-15 → MCCS-13`: portraits/cards, tactical derivatives and sprite/stance outputs are renderer/output profiles over one appearance workspace.
+- `MCCS-16` remains and absorbs the visual-only residual of historical `MCCS-17`: style/templates/renderer profiles and deterministic visual-variant recipes share configuration/seeded-variation infrastructure. MNCS owns population/group identity; PCA owns generic recipe/generation substrate.
+- `MCCS-18` remains: multi-Form/lifecycle/transformation appearance inheritance/staleness is a distinct adapter over owner Form/state truth.
+- `MCCS-19 + MCCS-20 → MCCS-19`: appearance interchange, external round-trip, cross-renderer serialization and future-P3D handoff are one interchange contract; ARI/PCA retain generic provenance/version/review.
+- `MCCS-21` remains as final golden proof.
 
-### MCCS-03 absorbs MCCS-04 and MCCS-08
-Topology family, morphology/proportion/silhouette and modular appendage/anatomy compatibility use one topology-aware component/parameter validation kernel. Face/sensory authoring remains separate because it has distinct topology specialization, expression anatomy and accessibility/preview behavior.
+## Reduced surviving order
 
-### MCCS-06 absorbs MCCS-07
-Hair/fur/feather/scale/shell/skin coverings and color/material/pattern/marking layers share the same layered surface/material authoring substrate.
-
-### MCCS-09 absorbs MCCS-10
-Wardrobe/armor/equipment fit and accessory/prop/mount/familiar/companion composition share the same presentation-composition, attachment, layering and linked-entity visualization shell. Canonical ownership/relationships stay external.
-
-### MCCS-11 absorbs MCCS-12
-Pose/posture/gesture/expression authoring and rig/anchor/IK/retarget preview are one pose/rig preview kernel. This remains presentation-only and does not become animation-runtime authority.
-
-### MCCS-13 absorbs MCCS-14 and MCCS-15
-Portrait/bust/reference-card, token/paper-doll/top-down/isometric and sprite/stance/animation-sheet outputs are derivative render profiles over one appearance workspace. Output-profile differences remain adapters, not separate semantic engines.
-
-### MCCS-16 absorbs the MCCS-specific residual from MCCS-17
-Style packs/templates/renderer profiles and deterministic **visual** variant recipes share configuration, seeded variation and profile application infrastructure. NPC/crowd/herd/population identity/composition is MNCS-owned; MCCS only varies presentation within owner-supplied eligibility/ranges.
-
-### MCCS-18 remains
-Multi-Form, lifecycle and transformation appearance inheritance/staleness is a distinct adapter over owner Form/state truth and cannot be safely hidden inside generic style switching.
-
-### MCCS-19 absorbs MCCS-20
-Appearance-package interchange, external-specialist round-trip, cross-renderer serialization and P3D/future-renderer handoff are one interchange contract. Generic review/provenance/version rights remain ARI/PCA; MCCS owns appearance-specific mapping/loss reporting.
-
-### MCCS-21 remains
-The final golden proof retains all cross-output, topology, multi-Form, accessibility, provenance, offline/local-first and owner-boundary obligations.
-
-## Reduced surviving tranches
-
-1. `MCCS-01` — Creator Workspace, Renderer-Neutral Projection, Draft/Rebase & Authority Contract
-2. `MCCS-03` — Topology, Morphology, Silhouette, Appendage & Modular Anatomy Authoring
-3. `MCCS-05` — Head, Face, Sensory Feature & Expression Anatomy Authoring
-4. `MCCS-06` — Coverings, Color, Material, Pattern, Marking & Surface-Layer Studio
-5. `MCCS-09` — Wardrobe, Equipment Fit, Accessories, Props & Linked-Being Presentation Composition
-6. `MCCS-11` — Pose, Gesture, Expression, Rig, Anchor, IK & Retarget Preview
-7. `MCCS-13` — Multi-Profile Derivative Rendering: Portrait/Token/Paper-Doll/Top-Down/Isometric/Sprite/Stance
-8. `MCCS-16` — Style Packs, Templates, Renderer Profiles & Visual Variant Recipes
-9. `MCCS-18` — Multi-Form, Transformation, Lifecycle & Appearance-State Management
-10. `MCCS-19` — Appearance Interchange, Round-Trip, Cross-Renderer & Future-P3D Handoff
-11. `MCCS-21` — Golden Character & Creature Capability / Semantic-Integration Proof
-
-## Cross-family absorptions
-
-Historical `MCCS-17` no longer owns NPC/crowd/herd/creature population generation. MNCS owns identity/group/population construction; PCA owns generic procedural-generation substrate. `MCCS-16` retains only deterministic visual-variation recipes over owner-supplied populations and eligibility.
-
-Historical `MCCS-19` no longer implies a generic provenance/version/review/import-export platform. ARI/PCA own that infrastructure. `MCCS-19` retains appearance-schema mapping, round-trip loss reporting, renderer-package serialization and future-renderer handoff.
-
-Generic mesh/image/rig/texture/codec/DCC primitives remain lawful replaceable local tools/libraries or PCA/PAPT capabilities rather than MCCS implementations.
+`MCCS-01 → MCCS-03 → MCCS-05 → MCCS-06 → MCCS-09 → MCCS-11 → MCCS-13 → MCCS-16 → MCCS-18 → MCCS-19 → MCCS-21`
 
 ## Golden vectors
 
-The reduced family must preserve at least these 48 proof vectors:
+The reduced family preserves these 48 proof vectors:
 
 1. Humanoid Character opens from owner projection without copying Character truth.
 2. Quadruped opens with topology-appropriate controls and no forced humanoid mapping.
@@ -92,7 +54,7 @@ The reduced family must preserve at least these 48 proof vectors:
 7. Rebase preserves compatible manual presentation overrides.
 8. Rebase reports conflicts instead of silently discarding edits.
 9. Draft appearance mutation does not change canonical Species/Form truth.
-10. Morphology slider never mutates mechanical size unless owner operation separately does so.
+10. Morphology slider never mutates mechanical size unless an owner operation separately does so.
 11. Face/sensory authoring supports nonhuman head plans.
 12. Expression preview does not become canonical emotional state.
 13. Covering layers support hair/fur/feathers/scales/shell with renderer capability reporting.
@@ -126,7 +88,7 @@ The reduced family must preserve at least these 48 proof vectors:
 41. ARI rights/use restrictions are enforced before derivative publication/export.
 42. Cross-renderer handoff distinguishes required semantics from optional renderer hints.
 43. P3D handoff does not activate P3D or require printable geometry.
-44. Generic review/version/provenance actions resolve to ARI/PCA owners rather than a second MCCS ledger.
+44. Generic review/version/provenance actions resolve to ARI/PCA rather than a second MCCS ledger.
 45. Blocking authoring works with paid/cloud providers disabled.
 46. Keyboard/touch/screen-reader equivalents exist for essential creator operations.
 47. Undo/recovery restores creator draft state without deleting canonical owner history.
@@ -140,6 +102,12 @@ The reduced family must preserve at least these 48 proof vectors:
 - MNCS: NPC/creature/group/population identity and composition.
 - MCCS survivors: entity-centric creator UX, appearance-domain validation/adapters, derivative profiles, visual variation, appearance-state adapters and final proof.
 
-## DAG / OPS3
+## DAG / OPS3 reconciliation
 
-`MCCS-01` and `MCCS-21` survive with equivalent-or-stronger milestone semantics. No DAG change is required for this family reduction. PDCP grants no implementation authority and does not mutate `operations/CURRENT.json`.
+Historical `MCCS-02` was a live MNCS rotation/start milestone. Because reduced `MCCS-01` absorbs the entire historical `MCCS-02` renderer-neutral projection/draft-overlay contract, the reduction performs an **atomic equivalent gate rewrite**:
+
+- `MNCS.program_edges.start_requires`: `MCCS-02` → `MCCS-01`;
+- `milestone_gates.rotation[MNCS-01]`: `MCCS-02` → `MCCS-01`;
+- parallel execution map: MNCS may start from reduced `MCCS-01` plus its unchanged MIB-09/DPL prerequisites.
+
+This is a gate-equivalence repair, not earlier activation: reduced `MCCS-01` includes all capability previously promised by `MCCS-02`. `MCCS-21` remains the MNCS golden-proof dependency. PDCP grants no product implementation authority and does not mutate `operations/CURRENT.json`.
