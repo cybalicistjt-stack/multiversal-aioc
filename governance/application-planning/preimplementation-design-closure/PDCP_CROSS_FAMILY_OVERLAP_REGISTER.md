@@ -1,12 +1,12 @@
 # PDCP Cross-Family Overlap & Folding Register
 
 **Project:** PDCP — Preimplementation Design Closure Project  
-**Status:** ACTIVE REDUCTION CONTROL SURFACE  
+**Status:** FAMILY REDUCTION COMPLETE — FINAL PROJECT RECONCILIATION PENDING PUBLICATION  
 **Implementation authority:** none
 
 ## Rule
 
-Every family reduction performs both an intra-family overlap audit and a cross-family/shared-owner audit. A historical tranche survives only when a distinct bounded implementation/proof seam remains after design closure and shared-owner absorption.
+Every family reduction performed both an intra-family overlap audit and a cross-family/shared-owner audit. A historical tranche survives only when a distinct bounded implementation/proof seam remains after design closure and shared-owner absorption.
 
 ## Shared ownership patterns
 
@@ -19,12 +19,11 @@ Every family reduction performs both an intra-family overlap audit and a cross-f
 | generic gameplay execution/replay/delivery | reduced GPR + Action/Event | domain adapters only |
 | reusable rule/content definition authoring | reduced MRCS + owner-domain contracts | specialist studios retain domain creator UX |
 | semantic affordances/effect composition | reduced MRCS + reduced GPR + Packet 04 | target/domain adapters only |
-| audio semantic/runtime/interoperability | AAI | MSAS supplies integrated production/direction UX only |
-| adaptive-audio authoring primitives | PCA-07 + AAI | MSAS composes creator workflows and domain binding |
-| voice/speech/SFX production primitives | PCA-08 | MSAS owns audio-domain workflow/binding only |
+| audio semantic/runtime/interoperability | AAI | reduced MSAS supplies integrated production/direction UX only |
+| adaptive-audio/voice/SFX production primitives | PCA-07/PCA-08 + AAI | MSAS composes creator workflows and domain binding |
 | generic generation orchestration | PCA-02/PCA-03/PCA-09 as applicable | specialist families supply domain recipes/briefs/review/acceptance adapters |
 | generic localization production | PCA-13 | specialist families bind domain localization context |
-| map/cartographic projection/editing | MCS | other families bind map projections only |
+| map/cartographic projection/editing | reduced MCS + MAI | other families bind map projections only |
 | character/creature appearance presentation | reduced MCCS + CAPP/PPIA/PAPT/PCA | NPC/runtime families request or bind presentation only |
 | NPC/creature entity identity/placement/live instance | PPIA-02 + Character/NPC/Creature | reduced MNCS supplies construction/progressive-resolution UX only |
 | profession/household/economy/schedule/project/life truth | DPL/Profession + Economy/Organization + Project/Time | MNCS binds projections only |
@@ -33,6 +32,7 @@ Every family reduction performs both an intra-family overlap audit and a cross-f
 | systemic consequence propagation | reduced MSWI | upstream systems emit typed Events/deltas |
 | engineering orchestration | reduced MERA + Asset/MIB owners | consumers bind engineering adapters only |
 | built environment/facilities | reduced MBES + underlying owners | consumers reference facility context |
+| runtime spatial law/topology | reduced MSLR + World/Scene/SSA owners | MCS/MBES project or author inputs; they do not duplicate runtime law |
 
 ## Repeated folding rules
 
@@ -41,18 +41,6 @@ Every family reduction performs both an intra-family overlap audit and a cross-f
 - proof-only pre-golden tranches fold into final golden proof when no independent runtime remains;
 - sparse historical IDs are preferred over renumbering when DAG milestones can survive;
 - family-specific UI may survive even when its canonical data/runtime owner is elsewhere, but only as a bounded adapter/projection seam.
-
-## Next selected review — MCS (final family)
-
-Strong candidates to test:
-
-- `MCS-01+02`: creator workspace/authority and shared semantic map-document shell if they are one implementation boundary;
-- `MCS-10+11+12`: world/terrain/settlement/procedural map-generation surfaces over the same PCA recipe/seed/cache substrate;
-- `MCS-13+14+16`: inspect shared built/interior/multi-level projection infrastructure while preserving materially different city/interior/dungeon authoring UX if needed;
-- `MCS-17+18`: inspect live map interaction/GM authoring and preview/debug overlap under Packet 07;
-- `MCS-19+20`: generic interchange/version/review/publishing/provenance stays ARI/PCA; retain only map-specific serialization, loss reporting and publication adapters;
-- strip generic analysis/solvability/pathfinding/graph infrastructure to PCA-12/Packet 08 where MCS only needs cartographic/spatial model adapters;
-- preserve `MCS-01` and `MCS-21` unless an equivalent DAG update is demonstrably safer.
 
 ## Resolved families
 
@@ -83,16 +71,21 @@ Strong candidates to test:
 ### MCCS — 21 → 11
 `01+02→01`; `03+04+08→03`; `05`; `06+07→06`; `09+10→09`; `11+12→11`; `13+14+15→13`; `16`; historical `17` absorbed to MNCS/PCA with visual-variant residual in `16`; `18`; `19+20→19`; `21`.
 
-MCCS-specific result: Character/NPC/Creature and Species/Form keep entity/body/Form truth; CAPP/PPIA keep renderer-neutral appearance semantics; PAPT/PCA keep generic production primitives; MNCS keeps group/population identity; ARI/PCA keep generic provenance/review/interchange; MCCS keeps topology-first appearance authoring, presentation composition, derivative render profiles, visual variation and appearance-state/interchange adapters.
+### MCS — 21 → 12
+`01+02→01`; `03+04→03`; `05+06→05`; `07+17→07`; `08+09→08`; `10+11+12→10`; `13`; `14+16→14`; `15`; `18`; `19+20→19`; `21`.
 
-## Reduction order
+MCS-specific result: MAI keeps map schemas/projection foundations; PCA keeps generic generator/style/analysis substrate; ISE/Scene keep live canvas/runtime state; SSA/World/MSLR keep spatial truth; MBES/Settlement keep built-environment truth; ARI/PCA/Packet-07 keep generic lifecycle/provenance/review; MCS keeps map-document/editor UX, cartographic generator packs, geographic/urban/interior/tactical authoring, semantic binding, map interchange/atlas adapters and golden proof.
 
-Resolved: MSLR, MSWI, MBES, MERA, GPR, MRCS, MSAS, MNCS, MCCS. Remaining:
+## Whole-project overlap conclusion
 
-1. **MCS** — final family review.
+All ten in-scope family receipts are complete on the MCS candidate. No surviving tranche is retained solely because the historical roadmap gave it an independent ID. Generic infrastructure is assigned to one practical owner, while specialist families retain bounded domain adapters/UX/proof. No additional cross-family fold is identified that can be made now without either creating an oversized survivor, weakening an owner boundary, or moving implementation into a family that does not own the capability.
 
-Already-resolved receipts may be amended only through explicit capability-preserving reconciliation if the final MCS reduction exposes a safer owner fold.
+The final effective family count is **105** from a historical **208**, removing **103** standalone future tranches. MAS remains excluded and unchanged.
+
+## Remaining action
+
+After MCS publication to `main`, perform final whole-project reconciliation and publish PDCP closeout. No additional family review remains.
 
 ## Guardrails
 
-MAS is excluded. Candidate folds do not alter counts before complete receipts merge. Accessibility, permissions/privacy, provenance, replay/recovery, migration and deterministic proof survive every fold. PDCP does not mutate `operations/CURRENT.json` merely for planning work.
+Accessibility, permissions/privacy, provenance, replay/recovery, migration and deterministic proof survive every fold. PDCP does not mutate `operations/CURRENT.json` merely for planning work.
