@@ -1,5 +1,11 @@
 # Canonical Object Template Program
 
+> **POPULATION-AUTHORITY DISPOSITION — 2026-09-17**  
+> This document is preserved as historical completion evidence for the 8E-009 CSV-first program. It no longer selects the current Item/Object source population.  
+> Current population authority is `governance/object-system/CURRENT_GAME_OBJECT_SOURCE_AUTHORITY.json`.  
+> The historical `19,199` figure below must not be used as the current Item/Object corpus total.
+
+
 **Milestone:** 8E-009  
 **Status:** COMPLETE — OWNER APPROVED EXECUTION PATH SATISFIED  
 **Owner and final authority:** John Brandon Turner  
