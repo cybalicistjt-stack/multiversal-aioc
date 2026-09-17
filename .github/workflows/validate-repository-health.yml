@@ -120,6 +120,12 @@ jobs:
           node scripts/build-canonical-version-index.mjs
           python3 tests/control_plane/test_beacon_debt_golden_diagnostics.py
 
+      - name: Validate Beacon Debt pre-runtime fixture candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_beacon_debt_runtime_fixture.py
+
       - name: Run Content Library collection regression
         shell: bash
         run: |
@@ -150,6 +156,7 @@ jobs:
             content-db/**
             evidence/content-pipeline/latest-certificate.json
             evidence/content-pipeline/beacon-debt-golden-diagnostics.json
+            evidence/content-pipeline/beacon-debt-runtime-fixture-candidate.json
           if-no-files-found: warn
           retention-days: 14
 
