@@ -4,13 +4,17 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-EXPECTED_RECORD_COUNT = 516
+EXPECTED_RECORD_COUNT = 526
 REQUIRED_IDS = {
     "mv.setting.faction.administrative-syndicate",
     "mv.setting.faction.black-feathers",
     "mv.adventure.beacon-debt.module",
     "mv.adventure.beacon-debt.investigation.maps-as-leverage",
     "mv.adventure.beacon-debt.clue.cf06-black-feathers-association-evidence",
+    "mv.adventure.beacon-debt.rules.golden-test-core",
+    "mv.adventure.beacon-debt.action.navigate-crossflow",
+    "mv.adventure.beacon-debt.action.restore-route-beacon",
+    "mv.adventure.beacon-debt.action.request-priority-exception",
 }
 
 
@@ -42,9 +46,9 @@ def main() -> None:
     )
     assert certificate["recordCount"] == EXPECTED_RECORD_COUNT
     assert certificate["baselineRecordCount"] == 487
-    assert certificate["appendedRecordCount"] == 29
-    assert certificate["replacementRecordCount"] == 4
-    assert certificate["supplementalInputRecordCount"] == 33
+    assert certificate["appendedRecordCount"] == 39
+    assert certificate["replacementRecordCount"] == 8
+    assert certificate["supplementalInputRecordCount"] == 47
     assert certificate["gameReadiness"]["assessed"] is False
     assert "not-game-readiness" in certificate["certificationScope"]
     assert (ROOT / "content-db" / "content-record.schema.json").exists(), "clean rebuild must preserve the record schema"
@@ -59,13 +63,21 @@ def main() -> None:
     expected_versions = {
         "mv.setting.faction-relationship.administrative-syndicate-east-gate": "1.0.1",
         "mv.setting.faction-relationship.lantern-compact-administrative-syndicate": "1.0.1",
-        "mv.adventure.beacon-debt.social-situation.east-gate-priority": "1.0.1",
-        "mv.adventure.beacon-debt.module": "1.0.1",
+        "mv.setting.vertigon.hazard.transit-crossflow-cascade": "1.0.1",
+        "mv.adventure.beacon-debt.npc.mira-venn": "1.0.1",
+        "mv.adventure.beacon-debt.social-situation.east-gate-priority": "1.0.2",
+        "mv.adventure.beacon-debt.module": "1.0.2",
     }
     for stable_id, version in expected_versions.items():
         assert by_id[stable_id]["contentVersion"] == version, f"{stable_id} must resolve at {version}"
         assert by_id[stable_id]["provenance"]["sourceClass"] == "replacement"
-        assert by_id[stable_id]["provenance"]["replaces"]["contentVersion"] == "1.0.0"
+
+    assert by_id["mv.setting.faction-relationship.administrative-syndicate-east-gate"]["provenance"]["replaces"]["contentVersion"] == "1.0.0"
+    assert by_id["mv.setting.faction-relationship.lantern-compact-administrative-syndicate"]["provenance"]["replaces"]["contentVersion"] == "1.0.0"
+    assert by_id["mv.setting.vertigon.hazard.transit-crossflow-cascade"]["provenance"]["replaces"]["contentVersion"] == "1.0.0"
+    assert by_id["mv.adventure.beacon-debt.npc.mira-venn"]["provenance"]["replaces"]["contentVersion"] == "1.0.0"
+    assert by_id["mv.adventure.beacon-debt.social-situation.east-gate-priority"]["provenance"]["replaces"]["contentVersion"] == "1.0.1"
+    assert by_id["mv.adventure.beacon-debt.module"]["provenance"]["replaces"]["contentVersion"] == "1.0.1"
 
     beacon_ids = [sid for sid in by_id if sid.startswith("mv.adventure.beacon-debt") or sid.startswith("mv.setting.vertigon") or sid.startswith("mv.setting.faction-relationship") or sid in {"mv.faction.lantern-compact", "mv.setting.faction.black-feathers"}]
     unresolved_admin_refs = []
@@ -77,7 +89,7 @@ def main() -> None:
 
     print(
         "Canonical content pipeline reconciliation PASS: "
-        f"{index['recordCount']} effective records; 29 appends + 4 governed replacements; exact Beacon Debt references resolve."
+        f"{index['recordCount']} effective records; 39 appends + 8 governed replacements; Beacon Debt mechanics and exact references resolve."
     )
 
 
