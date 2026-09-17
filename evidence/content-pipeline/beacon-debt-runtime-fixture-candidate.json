@@ -1,0 +1,261 @@
+{
+  "schema_version": "1.0.0",
+  "artifact": "BEACON_DEBT_GOLDEN_RUNTIME_FIXTURE_CANDIDATE",
+  "state": "PRE_RUNTIME_FIXTURE_SPEC_READY",
+  "runtimeStateCreated": false,
+  "launchSnapshotCreated": false,
+  "playtestClaim": false,
+  "authority": {
+    "owner": "PPIA-08 / MV-IA-F005 future runtime path",
+    "currentArtifactClass": "pre-runtime deterministic test fixture specification",
+    "explicitNonClaims": [
+      "This artifact is not a Campaign aggregate.",
+      "This artifact is not a Scene aggregate.",
+      "This artifact is not a Session aggregate.",
+      "This artifact is not a P8-ACT-021 readiness receipt.",
+      "This artifact is not a P8-ACT-022 launch snapshot.",
+      "This artifact does not reveal clues or create player knowledge.",
+      "This artifact does not claim a playtest, balance pass, release, or OGR GAME_READY status."
+    ]
+  },
+  "campaignDraft": {
+    "campaignId": "campaign-fixture:beacon-debt-golden-01",
+    "version": "candidate-0.1.0",
+    "title": "Beacon Debt — Deterministic Golden Test",
+    "lifecycleState": "pre-runtime-fixture-draft",
+    "adventureRef": {
+      "ownerDomain": "D28",
+      "objectId": "mv.adventure.beacon-debt.module",
+      "objectVersion": "1.0.2"
+    },
+    "worldRef": {
+      "ownerDomain": "D18/PPIA-12",
+      "objectId": "world:havalaea",
+      "objectVersion": "1.0.0",
+      "referenceClass": "MIB-11 source-only stable identity"
+    },
+    "settingRef": {
+      "ownerDomain": "D18/PPIA-12",
+      "objectId": "setting:vertigon",
+      "objectVersion": "1.0.0",
+      "referenceClass": "MIB-11 source-only stable identity",
+      "parentRef": "world:havalaea"
+    },
+    "campaignPolicyCandidate": {
+      "coordinateMode": "gridless",
+      "combatRequired": false,
+      "damagePolicy": "none-first-golden-test",
+      "conditionPolicy": "none-first-golden-test",
+      "persistentSocialConsequencesRequireEventAndInformationPath": true
+    }
+  },
+  "sceneDrafts": [
+    {
+      "sceneId": "scene:beacon-debt:gate-pressure",
+      "version": "candidate-0.1.0",
+      "title": "Gate Pressure",
+      "order": 1,
+      "coordinateMode": "gridless",
+      "mapMediaReferenceId": null,
+      "calibrationId": null,
+      "semanticLocation": "East Gate Interchange queue and access-control area",
+      "primaryLocationRef": {"ownerDomain":"PPIA-12","objectId":"mv.setting.vertigon.location.east-gate-interchange","objectVersion":"1.0.0"},
+      "contentRefs": [
+        {"ownerDomain":"PPIA-10","objectId":"mv.adventure.beacon-debt.social-situation.east-gate-priority","objectVersion":"1.0.2"},
+        {"ownerDomain":"PPIA-02","objectId":"mv.adventure.beacon-debt.npc.mira-venn","objectVersion":"1.0.1"},
+        {"ownerDomain":"PPIA-02","objectId":"mv.adventure.beacon-debt.group.displaced-travelers","objectVersion":"1.0.0"},
+        {"ownerDomain":"PPIA-10","objectId":"mv.faction.lantern-compact","objectVersion":"1.0.0"},
+        {"ownerDomain":"PPIA-10/PPIA-12","objectId":"mv.setting.faction.administrative-syndicate","objectVersion":"1.0.0"},
+        {"ownerDomain":"PPIA-10/MRCS/D28","objectId":"mv.adventure.beacon-debt.action.request-priority-exception","objectVersion":"1.0.0"},
+        {"ownerDomain":"MRCS/D28","objectId":"mv.adventure.beacon-debt.resource.refugee-arrival-pressure","objectVersion":"1.0.0"}
+      ]
+    },
+    {
+      "sceneId": "scene:beacon-debt:damaged-crossing",
+      "version": "candidate-0.1.0",
+      "title": "Damaged Crossing",
+      "order": 2,
+      "coordinateMode": "gridless",
+      "mapMediaReferenceId": null,
+      "calibrationId": null,
+      "semanticLocation": "Eastern Bridge crossing on the East Transit Spine",
+      "primaryLocationRef": {"ownerDomain":"PPIA-12","objectId":"mv.setting.vertigon.location.eastern-bridge","objectVersion":"1.0.0"},
+      "contentRefs": [
+        {"ownerDomain":"PPIA-12","objectId":"mv.setting.vertigon.location.east-transit-spine","objectVersion":"1.0.0"},
+        {"ownerDomain":"PPIA-12/rules","objectId":"mv.setting.vertigon.hazard.transit-crossflow-cascade","objectVersion":"1.0.1"},
+        {"ownerDomain":"MRCS/D28","objectId":"mv.adventure.beacon-debt.action.navigate-crossflow","objectVersion":"1.0.0"},
+        {"ownerDomain":"MRCS/D28","objectId":"mv.adventure.beacon-debt.resource.route-deterioration","objectVersion":"1.0.0"}
+      ]
+    },
+    {
+      "sceneId": "scene:beacon-debt:beacon-restoration",
+      "version": "candidate-0.1.0",
+      "title": "Beacon Restoration",
+      "order": 3,
+      "coordinateMode": "gridless",
+      "mapMediaReferenceId": null,
+      "calibrationId": null,
+      "semanticLocation": "East Route Beacon service area",
+      "primaryLocationRef": {"ownerDomain":"PPIA-12","objectId":"mv.setting.vertigon.location.east-route-beacon","objectVersion":"1.0.0"},
+      "contentRefs": [
+        {"ownerDomain":"PPIA-10","objectId":"mv.faction.lantern-compact","objectVersion":"1.0.0"},
+        {"ownerDomain":"MRCS/D28","objectId":"mv.adventure.beacon-debt.action.restore-route-beacon","objectVersion":"1.0.0"},
+        {"ownerDomain":"MRCS/D28","objectId":"mv.adventure.beacon-debt.resource.route-deterioration","objectVersion":"1.0.0"},
+        {"ownerDomain":"D28/PPIA-08","objectId":"mv.adventure.beacon-debt.effect.route-beacon-restored","objectVersion":"1.0.0"}
+      ]
+    },
+    {
+      "sceneId": "scene:beacon-debt:listening-market-investigation",
+      "version": "candidate-0.1.0",
+      "title": "Listening Market Investigation",
+      "order": 4,
+      "coordinateMode": "gridless",
+      "mapMediaReferenceId": null,
+      "calibrationId": null,
+      "semanticLocation": "The Listening Market",
+      "primaryLocationRef": {"ownerDomain":"PPIA-12","objectId":"mv.setting.vertigon.location.listening-market","objectVersion":"1.0.0"},
+      "contentRefs": [
+        {"ownerDomain":"PPIA-09","objectId":"mv.adventure.beacon-debt.investigation.maps-as-leverage","objectVersion":"1.0.0"},
+        {"ownerDomain":"PPIA-10","objectId":"mv.setting.faction.black-feathers","objectVersion":"1.0.0"},
+        {"ownerDomain":"PPIA-02/D28","objectId":"mv.adventure.beacon-debt.npc.independent-listening-market-broker","objectVersion":"1.0.0"},
+        {"ownerDomain":"D28/Items","objectId":"mv.adventure.beacon-debt.item.east-spine-revision-sale-note","objectVersion":"1.0.0"},
+        {"ownerDomain":"D28/Items","objectId":"mv.adventure.beacon-debt.item.current-conditions-annotation-request","objectVersion":"1.0.0"},
+        {"ownerDomain":"D28/Items","objectId":"mv.adventure.beacon-debt.item.broker-delivery-memorandum","objectVersion":"1.0.0"},
+        {"ownerDomain":"PPIA-09","objectId":"mv.adventure.beacon-debt.clue.cf01-recent-map-purchase-observation","objectVersion":"1.0.0"},
+        {"ownerDomain":"PPIA-09","objectId":"mv.adventure.beacon-debt.clue.cf02-fresh-revision-premium","objectVersion":"1.0.0"},
+        {"ownerDomain":"PPIA-09","objectId":"mv.adventure.beacon-debt.clue.cf03-current-conditions-annotation-request","objectVersion":"1.0.0"},
+        {"ownerDomain":"PPIA-09","objectId":"mv.adventure.beacon-debt.clue.cf04-fragmented-brokerage-pattern","objectVersion":"1.0.0"},
+        {"ownerDomain":"PPIA-09","objectId":"mv.adventure.beacon-debt.clue.cf05-independent-black-feathers-association-claim","objectVersion":"1.0.0"},
+        {"ownerDomain":"PPIA-09","objectId":"mv.adventure.beacon-debt.clue.cf06-black-feathers-association-evidence","objectVersion":"1.0.0"}
+      ]
+    },
+    {
+      "sceneId": "scene:beacon-debt:consequence-return",
+      "version": "candidate-0.1.0",
+      "title": "Consequence / Return",
+      "order": 5,
+      "coordinateMode": "gridless",
+      "mapMediaReferenceId": null,
+      "calibrationId": null,
+      "semanticLocation": "East-route consequence and return context",
+      "primaryLocationRef": {"ownerDomain":"PPIA-12","objectId":"mv.setting.vertigon.location.east-transit-spine","objectVersion":"1.0.0"},
+      "contentRefs": [
+        {"ownerDomain":"D28","objectId":"mv.adventure.beacon-debt.module","objectVersion":"1.0.2"},
+        {"ownerDomain":"PPIA-09","objectId":"mv.adventure.beacon-debt.investigation.maps-as-leverage","objectVersion":"1.0.0"}
+      ]
+    }
+  ],
+  "rulesAndMechanicsRefs": [
+    {"ownerDomain":"MRCS/D28","objectId":"mv.adventure.beacon-debt.rules.golden-test-core","objectVersion":"1.0.0"},
+    {"ownerDomain":"MRCS/D28","objectId":"mv.adventure.beacon-debt.action.navigate-crossflow","objectVersion":"1.0.0"},
+    {"ownerDomain":"MRCS/D28","objectId":"mv.adventure.beacon-debt.action.restore-route-beacon","objectVersion":"1.0.0"},
+    {"ownerDomain":"PPIA-10/MRCS/D28","objectId":"mv.adventure.beacon-debt.action.request-priority-exception","objectVersion":"1.0.0"},
+    {"ownerDomain":"MRCS/D28","objectId":"mv.adventure.beacon-debt.resource.route-deterioration","objectVersion":"1.0.0"},
+    {"ownerDomain":"MRCS/D28","objectId":"mv.adventure.beacon-debt.resource.refugee-arrival-pressure","objectVersion":"1.0.0"},
+    {"ownerDomain":"MRCS/D28","objectId":"mv.adventure.beacon-debt.effect.route-pressure-advance","objectVersion":"1.0.0"},
+    {"ownerDomain":"MRCS/D28","objectId":"mv.adventure.beacon-debt.effect.refugee-pressure-advance","objectVersion":"1.0.0"},
+    {"ownerDomain":"D28/PPIA-08","objectId":"mv.adventure.beacon-debt.effect.route-beacon-restored","objectVersion":"1.0.0"},
+    {"ownerDomain":"PPIA-10/D28","objectId":"mv.adventure.beacon-debt.effect.priority-exception-granted","objectVersion":"1.0.0"}
+  ],
+  "initialCampaignLocalState": {
+    "stateClass": "synthetic-pre-runtime-fixture-only",
+    "resourceValues": {
+      "mv.adventure.beacon-debt.resource.route-deterioration@1.0.0": 1,
+      "mv.adventure.beacon-debt.resource.refugee-arrival-pressure@1.0.0": 1
+    },
+    "bridgeState": "already-damaged-synthetic-fixture",
+    "routeState": "reduced-passage",
+    "beaconState": "degraded-function",
+    "priorRealSessionOrEventImplied": false,
+    "durableEventsCreated": false
+  },
+  "deterministicInputContract": {
+    "actorMode": "nonpersistent-test-harness-input",
+    "characterDefinitionCreated": false,
+    "checkTotalsSuppliedAtExecution": true,
+    "checkTotalOwnership": "current Character/rules owner or deterministic harness adapter",
+    "defaultGoldenPathInputs": {
+      "mv.adventure.beacon-debt.action.request-priority-exception@1.0.0": 15,
+      "mv.adventure.beacon-debt.action.navigate-crossflow@1.0.0": 12,
+      "mv.adventure.beacon-debt.action.restore-route-beacon@1.0.0": 15
+    },
+    "note": "These totals are fixture inputs for deterministic execution, not reusable Character stats or universal target guidance."
+  },
+  "visibilityPolicyCandidate": {
+    "policyId": "visibility-fixture:beacon-debt-golden-01",
+    "policyVersion": "candidate-0.1.0",
+    "permissionBeforeResolutionAndAggregation": true,
+    "truthProjection": "gm-only-until-solved",
+    "clueDefault": "hidden-until-governed-discovery-or-reveal",
+    "initiallyHiddenClueIds": ["CF-01", "CF-02", "CF-03", "CF-04", "CF-05", "CF-06"],
+    "initiallyVisiblePlayerFacts": [
+      "The East route has reduced passage.",
+      "Displaced travelers are arriving and access pressure is rising.",
+      "The Eastern Bridge is already damaged as a synthetic starting condition.",
+      "The East Route Beacon is not functioning normally.",
+      "The Listening Market is a plausible place to investigate route-map purchasing."
+    ],
+    "protectedUntilGovernedReveal": [
+      "Black Feathers is the principal map-buyer network.",
+      "Mira Venn has one legitimate discretionary exception and its exact terms.",
+      "CF-05 witness association claim.",
+      "CF-06 independent Black Feathers association evidence."
+    ]
+  },
+  "sessionBindingCandidate": {
+    "sessionId": null,
+    "sessionMode": "deterministic-golden-test",
+    "campaignId": "campaign-fixture:beacon-debt-golden-01",
+    "sceneOrder": [
+      "scene:beacon-debt:gate-pressure",
+      "scene:beacon-debt:damaged-crossing",
+      "scene:beacon-debt:beacon-restoration",
+      "scene:beacon-debt:listening-market-investigation",
+      "scene:beacon-debt:consequence-return"
+    ],
+    "participantBindingMode": "test-harness-supplied-at-runtime-instantiation",
+    "persistentCharacterRequired": false,
+    "encounterRequired": false,
+    "mapAssetRequired": false,
+    "gridCalibrationRequired": false
+  },
+  "launchSnapshotBoundary": {
+    "projectionGroup": "P8-PG-014",
+    "launchSnapshotId": null,
+    "readinessReceiptId": null,
+    "immutableOnceCreated": true,
+    "creationAuthorizedByThisArtifact": false,
+    "requiredActionSequence": ["P8-ACT-021", "P8-ACT-022"],
+    "candidateVersionsSource": "all exact reusable references in this fixture plus authoritative Campaign/Scene versions created at runtime-fixture instantiation",
+    "mapAssetVersion": null,
+    "calibrationVersion": null,
+    "coordinateModeJustification": "All five Scenes are intentionally gridless; PPIA-08 treats gridless Scenes as first-class, so no map/calibration is fabricated.",
+    "placementVersions": "must be authoritative Campaign-local placement versions returned by the future PPIA-08 creation path",
+    "visibilityPolicyVersion": "must be the authoritative version created from visibility-fixture:beacon-debt-golden-01",
+    "sessionBindingInputs": "must be resolved only after authoritative Campaign and Scene aggregates exist",
+    "blockingFindings": [
+      "authoritative Campaign/Scene/Session aggregate versions do not yet exist",
+      "P8-ACT-021 launch-readiness receipt has not yet been created"
+    ]
+  },
+  "itemCompletionCompatibility": {
+    "modifiesItemIdentity": false,
+    "ogrGameReadyClaim": false,
+    "replacementPathPreserved": true,
+    "beaconEvidenceItemsRemainAdventureLocalTemplates": [
+      "mv.adventure.beacon-debt.item.east-spine-revision-sale-note@1.0.0",
+      "mv.adventure.beacon-debt.item.current-conditions-annotation-request@1.0.0",
+      "mv.adventure.beacon-debt.item.broker-delivery-memorandum@1.0.0"
+    ]
+  },
+  "nextAuthorizedBoundary": {
+    "name": "Beacon Debt Golden-Test Runtime Instantiation and Immutable Launch Snapshot",
+    "requires": [
+      "explicit owner authorization to create Campaign/Scene/Session runtime fixture aggregates",
+      "P8-ACT-021 readiness validation over authoritative aggregate versions",
+      "zero blocking readiness findings",
+      "P8-ACT-022 immutable snapshot creation using expected_version and stable operation_id"
+    ],
+    "notPerformedHere": true
+  }
+}
