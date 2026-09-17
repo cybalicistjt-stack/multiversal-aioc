@@ -4,13 +4,13 @@
   "name": "Transit Crossflow Cascade",
   "objectType": "mv.object.hazard-definition",
   "developmentStage": "Approved",
-  "source": "Owner-authorized canonical incorporation",
-  "sourceLocator": "content-source/beacon-debt-canonical-part-02.json",
+  "source": "Owner-authorized Beacon Debt mechanics closure",
+  "sourceLocator": "content-source/beacon-debt-golden-test-mechanics-replacements-v1.0.1.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
   "promotionDecision": "",
   "reviewStatus": "",
   "schemaVersion": "1.0.0",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.0.1",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -25,7 +25,12 @@
     "name": "Transit Crossflow Cascade",
     "objectType": "mv.object.hazard-definition",
     "schemaVersion": "1.0.0",
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.0.1",
+    "replacementOf": {
+      "stableId": "mv.setting.vertigon.hazard.transit-crossflow-cascade",
+      "expectedContentVersion": "1.0.0",
+      "reason": "Bind the existing setting hazard to the bounded first-golden-test navigation mechanics."
+    },
     "canonStatus": "approved",
     "lifecycleStatus": "approved",
     "scope": "reusable-definition",
@@ -61,7 +66,40 @@
       "rescue/logistics pressure",
       "interaction with gate priority"
     ],
-    "mechanicsPolicy": "Exact movement, Effect, Condition, resource, DC, damage, or action-economy mechanics are not defined here and remain with owning rule domains.",
+    "deterministicResolution": {
+      "method": "fixed-target-check",
+      "target": 12,
+      "targetPolicy": "packet-local-authored-threshold-not-universal",
+      "actionRef": {
+        "ownerDomain": "MRCS/D28",
+        "objectId": "mv.adventure.beacon-debt.action.navigate-crossflow",
+        "objectVersion": "1.0.0"
+      }
+    },
+    "mechanicsRefs": [
+      {
+        "ownerDomain": "MRCS/D28",
+        "objectId": "mv.adventure.beacon-debt.rules.golden-test-core",
+        "objectVersion": "1.0.0"
+      },
+      {
+        "ownerDomain": "MRCS/D28",
+        "objectId": "mv.adventure.beacon-debt.action.navigate-crossflow",
+        "objectVersion": "1.0.0"
+      },
+      {
+        "ownerDomain": "MRCS/D28",
+        "objectId": "mv.adventure.beacon-debt.resource.route-deterioration",
+        "objectVersion": "1.0.0"
+      },
+      {
+        "ownerDomain": "MRCS/D28",
+        "objectId": "mv.adventure.beacon-debt.effect.route-pressure-advance",
+        "objectVersion": "1.0.0"
+      }
+    ],
+    "damagePolicy": "none-first-golden-test",
+    "conditionPolicy": "none-first-golden-test",
     "excludedLegacyMechanics": [
       "legacy DCs",
       "damage dice",
@@ -69,12 +107,12 @@
       "universal vehicle checks"
     ],
     "provenance": {
-      "authority": "Owner-authorized canonical incorporation",
-      "ownerDecisionDate": "2026-09-16",
-      "evidenceClass": "governed-authoring",
+      "authority": "Owner-authorized Beacon Debt mechanics closure",
+      "ownerDecisionDate": "2026-09-17",
+      "evidenceClass": "governed-replacement",
       "sourceReferences": [
-        "Owner-approved Beacon Debt Vertigon adaptation",
-        "Urban Environments transit/traffic pressure source concept (mechanics stripped)"
+        "Transit Crossflow Cascade canonical hazard",
+        "Beacon Debt Golden-Test Core Mechanics@1.0.0"
       ],
       "sourceResourceRefs": [],
       "noPlaytestClaim": true,
@@ -86,22 +124,28 @@
   "balance": null,
   "testing": null,
   "provenance": {
-    "authority": "Owner-authorized canonical incorporation",
-    "ownerDecisionDate": "2026-09-16",
-    "evidenceClass": "governed-authoring",
+    "authority": "Owner-authorized Beacon Debt mechanics closure",
+    "ownerDecisionDate": "2026-09-17",
+    "evidenceClass": "governed-replacement",
     "sourceReferences": [
-      "Owner-approved Beacon Debt Vertigon adaptation",
-      "Urban Environments transit/traffic pressure source concept (mechanics stripped)"
+      "Transit Crossflow Cascade canonical hazard",
+      "Beacon Debt Golden-Test Core Mechanics@1.0.0"
     ],
     "sourceResourceRefs": [],
     "noPlaytestClaim": true,
     "noReleaseClaim": true,
     "noBalanceClaim": true,
-    "sourcePath": "content-source/beacon-debt-canonical-part-02.json",
-    "sourceDigest": "sha256:82597065cb8ee604fa70dbd4e24caf2fb28d9125392645556713bfa9836071c2",
-    "sourceBundleId": "mv.content.beacon-debt.canonical-v1",
-    "sourceBundlePart": "part-02-of-04",
-    "sourceClass": "supplemental",
+    "sourcePath": "content-source/beacon-debt-golden-test-mechanics-replacements-v1.0.1.json",
+    "sourceDigest": "sha256:a5ef1070b226195fb9d312c1364d1899036b6069268ebca4fb064f8796b93df7",
+    "sourceBundleId": "mv.content.beacon-debt.golden-test-mechanics-replacements-v1",
+    "sourceBundlePart": "golden-test-mechanics-binding",
+    "sourceClass": "replacement",
+    "replaces": {
+      "stableId": "mv.setting.vertigon.hazard.transit-crossflow-cascade",
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/beacon-debt-canonical-part-02.json",
+      "sourceDigest": "sha256:82597065cb8ee604fa70dbd4e24caf2fb28d9125392645556713bfa9836071c2"
+    },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
 }

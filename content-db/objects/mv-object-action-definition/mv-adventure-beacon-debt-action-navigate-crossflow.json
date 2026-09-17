@@ -1,0 +1,94 @@
+{
+  "databaseId": "mv.adventure.beacon-debt.action.navigate-crossflow",
+  "stableId": "mv.adventure.beacon-debt.action.navigate-crossflow",
+  "name": "Navigate Transit Crossflow",
+  "objectType": "mv.object.action-definition",
+  "developmentStage": "Approved",
+  "source": "Owner-authorized Beacon Debt mechanics closure",
+  "sourceLocator": "content-source/beacon-debt-golden-test-mechanics-v1.0.0.json",
+  "coverageStatus": "CANONICAL_OBJECT_PRESENT",
+  "promotionDecision": "",
+  "reviewStatus": "",
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "packIds": [],
+  "dependencies": [],
+  "tags": [
+    "beacon-debt",
+    "hazard",
+    "movement",
+    "canonical-object"
+  ],
+  "manualEntry": null,
+  "gameObject": {
+    "id": "mv.adventure.beacon-debt.action.navigate-crossflow",
+    "name": "Navigate Transit Crossflow",
+    "objectType": "mv.object.action-definition",
+    "schemaVersion": "1.0.0",
+    "contentVersion": "1.0.0",
+    "canonStatus": "approved",
+    "lifecycleStatus": "approved",
+    "scope": "adventure-local-action",
+    "tags": [
+      "beacon-debt",
+      "hazard",
+      "movement"
+    ],
+    "resolutionMethod": "fixed-target-check",
+    "target": 12,
+    "inputContract": "Current Character/rules owner supplies the numeric check total; this packet does not own Attribute/Skill calculation.",
+    "actionEconomy": {
+      "unit": "structured-action",
+      "cost": 1
+    },
+    "movementBinding": {
+      "mode": "careful-pedestrian-passage",
+      "movementRequired": true,
+      "vehicleCheckRequired": false
+    },
+    "successEffectRefs": [],
+    "failureEffectRefs": [
+      {
+        "ownerDomain": "MRCS/D28",
+        "objectId": "mv.adventure.beacon-debt.effect.route-pressure-advance",
+        "objectVersion": "1.0.0"
+      }
+    ],
+    "damagePolicy": "none-first-golden-test",
+    "conditionPolicy": "none-first-golden-test",
+    "combatRequired": false,
+    "provenance": {
+      "authority": "Owner-authorized Beacon Debt mechanics closure",
+      "ownerDecisionDate": "2026-09-17",
+      "evidenceClass": "bounded-governed-authoring",
+      "sourceReferences": [
+        "Transit Crossflow Cascade hazard concept"
+      ],
+      "sourceResourceRefs": [],
+      "noPlaytestClaim": true,
+      "noReleaseClaim": true,
+      "noBalanceClaim": true
+    }
+  },
+  "validation": null,
+  "balance": null,
+  "testing": null,
+  "provenance": {
+    "authority": "Owner-authorized Beacon Debt mechanics closure",
+    "ownerDecisionDate": "2026-09-17",
+    "evidenceClass": "bounded-governed-authoring",
+    "sourceReferences": [
+      "Transit Crossflow Cascade hazard concept"
+    ],
+    "sourceResourceRefs": [],
+    "noPlaytestClaim": true,
+    "noReleaseClaim": true,
+    "noBalanceClaim": true,
+    "sourcePath": "content-source/beacon-debt-golden-test-mechanics-v1.0.0.json",
+    "sourceDigest": "sha256:9f83f80fb1789d3b393cf76c37c09e87222beeafb8b6de8030cc8c36f329dc12",
+    "sourceBundleId": "mv.content.beacon-debt.golden-test-mechanics-v1",
+    "sourceBundlePart": "golden-test-mechanics",
+    "sourceClass": "supplemental",
+    "importedBy": "scripts/build-canonical-content-database.mjs"
+  }
+}

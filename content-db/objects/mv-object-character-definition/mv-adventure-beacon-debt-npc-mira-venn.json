@@ -4,13 +4,13 @@
   "name": "Mira Venn",
   "objectType": "mv.object.character-definition",
   "developmentStage": "Approved",
-  "source": "Owner-authorized canonical incorporation",
-  "sourceLocator": "content-source/beacon-debt-canonical-part-02.json",
+  "source": "Owner-authorized Beacon Debt mechanics closure",
+  "sourceLocator": "content-source/beacon-debt-golden-test-mechanics-replacements-v1.0.1.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
   "promotionDecision": "",
   "reviewStatus": "",
   "schemaVersion": "1.0.0",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.0.1",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -25,7 +25,12 @@
     "name": "Mira Venn",
     "objectType": "mv.object.character-definition",
     "schemaVersion": "1.0.0",
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.0.1",
+    "replacementOf": {
+      "stableId": "mv.adventure.beacon-debt.npc.mira-venn",
+      "expectedContentVersion": "1.0.0",
+      "reason": "Add only the bounded noncombat gatekeeper mechanics required for the first golden test."
+    },
     "canonStatus": "approved",
     "lifecycleStatus": "approved",
     "scope": "reusable-definition",
@@ -43,13 +48,26 @@
       "redirects rather than simply refusing"
     ],
     "protectedFact": "One legitimate discretionary exception exists; exact details remain GM-protected until revealed.",
-    "mechanicalStats": null,
+    "mechanicalStats": {
+      "profileKind": "bounded-noncombat-gatekeeper",
+      "combatStatsRequired": false,
+      "priorityExceptionTarget": 15,
+      "targetPolicy": "packet-local-authored-threshold-not-universal",
+      "actionRef": {
+        "ownerDomain": "PPIA-10/MRCS/D28",
+        "objectId": "mv.adventure.beacon-debt.action.request-priority-exception",
+        "objectVersion": "1.0.0"
+      },
+      "agencyBoundary": "A successful request can obtain only the best plausible legitimate exception and cannot override an impossible boundary or mind-control Mira."
+    },
     "placementPolicy": "Reusable persona only; Campaign/Scene placement remains PPIA-08.",
     "provenance": {
-      "authority": "Owner-authorized canonical incorporation",
-      "ownerDecisionDate": "2026-09-16",
-      "evidenceClass": "NCG-source-resource-plus-owner-incorporation",
-      "sourceReferences": [],
+      "authority": "Owner-authorized Beacon Debt mechanics closure",
+      "ownerDecisionDate": "2026-09-17",
+      "evidenceClass": "NCG-source-resource-plus-bounded-mechanics-replacement",
+      "sourceReferences": [
+        "MV-IA-F010 Social Interaction Mode"
+      ],
       "sourceResourceRefs": [
         "gmr-npc-001@0.1"
       ],
@@ -62,21 +80,29 @@
   "balance": null,
   "testing": null,
   "provenance": {
-    "authority": "Owner-authorized canonical incorporation",
-    "ownerDecisionDate": "2026-09-16",
-    "evidenceClass": "NCG-source-resource-plus-owner-incorporation",
-    "sourceReferences": [],
+    "authority": "Owner-authorized Beacon Debt mechanics closure",
+    "ownerDecisionDate": "2026-09-17",
+    "evidenceClass": "NCG-source-resource-plus-bounded-mechanics-replacement",
+    "sourceReferences": [
+      "MV-IA-F010 Social Interaction Mode"
+    ],
     "sourceResourceRefs": [
       "gmr-npc-001@0.1"
     ],
     "noPlaytestClaim": true,
     "noReleaseClaim": true,
     "noBalanceClaim": true,
-    "sourcePath": "content-source/beacon-debt-canonical-part-02.json",
-    "sourceDigest": "sha256:82597065cb8ee604fa70dbd4e24caf2fb28d9125392645556713bfa9836071c2",
-    "sourceBundleId": "mv.content.beacon-debt.canonical-v1",
-    "sourceBundlePart": "part-02-of-04",
-    "sourceClass": "supplemental",
+    "sourcePath": "content-source/beacon-debt-golden-test-mechanics-replacements-v1.0.1.json",
+    "sourceDigest": "sha256:a5ef1070b226195fb9d312c1364d1899036b6069268ebca4fb064f8796b93df7",
+    "sourceBundleId": "mv.content.beacon-debt.golden-test-mechanics-replacements-v1",
+    "sourceBundlePart": "golden-test-mechanics-binding",
+    "sourceClass": "replacement",
+    "replaces": {
+      "stableId": "mv.adventure.beacon-debt.npc.mira-venn",
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/beacon-debt-canonical-part-02.json",
+      "sourceDigest": "sha256:82597065cb8ee604fa70dbd4e24caf2fb28d9125392645556713bfa9836071c2"
+    },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
 }
