@@ -22,6 +22,8 @@ OWNER = "subject:beacon-debt-golden-gm"
 CAMPAIGN_ID = "campaign:beacon-debt-golden-01"
 SESSION_ID = "session:beacon-debt-golden-01"
 VISIBILITY_ID = "visibility:beacon-debt-golden-01"
+RULES_ID = "mv.adventure.beacon-debt.rules.golden-test-core"
+RULES_VERSION = "1.0.0"
 
 
 def digest(value):
@@ -53,8 +55,8 @@ def main():
         "summary": "Governed A5 golden-test fixture for The Beacon Debt; no play sequence executed.",
         "lifecycleState": "active",
         "policyBinding": {
-            "rulesProfileId": "mv.adventure.beacon-debt.rules.golden-test-core",
-            "rulesProfileVersion": "1.0.0",
+            "rulesProfileId": RULES_ID,
+            "rulesProfileVersion": RULES_VERSION,
             "permissionPolicyVersion": "fixture-1",
             "visibilityPolicyVersion": "1",
         },
@@ -132,8 +134,8 @@ def main():
         "campaignVersion": 1,
         "sceneId": gate_scene["sceneId"],
         "sceneVersion": 1,
-        "rulesProfileId": campaign["policyBinding"]["rulesProfileId"],
-        "rulesProfileVersion": campaign["policyBinding"]["rulesProfileVersion"],
+        "rulesProfileId": RULES_ID,
+        "rulesProfileVersion": RULES_VERSION,
         "packLockDigest": cert["semanticFingerprint"],
         "viewerSubjectId": OWNER,
         "workspaceEntryAuthorizationId": "workspace-entry:beacon-debt-golden-01",
@@ -160,8 +162,8 @@ def main():
         "campaignVersion": 1,
         "sceneId": gate_scene["sceneId"],
         "sceneVersion": 1,
-        "rulesProfileId": receipt["rulesProfileId"],
-        "rulesProfileVersion": receipt["rulesProfileVersion"],
+        "rulesProfileId": RULES_ID,
+        "rulesProfileVersion": RULES_VERSION,
         "packLockDigest": cert["semanticFingerprint"],
         "schemaVersions": {"a5": "0.3.0", "content-db": "3.0.0", "beacon-debt-runtime-fixture": "1.0.0"},
         "participantBindings": [{
@@ -223,6 +225,11 @@ def main():
             "recordCount": cert["recordCount"],
             "semanticFingerprint": cert["semanticFingerprint"],
             "sourceDigest": cert["sourceDigest"],
+        },
+        "rulesProfileRef": {
+            "ownerDomain": "MRCS/D28",
+            "objectId": RULES_ID,
+            "objectVersion": RULES_VERSION,
         },
         "campaign": campaign,
         "scenes": scenes,
