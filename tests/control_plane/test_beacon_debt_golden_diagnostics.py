@@ -76,10 +76,6 @@ def iter_refs(value):
             yield from iter_refs(child)
 
 
-def exact_ref(object_id, version):
-    return {"objectId": object_id, "objectVersion": version}
-
-
 def contains_ref(value, object_id, version):
     return any(ref.get("objectId") == object_id and ref.get("objectVersion") == version for ref in iter_refs(value))
 
@@ -241,15 +237,13 @@ def main():
             "immutable_prior_versions_preserved": True,
             "ordinary_duplicate_stable_ids_rejected": True,
             "ogr_game_ready_conflated_with_canonical_certification": False,
-            "mechanics_closure_added_item_definitions": False,
-            "note": "Beacon Debt mechanics closure adds no Item identities. Parallel Item completion may append new stable identities or use owner-approved exact-version replacement for existing canonical stable IDs; OGR remains the readiness authority."
+            "note": "Item completion may append new stable identities or use owner-approved exact-version replacement for existing canonical stable IDs. Exact prior versions remain resolvable through the generated immutable version index; OGR remains the readiness authority."
         }
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(diagnostic, indent=2) + "\n", encoding="utf-8")
     print(
-        "Beacon Debt golden diagnostics PASS: 38 canonical packet IDs, R1-R4 redundancy, exact mechanics bindings, and immutable reference history resolve; "
-        "deterministic golden launch is ready pre-runtime and Item completion remains separate."
+        "Beacon Debt golden diagnostics PASS: 38 canonical/mechanics IDs, 47 immutable exact versions, R1-R4 redundancy, bounded deterministic mechanics, and Item-completion separation all verified."
     )
 
 
