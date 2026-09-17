@@ -25,8 +25,20 @@ navElement.addEventListener('click',event=>{
   window.location.assign(target);
 });
 
-const stats=[['7','Implementation milestones'],['22','Required CI suites'],['487','Certified content objects'],['1','Active app work item']];
-document.querySelector('#stats').innerHTML=stats.map(([value,label])=>`<div class="stat"><strong>${value}</strong><span>${label}</span></div>`).join('');
+const stats=[['7','Implementation milestones'],['22','Required CI suites'],['—','Certified content objects'],['1','Active app work item']];
+const statsElement=document.querySelector('#stats');
+const renderStats=()=>{statsElement.innerHTML=stats.map(([value,label])=>`<div class="stat"><strong>${value}</strong><span>${label}</span></div>`).join('');};
+renderStats();
+fetch(route('content-db/manifest.json'),{cache:'no-store'})
+  .then(response=>{if(!response.ok)throw new Error(response.status);return response.json();})
+  .then(manifest=>{
+    const certifiedCount=Number(manifest?.recordCount);
+    if(Number.isInteger(certifiedCount)&&certifiedCount>=0){
+      stats[2][0]=String(certifiedCount);
+      renderStats();
+    }
+  })
+  .catch(()=>{});
 
 const workbench=[
   ['Content Structure Pipeline','Decide which COS records are standalone, reusable, parent components, variants, duplicates, or obsolete.',route('content-structure.html')],

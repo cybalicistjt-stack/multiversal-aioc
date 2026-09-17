@@ -54,10 +54,12 @@ function normalizeRecord(entry, index) {
       authority: provenance.authority || provenance.source || raw.source || 'Multiversal canonical source bundle',
       sourcePath: entry.sourcePath,
       sourceDigest: entry.sourceDigest,
-      ...(entry.sourceClass === 'supplemental' ? {
+      ...(entry.sourceClass !== 'baseline' ? {
         sourceBundleId: entry.sourceBundleId,
-        sourceBundlePart: entry.sourceBundlePart
+        sourceBundlePart: entry.sourceBundlePart,
+        sourceClass: entry.sourceClass
       } : {}),
+      ...(entry.replaces ? { replaces: entry.replaces } : {}),
       importedBy: 'scripts/build-canonical-content-database.mjs'
     }
   };
@@ -91,20 +93,28 @@ const semanticProjection = records.map(record => [
   record.databaseId,
   record.stableId,
   record.objectType,
-  record.name
+  record.name,
+  record.contentVersion
 ]);
 const semanticFingerprint = sha256(JSON.stringify(semanticProjection));
 const generatedAt = new Date().toISOString();
 const sourceComposition = {
   baselineRecords: sourceSet.baselineRecordCount,
-  supplementalRecords: sourceSet.supplementalRecordCount,
+  appendedRecords: sourceSet.appendedRecordCount,
+  replacementRecords: sourceSet.replacementRecordCount,
+  supplementalInputRecords: sourceSet.supplementalRecordCount,
+  effectiveRecords: sourceSet.recordCount,
   sources: sourceSet.sources
 };
 const summary = {
   canonicalSourceRecords: sourceSet.recordCount,
   baselineSourceRecords: sourceSet.baselineRecordCount,
+  appendedSourceRecords: sourceSet.appendedRecordCount,
+  replacementSourceRecords: sourceSet.replacementRecordCount,
   supplementalSourceRecords: sourceSet.supplementalRecordCount,
   fullObjectBodies: records.length,
+  certificationScope: 'canonical-source-integrity-not-game-readiness',
+  gameReadinessAuthority: 'OBJECT_GAME_READINESS_PROGRAM / OGR',
   legacyInventoryRecords: 0,
   legacyInventoryStatus: 'QUARANTINED_CORRUPTED_SOURCE',
   uniqueDatabaseIds: databaseIds.size,
@@ -134,6 +144,8 @@ const manifest = {
   semanticFingerprint,
   recordCount: records.length,
   fullObjectBodies: records.length,
+  certificationScope: summary.certificationScope,
+  gameReadinessAuthority: summary.gameReadinessAuthority,
   legacyInventoryStatus: summary.legacyInventoryStatus,
   recordSchema: './content-record.schema.json',
   sourceRegistry: './source-registry.json',
@@ -147,15 +159,29 @@ const manifest = {
 };
 const sourceRegistry = {
   format: 'multiversal-content-source-registry',
-  version: '1.0.0',
+  version: '1.1.0',
   sourceSetDigest: sourceSet.sourceSetDigest,
   recordCount: sourceSet.recordCount,
   baselineRecordCount: sourceSet.baselineRecordCount,
+  appendedRecordCount: sourceSet.appendedRecordCount,
+  replacementRecordCount: sourceSet.replacementRecordCount,
   supplementalRecordCount: sourceSet.supplementalRecordCount,
+  certificationScope: summary.certificationScope,
+  gameReadinessAuthority: summary.gameReadinessAuthority,
   sources: sourceSet.sources
 };
 
-await fs.rm(OUT_DIR, { recursive: true, force: true });
+await fs.mkdir(OUT_DIR, { recursive: true });
+for (const generatedPath of [
+  'index.json',
+  'manifest.json',
+  'source-registry.json',
+  'certification.json',
+  'indexes',
+  'objects'
+]) {
+  await fs.rm(path.join(OUT_DIR, generatedPath), { recursive: true, force: true });
+}
 await fs.mkdir(path.join(OUT_DIR, 'indexes'), { recursive: true });
 await fs.mkdir(path.join(OUT_DIR, 'objects'), { recursive: true });
 await fs.writeFile(path.join(OUT_DIR, 'index.json'), JSON.stringify(index, null, 2) + '\n');
@@ -177,5 +203,6 @@ for (const record of records) {
 
 console.log(
   `Generated canonical Multiversal content database: ${records.length} governed objects ` +
-  `(${sourceSet.baselineRecordCount} baseline + ${sourceSet.supplementalRecordCount} supplemental); ${semanticFingerprint}.`
+  `(${sourceSet.baselineRecordCount} baseline + ${sourceSet.appendedRecordCount} appended; ` +
+  `${sourceSet.replacementRecordCount} replacements applied); ${semanticFingerprint}.`
 );

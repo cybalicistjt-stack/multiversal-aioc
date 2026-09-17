@@ -194,20 +194,33 @@ async function verifyLiveAioc(expectedCommit) {
     inspectLiveResource('/content-structure.html', ['Content Structure']),
     inspectLiveResource('/content-library.html', ['Content Library']),
     inspectLiveResource('/studio.html', ['Design Studio']),
-    inspectLiveResource('/content-db/index.json')
+    inspectLiveResource('/content-db/index.json'),
+    inspectLiveResource('/content-db/manifest.json')
   ]);
   const byPath = Object.fromEntries(checks.map(check => [check.path, check]));
   const health = byPath['/operational/health.json']?.json || null;
   const deployed = byPath['/deployed-build.json']?.json || null;
   const contentDb = byPath['/content-db/index.json']?.json || null;
+  const contentManifest = byPath['/content-db/manifest.json']?.json || null;
   const repository = await latestRepositoryCommit().catch(error => ({ error: String(error?.message || error) }));
   const targetCommit = expectedCommit || repository.sha || null;
   const commitMatches = Boolean(targetCommit && (deployed?.commit === targetCommit || health?.commit === targetCommit));
   const recordCount = Array.isArray(contentDb?.records) ? contentDb.records.length : contentDb?.recordCount;
-  const recordCountValid = recordCount === 487;
+  const certifiedRecordCount = contentManifest?.recordCount;
+  const recordCountValid = Number.isInteger(recordCount)
+    && Number.isInteger(certifiedRecordCount)
+    && recordCount === certifiedRecordCount
+    && contentDb?.recordCount === certifiedRecordCount;
   const failed = checks.filter(check => !check.ok).map(check => ({ path: check.path, status: check.status, error: check.error, checks: check.checks }));
   if (!commitMatches) failed.push({ path: 'deployment-commit', expected: targetCommit, deployed: deployed?.commit || health?.commit || null });
-  if (!recordCountValid) failed.push({ path: 'content-record-count', expected: 487, actual: recordCount ?? null });
+  if (!recordCountValid) {
+    failed.push({
+      path: 'content-record-count',
+      expected: certifiedRecordCount ?? 'content-db/manifest.json recordCount',
+      actual: recordCount ?? null,
+      indexDeclared: contentDb?.recordCount ?? null
+    });
+  }
   return {
     result: failed.length ? 'FAIL' : 'PASS',
     publicBase: PUBLIC_BASE,
@@ -216,6 +229,7 @@ async function verifyLiveAioc(expectedCommit) {
     repository,
     commitMatches,
     recordCount,
+    certifiedRecordCount,
     recordCountValid,
     checkedAt: new Date().toISOString(),
     checks,
