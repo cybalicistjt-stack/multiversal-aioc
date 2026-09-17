@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.0.0  
+**Version:** 3.1.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -21,6 +21,8 @@ Authority is intentionally shallow:
 6. Repository, PR, CI, filesystem, and tool evidence prove implementation facts; they do not independently grant product authority.
 
 No other file is allowed to declare current work or override this chain. Compatibility projections may repeat data only when they explicitly identify `operations/CURRENT.json` as their source.
+
+Execution guards and merge leases are **validation/executor-coordination mechanisms only**. They may block an unsafe transition, but they may never select work, expand scope, or grant implementation authority.
 
 ## 2. GPT-first startup
 
@@ -46,7 +48,14 @@ When a conversation changes topics materially, reselect the lane once. Do not ca
 
 Within an established lane, `Continue`, `keep going`, `fix this`, and `implement this` authorize ordinary reversible work through the requested bounded result unless an owner-only decision or genuine external blocker is reached.
 
-Do not stop merely because a substep, commit, RED/GREEN transition, tool batch, or PR creation completed. Do not manufacture extra work to satisfy a timer. No minimum runtime exists.
+Do not stop merely because a substep, commit, RED/GREEN transition, tool batch, PR creation, validation start, validation completion, product merge, or control-plane PR creation completed. Do not manufacture extra work to satisfy a timer. No minimum runtime exists.
+
+For a governed bounded execution, the active checkpoint carries `execution_guard` evidence. The first owner execution command for the attempt increments `continue_turns`, sets `terminal_response_allowed=false`, and keeps it false until either:
+
+- the bounded result is fully completed and reconciled; or
+- a genuine owner-only or external blocker is recorded with concrete evidence.
+
+Before a normal terminal response, the executor must fresh-read `operations/CURRENT.json` plus the active checkpoint and apply `scripts/ops3_execution_guard.py` or its exact equivalent. A response that would hand control back while authorized work or closeout remains is nonterminal and must not be emitted as the result of the Continue.
 
 A status request without execution wording is read-only. `get ready` means reconcile enough current state that the next `Continue` can execute without repeating broad discovery.
 
@@ -78,7 +87,7 @@ An executor outage, quota, sandbox defect, PATH defect, or local-host problem is
 
 Never make Codex availability, a specific laptop, or a specific chat session part of product authority.
 
-## 7. Changes, validation, and publication
+## 7. Changes, validation, publication, and merge serialization
 
 For implementation work:
 
@@ -86,16 +95,45 @@ For implementation work:
 2. make the smallest coherent change;
 3. run focused validation;
 4. run the lane's required acceptance gate;
-5. verify exact-head evidence before merge or publication;
-6. reconcile the work record after durable side effects.
+5. verify exact-head evidence before publication;
+6. acquire the OPS3 publication lease for the target repository;
+7. while holding the lease, fresh-read target `main` and compare it with the **base SHA recorded by the successful validation run**;
+8. if `main` changed, fail closed, release/reacquire as necessary, reconcile the branch, and revalidate against the new base before merge;
+9. merge only the exact validated PR head using an expected-head check;
+10. verify the durable `main` result/tree;
+11. release the lease with the verified merge SHA;
+12. reconcile the work record after durable side effects.
+
+### Serialized publication lease
+
+`main` publication in `cybalicistjt-stack/Multiversal-app` and `cybalicistjt-stack/multiversal-aioc` is serialized by a compare-and-swap lease stored on dedicated non-authoritative AIOC coordination branches named:
+
+`ops3-merge-lease/<lowercase-target-repository-slug>`
+
+The lease state is modeled by `scripts/ops3_merge_lease.py`.
+
+- Lease acquisition must build the next lease commit from the observed lease-branch head and advance the lease ref **without force**.
+- Competing acquisitions from the same observed head create sibling commits; after the first fast-forward succeeds, the other ref update must fail and re-read rather than overwrite.
+- The held lease binds holder/attempt, validated PR head, and validated target-main base.
+- A fresh target-main SHA that differs from `validated_base` is `OPS3.STALE_MAIN` and forbids merge.
+- Lease release requires the same holder and a verified durable merge SHA.
+- Lease branches are executor coordination only and cannot select work or grant authority.
+
+This is the default concurrency defense even if GitHub native merge queue/branch protection is unavailable. If native GitHub merge queue is later enabled, it may replace the transport mechanism only if these stale-base, exact-head, and durable-verification properties are preserved.
+
+### Atomic control-plane projection
+
+Multi-file governed-start and closeout updates must be projected as one repository tree, one commit, and one ref advance whenever the executor exposes Git object primitives. Sequential one-file commits are fallback-only. This prevents partial control-plane states and reduces serial round trips.
 
 Keep execution credentials separate from publication credentials when the execution system requires that boundary. Do not weaken security controls simply to make a worker green.
 
 ## 8. Failure discipline
 
-Classify failures before repair. Useful classes include product defect, validation defect, repository state, executor/tooling, source availability, external service, and owner-only decision.
+Classify failures before repair. Useful classes include product defect, validation defect, repository state, executor/tooling, source availability, external service, publication lease conflict, stale-main validation, and owner-only decision.
 
 A deterministic failure is not retried unchanged. Record the exact failure signature or evidence, form a falsifiable cause, apply the smallest causal repair, and rerun the smallest proof first.
+
+A lost publication lease is not a product failure. Re-read the lease and target `main`; do not force-update the coordination ref and do not merge around the holder.
 
 If a failure is isolated to one executor, do not rewrite project governance around that executor.
 
@@ -106,12 +144,15 @@ Only verified evidence can support completion claims.
 A bounded work item may be called `completed_verified` only when:
 
 - requested scope is complete;
-- required validation is green for the exact candidate;
+- required validation is green for the exact candidate and recorded base;
 - required durable side effects are observed;
+- publication lease acquisition/release evidence exists when `main` was mutated;
 - no authorized closeout action remains;
 - current operational state is reconciled.
 
-An open PR, queued/running check, patch, local success, model exit code, or conversational assertion is nonterminal unless the work item explicitly defines it as the requested endpoint.
+An open PR, queued/running check, patch, local success, model exit code, product merge without control-plane closeout, or conversational assertion is nonterminal unless the work item explicitly defines it as the requested endpoint.
+
+Product completion and execution-process conformance are separate. If `continue_turns > 1`, the checkpoint may still preserve valid completed product work, but execution conformance must record `OPS3.MULTI_CONTINUE_UNRECORDED` (or an equivalent explicit multi-Continue violation) rather than falsely reporting a clean one-Continue execution. Any owner stall nudge must likewise be recorded as a process violation. `scripts/ops3_execution_guard.py` enforces these evidence rules.
 
 ## 10. Owner-only boundaries
 
@@ -139,6 +180,6 @@ A compatibility surface must state its disposition and may not invent current wo
 
 ## 13. Operations-system changes
 
-Changes to this contract, the canonical door, current-state schema, or lane semantics are operations-lane work. Product lanes stay preserved while a stop-the-line operations freeze is active.
+Changes to this contract, the canonical door, current-state schema, lane semantics, response guard, or publication lease protocol are operations-lane work. Product lanes stay preserved while a stop-the-line operations freeze is active.
 
-The operations system should become simpler over time. A new control file is justified only when it owns data that cannot live clearly in the existing contract, current state, lane registry, work item, evidence, or adapter.
+The operations system should become simpler over time. A new control file is justified only when it owns data that cannot live clearly in the existing contract, current state, lane registry, work item, evidence, or adapter. New execution controls require a reproduced failure plus an executable regression before they enter the critical path.

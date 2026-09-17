@@ -29,7 +29,7 @@ Read `operations/LANES.json` and choose exactly one lane that matches the user's
 
 ## 4. Load only the lane's active work record
 
-For a persistent lane, read the work-item path named by `CURRENT.json`. For an on-demand lane, use only the sources named by `LANES.json` plus the user's request.
+For a persistent lane, read the work-item/checkpoint path named by `CURRENT.json`. For an on-demand lane, use only the sources named by `LANES.json` plus the user's request.
 
 Then reconcile the work record with live repository/PR/CI/tool evidence needed for the requested action. Repository evidence determines implementation facts; the work record determines authorization and scope.
 
@@ -41,15 +41,36 @@ Codex is optional. The local Windows worker is optional. No product work may bec
 
 ## 6. Current stop-the-line rule
 
-While `operations/CURRENT.json` has `product_start_freeze.active=true`, do not start new product implementation. Preserve the selected product item exactly as recorded and work only in the authorized operations lane until the freeze is cleared by a verified OPS3 cutover.
+While `operations/CURRENT.json` has `product_start_freeze.active=true`, do not start new product implementation. Preserve the selected product item exactly as recorded and work only in the authorized operations lane until the freeze is cleared by verified operations closeout.
 
-## 7. Evidence and completion
+## 7. Continue/response gate
+
+A governed `Continue` is one bounded execution, not permission to stop after an intermediate milestone. Once an attempt is in progress, its checkpoint must carry `execution_guard` evidence and keep `terminal_response_allowed=false` while ordinary authorized work or closeout remains.
+
+Before returning a normal terminal response for an execution command:
+
+1. fresh-read `operations/CURRENT.json` and the active checkpoint;
+2. apply `scripts/ops3_execution_guard.py` or the exact equivalent logic;
+3. continue working if the result is nonterminal;
+4. stop only on verified completion or a recorded owner-only/external blocker.
+
+Multiple owner Continues or owner stall nudges are execution-quality incidents and must be recorded truthfully; they may not be certified as clean single-Continue execution.
+
+## 8. Publication serialization
+
+Before any executor merges or pushes to `main` in `cybalicistjt-stack/Multiversal-app` or `cybalicistjt-stack/multiversal-aioc`, follow the publication-lease protocol in `operations/OPERATING_CONTRACT.md` using `scripts/ops3_merge_lease.py`.
+
+Acquire the target-repository lease by compare-and-swap, fresh-read target `main` while holding it, require that `main` still equals the base SHA recorded by the successful validation run, merge only the expected validated PR head, verify the durable result, and release the lease with the merge SHA. Never force the coordination ref or merge around another holder.
+
+## 9. Evidence and completion
 
 Use the smallest validation that proves the changed behavior, then the lane's required acceptance gate. Never claim a file, branch, commit, PR, test, merge, deployment, or completion without tool evidence.
 
-`completed_verified` means the requested bounded work is implemented, required validation passed, durable side effects are verified, and the current record has been reconciled. A process exit code, generated patch, open PR, running check, or narrative assertion is not completion by itself.
+`completed_verified` means the requested bounded work is implemented, required validation passed, durable side effects are verified, publication coordination is reconciled when applicable, and the current record has been reconciled. A process exit code, generated patch, open PR, running check, product merge without control-plane closeout, or narrative assertion is not completion by itself.
 
-## 8. Context discipline
+Multi-file governed-start/closeout projections should use one tree, one commit and one ref advance whenever the executor exposes Git object primitives; sequential one-file commits are fallback-only.
+
+## 10. Context discipline
 
 Prefer the shortest path from current state to the requested result. Do not restart repository archaeology after the lane and work item are known. Expand context only for a concrete contradiction, failure signature, or source dependency.
 
