@@ -4,6 +4,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 INDEX = ROOT / "content-db" / "index.json"
+VERSION_INDEX = ROOT / "content-db" / "version-index.json"
 CERT = ROOT / "content-db" / "certification.json"
 OUT = ROOT / "evidence" / "content-pipeline" / "beacon-debt-golden-diagnostics.json"
 
@@ -61,8 +62,10 @@ def iter_refs(value):
 
 def main():
     index = json.loads(INDEX.read_text(encoding="utf-8"))
+    version_index = json.loads(VERSION_INDEX.read_text(encoding="utf-8"))
     certificate = json.loads(CERT.read_text(encoding="utf-8"))
     by_id = {record["stableId"]: record for record in index["records"]}
+    version_keys = {entry["key"] for entry in version_index["versions"]}
 
     missing = [stable_id for stable_id in BEACON_IDS if stable_id not in by_id]
     assert not missing, f"Beacon Debt canonical IDs missing: {missing}"
@@ -75,6 +78,15 @@ def main():
 
     admin = by_id["mv.setting.faction.administrative-syndicate"]
     assert admin.get("contentVersion") == "1.0.0"
+    for key in [
+        "mv.setting.faction.administrative-syndicate@1.0.0",
+        "mv.setting.faction-relationship.administrative-syndicate-east-gate@1.0.0",
+        "mv.setting.faction-relationship.administrative-syndicate-east-gate@1.0.1",
+        "mv.adventure.beacon-debt.module@1.0.0",
+        "mv.adventure.beacon-debt.module@1.0.1",
+    ]:
+        assert key in version_keys, f"immutable canonical version missing: {key}"
+
     unresolved_refs = []
     for stable_id in BEACON_IDS:
         for ref in iter_refs(by_id[stable_id]["gameObject"]):
@@ -82,9 +94,9 @@ def main():
             version = ref.get("objectVersion")
             if object_id == "mv.setting.faction.administrative-syndicate" and version != "1.0.0":
                 unresolved_refs.append({"source": stable_id, "ref": ref})
-            if object_id in by_id and version is not None and by_id[object_id].get("contentVersion") != version:
-                unresolved_refs.append({"source": stable_id, "ref": ref, "actual": by_id[object_id].get("contentVersion")})
-    assert not unresolved_refs, f"Exact in-database references unresolved: {unresolved_refs}"
+            if version is not None and f"{object_id}@{version}" not in version_keys:
+                unresolved_refs.append({"source": stable_id, "ref": ref, "reason": "exact version absent from canonical version index"})
+    assert not unresolved_refs, f"Exact canonical references unresolved: {unresolved_refs}"
 
     investigation = by_id["mv.adventure.beacon-debt.investigation.maps-as-leverage"]["gameObject"]
     expected_routes = {
@@ -122,9 +134,10 @@ def main():
     assert all(record["gameObject"].get("scope") == "adventure-local-source-template" for record in beacon_evidence_items)
     assert certificate["gameReadiness"]["assessed"] is False
     assert certificate["replacementRecordCount"] == 4
+    assert version_index["gameReadinessAssessed"] is False
 
     diagnostic = {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "artifact": "BEACON_DEBT_GOLDEN_TEST_DIAGNOSTICS",
         "overall_state": "PRE_RUNTIME_REFERENCES_READY_MECHANICS_BINDING_INCOMPLETE",
         "runtime_state_created": False,
@@ -132,6 +145,7 @@ def main():
         "playtest_claim": False,
         "canonical_database": {
             "effective_record_count": index["recordCount"],
+            "version_index_count": version_index["versionCount"],
             "certification_scope": certificate["certificationScope"],
             "game_readiness_assessed": certificate["gameReadiness"]["assessed"],
             "explicit_nonclaim": "The certified content database is not the total Multiversal object corpus and does not certify OGR GAME_READY status."
@@ -143,7 +157,7 @@ def main():
             "administrative_syndicate": "mv.setting.faction.administrative-syndicate@1.0.0",
             "investigation_redundancy": expected_routes,
             "R5": "omitted_first_golden_test",
-            "reference_status": "PASS"
+            "reference_status": "PASS_IMMUTABLE_VERSION_INDEX"
         },
         "mechanics": {
             "status": "BLOCKED_FOR_DETERMINISTIC_GOLDEN_LAUNCH",
@@ -157,15 +171,16 @@ def main():
             "current_certified_item_type_definitions": len(item_type_definitions),
             "beacon_adventure_local_evidence_item_templates": len(beacon_evidence_items),
             "replacement_path_available": True,
+            "immutable_prior_versions_preserved": True,
             "ordinary_duplicate_stable_ids_rejected": True,
             "ogr_game_ready_conflated_with_canonical_certification": False,
-            "note": "Item completion may append new stable identities or use owner-approved exact-version replacement for existing canonical stable IDs; OGR remains the readiness authority."
+            "note": "Item completion may append new stable identities or use owner-approved exact-version replacement for existing canonical stable IDs. Exact prior versions remain resolvable through the generated immutable version index; OGR remains the readiness authority."
         }
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(diagnostic, indent=2) + "\n", encoding="utf-8")
     print(
-        "Beacon Debt golden diagnostics PASS: 28 canonical IDs and R1-R4 redundancy resolve; "
+        "Beacon Debt golden diagnostics PASS: 28 canonical IDs and R1-R4 redundancy resolve through immutable version history; "
         f"deterministic mechanics binding remains blocked by {len(mechanics_blockers)} explicit gaps; "
         "Item completion authority remains separate."
     )
