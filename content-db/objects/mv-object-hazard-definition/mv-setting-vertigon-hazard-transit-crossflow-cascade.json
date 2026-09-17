@@ -1,0 +1,107 @@
+{
+  "databaseId": "mv.setting.vertigon.hazard.transit-crossflow-cascade",
+  "stableId": "mv.setting.vertigon.hazard.transit-crossflow-cascade",
+  "name": "Transit Crossflow Cascade",
+  "objectType": "mv.object.hazard-definition",
+  "developmentStage": "Approved",
+  "source": "Owner-authorized canonical incorporation",
+  "sourceLocator": "content-source/beacon-debt-canonical-part-02.json",
+  "coverageStatus": "CANONICAL_OBJECT_PRESENT",
+  "promotionDecision": "",
+  "reviewStatus": "",
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "packIds": [],
+  "dependencies": [],
+  "tags": [
+    "vertigon",
+    "hazard",
+    "transit",
+    "canonical-object"
+  ],
+  "manualEntry": null,
+  "gameObject": {
+    "id": "mv.setting.vertigon.hazard.transit-crossflow-cascade",
+    "name": "Transit Crossflow Cascade",
+    "objectType": "mv.object.hazard-definition",
+    "schemaVersion": "1.0.0",
+    "contentVersion": "1.0.0",
+    "canonStatus": "approved",
+    "lifecycleStatus": "approved",
+    "scope": "reusable-definition",
+    "tags": [
+      "vertigon",
+      "hazard",
+      "transit"
+    ],
+    "settingRef": {
+      "ownerDomain": "D18/PPIA-12",
+      "objectId": "setting:vertigon",
+      "objectVersion": "1.0.0",
+      "referenceClass": "MIB-11 source-only stable identity",
+      "parentRef": "world:havalaea"
+    },
+    "routeRefs": [
+      {
+        "ownerDomain": "PPIA-12",
+        "objectId": "mv.setting.vertigon.location.east-transit-spine",
+        "objectVersion": "1.0.0"
+      },
+      {
+        "ownerDomain": "PPIA-12",
+        "objectId": "mv.setting.vertigon.location.eastern-bridge",
+        "objectVersion": "1.0.0"
+      }
+    ],
+    "hazardClass": "transport-congestion-crossflow",
+    "pressures": [
+      "congestion/crossflow",
+      "delay",
+      "secondary accidents",
+      "rescue/logistics pressure",
+      "interaction with gate priority"
+    ],
+    "mechanicsPolicy": "Exact movement, Effect, Condition, resource, DC, damage, or action-economy mechanics are not defined here and remain with owning rule domains.",
+    "excludedLegacyMechanics": [
+      "legacy DCs",
+      "damage dice",
+      "exhaustion assumptions",
+      "universal vehicle checks"
+    ],
+    "provenance": {
+      "authority": "Owner-authorized canonical incorporation",
+      "ownerDecisionDate": "2026-09-16",
+      "evidenceClass": "governed-authoring",
+      "sourceReferences": [
+        "Owner-approved Beacon Debt Vertigon adaptation",
+        "Urban Environments transit/traffic pressure source concept (mechanics stripped)"
+      ],
+      "sourceResourceRefs": [],
+      "noPlaytestClaim": true,
+      "noReleaseClaim": true,
+      "noBalanceClaim": true
+    }
+  },
+  "validation": null,
+  "balance": null,
+  "testing": null,
+  "provenance": {
+    "authority": "Owner-authorized canonical incorporation",
+    "ownerDecisionDate": "2026-09-16",
+    "evidenceClass": "governed-authoring",
+    "sourceReferences": [
+      "Owner-approved Beacon Debt Vertigon adaptation",
+      "Urban Environments transit/traffic pressure source concept (mechanics stripped)"
+    ],
+    "sourceResourceRefs": [],
+    "noPlaytestClaim": true,
+    "noReleaseClaim": true,
+    "noBalanceClaim": true,
+    "sourcePath": "content-source/beacon-debt-canonical-part-02.json",
+    "sourceDigest": "sha256:82597065cb8ee604fa70dbd4e24caf2fb28d9125392645556713bfa9836071c2",
+    "sourceBundleId": "mv.content.beacon-debt.canonical-v1",
+    "sourceBundlePart": "part-02-of-04",
+    "sourceClass": "supplemental",
+    "importedBy": "scripts/build-canonical-content-database.mjs"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "databaseId": "mv.adventure.beacon-debt.clue.cf01-recent-map-purchase-observation",
+  "stableId": "mv.adventure.beacon-debt.clue.cf01-recent-map-purchase-observation",
+  "name": "CF-01 — Recent-Map Purchase Observation",
+  "objectType": "mv.object.clue-definition",
+  "developmentStage": "Approved",
+  "source": "Owner-authorized canonical incorporation",
+  "sourceLocator": "content-source/beacon-debt-canonical-part-03.json",
+  "coverageStatus": "CANONICAL_OBJECT_PRESENT",
+  "promotionDecision": "",
+  "reviewStatus": "",
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "packIds": [],
+  "dependencies": [],
+  "tags": [
+    "clue",
+    "cf-01",
+    "canonical-object"
+  ],
+  "manualEntry": null,
+  "gameObject": {
+    "id": "mv.adventure.beacon-debt.clue.cf01-recent-map-purchase-observation",
+    "name": "CF-01 — Recent-Map Purchase Observation",
+    "objectType": "mv.object.clue-definition",
+    "schemaVersion": "1.0.0",
+    "contentVersion": "1.0.0",
+    "canonStatus": "approved",
+    "lifecycleStatus": "approved",
+    "scope": "reusable-definition",
+    "tags": [
+      "clue",
+      "cf-01"
+    ],
+    "clueId": "CF-01",
+    "clueKind": "observation",
+    "supports": [
+      "R1"
+    ],
+    "content": "Someone is purchasing maps of places/routes the party recently used or learned about.",
+    "locationRef": {
+      "ownerDomain": "PPIA-12",
+      "objectId": "mv.setting.vertigon.location.listening-market",
+      "objectVersion": "1.0.0"
+    },
+    "truthRelationship": "True observation; does not identify buyer.",
+    "evidenceRef": null,
+    "investigationRef": {
+      "ownerDomain": "PPIA-09",
+      "objectId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+      "objectVersion": "1.0.0"
+    },
+    "defaultRevealPolicy": "hidden-until-discovered-or-governed-reveal",
+    "runtimeInstantiationPolicy": "Definition is canonical; Campaign discovery/reveal state is not created here.",
+    "provenance": {
+      "authority": "Owner-authorized canonical incorporation",
+      "ownerDecisionDate": "2026-09-16",
+      "evidenceClass": "owner-approved-investigation-clue-definition",
+      "sourceReferences": [
+        "Beacon Debt Black Feathers Final Investigation Packet"
+      ],
+      "sourceResourceRefs": [],
+      "noPlaytestClaim": true,
+      "noReleaseClaim": true,
+      "noBalanceClaim": true
+    }
+  },
+  "validation": null,
+  "balance": null,
+  "testing": null,
+  "provenance": {
+    "authority": "Owner-authorized canonical incorporation",
+    "ownerDecisionDate": "2026-09-16",
+    "evidenceClass": "owner-approved-investigation-clue-definition",
+    "sourceReferences": [
+      "Beacon Debt Black Feathers Final Investigation Packet"
+    ],
+    "sourceResourceRefs": [],
+    "noPlaytestClaim": true,
+    "noReleaseClaim": true,
+    "noBalanceClaim": true,
+    "sourcePath": "content-source/beacon-debt-canonical-part-03.json",
+    "sourceDigest": "sha256:3bb960234eb0cdb33a55cbe9d7f9dabdbe8cf653865a021b7649e1016cddcbd5",
+    "sourceBundleId": "mv.content.beacon-debt.canonical-v1",
+    "sourceBundlePart": "part-03-of-04",
+    "sourceClass": "supplemental",
+    "importedBy": "scripts/build-canonical-content-database.mjs"
+  }
+}

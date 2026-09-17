@@ -1,0 +1,103 @@
+{
+  "databaseId": "mv.setting.faction-relationship.lantern-compact-administrative-syndicate",
+  "stableId": "mv.setting.faction-relationship.lantern-compact-administrative-syndicate",
+  "name": "Lantern Compact — Administrative Syndicate Route-Safety Relationship",
+  "objectType": "mv.object.faction-relationship-definition",
+  "developmentStage": "Approved",
+  "source": "Owner-authorized canonical incorporation plus exact-reference resolution",
+  "sourceLocator": "content-source/beacon-debt-administrative-reference-replacements-v1.0.1.json",
+  "coverageStatus": "CANONICAL_OBJECT_PRESENT",
+  "promotionDecision": "",
+  "reviewStatus": "",
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.1",
+  "packIds": [],
+  "dependencies": [],
+  "tags": [
+    "relationship",
+    "route-safety",
+    "canonical-object"
+  ],
+  "manualEntry": null,
+  "gameObject": {
+    "id": "mv.setting.faction-relationship.lantern-compact-administrative-syndicate",
+    "name": "Lantern Compact — Administrative Syndicate Route-Safety Relationship",
+    "objectType": "mv.object.faction-relationship-definition",
+    "schemaVersion": "1.0.0",
+    "contentVersion": "1.0.1",
+    "replacementOf": {
+      "stableId": "mv.setting.faction-relationship.lantern-compact-administrative-syndicate",
+      "expectedContentVersion": "1.0.0",
+      "reason": "Resolve the previously null Administrative Syndicate objectVersion after owning-domain materialization."
+    },
+    "canonStatus": "approved",
+    "lifecycleStatus": "approved",
+    "scope": "reusable-definition",
+    "tags": [
+      "relationship",
+      "route-safety"
+    ],
+    "sourceRef": {
+      "ownerDomain": "PPIA-10",
+      "objectId": "mv.faction.lantern-compact",
+      "objectVersion": "1.0.0"
+    },
+    "targetRef": {
+      "ownerDomain": "PPIA-10/PPIA-12",
+      "objectId": "mv.setting.faction.administrative-syndicate",
+      "objectVersion": "1.0.0"
+    },
+    "relationType": "recognized-route-safety-participant",
+    "directional": true,
+    "semantics": "The Lantern Compact is sufficiently recognized to participate in route-safety infrastructure but does not possess sovereign East Gate authority.",
+    "explicitNonClaims": [
+      "licensed",
+      "subordinate",
+      "member",
+      "ally",
+      "contractor",
+      "automatic standing score"
+    ],
+    "provenance": {
+      "authority": "Owner-authorized canonical incorporation plus exact-reference resolution",
+      "ownerDecisionDate": "2026-09-16",
+      "evidenceClass": "owner-approved-adaptation-relation",
+      "sourceReferences": [
+        "Beacon Debt Vertigon Adaptation Packet v0.1",
+        "mv.setting.faction.administrative-syndicate@1.0.0 materialized 2026-09-16"
+      ],
+      "sourceResourceRefs": [],
+      "noPlaytestClaim": true,
+      "noReleaseClaim": true,
+      "noBalanceClaim": true
+    }
+  },
+  "validation": null,
+  "balance": null,
+  "testing": null,
+  "provenance": {
+    "authority": "Owner-authorized canonical incorporation plus exact-reference resolution",
+    "ownerDecisionDate": "2026-09-16",
+    "evidenceClass": "owner-approved-adaptation-relation",
+    "sourceReferences": [
+      "Beacon Debt Vertigon Adaptation Packet v0.1",
+      "mv.setting.faction.administrative-syndicate@1.0.0 materialized 2026-09-16"
+    ],
+    "sourceResourceRefs": [],
+    "noPlaytestClaim": true,
+    "noReleaseClaim": true,
+    "noBalanceClaim": true,
+    "sourcePath": "content-source/beacon-debt-administrative-reference-replacements-v1.0.1.json",
+    "sourceDigest": "sha256:ffadabb7f59075cc6f94ae9a588bf41b6ebddb65b5df855192c91b85c0be19b5",
+    "sourceBundleId": "mv.content.beacon-debt.admin-reference-resolution-v1",
+    "sourceBundlePart": "exact-reference-resolution",
+    "sourceClass": "replacement",
+    "replaces": {
+      "stableId": "mv.setting.faction-relationship.lantern-compact-administrative-syndicate",
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/beacon-debt-canonical-part-01.json",
+      "sourceDigest": "sha256:5950afb6cad815947ae7c884c4023208f03a5d1fe69784e8d2cdc6dd6cd075df"
+    },
+    "importedBy": "scripts/build-canonical-content-database.mjs"
+  }
+}

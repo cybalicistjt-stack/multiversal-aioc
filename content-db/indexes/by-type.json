@@ -65,6 +65,7 @@
     "mv.core.action-type.reaction"
   ],
   "mv.object.adventure-definition": [
+    "mv.adventure.beacon-debt.module",
     "mv.adventure.lost-key.module"
   ],
   "mv.object.adventure-route-definition": [
@@ -96,14 +97,23 @@
   ],
   "mv.object.character-definition": [
     "mv.adventure.lost-key.npc.jaren-kolt",
+    "mv.adventure.beacon-debt.group.displaced-travelers",
     "mv.adventure.lost-key.npc.ilya-moren",
     "mv.adventure.lost-key.npc.elias-graye",
     "mv.adventure.lost-key.npc.frightened-townsfolk",
+    "mv.adventure.beacon-debt.npc.independent-listening-market-broker",
+    "mv.adventure.beacon-debt.npc.mira-venn",
     "mv.adventure.lost-key.npc.miriam-thorn",
     "mv.adventure.lost-key.npc.historian"
   ],
   "mv.object.clue-definition": [
     "mv.adventure.lost-key.clue.burned-correspondence",
+    "mv.adventure.beacon-debt.clue.cf01-recent-map-purchase-observation",
+    "mv.adventure.beacon-debt.clue.cf02-fresh-revision-premium",
+    "mv.adventure.beacon-debt.clue.cf03-current-conditions-annotation-request",
+    "mv.adventure.beacon-debt.clue.cf04-fragmented-brokerage-pattern",
+    "mv.adventure.beacon-debt.clue.cf05-independent-black-feathers-association-claim",
+    "mv.adventure.beacon-debt.clue.cf06-black-feathers-association-evidence",
     "mv.adventure.lost-key.clue.distorted-security-footage",
     "mv.adventure.lost-key.clue.elias-notes",
     "mv.adventure.lost-key.clue.historian-warning",
@@ -115,6 +125,9 @@
   ],
   "mv.object.connection-edge": [
     "mv.adventure.lost-key.connection.church-historian",
+    "mv.adventure.beacon-debt.connection.cf02-cf03-same-subject",
+    "mv.adventure.beacon-debt.connection.cf02-cf04-supports",
+    "mv.adventure.beacon-debt.connection.cf03-cf04-supports",
     "mv.adventure.lost-key.connection.rift-camp",
     "mv.adventure.lost-key.connection.rift-pocket",
     "mv.adventure.lost-key.connection.alley-rift",
@@ -270,21 +283,35 @@
     "mv.core.slot.hand.primary"
   ],
   "mv.object.faction-definition": [
+    "mv.setting.faction.black-feathers",
     "mv.adventure.lost-key.faction.duskwatch-leadership",
     "mv.adventure.lost-key.faction.graye-interests",
-    "mv.adventure.lost-key.faction.shadow-echoes"
+    "mv.adventure.lost-key.faction.shadow-echoes",
+    "mv.setting.faction.administrative-syndicate",
+    "mv.faction.lantern-compact"
+  ],
+  "mv.object.faction-relationship-definition": [
+    "mv.setting.faction-relationship.administrative-syndicate-east-gate",
+    "mv.setting.faction-relationship.lantern-compact-administrative-syndicate"
   ],
   "mv.object.hazard-definition": [
     "mv.adventure.lost-key.hazard.dimensional-collapse",
     "mv.adventure.lost-key.hazard.distorted-time-loop",
-    "mv.adventure.lost-key.hazard.rift-energy-surge"
+    "mv.adventure.lost-key.hazard.rift-energy-surge",
+    "mv.setting.vertigon.hazard.transit-crossflow-cascade"
+  ],
+  "mv.object.investigation-definition": [
+    "mv.adventure.beacon-debt.investigation.maps-as-leverage"
   ],
   "mv.object.item-definition": [
     "mv.core.item.weapon.battleaxe",
+    "mv.adventure.beacon-debt.item.broker-delivery-memorandum",
     "mv.core.item.armor.chain-shirt",
     "mv.core.item.utility.comms-link",
+    "mv.adventure.beacon-debt.item.current-conditions-annotation-request",
     "mv.core.item.weapon.dagger",
     "mv.core.item.utility.data-pad",
+    "mv.adventure.beacon-debt.item.east-spine-revision-sale-note",
     "mv.core.item.weapon.electroshock-baton",
     "mv.core.item.explosive.emp-grenade",
     "mv.core.item.armor.full-plate",
@@ -347,12 +374,17 @@
   ],
   "mv.object.location-node": [
     "mv.adventure.lost-key.location.abandoned-church",
+    "mv.setting.vertigon.location.east-gate-interchange",
+    "mv.setting.vertigon.location.east-route-beacon",
+    "mv.setting.vertigon.location.east-transit-spine",
+    "mv.setting.vertigon.location.eastern-bridge",
     "mv.adventure.lost-key.location.elias-camp",
     "mv.adventure.lost-key.location.historians-lair",
     "mv.adventure.lost-key.location.mayors-office",
     "mv.adventure.lost-key.location.pocket-dimension",
     "mv.adventure.lost-key.location.rift-zone",
     "mv.adventure.lost-key.location.shadowed-alley",
+    "mv.setting.vertigon.location.listening-market",
     "mv.adventure.lost-key.location.town-square"
   ],
   "mv.object.magic-source-definition": [
@@ -457,6 +489,9 @@
     "mv.core.sense.darkvision",
     "mv.core.sense.normal",
     "mv.core.sense.tremorsense"
+  ],
+  "mv.object.social-situation-definition": [
+    "mv.adventure.beacon-debt.social-situation.east-gate-priority"
   ],
   "mv.object.species-definition": [
     "mv.core.species.arborae",

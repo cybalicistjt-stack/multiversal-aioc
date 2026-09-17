@@ -1,0 +1,96 @@
+{
+  "databaseId": "mv.setting.vertigon.location.east-gate-interchange",
+  "stableId": "mv.setting.vertigon.location.east-gate-interchange",
+  "name": "East Gate Interchange",
+  "objectType": "mv.object.location-node",
+  "developmentStage": "Approved",
+  "source": "Owner-authorized canonical incorporation",
+  "sourceLocator": "content-source/beacon-debt-canonical-part-01.json",
+  "coverageStatus": "CANONICAL_OBJECT_PRESENT",
+  "promotionDecision": "",
+  "reviewStatus": "",
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "packIds": [],
+  "dependencies": [],
+  "tags": [
+    "vertigon",
+    "location",
+    "checkpoint",
+    "east-gate",
+    "canonical-object"
+  ],
+  "manualEntry": null,
+  "gameObject": {
+    "id": "mv.setting.vertigon.location.east-gate-interchange",
+    "name": "East Gate Interchange",
+    "objectType": "mv.object.location-node",
+    "schemaVersion": "1.0.0",
+    "contentVersion": "1.0.0",
+    "canonStatus": "approved",
+    "lifecycleStatus": "approved",
+    "scope": "reusable-definition",
+    "tags": [
+      "vertigon",
+      "location",
+      "checkpoint",
+      "east-gate"
+    ],
+    "settingRef": {
+      "ownerDomain": "D18/PPIA-12",
+      "objectId": "setting:vertigon",
+      "objectVersion": "1.0.0",
+      "referenceClass": "MIB-11 source-only stable identity",
+      "parentRef": "world:havalaea"
+    },
+    "locationKind": "checkpoint-access-node",
+    "routeRef": {
+      "ownerDomain": "PPIA-12",
+      "objectId": "mv.setting.vertigon.location.east-transit-spine",
+      "objectVersion": "1.0.0"
+    },
+    "roles": [
+      "queue",
+      "inspection",
+      "access control"
+    ],
+    "authorityRelationRef": {
+      "ownerDomain": "PPIA-10/PPIA-12",
+      "objectId": "mv.setting.faction-relationship.administrative-syndicate-east-gate",
+      "objectVersion": "1.0.0"
+    },
+    "explicitNonClaims": [
+      "No corruption implied.",
+      "No universal checkpoint mechanics or social DC."
+    ],
+    "provenance": {
+      "authority": "Owner-authorized canonical incorporation",
+      "ownerDecisionDate": "2026-09-16",
+      "evidenceClass": "governed-authoring",
+      "sourceReferences": [],
+      "sourceResourceRefs": [],
+      "noPlaytestClaim": true,
+      "noReleaseClaim": true,
+      "noBalanceClaim": true
+    }
+  },
+  "validation": null,
+  "balance": null,
+  "testing": null,
+  "provenance": {
+    "authority": "Owner-authorized canonical incorporation",
+    "ownerDecisionDate": "2026-09-16",
+    "evidenceClass": "governed-authoring",
+    "sourceReferences": [],
+    "sourceResourceRefs": [],
+    "noPlaytestClaim": true,
+    "noReleaseClaim": true,
+    "noBalanceClaim": true,
+    "sourcePath": "content-source/beacon-debt-canonical-part-01.json",
+    "sourceDigest": "sha256:5950afb6cad815947ae7c884c4023208f03a5d1fe69784e8d2cdc6dd6cd075df",
+    "sourceBundleId": "mv.content.beacon-debt.canonical-v1",
+    "sourceBundlePart": "part-01-of-04",
+    "sourceClass": "supplemental",
+    "importedBy": "scripts/build-canonical-content-database.mjs"
+  }
+}

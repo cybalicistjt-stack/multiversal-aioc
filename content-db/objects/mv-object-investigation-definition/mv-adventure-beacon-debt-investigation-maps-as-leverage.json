@@ -1,0 +1,198 @@
+{
+  "databaseId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+  "stableId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+  "name": "Maps as Leverage",
+  "objectType": "mv.object.investigation-definition",
+  "developmentStage": "Approved",
+  "source": "Owner-authorized canonical incorporation",
+  "sourceLocator": "content-source/beacon-debt-canonical-part-03.json",
+  "coverageStatus": "CANONICAL_OBJECT_PRESENT",
+  "promotionDecision": "",
+  "reviewStatus": "",
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.0",
+  "packIds": [],
+  "dependencies": [],
+  "tags": [
+    "investigation",
+    "mystery",
+    "maps-as-leverage",
+    "canonical-object"
+  ],
+  "manualEntry": null,
+  "gameObject": {
+    "id": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+    "name": "Maps as Leverage",
+    "objectType": "mv.object.investigation-definition",
+    "schemaVersion": "1.0.0",
+    "contentVersion": "1.0.0",
+    "canonStatus": "approved",
+    "lifecycleStatus": "approved",
+    "scope": "reusable-definition",
+    "tags": [
+      "investigation",
+      "mystery",
+      "maps-as-leverage"
+    ],
+    "parentAdventureRef": {
+      "ownerDomain": "D28",
+      "objectId": "mv.adventure.beacon-debt.module",
+      "objectVersion": "1.0.0"
+    },
+    "settingRef": {
+      "ownerDomain": "D18/PPIA-12",
+      "objectId": "setting:vertigon",
+      "objectVersion": "1.0.0",
+      "referenceClass": "MIB-11 source-only stable identity",
+      "parentRef": "world:havalaea"
+    },
+    "primaryLocationRef": {
+      "ownerDomain": "PPIA-12",
+      "objectId": "mv.setting.vertigon.location.listening-market",
+      "objectVersion": "1.0.0"
+    },
+    "objectiveTruth": {
+      "id": "mv.adventure.beacon-debt.truth.black-feathers-principal-buyer",
+      "kind": "objective-truth",
+      "visibility": "gm-only",
+      "statement": "A Black Feathers intermediary network is the principal buyer of recent East Transit Spine maps and route revisions, collecting fresh route intelligence because disruption and uncertainty increase the value of accurate movement information.",
+      "doesNotEstablish": [
+        "Black Feathers caused Eastern Bridge damage.",
+        "Black Feathers caused East Route Beacon degradation.",
+        "Black Feathers wants permanent closure.",
+        "Any East Gate official is compromised.",
+        "Ultimate downstream client identities.",
+        "Midbay is uninvolved in other disruption-related activity."
+      ],
+      "responsibleActorRef": {
+        "ownerDomain": "PPIA-10",
+        "objectId": "mv.setting.faction.black-feathers",
+        "objectVersion": "1.0.0"
+      }
+    },
+    "requiredRevelations": {
+      "R1": "Someone is systematically purchasing unusually current East Transit Spine maps/revisions.",
+      "R2": "The procurement values current access conditions, closures, inspection/patrol patterns and workarounds.",
+      "R3": "Purchases are compartmentalized across brokers/sellers, indicating an organized information-gathering network.",
+      "R4": "The purchasing network is associated with Black Feathers."
+    },
+    "optionalRevelations": {
+      "R5": {
+        "statement": "The intelligence is accumulated for downstream clients/leverage.",
+        "firstGoldenTestState": "omitted"
+      }
+    },
+    "primaryConclusion": "Black Feathers is the principal map-buyer network.",
+    "primaryConclusionRequires": [
+      "R1",
+      "R2",
+      "R3",
+      "R4"
+    ],
+    "clueRefs": [
+      {
+        "ownerDomain": "PPIA-09",
+        "objectId": "mv.adventure.beacon-debt.clue.cf01-recent-map-purchase-observation",
+        "objectVersion": "1.0.0"
+      },
+      {
+        "ownerDomain": "PPIA-09",
+        "objectId": "mv.adventure.beacon-debt.clue.cf02-fresh-revision-premium",
+        "objectVersion": "1.0.0"
+      },
+      {
+        "ownerDomain": "PPIA-09",
+        "objectId": "mv.adventure.beacon-debt.clue.cf03-current-conditions-annotation-request",
+        "objectVersion": "1.0.0"
+      },
+      {
+        "ownerDomain": "PPIA-09",
+        "objectId": "mv.adventure.beacon-debt.clue.cf04-fragmented-brokerage-pattern",
+        "objectVersion": "1.0.0"
+      },
+      {
+        "ownerDomain": "PPIA-09",
+        "objectId": "mv.adventure.beacon-debt.clue.cf05-independent-black-feathers-association-claim",
+        "objectVersion": "1.0.0"
+      },
+      {
+        "ownerDomain": "PPIA-09",
+        "objectId": "mv.adventure.beacon-debt.clue.cf06-black-feathers-association-evidence",
+        "objectVersion": "1.0.0"
+      }
+    ],
+    "redundancyContract": {
+      "R1": [
+        "CF-01",
+        "CF-02"
+      ],
+      "R2": [
+        "CF-02",
+        "CF-03"
+      ],
+      "R3": [
+        "CF-03",
+        "CF-04"
+      ],
+      "R4": [
+        "CF-05",
+        "CF-06"
+      ]
+    },
+    "competingHypothesis": {
+      "id": "mv.adventure.beacon-debt.hypothesis.midbay-route-exploitation",
+      "kind": "hypothesis",
+      "proposition": "The Midbay Outfit may be exploiting the disruption and therefore plausibly benefits from closure or degraded official access.",
+      "canExplain": [
+        "unusual cargo movement",
+        "bypass interest",
+        "informal-route use",
+        "increased value of unofficial access"
+      ],
+      "cannotEstablish": [
+        "Midbay is the principal map buyer"
+      ],
+      "retentionRule": "Black Feathers resolution does not rewrite independent Midbay activity as fabricated false evidence.",
+      "sourceReference": "Vertigon.PDF p.49: Midbay Outfit controls smuggling and unregistered shipping lanes."
+    },
+    "truthBeliefEvidencePolicy": "Objective truth, observation, claim, evidence, hypothesis, source reliability, reveal state and Player knowledge remain separately typed.",
+    "runtimePolicy": "Clue discovery/reveal instances are created only when Campaign/Session runtime is separately authorized.",
+    "provenance": {
+      "authority": "Owner-authorized canonical incorporation",
+      "ownerDecisionDate": "2026-09-16",
+      "evidenceClass": "owner-accepted-E-B-investigation",
+      "sourceReferences": [
+        "Owner decision E-B accepted 2026-09-16",
+        "Vertigon.PDF p.49",
+        "Beacon Debt Black Feathers Final Investigation & Pre-Runtime Readiness Packet v0.1"
+      ],
+      "sourceResourceRefs": [],
+      "noPlaytestClaim": true,
+      "noReleaseClaim": true,
+      "noBalanceClaim": true
+    }
+  },
+  "validation": null,
+  "balance": null,
+  "testing": null,
+  "provenance": {
+    "authority": "Owner-authorized canonical incorporation",
+    "ownerDecisionDate": "2026-09-16",
+    "evidenceClass": "owner-accepted-E-B-investigation",
+    "sourceReferences": [
+      "Owner decision E-B accepted 2026-09-16",
+      "Vertigon.PDF p.49",
+      "Beacon Debt Black Feathers Final Investigation & Pre-Runtime Readiness Packet v0.1"
+    ],
+    "sourceResourceRefs": [],
+    "noPlaytestClaim": true,
+    "noReleaseClaim": true,
+    "noBalanceClaim": true,
+    "sourcePath": "content-source/beacon-debt-canonical-part-03.json",
+    "sourceDigest": "sha256:3bb960234eb0cdb33a55cbe9d7f9dabdbe8cf653865a021b7649e1016cddcbd5",
+    "sourceBundleId": "mv.content.beacon-debt.canonical-v1",
+    "sourceBundlePart": "part-03-of-04",
+    "sourceClass": "supplemental",
+    "importedBy": "scripts/build-canonical-content-database.mjs"
+  }
+}

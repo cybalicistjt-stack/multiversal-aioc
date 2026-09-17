@@ -1,0 +1,2222 @@
+{
+  "format": "multiversal-canonical-version-index",
+  "version": "1.0.0",
+  "generatedAt": "2026-09-17T00:58:13.627Z",
+  "purpose": "Resolve immutable exact-version canonical references independently of the effective-current record projection.",
+  "gameReadinessAssessed": false,
+  "versionCount": 33,
+  "versions": [
+    {
+      "key": "mv.adventure.beacon-debt.clue.cf01-recent-map-purchase-observation@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.clue.cf01-recent-map-purchase-observation",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-03.json",
+      "sourceDigest": "sha256:3bb960234eb0cdb33a55cbe9d7f9dabdbe8cf653865a021b7649e1016cddcbd5",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.clue.cf01-recent-map-purchase-observation",
+        "name": "CF-01 — Recent-Map Purchase Observation",
+        "objectType": "mv.object.clue-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "clue",
+          "cf-01"
+        ],
+        "clueId": "CF-01",
+        "clueKind": "observation",
+        "supports": [
+          "R1"
+        ],
+        "content": "Someone is purchasing maps of places/routes the party recently used or learned about.",
+        "locationRef": {
+          "ownerDomain": "PPIA-12",
+          "objectId": "mv.setting.vertigon.location.listening-market",
+          "objectVersion": "1.0.0"
+        },
+        "truthRelationship": "True observation; does not identify buyer.",
+        "evidenceRef": null,
+        "investigationRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+          "objectVersion": "1.0.0"
+        },
+        "defaultRevealPolicy": "hidden-until-discovered-or-governed-reveal",
+        "runtimeInstantiationPolicy": "Definition is canonical; Campaign discovery/reveal state is not created here.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-investigation-clue-definition",
+          "sourceReferences": [
+            "Beacon Debt Black Feathers Final Investigation Packet"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.clue.cf02-fresh-revision-premium@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.clue.cf02-fresh-revision-premium",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-03.json",
+      "sourceDigest": "sha256:3bb960234eb0cdb33a55cbe9d7f9dabdbe8cf653865a021b7649e1016cddcbd5",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.clue.cf02-fresh-revision-premium",
+        "name": "CF-02 — Fresh-Revision Premium Pattern",
+        "objectType": "mv.object.clue-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "clue",
+          "cf-02"
+        ],
+        "clueId": "CF-02",
+        "clueKind": "evidence-backed clue",
+        "supports": [
+          "R1",
+          "R2"
+        ],
+        "content": "Buyer pays more for very recent route revisions than ordinary/older maps.",
+        "evidenceRef": {
+          "ownerDomain": "D28/Items",
+          "objectId": "mv.adventure.beacon-debt.item.east-spine-revision-sale-note",
+          "objectVersion": "1.0.0"
+        },
+        "truthRelationship": "Evidence of freshness preference; not buyer identity.",
+        "investigationRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+          "objectVersion": "1.0.0"
+        },
+        "defaultRevealPolicy": "hidden-until-discovered-or-governed-reveal",
+        "runtimeInstantiationPolicy": "Definition is canonical; Campaign discovery/reveal state is not created here.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-investigation-clue-definition",
+          "sourceReferences": [
+            "Beacon Debt Black Feathers Final Investigation Packet"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.clue.cf03-current-conditions-annotation-request@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.clue.cf03-current-conditions-annotation-request",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-04.json",
+      "sourceDigest": "sha256:48f74dc79d3785d9d663b57e2c22d7fc321a0ff0e35ca9387a062848593454a8",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.clue.cf03-current-conditions-annotation-request",
+        "name": "CF-03 — Current-Conditions Annotation Request",
+        "objectType": "mv.object.clue-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "clue",
+          "cf-03"
+        ],
+        "clueId": "CF-03",
+        "clueKind": "evidence-backed clue",
+        "supports": [
+          "R2",
+          "R3"
+        ],
+        "content": "Requests prioritize current access, inspections/patrol patterns, closures, workarounds and changed choke points.",
+        "evidenceRef": {
+          "ownerDomain": "D28/Items",
+          "objectId": "mv.adventure.beacon-debt.item.current-conditions-annotation-request",
+          "objectVersion": "1.0.0"
+        },
+        "truthRelationship": "Operational-intelligence preference; not automatic proof of Black Feathers.",
+        "investigationRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+          "objectVersion": "1.0.0"
+        },
+        "defaultRevealPolicy": "hidden-until-discovered-or-governed-reveal",
+        "runtimeInstantiationPolicy": "Definition is canonical; Campaign discovery/reveal state is not created here.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-investigation-clue-definition",
+          "sourceReferences": [
+            "Beacon Debt Black Feathers Final Investigation Packet"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.clue.cf04-fragmented-brokerage-pattern@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.clue.cf04-fragmented-brokerage-pattern",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-04.json",
+      "sourceDigest": "sha256:48f74dc79d3785d9d663b57e2c22d7fc321a0ff0e35ca9387a062848593454a8",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.clue.cf04-fragmented-brokerage-pattern",
+        "name": "CF-04 — Fragmented Brokerage Pattern",
+        "objectType": "mv.object.clue-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "clue",
+          "cf-04"
+        ],
+        "clueId": "CF-04",
+        "clueKind": "typed-analysis",
+        "supports": [
+          "R3"
+        ],
+        "content": "Comparing separately attributable procurement sources shows different intermediaries collecting different pieces of current East Transit Spine intelligence rather than one ordinary traveler buying one complete map.",
+        "sourceClueRefs": [
+          {
+            "ownerDomain": "PPIA-09",
+            "objectId": "mv.adventure.beacon-debt.clue.cf01-recent-map-purchase-observation",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-09",
+            "objectId": "mv.adventure.beacon-debt.clue.cf02-fresh-revision-premium",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-09",
+            "objectId": "mv.adventure.beacon-debt.clue.cf03-current-conditions-annotation-request",
+            "objectVersion": "1.0.0"
+          }
+        ],
+        "truthRelationship": "Supports organized compartmentalization only; does not identify Black Feathers.",
+        "investigationRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+          "objectVersion": "1.0.0"
+        },
+        "defaultRevealPolicy": "hidden-until-discovered-or-governed-reveal",
+        "runtimeInstantiationPolicy": "Definition is canonical; Campaign discovery/reveal state is not created here.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-investigation-clue-definition",
+          "sourceReferences": [
+            "Beacon Debt Black Feathers Final Investigation Packet"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.clue.cf05-independent-black-feathers-association-claim@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.clue.cf05-independent-black-feathers-association-claim",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-04.json",
+      "sourceDigest": "sha256:48f74dc79d3785d9d663b57e2c22d7fc321a0ff0e35ca9387a062848593454a8",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.clue.cf05-independent-black-feathers-association-claim",
+        "name": "CF-05 — Independent Black Feathers Association Claim",
+        "objectType": "mv.object.clue-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "clue",
+          "cf-05"
+        ],
+        "clueId": "CF-05",
+        "clueKind": "attributable-claim",
+        "supports": [
+          "R4"
+        ],
+        "sourceTemplateRef": {
+          "ownerDomain": "PPIA-02/D28",
+          "objectId": "mv.adventure.beacon-debt.npc.independent-listening-market-broker",
+          "objectVersion": "1.0.0"
+        },
+        "claimTemplate": "The recurring procurement handler has previously acquired information on Black Feathers' behalf.",
+        "truthRelationship": "Attributable claim; does not become objective truth by assertion.",
+        "qualityDimensions": [
+          "source reliability",
+          "basis for recognition",
+          "visibility",
+          "review state"
+        ],
+        "investigationRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+          "objectVersion": "1.0.0"
+        },
+        "defaultRevealPolicy": "hidden-until-discovered-or-governed-reveal",
+        "runtimeInstantiationPolicy": "Definition is canonical; Campaign discovery/reveal state is not created here.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-investigation-clue-definition",
+          "sourceReferences": [
+            "Beacon Debt Black Feathers Final Investigation Packet"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.clue.cf06-black-feathers-association-evidence@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.clue.cf06-black-feathers-association-evidence",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-04.json",
+      "sourceDigest": "sha256:48f74dc79d3785d9d663b57e2c22d7fc321a0ff0e35ca9387a062848593454a8",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.clue.cf06-black-feathers-association-evidence",
+        "name": "CF-06 — Black Feathers Association Evidence",
+        "objectType": "mv.object.clue-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "clue",
+          "cf-06"
+        ],
+        "clueId": "CF-06",
+        "clueKind": "owning-domain-evidence-reference",
+        "supports": [
+          "R4"
+        ],
+        "evidenceRef": {
+          "ownerDomain": "D28/Items",
+          "objectId": "mv.adventure.beacon-debt.item.broker-delivery-memorandum",
+          "objectVersion": "1.0.0"
+        },
+        "actorRef": {
+          "ownerDomain": "PPIA-10",
+          "objectId": "mv.setting.faction.black-feathers",
+          "objectVersion": "1.0.0"
+        },
+        "truthRelationship": "Independent evidence link to Black Feathers; proves only what the owning evidence object establishes.",
+        "investigationRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+          "objectVersion": "1.0.0"
+        },
+        "defaultRevealPolicy": "hidden-until-discovered-or-governed-reveal",
+        "runtimeInstantiationPolicy": "Definition is canonical; Campaign discovery/reveal state is not created here.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-investigation-clue-definition",
+          "sourceReferences": [
+            "Beacon Debt Black Feathers Final Investigation Packet"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.connection.cf02-cf03-same-subject@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.connection.cf02-cf03-same-subject",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-04.json",
+      "sourceDigest": "sha256:48f74dc79d3785d9d663b57e2c22d7fc321a0ff0e35ca9387a062848593454a8",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.connection.cf02-cf03-same-subject",
+        "name": "CF02 and CF03 Same Subject",
+        "objectType": "mv.object.connection-edge",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "investigation",
+          "connection",
+          "cf04"
+        ],
+        "investigationRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+          "objectVersion": "1.0.0"
+        },
+        "predicate": "same-subject",
+        "sourceNodeRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.clue.cf02-fresh-revision-premium",
+          "objectVersion": "1.0.0"
+        },
+        "targetNodeRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.clue.cf03-current-conditions-annotation-request",
+          "objectVersion": "1.0.0"
+        },
+        "rationale": "The sale note and annotation request concern the same East Transit Spine current-route intelligence subject.",
+        "linearPredicateText": "The sale note and annotation request concern the same East Transit Spine current-route intelligence subject.",
+        "graphLayoutAuthoritative": false,
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-investigation-typed-connection",
+          "sourceReferences": [],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.connection.cf02-cf04-supports@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.connection.cf02-cf04-supports",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-04.json",
+      "sourceDigest": "sha256:48f74dc79d3785d9d663b57e2c22d7fc321a0ff0e35ca9387a062848593454a8",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.connection.cf02-cf04-supports",
+        "name": "CF02 Supports CF04",
+        "objectType": "mv.object.connection-edge",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "investigation",
+          "connection",
+          "cf04"
+        ],
+        "investigationRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+          "objectVersion": "1.0.0"
+        },
+        "predicate": "supports",
+        "sourceNodeRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.clue.cf02-fresh-revision-premium",
+          "objectVersion": "1.0.0"
+        },
+        "targetNodeRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.clue.cf04-fragmented-brokerage-pattern",
+          "objectVersion": "1.0.0"
+        },
+        "rationale": "The independent premium purchase contributes to the comparison that multiple procurement actions target fresh route intelligence.",
+        "linearPredicateText": "The independent premium purchase contributes to the comparison that multiple procurement actions target fresh route intelligence.",
+        "graphLayoutAuthoritative": false,
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-investigation-typed-connection",
+          "sourceReferences": [],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.connection.cf03-cf04-supports@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.connection.cf03-cf04-supports",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-04.json",
+      "sourceDigest": "sha256:48f74dc79d3785d9d663b57e2c22d7fc321a0ff0e35ca9387a062848593454a8",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.connection.cf03-cf04-supports",
+        "name": "CF03 Supports CF04",
+        "objectType": "mv.object.connection-edge",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "investigation",
+          "connection",
+          "cf04"
+        ],
+        "investigationRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+          "objectVersion": "1.0.0"
+        },
+        "predicate": "supports",
+        "sourceNodeRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.clue.cf03-current-conditions-annotation-request",
+          "objectVersion": "1.0.0"
+        },
+        "targetNodeRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.clue.cf04-fragmented-brokerage-pattern",
+          "objectVersion": "1.0.0"
+        },
+        "rationale": "The limited request plus separate-runner instruction supports compartmentalized collection.",
+        "linearPredicateText": "The limited request plus separate-runner instruction supports compartmentalized collection.",
+        "graphLayoutAuthoritative": false,
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-investigation-typed-connection",
+          "sourceReferences": [],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.group.displaced-travelers@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.group.displaced-travelers",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-02.json",
+      "sourceDigest": "sha256:82597065cb8ee604fa70dbd4e24caf2fb28d9125392645556713bfa9836071c2",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.group.displaced-travelers",
+        "name": "Displaced Travelers",
+        "objectType": "mv.object.character-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "group",
+          "displaced-travelers",
+          "beacon-debt"
+        ],
+        "definitionKind": "group",
+        "presentationProfile": "swarm_group",
+        "purpose": "Represent affected travelers as people with agency and needs without manufacturing one NPC per person.",
+        "unknownsPreserved": [
+          "exact population",
+          "species mix",
+          "demographics",
+          "leaders",
+          "faction alignment",
+          "stat blocks"
+        ],
+        "runtimePolicy": "Campaign-local quantity and current state remain outside this reusable group definition.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-adventure-group-definition",
+          "sourceReferences": [
+            "The Beacon Debt premise",
+            "PPIA-02 Group/Swarm profile contract"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.investigation.maps-as-leverage@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-03.json",
+      "sourceDigest": "sha256:3bb960234eb0cdb33a55cbe9d7f9dabdbe8cf653865a021b7649e1016cddcbd5",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+        "name": "Maps as Leverage",
+        "objectType": "mv.object.investigation-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "investigation",
+          "mystery",
+          "maps-as-leverage"
+        ],
+        "parentAdventureRef": {
+          "ownerDomain": "D28",
+          "objectId": "mv.adventure.beacon-debt.module",
+          "objectVersion": "1.0.0"
+        },
+        "settingRef": {
+          "ownerDomain": "D18/PPIA-12",
+          "objectId": "setting:vertigon",
+          "objectVersion": "1.0.0",
+          "referenceClass": "MIB-11 source-only stable identity",
+          "parentRef": "world:havalaea"
+        },
+        "primaryLocationRef": {
+          "ownerDomain": "PPIA-12",
+          "objectId": "mv.setting.vertigon.location.listening-market",
+          "objectVersion": "1.0.0"
+        },
+        "objectiveTruth": {
+          "id": "mv.adventure.beacon-debt.truth.black-feathers-principal-buyer",
+          "kind": "objective-truth",
+          "visibility": "gm-only",
+          "statement": "A Black Feathers intermediary network is the principal buyer of recent East Transit Spine maps and route revisions, collecting fresh route intelligence because disruption and uncertainty increase the value of accurate movement information.",
+          "doesNotEstablish": [
+            "Black Feathers caused Eastern Bridge damage.",
+            "Black Feathers caused East Route Beacon degradation.",
+            "Black Feathers wants permanent closure.",
+            "Any East Gate official is compromised.",
+            "Ultimate downstream client identities.",
+            "Midbay is uninvolved in other disruption-related activity."
+          ],
+          "responsibleActorRef": {
+            "ownerDomain": "PPIA-10",
+            "objectId": "mv.setting.faction.black-feathers",
+            "objectVersion": "1.0.0"
+          }
+        },
+        "requiredRevelations": {
+          "R1": "Someone is systematically purchasing unusually current East Transit Spine maps/revisions.",
+          "R2": "The procurement values current access conditions, closures, inspection/patrol patterns and workarounds.",
+          "R3": "Purchases are compartmentalized across brokers/sellers, indicating an organized information-gathering network.",
+          "R4": "The purchasing network is associated with Black Feathers."
+        },
+        "optionalRevelations": {
+          "R5": {
+            "statement": "The intelligence is accumulated for downstream clients/leverage.",
+            "firstGoldenTestState": "omitted"
+          }
+        },
+        "primaryConclusion": "Black Feathers is the principal map-buyer network.",
+        "primaryConclusionRequires": [
+          "R1",
+          "R2",
+          "R3",
+          "R4"
+        ],
+        "clueRefs": [
+          {
+            "ownerDomain": "PPIA-09",
+            "objectId": "mv.adventure.beacon-debt.clue.cf01-recent-map-purchase-observation",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-09",
+            "objectId": "mv.adventure.beacon-debt.clue.cf02-fresh-revision-premium",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-09",
+            "objectId": "mv.adventure.beacon-debt.clue.cf03-current-conditions-annotation-request",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-09",
+            "objectId": "mv.adventure.beacon-debt.clue.cf04-fragmented-brokerage-pattern",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-09",
+            "objectId": "mv.adventure.beacon-debt.clue.cf05-independent-black-feathers-association-claim",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-09",
+            "objectId": "mv.adventure.beacon-debt.clue.cf06-black-feathers-association-evidence",
+            "objectVersion": "1.0.0"
+          }
+        ],
+        "redundancyContract": {
+          "R1": [
+            "CF-01",
+            "CF-02"
+          ],
+          "R2": [
+            "CF-02",
+            "CF-03"
+          ],
+          "R3": [
+            "CF-03",
+            "CF-04"
+          ],
+          "R4": [
+            "CF-05",
+            "CF-06"
+          ]
+        },
+        "competingHypothesis": {
+          "id": "mv.adventure.beacon-debt.hypothesis.midbay-route-exploitation",
+          "kind": "hypothesis",
+          "proposition": "The Midbay Outfit may be exploiting the disruption and therefore plausibly benefits from closure or degraded official access.",
+          "canExplain": [
+            "unusual cargo movement",
+            "bypass interest",
+            "informal-route use",
+            "increased value of unofficial access"
+          ],
+          "cannotEstablish": [
+            "Midbay is the principal map buyer"
+          ],
+          "retentionRule": "Black Feathers resolution does not rewrite independent Midbay activity as fabricated false evidence.",
+          "sourceReference": "Vertigon.PDF p.49: Midbay Outfit controls smuggling and unregistered shipping lanes."
+        },
+        "truthBeliefEvidencePolicy": "Objective truth, observation, claim, evidence, hypothesis, source reliability, reveal state and Player knowledge remain separately typed.",
+        "runtimePolicy": "Clue discovery/reveal instances are created only when Campaign/Session runtime is separately authorized.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-accepted-E-B-investigation",
+          "sourceReferences": [
+            "Owner decision E-B accepted 2026-09-16",
+            "Vertigon.PDF p.49",
+            "Beacon Debt Black Feathers Final Investigation & Pre-Runtime Readiness Packet v0.1"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.item.broker-delivery-memorandum@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.item.broker-delivery-memorandum",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-03.json",
+      "sourceDigest": "sha256:3bb960234eb0cdb33a55cbe9d7f9dabdbe8cf653865a021b7649e1016cddcbd5",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.item.broker-delivery-memorandum",
+        "name": "Broker Delivery Memorandum",
+        "objectType": "mv.object.item-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "adventure-local-source-template",
+        "tags": [
+          "evidence",
+          "document",
+          "cf06"
+        ],
+        "definitionKind": "document-evidence-template",
+        "instantiatePerCampaign": true,
+        "contentSummary": "A separate procurement broker's retained memorandum names Black Feathers as the recipient for a packet containing a current East Transit Spine revision and current-access annotations.",
+        "independenceRule": "Must come from a different source chain than the CF-05 witness claim and must not depend on that witness for meaning or authenticity.",
+        "establishesIfAcceptedAuthentic": [
+          "procurement network has an attributable Black Feathers recipient link",
+          "linked packet concerns the same current-route intelligence pattern"
+        ],
+        "doesNotEstablish": [
+          "route sabotage",
+          "beacon sabotage",
+          "downstream client identities",
+          "reusable Black Feathers credential/account/courier convention"
+        ],
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-adventure-local-source-template",
+          "sourceReferences": [
+            "CF06 Campaign-Local Evidence Draft Pack"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.item.current-conditions-annotation-request@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.item.current-conditions-annotation-request",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-03.json",
+      "sourceDigest": "sha256:3bb960234eb0cdb33a55cbe9d7f9dabdbe8cf653865a021b7649e1016cddcbd5",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.item.current-conditions-annotation-request",
+        "name": "Current-Conditions Annotation Request",
+        "objectType": "mv.object.item-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "adventure-local-source-template",
+        "tags": [
+          "evidence",
+          "communication",
+          "cf03"
+        ],
+        "definitionKind": "communication-evidence-template",
+        "instantiatePerCampaign": true,
+        "content": "Mark the current East Gate access restrictions, closure points, inspection windows, and usable workarounds. Leave general district detail out. Do not bundle alternate-passage notes with this copy; another runner is collecting those.",
+        "establishes": [
+          "current access/closure/inspection/workaround interest",
+          "partial intelligence slice",
+          "another intermediary collects a different slice"
+        ],
+        "doesNotEstablish": [
+          "Black Feathers identity",
+          "ultimate client",
+          "East Gate controlling organization",
+          "official corruption"
+        ],
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-adventure-local-source-template",
+          "sourceReferences": [
+            "CF03 Campaign-Local Evidence Draft Pack"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.item.east-spine-revision-sale-note@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.item.east-spine-revision-sale-note",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-03.json",
+      "sourceDigest": "sha256:3bb960234eb0cdb33a55cbe9d7f9dabdbe8cf653865a021b7649e1016cddcbd5",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.item.east-spine-revision-sale-note",
+        "name": "East-Spine Revision Sale Note",
+        "objectType": "mv.object.item-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "adventure-local-source-template",
+        "tags": [
+          "evidence",
+          "document",
+          "cf02"
+        ],
+        "definitionKind": "document-evidence-template",
+        "instantiatePerCampaign": true,
+        "contentSummary": "A route-chart seller's retained sale note records that a recurring intermediary offered a clearly higher price for an East Transit Spine revision updated after the current disruption than for older editions.",
+        "establishes": [
+          "fresh revisions are valued above older copies",
+          "procurement focuses on current East Transit Spine information"
+        ],
+        "doesNotEstablish": [
+          "buyer identity",
+          "Black Feathers",
+          "motive",
+          "sabotage",
+          "corruption"
+        ],
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-adventure-local-source-template",
+          "sourceReferences": [
+            "CF02 Campaign-Local Evidence Draft Pack"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.module@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.module",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-02.json",
+      "sourceDigest": "sha256:82597065cb8ee604fa70dbd4e24caf2fb28d9125392645556713bfa9836071c2",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.module",
+        "name": "The Beacon Debt",
+        "objectType": "mv.object.adventure-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "adventure",
+          "golden-test",
+          "vertigon"
+        ],
+        "settingRefs": [
+          {
+            "ownerDomain": "D18/PPIA-12",
+            "objectId": "world:havalaea",
+            "objectVersion": "1.0.0",
+            "referenceClass": "MIB-11 source-only stable identity"
+          },
+          {
+            "ownerDomain": "D18/PPIA-12",
+            "objectId": "setting:vertigon",
+            "objectVersion": "1.0.0",
+            "referenceClass": "MIB-11 source-only stable identity",
+            "parentRef": "world:havalaea"
+          }
+        ],
+        "premise": "The Lantern Compact owes safe passage to displaced travelers while a damaged eastern route and degraded beacon compromise passage.",
+        "objective": "Restore useful passage while deciding who controls access and what obligations or costs follow.",
+        "forces": [
+          {
+            "ownerDomain": "PPIA-10",
+            "objectId": "mv.faction.lantern-compact",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-10/PPIA-12",
+            "objectId": "mv.setting.faction.administrative-syndicate",
+            "objectVersion": null,
+            "versionState": "stable source-backed identity; owning-domain current version must be revalidated before runtime composition",
+            "sourcePackVersion": "0.1.2",
+            "sourceAnchor": "The Administrative Syndicate",
+            "source": "mvPreFinal.pdf pp.4170-4238 / 8E-006D/E/F/G direct-source-reference"
+          },
+          {
+            "ownerDomain": "PPIA-10",
+            "objectId": "mv.setting.faction.black-feathers",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-02",
+            "objectId": "mv.adventure.beacon-debt.group.displaced-travelers",
+            "objectVersion": "1.0.0"
+          }
+        ],
+        "locationRefs": [
+          {
+            "ownerDomain": "PPIA-12",
+            "objectId": "mv.setting.vertigon.location.east-transit-spine",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-12",
+            "objectId": "mv.setting.vertigon.location.east-gate-interchange",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-12",
+            "objectId": "mv.setting.vertigon.location.eastern-bridge",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-12",
+            "objectId": "mv.setting.vertigon.location.east-route-beacon",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-12",
+            "objectId": "mv.setting.vertigon.location.listening-market",
+            "objectVersion": "1.0.0"
+          }
+        ],
+        "hazardRefs": [
+          {
+            "ownerDomain": "PPIA-12/rules",
+            "objectId": "mv.setting.vertigon.hazard.transit-crossflow-cascade",
+            "objectVersion": "1.0.0"
+          }
+        ],
+        "socialSituationRefs": [
+          {
+            "ownerDomain": "PPIA-10",
+            "objectId": "mv.adventure.beacon-debt.social-situation.east-gate-priority",
+            "objectVersion": "1.0.0"
+          }
+        ],
+        "investigationRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+          "objectVersion": "1.0.0"
+        },
+        "coreSituations": [
+          "negotiate access and priority",
+          "cross or inspect damaged route infrastructure",
+          "restore or decide how to handle the route-safety beacon",
+          "investigate who is buying fresh route intelligence",
+          "determine immediate passage/control consequences"
+        ],
+        "sceneSpineBlueprint": [
+          "Gate Pressure",
+          "Damaged Crossing",
+          "Beacon Restoration",
+          "Listening Market Investigation",
+          "Consequence / Return"
+        ],
+        "endings": [
+          "route reopened",
+          "route compromised",
+          "new authority controls passage",
+          "deliberate closure"
+        ],
+        "clocks": [
+          "displaced-traveler arrival pressure",
+          "route deterioration"
+        ],
+        "runtimeStartingFixture": {
+          "bridgeState": "already damaged",
+          "routeState": "reduced passage",
+          "provenanceClass": "synthetic starting fixture",
+          "explicitNonClaim": "No prior real Session/Event is implied."
+        },
+        "combatPolicy": "No mandatory combat encounter.",
+        "mechanicsPolicy": "No universal CR, encounter level, DC, social score, power score, or cross-scale equivalence is introduced.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "NCG-source-resource-plus-owner-approved-canonical-adaptation",
+          "sourceReferences": [],
+          "sourceResourceRefs": [
+            "gmr-adv-001@0.1",
+            "gmr-prep-001@0.1"
+          ],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.module@1.0.1",
+      "stableId": "mv.adventure.beacon-debt.module",
+      "contentVersion": "1.0.1",
+      "sourceClass": "replacement",
+      "sourcePath": "content-source/beacon-debt-administrative-reference-replacements-v1.0.1.json",
+      "sourceDigest": "sha256:ffadabb7f59075cc6f94ae9a588bf41b6ebddb65b5df855192c91b85c0be19b5",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.module",
+        "name": "The Beacon Debt",
+        "objectType": "mv.object.adventure-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.1",
+        "replacementOf": {
+          "stableId": "mv.adventure.beacon-debt.module",
+          "expectedContentVersion": "1.0.0",
+          "reason": "Resolve the previously null Administrative Syndicate force objectVersion after owning-domain materialization."
+        },
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "adventure",
+          "golden-test",
+          "vertigon"
+        ],
+        "settingRefs": [
+          {
+            "ownerDomain": "D18/PPIA-12",
+            "objectId": "world:havalaea",
+            "objectVersion": "1.0.0",
+            "referenceClass": "MIB-11 source-only stable identity"
+          },
+          {
+            "ownerDomain": "D18/PPIA-12",
+            "objectId": "setting:vertigon",
+            "objectVersion": "1.0.0",
+            "referenceClass": "MIB-11 source-only stable identity",
+            "parentRef": "world:havalaea"
+          }
+        ],
+        "premise": "The Lantern Compact owes safe passage to displaced travelers while a damaged eastern route and degraded beacon compromise passage.",
+        "objective": "Restore useful passage while deciding who controls access and what obligations or costs follow.",
+        "forces": [
+          {
+            "ownerDomain": "PPIA-10",
+            "objectId": "mv.faction.lantern-compact",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-10/PPIA-12",
+            "objectId": "mv.setting.faction.administrative-syndicate",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-10",
+            "objectId": "mv.setting.faction.black-feathers",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-02",
+            "objectId": "mv.adventure.beacon-debt.group.displaced-travelers",
+            "objectVersion": "1.0.0"
+          }
+        ],
+        "locationRefs": [
+          {
+            "ownerDomain": "PPIA-12",
+            "objectId": "mv.setting.vertigon.location.east-transit-spine",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-12",
+            "objectId": "mv.setting.vertigon.location.east-gate-interchange",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-12",
+            "objectId": "mv.setting.vertigon.location.eastern-bridge",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-12",
+            "objectId": "mv.setting.vertigon.location.east-route-beacon",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-12",
+            "objectId": "mv.setting.vertigon.location.listening-market",
+            "objectVersion": "1.0.0"
+          }
+        ],
+        "hazardRefs": [
+          {
+            "ownerDomain": "PPIA-12/rules",
+            "objectId": "mv.setting.vertigon.hazard.transit-crossflow-cascade",
+            "objectVersion": "1.0.0"
+          }
+        ],
+        "socialSituationRefs": [
+          {
+            "ownerDomain": "PPIA-10",
+            "objectId": "mv.adventure.beacon-debt.social-situation.east-gate-priority",
+            "objectVersion": "1.0.1"
+          }
+        ],
+        "investigationRef": {
+          "ownerDomain": "PPIA-09",
+          "objectId": "mv.adventure.beacon-debt.investigation.maps-as-leverage",
+          "objectVersion": "1.0.0"
+        },
+        "coreSituations": [
+          "negotiate access and priority",
+          "cross or inspect damaged route infrastructure",
+          "restore or decide how to handle the route-safety beacon",
+          "investigate who is buying fresh route intelligence",
+          "determine immediate passage/control consequences"
+        ],
+        "sceneSpineBlueprint": [
+          "Gate Pressure",
+          "Damaged Crossing",
+          "Beacon Restoration",
+          "Listening Market Investigation",
+          "Consequence / Return"
+        ],
+        "endings": [
+          "route reopened",
+          "route compromised",
+          "new authority controls passage",
+          "deliberate closure"
+        ],
+        "clocks": [
+          "displaced-traveler arrival pressure",
+          "route deterioration"
+        ],
+        "runtimeStartingFixture": {
+          "bridgeState": "already damaged",
+          "routeState": "reduced passage",
+          "provenanceClass": "synthetic starting fixture",
+          "explicitNonClaim": "No prior real Session/Event is implied."
+        },
+        "combatPolicy": "No mandatory combat encounter.",
+        "mechanicsPolicy": "No universal CR, encounter level, DC, social score, power score, or cross-scale equivalence is introduced.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation plus exact-reference resolution",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "NCG-source-resource-plus-owner-approved-canonical-adaptation",
+          "sourceReferences": [
+            "mv.setting.faction.administrative-syndicate@1.0.0 materialized 2026-09-16"
+          ],
+          "sourceResourceRefs": [
+            "gmr-adv-001@0.1",
+            "gmr-prep-001@0.1"
+          ],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.npc.independent-listening-market-broker@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.npc.independent-listening-market-broker",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-03.json",
+      "sourceDigest": "sha256:3bb960234eb0cdb33a55cbe9d7f9dabdbe8cf653865a021b7649e1016cddcbd5",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.npc.independent-listening-market-broker",
+        "name": "Independent Listening Market Information Broker",
+        "objectType": "mv.object.character-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "campaign-local-source-template",
+        "tags": [
+          "witness",
+          "source",
+          "cf05"
+        ],
+        "definitionKind": "campaign-local-source-template",
+        "instantiatePerCampaign": true,
+        "role": "information broker who regularly observes route-information transactions in the Listening Market",
+        "claimTemplate": "The recurring procurement handler has previously acquired information on Black Feathers' behalf.",
+        "speakerBeliefIntent": "believes claim true",
+        "sourceReliabilityIntent": "locally informed but not infallible",
+        "mechanicalStats": null,
+        "globalReusableIdentity": false,
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-campaign-local-witness-template",
+          "sourceReferences": [
+            "CF05 Campaign-Local Evidence Draft Pack"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.npc.mira-venn@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.npc.mira-venn",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-02.json",
+      "sourceDigest": "sha256:82597065cb8ee604fa70dbd4e24caf2fb28d9125392645556713bfa9836071c2",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.npc.mira-venn",
+        "name": "Mira Venn",
+        "objectType": "mv.object.character-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "npc",
+          "gatekeeper",
+          "beacon-debt"
+        ],
+        "definitionKind": "npc-persona",
+        "sourceIdentity": "gmr-npc-001",
+        "role": "gatekeeper",
+        "behavior": [
+          "avoids blame",
+          "uses queue/access leverage",
+          "redirects rather than simply refusing"
+        ],
+        "protectedFact": "One legitimate discretionary exception exists; exact details remain GM-protected until revealed.",
+        "mechanicalStats": null,
+        "placementPolicy": "Reusable persona only; Campaign/Scene placement remains PPIA-08.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "NCG-source-resource-plus-owner-incorporation",
+          "sourceReferences": [],
+          "sourceResourceRefs": [
+            "gmr-npc-001@0.1"
+          ],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.social-situation.east-gate-priority@1.0.0",
+      "stableId": "mv.adventure.beacon-debt.social-situation.east-gate-priority",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-02.json",
+      "sourceDigest": "sha256:82597065cb8ee604fa70dbd4e24caf2fb28d9125392645556713bfa9836071c2",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.social-situation.east-gate-priority",
+        "name": "Priority at the East Gate",
+        "objectType": "mv.object.social-situation-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "social-situation",
+          "east-gate",
+          "beacon-debt"
+        ],
+        "locationRef": {
+          "ownerDomain": "PPIA-12",
+          "objectId": "mv.setting.vertigon.location.east-gate-interchange",
+          "objectVersion": "1.0.0"
+        },
+        "participantRefs": [
+          {
+            "ownerDomain": "PPIA-10",
+            "objectId": "mv.faction.lantern-compact",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-10/PPIA-12",
+            "objectId": "mv.setting.faction.administrative-syndicate",
+            "objectVersion": null,
+            "versionState": "stable source-backed identity; owning-domain current version must be revalidated before runtime composition",
+            "sourcePackVersion": "0.1.2",
+            "sourceAnchor": "The Administrative Syndicate",
+            "source": "mvPreFinal.pdf pp.4170-4238 / 8E-006D/E/F/G direct-source-reference"
+          },
+          {
+            "ownerDomain": "PPIA-02",
+            "objectId": "mv.adventure.beacon-debt.npc.mira-venn",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-02",
+            "objectId": "mv.adventure.beacon-debt.group.displaced-travelers",
+            "objectVersion": "1.0.0"
+          }
+        ],
+        "invariants": [
+          "There is no universally correct queue order.",
+          "Displaced travelers retain agency.",
+          "Mira can create one legitimate exception.",
+          "Expedited passage imposes opportunity cost elsewhere."
+        ],
+        "persistentConsequencePolicy": "Persistent relationship/standing consequences require attributable Events and an information path; no generic social-score adjustment exists.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "governed-authoring",
+          "sourceReferences": [],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.adventure.beacon-debt.social-situation.east-gate-priority@1.0.1",
+      "stableId": "mv.adventure.beacon-debt.social-situation.east-gate-priority",
+      "contentVersion": "1.0.1",
+      "sourceClass": "replacement",
+      "sourcePath": "content-source/beacon-debt-administrative-reference-replacements-v1.0.1.json",
+      "sourceDigest": "sha256:ffadabb7f59075cc6f94ae9a588bf41b6ebddb65b5df855192c91b85c0be19b5",
+      "gameObject": {
+        "id": "mv.adventure.beacon-debt.social-situation.east-gate-priority",
+        "name": "Priority at the East Gate",
+        "objectType": "mv.object.social-situation-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.1",
+        "replacementOf": {
+          "stableId": "mv.adventure.beacon-debt.social-situation.east-gate-priority",
+          "expectedContentVersion": "1.0.0",
+          "reason": "Resolve the previously null Administrative Syndicate participant objectVersion after owning-domain materialization."
+        },
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "social-situation",
+          "east-gate",
+          "beacon-debt"
+        ],
+        "locationRef": {
+          "ownerDomain": "PPIA-12",
+          "objectId": "mv.setting.vertigon.location.east-gate-interchange",
+          "objectVersion": "1.0.0"
+        },
+        "participantRefs": [
+          {
+            "ownerDomain": "PPIA-10",
+            "objectId": "mv.faction.lantern-compact",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-10/PPIA-12",
+            "objectId": "mv.setting.faction.administrative-syndicate",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-02",
+            "objectId": "mv.adventure.beacon-debt.npc.mira-venn",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-02",
+            "objectId": "mv.adventure.beacon-debt.group.displaced-travelers",
+            "objectVersion": "1.0.0"
+          }
+        ],
+        "invariants": [
+          "There is no universally correct queue order.",
+          "Displaced travelers retain agency.",
+          "Mira can create one legitimate exception.",
+          "Expedited passage imposes opportunity cost elsewhere."
+        ],
+        "persistentConsequencePolicy": "Persistent relationship/standing consequences require attributable Events and an information path; no generic social-score adjustment exists.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation plus exact-reference resolution",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "governed-authoring",
+          "sourceReferences": [
+            "mv.setting.faction.administrative-syndicate@1.0.0 materialized 2026-09-16"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.faction.lantern-compact@1.0.0",
+      "stableId": "mv.faction.lantern-compact",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-01.json",
+      "sourceDigest": "sha256:5950afb6cad815947ae7c884c4023208f03a5d1fe69784e8d2cdc6dd6cd075df",
+      "gameObject": {
+        "id": "mv.faction.lantern-compact",
+        "name": "The Lantern Compact",
+        "objectType": "mv.object.faction-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "faction",
+          "civilian-routes",
+          "route-safety"
+        ],
+        "settingMembershipRef": {
+          "ownerDomain": "D18/PPIA-12",
+          "objectId": "setting:vertigon",
+          "objectVersion": "1.0.0",
+          "referenceClass": "MIB-11 source-only stable identity",
+          "parentRef": "world:havalaea"
+        },
+        "definitionKind": "faction",
+        "purpose": "Maintain safe civilian routes.",
+        "methods": [
+          "guides",
+          "safehouses",
+          "signals",
+          "route-safety infrastructure"
+        ],
+        "publicPosture": "neutral",
+        "currentProject": {
+          "name": "Reopen Three Abandoned Beacons",
+          "siteCount": 3,
+          "beaconDebtSiteRef": "mv.setting.vertigon.location.east-route-beacon"
+        },
+        "explicitNonClaims": [
+          "The Lantern Compact is not sovereign East Gate authority.",
+          "No universal faction standing, influence, rank, or reputation scale is created."
+        ],
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "NCG-source-resource-plus-owner-incorporation",
+          "sourceReferences": [],
+          "sourceResourceRefs": [
+            "gmr-fac-001@0.1"
+          ],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.setting.faction-relationship.administrative-syndicate-east-gate@1.0.0",
+      "stableId": "mv.setting.faction-relationship.administrative-syndicate-east-gate",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-01.json",
+      "sourceDigest": "sha256:5950afb6cad815947ae7c884c4023208f03a5d1fe69784e8d2cdc6dd6cd075df",
+      "gameObject": {
+        "id": "mv.setting.faction-relationship.administrative-syndicate-east-gate",
+        "name": "Administrative Syndicate — East Gate Jurisdiction",
+        "objectType": "mv.object.faction-relationship-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": [
+          "routine access sequencing",
+          "inspection",
+          "closure administration"
+        ],
+        "tags": [
+          "vertigon",
+          "faction-relationship",
+          "jurisdiction",
+          "east-gate"
+        ],
+        "sourceRef": {
+          "ownerDomain": "PPIA-10/PPIA-12",
+          "objectId": "mv.setting.faction.administrative-syndicate",
+          "objectVersion": null,
+          "versionState": "stable source-backed identity; owning-domain current version must be revalidated before runtime composition",
+          "sourcePackVersion": "0.1.2",
+          "sourceAnchor": "The Administrative Syndicate",
+          "source": "mvPreFinal.pdf pp.4170-4238 / 8E-006D/E/F/G direct-source-reference"
+        },
+        "targetRef": {
+          "ownerDomain": "PPIA-12",
+          "objectId": "mv.setting.vertigon.location.east-gate-interchange",
+          "objectVersion": "1.0.0"
+        },
+        "relationType": "administers-routine-access-inspection",
+        "directional": true,
+        "authoredStatement": "The Administrative Syndicate administers routine East Gate access and inspection.",
+        "explicitNonClaims": [
+          "No sovereignty over all Vertigon.",
+          "No ownership or command of the Lantern Compact.",
+          "No corruption is implied.",
+          "No control of Black Feathers.",
+          "No automatic control of the entire East Transit Spine."
+        ],
+        "sourceFactStatus": "owner-authored canonical relation; not recovered-source fact",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "explicit-owner-authored-setting-relation",
+          "sourceReferences": [
+            "Owner decision BD-OD-002 accepted 2026-09-16",
+            "Administrative Syndicate stable identity: mv.setting.faction.administrative-syndicate (8E direct-source-reference)"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.setting.faction-relationship.administrative-syndicate-east-gate@1.0.1",
+      "stableId": "mv.setting.faction-relationship.administrative-syndicate-east-gate",
+      "contentVersion": "1.0.1",
+      "sourceClass": "replacement",
+      "sourcePath": "content-source/beacon-debt-administrative-reference-replacements-v1.0.1.json",
+      "sourceDigest": "sha256:ffadabb7f59075cc6f94ae9a588bf41b6ebddb65b5df855192c91b85c0be19b5",
+      "gameObject": {
+        "id": "mv.setting.faction-relationship.administrative-syndicate-east-gate",
+        "name": "Administrative Syndicate — East Gate Jurisdiction",
+        "objectType": "mv.object.faction-relationship-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.1",
+        "replacementOf": {
+          "stableId": "mv.setting.faction-relationship.administrative-syndicate-east-gate",
+          "expectedContentVersion": "1.0.0",
+          "reason": "Resolve the previously null Administrative Syndicate objectVersion after owning-domain materialization."
+        },
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": [
+          "routine access sequencing",
+          "inspection",
+          "closure administration"
+        ],
+        "tags": [
+          "vertigon",
+          "faction-relationship",
+          "jurisdiction",
+          "east-gate"
+        ],
+        "sourceRef": {
+          "ownerDomain": "PPIA-10/PPIA-12",
+          "objectId": "mv.setting.faction.administrative-syndicate",
+          "objectVersion": "1.0.0"
+        },
+        "targetRef": {
+          "ownerDomain": "PPIA-12",
+          "objectId": "mv.setting.vertigon.location.east-gate-interchange",
+          "objectVersion": "1.0.0"
+        },
+        "relationType": "administers-routine-access-inspection",
+        "directional": true,
+        "authoredStatement": "The Administrative Syndicate administers routine East Gate access and inspection.",
+        "explicitNonClaims": [
+          "No sovereignty over all Vertigon.",
+          "No ownership or command of the Lantern Compact.",
+          "No corruption is implied.",
+          "No control of Black Feathers.",
+          "No automatic control of the entire East Transit Spine."
+        ],
+        "sourceFactStatus": "owner-authored canonical relation; not recovered-source fact",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation plus exact-reference resolution",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "explicit-owner-authored-setting-relation",
+          "sourceReferences": [
+            "Owner decision BD-OD-002 accepted 2026-09-16",
+            "mv.setting.faction.administrative-syndicate@1.0.0 materialized 2026-09-16"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.setting.faction-relationship.lantern-compact-administrative-syndicate@1.0.0",
+      "stableId": "mv.setting.faction-relationship.lantern-compact-administrative-syndicate",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-01.json",
+      "sourceDigest": "sha256:5950afb6cad815947ae7c884c4023208f03a5d1fe69784e8d2cdc6dd6cd075df",
+      "gameObject": {
+        "id": "mv.setting.faction-relationship.lantern-compact-administrative-syndicate",
+        "name": "Lantern Compact — Administrative Syndicate Route-Safety Relationship",
+        "objectType": "mv.object.faction-relationship-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "relationship",
+          "route-safety"
+        ],
+        "sourceRef": {
+          "ownerDomain": "PPIA-10",
+          "objectId": "mv.faction.lantern-compact",
+          "objectVersion": "1.0.0"
+        },
+        "targetRef": {
+          "ownerDomain": "PPIA-10/PPIA-12",
+          "objectId": "mv.setting.faction.administrative-syndicate",
+          "objectVersion": null,
+          "versionState": "stable source-backed identity; owning-domain current version must be revalidated before runtime composition",
+          "sourcePackVersion": "0.1.2",
+          "sourceAnchor": "The Administrative Syndicate",
+          "source": "mvPreFinal.pdf pp.4170-4238 / 8E-006D/E/F/G direct-source-reference"
+        },
+        "relationType": "recognized-route-safety-participant",
+        "directional": true,
+        "semantics": "The Lantern Compact is sufficiently recognized to participate in route-safety infrastructure but does not possess sovereign East Gate authority.",
+        "explicitNonClaims": [
+          "licensed",
+          "subordinate",
+          "member",
+          "ally",
+          "contractor",
+          "automatic standing score"
+        ],
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-adaptation-relation",
+          "sourceReferences": [
+            "Beacon Debt Vertigon Adaptation Packet v0.1"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.setting.faction-relationship.lantern-compact-administrative-syndicate@1.0.1",
+      "stableId": "mv.setting.faction-relationship.lantern-compact-administrative-syndicate",
+      "contentVersion": "1.0.1",
+      "sourceClass": "replacement",
+      "sourcePath": "content-source/beacon-debt-administrative-reference-replacements-v1.0.1.json",
+      "sourceDigest": "sha256:ffadabb7f59075cc6f94ae9a588bf41b6ebddb65b5df855192c91b85c0be19b5",
+      "gameObject": {
+        "id": "mv.setting.faction-relationship.lantern-compact-administrative-syndicate",
+        "name": "Lantern Compact — Administrative Syndicate Route-Safety Relationship",
+        "objectType": "mv.object.faction-relationship-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.1",
+        "replacementOf": {
+          "stableId": "mv.setting.faction-relationship.lantern-compact-administrative-syndicate",
+          "expectedContentVersion": "1.0.0",
+          "reason": "Resolve the previously null Administrative Syndicate objectVersion after owning-domain materialization."
+        },
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "relationship",
+          "route-safety"
+        ],
+        "sourceRef": {
+          "ownerDomain": "PPIA-10",
+          "objectId": "mv.faction.lantern-compact",
+          "objectVersion": "1.0.0"
+        },
+        "targetRef": {
+          "ownerDomain": "PPIA-10/PPIA-12",
+          "objectId": "mv.setting.faction.administrative-syndicate",
+          "objectVersion": "1.0.0"
+        },
+        "relationType": "recognized-route-safety-participant",
+        "directional": true,
+        "semantics": "The Lantern Compact is sufficiently recognized to participate in route-safety infrastructure but does not possess sovereign East Gate authority.",
+        "explicitNonClaims": [
+          "licensed",
+          "subordinate",
+          "member",
+          "ally",
+          "contractor",
+          "automatic standing score"
+        ],
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation plus exact-reference resolution",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "owner-approved-adaptation-relation",
+          "sourceReferences": [
+            "Beacon Debt Vertigon Adaptation Packet v0.1",
+            "mv.setting.faction.administrative-syndicate@1.0.0 materialized 2026-09-16"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.setting.faction.administrative-syndicate@1.0.0",
+      "stableId": "mv.setting.faction.administrative-syndicate",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/vertigon-administrative-syndicate-canonical.json",
+      "sourceDigest": "sha256:295ddc1904cfb21eaea5e7bf155e3e9e9c68c1b6983d15e6ab9c99576e8d6d83",
+      "gameObject": {
+        "id": "mv.setting.faction.administrative-syndicate",
+        "name": "The Administrative Syndicate",
+        "objectType": "mv.object.faction-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "vertigon",
+          "faction",
+          "governance",
+          "mandated-corporations",
+          "administration"
+        ],
+        "settingRef": {
+          "ownerDomain": "D18/PPIA-12",
+          "objectId": "setting:vertigon",
+          "objectVersion": "1.0.0"
+        },
+        "definitionKind": "governing-body",
+        "composition": "A governing body composed of Mandated Corporations chosen by the Kosmer Royal Family.",
+        "sourceSupportedAuthority": "Mandated Corporations are granted formal dominion over specific aspects of Vertigon's operation and governance.",
+        "sourceSupportedPortfolioExamples": [
+          "transportation",
+          "housing",
+          "defense",
+          "multiversal transit",
+          "urban planning"
+        ],
+        "oversight": "Mandated Corporations remain answerable to the Throne and Goblifex scrutiny; the source also describes quarterly audits and reality-compliance reporting to the Imperial Bureau of Oversight.",
+        "explicitNonClaims": [
+          "This source-backed identity does not itself establish routine East Gate jurisdiction.",
+          "This identity does not imply sovereignty over every Vertigon institution or route.",
+          "This identity does not imply corruption, control of Black Feathers, ownership of the Lantern Compact, or control of the full East Transit Spine."
+        ],
+        "provenance": {
+          "authority": "Existing source-backed identity materialized under owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "direct-source-reference-plus-owner-version-materialization",
+          "sourceReferences": [
+            "Vertigon.PDF p.50 — Government & Control in Vertigon / The Mandated Corporations & The Administrative Syndicate",
+            "Multiversal-app A2-RD-013 governed Vertigon source snapshot",
+            "8E-006D/E/F/G v0.1.2 direct-source-reference record mv.setting.faction.administrative-syndicate"
+          ],
+          "sourcePackVersion": "0.1.2",
+          "sourcePackVersionIsObjectVersion": false,
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.setting.faction.black-feathers@1.0.0",
+      "stableId": "mv.setting.faction.black-feathers",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-01.json",
+      "sourceDigest": "sha256:5950afb6cad815947ae7c884c4023208f03a5d1fe69784e8d2cdc6dd6cd075df",
+      "gameObject": {
+        "id": "mv.setting.faction.black-feathers",
+        "name": "Black Feathers",
+        "objectType": "mv.object.faction-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "vertigon",
+          "faction",
+          "underworld",
+          "information",
+          "espionage"
+        ],
+        "settingRef": {
+          "ownerDomain": "D18/PPIA-12",
+          "objectId": "setting:vertigon",
+          "objectVersion": "1.0.0",
+          "referenceClass": "MIB-11 source-only stable identity",
+          "parentRef": "world:havalaea"
+        },
+        "definitionKind": "organization",
+        "roles": [
+          "information syndicate",
+          "espionage syndicate"
+        ],
+        "activities": [
+          "sells secrets to the highest bidder"
+        ],
+        "explicitNonClaims": [
+          "No standing global map-buying practice is established.",
+          "No bridge or beacon sabotage is established.",
+          "No East Gate authority or compromised official is established.",
+          "No reusable logo, credential, account convention, hierarchy, leader, courier protocol, or handler protocol is established."
+        ],
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "explicit-source-plus-owner-incorporation",
+          "sourceReferences": [
+            "part-3/Part 3/Worlds/Vertigon.PDF p.49",
+            "semantic recovery candidate mv.world.black-market-underworld-powers.b3387bbf finding 895e1c5ae6849980e477"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.setting.vertigon.hazard.transit-crossflow-cascade@1.0.0",
+      "stableId": "mv.setting.vertigon.hazard.transit-crossflow-cascade",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-02.json",
+      "sourceDigest": "sha256:82597065cb8ee604fa70dbd4e24caf2fb28d9125392645556713bfa9836071c2",
+      "gameObject": {
+        "id": "mv.setting.vertigon.hazard.transit-crossflow-cascade",
+        "name": "Transit Crossflow Cascade",
+        "objectType": "mv.object.hazard-definition",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "vertigon",
+          "hazard",
+          "transit"
+        ],
+        "settingRef": {
+          "ownerDomain": "D18/PPIA-12",
+          "objectId": "setting:vertigon",
+          "objectVersion": "1.0.0",
+          "referenceClass": "MIB-11 source-only stable identity",
+          "parentRef": "world:havalaea"
+        },
+        "routeRefs": [
+          {
+            "ownerDomain": "PPIA-12",
+            "objectId": "mv.setting.vertigon.location.east-transit-spine",
+            "objectVersion": "1.0.0"
+          },
+          {
+            "ownerDomain": "PPIA-12",
+            "objectId": "mv.setting.vertigon.location.eastern-bridge",
+            "objectVersion": "1.0.0"
+          }
+        ],
+        "hazardClass": "transport-congestion-crossflow",
+        "pressures": [
+          "congestion/crossflow",
+          "delay",
+          "secondary accidents",
+          "rescue/logistics pressure",
+          "interaction with gate priority"
+        ],
+        "mechanicsPolicy": "Exact movement, Effect, Condition, resource, DC, damage, or action-economy mechanics are not defined here and remain with owning rule domains.",
+        "excludedLegacyMechanics": [
+          "legacy DCs",
+          "damage dice",
+          "exhaustion assumptions",
+          "universal vehicle checks"
+        ],
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "governed-authoring",
+          "sourceReferences": [
+            "Owner-approved Beacon Debt Vertigon adaptation",
+            "Urban Environments transit/traffic pressure source concept (mechanics stripped)"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.setting.vertigon.location.east-gate-interchange@1.0.0",
+      "stableId": "mv.setting.vertigon.location.east-gate-interchange",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-01.json",
+      "sourceDigest": "sha256:5950afb6cad815947ae7c884c4023208f03a5d1fe69784e8d2cdc6dd6cd075df",
+      "gameObject": {
+        "id": "mv.setting.vertigon.location.east-gate-interchange",
+        "name": "East Gate Interchange",
+        "objectType": "mv.object.location-node",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "vertigon",
+          "location",
+          "checkpoint",
+          "east-gate"
+        ],
+        "settingRef": {
+          "ownerDomain": "D18/PPIA-12",
+          "objectId": "setting:vertigon",
+          "objectVersion": "1.0.0",
+          "referenceClass": "MIB-11 source-only stable identity",
+          "parentRef": "world:havalaea"
+        },
+        "locationKind": "checkpoint-access-node",
+        "routeRef": {
+          "ownerDomain": "PPIA-12",
+          "objectId": "mv.setting.vertigon.location.east-transit-spine",
+          "objectVersion": "1.0.0"
+        },
+        "roles": [
+          "queue",
+          "inspection",
+          "access control"
+        ],
+        "authorityRelationRef": {
+          "ownerDomain": "PPIA-10/PPIA-12",
+          "objectId": "mv.setting.faction-relationship.administrative-syndicate-east-gate",
+          "objectVersion": "1.0.0"
+        },
+        "explicitNonClaims": [
+          "No corruption implied.",
+          "No universal checkpoint mechanics or social DC."
+        ],
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "governed-authoring",
+          "sourceReferences": [],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.setting.vertigon.location.east-route-beacon@1.0.0",
+      "stableId": "mv.setting.vertigon.location.east-route-beacon",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-01.json",
+      "sourceDigest": "sha256:5950afb6cad815947ae7c884c4023208f03a5d1fe69784e8d2cdc6dd6cd075df",
+      "gameObject": {
+        "id": "mv.setting.vertigon.location.east-route-beacon",
+        "name": "East Route Beacon",
+        "objectType": "mv.object.location-node",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "vertigon",
+          "location",
+          "beacon",
+          "route-safety"
+        ],
+        "settingRef": {
+          "ownerDomain": "D18/PPIA-12",
+          "objectId": "setting:vertigon",
+          "objectVersion": "1.0.0",
+          "referenceClass": "MIB-11 source-only stable identity",
+          "parentRef": "world:havalaea"
+        },
+        "locationKind": "route-safety-signal-relay",
+        "routeRef": {
+          "ownerDomain": "PPIA-12",
+          "objectId": "mv.setting.vertigon.location.east-transit-spine",
+          "objectVersion": "1.0.0"
+        },
+        "factionRef": {
+          "ownerDomain": "PPIA-10",
+          "objectId": "mv.faction.lantern-compact",
+          "objectVersion": "1.0.0"
+        },
+        "projectRole": "one site within the Lantern Compact's existing three-beacon restoration project",
+        "functions": [
+          "route-safety signaling",
+          "navigation support",
+          "portal-alignment/route relay as packet-local implementation"
+        ],
+        "explicitNonClaims": [
+          "Restoration does not guarantee perfect safety.",
+          "Restoration does not establish political neutrality.",
+          "No fourth beacon is created."
+        ],
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "governed-authoring",
+          "sourceReferences": [],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.setting.vertigon.location.east-transit-spine@1.0.0",
+      "stableId": "mv.setting.vertigon.location.east-transit-spine",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-01.json",
+      "sourceDigest": "sha256:5950afb6cad815947ae7c884c4023208f03a5d1fe69784e8d2cdc6dd6cd075df",
+      "gameObject": {
+        "id": "mv.setting.vertigon.location.east-transit-spine",
+        "name": "East Transit Spine",
+        "objectType": "mv.object.location-node",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "vertigon",
+          "location",
+          "transport",
+          "route"
+        ],
+        "settingRef": {
+          "ownerDomain": "D18/PPIA-12",
+          "objectId": "setting:vertigon",
+          "objectVersion": "1.0.0",
+          "referenceClass": "MIB-11 source-only stable identity",
+          "parentRef": "world:havalaea"
+        },
+        "locationKind": "transport-corridor",
+        "roles": [
+          "civilian passage",
+          "commercial passage",
+          "route access",
+          "social/economic dependency"
+        ],
+        "invariants": [
+          "Multiple actors depend on access.",
+          "Disruption has social and economic consequences.",
+          "Alternate paths exist but are inferior in a bounded way.",
+          "Reopening can change control and profit relationships."
+        ],
+        "unknownsPreserved": [
+          "exact coordinates",
+          "length",
+          "capacity",
+          "pricing",
+          "transport proportions",
+          "district containment",
+          "ownership",
+          "mechanics"
+        ],
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "governed-authoring",
+          "sourceReferences": [
+            "Owner-approved Beacon Debt Vertigon adaptation"
+          ],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.setting.vertigon.location.eastern-bridge@1.0.0",
+      "stableId": "mv.setting.vertigon.location.eastern-bridge",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-02.json",
+      "sourceDigest": "sha256:82597065cb8ee604fa70dbd4e24caf2fb28d9125392645556713bfa9836071c2",
+      "gameObject": {
+        "id": "mv.setting.vertigon.location.eastern-bridge",
+        "name": "Eastern Bridge",
+        "objectType": "mv.object.location-node",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "vertigon",
+          "location",
+          "bridge"
+        ],
+        "settingRef": {
+          "ownerDomain": "D18/PPIA-12",
+          "objectId": "setting:vertigon",
+          "objectVersion": "1.0.0",
+          "referenceClass": "MIB-11 source-only stable identity",
+          "parentRef": "world:havalaea"
+        },
+        "locationKind": "crossing-bridge",
+        "routeRef": {
+          "ownerDomain": "PPIA-12",
+          "objectId": "mv.setting.vertigon.location.east-transit-spine",
+          "objectVersion": "1.0.0"
+        },
+        "definitionExcludes": [
+          "synthetic bridge damage state",
+          "fictional prior Session history"
+        ],
+        "runtimeStartingStatePolicy": "Damage/reduced passage may be instantiated only as explicit Campaign-local synthetic starting state.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "governed-authoring",
+          "sourceReferences": [],
+          "sourceResourceRefs": [],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    },
+    {
+      "key": "mv.setting.vertigon.location.listening-market@1.0.0",
+      "stableId": "mv.setting.vertigon.location.listening-market",
+      "contentVersion": "1.0.0",
+      "sourceClass": "supplemental",
+      "sourcePath": "content-source/beacon-debt-canonical-part-02.json",
+      "sourceDigest": "sha256:82597065cb8ee604fa70dbd4e24caf2fb28d9125392645556713bfa9836071c2",
+      "gameObject": {
+        "id": "mv.setting.vertigon.location.listening-market",
+        "name": "The Listening Market",
+        "objectType": "mv.object.location-node",
+        "schemaVersion": "1.0.0",
+        "contentVersion": "1.0.0",
+        "canonStatus": "approved",
+        "lifecycleStatus": "approved",
+        "scope": "reusable-definition",
+        "tags": [
+          "vertigon",
+          "location",
+          "market",
+          "information"
+        ],
+        "settingRef": {
+          "ownerDomain": "D18/PPIA-12",
+          "objectId": "setting:vertigon",
+          "objectVersion": "1.0.0",
+          "referenceClass": "MIB-11 source-only stable identity",
+          "parentRef": "world:havalaea"
+        },
+        "locationKind": "market-information-node",
+        "sourceIdentity": "gmr-loc-001",
+        "features": [
+          "goods and information bazaar",
+          "chimes mask conversation",
+          "auction bell",
+          "message wall",
+          "roof tea stalls"
+        ],
+        "exits": [
+          "docks",
+          "archive",
+          "shrine court"
+        ],
+        "pressures": [
+          "competing buyer surveillance",
+          "buyers watching buyers"
+        ],
+        "sourceObservation": "Someone is purchasing maps of places or routes the party recently visited.",
+        "placementStatus": "Owner-approved Vertigon incorporation; source resource identity/provenance retained.",
+        "provenance": {
+          "authority": "Owner-authorized canonical incorporation",
+          "ownerDecisionDate": "2026-09-16",
+          "evidenceClass": "NCG-source-resource-plus-owner-authored-setting-placement",
+          "sourceReferences": [],
+          "sourceResourceRefs": [
+            "gmr-loc-001@0.1"
+          ],
+          "noPlaytestClaim": true,
+          "noReleaseClaim": true,
+          "noBalanceClaim": true
+        }
+      }
+    }
+  ]
+}
