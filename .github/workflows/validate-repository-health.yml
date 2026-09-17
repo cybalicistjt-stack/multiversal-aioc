@@ -95,6 +95,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_operations_v3_single_door.py
 
+      - name: Run OPS3 execution/concurrency regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_ops3_execution_concurrency.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |
