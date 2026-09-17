@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS3-02",
+  "title": "Execution Completion and Merge-Concurrency Hardening",
+  "lane": "operations",
+  "status": "in_progress",
+  "owner_authorized": true,
+  "implementation_authority": true,
+  "purpose": "Restore executable OPS3 enforcement for bounded Continue completion and serialize publication to main so concurrent conversations cannot race or invalidate exact-tree evidence.",
+  "preserved_product_state": {
+    "selected_work_item": "PCA-13",
+    "attempt_id": "PCA-13-attempt-001",
+    "status": "selected_not_started",
+    "implementation_authority": false,
+    "implementation_branch": null
+  },
+  "scope": [
+    "add an OPS3-native nonterminal response/termination guard without restoring Operations V2 authority",
+    "make multi-Continue and stall incidents machine-visible execution-conformance failures rather than silently clean",
+    "add a compare-and-swap publication lease for main merges in Multiversal-app and multiversal-aioc",
+    "require fresh target-main reconciliation under the lease before merge and exact durable-result verification before release",
+    "batch multi-file control-plane projections atomically to reduce serial writes and partial closeouts",
+    "add focused regressions for premature terminal response, multi-Continue certification, stale-main publication and competing lease acquisition"
+  ],
+  "non_goals": [
+    "change product priority or start PCA-13",
+    "restore Operations V2 as an authority source",
+    "add a second current-state selector",
+    "require a long-lived pre-main branch as a second source of truth",
+    "depend on GitHub repository administration features unavailable to the connected executor"
+  ],
+  "acceptance_criteria": [
+    "an in-progress bounded Continue cannot pass the OPS3 response gate as terminal without an owner-only or external blocker record",
+    "a completed checkpoint with more than one Continue cannot report a clean execution-conformance result",
+    "publication protocol uses a compare-and-swap merge lease and rejects stale-main merge authorization",
+    "two competing lease acquisitions from the same observed lease head cannot both succeed",
+    "multi-file control-plane projection guidance uses one tree/commit/ref update rather than sequential file commits",
+    "OPS3 repository validation and focused regressions pass on the exact candidate",
+    "PCA-13 remains selected_not_started with no implementation authority after closeout"
+  ],
+  "completion_evidence": {},
+  "completion_rule": "Close only after exact-head OPS3 validation is green, the serialized publication/response guards are merged, and CURRENT is reconciled back to PCA-13 selected_not_started with the operations freeze cleared."
+}
