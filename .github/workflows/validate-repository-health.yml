@@ -120,7 +120,13 @@ jobs:
           node scripts/build-canonical-version-index.mjs
           python3 tests/control_plane/test_beacon_debt_golden_diagnostics.py
 
-      - name: Validate Beacon Debt pre-runtime fixture candidate
+      - name: Build Beacon Debt A5 runtime fixture and immutable snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_beacon_debt_runtime_fixture.py
+
+      - name: Validate Beacon Debt runtime fixture and immutable snapshot
         shell: bash
         run: |
           set -euo pipefail
@@ -132,19 +138,22 @@ jobs:
           set -euo pipefail
           node tests/validate-content-library-staging.mjs
 
-      - name: Publish certified generated content DB on main
+      - name: Publish certified generated content DB and runtime evidence on main
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A content-db evidence/content-pipeline/latest-certificate.json evidence/content-pipeline/beacon-debt-golden-diagnostics.json
+          git add -A content-db \
+            evidence/content-pipeline/latest-certificate.json \
+            evidence/content-pipeline/beacon-debt-golden-diagnostics.json \
+            evidence/content-pipeline/beacon-debt-runtime-instantiated.json
           if git diff --cached --quiet; then
-            echo 'Generated canonical content DB already matches certified output.'
+            echo 'Generated canonical content DB and runtime evidence already match certified output.'
             exit 0
           fi
-          git commit -m 'chore: publish certified generated content database [skip ci]'
+          git commit -m 'chore: publish certified generated content and Beacon Debt runtime snapshot [skip ci]'
           git push origin HEAD:main
 
       - name: Upload certified canonical content evidence
@@ -157,6 +166,7 @@ jobs:
             evidence/content-pipeline/latest-certificate.json
             evidence/content-pipeline/beacon-debt-golden-diagnostics.json
             evidence/content-pipeline/beacon-debt-runtime-fixture-candidate.json
+            evidence/content-pipeline/beacon-debt-runtime-instantiated.json
           if-no-files-found: warn
           retention-days: 14
 
