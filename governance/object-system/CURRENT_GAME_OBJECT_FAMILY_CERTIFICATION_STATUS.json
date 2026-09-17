@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "authority_id": "MV-GAME-OBJECT-FAMILY-CERTIFICATION-2026-09-17",
   "status": "CURRENT_FAMILY_CERTIFICATION_STATUS",
-  "normalization_authority": "MV-GAME-OBJECT-NORMALIZATION-AUTHORITY-2026-09-17",
+  "working_population_authority": "governance/object-system/CURRENT_GAME_OBJECT_NORMALIZATION_AUTHORITY.json",
+  "working_population": 21495,
   "families": {
     "weapons": {
       "population": 2056,
@@ -10,21 +10,33 @@
       "ranged": 1032,
       "mechanics_content_complete": 2056,
       "runtime_owner_bound": 2056,
-      "atomic_action_contract_bound": 2056,
-      "new_inline_repairs": 2459,
-      "property_rule_registry_entries": 409,
-      "mechanics_content_blockers": 0,
-      "runtime_execution_status": "EXECUTION_ADAPTER_PENDING_GENERIC_WEAPON_PROPERTY_RESOLVER",
       "game_ready": 0,
-      "library_folder": "/Multiversal Canonical Game Objects/Normalized v1.0.0/Certification/Weapons v1.0.0",
-      "package_sha256": "d762ecb4a36deb4321bcddade98b5d61702277443fcb8a054455bdbd3d6ef736"
+      "status": "MECHANICS_COMPLETE_OWNER_BOUND_RUNTIME_ADAPTER_PENDING",
+      "pending_adapter": "generic weapon-property/effect runtime resolver"
+    },
+    "protection_eva": {
+      "population": 691,
+      "armor": 195,
+      "shields": 48,
+      "powered_armor": 28,
+      "eva_suits": 25,
+      "eva_modules": 395,
+      "mechanics_content_complete": 691,
+      "runtime_owner_bound": 691,
+      "inline_repairs": 1361,
+      "protection_rule_registry_entries": 273,
+      "content_blockers": 0,
+      "game_ready": 0,
+      "status": "MECHANICS_COMPLETE_OWNER_BOUND_RUNTIME_ADAPTER_PENDING",
+      "pending_adapters": [
+        "generic protection/effect runtime resolver",
+        "generic protection/environment/EVA-suit resolver",
+        "generic EVA-module effect/compatibility resolver"
+      ],
+      "package_sha256": "47836fd82527d3c37e8ac018b542753414b602699b9dbf03264726a5d4f2dfa4",
+      "library_path": "/Multiversal Canonical Game Objects/Normalized v1.0.0/Family Certifications/Protection v1.0.0"
     }
   },
-  "selection_rules": [
-    "This file tracks family-deep certification overlays on the current normalized 21,495-object layer.",
-    "Family certification overlays do not replace the normalized object identity; they add governed mechanics/runtime/readiness assertions keyed by object_id.",
-    "A family may be mechanics-complete and owner-bound without being runtime-executable or GAME_READY.",
-    "Do not use historical P1/CCTI/FIAA family counts for current family population selection."
-  ],
-  "next_family": "protection: item.armor + item.shield + item.powered-armor + item.eva-suit, then EVA modules"
+  "selection_rule": "Historical P1/CCTI/OGR/FIAA family counts and pilot records are provenance/history only and must not select the current working family population.",
+  "next_family": "computers/software/components/AI systems"
 }
