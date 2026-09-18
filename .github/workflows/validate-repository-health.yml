@@ -125,6 +125,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_mvps04_scale_movement_sense_integration.py
 
+      - name: Run MVPS-05 physiology environment regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps05_physiology_environment.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |
