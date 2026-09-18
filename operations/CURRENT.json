@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 176,
+  "state_revision": 177,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -26,13 +26,13 @@
       "implementation_authority": false
     },
     "product-development": {
-      "state": "in_progress",
-      "selected_work_item": "MNCS-10",
-      "attempt_id": "MNCS-10-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MNCS-10-attempt-001.json",
-      "implementation_branch": "work/mncs-10-mechanics-rules-ability-equipment-capability",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue governed-started MNCS-10 from the selected_not_started checkpoint on fresh application base 5e3cf4175e5473c48f41925452b714a7b60788a1. Execute only MNCS-10 through causal RED, GREEN, proof, exact-head validation, serialized publication, fresh DAG reconciliation and atomic closeout. The parallel ui-implementation lane remains UISR-06 in_progress and independent."
+      "state": "selected_not_started",
+      "selected_work_item": "MNCS-12",
+      "attempt_id": "MNCS-12-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MNCS-12-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MNCS-10 completed_verified on application PR 584 after two stale-base reconciliations caused by concurrent UISR publications, final exact-head revalidation run 35359035006, and exact-tree publication as squash merge cff611265c9dca1d9b670ba41db68f2e51b451b4 with tree 3dd3e77337e554850c27dae3178db0c767b1449c. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 and MNCS backlog reconciliation select MNCS-12. No implementation branch or authority exists until a later owner Continue."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -78,5 +78,5 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. MVPS/player-species is independently selectable; shared-owner contract edits require explicit dependency coordination and same-repository publication is serialized by OPS3 merge leases."
   },
-  "next_project_action": "Route by selected lane: product-development independently remains MNCS-10 in_progress; ui-implementation independently remains UISR-08 in_progress; player-species independently awaits an MVPS-specific Continue to govern-start MVPS-01. No lane pauses or rewrites another."
+  "next_project_action": "Route by selected lane: product-development next owner Continue governed-starts MNCS-12 — Creature Ecology, Behavior, Social Structure, Territory & Tactics Authoring — from MNCS-12-attempt-001; ui-implementation independently remains UISR-08 in_progress; player-species independently remains MVPS-01 selected_not_started. Do not mutate the other lanes."
 }
