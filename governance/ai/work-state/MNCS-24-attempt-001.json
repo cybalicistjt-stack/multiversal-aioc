@@ -7,10 +7,10 @@
   "track": "multiversal-npc-creature-studio",
   "source_program": "MNCS",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/mncs-24-golden-campaign-continuity-proof",
   "completed": false,
   "objective": "Prove the completed MNCS family end-to-end through progressive NPC/creature generation, selective refinement, continuity-safe campaign evolution, governed review/provenance, optional-AI boundaries and local-first operation without collapsing candidate, accepted-definition, placement or live-instance authority.",
   "predecessor": {
@@ -42,28 +42,31 @@
     "The independent ui-implementation lane remains UISR-10 in_progress and player-species remains MVPS-05 in_progress; both are preserved unchanged."
   ],
   "implementation_plan": {
-    "red": "pending",
+    "red": "in_progress",
     "green": "pending",
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": null,
-  "next_action": "Wait for the next owner Continue in the product-development lane. On that command, governed-start MNCS-24 with the OPS3 execution guard; do not implement while selected_not_started.",
+  "active_substep": "red",
+  "next_action": "Establish causal RED for the final progressive generation/campaign-continuity golden proof, including selective refinement, provenance/review, hidden/canonical safety, optional-AI boundaries and local-first operation; then implement only the missing MNCS-24 proof seam.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
-    "stop_reason": {
-      "kind": "selection_only",
-      "evidence": "MNCS-24 is selected_not_started after fresh post-MNCS-22 DAG/backlog reconciliation; no bounded MNCS-24 execution is active."
-    }
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "in_progress",
     "policy_violations": []
+  },
+  "governed_start": {
+    "aioc_base_sha": "75c7520f2e592266be3c4d2b8cb6b699aa7a8b5a",
+    "application_base_sha": "0c3008dea5b378cb4151563b30505e0a5054c22a",
+    "owner_command": "Continue",
+    "started_on": "2026-09-18"
   }
 }
