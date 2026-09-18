@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesChoiceSchema",
+  "record_type": "SpeciesChoiceSchema",
+  "status": "MVPS-02_CANONICAL_CONTRACT",
+  "purpose": "Describe player-species creation choices declaratively so builders can enumerate required decisions and validators can evaluate legality without embedding UI-specific or species-specific runtime logic.",
+  "source_basis": [
+    "PROJECT_BIBLE_OPS3_REFERENCE.md §9.3 staged character creation",
+    "PROJECT_BIBLE_OPS3_REFERENCE.md §9.4 validation gates",
+    "PROJECT_BIBLE_OPS3_REFERENCE.md §25.4 species choice layers",
+    "DB-004 characters-and-progression.md Creation and validation",
+    "DB-004 creatures-npcs-and-species.md Species",
+    "SCREEN_DESIGN_BIBLE.md SD-103 Character Builder"
+  ],
+  "execution_policy": "declarative_choice_constraints_only",
+  "fixed_grants_policy": "not_selectable_but_receipted",
+  "required_choice_enumeration": {
+    "deterministic": true,
+    "include_resolved": false,
+    "include_unresolved_required": true,
+    "stable_order": [
+      "stage_order",
+      "group_order",
+      "choice_group_id"
+    ],
+    "rule": "Given the same species/version, campaign context, entitlement context and recorded selections, the builder-visible required-choice list must be reproducible."
+  },
+  "choice_group_kinds": [
+    "selected_trait",
+    "optional_alternative",
+    "lineage",
+    "form",
+    "adaptation",
+    "substitution"
+  ],
+  "gate_kinds": [
+    "prerequisite",
+    "mutual_exclusion",
+    "budget",
+    "source_availability",
+    "campaign",
+    "setting",
+    "entitlement"
+  ],
+  "group_contract": {
+    "required": [
+      "choice_group_id",
+      "kind",
+      "label",
+      "required",
+      "selection_rule",
+      "option_refs",
+      "rule_source_refs"
+    ],
+    "selection_rule_modes": [
+      "choose_exactly",
+      "choose_at_least",
+      "choose_at_most",
+      "choose_between",
+      "spend_budget",
+      "choose_zero_or_more"
+    ],
+    "optional": [
+      "min_selections",
+      "max_selections",
+      "exact_selections",
+      "budget",
+      "gate_refs",
+      "alternative_group_ref",
+      "substitution_target_ref",
+      "presentation_hints"
+    ],
+    "presentation_hints_authoritative": false
+  },
+  "option_contract": {
+    "required": [
+      "option_id",
+      "record_ref",
+      "source_ref"
+    ],
+    "optional": [
+      "cost",
+      "gate_refs",
+      "replaces_ref",
+      "grants_ref",
+      "notes"
+    ],
+    "rule": "Options reference canonical records or later-layer records; this schema does not duplicate their mechanics."
+  },
+  "budget_contract": {
+    "required": [
+      "budget_id",
+      "unit",
+      "amount",
+      "rule_source_ref"
+    ],
+    "rule": "Budgets are validation constraints, not mutable currencies unless a shared owner contract explicitly defines one."
+  },
+  "substitution_contract": {
+    "required": [
+      "substitution_id",
+      "target_ref",
+      "replacement_ref",
+      "rule_source_ref"
+    ],
+    "rule": "A substitution must explicitly identify what is replaced, by what, and why."
+  },
+  "unresolved_policy": {
+    "represent_explicitly": true,
+    "fabricate_default": false,
+    "blocking_when_required": true,
+    "preserve_on_save": true
+  },
+  "extension_policy": {
+    "namespace_required": true,
+    "override_core_fields": false
+  }
+}
