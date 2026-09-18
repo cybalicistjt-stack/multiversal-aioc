@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-01",
+  "title": "Canonical Species Aggregate and Invariants",
+  "attempt_id": "MVPS-01-attempt-001",
+  "lane": "player-species",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_owner": "2026-09-18",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "An MVPS-specific Continue may govern-start MVPS-01. Do not start MVPS-02+ and do not mutate product-development/MNCS or ui-implementation/UISR state.",
+  "predecessor": null,
+  "strict_successor": "MVPS-02",
+  "required_sources": [
+    "governance/application-planning/player-species/MVPS_PLAYER_SPECIES_PROGRAM.md",
+    "governance/application-planning/player-species/MVPS_PROGRAM_BACKLOG.json",
+    "PROJECT_BIBLE_OPS3_REFERENCE.md character lifecycle/composition/progression/actions/effects/resources/abilities",
+    "FEATURE_BIBLE.md relevant shared-domain integration contracts",
+    "SCREEN_DESIGN_BIBLE.md SD-102/SD-103 character sheet/builder contracts",
+    "Multiversal_DB-004_Game_Framework_OPS3_REFERENCE_v0.2.0.zip species/character framework references"
+  ],
+  "boundaries": [
+    "MVPS-01 is contract/schema/invariant work only.",
+    "Species describe/grant capabilities and do not create a bespoke mechanics engine.",
+    "Shared Character/Ability/Equipment/Environment owner contracts are consumed as dependencies; changes to them require explicit coordination.",
+    "Later MVPS tranches remain unauthorized until separately selected."
+  ],
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "terminal_reason": "selected_not_started; no execution attempt has begun"
+  }
+}
