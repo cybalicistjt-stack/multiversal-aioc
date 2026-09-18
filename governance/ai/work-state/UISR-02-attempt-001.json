@@ -7,10 +7,10 @@
   "track": "ui-skin-runtime",
   "source_program": "UISR",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "feature/uisr-02-token-material-frame-runtime",
   "completed": false,
   "objective": "Implement the bounded UISK presentation-engine layer for token resolution, material/surface recipes, frame/border/ornament composition, cost/degradation metadata and safe fallbacks over the UISR-01 registry foundation.",
   "predecessor": {
@@ -47,25 +47,30 @@
     "Publication to Multiversal-app main remains serialized by the existing merge lease and requires fresh-base reconciliation if another lane publishes first."
   ],
   "implementation_plan": {
-    "red": "pending",
+    "red": "in_progress",
     "green": "pending",
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": "selected_not_started",
-  "next_action": "Await owner Continue. On Continue, fresh-read OPS3, govern-start UISR-02 on a dedicated UI branch from then-current application main, and execute only the bounded UISR-02 tranche.",
+  "active_substep": "red",
+  "next_action": "Establish causal RED for token resolution, material recipes, frame/ornament composition and safe fallback, then implement the bounded UISR-02 runtime through exact-head cross-platform validation, serialized publication and closeout. Do not touch product-development/MCS state.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
-    "stop_reason": "selected_not_started"
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "conforming",
     "policy_violations": []
+  },
+  "governed_start": {
+    "application_base_sha": "2ffc8cb79abae30ccdd9b6b943626b7d0553b42d",
+    "owner_command": "Continue",
+    "started_on": "2026-09-18"
   }
 }
