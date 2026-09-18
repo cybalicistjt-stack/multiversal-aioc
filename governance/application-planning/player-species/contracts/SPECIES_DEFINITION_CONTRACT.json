@@ -1,0 +1,207 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesDefinition",
+  "record_type": "SpeciesDefinition",
+  "status": "MVPS-01_CANONICAL_CONTRACT",
+  "purpose": "Define the stable player-species aggregate boundary without creating a species-specific mechanics engine or duplicating shared biological/entity truth.",
+  "source_basis": [
+    "PROJECT_BIBLE_OPS3_REFERENCE.md §25.2-25.6 species/form/adaptation separation and species grant/reference model",
+    "PROJECT_BIBLE_OPS3_REFERENCE.md §9.3-9.6 character creation, validation and migration",
+    "PROJECT_BIBLE_OPS3_REFERENCE.md §10.1-10.4 character aggregate, state distinctions, grant provenance and derived rules",
+    "DB-004 DevelopmentBible/02-game-framework/creatures-npcs-and-species.md",
+    "DB-004 DevelopmentBible/02-game-framework/characters-and-progression.md",
+    "MVPS approved 2026-09-18 player-species completeness audit"
+  ],
+  "authority_boundary": {
+    "owns": [
+      "player-species aggregate identity and composition envelope",
+      "species-specific references and grant declarations",
+      "species record lifecycle/provenance/version envelope",
+      "species extension namespace"
+    ],
+    "does_not_own": [
+      "shared ability/action/effect/condition/resource mechanics",
+      "generic character state engine",
+      "generic inventory/equipment engine",
+      "generic environment resolution",
+      "NPC/creature proposal composition",
+      "form/transformation runtime",
+      "choice-transaction semantics reserved for MVPS-02"
+    ]
+  },
+  "mechanics_policy": "references_and_grants_only",
+  "descriptive_fields_policy": "non_executable",
+  "lifecycle_states": [
+    "draft",
+    "rules_incomplete",
+    "ready_for_validation",
+    "valid_playable",
+    "migration_required",
+    "deprecated",
+    "retired",
+    "archived"
+  ],
+  "lifecycle_note": "The controlling character lifecycle requires distinctions beyond a single active/inactive flag and leaves the exact enum to implementation. This species-record enum is the MVPS-01 implementation contract; later validation/migration tranches may add transition rules without collapsing these distinctions.",
+  "required_top_level_fields": [
+    "identity",
+    "versioning",
+    "provenance",
+    "lifecycle_state",
+    "taxonomy",
+    "setting_scope",
+    "biology_descriptor",
+    "morphology_profile_ref",
+    "scale_profile_ref",
+    "choice_schema_ref",
+    "sense_grants",
+    "movement_grants",
+    "adaptation_grants",
+    "capability_grants",
+    "compatibility_profile_ref",
+    "lineage_refs",
+    "form_refs",
+    "progression_refs",
+    "lore_culture_links",
+    "presentation_assets",
+    "validation_profile_ref",
+    "extension_data"
+  ],
+  "field_contracts": {
+    "identity": {
+      "required": [
+        "species_id",
+        "canonical_name"
+      ],
+      "optional": [
+        "aliases",
+        "namespace"
+      ],
+      "rule": "species_id is stable identity; presentation/name changes do not mint a new identity unless canon declares a distinct species record"
+    },
+    "versioning": {
+      "required": [
+        "schema_version",
+        "record_version"
+      ],
+      "optional": [
+        "compatibility_version",
+        "supersedes_ref",
+        "replacement_ref"
+      ],
+      "rule": "character selections pin exact species record version; incompatible evolution is handled through migration rather than silent substitution"
+    },
+    "provenance": {
+      "required": [
+        "source_refs",
+        "authority_status"
+      ],
+      "optional": [
+        "coverage_status",
+        "conflict_refs",
+        "missing_information_refs"
+      ],
+      "rule": "missing or conflicting canon remains explicit and is never fabricated"
+    },
+    "lifecycle_state": {
+      "enum_ref": "lifecycle_states",
+      "rule": "state is explicit and is not represented by a single active boolean"
+    },
+    "taxonomy": {
+      "classification": "descriptive",
+      "executable": false,
+      "rule": "taxonomy can classify/link the species but cannot directly execute rules"
+    },
+    "setting_scope": {
+      "classification": "reference_set",
+      "executable": false,
+      "rule": "setting/lore applicability is referenced and does not encode campaign mutation"
+    },
+    "biology_descriptor": {
+      "classification": "descriptive",
+      "executable": false,
+      "rule": "physical/biological description may state authored facts; any executable survival, resistance, sense, movement or capability effect must be expressed through a typed shared-record grant/reference"
+    },
+    "morphology_profile_ref": {
+      "classification": "shared_owner_reference",
+      "owner": "morphology/body-plan contract",
+      "inline_mechanics": false
+    },
+    "scale_profile_ref": {
+      "classification": "shared_owner_reference",
+      "owner": "scale/rules profile",
+      "inline_mechanics": false
+    },
+    "choice_schema_ref": {
+      "classification": "mvps_reference",
+      "owner": "MVPS-02 choice schema",
+      "inline_mechanics": false
+    },
+    "compatibility_profile_ref": {
+      "classification": "shared_owner_reference",
+      "owner": "equipment/body compatibility",
+      "inline_mechanics": false
+    },
+    "validation_profile_ref": {
+      "classification": "mvps_reference",
+      "owner": "MVPS validation profile",
+      "inline_mechanics": false
+    },
+    "grants": {
+      "applies_to": [
+        "sense_grants",
+        "movement_grants",
+        "adaptation_grants",
+        "capability_grants"
+      ],
+      "item_contract": {
+        "required": [
+          "record_ref",
+          "grant_class"
+        ],
+        "grant_class_enum": [
+          "fixed",
+          "optional"
+        ],
+        "optional": [
+          "conditions_ref",
+          "choice_key",
+          "notes"
+        ],
+        "inline_mechanics": false
+      },
+      "rule": "grant entries identify shared records; they do not duplicate formulas, actions, effects or resource logic"
+    },
+    "lineage_refs": {
+      "classification": "reference_set",
+      "rule": "lineages/subspecies remain distinct layers and do not overwrite base species identity"
+    },
+    "form_refs": {
+      "classification": "reference_set",
+      "rule": "forms remain distinct governed body/state configurations and do not overwrite base species identity"
+    },
+    "progression_refs": {
+      "classification": "reference_set",
+      "rule": "species progression is optional and uses the shared progression system"
+    },
+    "lore_culture_links": {
+      "classification": "reference_set",
+      "rule": "culture/lore links do not become biological mechanics"
+    },
+    "presentation_assets": {
+      "classification": "reference_set",
+      "rule": "presentation/assets cannot redefine hidden mechanical or lore facts"
+    },
+    "extension_data": {
+      "classification": "namespaced_extension_map",
+      "authoritative_by_default": false
+    }
+  },
+  "extension_policy": {
+    "namespace_required": true,
+    "override_core_fields": false,
+    "authoritative_by_default": false,
+    "collision_rule": "extensions may add namespaced data but cannot shadow, replace or reinterpret reserved MVPS core fields",
+    "promotion_rule": "an extension becomes canonical core behavior only through a versioned contract change"
+  },
+  "invariants_ref": "governance/application-planning/player-species/contracts/MVPS-01_INVARIANTS.json"
+}
