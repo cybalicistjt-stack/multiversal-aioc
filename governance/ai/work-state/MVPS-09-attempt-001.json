@@ -5,9 +5,9 @@
   "title": "Forms and Transformation Semantics",
   "attempt_id": "MVPS-09-attempt-001",
   "lane": "player-species",
-  "status": "selected_not_started",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/mvps-09-forms-transformation-semantics",
   "selected_by_verified_predecessor": "MVPS-08",
   "predecessor": {
     "work_item_id": "MVPS-08",
@@ -31,12 +31,19 @@
     "Species progression/maturation remains MVPS-10 and runtime active-contribution projection/receipts remain MVPS-13.",
     "MVPS-10+ remain unauthorized until separately selected."
   ],
-  "active_substep": "awaiting_governed_start",
-  "next_action": "On an MVPS-specific owner Continue, enter through OPS3, reserve the FIFO publication turn before candidate preparation, fresh-read MVPS-01 through MVPS-08 plus current form/transformation/equipment/resource owner contracts, then govern-start MVPS-09 and execute the bounded tranche.",
+  "active_substep": "governed_start_complete_prepare_red",
+  "next_action": "Fresh-read MVPS-01 through MVPS-08 and current form/transformation/equipment/resource owner contracts, then establish causal RED and implement the bounded MVPS-09 tranche.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
+    "terminal_response_allowed": false,
     "stop_reason": null
+  },
+  "governed_start": {
+    "aioc_base_sha": "8f740213813b85af97184c42a0916b96cac603d2",
+    "owner_command": "Continue",
+    "started_on": "2026-09-18",
+    "publication_queue_schema": "2.0.0",
+    "reservation_id": "mvps-09-attempt-001-governed-start-001"
   }
 }
