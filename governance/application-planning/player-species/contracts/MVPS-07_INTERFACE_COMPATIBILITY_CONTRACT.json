@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesInterfaceCompatibility",
+  "record_type": "SpeciesInterfaceCompatibilityPolicy",
+  "status": "MVPS-07_CANONICAL_CONTRACT",
+  "purpose": "Evaluate whether a current body/morphology projection can use, wear, host, occupy or structurally interface with equipment, implants, suits, seats, vehicles and mount/rider interfaces without species-name dispatch, size-only inference or mutation authority.",
+  "source_basis": [
+    "MVPS.BodyStructureQuery — structural matching only; no equipment policy",
+    "MVPS.SpeciesNaturalEquipmentGrant — shared Item/Equipment owner boundary",
+    "PPIA-03 Items/Equipment/Inventory — equipment assignment, installation and host compatibility remain owning-workflow mutations",
+    "PPIA-04 Vehicle/Mecha/Starship — passenger/station/vehicle state and commands remain vehicle-owner authority",
+    "CEW-11 / CCP-06 — mount/work/travel roles are relationship pathways; capacity, gear, price and workload are not inferred"
+  ],
+  "species_name_input_allowed": false,
+  "size_only_compatibility_allowed": false,
+  "evaluation_policy": "side_effect_free_policy_evaluation",
+  "authoritative_assignment_mutation_allowed": false,
+  "authoritative_inventory_mutation_allowed": false,
+  "authoritative_vehicle_mutation_allowed": false,
+  "authoritative_relationship_mutation_allowed": false,
+  "interface_kinds": [
+    "clothing",
+    "armor",
+    "weapon",
+    "tool",
+    "implant",
+    "suit",
+    "seat",
+    "vehicle_occupant",
+    "mount_rider",
+    "module_host",
+    "attachment"
+  ],
+  "compatibility_directions": [
+    "body_uses_interface",
+    "body_wears_interface",
+    "body_hosts_interface",
+    "body_occupies_interface",
+    "body_supports_external_rider_interface"
+  ],
+  "requirement_kinds": [
+    "structural",
+    "scale_profile",
+    "capability",
+    "attachment",
+    "worn_region",
+    "manipulator",
+    "host_interface",
+    "relationship_authority",
+    "environment_profile",
+    "owner_rule"
+  ],
+  "requirement_contract": {
+    "required": [
+      "requirement_id",
+      "kind",
+      "predicate_ref",
+      "source_ref",
+      "owner_domain"
+    ],
+    "optional": [
+      "severity",
+      "evidence_ref",
+      "adapter_satisfiable",
+      "notes"
+    ],
+    "inline_owner_mechanics_allowed": false,
+    "rule": "predicate_ref points to a structural/shared-owner predicate. MVPS-07 composes decisions but does not copy dimensions, scale math, installation rules, vehicle station rules, mount relationship rules, proficiency, ownership, or item mechanics."
+  },
+  "evaluation_inputs": {
+    "required": [
+      "morphology_profile_ref",
+      "interface_definition_ref",
+      "interface_kind",
+      "requirement_refs"
+    ],
+    "optional": [
+      "body_structure_query_ref",
+      "scale_profile_ref",
+      "capability_refs",
+      "current_form_projection_ref",
+      "adapter_candidate_refs",
+      "relationship_authority_ref",
+      "vehicle_or_mount_context_ref"
+    ],
+    "forbidden": [
+      "species_name_dispatch",
+      "visual_similarity_as_fit",
+      "size_category_as_complete_fit_rule"
+    ]
+  },
+  "evaluation_order": [
+    "resolve exact interface identity/version and owner requirements",
+    "resolve current morphology/body projection",
+    "evaluate structural requirements through MVPS.BodyStructureQuery",
+    "evaluate explicitly referenced scale/capability/host requirements through their owners",
+    "evaluate required relationship/station/mount eligibility only through external owner references",
+    "evaluate explicit adapter candidates when owner data permits",
+    "return MVPS-07 compatibility result; perform no mutation"
+  ],
+  "adapter_policy": {
+    "explicit_definition_required": true,
+    "may_change_result_to_compatible_with_adapter": true,
+    "automatic_synthesis_allowed": false,
+    "ownership_or_installation_implied": false,
+    "rule": "An adapter is a separately identified owner-domain solution (for example a harness, seat insert, armor alteration profile or interface module). Compatibility may require it, but MVPS-07 neither creates nor installs it."
+  },
+  "mount_role_eligibility_inferred_from_fit": false,
+  "mount_policy": {
+    "compatibility_scope": "body/interface fit only",
+    "relationship_owner": "CCP-06 / mount-work-travel owner",
+    "rule": "A body may structurally support a saddle/harness or a rider may structurally fit an interface, but fit never creates mount eligibility, partnership, ownership, training, consent, workload or travel capability."
+  },
+  "vehicle_station_authority_inferred_from_fit": false,
+  "vehicle_policy": {
+    "compatibility_scope": "occupant/seat/suit/control-interface fit only",
+    "operational_owner": "PPIA-04 / F014 vehicle authority",
+    "rule": "Occupant or control-interface fit never assigns a station, grants control, changes passenger state or mutates a vehicle."
+  },
+  "equipment_policy": {
+    "assignment_owner": "PPIA-03 / Asset-Character equipment workflow",
+    "rule": "Compatibility is a prerequisite/projection only; equip/install/attune/bond remains an explicit owning-workflow command."
+  },
+  "unknown_policy": "unknown_required_fact_yields_unresolved_not_compatible_or_incompatible",
+  "extension_policy": {
+    "namespace_required": true,
+    "override_core_fields": false
+  }
+}
