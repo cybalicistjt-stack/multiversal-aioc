@@ -5,9 +5,9 @@
   "title": "Morphology and Body-Plan Contract",
   "attempt_id": "MVPS-03-attempt-001",
   "lane": "player-species",
-  "status": "selected_not_started",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/mvps-03-morphology-body-plan",
   "selected_by_verified_predecessor": "MVPS-02",
   "predecessor": {
     "work_item_id": "MVPS-02",
@@ -28,12 +28,23 @@
     "Forms/transformation semantics remain MVPS-09.",
     "MVPS-04+ remain unauthorized until separately selected."
   ],
-  "active_substep": "awaiting_governed_start",
-  "next_action": "On an MVPS-specific owner Continue, fresh-read MVPS-01/02 contracts plus controlling morphology/equipment source contracts, reconcile current shared-owner state, govern-start MVPS-03, establish causal RED and execute through proof, publication and closeout.",
+  "active_substep": "red",
+  "next_action": "Establish causal RED for one size-independent morphology interface shared by humanoid and non-humanoid fixtures, including body regions, limbs/manipulators, worn regions, attachment points and natural appendages, plus equipment-facing structural queries without species-name branching; then implement only MVPS-03 contract/fixture semantics.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
-    "terminal_reason": "selected_not_started; no execution attempt has begun"
+    "terminal_response_allowed": false,
+    "terminal_reason": null
+  },
+  "implementation_plan": {
+    "red": "in_progress",
+    "green": "pending",
+    "proof": "pending",
+    "closeout": "pending"
+  },
+  "governed_start": {
+    "aioc_base_sha": "f01802334f84a3e086f137bf928fe3bbd1f731b2",
+    "owner_command": "Continue",
+    "started_on": "2026-09-18"
   }
 }
