@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 228,
+  "state_revision": 229,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -21,8 +21,8 @@
   "lanes": {
     "operations": {
       "state": "completed_verified",
-      "work_item_id": "OPS3-05",
-      "work_item_path": "operations/work-items/OPS3-05.json",
+      "work_item_id": "OPS3-07",
+      "work_item_path": "operations/work-items/OPS3-07.json",
       "implementation_authority": false
     },
     "product-development": {
@@ -76,7 +76,8 @@
     "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
     "cross_program_successor_rule": "Before successor selection, consult governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json. Individual program strict_successor or backlog fields cannot skip an eligible interstitial program or override cross-program gates.",
     "executor_independence": "Executor availability never grants or revokes project authority.",
-    "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. Same-repository publication uses the OPS3 FIFO reservation queue: reserve first, prepare/reconcile/validate only when the reservation activates, then merge/release before the next turn. MVPS/player-species and product lanes remain independently selectable."
+    "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. Same-repository publication uses the OPS3 FIFO reservation queue: reserve first, prepare/reconcile/validate only when the reservation activates, then merge/release before the next turn. MVPS/player-species and product lanes remain independently selectable.",
+    "protected_main_interlock": "For cybalicistjt-stack/Multiversal-app and cybalicistjt-stack/multiversal-aioc, every main mutation participates in the repository-local FIFO queue. Direct main writes are prohibited. Once a turn activates, target main is frozen at turn_base for all other lanes/executors; unexpected advancement is OPS3.PROTECTED_MAIN_BYPASS and must be diagnosed rather than normalized by holder rebase/yield/re-reserve."
   },
   "next_project_action": "Route by selected lane: product-development awaits owner Continue to govern-start MCCS-16 — Style Packs, Templates, Renderer Profiles & Visual Variant Recipes; ui-implementation and player-species remain exactly whatever their independently governed live checkpoints authorize. No lane pauses or rewrites another."
 }

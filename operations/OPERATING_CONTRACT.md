@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.4.0  
+**Version:** 3.5.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -136,6 +136,19 @@ The queue state is modeled by `scripts/ops3_merge_lease.py`.
 - A queued reservation may be cancelled before activation without reordering the remaining queue. An active turn may be yielded without merge only with an explicit failure/blocker reason.
 - Every queue-state mutation must build from the observed coordination-branch head and advance that ref **without force**. Competing writes from the same head must fail and re-read rather than overwrite.
 - Queue branches are executor coordination only and cannot select work, reorder product priority, or grant implementation authority.
+
+### Protected-main mutation interlock
+
+FIFO is a global write interlock, not merely a merge-order convention. The protected repositories are `cybalicistjt-stack/Multiversal-app` and `cybalicistjt-stack/multiversal-aioc`.
+
+- **Every mutation of protected `main` participates.** Product publication, operations/control-plane closeout, `CURRENT.json` or checkpoint projection, compatibility projection, operations repair, emergency repair, contents-API writes, ref updates, and PR merges are all protected-main mutations.
+- **Direct writes are prohibited.** Prepare every protected-main change on a non-`main` branch and publish it only as the exact validated PR head authorized by the active FIFO turn. `update_file`, `create_file`, `delete_file`, `update_ref`, or equivalent direct mutation against protected `main` is a protocol violation even when the change appears harmless.
+- **Activation freezes the base globally.** From activation until the holder's verified exact merge or explicit yield, target `main` must remain exactly equal to `turn_base` for every other lane and executor. No second writer, including an operations/control-plane writer, may advance it.
+- **Unexpected advancement is a stop-the-line breach.** If target `main` changes while a turn is held, record `OPS3.PROTECTED_MAIN_BYPASS`, identify the bypassing write, and repair the enforcement path. The active holder must not treat repeated rebase/yield/re-reserve cycles as normal concurrency handling.
+- **Queue participation is repository-local but universal.** A lane publishing to both protected repositories needs a separate reservation/turn for each target repository. Holding one repository's turn grants no right to mutate the other repository.
+- **Branch work remains parallel.** The interlock freezes only the protected `main` ref; independent branch implementation may continue as allowed by lane authority.
+
+The executable guard in `scripts/ops3_merge_lease.py` must reject direct protected-main mutation modes and retain exact-holder/head/base checks for queue-bound PR merges.
 
 This is the default concurrency defense even if GitHub native merge queue/branch protection is unavailable. If a native GitHub merge queue is later enabled, it may replace the transport only if FIFO reservation, turn-base ownership, exact-head validation, and durable-verification properties are preserved.
 
