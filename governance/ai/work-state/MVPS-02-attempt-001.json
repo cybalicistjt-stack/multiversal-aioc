@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-02",
+  "title": "Choice Schema and Character-Creation Transaction",
+  "attempt_id": "MVPS-02-attempt-001",
+  "lane": "player-species",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-01",
+  "predecessor": {
+    "work_item_id": "MVPS-01",
+    "status": "completed_verified",
+    "implementation_merge_sha": "0315b6b074e3fab7624ed0db5097b86413b8b114",
+    "validation_run": 35361897600
+  },
+  "strict_successor": "MVPS-03",
+  "objective": "Define fixed grants, selectable groups, budgets/counts, alternatives, substitutions, exclusions, campaign gates, unresolved choices and creation-stage validation without moving later morphology, progression, form or runtime-projection semantics into this tranche.",
+  "acceptance": [
+    "builder can enumerate required choices",
+    "illegal combinations return sourced validation",
+    "draft can remain incomplete without being playable"
+  ],
+  "boundaries": [
+    "MVPS-02 owns species choice-schema and staged character-creation transaction semantics only.",
+    "MVPS-01 SpeciesDefinition and CharacterSpeciesSelection contracts remain authoritative foundations.",
+    "Shared Character/Ability/Equipment owner contracts are consumed by reference; shared-owner changes require explicit coordination.",
+    "MVPS-03+ remain unauthorized until separately selected."
+  ],
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MVPS-specific owner Continue, fresh-read MVPS-01 contracts plus controlling character-creation/validation sources, reconcile current shared-owner state, govern-start MVPS-02, establish causal RED and execute through proof, publication and closeout.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "terminal_reason": "selected_not_started; no execution attempt has begun"
+  }
+}
