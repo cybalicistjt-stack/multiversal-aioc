@@ -30,7 +30,8 @@
         "schema/contract fixture exists",
         "invariants are machine-testable",
         "no species-specific runtime engine is introduced"
-      ]
+      ],
+      "status": "completed_verified"
     },
     "MVPS-02": {
       "title": "Choice Schema and Character-Creation Transaction",
@@ -39,7 +40,8 @@
         "builder can enumerate required choices",
         "illegal combinations return sourced validation",
         "draft can remain incomplete without being playable"
-      ]
+      ],
+      "status": "selected_not_started"
     },
     "MVPS-03": {
       "title": "Morphology and Body-Plan Contract",
@@ -47,7 +49,8 @@
       "acceptance": [
         "humanoid and non-humanoid fixtures use one morphology interface",
         "inventory/equipment can query body compatibility without species-name branching"
-      ]
+      ],
+      "status": "planned"
     },
     "MVPS-04": {
       "title": "Scale, Movement and Sense Capability Integration",
@@ -56,7 +59,8 @@
         "movement and senses are typed grants",
         "derived values reference shared rules profiles",
         "no duplicate movement/sense engine"
-      ]
+      ],
+      "status": "planned"
     },
     "MVPS-05": {
       "title": "Physiology, Lifecycle and Environmental Tolerance",
@@ -64,7 +68,8 @@
       "acceptance": [
         "descriptive fields cannot silently mutate mechanics",
         "environment resolution consumes typed tolerances/adaptations"
-      ]
+      ],
+      "status": "planned"
     },
     "MVPS-06": {
       "title": "Capability Grants and Natural Equipment",
@@ -72,7 +77,8 @@
       "acceptance": [
         "every executable grant has canonical identity and provenance",
         "natural equipment resolves through shared item/ability/effect contracts"
-      ]
+      ],
+      "status": "planned"
     },
     "MVPS-07": {
       "title": "Equipment, Vehicle and Interface Compatibility",
@@ -81,7 +87,8 @@
         "compatibility is not inferred only from size",
         "incompatible equipment yields explicit reason",
         "common interface handles diverse body plans"
-      ]
+      ],
+      "status": "planned"
     },
     "MVPS-08": {
       "title": "Lineage/Subspecies Inheritance and Composition",
@@ -90,7 +97,8 @@
         "lineages do not copy full parent records",
         "composition is deterministic and replayable",
         "conflicts are surfaced rather than guessed"
-      ]
+      ],
+      "status": "planned"
     },
     "MVPS-09": {
       "title": "Forms and Transformation Semantics",
@@ -99,7 +107,8 @@
         "transformations preserve base selection history",
         "equipment behavior is explicit",
         "reversal is provenance-safe"
-      ]
+      ],
+      "status": "planned"
     },
     "MVPS-10": {
       "title": "Species Progression and Maturation Hooks",
@@ -108,7 +117,8 @@
         "species progression is optional",
         "all advancement is event-sourced",
         "duplicate grants follow shared rules"
-      ]
+      ],
+      "status": "planned"
     },
     "MVPS-11": {
       "title": "Social, Language and Knowledge Identity Hooks",
@@ -117,7 +127,8 @@
         "culture remains separable",
         "biological communication and learned languages are distinct",
         "observer knowledge can hide canonical identity"
-      ]
+      ],
+      "status": "planned"
     },
     "MVPS-12": {
       "title": "Validation, Migration and Import/Export",
@@ -126,7 +137,8 @@
         "missing canon is never silently fabricated",
         "historical selections survive deprecation",
         "migration emits receipts/discrepancies"
-      ]
+      ],
+      "status": "planned"
     },
     "MVPS-13": {
       "title": "Runtime Projection and Grant Receipts",
@@ -135,7 +147,8 @@
         "projection is reproducible",
         "temporary state does not corrupt base selection",
         "each active contribution is source-traceable"
-      ]
+      ],
+      "status": "planned"
     },
     "MVPS-14": {
       "title": "Authoring, Search, Inspection and Presentation",
@@ -144,7 +157,8 @@
         "UI is projection not rules authority",
         "provenance and validation are inspectable",
         "presentation data remains mechanically separate"
-      ]
+      ],
+      "status": "planned"
     },
     "MVPS-15": {
       "title": "NPC/Creature Reuse and Cross-System Adapters",
@@ -153,7 +167,8 @@
         "no duplicate player/NPC species canon",
         "shared entity references are preserved",
         "cross-system adapters pass integration tests"
-      ]
+      ],
+      "status": "planned"
     },
     "MVPS-16": {
       "title": "Radical-Species Conformance and Golden Proof",
@@ -162,8 +177,15 @@
         "all eight fixtures pass the common conformance matrix",
         "no species-name conditional is needed for core workflows",
         "creation/runtime/equipment/environment/progression/transform/serialization/migration/presentation proof is recorded"
-      ]
+      ],
+      "status": "planned"
     }
   },
-  "strict_successor": null
+  "strict_successor": null,
+  "last_completed": {
+    "work_item_id": "MVPS-01",
+    "implementation_merge_sha": "0315b6b074e3fab7624ed0db5097b86413b8b114",
+    "validation_run": 35361897600
+  },
+  "next_selected": "MVPS-02"
 }
