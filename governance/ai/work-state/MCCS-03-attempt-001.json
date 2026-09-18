@@ -52,13 +52,13 @@
     "The independent ui-implementation UISR-10 and player-species MVPS-07 lanes remain independently active and unchanged."
   ],
   "implementation_plan": {
-    "red": "in_progress",
-    "green": "pending",
+    "red": "completed_expected_failure",
+    "green": "in_progress",
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": "red",
-  "next_action": "Establish causal RED for topology-aware morphology/silhouette/appendage/modular-part authoring, then implement only the missing MCCS-03 production seam and carry through exact-head proof/publication/closeout.",
+  "active_substep": "green",
+  "next_action": "Validate unchanged MCCS-03 assertions against production head 58c1eaec29607e1f076ee323adb41ab5992440ef; repair only causal MCCS-03 failures, then run exact-head proof/publication/closeout.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -78,5 +78,17 @@
     "application_base_sha": "d781b59da41b794a966ecd096c1d7703c7c7b077",
     "owner_command": "Continue",
     "started_on": "2026-09-18"
+  },
+  "red_evidence": {
+    "head_sha": "15ad1cc13397874578ca2bef62c9e3ed7a092f6d",
+    "workflow_run": 35372783031,
+    "lane": "linux",
+    "failing_step": "mccs03-focused-topology-morphology",
+    "result": "expected_failure",
+    "cause": "Repository health and MCCS-03 profile selection passed; focused topology/morphology acceptance failed before the authorized MCCS-03 production module existed."
+  },
+  "green_candidate": {
+    "head_sha": "58c1eaec29607e1f076ee323adb41ab5992440ef",
+    "status": "awaiting_validation"
   }
 }
