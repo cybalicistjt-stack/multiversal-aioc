@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.CharacterCreationSpeciesTransaction",
+  "record_type": "CharacterCreationSpeciesTransaction",
+  "status": "MVPS-02_CANONICAL_CONTRACT",
+  "purpose": "Model the species portion of character creation as a staged, saveable transaction with explicit unresolved choices and validation gates.",
+  "source_basis": [
+    "PROJECT_BIBLE_OPS3_REFERENCE.md §9.2-9.4",
+    "DB-004 characters-and-progression.md Creation and validation",
+    "SCREEN_DESIGN_BIBLE.md SD-103 Character Builder"
+  ],
+  "transaction_model": "staged",
+  "states": [
+    "draft_incomplete",
+    "draft_complete",
+    "ready_for_validation",
+    "validation_failed",
+    "valid_playable",
+    "migration_required",
+    "abandoned"
+  ],
+  "stages": [
+    "resolve_species_reference",
+    "apply_fixed_grant_receipts",
+    "enumerate_required_choices",
+    "record_selections",
+    "evaluate_choice_constraints",
+    "resolve_substitutions",
+    "collect_validation_result",
+    "commit_species_selection"
+  ],
+  "draft_policy": {
+    "save_incomplete": true,
+    "preserve_unresolved_choices": true,
+    "preserve_illegal_attempts_as_noncanonical_diagnostics": true,
+    "incomplete_may_be_playable": false
+  },
+  "commit_policy": {
+    "required_terminal_state": "valid_playable",
+    "require_zero_blocking_issues": true,
+    "require_all_required_choices_resolved": true,
+    "require_exact_species_version_ref": true,
+    "write_target_contract": "MVPS.CharacterSpeciesSelection",
+    "rule": "Commit writes references and receipts only; it does not copy SpeciesDefinition or shared mechanics."
+  },
+  "mutation_policy": {
+    "global_species_definition_mutation": false,
+    "campaign_rules_mutation": false,
+    "transaction_local_until_commit": true
+  },
+  "undo_redo_policy": {
+    "supported": true,
+    "operation_receipts_required": true,
+    "replay_must_be_deterministic": true
+  },
+  "transaction_receipt_contract": {
+    "required": [
+      "transaction_id",
+      "character_ref",
+      "species_ref",
+      "context_snapshot_ref",
+      "operations",
+      "validation_result_ref"
+    ],
+    "operation_kinds": [
+      "select",
+      "unselect",
+      "substitute",
+      "resolve_gate",
+      "apply_adjudication",
+      "undo",
+      "redo"
+    ]
+  }
+}
