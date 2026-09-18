@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 225,
+  "state_revision": 226,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -26,13 +26,13 @@
       "implementation_authority": false
     },
     "product-development": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "MCCS-13",
       "attempt_id": "MCCS-13-attempt-001",
       "checkpoint_path": "governance/ai/work-state/MCCS-13-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "MCCS-11 completed_verified on application PR 606 after causal RED run 35382164703 and exact-head validation run 35382327464. OPS3 FIFO Multiversal-app main-publication reservation MCCS-11-attempt-001-pub-001 reserved/activated/bound/released generations 138→141 from turn_base febc3d770f93871b1b1091c796f698cfa753e26e; squash merge 11a104acc160cf82a7c89721fd942d4c38f37320 published exact validated tree 046b5b6d02d4e98b4e879af2482399029e13bc5a. Fresh DAG contains no MCCS-11 rotation override, so reduced MCCS strict order selects MCCS-13. No implementation branch or authority exists until a later owner Continue."
+      "implementation_branch": "work/mccs-13-multi-profile-derivative-rendering",
+      "implementation_authority": true,
+      "activation_rule": "Owner Continue on 2026-09-18 govern-started MCCS-13 under OPS3 FIFO Multiversal-app main-publication queue. Reserve and activate before branch/candidate preparation; prepare once from immutable turn_base; establish causal RED; implement minimal GREEN; exact-head validate; bind/merge/verify/release; then fresh DAG closeout. Preserve independently governed lanes exactly."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -78,5 +78,5 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. Same-repository publication uses the OPS3 FIFO reservation queue: reserve first, prepare/reconcile/validate only when the reservation activates, then merge/release before the next turn. MVPS/player-species and product lanes remain independently selectable."
   },
-  "next_project_action": "Route by selected lane: product-development awaits owner Continue to govern-start MCCS-13 — Multi-Profile Derivative Rendering; ui-implementation and player-species remain exactly whatever their independently governed live checkpoints authorize. No lane pauses or rewrites another."
+  "next_project_action": "Execute MCCS-13 — Multi-Profile Derivative Rendering — under the OPS3 FIFO Multiversal-app main-publication turn through causal RED/GREEN, exact-head validation, merge/release, successor reconciliation and atomic closeout."
 }
