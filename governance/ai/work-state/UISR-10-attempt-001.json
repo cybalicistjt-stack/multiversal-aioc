@@ -9,8 +9,8 @@
   "repository": "cybalicistjt-stack/Multiversal-app",
   "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "feature/uisr-10-full-skin-capability",
+  "implementation_authority": false,
+  "implementation_branch": null,
   "completed": false,
   "objective": "Close the production Full Skin Capability gate by packaging the complete runtime declaratively, producing truthful Tier-C Skin Laboratory evidence for the two migration/reference packs plus all eighteen target packs, measuring performance/memory/switch behavior on supported runners, validating assignment/recovery/package integrity, and migrating only evidence-backed obsolete Class-B legacy theme paths while preserving compatibility adapters and historical evidence.",
   "predecessor": {
@@ -50,30 +50,170 @@
     "Application publication remains serialized by the OPS3 merge lease and requires stale-base reconciliation/revalidation whenever another app lane publishes first."
   ],
   "implementation_plan": {
-    "red": "pending",
-    "green": "pending",
-    "proof": "pending",
-    "closeout": "pending"
+    "red": "completed",
+    "green": "completed",
+    "proof": "completed_reviewable",
+    "closeout": "blocked_owner_only"
   },
-  "active_substep": "establish_causal_red",
-  "next_action": "Create focused UISR-10 RED on application base bda4936f828e636cdc8eb1ae104b0c620b0152e1 for complete 20-pack runtime availability, Secondary Trio/Rainbow materialization, declarative package validation/integrity/non-executable rejection, Tier-C SCREEN-* evidence/baseline manifest completeness, assignment/recovery matrix, measured runner performance/memory/switch receipts, and evidence-backed Class-B legacy App theme migration; then implement, capture headed-browser evidence, exact-head cross-platform validate, publish and close only on truthful Full Skin Capability proof.",
+  "active_substep": "owner_review_required",
+  "next_action": "Owner action required: review the exact-head 20-pack headed-Chromium Tier-C candidate baselines from validation run 35372387616/artifact 10559410154 and approve or reject them as visual baselines; establish/approve the numeric UISR memory profile (safe-core baseline resident, active-skin incremental resident, switch peak, asset/font residency/cache, post-switch settled and repeated-switch leak tolerance). After those decisions, record the gate result and close UISR-10 only if both pass.",
   "execution_guard": {
-    "continue_turns": 1,
-    "stall_nudges": 0,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "continue_turns": 2,
+    "stall_nudges": 1,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "owner_only",
+      "evidence": "UISK-10 visual regression policy requires human/art-direction approval before candidate captures become approved baselines, and UISK-16 requires an approved numeric production memory profile without inventing universal byte limits. Exact-candidate engineering/proof is complete and published, so only these owner decisions remain."
+    }
   },
   "owner_interaction_observation": {
-    "continue_turns": 1,
-    "stall_nudges": 0
+    "continue_turns": 2,
+    "stall_nudges": 1
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED",
+      "OPS3.STALL_NUDGE_UNRECORDED"
+    ]
   },
   "governed_start": {
     "application_base_sha": "bda4936f828e636cdc8eb1ae104b0c620b0152e1",
     "owner_command": "Continue",
     "started_on": "2026-09-18"
+  },
+  "completion_evidence": {
+    "tdd": {
+      "invalid_pre_red_run": 35368151355,
+      "invalid_pre_red_reason": "Validation profile used an unregistered reason code and failed before behavioral execution; explicitly not counted as RED.",
+      "red_observed": true,
+      "red_commit": "ed8b93a84e349f305ed87c7aff78d449749226d3",
+      "red_validation_run": 35368278300,
+      "red_failure_layer": "TEST_UNIT",
+      "red_failure_reason_code": "TEST_UNIT.ASSERTION_FAILURE",
+      "red_decisive_failure": "UISR-10 focused runtime test reached the behavioral boundary and failed because FULL_SKIN_CAPABILITY_PACK_IDS/final capability API were absent."
+    },
+    "green_head_before_reconciliation": "b092ae8c05142226611d21f085d927e75665b86a",
+    "reconciled_head": "2ab00b8eb77192b726a03985a0636e9b5daf0431",
+    "validation_base_sha": "d781b59da41b794a966ecd096c1d7703c7c7b077",
+    "validation_run": 35372387616,
+    "validation": {
+      "repository_health": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_cross_platform_comparison": "success",
+      "tier_c_browser_capture": "success",
+      "client_typecheck": "success"
+    },
+    "runtime_roster": {
+      "pack_count": 20,
+      "screen_class_count": 11,
+      "tier_c_matrix_rows": 220,
+      "secondary_trio": "available",
+      "rainbow_in_the_dark": "available"
+    },
+    "package_gate": {
+      "declarative_only": true,
+      "integrity_validation": "pass",
+      "provenance_license_metadata": "present",
+      "non_executable_rejection": "pass",
+      "network_credential_rejection": "pass",
+      "safe_fallback_metadata": "present"
+    },
+    "assignment_recovery": {
+      "complete_roster_round_trip": "pass",
+      "accessibility_preference_persistence": "pass",
+      "hot_switch_continuity": "pass"
+    },
+    "legacy_migration": {
+      "app_class_b_two_theme_transport": "migrated_to_registry_backed_appearance",
+      "compatibility_theme_api": "retained",
+      "talker_theme_alias": "retained_to_roses_theme"
+    },
+    "timing_measurement": {
+      "source": "validation-runner",
+      "switch_samples": 500,
+      "approved_product_timing_budgets_ms": {
+        "runtime_interaction": 50,
+        "transition": 200
+      },
+      "measured_ms": {
+        "average": 0.006841565999998465,
+        "p95": 0.024757000000022344,
+        "maximum": 0.15401199999996606
+      },
+      "result": "pass"
+    },
+    "memory_measurement": {
+      "source": "validation-runner",
+      "bytes": {
+        "baseline_heap": 60261272,
+        "peak_heap": 62433280,
+        "settled_heap": 62543896
+      },
+      "approved_numeric_profile": false,
+      "result": "measured_pending_owner_budget"
+    },
+    "tier_c_browser_evidence": {
+      "artifact_id": 10559410154,
+      "artifact_digest": "sha256:5bfca09c6c313045e92422e1ba77ce77020c42fee9bc18d3777268ce0b7a4fc0",
+      "exact_head": "2ab00b8eb77192b726a03985a0636e9b5daf0431",
+      "headed_chromium": true,
+      "playwright_version": "1.55.0",
+      "pack_captures": 20,
+      "screen_classes_per_capture": 11,
+      "all_no_horizontal_overflow": true,
+      "capture_ms_range": [
+        339,
+        466
+      ],
+      "evidence_state": "reviewable",
+      "visual_baselines_approved": false,
+      "approval_blocker": "human-art-direction-review-required",
+      "expires_at": "2026-10-02T17:08:30Z"
+    },
+    "application_pr": 594,
+    "application_merge_sha": "7ce8035f08c3e1bbff572d5a549809518edf8065",
+    "application_tree_sha": "b142ba290beaa8c0d13366b7739e7463cf162d13",
+    "publication_lease": {
+      "acquired_generation": 119,
+      "released_generation": 120
+    },
+    "full_skin_capability_gate": {
+      "production_complete": false,
+      "passed": [
+        "runtime-implementation",
+        "complete-20-pack-roster",
+        "tier-c-reference-matrix",
+        "exact-head-linux-windows",
+        "deterministic-cross-platform",
+        "headed-browser-candidate-captures",
+        "package-integrity-and-non-executable-policy",
+        "assignment-recovery-and-reading-preferences",
+        "timing-budget",
+        "legacy-class-b-migration"
+      ],
+      "owner_blockers": [
+        "visual-baseline-human-art-direction-approval",
+        "numeric-production-memory-profile-approval"
+      ]
+    }
+  },
+  "owner_only_blocker": {
+    "kind": "owner_only",
+    "decisions": [
+      {
+        "id": "UISR10-VISUAL-BASELINE-APPROVAL",
+        "question": "Approve the exact-head Tier-C candidate captures as the initial visual baselines, or reject with required art-direction changes.",
+        "evidence_ref": "validation run 35372387616 / artifact 10559410154",
+        "current_state": "reviewable_not_approved"
+      },
+      {
+        "id": "UISR10-MEMORY-PROFILE-APPROVAL",
+        "question": "Approve a numeric production memory profile/budget for safe-core resident memory, active-skin increment, switch peak, asset/font/cache residency, post-switch settled memory and repeated-switch leak tolerance.",
+        "evidence_ref": "validation run 35372387616 measured baseline 60261272 bytes, peak 62433280 bytes, settled 62543896 bytes after 500 hot switches",
+        "current_state": "measured_no_approved_numeric_profile"
+      }
+    ]
   }
 }

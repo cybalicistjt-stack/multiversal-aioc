@@ -2,7 +2,7 @@
   "schema_version": "0.1.0",
   "program_id": "UISR",
   "program_name": "Multiversal UI Skin Runtime Implementation",
-  "status": "owner_approved_in_progress",
+  "status": "owner_review_required",
   "owner_authorized": "2026-09-18",
   "implementation_repository": "cybalicistjt-stack/Multiversal-app",
   "lane": "ui-implementation",
@@ -67,7 +67,7 @@
     {
       "id": "UISR-10",
       "name": "Packaging, Tier-C Validation, Performance Proof & Legacy Cleanup",
-      "status": "in_progress"
+      "status": "owner_review_required"
     }
   ],
   "parallelism": {
@@ -88,5 +88,14 @@
     "application_merge_sha": "2747e6342b334f911f227a1bdd833cca69277a11",
     "validation_run": 35363935193
   },
-  "next_selected": "UISR-10"
+  "next_selected": null,
+  "active_owner_blocker": {
+    "work_item_id": "UISR-10",
+    "decisions": [
+      "UISR10-VISUAL-BASELINE-APPROVAL",
+      "UISR10-MEMORY-PROFILE-APPROVAL"
+    ],
+    "engineering_published_sha": "7ce8035f08c3e1bbff572d5a549809518edf8065",
+    "validation_run": 35372387616
+  }
 }
