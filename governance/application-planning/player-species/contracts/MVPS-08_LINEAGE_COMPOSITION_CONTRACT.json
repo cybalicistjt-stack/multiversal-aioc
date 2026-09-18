@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.LineageComposition",
+  "record_type": "SpeciesLineageCompositionContract",
+  "status": "MVPS-08_CANONICAL_CONTRACT",
+  "purpose": "Deterministically compose exact-version lineage/subspecies deltas over a base SpeciesDefinition while surfacing semantic conflicts and delegating duplicate/stacking mechanics to shared owners.",
+  "deterministic_replay": true,
+  "stable_order": [
+    "base_species",
+    "lineage.layer_order",
+    "lineage.lineage_id",
+    "lineage.lineage_version",
+    "operation.order",
+    "operation.operation_id"
+  ],
+  "semantic_conflict_resolution_by_order_allowed": false,
+  "unknown_or_conflict_policy": "surface_unresolved_not_guess",
+  "conflict_statuses": [
+    "unresolved",
+    "resolved_by_explicit_rule"
+  ],
+  "inputs": {
+    "required": [
+      "base_species_ref",
+      "lineage_selections"
+    ],
+    "base_species_ref_required": [
+      "species_id",
+      "record_version"
+    ],
+    "lineage_selection_required": [
+      "lineage_id",
+      "lineage_version",
+      "layer_order"
+    ],
+    "exact_version_pins_required": true
+  },
+  "preconditions": [
+    "every lineage parent_species_ref exactly matches the selected base SpeciesDefinition identity/version",
+    "every lineage relationship is supported by explicit relationship_evidence_refs",
+    "every delta target exists or is explicitly authorized as an additive reference path",
+    "every operation carries source/provenance evidence"
+  ],
+  "composition_algorithm": [
+    "load exact base SpeciesDefinition reference/version",
+    "validate each selected lineage exact identity/version and parent relationship",
+    "sort lineages by layer_order then lineage_id then lineage_version for replay stability",
+    "sort each lineage operations by order then operation_id",
+    "group operations by semantic target before application",
+    "surface target collisions requiring semantic authority; stable order alone never chooses a winner",
+    "apply non-conflicting reference/descriptive deltas",
+    "route duplicate/stacking/suppression/replacement mechanic interactions to owning shared records/profiles",
+    "emit definition-level composition result and conflict/handoff evidence without character runtime mutation"
+  ],
+  "conflict_classes": [
+    "parent_version_mismatch",
+    "unknown_target_path",
+    "multiple_replacements_same_target",
+    "remove_replace_collision",
+    "descriptive_override_conflict",
+    "relationship_evidence_missing",
+    "explicit_exclusion_addition_collision",
+    "shared_owner_interaction_required"
+  ],
+  "conflict_record_contract": {
+    "required": [
+      "conflict_id",
+      "status",
+      "target_path",
+      "operation_refs",
+      "reason",
+      "source_refs"
+    ],
+    "optional": [
+      "conflict_rule_ref",
+      "owner_domain",
+      "resolution_ref"
+    ],
+    "rule": "Unresolved conflicts block a fully composed definition-level result for the affected target; no last-write-wins or lineage-name precedence is invented."
+  },
+  "duplicate_grant_policy": "defer_to_shared_owner_stacking_and_duplicate_rules",
+  "shared_owner_handoff": {
+    "required_when": [
+      "same canonical record_ref appears from multiple species/lineage sources",
+      "stacking/suppression/replacement meaning depends on Ability/Effect/Condition/Resource/Modifier/RulesProfile rules"
+    ],
+    "handoff_fields": [
+      "record_ref",
+      "owner_domain",
+      "source_operation_refs",
+      "stacking_policy_ref_if_known"
+    ],
+    "missing_owner_policy": "unresolved_not_inferred"
+  },
+  "lineage_local_stacking_engine_created": false,
+  "runtime_projection_created": false,
+  "runtime_projection_owner": "MVPS-13",
+  "output_scope": {
+    "emits": [
+      "base_species_ref",
+      "ordered_lineage_refs",
+      "ordered_operation_refs",
+      "applied_reference_deltas",
+      "descriptive_deltas",
+      "conflicts",
+      "shared_owner_handoffs",
+      "composition_provenance"
+    ],
+    "does_not_emit": [
+      "character runtime grant receipts",
+      "active form state",
+      "progression events",
+      "inventory/equipment mutation",
+      "runtime actions/effects"
+    ]
+  },
+  "base_species_identity_preserved": true,
+  "form_transformation_owner": "MVPS-09",
+  "progression_owner": "MVPS-10"
+}
