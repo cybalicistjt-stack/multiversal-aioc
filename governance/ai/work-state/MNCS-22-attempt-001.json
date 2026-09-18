@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "MNCS-22",
+  "attempt_id": "MNCS-22-attempt-001",
+  "title": "Governed Runtime Handoff & MAS Cast Integration",
+  "track": "multiversal-npc-creature-studio",
+  "source_program": "MNCS",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "objective": "Add governed NPC/creature runtime handoff and MAS cast-integration projections with structured import mapping while preserving Character/NPC/Creature definition, placement, live-instance, conversion and downstream adventure/session authority.",
+  "predecessor": {
+    "work_item_id": "MNCS-20",
+    "status": "completed_verified",
+    "application_pr": 592,
+    "application_merge_sha": "bda4936f828e636cdc8eb1ae104b0c620b0152e1",
+    "validated_tree_sha": "b2cee1395c650eb56f857ff1a1e494495519e024"
+  },
+  "scope": {
+    "purpose": "Provide explicit, provenance-preserving handoff adapters from completed MNCS candidates into governed runtime/MAS cast workflows without minting duplicate entity or session truth.",
+    "included": [
+      "governed runtime handoff",
+      "structured handoff/import mapping",
+      "MAS cast integration projections",
+      "provenance-preserving references",
+      "unresolved-safe mapping",
+      "local-first operation"
+    ],
+    "completion_gate": "MNCS candidates can be handed into runtime/MAS cast workflows through explicit governed mappings without duplicating Character/NPC/Creature entity authority or downstream adventure/session state."
+  },
+  "selection_boundaries": [
+    "ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 and MNCS_PROGRAM_BACKLOG.json were reconsulted after exact-tree MNCS-20 publication.",
+    "The DAG contains no MNCS-20-triggered rotation or newly eligible unfinished interstitial that overrides MNCS strict order; MNCS-22 is the next unfinished surviving tranche.",
+    "PPIA-02 and Character/NPC/Creature owners retain Definition, placement, live-instance, conversion and entity authority; MNCS-22 supplies handoff projections/adapters only.",
+    "MAS and downstream Adventure/Scene/Session owners retain their canonical runtime/cast/session truth; integration must reference rather than duplicate those owner records.",
+    "MNCS-22 absorbs baseline MNCS-22 plus the documented MNCS-23 structured handoff/import-mapping residual.",
+    "MNCS-22 is selected_not_started only; no implementation branch or implementation authority exists until a later owner Continue.",
+    "The independent ui-implementation lane remains UISR-10 selected_not_started and player-species remains MVPS-05 selected_not_started; both are preserved unchanged."
+  ],
+  "implementation_plan": {
+    "red": "pending",
+    "green": "pending",
+    "proof": "pending",
+    "closeout": "pending"
+  },
+  "active_substep": null,
+  "next_action": "Wait for the next owner Continue in the product-development lane. On that command, governed-start MNCS-22 with the OPS3 execution guard; do not implement while selected_not_started.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selection_only",
+      "evidence": "MNCS-22 is selected_not_started after fresh post-MNCS-20 DAG/backlog reconciliation; no bounded MNCS-22 execution is active."
+    }
+  },
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
