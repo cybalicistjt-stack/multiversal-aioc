@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 201,
+  "state_revision": 202,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -26,13 +26,13 @@
       "implementation_authority": false
     },
     "product-development": {
-      "state": "in_progress",
-      "selected_work_item": "MNCS-22",
-      "attempt_id": "MNCS-22-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MNCS-22-attempt-001.json",
-      "implementation_branch": "work/mncs-22-runtime-handoff-mas-cast",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue on 2026-09-18 govern-started MNCS-22 from fresh Multiversal-app base bda4936f828e636cdc8eb1ae104b0c620b0152e1. Execute only MNCS-22 through causal RED, GREEN, exact-head validation, serialized publication, fresh DAG reconciliation and atomic closeout; preserve ui-implementation and player-species independently."
+      "state": "selected_not_started",
+      "selected_work_item": "MNCS-24",
+      "attempt_id": "MNCS-24-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MNCS-24-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MNCS-22 completed_verified on application PR 593 after causal RED run 35367854860 and exact-head GREEN/acceptance run 35367952081, published under OPS3 lease generation 115→116 as squash merge 0c3008dea5b378cb4151563b30505e0a5054c22a with exact validated tree ff4f397d052acf1feac12ed6a7b116e9c396a430. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 and MNCS strict-order reconciliation select MNCS-24. No implementation branch or authority exists until a later owner Continue."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -78,5 +78,5 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. MVPS/player-species is independently selectable; shared-owner contract edits require explicit dependency coordination and same-repository publication is serialized by OPS3 merge leases."
   },
-  "next_project_action": "Execute MVPS-05 — Physiology, Lifecycle and Environmental Tolerance — through causal RED/GREEN, exact-head validation, serialized publication, fresh successor reconciliation and atomic closeout. Preserve MNCS-22 and UISR-10 independently."
+  "next_project_action": "Route by selected lane: product-development awaits owner Continue to govern-start MNCS-24 — Golden Progressive NPC/Creature Generation & Campaign-Continuity Proof; ui-implementation continues UISR-10 independently; player-species continues MVPS-05 independently. No lane pauses or rewrites another."
 }

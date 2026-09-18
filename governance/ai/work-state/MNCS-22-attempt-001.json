@@ -7,11 +7,11 @@
   "track": "multiversal-npc-creature-studio",
   "source_program": "MNCS",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/mncs-22-runtime-handoff-mas-cast",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "objective": "Add governed NPC/creature runtime handoff and MAS cast-integration projections with structured import mapping while preserving Character/NPC/Creature definition, placement, live-instance, conversion and downstream adventure/session authority.",
   "predecessor": {
     "work_item_id": "MNCS-20",
@@ -33,34 +33,38 @@
     "completion_gate": "MNCS candidates can be handed into runtime/MAS cast workflows through explicit governed mappings without duplicating Character/NPC/Creature entity authority or downstream adventure/session state."
   },
   "selection_boundaries": [
-    "ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 and MNCS_PROGRAM_BACKLOG.json were reconsulted after exact-tree MNCS-20 publication.",
-    "The DAG contains no MNCS-20-triggered rotation or newly eligible unfinished interstitial that overrides MNCS strict order; MNCS-22 is the next unfinished surviving tranche.",
-    "PPIA-02 and Character/NPC/Creature owners retain Definition, placement, live-instance, conversion and entity authority; MNCS-22 supplies handoff projections/adapters only.",
-    "MAS and downstream Adventure/Scene/Session owners retain their canonical runtime/cast/session truth; integration must reference rather than duplicate those owner records.",
-    "MNCS-22 absorbs baseline MNCS-22 plus the documented MNCS-23 structured handoff/import-mapping residual.",
-    "MNCS-22 is selected_not_started only; no implementation branch or implementation authority exists until a later owner Continue.",
-    "The independent ui-implementation lane remains UISR-10 selected_not_started and player-species remains MVPS-05 selected_not_started; both are preserved unchanged."
+    "MNCS-22 completed governed runtime handoff, structured import mapping and MAS cast-integration projections while preserving owner-domain authority.",
+    "PPIA-02 and Character/NPC/Creature owners retain reusable-definition, placement, conversion and live-instance authority; MAS and Adventure/Scene/Session owners retain cast and runtime/session truth.",
+    "MNCS-22 performs no canonical entity minting, live-instance minting, cast-membership mutation or session-state mutation, and unresolved mappings remain unresolved instead of being inferred.",
+    "Causal RED was observed on exact head 440bbf94b64cc1d19df347e1b6935da259f69994 in run 35367854860 before production implementation.",
+    "Exact-head run 35367952081 passed repository health, Linux, Windows and deterministic cross-platform comparison on head 8e16ef6c07f7fd21564eb861769605b0e0db0114 against base bda4936f828e636cdc8eb1ae104b0c620b0152e1.",
+    "Serialized publication acquired lease generation 115, squash-merged PR 593 as 0c3008dea5b378cb4151563b30505e0a5054c22a with exact validated tree ff4f397d052acf1feac12ed6a7b116e9c396a430, and released the lease at generation 116.",
+    "Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MNCS-22-triggered cross-program rotation or interstitial gate; MNCS strict order selects MNCS-24 next.",
+    "The independent ui-implementation lane remains UISR-10 in_progress and player-species remains MVPS-05 in_progress; both are preserved exactly from fresh CURRENT.json."
   ],
   "implementation_plan": {
-    "red": "completed_expected_failure",
-    "green": "in_progress",
-    "proof": "pending",
-    "closeout": "pending"
+    "red": "completed",
+    "green": "completed",
+    "proof": "completed",
+    "closeout": "completed"
   },
-  "active_substep": "green",
-  "next_action": "Validate the unchanged MNCS-22 RED assertions against production contract head 8e16ef6c07f7fd21564eb861769605b0e0db0114; repair only causal MNCS-22 failures, then run exact-head proof.",
+  "active_substep": "completed_verified",
+  "next_action": "MNCS-22 is closed. MNCS-24 is selected_not_started in the product-development lane; wait for a later owner Continue before granting MNCS-24 implementation authority.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MNCS-22 PR 593 passed causal RED then exact-head repository health, Linux, Windows and deterministic comparison in run 35367952081, published under OPS3 lease generations 115→116 as squash merge 0c3008dea5b378cb4151563b30505e0a5054c22a with exact tree ff4f397d052acf1feac12ed6a7b116e9c396a430, and fresh DAG/backlog reconciliation selected MNCS-24 without starting it."
+    }
   },
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "in_progress",
+    "status": "conforming",
     "policy_violations": []
   },
   "governed_start": {
@@ -79,6 +83,26 @@
   },
   "green_candidate": {
     "head_sha": "8e16ef6c07f7fd21564eb861769605b0e0db0114",
-    "status": "awaiting_validation"
+    "workflow_run": 35367952081,
+    "status": "success"
+  },
+  "implementation_evidence": {
+    "application_pr": 593,
+    "red_candidate_head": "440bbf94b64cc1d19df347e1b6935da259f69994",
+    "red_validation_run": 35367854860,
+    "red_linux_job": 105674593443,
+    "green_candidate_head": "8e16ef6c07f7fd21564eb861769605b0e0db0114",
+    "application_validated_head": "8e16ef6c07f7fd21564eb861769605b0e0db0114",
+    "application_validated_base_sha": "bda4936f828e636cdc8eb1ae104b0c620b0152e1",
+    "application_validation_run": 35367952081,
+    "repository_health_job": 105674846753,
+    "linux_job": 105674904150,
+    "windows_job": 105674904041,
+    "deterministic_compare_job": 105675523061,
+    "validated_tree_sha": "ff4f397d052acf1feac12ed6a7b116e9c396a430",
+    "application_merge_sha": "0c3008dea5b378cb4151563b30505e0a5054c22a",
+    "changed_files": 7,
+    "lease_generation_acquired": 115,
+    "lease_generation_released": 116
   }
 }
