@@ -101,6 +101,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_ops3_execution_concurrency.py
 
+      - name: Run MVPS-01 species aggregate contract regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps01_species_aggregate_contract.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |
