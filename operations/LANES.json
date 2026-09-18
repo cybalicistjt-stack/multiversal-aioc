@@ -7,7 +7,11 @@
     {
       "id": "product-development",
       "purpose": "Software implementation roadmap, product code, schemas, UI, rules-engine and application features.",
-      "intent_examples": ["continue software development", "implement the next roadmap item", "fix this product bug"],
+      "intent_examples": [
+        "continue software development",
+        "implement the next roadmap item",
+        "fix this product bug"
+      ],
       "current_state_source": "operations/CURRENT.json#/lanes/product-development",
       "source_bundle": [
         "current referenced work item/checkpoint",
@@ -18,9 +22,33 @@
       "cross_lane_reads": "Only for an explicit dependency or failure signature."
     },
     {
+      "id": "ui-implementation",
+      "purpose": "Implementation of the Multiversal UI Skin Runtime (UISR): Skin Pack runtime, presentation engines, reading/accessibility runtime, Skin Laboratory, skin materialization, gallery/assignment/persistence, packaging and Tier-C UI evidence.",
+      "intent_examples": [
+        "continue UI skin implementation",
+        "implement UISR",
+        "build the Skin Pack runtime",
+        "continue the UI implementation lane"
+      ],
+      "current_state_source": "operations/CURRENT.json#/lanes/ui-implementation",
+      "source_bundle": [
+        "current referenced UISR work item/checkpoint",
+        "governance/application-planning/ui-skin-runtime/UISR_PROGRAM_BACKLOG.json",
+        "Multiversal-app UISK design contracts named by the selected UISR work item",
+        "live application repository evidence limited to the UISR scope"
+      ],
+      "cross_lane_reads": "Do not read or mutate product-development/MCS state except for an explicit shared dependency or same-repository publication conflict. UI implementation does not pause the main product-development lane."
+    },
+    {
       "id": "operations",
       "purpose": "Governance architecture, repositories, CI, agent behavior, execution infrastructure, validation infrastructure and operational tooling.",
-      "intent_examples": ["fix governance", "redesign operations", "repair CI", "change agent behavior", "repository maintenance"],
+      "intent_examples": [
+        "fix governance",
+        "redesign operations",
+        "repair CI",
+        "change agent behavior",
+        "repository maintenance"
+      ],
       "current_state_source": "operations/CURRENT.json#/lanes/operations",
       "source_bundle": [
         "operations/",
@@ -32,7 +60,12 @@
     {
       "id": "content-design",
       "purpose": "Game-system evaluation, world/game content design, mechanics design and content creation that does not itself authorize software implementation.",
-      "intent_examples": ["evaluate this game system", "design creatures", "create RPG content", "work on lore"],
+      "intent_examples": [
+        "evaluate this game system",
+        "design creatures",
+        "create RPG content",
+        "work on lore"
+      ],
       "current_state_source": "operations/CURRENT.json#/lanes/content-design",
       "source_bundle": [
         "user-selected game/content sources",
@@ -44,7 +77,11 @@
     {
       "id": "dwc-speech",
       "purpose": "The DWC speech-synthesis project and its corpus/training/inference workflow.",
-      "intent_examples": ["continue DWC", "speech retrain", "DWC diagnostic"],
+      "intent_examples": [
+        "continue DWC",
+        "speech retrain",
+        "DWC diagnostic"
+      ],
       "current_state_source": "operations/CURRENT.json#/lanes/dwc-speech",
       "source_bundle": [
         "governance/application-planning/dwc-speech/README.md",
@@ -56,7 +93,12 @@
     {
       "id": "research-evaluation",
       "purpose": "External research, tools/resources evaluation, vendor/open-source comparisons and technical investigation that does not itself mutate product state.",
-      "intent_examples": ["research this", "compare tools", "evaluate software", "find resources"],
+      "intent_examples": [
+        "research this",
+        "compare tools",
+        "evaluate software",
+        "find resources"
+      ],
       "current_state_source": "operations/CURRENT.json#/lanes/research-evaluation",
       "source_bundle": [
         "user-supplied research question",
@@ -68,7 +110,12 @@
     {
       "id": "source-provenance",
       "purpose": "Source ingestion, provenance, corpus coverage, licensing traceability and recovery of project source material.",
-      "intent_examples": ["audit source coverage", "trace provenance", "review these source files", "recover missing material"],
+      "intent_examples": [
+        "audit source coverage",
+        "trace provenance",
+        "review these source files",
+        "recover missing material"
+      ],
       "current_state_source": "operations/CURRENT.json#/lanes/source-provenance",
       "source_bundle": [
         "SOURCE_MAP/manifest equivalents",

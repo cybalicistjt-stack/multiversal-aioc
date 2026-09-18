@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "program_id": "UISR",
+  "program_name": "Multiversal UI Skin Runtime Implementation",
+  "status": "owner_approved_in_progress",
+  "owner_authorized": "2026-09-18",
+  "implementation_repository": "cybalicistjt-stack/Multiversal-app",
+  "lane": "ui-implementation",
+  "strict_order": [
+    "UISR-01",
+    "UISR-02",
+    "UISR-03",
+    "UISR-04",
+    "UISR-05",
+    "UISR-06",
+    "UISR-07",
+    "UISR-08",
+    "UISR-09",
+    "UISR-10"
+  ],
+  "tranches": [
+    {
+      "id": "UISR-01",
+      "name": "Skin Runtime Registry, Selection Resolver & Legacy Adapter Foundation",
+      "status": "in_progress"
+    },
+    {
+      "id": "UISR-02",
+      "name": "Token Resolution, Material, Frame & Ornament Runtime",
+      "status": "planned"
+    },
+    {
+      "id": "UISR-03",
+      "name": "Typography, Icons, Reading Assistance & Accessibility Runtime",
+      "status": "planned"
+    },
+    {
+      "id": "UISR-04",
+      "name": "Effects, Motion, Atmosphere & Shared Component Recipe Runtime",
+      "status": "planned"
+    },
+    {
+      "id": "UISR-05",
+      "name": "Specialized Surface Bindings & Skin Laboratory Runtime",
+      "status": "planned"
+    },
+    {
+      "id": "UISR-06",
+      "name": "Ember/Chromatic Migration, Gallery, Assignment & Persistence",
+      "status": "planned"
+    },
+    {
+      "id": "UISR-07",
+      "name": "Structural Stress-Test Skin Pack Materialization",
+      "status": "planned"
+    },
+    {
+      "id": "UISR-08",
+      "name": "Environmental/Genre Skin Pack Materialization",
+      "status": "planned"
+    },
+    {
+      "id": "UISR-09",
+      "name": "Extreme/Social/Craft Skin Pack Materialization",
+      "status": "planned"
+    },
+    {
+      "id": "UISR-10",
+      "name": "Packaging, Tier-C Validation, Performance Proof & Legacy Cleanup",
+      "status": "planned"
+    }
+  ],
+  "parallelism": {
+    "allowed_with": [
+      "product-development"
+    ],
+    "rule": "UISR and product-development may execute concurrently on separate branches. Neither lane may pause/reprioritize the other. Shared Multiversal-app publication is serialized by the OPS3 merge lease and stale-base revalidation."
+  },
+  "execution_rule": "Each UISR tranche is a bounded ui-implementation work item carried through implementation, exact-head validation, serialized publication and lane-local closeout unless a genuine owner-only/external blocker is reached.",
+  "boundaries": [
+    "UISR implements presentation only and may not become gameplay, permission, hidden-information, validation, provenance, AI or navigation authority.",
+    "Accessibility and reading preferences remain above Skin Pack presentation.",
+    "No target skin is runtime-complete until its separately governed implementation and Tier-C evidence exist.",
+    "UISR may not mutate MCS/product-development checkpoint state."
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "UISR-01",
+  "attempt_id": "UISR-01-attempt-001",
+  "title": "Skin Runtime Registry, Selection Resolver & Legacy Adapter Foundation",
+  "track": "ui-skin-runtime",
+  "source_program": "UISR",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "feature/uisr-01-skin-runtime-foundation",
+  "completed": false,
+  "objective": "Implement the first production UISK runtime seam: registry-backed Skin Pack identities and availability, exact alias resolution, deterministic assignment precedence, safe apply/clear helpers, and Ember/Chromatic compatibility without implementing later material/frame/effect engines or production target-skin assets.",
+  "predecessor": {
+    "work_item_id": "UISK-16-design-closeout",
+    "status": "completed_verified",
+    "application_merge_sha": "99663044e1c2463e95787d50932df7edfe58d834"
+  },
+  "strict_successor": "UISR-02",
+  "parallel_lane": "product-development",
+  "scope": {
+    "included": [
+      "canonical registry identities for Ember/Chromatic plus the eighteen target Skin Packs",
+      "runtime availability metadata distinguishing live migration packs from design-complete not-yet-implemented packs",
+      "exact alias resolution including talker-theme to roses-theme",
+      "follow-context versus always-use-personal assignment precedence resolver",
+      "temporary/user/world/campaign/application fallback ordering",
+      "safe presentation-only apply and clear helpers",
+      "legacy applyMultiversalTheme compatibility adapter",
+      "focused unit/integration/typecheck validation"
+    ],
+    "excluded": [
+      "material/frame/ornament runtime",
+      "new production Skin Pack visual assets",
+      "Skin Laboratory",
+      "account/campaign/world persistence",
+      "gallery/import/export UI",
+      "gameplay, permission, hidden-information, routing, validation or provenance authority changes",
+      "MCS implementation or MCS checkpoint changes"
+    ],
+    "completion_gate": "The shared UI package exposes a registry-backed Skin Pack runtime foundation with deterministic selection/fallback semantics and legacy Ember/Chromatic compatibility; exact-head validation passes; publication is durable; UISR-01 closes to UISR-02 without modifying the product-development lane."
+  },
+  "selection_boundaries": [
+    "Owner explicitly created a parallel ui-implementation lane so UISR and MCS can run concurrently.",
+    "UISR-01 is presentation infrastructure only and creates no gameplay, permission, hidden-information, campaign, world, rules, validation or provenance authority.",
+    "Only Ember and Chromatic are activatable in UISR-01; the eighteen target packs may be registered as known design identities but remain unavailable until their implementation tranches.",
+    "Roses Theme is canonical; talker-theme is an exact compatibility alias only.",
+    "MCS/product-development state is out of UISR scope except same-repository publication evidence."
+  ],
+  "implementation_plan": {
+    "red": "write focused UISR-01 tests first",
+    "green": "implement registry/resolver/legacy adapter",
+    "proof": "run exact-head validation on the UISR branch",
+    "closeout": "publish exact validated application head and select UISR-02 in ui-implementation lane only"
+  },
+  "active_substep": "governed_start_complete",
+  "next_action": "Implement UISR-01 on feature/uisr-01-skin-runtime-foundation. Do not touch MCS work.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "owner_interaction_observation": {
+    "continue_turns": 1,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  }
+}
