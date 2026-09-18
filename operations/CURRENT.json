@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 206,
+  "state_revision": 207,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -61,13 +61,13 @@
       "activation_rule": "Owner Continue on 2026-09-18 govern-started UISR-10 from fresh Multiversal-app base bda4936f828e636cdc8eb1ae104b0c620b0152e1 after fresh UISK-10 Laboratory/capture/baseline/evidence and UISK-16 packaging/validation/evidence/legacy-migration review. Execute UISR-10 through causal RED, GREEN, measured Tier-C/browser evidence, exact-head validation, serialized publication and final UISR closeout only if the production Full Skin Capability gate is proven; preserve product-development MNCS-22 and player-species independently."
     },
     "player-species": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "MVPS-07",
       "attempt_id": "MVPS-07-attempt-001",
       "checkpoint_path": "governance/ai/work-state/MVPS-07-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "MVPS-06 completed_verified after causal RED run 35369637049, GREEN run 35369786243, and implementation merge d373a9642d511bb163ea6b747c471c923be2a33b. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MVPS interstitial gate overriding strict order, so MVPS-07 is selected_not_started until a later owner Continue."
+      "implementation_branch": "work/mvps-07-equipment-vehicle-interface-compatibility",
+      "implementation_authority": true,
+      "activation_rule": "Owner Continue on 2026-09-18 govern-started MVPS-07 from fresh AIOC base 984b81f4dc6b1fb5ac1e32e0a75436f9ffd4ab56. Execute only Equipment, Vehicle and Interface Compatibility through causal RED, GREEN, proof, exact-head validation, serialized publication, fresh DAG reconciliation and atomic closeout; preserve product/UI lanes independently."
     }
   },
   "truth_rules": {
@@ -78,5 +78,5 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. MVPS/player-species is independently selectable; shared-owner contract edits require explicit dependency coordination and same-repository publication is serialized by OPS3 merge leases."
   },
-  "next_project_action": "Route by selected lane: product-development independently executes MNCS-24; ui-implementation independently executes UISR-10; player-species awaits an MVPS-specific Continue to govern-start MVPS-07 — Equipment, Vehicle and Interface Compatibility. No lane pauses or rewrites another."
+  "next_project_action": "Execute MVPS-07 — Equipment, Vehicle and Interface Compatibility — through causal RED/GREEN, exact-head validation, serialized publication, successor reconciliation and atomic closeout. Preserve other lanes independently."
 }
