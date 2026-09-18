@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-09",
+  "title": "Forms and Transformation Semantics",
+  "attempt_id": "MVPS-09-attempt-001",
+  "lane": "player-species",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-08",
+  "predecessor": {
+    "work_item_id": "MVPS-08",
+    "status": "completed_verified",
+    "implementation_merge_sha": "47f450b4e97d06074a91cf7f7c478e98c1051702",
+    "validation_run": 35384256512
+  },
+  "strict_successor": "MVPS-10",
+  "objective": "Separate species from form and define explicit transformation changes and retention across anatomy, scale, movement, senses, equipment, attributes, grants, resources and presentation while preserving base identity/history and provenance-safe reversal.",
+  "acceptance": [
+    "transformations preserve base selection history",
+    "equipment behavior is explicit",
+    "reversal is provenance-safe"
+  ],
+  "boundaries": [
+    "MVPS-09 owns form identity, form composition and transformation semantics only; base species identity remains MVPS-01 and lineage composition remains MVPS-08.",
+    "A form is a governed body/state configuration distinct from species identity and must use stable references to morphology, scale, movement, senses, capabilities, resources, equipment behavior and presentation owners rather than copy their mechanics.",
+    "Transformation records must make source form, target form, entry trigger/cost, duration, retained/replaced contributions, equipment handling, exit/reversal, visibility and provenance explicit where applicable.",
+    "Temporary form state may not erase base species/lineage selections or historical receipts.",
+    "Equipment mutation remains with Item/Equipment owners; MVPS-09 specifies retain/drop/suppress/resize/replace/adapt policy references, not inventory ownership engines.",
+    "Species progression/maturation remains MVPS-10 and runtime active-contribution projection/receipts remain MVPS-13.",
+    "MVPS-10+ remain unauthorized until separately selected."
+  ],
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MVPS-specific owner Continue, enter through OPS3, reserve the FIFO publication turn before candidate preparation, fresh-read MVPS-01 through MVPS-08 plus current form/transformation/equipment/resource owner contracts, then govern-start MVPS-09 and execute the bounded tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

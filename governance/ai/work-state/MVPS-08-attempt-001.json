@@ -5,8 +5,8 @@
   "title": "Lineage/Subspecies Inheritance and Composition",
   "attempt_id": "MVPS-08-attempt-001",
   "lane": "player-species",
-  "status": "in_progress",
-  "implementation_authority": true,
+  "status": "completed_verified",
+  "implementation_authority": false,
   "implementation_branch": "work/mvps-08-lineage-inheritance-composition",
   "selected_by_verified_predecessor": "MVPS-07",
   "predecessor": {
@@ -29,27 +29,34 @@
     "Form/transformation runtime remains MVPS-09; species progression remains MVPS-10; runtime active-contribution projection remains MVPS-13.",
     "MVPS-09+ remain unauthorized until separately selected."
   ],
-  "active_substep": "red",
-  "next_action": "Establish causal RED for deterministic lineage/subspecies delta composition: lineages reference exact parent species/version rather than copying parent records; additions/removals/replacements/overrides are explicit operations; ordering is stable; duplicate-grant stacking defers to shared owners; unresolved conflicts remain explicit rather than guessed.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS-08 is completed_verified. MVPS-09 is selected_not_started with no implementation branch or authority and requires a later owner Continue.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MVPS-08 implementation is durably merged and this FIFO closeout candidate is the final canonical-state publication gate."
+    }
   },
   "implementation_plan": {
-    "red": "in_progress",
-    "green": "pending",
-    "proof": "pending",
-    "closeout": "pending"
+    "red": "completed_expected_failure",
+    "green": "completed",
+    "proof": "completed",
+    "closeout": "completed"
   },
   "owner_interaction_observation": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED"
+    ],
+    "product_completion_valid": true,
+    "execution_quality_note": "A second owner Continue was required because repeated pre-publication FIFO stale-main races and a stall-recovery handoff interrupted the original execution turn; no stale MVPS candidate was merged."
   },
   "governed_start": {
     "aioc_base_sha": "b58918324e56c3c27aedeac01e8398afb78eef9d",
@@ -60,9 +67,65 @@
   },
   "publication_turn": {
     "schema_version": "2.0.0",
-    "reservation_id": "mvps-08-attempt-001-governed-start-001",
-    "holder": "MVPS-08-attempt-001-governed-start",
-    "status": "held",
-    "turn_base": "b58918324e56c3c27aedeac01e8398afb78eef9d"
+    "reservation_id": "mvps-08-attempt-001-closeout-001",
+    "holder": "MVPS-08-attempt-001-closeout",
+    "turn_base": "9c8f11f1a463a418c7dfab6da10c1a56c3ea3878"
+  },
+  "convergence_control": {
+    "owner_continue_count": 2,
+    "execution_cycles": 2,
+    "single_continue_achieved": false,
+    "genuine_blocker": null,
+    "execution_incident": "MVPS-08 causal RED/GREEN was completed during the first Continue, but AIOC main advanced repeatedly during held publication turns. Each stale candidate failed closed, was yielded, and re-reserved. The second Continue resumed from preserved authority and completed durable implementation publication plus closeout."
+  },
+  "completion_evidence": {
+    "red": {
+      "head": "f59bd69164f84e43d485ac675ef00abffc65d801",
+      "validation_run": 35382218285,
+      "result": "expected_failure",
+      "observed_failure": "MVPS-08 lineage composition regression failed before implementation because the four lineage definition/composition artifacts were absent."
+    },
+    "green": {
+      "validated_head": "872ce4cedf2848d4d79f030af0285ac5d08982e6",
+      "validation_run": 35382373920,
+      "result": "success"
+    },
+    "replay_green": {
+      "validated_head": "97fcf986c7adb004c8cfd9c8eb7bdd964c127f85",
+      "validation_run": 35382865993,
+      "result": "success",
+      "note": "Validated replay before a later FIFO stale-main invalidation."
+    },
+    "final_fifo_publication": {
+      "validated_head": "9886727af1d2dd46076457ae7db0bbdb526de130",
+      "validation_run": 35384256512,
+      "implementation_pr": 1413,
+      "implementation_merge_sha": "47f450b4e97d06074a91cf7f7c478e98c1051702"
+    },
+    "artifacts": [
+      "governance/application-planning/player-species/contracts/MVPS-08_LINEAGE_DEFINITION_CONTRACT.json",
+      "governance/application-planning/player-species/contracts/MVPS-08_LINEAGE_COMPOSITION_CONTRACT.json",
+      "governance/application-planning/player-species/contracts/MVPS-08_LINEAGE_COMPOSITION_FIXTURES.json",
+      "governance/application-planning/player-species/contracts/MVPS-08_INVARIANTS.json"
+    ],
+    "acceptance": {
+      "lineages_do_not_copy_full_parent_records": true,
+      "composition_is_deterministic_and_replayable": true,
+      "conflicts_are_surfaced_not_guessed": true
+    }
+  },
+  "roadmap_reconciliation": {
+    "dependency_graph_schema": "1.0.4",
+    "cross_program_mvps_interstitial_gate": false,
+    "selected_successor": "MVPS-09",
+    "rationale": "MVPS has no hard/start gate or milestone rotation overriding strict order after MVPS-08."
+  },
+  "closeout": {
+    "completed_on": "2026-09-18",
+    "result": "completed_verified",
+    "successor": "MVPS-09",
+    "successor_state": "selected_not_started",
+    "product_lane_mutated": false,
+    "ui_lane_mutated": false
   }
 }
