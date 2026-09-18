@@ -10,7 +10,7 @@
   "status": "in_progress",
   "owner_selected": true,
   "implementation_authority": true,
-  "implementation_branch": "work/mccs-03-topology-morphology-anatomy-authoring",
+  "implementation_branch": "work/mccs-03-topology-morphology-anatomy-authoring-r2",
   "completed": false,
   "objective": "Implement topology-aware component/parameter authoring for humanoid/biped, quadruped, serpentine, winged, multi-limbed, aquatic, composite, constructed/modular and extensible families, including proportion/silhouette controls and eligible tails, wings, fins, extra limbs, tentacles and modular parts with explicit compatibility/anchor validation.",
   "predecessor": {
@@ -58,7 +58,7 @@
     "closeout": "pending"
   },
   "active_substep": "green",
-  "next_action": "Validate unchanged MCCS-03 assertions against production head 58c1eaec29607e1f076ee323adb41ab5992440ef; repair only causal MCCS-03 failures, then run exact-head proof/publication/closeout.",
+  "next_action": "Validate PR 597 exact head 2174ba4747e16dc4186445445e4ea03041066780 against fresh base 7ce8035f08c3e1bbff572d5a549809518edf8065. The original RED at 15ad1cc13397874578ca2bef62c9e3ed7a092f6d remains causal evidence; stale-base PR 596 is closed and may not be published.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -88,7 +88,29 @@
     "cause": "Repository health and MCCS-03 profile selection passed; focused topology/morphology acceptance failed before the authorized MCCS-03 production module existed."
   },
   "green_candidate": {
-    "head_sha": "58c1eaec29607e1f076ee323adb41ab5992440ef",
-    "status": "awaiting_validation"
-  }
+    "head_sha": "2174ba4747e16dc4186445445e4ea03041066780",
+    "status": "awaiting_validation",
+    "reconciled_from_head": "58c1eaec29607e1f076ee323adb41ab5992440ef",
+    "reconciled_onto_base": "7ce8035f08c3e1bbff572d5a549809518edf8065",
+    "application_pr": 597,
+    "stale_application_pr": 596,
+    "stale_selector_run": 35373139072,
+    "stale_selector_failure": "Pull-request event retained old base d781b59da41b794a966ecd096c1d7703c7c7b077, causing three-dot profile discovery to see both MCCS-03 and already-published UISR-10. A new branch/PR was rooted at fresh main instead of weakening validation or forcing history."
+  },
+  "plan_adjustments": [
+    {
+      "adjustment_id": "MCCS-03-ADJ-001",
+      "reason": "UISR-10 published to the shared application main while MCCS-03 validation was running, making the original PR base stale.",
+      "evidence": {
+        "old_base": "d781b59da41b794a966ecd096c1d7703c7c7b077",
+        "fresh_base": "7ce8035f08c3e1bbff572d5a549809518edf8065",
+        "stale_pr": 596,
+        "stale_selector_run": 35373139072
+      },
+      "change": "Rebuilt the exact seven-file MCCS-03 candidate tree on fresh main, created reconciled branch work/mccs-03-topology-morphology-anatomy-authoring-r2 and PR 597, and closed stale PR 596. No MCCS test or production behavior was weakened.",
+      "authority_expansion": false,
+      "scope_expansion": false,
+      "status": "resolved_pending_validation"
+    }
+  ]
 }
