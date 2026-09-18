@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-07",
+  "title": "Equipment, Vehicle and Interface Compatibility",
+  "attempt_id": "MVPS-07-attempt-001",
+  "lane": "player-species",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-06",
+  "predecessor": {
+    "work_item_id": "MVPS-06",
+    "status": "completed_verified",
+    "implementation_merge_sha": "d373a9642d511bb163ea6b747c471c923be2a33b",
+    "validation_run": 35369786243
+  },
+  "strict_successor": "MVPS-08",
+  "objective": "Define common compatibility predicates for clothing, armor, weapons, tools, implants, suits, seats, mounts, vehicles and other body/interface relationships so diverse species and body plans can explicitly accept, adapt or reject interfaces without species-name branching or size-only inference.",
+  "acceptance": [
+    "compatibility is not inferred only from size",
+    "incompatible equipment yields explicit reason",
+    "common interface handles diverse body plans"
+  ],
+  "boundaries": [
+    "MVPS-07 owns species/body-plan-facing compatibility predicates and compatibility-result semantics only.",
+    "MVPS-03 morphology and MVPS-06 natural-equipment structures are consumed by reference rather than rewritten.",
+    "Item Definition, Asset Instance, ownership, equipment assignment, vehicle, mount and installation workflows remain with their shared owners.",
+    "Mount-capable and rider/occupant relationships may expose compatibility predicates here, but mount runtime/control/progression mechanics remain with the mount/vehicle/entity owners.",
+    "Lineage inheritance remains MVPS-08; form/transformation behavior remains MVPS-09; progression remains MVPS-10.",
+    "MVPS-08+ remain unauthorized until separately selected."
+  ],
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MVPS-specific owner Continue, fresh-read MVPS-03 and MVPS-06 plus controlling Item/Equipment/Inventory/Vehicle/Mount/Implant/Seat/Interface owner contracts, reconcile current shared-owner state, govern-start MVPS-07, establish causal RED and execute through proof, publication and closeout.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "terminal_reason": "selected_not_started; no execution attempt has begun"
+  }
+}
