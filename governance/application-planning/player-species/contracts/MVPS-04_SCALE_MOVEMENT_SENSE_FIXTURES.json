@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_scope": "MVPS-04 synthetic non-canon integration fixtures",
+  "non_canon": true,
+  "winged_fixture": {
+    "fixture_id": "fixture:mvps04/winged",
+    "morphology_profile_ref": "fixture:morphology/winged-biped",
+    "scale_profile_ref": "fixture:scale/personal-medium@1",
+    "movement_grants": [
+      {
+        "record_ref": "fixture:movement/walk@1",
+        "grant_type": "locomotion_mode",
+        "source_ref": "fixture:species/winged@1",
+        "rules_profile_ref": "fixture:rules/movement-standard@1",
+        "morphology_requirement_refs": [
+          "fixture:morphology/winged-biped:legs"
+        ]
+      },
+      {
+        "record_ref": "fixture:movement/flight@1",
+        "grant_type": "locomotion_mode",
+        "source_ref": "fixture:species/winged@1",
+        "rules_profile_ref": "fixture:rules/flight-standard@1",
+        "morphology_requirement_refs": [
+          "fixture:morphology/winged-biped:wings"
+        ]
+      }
+    ],
+    "sense_grants": [
+      {
+        "record_ref": "fixture:sense/visible-spectrum@1",
+        "grant_type": "sense_mode",
+        "source_ref": "fixture:species/winged@1",
+        "rules_profile_ref": "fixture:rules/vision-standard@1",
+        "anatomy_requirement_refs": [
+          "fixture:morphology/winged-biped:visual-organs"
+        ]
+      }
+    ],
+    "derived_value_rule_refs": [
+      {
+        "derived_value_key": "ground_movement",
+        "rules_profile_ref": "fixture:rules/movement-standard@1",
+        "source_ref": "fixture:species/winged@1"
+      },
+      {
+        "derived_value_key": "flight_movement",
+        "rules_profile_ref": "fixture:rules/flight-standard@1",
+        "source_ref": "fixture:species/winged@1"
+      },
+      {
+        "derived_value_key": "visual_perception",
+        "rules_profile_ref": "fixture:rules/vision-standard@1",
+        "source_ref": "fixture:species/winged@1"
+      }
+    ]
+  },
+  "aquatic_fixture": {
+    "fixture_id": "fixture:mvps04/aquatic",
+    "morphology_profile_ref": "fixture:morphology/aquatic-nonhumanoid",
+    "scale_profile_ref": "fixture:scale/personal-medium@1",
+    "movement_grants": [
+      {
+        "record_ref": "fixture:movement/swim@1",
+        "grant_type": "locomotion_mode",
+        "source_ref": "fixture:species/aquatic@1",
+        "rules_profile_ref": "fixture:rules/swim-standard@1",
+        "morphology_requirement_refs": [
+          "fixture:morphology/aquatic-nonhumanoid:propulsion"
+        ]
+      }
+    ],
+    "sense_grants": [
+      {
+        "record_ref": "fixture:sense/visible-spectrum@1",
+        "grant_type": "sense_mode",
+        "source_ref": "fixture:species/aquatic@1",
+        "rules_profile_ref": "fixture:rules/vision-aquatic@1",
+        "anatomy_requirement_refs": [
+          "fixture:morphology/aquatic-nonhumanoid:visual-organs"
+        ]
+      },
+      {
+        "record_ref": "fixture:sense/vibration-detection@1",
+        "grant_type": "sense_mode",
+        "source_ref": "fixture:species/aquatic@1",
+        "rules_profile_ref": "fixture:rules/vibration-sense@1",
+        "anatomy_requirement_refs": [
+          "fixture:morphology/aquatic-nonhumanoid:vibration-organs"
+        ]
+      }
+    ],
+    "derived_value_rule_refs": [
+      {
+        "derived_value_key": "swim_movement",
+        "rules_profile_ref": "fixture:rules/swim-standard@1",
+        "source_ref": "fixture:species/aquatic@1"
+      },
+      {
+        "derived_value_key": "visual_perception",
+        "rules_profile_ref": "fixture:rules/vision-aquatic@1",
+        "source_ref": "fixture:species/aquatic@1"
+      },
+      {
+        "derived_value_key": "vibration_perception",
+        "rules_profile_ref": "fixture:rules/vibration-sense@1",
+        "source_ref": "fixture:species/aquatic@1"
+      }
+    ]
+  },
+  "proof_notes": [
+    "Both fixtures use the same integration contract.",
+    "No fixture contains movement/sense formulas or numeric engine logic.",
+    "Scale is a profile reference, not inline resolution math.",
+    "Different locomotion and sense modes are expressed as typed shared-record grants."
+  ]
+}
