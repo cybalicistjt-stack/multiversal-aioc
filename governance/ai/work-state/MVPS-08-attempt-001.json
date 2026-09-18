@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-08",
+  "title": "Lineage/Subspecies Inheritance and Composition",
+  "attempt_id": "MVPS-08-attempt-001",
+  "lane": "player-species",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-07",
+  "predecessor": {
+    "work_item_id": "MVPS-07",
+    "status": "completed_verified",
+    "implementation_merge_sha": "152bddb0eec1f00af584f9c15563f981af3f0e44",
+    "validation_run": 35372176082
+  },
+  "strict_successor": "MVPS-09",
+  "objective": "Define deterministic parent/lineage deltas, overrides, exclusions, grant stacking and composition order without copying full parent records or guessing conflicts.",
+  "acceptance": [
+    "lineages do not copy full parent records",
+    "composition is deterministic and replayable",
+    "conflicts are surfaced rather than guessed"
+  ],
+  "boundaries": [
+    "MVPS-08 owns lineage/subspecies inheritance and composition semantics only.",
+    "Base species identity remains MVPS-01 and species choice semantics remain MVPS-02.",
+    "Morphology, scale/movement/senses, physiology, natural equipment and compatibility consume MVPS-03 through MVPS-07 by stable reference/delta rather than copied mechanics.",
+    "Form/transformation runtime remains MVPS-09; species progression remains MVPS-10; runtime active-contribution projection remains MVPS-13.",
+    "MVPS-09+ remain unauthorized until separately selected."
+  ],
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MVPS-specific owner Continue, enter through OPS3, reserve the FIFO publication turn before candidate preparation, fresh-read MVPS-01 through MVPS-07 composition-bearing contracts and current shared duplicate/stacking owner rules, then govern-start MVPS-08 and execute the bounded tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

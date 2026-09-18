@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 217,
+  "state_revision": 218,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -61,13 +61,13 @@
       "activation_rule": "Owner Continue on 2026-09-18 govern-started UISR-11 for four showcase packs from fresh app base 74c9f5a5d784edcf4ba6112fd270a99672c99966: zombie-garden, cozy-cabin, non-euclidean and amphibious-frogs. Non-Euclidean may alter deterministic presentation frame/panel geometry only; logical task topology, focus order, hit targets, semantics, permissions, hidden information, validation, provenance, navigation and gameplay remain application-owned."
     },
     "player-species": {
-      "state": "in_progress",
-      "selected_work_item": "MVPS-07",
-      "attempt_id": "MVPS-07-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MVPS-07-attempt-001.json",
-      "implementation_branch": "work/mvps-07-equipment-vehicle-interface-compatibility",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue on 2026-09-18 govern-started MVPS-07 from fresh AIOC base 984b81f4dc6b1fb5ac1e32e0a75436f9ffd4ab56. Execute only Equipment, Vehicle and Interface Compatibility through causal RED, GREEN, proof, exact-head validation, serialized publication, fresh DAG reconciliation and atomic closeout; preserve product/UI lanes independently."
+      "state": "selected_not_started",
+      "selected_work_item": "MVPS-08",
+      "attempt_id": "MVPS-08-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MVPS-08-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MVPS-07 completed_verified after causal RED run 35372047965, GREEN run 35372176082, implementation merge 152bddb0eec1f00af584f9c15563f981af3f0e44, and FIFO closeout from AIOC turn_base 1fb67214e840a7fa8c3e33061b9a538bc1b2e4f7. ROADMAP_DEPENDENCY_GRAPH schema 1.0.4 has no MVPS interstitial gate overriding strict order; MVPS-08 remains selected_not_started until a later owner Continue."
     }
   },
   "truth_rules": {
@@ -78,5 +78,5 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. Same-repository publication uses the OPS3 FIFO reservation queue: reserve first, prepare/reconcile/validate only when the reservation activates, then merge/release before the next turn. MVPS/player-species and product lanes remain independently selectable."
   },
-  "next_project_action": "Route by selected lane: ui-implementation executes UISR-11 through causal RED, GREEN, proof, exact-head validation, serialized publication and atomic closeout; product-development independently executes MCCS-06; player-species independently executes MVPS-07. No lane pauses or rewrites another."
+  "next_project_action": "Route by selected lane: product-development independently executes MCCS-06; ui-implementation independently executes UISR-11; player-species awaits an MVPS-specific Continue to govern-start MVPS-08 — Lineage/Subspecies Inheritance and Composition. No lane pauses or rewrites another."
 }
