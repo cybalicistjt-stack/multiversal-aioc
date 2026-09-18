@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_scope": "MVPS-05 synthetic non-canon physiology and environmental fixtures",
+  "non_canon": true,
+  "baseline_biological_fixture": {
+    "fixture_id": "fixture:mvps05/baseline-biological",
+    "biology_descriptor": {
+      "summary": "Aerobic biological organism with ordinary food, water and sleep needs.",
+      "mechanical_effect": null
+    },
+    "lifecycle_metadata": {
+      "lifespan": "authored-descriptive-example",
+      "development_stages": [
+        "juvenile",
+        "mature",
+        "elder"
+      ]
+    },
+    "physiology_hooks": [
+      {
+        "record_ref": "fixture:physiology/air-respiration@1",
+        "hook_type": "respiration",
+        "source_ref": "fixture:species/baseline@1",
+        "rules_profile_ref": "fixture:rules/respiration-standard@1"
+      },
+      {
+        "record_ref": "fixture:physiology/organic-sustenance@1",
+        "hook_type": "sustenance",
+        "source_ref": "fixture:species/baseline@1",
+        "rules_profile_ref": "fixture:rules/sustenance-standard@1"
+      },
+      {
+        "record_ref": "fixture:physiology/sleep-rest@1",
+        "hook_type": "rest_recovery",
+        "source_ref": "fixture:species/baseline@1",
+        "rules_profile_ref": "fixture:rules/rest-standard@1"
+      }
+    ],
+    "lifecycle_rule_refs": [],
+    "environment_tolerance_grants": []
+  },
+  "aquatic_fixture": {
+    "fixture_id": "fixture:mvps05/aquatic",
+    "biology_descriptor": {
+      "summary": "Aquatic organism adapted to extracting dissolved gases and living submerged.",
+      "mechanical_effect": null
+    },
+    "lifecycle_metadata": {
+      "lifespan": "authored-descriptive-example",
+      "development_stages": [
+        "larval",
+        "mature"
+      ]
+    },
+    "physiology_hooks": [
+      {
+        "record_ref": "fixture:physiology/water-respiration@1",
+        "hook_type": "respiration",
+        "source_ref": "fixture:species/aquatic@1",
+        "rules_profile_ref": "fixture:rules/respiration-aquatic@1"
+      },
+      {
+        "record_ref": "fixture:physiology/organic-sustenance@1",
+        "hook_type": "sustenance",
+        "source_ref": "fixture:species/aquatic@1",
+        "rules_profile_ref": "fixture:rules/sustenance-standard@1"
+      },
+      {
+        "record_ref": "fixture:physiology/aquatic-rest@1",
+        "hook_type": "rest_recovery",
+        "source_ref": "fixture:species/aquatic@1",
+        "rules_profile_ref": "fixture:rules/rest-aquatic@1"
+      }
+    ],
+    "lifecycle_rule_refs": [],
+    "environment_tolerance_grants": [
+      {
+        "record_ref": "fixture:adaptation/submerged-function@1",
+        "factor_type": "water",
+        "source_ref": "fixture:species/aquatic@1",
+        "rules_profile_ref": "fixture:rules/environment-water@1",
+        "capability_tags": [
+          "submerged_survival"
+        ]
+      },
+      {
+        "record_ref": "fixture:adaptation/pressure-band-aquatic@1",
+        "factor_type": "pressure",
+        "source_ref": "fixture:species/aquatic@1",
+        "rules_profile_ref": "fixture:rules/environment-pressure@1",
+        "capability_tags": [
+          "pressure_tolerance"
+        ]
+      }
+    ]
+  },
+  "construct_fixture": {
+    "fixture_id": "fixture:mvps05/construct",
+    "biology_descriptor": {
+      "summary": "Artificial construct with no ordinary biological respiration or food cycle.",
+      "mechanical_effect": null
+    },
+    "lifecycle_metadata": {
+      "lifespan": "maintenance-dependent descriptive example",
+      "development_stages": []
+    },
+    "physiology_hooks": [
+      {
+        "record_ref": "fixture:physiology/respiration-independent@1",
+        "hook_type": "respiration",
+        "source_ref": "fixture:species/construct@1",
+        "rules_profile_ref": "fixture:rules/respiration-independent@1"
+      },
+      {
+        "record_ref": "fixture:physiology/sustenance-energy-input@1",
+        "hook_type": "sustenance",
+        "source_ref": "fixture:species/construct@1",
+        "rules_profile_ref": "fixture:rules/sustenance-energy@1"
+      },
+      {
+        "record_ref": "fixture:physiology/maintenance-recovery@1",
+        "hook_type": "rest_recovery",
+        "source_ref": "fixture:species/construct@1",
+        "rules_profile_ref": "fixture:rules/recovery-maintenance@1"
+      }
+    ],
+    "lifecycle_rule_refs": [],
+    "environment_tolerance_grants": [
+      {
+        "record_ref": "fixture:adaptation/vacuum-function@1",
+        "factor_type": "vacuum",
+        "source_ref": "fixture:species/construct@1",
+        "rules_profile_ref": "fixture:rules/environment-vacuum@1",
+        "capability_tags": [
+          "vacuum_tolerance"
+        ]
+      },
+      {
+        "record_ref": "fixture:adaptation/radiation-shielding-basic@1",
+        "factor_type": "radiation",
+        "source_ref": "fixture:species/construct@1",
+        "rules_profile_ref": "fixture:rules/environment-radiation@1",
+        "capability_tags": [
+          "radiation_tolerance"
+        ]
+      }
+    ]
+  },
+  "proof_notes": [
+    "Biology prose has no mechanical_effect.",
+    "Executable physiology is expressed only through typed shared-record references.",
+    "Environmental protection is expressed as typed adaptation/tolerance grants rather than prose inference.",
+    "No fixture contains species_name dispatch, survival formulas or aging formulas."
+  ]
+}
