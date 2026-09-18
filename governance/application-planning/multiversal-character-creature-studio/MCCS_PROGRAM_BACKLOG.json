@@ -2,7 +2,7 @@
   "schema_version": "0.3.1",
   "program_id": "MCCS",
   "program_name": "Multiversal Character & Creature Studio",
-  "status": "owner_approved_planned",
+  "status": "active_under_ops3",
   "activation_after": "ROADMAP_DEPENDENCY_GRAPH typed MCCS start gates; parallel-safe with MCS/MRCS/MSAS",
   "successor": "MNCS-01 via ROADMAP_DEPENDENCY_GRAPH rotation after reduced MCCS-01 plus MNCS prerequisites",
   "owner": "John Brandon Turner",
@@ -16,7 +16,10 @@
     "reduced_tranche_count": 11,
     "receipt": "governance/application-planning/preimplementation-design-closure/PDCP_MCCS_REDUCTION_RECEIPT.json",
     "family_design_closure": "governance/application-planning/preimplementation-design-closure/PDCP_MCCS_FAMILY_DESIGN_CLOSURE.md",
-    "stable_milestones": ["MCCS-01", "MCCS-21"],
+    "stable_milestones": [
+      "MCCS-01",
+      "MCCS-21"
+    ],
     "capability_loss_detected": false
   },
   "execution_design": {
@@ -26,19 +29,135 @@
     "split_rule": "Split before governed start if the selected surviving tranche cannot credibly preserve the closeout reserve.",
     "retry_rule": "Do not rerun an unchanged deterministic failure; require changed evidence before retry."
   },
-  "strict_order": ["MCCS-01","MCCS-03","MCCS-05","MCCS-06","MCCS-09","MCCS-11","MCCS-13","MCCS-16","MCCS-18","MCCS-19","MCCS-21"],
+  "strict_order": [
+    "MCCS-01",
+    "MCCS-03",
+    "MCCS-05",
+    "MCCS-06",
+    "MCCS-09",
+    "MCCS-11",
+    "MCCS-13",
+    "MCCS-16",
+    "MCCS-18",
+    "MCCS-19",
+    "MCCS-21"
+  ],
   "tranches": [
-    {"id":"MCCS-01","name":"Creator Workspace, Renderer-Neutral Projection, Draft/Rebase & Authority Contract","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MCCS-01","MCCS-02"]},
-    {"id":"MCCS-03","name":"Topology, Morphology, Silhouette, Appendage & Modular Anatomy Authoring","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MCCS-03","MCCS-04","MCCS-08"]},
-    {"id":"MCCS-05","name":"Head, Face, Sensory Feature & Expression Anatomy Authoring","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MCCS-05"]},
-    {"id":"MCCS-06","name":"Coverings, Color, Material, Pattern, Marking & Surface-Layer Studio","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MCCS-06","MCCS-07"]},
-    {"id":"MCCS-09","name":"Wardrobe, Equipment Fit, Accessories, Props & Linked-Being Presentation Composition","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MCCS-09","MCCS-10"]},
-    {"id":"MCCS-11","name":"Pose, Gesture, Expression, Rig, Anchor, IK & Retarget Preview","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MCCS-11","MCCS-12"]},
-    {"id":"MCCS-13","name":"Multi-Profile Derivative Rendering: Portrait/Token/Paper-Doll/Top-Down/Isometric/Sprite/Stance","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MCCS-13","MCCS-14","MCCS-15"]},
-    {"id":"MCCS-16","name":"Style Packs, Templates, Renderer Profiles & Visual Variant Recipes","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MCCS-16"],"absorbs_external_residuals":["MCCS-17 visual-only variation recipes"]},
-    {"id":"MCCS-18","name":"Multi-Form, Transformation, Lifecycle & Appearance-State Management","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MCCS-18"]},
-    {"id":"MCCS-19","name":"Appearance Interchange, Round-Trip, Cross-Renderer & Future-P3D Handoff","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MCCS-19","MCCS-20"]},
-    {"id":"MCCS-21","name":"Golden Character & Creature Capability / Semantic-Integration Proof","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MCCS-21"],"absorbs_external_residuals":["MCCS-17 population-visualization proof","MCCS-19 generic provenance/review integration proof"]}
+    {
+      "id": "MCCS-01",
+      "name": "Creator Workspace, Renderer-Neutral Projection, Draft/Rebase & Authority Contract",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MCCS-01",
+        "MCCS-02"
+      ]
+    },
+    {
+      "id": "MCCS-03",
+      "name": "Topology, Morphology, Silhouette, Appendage & Modular Anatomy Authoring",
+      "status": "in_progress",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MCCS-03",
+        "MCCS-04",
+        "MCCS-08"
+      ]
+    },
+    {
+      "id": "MCCS-05",
+      "name": "Head, Face, Sensory Feature & Expression Anatomy Authoring",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MCCS-05"
+      ]
+    },
+    {
+      "id": "MCCS-06",
+      "name": "Coverings, Color, Material, Pattern, Marking & Surface-Layer Studio",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MCCS-06",
+        "MCCS-07"
+      ]
+    },
+    {
+      "id": "MCCS-09",
+      "name": "Wardrobe, Equipment Fit, Accessories, Props & Linked-Being Presentation Composition",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MCCS-09",
+        "MCCS-10"
+      ]
+    },
+    {
+      "id": "MCCS-11",
+      "name": "Pose, Gesture, Expression, Rig, Anchor, IK & Retarget Preview",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MCCS-11",
+        "MCCS-12"
+      ]
+    },
+    {
+      "id": "MCCS-13",
+      "name": "Multi-Profile Derivative Rendering: Portrait/Token/Paper-Doll/Top-Down/Isometric/Sprite/Stance",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MCCS-13",
+        "MCCS-14",
+        "MCCS-15"
+      ]
+    },
+    {
+      "id": "MCCS-16",
+      "name": "Style Packs, Templates, Renderer Profiles & Visual Variant Recipes",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MCCS-16"
+      ],
+      "absorbs_external_residuals": [
+        "MCCS-17 visual-only variation recipes"
+      ]
+    },
+    {
+      "id": "MCCS-18",
+      "name": "Multi-Form, Transformation, Lifecycle & Appearance-State Management",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MCCS-18"
+      ]
+    },
+    {
+      "id": "MCCS-19",
+      "name": "Appearance Interchange, Round-Trip, Cross-Renderer & Future-P3D Handoff",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MCCS-19",
+        "MCCS-20"
+      ]
+    },
+    {
+      "id": "MCCS-21",
+      "name": "Golden Character & Creature Capability / Semantic-Integration Proof",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MCCS-21"
+      ],
+      "absorbs_external_residuals": [
+        "MCCS-17 population-visualization proof",
+        "MCCS-19 generic provenance/review integration proof"
+      ]
+    }
   ],
   "required_upstream": [
     "ROADMAP_DEPENDENCY_GRAPH FOUR_LANE_RELEASE_BARRIER",
@@ -48,9 +167,37 @@
     "PCA-15",
     "CAPP/PPIA/PAPT/ARI contracts"
   ],
-  "late_bind_requires": ["MCS map/scene bindings"],
-  "golden_proof_requires": ["PCA-16", "MCS-21 relevant presentation proof"],
-  "integration_targets": ["Character","NPC","Creature","Species/Form","PPIA","CAPP","PAPT","Inventory/Asset","Mount/Familiar/Pet/Companion owners","ARI","PCA","Animation","Scene/Tabletop","Combat","Dialogue","P3D future handoff","MCS","MNCS","MAS","SMB-08","SMB-09","SAA"],
+  "late_bind_requires": [
+    "MCS map/scene bindings"
+  ],
+  "golden_proof_requires": [
+    "PCA-16",
+    "MCS-21 relevant presentation proof"
+  ],
+  "integration_targets": [
+    "Character",
+    "NPC",
+    "Creature",
+    "Species/Form",
+    "PPIA",
+    "CAPP",
+    "PAPT",
+    "Inventory/Asset",
+    "Mount/Familiar/Pet/Companion owners",
+    "ARI",
+    "PCA",
+    "Animation",
+    "Scene/Tabletop",
+    "Combat",
+    "Dialogue",
+    "P3D future handoff",
+    "MCS",
+    "MNCS",
+    "MAS",
+    "SMB-08",
+    "SMB-09",
+    "SAA"
+  ],
   "boundaries": [
     "MCCS is creator-facing appearance/presentation tooling and does not become canonical Character, NPC, Creature, Species, Form, Inventory, Asset or relationship authority",
     "CAPP/PPIA retain renderer-neutral appearance authority; MCCS supplies creator draft/authoring UX and renderer/output adapters",
@@ -74,5 +221,7 @@
     "governance/application-planning/preimplementation-design-closure/PDCP_MCCS_FAMILY_DESIGN_CLOSURE.md",
     "governance/application-planning/preimplementation-design-closure/PDCP_MCCS_REDUCTION_RECEIPT.json",
     "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md"
-  ]
+  ],
+  "current_item": "MCCS-03",
+  "current_attempt": "MCCS-03-attempt-001"
 }
