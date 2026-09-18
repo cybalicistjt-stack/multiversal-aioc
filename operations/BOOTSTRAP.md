@@ -62,7 +62,7 @@ Multiple owner Continues or owner stall nudges are execution-quality incidents a
 
 Before any executor merges or pushes to `main` in `cybalicistjt-stack/Multiversal-app` or `cybalicistjt-stack/multiversal-aioc`, follow the FIFO publication-reservation protocol in `operations/OPERATING_CONTRACT.md` using `scripts/ops3_merge_lease.py`.
 
-Reserve one queue turn first. If another reservation is ahead, wait without rebasing/reconciling/revalidating a publication candidate. When the reservation becomes first, activate it against the fresh target `main`; only then prepare/reconcile once from that `turn_base`, validate while holding the publication window, bind the exact validated head/base, merge, verify the durable result, and release so the next reservation can activate. Never force the coordination ref, skip the queue, or merge around the active holder.
+Reserve one queue turn first. If another reservation is ahead, wait without rebasing/reconciling/revalidating a publication candidate. When the reservation becomes first, activate it against the fresh target `main`; only then prepare/reconcile once from that `turn_base`, validate while holding the publication window, bind the exact validated head/base, merge, verify the durable result, and release so the next reservation can activate. Never force the coordination ref, skip the queue, or merge around the active holder. If the originating conversation stalls after a durable verified merge but before release, a replacement executor must record a durable recovery pointer and recovery-release that completed turn; a finished holder may not strand the FIFO queue.
 
 ## 9. Evidence and completion
 

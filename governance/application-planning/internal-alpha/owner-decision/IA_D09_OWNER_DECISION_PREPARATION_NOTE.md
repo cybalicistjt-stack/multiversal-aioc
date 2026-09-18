@@ -1,1 +1,0 @@
-This packet was prepared after STAGE-A-A12 reached `completed_verified` / `candidate-validated`. It contains evidence and decision-readiness classification only. It does not record an owner approval or denial.
