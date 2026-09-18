@@ -1,1 +1,81 @@
-{"schema_version":"0.1.0","control_plane":"OPS3","work_item_id":"MCS-15","attempt_id":"MCS-15-attempt-001","title":"Tactical Scene, Lighting, Fog, Elevation & Hazard Authoring","track":"multiversal-cartography-studio","source_program":"MCS","repository":"cybalicistjt-stack/Multiversal-app","status":"in_progress","owner_selected":true,"implementation_authority":true,"implementation_branch":"work/mcs-15-tactical-scene-authoring","completed":false,"objective":"Implement tactical-map authoring for grid calibration, measurement/templates, spawn/waypoint zones, cover/elevation annotations, hazard/light inputs, wall/door occlusion geometry and fog painting/preview while keeping runtime LOS, collision, cover, movement and hazard adjudication with Scene/Combat/Visibility owners.","predecessor":{"work_item_id":"MCS-14","status":"completed_verified","application_pr":565,"application_validated_head":"b956f9a9083acbdf5fecc1c0579a52474d0b4788","application_validation_run":35331364022,"application_merge_sha":"eb8c51e01c4d6363e4a2217ef9c3a1cefcd953a1","validated_tree_sha":"5f3695c75d93508bdcb97509ef92eb6ac6d5bb89"},"strict_successor":"MCS-18","scope":{"purpose":"Provide tactical-scene cartographic authoring and preview over completed MCS map foundations without becoming runtime Scene/Combat/Visibility adjudication authority.","included":["square, hex and gridless calibration","measurement and templates","spawn and waypoint zones","cover annotations","elevation annotations","hazard inputs","light inputs","wall and door occlusion geometry","fog painting and preview"],"completion_gate":"Representative tactical documents can deterministically author and inspect grid calibration, measurements/templates, spawn/waypoint zones, cover/elevation annotations, hazard/light inputs, wall/door occlusion geometry and fog presentation while runtime LOS, collision, cover, movement and hazard adjudication remain Scene/Combat/Visibility owner authority."},"selection_boundaries":["ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.3 and MCS_PROGRAM_BACKLOG.json schema 0.3.0 were reconsulted after MCS-14 exact-tree publication. No cross-program rotation detour supersedes the surviving MCS strict order, so MCS-15 is selected.","MCS-15 is a tactical-map authoring and preview seam over completed MCS foundations.","Square/hex/gridless calibration, measurement/templates, spawn/waypoint zones, cover/elevation annotations, hazard/light inputs, wall/door occlusion geometry and fog painting/preview remain cartographic authoring/projection state.","Runtime LOS, collision, cover, movement and hazard adjudication remain with Scene/Combat/Visibility owners and are not inferred or executed by MCS-15.","MCS-15 is governed-started on branch work/mcs-15-tactical-scene-authoring from application main 99663044e1c2463e95787d50932df7edfe58d834; implementation authority is limited to this bounded tranche.","MCS-18, PCA-16, MCCS, MRCS, MSAS, MNCS, SMB-08 and downstream work remain unauthorized by this selection."],"implementation_plan":{"red":"in_progress","green":"pending","proof":"pending","closeout":"pending"},"active_substep":"red","next_action":"Establish causal RED for the bounded MCS-15 tactical cartography seam, then implement only tactical authoring/projection behavior and continue through validation, publication and closeout without starting downstream work.","execution_guard":{"continue_turns":1,"stall_nudges":0,"terminal_response_allowed":false,"stop_reason":null},"owner_interaction_observation":{"continue_turns":1,"stall_nudges":0},"execution_conformance":{"status":"conforming","policy_violations":[]},"governed_start":{"application_base_sha":"99663044e1c2463e95787d50932df7edfe58d834"}}
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "MCS-15",
+  "attempt_id": "MCS-15-attempt-001",
+  "title": "Tactical Scene, Lighting, Fog, Elevation & Hazard Authoring",
+  "track": "multiversal-cartography-studio",
+  "source_program": "MCS",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/mcs-15-tactical-scene-authoring",
+  "completed": false,
+  "objective": "Implement tactical-map authoring for grid calibration, measurement/templates, spawn/waypoint zones, cover/elevation annotations, hazard/light inputs, wall/door occlusion geometry and fog painting/preview while keeping runtime LOS, collision, cover, movement and hazard adjudication with Scene/Combat/Visibility owners.",
+  "predecessor": {
+    "work_item_id": "MCS-14",
+    "status": "completed_verified",
+    "application_pr": 565,
+    "application_validated_head": "b956f9a9083acbdf5fecc1c0579a52474d0b4788",
+    "application_validation_run": 35331364022,
+    "application_merge_sha": "eb8c51e01c4d6363e4a2217ef9c3a1cefcd953a1",
+    "validated_tree_sha": "5f3695c75d93508bdcb97509ef92eb6ac6d5bb89"
+  },
+  "strict_successor": "MCS-18",
+  "scope": {
+    "purpose": "Provide tactical-scene cartographic authoring and preview over completed MCS map foundations without becoming runtime Scene/Combat/Visibility adjudication authority.",
+    "included": [
+      "square, hex and gridless calibration",
+      "measurement and templates",
+      "spawn and waypoint zones",
+      "cover annotations",
+      "elevation annotations",
+      "hazard inputs",
+      "light inputs",
+      "wall and door occlusion geometry",
+      "fog painting and preview"
+    ],
+    "completion_gate": "Representative tactical documents can deterministically author and inspect grid calibration, measurements/templates, spawn/waypoint zones, cover/elevation annotations, hazard/light inputs, wall/door occlusion geometry and fog presentation while runtime LOS, collision, cover, movement and hazard adjudication remain Scene/Combat/Visibility owner authority."
+  },
+  "selection_boundaries": [
+    "ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.3 and MCS_PROGRAM_BACKLOG.json schema 0.3.0 were reconsulted after MCS-14 exact-tree publication. No cross-program rotation detour supersedes the surviving MCS strict order, so MCS-15 is selected.",
+    "MCS-15 is a tactical-map authoring and preview seam over completed MCS foundations.",
+    "Square/hex/gridless calibration, measurement/templates, spawn/waypoint zones, cover/elevation annotations, hazard/light inputs, wall/door occlusion geometry and fog painting/preview remain cartographic authoring/projection state.",
+    "Runtime LOS, collision, cover, movement and hazard adjudication remain with Scene/Combat/Visibility owners and are not inferred or executed by MCS-15.",
+    "MCS-15 is governed-started on branch work/mcs-15-tactical-scene-authoring from application main 99663044e1c2463e95787d50932df7edfe58d834; implementation authority is limited to this bounded tranche.",
+    "MCS-18, PCA-16, MCCS, MRCS, MSAS, MNCS, SMB-08 and downstream work remain unauthorized by this selection."
+  ],
+  "implementation_plan": {
+    "red": "in_progress",
+    "green": "pending",
+    "proof": "pending",
+    "closeout": "pending"
+  },
+  "active_substep": "red",
+  "next_action": "Remain selected_not_started and do not execute while UISR is current. Resume through operations/CURRENT.json only after UISR-10 terminal closeout or a later explicit owner reprioritization.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "owner_interaction_observation": {
+    "continue_turns": 1,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": []
+  },
+  "governed_start": {
+    "application_base_sha": "99663044e1c2463e95787d50932df7edfe58d834"
+  },
+  "deferred_by_owner_override": {
+    "active": true,
+    "deferred_on": "2026-09-18",
+    "interstitial_program": "UISR",
+    "resume_after": "UISR-10",
+    "reason": "Owner explicitly reprioritized product-development to implement the completed UISK design system before resuming MCS-15."
+  }
+}

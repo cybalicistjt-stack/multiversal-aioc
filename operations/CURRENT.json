@@ -1,1 +1,63 @@
-{"schema_version":"3.0.0","system":"OPS3","status":"completed_verified","canonical_door":"operations/BOOTSTRAP.md","operating_contract":"operations/OPERATING_CONTRACT.md","lane_registry":"operations/LANES.json","control_surface_registry":"operations/CONTROL_SURFACE_REGISTRY.json","state_revision":137,"default_lane":"product-development","active_operations_work_item":null,"active_operations_work_item_path":null,"product_start_freeze":{"active":false,"reason":"OPS3-01 completed_verified after repository, ChatGPT Project Source, and owner-confirmed Project entry-surface cutover","preserved_selected_work_item":"MIB-17","preserved_attempt_id":"MIB-17-attempt-001","implementation_authority":false,"cleared_by":"OPS3-01 completed_verified"},"lanes":{"operations":{"state":"completed_verified","work_item_id":"OPS3-02","work_item_path":"operations/work-items/OPS3-02.json","implementation_authority":false},"product-development":{"state":"in_progress","selected_work_item":"MCS-15","attempt_id":"MCS-15-attempt-001","checkpoint_path":"governance/ai/work-state/MCS-15-attempt-001.json","implementation_branch":"work/mcs-15-tactical-scene-authoring","implementation_authority":true,"activation_rule":"Owner Continue governed-started MCS-15 from the preserved selected_not_started checkpoint on application base 99663044e1c2463e95787d50932df7edfe58d834. Execute only MCS-15 through causal RED, GREEN, proof, exact-head validation, serialized application publication, fresh DAG reconciliation and atomic closeout; do not start MCS-18, PCA-16, MCCS, MRCS, MSAS, MNCS, SMB-08 or downstream work in this Continue."},"dwc-speech":{"state":"preserved_external_lane","recovery_path":"governance/application-planning/dwc-speech/README.md","implementation_authority":"resolve_from_lane_sources_when_selected"},"content-design":{"state":"on_demand","implementation_authority":"session_scoped_by_owner_request"},"research-evaluation":{"state":"on_demand","implementation_authority":"session_scoped_by_owner_request"},"source-provenance":{"state":"on_demand","implementation_authority":"session_scoped_by_owner_request"}},"truth_rules":{"current_selector":"This file alone selects live operational state.","implementation_facts":"Use live repository, PR, CI, filesystem, and tool evidence.","legacy_surfaces":"Legacy selectors are compatibility projections or history only and may not override this file.","cross_program_successor_rule":"Before successor selection, consult governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json. Individual program strict_successor or backlog fields cannot skip an eligible interstitial program or override cross-program gates.","executor_independence":"Executor availability never grants or revokes project authority."},"next_project_action":"Execute MCS-15 — Tactical Scene, Lighting, Fog, Elevation & Hazard Authoring — from MCS-15-attempt-001 through causal RED, GREEN, proof, exact-head validation, serialized application publication, fresh DAG reconciliation and atomic AIOC closeout. Do not start MCS-18, PCA-16, MCCS, MRCS, MSAS, MNCS, SMB-08 or downstream work in this Continue."}
+{
+  "schema_version": "3.0.0",
+  "system": "OPS3",
+  "status": "completed_verified",
+  "canonical_door": "operations/BOOTSTRAP.md",
+  "operating_contract": "operations/OPERATING_CONTRACT.md",
+  "lane_registry": "operations/LANES.json",
+  "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
+  "state_revision": 137,
+  "default_lane": "product-development",
+  "active_operations_work_item": null,
+  "active_operations_work_item_path": null,
+  "product_start_freeze": {
+    "active": false,
+    "reason": "OPS3-01 completed_verified after repository, ChatGPT Project Source, and owner-confirmed Project entry-surface cutover",
+    "preserved_selected_work_item": "MIB-17",
+    "preserved_attempt_id": "MIB-17-attempt-001",
+    "implementation_authority": false,
+    "cleared_by": "OPS3-01 completed_verified"
+  },
+  "lanes": {
+    "operations": {
+      "state": "completed_verified",
+      "work_item_id": "OPS3-02",
+      "work_item_path": "operations/work-items/OPS3-02.json",
+      "implementation_authority": false
+    },
+    "product-development": {
+      "state": "in_progress",
+      "selected_work_item": "UISR-01",
+      "attempt_id": "UISR-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/UISR-01-attempt-001.json",
+      "implementation_branch": "feature/uisr-01-skin-runtime-foundation",
+      "implementation_authority": true,
+      "activation_rule": "Owner explicitly reprioritized product-development on 2026-09-18 to begin implementation of the completed UISK design system. UISR is a bounded interstitial implementation program registered from UISK-16 design closeout and IC-13 convergence; MCS-15 remains preserved as the resume target after UISR terminal closeout unless the owner changes direction."
+    },
+    "dwc-speech": {
+      "state": "preserved_external_lane",
+      "recovery_path": "governance/application-planning/dwc-speech/README.md",
+      "implementation_authority": "resolve_from_lane_sources_when_selected"
+    },
+    "content-design": {
+      "state": "on_demand",
+      "implementation_authority": "session_scoped_by_owner_request"
+    },
+    "research-evaluation": {
+      "state": "on_demand",
+      "implementation_authority": "session_scoped_by_owner_request"
+    },
+    "source-provenance": {
+      "state": "on_demand",
+      "implementation_authority": "session_scoped_by_owner_request"
+    }
+  },
+  "truth_rules": {
+    "current_selector": "This file alone selects live operational state.",
+    "implementation_facts": "Use live repository, PR, CI, filesystem, and tool evidence.",
+    "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
+    "cross_program_successor_rule": "Before successor selection, consult governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json. Individual program strict_successor or backlog fields cannot skip an eligible interstitial program or override cross-program gates.",
+    "executor_independence": "Executor availability never grants or revokes project authority."
+  },
+  "next_project_action": "Execute UISR-01 — Skin Runtime Registry, Selection Resolver & Legacy Adapter Foundation — through code, exact-head validation, publication, control-plane closeout, and UISR-02 selection. MCS-15 remains deferred without implementation authority until UISR terminal closeout or a later explicit owner reprioritization."
+}

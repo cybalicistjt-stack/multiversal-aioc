@@ -4,17 +4,17 @@
   "canonical_source": "operations/CURRENT.json",
   "canonical_door": "operations/BOOTSTRAP.md",
   "rule": "Compatibility projection only. This file cannot select work or grant authority.",
-  "primary_attempt_id": "MCS-15-attempt-001",
+  "primary_attempt_id": "UISR-01-attempt-001",
   "active_attempt": {
-    "work_item_id": "MCS-15",
-    "attempt_id": "MCS-15-attempt-001",
-    "track": "multiversal-cartography-studio",
+    "work_item_id": "UISR-01",
+    "attempt_id": "UISR-01-attempt-001",
+    "track": "ui-skin-runtime",
     "repository": "cybalicistjt-stack/Multiversal-app",
-    "checkpoint_path": "governance/ai/work-state/MCS-15-attempt-001.json",
+    "checkpoint_path": "governance/ai/work-state/UISR-01-attempt-001.json",
     "status": "in_progress",
-    "implementation_branch": "work/mcs-15-tactical-scene-authoring",
+    "implementation_branch": "feature/uisr-01-skin-runtime-foundation",
     "implementation_authority": true,
-    "active_item": "MCS-15 — Tactical Scene, Lighting, Fog, Elevation & Hazard Authoring"
+    "active_item": "UISR-01 — Skin Runtime Registry, Selection Resolver & Legacy Adapter Foundation"
   },
   "exclusive_control_plane_maintenance": {
     "work_item_id": "OPS3-02",
@@ -23,6 +23,11 @@
     "work_item_path": "operations/work-items/OPS3-02.json",
     "feature_starts_blocked": false,
     "reason": "Operations V3 single-door cutover completed and freeze cleared"
+  },
+  "deferred_resume_target": {
+    "work_item_id": "MCS-15",
+    "attempt_id": "MCS-15-attempt-001",
+    "resume_after": "UISR-10"
   },
   "exact_next_action": "Read operations/CURRENT.json; this projection has no independent next-action authority."
 }
