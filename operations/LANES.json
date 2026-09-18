@@ -40,6 +40,25 @@
       "cross_lane_reads": "Do not read or mutate product-development/MCS state except for an explicit shared dependency or same-repository publication conflict. UI implementation does not pause the main product-development lane."
     },
     {
+      "id": "player-species",
+      "purpose": "Multiversal Player Species (MVPS) program family: species as fully functioning game objects, including species composition, morphology, grants, forms, adaptations, validation, runtime projection, migration, UI/authoring, and cross-system conformance.",
+      "intent_examples": [
+        "continue MVPS",
+        "continue player species",
+        "implement the species object contract",
+        "work on player species game objects"
+      ],
+      "current_state_source": "operations/CURRENT.json#/lanes/player-species",
+      "source_bundle": [
+        "current referenced MVPS work item/checkpoint",
+        "governance/application-planning/player-species/MVPS_PLAYER_SPECIES_PROGRAM.md",
+        "governance/application-planning/player-species/MVPS_PROGRAM_BACKLOG.json",
+        "Project/Feature/UI/Screen Bibles and DB-004 references named by the active MVPS item",
+        "live application repository evidence limited to the active MVPS scope"
+      ],
+      "cross_lane_reads": "Consume shared Character/Ability/Equipment/Environment owner contracts as dependencies. Do not mutate product-development/MNCS or ui-implementation/UISR state. If an MVPS tranche needs a shared owner-contract change, record the dependency and coordinate explicitly rather than silently crossing lane ownership."
+    },
+    {
       "id": "operations",
       "purpose": "Governance architecture, repositories, CI, agent behavior, execution infrastructure, validation infrastructure and operational tooling.",
       "intent_examples": [
