@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 217,
+  "state_revision": 218,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -26,13 +26,13 @@
       "implementation_authority": false
     },
     "product-development": {
-      "state": "in_progress",
-      "selected_work_item": "MCCS-06",
-      "attempt_id": "MCCS-06-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MCCS-06-attempt-001.json",
-      "implementation_branch": "work/mccs-06-surface-layer-studio",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue on 2026-09-18 govern-started MCCS-06 under OPS3 FIFO publication queue schema 2. Reserve one publication turn before candidate preparation; once active, bind all RED/GREEN/exact-head work to the immutable turn_base, publish, release, reconcile, and preserve player-species independently."
+      "state": "selected_not_started",
+      "selected_work_item": "MCCS-09",
+      "attempt_id": "MCCS-09-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MCCS-09-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MCCS-06 completed_verified on application PR 600 after causal RED run 35377985626, a diagnosed test-fixture-only first-GREEN failure, and exact-head validation run 35378297606. FIFO publication reservation MCCS-06-attempt-001-pub-001 used turn_base 74c9f5a5d784edcf4ba6112fd270a99672c99966, bound head 51527d3e90690e7d9d21636ee04525a9918a8751, and released at generation 129 after squash merge 76a255481e256dea79da2c796accfeff954aa208 with exact validated tree ae0f4583e26e27c96376b148b0ee7b73b4313643. Fresh DAG contains no MCCS-06 rotation override, so reduced MCCS strict order selects MCCS-09. No implementation branch or authority exists until a later owner Continue."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -78,5 +78,5 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. Same-repository publication uses the OPS3 FIFO reservation queue: reserve first, prepare/reconcile/validate only when the reservation activates, then merge/release before the next turn. MVPS/player-species and product lanes remain independently selectable."
   },
-  "next_project_action": "Route by selected lane: ui-implementation executes UISR-11 through causal RED, GREEN, proof, exact-head validation, serialized publication and atomic closeout; product-development independently executes MCCS-06; player-species independently executes MVPS-07. No lane pauses or rewrites another."
+  "next_project_action": "Route by selected lane: product-development awaits owner Continue to govern-start MCCS-09 — Wardrobe, Equipment Fit, Accessories, Props & Linked-Being Presentation Composition; ui-implementation UISR-11 and player-species MVPS-07 continue independently. No lane pauses or rewrites another."
 }
