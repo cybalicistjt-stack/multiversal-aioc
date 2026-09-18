@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 199,
+  "state_revision": 200,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -61,13 +61,13 @@
       "activation_rule": "UISR-09 completed_verified at application merge 2747e6342b334f911f227a1bdd833cca69277a11 after causal RED run 35363428903, GREEN run 35363602466, stale-base reconciliation validation run 35363935193 on reconciled head 3e3f007c987fe6be598b984cf7ce49e722c0ab44 and base e6215fdddcdb235958da876ee94271035e1f372f. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no UISR interstitial gate, so UISR-10 is selected_not_started until a later owner Continue."
     },
     "player-species": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "MVPS-05",
       "attempt_id": "MVPS-05-attempt-001",
       "checkpoint_path": "governance/ai/work-state/MVPS-05-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "MVPS-04 completed_verified after causal RED run 35366262202, GREEN run 35366367320, stale-base reconciliation run 35366509134, and implementation merge acff99bb61d23cc34e951ad54397ea3e8d53dd5e. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MVPS interstitial gate overriding strict order, so MVPS-05 is selected_not_started until a later owner Continue."
+      "implementation_branch": "work/mvps-05-physiology-lifecycle-environment",
+      "implementation_authority": true,
+      "activation_rule": "Owner Continue on 2026-09-18 govern-started MVPS-05 from fresh AIOC base b7ef89520cd362bffd933c237d08f0ed36ce380e. Execute only MVPS-05 — Physiology, Lifecycle and Environmental Tolerance — through causal RED, GREEN, proof, exact-head validation, serialized publication, fresh DAG reconciliation and atomic closeout. Preserve product-development and ui-implementation independently."
     }
   },
   "truth_rules": {
@@ -78,5 +78,5 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. MVPS/player-species is independently selectable; shared-owner contract edits require explicit dependency coordination and same-repository publication is serialized by OPS3 merge leases."
   },
-  "next_project_action": "Execute MNCS-22 — Governed Runtime Handoff & MAS Cast Integration — through causal RED/GREEN, exact-head validation, serialized publication, fresh successor reconciliation and atomic closeout. Preserve ui-implementation and player-species independently."
+  "next_project_action": "Execute MVPS-05 — Physiology, Lifecycle and Environmental Tolerance — through causal RED/GREEN, exact-head validation, serialized publication, fresh successor reconciliation and atomic closeout. Preserve MNCS-22 and UISR-10 independently."
 }
