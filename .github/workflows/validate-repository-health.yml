@@ -137,6 +137,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_mvps06_capability_natural_equipment.py
 
+      - name: Run MVPS-07 interface compatibility regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps07_interface_compatibility.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |
