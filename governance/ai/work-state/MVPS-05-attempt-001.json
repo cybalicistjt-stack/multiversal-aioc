@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-05",
+  "title": "Physiology, Lifecycle and Environmental Tolerance",
+  "attempt_id": "MVPS-05-attempt-001",
+  "lane": "player-species",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-04",
+  "predecessor": {
+    "work_item_id": "MVPS-04",
+    "status": "completed_verified",
+    "implementation_merge_sha": "acff99bb61d23cc34e951ad54397ea3e8d53dd5e",
+    "validation_run": 35366509134
+  },
+  "strict_successor": "MVPS-06",
+  "objective": "Separate descriptive biology from executable respiration, sustenance, rest, aging/lifecycle and temperature/pressure/gravity/radiation/water/vacuum or other environmental tolerance hooks so environment resolution consumes typed capabilities rather than prose biology.",
+  "acceptance": [
+    "descriptive fields cannot silently mutate mechanics",
+    "environment resolution consumes typed tolerances/adaptations"
+  ],
+  "boundaries": [
+    "MVPS-05 owns species-facing physiology/lifecycle/environment-tolerance integration contracts only.",
+    "Descriptive biology remains non-executable under MVPS-01.",
+    "Movement/sense capability integration remains MVPS-04 and is consumed by reference.",
+    "Executable grants outside environmental/physiology scope remain MVPS-06/shared-owner territory.",
+    "MVPS-06+ remain unauthorized until separately selected."
+  ],
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MVPS-specific owner Continue, fresh-read MVPS-01 through MVPS-04 contracts plus controlling environment/condition/resource/lifecycle owner sources, reconcile shared-owner state, govern-start MVPS-05, establish causal RED and execute through proof, publication and closeout.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "terminal_reason": "selected_not_started; no execution attempt has begun"
+  }
+}
