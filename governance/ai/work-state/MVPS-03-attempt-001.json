@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-03",
+  "title": "Morphology and Body-Plan Contract",
+  "attempt_id": "MVPS-03-attempt-001",
+  "lane": "player-species",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-02",
+  "predecessor": {
+    "work_item_id": "MVPS-02",
+    "status": "completed_verified",
+    "implementation_merge_sha": "9cddaadf9f040b99cf917222f7dfced11ef346c4",
+    "validation_run": 35363608129
+  },
+  "strict_successor": "MVPS-04",
+  "objective": "Normalize size-independent anatomy, limbs/manipulators, worn regions, attachment points, natural appendages and unusual body plans so humanoid and non-humanoid species use one morphology interface and equipment compatibility can query body structure without species-name branching.",
+  "acceptance": [
+    "humanoid and non-humanoid fixtures use one morphology interface",
+    "inventory/equipment can query body compatibility without species-name branching"
+  ],
+  "boundaries": [
+    "MVPS-03 owns morphology/body-plan contract semantics only.",
+    "Scale mechanics remain MVPS-04/shared scale-owner territory.",
+    "Equipment compatibility policy is refined in MVPS-07; MVPS-03 exposes queryable body structure only.",
+    "Forms/transformation semantics remain MVPS-09.",
+    "MVPS-04+ remain unauthorized until separately selected."
+  ],
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MVPS-specific owner Continue, fresh-read MVPS-01/02 contracts plus controlling morphology/equipment source contracts, reconcile current shared-owner state, govern-start MVPS-03, establish causal RED and execute through proof, publication and closeout.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "terminal_reason": "selected_not_started; no execution attempt has begun"
+  }
+}
