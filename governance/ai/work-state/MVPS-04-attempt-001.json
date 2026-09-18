@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-04",
+  "title": "Scale, Movement and Sense Capability Integration",
+  "attempt_id": "MVPS-04-attempt-001",
+  "lane": "player-species",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-03",
+  "predecessor": {
+    "work_item_id": "MVPS-03",
+    "status": "completed_verified",
+    "implementation_merge_sha": "94a174fcb561ddef1175889844211c933b791dea",
+    "validation_run": 35365390915
+  },
+  "strict_successor": "MVPS-05",
+  "objective": "Connect scale profiles, locomotion modes and senses to shared capability/rules profiles so movement and senses are typed grants, derived values reference shared rules, and species do not create duplicate movement or sense engines.",
+  "acceptance": [
+    "movement and senses are typed grants",
+    "derived values reference shared rules profiles",
+    "no duplicate movement/sense engine"
+  ],
+  "boundaries": [
+    "MVPS-04 owns species-facing scale/movement/sense integration contracts only.",
+    "MVPS-03 morphology remains the structural body-plan source and is consumed by reference.",
+    "Shared scale, movement, action/effect and sense rules remain authoritative owners; MVPS-04 must reference them rather than duplicate formulas or engines.",
+    "Environmental tolerance belongs to MVPS-05; broader capability/natural-equipment grants belong to MVPS-06.",
+    "MVPS-05+ remain unauthorized until separately selected."
+  ],
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MVPS-specific owner Continue, fresh-read MVPS-01 through MVPS-03 contracts plus controlling scale, movement and sense owner sources, reconcile current shared-owner state, govern-start MVPS-04, establish causal RED and execute through proof, publication and closeout.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "terminal_reason": "selected_not_started; no execution attempt has begun"
+  }
+}
