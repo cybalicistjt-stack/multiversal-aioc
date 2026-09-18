@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 174,
+  "state_revision": 175,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -21,8 +21,8 @@
   "lanes": {
     "operations": {
       "state": "completed_verified",
-      "work_item_id": "OPS3-03",
-      "work_item_path": "operations/work-items/OPS3-03.json",
+      "work_item_id": "OPS3-04",
+      "work_item_path": "operations/work-items/OPS3-04.json",
       "implementation_authority": false
     },
     "product-development": {
@@ -59,6 +59,15 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "activation_rule": "UISR-07 completed_verified at application merge b217074bb9fe318a12f96e4e1517b4caff9fb5ac after causal RED run 35357068821 and exact-head cross-platform validation run 35357209937 on validated base cf9a65d6cab25390340ffd761f5a2def14c881c4. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.3 contains no UISR cross-program interstitial gate, so UISR-08 is the eligible lane-local strict successor and remains selected_not_started until a later owner Continue. Product-development remains independent."
+    },
+    "player-species": {
+      "state": "selected_not_started",
+      "selected_work_item": "MVPS-01",
+      "attempt_id": "MVPS-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MVPS-01-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "Owner approval on 2026-09-18 established the persistent Multiversal Player Species (MVPS) lane. MVPS-01 is selected_not_started and may be governed-started only by an MVPS-specific execution command. It executes independently of product-development/MNCS and ui-implementation/UISR; shared-owner contract edits require explicit dependency coordination, and same-repository publication remains serialized by the OPS3 merge lease."
     }
   },
   "truth_rules": {
@@ -67,7 +76,7 @@
     "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
     "cross_program_successor_rule": "Before successor selection, consult governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json. Individual program strict_successor or backlog fields cannot skip an eligible interstitial program or override cross-program gates.",
     "executor_independence": "Executor availability never grants or revokes project authority.",
-    "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. Same-repository publication is serialized by OPS3 merge leases."
+    "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. MVPS/player-species is independently selectable; shared-owner contract edits require explicit dependency coordination and same-repository publication is serialized by OPS3 merge leases."
   },
-  "next_project_action": "Route by selected lane: product-development independently remains MNCS-10 in_progress; ui-implementation independently awaits owner Continue to govern-start UISR-08 — Environmental/Genre Skin Pack Materialization. Neither lane pauses or rewrites the other."
+  "next_project_action": "Route by selected lane: product-development independently remains MNCS-10 in_progress; ui-implementation independently awaits owner Continue to govern-start UISR-08; player-species independently awaits an MVPS-specific Continue to govern-start MVPS-01. No lane pauses or rewrites another."
 }
