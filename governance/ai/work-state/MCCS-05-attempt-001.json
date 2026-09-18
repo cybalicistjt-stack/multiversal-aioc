@@ -47,13 +47,13 @@
     "The ui-implementation and player-species lanes remain independently governed and are not modified by this selection."
   ],
   "implementation_plan": {
-    "red": "in_progress",
-    "green": "pending",
+    "red": "completed_expected_failure",
+    "green": "in_progress",
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": "red",
-  "next_action": "Establish causal RED for topology-aware head/sensory/expression presentation authoring, then implement only the missing MCCS-05 production seam and carry through exact-head proof/publication/closeout.",
+  "active_substep": "green",
+  "next_action": "Validate unchanged MCCS-05 assertions against the production candidate; repair only causal MCCS-05 failures, then carry the exact head through proof, serialized publication, DAG reconciliation and closeout.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -73,5 +73,13 @@
     "application_base_sha": "d132dbf655a8c66a1f9e93cf5a9fff62b2e4e76c",
     "owner_command": "Continue",
     "started_on": "2026-09-18"
+  },
+  "red_evidence": {
+    "head_sha": "4687b8edc3b767de1d5413de8a83826864b1078c",
+    "workflow_run": 35374982780,
+    "linux_job": 105697507587,
+    "failing_step": "mccs05-focused-head-sensory-expression",
+    "result": "expected_failure",
+    "cause": "Repository health and MCCS-05 profile selection passed; focused head/sensory/expression acceptance failed before the authorized MCCS-05 production module existed."
   }
 }
