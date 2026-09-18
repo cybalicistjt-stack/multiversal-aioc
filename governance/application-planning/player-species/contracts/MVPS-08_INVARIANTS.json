@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "MVPS-08-INVARIANTS",
+  "status": "MVPS-08_CANONICAL_INVARIANTS",
+  "lineage_specific_runtime_engine_created": false,
+  "invariants": [
+    {
+      "id": "MVPS08-I01-parent-reference-not-copy",
+      "rule": "A lineage/subspecies stores an exact parent SpeciesDefinition identity/version reference and deltas; it never copies the complete parent record."
+    },
+    {
+      "id": "MVPS08-I02-source-backed-lineage-relationship",
+      "rule": "Lineage/subspecies/variant relationships require explicit source-backed evidence; names, document co-location, dataset membership or visual similarity are insufficient."
+    },
+    {
+      "id": "MVPS08-I03-deterministic-replay",
+      "rule": "Given identical exact-version base/lineage inputs and source-backed operations, stable ordering makes the definition-level composition replayable."
+    },
+    {
+      "id": "MVPS08-I04-order-does-not-resolve-semantic-conflict",
+      "rule": "Ordering establishes replay sequence only; colliding replacements/overrides are not resolved by last-write-wins, lineage name or layer order unless an explicit authoritative conflict rule says so."
+    },
+    {
+      "id": "MVPS08-I05-conflicts-remain-explicit",
+      "rule": "Missing parent versions, unknown targets, incompatible deltas and unresolved collisions remain explicit conflict records rather than guessed outcomes."
+    },
+    {
+      "id": "MVPS08-I06-shared-owner-stacking",
+      "rule": "Duplicate grants and stacking, suppression, replacement or magnitude semantics remain with the owning shared mechanic/rules profile."
+    },
+    {
+      "id": "MVPS08-I07-base-species-identity-preserved",
+      "rule": "Lineage/subspecies composition does not replace or erase the selected base species identity/history."
+    },
+    {
+      "id": "MVPS08-I08-no-form-or-runtime-projection-leakage",
+      "rule": "MVPS-08 does not own form/transformation runtime, species progression events or active runtime contribution/grant receipts; those remain MVPS-09, MVPS-10 and MVPS-13."
+    }
+  ],
+  "enforcement": {
+    "regression_test": "tests/control_plane/test_mvps08_lineage_composition.py",
+    "ci_step": "Run MVPS-08 lineage composition regressions"
+  }
+}
