@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 179,
+  "state_revision": 180,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -26,13 +26,13 @@
       "implementation_authority": false
     },
     "product-development": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "MNCS-14",
       "attempt_id": "MNCS-14-attempt-001",
       "checkpoint_path": "governance/ai/work-state/MNCS-14-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "MNCS-12 completed_verified on application PR 587 after exact-head validation run 35359950481 and exact-tree publication as squash merge 499749633fab5fa07049667f6d6e836c1fac7331 with tree 05c8abfc6cf45dfd1270d9587078943859612ad0. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 and MNCS backlog reconciliation select MNCS-14. No implementation branch or authority exists until a later owner Continue."
+      "implementation_branch": "work/mncs-14-species-form-stage-template-variant-mutation-role",
+      "implementation_authority": true,
+      "activation_rule": "Owner Continue governed-started MNCS-14 from the selected_not_started checkpoint on fresh application base 499749633fab5fa07049667f6d6e836c1fac7331. Execute only MNCS-14 through causal RED, GREEN, proof, exact-head validation, serialized publication, fresh DAG reconciliation and atomic closeout. Parallel ui-implementation and player-species lanes remain independent and must be preserved."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -78,5 +78,5 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. MVPS/player-species is independently selectable; shared-owner contract edits require explicit dependency coordination and same-repository publication is serialized by OPS3 merge leases."
   },
-  "next_project_action": "Route by selected lane: product-development next owner Continue governed-starts MNCS-14 — Species, Form, Stage, Template, Variant, Mutation & Role Composition — from MNCS-14-attempt-001; ui-implementation independently remains UISR-08 in_progress; player-species independently remains MVPS-01 selected_not_started. Do not mutate the other lanes."
+  "next_project_action": "Execute MNCS-14 — Species, Form, Stage, Template, Variant, Mutation & Role Composition — through RED/GREEN, exact-head validation, serialized publication, fresh successor reconciliation and atomic closeout. Do not alter the independent UI or player-species lanes."
 }
