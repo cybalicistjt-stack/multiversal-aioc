@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "UISR-01",
+  "attempt_id": "UISR-01-attempt-001",
+  "title": "Skin Runtime Registry, Selection Resolver & Legacy Adapter Foundation",
+  "track": "ui-skin-runtime",
+  "source_program": "UISR",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "feature/uisr-01-skin-runtime-foundation",
+  "completed": false,
+  "objective": "Implement the first production UISK runtime seam: a registry-backed Skin Pack identity/catalog, deterministic assignment precedence resolver, Roses legacy alias resolution, safe application/clear helpers, Ember/Chromatic compatibility, and a governed validation profile without yet implementing material/frame/effect engines or additional production skin assets.",
+  "predecessor": {
+    "work_item_id": "UISK-16-design-closeout",
+    "status": "completed_verified",
+    "application_merge_sha": "99663044e1c2463e95787d50932df7edfe58d834"
+  },
+  "strict_successor": "UISR-02",
+  "program_terminal_resume_target": "MCS-15",
+  "scope": {
+    "purpose": "Create the runtime foundation that later UISR tranches can build on while preserving the live Ember/Chromatic experience and all application authority boundaries.",
+    "included": [
+      "canonical registry identities for Ember/Chromatic plus the eighteen target Skin Packs",
+      "runtime availability metadata distinguishing live migration packs from design-complete not-yet-implemented packs",
+      "exact alias resolution including talker-theme to roses-theme",
+      "follow-context versus always-use-personal assignment precedence resolver",
+      "temporary/user/world/campaign/application fallback ordering",
+      "safe presentation-only apply and clear helpers",
+      "legacy applyMultiversalTheme compatibility adapter",
+      "App migration to common clear/apply transport without adding a new gallery yet",
+      "focused unit/integration/accessibility/typecheck validation"
+    ],
+    "excluded": [
+      "material/frame/ornament runtime",
+      "new production Skin Pack visual assets",
+      "Skin Laboratory",
+      "account/campaign/world persistence",
+      "gallery/import/export UI",
+      "gameplay, permission, hidden-information or routing authority changes"
+    ],
+    "completion_gate": "The shared UI package exposes a registry-backed Skin Pack runtime foundation with deterministic selection/fallback semantics and legacy Ember/Chromatic compatibility; the real App uses the compatibility-safe transport; exact-head validation passes on Linux and Windows; publication is durable; and control-plane closeout selects UISR-02 while preserving MCS-15 as the terminal program resume target."
+  },
+  "selection_boundaries": [
+    "Owner explicitly redirected product-development to UISR implementation after UISK-16 design closeout.",
+    "MCS-15 was selected_not_started and had no implementation branch or authority when deferred.",
+    "UISR-01 is presentation infrastructure only and creates no gameplay, permission, hidden-information, campaign, world or rules authority.",
+    "Only Ember and Chromatic become activatable in UISR-01; the eighteen target packs may be registered as known design identities but remain unavailable until their implementation tranches.",
+    "Roses Theme is canonical; talker-theme is an exact compatibility alias only.",
+    "After UISR-10 terminal closeout, product selection returns to preserved MCS-15 unless the owner explicitly changes priority."
+  ],
+  "implementation_plan": {
+    "red": "write focused UISR-01 tests first in candidate",
+    "green": "implement registry/resolver/legacy adapter and App transport migration",
+    "proof": "run UISR-01 validation profile on exact candidate across Linux and Windows",
+    "closeout": "publish exact validated app head, reconcile AIOC checkpoint, select UISR-02"
+  },
+  "active_substep": "governed-start complete; implement candidate",
+  "next_action": "Implement UISR-01 on feature/uisr-01-skin-runtime-foundation, open PR, obtain exact-head validation, publish under OPS3 lease, then close out to UISR-02.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "owner_interaction_observation": {
+    "continue_turns": 1,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  }
+}
