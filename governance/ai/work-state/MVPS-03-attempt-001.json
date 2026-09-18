@@ -5,9 +5,9 @@
   "title": "Morphology and Body-Plan Contract",
   "attempt_id": "MVPS-03-attempt-001",
   "lane": "player-species",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_branch": "work/mvps-03-morphology-body-plan",
   "selected_by_verified_predecessor": "MVPS-02",
   "predecessor": {
     "work_item_id": "MVPS-02",
@@ -28,12 +28,62 @@
     "Forms/transformation semantics remain MVPS-09.",
     "MVPS-04+ remain unauthorized until separately selected."
   ],
-  "active_substep": "awaiting_governed_start",
-  "next_action": "On an MVPS-specific owner Continue, fresh-read MVPS-01/02 contracts plus controlling morphology/equipment source contracts, reconcile current shared-owner state, govern-start MVPS-03, establish causal RED and execute through proof, publication and closeout.",
+  "active_substep": "completed",
+  "next_action": "No MVPS-03 work remains. MVPS-04 is selected_not_started with no implementation branch or authority and requires a later owner Continue.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
     "terminal_response_allowed": true,
-    "terminal_reason": "selected_not_started; no execution attempt has begun"
+    "terminal_reason": "completed_verified"
+  },
+  "implementation_plan": {
+    "red": "completed",
+    "green": "completed",
+    "proof": "completed",
+    "closeout": "completed"
+  },
+  "governed_start": {
+    "aioc_base_sha": "f01802334f84a3e086f137bf928fe3bbd1f731b2",
+    "owner_command": "Continue",
+    "started_on": "2026-09-18"
+  },
+  "completion_evidence": {
+    "red": {
+      "commit": "fa17bd97ae2d8042bcc6111f3c724c6b5220bebd",
+      "validation_run": 35365270116,
+      "observed_failure": "MVPS-03 regression failed because the morphology-profile, structural-query and morphology-fixture artifacts did not exist."
+    },
+    "green": {
+      "validated_head": "96fc724cd84635570d5de7a7da18cd8bea7c9fde",
+      "validation_run": 35365390915,
+      "result": "success"
+    },
+    "publication": {
+      "pr": 1376,
+      "merge_sha": "94a174fcb561ddef1175889844211c933b791dea"
+    },
+    "artifacts": [
+      "governance/application-planning/player-species/contracts/MVPS-03_MORPHOLOGY_PROFILE_CONTRACT.json",
+      "governance/application-planning/player-species/contracts/MVPS-03_BODY_STRUCTURE_QUERY_CONTRACT.json",
+      "governance/application-planning/player-species/contracts/MVPS-03_MORPHOLOGY_FIXTURES.json"
+    ],
+    "acceptance": {
+      "humanoid_and_nonhumanoid_use_one_morphology_interface": true,
+      "equipment_inventory_can_query_structure_without_species_name_branching": true
+    }
+  },
+  "roadmap_reconciliation": {
+    "dependency_graph_schema": "1.0.4",
+    "cross_program_mvps_interstitial_gate": false,
+    "selected_successor": "MVPS-04",
+    "rationale": "MVPS has no hard/start gate or milestone rotation overriding strict order after MVPS-03."
+  },
+  "closeout": {
+    "completed_on": "2026-09-18",
+    "result": "completed_verified",
+    "successor": "MVPS-04",
+    "successor_state": "selected_not_started",
+    "product_lane_mutated": false,
+    "ui_lane_mutated": false
   }
 }
