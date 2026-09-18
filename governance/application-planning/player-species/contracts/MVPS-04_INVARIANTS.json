@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "MVPS-04-INVARIANTS",
+  "status": "MVPS-04_CANONICAL_INVARIANTS",
+  "runtime_engine_created": false,
+  "invariants": [
+    {
+      "id": "MVPS04-I01-scale-is-profile-reference",
+      "rule": "Species scale is represented by a canonical scale_profile_ref and provenance; resolution belongs to shared rules/modifier owners."
+    },
+    {
+      "id": "MVPS04-I02-movement-is-typed-shared-grant",
+      "rule": "Every executable species movement declaration is a typed reference to a shared canonical record and rules profile."
+    },
+    {
+      "id": "MVPS04-I03-senses-are-typed-shared-grants",
+      "rule": "Every executable species sense declaration is a typed reference to a shared canonical record and rules profile."
+    },
+    {
+      "id": "MVPS04-I04-derived-values-use-registered-rules",
+      "rule": "Derived scale/movement/sense values reference registered rules profiles; species records may not embed duplicate formulas."
+    },
+    {
+      "id": "MVPS04-I05-no-duplicate-movement-or-sense-engine",
+      "rule": "MVPS must not create movement, sense/perception, or scale-resolution engines; it integrates shared owners by reference."
+    },
+    {
+      "id": "MVPS04-I06-morphology-and-capability-remain-separate",
+      "rule": "Morphology can be referenced as a structural applicability requirement, but body structure alone does not grant locomotion or senses."
+    },
+    {
+      "id": "MVPS04-I07-environment-tolerance-remains-later-owned",
+      "rule": "MVPS-04 may reference movement/perception capabilities but does not own survival/environment tolerance semantics reserved for MVPS-05."
+    },
+    {
+      "id": "MVPS04-I08-form-overrides-remain-later-owned",
+      "rule": "MVPS-04 base integration contracts do not define transformation or form replacement semantics reserved for MVPS-09."
+    }
+  ],
+  "enforcement": {
+    "regression_test": "tests/control_plane/test_mvps04_scale_movement_sense_integration.py",
+    "ci_step": "Run MVPS-04 scale movement sense regressions"
+  }
+}
