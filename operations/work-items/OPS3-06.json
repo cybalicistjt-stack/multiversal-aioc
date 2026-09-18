@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS3-06",
+  "title": "Stall-Safe Completed Publication Recovery",
+  "status": "implementation_candidate",
+  "owner_directive": "If a conversation stalls during main publication, finished operations must be recoverably handed off and the FIFO lease must be released so non-stalled conversations can continue.",
+  "reproduced_failure": [
+    "UISR-11 publication completed durably while the originating conversation stalled during main-use closeout.",
+    "The active publication lease remained capable of blocking unrelated queued conversations until another executor intervened."
+  ],
+  "implementation": [
+    "OPERATING_CONTRACT 3.4.0 defines cross-conversation recovery release for turns whose merge is already durably verified.",
+    "BOOTSTRAP requires recovery handoff plus release instead of waiting for the stalled conversation.",
+    "ops3_merge_lease.py adds recover_completed_turn with generation, holder, fresh-main, verified-merge and recovery-location checks.",
+    "Control-plane regression tests prove queue preservation, next-holder progress, fail-closed main mismatch and mandatory recovery location."
+  ],
+  "acceptance_gate": {
+    "durable_merge_required": true,
+    "fresh_main_must_equal_verified_merge": true,
+    "durable_recovery_pointer_required": true,
+    "fifo_order_preserved": true,
+    "next_holder_can_activate": true,
+    "stalled_holder_return_not_required": true
+  },
+  "successor": null
+}

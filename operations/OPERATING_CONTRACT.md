@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.3.0  
+**Version:** 3.4.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -139,6 +139,20 @@ The queue state is modeled by `scripts/ops3_merge_lease.py`.
 
 This is the default concurrency defense even if GitHub native merge queue/branch protection is unavailable. If a native GitHub merge queue is later enabled, it may replace the transport only if FIFO reservation, turn-base ownership, exact-head validation, and durable-verification properties are preserved.
 
+
+### Stall-safe completed-turn recovery
+
+A chat/session/executor is not allowed to become a publication dependency after the durable merge has landed.
+
+- The normal path remains: verify the merge on target `main`, release the active turn immediately, then reconcile the work record.
+- If the originating conversation stalls, disconnects, exhausts quota, or otherwise disappears **after the merge is durably present on target `main` but before release**, a replacement executor must recover the finished publication instead of leaving the queue blocked.
+- Recovery first identifies a durable recovery location for the finished work, normally the canonical active checkpoint path named by `CURRENT.json` (or another already-authoritative work record when no checkpoint exists). The recovery pointer is coordination metadata only; it does not grant scope or declare completion by itself.
+- The replacement executor fresh-reads target `main` and may recovery-release the active turn only when the observed target-main SHA exactly equals the verified merged SHA for that stranded publication. If they differ, recovery fails closed and requires diagnosis; it may not guess which work landed.
+- A recovery release records `last_recovery_handoff` on the coordination state, preserves the remaining FIFO queue unchanged, clears the stranded holder, records the verified merge SHA, and allows the next queued reservation to activate.
+- Recovery release is allowed across conversations/executors. It does not require the stalled holder to return, and it must not reopen or re-run already verified product work merely to free the queue.
+- If the work record itself still needs closeout after the queue is freed, the replacement executor resumes from the recorded recovery location under the original lane authority and completes that closeout through the normal control-plane publication rules.
+- A stalled conversation before durable merge is **not** a completed-turn recovery. The active turn must instead continue under a replacement executor or be explicitly yielded with a blocker/failure reason.
+
 ### Atomic control-plane projection
 
 Multi-file governed-start and closeout updates must be projected as one repository tree, one commit, and one ref advance whenever the executor exposes Git object primitives. Sequential one-file commits are fallback-only. This prevents partial control-plane states and reduces serial round trips.
@@ -151,7 +165,7 @@ Classify failures before repair. Useful classes include product defect, validati
 
 A deterministic failure is not retried unchanged. Record the exact failure signature or evidence, form a falsifiable cause, apply the smallest causal repair, and rerun the smallest proof first.
 
-A lost publication-queue CAS is not a product failure. Re-read the queue; do not force-update the coordination ref, skip ahead of queued reservations, prepare a competing publication candidate, or merge around the active holder.
+A lost publication-queue CAS is not a product failure. Re-read the queue; do not force-update the coordination ref, skip ahead of queued reservations, prepare a competing publication candidate, or merge around the active holder. If an active holder has stalled after a durable verified merge, use the stall-safe completed-turn recovery rule rather than waiting for that conversation to return.
 
 If a failure is isolated to one executor, do not rewrite project governance around that executor.
 
@@ -164,7 +178,7 @@ A bounded work item may be called `completed_verified` only when:
 - requested scope is complete;
 - required validation is green for the exact candidate and recorded base;
 - required durable side effects are observed;
-- publication lease acquisition/release evidence exists when `main` was mutated;
+- publication lease acquisition/release evidence exists when `main` was mutated, including recovery-release evidence when a stalled executor was replaced;
 - no authorized closeout action remains;
 - current operational state is reconciled.
 
