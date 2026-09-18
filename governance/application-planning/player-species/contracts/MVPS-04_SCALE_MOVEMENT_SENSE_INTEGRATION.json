@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesScaleMovementSenseIntegration",
+  "record_type": "SpeciesScaleMovementSenseIntegration",
+  "status": "MVPS-04_CANONICAL_CONTRACT",
+  "purpose": "Connect species-facing scale, locomotion and sense declarations to shared canonical profiles and typed capability grants without creating species-local rules engines or formulas.",
+  "source_basis": [
+    "PROJECT_BIBLE_OPS3_REFERENCE.md §24.19 Scale",
+    "PROJECT_BIBLE_OPS3_REFERENCE.md §25.3 Species",
+    "PROJECT_BIBLE_OPS3_REFERENCE.md §25.5 Forms and transformations",
+    "PROJECT_BIBLE_OPS3_REFERENCE.md §25.6 Environmental adaptations",
+    "DevelopmentBible/02-game-framework/creatures-npcs-and-species.md",
+    "DevelopmentBible/02-game-framework/characters-and-progression.md",
+    "MVPS-01 SpeciesDefinition scale_profile_ref, sense_grants and movement_grants",
+    "MVPS-03 MorphologyProfile scale external-reference boundary"
+  ],
+  "ownership_boundary": {
+    "owns": [
+      "species-facing references to shared scale profiles",
+      "typed species movement-grant declarations",
+      "typed species sense-grant declarations",
+      "species-facing references to registered derived-value rules profiles"
+    ],
+    "does_not_own": [
+      "scale resolution formulas",
+      "movement or locomotion engine",
+      "pathfinding or movement validation engine",
+      "sense/perception resolution engine",
+      "environment tolerance evaluation",
+      "natural weapon/equipment mechanics",
+      "form/transformation application"
+    ]
+  },
+  "scale": {
+    "policy": "external_profile_reference",
+    "required_field": "scale_profile_ref",
+    "profile_contract": {
+      "required": [
+        "scale_profile_ref",
+        "source_ref"
+      ],
+      "optional": [
+        "rules_profile_ref",
+        "projection_tags"
+      ],
+      "rule": "Scale effects resolve through shared rules/modifiers. Species stores only canonical references and provenance."
+    },
+    "inline_numeric_scale_rules_allowed": false,
+    "separate_scale_database_required": false
+  },
+  "movement": {
+    "grant_policy": "typed_shared_record_reference",
+    "species_formula_allowed": false,
+    "grant_types": [
+      "locomotion_mode",
+      "movement_capability",
+      "movement_modifier_ref",
+      "movement_action_ref"
+    ],
+    "grant_contract": {
+      "required": [
+        "record_ref",
+        "grant_type",
+        "source_ref",
+        "rules_profile_ref"
+      ],
+      "optional": [
+        "morphology_requirement_refs",
+        "activation_ref",
+        "condition_refs",
+        "projection_tags"
+      ],
+      "rule": "A species movement declaration points to a canonical shared movement/capability/action/rules record. It does not define speed, action cost, terrain math or path validation inline."
+    },
+    "morphology_link": {
+      "source_contract": "MVPS.MorphologyProfile",
+      "policy": "requirements_by_reference_only",
+      "rule": "Morphology may constrain structural applicability, but locomotion capability remains a separate grant."
+    }
+  },
+  "senses": {
+    "grant_policy": "typed_shared_record_reference",
+    "species_formula_allowed": false,
+    "grant_types": [
+      "sense_mode",
+      "sense_capability",
+      "sense_modifier_ref",
+      "perception_action_ref"
+    ],
+    "grant_contract": {
+      "required": [
+        "record_ref",
+        "grant_type",
+        "source_ref",
+        "rules_profile_ref"
+      ],
+      "optional": [
+        "anatomy_requirement_refs",
+        "activation_ref",
+        "condition_refs",
+        "projection_tags"
+      ],
+      "rule": "A species sense declaration points to canonical shared perception/sense/rules records. It does not define range, acuity, detection thresholds or resolution algorithms inline."
+    }
+  },
+  "derived_values": {
+    "policy": "registered_rules_profile_reference_only",
+    "reference_contract": {
+      "required": [
+        "derived_value_key",
+        "rules_profile_ref",
+        "source_ref"
+      ],
+      "optional": [
+        "input_refs",
+        "projection_tags"
+      ],
+      "rule": "Derived movement/sense/scale values are recalculated by registered shared rules rather than copied formulas or UI calculations."
+    },
+    "inline_formula_allowed": false
+  },
+  "duplicate_engine_policy": {
+    "movement_engine_allowed": false,
+    "sense_engine_allowed": false,
+    "scale_resolution_engine_allowed": false,
+    "required_behavior": "Consume shared canonical owners by reference; if a needed owner contract is absent, record a dependency rather than inventing a species-local engine."
+  },
+  "provenance_policy": {
+    "source_ref_required": true,
+    "rules_profile_ref_required_for_executable_grants": true,
+    "grant_receipts_use_mvps01_contract": true
+  },
+  "extension_policy": {
+    "namespace_required": true,
+    "override_core_fields": false
+  }
+}
