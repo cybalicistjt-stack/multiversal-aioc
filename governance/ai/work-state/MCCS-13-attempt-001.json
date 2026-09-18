@@ -51,13 +51,13 @@
     "ui-implementation and player-species remain independently governed and must be preserved exactly from fresh CURRENT."
   ],
   "implementation_plan": {
-    "red": "in_progress",
-    "green": "pending",
+    "red": "completed_expected_failure",
+    "green": "in_progress",
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": "publication_reservation",
-  "next_action": "Reserve and activate MCCS-13 on the OPS3 FIFO Multiversal-app main-publication queue before branch or candidate preparation; then establish causal RED from the immutable turn_base.",
+  "active_substep": "green",
+  "next_action": "Implement only the missing MCCS-13 multi-profile derivative production seam on the active FIFO turn; then validate the unchanged final assertions on exact head.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -79,5 +79,31 @@
     "started_on": "2026-09-18",
     "publication_queue_schema": "2.0.0",
     "reservation_id": "MCCS-13-attempt-001-pub-001"
+  },
+  "red_evidence": {
+    "initial_head_sha": "c91dcdf4b6feae881f59b5263347208ac8e94289",
+    "initial_workflow_run": 35383844379,
+    "initial_linux_job": 105726083870,
+    "initial_result": "expected_failure",
+    "test_contract_correction": {
+      "head_sha": "eaf1b5423f51608f49d103f72829e0b555c6e10e",
+      "reason": "Projection loss could not be distinguished from a legitimately lossless output without an explicit signal. Added lossDeclarationRequired to the test contract while production remained absent; no assertion was weakened."
+    },
+    "head_sha": "eaf1b5423f51608f49d103f72829e0b555c6e10e",
+    "workflow_run": 35384024486,
+    "linux_job": 105726628463,
+    "failing_step": "mccs13-focused-multi-profile-derivatives",
+    "result": "expected_failure",
+    "raw_artifact_id": 10562069025,
+    "decisive_assertion": "All 5 focused tests failed because the dynamically loaded MCCS-13 production module resolved to null: `expected null not to be null`.",
+    "cause": "Authorized MCCS-13 production module absent; repository health, preflight, workspace installation and profile selection passed."
+  },
+  "publication_turn": {
+    "schema_version": "2.0.0",
+    "reservation_id": "MCCS-13-attempt-001-pub-001",
+    "holder": "MCCS-13-attempt-001",
+    "status": "held",
+    "generation": 146,
+    "turn_base": "11a104acc160cf82a7c89721fd942d4c38f37320"
   }
 }
