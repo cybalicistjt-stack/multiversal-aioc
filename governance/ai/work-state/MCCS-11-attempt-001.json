@@ -48,13 +48,13 @@
     "ui-implementation and player-species remain independently governed and must be preserved exactly from fresh CURRENT."
   ],
   "implementation_plan": {
-    "red": "in_progress",
-    "green": "pending",
+    "red": "completed_expected_failure",
+    "green": "in_progress",
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": "publication_reservation",
-  "next_action": "Reserve and activate MCCS-11 on the OPS3 FIFO Multiversal-app main-publication queue before branch or candidate preparation; then establish causal RED from the immutable turn_base.",
+  "active_substep": "green",
+  "next_action": "Implement only the missing MCCS-11 topology-aware preview production seam on the active FIFO turn; then validate the unchanged assertions on exact head.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -76,5 +76,23 @@
     "started_on": "2026-09-18",
     "publication_queue_schema": "2.0.0",
     "reservation_id": "MCCS-11-attempt-001-pub-001"
+  },
+  "red_evidence": {
+    "head_sha": "f07041b4a0e743ba1142a71bb9fb6dba891f8160",
+    "workflow_run": 35382164703,
+    "linux_job": 105720695929,
+    "failing_step": "mccs11-focused-pose-rig-retarget",
+    "result": "expected_failure",
+    "raw_artifact_id": 10563216375,
+    "decisive_assertion": "All 5 focused tests failed because the dynamically loaded MCCS-11 production module resolved to null: `expected null not to be null`.",
+    "cause": "Authorized MCCS-11 production module absent; repository health, preflight, workspace installation and profile selection passed."
+  },
+  "publication_turn": {
+    "schema_version": "2.0.0",
+    "reservation_id": "MCCS-11-attempt-001-pub-001",
+    "holder": "MCCS-11-attempt-001",
+    "status": "held",
+    "generation": 139,
+    "turn_base": "febc3d770f93871b1b1091c796f698cfa753e26e"
   }
 }
