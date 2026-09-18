@@ -48,12 +48,12 @@
   ],
   "implementation_plan": {
     "red": "completed_expected_failure",
-    "green": "in_progress",
-    "proof": "pending",
+    "green": "completed",
+    "proof": "in_progress",
     "closeout": "pending"
   },
-  "active_substep": "green",
-  "next_action": "Validate unchanged MCCS-05 assertions against the production candidate; repair only causal MCCS-05 failures, then carry the exact head through proof, serialized publication, DAG reconciliation and closeout.",
+  "active_substep": "proof",
+  "next_action": "Publish exact validated head 2bedc6abe249a60f87048288b2f50909dbcef79e only if fresh app main remains d132dbf655a8c66a1f9e93cf5a9fff62b2e4e76c and the OPS3 merge lease is acquired.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -81,5 +81,17 @@
     "failing_step": "mccs05-focused-head-sensory-expression",
     "result": "expected_failure",
     "cause": "Repository health and MCCS-05 profile selection passed; focused head/sensory/expression acceptance failed before the authorized MCCS-05 production module existed."
+  },
+  "green_candidate": {
+    "head_sha": "2bedc6abe249a60f87048288b2f50909dbcef79e",
+    "status": "validated_exact_head",
+    "application_pr": 599,
+    "application_validated_base_sha": "d132dbf655a8c66a1f9e93cf5a9fff62b2e4e76c",
+    "application_validation_run": 35375134828,
+    "validated_tree_sha": "7d49b274ec253a4c58c20596e96ea8072bf27c0a",
+    "repository_health_job": 105697928332,
+    "linux_job": 105697986188,
+    "windows_job": 105697986157,
+    "deterministic_compare_job": 105698602510
   }
 }
