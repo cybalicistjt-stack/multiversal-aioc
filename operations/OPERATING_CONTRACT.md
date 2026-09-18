@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.2.0  
+**Version:** 3.3.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -52,8 +52,9 @@ OPS3 may keep more than one persistent implementation lane active at once when t
 - Implementation authority is lane-local. Starting or continuing one lane does not implicitly pause, revoke, reorder, or rewrite another active lane.
 - A lane may change another lane's selector/checkpoint only when the owner explicitly directs cross-lane reprioritization or when an operations-lane repair is required to restore canonical truth.
 - Active lanes that target the same repository must use distinct branches.
-- Shared-repository publication remains serialized by the existing OPS3 merge lease. The holder must fresh-read `main`, enforce the validated base, and reconcile stale bases before merge.
-- A publication conflict or stale base does not change either lane's authority; it only blocks that candidate until reconciled and revalidated.
+- Shared-repository publication is serialized by the OPS3 FIFO publication queue. A lane reserves a publication turn first; queued lanes do not prepare/reconcile/revalidate a publication candidate until their reservation reaches the active head.
+- When a reservation becomes active, that holder owns the publication window, fresh-reads `main`, prepares/reconciles exactly once from that turn base, validates the candidate while the window is held, merges the exact validated head, then releases so the next reservation can activate.
+- A queue wait never changes lane authority. It delays only publication preparation and `main` mutation; implementation work that cannot invalidate the eventual turn-base preparation may continue independently.
 - Cross-lane reads remain minimal and evidence-driven.
 
 ## 4. Meaning of execution commands
@@ -107,31 +108,36 @@ For implementation work:
 2. make the smallest coherent change;
 3. run focused validation;
 4. run the lane's required acceptance gate;
-5. verify exact-head evidence before publication;
-6. acquire the OPS3 publication lease for the target repository;
-7. while holding the lease, fresh-read target `main` and compare it with the **base SHA recorded by the successful validation run**;
-8. if `main` changed, fail closed, release/reacquire as necessary, reconcile the branch, and revalidate against the new base before merge;
-9. merge only the exact validated PR head using an expected-head check;
-10. verify the durable `main` result/tree;
-11. release the lease with the verified merge SHA;
-12. reconcile the work record after durable side effects.
+5. reserve a FIFO publication turn for the target repository before publication preparation;
+6. if the reservation is not first, wait without rebasing, reconciling, or repeatedly validating a publication candidate;
+7. when the reservation reaches the head, activate the turn and fresh-read target `main`; that SHA becomes the immutable `turn_base` for this publication window;
+8. only after activation, prepare/reconcile the branch exactly once from `turn_base` and run the required focused/acceptance validation while the publication window is held;
+9. bind the exact validated PR head and validated base to the active turn; `validated_base` must equal `turn_base`;
+10. merge only that exact validated PR head using an expected-head check;
+11. verify the durable `main` result/tree;
+12. release the active turn with the verified merge SHA, preserving FIFO order for queued reservations;
+13. reconcile the work record after durable side effects.
 
-### Serialized publication lease
+### FIFO publication reservation queue
 
-`main` publication in `cybalicistjt-stack/Multiversal-app` and `cybalicistjt-stack/multiversal-aioc` is serialized by a compare-and-swap lease stored on dedicated non-authoritative AIOC coordination branches named:
+`main` publication in `cybalicistjt-stack/Multiversal-app` and `cybalicistjt-stack/multiversal-aioc` is serialized by a compare-and-swap FIFO reservation queue stored on dedicated non-authoritative AIOC coordination branches named:
 
 `ops3-merge-lease/<lowercase-target-repository-slug>`
 
-The lease state is modeled by `scripts/ops3_merge_lease.py`.
+The queue state is modeled by `scripts/ops3_merge_lease.py`.
 
-- Lease acquisition must build the next lease commit from the observed lease-branch head and advance the lease ref **without force**.
-- Competing acquisitions from the same observed head create sibling commits; after the first fast-forward succeeds, the other ref update must fail and re-read rather than overwrite.
-- The held lease binds holder/attempt, validated PR head, and validated target-main base.
-- A fresh target-main SHA that differs from `validated_base` is `OPS3.STALE_MAIN` and forbids merge.
-- Lease release requires the same holder and a verified durable merge SHA.
-- Lease branches are executor coordination only and cannot select work or grant authority.
+- A publisher first appends one reservation containing only `reservation_id` and `holder`. A queued reservation must not contain a prepared/validated candidate head or base.
+- Reservations are FIFO. Only the first queued reservation may activate when no turn is currently held.
+- Activation records the fresh target-main SHA as `turn_base` and removes that reservation from the queue. From activation until release, no other publisher may mutate that target `main`.
+- The active holder performs its one publication preparation/reconciliation **after activation**, from `turn_base`, then validates while the turn remains held. This is the normal path; repeated stale-base rebases caused by racing lanes are a protocol failure, not expected work.
+- After validation, the holder binds `validated_head` and `validated_base`; `validated_base` must equal `turn_base`.
+- Merge authorization requires the same active holder, exact PR head, and fresh target `main` still equal to both `turn_base` and `validated_base`. A mismatch is `OPS3.STALE_MAIN` and fails closed.
+- Release requires the same holder and a verified durable merge SHA. Release clears the active turn but preserves the remaining FIFO queue so the next reservation can activate on the newly published `main`.
+- A queued reservation may be cancelled before activation without reordering the remaining queue. An active turn may be yielded without merge only with an explicit failure/blocker reason.
+- Every queue-state mutation must build from the observed coordination-branch head and advance that ref **without force**. Competing writes from the same head must fail and re-read rather than overwrite.
+- Queue branches are executor coordination only and cannot select work, reorder product priority, or grant implementation authority.
 
-This is the default concurrency defense even if GitHub native merge queue/branch protection is unavailable. If native GitHub merge queue is later enabled, it may replace the transport mechanism only if these stale-base, exact-head, and durable-verification properties are preserved.
+This is the default concurrency defense even if GitHub native merge queue/branch protection is unavailable. If a native GitHub merge queue is later enabled, it may replace the transport only if FIFO reservation, turn-base ownership, exact-head validation, and durable-verification properties are preserved.
 
 ### Atomic control-plane projection
 
@@ -145,7 +151,7 @@ Classify failures before repair. Useful classes include product defect, validati
 
 A deterministic failure is not retried unchanged. Record the exact failure signature or evidence, form a falsifiable cause, apply the smallest causal repair, and rerun the smallest proof first.
 
-A lost publication lease is not a product failure. Re-read the lease and target `main`; do not force-update the coordination ref and do not merge around the holder.
+A lost publication-queue CAS is not a product failure. Re-read the queue; do not force-update the coordination ref, skip ahead of queued reservations, prepare a competing publication candidate, or merge around the active holder.
 
 If a failure is isolated to one executor, do not rewrite project governance around that executor.
 

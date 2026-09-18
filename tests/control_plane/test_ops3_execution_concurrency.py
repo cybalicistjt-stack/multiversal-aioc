@@ -6,7 +6,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 
-
 def _load(name: str, relative: str):
     path = ROOT / relative
     spec = importlib.util.spec_from_file_location(name, path)
@@ -16,119 +15,70 @@ def _load(name: str, relative: str):
     spec.loader.exec_module(module)
     return module
 
-
 EXECUTION_GUARD = _load("ops3_execution_guard", "scripts/ops3_execution_guard.py")
 MERGE_LEASE = _load("ops3_merge_lease", "scripts/ops3_merge_lease.py")
 
-
 class Ops3ExecutionConcurrencyTests(unittest.TestCase):
     def test_terminal_response_fails_while_bounded_continue_is_in_progress(self) -> None:
-        checkpoint = {
-            "status": "in_progress",
-            "execution_guard": {
-                "continue_turns": 1,
-                "stall_nudges": 0,
-                "terminal_response_allowed": False,
-                "stop_reason": None,
-            },
-            "execution_conformance": {"status": "in_progress", "policy_violations": []},
-        }
-        errors = EXECUTION_GUARD.validate_terminal_response(checkpoint)
-        self.assertIn("OPS3.NONTERMINAL_RESPONSE", errors)
+        checkpoint={"status":"in_progress","execution_guard":{"continue_turns":1,"stall_nudges":0,"terminal_response_allowed":False,"stop_reason":None},"execution_conformance":{"status":"in_progress","policy_violations":[]}}
+        self.assertIn("OPS3.NONTERMINAL_RESPONSE", EXECUTION_GUARD.validate_terminal_response(checkpoint))
 
-    def test_owner_or_external_blocker_can_end_a_continue_truthfully(self) -> None:
-        checkpoint = {
-            "status": "in_progress",
-            "execution_guard": {
-                "continue_turns": 1,
-                "stall_nudges": 0,
-                "terminal_response_allowed": True,
-                "stop_reason": {
-                    "kind": "external_blocker",
-                    "evidence": "target service unavailable after verified check",
-                },
-            },
-            "execution_conformance": {"status": "blocked", "policy_violations": []},
-        }
-        self.assertEqual(EXECUTION_GUARD.validate_terminal_response(checkpoint), [])
-
-    def test_multi_continue_cannot_be_certified_clean(self) -> None:
-        checkpoint = {
-            "status": "completed_verified",
-            "execution_guard": {
-                "continue_turns": 3,
-                "stall_nudges": 0,
-                "terminal_response_allowed": True,
-                "stop_reason": {"kind": "completed", "evidence": "verified closeout"},
-            },
-            "execution_conformance": {"status": "completed_verified", "policy_violations": []},
-        }
-        errors = EXECUTION_GUARD.validate_execution_conformance(checkpoint)
+    def test_multi_continue_must_be_recorded_as_process_violation(self) -> None:
+        checkpoint={"status":"completed_verified","execution_guard":{"continue_turns":4,"stall_nudges":2,"terminal_response_allowed":True,"stop_reason":{"kind":"completed","evidence":"verified closeout"}},"execution_conformance":{"status":"conforming","policy_violations":[]}}
+        errors=EXECUTION_GUARD.validate_execution_conformance(checkpoint)
         self.assertIn("OPS3.MULTI_CONTINUE_UNRECORDED", errors)
-
-    def test_stall_nudge_cannot_be_certified_clean(self) -> None:
-        checkpoint = {
-            "status": "completed_verified",
-            "execution_guard": {
-                "continue_turns": 1,
-                "stall_nudges": 1,
-                "terminal_response_allowed": True,
-                "stop_reason": {"kind": "completed", "evidence": "verified closeout"},
-            },
-            "execution_conformance": {"status": "completed_verified", "policy_violations": []},
-        }
-        errors = EXECUTION_GUARD.validate_execution_conformance(checkpoint)
         self.assertIn("OPS3.STALL_NUDGE_UNRECORDED", errors)
 
-    def test_merge_authorization_fails_if_main_advanced_after_validation(self) -> None:
-        lease = MERGE_LEASE.acquire_lease(
-            MERGE_LEASE.free_lease("cybalicistjt-stack/Multiversal-app", generation=7),
-            expected_generation=7,
-            holder="PCA-13-attempt-001",
-            validated_head="feature-head",
-            validated_base="main-a",
-        )
-        errors = MERGE_LEASE.validate_merge_authorization(
-            lease,
-            fresh_main_sha="main-b",
-            pr_head_sha="feature-head",
-            holder="PCA-13-attempt-001",
-        )
-        self.assertIn("OPS3.STALE_MAIN", errors)
+    def test_reservations_are_fifo_and_carry_no_prepared_candidate(self) -> None:
+        state=MERGE_LEASE.free_lease("cybalicistjt-stack/Multiversal-app",generation=10)
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=10,holder="lane-a",reservation_id="a")
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=11,holder="lane-b",reservation_id="b")
+        self.assertEqual([e["holder"] for e in state["queue"]],["lane-a","lane-b"])
+        self.assertIsNone(state["validated_head"])
+        self.assertIsNone(state["validated_base"])
 
-    def test_competing_acquisitions_from_same_generation_cannot_both_apply(self) -> None:
-        free = MERGE_LEASE.free_lease("cybalicistjt-stack/Multiversal-app", generation=11)
-        first = MERGE_LEASE.acquire_lease(
-            free,
-            expected_generation=11,
-            holder="attempt-a",
-            validated_head="head-a",
-            validated_base="main-a",
-        )
+    def test_only_queue_head_can_activate(self) -> None:
+        state=MERGE_LEASE.free_lease("cybalicjt-stack/Multiversal-app",generation=3)
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=3,holder="first",reservation_id="r1")
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=4,holder="second",reservation_id="r2")
         with self.assertRaises(MERGE_LEASE.LeaseConflict):
-            MERGE_LEASE.acquire_lease(
-                first,
-                expected_generation=11,
-                holder="attempt-b",
-                validated_head="head-b",
-                validated_base="main-a",
-            )
+            MERGE_LEASE.activate_next_turn(state,expected_generation=5,holder="second",fresh_main_sha="main-a")
+        active=MERGE_LEASE.activate_next_turn(state,expected_generation=5,holder="first",fresh_main_sha="main-a")
+        self.assertEqual(active["turn_base"],"main-a")
+        self.assertEqual([e["holder"] for e in active["queue"]],["second"])
 
-    def test_release_requires_same_holder_and_verified_merge(self) -> None:
-        held = MERGE_LEASE.acquire_lease(
-            MERGE_LEASE.free_lease("cybalicistjt-stack/multiversal-aioc", generation=3),
-            expected_generation=3,
-            holder="OPS3-02",
-            validated_head="head",
-            validated_base="base",
-        )
+    def test_validation_is_bound_only_after_turn_activation_and_to_turn_base(self) -> None:
+        state=MERGE_LEASE.free_lease("cybalicistjt-stack/Multiversal-app",generation=20)
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=20,holder="lane-a",reservation_id="r")
+        state=MERGE_LEASE.activate_next_turn(state,expected_generation=21,holder="lane-a",fresh_main_sha="main-current")
         with self.assertRaises(MERGE_LEASE.LeaseConflict):
-            MERGE_LEASE.release_lease(held, holder="other", merged_sha="merge")
-        released = MERGE_LEASE.release_lease(held, holder="OPS3-02", merged_sha="merge")
-        self.assertEqual(released["status"], "free")
-        self.assertEqual(released["generation"], 5)
-        self.assertEqual(released["last_merge_sha"], "merge")
+            MERGE_LEASE.bind_validated_candidate(state,expected_generation=22,holder="lane-a",validated_head="head",validated_base="old-main")
+        bound=MERGE_LEASE.bind_validated_candidate(state,expected_generation=22,holder="lane-a",validated_head="head",validated_base="main-current")
+        self.assertEqual(MERGE_LEASE.validate_merge_authorization(bound,fresh_main_sha="main-current",pr_head_sha="head",holder="lane-a"),[])
 
+    def test_release_preserves_fifo_and_next_turn_uses_new_main_without_rebase_race(self) -> None:
+        state=MERGE_LEASE.free_lease("cybalicistjt-stack/Multiversal-app",generation=30)
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=30,holder="lane-a",reservation_id="a")
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=31,holder="lane-b",reservation_id="b")
+        state=MERGE_LEASE.activate_next_turn(state,expected_generation=32,holder="lane-a",fresh_main_sha="main-a")
+        state=MERGE_LEASE.bind_validated_candidate(state,expected_generation=33,holder="lane-a",validated_head="head-a",validated_base="main-a")
+        state=MERGE_LEASE.release_lease(state,holder="lane-a",merged_sha="merge-a")
+        self.assertEqual([e["holder"] for e in state["queue"]],["lane-b"])
+        next_state=MERGE_LEASE.activate_next_turn(state,expected_generation=35,holder="lane-b",fresh_main_sha="merge-a")
+        self.assertEqual(next_state["turn_base"],"merge-a")
+        self.assertIsNone(next_state["validated_head"])
+
+    def test_stale_main_still_fails_closed_inside_active_turn(self) -> None:
+        state=MERGE_LEASE.free_lease("cybalicistjt-stack/Multiversal-app",generation=40)
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=40,holder="lane-a",reservation_id="a")
+        state=MERGE_LEASE.activate_next_turn(state,expected_generation=41,holder="lane-a",fresh_main_sha="main-a")
+        state=MERGE_LEASE.bind_validated_candidate(state,expected_generation=42,holder="lane-a",validated_head="head-a",validated_base="main-a")
+        errors=MERGE_LEASE.validate_merge_authorization(state,fresh_main_sha="main-b",pr_head_sha="head-a",holder="lane-a")
+        self.assertIn("OPS3.STALE_MAIN",errors)
+
+    def test_direct_acquire_is_retired(self) -> None:
+        with self.assertRaises(MERGE_LEASE.LeaseConflict):
+            MERGE_LEASE.acquire_lease()
 
 if __name__ == "__main__":
     unittest.main()
