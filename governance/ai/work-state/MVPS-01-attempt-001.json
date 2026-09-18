@@ -5,12 +5,12 @@
   "title": "Canonical Species Aggregate and Invariants",
   "attempt_id": "MVPS-01-attempt-001",
   "lane": "player-species",
-  "status": "selected_not_started",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/mvps-01-species-aggregate-invariants",
   "selected_by_owner": "2026-09-18",
-  "active_substep": "awaiting_governed_start",
-  "next_action": "An MVPS-specific Continue may govern-start MVPS-01. Do not start MVPS-02+ and do not mutate product-development/MNCS or ui-implementation/UISR state.",
+  "active_substep": "red",
+  "next_action": "Establish causal RED proving the canonical SpeciesDefinition and CharacterSpeciesSelection contracts/invariants are absent, then implement only MVPS-01 contract/schema fixtures and machine-testable invariants without creating a species-specific runtime engine or crossing MNCS-14 shared-owner scope.",
   "predecessor": null,
   "strict_successor": "MVPS-02",
   "required_sources": [
@@ -28,9 +28,20 @@
     "Later MVPS tranches remain unauthorized until separately selected."
   ],
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
-    "terminal_reason": "selected_not_started; no execution attempt has begun"
+    "terminal_response_allowed": false,
+    "terminal_reason": null
+  },
+  "implementation_plan": {
+    "red": "in_progress",
+    "green": "pending",
+    "proof": "pending",
+    "closeout": "pending"
+  },
+  "governed_start": {
+    "aioc_base_sha": "c5afef03d1689bce9e8427af5c101fe148adc2c7",
+    "owner_command": "Continue",
+    "started_on": "2026-09-18"
   }
 }
