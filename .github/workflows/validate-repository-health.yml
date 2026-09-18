@@ -113,6 +113,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_mvps02_choice_schema_transaction.py
 
+      - name: Run MVPS-03 morphology body-plan regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps03_morphology_body_plan.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |

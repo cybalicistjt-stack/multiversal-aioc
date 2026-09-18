@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.BodyStructureQuery",
+  "record_type": "BodyStructureQueryContract",
+  "status": "MVPS-03_CANONICAL_CONTRACT",
+  "purpose": "Provide deterministic structural queries over MorphologyProfile for inventory/equipment and other consumers without owning their policy decisions.",
+  "species_name_input_allowed": false,
+  "owns_equipment_compatibility_policy": false,
+  "inputs": {
+    "required": [
+      "morphology_profile_ref",
+      "operation"
+    ],
+    "optional": [
+      "structural_requirements",
+      "external_scale_context_ref"
+    ],
+    "rule": "A caller supplies a morphology reference plus structural predicates; species identity/name is neither required nor accepted as a dispatch key."
+  },
+  "operations": [
+    "list_regions",
+    "list_limbs",
+    "list_manipulators",
+    "list_worn_regions",
+    "list_attachment_points",
+    "list_natural_appendages",
+    "match_structural_requirements"
+  ],
+  "predicate_contract": {
+    "allowed": [
+      "minimum_count",
+      "maximum_count",
+      "requires_all_tags",
+      "requires_any_tag",
+      "host_relation",
+      "paired_group",
+      "relation_type"
+    ],
+    "forbidden": [
+      "species_name_equals",
+      "scale_numeric_comparison",
+      "equipment_item_id_special_case",
+      "form_transformation_rule"
+    ]
+  },
+  "match_result_contract": {
+    "required": [
+      "matched",
+      "matched_refs",
+      "unmatched_requirements",
+      "reason"
+    ],
+    "reason_required": true,
+    "policy_semantics": "structural_match_only",
+    "rule": "matched=true means the morphology satisfies structural predicates; it does not mean an item is legally/physically compatible under MVPS-07 or the equipment owner."
+  },
+  "deterministic": true,
+  "side_effect_free": true
+}

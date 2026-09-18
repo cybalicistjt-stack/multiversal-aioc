@@ -1,0 +1,506 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_scope": "MVPS-03 synthetic non-canon morphology fixtures",
+  "non_canon": true,
+  "humanoid_fixture": {
+    "morphology_id": "fixture:morphology/humanoid-biped",
+    "body_plan_family": "humanoid_biped",
+    "body_regions": [
+      {
+        "region_id": "torso",
+        "region_kind": "core",
+        "parent_region_ref": null,
+        "child_region_refs": [
+          "head",
+          "left-arm-root",
+          "right-arm-root",
+          "left-leg-root",
+          "right-leg-root"
+        ],
+        "surface_tags": [
+          "wearable_core_surface"
+        ],
+        "query_tags": [
+          "core"
+        ]
+      },
+      {
+        "region_id": "head",
+        "region_kind": "cranial",
+        "parent_region_ref": "torso",
+        "child_region_refs": [],
+        "surface_tags": [
+          "wearable_head_surface"
+        ],
+        "query_tags": [
+          "head"
+        ]
+      },
+      {
+        "region_id": "left-arm-root",
+        "region_kind": "limb_root",
+        "parent_region_ref": "torso",
+        "child_region_refs": [],
+        "paired_group_ref": "arms",
+        "surface_tags": [],
+        "query_tags": [
+          "upper_appendage_root"
+        ]
+      },
+      {
+        "region_id": "right-arm-root",
+        "region_kind": "limb_root",
+        "parent_region_ref": "torso",
+        "child_region_refs": [],
+        "paired_group_ref": "arms",
+        "surface_tags": [],
+        "query_tags": [
+          "upper_appendage_root"
+        ]
+      },
+      {
+        "region_id": "left-leg-root",
+        "region_kind": "limb_root",
+        "parent_region_ref": "torso",
+        "child_region_refs": [],
+        "paired_group_ref": "legs",
+        "surface_tags": [],
+        "query_tags": [
+          "lower_appendage_root"
+        ]
+      },
+      {
+        "region_id": "right-leg-root",
+        "region_kind": "limb_root",
+        "parent_region_ref": "torso",
+        "child_region_refs": [],
+        "paired_group_ref": "legs",
+        "surface_tags": [],
+        "query_tags": [
+          "lower_appendage_root"
+        ]
+      }
+    ],
+    "limbs": [
+      {
+        "limb_id": "left-arm",
+        "root_region_ref": "left-arm-root",
+        "segment_refs": [
+          "left-upper-arm",
+          "left-forearm"
+        ],
+        "terminus_refs": [
+          "left-hand"
+        ],
+        "query_tags": [
+          "upper_limb"
+        ],
+        "paired_group_ref": "arms"
+      },
+      {
+        "limb_id": "right-arm",
+        "root_region_ref": "right-arm-root",
+        "segment_refs": [
+          "right-upper-arm",
+          "right-forearm"
+        ],
+        "terminus_refs": [
+          "right-hand"
+        ],
+        "query_tags": [
+          "upper_limb"
+        ],
+        "paired_group_ref": "arms"
+      },
+      {
+        "limb_id": "left-leg",
+        "root_region_ref": "left-leg-root",
+        "segment_refs": [
+          "left-thigh",
+          "left-shin"
+        ],
+        "terminus_refs": [
+          "left-foot"
+        ],
+        "query_tags": [
+          "lower_limb"
+        ],
+        "paired_group_ref": "legs"
+      },
+      {
+        "limb_id": "right-leg",
+        "root_region_ref": "right-leg-root",
+        "segment_refs": [
+          "right-thigh",
+          "right-shin"
+        ],
+        "terminus_refs": [
+          "right-foot"
+        ],
+        "query_tags": [
+          "lower_limb"
+        ],
+        "paired_group_ref": "legs"
+      }
+    ],
+    "manipulators": [
+      {
+        "manipulator_id": "left-hand",
+        "host_ref": "left-arm",
+        "structure_tags": [
+          "multi_digit",
+          "opposable",
+          "equipment_grip"
+        ],
+        "query_tags": [
+          "primary_manipulator",
+          "equipment_grip"
+        ]
+      },
+      {
+        "manipulator_id": "right-hand",
+        "host_ref": "right-arm",
+        "structure_tags": [
+          "multi_digit",
+          "opposable",
+          "equipment_grip"
+        ],
+        "query_tags": [
+          "primary_manipulator",
+          "equipment_grip"
+        ]
+      }
+    ],
+    "worn_regions": [
+      {
+        "worn_region_id": "torso-wear",
+        "region_refs": [
+          "torso"
+        ],
+        "surface_tags": [
+          "wearable_core_surface"
+        ],
+        "query_tags": [
+          "torso_worn_region"
+        ]
+      },
+      {
+        "worn_region_id": "head-wear",
+        "region_refs": [
+          "head"
+        ],
+        "surface_tags": [
+          "wearable_head_surface"
+        ],
+        "query_tags": [
+          "head_worn_region"
+        ]
+      }
+    ],
+    "attachment_points": [
+      {
+        "attachment_point_id": "left-hand-grip",
+        "host_ref": "left-hand",
+        "attachment_kind": "grasp_interface",
+        "query_tags": [
+          "equipment_grip"
+        ]
+      },
+      {
+        "attachment_point_id": "right-hand-grip",
+        "host_ref": "right-hand",
+        "attachment_kind": "grasp_interface",
+        "query_tags": [
+          "equipment_grip"
+        ]
+      }
+    ],
+    "natural_appendages": [],
+    "structural_relations": [
+      {
+        "relation_id": "arms-paired",
+        "relation_type": "paired",
+        "subject_ref": "left-arm",
+        "object_refs": [
+          "right-arm"
+        ],
+        "query_tags": [
+          "bilateral_pair"
+        ]
+      },
+      {
+        "relation_id": "legs-paired",
+        "relation_type": "paired",
+        "subject_ref": "left-leg",
+        "object_refs": [
+          "right-leg"
+        ],
+        "query_tags": [
+          "bilateral_pair"
+        ]
+      }
+    ],
+    "query_tags": [
+      "bilateral",
+      "bipedal_structure",
+      "two_equipment_grips"
+    ]
+  },
+  "nonhumanoid_fixture": {
+    "morphology_id": "fixture:morphology/quadruped-hooved",
+    "body_plan_family": "quadruped_nonhumanoid",
+    "body_regions": [
+      {
+        "region_id": "trunk",
+        "region_kind": "core",
+        "parent_region_ref": null,
+        "child_region_refs": [
+          "neck",
+          "fore-left-root",
+          "fore-right-root",
+          "hind-left-root",
+          "hind-right-root"
+        ],
+        "surface_tags": [
+          "wearable_core_surface"
+        ],
+        "query_tags": [
+          "core"
+        ]
+      },
+      {
+        "region_id": "neck",
+        "region_kind": "connector",
+        "parent_region_ref": "trunk",
+        "child_region_refs": [
+          "head"
+        ],
+        "surface_tags": [],
+        "query_tags": [
+          "neck"
+        ]
+      },
+      {
+        "region_id": "head",
+        "region_kind": "cranial",
+        "parent_region_ref": "neck",
+        "child_region_refs": [],
+        "surface_tags": [
+          "wearable_head_surface"
+        ],
+        "query_tags": [
+          "head"
+        ]
+      },
+      {
+        "region_id": "fore-left-root",
+        "region_kind": "limb_root",
+        "parent_region_ref": "trunk",
+        "child_region_refs": [],
+        "paired_group_ref": "forelimbs",
+        "surface_tags": [],
+        "query_tags": [
+          "appendage_root"
+        ]
+      },
+      {
+        "region_id": "fore-right-root",
+        "region_kind": "limb_root",
+        "parent_region_ref": "trunk",
+        "child_region_refs": [],
+        "paired_group_ref": "forelimbs",
+        "surface_tags": [],
+        "query_tags": [
+          "appendage_root"
+        ]
+      },
+      {
+        "region_id": "hind-left-root",
+        "region_kind": "limb_root",
+        "parent_region_ref": "trunk",
+        "child_region_refs": [],
+        "paired_group_ref": "hindlimbs",
+        "surface_tags": [],
+        "query_tags": [
+          "appendage_root"
+        ]
+      },
+      {
+        "region_id": "hind-right-root",
+        "region_kind": "limb_root",
+        "parent_region_ref": "trunk",
+        "child_region_refs": [],
+        "paired_group_ref": "hindlimbs",
+        "surface_tags": [],
+        "query_tags": [
+          "appendage_root"
+        ]
+      }
+    ],
+    "limbs": [
+      {
+        "limb_id": "fore-left",
+        "root_region_ref": "fore-left-root",
+        "segment_refs": [
+          "fore-left-upper",
+          "fore-left-lower"
+        ],
+        "terminus_refs": [
+          "fore-left-hoof"
+        ],
+        "query_tags": [
+          "support_limb"
+        ],
+        "paired_group_ref": "forelimbs"
+      },
+      {
+        "limb_id": "fore-right",
+        "root_region_ref": "fore-right-root",
+        "segment_refs": [
+          "fore-right-upper",
+          "fore-right-lower"
+        ],
+        "terminus_refs": [
+          "fore-right-hoof"
+        ],
+        "query_tags": [
+          "support_limb"
+        ],
+        "paired_group_ref": "forelimbs"
+      },
+      {
+        "limb_id": "hind-left",
+        "root_region_ref": "hind-left-root",
+        "segment_refs": [
+          "hind-left-upper",
+          "hind-left-lower"
+        ],
+        "terminus_refs": [
+          "hind-left-hoof"
+        ],
+        "query_tags": [
+          "support_limb"
+        ],
+        "paired_group_ref": "hindlimbs"
+      },
+      {
+        "limb_id": "hind-right",
+        "root_region_ref": "hind-right-root",
+        "segment_refs": [
+          "hind-right-upper",
+          "hind-right-lower"
+        ],
+        "terminus_refs": [
+          "hind-right-hoof"
+        ],
+        "query_tags": [
+          "support_limb"
+        ],
+        "paired_group_ref": "hindlimbs"
+      }
+    ],
+    "manipulators": [],
+    "worn_regions": [
+      {
+        "worn_region_id": "trunk-wear",
+        "region_refs": [
+          "trunk"
+        ],
+        "surface_tags": [
+          "wearable_core_surface"
+        ],
+        "query_tags": [
+          "core_worn_region"
+        ]
+      },
+      {
+        "worn_region_id": "head-wear",
+        "region_refs": [
+          "head"
+        ],
+        "surface_tags": [
+          "wearable_head_surface"
+        ],
+        "query_tags": [
+          "head_worn_region"
+        ]
+      }
+    ],
+    "attachment_points": [],
+    "natural_appendages": [
+      {
+        "appendage_id": "tail",
+        "host_ref": "trunk",
+        "appendage_kind": "tail",
+        "structural_tags": [
+          "flexible_appendage"
+        ],
+        "query_tags": [
+          "posterior_appendage"
+        ]
+      }
+    ],
+    "structural_relations": [
+      {
+        "relation_id": "fore-pair",
+        "relation_type": "paired",
+        "subject_ref": "fore-left",
+        "object_refs": [
+          "fore-right"
+        ],
+        "query_tags": [
+          "bilateral_pair"
+        ]
+      },
+      {
+        "relation_id": "hind-pair",
+        "relation_type": "paired",
+        "subject_ref": "hind-left",
+        "object_refs": [
+          "hind-right"
+        ],
+        "query_tags": [
+          "bilateral_pair"
+        ]
+      }
+    ],
+    "query_tags": [
+      "bilateral",
+      "quadruped_structure",
+      "no_equipment_grips"
+    ]
+  },
+  "structural_requirement_examples": {
+    "two_hand_requirement": {
+      "target_collection": "manipulators",
+      "minimum_count": 2,
+      "requires_all_tags": [
+        "equipment_grip"
+      ]
+    }
+  },
+  "query_examples": {
+    "humanoid_two_hand_requirement": {
+      "operation": "match_structural_requirements",
+      "requirement_ref": "two_hand_requirement",
+      "matched": true,
+      "matched_refs": [
+        "left-hand",
+        "right-hand"
+      ],
+      "unmatched_requirements": [],
+      "reason": "Two manipulators expose the required equipment_grip structural tag."
+    },
+    "nonhumanoid_two_hand_requirement": {
+      "operation": "match_structural_requirements",
+      "requirement_ref": "two_hand_requirement",
+      "matched": false,
+      "matched_refs": [],
+      "unmatched_requirements": [
+        "minimum_count:2",
+        "requires_all_tags:equipment_grip"
+      ],
+      "reason": "This morphology exposes no manipulators tagged equipment_grip; an equipment owner may still evaluate adapters or alternate interfaces separately."
+    }
+  }
+}
