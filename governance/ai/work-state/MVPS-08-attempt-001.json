@@ -5,9 +5,9 @@
   "title": "Lineage/Subspecies Inheritance and Composition",
   "attempt_id": "MVPS-08-attempt-001",
   "lane": "player-species",
-  "status": "selected_not_started",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/mvps-08-lineage-inheritance-composition",
   "selected_by_verified_predecessor": "MVPS-07",
   "predecessor": {
     "work_item_id": "MVPS-07",
@@ -29,12 +29,40 @@
     "Form/transformation runtime remains MVPS-09; species progression remains MVPS-10; runtime active-contribution projection remains MVPS-13.",
     "MVPS-09+ remain unauthorized until separately selected."
   ],
-  "active_substep": "awaiting_governed_start",
-  "next_action": "On an MVPS-specific owner Continue, enter through OPS3, reserve the FIFO publication turn before candidate preparation, fresh-read MVPS-01 through MVPS-07 composition-bearing contracts and current shared duplicate/stacking owner rules, then govern-start MVPS-08 and execute the bounded tranche.",
+  "active_substep": "red",
+  "next_action": "Establish causal RED for deterministic lineage/subspecies delta composition: lineages reference exact parent species/version rather than copying parent records; additions/removals/replacements/overrides are explicit operations; ordering is stable; duplicate-grant stacking defers to shared owners; unresolved conflicts remain explicit rather than guessed.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
+    "terminal_response_allowed": false,
     "stop_reason": null
+  },
+  "implementation_plan": {
+    "red": "in_progress",
+    "green": "pending",
+    "proof": "pending",
+    "closeout": "pending"
+  },
+  "owner_interaction_observation": {
+    "continue_turns": 1,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  },
+  "governed_start": {
+    "aioc_base_sha": "b58918324e56c3c27aedeac01e8398afb78eef9d",
+    "owner_command": "Continue",
+    "started_on": "2026-09-18",
+    "publication_queue_schema": "2.0.0",
+    "reservation_id": "mvps-08-attempt-001-governed-start-001"
+  },
+  "publication_turn": {
+    "schema_version": "2.0.0",
+    "reservation_id": "mvps-08-attempt-001-governed-start-001",
+    "holder": "MVPS-08-attempt-001-governed-start",
+    "status": "held",
+    "turn_base": "b58918324e56c3c27aedeac01e8398afb78eef9d"
   }
 }
