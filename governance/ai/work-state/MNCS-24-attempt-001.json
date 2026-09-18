@@ -42,13 +42,13 @@
     "The independent ui-implementation lane remains UISR-10 in_progress and player-species remains MVPS-05 in_progress; both are preserved unchanged."
   ],
   "implementation_plan": {
-    "red": "in_progress",
-    "green": "pending",
+    "red": "completed_expected_failure",
+    "green": "in_progress",
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": "red",
-  "next_action": "Establish causal RED for the final progressive generation/campaign-continuity golden proof, including selective refinement, provenance/review, hidden/canonical safety, optional-AI boundaries and local-first operation; then implement only the missing MNCS-24 proof seam.",
+  "active_substep": "green",
+  "next_action": "Validate the unchanged MNCS-24 golden assertions against production proof head 10ab5e57bcb274e51865783f370915b886b184ed; repair only causal MNCS-24 failures, then run exact-head final-family proof.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -68,5 +68,17 @@
     "application_base_sha": "0c3008dea5b378cb4151563b30505e0a5054c22a",
     "owner_command": "Continue",
     "started_on": "2026-09-18"
+  },
+  "red_evidence": {
+    "head_sha": "3761d47c1b489b6ea995ffc644b24392e33b8102",
+    "workflow_run": 35368955007,
+    "lane": "linux",
+    "failing_step": "mncs24-focused",
+    "result": "expected_failure",
+    "cause": "Focused golden test composed existing MNCS-05/18/20/22 setup successfully but could not load the not-yet-implemented MNCS-24 proof seam; repository health and profile selection passed."
+  },
+  "green_candidate": {
+    "head_sha": "10ab5e57bcb274e51865783f370915b886b184ed",
+    "status": "awaiting_validation"
   }
 }
