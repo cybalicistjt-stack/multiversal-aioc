@@ -5,8 +5,8 @@
   "title": "Capability Grants and Natural Equipment",
   "attempt_id": "MVPS-06-attempt-001",
   "lane": "player-species",
-  "status": "in_progress",
-  "implementation_authority": true,
+  "status": "completed_verified",
+  "implementation_authority": false,
   "implementation_branch": "work/mvps-06-capability-grants-natural-equipment",
   "selected_by_verified_predecessor": "MVPS-05",
   "predecessor": {
@@ -28,23 +28,63 @@
     "Lineage inheritance belongs to MVPS-08, form/transformation semantics to MVPS-09, and species progression/maturation to MVPS-10.",
     "MVPS-07+ remain unauthorized until separately selected."
   ],
-  "active_substep": "red",
-  "next_action": "Establish causal RED proving every species executable grant has canonical shared-record identity, source/provenance, and typed grant role; biological-looking or species-gated labels do not create mechanics; natural weapons/armor/organs route through shared Ability/Action/Effect/Condition/Resource/Modifier and Item/Equipment owners without inline mechanics or ownership duplication; then implement only MVPS-06 contracts/fixtures.",
+  "active_substep": "completed",
+  "next_action": "No MVPS-06 work remains. MVPS-07 is selected_not_started with no implementation branch or authority and requires a later owner Continue.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": false,
-    "terminal_reason": null
+    "terminal_response_allowed": true,
+    "terminal_reason": "completed_verified"
   },
   "implementation_plan": {
-    "red": "in_progress",
-    "green": "pending",
-    "proof": "pending",
-    "closeout": "pending"
+    "red": "completed",
+    "green": "completed",
+    "proof": "completed",
+    "closeout": "completed"
   },
   "governed_start": {
     "aioc_base_sha": "f56da85c28504d85e5f9866c5967399dc06e9df1",
     "owner_command": "Continue",
     "started_on": "2026-09-18"
+  },
+  "completion_evidence": {
+    "red": {
+      "commit": "6d5f577357309bc794d14fcf1c964ae4e4b6dc83",
+      "validation_run": 35369637049,
+      "observed_failure": "MVPS-06 regression alone failed because the capability-grant, natural-equipment, fixture and invariant artifacts did not exist; all prior OPS3/MVPS gates passed."
+    },
+    "green": {
+      "validated_head": "9615f0d9fadb2a972cc9ba4b1712fc7f55159a54",
+      "validation_run": 35369786243,
+      "result": "success"
+    },
+    "publication": {
+      "pr": 1391,
+      "merge_sha": "d373a9642d511bb163ea6b747c471c923be2a33b"
+    },
+    "artifacts": [
+      "governance/application-planning/player-species/contracts/MVPS-06_CAPABILITY_GRANT_CONTRACT.json",
+      "governance/application-planning/player-species/contracts/MVPS-06_NATURAL_EQUIPMENT_CONTRACT.json",
+      "governance/application-planning/player-species/contracts/MVPS-06_CAPABILITY_NATURAL_EQUIPMENT_FIXTURES.json",
+      "governance/application-planning/player-species/contracts/MVPS-06_INVARIANTS.json"
+    ],
+    "acceptance": {
+      "every_executable_grant_has_canonical_identity_and_provenance": true,
+      "natural_equipment_resolves_through_shared_item_ability_effect_contracts": true
+    }
+  },
+  "roadmap_reconciliation": {
+    "dependency_graph_schema": "1.0.4",
+    "cross_program_mvps_interstitial_gate": false,
+    "selected_successor": "MVPS-07",
+    "rationale": "MVPS has no hard/start gate or milestone rotation overriding strict order after MVPS-06."
+  },
+  "closeout": {
+    "completed_on": "2026-09-18",
+    "result": "completed_verified",
+    "successor": "MVPS-07",
+    "successor_state": "selected_not_started",
+    "product_lane_mutated": false,
+    "ui_lane_mutated": false
   }
 }
