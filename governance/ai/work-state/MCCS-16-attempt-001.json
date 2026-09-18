@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "MCCS-16",
+  "attempt_id": "MCCS-16-attempt-001",
+  "title": "Style Packs, Templates, Renderer Profiles & Visual Variant Recipes",
+  "track": "multiversal-character-creature-studio",
+  "source_program": "MCCS",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "objective": "Implement reusable style packs, appearance templates, palette/material sets, renderer/output profiles and deterministic visual-variation recipes over governed MCCS appearance workspaces without creating canonical identity, population truth, or renderer-specific authority.",
+  "predecessor": {
+    "work_item_id": "MCCS-13",
+    "status": "completed_verified",
+    "application_pr": 608,
+    "application_validation_run": 35384187155,
+    "application_merge_sha": "4a2d5044c516536dcc2f2ab2df21d2f1c02c261e",
+    "validated_tree_sha": "56aaab600e06ba2fed0c2b9c69c1fafe3afad1ed"
+  },
+  "scope": {
+    "purpose": "Extend the MCCS presentation stack with reusable style/template/profile primitives and deterministic visual-variation recipes while preserving owner-supplied entity/group identity and eligibility.",
+    "included": [
+      "style packs",
+      "appearance templates",
+      "palette/material sets",
+      "renderer profiles",
+      "output profiles",
+      "deterministic visual-variation recipes",
+      "owner-supplied group visual variation",
+      "explicit unsupported/unresolved renderer states",
+      "local-first deterministic authoring"
+    ],
+    "completion_gate": "Representative humanoid, nonhumanoid and owner-supplied group appearances can apply reusable style/template/profile/variant recipes deterministically with explicit compatibility and unresolved states, while preserving canonical identity, population, mechanics, asset and live-state authority."
+  },
+  "selection_boundaries": [
+    "MCCS-01, MCCS-03, MCCS-05, MCCS-06, MCCS-09, MCCS-11 and MCCS-13 are completed_verified foundations and are not reopened.",
+    "Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MCCS-13-triggered rotation or interstitial override; reduced MCCS strict order therefore selects MCCS-16.",
+    "CAPP/PPIA retain renderer-neutral appearance authority; PAPT/PCA retain reusable character-asset, style-generation and local-production primitives.",
+    "MNCS supplies NPC/crowd/herd/group identities and eligibility; PCA supplies generic procedural substrate. MCCS-16 may produce visual variation only and never creates population truth.",
+    "Character/NPC/Creature/Species/Form owners retain canonical identity, mechanics and live-state truth; ARI/PCA retain generic resource identity, provenance, version and review authority.",
+    "Unsupported renderer/style/template/profile compatibility remains explicit and may not silently rewrite semantic appearance.",
+    "MCCS-16 is selected_not_started only; no implementation branch or authority exists until a later owner Continue.",
+    "ui-implementation and player-species remain independently governed and must be preserved exactly from fresh CURRENT."
+  ],
+  "implementation_plan": {
+    "red": "pending",
+    "green": "pending",
+    "proof": "pending",
+    "closeout": "pending"
+  },
+  "active_substep": null,
+  "next_action": "Wait for the next owner Continue in product-development. On that command, govern-start MCCS-16 under the OPS3 FIFO Multiversal-app main-publication queue; do not implement while selected_not_started.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selection_only",
+      "evidence": "MCCS-13 completed_verified; fresh DAG and reduced MCCS order select MCCS-16."
+    }
+  },
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
