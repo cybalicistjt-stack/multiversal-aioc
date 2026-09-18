@@ -26,7 +26,7 @@ Read `operations/LANES.json` and choose exactly one lane that matches the user's
 - A bare `Continue` resumes the lane already established by the conversation. If this is a new conversation, use `CURRENT.json` and the user's opening request to resolve the lane.
 - Lane selection changes scope and source bundle only. It never changes the global operating contract.
 - Multiple persistent lanes may hold implementation authority at the same time. A conversation still selects exactly one lane; selecting it does **not** pause, revoke, or rewrite another lane merely because both change product code.
-- When active lanes share a repository, they use separate implementation branches and the publication lease serializes `main` mutation. Stale-base reconciliation is a publication concern, not a reason to collapse the lanes.
+- When active lanes share a repository, they use separate implementation branches and the FIFO publication queue serializes `main` mutation. Each lane reserves a turn; only the active head prepares/reconciles/validates its publication candidate against the fresh turn base.
 - Do not load or mutate another lane merely because it exists; cross-lane reads are limited to explicit dependencies, publication conflicts, or owner-directed coordination.
 
 ## 4. Load only the lane's active work record
@@ -60,9 +60,9 @@ Multiple owner Continues or owner stall nudges are execution-quality incidents a
 
 ## 8. Publication serialization
 
-Before any executor merges or pushes to `main` in `cybalicistjt-stack/Multiversal-app` or `cybalicistjt-stack/multiversal-aioc`, follow the publication-lease protocol in `operations/OPERATING_CONTRACT.md` using `scripts/ops3_merge_lease.py`.
+Before any executor merges or pushes to `main` in `cybalicistjt-stack/Multiversal-app` or `cybalicistjt-stack/multiversal-aioc`, follow the FIFO publication-reservation protocol in `operations/OPERATING_CONTRACT.md` using `scripts/ops3_merge_lease.py`.
 
-Acquire the target-repository lease by compare-and-swap, fresh-read target `main` while holding it, require that `main` still equals the base SHA recorded by the successful validation run, merge only the expected validated PR head, verify the durable result, and release the lease with the merge SHA. Never force the coordination ref or merge around another holder.
+Reserve one queue turn first. If another reservation is ahead, wait without rebasing/reconciling/revalidating a publication candidate. When the reservation becomes first, activate it against the fresh target `main`; only then prepare/reconcile once from that `turn_base`, validate while holding the publication window, bind the exact validated head/base, merge, verify the durable result, and release so the next reservation can activate. Never force the coordination ref, skip the queue, or merge around the active holder.
 
 ## 9. Evidence and completion
 

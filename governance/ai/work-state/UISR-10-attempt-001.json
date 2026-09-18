@@ -59,17 +59,24 @@
   "next_action": "No UISR work remains. The UISR program is closed; later skin changes require a newly governed work item rather than continuing UISR-10.",
   "execution_guard": {
     "continue_turns": 4,
-    "stall_nudges": 0,
+    "stall_nudges": 2,
     "terminal_response_allowed": true,
-    "stop_reason": "completed_verified"
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "UISR-10 implementation, exact-head validation, application publication, evidence closeout and UISR terminal closeout are durably verified."
+    }
   },
   "owner_interaction_observation": {
     "continue_turns": 4,
-    "stall_nudges": 0
+    "stall_nudges": 2
   },
   "execution_conformance": {
-    "status": "conforming",
-    "policy_violations": []
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED",
+      "OPS3.STALL_NUDGE_UNRECORDED"
+    ],
+    "note": "Product completion remains valid, but execution required four owner Continue turns and two explicit owner stall nudges; this is recorded rather than certified as clean one-Continue execution."
   },
   "governed_start": {
     "application_base_sha": "bda4936f828e636cdc8eb1ae104b0c620b0152e1",
