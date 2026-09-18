@@ -47,13 +47,13 @@
     "ui-implementation and player-species remain independently governed and must be preserved exactly from fresh CURRENT."
   ],
   "implementation_plan": {
-    "red": "in_progress",
-    "green": "pending",
+    "red": "completed_expected_failure",
+    "green": "in_progress",
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": "application_publication_reservation",
-  "next_action": "After this queue-bound governed-start publishes, reserve and activate the separate Multiversal-app FIFO turn before preparing the MCCS-16 RED candidate.",
+  "active_substep": "green",
+  "next_action": "Implement only the missing MCCS-16 style/template/profile/visual-variant production seam on the already-active Multiversal-app FIFO turn, then validate unchanged assertions on exact head.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -75,5 +75,23 @@
     "owner_command": "Continue",
     "started_on": "2026-09-18",
     "application_branch": "work/mccs-16-style-template-profile-recipes"
+  },
+  "red_evidence": {
+    "head_sha": "63bc92cec35dea3f8be4856c86ffbd11a433d9f0",
+    "workflow_run": 35386180182,
+    "linux_job": 105733706688,
+    "failing_step": "mccs16-focused-style-template-recipes",
+    "result": "expected_failure",
+    "raw_artifact_id": 10563858649,
+    "decisive_assertion": "All 5 focused tests failed because the dynamically loaded MCCS-16 production module resolved to null: `expected null not to be null`.",
+    "cause": "Authorized MCCS-16 production module absent; repository health, preflight and workspace installation passed."
+  },
+  "publication_turn": {
+    "schema_version": "2.0.0",
+    "reservation_id": "MCCS-16-attempt-001-app-pub-001",
+    "holder": "MCCS-16-attempt-001",
+    "status": "held",
+    "generation": 150,
+    "turn_base": "4a2d5044c516536dcc2f2ab2df21d2f1c02c261e"
   }
 }
