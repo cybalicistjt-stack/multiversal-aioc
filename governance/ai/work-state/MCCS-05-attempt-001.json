@@ -7,10 +7,10 @@
   "track": "multiversal-character-creature-studio",
   "source_program": "MCCS",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/mccs-05-head-sensory-expression-authoring",
   "completed": false,
   "objective": "Implement topology-aware head and sensory-feature appearance authoring for eyes or other sensory organs, mouths/beaks/mandibles, ears, horns/antlers/tusks/crests and expression-capable structures without requiring or inventing a human face plan.",
   "predecessor": {
@@ -47,28 +47,31 @@
     "The ui-implementation and player-species lanes remain independently governed and are not modified by this selection."
   ],
   "implementation_plan": {
-    "red": "pending",
+    "red": "in_progress",
     "green": "pending",
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": null,
-  "next_action": "Wait for the next owner Continue in product-development. On that command, governed-start MCCS-05 with the OPS3 execution guard; do not implement while selected_not_started.",
+  "active_substep": "red",
+  "next_action": "Establish causal RED for topology-aware head/sensory/expression presentation authoring, then implement only the missing MCCS-05 production seam and carry through exact-head proof/publication/closeout.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
-    "stop_reason": {
-      "kind": "selection_only",
-      "evidence": "MCCS-05 is selected_not_started after fresh post-MCCS-03 DAG/backlog reconciliation; no bounded MCCS-05 execution is active."
-    }
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "in_progress",
     "policy_violations": []
+  },
+  "governed_start": {
+    "aioc_base_sha": "505a0ec8e00307558288a044e0abe37ead99d700",
+    "application_base_sha": "d132dbf655a8c66a1f9e93cf5a9fff62b2e4e76c",
+    "owner_command": "Continue",
+    "started_on": "2026-09-18"
   }
 }
