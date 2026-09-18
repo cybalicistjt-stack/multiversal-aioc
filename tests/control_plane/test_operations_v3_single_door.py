@@ -191,26 +191,37 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertIn("does **not** pause, revoke, or rewrite another lane", bootstrap)
         self.assertIn("does not implicitly pause, revoke, reorder, or rewrite another active lane", contract)
 
-    def test_player_species_lane_is_independent_and_selected_not_started(self) -> None:
+    def test_player_species_lane_lifecycle_is_independent_and_checkpointed(self) -> None:
         current = self._json("operations/CURRENT.json")
         mvps = current["lanes"]["player-species"]
         self.assertEqual(mvps["selected_work_item"], "MVPS-01")
         self.assertEqual(mvps["attempt_id"], "MVPS-01-attempt-001")
-        self.assertEqual(mvps["state"], "selected_not_started")
-        self.assertIsNone(mvps["implementation_branch"])
-        self.assertFalse(mvps["implementation_authority"])
+        self.assertIn(mvps["state"], {"selected_not_started", "in_progress", "completed_verified"})
 
         checkpoint = self._json(mvps["checkpoint_path"])
         self.assertEqual(checkpoint["work_item_id"], mvps["selected_work_item"])
         self.assertEqual(checkpoint["attempt_id"], mvps["attempt_id"])
         self.assertEqual(checkpoint["status"], mvps["state"])
-        self.assertIsNone(checkpoint["implementation_branch"])
-        self.assertFalse(checkpoint["implementation_authority"])
+        self.assertEqual(checkpoint["implementation_branch"], mvps["implementation_branch"])
+        self.assertEqual(checkpoint["implementation_authority"], mvps["implementation_authority"])
+
+        if mvps["state"] == "selected_not_started":
+            self.assertIsNone(mvps["implementation_branch"])
+            self.assertFalse(mvps["implementation_authority"])
+        elif mvps["state"] == "in_progress":
+            self.assertTrue(mvps["implementation_branch"])
+            self.assertTrue(mvps["implementation_authority"])
+        else:
+            self.assertFalse(mvps["implementation_authority"])
 
         product = current["lanes"]["product-development"]
         ui_lane = current["lanes"]["ui-implementation"]
         self.assertNotEqual(mvps["attempt_id"], product["attempt_id"])
         self.assertNotEqual(mvps["attempt_id"], ui_lane["attempt_id"])
+        if mvps.get("implementation_branch") and product.get("implementation_branch"):
+            self.assertNotEqual(mvps["implementation_branch"], product["implementation_branch"])
+        if mvps.get("implementation_branch") and ui_lane.get("implementation_branch"):
+            self.assertNotEqual(mvps["implementation_branch"], ui_lane["implementation_branch"])
 
     def test_repository_entrypoint_has_no_independent_current_state(self) -> None:
         agents = self._text("AGENTS.md")
