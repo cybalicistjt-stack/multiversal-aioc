@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_scope": "MVPS-06 synthetic non-canon capability and natural-equipment fixtures",
+  "non_canon": true,
+  "morphology_only_claw_fixture": {
+    "fixture_id": "fixture:mvps06/morphology-only-claw",
+    "morphology_fact_ref": "fixture:morphology/keratin-claw@1",
+    "source_evidence": "A claw-shaped digit ending is explicitly morphological; no approved attack, climbing, tool, armor or damage mechanic is supplied.",
+    "executable_grants": [],
+    "natural_equipment_grants": [],
+    "unresolved_mechanic_note": "Do not infer a natural weapon or other executable capability from morphology or name."
+  },
+  "explicit_stinger_weapon_fixture": {
+    "fixture_id": "fixture:mvps06/explicit-stinger-weapon",
+    "creates_asset_instance": false,
+    "creates_inventory_ownership": false,
+    "executable_grants": [
+      {
+        "grant_id": "fixture:grant/stinger-attack",
+        "record_ref": "fixture:action/stinger-strike@1",
+        "owner_domain": "Action",
+        "capability_kind": "action",
+        "grant_class": "fixed",
+        "source_ref": "fixture:source/stinger-rule",
+        "provenance_ref": "fixture:provenance/stinger-rule"
+      }
+    ],
+    "natural_equipment_grants": [
+      {
+        "natural_equipment_id": "fixture:natural-equipment/stinger",
+        "kind": "natural_weapon",
+        "body_structure_ref": "fixture:morphology/stinger@1",
+        "source_ref": "fixture:source/stinger-rule",
+        "provenance_ref": "fixture:provenance/stinger-rule",
+        "mechanic_refs": [
+          {
+            "owner_domain": "Action",
+            "record_ref": "fixture:action/stinger-strike@1",
+            "role": "attack_action"
+          },
+          {
+            "owner_domain": "Effect",
+            "record_ref": "fixture:effect/stinger-damage@1",
+            "role": "damage_effect"
+          },
+          {
+            "owner_domain": "ItemDefinition",
+            "record_ref": "fixture:item-definition/natural-piercing-profile@1",
+            "role": "weapon_profile"
+          }
+        ]
+      }
+    ]
+  },
+  "explicit_natural_armor_fixture": {
+    "fixture_id": "fixture:mvps06/explicit-natural-armor",
+    "creates_asset_instance": false,
+    "creates_inventory_ownership": false,
+    "executable_grants": [
+      {
+        "grant_id": "fixture:grant/chitin-protection",
+        "record_ref": "fixture:modifier/chitin-protection@1",
+        "owner_domain": "Modifier",
+        "capability_kind": "modifier",
+        "grant_class": "fixed",
+        "source_ref": "fixture:source/chitin-rule",
+        "provenance_ref": "fixture:provenance/chitin-rule"
+      }
+    ],
+    "natural_equipment_grants": [
+      {
+        "natural_equipment_id": "fixture:natural-equipment/chitin",
+        "kind": "natural_armor",
+        "body_structure_ref": "fixture:morphology/chitin-plates@1",
+        "source_ref": "fixture:source/chitin-rule",
+        "provenance_ref": "fixture:provenance/chitin-rule",
+        "mechanic_refs": [
+          {
+            "owner_domain": "Modifier",
+            "record_ref": "fixture:modifier/chitin-protection@1",
+            "role": "protection_modifier"
+          },
+          {
+            "owner_domain": "Effect",
+            "record_ref": "fixture:effect/chitin-protection@1",
+            "role": "protection_effect"
+          },
+          {
+            "owner_domain": "ItemDefinition",
+            "record_ref": "fixture:item-definition/natural-armor-profile@1",
+            "role": "armor_profile"
+          }
+        ]
+      }
+    ]
+  },
+  "explicit_organ_resource_fixture": {
+    "fixture_id": "fixture:mvps06/explicit-organ-resource",
+    "creates_asset_instance": false,
+    "creates_inventory_ownership": false,
+    "executable_grants": [
+      {
+        "grant_id": "fixture:grant/venom-reservoir",
+        "record_ref": "fixture:resource/venom-reservoir@1",
+        "owner_domain": "Resource",
+        "capability_kind": "resource",
+        "grant_class": "fixed",
+        "source_ref": "fixture:source/venom-organ-rule",
+        "provenance_ref": "fixture:provenance/venom-organ-rule"
+      },
+      {
+        "grant_id": "fixture:grant/venom-delivery",
+        "record_ref": "fixture:action/venom-delivery@1",
+        "owner_domain": "Action",
+        "capability_kind": "action",
+        "grant_class": "fixed",
+        "source_ref": "fixture:source/venom-organ-rule",
+        "provenance_ref": "fixture:provenance/venom-organ-rule"
+      }
+    ],
+    "natural_equipment_grants": [
+      {
+        "natural_equipment_id": "fixture:natural-equipment/venom-organ",
+        "kind": "organ",
+        "body_structure_ref": "fixture:morphology/venom-sac@1",
+        "source_ref": "fixture:source/venom-organ-rule",
+        "provenance_ref": "fixture:provenance/venom-organ-rule",
+        "mechanic_refs": [
+          {
+            "owner_domain": "Resource",
+            "record_ref": "fixture:resource/venom-reservoir@1",
+            "role": "resource_pool"
+          },
+          {
+            "owner_domain": "Action",
+            "record_ref": "fixture:action/venom-delivery@1",
+            "role": "attack_action"
+          },
+          {
+            "owner_domain": "Effect",
+            "record_ref": "fixture:effect/venom@1",
+            "role": "damage_effect"
+          }
+        ]
+      }
+    ]
+  },
+  "typed_general_capability_fixture": {
+    "fixture_id": "fixture:mvps06/general-capabilities",
+    "grants": [
+      {
+        "grant_id": "fixture:grant/toxin-resistance",
+        "record_ref": "fixture:effect/toxin-resistance@1",
+        "owner_domain": "Effect",
+        "capability_kind": "resistance",
+        "grant_class": "fixed",
+        "source_ref": "fixture:source/toxin-resistance",
+        "provenance_ref": "fixture:provenance/toxin-resistance"
+      },
+      {
+        "grant_id": "fixture:grant/fear-immunity",
+        "record_ref": "fixture:effect/fear-immunity@1",
+        "owner_domain": "Effect",
+        "capability_kind": "immunity",
+        "grant_class": "fixed",
+        "source_ref": "fixture:source/fear-immunity",
+        "provenance_ref": "fixture:provenance/fear-immunity"
+      },
+      {
+        "grant_id": "fixture:grant/tool-proficiency",
+        "record_ref": "fixture:ability/tool-proficiency@1",
+        "owner_domain": "Ability",
+        "capability_kind": "proficiency",
+        "grant_class": "optional",
+        "source_ref": "fixture:source/tool-proficiency",
+        "provenance_ref": "fixture:provenance/tool-proficiency",
+        "choice_key": "fixture:choice/tool-proficiency"
+      }
+    ]
+  },
+  "proof_notes": [
+    "A morphology-only claw produces no executable capability absent explicit mechanic evidence.",
+    "Explicit natural weapon, natural armor and organ mechanics route through shared owners.",
+    "Intrinsic natural equipment does not create Asset Instance, inventory ownership or equipment assignment by default.",
+    "ItemDefinition references reuse item-domain profiles without copying mechanics or implying possession."
+  ]
+}
