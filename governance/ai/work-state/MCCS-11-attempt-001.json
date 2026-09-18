@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "MCCS-11",
+  "attempt_id": "MCCS-11-attempt-001",
+  "title": "Pose, Gesture, Expression, Rig, Anchor, IK & Retarget Preview",
+  "track": "multiversal-character-creature-studio",
+  "source_program": "MCCS",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "objective": "Implement topology-aware pose, gesture and expression presentation authoring integrated with owner-supplied/local rig, anchor, IK and retarget preview helpers, reporting incompatibilities explicitly while leaving runtime pose/action/state authority external.",
+  "predecessor": {
+    "work_item_id": "MCCS-09",
+    "status": "completed_verified",
+    "application_pr": 603,
+    "application_validation_run": 35380483124,
+    "application_merge_sha": "84b6103a8b305cda3a0e278d0f8cf9c53e5212a8",
+    "validated_tree_sha": "74e31c6264f6be67d284d7289302844575f05f28"
+  },
+  "scope": {
+    "purpose": "Extend the MCCS presentation stack into topology-aware pose/expression preview over PAPT/PCA/local rig/anchor/IK/retarget helpers without becoming runtime action, pose, placement or live-state authority.",
+    "included": [
+      "pose presentation authoring",
+      "gesture presentation authoring",
+      "expression preview",
+      "rig compatibility references",
+      "anchor preview",
+      "IK preview",
+      "retarget preview",
+      "explicit incompatibility/unresolved states",
+      "topology-aware nonhuman support",
+      "local-first deterministic preview"
+    ],
+    "completion_gate": "Representative humanoid and nonhumanoid topologies can author and preview deterministic pose/gesture/expression plans using explicit rig/anchor/IK/retarget compatibility references, with incompatibilities unresolved rather than fabricated and without mutating runtime pose/action/placement/live state."
+  },
+  "selection_boundaries": [
+    "MCCS-01, MCCS-03, MCCS-05, MCCS-06 and MCCS-09 are completed_verified foundations and are not reopened.",
+    "Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MCCS-09-triggered rotation or interstitial override; reduced MCCS strict order therefore selects MCCS-11.",
+    "Animation/Scene/Combat/Dialogue owners retain runtime action, pose and placement authority; MCCS-11 is preview/authoring only.",
+    "PAPT/PCA and lawful local rigging helpers retain generic rig, motion, anchor, IK and retarget primitives; MCCS-11 consumes compatibility/projection references.",
+    "Character/NPC/Creature/Species/Form/PPIA retain canonical anatomy/topology/mechanics; CAPP/PPIA retain renderer-neutral appearance authority.",
+    "Unsupported or incompatible topology/rig/anchor/IK/retarget mappings remain explicit and may not be silently coerced to humanoid behavior.",
+    "MCCS-11 is selected_not_started only; no implementation branch or authority exists until a later owner Continue.",
+    "ui-implementation and player-species remain independently governed and must be preserved exactly from fresh CURRENT."
+  ],
+  "implementation_plan": {
+    "red": "pending",
+    "green": "pending",
+    "proof": "pending",
+    "closeout": "pending"
+  },
+  "active_substep": null,
+  "next_action": "Wait for the next owner Continue in product-development. On that command, govern-start MCCS-11 under the OPS3 FIFO main-publication queue; do not implement while selected_not_started.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selection_only",
+      "evidence": "MCCS-09 completed_verified; fresh DAG and reduced MCCS order select MCCS-11."
+    }
+  },
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}

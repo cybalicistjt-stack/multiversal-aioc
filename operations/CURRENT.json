@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 220,
+  "state_revision": 221,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -26,13 +26,13 @@
       "implementation_authority": false
     },
     "product-development": {
-      "state": "in_progress",
-      "selected_work_item": "MCCS-09",
-      "attempt_id": "MCCS-09-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MCCS-09-attempt-001.json",
-      "implementation_branch": "work/mccs-09-wardrobe-equipment-linked-presentation",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue on 2026-09-18 govern-started MCCS-09 using the OPS3 FIFO main-publication queue. Reserve and activate the Multiversal-app publication turn before branch/candidate preparation; prepare once from immutable turn_base, establish causal RED, implement GREEN, exact-head validate, bind, merge, verify, release, reconcile, and preserve all other lanes from fresh CURRENT."
+      "state": "selected_not_started",
+      "selected_work_item": "MCCS-11",
+      "attempt_id": "MCCS-11-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MCCS-11-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MCCS-09 completed_verified on application PR 603 after causal RED run 35380314999 and exact-head validation run 35380483124. The OPS3 FIFO main queue reserved MCCS-09 at generation 130, activated at 131 on turn_base 76a255481e256dea79da2c796accfeff954aa208, bound validated head 582f75b441d40d982acd88832cef5ff9df88c7f6 at 132, preserved UISR-11 queued behind at generation 133, and released MCCS-09 at generation 134 after squash merge 84b6103a8b305cda3a0e278d0f8cf9c53e5212a8 with exact validated tree 74e31c6264f6be67d284d7289302844575f05f28. Fresh DAG contains no MCCS-09 rotation override, so reduced MCCS strict order selects MCCS-11. No implementation branch or authority exists until a later owner Continue."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -78,5 +78,5 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. Same-repository publication uses the OPS3 FIFO reservation queue: reserve first, prepare/reconcile/validate only when the reservation activates, then merge/release before the next turn. MVPS/player-species and product lanes remain independently selectable."
   },
-  "next_project_action": "Execute MCCS-09 — Wardrobe, Equipment Fit, Accessories, Props & Linked-Being Presentation Composition — under the active OPS3 FIFO main-publication turn through causal RED/GREEN, exact-head validation, merge/release, fresh DAG reconciliation and atomic closeout. Preserve ui-implementation and player-species exactly."
+  "next_project_action": "Route by selected lane: product-development awaits owner Continue to govern-start MCCS-11 — Pose, Gesture, Expression, Rig, Anchor, IK & Retarget Preview; ui-implementation and player-species remain exactly whatever their independently governed live checkpoints authorize. No lane pauses or rewrites another."
 }
