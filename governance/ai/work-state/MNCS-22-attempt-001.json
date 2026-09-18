@@ -42,13 +42,13 @@
     "The independent ui-implementation lane remains UISR-10 selected_not_started and player-species remains MVPS-05 selected_not_started; both are preserved unchanged."
   ],
   "implementation_plan": {
-    "red": "in_progress",
-    "green": "pending",
+    "red": "completed_expected_failure",
+    "green": "in_progress",
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": "red",
-  "next_action": "Establish causal RED for provenance-preserving runtime handoff, structured import mapping, MAS cast projections, unresolved-safe mapping, and strict preservation of Character/NPC/Creature plus downstream runtime authority; then implement only MNCS-22.",
+  "active_substep": "green",
+  "next_action": "Validate the unchanged MNCS-22 RED assertions against production contract head 8e16ef6c07f7fd21564eb861769605b0e0db0114; repair only causal MNCS-22 failures, then run exact-head proof.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -68,5 +68,17 @@
     "application_base_sha": "bda4936f828e636cdc8eb1ae104b0c620b0152e1",
     "owner_command": "Continue",
     "started_on": "2026-09-18"
+  },
+  "red_evidence": {
+    "head_sha": "440bbf94b64cc1d19df347e1b6935da259f69994",
+    "workflow_run": 35367854860,
+    "lane": "linux",
+    "failing_step": "mncs22-focused",
+    "result": "expected_failure",
+    "cause": "Focused public-seam test failed before the MNCS-22 runtime-handoff contract existed; repository health and profile selection passed."
+  },
+  "green_candidate": {
+    "head_sha": "8e16ef6c07f7fd21564eb861769605b0e0db0114",
+    "status": "awaiting_validation"
   }
 }
