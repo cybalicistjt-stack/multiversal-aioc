@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.MorphologyProfile",
+  "record_type": "MorphologyProfile",
+  "status": "MVPS-03_CANONICAL_CONTRACT",
+  "purpose": "Describe size-independent body structure in a species-agnostic form that shared systems can query without species-name branching.",
+  "source_basis": [
+    "DevelopmentBible/02-game-framework/creatures-npcs-and-species.md Species: physical traits and compatibility constraints",
+    "DevelopmentBible/02-game-framework/characters-and-progression.md Character composition: species/form selections and inventory remain separate aggregate concerns",
+    "MVPS-01 SpeciesDefinition morphology_profile_ref / scale_profile_ref separation",
+    "MVPS-03 approved objective and acceptance criteria"
+  ],
+  "ownership_boundary": {
+    "owns": [
+      "body-region topology",
+      "limb/segment topology",
+      "manipulator structure",
+      "worn-region structural surfaces",
+      "attachment-point structure",
+      "natural appendage structure",
+      "structural relations and query tags"
+    ],
+    "does_not_own": [
+      "scale values or scale-derived mechanics",
+      "movement speeds or locomotion rules",
+      "sense rules",
+      "equipment compatibility policy or fit formulas",
+      "natural weapon/armor mechanics",
+      "transformation semantics",
+      "species progression",
+      "environment tolerances"
+    ]
+  },
+  "scale_policy": "external_reference_only",
+  "species_name_branching_allowed": false,
+  "required_top_level_fields": [
+    "morphology_id",
+    "body_plan_family",
+    "body_regions",
+    "limbs",
+    "manipulators",
+    "worn_regions",
+    "attachment_points",
+    "natural_appendages",
+    "structural_relations",
+    "query_tags"
+  ],
+  "body_plan_family_policy": {
+    "classification": "descriptive_index_tag",
+    "executable": false,
+    "open_vocabulary": true,
+    "rule": "Family labels aid authoring/search but never select mechanics or code paths."
+  },
+  "body_region_contract": {
+    "required": [
+      "region_id",
+      "region_kind",
+      "parent_region_ref",
+      "query_tags"
+    ],
+    "optional": [
+      "child_region_refs",
+      "paired_group_ref",
+      "surface_tags",
+      "notes"
+    ],
+    "parent_ref_may_be_null_for_root": true,
+    "inline_scale": false,
+    "rule": "Regions describe topology/surfaces only; dimensions and mechanical scale remain external."
+  },
+  "limb_contract": {
+    "required": [
+      "limb_id",
+      "root_region_ref",
+      "segment_refs",
+      "terminus_refs",
+      "query_tags"
+    ],
+    "optional": [
+      "paired_group_ref",
+      "attachment_point_refs",
+      "notes"
+    ],
+    "inline_scale": false,
+    "rule": "A limb is a structural branch; locomotion and action capability are separate shared grants/rules."
+  },
+  "manipulator_contract": {
+    "required": [
+      "manipulator_id",
+      "host_ref",
+      "structure_tags",
+      "query_tags"
+    ],
+    "optional": [
+      "segment_refs",
+      "attachment_point_refs",
+      "notes"
+    ],
+    "rule": "Manipulator tags expose physical structure for later capability/equipment queries without embedding action or proficiency rules."
+  },
+  "worn_region_contract": {
+    "required": [
+      "worn_region_id",
+      "region_refs",
+      "surface_tags",
+      "query_tags"
+    ],
+    "optional": [
+      "paired_group_ref",
+      "notes"
+    ],
+    "rule": "A worn region exposes a structural surface only. Layering, sizing, armor math and compatibility decisions remain equipment-owner policy."
+  },
+  "attachment_point_contract": {
+    "required": [
+      "attachment_point_id",
+      "host_ref",
+      "attachment_kind",
+      "query_tags"
+    ],
+    "optional": [
+      "orientation_tags",
+      "paired_group_ref",
+      "notes"
+    ],
+    "rule": "Attachment points indicate structural places an external system may evaluate; they do not grant an item or implant."
+  },
+  "natural_appendage_contract": {
+    "required": [
+      "appendage_id",
+      "host_ref",
+      "appendage_kind",
+      "structural_tags",
+      "query_tags"
+    ],
+    "optional": [
+      "segment_refs",
+      "attachment_point_refs",
+      "notes"
+    ],
+    "mechanics_policy": "structure_only",
+    "rule": "Claws, horns, tails, tendrils, shells and similar anatomy are represented structurally here; executable natural equipment/capabilities belong to MVPS-06/shared owner records."
+  },
+  "structural_relation_contract": {
+    "required": [
+      "relation_id",
+      "relation_type",
+      "subject_ref",
+      "object_refs"
+    ],
+    "relation_types": [
+      "parent_child",
+      "paired",
+      "radial_group",
+      "serial_chain",
+      "segment_of",
+      "surface_of",
+      "attached_to",
+      "overlaps"
+    ],
+    "optional": [
+      "query_tags",
+      "notes"
+    ]
+  },
+  "query_tag_policy": {
+    "open_vocabulary": true,
+    "authoritative_for_structure_only": true,
+    "forbidden_uses": [
+      "species-name dispatch",
+      "movement speed",
+      "sense range",
+      "damage/armor values",
+      "equipment fit conclusion",
+      "transformation behavior"
+    ]
+  },
+  "extension_policy": {
+    "namespace_required": true,
+    "override_core_fields": false
+  }
+}
