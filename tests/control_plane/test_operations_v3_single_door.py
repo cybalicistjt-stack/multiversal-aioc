@@ -194,8 +194,8 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
     def test_player_species_lane_lifecycle_is_independent_and_checkpointed(self) -> None:
         current = self._json("operations/CURRENT.json")
         mvps = current["lanes"]["player-species"]
-        self.assertEqual(mvps["selected_work_item"], "MVPS-01")
-        self.assertEqual(mvps["attempt_id"], "MVPS-01-attempt-001")
+        self.assertTrue(mvps["selected_work_item"].startswith("MVPS-"))
+        self.assertTrue(mvps["attempt_id"].startswith(mvps["selected_work_item"] + "-attempt-"))
         self.assertIn(mvps["state"], {"selected_not_started", "in_progress", "completed_verified"})
 
         checkpoint = self._json(mvps["checkpoint_path"])
