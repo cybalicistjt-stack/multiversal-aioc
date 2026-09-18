@@ -1,0 +1,40 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "MCCS-19",
+  "attempt_id": "MCCS-19-attempt-001",
+  "title": "Appearance Interchange, Round-Trip, Cross-Renderer & Future-P3D Handoff",
+  "track": "multiversal-character-creature-studio",
+  "source_program": "MCCS",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MCCS-18",
+  "predecessor": {
+    "work_item_id": "MCCS-18",
+    "status": "completed_verified",
+    "application_pr": 610,
+    "application_validation_run": 35388189056,
+    "application_merge_sha": "c4264837d62a7542738f7fe924dc2da902fcfc75",
+    "validated_tree_sha": "695431e8a572aa56eaddc1656cdd428621ee36b9"
+  },
+  "strict_successor": "MCCS-21",
+  "objective": "Implement appearance-schema import/export mapping, external-specialist round-trip, explicit loss reporting and renderer-neutral future-renderer/P3D handoff packages without activating P3D or replacing ARI/PCA provenance/version/review/import-export authority.",
+  "boundaries": [
+    "MCCS-19 owns appearance-schema mapping, round-trip and loss reporting only; ARI/PCA retain generic provenance, version, review and import/export authority.",
+    "P3D remains deferred and separate; this tranche preserves a handoff seam without activating physical/3D miniature implementation.",
+    "Canonical entity, Form, mechanics, equipment, identity and live-state owners remain authoritative.",
+    "Cross-renderer losses and unsupported/unresolved mappings remain explicit.",
+    "MCCS-21 remains unauthorized until separately selected.",
+    "ui-implementation and player-species lanes remain independently governed and unchanged by this selection."
+  ],
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On a product-development owner Continue, enter through OPS3, reserve the required FIFO publication turns, fresh-read MCCS-19 dependency closure and govern-start MCCS-19 through the bounded tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
