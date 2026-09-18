@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesCapabilityGrant",
+  "record_type": "SpeciesCapabilityGrantDeclaration",
+  "status": "MVPS-06_CANONICAL_CONTRACT",
+  "purpose": "Normalize species-origin executable capability declarations as stable references to shared Ability/Action/Reaction/Resource/Resistance/Immunity/Proficiency/Modifier/Effect owners without duplicating mechanics or creating a species-specific execution engine.",
+  "source_basis": [
+    "MVPS.SpeciesDefinition mechanics_policy=references_and_grants_only",
+    "MVPS-01 descriptive biology is non-executable",
+    "MVPS-04 movement/sense typed-grant precedent",
+    "MVPS-05 physiology/environment shared-owner reference precedent",
+    "PPIA-05_ABILITY_BIOLOGY_ROUTING_v0.1.0.json",
+    "Project Bible character grant/provenance and shared Ability/Action/Effect/Condition/Resource owner rules"
+  ],
+  "execution_policy": "shared_owner_reference_only",
+  "inline_mechanics_allowed": false,
+  "species_specific_execution_engine_created": false,
+  "capability_kinds": [
+    "ability",
+    "action",
+    "reaction",
+    "resource",
+    "resistance",
+    "immunity",
+    "proficiency",
+    "modifier",
+    "effect"
+  ],
+  "owner_domain_by_kind": {
+    "ability": [
+      "Ability"
+    ],
+    "action": [
+      "Action"
+    ],
+    "reaction": [
+      "Action"
+    ],
+    "resource": [
+      "Resource"
+    ],
+    "resistance": [
+      "Effect",
+      "Modifier",
+      "Condition",
+      "RulesProfile"
+    ],
+    "immunity": [
+      "Effect",
+      "Modifier",
+      "Condition",
+      "RulesProfile"
+    ],
+    "proficiency": [
+      "Ability",
+      "Modifier",
+      "RulesProfile"
+    ],
+    "modifier": [
+      "Modifier"
+    ],
+    "effect": [
+      "Effect"
+    ]
+  },
+  "grant_declaration_contract": {
+    "required": [
+      "grant_id",
+      "record_ref",
+      "owner_domain",
+      "capability_kind",
+      "grant_class",
+      "source_ref",
+      "provenance_ref"
+    ],
+    "optional": [
+      "record_version",
+      "rules_profile_ref",
+      "choice_key",
+      "activation_ref",
+      "condition_refs",
+      "replacement_ref",
+      "stacking_policy_ref",
+      "notes"
+    ],
+    "grant_class_enum": [
+      "fixed",
+      "optional"
+    ],
+    "rule": "record_ref identifies the canonical shared-owner mechanic. Species records declare why/how the capability is granted; they do not copy formulas, rolls, costs, durations, effects, resource logic, stacking rules, or condition behavior."
+  },
+  "identity_policy": {
+    "stable_grant_id_required": true,
+    "canonical_mechanic_identity_is_record_ref": true,
+    "version_pin_when_owner_requires_it": true,
+    "species_local_name_may_not_replace_shared_identity": true
+  },
+  "provenance_policy": {
+    "source_ref_required": true,
+    "provenance_ref_required": true,
+    "source_reason_preserved": true,
+    "copied_mechanic_text_is_not_provenance": true
+  },
+  "biological_binding_evidence": {
+    "species_prerequisite_is_sufficient": false,
+    "species_perk_label_is_sufficient": false,
+    "innate_label_is_sufficient": false,
+    "biological_looking_name_is_sufficient": false,
+    "sufficient_routes": [
+      "explicit SpeciesDefinition capability grant/reference",
+      "explicit source-backed species/form/body binding",
+      "explicit owner-approved biological binding with provenance"
+    ],
+    "rule": "Eligibility, labels, names, tree placement, visual resemblance, or dataset membership may route review but cannot create a mechanical grant or biological ownership by themselves."
+  },
+  "missing_mechanics_policy": "unresolved_not_inferred",
+  "duplicate_grant_policy": "defer_to_shared_owner_stacking_and_duplicate_rules",
+  "runtime_projection_and_receipts": {
+    "current_tranche_scope": "declaration_contract_only",
+    "runtime_receipt_owner": "MVPS-13",
+    "rule": "MVPS-06 defines source grant declarations; deterministic active-contribution projection and runtime grant receipts remain MVPS-13."
+  },
+  "prior_tranche_boundaries": {
+    "movement_and_senses": "MVPS-04 remains authoritative",
+    "physiology_and_environment": "MVPS-05 remains authoritative"
+  },
+  "extension_policy": {
+    "namespace_required": true,
+    "override_core_fields": false
+  }
+}
