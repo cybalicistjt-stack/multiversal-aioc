@@ -129,6 +129,48 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
                 recovery_executor="replacement-chat",
             )
 
+    def test_direct_protected_main_write_is_rejected_even_for_active_holder(self) -> None:
+        state=MERGE_LEASE.free_lease("cybalicistjt-stack/multiversal-aioc",generation=80)
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=80,holder="ops",reservation_id="r")
+        state=MERGE_LEASE.activate_next_turn(state,expected_generation=81,holder="ops",fresh_main_sha="main-a")
+        errors=MERGE_LEASE.validate_protected_main_write(
+            state,
+            target_repo="cybalicistjt-stack/multiversal-aioc",
+            fresh_main_sha="main-a",
+            holder="ops",
+            mutation_kind="contents_api",
+        )
+        self.assertIn(MERGE_LEASE.DIRECT_MAIN_MUTATION,errors)
+
+    def test_held_turn_detects_protected_main_bypass_instead_of_normalizing_rebase(self) -> None:
+        state=MERGE_LEASE.free_lease("cybalicistjt-stack/multiversal-aioc",generation=90)
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=90,holder="lane-a",reservation_id="r")
+        state=MERGE_LEASE.activate_next_turn(state,expected_generation=91,holder="lane-a",fresh_main_sha="main-a")
+        errors=MERGE_LEASE.validate_protected_main_write(
+            state,
+            target_repo="cybalicistjt-stack/multiversal-aioc",
+            fresh_main_sha="main-b",
+            holder="other-writer",
+            mutation_kind="contents_api",
+        )
+        self.assertIn(MERGE_LEASE.PROTECTED_MAIN_BYPASS,errors)
+        self.assertIn(MERGE_LEASE.DIRECT_MAIN_MUTATION,errors)
+
+    def test_exact_queue_bound_merge_is_the_only_protected_main_write_path(self) -> None:
+        state=MERGE_LEASE.free_lease("cybalicistjt-stack/Multiversal-app",generation=100)
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=100,holder="lane-a",reservation_id="r")
+        state=MERGE_LEASE.activate_next_turn(state,expected_generation=101,holder="lane-a",fresh_main_sha="main-a")
+        state=MERGE_LEASE.bind_validated_candidate(state,expected_generation=102,holder="lane-a",validated_head="head-a",validated_base="main-a")
+        errors=MERGE_LEASE.validate_protected_main_write(
+            state,
+            target_repo="cybalicistjt-stack/Multiversal-app",
+            fresh_main_sha="main-a",
+            holder="lane-a",
+            mutation_kind="pull_request_merge",
+            pr_head_sha="head-a",
+        )
+        self.assertEqual(errors,[])
+
     def test_direct_acquire_is_retired(self) -> None:
         with self.assertRaises(MERGE_LEASE.LeaseConflict):
             MERGE_LEASE.acquire_lease()

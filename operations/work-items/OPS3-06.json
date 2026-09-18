@@ -1,26 +1,28 @@
 {
   "schema_version": "1.0.0",
   "work_item_id": "OPS3-06",
-  "title": "Stall-Safe Completed Publication Recovery",
-  "status": "implementation_candidate",
-  "owner_directive": "If a conversation stalls during main publication, finished operations must be recoverably handed off and the FIFO lease must be released so non-stalled conversations can continue.",
+  "title": "Protected Main FIFO Interlock Hardening",
+  "status": "completed_verified",
+  "owner_directive": "Make the FIFO queue foundational and durable so lanes cannot force one another through repeated stale-main reconciliation/revalidation.",
   "reproduced_failure": [
-    "UISR-11 publication completed durably while the originating conversation stalled during main-use closeout.",
-    "The active publication lease remained capable of blocking unrelated queued conversations until another executor intervened."
+    "MVPS-08 recorded repeated AIOC main advancement while publication turns were held, causing stale candidates to be yielded, re-reserved, reconciled and revalidated.",
+    "That behavior contradicted the intended FIFO invariant that an active turn owns a stable turn_base until merge or explicit yield."
   ],
+  "root_cause": "FIFO ordering existed in BOOTSTRAP, OPERATING_CONTRACT and ops3_merge_lease.py, but the contract did not state strongly enough that every protected-main writer—including AIOC/control-plane projection and direct contents/ref writes—must participate. Executors could therefore treat FIFO as lane merge etiquette rather than a universal main-write interlock.",
   "implementation": [
-    "OPERATING_CONTRACT 3.4.0 defines cross-conversation recovery release for turns whose merge is already durably verified.",
-    "BOOTSTRAP requires recovery handoff plus release instead of waiting for the stalled conversation.",
-    "ops3_merge_lease.py adds recover_completed_turn with generation, holder, fresh-main, verified-merge and recovery-location checks.",
-    "Control-plane regression tests prove queue preservation, next-holder progress, fail-closed main mismatch and mandatory recovery location."
+    "OPERATING_CONTRACT v3.5.0 defines protected-main mutation as a universal repository-local FIFO interlock and prohibits direct protected-main writes.",
+    "BOOTSTRAP now states that product, operations/control-plane, checkpoint/CURRENT and compatibility projection writes all participate.",
+    "ops3_merge_lease.py exposes validate_protected_main_write and detects direct-main mutation plus held-turn bypass.",
+    "Regression tests prove direct writes are rejected, held-turn main advancement is classified as OPS3.PROTECTED_MAIN_BYPASS, and an exact queue-bound PR merge remains the allowed path.",
+    "CURRENT truth rules carry the invariant so every lane reconciliation sees it without duplicating queue state."
   ],
   "acceptance_gate": {
-    "durable_merge_required": true,
-    "fresh_main_must_equal_verified_merge": true,
-    "durable_recovery_pointer_required": true,
-    "fifo_order_preserved": true,
-    "next_holder_can_activate": true,
-    "stalled_holder_return_not_required": true
+    "all_protected_main_writers_participate": true,
+    "direct_main_writes_prohibited": true,
+    "active_turn_freezes_turn_base_globally": true,
+    "unexpected_main_advance_is_protocol_breach": true,
+    "exact_head_base_holder_checks_preserved": true,
+    "lane_authority_and_fifo_order_preserved": true
   },
   "successor": null
 }

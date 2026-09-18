@@ -20,6 +20,12 @@ QUEUE_ORDER = "OPS3.QUEUE_ORDER"
 VALIDATION_NOT_BOUND = "OPS3.VALIDATION_NOT_BOUND"
 RECOVERY_MAIN_MISMATCH = "OPS3.RECOVERY_MAIN_MISMATCH"
 RECOVERY_LOCATION_REQUIRED = "OPS3.RECOVERY_LOCATION_REQUIRED"
+DIRECT_MAIN_MUTATION = "OPS3.DIRECT_MAIN_MUTATION"
+PROTECTED_MAIN_BYPASS = "OPS3.PROTECTED_MAIN_BYPASS"
+PROTECTED_REPOSITORIES = frozenset({
+    "cybalicistjt-stack/Multiversal-app",
+    "cybalicistjt-stack/multiversal-aioc",
+})
 
 class LeaseConflict(RuntimeError):
     pass
@@ -145,6 +151,40 @@ def validate_merge_authorization(
     if lease.get("turn_base") != fresh_main_sha or lease.get("validated_base") != fresh_main_sha:
         errors.append(STALE_MAIN)
     return sorted(set(errors))
+
+def validate_protected_main_write(
+    lease: dict[str, Any],
+    *,
+    target_repo: str,
+    fresh_main_sha: str,
+    holder: str,
+    mutation_kind: str,
+    pr_head_sha: str | None = None,
+) -> list[str]:
+    """Validate any attempted mutation of a protected repository's main ref.
+
+    Protected main is publish-only: callers must prepare changes on branches and
+    publish through the active FIFO turn as an exact validated PR merge. This
+    guard intentionally rejects contents/ref/direct write modes.
+    """
+    if target_repo not in PROTECTED_REPOSITORIES:
+        return []
+    errors: list[str] = []
+    if mutation_kind != "pull_request_merge":
+        errors.append(DIRECT_MAIN_MUTATION)
+    if lease.get("status") == "held" and fresh_main_sha != lease.get("turn_base"):
+        errors.append(PROTECTED_MAIN_BYPASS)
+    if mutation_kind == "pull_request_merge":
+        errors.extend(
+            validate_merge_authorization(
+                lease,
+                fresh_main_sha=fresh_main_sha,
+                pr_head_sha=pr_head_sha or "",
+                holder=holder,
+            )
+        )
+    return sorted(set(errors))
+
 
 def release_lease(lease: dict[str, Any], *, holder: str, merged_sha: str) -> dict[str, Any]:
     if lease.get("status") != "held":
