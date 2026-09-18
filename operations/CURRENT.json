@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 235,
+  "state_revision": 236,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -26,13 +26,13 @@
       "implementation_authority": false
     },
     "product-development": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "MCCS-21",
       "attempt_id": "MCCS-21-attempt-001",
       "checkpoint_path": "governance/ai/work-state/MCCS-21-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "MCCS-19 completed_verified after causal RED run 35388948344 at proof head 97f460a271dd2a702798ea361ce3aa48019dbbcc, exact-head cross-platform validation run 35388990220 at 119397152fab86d22b8fcae2950bb8515ddbdfce, and FIFO application publication PR 612 as squash merge d4497b59ebd815ad4c140c98651bf548b79d087f with exact tree efe48e61e74bcc091259ea35ff0e84fdd50c6783. Fresh ROADMAP_DEPENDENCY_GRAPH schema 1.0.4 contains no MCCS-19-specific interstitial/rotation override, so reduced MCCS strict order selects MCCS-21 until a later owner Continue govern-starts it."
+      "implementation_branch": "work/mccs-21-golden-semantic-proof",
+      "implementation_authority": true,
+      "activation_rule": "Owner Continue on 2026-09-18 govern-started final reduced MCCS tranche MCCS-21 under OPS3 protected-main FIFO. PCA-16 and MCS-21 golden dependencies are completed_verified. Execute the bounded golden semantic-integration proof through causal RED, GREEN, exact-head proof, FIFO publication, fresh roadmap reconciliation and queue-bound AIOC closeout."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -79,5 +79,5 @@
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. Same-repository publication uses the OPS3 FIFO reservation queue: reserve first, prepare/reconcile/validate only when the reservation activates, then merge/release before the next turn. MVPS/player-species and product lanes remain independently selectable.",
     "protected_main_interlock": "For cybalicistjt-stack/Multiversal-app and cybalicistjt-stack/multiversal-aioc, every main mutation participates in the repository-local FIFO queue. Direct main writes are prohibited. Once a turn activates, target main is frozen at turn_base for all other lanes/executors; unexpected advancement is OPS3.PROTECTED_MAIN_BYPASS and must be diagnosed rather than normalized by holder rebase/yield/re-reserve."
   },
-  "next_project_action": "Await owner Continue to govern-start MCCS-21 — Golden Character & Creature Capability / Semantic-Integration Proof — under OPS3 protected-main FIFO. UI and player-species lanes remain independently preserved."
+  "next_project_action": "Execute MCCS-21 — Golden Character & Creature Capability / Semantic-Integration Proof — under protected-main FIFO through causal RED/GREEN, exact-head validation, application publication and final MCCS closeout."
 }
