@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.InterfaceCompatibilityResult",
+  "record_type": "InterfaceCompatibilityResult",
+  "status": "MVPS-07_CANONICAL_CONTRACT",
+  "statuses": [
+    "compatible",
+    "compatible_with_adapter",
+    "incompatible",
+    "unresolved"
+  ],
+  "reason_required": true,
+  "unresolved_when_required_fact_unknown": true,
+  "automatic_adapter_synthesis_allowed": false,
+  "result_contract": {
+    "required": [
+      "status",
+      "reason",
+      "evidence_refs",
+      "matched_requirements",
+      "unmet_requirements",
+      "owner_route"
+    ],
+    "optional": [
+      "matched_structure_refs",
+      "adapter_definition_refs",
+      "unknown_requirement_refs",
+      "warnings",
+      "rules_profile_refs"
+    ],
+    "rule": "Every result is explainable and source/owner traceable. incompatible identifies unsatisfied requirements; unresolved identifies missing/unknown authority; compatible_with_adapter identifies explicit adapter definitions still requiring owner-workflow acquisition/installation."
+  },
+  "status_semantics": {
+    "compatible": "All blocking requirements are satisfied by current authoritative inputs. This grants no assignment or use authority by itself.",
+    "compatible_with_adapter": "All blocking requirements are satisfiable only with one or more explicit adapter definitions. Adapter ownership/acquisition/installation is not implied.",
+    "incompatible": "At least one blocking authoritative requirement is unsatisfied and no authorized adapter path in the evaluated input satisfies it.",
+    "unresolved": "A required compatibility fact, relation, source decision or owner predicate is absent, unknown, conflicted or not authorized for evaluation."
+  },
+  "reason_codes": [
+    "structural_requirement_unmet",
+    "worn_region_unavailable",
+    "manipulator_requirement_unmet",
+    "attachment_point_unavailable",
+    "scale_requirement_unmet",
+    "capability_requirement_unmet",
+    "host_interface_mismatch",
+    "explicit_adapter_required",
+    "relationship_authority_unresolved",
+    "station_authority_external",
+    "source_compatibility_unknown",
+    "owner_rule_unresolved"
+  ],
+  "mutation_policy": {
+    "side_effect_free": true,
+    "creates_assignment": false,
+    "creates_asset": false,
+    "changes_ownership": false,
+    "creates_mount_relationship": false,
+    "grants_vehicle_station": false
+  }
+}

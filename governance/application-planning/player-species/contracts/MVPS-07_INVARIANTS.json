@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "MVPS-07-INVARIANTS",
+  "status": "MVPS-07_CANONICAL_INVARIANTS",
+  "runtime_equipment_engine_created": false,
+  "runtime_vehicle_or_mount_engine_created": false,
+  "invariants": [
+    {
+      "id": "MVPS07-I01-no-species-name-dispatch",
+      "rule": "Compatibility never branches on species identity/name; current structural/capability/owner projections are the inputs."
+    },
+    {
+      "id": "MVPS07-I02-no-size-only-fit",
+      "rule": "Scale may be one explicit requirement but size/category alone cannot determine compatibility."
+    },
+    {
+      "id": "MVPS07-I03-explicit-reason-for-rejection",
+      "rule": "Every incompatible result identifies explicit unmet requirements and an owner/source-traceable reason."
+    },
+    {
+      "id": "MVPS07-I04-unknown-remains-unresolved",
+      "rule": "Missing, source-unspecified, conflicted or unauthorized required facts yield unresolved rather than fabricated fit or rejection."
+    },
+    {
+      "id": "MVPS07-I05-adapters-are-explicit",
+      "rule": "compatible_with_adapter requires explicit adapter Definition references; MVPS-07 never synthesizes, grants, owns or installs adapters."
+    },
+    {
+      "id": "MVPS07-I06-compatibility-does-not-mutate-assignment",
+      "rule": "Compatibility evaluation is side-effect-free and cannot equip, install, attune, bond, seat, board, assign or otherwise mutate owning-domain state."
+    },
+    {
+      "id": "MVPS07-I07-mount-fit-does-not-create-role-or-bond",
+      "rule": "Structural mount/rider fit never creates mount eligibility, partnership, training, consent, workload, ownership or relationship state; CCP/mount owners remain authoritative."
+    },
+    {
+      "id": "MVPS07-I08-vehicle-fit-does-not-create-station-authority",
+      "rule": "Vehicle-seat/control-interface compatibility never assigns passenger/station state or grants control; PPIA-04/F014 remains authoritative."
+    },
+    {
+      "id": "MVPS07-I09-item-and-asset-identity-remain-external",
+      "rule": "MVPS-07 evaluates referenced definitions/projections and does not create Item Definitions, Asset Instances, ownership or inventory state."
+    },
+    {
+      "id": "MVPS07-I10-form-state-is-input-not-owned",
+      "rule": "Current form/body projection may change compatibility inputs, but form/transformation semantics remain MVPS-09."
+    }
+  ],
+  "enforcement": {
+    "regression_test": "tests/control_plane/test_mvps07_interface_compatibility.py",
+    "ci_step": "Run MVPS-07 interface compatibility regressions"
+  }
+}
