@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.LineageDefinition",
+  "record_type": "SpeciesLineageDefinition",
+  "status": "MVPS-08_CANONICAL_CONTRACT",
+  "purpose": "Represent a source-backed lineage/subspecies as an exact-version delta over a base SpeciesDefinition without copying the parent record, inventing relationship evidence, or creating lineage-local shared mechanics.",
+  "source_basis": [
+    "MVPS.SpeciesDefinition lineage_refs: lineages/subspecies remain distinct layers and do not overwrite base species identity",
+    "MVPS.CharacterSpeciesSelection: lineage selections are references/receipts and inheritance semantics belong to MVPS-08",
+    "PPIA05-AC-008: lineage/subspecies/variant relationships require explicit source-backed evidence; same-name, shared-document or visual similarity is insufficient",
+    "MVPS-06 duplicate/stacking invariant: duplicate, stacking, suppression and replacement behavior remains with shared owners"
+  ],
+  "full_parent_definition_copy_allowed": false,
+  "required_top_level_fields": [
+    "lineage_id",
+    "lineage_version",
+    "parent_species_ref",
+    "relationship_evidence_refs",
+    "delta_operations",
+    "provenance"
+  ],
+  "parent_species_ref": {
+    "exact_version_required": true,
+    "required": [
+      "species_id",
+      "record_version"
+    ],
+    "optional": [
+      "schema_version"
+    ],
+    "rule": "A lineage binds to the exact parent SpeciesDefinition version it modifies. Version mismatch is unresolved/migration-required, never silently retargeted."
+  },
+  "relationship_evidence": {
+    "source_backed_required": true,
+    "relationship_evidence_refs_required": true,
+    "same_name_or_visual_similarity_sufficient": false,
+    "shared_document_or_dataset_membership_sufficient": false,
+    "rule": "Lineage/subspecies identity must be established by explicit source/canon relationship evidence."
+  },
+  "delta_operation_kinds": [
+    "add_reference",
+    "exclude_reference",
+    "remove_reference",
+    "replace_reference",
+    "override_descriptive_value"
+  ],
+  "delta_operation_contract": {
+    "required": [
+      "operation_id",
+      "operation_kind",
+      "target_path",
+      "source_ref",
+      "provenance_ref",
+      "order"
+    ],
+    "optional": [
+      "record_ref",
+      "expected_parent_ref",
+      "replacement_ref",
+      "value",
+      "shared_owner_policy_ref",
+      "conflict_rule_ref",
+      "notes"
+    ],
+    "inline_shared_mechanics_allowed": false,
+    "runtime_state_mutation_allowed": false,
+    "operation_requirements": {
+      "add_reference": "record_ref required; adds a referenced record/layer contribution without copying it",
+      "exclude_reference": "record_ref required; explicitly excludes an inherited referenced contribution where source authority permits",
+      "remove_reference": "expected_parent_ref required; removes an exact inherited reference only with source-backed authority",
+      "replace_reference": "expected_parent_ref and replacement_ref required; replacement is explicit and source-traceable",
+      "override_descriptive_value": "value required; allowed only on non-executable descriptive fields and cannot create mechanics"
+    },
+    "rule": "Every operation is an attributable delta against a named target path. Executable mechanics remain canonical shared-record references."
+  },
+  "target_path_policy": {
+    "reference_paths": [
+      "morphology_profile_ref",
+      "scale_profile_ref",
+      "choice_schema_ref",
+      "sense_grants",
+      "movement_grants",
+      "adaptation_grants",
+      "capability_grants",
+      "compatibility_profile_ref",
+      "progression_refs",
+      "lore_culture_links",
+      "presentation_assets",
+      "validation_profile_ref"
+    ],
+    "descriptive_paths": [
+      "taxonomy",
+      "biology_descriptor",
+      "setting_scope"
+    ],
+    "reserved_not_owned": [
+      "species.identity",
+      "species.versioning",
+      "form_runtime_state",
+      "character_runtime_state",
+      "runtime_grant_receipts"
+    ],
+    "unknown_target_policy": "unresolved_not_inferred"
+  },
+  "identity_policy": {
+    "lineage_identity_distinct_from_parent_species": true,
+    "base_species_identity_replaced": false,
+    "character_selection_uses_reference_receipt": true
+  },
+  "extension_policy": {
+    "namespace_required": true,
+    "override_core_fields": false
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_scope": "MVPS-08 synthetic non-canon lineage/subspecies composition fixtures",
+  "non_canon": true,
+  "cases": {
+    "reference_addition": {
+      "base_species_ref": {
+        "species_id": "fixture:species/base-a",
+        "record_version": "1.0.0"
+      },
+      "lineage": {
+        "lineage_id": "fixture:lineage/add-sense",
+        "lineage_version": "1.0.0",
+        "layer_order": 10,
+        "parent_species_ref": {
+          "species_id": "fixture:species/base-a",
+          "record_version": "1.0.0"
+        },
+        "relationship_evidence_refs": [
+          "fixture:source/lineage-a"
+        ],
+        "delta_operations": [
+          {
+            "operation_id": "op:add-sense",
+            "operation_kind": "add_reference",
+            "target_path": "sense_grants",
+            "record_ref": "fixture:sense/echo@1",
+            "source_ref": "fixture:source/lineage-a",
+            "provenance_ref": "fixture:prov/a",
+            "order": 10
+          }
+        ]
+      },
+      "runtime_mutation": false,
+      "expected": {
+        "status": "composed",
+        "applied_operation_refs": [
+          "op:add-sense"
+        ],
+        "conflicts": [],
+        "base_species_identity_preserved": true
+      }
+    },
+    "explicit_replacement": {
+      "base_species_ref": {
+        "species_id": "fixture:species/base-b",
+        "record_version": "2.0.0"
+      },
+      "lineage": {
+        "lineage_id": "fixture:lineage/scale-replace",
+        "lineage_version": "1.0.0",
+        "layer_order": 10,
+        "parent_species_ref": {
+          "species_id": "fixture:species/base-b",
+          "record_version": "2.0.0"
+        },
+        "relationship_evidence_refs": [
+          "fixture:source/lineage-b"
+        ],
+        "delta_operations": [
+          {
+            "operation_id": "op:replace-scale",
+            "operation_kind": "replace_reference",
+            "target_path": "scale_profile_ref",
+            "expected_parent_ref": "fixture:scale/base@2",
+            "replacement_ref": "fixture:scale/lineage@1",
+            "source_ref": "fixture:source/lineage-b",
+            "provenance_ref": "fixture:prov/b",
+            "order": 10
+          }
+        ]
+      },
+      "runtime_mutation": false,
+      "expected": {
+        "status": "composed",
+        "applied_operation_refs": [
+          "op:replace-scale"
+        ],
+        "conflicts": [],
+        "base_species_identity_preserved": true
+      }
+    },
+    "duplicate_shared_owner": {
+      "base_species_ref": {
+        "species_id": "fixture:species/base-c",
+        "record_version": "1.0.0"
+      },
+      "inherited_record_refs": [
+        "fixture:ability/shared@3"
+      ],
+      "lineage": {
+        "lineage_id": "fixture:lineage/duplicate-grant",
+        "lineage_version": "1.0.0",
+        "layer_order": 10,
+        "parent_species_ref": {
+          "species_id": "fixture:species/base-c",
+          "record_version": "1.0.0"
+        },
+        "relationship_evidence_refs": [
+          "fixture:source/lineage-c"
+        ],
+        "delta_operations": [
+          {
+            "operation_id": "op:add-duplicate",
+            "operation_kind": "add_reference",
+            "target_path": "capability_grants",
+            "record_ref": "fixture:ability/shared@3",
+            "source_ref": "fixture:source/lineage-c",
+            "provenance_ref": "fixture:prov/c",
+            "order": 10
+          }
+        ]
+      },
+      "runtime_mutation": false,
+      "expected": {
+        "status": "owner_deferred",
+        "owner_domain": "Ability/RulesProfile",
+        "shared_owner_handoff_ref": "fixture:handoff/shared-ability",
+        "reason": "Canonical record_ref already contributes from the base; stacking/suppression/replacement semantics belong to the shared owner."
+      }
+    },
+    "conflict_same_target": {
+      "base_species_ref": {
+        "species_id": "fixture:species/base-d",
+        "record_version": "1.0.0"
+      },
+      "lineages": [
+        {
+          "lineage_id": "fixture:lineage/d1",
+          "lineage_version": "1.0.0",
+          "layer_order": 10,
+          "parent_species_ref": {
+            "species_id": "fixture:species/base-d",
+            "record_version": "1.0.0"
+          },
+          "relationship_evidence_refs": [
+            "fixture:source/d1"
+          ],
+          "delta_operations": [
+            {
+              "operation_id": "op:d1-scale",
+              "operation_kind": "replace_reference",
+              "target_path": "scale_profile_ref",
+              "expected_parent_ref": "fixture:scale/base@1",
+              "replacement_ref": "fixture:scale/d1@1",
+              "source_ref": "fixture:source/d1",
+              "provenance_ref": "fixture:prov/d1",
+              "order": 10
+            }
+          ]
+        },
+        {
+          "lineage_id": "fixture:lineage/d2",
+          "lineage_version": "1.0.0",
+          "layer_order": 20,
+          "parent_species_ref": {
+            "species_id": "fixture:species/base-d",
+            "record_version": "1.0.0"
+          },
+          "relationship_evidence_refs": [
+            "fixture:source/d2"
+          ],
+          "delta_operations": [
+            {
+              "operation_id": "op:d2-scale",
+              "operation_kind": "replace_reference",
+              "target_path": "scale_profile_ref",
+              "expected_parent_ref": "fixture:scale/base@1",
+              "replacement_ref": "fixture:scale/d2@1",
+              "source_ref": "fixture:source/d2",
+              "provenance_ref": "fixture:prov/d2",
+              "order": 10
+            }
+          ]
+        }
+      ],
+      "runtime_mutation": false,
+      "expected": {
+        "status": "unresolved",
+        "conflict_class": "multiple_replacements_same_target",
+        "reason": "Stable lineage order is replay order only and cannot choose the semantically correct replacement."
+      }
+    },
+    "parent_version_mismatch": {
+      "base_species_ref": {
+        "species_id": "fixture:species/base-e",
+        "record_version": "2.0.0"
+      },
+      "lineage": {
+        "lineage_id": "fixture:lineage/e-old",
+        "lineage_version": "1.0.0",
+        "layer_order": 10,
+        "parent_species_ref": {
+          "species_id": "fixture:species/base-e",
+          "record_version": "1.0.0"
+        },
+        "relationship_evidence_refs": [
+          "fixture:source/e"
+        ],
+        "delta_operations": []
+      },
+      "runtime_mutation": false,
+      "expected": {
+        "status": "unresolved",
+        "conflict_class": "parent_version_mismatch",
+        "reason": "Lineage targets parent record_version 1.0.0 but selected base is 2.0.0; retargeting requires migration/source authority."
+      }
+    }
+  },
+  "proof_notes": [
+    "No fixture embeds a full parent SpeciesDefinition.",
+    "Stable order makes replay reproducible but never substitutes for semantic conflict authority.",
+    "Duplicate executable grants route to shared owners instead of a lineage-local stacking engine.",
+    "All fixtures preserve base species identity and perform no character/runtime mutation."
+  ]
+}
