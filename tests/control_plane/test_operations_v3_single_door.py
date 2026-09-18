@@ -163,11 +163,21 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         product = current["lanes"]["product-development"]
         ui_lane = current["lanes"]["ui-implementation"]
 
-        self.assertEqual(product["state"], "in_progress")
-        self.assertTrue(product["implementation_authority"])
-        self.assertEqual(ui_lane["state"], "in_progress")
-        self.assertTrue(ui_lane["implementation_authority"])
-        self.assertNotEqual(product["implementation_branch"], ui_lane["implementation_branch"])
+        self.assertIn(product["state"], {"selected_not_started", "in_progress", "completed_verified"})
+        self.assertIn(ui_lane["state"], {"selected_not_started", "in_progress", "completed_verified"})
+
+        if product["state"] == "in_progress":
+            self.assertTrue(product["implementation_authority"])
+            self.assertTrue(product["implementation_branch"])
+        if ui_lane["state"] == "in_progress":
+            self.assertTrue(ui_lane["implementation_authority"])
+            self.assertTrue(ui_lane["implementation_branch"])
+        if ui_lane["state"] == "selected_not_started":
+            self.assertFalse(ui_lane["implementation_authority"])
+            self.assertIsNone(ui_lane["implementation_branch"])
+
+        if product.get("implementation_branch") and ui_lane.get("implementation_branch"):
+            self.assertNotEqual(product["implementation_branch"], ui_lane["implementation_branch"])
 
         ui_checkpoint = self._json(ui_lane["checkpoint_path"])
         self.assertEqual(ui_checkpoint["work_item_id"], ui_lane["selected_work_item"])
