@@ -66,7 +66,7 @@ Use this after a conversation break when you want the repository state, not the 
 Bootstrap through current OPS3. My intended lane is `<lane>`; reconcile that intent through the canonical lane registry, then: <objective>.
 ```
 
-Useful lane names currently include `product-development`, `operations`, `content-design`, `dwc-speech`, `research-evaluation`, and `source-provenance`. Naming a lane is an intent hint, not authority to bypass `operations/LANES.json` or `operations/CURRENT.json`.
+Useful lane names currently include `product-development`, `ui-implementation`, `operations`, `content-design`, `dwc-speech`, `research-evaluation`, and `source-provenance`. Use `ui-implementation` for UISR/Skin Pack runtime work; ordinary roadmap software work remains `product-development`. Naming a lane is an intent hint, not authority to bypass `operations/LANES.json` or `operations/CURRENT.json`.
 
 ### Diagnose an operational problem
 

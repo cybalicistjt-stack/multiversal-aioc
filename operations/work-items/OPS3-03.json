@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "OPS3-03",
+  "title": "Parallel UI implementation lane",
+  "lane": "operations",
+  "status": "completed_verified",
+  "implementation_authority": false,
+  "owner_authorized": "2026-09-18",
+  "reproduced_failure": "A single product-development selector caused UISR setup to pause/close active MCS work even though the owner intended both work streams to continue.",
+  "repair": "Add a persistent ui-implementation lane, restore product-development/MCS authority, define lane-local authority and same-repository publication serialization, and add regression validation.",
+  "acceptance": [
+    "CURRENT simultaneously represents product-development/MCS-18 and ui-implementation/UISR-01 as in_progress with lane-local authority.",
+    "LANES routes UI skin runtime work to ui-implementation while ordinary roadmap implementation remains product-development.",
+    "Operating contract explicitly forbids one active lane from implicitly pausing another.",
+    "Validator/test coverage requires the new lane and checks current/checkpoint consistency.",
+    "Same-repository publication remains serialized by the existing merge-lease protocol."
+  ]
+}

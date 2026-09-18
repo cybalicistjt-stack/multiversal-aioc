@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.1.0  
+**Version:** 3.2.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -43,6 +43,18 @@ Lane selection determines:
 Lane selection does not change behavior rules, owner authority, or completion standards.
 
 When a conversation changes topics materially, reselect the lane once. Do not carry irrelevant lane context forward.
+
+### Parallel persistent lanes
+
+OPS3 may keep more than one persistent implementation lane active at once when the owner has explicitly separated the work streams.
+
+- Each conversation/executor still selects exactly one lane from user intent.
+- Implementation authority is lane-local. Starting or continuing one lane does not implicitly pause, revoke, reorder, or rewrite another active lane.
+- A lane may change another lane's selector/checkpoint only when the owner explicitly directs cross-lane reprioritization or when an operations-lane repair is required to restore canonical truth.
+- Active lanes that target the same repository must use distinct branches.
+- Shared-repository publication remains serialized by the existing OPS3 merge lease. The holder must fresh-read `main`, enforce the validated base, and reconcile stale bases before merge.
+- A publication conflict or stale base does not change either lane's authority; it only blocks that candidate until reconciled and revalidated.
+- Cross-lane reads remain minimal and evidence-driven.
 
 ## 4. Meaning of execution commands
 

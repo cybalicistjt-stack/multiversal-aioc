@@ -25,7 +25,9 @@ Read `operations/LANES.json` and choose exactly one lane that matches the user's
 - Explicit requests name or imply their lane and override the default lane.
 - A bare `Continue` resumes the lane already established by the conversation. If this is a new conversation, use `CURRENT.json` and the user's opening request to resolve the lane.
 - Lane selection changes scope and source bundle only. It never changes the global operating contract.
-- Do not load other lanes merely because they exist.
+- Multiple persistent lanes may hold implementation authority at the same time. A conversation still selects exactly one lane; selecting it does **not** pause, revoke, or rewrite another lane merely because both change product code.
+- When active lanes share a repository, they use separate implementation branches and the publication lease serializes `main` mutation. Stale-base reconciliation is a publication concern, not a reason to collapse the lanes.
+- Do not load or mutate another lane merely because it exists; cross-lane reads are limited to explicit dependencies, publication conflicts, or owner-directed coordination.
 
 ## 4. Load only the lane's active work record
 

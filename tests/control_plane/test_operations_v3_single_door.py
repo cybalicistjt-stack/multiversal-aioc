@@ -157,6 +157,30 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         _validate_product_lane_projection(current, pointer, authority, checkpoint, errors)
         self.assertEqual(errors, [])
 
+
+    def test_parallel_ui_and_product_lanes_keep_independent_authority(self) -> None:
+        current = self._json("operations/CURRENT.json")
+        product = current["lanes"]["product-development"]
+        ui_lane = current["lanes"]["ui-implementation"]
+
+        self.assertEqual(product["state"], "in_progress")
+        self.assertTrue(product["implementation_authority"])
+        self.assertEqual(ui_lane["state"], "in_progress")
+        self.assertTrue(ui_lane["implementation_authority"])
+        self.assertNotEqual(product["implementation_branch"], ui_lane["implementation_branch"])
+
+        ui_checkpoint = self._json(ui_lane["checkpoint_path"])
+        self.assertEqual(ui_checkpoint["work_item_id"], ui_lane["selected_work_item"])
+        self.assertEqual(ui_checkpoint["attempt_id"], ui_lane["attempt_id"])
+        self.assertEqual(ui_checkpoint["status"], ui_lane["state"])
+        self.assertEqual(ui_checkpoint["implementation_branch"], ui_lane["implementation_branch"])
+        self.assertEqual(ui_checkpoint["implementation_authority"], ui_lane["implementation_authority"])
+
+        bootstrap = self._text("operations/BOOTSTRAP.md")
+        contract = self._text("operations/OPERATING_CONTRACT.md")
+        self.assertIn("does **not** pause, revoke, or rewrite another lane", bootstrap)
+        self.assertIn("does not implicitly pause, revoke, reorder, or rewrite another active lane", contract)
+
     def test_repository_entrypoint_has_no_independent_current_state(self) -> None:
         agents = self._text("AGENTS.md")
         self.assertIn("operations/BOOTSTRAP.md", agents)
@@ -194,7 +218,7 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertEqual(lanes["operating_contract"], "operations/OPERATING_CONTRACT.md")
         self.assertEqual(lanes["selection_rule"], "User intent selects a lane; lane state never changes the global operating contract.")
         lane_ids = {row["id"] for row in lanes["lanes"]}
-        for required in {"product-development", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}:
+        for required in {"product-development", "ui-implementation", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}:
             self.assertIn(required, lane_ids)
 
     def test_legacy_projections_follow_canonical_product_state_without_selecting_work(self) -> None:

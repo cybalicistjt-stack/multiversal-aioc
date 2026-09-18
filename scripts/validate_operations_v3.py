@@ -281,7 +281,7 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         errors.append("LANES lanes must be an array")
         lane_rows = []
     lane_ids = {row.get("id") for row in lane_rows if isinstance(row, dict)}
-    required_lanes = {"product-development", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}
+    required_lanes = {"product-development", "ui-implementation", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}
     if not required_lanes <= lane_ids:
         errors.append(f"missing required lanes: {sorted(required_lanes - lane_ids)}")
 
@@ -372,6 +372,32 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     else:
         checkpoint = _read_json(root, Path(checkpoint_path_value), errors)
     _validate_product_lane_projection(current, legacy_pointer, legacy_authority, checkpoint, errors)
+
+    ui_lane = product_lanes.get("ui-implementation", {}) if isinstance(product_lanes, dict) else {}
+    if not isinstance(ui_lane, dict):
+        errors.append("CURRENT ui-implementation lane must be an object")
+    else:
+        ui_state = ui_lane.get("state")
+        if ui_state not in {"selected_not_started", "in_progress", "completed_verified"}:
+            errors.append(f"invalid ui-implementation state: {ui_state!r}")
+        ui_checkpoint_value = ui_lane.get("checkpoint_path") or ui_lane.get("legacy_checkpoint_path")
+        if not isinstance(ui_checkpoint_value, str) or not ui_checkpoint_value:
+            errors.append("CURRENT ui-implementation checkpoint path is required")
+        else:
+            ui_checkpoint = _read_json(root, Path(ui_checkpoint_value), errors)
+            expected_ui = {
+                "work_item_id": ui_lane.get("selected_work_item"),
+                "attempt_id": ui_lane.get("attempt_id"),
+                "status": ui_state,
+                "implementation_branch": ui_lane.get("implementation_branch"),
+                "implementation_authority": ui_lane.get("implementation_authority"),
+            }
+            for key, value in expected_ui.items():
+                if ui_checkpoint.get(key) != value:
+                    errors.append(f"CURRENT/ui checkpoint drift for {key}: {value!r} != {ui_checkpoint.get(key)!r}")
+        if ui_state == "in_progress":
+            if not ui_lane.get("implementation_branch") or ui_lane.get("implementation_authority") is not True:
+                errors.append("in_progress ui-implementation lane requires branch and implementation authority")
 
     observed_head = _git_head(root, errors) if expected_head else None
     if expected_head and observed_head != expected_head:
