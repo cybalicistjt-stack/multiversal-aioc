@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 212,
+  "state_revision": 213,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -26,13 +26,13 @@
       "implementation_authority": false
     },
     "product-development": {
-      "state": "in_progress",
-      "selected_work_item": "MCCS-05",
-      "attempt_id": "MCCS-05-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MCCS-05-attempt-001.json",
-      "implementation_branch": "work/mccs-05-head-sensory-expression-authoring",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue on 2026-09-18 govern-started MCCS-05 from fresh Multiversal-app base d132dbf655a8c66a1f9e93cf5a9fff62b2e4e76c. Execute only head, face-equivalent, sensory-feature and expression anatomy presentation authoring through causal RED/GREEN, exact-head validation, serialized publication, fresh DAG reconciliation and atomic closeout; preserve ui-implementation and player-species independently."
+      "state": "selected_not_started",
+      "selected_work_item": "MCCS-06",
+      "attempt_id": "MCCS-06-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MCCS-06-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MCCS-05 completed_verified on application PR 599 after causal RED run 35374982780 and exact-head validation run 35375134828. PR 599 published under OPS3 lease generation 123→124 as squash merge 74c9f5a5d784edcf4ba6112fd270a99672c99966 with exact validated tree 7d49b274ec253a4c58c20596e96ea8072bf27c0a. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MCCS-05-triggered rotation/interstitial override, so reduced MCCS strict order selects MCCS-06. No implementation branch or authority exists until a later owner Continue."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -78,5 +78,5 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. MVPS/player-species is independently selectable; shared-owner contract edits require explicit dependency coordination and same-repository publication is serialized by OPS3 merge leases."
   },
-  "next_project_action": "Execute MCCS-05 — Head, Face, Sensory Feature & Expression Anatomy Authoring — through causal RED/GREEN, exact-head validation, serialized publication, fresh successor reconciliation and atomic closeout. Preserve ui-implementation and player-species independently."
+  "next_project_action": "Route by selected lane: product-development awaits owner Continue to govern-start MCCS-06 — Coverings, Color, Material, Pattern, Marking & Surface-Layer Studio; ui-implementation and player-species remain independently governed. No lane pauses or rewrites another."
 }
