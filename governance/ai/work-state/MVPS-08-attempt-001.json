@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-08",
+  "title": "Lineage/Subspecies Inheritance and Composition",
+  "attempt_id": "MVPS-08-attempt-001",
+  "lane": "player-species",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-07",
+  "predecessor": {
+    "work_item_id": "MVPS-07",
+    "status": "completed_verified",
+    "implementation_merge_sha": "152bddb0eec1f00af584f9c15563f981af3f0e44",
+    "validation_run": 35372176082
+  },
+  "strict_successor": "MVPS-09",
+  "objective": "Define deterministic lineage/subspecies deltas over a base SpeciesDefinition so inherited fields, overrides, exclusions, additions and grant composition remain explicit, replayable and source-traceable without copying full parent definitions or guessing conflicts.",
+  "acceptance": [
+    "lineages do not copy full parent records",
+    "composition is deterministic and replayable",
+    "conflicts are surfaced rather than guessed"
+  ],
+  "boundaries": [
+    "MVPS-08 owns lineage/subspecies inheritance and composition semantics only.",
+    "Base species identity and aggregate boundaries remain MVPS-01; choice selection remains MVPS-02.",
+    "Morphology, capabilities, natural equipment and compatibility consume MVPS-03 through MVPS-07 by stable reference/delta rather than copied mechanics.",
+    "Form/transformation runtime remains MVPS-09 and must not be folded into lineage composition.",
+    "Species progression/maturation remains MVPS-10; runtime active-contribution projection/receipts remain MVPS-13.",
+    "MVPS-09+ remain unauthorized until separately selected."
+  ],
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MVPS-specific owner Continue, fresh-read MVPS-01/02 and MVPS-03 through MVPS-07 composition-bearing contracts plus current shared duplicate/stacking owner rules, reconcile current state, govern-start MVPS-08, establish causal RED and execute through proof, publication and closeout.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "terminal_reason": "selected_not_started; no execution attempt has begun"
+  }
+}
