@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS-01.Invariants",
+  "status": "MACHINE_TESTABLE",
+  "applies_to": [
+    "MVPS.SpeciesDefinition",
+    "MVPS.CharacterSpeciesSelection"
+  ],
+  "invariants": [
+    {
+      "id": "MVPS01-I01",
+      "rule": "stable_identity_and_exact_version_pin",
+      "assertion": "SpeciesDefinition has stable species_id/record_version and CharacterSpeciesSelection pins both.",
+      "source": "Character migration/stable identity and MVPS audit."
+    },
+    {
+      "id": "MVPS01-I02",
+      "rule": "definition_and_selection_are_separate_records",
+      "assertion": "CharacterSpeciesSelection stores references/receipts and does not embed SpeciesDefinition fields.",
+      "source": "Character aggregate plus MVPS receipt model."
+    },
+    {
+      "id": "MVPS01-I03",
+      "rule": "executable_mechanics_are_shared_record_references",
+      "assertion": "Species executable contributions are typed grant/reference entries; inline formulas/actions/effects are not species authority.",
+      "source": "Project Bible §25.3 and DB-004 species mechanics rule."
+    },
+    {
+      "id": "MVPS01-I04",
+      "rule": "grant_receipts_preserve_source_and_reason",
+      "assertion": "Every selected-character grant receipt retains source, reason, event, permanence, activation and stacking/replacement semantics.",
+      "source": "Project Bible §10.3."
+    },
+    {
+      "id": "MVPS01-I05",
+      "rule": "descriptive_biology_is_non_executable",
+      "assertion": "biology_descriptor cannot itself execute movement, sense, resistance, resource or other mechanics.",
+      "source": "Species mechanics are shared grants/references; MVPS approved separation."
+    },
+    {
+      "id": "MVPS01-I06",
+      "rule": "authored_and_granted_state_are_distinct",
+      "assertion": "Selection choices/adjudications remain distinguishable from resulting mechanical grants.",
+      "source": "Project Bible §10.2 and DB-004 characters."
+    },
+    {
+      "id": "MVPS01-I07",
+      "rule": "extensions_are_namespaced_and_non_overriding",
+      "assertion": "extension_data requires namespaces and cannot shadow core fields or become authoritative without a versioned contract change.",
+      "source": "MVPS approved extension policy."
+    },
+    {
+      "id": "MVPS01-I08",
+      "rule": "base_species_identity_is_recoverable",
+      "assertion": "Lineage/subspecies/form/adaptation layers remain referenced separately and cannot silently replace the base species identity.",
+      "source": "Project Bible §25.2, §25.5."
+    },
+    {
+      "id": "MVPS01-I09",
+      "rule": "unresolved_facts_are_not_fabricated",
+      "assertion": "Missing/conflicting species facts remain explicit through provenance/coverage/conflict/missing-information references.",
+      "source": "Project Bible §25.17 and DB-004 open issues."
+    },
+    {
+      "id": "MVPS01-I10",
+      "rule": "no_species_specific_runtime_engine",
+      "assertion": "MVPS-01 defines contracts/references only and does not introduce an alternate Action/Effect/Condition/Resource/Character/Inventory/Environment runtime.",
+      "source": "MVPS core object principle and MNCS shared-owner boundary."
+    },
+    {
+      "id": "MVPS01-I11",
+      "rule": "lifecycle_is_explicit_not_boolean",
+      "assertion": "Species and selection records expose governed lifecycle states rather than a single active/inactive flag.",
+      "source": "Project Bible character lifecycle distinction; exact enum delegated to implementation."
+    },
+    {
+      "id": "MVPS01-I12",
+      "rule": "migration_preserves_historical_selection",
+      "assertion": "Exact-version selection references and provenance survive deprecation/replacement; incompatible evolution becomes migration_required rather than silent rewrite.",
+      "source": "Project Bible §9.6 and DB-004 history preservation."
+    }
+  ],
+  "enforcement": {
+    "regression_test": "tests/control_plane/test_mvps01_species_aggregate_contract.py",
+    "ci_step": "Run MVPS-01 species aggregate contract regressions",
+    "runtime_engine_created": false
+  }
+}
