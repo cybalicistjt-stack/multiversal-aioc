@@ -7,10 +7,10 @@
   "track": "ui-skin-runtime",
   "source_program": "UISR",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "feature/uisr-06-migration-gallery-assignment",
   "completed": false,
   "objective": "Migrate the existing Ember and Chromatic compatibility identities into the canonical Skin Pack runtime without semantic, layout, interaction, accessibility or reading-assistance regression, and implement bounded gallery/preview/apply/assignment/persistence/hot-switch/recovery behavior over the completed UISR-01..05 foundations.",
   "predecessor": {
@@ -54,21 +54,25 @@
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": "awaiting_owner_continue",
-  "next_action": "On owner Continue, fresh-read UISK-11 migration/baseline, UISK-15 registry/assignment/gallery/persistence/hot-switch, and UISK-16 legacy migration/obsolete-path contracts; reconcile the then-current application base; govern-start UISR-06; establish causal RED; implement through exact-head cross-platform validation, serialized publication and lane-local closeout.",
+  "active_substep": "establish_causal_red",
+  "next_action": "Create focused UISR-06 RED tests from Multiversal-app base 5e3cf4175e5473c48f41925452b714a7b60788a1 for Ember/Chromatic compatibility migration, registry-backed gallery status, scope-explicit assignment resolution/persistence, nonpersistent preview, atomic hot-switch continuity and safe fallback/recovery; then implement only bounded presentation runtime and validate exact-head cross-platform.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
-    "stop_reason": "selected_not_started"
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   },
-  "governed_start": null
+  "governed_start": {
+    "application_base_sha": "5e3cf4175e5473c48f41925452b714a7b60788a1",
+    "owner_command": "Continue",
+    "started_on": "2026-09-18"
+  }
 }
