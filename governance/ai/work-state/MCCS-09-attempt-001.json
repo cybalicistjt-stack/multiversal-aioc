@@ -7,10 +7,10 @@
   "track": "multiversal-character-creature-studio",
   "source_program": "MCCS",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/mccs-09-wardrobe-equipment-linked-presentation",
   "completed": false,
   "objective": "Implement creator-facing presentation composition for wardrobe and equipment fit, accessories, props, and linked-being presentation while preserving Inventory/Asset, equipment, relationship, mount/familiar/pet/companion, anatomy, mechanics and live-state authority.",
   "predecessor": {
@@ -47,28 +47,33 @@
     "ui-implementation UISR-11 and player-species MVPS-07 remain independently governed and are preserved exactly from fresh CURRENT."
   ],
   "implementation_plan": {
-    "red": "pending",
+    "red": "in_progress",
     "green": "pending",
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": null,
-  "next_action": "Wait for the next owner Continue in product-development. On that command, governed-start MCCS-09 under the OPS3 FIFO publication queue; do not implement while selected_not_started.",
+  "active_substep": "publication_reservation",
+  "next_action": "Reserve and activate MCCS-09 on the OPS3 FIFO Multiversal-app main-publication queue before branch or candidate preparation; then establish causal RED from the immutable turn_base.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
-    "stop_reason": {
-      "kind": "selection_only",
-      "evidence": "MCCS-06 completed_verified; fresh DAG and reduced MCCS order select MCCS-09."
-    }
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "in_progress",
     "policy_violations": []
+  },
+  "governed_start": {
+    "aioc_base_sha": "d0559cd09a6e9aba70fe0c5106264e6af0e4c97f",
+    "application_base_sha": "76a255481e256dea79da2c796accfeff954aa208",
+    "owner_command": "Continue, but use the new fifo main queue",
+    "started_on": "2026-09-18",
+    "publication_queue_schema": "2.0.0",
+    "reservation_id": "MCCS-09-attempt-001-pub-001"
   }
 }
