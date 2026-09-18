@@ -18,6 +18,8 @@ HOLDER_MISMATCH = "OPS3.HOLDER_MISMATCH"
 LEASE_NOT_HELD = "OPS3.LEASE_NOT_HELD"
 QUEUE_ORDER = "OPS3.QUEUE_ORDER"
 VALIDATION_NOT_BOUND = "OPS3.VALIDATION_NOT_BOUND"
+RECOVERY_MAIN_MISMATCH = "OPS3.RECOVERY_MAIN_MISMATCH"
+RECOVERY_LOCATION_REQUIRED = "OPS3.RECOVERY_LOCATION_REQUIRED"
 
 class LeaseConflict(RuntimeError):
     pass
@@ -164,6 +166,54 @@ def release_lease(lease: dict[str, Any], *, holder: str, merged_sha: str) -> dic
         "validated_head": None,
         "validated_base": None,
         "last_merge_sha": merged_sha,
+    }
+
+
+def recover_completed_turn(
+    lease: dict[str, Any],
+    *,
+    expected_generation: int,
+    stalled_holder: str,
+    fresh_main_sha: str,
+    merged_sha: str,
+    recovery_location: str,
+    recovery_executor: str,
+) -> dict[str, Any]:
+    """Release a stranded completed turn after durable merge verification.
+
+    This transition does not grant scope or complete product work. It exists only
+    so a replacement executor can preserve a recovery pointer and free FIFO
+    publication capacity when the originating conversation disappears after the
+    merge has already landed.
+    """
+    _generation(lease, expected_generation)
+    if lease.get("status") != "held" or lease.get("holder") != stalled_holder:
+        raise LeaseConflict("active publication turn holder mismatch")
+    if not merged_sha or fresh_main_sha != merged_sha:
+        raise LeaseConflict(RECOVERY_MAIN_MISMATCH)
+    if not recovery_location.strip():
+        raise LeaseConflict(RECOVERY_LOCATION_REQUIRED)
+    if not recovery_executor.strip():
+        raise LeaseConflict("recovery_executor is required")
+    generation = lease.get("generation")
+    if not isinstance(generation, int):
+        raise LeaseConflict("invalid lease generation")
+    return {
+        **lease,
+        "status": "free",
+        "generation": generation + 1,
+        "holder": None,
+        "active_reservation_id": None,
+        "turn_base": None,
+        "validated_head": None,
+        "validated_base": None,
+        "last_merge_sha": merged_sha,
+        "last_recovery_handoff": {
+            "stalled_holder": stalled_holder,
+            "merged_sha": merged_sha,
+            "recovery_location": recovery_location,
+            "recovery_executor": recovery_executor,
+        },
     }
 
 def yield_turn(lease: dict[str, Any], *, holder: str, reason: str) -> dict[str, Any]:

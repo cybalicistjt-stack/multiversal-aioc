@@ -76,6 +76,59 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         errors=MERGE_LEASE.validate_merge_authorization(state,fresh_main_sha="main-b",pr_head_sha="head-a",holder="lane-a")
         self.assertIn("OPS3.STALE_MAIN",errors)
 
+
+    def test_stalled_completed_turn_can_be_recovery_released_and_fifo_continues(self) -> None:
+        state=MERGE_LEASE.free_lease("cybalicistjt-stack/Multiversal-app",generation=50)
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=50,holder="stalled",reservation_id="a")
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=51,holder="next",reservation_id="b")
+        state=MERGE_LEASE.activate_next_turn(state,expected_generation=52,holder="stalled",fresh_main_sha="main-a")
+        state=MERGE_LEASE.bind_validated_candidate(state,expected_generation=53,holder="stalled",validated_head="head-a",validated_base="main-a")
+        recovered=MERGE_LEASE.recover_completed_turn(
+            state,
+            expected_generation=54,
+            stalled_holder="stalled",
+            fresh_main_sha="merge-a",
+            merged_sha="merge-a",
+            recovery_location="governance/ai/work-state/W-attempt-001.json",
+            recovery_executor="replacement-chat",
+        )
+        self.assertEqual(recovered["status"],"free")
+        self.assertEqual(recovered["last_merge_sha"],"merge-a")
+        self.assertEqual(recovered["last_recovery_handoff"]["recovery_location"],"governance/ai/work-state/W-attempt-001.json")
+        self.assertEqual([e["holder"] for e in recovered["queue"]],["next"])
+        next_state=MERGE_LEASE.activate_next_turn(recovered,expected_generation=55,holder="next",fresh_main_sha="merge-a")
+        self.assertEqual(next_state["holder"],"next")
+
+    def test_recovery_release_fails_if_main_does_not_match_verified_merge(self) -> None:
+        state=MERGE_LEASE.free_lease("cybalicistjt-stack/Multiversal-app",generation=60)
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=60,holder="stalled",reservation_id="a")
+        state=MERGE_LEASE.activate_next_turn(state,expected_generation=61,holder="stalled",fresh_main_sha="main-a")
+        with self.assertRaises(MERGE_LEASE.LeaseConflict):
+            MERGE_LEASE.recover_completed_turn(
+                state,
+                expected_generation=62,
+                stalled_holder="stalled",
+                fresh_main_sha="other-main",
+                merged_sha="merge-a",
+                recovery_location="governance/ai/work-state/W-attempt-001.json",
+                recovery_executor="replacement-chat",
+            )
+
+    def test_recovery_release_requires_durable_recovery_location(self) -> None:
+        state=MERGE_LEASE.free_lease("cybalicistjt-stack/Multiversal-app",generation=70)
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=70,holder="stalled",reservation_id="a")
+        state=MERGE_LEASE.activate_next_turn(state,expected_generation=71,holder="stalled",fresh_main_sha="main-a")
+        with self.assertRaises(MERGE_LEASE.LeaseConflict):
+            MERGE_LEASE.recover_completed_turn(
+                state,
+                expected_generation=72,
+                stalled_holder="stalled",
+                fresh_main_sha="merge-a",
+                merged_sha="merge-a",
+                recovery_location="",
+                recovery_executor="replacement-chat",
+            )
+
     def test_direct_acquire_is_retired(self) -> None:
         with self.assertRaises(MERGE_LEASE.LeaseConflict):
             MERGE_LEASE.acquire_lease()
