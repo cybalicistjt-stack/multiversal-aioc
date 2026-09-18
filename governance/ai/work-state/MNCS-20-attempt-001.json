@@ -44,13 +44,13 @@
     "The independent ui-implementation lane remains UISR-09 in_progress and player-species remains MVPS-03 selected_not_started; both are preserved unchanged."
   ],
   "implementation_plan": {
-    "red": "in_progress",
-    "green": "pending",
+    "red": "completed_expected_failure",
+    "green": "in_progress",
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": "red",
-  "next_action": "Establish causal RED for continuity projections, owner-event references, advancement/life/ecology change proposals, unresolved-safe resolution management, and preservation of authoritative history; then implement only MNCS-20 contracts/fixtures.",
+  "active_substep": "green",
+  "next_action": "Validate the unchanged MNCS-20 RED assertions against production contract head 57b0948815d227783eeaf748c6a8a7d6bf004b6e; repair only causal MNCS-20 failures, then run exact-head proof.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -70,5 +70,18 @@
     "application_base_sha": "4559997b3b8036b874e97750f95b1ef5eed2f7ee",
     "owner_command": "Continue",
     "started_on": "2026-09-18"
+  },
+  "red_evidence": {
+    "head_sha": "6da0aa709d46daeb3c9a7a7dfdecfdb04c886479",
+    "workflow_run": 35366790077,
+    "lane": "linux",
+    "failing_step": "mncs20-focused",
+    "result": "expected_failure",
+    "cause": "Focused public-seam test could not load the not-yet-implemented MNCS-20 continuity-resolution contract; repository health and profile selection passed."
+  },
+  "green_candidate": {
+    "head_sha": "57b0948815d227783eeaf748c6a8a7d6bf004b6e",
+    "workflow_run": 35366936905,
+    "status": "in_progress"
   }
 }
