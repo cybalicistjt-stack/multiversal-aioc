@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 230,
+  "state_revision": 231,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -26,13 +26,13 @@
       "implementation_authority": false
     },
     "product-development": {
-      "state": "in_progress",
-      "selected_work_item": "MCCS-16",
-      "attempt_id": "MCCS-16-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MCCS-16-attempt-001.json",
-      "implementation_branch": "work/mccs-16-style-template-profile-recipes",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue on 2026-09-18 govern-started MCCS-16 under OPS3 protected-main FIFO. AIOC governed-start is itself queue-bound; Multiversal-app publication will reserve/activate separately. Execute style packs, templates, renderer/output profiles and deterministic visual-variation recipes through causal RED, GREEN, exact-head proof, FIFO publication, fresh successor reconciliation and queue-bound AIOC closeout. Preserve UI and player-species lanes exactly."
+      "state": "selected_not_started",
+      "selected_work_item": "MCCS-18",
+      "attempt_id": "MCCS-18-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MCCS-18-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MCCS-16 completed_verified after causal RED run 35386180182, exact-head cross-platform validation run 35386266160 at e39f34520c0f914662260a623d339aedca4ae8fe, and FIFO application publication PR 609 as squash merge 5d458a02467d4b533715201ad9052c5cc7dd257f with exact tree 92f637a8653007d807d6865fae1f347394160e8d. Fresh ROADMAP_DEPENDENCY_GRAPH schema 1.0.4 contains no MCCS-16-triggered rotation/interstitial override, so reduced MCCS strict order selects MCCS-18 until a later owner Continue govern-starts it."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -79,5 +79,5 @@
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. Same-repository publication uses the OPS3 FIFO reservation queue: reserve first, prepare/reconcile/validate only when the reservation activates, then merge/release before the next turn. MVPS/player-species and product lanes remain independently selectable.",
     "protected_main_interlock": "For cybalicistjt-stack/Multiversal-app and cybalicistjt-stack/multiversal-aioc, every main mutation participates in the repository-local FIFO queue. Direct main writes are prohibited. Once a turn activates, target main is frozen at turn_base for all other lanes/executors; unexpected advancement is OPS3.PROTECTED_MAIN_BYPASS and must be diagnosed rather than normalized by holder rebase/yield/re-reserve."
   },
-  "next_project_action": "Execute MCCS-16 — Style Packs, Templates, Renderer Profiles & Visual Variant Recipes — under protected-main FIFO through causal RED/GREEN, exact-head validation, application publication, queue-bound control-plane closeout and successor reconciliation."
+  "next_project_action": "Await owner Continue to govern-start MCCS-18 — Multi-Form, Transformation, Lifecycle & Appearance-State Management — under OPS3 protected-main FIFO. UI and player-species lanes remain independently preserved."
 }
