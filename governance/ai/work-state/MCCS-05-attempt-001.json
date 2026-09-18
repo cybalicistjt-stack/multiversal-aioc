@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "MCCS-05",
+  "attempt_id": "MCCS-05-attempt-001",
+  "title": "Head, Face, Sensory Feature & Expression Anatomy Authoring",
+  "track": "multiversal-character-creature-studio",
+  "source_program": "MCCS",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "objective": "Implement topology-aware head and sensory-feature appearance authoring for eyes or other sensory organs, mouths/beaks/mandibles, ears, horns/antlers/tusks/crests and expression-capable structures without requiring or inventing a human face plan.",
+  "predecessor": {
+    "work_item_id": "MCCS-03",
+    "status": "completed_verified",
+    "application_pr": 597,
+    "application_validation_run": 35373253028,
+    "application_merge_sha": "d132dbf655a8c66a1f9e93cf5a9fff62b2e4e76c",
+    "validated_tree_sha": "01c5327c89e37b9514ed07de4a9c123bd14d8690"
+  },
+  "scope": {
+    "purpose": "Provide topology-aware head, face-equivalent, sensory-feature and expression presentation authoring over owner-supplied anatomy eligibility without becoming canonical anatomy, mechanics or live-state authority.",
+    "included": [
+      "eyes and non-ocular sensory-organ presentation",
+      "mouth, beak and mandible presentation",
+      "ears and other topology-eligible sensory structures",
+      "horn, antler, tusk and crest presentation",
+      "expression-capable head structures",
+      "nonhuman head-plan support",
+      "unsupported/unresolved anatomy projection",
+      "local-first deterministic authoring"
+    ],
+    "completion_gate": "Representative human and nonhuman head/sensory topologies can be authored deterministically as presentation proposals with unsupported/unresolved structures explicit, without requiring a human face plan or mutating canonical anatomy, mechanics, equipment, relationships or live state."
+  },
+  "selection_boundaries": [
+    "MCCS-01 and MCCS-03 are completed_verified foundations and are not reopened.",
+    "Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 reconciliation after MCCS-03 contains no new rotation/interstitial override, so reduced MCCS strict order selects MCCS-05.",
+    "Character/NPC/Creature/Species/Form/PPIA owners retain canonical identity, topology eligibility, anatomy, Form/state, mechanics and live truth.",
+    "CAPP/PPIA retain renderer-neutral appearance authority; MCCS-05 supplies creator-facing presentation authoring only.",
+    "PAPT/PCA retain generic asset, rig, image/style and local-production primitives.",
+    "Head/sensory authoring must remain topology-aware and cannot assume or fabricate a human face plan.",
+    "Unsupported or unresolved head/sensory structures remain explicit instead of being silently coerced.",
+    "MCCS-05 is selected_not_started only; no implementation branch or authority exists until a later owner Continue.",
+    "The ui-implementation and player-species lanes remain independently governed and are not modified by this selection."
+  ],
+  "implementation_plan": {
+    "red": "pending",
+    "green": "pending",
+    "proof": "pending",
+    "closeout": "pending"
+  },
+  "active_substep": null,
+  "next_action": "Wait for the next owner Continue in product-development. On that command, governed-start MCCS-05 with the OPS3 execution guard; do not implement while selected_not_started.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selection_only",
+      "evidence": "MCCS-05 is selected_not_started after fresh post-MCCS-03 DAG/backlog reconciliation; no bounded MCCS-05 execution is active."
+    }
+  },
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
