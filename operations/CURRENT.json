@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 215,
+  "state_revision": 216,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -52,13 +52,13 @@
       "implementation_authority": "session_scoped_by_owner_request"
     },
     "ui-implementation": {
-      "state": "completed_verified",
-      "selected_work_item": "UISR-10",
-      "attempt_id": "UISR-10-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/UISR-10-attempt-001.json",
-      "implementation_branch": "feature/uisr-10-full-skin-capability",
-      "implementation_authority": false,
-      "activation_rule": "UISR-10 completed_verified after causal RED run 35368278300, exact-head reconciled validation run 35372387616 at head 2ab00b8eb77192b726a03985a0636e9b5daf0431/tree b142ba290beaa8c0d13366b7739e7463cf162d13, application publication 7ce8035f08c3e1bbff572d5a549809518edf8065, owner closeout directive, and final UISR evidence closeout. UISR has no lane-local successor."
+      "state": "in_progress",
+      "selected_work_item": "UISR-11",
+      "attempt_id": "UISR-11-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/UISR-11-attempt-001.json",
+      "implementation_branch": "feature/uisr-11-showcase-skin-expansion",
+      "implementation_authority": true,
+      "activation_rule": "Owner Continue on 2026-09-18 created a new post-UISR terminal expansion item for four owner-requested showcase Skin Packs: zombies + exotic flowers, cozy cabin, non-Euclidean, and frogs/amphibious. Govern-start from fresh Multiversal-app main 74c9f5a5d784edcf4ba6112fd270a99672c99966. Execute only presentation/runtime/gallery/evidence work for these four packs, with the non-Euclidean pack explicitly allowed to alter presentational frame/panel geometry while preserving task topology, focus order, hit targets, semantics, permissions, hidden information, validation, provenance, navigation and gameplay authority."
     },
     "player-species": {
       "state": "in_progress",
@@ -78,5 +78,5 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. Same-repository publication uses the OPS3 FIFO reservation queue: reserve first, prepare/reconcile/validate only when the reservation activates, then merge/release before the next turn. MVPS/player-species and product lanes remain independently selectable."
   },
-  "next_project_action": "Route by selected lane: product-development awaits owner Continue to govern-start MCCS-06; player-species independently executes MVPS-07; ui-implementation is completed_verified and has no successor. No lane pauses or rewrites another."
+  "next_project_action": "Route by selected lane: ui-implementation executes UISR-11 through causal RED, GREEN, proof, exact-head validation, serialized publication and atomic closeout; product-development awaits owner Continue to govern-start MCCS-06; player-species independently executes MVPS-07. No lane pauses or rewrites another."
 }
