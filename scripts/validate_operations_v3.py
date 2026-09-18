@@ -281,7 +281,7 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         errors.append("LANES lanes must be an array")
         lane_rows = []
     lane_ids = {row.get("id") for row in lane_rows if isinstance(row, dict)}
-    required_lanes = {"product-development", "ui-implementation", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}
+    required_lanes = {"product-development", "ui-implementation", "player-species", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}
     if not required_lanes <= lane_ids:
         errors.append(f"missing required lanes: {sorted(required_lanes - lane_ids)}")
 
@@ -398,6 +398,37 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         if ui_state == "in_progress":
             if not ui_lane.get("implementation_branch") or ui_lane.get("implementation_authority") is not True:
                 errors.append("in_progress ui-implementation lane requires branch and implementation authority")
+
+    mvps_lane = product_lanes.get("player-species", {}) if isinstance(product_lanes, dict) else {}
+    if not isinstance(mvps_lane, dict):
+        errors.append("CURRENT player-species lane must be an object")
+    else:
+        mvps_state = mvps_lane.get("state")
+        if mvps_state not in {"selected_not_started", "in_progress", "completed_verified"}:
+            errors.append(f"invalid player-species state: {mvps_state!r}")
+        mvps_checkpoint_value = mvps_lane.get("checkpoint_path") or mvps_lane.get("legacy_checkpoint_path")
+        if not isinstance(mvps_checkpoint_value, str) or not mvps_checkpoint_value:
+            errors.append("CURRENT player-species checkpoint path is required")
+        else:
+            mvps_checkpoint = _read_json(root, Path(mvps_checkpoint_value), errors)
+            expected_mvps = {
+                "work_item_id": mvps_lane.get("selected_work_item"),
+                "attempt_id": mvps_lane.get("attempt_id"),
+                "status": mvps_state,
+                "implementation_branch": mvps_lane.get("implementation_branch"),
+                "implementation_authority": mvps_lane.get("implementation_authority"),
+            }
+            for key, value in expected_mvps.items():
+                if mvps_checkpoint.get(key) != value:
+                    errors.append(f"CURRENT/MVPS checkpoint drift for {key}: {value!r} != {mvps_checkpoint.get(key)!r}")
+        if mvps_state == "selected_not_started":
+            if mvps_lane.get("implementation_branch") is not None or mvps_lane.get("implementation_authority") is not False:
+                errors.append("selected_not_started player-species lane must have no branch or implementation authority")
+        if mvps_state == "in_progress":
+            if not mvps_lane.get("implementation_branch") or mvps_lane.get("implementation_authority") is not True:
+                errors.append("in_progress player-species lane requires branch and implementation authority")
+        if mvps_state == "completed_verified" and mvps_lane.get("implementation_authority") is not False:
+            errors.append("completed_verified player-species work must retire implementation authority")
 
     observed_head = _git_head(root, errors) if expected_head else None
     if expected_head and observed_head != expected_head:
