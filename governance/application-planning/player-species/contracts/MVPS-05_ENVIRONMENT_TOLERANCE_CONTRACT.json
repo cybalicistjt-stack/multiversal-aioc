@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesEnvironmentTolerance",
+  "record_type": "SpeciesEnvironmentTolerance",
+  "status": "MVPS-05_CANONICAL_CONTRACT",
+  "purpose": "Expose species-origin environmental tolerance/adaptation capabilities as typed shared-record references so Environment resolution can test required capabilities without species-name branching or copied survival mechanics.",
+  "environment_factor_types": [
+    "atmosphere",
+    "pressure",
+    "temperature",
+    "gravity",
+    "radiation",
+    "water",
+    "vacuum",
+    "light",
+    "corruption",
+    "supernatural_influence"
+  ],
+  "environment_evaluation_policy": "environment_requires_capabilities_species_exposes_refs",
+  "species_name_branching_allowed": false,
+  "environment_owner_rule": "Environment records declare factors, hazards and required capabilities/effects; they do not duplicate each species adaptation.",
+  "tolerance_grant_contract": {
+    "required": [
+      "record_ref",
+      "factor_type",
+      "source_ref",
+      "rules_profile_ref"
+    ],
+    "optional": [
+      "capability_tags",
+      "condition_refs",
+      "effect_refs",
+      "activation_ref",
+      "scope_notes",
+      "projection_tags"
+    ],
+    "inline_resolution_formula_allowed": false,
+    "rule": "The referenced shared record owns thresholds, modifiers, immunity/resistance semantics and resolution behavior. Species only grants/references it."
+  },
+  "adaptation_sources": [
+    "species",
+    "form",
+    "ability",
+    "equipment",
+    "vehicle",
+    "condition",
+    "temporary_effect",
+    "campaign_rule"
+  ],
+  "resolution_inputs": [
+    "species_traits",
+    "body_forms",
+    "environmental_adaptations",
+    "equipment",
+    "vehicles_or_shelters",
+    "abilities",
+    "conditions",
+    "temporary_protections",
+    "campaign_rules"
+  ],
+  "shared_effect_outputs": [
+    "conditions",
+    "resources",
+    "modifiers",
+    "actions",
+    "effects",
+    "timers"
+  ],
+  "unresolved_policy": "If a required environmental mechanic has no canonical record, report the dependency/unresolved state; do not infer protection from descriptive biology.",
+  "inline_survival_formula_allowed": false,
+  "inline_environment_thresholds_allowed": false,
+  "extension_policy": {
+    "namespace_required": true,
+    "override_core_fields": false
+  }
+}
