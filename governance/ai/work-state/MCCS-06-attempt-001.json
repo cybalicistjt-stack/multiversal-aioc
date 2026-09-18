@@ -46,13 +46,13 @@
     "ui-implementation and player-species lanes remain independently governed and are preserved exactly from fresh CURRENT."
   ],
   "implementation_plan": {
-    "red": "in_progress",
-    "green": "pending",
+    "red": "completed_expected_failure",
+    "green": "in_progress",
     "proof": "pending",
     "closeout": "pending"
   },
-  "active_substep": "publication_reservation",
-  "next_action": "Reserve and activate the OPS3 publication turn on fresh Multiversal-app main before preparing the MCCS-06 candidate; then establish causal RED on that immutable turn_base.",
+  "active_substep": "green",
+  "next_action": "Implement only the missing MCCS-06 surface-layer production seam on the active FIFO publication turn, then validate the unchanged assertions on exact head.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -74,5 +74,21 @@
     "started_on": "2026-09-18",
     "publication_queue_schema": "2.0.0",
     "reservation_id": "MCCS-06-attempt-001-pub-001"
+  },
+  "red_evidence": {
+    "head_sha": "5054019db53f2aa7e26e78199d70ce2f04f140eb",
+    "workflow_run": 35377985626,
+    "linux_job": 105707220194,
+    "failing_step": "mccs06-focused-surface-layers",
+    "result": "expected_failure",
+    "cause": "Repository health and MCCS-06 profile selection passed; focused surface-layer acceptance failed before the authorized MCCS-06 production module existed."
+  },
+  "publication_turn": {
+    "schema_version": "2.0.0",
+    "reservation_id": "MCCS-06-attempt-001-pub-001",
+    "holder": "MCCS-06-attempt-001",
+    "status": "held",
+    "generation": 127,
+    "turn_base": "74c9f5a5d784edcf4ba6112fd270a99672c99966"
   }
 }
