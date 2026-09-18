@@ -5,9 +5,9 @@
   "title": "Choice Schema and Character-Creation Transaction",
   "attempt_id": "MVPS-02-attempt-001",
   "lane": "player-species",
-  "status": "selected_not_started",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/mvps-02-choice-schema-creation-transaction",
   "selected_by_verified_predecessor": "MVPS-01",
   "predecessor": {
     "work_item_id": "MVPS-01",
@@ -28,12 +28,23 @@
     "Shared Character/Ability/Equipment owner contracts are consumed by reference; shared-owner changes require explicit coordination.",
     "MVPS-03+ remain unauthorized until separately selected."
   ],
-  "active_substep": "awaiting_governed_start",
-  "next_action": "On an MVPS-specific owner Continue, fresh-read MVPS-01 contracts plus controlling character-creation/validation sources, reconcile current shared-owner state, govern-start MVPS-02, establish causal RED and execute through proof, publication and closeout.",
+  "active_substep": "red",
+  "next_action": "Establish causal RED for enumerating required species choices, sourced legality/blocking validation, draft-incomplete/non-playable behavior, fixed grants, selectable groups, alternatives, substitutions, exclusions, budgets/counts, campaign/setting/entitlement gates and unresolved choices; then implement only MVPS-02 contract/fixture/validator semantics.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
-    "terminal_reason": "selected_not_started; no execution attempt has begun"
+    "terminal_response_allowed": false,
+    "terminal_reason": null
+  },
+  "implementation_plan": {
+    "red": "in_progress",
+    "green": "pending",
+    "proof": "pending",
+    "closeout": "pending"
+  },
+  "governed_start": {
+    "aioc_base_sha": "25d6a5c61a4b60a68a7e5138d9775ecad3a42235",
+    "owner_command": "Continue",
+    "started_on": "2026-09-18"
   }
 }
