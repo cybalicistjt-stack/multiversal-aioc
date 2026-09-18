@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 156,
+  "state_revision": 157,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -26,13 +26,13 @@
       "implementation_authority": false
     },
     "product-development": {
-      "state": "in_progress",
-      "selected_work_item": "MNCS-01",
-      "attempt_id": "MNCS-01-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MNCS-01-attempt-001.json",
-      "implementation_branch": "work/mncs-01-studio-core-resolution-authority",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue governed-started MNCS-01 from the selected_not_started checkpoint on application base 2260225b68bba71069a9f32e72b525617be585a9. Execute only MNCS-01 through causal RED, GREEN, proof, exact-head validation, serialized publication, fresh DAG reconciliation and atomic closeout. The parallel ui-implementation lane remains independent."
+      "state": "selected_not_started",
+      "selected_work_item": "MNCS-04",
+      "attempt_id": "MNCS-04-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MNCS-04-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MNCS-01 completed_verified on application PR 576 after exact-head validation run 35346120695 and exact-tree publication as squash merge c6c5891cd81713bc0241ec36b157698b2fae573b with tree 3f0f439aa284eb6841a00b37b0fc4cf92a341264. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.3 and MNCS_PROGRAM_BACKLOG.json schema 0.2.0 reconciliation selects MNCS-04. No implementation branch or authority exists until a later owner Continue."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -69,5 +69,5 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. Same-repository publication is serialized by OPS3 merge leases."
   },
-  "next_project_action": "Execute MNCS-01 — Studio Core, NPC/Creature Recipe/Constraint Engine & Resolution Authority — through RED/GREEN, exact-head validation, serialized publication, fresh successor reconciliation and atomic closeout. Do not alter the independent ui-implementation lane."
+  "next_project_action": "Route by selected lane: product-development next owner Continue governed-starts MNCS-04 — Identity, Naming, Culture, Language, Demographic & Origin Construction — from MNCS-04-attempt-001; ui-implementation remains independent. Do not mutate the other lane."
 }
