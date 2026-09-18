@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 183,
+  "state_revision": 184,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -52,13 +52,13 @@
       "implementation_authority": "session_scoped_by_owner_request"
     },
     "ui-implementation": {
-      "state": "in_progress",
-      "selected_work_item": "UISR-08",
-      "attempt_id": "UISR-08-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/UISR-08-attempt-001.json",
-      "implementation_branch": "feature/uisr-08-environmental-genre-packs",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue on 2026-09-18 govern-started UISR-08 from Multiversal-app base b217074bb9fe318a12f96e4e1517b4caff9fb5ac after fresh UISK-13 environmental/genre contract and five-pack specification review. Execute only UISR-08 through causal RED, GREEN, exact-head validation, serialized publication and closeout; preserve product-development independently."
+      "state": "selected_not_started",
+      "selected_work_item": "UISR-09",
+      "attempt_id": "UISR-09-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/UISR-09-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "UISR-08 completed_verified at application merge 496fd4cf886d8eac674dafab5f95f3592ea7e3da after causal RED run 35359101279, GREEN run 35359230842, stale-base reconciliation runs 35359617219 and 35361856149, and final validated head 8401ed134b0b1a749242d9ebb402680fd3530992 on base 554309398f3a2324c01b91a9a11d00ffbf3861f6. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no UISR interstitial gate, so UISR-09 is selected_not_started until a later owner Continue."
     },
     "player-species": {
       "state": "selected_not_started",
@@ -78,5 +78,5 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. MVPS/player-species is independently selectable; shared-owner contract edits require explicit dependency coordination and same-repository publication is serialized by OPS3 merge leases."
   },
-  "next_project_action": "Route by selected lane: product-development awaits owner Continue for MNCS-15; ui-implementation remains UISR-08 in_progress; player-species awaits an MVPS-specific Continue to govern-start MVPS-02 — Choice Schema and Character-Creation Transaction. No lane pauses or rewrites another."
+  "next_project_action": "Route by selected lane: product-development awaits owner Continue for MNCS-15; ui-implementation awaits owner Continue to govern-start UISR-09 — Extreme/Social/Craft Skin Pack Materialization; player-species awaits MVPS-specific Continue for MVPS-02. No lane pauses or rewrites another."
 }
