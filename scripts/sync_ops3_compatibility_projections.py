@@ -33,14 +33,14 @@ def _canonical_context(root: Path) -> tuple[dict[str, Any], dict[str, Any], dict
     lanes = current.get("lanes")
     if not isinstance(lanes, dict):
         raise ValueError("CURRENT lanes must be an object")
-    product = lanes.get("product-development")
+    product = lanes.get("msas")
     operations = lanes.get("operations")
     if not isinstance(product, dict) or not isinstance(operations, dict):
-        raise ValueError("CURRENT product-development and operations lanes must be objects")
+        raise ValueError("CURRENT msas and operations lanes must be objects")
 
     checkpoint_value = product.get("checkpoint_path") or product.get("legacy_checkpoint_path")
     if not isinstance(checkpoint_value, str) or not checkpoint_value:
-        raise ValueError("CURRENT product-development checkpoint path is required")
+        raise ValueError("CURRENT msas checkpoint path is required")
     checkpoint_path = Path(checkpoint_value)
     checkpoint = _load_json(root / checkpoint_path)
 
@@ -128,7 +128,7 @@ def render_authority(current: dict[str, Any], product: dict[str, Any], operation
             "implementation_branch": product["implementation_branch"],
             "implementation_authority": product["implementation_authority"],
             "feature_starts_blocked": bool(freeze.get("active")),
-            "rule": "Compatibility projection of the canonical product-development lane; this file does not independently grant authority.",
+            "rule": "Compatibility projection of the canonical MSAS lane using the legacy preserved_product_selection field name; this file does not independently grant authority.",
         },
     }
 

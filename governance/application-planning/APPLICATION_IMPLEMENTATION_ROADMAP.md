@@ -2,11 +2,11 @@
 
 **OPS3 BACKGROUND ONLY / NO OPERATIONAL AUTHORITY**
 
-This path remains the product-development lane's dependency-roadmap reference, but it no longer selects current work, defines runtime authority, interprets `Continue`, grants implementation authority, or controls recovery.
+This path remains a dependency-roadmap reference for the persistent implementation lanes, but it no longer selects current work, defines runtime authority, interprets `Continue`, grants implementation authority, or controls recovery.
 
 ## Live authority
 
-Every product-development conversation begins at `operations/BOOTSTRAP.md`. Live product selection comes only from `operations/CURRENT.json` and the work item/checkpoint it references. Repository/PR/CI evidence supplies implementation facts.
+Every implementation conversation begins at `operations/BOOTSTRAP.md`. Live MSAS/MRCS/MVPS selection comes only from `operations/CURRENT.json` and the lane-specific work item/checkpoint it references. Repository/PR/CI evidence supplies implementation facts.
 
 ## Preserved roadmap state
 

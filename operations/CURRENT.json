@@ -6,17 +6,34 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 244,
-  "default_lane": "product-development",
+  "state_revision": 245,
+  "default_lane": "msas",
   "active_operations_work_item": "OPS3-09",
   "active_operations_work_item_path": "operations/work-items/OPS3-09.json",
   "product_start_freeze": {
     "active": true,
-    "reason": "Owner-approved OPS3 lane-topology repair: replace the obsolete persistent product-development/ui-implementation/player-species topology with independent MSAS/MRCS/MVPS lanes while preserving in-progress MSAS-01 and completed UISR-11 evidence.",
+    "reason": "OPS3-09 is in progress. Existing MSAS-01 implementation authority remains valid, but new implementation starts are frozen until the MSAS/MRCS/MVPS persistent-lane topology repair is validated, published and closed.",
     "preserved_selected_work_item": "MSAS-01",
     "preserved_attempt_id": "MSAS-01-attempt-001",
     "implementation_authority": false,
-    "cleared_by": null
+    "cleared_by": null,
+    "preserved_lane_selections": {
+      "msas": {
+        "selected_work_item": "MSAS-01",
+        "attempt_id": "MSAS-01-attempt-001",
+        "state": "in_progress"
+      },
+      "mrcs": {
+        "selected_work_item": "MRCS-01",
+        "attempt_id": "MRCS-01-attempt-001",
+        "state": "selected_not_started"
+      },
+      "mvps": {
+        "selected_work_item": "MVPS-10",
+        "attempt_id": "MVPS-10-attempt-001",
+        "state": "selected_not_started"
+      }
+    }
   },
   "lanes": {
     "operations": {
@@ -25,14 +42,32 @@
       "work_item_path": "operations/work-items/OPS3-09.json",
       "implementation_authority": true
     },
-    "product-development": {
+    "msas": {
       "state": "in_progress",
       "selected_work_item": "MSAS-01",
       "attempt_id": "MSAS-01-attempt-001",
       "checkpoint_path": "governance/ai/work-state/MSAS-01-attempt-001.json",
       "implementation_branch": "work/msas-01-audio-studio-workspace-session-authority",
       "implementation_authority": true,
-      "activation_rule": "Owner Continue governed-started MSAS-01 after OPS3-08 cleared the repair freeze. Authority is limited to the MSAS-01 reduced tranche and its declared dependency closure; MSAS-03+ remain unauthorized."
+      "activation_rule": "MSAS-01 remains in_progress under the owner-approved independent MSAS persistent lane. OPS3-09 changes only lane identity/topology and does not alter the existing MSAS-01 branch, scope, checkpoint, or implementation authority."
+    },
+    "mrcs": {
+      "state": "selected_not_started",
+      "selected_work_item": "MRCS-01",
+      "attempt_id": "MRCS-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MRCS-01-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "Owner-approved OPS3-09 topology selects MRCS-01 independently from MSAS and MVPS. A later MRCS-specific Continue must verify ROADMAP_DEPENDENCY_GRAPH.json start requirements and govern-start MRCS-01 before implementation authority is granted."
+    },
+    "mvps": {
+      "state": "selected_not_started",
+      "selected_work_item": "MVPS-10",
+      "attempt_id": "MVPS-10-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MVPS-10-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MVPS-10 remains selected_not_started under the owner-approved independent MVPS persistent lane. OPS3-09 changes only the canonical lane identity from player-species to mvps; a later MVPS-specific Continue govern-starts it."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -50,24 +85,6 @@
     "source-provenance": {
       "state": "on_demand",
       "implementation_authority": "session_scoped_by_owner_request"
-    },
-    "ui-implementation": {
-      "state": "completed_verified",
-      "selected_work_item": "UISR-11",
-      "attempt_id": "UISR-11-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/UISR-11-attempt-001.json",
-      "implementation_branch": "feature/uisr-11-showcase-skin-expansion",
-      "implementation_authority": false,
-      "activation_rule": "UISR-11 completed_verified after causal RED run 35380829688 at proof head bbc406bbd76b06f7aa3027b2a2987224598bad58, final exact-head validation run 35381300146 at reconciled head 82e4abe12c3883e03498209d100c3d326fba10bb against FIFO turn_base 84b6103a8b305cda3a0e278d0f8cf9c53e5212a8, and application publication PR 605 as squash merge febc3d770f93871b1b1091c796f698cfa753e26e with tree 694f3b2e10d29e5f841960cd171bcf2c0771c84b. The four showcase packs are runtime-available; non-Euclidean geometry remains presentation-only. No UISR successor is selected."
-    },
-    "player-species": {
-      "state": "selected_not_started",
-      "selected_work_item": "MVPS-10",
-      "attempt_id": "MVPS-10-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MVPS-10-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "MVPS-09 completed_verified after causal RED run 35390307187, exact-head GREEN validation run 35434657461 at head 753d1a10650222c75261bdefa9af8cd170190af9, and implementation merge c7f9163b380b829781dd027154b220e770ea7a79. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MVPS interstitial gate overriding strict order, so MVPS-10 is selected_not_started until a later owner Continue."
     }
   },
   "truth_rules": {
@@ -76,12 +93,24 @@
     "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
     "cross_program_successor_rule": "Before successor selection, consult governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json. Individual program strict_successor or backlog fields cannot skip an eligible interstitial program or override cross-program gates.",
     "executor_independence": "Executor availability never grants or revokes project authority.",
-    "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. Same-repository publication uses the OPS3 FIFO reservation queue: reserve first, prepare/reconcile/validate only when the reservation activates, then merge/release before the next turn. MVPS/player-species and product lanes remain independently selectable.",
+    "parallel_lane_rule": "MSAS, MRCS and MVPS are independent persistent implementation lanes and may hold authority concurrently. Lane selection is per conversation; work in one lane does not pause, revoke, reorder or rewrite another. Same-repository publication remains serialized by the OPS3 FIFO reservation queue.",
     "protected_main_interlock": "For cybalicistjt-stack/Multiversal-app and cybalicistjt-stack/multiversal-aioc, every main mutation participates in the repository-local FIFO queue. Direct main writes are prohibited. Once a turn activates, target main is frozen at turn_base for all other lanes/executors; unexpected advancement is OPS3.PROTECTED_MAIN_BYPASS and must be diagnosed rather than normalized by holder rebase/yield/re-reserve.",
-    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: product-development, ui-implementation, and player-species. Completion or idleness never collapses one into another.",
+    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: msas, mrcs and mvps. UISR-11 is completed program history and does not occupy a persistent implementation slot.",
     "active_turn_liveness": "Protected-main publication turns carry bounded material-progress liveness. A stale active turn cannot merge or cosmetically renew; it must be recovery-released or stalled-turn recovered according to scripts/ops3_merge_lease.py.",
     "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS3.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
     "generated_main_writers": "CI/bots/generated-content jobs may not push directly to protected main; generated outputs must be present on the queue-bound candidate branch or validation fails closed."
   },
-  "next_project_action": "Complete OPS3-09 persistent-lane topology repair without changing MSAS-01 implementation scope or MVPS-10 selection; then clear the temporary start freeze and resume independent MSAS/MRCS/MVPS execution."
+  "next_project_action": "Finish OPS3-09 closeout after this topology implementation is durably published. Thereafter MSAS-01 remains in_progress, MRCS-01 and MVPS-10 remain independently selected_not_started, and lane-specific owner Continues operate only their chosen lane.",
+  "completed_programs": {
+    "UISR": {
+      "program_id": "UISR",
+      "state": "completed_verified",
+      "selected_work_item": "UISR-11",
+      "attempt_id": "UISR-11-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/UISR-11-attempt-001.json",
+      "implementation_branch": "feature/uisr-11-showcase-skin-expansion",
+      "implementation_authority": false,
+      "completion_rule": "UISR-11 is completed_verified. UISR is preserved as completed program history and no longer occupies a persistent implementation lane."
+    }
+  }
 }

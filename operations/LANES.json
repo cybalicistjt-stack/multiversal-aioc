@@ -1,62 +1,64 @@
 {
-  "schema_version": "3.1.0",
+  "schema_version": "3.2.0",
   "canonical_door": "operations/BOOTSTRAP.md",
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "selection_rule": "User intent selects a lane; lane state never changes the global operating contract.",
   "lanes": [
     {
-      "id": "product-development",
-      "purpose": "Software implementation roadmap, product code, schemas, UI, rules-engine and application features.",
+      "id": "msas",
+      "purpose": "Multiversal Sound & Audio Studio (MSAS): integrated creator workflow for governed sound, music, voice and audio production over existing AAI/PCA/DWC/resource/runtime contracts.",
       "intent_examples": [
-        "continue software development",
-        "implement the next roadmap item",
-        "fix this product bug"
+        "continue MSAS",
+        "continue sound studio",
+        "implement MSAS-01",
+        "work on audio studio"
       ],
-      "current_state_source": "operations/CURRENT.json#/lanes/product-development",
+      "current_state_source": "operations/CURRENT.json#/lanes/msas",
       "source_bundle": [
-        "current referenced work item/checkpoint",
-        "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
-        "only source/program paths named by the selected work item",
-        "live application repository evidence"
+        "current referenced MSAS work item/checkpoint",
+        "governance/application-planning/multiversal-sound-audio-studio/MSAS_PROGRAM_BACKLOG.json",
+        "AAI/PCA/DWC and other owner contracts named by the selected MSAS item",
+        "live application repository evidence limited to active MSAS scope"
       ],
-      "cross_lane_reads": "Only for an explicit dependency or failure signature."
+      "cross_lane_reads": "Read MRCS/MVPS only for explicit dependencies or publication conflicts. MSAS execution never pauses, replaces or rewrites MRCS or MVPS."
     },
     {
-      "id": "ui-implementation",
-      "purpose": "Implementation of the Multiversal UI Skin Runtime (UISR): Skin Pack runtime, presentation engines, reading/accessibility runtime, Skin Laboratory, skin materialization, gallery/assignment/persistence, packaging and Tier-C UI evidence.",
+      "id": "mrcs",
+      "purpose": "Multiversal Rules & Content Studio (MRCS): creator-facing governed reusable rule/content definition authoring over Content Forge and owner-domain contracts.",
       "intent_examples": [
-        "continue UI skin implementation",
-        "implement UISR",
-        "build the Skin Pack runtime",
-        "continue the UI implementation lane"
+        "continue MRCS",
+        "continue rules content studio",
+        "start MRCS-01",
+        "work on Content Forge authoring"
       ],
-      "current_state_source": "operations/CURRENT.json#/lanes/ui-implementation",
+      "current_state_source": "operations/CURRENT.json#/lanes/mrcs",
       "source_bundle": [
-        "current referenced UISR work item/checkpoint",
-        "governance/application-planning/ui-skin-runtime/UISR_PROGRAM_BACKLOG.json",
-        "Multiversal-app UISK design contracts named by the selected UISR work item",
-        "live application repository evidence limited to the UISR scope"
+        "current referenced MRCS work item/checkpoint",
+        "governance/application-planning/multiversal-rules-content-studio/MRCS_MULTIVERSAL_RULES_CONTENT_STUDIO_PROGRAM.md",
+        "governance/application-planning/multiversal-rules-content-studio/MRCS_PROGRAM_BACKLOG.json",
+        "only owner-domain/PDCP/CAB/Content Forge sources named by the selected MRCS item",
+        "live application repository evidence limited to active MRCS scope"
       ],
-      "cross_lane_reads": "Do not read or mutate product-development/MCS state except for an explicit shared dependency or same-repository publication conflict. UI implementation does not pause the main product-development lane."
+      "cross_lane_reads": "Read MSAS/MVPS only for explicit dependencies or publication conflicts. MRCS execution never pauses, replaces or rewrites MSAS or MVPS."
     },
     {
-      "id": "player-species",
-      "purpose": "Multiversal Player Species (MVPS) program family: species as fully functioning game objects, including species composition, morphology, grants, forms, adaptations, validation, runtime projection, migration, UI/authoring, and cross-system conformance.",
+      "id": "mvps",
+      "purpose": "Multiversal Player Species (MVPS): species as fully functioning game objects, including composition, morphology, grants, forms, adaptations, validation, projection, migration, UI/authoring and cross-system conformance.",
       "intent_examples": [
         "continue MVPS",
         "continue player species",
         "implement the species object contract",
         "work on player species game objects"
       ],
-      "current_state_source": "operations/CURRENT.json#/lanes/player-species",
+      "current_state_source": "operations/CURRENT.json#/lanes/mvps",
       "source_bundle": [
         "current referenced MVPS work item/checkpoint",
         "governance/application-planning/player-species/MVPS_PLAYER_SPECIES_PROGRAM.md",
         "governance/application-planning/player-species/MVPS_PROGRAM_BACKLOG.json",
         "Project/Feature/UI/Screen Bibles and DB-004 references named by the active MVPS item",
-        "live application repository evidence limited to the active MVPS scope"
+        "live application repository evidence limited to active MVPS scope"
       ],
-      "cross_lane_reads": "Consume shared Character/Ability/Equipment/Environment owner contracts as dependencies. Do not mutate product-development/MNCS or ui-implementation/UISR state. If an MVPS tranche needs a shared owner-contract change, record the dependency and coordinate explicitly rather than silently crossing lane ownership."
+      "cross_lane_reads": "Consume shared owner contracts as explicit dependencies. Read MSAS/MRCS only for explicit dependencies or publication conflicts; do not mutate their selectors."
     },
     {
       "id": "operations",
@@ -74,7 +76,7 @@
         "only affected repository control surfaces",
         "live repository/CI/tool evidence"
       ],
-      "cross_lane_reads": "Product state may be read only to preserve or reconcile it; operations work may not silently start product implementation."
+      "cross_lane_reads": "Implementation state may be read only to preserve or reconcile it; operations work may not silently start implementation work."
     },
     {
       "id": "content-design",
@@ -91,7 +93,7 @@
         "Project/Feature/UI/Screen Bibles when relevant",
         "canonical source material needed for the requested domain"
       ],
-      "cross_lane_reads": "Do not load software-roadmap control state unless the user asks to integrate the result into implementation."
+      "cross_lane_reads": "Do not load implementation-roadmap control state unless the user asks to integrate the result into implementation."
     },
     {
       "id": "dwc-speech",
@@ -107,7 +109,7 @@
         "the current DWC checkpoint/evidence named there",
         "live DWC artifacts supplied by the user"
       ],
-      "cross_lane_reads": "Keep DWC isolated from the application product lane unless an explicit integration task requires both."
+      "cross_lane_reads": "Keep DWC isolated from implementation lanes unless an explicit integration task requires both."
     },
     {
       "id": "research-evaluation",
@@ -124,7 +126,7 @@
         "relevant current web/external sources",
         "project constraints only when they affect the evaluation"
       ],
-      "cross_lane_reads": "Research findings become product or operations work only through an explicit follow-on task."
+      "cross_lane_reads": "Research findings become implementation or operations work only through an explicit follow-on task."
     },
     {
       "id": "source-provenance",
@@ -146,9 +148,14 @@
     }
   ],
   "persistent_implementation_lanes": [
-    "product-development",
-    "ui-implementation",
-    "player-species"
+    "msas",
+    "mrcs",
+    "mvps"
   ],
-  "parallel_persistence_rule": "These three persistent implementation lanes remain independent OPS3 lanes even when one is completed or idle; operations repair may reconcile selectors but may not collapse the topology."
+  "retired_lane_aliases": {
+    "product-development": "Retired umbrella. Resolve explicit intent to msas, mrcs or mvps; this alias cannot select work.",
+    "ui-implementation": "UISR-11 completed_verified. UISR is completed program history, not a persistent implementation lane.",
+    "player-species": "Retired alias for canonical mvps lane."
+  },
+  "parallel_persistence_rule": "MSAS, MRCS and MVPS are the three independent persistent implementation lanes. They may execute concurrently on distinct branches; same-repository publication is serialized by the OPS3 FIFO queue. Completion or idleness of one never collapses or rewrites either other lane."
 }

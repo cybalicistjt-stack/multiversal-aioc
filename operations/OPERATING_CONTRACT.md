@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.6.0  
+**Version:** 3.7.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -46,7 +46,7 @@ When a conversation changes topics materially, reselect the lane once. Do not ca
 
 ### Parallel persistent lanes
 
-OPS3 permanently preserves three independent persistent implementation lanes: `product-development`, `ui-implementation`, and `player-species`. A lane may be `completed_verified`, `selected_not_started`, or `in_progress`, but completion or inactivity never deletes, folds into, or revokes either of the other persistent lanes. Operations work may repair their selectors without collapsing this three-lane topology.
+OPS3 permanently preserves three independent persistent implementation lanes: `msas`, `mrcs`, and `mvps`. A lane may be `completed_verified`, `selected_not_started`, or `in_progress`, but completion or inactivity never deletes, folds into, or revokes either of the other persistent lanes. UISR-11 remains preserved as completed program history rather than occupying one of these slots. Operations work may repair lane selectors without collapsing this three-lane topology.
 
 
 OPS3 may keep more than one persistent implementation lane active at once when the owner has explicitly separated the work streams.
