@@ -35,16 +35,16 @@
     "MSAS and MVPS lane selectors/branches/authority are independent and must not be rewritten by MRCS work."
   ],
   "active_substep": "green_exact_head_validation",
-  "next_action": "Validate exact implementation head f3f7ea0f74f0e8c9804697d29a8c9e2360269926 with the MRCS-03 profile; diagnose the first material failure before any repair, then obtain full exact-head cross-platform GREEN before READY submission.",
+  "next_action": "Validate exact head e6d9643a2dfb63c0d62aa216593ae6220d3c6312 under MRCS-03 profile; require focused MRCS-03, MRCS-01 regression, typecheck, and cross-platform comparison to pass before READY submission.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 4,
+    "material_progress_seq": 5,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "kind": "green_candidate_implementation",
-      "evidence": "Valid RED: run 35474188994, Linux focused step mrcs03-focused-guided-authoring, 5 tests failed for missing behavior. Production implementation committed at f3f7ea0f74f0e8c9804697d29a8c9e2360269926."
+      "kind": "test_scope_repair",
+      "evidence": "Run 35474278702 isolated one non-product ambiguity in clone status test; scoped assertion to MRCS workspace at e6d9643a2dfb63c0d62aa216593ae6220d3c6312."
     },
     "active_stall": false,
     "terminal_response_allowed": false,

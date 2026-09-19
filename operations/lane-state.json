@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0.0",
   "lane": "mrcs",
-  "revision": 5,
+  "revision": 6,
   "selected_work_item": "MRCS-03",
   "attempt_id": "MRCS-03-attempt-001",
   "execution_status": "in_progress",
   "implementation_branch": "feature/mrcs-03-guided-forge-authoring",
-  "progress_seq": 4,
+  "progress_seq": 5,
   "last_progress": {
-    "kind": "green_candidate_implementation",
-    "evidence": "Causal RED run 35474188994 at head 24b493854c46eef3c1142e89e05df455708e07c2 failed 5/5 focused MRCS-03 tests for missing guided/template/lineage/advisory behavior. Implemented bounded production change in apps/client-ui/src/mrcs/Mrcs01Workspace.tsx at head f3f7ea0f74f0e8c9804697d29a8c9e2360269926."
+    "kind": "test_scope_repair",
+    "evidence": "Exact-head run 35474278702 at f3f7ea0f74f0e8c9804697d29a8c9e2360269926 passed 4/5 MRCS-03 tests; only clone status assertion failed because Candidate Content also exposes role=status. Narrowed assertion to MRCS workspace in e6d9643a2dfb63c0d62aa216593ae6220d3c6312 without weakening behavior."
   },
   "terminal": false
 }
