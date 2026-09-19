@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_scope": "MVPS-10 species progression and maturation semantic proof",
+  "non_canon": true,
+  "cases": {
+    "no_species_progression": {
+      "input": {
+        "species_ref": "species:baseline@1",
+        "progression_hook": null
+      },
+      "expected": {
+        "status": "valid_no_progression",
+        "advancement_event_created": false
+      }
+    },
+    "explicit_species_unlock_event": {
+      "input": {
+        "species_ref": "species:example-winged@1",
+        "hook_ref": "progression:flight-mastery@1",
+        "event_ref": "event:advancement-001"
+      },
+      "expected": {
+        "status": "accepted_owner_handoff",
+        "event_sourced": true,
+        "silent_character_mutation": false
+      }
+    },
+    "maturation_stage_unlock": {
+      "input": {
+        "species_ref": "species:example-lifecycle@1",
+        "from_stage_ref": "stage:juvenile@1",
+        "to_stage_ref": "stage:adult@1",
+        "source_rule_ref": "rule:maturation-adult@1",
+        "event_ref": "event:maturation-001"
+      },
+      "expected": {
+        "status": "accepted_owner_handoff",
+        "event_sourced": true,
+        "base_selection_history_preserved": true
+      }
+    },
+    "duplicate_grant_owner_deferred": {
+      "input": {
+        "existing_grant_ref": "ability:adaptive-sense@3",
+        "incoming_grant_ref": "ability:adaptive-sense@3"
+      },
+      "expected": {
+        "status": "owner_deferred",
+        "resolution_owner": "owning shared mechanic/rules profile",
+        "species_local_resolution": false
+      }
+    },
+    "age_without_authorizing_rule_unresolved": {
+      "input": {
+        "chronological_age": 18,
+        "source_rule_ref": null
+      },
+      "expected": {
+        "status": "unresolved",
+        "automatic_unlock": false,
+        "reason": "age_without_source_backed_authorizing_rule"
+      }
+    },
+    "missing_advancement_event_rejected": {
+      "input": {
+        "progression_option_ref": "species-option:example@1",
+        "event_ref": null
+      },
+      "expected": {
+        "status": "invalid",
+        "reason": "durable_advancement_event_required",
+        "character_mutated": false
+      }
+    }
+  },
+  "proof_notes": [
+    "No species progression hook is a valid configuration.",
+    "Age/lifecycle metadata alone never grants mechanics.",
+    "Duplicate grant semantics remain shared-owner truth.",
+    "Fixtures are noncanonical semantic proof only."
+  ]
+}

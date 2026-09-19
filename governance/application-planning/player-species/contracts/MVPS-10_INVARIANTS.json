@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "MVPS-10.Invariants",
+  "status": "implementation_ready_contract",
+  "species_progression_engine_created": false,
+  "invariants": [
+    {
+      "id": "MVPS10-I01-progression-optional",
+      "rule": "A species may define no progression or maturation unlock hooks; absence is valid and must not synthesize a progression tree."
+    },
+    {
+      "id": "MVPS10-I02-advancement-event-sourced",
+      "rule": "Every permanent or conditional species-origin advancement acquisition/unlock is committed as an attributable canonical Character/Progression Event with before/result state and source evidence; silent Character mutation is forbidden."
+    },
+    {
+      "id": "MVPS10-I03-maturation-explicit-not-age-entitlement",
+      "rule": "Lifecycle descriptors and chronological age are non-executable; mechanical maturation requires an explicit source-backed rule and progression/Event handoff."
+    },
+    {
+      "id": "MVPS10-I04-shared-acquisition-eligibility-owners",
+      "rule": "Eligibility, prerequisites, acquisition modes, costs, waivers, grants and reference value remain with CAB/Progression and other owning domains; MVPS-10 stores typed references/handoffs only."
+    },
+    {
+      "id": "MVPS10-I05-duplicate-grants-shared-owner",
+      "rule": "Duplicate, stacking, suppression, replacement and magnitude semantics defer to the owning shared mechanic/rules profile and are never resolved by species-local logic."
+    },
+    {
+      "id": "MVPS10-I06-history-and-provenance-preserved",
+      "rule": "Maturation and progression events preserve base species selection/history, exact source/version references and provenance; correction uses a new attributable event or owner-defined compensation rather than history rewrite."
+    },
+    {
+      "id": "MVPS10-I07-no-species-progression-engine",
+      "rule": "MVPS-10 does not create a progression, XP/cost, prerequisite, Ability, Action/Event, Effect, Condition, Resource or grant-execution engine."
+    },
+    {
+      "id": "MVPS10-I08-form-and-runtime-projection-boundaries",
+      "rule": "Form/transformation semantics remain MVPS-09, social/language/knowledge hooks remain MVPS-11, and active runtime contribution/grant projection remains MVPS-13."
+    }
+  ],
+  "enforcement": {
+    "unknown_or_conflict": "surface_unresolved_not_guess",
+    "inline_shared_mechanics": false,
+    "source_backed_refs_required": true
+  }
+}
