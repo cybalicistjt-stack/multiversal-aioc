@@ -7,9 +7,9 @@
   "track": "multiversal-npc-creature-studio",
   "source_program": "MNCS",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/mncs-20-continuity-change-resolution",
   "selected_by_verified_predecessor": "MNCS-18",
   "predecessor": {
     "work_item_id": "MNCS-18",
@@ -38,12 +38,29 @@
     "MNCS-22+ remain unauthorized until separately selected.",
     "ui-implementation and player-species lanes remain independently governed."
   ],
-  "active_substep": "awaiting_governed_start",
-  "next_action": "On a product-development owner execution command, enter through OPS3, reserve required publication turns, fresh-read MNCS-20 dependency closure and govern-start the bounded tranche.",
+  "active_substep": "application_publication_reservation",
+  "next_action": "After this queue-bound governed-start publishes, reserve and activate the separate Multiversal-app FIFO turn before preparing the MNCS-20 causal RED candidate.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
+    "terminal_response_allowed": false,
     "stop_reason": null
+  },
+  "completed": false,
+  "owner_interaction_observation": {
+    "continue_turns": 1,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  },
+  "governed_start": {
+    "aioc_turn_base": "7d06714df30116d85b023c3f52fcf62179407cf3",
+    "aioc_queue_schema": "2.0.0",
+    "aioc_reservation_id": "MNCS-20-attempt-001-aioc-start-pub-001",
+    "owner_command": "Continue",
+    "started_on": "2026-09-19",
+    "application_branch": "work/mncs-20-continuity-change-resolution"
   }
 }
