@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesIdentityKnowledgeHook",
+  "record_type": "species_identity_knowledge_hook_contract",
+  "status": "implementation_ready_contract",
+  "purpose": "Project species identity through observer-relative Knowledge/Visibility state without leaking hidden canonical truth or allowing belief/misidentification to rewrite SpeciesDefinition identity.",
+  "source_basis": [
+    "PPIA-09 Investigation/Knowledge truth-versus-knowledge invariants",
+    "MV-IA-F009 reveal-layer model",
+    "MV-IA-F016 visibility-layer model",
+    "PDCP Packet 03 actor-relative Knowledge/Visibility boundary"
+  ],
+  "canonical_identity_distinct_from_observer_knowledge": true,
+  "observer_misidentification_allowed_as_belief_only": true,
+  "observer_belief_can_rewrite_canonical_identity": false,
+  "permission_filter_before_projection_and_derivatives": true,
+  "hidden_identity_leaks_through_counts_search_diagnostics_or_ai": false,
+  "canonical_identity_owner": "MVPS-01 SpeciesDefinition identity",
+  "observer_knowledge_owner": "Knowledge/Visibility owning domain",
+  "projection_states": [
+    "known",
+    "partially_known",
+    "unknown",
+    "hidden",
+    "misidentified",
+    "conflicted"
+  ],
+  "projection_contract": {
+    "required": [
+      "observer_ref",
+      "subject_ref",
+      "knowledge_state",
+      "identity_projection",
+      "source_or_evidence_refs",
+      "visibility_policy_ref",
+      "provenance_ref"
+    ],
+    "exact_hidden_cardinality_exposed": false,
+    "hidden_source_names_exposed": false,
+    "hidden_identity_ids_exposed": false,
+    "belief_or_claim_marked_nontruth": true
+  },
+  "permission_filter_order": [
+    "authorize observer scope",
+    "filter hidden identity and source facts",
+    "resolve allowed knowledge/belief records",
+    "construct identity projection",
+    "derive counts/search/diagnostics/AI context only from allowed projection"
+  ],
+  "unknown_or_hidden_policy": "preserve_unknown_hidden_or_misidentified_without_truth_inference",
+  "canonical_species_mutation_owned_by_mvps11": false,
+  "knowledge_mutation_owned_by_mvps11": false,
+  "runtime_knowledge_engine_created": false,
+  "extension_policy": "namespaced_non_overriding"
+}

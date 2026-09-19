@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesLanguageCommunicationHook",
+  "record_type": "species_language_communication_hook_contract",
+  "status": "implementation_ready_contract",
+  "purpose": "Separate biological communication capabilities from learned languages and cultural language practices while routing executable communication/language state to shared owners.",
+  "source_basis": [
+    "PPIA-05 biology versus culture/language-practice separation",
+    "MVPS-04 senses and movement shared-owner pattern",
+    "MVPS-06 capability grant owner delegation",
+    "MVPS-10 acquisition/progression owner delegation"
+  ],
+  "biological_communication_distinct_from_learned_language": true,
+  "biological_communication_implies_language_proficiency": false,
+  "learned_language_is_immutable_biology": false,
+  "species_local_language_engine_created": false,
+  "learned_language_policy": "shared_language_knowledge_progression_owner_handoff",
+  "exact_source_and_provenance_refs_required": true,
+  "biological_communication_hook": {
+    "required": [
+      "hook_id",
+      "species_ref",
+      "communication_capability_ref",
+      "modality",
+      "source_ref",
+      "provenance_ref"
+    ],
+    "modalities": [
+      "vocal",
+      "auditory",
+      "visual",
+      "gestural",
+      "chemical",
+      "tactile",
+      "electromagnetic",
+      "telepathic_owner_defined",
+      "other_owner_defined"
+    ],
+    "capability_owner": "Ability/Action/Effect/Sense/Communication owning domain",
+    "language_proficiency_granted_by_presence": false
+  },
+  "learned_language_hook": {
+    "required": [
+      "language_ref",
+      "acquisition_or_knowledge_ref",
+      "source_ref",
+      "provenance_ref"
+    ],
+    "acquisition_owner": "Language/Knowledge/Progression owning domain",
+    "automatic_species_grant_requires_explicit_source_rule": true,
+    "cultural_association_is_not_automatic_proficiency": true
+  },
+  "culture_language_practice": {
+    "policy": "culture_context_reference_only",
+    "immutable_biology": false,
+    "source_silence": "unresolved"
+  },
+  "unknown_or_conflict_policy": "surface_unresolved_not_guess",
+  "runtime_projection_created": false,
+  "runtime_projection_owner": "MVPS-13",
+  "extension_policy": "namespaced_non_overriding"
+}

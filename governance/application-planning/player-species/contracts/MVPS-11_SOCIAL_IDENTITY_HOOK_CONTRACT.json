@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesSocialIdentityHook",
+  "record_type": "species_social_identity_hook_contract",
+  "status": "implementation_ready_contract",
+  "purpose": "Expose source-backed species identity references to social, relationship, reputation, faction and law owners without turning culture, stereotypes or social consequences into immutable biology.",
+  "source_basis": [
+    "MVPS-01..10 contracts/invariants",
+    "PPIA-05 Species, Forms & Character Biology culture-versus-biology boundary",
+    "MV-IA-F009 Relationship Tracker concept separation",
+    "MV-IA-F016 Faction/Reputation concept separation",
+    "PPIA-10 Relationship/Social/Faction taxonomy"
+  ],
+  "culture_is_biology": false,
+  "species_identity_implies_behavior": false,
+  "species_identity_auto_creates_relationship": false,
+  "species_identity_auto_creates_reputation": false,
+  "species_identity_auto_assigns_faction_membership": false,
+  "species_identity_auto_grants_legal_status": false,
+  "culture_context_policy": "reference_only_never_immutable_biology",
+  "stereotype_or_behavior_inference_allowed": false,
+  "source_backed_identity_hook": {
+    "required": [
+      "hook_id",
+      "species_ref",
+      "source_ref",
+      "provenance_ref",
+      "owner_domain_ref",
+      "semantic_role"
+    ],
+    "semantic_roles": [
+      "relationship_context",
+      "reputation_context",
+      "faction_context",
+      "law_context",
+      "social_status_context",
+      "culture_context"
+    ],
+    "exact_version_refs_required": true,
+    "owner_mutation_authority": false
+  },
+  "owner_domain_handoffs": {
+    "personal_relationship": "MV-IA-F009 / Relationship owner",
+    "faction_standing_reputation": "MV-IA-F016 / Faction-Reputation owner",
+    "membership_rank_office": "Organization/Faction owner",
+    "law_legal_status": "Law/World/Campaign owning domain",
+    "social_status_condition": "shared Condition/Status owner",
+    "mood_intent_stance": "MV-IA-F010 scene/social state owner"
+  },
+  "concept_separations": [
+    "species identity is not personal relationship",
+    "species identity is not faction standing or reputation",
+    "species identity is not membership/rank/office",
+    "species identity is not legal status",
+    "species identity is not culture",
+    "species identity is not behavior or disposition"
+  ],
+  "social_state_mutation_owned_by_mvps11": false,
+  "social_owner_events_required_for_mutation": true,
+  "unknown_or_conflict_policy": "surface_unresolved_not_guess",
+  "runtime_social_engine_created": false,
+  "extension_policy": "namespaced_non_overriding"
+}
