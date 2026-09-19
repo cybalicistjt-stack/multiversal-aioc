@@ -5,8 +5,8 @@
   "title": "Species Progression and Maturation Hooks",
   "attempt_id": "MVPS-10-attempt-001",
   "lane": "mvps",
-  "status": "in_progress",
-  "implementation_authority": true,
+  "status": "completed_verified",
+  "implementation_authority": false,
   "implementation_branch": "work/mvps-10-species-progression-maturation-hooks",
   "selected_by_verified_predecessor": "MVPS-09",
   "predecessor": {
@@ -30,22 +30,25 @@
     "Forms/transformation semantics remain MVPS-09; runtime active-contribution projection/receipts remain MVPS-13.",
     "MVPS-11+ remain unauthorized until separately selected."
   ],
-  "active_substep": "governed_start_publication",
-  "next_action": "After this governed-start publication is durably verified, reserve the AIOC FIFO implementation turn before candidate preparation, establish a causal RED for the missing MVPS-10 progression/maturation contracts, implement the bounded tranche over shared Progression/Action-Event/CAB owners, validate exact head, publish, then close out and select the verified successor in the same owner Continue.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS-10 is closed. MVPS-11 is selected_not_started; a later MVPS-specific Continue must govern-start it before implementation authority is granted.",
   "execution_guard": {
     "continue_turns": 2,
-    "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "stall_nudges": 1,
+    "material_progress_seq": 6,
+    "progress_at_last_owner_command": 5,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "governed_start_candidate",
-      "evidence": "MVPS-10 start gates and dependency closure verified; candidate activates only the mvps lane and preserves independent MSAS/MRCS selectors."
+      "seq": 6,
+      "kind": "closeout_candidate",
+      "evidence": "MVPS-10 implementation is durably merged as f8cc9932fad3e2fc10cbe74f8e3451e75a33747c after causal RED 35440193863 and exact-head GREEN 35440253717; closeout selects MVPS-11 from fresh DAG schema 1.0.4."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MVPS-10 implementation is on AIOC main and this closeout records completed_verified plus MVPS-11 selected_not_started."
+    }
   },
   "start_gate_evidence": {
     "roadmap_dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4",
@@ -73,14 +76,40 @@
     "owner_boundary": "MVPS-10 defines species-facing progression/maturation hooks only; canonical progression acquisition, Action/Event mutation, duplicate/stacking, costs, eligibility, and runtime mutation remain shared-owner truth."
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "completed_with_interruption",
+    "policy_violations": [
+      {
+        "kind": "mid_tranche_interruption",
+        "evidence": "Execution stopped after implementation publication/release and before terminal closeout; owner had to issue an explicit finish directive. No unauthorized candidate preparation, queue bypass, or cross-lane mutation occurred."
+      }
+    ],
+    "note": "Closeout resumed from durable FIFO/checkpoint evidence and completed without redoing or mutating the verified implementation."
   },
   "implementation_plan": {
-    "governed_start": "in_progress",
-    "red": "pending",
-    "green": "pending",
-    "publication": "pending",
-    "closeout": "pending"
+    "governed_start": "completed",
+    "red": "completed",
+    "green": "completed",
+    "publication": "completed",
+    "closeout": "in_progress"
+  },
+  "completed": true,
+  "completed_at": "2026-09-19T11:33:00-05:00",
+  "acceptance_evidence": {
+    "governed_start_pr": 1437,
+    "governed_start_validated_head": "fd1de892083fec05466b629d0daf1b4925e458c0",
+    "governed_start_validation_run": 35440075872,
+    "governed_start_merge_sha": "88b727e9a9ef2744ea260dacbc9b40e0caf00964",
+    "causal_red_head": "88ccc297109991741a8611066b38687f3c8beddd",
+    "causal_red_run": 35440193863,
+    "implementation_pr": 1438,
+    "implementation_validated_head": "98490673e2fab4f292d0473a6ea6189e0f0dda89",
+    "implementation_validation_run": 35440253717,
+    "implementation_merge_sha": "f8cc9932fad3e2fc10cbe74f8e3451e75a33747c",
+    "implementation_tree": "e84443cc546292d4e86a15686032e2d18215860a",
+    "successor": "MVPS-11",
+    "successor_state": "selected_not_started",
+    "roadmap_dependency_graph_schema": "1.0.4",
+    "product_lane_mutated": false,
+    "mrcs_lane_mutated": false
   }
 }

@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 249,
+  "state_revision": 250,
   "default_lane": "msas",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -29,9 +29,9 @@
         "state": "in_progress"
       },
       "mvps": {
-        "selected_work_item": "MVPS-10",
-        "attempt_id": "MVPS-10-attempt-001",
-        "state": "in_progress"
+        "selected_work_item": "MVPS-11",
+        "attempt_id": "MVPS-11-attempt-001",
+        "state": "selected_not_started"
       }
     }
   },
@@ -61,13 +61,13 @@
       "activation_rule": "MRCS-01 governed-started after verifying its DAG start requirements and existing Content Forge/candidate-content foundation. This lane is independent of MSAS and MVPS."
     },
     "mvps": {
-      "state": "in_progress",
-      "selected_work_item": "MVPS-10",
-      "attempt_id": "MVPS-10-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MVPS-10-attempt-001.json",
-      "implementation_branch": "work/mvps-10-species-progression-maturation-hooks",
-      "implementation_authority": true,
-      "activation_rule": "Owner MVPS-specific Continue govern-started MVPS-10 after OPS3-09 completed the independent-lane topology repair and cleared the start freeze. ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 has no MVPS hard/start prerequisites; MVPS-01 through MVPS-09 are completed_verified, and shared Progression/Action-Event ownership remains external. Authority is limited to MVPS-10 species-facing progression and maturation hooks; MSAS and MRCS remain independent."
+      "state": "selected_not_started",
+      "selected_work_item": "MVPS-11",
+      "attempt_id": "MVPS-11-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MVPS-11-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MVPS-10 completed_verified after causal RED run 35440193863 at head 88ccc297109991741a8611066b38687f3c8beddd, exact-head GREEN validation run 35440253717 at head 98490673e2fab4f292d0473a6ea6189e0f0dda89, and implementation merge f8cc9932fad3e2fc10cbe74f8e3451e75a33747c. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MVPS interstitial gate overriding strict order, so MVPS-11 is selected_not_started until a later MVPS-specific Continue."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -100,7 +100,7 @@
     "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS3.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
     "generated_main_writers": "CI/bots/generated-content jobs may not push directly to protected main; generated outputs must be present on the queue-bound candidate branch or validation fails closed."
   },
-  "next_project_action": "Continue the owner-requested MVPS-10 tranche through causal RED, bounded implementation, exact-head validation/publication and closeout. MSAS-03 remains selected_not_started and MRCS-01 remains independently in_progress; same-repository publication stays FIFO-serialized.",
+  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MVPS-11 is selected_not_started, MSAS-03 is independently selected_not_started, and MRCS-01 remains independently in_progress; same-repository publication stays FIFO-serialized.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
