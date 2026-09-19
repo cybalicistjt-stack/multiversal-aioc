@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS3-09",
+  "title": "Persistent Implementation Lane Topology Repair",
+  "status": "in_progress",
+  "owner_directive": "Replace the obsolete persistent lane topology with three independent parallel implementation lanes for MSAS, MRCS and MVPS. UISR-11 remains completed and must not occupy a persistent implementation slot. Preserve already-govern-started MSAS-01 exactly and preserve MVPS-10 selected_not_started while adding MRCS-01 selected_not_started.",
+  "reproduced_failures": [
+    "CURRENT and LANES still define product-development, ui-implementation and player-species as the three persistent lanes even though UISR-11 completed and MSAS/MRCS/MVPS are the owner-approved parallel-safe workstreams.",
+    "The obsolete product-development umbrella serializes MSAS and MRCS selection even though ROADMAP_DEPENDENCY_GRAPH.json explicitly marks MCS/MCCS/MRCS/MSAS parallel-safe.",
+    "A new MRCS conversation could incorrectly replace or pause MSAS because MRCS has no independent persistent selector."
+  ],
+  "repair_scope": [
+    "Create independent canonical persistent lanes msas, mrcs and mvps.",
+    "Preserve MSAS-01 in_progress checkpoint/branch/authority without mutation.",
+    "Preserve MVPS-10 selected_not_started checkpoint and add MRCS-01 selected_not_started checkpoint.",
+    "Retire UISR from the persistent-lane set while preserving UISR-11 completion evidence as completed program history.",
+    "Update bootstrap, operating contract, lane registry, CURRENT, validators, compatibility projections and regression tests so future conversations cannot silently collapse the three workstreams.",
+    "Do not change product implementation code or start MRCS-01/MVPS-10 during this operations repair."
+  ],
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start_candidate",
+      "evidence": "OPS3-09 start candidate preserves MSAS-01 in_progress while temporarily blocking only new implementation starts."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  },
+  "implementation_authority": true,
+  "completed": false,
+  "active_substep": "governed_start_publication",
+  "next_action": "Publish this governed start through the AIOC FIFO, then implement and validate the MSAS/MRCS/MVPS persistent-lane topology repair and close it out in the same owner Continue."
+}
