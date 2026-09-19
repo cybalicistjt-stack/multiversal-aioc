@@ -35,16 +35,16 @@
     "MSAS and MVPS lane selectors/branches/authority are independent and must not be rewritten by MRCS work."
   ],
   "active_substep": "green_exact_head_validation",
-  "next_action": "Validate exact head e6d9643a2dfb63c0d62aa216593ae6220d3c6312 under MRCS-03 profile; require focused MRCS-03, MRCS-01 regression, typecheck, and cross-platform comparison to pass before READY submission.",
+  "next_action": "Validate exact head a66f677a41e5500630f9668fba3732d2fcd4aaab under MRCS-03 profile and require full cross-platform GREEN plus deterministic comparison before READY queue submission.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 5,
+    "material_progress_seq": 6,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "kind": "test_scope_repair",
-      "evidence": "Run 35474278702 isolated one non-product ambiguity in clone status test; scoped assertion to MRCS workspace at e6d9643a2dfb63c0d62aa216593ae6220d3c6312."
+      "kind": "typecheck_causal_repair",
+      "evidence": "Behavior suites green on run 35474316653; client typecheck failed on version parser intersection and was causally repaired at a66f677a41e5500630f9668fba3732d2fcd4aaab."
     },
     "active_stall": false,
     "terminal_response_allowed": false,

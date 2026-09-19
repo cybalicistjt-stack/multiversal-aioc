@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0.0",
   "lane": "mrcs",
-  "revision": 6,
+  "revision": 7,
   "selected_work_item": "MRCS-03",
   "attempt_id": "MRCS-03-attempt-001",
   "execution_status": "in_progress",
   "implementation_branch": "feature/mrcs-03-guided-forge-authoring",
-  "progress_seq": 5,
+  "progress_seq": 6,
   "last_progress": {
-    "kind": "test_scope_repair",
-    "evidence": "Exact-head run 35474278702 at f3f7ea0f74f0e8c9804697d29a8c9e2360269926 passed 4/5 MRCS-03 tests; only clone status assertion failed because Candidate Content also exposes role=status. Narrowed assertion to MRCS workspace in e6d9643a2dfb63c0d62aa216593ae6220d3c6312 without weakening behavior."
+    "kind": "typecheck_causal_repair",
+    "evidence": "Run 35474316653 at head e6d9643a2dfb63c0d62aa216593ae6220d3c6312 passed MRCS-03 focused tests and MRCS-01 regression, then failed client typecheck because parser typing intersected mutually exclusive draft schema versions into never. Repaired only that cast to a discriminated union at a66f677a41e5500630f9668fba3732d2fcd4aaab."
   },
   "terminal": false
 }
