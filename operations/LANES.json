@@ -15,12 +15,14 @@
       ],
       "current_state_source": "operations/CURRENT.json#/lanes/msas",
       "source_bundle": [
-        "current referenced MSAS work item/checkpoint",
+        "CURRENT-selected MSAS work item/checkpoint",
+        "live lane execution state from ops3-lane-state/msas",
         "governance/application-planning/multiversal-sound-audio-studio/MSAS_PROGRAM_BACKLOG.json",
         "AAI/PCA/DWC and other owner contracts named by the selected MSAS item",
         "live application repository evidence limited to active MSAS scope"
       ],
-      "cross_lane_reads": "Read MRCS/MVPS only for explicit dependencies or publication conflicts. MSAS execution never pauses, replaces or rewrites MRCS or MVPS."
+      "cross_lane_reads": "Read MRCS/MVPS only for explicit dependencies or publication conflicts. MSAS execution never pauses, replaces or rewrites MRCS or MVPS.",
+      "execution_state_ref": "ops3-lane-state/msas"
     },
     {
       "id": "mrcs",
@@ -33,13 +35,15 @@
       ],
       "current_state_source": "operations/CURRENT.json#/lanes/mrcs",
       "source_bundle": [
-        "current referenced MRCS work item/checkpoint",
+        "CURRENT-selected MRCS work item/checkpoint",
+        "live lane execution state from ops3-lane-state/mrcs",
         "governance/application-planning/multiversal-rules-content-studio/MRCS_MULTIVERSAL_RULES_CONTENT_STUDIO_PROGRAM.md",
         "governance/application-planning/multiversal-rules-content-studio/MRCS_PROGRAM_BACKLOG.json",
         "only owner-domain/PDCP/CAB/Content Forge sources named by the selected MRCS item",
         "live application repository evidence limited to active MRCS scope"
       ],
-      "cross_lane_reads": "Read MSAS/MVPS only for explicit dependencies or publication conflicts. MRCS execution never pauses, replaces or rewrites MSAS or MVPS."
+      "cross_lane_reads": "Read MSAS/MVPS only for explicit dependencies or publication conflicts. MRCS execution never pauses, replaces or rewrites MSAS or MVPS.",
+      "execution_state_ref": "ops3-lane-state/mrcs"
     },
     {
       "id": "mvps",
@@ -52,13 +56,15 @@
       ],
       "current_state_source": "operations/CURRENT.json#/lanes/mvps",
       "source_bundle": [
-        "current referenced MVPS work item/checkpoint",
+        "CURRENT-selected MVPS work item/checkpoint",
+        "live lane execution state from ops3-lane-state/mvps",
         "governance/application-planning/player-species/MVPS_PLAYER_SPECIES_PROGRAM.md",
         "governance/application-planning/player-species/MVPS_PROGRAM_BACKLOG.json",
         "Project/Feature/UI/Screen Bibles and DB-004 references named by the active MVPS item",
         "live application repository evidence limited to active MVPS scope"
       ],
-      "cross_lane_reads": "Consume shared owner contracts as explicit dependencies. Read MSAS/MRCS only for explicit dependencies or publication conflicts; do not mutate their selectors."
+      "cross_lane_reads": "Consume shared owner contracts as explicit dependencies. Read MSAS/MRCS only for explicit dependencies or publication conflicts; do not mutate their selectors.",
+      "execution_state_ref": "ops3-lane-state/mvps"
     },
     {
       "id": "operations",
@@ -157,5 +163,5 @@
     "ui-implementation": "UISR-11 completed_verified. UISR is completed program history, not a persistent implementation lane.",
     "player-species": "Retired alias for canonical mvps lane."
   },
-  "parallel_persistence_rule": "MSAS, MRCS and MVPS are the three independent persistent implementation lanes. They may execute concurrently on distinct branches; same-repository publication is serialized by the OPS3 FIFO queue. Completion or idleness of one never collapses or rewrites either other lane."
+  "parallel_persistence_rule": "MSAS, MRCS and MVPS are independent persistent implementation lanes with separate lane-state refs. They implement and validate concurrently; only immutable green READY candidates enter repository-local FIFO publication order. There is no future reservation or active publication holder."
 }
