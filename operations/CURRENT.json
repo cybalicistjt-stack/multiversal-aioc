@@ -6,33 +6,33 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 240,
+  "state_revision": 241,
   "default_lane": "product-development",
-  "active_operations_work_item": null,
-  "active_operations_work_item_path": null,
+  "active_operations_work_item": "OPS3-08",
+  "active_operations_work_item_path": "operations/work-items/OPS3-08.json",
   "product_start_freeze": {
-    "active": false,
-    "reason": "OPS3-01 completed_verified after repository, ChatGPT Project Source, and owner-confirmed Project entry-surface cutover",
-    "preserved_selected_work_item": "MIB-17",
-    "preserved_attempt_id": "MIB-17-attempt-001",
+    "active": true,
+    "reason": "OPS3-08 repairs stale DAG/frontier selectors, protected-main liveness, no-progress visibility, and an Actions direct-main writer before another product governed start.",
+    "preserved_selected_work_item": "MSAS-01",
+    "preserved_attempt_id": "MSAS-01-attempt-001",
     "implementation_authority": false,
-    "cleared_by": "OPS3-01 completed_verified"
+    "cleared_by": null
   },
   "lanes": {
     "operations": {
-      "state": "completed_verified",
-      "work_item_id": "OPS3-07",
-      "work_item_path": "operations/work-items/OPS3-07.json",
-      "implementation_authority": false
+      "state": "in_progress",
+      "work_item_id": "OPS3-08",
+      "work_item_path": "operations/work-items/OPS3-08.json",
+      "implementation_authority": true
     },
     "product-development": {
-      "state": "in_progress",
-      "selected_work_item": "MNCS-20",
-      "attempt_id": "MNCS-20-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MNCS-20-attempt-001.json",
-      "implementation_branch": "work/mncs-20-continuity-change-resolution",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue on 2026-09-19 govern-started MNCS-20 under OPS3 protected-main FIFO. Execute continuity, Event-linked advancement, life/ecology change and progressive-resolution management through causal RED, GREEN, exact-head proof, FIFO publication, fresh successor reconciliation and queue-bound AIOC closeout. Preserve UI and player-species lanes exactly."
+      "state": "selected_not_started",
+      "selected_work_item": "MSAS-01",
+      "attempt_id": "MSAS-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MSAS-01-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "OPS3-08 live DAG/frontier recovery recognizes terminal MNCS-24 and already-completed MAS-21, verifies MSAS start gates, and selects MSAS-01 without starting it. A later product-development owner Continue is required after OPS3-08 closeout clears the repair freeze."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -77,7 +77,11 @@
     "cross_program_successor_rule": "Before successor selection, consult governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json. Individual program strict_successor or backlog fields cannot skip an eligible interstitial program or override cross-program gates.",
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "Persistent implementation lanes may be simultaneously active. Lane selection is per conversation; no lane loses authority merely because another lane is active. Same-repository publication uses the OPS3 FIFO reservation queue: reserve first, prepare/reconcile/validate only when the reservation activates, then merge/release before the next turn. MVPS/player-species and product lanes remain independently selectable.",
-    "protected_main_interlock": "For cybalicistjt-stack/Multiversal-app and cybalicistjt-stack/multiversal-aioc, every main mutation participates in the repository-local FIFO queue. Direct main writes are prohibited. Once a turn activates, target main is frozen at turn_base for all other lanes/executors; unexpected advancement is OPS3.PROTECTED_MAIN_BYPASS and must be diagnosed rather than normalized by holder rebase/yield/re-reserve."
+    "protected_main_interlock": "For cybalicistjt-stack/Multiversal-app and cybalicistjt-stack/multiversal-aioc, every main mutation participates in the repository-local FIFO queue. Direct main writes are prohibited. Once a turn activates, target main is frozen at turn_base for all other lanes/executors; unexpected advancement is OPS3.PROTECTED_MAIN_BYPASS and must be diagnosed rather than normalized by holder rebase/yield/re-reserve.",
+    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: product-development, ui-implementation, and player-species. Completion or idleness never collapses one into another.",
+    "active_turn_liveness": "Protected-main publication turns carry bounded material-progress liveness. A stale active turn cannot merge or cosmetically renew; it must be recovery-released or stalled-turn recovered according to scripts/ops3_merge_lease.py.",
+    "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS3.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
+    "generated_main_writers": "CI/bots/generated-content jobs may not push directly to protected main; generated outputs must be present on the queue-bound candidate branch or validation fails closed."
   },
-  "next_project_action": "Execute MNCS-20 — Continuity, Events, Advancement, Life/Ecology Change & Resolution Management — under protected-main FIFO through causal RED/GREEN, exact-head validation, application publication and queue-bound closeout."
+  "next_project_action": "Complete OPS3-08 validation/publication and closeout. Product-development is repaired to MSAS-01 selected_not_started under a temporary repair freeze; player-species remains MVPS-10 selected_not_started and ui-implementation remains independently completed_verified."
 }

@@ -50,12 +50,22 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertEqual(current["operating_contract"], "operations/OPERATING_CONTRACT.md")
         self.assertEqual(current["lane_registry"], "operations/LANES.json")
         self.assertEqual(current["status"], "completed_verified")
-        self.assertIsNone(current["active_operations_work_item"])
-        self.assertFalse(current["product_start_freeze"]["active"])
-        self.assertEqual(current["product_start_freeze"]["preserved_selected_work_item"], "MIB-17")
-        self.assertFalse(current["product_start_freeze"]["implementation_authority"])
-        self.assertEqual(current["lanes"]["operations"]["state"], "completed_verified")
-        self.assertFalse(current["lanes"]["operations"]["implementation_authority"])
+        operations = current["lanes"]["operations"]
+        freeze = current["product_start_freeze"]
+        self.assertFalse(freeze["implementation_authority"])
+        if current["active_operations_work_item"] is None:
+            self.assertIsNone(current["active_operations_work_item_path"])
+            self.assertFalse(freeze["active"])
+            self.assertEqual(operations["state"], "completed_verified")
+            self.assertFalse(operations["implementation_authority"])
+        else:
+            self.assertEqual(operations["work_item_id"], current["active_operations_work_item"])
+            self.assertEqual(operations["work_item_path"], current["active_operations_work_item_path"])
+            self.assertEqual(operations["state"], "in_progress")
+            self.assertTrue(operations["implementation_authority"])
+            self.assertTrue(freeze["active"])
+            self.assertEqual(freeze["preserved_selected_work_item"], current["lanes"]["product-development"]["selected_work_item"])
+            self.assertEqual(freeze["preserved_attempt_id"], current["lanes"]["product-development"]["attempt_id"])
 
         product = current["lanes"]["product-development"]
         self.assertIn(product["state"], {"selected_not_started", "in_progress", "completed_verified"})
@@ -273,20 +283,24 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertEqual(pointer["active_attempt"]["status"], product["state"])
         self.assertEqual(pointer["active_attempt"]["implementation_branch"], product["implementation_branch"])
         self.assertEqual(pointer["active_attempt"]["implementation_authority"], product["implementation_authority"])
-        self.assertEqual(pointer["exclusive_control_plane_maintenance"]["status"], "completed_verified")
-        self.assertFalse(pointer["exclusive_control_plane_maintenance"]["feature_starts_blocked"])
+        operations = current["lanes"]["operations"]
+        blocked = bool(current["product_start_freeze"]["active"])
+        self.assertEqual(pointer["exclusive_control_plane_maintenance"]["work_item_id"], operations["work_item_id"])
+        self.assertEqual(pointer["exclusive_control_plane_maintenance"]["status"], operations["state"])
+        self.assertEqual(pointer["exclusive_control_plane_maintenance"]["feature_starts_blocked"], blocked)
 
         authority = self._json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
         self.assertTrue(authority["projection_only"])
-        self.assertEqual(authority["active_operations_work"]["state"], "completed_verified")
-        self.assertFalse(authority["active_operations_work"]["implementation_authority"])
+        self.assertEqual(authority["active_operations_work"]["work_item"], operations["work_item_id"])
+        self.assertEqual(authority["active_operations_work"]["state"], operations["state"])
+        self.assertEqual(authority["active_operations_work"]["implementation_authority"], operations["implementation_authority"])
         projection = authority["preserved_product_selection"]
         self.assertEqual(projection["work_item"], product["selected_work_item"])
         self.assertEqual(projection["attempt_id"], product["attempt_id"])
         self.assertEqual(projection["state"], product["state"])
         self.assertEqual(projection["implementation_branch"], product["implementation_branch"])
         self.assertEqual(projection["implementation_authority"], product["implementation_authority"])
-        self.assertFalse(projection["feature_starts_blocked"])
+        self.assertEqual(projection["feature_starts_blocked"], blocked)
 
     def test_generated_compatibility_manifest_declares_only_two_outputs(self) -> None:
         manifest = self._json("operations/GENERATED_COMPATIBILITY_PROJECTIONS.json")
@@ -338,6 +352,18 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
                 Path("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json"),
             ),
         )
+
+    def test_three_persistent_implementation_lanes_are_never_collapsed(self) -> None:
+        lanes = self._json("operations/LANES.json")
+        self.assertEqual(lanes["persistent_implementation_lanes"], ["product-development","ui-implementation","player-species"])
+        current = self._json("operations/CURRENT.json")
+        for lane_id in lanes["persistent_implementation_lanes"]:
+            self.assertIn(lane_id, current["lanes"])
+
+    def test_repository_health_workflow_never_pushes_generated_content_directly_to_main(self) -> None:
+        workflow = self._text(".github/workflows/validate-repository-health.yml")
+        self.assertNotIn("git push origin HEAD:main", workflow)
+        self.assertIn("OPS3 forbids CI/bot direct pushes to protected main", workflow)
 
 
 if __name__ == "__main__":

@@ -93,6 +93,27 @@ const semanticFingerprint = sha256(JSON.stringify(semanticProjection));
 if (index.semanticFingerprint !== semanticFingerprint) fail('Index semantic fingerprint mismatch.');
 if (manifest.semanticFingerprint !== semanticFingerprint) fail('Manifest semantic fingerprint mismatch.');
 
+let certifiedAt = new Date().toISOString();
+for (const previousPath of [
+  path.join(EVIDENCE_DIR, 'latest-certificate.json'),
+  path.join(DB_DIR, 'certification.json')
+]) {
+  try {
+    const previous = JSON.parse(await fs.readFile(previousPath, 'utf8'));
+    if (
+      previous.sourceDigest === sourceSet.sourceSetDigest &&
+      previous.semanticFingerprint === semanticFingerprint &&
+      typeof previous.certifiedAt === 'string' &&
+      previous.certifiedAt
+    ) {
+      certifiedAt = previous.certifiedAt;
+      break;
+    }
+  } catch {
+    // Try the next durable prior-certificate location.
+  }
+}
+
 const certificate = {
   format: 'multiversal-content-pipeline-certificate',
   version: '3.1.0',
@@ -100,7 +121,7 @@ const certificate = {
   certificationScope: CERTIFICATION_SCOPE,
   gameReadinessAuthority: GAME_READINESS_AUTHORITY,
   result: 'PASS',
-  certifiedAt: new Date().toISOString(),
+  certifiedAt,
   recordCount: index.recordCount,
   baselineRecordCount: sourceSet.baselineRecordCount,
   appendedRecordCount: sourceSet.appendedRecordCount,

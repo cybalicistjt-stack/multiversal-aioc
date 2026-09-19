@@ -2,7 +2,7 @@
   "schema_version": "0.2.0",
   "program_id": "MNCS",
   "program_name": "Multiversal NPC & Creature Studio",
-  "status": "active_under_ops3",
+  "status": "completed_verified",
   "activation_after": "MCCS-21",
   "successor": "MAS-01",
   "owner": "John Brandon Turner",
@@ -159,7 +159,7 @@
     {
       "id": "MNCS-20",
       "name": "Continuity, Events, Advancement, Life/Ecology Change & Resolution Management",
-      "status": "in_progress",
+      "status": "completed_verified",
       "estimated_active_minutes": 16,
       "absorbs_baseline": [
         "MNCS-20",
@@ -172,7 +172,7 @@
     {
       "id": "MNCS-22",
       "name": "Governed Runtime Handoff & MAS Cast Integration",
-      "status": "planned",
+      "status": "completed_verified",
       "estimated_active_minutes": 16,
       "absorbs_baseline": [
         "MNCS-22"
@@ -184,7 +184,7 @@
     {
       "id": "MNCS-24",
       "name": "Golden Progressive NPC/Creature Generation & Campaign-Continuity Proof",
-      "status": "planned",
+      "status": "completed_verified",
       "estimated_active_minutes": 16,
       "absorbs_baseline": [
         "MNCS-24"
@@ -282,7 +282,14 @@
     "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_06_MULTIRES_SIMULATION_DESIGN_CLOSURE.md",
     "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md"
   ],
-  "current_item": "MNCS-20",
-  "current_attempt": "MNCS-20-attempt-001",
-  "completed_through": "MNCS-18"
+  "current_item": null,
+  "current_attempt": null,
+  "completed_through": "MNCS-24",
+  "ops3_reconciliation": {
+    "repaired_by": "OPS3-08",
+    "reason": "Stale family backlog incorrectly caused a completed MNCS-20 tranche to be re-selected after MCCS-21. Live terminal checkpoints prove MNCS-20, MNCS-22 and MNCS-24 completed before that re-entry.",
+    "terminal_checkpoint": "governance/ai/work-state/MNCS-24-attempt-001.json",
+    "corrective_amendment_merge": "3c40f0ddbc4abe5940e760f0ef9dd3a58f8608bd",
+    "successor_frontier": "MSAS-01 selected_not_started after DAG reconciliation; MAS-21 is already completed_verified."
+  }
 }

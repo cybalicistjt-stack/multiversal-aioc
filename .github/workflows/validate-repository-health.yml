@@ -198,23 +198,22 @@ jobs:
           set -euo pipefail
           node tests/validate-content-library-staging.mjs
 
-      - name: Publish certified generated content DB and runtime evidence on main
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      - name: Enforce certified generated content is already in the candidate
         shell: bash
         run: |
           set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A content-db \
             evidence/content-pipeline/latest-certificate.json \
             evidence/content-pipeline/beacon-debt-golden-diagnostics.json \
             evidence/content-pipeline/beacon-debt-runtime-instantiated.json
           if git diff --cached --quiet; then
-            echo 'Generated canonical content DB and runtime evidence already match certified output.'
+            echo 'Generated canonical content DB and runtime evidence already match the validated candidate.'
             exit 0
           fi
-          git commit -m 'chore: publish certified generated content and Beacon Debt runtime snapshot [skip ci]'
-          git push origin HEAD:main
+          echo 'Generated outputs differ from the candidate. OPS3 forbids CI/bot direct pushes to protected main.' >&2
+          echo 'Materialize these generated outputs on the queue-bound publication branch, then revalidate.' >&2
+          git diff --cached --stat >&2
+          exit 1
 
       - name: Upload certified canonical content evidence
         if: always()

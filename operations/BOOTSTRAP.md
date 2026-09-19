@@ -58,11 +58,15 @@ Before returning a normal terminal response for an execution command:
 
 Multiple owner Continues or owner stall nudges are execution-quality incidents and must be recorded truthfully; they may not be certified as clean single-Continue execution.
 
+A repeated owner execution command on the same in-progress attempt is not a fresh cycle by default. Compare the checkpoint's material-progress sequence with the sequence observed at the prior execution command. If nothing material changed, record `OPS3.NO_MATERIAL_PROGRESS` and enter stall diagnosis/recovery before doing more ordinary work. Polling, unchanged reads, or restating status do not count as progress. Status requests must report the current progress receipt and any held publication turn so the owner can distinguish active work from a stall.
+
 ## 8. Publication serialization
 
 Before any executor mutates `main` in `cybalicistjt-stack/Multiversal-app` or `cybalicistjt-stack/multiversal-aioc`, follow the FIFO publication-reservation protocol in `operations/OPERATING_CONTRACT.md` using `scripts/ops3_merge_lease.py`. This includes product merges, OPS3/control-plane closeout, `CURRENT.json` or checkpoint projection, compatibility projection, operations repair, and any contents/ref write. Protected `main` is never a direct-write surface.
 
 Reserve one queue turn first. If another reservation is ahead, wait without rebasing/reconciling/revalidating a publication candidate. When the reservation becomes first, activate it against the fresh target `main`; only then prepare/reconcile once from that `turn_base`, validate while holding the publication window, bind the exact validated head/base, merge, verify the durable result, and release so the next reservation can activate. From activation until that exact merge or an explicit yield, target `main` is frozen at `turn_base` for every other lane and executor. If it advances anyway, treat that as an OPS3 protocol breach and diagnose the bypassing writer; do not normalize the breach by making the holder rebase/yield/re-reserve. Never force the coordination ref, skip the queue, or merge around the active holder. If the originating conversation stalls after a durable verified merge but before release, a replacement executor must record a durable recovery pointer and recovery-release that completed turn; a finished holder may not strand the FIFO queue.
+
+An activated FIFO turn also has bounded liveness. Future schema-2.1 turns carry material progress timestamps/evidence and a 900-second idle limit. A stale turn cannot merge or be cosmetically revived; a replacement executor must recovery-release it after a completed merge or recover the unmerged turn only after proving target `main` is still `turn_base`. Generated-content or CI jobs must never push directly to protected `main`; generated outputs belong in the queue-bound candidate branch.
 
 ## 9. Evidence and completion
 

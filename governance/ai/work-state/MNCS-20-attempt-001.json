@@ -7,9 +7,9 @@
   "track": "multiversal-npc-creature-studio",
   "source_program": "MNCS",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
-  "implementation_authority": true,
-  "implementation_branch": "work/mncs-20-continuity-change-resolution",
+  "status": "completed_verified",
+  "implementation_authority": false,
+  "implementation_branch": null,
   "selected_by_verified_predecessor": "MNCS-18",
   "predecessor": {
     "work_item_id": "MNCS-18",
@@ -38,22 +38,37 @@
     "MNCS-22+ remain unauthorized until separately selected.",
     "ui-implementation and player-species lanes remain independently governed."
   ],
-  "active_substep": "application_publication_reservation",
-  "next_action": "After this queue-bound governed-start publishes, reserve and activate the separate Multiversal-app FIFO turn before preparing the MNCS-20 causal RED candidate.",
+  "active_substep": "completed_verified",
+  "next_action": "MNCS-20 remains completed_verified as originally published in PR 592. PR 616 is retained only as a validated post-completion identity/Event-history hardening amendment; it did not reopen the MNCS tranche. MNCS remains terminal through MNCS-24.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "material_progress_seq": 4,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 4,
+      "kind": "repair_reconciliation",
+      "evidence": "OPS3-08 restored original MNCS-20 completion and classified PR 616 as post-completion corrective amendment."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Original MNCS-20 PR 592 validated successfully in run 35366936905 and merged as bda4936f828e636cdc8eb1ae104b0c620b0152e1 with tree b2cee1395c650eb56f857ff1a1e494495519e024; later PR 616/run 35433914921/merge 3c40f0ddbc4abe5940e760f0ef9dd3a58f8608bd is retained as a corrective amendment, not a tranche re-entry."
+    }
   },
-  "completed": false,
+  "completed": true,
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "completed_verified_with_process_violation",
+    "policy_violations": [
+      "OPS3.DAG_REENTRY_SELECTION_ERROR"
+    ],
+    "note": "MCCS-21 closeout incorrectly re-entered already-completed MNCS-20 from a stale family backlog instead of reconciling DAG plus terminal checkpoints. OPS3-08 repairs the selector without discarding the separately validated corrective amendment."
   },
   "governed_start": {
     "aioc_turn_base": "7d06714df30116d85b023c3f52fcf62179407cf3",
@@ -62,5 +77,21 @@
     "owner_command": "Continue",
     "started_on": "2026-09-19",
     "application_branch": "work/mncs-20-continuity-change-resolution"
+  },
+  "original_completion_evidence": {
+    "application_pr": 592,
+    "application_validated_head": "57b0948815d227783eeaf748c6a8a7d6bf004b6e",
+    "application_validation_run": 35366936905,
+    "application_merge_sha": "bda4936f828e636cdc8eb1ae104b0c620b0152e1",
+    "validated_tree_sha": "b2cee1395c650eb56f857ff1a1e494495519e024"
+  },
+  "corrective_amendment": {
+    "disposition": "retained_post_completion_hardening_not_tranche_reentry",
+    "application_pr": 616,
+    "application_validated_head": "44f11ceca6c36d3ba7c8930a5942a976547e9464",
+    "application_validation_run": 35433914921,
+    "application_merge_sha": "3c40f0ddbc4abe5940e760f0ef9dd3a58f8608bd",
+    "validated_tree_sha": "f4d3e5f0afbc3cf3ef99f67e53b73525e9885601",
+    "purpose": "Tighten stable identity and authoritative Event-history preservation during progressive-resolution detail add/retire semantics."
   }
 }

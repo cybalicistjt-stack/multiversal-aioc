@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.0.0",
+  "schema_version": "3.1.0",
   "canonical_door": "operations/BOOTSTRAP.md",
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "selection_rule": "User intent selects a lane; lane state never changes the global operating contract.",
@@ -144,5 +144,11 @@
       ],
       "cross_lane_reads": "Source evidence may inform other lanes but does not select their work."
     }
-  ]
+  ],
+  "persistent_implementation_lanes": [
+    "product-development",
+    "ui-implementation",
+    "player-species"
+  ],
+  "parallel_persistence_rule": "These three persistent implementation lanes remain independent OPS3 lanes even when one is completed or idle; operations repair may reconcile selectors but may not collapse the topology."
 }
