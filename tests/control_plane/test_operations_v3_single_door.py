@@ -371,6 +371,21 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertNotIn("git push origin HEAD:main", workflow)
         self.assertIn("OPS3 forbids CI/bot direct pushes to protected main", workflow)
 
+    def test_ready_then_queue_and_lane_state_are_canonical(self) -> None:
+        current = self._json("operations/CURRENT.json")
+        bootstrap = self._text("operations/BOOTSTRAP.md")
+        contract = self._text("operations/OPERATING_CONTRACT.md")
+        for lane_id in ("msas", "mrcs", "mvps"):
+            self.assertEqual(current["lanes"][lane_id]["execution_state_ref"], f"ops3-lane-state/{lane_id}")
+        self.assertIn("Ready-then-queue publication", bootstrap)
+        self.assertIn("ready-candidate publication queue", contract)
+        self.assertIn("there is no release step", contract)
+        self.assertNotIn("Reserve one queue turn first", bootstrap)
+        self.assertNotIn("reserve a publication turn first", contract)
+        self.assertIn("Executor/session interruption rule", bootstrap)
+        self.assertIn("A chat/session/tool runtime is never a project dependency", bootstrap)
+
+
 
 if __name__ == "__main__":
     unittest.main()
