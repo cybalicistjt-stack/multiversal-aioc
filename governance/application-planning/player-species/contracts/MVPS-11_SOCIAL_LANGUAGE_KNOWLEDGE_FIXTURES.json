@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_scope": "MVPS-11 social, language and identity-knowledge semantic proof",
+  "non_canon": true,
+  "cases": {
+    "culture_adjacent_not_biology": {
+      "input": {
+        "species_ref": "species:example@1",
+        "source_section": "culture",
+        "statement": "community language practice"
+      },
+      "expected": {
+        "classification": "culture_context",
+        "immutable_biology": false,
+        "behavior_inferred": false
+      }
+    },
+    "biological_signal_not_learned_language": {
+      "input": {
+        "species_ref": "species:signal-organism@1",
+        "communication_capability_ref": "capability:pheromone-signal@1",
+        "learned_language_ref": null
+      },
+      "expected": {
+        "status": "valid_biological_communication",
+        "language_proficiency_granted": false
+      }
+    },
+    "learned_language_owner_handoff": {
+      "input": {
+        "species_ref": "species:example@1",
+        "language_ref": "language:trade-common@3",
+        "acquisition_ref": "knowledge:language-training@2"
+      },
+      "expected": {
+        "status": "owner_deferred",
+        "owner": "Language/Knowledge/Progression owning domain",
+        "immutable_biology": false
+      }
+    },
+    "relationship_reputation_owner_deferred": {
+      "input": {
+        "species_ref": "species:example@1",
+        "relationship_context_ref": "social:historical-contact@1"
+      },
+      "expected": {
+        "status": "owner_deferred",
+        "relationship_owner": "MV-IA-F009 / Relationship owner",
+        "reputation_owner": "MV-IA-F016 / Faction-Reputation owner",
+        "state_mutated": false
+      }
+    },
+    "observer_hidden_identity": {
+      "input": {
+        "subject_ref": "character:hidden-species@1",
+        "observer_ref": "character:outsider@1",
+        "visibility_policy_ref": "visibility:concealed-species@1"
+      },
+      "expected": {
+        "status": "filtered",
+        "visible_identity": "hidden",
+        "canonical_identity_changed": false,
+        "hidden_count_leaked": false
+      }
+    },
+    "observer_misidentification_without_truth_mutation": {
+      "input": {
+        "subject_ref": "character:shape-disguised@1",
+        "observer_ref": "character:witness@1",
+        "observer_belief": "species:human@1",
+        "canonical_species_ref": "species:shapeshifter@4"
+      },
+      "expected": {
+        "status": "misidentified",
+        "canonical_identity_unchanged": true,
+        "belief_marked_nontruth": true
+      }
+    },
+    "unknown_social_identity_fact_unresolved": {
+      "input": {
+        "species_ref": "species:fragmentary-source@1",
+        "law_status_ref": null,
+        "faction_context_ref": null
+      },
+      "expected": {
+        "status": "unresolved",
+        "fact_inferred": false
+      }
+    }
+  },
+  "proof_notes": [
+    "Species files may contain culture/language/social material without making it biology.",
+    "Biological communication capability does not automatically create learned-language proficiency.",
+    "Relationship, reputation, faction, law and knowledge state remain shared-owner truth.",
+    "Observer belief or concealment changes projection, never canonical SpeciesDefinition identity."
+  ]
+}
