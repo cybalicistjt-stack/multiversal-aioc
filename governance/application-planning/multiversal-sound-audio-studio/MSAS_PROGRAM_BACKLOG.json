@@ -2,7 +2,7 @@
   "schema_version": "0.3.0",
   "program_id": "MSAS",
   "program_name": "Multiversal Sound & Audio Studio",
-  "status": "owner_approved_planned",
+  "status": "selected_not_started",
   "activation_after": "MAS-21",
   "successor": "MRCS-01",
   "owner": "John Brandon Turner",
@@ -16,7 +16,10 @@
     "reduced_tranche_count": 11,
     "receipt": "governance/application-planning/preimplementation-design-closure/PDCP_MSAS_REDUCTION_RECEIPT.json",
     "family_design_closure": "governance/application-planning/preimplementation-design-closure/PDCP_MSAS_FAMILY_DESIGN_CLOSURE.md",
-    "stable_milestones": ["MSAS-01", "MSAS-21"],
+    "stable_milestones": [
+      "MSAS-01",
+      "MSAS-21"
+    ],
     "capability_loss_detected": false
   },
   "execution_design": {
@@ -26,19 +29,131 @@
     "split_rule": "Split before governed start if a surviving tranche cannot credibly preserve the closeout reserve.",
     "retry_rule": "Do not rerun an unchanged deterministic failure; require changed evidence before retry."
   },
-  "strict_order": ["MSAS-01","MSAS-03","MSAS-04","MSAS-05","MSAS-07","MSAS-09","MSAS-12","MSAS-14","MSAS-15","MSAS-18","MSAS-21"],
+  "strict_order": [
+    "MSAS-01",
+    "MSAS-03",
+    "MSAS-04",
+    "MSAS-05",
+    "MSAS-07",
+    "MSAS-09",
+    "MSAS-12",
+    "MSAS-14",
+    "MSAS-15",
+    "MSAS-18",
+    "MSAS-21"
+  ],
   "tranches": [
-    {"id":"MSAS-01","name":"Audio Studio Workspace, Session Graph & Authority","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSAS-01","MSAS-02"]},
-    {"id":"MSAS-03","name":"Waveform, Timeline, Multitrack & Nonlinear Editing","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSAS-03"]},
-    {"id":"MSAS-04","name":"Mixing, Routing, DSP Intent, Metering & Master/Accessibility Validation","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSAS-04","MSAS-16"]},
-    {"id":"MSAS-05","name":"Music Composition & Adaptive-Music Authoring","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSAS-05","MSAS-06"]},
-    {"id":"MSAS-07","name":"SFX, Foley, Procedural One-Shot, Ambience & Soundscape Production","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSAS-07","MSAS-08"]},
-    {"id":"MSAS-09","name":"Semantic Audio Direction: Event/World/Combat Cue & State Graphs","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSAS-09","MSAS-10","MSAS-11"]},
-    {"id":"MSAS-12","name":"Dialogue, Voice, Pronunciation, Localization & Alternate-Voice Production","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSAS-12","MSAS-13"]},
-    {"id":"MSAS-14","name":"Spatial Audio, Emitters, Zones, Occlusion & Listener Preview","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSAS-14"]},
-    {"id":"MSAS-15","name":"Session Soundboard, Cue Stack, Playlist & Live-GM Audio Control","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSAS-15"]},
-    {"id":"MSAS-18","name":"Audio Asset Lifecycle, Interchange, Rights, Review & Publication","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSAS-18","MSAS-19","MSAS-20"],"absorbs_external_residuals":["MSAS-17 candidate provenance/review/publication"]},
-    {"id":"MSAS-21","name":"Golden Adaptive Audio Capability & Semantic-Integration Proof","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSAS-21"]}
+    {
+      "id": "MSAS-01",
+      "name": "Audio Studio Workspace, Session Graph & Authority",
+      "status": "selected_not_started",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSAS-01",
+        "MSAS-02"
+      ]
+    },
+    {
+      "id": "MSAS-03",
+      "name": "Waveform, Timeline, Multitrack & Nonlinear Editing",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSAS-03"
+      ]
+    },
+    {
+      "id": "MSAS-04",
+      "name": "Mixing, Routing, DSP Intent, Metering & Master/Accessibility Validation",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSAS-04",
+        "MSAS-16"
+      ]
+    },
+    {
+      "id": "MSAS-05",
+      "name": "Music Composition & Adaptive-Music Authoring",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSAS-05",
+        "MSAS-06"
+      ]
+    },
+    {
+      "id": "MSAS-07",
+      "name": "SFX, Foley, Procedural One-Shot, Ambience & Soundscape Production",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSAS-07",
+        "MSAS-08"
+      ]
+    },
+    {
+      "id": "MSAS-09",
+      "name": "Semantic Audio Direction: Event/World/Combat Cue & State Graphs",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSAS-09",
+        "MSAS-10",
+        "MSAS-11"
+      ]
+    },
+    {
+      "id": "MSAS-12",
+      "name": "Dialogue, Voice, Pronunciation, Localization & Alternate-Voice Production",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSAS-12",
+        "MSAS-13"
+      ]
+    },
+    {
+      "id": "MSAS-14",
+      "name": "Spatial Audio, Emitters, Zones, Occlusion & Listener Preview",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSAS-14"
+      ]
+    },
+    {
+      "id": "MSAS-15",
+      "name": "Session Soundboard, Cue Stack, Playlist & Live-GM Audio Control",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSAS-15"
+      ]
+    },
+    {
+      "id": "MSAS-18",
+      "name": "Audio Asset Lifecycle, Interchange, Rights, Review & Publication",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSAS-18",
+        "MSAS-19",
+        "MSAS-20"
+      ],
+      "absorbs_external_residuals": [
+        "MSAS-17 candidate provenance/review/publication"
+      ]
+    },
+    {
+      "id": "MSAS-21",
+      "name": "Golden Adaptive Audio Capability & Semantic-Integration Proof",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSAS-21"
+      ]
+    }
   ],
   "required_upstream": [
     "ARI family completed_verified",
@@ -54,7 +169,32 @@
     "DWC speech pronunciation/acoustic contracts available",
     "PDCP Packets 01..08 design_closed"
   ],
-  "integration_targets": ["AAI","DWC-SPEECH","ARI","PCA","World","Environment","Scene","Adventure","MAS","Combat","Dialogue","Action/Event","Character","MCCS","MCS","MNCS","CNI","Localization","Accessibility","MRCS","GPR","SMB-08","SMB-09","SAA"],
+  "integration_targets": [
+    "AAI",
+    "DWC-SPEECH",
+    "ARI",
+    "PCA",
+    "World",
+    "Environment",
+    "Scene",
+    "Adventure",
+    "MAS",
+    "Combat",
+    "Dialogue",
+    "Action/Event",
+    "Character",
+    "MCCS",
+    "MCS",
+    "MNCS",
+    "CNI",
+    "Localization",
+    "Accessibility",
+    "MRCS",
+    "GPR",
+    "SMB-08",
+    "SMB-09",
+    "SAA"
+  ],
   "boundaries": [
     "AAI remains audio asset, cue, soundscape, provider, playback, layering/mixer, availability, event-binding, permission, remote-sync, recording/streaming and interoperability authority",
     "DWC speech retains constructed-language pronunciation, exact-ID and governed acoustic-model authority",
@@ -85,5 +225,7 @@
     "governance/application-planning/preimplementation-design-closure/PDCP_MSAS_REDUCTION_RECEIPT.json",
     "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md",
     "governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md"
-  ]
+  ],
+  "current_item": "MSAS-01",
+  "current_attempt": "MSAS-01-attempt-001"
 }

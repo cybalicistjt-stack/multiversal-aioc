@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.5.0  
+**Version:** 3.6.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -46,6 +46,9 @@ When a conversation changes topics materially, reselect the lane once. Do not ca
 
 ### Parallel persistent lanes
 
+OPS3 permanently preserves three independent persistent implementation lanes: `product-development`, `ui-implementation`, and `player-species`. A lane may be `completed_verified`, `selected_not_started`, or `in_progress`, but completion or inactivity never deletes, folds into, or revokes either of the other persistent lanes. Operations work may repair their selectors without collapsing this three-lane topology.
+
+
 OPS3 may keep more than one persistent implementation lane active at once when the owner has explicitly separated the work streams.
 
 - Each conversation/executor still selects exactly one lane from user intent.
@@ -71,6 +74,14 @@ For a governed bounded execution, the active checkpoint carries `execution_guard
 Before a normal terminal response, the executor must fresh-read `operations/CURRENT.json` plus the active checkpoint and apply `scripts/ops3_execution_guard.py` or its exact equivalent. A response that would hand control back while authorized work or closeout remains is nonterminal and must not be emitted as the result of the Continue.
 
 A status request without execution wording is read-only. `get ready` means reconcile enough current state that the next `Continue` can execute without repeating broad discovery.
+
+### Material-progress anti-loop
+
+Every newly governed or repaired in-progress attempt must carry a machine-readable material-progress receipt in `execution_guard`: `material_progress_seq`, `progress_at_last_owner_command`, `no_progress_cycles`, `last_material_progress`, and `active_stall`.
+
+On every additional owner execution command for an already in-progress attempt, compare `material_progress_seq` with `progress_at_last_owner_command` before beginning another ordinary cycle. If they are equal, record `OPS3.NO_MATERIAL_PROGRESS`, set `active_stall=true`, and enter diagnosis/recovery immediately. Do not begin another broad discovery, polling, validation, or retry cycle until changed evidence clears the stall. Repeated polling, re-reading unchanged sources, re-emitting status, waiting on the same deterministic failure, or recreating the same candidate is not material progress.
+
+A status request is read-only and must expose enough current evidence to make a stall visible: work item, active substep, material-progress sequence and last evidence, protected-main holder/phase/liveness when applicable, and the first unresolved blocker/failure. Status reporting never resets a stall or counts as progress.
 
 ## 5. Critical-path discipline
 
@@ -152,6 +163,19 @@ The executable guard in `scripts/ops3_merge_lease.py` must reject direct protect
 
 This is the default concurrency defense even if GitHub native merge queue/branch protection is unavailable. If a native GitHub merge queue is later enabled, it may replace the transport only if FIFO reservation, turn-base ownership, exact-head validation, and durable-verification properties are preserved.
 
+
+### Active-turn liveness and no-sleep rule
+
+An active protected-main publication turn is a short-lived publication window, not a parking place. Schema 2.1 queue state records `hold_started_at`, `last_progress_at`, `progress_seq`, `active_phase`, `last_progress_evidence`, and `max_idle_seconds` (default 900 seconds).
+
+- Activation creates the first progress receipt. The holder records a new queue progress receipt whenever publication materially advances.
+- A progress receipt must contain changed material evidence; duplicate phase/evidence markers cannot renew the turn.
+- Once `last_progress_at` exceeds `max_idle_seconds`, the turn is `OPS3.ACTIVE_TURN_STALLED`. A stale holder may not bind, merge, or revive the turn with a cosmetic heartbeat.
+- A replacement executor fresh-reads target `main` and the queue. If the verified merge already landed, use completed-turn recovery. If `main == turn_base`, use stalled-turn recovery to release the abandoned unmerged turn while preserving FIFO reservations and a durable recovery pointer. If `main` moved unexpectedly, classify `OPS3.PROTECTED_MAIN_BYPASS`.
+- The original holder must fresh-read the queue immediately before bind/merge. If its stale turn was recovered, its former authority is gone.
+- CI, bots, generated-content publishers, compatibility generators, and post-merge jobs are not exempt. They may prepare artifacts on a branch or fail closed on drift, but may never push directly to protected `main`.
+
+This liveness rule is deliberately stronger than conversational continuity: a sleeping/stalled executor loses the publication turn after the bounded idle window; it does not strand `main` indefinitely.
 
 ### Stall-safe completed-turn recovery
 

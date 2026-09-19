@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS3-08",
+  "title": "Execution Liveness, Frontier Reconciliation & Stall Visibility Repair",
+  "status": "in_progress",
+  "owner_directive": "Repair stale roadmap/frontier state under OPS3; preserve three parallel persistent implementation lanes; prevent an active main holder from silently sleeping; make no-progress Continue cycles visibly stalled instead of indefinitely repeating.",
+  "reproduced_failures": [
+    "MCCS-21 closeout selected MNCS-20 from a stale family backlog even though live terminal checkpoints already proved MNCS-20, MNCS-22 and MNCS-24 complete.",
+    "PR 616 re-executed MNCS-20 and published a valid hardening amendment, but the control plane mislabeled it as an active tranche re-entry.",
+    "GitHub Actions commit be0f289a01c6e7a510aa5cf022a7694878c94b74 directly advanced protected AIOC main after PR 1428 instead of using the FIFO.",
+    "The FIFO froze turn_base but had no bounded holder liveness/deadline, so a sleeping executor could strand the queue.",
+    "execution_guard recorded repeated Continue/stall incidents only after the fact and did not classify a new owner command with unchanged material progress as an immediate stall."
+  ],
+  "repair_scope": [
+    "Restore MNCS terminal truth through MNCS-24 and retain PR 616 only as a post-completion corrective amendment.",
+    "Select MSAS-01 selected_not_started from live DAG/frontier evidence without starting product work.",
+    "Preserve product-development, ui-implementation and player-species as three independent persistent implementation lanes; preserve MVPS-10 selection.",
+    "Upgrade FIFO semantics to schema 2.1 bounded liveness with non-cosmetic progress receipts and safe stalled-turn recovery.",
+    "Remove the repository-health workflow's direct-to-main generated-content push; generated drift now fails closed on the candidate.",
+    "Upgrade execution guard with material-progress receipts and OPS3.NO_MATERIAL_PROGRESS stall classification."
+  ],
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 5,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 5,
+      "kind": "repair_candidate_prepared",
+      "evidence": "OPS3-08 candidate reconciles selector, queue liveness, direct-main writer and progress guard."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  },
+  "successor": null
+}

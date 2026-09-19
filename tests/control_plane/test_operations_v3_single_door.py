@@ -339,6 +339,18 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
             ),
         )
 
+    def test_three_persistent_implementation_lanes_are_never_collapsed(self) -> None:
+        lanes = self._json("operations/LANES.json")
+        self.assertEqual(lanes["persistent_implementation_lanes"], ["product-development","ui-implementation","player-species"])
+        current = self._json("operations/CURRENT.json")
+        for lane_id in lanes["persistent_implementation_lanes"]:
+            self.assertIn(lane_id, current["lanes"])
+
+    def test_repository_health_workflow_never_pushes_generated_content_directly_to_main(self) -> None:
+        workflow = self._text(".github/workflows/validate-repository-health.yml")
+        self.assertNotIn("git push origin HEAD:main", workflow)
+        self.assertIn("OPS3 forbids CI/bot direct pushes to protected main", workflow)
+
 
 if __name__ == "__main__":
     unittest.main()

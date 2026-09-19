@@ -175,5 +175,34 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         with self.assertRaises(MERGE_LEASE.LeaseConflict):
             MERGE_LEASE.acquire_lease()
 
+    def test_active_turn_has_bounded_liveness_and_duplicate_progress_cannot_extend_it(self) -> None:
+        state=MERGE_LEASE.free_lease("cybalicistjt-stack/Multiversal-app",generation=110)
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=110,holder="lane-a",reservation_id="r")
+        state=MERGE_LEASE.activate_next_turn(state,expected_generation=111,holder="lane-a",fresh_main_sha="main-a",observed_at="2026-09-19T00:00:00Z",max_idle_seconds=900)
+        state=MERGE_LEASE.record_turn_progress(state,expected_generation=112,holder="lane-a",phase="prepared",evidence="candidate head abc",observed_at="2026-09-19T00:05:00Z")
+        with self.assertRaises(MERGE_LEASE.LeaseConflict):
+            MERGE_LEASE.record_turn_progress(state,expected_generation=113,holder="lane-a",phase="prepared",evidence="candidate head abc",observed_at="2026-09-19T00:06:00Z")
+        self.assertIn(MERGE_LEASE.ACTIVE_TURN_STALLED,MERGE_LEASE.validate_turn_liveness(state,now="2026-09-19T00:21:00Z"))
+
+    def test_stale_unmerged_turn_cannot_merge_and_can_be_recovered_without_reordering_fifo(self) -> None:
+        state=MERGE_LEASE.free_lease("cybalicistjt-stack/Multiversal-app",generation=120)
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=120,holder="stalled",reservation_id="a")
+        state=MERGE_LEASE.reserve_turn(state,expected_generation=121,holder="next",reservation_id="b")
+        state=MERGE_LEASE.activate_next_turn(state,expected_generation=122,holder="stalled",fresh_main_sha="main-a",observed_at="2026-09-19T00:00:00Z",max_idle_seconds=900)
+        state=MERGE_LEASE.bind_validated_candidate(state,expected_generation=123,holder="stalled",validated_head="head-a",validated_base="main-a",observed_at="2026-09-19T00:01:00Z")
+        errors=MERGE_LEASE.validate_merge_authorization(state,fresh_main_sha="main-a",pr_head_sha="head-a",holder="stalled",now="2026-09-19T00:17:00Z")
+        self.assertIn(MERGE_LEASE.ACTIVE_TURN_STALLED,errors)
+        recovered=MERGE_LEASE.recover_stalled_turn(state,expected_generation=124,stalled_holder="stalled",fresh_main_sha="main-a",recovery_location="governance/ai/work-state/W.json",recovery_executor="replacement",reason="idle deadline exceeded",now="2026-09-19T00:17:00Z")
+        self.assertEqual(recovered["status"],"free")
+        self.assertEqual([x["holder"] for x in recovered["queue"]],["next"])
+
+    def test_owner_continue_without_material_progress_enters_visible_stall_recovery(self) -> None:
+        checkpoint={"status":"in_progress","execution_guard":{"continue_turns":1,"stall_nudges":0,"material_progress_seq":2,"progress_at_last_owner_command":2,"no_progress_cycles":0,"last_material_progress":{"seq":2,"kind":"validation","evidence":"run 7 failed"},"active_stall":False,"terminal_response_allowed":False,"stop_reason":None},"execution_conformance":{"status":"in_progress","policy_violations":[]}}
+        updated=EXECUTION_GUARD.observe_owner_execution_command(checkpoint)
+        self.assertTrue(updated["execution_guard"]["active_stall"])
+        self.assertIn(EXECUTION_GUARD.NO_MATERIAL_PROGRESS,updated["execution_conformance"]["policy_violations"])
+        progressed=EXECUTION_GUARD.record_material_progress(updated,kind="repair",evidence="changed failing signature")
+        self.assertFalse(progressed["execution_guard"]["active_stall"])
+
 if __name__ == "__main__":
     unittest.main()
