@@ -161,6 +161,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_mvps10_species_progression_maturation.py
 
+      - name: Run MVPS-11 social language knowledge regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps11_social_language_knowledge.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |
