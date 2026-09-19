@@ -70,10 +70,24 @@ for (const name of files) {
 }
 
 versions.sort((a, b) => a.stableId.localeCompare(b.stableId) || a.contentVersion.localeCompare(b.contentVersion));
+let generatedAt = new Date().toISOString();
+try {
+  const previous = JSON.parse(await fs.readFile(OUT, 'utf8'));
+  if (
+    previous.versionCount === versions.length &&
+    JSON.stringify(previous.versions) === JSON.stringify(versions) &&
+    typeof previous.generatedAt === 'string' &&
+    previous.generatedAt
+  ) {
+    generatedAt = previous.generatedAt;
+  }
+} catch {
+  // No prior version index: the first material generation may stamp wall-clock time.
+}
 const payload = {
   format: 'multiversal-canonical-version-index',
   version: '1.0.0',
-  generatedAt: new Date().toISOString(),
+  generatedAt,
   purpose: 'Resolve immutable exact-version canonical references independently of the effective-current record projection.',
   gameReadinessAssessed: false,
   versionCount: versions.length,

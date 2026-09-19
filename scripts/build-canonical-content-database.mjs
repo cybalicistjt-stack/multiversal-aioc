@@ -97,7 +97,20 @@ const semanticProjection = records.map(record => [
   record.contentVersion
 ]);
 const semanticFingerprint = sha256(JSON.stringify(semanticProjection));
-const generatedAt = new Date().toISOString();
+let generatedAt = new Date().toISOString();
+try {
+  const previous = JSON.parse(await fs.readFile(path.join(OUT_DIR, 'index.json'), 'utf8'));
+  if (
+    previous.sourceDigest === sourceSet.sourceSetDigest &&
+    previous.semanticFingerprint === semanticFingerprint &&
+    typeof previous.generatedAt === 'string' &&
+    previous.generatedAt
+  ) {
+    generatedAt = previous.generatedAt;
+  }
+} catch {
+  // No prior certified projection: the first material generation may stamp wall-clock time.
+}
 const sourceComposition = {
   baselineRecords: sourceSet.baselineRecordCount,
   appendedRecords: sourceSet.appendedRecordCount,
