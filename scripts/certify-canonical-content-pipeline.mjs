@@ -94,18 +94,24 @@ if (index.semanticFingerprint !== semanticFingerprint) fail('Index semantic fing
 if (manifest.semanticFingerprint !== semanticFingerprint) fail('Manifest semantic fingerprint mismatch.');
 
 let certifiedAt = new Date().toISOString();
-try {
-  const previous = JSON.parse(await fs.readFile(path.join(DB_DIR, 'certification.json'), 'utf8'));
-  if (
-    previous.sourceDigest === sourceSet.sourceSetDigest &&
-    previous.semanticFingerprint === semanticFingerprint &&
-    typeof previous.certifiedAt === 'string' &&
-    previous.certifiedAt
-  ) {
-    certifiedAt = previous.certifiedAt;
+for (const previousPath of [
+  path.join(EVIDENCE_DIR, 'latest-certificate.json'),
+  path.join(DB_DIR, 'certification.json')
+]) {
+  try {
+    const previous = JSON.parse(await fs.readFile(previousPath, 'utf8'));
+    if (
+      previous.sourceDigest === sourceSet.sourceSetDigest &&
+      previous.semanticFingerprint === semanticFingerprint &&
+      typeof previous.certifiedAt === 'string' &&
+      previous.certifiedAt
+    ) {
+      certifiedAt = previous.certifiedAt;
+      break;
+    }
+  } catch {
+    // Try the next durable prior-certificate location.
   }
-} catch {
-  // No prior certificate: the first material certification may stamp wall-clock time.
 }
 
 const certificate = {
