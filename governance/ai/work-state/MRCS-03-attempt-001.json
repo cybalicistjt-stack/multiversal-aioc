@@ -34,17 +34,17 @@
     "MRCS-04+ remain unauthorized until separately selected.",
     "MSAS and MVPS lane selectors/branches/authority are independent and must not be rewritten by MRCS work."
   ],
-  "active_substep": "red_mrcs03_authoring_workflow",
-  "next_action": "Establish causal RED coverage for PDCP-MRCS-007 through 010 against the MRCS-01 schema workspace, then implement the smallest bounded MRCS-03 workflow and validate the exact candidate head before READY queue submission.",
+  "active_substep": "awaiting_causal_red_validation",
+  "next_action": "Observe the PR validation failure for exact RED head 186071e7913cc36197afc5b9377d39d0fae31819 and confirm it is caused by missing MRCS-03 behavior, then implement the minimum production change.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "kind": "governed_start",
-      "evidence": "Created feature/mrcs-03-guided-forge-authoring from fresh application main 2acfa4819f63df674e1aee7e83379a922ad86768 and entered independent MRCS lane execution."
+      "kind": "red_candidate_published",
+      "evidence": "RED-only head 186071e7913cc36197afc5b9377d39d0fae31819 is on draft PR 625 with five user-visible MRCS-03 behavior tests and no production changes."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
