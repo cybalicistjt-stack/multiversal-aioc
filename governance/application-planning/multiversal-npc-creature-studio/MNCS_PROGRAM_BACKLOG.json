@@ -2,7 +2,7 @@
   "schema_version": "0.2.0",
   "program_id": "MNCS",
   "program_name": "Multiversal NPC & Creature Studio",
-  "status": "owner_approved_planned",
+  "status": "active_under_ops3",
   "activation_after": "MCCS-21",
   "successor": "MAS-01",
   "owner": "John Brandon Turner",
@@ -16,7 +16,10 @@
     "reduced_tranche_count": 13,
     "receipt": "governance/application-planning/preimplementation-design-closure/PDCP_MNCS_REDUCTION_RECEIPT.json",
     "family_design_closure": "governance/application-planning/preimplementation-design-closure/PDCP_MNCS_FAMILY_DESIGN_CLOSURE.md",
-    "stable_milestones": ["MNCS-01", "MNCS-24"],
+    "stable_milestones": [
+      "MNCS-01",
+      "MNCS-24"
+    ],
     "capability_loss_detected": false
   },
   "execution_design": {
@@ -26,21 +29,170 @@
     "split_rule": "Split before governed start if the selected surviving tranche cannot credibly preserve the closeout reserve.",
     "retry_rule": "Do not rerun an unchanged deterministic failure; require changed evidence before retry."
   },
-  "strict_order": ["MNCS-01","MNCS-04","MNCS-05","MNCS-06","MNCS-08","MNCS-10","MNCS-12","MNCS-14","MNCS-15","MNCS-18","MNCS-20","MNCS-22","MNCS-24"],
+  "strict_order": [
+    "MNCS-01",
+    "MNCS-04",
+    "MNCS-05",
+    "MNCS-06",
+    "MNCS-08",
+    "MNCS-10",
+    "MNCS-12",
+    "MNCS-14",
+    "MNCS-15",
+    "MNCS-18",
+    "MNCS-20",
+    "MNCS-22",
+    "MNCS-24"
+  ],
   "tranches": [
-    {"id":"MNCS-01","name":"Studio Core, NPC/Creature Recipe/Constraint Engine & Resolution Authority","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MNCS-01","MNCS-02","MNCS-03"],"absorbs_external_residuals":["MNCS-23 presets/batch recipe adapters"]},
-    {"id":"MNCS-04","name":"Identity, Naming, Culture, Language, Demographic & Origin Construction","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MNCS-04"]},
-    {"id":"MNCS-05","name":"Instant Improv, Role-First & Situation-First Generation","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MNCS-05"],"absorbs_external_residuals":["MNCS-23 quick-generation preset adapters"]},
-    {"id":"MNCS-06","name":"Persona, Goals, Knowledge, Belief & Actor-Context Authoring","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MNCS-06","MNCS-07"],"absorbs_external_residuals":["MNCS-09 life-context projections"]},
-    {"id":"MNCS-08","name":"Relationships, Factions, Reputation & Party-Association Influence","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MNCS-08"]},
-    {"id":"MNCS-10","name":"Mechanics-on-Demand, Rules Profile, Ability, Equipment & Capability Composition","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MNCS-10","MNCS-11"]},
-    {"id":"MNCS-12","name":"Creature Ecology, Behavior, Social Structure, Territory & Tactics Authoring","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MNCS-12","MNCS-13"]},
-    {"id":"MNCS-14","name":"Species, Form, Stage, Template, Variant, Mutation & Role Composition","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MNCS-14"]},
-    {"id":"MNCS-15","name":"Household, Crew, Crowd, Population, Herd/Pack/Swarm & Ecosystem-Cohort Generation","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MNCS-15","MNCS-16","MNCS-17"],"absorbs_external_residuals":["MNCS-09 household/group context","MNCS-23 population batch adapters"]},
-    {"id":"MNCS-18","name":"Secrets, Aliases, Reveal Conditions, Conversation Prep & Roleplay Card","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MNCS-18","MNCS-19"]},
-    {"id":"MNCS-20","name":"Continuity, Events, Advancement, Life/Ecology Change & Resolution Management","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MNCS-20","MNCS-21"],"absorbs_external_residuals":["MNCS-09 continuity projections"]},
-    {"id":"MNCS-22","name":"Governed Runtime Handoff & MAS Cast Integration","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MNCS-22"],"absorbs_external_residuals":["MNCS-23 structured handoff/import mapping"]},
-    {"id":"MNCS-24","name":"Golden Progressive NPC/Creature Generation & Campaign-Continuity Proof","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MNCS-24"],"absorbs_external_residuals":["MNCS-23 review/provenance/optional-AI evidence"]}
+    {
+      "id": "MNCS-01",
+      "name": "Studio Core, NPC/Creature Recipe/Constraint Engine & Resolution Authority",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MNCS-01",
+        "MNCS-02",
+        "MNCS-03"
+      ],
+      "absorbs_external_residuals": [
+        "MNCS-23 presets/batch recipe adapters"
+      ]
+    },
+    {
+      "id": "MNCS-04",
+      "name": "Identity, Naming, Culture, Language, Demographic & Origin Construction",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MNCS-04"
+      ]
+    },
+    {
+      "id": "MNCS-05",
+      "name": "Instant Improv, Role-First & Situation-First Generation",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MNCS-05"
+      ],
+      "absorbs_external_residuals": [
+        "MNCS-23 quick-generation preset adapters"
+      ]
+    },
+    {
+      "id": "MNCS-06",
+      "name": "Persona, Goals, Knowledge, Belief & Actor-Context Authoring",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MNCS-06",
+        "MNCS-07"
+      ],
+      "absorbs_external_residuals": [
+        "MNCS-09 life-context projections"
+      ]
+    },
+    {
+      "id": "MNCS-08",
+      "name": "Relationships, Factions, Reputation & Party-Association Influence",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MNCS-08"
+      ]
+    },
+    {
+      "id": "MNCS-10",
+      "name": "Mechanics-on-Demand, Rules Profile, Ability, Equipment & Capability Composition",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MNCS-10",
+        "MNCS-11"
+      ]
+    },
+    {
+      "id": "MNCS-12",
+      "name": "Creature Ecology, Behavior, Social Structure, Territory & Tactics Authoring",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MNCS-12",
+        "MNCS-13"
+      ]
+    },
+    {
+      "id": "MNCS-14",
+      "name": "Species, Form, Stage, Template, Variant, Mutation & Role Composition",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MNCS-14"
+      ]
+    },
+    {
+      "id": "MNCS-15",
+      "name": "Household, Crew, Crowd, Population, Herd/Pack/Swarm & Ecosystem-Cohort Generation",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MNCS-15",
+        "MNCS-16",
+        "MNCS-17"
+      ],
+      "absorbs_external_residuals": [
+        "MNCS-09 household/group context",
+        "MNCS-23 population batch adapters"
+      ]
+    },
+    {
+      "id": "MNCS-18",
+      "name": "Secrets, Aliases, Reveal Conditions, Conversation Prep & Roleplay Card",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MNCS-18",
+        "MNCS-19"
+      ]
+    },
+    {
+      "id": "MNCS-20",
+      "name": "Continuity, Events, Advancement, Life/Ecology Change & Resolution Management",
+      "status": "selected_not_started",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MNCS-20",
+        "MNCS-21"
+      ],
+      "absorbs_external_residuals": [
+        "MNCS-09 continuity projections"
+      ]
+    },
+    {
+      "id": "MNCS-22",
+      "name": "Governed Runtime Handoff & MAS Cast Integration",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MNCS-22"
+      ],
+      "absorbs_external_residuals": [
+        "MNCS-23 structured handoff/import mapping"
+      ]
+    },
+    {
+      "id": "MNCS-24",
+      "name": "Golden Progressive NPC/Creature Generation & Campaign-Continuity Proof",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MNCS-24"
+      ],
+      "absorbs_external_residuals": [
+        "MNCS-23 review/provenance/optional-AI evidence"
+      ]
+    }
   ],
   "required_upstream": [
     "ARI family completed_verified",
@@ -56,7 +208,43 @@
     "owner-domain Character/NPC/Creature/Species/Form/World/Encounter contracts available",
     "PDCP Packets 01,03,05,06,07 design_closed"
   ],
-  "integration_targets": ["PPIA-02","Character","NPC","Creature","Species/Form","MIB-09","Relationship/Reputation","Faction/Organization","DPL","World","Environment","Settlement","Profession","Economy","Project/Time","Inventory/Asset","Ability","Action/Event","Effect","Condition","Resource","Encounter","Scene","Combat","Investigation","Dialogue/Social","Exploration/Bestiary","MCCS","MAS","ARI","PCA","MRCS","GPR","SMB-08","SMB-09"],
+  "integration_targets": [
+    "PPIA-02",
+    "Character",
+    "NPC",
+    "Creature",
+    "Species/Form",
+    "MIB-09",
+    "Relationship/Reputation",
+    "Faction/Organization",
+    "DPL",
+    "World",
+    "Environment",
+    "Settlement",
+    "Profession",
+    "Economy",
+    "Project/Time",
+    "Inventory/Asset",
+    "Ability",
+    "Action/Event",
+    "Effect",
+    "Condition",
+    "Resource",
+    "Encounter",
+    "Scene",
+    "Combat",
+    "Investigation",
+    "Dialogue/Social",
+    "Exploration/Bestiary",
+    "MCCS",
+    "MAS",
+    "ARI",
+    "PCA",
+    "MRCS",
+    "GPR",
+    "SMB-08",
+    "SMB-09"
+  ],
   "boundaries": [
     "MNCS concerns fictional TTRPG NPC and creature generation/construction only and does not implement real-person reproduction, avatar scanning or digital-human reconstruction",
     "PPIA-02 and Character/NPC/Creature owners retain Definition, placement, live-instance, conversion and entity authority",
@@ -93,5 +281,8 @@
     "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_05_PERSISTENT_HISTORY_DESIGN_CLOSURE.md",
     "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_06_MULTIRES_SIMULATION_DESIGN_CLOSURE.md",
     "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md"
-  ]
+  ],
+  "current_item": "MNCS-20",
+  "current_attempt": "MNCS-20-attempt-001",
+  "completed_through": "MNCS-18"
 }
