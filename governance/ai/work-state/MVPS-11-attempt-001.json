@@ -5,9 +5,9 @@
   "title": "Social, Language and Knowledge Identity Hooks",
   "attempt_id": "MVPS-11-attempt-001",
   "lane": "mvps",
-  "status": "selected_not_started",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/mvps-11-social-language-knowledge-hooks",
   "selected_by_verified_predecessor": "MVPS-10",
   "predecessor": {
     "work_item_id": "MVPS-10",
@@ -30,12 +30,58 @@
     "Progression/maturation remains MVPS-10; validation/migration remains MVPS-12; runtime active contribution projection remains MVPS-13.",
     "MVPS-12+ remain unauthorized until separately selected."
   ],
-  "active_substep": "awaiting_governed_start",
-  "next_action": "On an MVPS-specific owner Continue, enter through OPS3, reserve the FIFO publication turn before candidate preparation, fresh-read MVPS-01 through MVPS-10 plus current Relationship/Reputation/Law/Faction/Knowledge/Language owner contracts, then govern-start MVPS-11 and execute the bounded tranche.",
+  "active_substep": "governed_start_publication",
+  "next_action": "After this governed-start publication is durably verified, reserve the AIOC FIFO implementation turn before candidate preparation, establish a causal RED for the missing MVPS-11 social/language/knowledge contracts, implement the bounded tranche over shared Relationship/Reputation/Faction/Knowledge/Visibility/Language owners, validate exact head, publish, then close out and select the verified successor in the same owner Continue.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start_candidate",
+      "evidence": "MVPS-11 dependency closure verified; candidate activates only the mvps lane and preserves independent MSAS/MRCS selectors."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
     "stop_reason": null
+  },
+  "start_gate_evidence": {
+    "roadmap_dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4",
+    "roadmap_requirements": {
+      "hard_requires": [],
+      "start_requires": [],
+      "late_bind_requires": [
+        "MNCS/shared Character-Ability-Equipment capability owner contracts",
+        "MCS environment/location projections",
+        "MCCS character presentation projections"
+      ],
+      "golden_proof_requires": [
+        "MVPS-16 radical-species conformance proof"
+      ]
+    },
+    "predecessor": "MVPS-10 completed_verified",
+    "dependency_closure": [
+      "MVPS-01..10 canonical contracts/invariants",
+      "PPIA-05 Species, Forms & Character Biology culture-versus-biology boundary",
+      "MV-IA-F009 Relationship Tracker concept separation/reveal layers",
+      "MV-IA-F016 Faction/Reputation concept separation/visibility layers",
+      "PPIA-10 social/faction taxonomy",
+      "PPIA-09 Investigation/Knowledge truth-versus-knowledge and permission-filtering invariants",
+      "PDCP Packet 03 actor-relative Knowledge/Visibility owner boundary"
+    ],
+    "owner_boundary": "MVPS-11 defines species-facing social, biological-communication, learned-language and identity-knowledge hooks only. Relationship/Reputation/Faction/Law/Knowledge/Visibility/Language state and mutation remain with shared owners; culture and behavior are never inferred as immutable biology."
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  },
+  "implementation_plan": {
+    "governed_start": "in_progress",
+    "red": "pending",
+    "green": "pending",
+    "publication": "pending",
+    "closeout": "pending"
   }
 }
