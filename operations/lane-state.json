@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0.0",
   "lane": "mrcs",
-  "revision": 4,
+  "revision": 5,
   "selected_work_item": "MRCS-03",
   "attempt_id": "MRCS-03-attempt-001",
   "execution_status": "in_progress",
   "implementation_branch": "feature/mrcs-03-guided-forge-authoring",
-  "progress_seq": 3,
+  "progress_seq": 4,
   "last_progress": {
-    "kind": "validation_contract_repair",
-    "evidence": "RED run 35474157731 failed before tests because MRCS-03 profile step mrcs01-workspace-regression used invalid failure blame metadata. Repaired only that metadata in application commit 24b493854c46eef3c1142e89e05df455708e07c2; production remains unchanged."
+    "kind": "green_candidate_implementation",
+    "evidence": "Causal RED run 35474188994 at head 24b493854c46eef3c1142e89e05df455708e07c2 failed 5/5 focused MRCS-03 tests for missing guided/template/lineage/advisory behavior. Implemented bounded production change in apps/client-ui/src/mrcs/Mrcs01Workspace.tsx at head f3f7ea0f74f0e8c9804697d29a8c9e2360269926."
   },
   "terminal": false
 }

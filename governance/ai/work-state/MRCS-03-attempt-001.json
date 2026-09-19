@@ -34,17 +34,17 @@
     "MRCS-04+ remain unauthorized until separately selected.",
     "MSAS and MVPS lane selectors/branches/authority are independent and must not be rewritten by MRCS work."
   ],
-  "active_substep": "awaiting_causal_red_validation",
-  "next_action": "Observe the new validation run at head 24b493854c46eef3c1142e89e05df455708e07c2 and require the focused MRCS-03 test to fail for missing behavior before implementing production code.",
+  "active_substep": "green_exact_head_validation",
+  "next_action": "Validate exact implementation head f3f7ea0f74f0e8c9804697d29a8c9e2360269926 with the MRCS-03 profile; diagnose the first material failure before any repair, then obtain full exact-head cross-platform GREEN before READY submission.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 3,
+    "material_progress_seq": 4,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "kind": "validation_contract_repair",
-      "evidence": "Classified run 35474157731 as validation defect, not behavioral RED; corrected failure metadata only at head 24b493854c46eef3c1142e89e05df455708e07c2."
+      "kind": "green_candidate_implementation",
+      "evidence": "Valid RED: run 35474188994, Linux focused step mrcs03-focused-guided-authoring, 5 tests failed for missing behavior. Production implementation committed at f3f7ea0f74f0e8c9804697d29a8c9e2360269926."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
