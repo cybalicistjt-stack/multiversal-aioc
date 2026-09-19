@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "work_item_id": "MSAS-03",
+  "attempt_id": "MSAS-03-attempt-001",
+  "title": "Waveform, Timeline, Multitrack & Nonlinear Editing",
+  "family": "MSAS",
+  "lane": "msas",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MSAS-01",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "reduced_strict_order": "MSAS-01 → MSAS-03 → MSAS-04 → MSAS-05 → MSAS-07 → MSAS-09 → MSAS-12 → MSAS-14 → MSAS-15 → MSAS-18 → MSAS-21",
+    "interstitial_override": "none",
+    "parallel_lanes": "MRCS-01 remains independently in_progress; MVPS-10 remains independently selected_not_started."
+  },
+  "objective": "Implement waveform, timeline, multitrack and nonlinear editing over the MSAS-01 authoring/session graph while preserving source-versus-derivative identity, deterministic edit projections, owner authority and noncanonical preview/edit state.",
+  "boundaries": [
+    "AAI remains runtime/playback/audio-semantic authority.",
+    "ARI retains source resource identity, provenance, rights and derivative lineage.",
+    "MSAS-03 owns edit projections only; destructive/nonlinear editing cannot fabricate gameplay Events or canonical owner state.",
+    "MSAS-04+ remain unauthorized until separately selected.",
+    "MRCS and MVPS lane selectors/branches/authority are independent and must not be rewritten by MSAS work."
+  ],
+  "strict_successor": "MSAS-04",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MSAS-specific owner Continue, fresh-read the MSAS-03 dependency closure and protected-main queues, then govern-start and execute the bounded tranche under OPS3.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  },
+  "track": "multiversal-sound-audio-studio",
+  "source_program": "MSAS"
+}
