@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 252,
+  "state_revision": 253,
   "default_lane": "msas",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -29,9 +29,9 @@
         "state": "selected_not_started"
       },
       "mvps": {
-        "selected_work_item": "MVPS-11",
-        "attempt_id": "MVPS-11-attempt-001",
-        "state": "in_progress"
+        "selected_work_item": "MVPS-12",
+        "attempt_id": "MVPS-12-attempt-001",
+        "state": "selected_not_started"
       }
     }
   },
@@ -61,13 +61,13 @@
       "activation_rule": "MRCS-01 completed_verified after causal RED run 35439912636 at head c626f880dd81a758e0c3dfbd597323f2a734cd67, exact-head cross-platform GREEN validation run 35440132356 at head 0b66f15071ddb0a9b249efe288a7a237d699107e, and application publication PR 620 as merge 610fa32e417a9a22bcbd9605a130c749fe175e9a. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MRCS interstitial gate overriding the reduced strict order, so MRCS-03 is selected_not_started until a later MRCS-specific Continue."
     },
     "mvps": {
-      "state": "in_progress",
-      "selected_work_item": "MVPS-11",
-      "attempt_id": "MVPS-11-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MVPS-11-attempt-001.json",
-      "implementation_branch": "work/mvps-11-social-language-knowledge-hooks",
-      "implementation_authority": true,
-      "activation_rule": "Owner MVPS-specific Continue govern-started MVPS-11 after verifying ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 has no MVPS hard/start prerequisites, MVPS-01 through MVPS-10 are completed_verified, PPIA-05 keeps culture/language-practice context separate from biology, MV-IA-F009/F016 keep relationship/reputation/faction concepts owner-separated, and PPIA-09/Knowledge-Visibility preserves truth-versus-observer-knowledge filtering. Authority is limited to species-facing social/language/knowledge identity hooks; MSAS and MRCS remain independent."
+      "state": "selected_not_started",
+      "selected_work_item": "MVPS-12",
+      "attempt_id": "MVPS-12-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MVPS-12-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MVPS-11 completed_verified after causal RED run 35441927515 at head be36d560c76a6def99a2dbb4213efc7b6b637ad0, exact-head GREEN validation run 35441991490 at head ddb6d94954defc8fcd253db2391b010d92d78dd0, and implementation merge eb879a079acd9d426f8c3e61573c0fc2d0abdbb1. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MVPS interstitial gate overriding strict order, so MVPS-12 is selected_not_started until a later MVPS-specific Continue."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -100,7 +100,7 @@
     "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS3.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
     "generated_main_writers": "CI/bots/generated-content jobs may not push directly to protected main; generated outputs must be present on the queue-bound candidate branch or validation fails closed."
   },
-  "next_project_action": "Continue the owner-requested MVPS-11 tranche through causal RED, bounded implementation, exact-head validation/publication and closeout. MSAS-03 and MRCS-03 remain independently selected_not_started; same-repository publication stays FIFO-serialized.",
+  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MVPS-12 is selected_not_started, MSAS-03 is independently selected_not_started, and MRCS-03 is independently selected_not_started; same-repository publication stays FIFO-serialized.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
