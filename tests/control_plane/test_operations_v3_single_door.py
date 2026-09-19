@@ -50,12 +50,22 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertEqual(current["operating_contract"], "operations/OPERATING_CONTRACT.md")
         self.assertEqual(current["lane_registry"], "operations/LANES.json")
         self.assertEqual(current["status"], "completed_verified")
-        self.assertIsNone(current["active_operations_work_item"])
-        self.assertFalse(current["product_start_freeze"]["active"])
-        self.assertEqual(current["product_start_freeze"]["preserved_selected_work_item"], "MIB-17")
-        self.assertFalse(current["product_start_freeze"]["implementation_authority"])
-        self.assertEqual(current["lanes"]["operations"]["state"], "completed_verified")
-        self.assertFalse(current["lanes"]["operations"]["implementation_authority"])
+        operations = current["lanes"]["operations"]
+        freeze = current["product_start_freeze"]
+        self.assertFalse(freeze["implementation_authority"])
+        if current["active_operations_work_item"] is None:
+            self.assertIsNone(current["active_operations_work_item_path"])
+            self.assertFalse(freeze["active"])
+            self.assertEqual(operations["state"], "completed_verified")
+            self.assertFalse(operations["implementation_authority"])
+        else:
+            self.assertEqual(operations["work_item_id"], current["active_operations_work_item"])
+            self.assertEqual(operations["work_item_path"], current["active_operations_work_item_path"])
+            self.assertEqual(operations["state"], "in_progress")
+            self.assertTrue(operations["implementation_authority"])
+            self.assertTrue(freeze["active"])
+            self.assertEqual(freeze["preserved_selected_work_item"], current["lanes"]["product-development"]["selected_work_item"])
+            self.assertEqual(freeze["preserved_attempt_id"], current["lanes"]["product-development"]["attempt_id"])
 
         product = current["lanes"]["product-development"]
         self.assertIn(product["state"], {"selected_not_started", "in_progress", "completed_verified"})
