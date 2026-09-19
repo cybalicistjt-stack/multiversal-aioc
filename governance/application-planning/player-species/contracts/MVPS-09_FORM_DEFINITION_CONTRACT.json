@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.FormDefinition",
+  "record_type": "SpeciesFormDefinition",
+  "status": "MVPS-09_CANONICAL_CONTRACT",
+  "purpose": "Represent a reusable, source-backed body/state configuration distinct from species identity and current Character runtime state, using stable references to shared mechanical owners.",
+  "source_basis": [
+    "MVPS.SpeciesDefinition form_refs boundary",
+    "MVPS.CharacterSpeciesSelection form_selection boundary",
+    "PPIA-05 reusable Form Definition/current body-form state separation",
+    "MVPS-03 through MVPS-08 shared-owner contracts"
+  ],
+  "identity_policy": {
+    "form_identity_distinct_from_species": true,
+    "form_replaces_base_species_identity": false,
+    "exact_version_reference_required": true,
+    "reusable_definition_not_current_state": true
+  },
+  "required_top_level_fields": [
+    "form_id",
+    "form_version",
+    "species_eligibility_refs",
+    "morphology_profile_ref",
+    "scale_profile_ref",
+    "movement_grants",
+    "sense_grants",
+    "capability_grants",
+    "resource_refs",
+    "compatibility_profile_ref",
+    "presentation_ref",
+    "visibility",
+    "provenance",
+    "extension_data"
+  ],
+  "reference_surfaces": [
+    "morphology_profile_ref",
+    "scale_profile_ref",
+    "movement_grants",
+    "sense_grants",
+    "capability_grants",
+    "resource_refs",
+    "compatibility_profile_ref",
+    "presentation_ref"
+  ],
+  "inline_shared_mechanics_allowed": false,
+  "owner_delegation": {
+    "morphology": "MVPS-03 / morphology-body-plan owner",
+    "scale_movement_senses": "MVPS-04 / shared capability-rules owners",
+    "physiology_resources": "MVPS-05 / Resource-Condition-Effect owners",
+    "capabilities": "MVPS-06 / shared capability owners",
+    "compatibility": "MVPS-07",
+    "equipment_mutation": "PPIA-03 / Item-Equipment owner workflow",
+    "runtime_projection": "MVPS-13"
+  },
+  "current_form_activation_owned_here": false,
+  "transformation_semantics_ref": "MVPS.TransformationSemantics",
+  "unknown_policy": "unresolved_not_inferred",
+  "extension_policy": {
+    "namespace_required": true,
+    "override_core_fields": false
+  }
+}

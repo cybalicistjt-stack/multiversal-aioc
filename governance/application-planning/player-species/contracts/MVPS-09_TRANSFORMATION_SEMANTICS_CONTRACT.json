@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.TransformationSemantics",
+  "record_type": "SpeciesFormTransformationContract",
+  "status": "MVPS-09_CANONICAL_CONTRACT",
+  "purpose": "Define explicit, attributable entry, retention/replacement, equipment, resource, duration and exit/reversal semantics for moving between governed forms without rewriting base species/lineage truth.",
+  "source_basis": [
+    "PPIA-05 transformation changes authorized current state not source truth",
+    "PPIA-03 equipment assignment/mutation authority",
+    "MVPS-01 through MVPS-08 boundaries"
+  ],
+  "transformation_record": {
+    "required": [
+      "transformation_id",
+      "source_form_ref",
+      "target_form_ref",
+      "entry_trigger_ref",
+      "retention_policy",
+      "equipment_policy_ref",
+      "exit_policy",
+      "visibility",
+      "provenance"
+    ],
+    "optional": [
+      "base_species_ref",
+      "lineage_snapshot_ref",
+      "entry_cost_refs",
+      "duration_ref",
+      "retained_contribution_refs",
+      "replaced_contribution_refs",
+      "resource_policy_refs",
+      "rules_profile_ref",
+      "adjudication_ref"
+    ],
+    "rule": "Source and target forms, entry authority, retained/replaced contributions, equipment handling and exit/reversal are explicit; omissions that affect semantics remain unresolved."
+  },
+  "base_selection_history_preserved": true,
+  "retention": {
+    "policy": "explicit_reference_delta_only",
+    "required_classes": [
+      "morphology",
+      "scale",
+      "movement",
+      "senses",
+      "capabilities",
+      "attributes_or_derived_refs",
+      "resources",
+      "compatibility",
+      "presentation"
+    ],
+    "implicit_replacement_allowed": false,
+    "shared_owner_resolution_required": true
+  },
+  "entry": {
+    "trigger_by_reference": true,
+    "costs_by_reference": true,
+    "atomic_result_and_cost_when_owner_requires": true,
+    "failed_before_commit_consumes_nothing": true
+  },
+  "equipment_handling": {
+    "policy_kinds": [
+      "retain",
+      "drop",
+      "suppress",
+      "resize",
+      "replace",
+      "adapt",
+      "owner_defined"
+    ],
+    "policy_reference_required": true,
+    "inventory_mutation_owned_by_mvps09": false,
+    "equipment_assignment_mutation_owned_by_mvps09": false,
+    "mutation_owner": "PPIA-03 / Item-Equipment owner workflow",
+    "rule": "MVPS-09 declares transformation-time handling policy/reference; Item/Equipment owners perform authoritative mutation."
+  },
+  "resource_handling": {
+    "policy": "reference_and_handoff_only",
+    "resource_engine_created": false,
+    "owner_domains": [
+      "Resource",
+      "Action",
+      "Effect",
+      "RulesProfile"
+    ],
+    "missing_owner_policy": "unresolved_not_inferred"
+  },
+  "reversal": {
+    "provenance_safe": true,
+    "exit_policy_required": true,
+    "restore_from_recorded_pre_transform_state": true,
+    "erase_history_allowed": false,
+    "compensating_or_owner_event_required_for_mutation": true
+  },
+  "visibility": {
+    "permission_filtered": true,
+    "hidden_form_non_inference": true
+  },
+  "unknown_or_conflict_policy": "surface_unresolved_not_guess",
+  "runtime_projection_created": false,
+  "runtime_projection_owner": "MVPS-13",
+  "progression_events_created": false,
+  "progression_owner": "MVPS-10",
+  "species_or_lineage_mutation_allowed": false,
+  "form_local_equipment_engine_created": false,
+  "form_local_resource_engine_created": false
+}

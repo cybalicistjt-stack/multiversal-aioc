@@ -31,8 +31,8 @@
     "Species progression/maturation remains MVPS-10 and runtime active-contribution projection/receipts remain MVPS-13.",
     "MVPS-10+ remain unauthorized until separately selected."
   ],
-  "active_substep": "governed_start_complete_prepare_red",
-  "next_action": "Fresh-read MVPS-01 through MVPS-08 and current form/transformation/equipment/resource owner contracts, then establish causal RED and implement the bounded MVPS-09 tranche.",
+  "active_substep": "green_validation_pending",
+  "next_action": "Validate the reconciled MVPS-09 GREEN candidate at the active FIFO turn base, bind the exact passing head, merge, release, then reconcile the roadmap and close out.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -45,5 +45,23 @@
     "started_on": "2026-09-18",
     "publication_queue_schema": "2.0.0",
     "reservation_id": "mvps-09-attempt-001-governed-start-001"
+  },
+  "implementation_plan": {
+    "red": "completed_expected_failure",
+    "green": "implemented_validation_pending",
+    "proof": "pending",
+    "closeout": "pending"
+  },
+  "causal_red": {
+    "head": "17b8fcb2008e0e30742cb6afc27aacee26cae414",
+    "validation_run": 35390307187,
+    "result": "expected_failure",
+    "observed_failure": "MVPS-09 regression failed only because the four MVPS-09 form/transformation artifacts were absent after all prior OPS3 and MVPS-01 through MVPS-08 gates passed."
+  },
+  "publication_turn": {
+    "schema_version": "2.0.0",
+    "reservation_id": "mvps-09-attempt-001-implementation-recovery-002",
+    "holder": "MVPS-09-attempt-001-implementation-recovery",
+    "turn_base": "4fc297449ffd176fb7ea6cb46e2386ddc8ad4e61"
   }
 }

@@ -149,6 +149,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_mvps08_lineage_composition.py
 
+      - name: Run MVPS-09 form transformation regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps09_form_transformation.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |

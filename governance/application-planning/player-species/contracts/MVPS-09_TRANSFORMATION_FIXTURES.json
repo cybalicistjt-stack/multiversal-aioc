@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_scope": "MVPS-09 synthetic non-canon form/transformation fixtures",
+  "non_canon": true,
+  "cases": {
+    "temporary_form_round_trip": {
+      "base_species_ref": "fixture:species/base@1",
+      "source_form_ref": "fixture:form/base@1",
+      "target_form_ref": "fixture:form/alternate@1",
+      "retention_policy_ref": "fixture:retention/temp-round-trip",
+      "equipment_policy_ref": "fixture:equipment/retain",
+      "exit_policy_ref": "fixture:exit/revert",
+      "expected": {
+        "status": "resolved",
+        "base_selection_history_preserved": true,
+        "reversal_provenance_preserved": true,
+        "equipment_policy": "retain"
+      }
+    },
+    "equipment_suppression": {
+      "source_form_ref": "fixture:form/humanoid@1",
+      "target_form_ref": "fixture:form/incorporeal@1",
+      "equipment_policy_ref": "fixture:equipment/suppress",
+      "expected": {
+        "status": "resolved",
+        "equipment_policy": "suppress",
+        "inventory_mutation_by_mvps09": false
+      }
+    },
+    "equipment_adaptation": {
+      "source_form_ref": "fixture:form/biped@1",
+      "target_form_ref": "fixture:form/quadruped@1",
+      "equipment_policy_ref": "fixture:equipment/adapt-harness",
+      "adapter_ref": "fixture:item-adapter/harness@1",
+      "expected": {
+        "status": "owner_handoff",
+        "equipment_policy": "adapt",
+        "mutation_owner": "PPIA-03 / Item-Equipment owner workflow"
+      }
+    },
+    "resource_owner_handoff": {
+      "source_form_ref": "fixture:form/base@1",
+      "target_form_ref": "fixture:form/charged@1",
+      "resource_policy_ref": "fixture:resource-policy/form-charge",
+      "expected": {
+        "status": "owner_deferred",
+        "owner_domain": "Resource/Action/RulesProfile",
+        "resource_engine_created": false
+      }
+    },
+    "unresolved_missing_exit": {
+      "source_form_ref": "fixture:form/base@1",
+      "target_form_ref": "fixture:form/unknown-exit@1",
+      "exit_policy_ref": null,
+      "expected": {
+        "status": "unresolved",
+        "reason": "Transformation lacks an authoritative exit/reversal policy; MVPS-09 does not invent one."
+      }
+    }
+  },
+  "proof_notes": [
+    "Fixtures preserve species/lineage selection history.",
+    "Equipment policies are explicit but mutation remains external.",
+    "Resource semantics defer to shared owners.",
+    "Missing exit authority remains unresolved rather than guessed."
+  ]
+}
