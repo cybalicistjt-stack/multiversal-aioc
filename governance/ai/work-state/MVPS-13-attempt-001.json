@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-13",
+  "title": "Runtime Projection and Grant Receipts",
+  "attempt_id": "MVPS-13-attempt-001",
+  "lane": "mvps",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-12",
+  "predecessor": {
+    "work_item_id": "MVPS-12",
+    "status": "completed_verified",
+    "implementation_merge_sha": "6bd2438a1aba8f6847890fc079d4f6f397be8b7a",
+    "validation_run": 35473801265
+  },
+  "strict_successor": "MVPS-14",
+  "objective": "Produce a deterministic current species contribution from base species + lineage + form + adaptations + campaign adjudications.",
+  "acceptance": [
+    "projection is reproducible",
+    "temporary state does not corrupt base selection",
+    "each active contribution is source-traceable"
+  ],
+  "boundaries": [
+    "MVPS-13 owns deterministic current species-contribution projection and species-origin grant receipt composition only; canonical shared mechanic owners retain their state and execution authority.",
+    "Projection must consume the exact-version SpeciesDefinition and preserved CharacterSpeciesSelection history established by MVPS-01 through MVPS-12.",
+    "Lineage, form, adaptation, campaign adjudication and shared-owner contribution ordering must remain explicit and reproducible; unresolved or migration-required inputs may not be silently normalized.",
+    "Temporary form/runtime state may affect the current projection but may not rewrite base species, lineage, historical choices or migration receipts.",
+    "Authoring/search/presentation remains MVPS-14; NPC/creature reuse remains MVPS-15; radical-species golden proof remains MVPS-16.",
+    "MVPS-14+ remain unauthorized until separately selected."
+  ],
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "interstitial_override": "none",
+    "strict_order": "MVPS-12 → MVPS-13 → MVPS-14 → MVPS-15 → MVPS-16",
+    "parallel_lanes": "MSAS-05 and MRCS-03 remain independently selected_not_started."
+  },
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MVPS-specific owner Continue, fresh-read the MVPS-13 dependency closure and current protected-main publication queue, then govern-start and execute the bounded tranche under OPS3.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

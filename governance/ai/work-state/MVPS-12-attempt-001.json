@@ -5,9 +5,9 @@
   "title": "Validation, Migration and Import/Export",
   "attempt_id": "MVPS-12-attempt-001",
   "lane": "mvps",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_branch": "work/mvps-12-validation-migration-import-export",
   "selected_by_verified_predecessor": "MVPS-11",
   "predecessor": {
     "work_item_id": "MVPS-11",
@@ -30,12 +30,85 @@
     "Import/export preserves stable identity, exact-version references, provenance, unresolved/conflict state and owner-domain references rather than flattening shared mechanics into species-local data.",
     "Runtime active-contribution projection/receipts remain MVPS-13; MVPS-13+ remain unauthorized until separately selected."
   ],
-  "active_substep": "awaiting_governed_start",
-  "next_action": "On an MVPS-specific owner Continue, enter through OPS3, reserve the FIFO publication turn before candidate preparation, fresh-read MVPS-01 through MVPS-11 plus current migration/versioning/import-export owner contracts, then govern-start MVPS-12 and execute the bounded tranche.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS-12 is closed. MVPS-13 is selected_not_started; a later MVPS-specific Continue must govern-start it before implementation authority is granted.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
+    "material_progress_seq": 10,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 10,
+      "kind": "closeout_candidate",
+      "evidence": "MVPS-12 implementation is durably merged as 6bd2438a1aba8f6847890fc079d4f6f397be8b7a after causal RED run 35473694572 and exact-head GREEN run 35473801265; publication queue is reconciled and closeout selects MVPS-13 from fresh DAG schema 1.0.4."
+    },
+    "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": null
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MVPS-12 implementation is on AIOC main, publication is reconciled, and this closeout records completed_verified plus MVPS-13 selected_not_started."
+    }
+  },
+  "start_gate_evidence": {
+    "roadmap_dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4",
+    "roadmap_requirements": {
+      "hard_requires": [],
+      "start_requires": [],
+      "late_bind_requires": [
+        "MNCS/shared Character-Ability-Equipment capability owner contracts",
+        "MCS environment/location projections",
+        "MCCS character presentation projections"
+      ],
+      "golden_proof_requires": [
+        "MVPS-16 radical-species conformance proof"
+      ]
+    },
+    "predecessor": "MVPS-11 completed_verified",
+    "dependency_closure": [
+      "MVPS-01..11 canonical contracts/invariants",
+      "A4 CharacterValidationPort",
+      "A4 CharacterMigrationPort",
+      "A4 CharacterExportPort",
+      "generic provider-neutral MigrationPort",
+      "Authoring ImportMappingPort",
+      "RoleFilteredContentExportPort",
+      "DevelopmentBible migration-and-import requirements"
+    ],
+    "owner_boundary": "MVPS-12 defines species-facing validation, migration and import/export contracts, findings, fixtures and invariants only. Shared Character/Persistence/Authoring owners retain generic validation, migration, serialization, permission filtering and authoritative mutation; runtime active species projection remains MVPS-13."
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "One owner Continue carried MVPS-12 through governed start, a corrected causal RED, bounded GREEN implementation, exact-head READY publication, durable merge and closeout. The first RED workflow attempt failed an OPS3 checkpoint-projection precondition and was repaired before causal RED was accepted; no additional owner Continue was required."
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "red": "completed",
+    "green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "completed": true,
+  "completed_at": "2026-09-19",
+  "acceptance_evidence": {
+    "lane_state_start_commit": "143c9d6953f335cfa081601009177c17f1faa670",
+    "pre_red_control_plane_failure_run": 35473664947,
+    "causal_red_head": "022b0b6fc61b5d56e9029a5f31f04fdf9254882e",
+    "causal_red_run": 35473694572,
+    "implementation_pr": 1449,
+    "implementation_validated_head": "4b0c09a833bf601799641d58f79207c6de0cb93d",
+    "implementation_validation_run": 35473801265,
+    "implementation_merge_sha": "6bd2438a1aba8f6847890fc079d4f6f397be8b7a",
+    "publication_candidate_id": "MVPS-12-attempt-001-4b0c09a8",
+    "publication_queue_reconciled_generation": 4,
+    "closeout_replayed_after_main_drift_from": "6bd2438a1aba8f6847890fc079d4f6f397be8b7a",
+    "closeout_replayed_onto_main": "1b8d5ea2ccba952d5b816b286f2352f515d96db5",
+    "preserved_parallel_closeout": "MSAS-04 → MSAS-05",
+    "successor": "MVPS-13",
+    "successor_state": "selected_not_started",
+    "roadmap_dependency_graph_schema": "1.0.4",
+    "msas_lane_mutated": false,
+    "mrcs_lane_mutated": false
   }
 }
