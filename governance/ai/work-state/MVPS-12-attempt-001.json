@@ -5,9 +5,9 @@
   "title": "Validation, Migration and Import/Export",
   "attempt_id": "MVPS-12-attempt-001",
   "lane": "mvps",
-  "status": "in_progress",
-  "implementation_authority": true,
-  "implementation_branch": "work/mvps-12-validation-migration-import-export",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
   "selected_by_verified_predecessor": "MVPS-11",
   "predecessor": {
     "work_item_id": "MVPS-11",
@@ -30,20 +30,12 @@
     "Import/export preserves stable identity, exact-version references, provenance, unresolved/conflict state and owner-domain references rather than flattening shared mechanics into species-local data.",
     "Runtime active-contribution projection/receipts remain MVPS-13; MVPS-13+ remain unauthorized until separately selected."
   ],
-  "active_substep": "causal_red",
-  "next_action": "Run the MVPS-12 regression on the exact causal-RED head; it must fail because the five MVPS-12 contract artifacts are absent. Then implement only the bounded species validation/migration/import-export contracts.",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MVPS-specific owner Continue, enter through OPS3, reserve the FIFO publication turn before candidate preparation, fresh-read MVPS-01 through MVPS-11 plus current migration/versioning/import-export owner contracts, then govern-start MVPS-12 and execute the bounded tranche.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 0,
     "stall_nudges": 0,
-    "terminal_response_allowed": false,
-    "stop_reason": null,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
-    "no_progress_cycles": 0,
-    "last_material_progress": {
-      "kind": "governed_start",
-      "evidence": "Lane-state revision 2 / progress_seq 1; implementation branch created from AIOC main 5f716e245c6cfdf065a5bf53374f594ac6315a59."
-    },
-    "active_stall": false
+    "terminal_response_allowed": true,
+    "stop_reason": null
   }
 }
