@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MRCS",
+  "work_item_id": "MRCS-01",
+  "title": "Studio Workspace, Content Registry & Schema-Aware Forms",
+  "attempt_id": "MRCS-01-attempt-001",
+  "lane": "mrcs",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_owner_directive": "OPS3-09 persistent-lane topology repair",
+  "selection_basis": {
+    "program_order": "MRCS-01 is the first surviving PDCP-reduced MRCS tranche.",
+    "parallelism": "Owner explicitly approved MSAS, MRCS and MVPS as independent parallel implementation lanes; ROADMAP_DEPENDENCY_GRAPH.json already treats MRCS and MSAS as parallel-safe and MVPS is separately persistent.",
+    "start_gate": "Implementation authority is withheld until an MRCS-specific Continue verifies current MRCS start requirements and performs governed start."
+  },
+  "strict_successor": "MRCS-03",
+  "objective": "Implement the creator-facing studio workspace shell, governed content-type registry, schema-driven forms, progressive disclosure, definition/instance separation, owner routing and noncanonical draft-state model over the existing Content Forge doctrine.",
+  "acceptance": [
+    "workspace authoring cannot create canonical live instances",
+    "registry metadata drives forms without hard-coded per-type screens",
+    "unknown owner fields remain unresolved rather than inferred",
+    "required and optional fields remain distinguishable",
+    "progressive disclosure preserves complete advanced access",
+    "draft save/resume remains noncanonical"
+  ],
+  "boundaries": [
+    "Content Forge remains the product foundation rather than a parallel authoring database.",
+    "Owner-domain contracts retain semantic authority.",
+    "CAB remains advancement/balance authority and CNI remains conditional-content runtime authority.",
+    "MRCS-01 owns the shared workspace/schema kernel only; MRCS-03+ remain unauthorized until separately selected.",
+    "MSAS and MVPS selectors, branches and implementation authority are independent and may not be rewritten by MRCS."
+  ],
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MRCS-specific owner Continue, enter through OPS3, verify current ROADMAP_DEPENDENCY_GRAPH.json MRCS start requirements plus the declared MRCS-01 dependency closure, reserve publication turns as required, then govern-start and execute MRCS-01 without pausing MSAS or MVPS.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

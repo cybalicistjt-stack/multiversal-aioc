@@ -20,13 +20,13 @@
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "governed_start_candidate",
-      "evidence": "OPS3-09 start candidate preserves MSAS-01 in_progress while temporarily blocking only new implementation starts."
+      "seq": 2,
+      "kind": "topology_candidate_prepared",
+      "evidence": "Canonical MSAS/MRCS/MVPS lane topology, MRCS-01 selector/checkpoint, validators, compatibility generator and regression surfaces prepared on the OPS3-09 implementation candidate."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
@@ -38,6 +38,6 @@
   },
   "implementation_authority": true,
   "completed": false,
-  "active_substep": "governed_start_publication",
-  "next_action": "Publish this governed start through the AIOC FIFO, then implement and validate the MSAS/MRCS/MVPS persistent-lane topology repair and close it out in the same owner Continue."
+  "active_substep": "topology_implementation_publication",
+  "next_action": "Validate and publish the canonical MSAS/MRCS/MVPS topology through the active FIFO turn, then perform post-merge closeout that clears the temporary new-start freeze and records exact publication evidence."
 }

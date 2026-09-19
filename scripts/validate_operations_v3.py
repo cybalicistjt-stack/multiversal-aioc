@@ -161,9 +161,9 @@ def _validate_product_lane_projection(
     errors: list[str],
 ) -> None:
     lanes = current.get("lanes", {})
-    product = lanes.get("product-development", {}) if isinstance(lanes, dict) else {}
+    product = lanes.get("msas", {}) if isinstance(lanes, dict) else {}
     if not isinstance(product, dict):
-        errors.append("CURRENT product-development lane must be an object")
+        errors.append("CURRENT msas lane must be an object")
         return
 
     work_item = product.get("selected_work_item")
@@ -173,17 +173,17 @@ def _validate_product_lane_projection(
     authority = product.get("implementation_authority")
 
     if not isinstance(work_item, str) or not work_item:
-        errors.append("CURRENT product-development selected_work_item is required")
+        errors.append("CURRENT msas selected_work_item is required")
     if not isinstance(attempt_id, str) or not attempt_id:
-        errors.append("CURRENT product-development attempt_id is required")
+        errors.append("CURRENT msas attempt_id is required")
     if state not in {"selected_not_started", "in_progress", "completed_verified"}:
-        errors.append(f"unsupported product-development state: {state}")
+        errors.append(f"unsupported msas state: {state}")
     if state == "selected_not_started" and (authority is not False or branch is not None):
-        errors.append("selected_not_started product work must have no implementation authority or branch")
+        errors.append("selected_not_started MSAS work must have no implementation authority or branch")
     if state == "in_progress" and (authority is not True or not isinstance(branch, str) or not branch):
-        errors.append("in_progress product work requires implementation authority and a branch")
+        errors.append("in_progress MSAS work requires implementation authority and a branch")
     if state == "completed_verified" and authority is not False:
-        errors.append("completed_verified product work must retire implementation authority")
+        errors.append("completed_verified MSAS work must retire implementation authority")
 
     active = legacy_pointer.get("active_attempt", {})
     if not isinstance(active, dict):
@@ -281,7 +281,7 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     if freeze.get("implementation_authority") is not False:
         errors.append("product_start_freeze may preserve selection only; it cannot grant implementation authority")
 
-    product_for_freeze = current_lanes.get("product-development", {}) if isinstance(current_lanes, dict) else {}
+    msas_for_freeze = current_lanes.get("msas", {}) if isinstance(current_lanes, dict) else {}
     if active_operations_id is not None:
         if not isinstance(operations_lane, dict):
             errors.append("CURRENT operations lane must be an object")
@@ -296,10 +296,10 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
             errors.append("CURRENT-referenced active operations work item must exist and be in_progress")
         if freeze.get("active") is not True:
             errors.append("active operations repair requires product_start_freeze.active=true")
-        if isinstance(product_for_freeze, dict):
-            if freeze.get("preserved_selected_work_item") != product_for_freeze.get("selected_work_item"):
+        if isinstance(msas_for_freeze, dict):
+            if freeze.get("preserved_selected_work_item") != msas_for_freeze.get("selected_work_item"):
                 errors.append("operations freeze must preserve the CURRENT product selection")
-            if freeze.get("preserved_attempt_id") != product_for_freeze.get("attempt_id"):
+            if freeze.get("preserved_attempt_id") != msas_for_freeze.get("attempt_id"):
                 errors.append("operations freeze must preserve the CURRENT product attempt")
     else:
         if current.get("active_operations_work_item_path") is not None:
@@ -318,7 +318,7 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         errors.append("LANES lanes must be an array")
         lane_rows = []
     lane_ids = {row.get("id") for row in lane_rows if isinstance(row, dict)}
-    required_lanes = {"product-development", "ui-implementation", "player-species", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}
+    required_lanes = {"msas", "mrcs", "mvps", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}
     if not required_lanes <= lane_ids:
         errors.append(f"missing required lanes: {sorted(required_lanes - lane_ids)}")
 
@@ -413,71 +413,57 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         errors.append("legacy authority operations path drift")
 
     product_lanes = current.get("lanes", {})
-    product = product_lanes.get("product-development", {}) if isinstance(product_lanes, dict) else {}
+    product = product_lanes.get("msas", {}) if isinstance(product_lanes, dict) else {}
     checkpoint_path_value = product.get("checkpoint_path") or product.get("legacy_checkpoint_path") if isinstance(product, dict) else None
     if not isinstance(checkpoint_path_value, str) or not checkpoint_path_value:
-        errors.append("CURRENT product-development checkpoint path is required")
+        errors.append("CURRENT msas checkpoint path is required")
         checkpoint = {}
     else:
         checkpoint = _read_json(root, Path(checkpoint_path_value), errors)
     _validate_product_lane_projection(current, legacy_pointer, legacy_authority, checkpoint, errors)
 
-    ui_lane = product_lanes.get("ui-implementation", {}) if isinstance(product_lanes, dict) else {}
-    if not isinstance(ui_lane, dict):
-        errors.append("CURRENT ui-implementation lane must be an object")
-    else:
-        ui_state = ui_lane.get("state")
-        if ui_state not in {"selected_not_started", "in_progress", "completed_verified"}:
-            errors.append(f"invalid ui-implementation state: {ui_state!r}")
-        ui_checkpoint_value = ui_lane.get("checkpoint_path") or ui_lane.get("legacy_checkpoint_path")
-        if not isinstance(ui_checkpoint_value, str) or not ui_checkpoint_value:
-            errors.append("CURRENT ui-implementation checkpoint path is required")
-        else:
-            ui_checkpoint = _read_json(root, Path(ui_checkpoint_value), errors)
-            expected_ui = {
-                "work_item_id": ui_lane.get("selected_work_item"),
-                "attempt_id": ui_lane.get("attempt_id"),
-                "status": ui_state,
-                "implementation_branch": ui_lane.get("implementation_branch"),
-                "implementation_authority": ui_lane.get("implementation_authority"),
-            }
-            for key, value in expected_ui.items():
-                if ui_checkpoint.get(key) != value:
-                    errors.append(f"CURRENT/ui checkpoint drift for {key}: {value!r} != {ui_checkpoint.get(key)!r}")
-        if ui_state == "in_progress":
-            if not ui_lane.get("implementation_branch") or ui_lane.get("implementation_authority") is not True:
-                errors.append("in_progress ui-implementation lane requires branch and implementation authority")
+    for lane_id in ("mrcs", "mvps"):
+        lane = product_lanes.get(lane_id, {}) if isinstance(product_lanes, dict) else {}
+        if not isinstance(lane, dict):
+            errors.append(f"CURRENT {lane_id} lane must be an object")
+            continue
+        lane_state = lane.get("state")
+        if lane_state not in {"selected_not_started", "in_progress", "completed_verified"}:
+            errors.append(f"invalid {lane_id} state: {lane_state!r}")
+        checkpoint_value = lane.get("checkpoint_path") or lane.get("legacy_checkpoint_path")
+        if not isinstance(checkpoint_value, str) or not checkpoint_value:
+            errors.append(f"CURRENT {lane_id} checkpoint path is required")
+            continue
+        lane_checkpoint = _read_json(root, Path(checkpoint_value), errors)
+        expected_lane = {
+            "work_item_id": lane.get("selected_work_item"),
+            "attempt_id": lane.get("attempt_id"),
+            "status": lane_state,
+            "implementation_branch": lane.get("implementation_branch"),
+            "implementation_authority": lane.get("implementation_authority"),
+        }
+        for key, value in expected_lane.items():
+            if lane_checkpoint.get(key) != value:
+                errors.append(f"CURRENT/{lane_id} checkpoint drift for {key}: {value!r} != {lane_checkpoint.get(key)!r}")
+        if lane_state == "selected_not_started":
+            if lane.get("implementation_branch") is not None or lane.get("implementation_authority") is not False:
+                errors.append(f"selected_not_started {lane_id} lane must have no branch or implementation authority")
+        if lane_state == "in_progress":
+            if not lane.get("implementation_branch") or lane.get("implementation_authority") is not True:
+                errors.append(f"in_progress {lane_id} lane requires branch and implementation authority")
+        if lane_state == "completed_verified" and lane.get("implementation_authority") is not False:
+            errors.append(f"completed_verified {lane_id} work must retire implementation authority")
 
-    mvps_lane = product_lanes.get("player-species", {}) if isinstance(product_lanes, dict) else {}
-    if not isinstance(mvps_lane, dict):
-        errors.append("CURRENT player-species lane must be an object")
+    completed_programs = current.get("completed_programs", {})
+    uisr = completed_programs.get("UISR", {}) if isinstance(completed_programs, dict) else {}
+    if not isinstance(uisr, dict) or uisr.get("state") != "completed_verified" or uisr.get("implementation_authority") is not False:
+        errors.append("UISR must remain preserved as completed program history with no implementation authority")
     else:
-        mvps_state = mvps_lane.get("state")
-        if mvps_state not in {"selected_not_started", "in_progress", "completed_verified"}:
-            errors.append(f"invalid player-species state: {mvps_state!r}")
-        mvps_checkpoint_value = mvps_lane.get("checkpoint_path") or mvps_lane.get("legacy_checkpoint_path")
-        if not isinstance(mvps_checkpoint_value, str) or not mvps_checkpoint_value:
-            errors.append("CURRENT player-species checkpoint path is required")
-        else:
-            mvps_checkpoint = _read_json(root, Path(mvps_checkpoint_value), errors)
-            expected_mvps = {
-                "work_item_id": mvps_lane.get("selected_work_item"),
-                "attempt_id": mvps_lane.get("attempt_id"),
-                "status": mvps_state,
-                "implementation_branch": mvps_lane.get("implementation_branch"),
-                "implementation_authority": mvps_lane.get("implementation_authority"),
-            }
-            for key, value in expected_mvps.items():
-                if mvps_checkpoint.get(key) != value:
-                    errors.append(f"CURRENT/MVPS checkpoint drift for {key}: {value!r} != {mvps_checkpoint.get(key)!r}")
-        if mvps_state == "selected_not_started":
-            if mvps_lane.get("implementation_branch") is not None or mvps_lane.get("implementation_authority") is not False:
-                errors.append("selected_not_started player-species lane must have no branch or implementation authority")
-        if mvps_state == "in_progress":
-            if not mvps_lane.get("implementation_branch") or mvps_lane.get("implementation_authority") is not True:
-                errors.append("in_progress player-species lane requires branch and implementation authority")
-        if mvps_state == "completed_verified" and mvps_lane.get("implementation_authority") is not False:
-            errors.append("completed_verified player-species work must retire implementation authority")
+        uisr_checkpoint_value = uisr.get("checkpoint_path")
+        if isinstance(uisr_checkpoint_value, str) and uisr_checkpoint_value:
+            uisr_checkpoint = _read_json(root, Path(uisr_checkpoint_value), errors)
+            if uisr_checkpoint.get("work_item_id") != uisr.get("selected_work_item") or uisr_checkpoint.get("status") != "completed_verified":
+                errors.append("UISR completed-program history drift")
 
     observed_head = _git_head(root, errors) if expected_head else None
     if expected_head and observed_head != expected_head:

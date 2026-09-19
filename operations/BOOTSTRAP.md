@@ -25,7 +25,7 @@ Read `operations/LANES.json` and choose exactly one lane that matches the user's
 - Explicit requests name or imply their lane and override the default lane.
 - A bare `Continue` resumes the lane already established by the conversation. If this is a new conversation, use `CURRENT.json` and the user's opening request to resolve the lane.
 - Lane selection changes scope and source bundle only. It never changes the global operating contract.
-- Multiple persistent lanes may hold implementation authority at the same time. A conversation still selects exactly one lane; selecting it does **not** pause, revoke, or rewrite another lane merely because both change product code.
+- The persistent implementation lanes are `msas`, `mrcs`, and `mvps`. They may hold implementation authority at the same time. A conversation still selects exactly one lane; selecting it does **not** pause, revoke, or rewrite another lane merely because both change product code. Completed UISR history is not a persistent implementation lane.
 - When active lanes share a repository, they use separate implementation branches and the FIFO publication queue serializes `main` mutation. Each lane reserves a turn; only the active head prepares/reconciles/validates its publication candidate against the fresh turn base.
 - Do not load or mutate another lane merely because it exists; cross-lane reads are limited to explicit dependencies, publication conflicts, or owner-directed coordination.
 

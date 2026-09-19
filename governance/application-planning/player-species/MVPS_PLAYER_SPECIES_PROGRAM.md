@@ -52,7 +52,7 @@ If an MVPS tranche discovers a necessary shared-owner change, record it as an ex
 
 ## Parallel execution
 
-MVPS is a persistent lane independent of product-development and ui-implementation. Each lane uses its own implementation branch. Same-repository publication is serialized by the OPS3 merge lease and stale-base validation rules.
+MVPS is a persistent lane independent of MSAS and MRCS. Each persistent lane uses its own implementation branch. Same-repository publication is serialized by the OPS3 FIFO merge-lease protocol and exact-base validation rules.
 
 ## Acceptance doctrine
 
