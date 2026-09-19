@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "MVPS-09-INVARIANTS",
+  "status": "MVPS-09_CANONICAL_INVARIANTS",
+  "form_specific_runtime_engine_created": false,
+  "invariants": [
+    {
+      "id": "MVPS09-I01-form-not-species",
+      "rule": "A Form has distinct stable identity and never replaces the selected base species identity."
+    },
+    {
+      "id": "MVPS09-I02-base-history-preserved",
+      "rule": "Temporary or alternate form state never erases base species, lineage, selection or historical receipts."
+    },
+    {
+      "id": "MVPS09-I03-explicit-retention",
+      "rule": "Every transformation explicitly identifies retained/replaced contribution policy across affected shared-owner surfaces; absence is unresolved."
+    },
+    {
+      "id": "MVPS09-I04-explicit-equipment-policy",
+      "rule": "Transformation-time equipment behavior is explicit as retain/drop/suppress/resize/replace/adapt/owner-defined, while authoritative equipment mutation remains with PPIA-03/Item-Equipment owners."
+    },
+    {
+      "id": "MVPS09-I05-provenance-safe-reversal",
+      "rule": "Exit/reversal preserves the original transition and pre-transform provenance; history is never overwritten or erased."
+    },
+    {
+      "id": "MVPS09-I06-shared-owner-delegation",
+      "rule": "Morphology, scale, movement, senses, capabilities, resources, equipment and presentation mechanics remain with their shared owners and are referenced or handed off."
+    },
+    {
+      "id": "MVPS09-I07-no-progression-or-runtime-projection-leakage",
+      "rule": "Species progression remains MVPS-10 and deterministic active contribution/runtime grant projection remains MVPS-13."
+    }
+  ],
+  "enforcement": {
+    "regression_test": "tests/control_plane/test_mvps09_form_transformation.py",
+    "ci_step": "Run MVPS-09 form transformation regressions"
+  }
+}
