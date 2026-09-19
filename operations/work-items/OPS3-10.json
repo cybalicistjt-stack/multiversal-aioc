@@ -26,13 +26,13 @@
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 2,
+    "material_progress_seq": 3,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 2,
-      "kind": "green_implementation_candidate",
-      "evidence": "PR 1447 now contains ready-candidate queue semantics, sharded lane-state transport, updated bootstrap/contract/current/lanes, and an explicit executor interruption recovery rule after the observed session abort."
+      "seq": 3,
+      "kind": "cutover_candidate",
+      "evidence": "READY-queue/lane-state implementation passed prequeue run 35449899102 at 90cf0f05ed815db6ffa0d08e11d48f0cfa7cd9c2; independent lane-state refs and repository-local READY queue refs are seeded; final legacy cutover turn is active at main 9ce9ee20603232d6bd20976eed7a9ea9f6c3d2f1."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
@@ -45,5 +45,21 @@
   "implementation_authority": true,
   "completed": false,
   "active_substep": "full_validation_and_cutover",
-  "next_action": "Run exact-head full validation for PR 1447, repair only causal failures, seed the three lane-state refs and two ready-publication queue refs, publish the cutover through the final legacy FIFO turn, reconcile legacy transport as retired, close OPS3-10 and clear the product-start freeze."
+  "next_action": "Run exact-head full validation for PR 1447, repair only causal failures, seed the three lane-state refs and two ready-publication queue refs, publish the cutover through the final legacy FIFO turn, reconcile legacy transport as retired, close OPS3-10 and clear the product-start freeze.",
+  "acceptance_evidence": {
+    "causal_red_run": 35447089860,
+    "causal_red_head": "eeab617869265d5cd030e21ab4ff8822455f93fc",
+    "prequeue_green_run": 35449899102,
+    "prequeue_green_head": "90cf0f05ed815db6ffa0d08e11d48f0cfa7cd9c2",
+    "seeded_lane_state_refs": [
+      "ops3-lane-state/msas",
+      "ops3-lane-state/mrcs",
+      "ops3-lane-state/mvps"
+    ],
+    "seeded_publication_queue_refs": [
+      "ops3-publication-queue/cybalicistjt-stack-multiversal-aioc",
+      "ops3-publication-queue/cybalicistjt-stack-multiversal-app"
+    ],
+    "final_legacy_turn_base": "9ce9ee20603232d6bd20976eed7a9ea9f6c3d2f1"
+  }
 }
