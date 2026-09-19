@@ -2,17 +2,13 @@
   "schema_version": "2.1.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
   "status": "free",
-  "generation": 319,
+  "generation": 320,
   "holder": null,
   "active_reservation_id": null,
   "turn_base": null,
   "validated_head": null,
   "validated_base": null,
   "queue": [
-    {
-      "reservation_id": "MSAS-03-attempt-001-aioc-start-002",
-      "holder": "MSAS-03-attempt-001-govern-start"
-    },
     {
       "reservation_id": "MVPS-11-attempt-001-aioc-impl-001",
       "holder": "MVPS-11-attempt-001-implementation"
@@ -36,9 +32,9 @@
     "recovery_location": "governance/ai/work-state/MVPS-11-attempt-001.json"
   },
   "last_cancelled_reservation": {
-    "reservation_id": "MSAS-03-attempt-001-aioc-start-001",
+    "reservation_id": "MSAS-03-attempt-001-aioc-start-002",
     "holder": "MSAS-03-attempt-001-govern-start",
-    "reason": "Owner explicitly directed the current MRCS-01 execution to finish after its frozen closeout. The MSAS-03 reservation was queued-only, had never activated, had no turn_base, and had no prepared publication candidate; MSAS-03 lane selection remains unchanged."
+    "reason": "Owner's active MVPS Continue requires MVPS-11 to run through bounded completion. MSAS-03 reservation was queued-only, had no activated turn_base, no prepared publication candidate, and MSAS-03 remains selected_not_started with implementation authority false."
   },
   "last_recovery_handoff": {
     "stalled_holder": "MVPS-10-attempt-001-closeout",
