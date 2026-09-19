@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesProgressionHook",
+  "record_type": "species_progression_hook_contract",
+  "status": "implementation_ready_contract",
+  "purpose": "Represent optional species-facing progression, maturation unlock and acquisition hooks as references into canonical Character/Progression, Action/Event and CAB owners without creating a species-specific progression engine.",
+  "source_basis": [
+    "MVPS-01..09 contracts and invariants",
+    "CAB-06 XP Cost Calibration Framework",
+    "CAB-09 Acquisition & Eligibility",
+    "APW-03 Between-Session Campaign Activity & Bounded Downtime",
+    "APM-02 CozyMode Core Loop",
+    "PDCP GPR Family Design Closure"
+  ],
+  "species_progression_required": false,
+  "no_progression_hook_is_valid": true,
+  "species_specific_progression_engine_created": false,
+  "acquisition_policy": "reference_and_handoff_only",
+  "progression_owner": "Character/Progression owning domain",
+  "action_event_owner": "Action/Event plus owning Character/Progression domain",
+  "cab_policy": "eligibility_acquisition_cost_and_reference_value_owned_by_CAB",
+  "eligibility_is_acquisition": false,
+  "progression_hook_declaration": {
+    "required": [
+      "hook_id",
+      "source_ref",
+      "provenance_ref",
+      "progression_profile_ref",
+      "availability_policy",
+      "acquisition_mode_refs",
+      "event_contract_ref"
+    ],
+    "stable_identity_required": true,
+    "exact_version_refs_required": true,
+    "inline_cost_formula_allowed": false,
+    "inline_prerequisite_engine_allowed": false,
+    "inline_grant_mechanics_allowed": false
+  },
+  "acquisition_modes_reference_owner_contracts": true,
+  "source_grant_policy": {
+    "zero_xp_debit_allowed_when_owner_rule_grants_or_waives": true,
+    "zero_xp_debit_implies_zero_reference_value": false,
+    "grant_source_and_reason_required": true
+  },
+  "event_sourcing": {
+    "all_permanent_or_conditional_advancement_event_sourced": true,
+    "durable_event_required_for_acquisition": true,
+    "historical_event_records_immutable": true,
+    "silent_character_mutation_allowed": false,
+    "required_event_evidence": [
+      "before_state_ref",
+      "selected_option_ref",
+      "cost_receipt_ref",
+      "grant_refs",
+      "prerequisite_evidence_refs",
+      "rules_source_refs",
+      "resulting_state_ref",
+      "provenance_ref"
+    ],
+    "revalidate_at_commit": [
+      "eligibility",
+      "prerequisites",
+      "cost_or_grant_authority",
+      "exclusions",
+      "source_versions",
+      "campaign_restrictions"
+    ]
+  },
+  "duplicate_grant_policy": "defer_to_shared_owner_stacking_replacement",
+  "species_local_duplicate_resolution_allowed": false,
+  "species_local_xp_or_cost_engine_created": false,
+  "shared_owner_handoff": {
+    "eligibility_and_acquisition": "CAB-09 and owning Progression domain",
+    "costs_and_reference_value": "CAB-06 and later CAB owners",
+    "canonical_mutation_and_history": "Action/Event plus Character/Progression owner",
+    "grant_execution": "Ability/Action/Effect/Condition/Resource/Modifier owners",
+    "stacking_suppression_replacement": "owning shared mechanic/rules profile"
+  },
+  "unknown_or_conflict_policy": "surface_unresolved_not_guess",
+  "form_transformation_owner": "MVPS-09",
+  "runtime_projection_created": false,
+  "runtime_projection_owner": "MVPS-13",
+  "social_language_knowledge_owner": "MVPS-11",
+  "extension_policy": "namespaced_non_overriding"
+}

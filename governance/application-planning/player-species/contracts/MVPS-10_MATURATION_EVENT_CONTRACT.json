@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesMaturationEventHook",
+  "record_type": "species_maturation_event_hook_contract",
+  "status": "implementation_ready_contract",
+  "purpose": "Bind source-backed developmental or maturation stages to explicit progression/Event handoffs while keeping lifecycle description, form state and runtime projection with their existing owners.",
+  "source_basis": [
+    "MVPS-05 physiology/lifecycle contract and invariants",
+    "MVPS-09 form/transformation contract and invariants",
+    "CAB-09 acquisition/eligibility",
+    "APW-03 immutable Character/progression Event boundary"
+  ],
+  "lifecycle_descriptor_non_executable": true,
+  "chronological_age_is_progression_entitlement": false,
+  "mechanical_stage_change_requires_explicit_event": true,
+  "automatic_unlock_from_age_without_authorizing_rule": false,
+  "base_species_selection_history_preserved": true,
+  "lifecycle_descriptor_owner": "MVPS-05",
+  "form_transformation_owner": "MVPS-09",
+  "canonical_event_owner": "Action/Event plus Character/Progression owning domain",
+  "maturation_hook": {
+    "required": [
+      "maturation_hook_id",
+      "source_rule_ref",
+      "provenance_ref",
+      "from_stage_ref",
+      "to_stage_ref",
+      "trigger_evidence_ref",
+      "event_contract_ref"
+    ],
+    "trigger_kinds": [
+      "source_defined_age_threshold",
+      "source_defined_developmental_milestone",
+      "source_defined_exposure_or_condition",
+      "source_defined_training_or_ritual",
+      "owner_defined"
+    ],
+    "age_threshold_requires_explicit_source_rule": true,
+    "descriptive_stage_name_grants_mechanics": false
+  },
+  "maturation_event_evidence": [
+    "before_state_ref",
+    "from_stage_ref",
+    "to_stage_ref",
+    "source_rule_ref",
+    "trigger_evidence_ref",
+    "grant_delta_refs",
+    "prerequisite_evidence_refs",
+    "resulting_state_ref",
+    "provenance_ref"
+  ],
+  "grant_delta_policy": "shared_owner_refs_only",
+  "duplicate_grant_policy": "defer_to_shared_owner_stacking_replacement",
+  "reversal_or_correction_policy": "new_attributable_event_or_owner_defined_compensation_never_history_rewrite",
+  "source_silence_policy": "unresolved_no_automatic_maturation_mechanic",
+  "species_specific_aging_engine_created": false,
+  "runtime_projection_created": false,
+  "runtime_projection_owner": "MVPS-13"
+}
