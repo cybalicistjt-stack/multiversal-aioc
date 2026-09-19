@@ -9,7 +9,8 @@
     "Schema-2.1 FIFO activates before RED/GREEN preparation and validation; recent MSAS-03 application history held the publication turn while causal RED, GREEN candidate construction and Linux validation were performed.",
     "AIOC coordination history required queued-reservation cancellation/reordering, active-reservation duplicate repair, and recovery-release of an already merged MVPS-10 closeout.",
     "Governed-start, implementation publication, checkpoint/CURRENT closeout and release all compete for protected AIOC main, turning administrative state changes into repository-wide serialization.",
-    "Release/closeout currently depends on the originating executor surviving after durable merge; a stalled conversation can require another executor to recover the publication turn."
+    "Release/closeout currently depends on the originating executor surviving after durable merge; a stalled conversation can require another executor to recover the publication turn.",
+    "During OPS3-10 itself, this chat stopped immediately after a batched read of the three selected lane checkpoints with no blocker or terminal response. The queue was not held; execution simply ceased, proving executor/session continuity must not be a project dependency."
   ],
   "repair_scope": [
     "Introduce ready-candidate publication state: candidates enter publication order only after an immutable head exists and prequeue validation is green.",
@@ -19,18 +20,19 @@
     "Keep operations/CURRENT.json as the small global selector/system-policy aggregate rather than the high-frequency lane execution log.",
     "Separate source integration from build/release/deployment status so a slow or failed release cannot block source publication.",
     "Add regression tests for no pre-ready reservation, no holder/release lifecycle, crash safety, lane-state isolation, ready-candidate ordering and drift-sensitive integration checks.",
-    "Preserve MSAS-04, MRCS-03 and MVPS-12 selected_not_started throughout the repair."
+    "Preserve MSAS-04, MRCS-03 and MVPS-12 selected_not_started throughout the repair.",
+    "Add executor/session interruption discipline: no silent waiting or open-ended polling, durable lane-state receipts after material side effects, and exact resume from the last receipt after a chat/tool/runtime abort."
   ],
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "governed_start_candidate",
-      "evidence": "OPS3-10 governed-start candidate freezes new product starts while preserving MSAS-04, MRCS-03 and MVPS-12 selections."
+      "seq": 2,
+      "kind": "green_implementation_candidate",
+      "evidence": "PR 1447 now contains ready-candidate queue semantics, sharded lane-state transport, updated bootstrap/contract/current/lanes, and an explicit executor interruption recovery rule after the observed session abort."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
@@ -42,6 +44,6 @@
   },
   "implementation_authority": true,
   "completed": false,
-  "active_substep": "governed_start_publication",
-  "next_action": "Publish this governed start through the legacy AIOC FIFO, then replace that transport with ready-candidate integration and isolated lane state, validate the new regression model, close OPS3-10 and clear the temporary product-start freeze in this same owner execution."
+  "active_substep": "full_validation_and_cutover",
+  "next_action": "Run exact-head full validation for PR 1447, repair only causal failures, seed the three lane-state refs and two ready-publication queue refs, publish the cutover through the final legacy FIFO turn, reconcile legacy transport as retired, close OPS3-10 and clear the product-start freeze."
 }
