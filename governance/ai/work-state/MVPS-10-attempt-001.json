@@ -5,9 +5,9 @@
   "title": "Species Progression and Maturation Hooks",
   "attempt_id": "MVPS-10-attempt-001",
   "lane": "mvps",
-  "status": "selected_not_started",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/mvps-10-species-progression-maturation-hooks",
   "selected_by_verified_predecessor": "MVPS-09",
   "predecessor": {
     "work_item_id": "MVPS-09",
@@ -30,12 +30,57 @@
     "Forms/transformation semantics remain MVPS-09; runtime active-contribution projection/receipts remain MVPS-13.",
     "MVPS-11+ remain unauthorized until separately selected."
   ],
-  "active_substep": "awaiting_governed_start",
-  "next_action": "On an MVPS-specific owner Continue, enter through OPS3, reserve the FIFO publication turn before candidate preparation, fresh-read MVPS-01 through MVPS-09 plus current Progression/Event owner contracts, then govern-start MVPS-10 and execute the bounded tranche without pausing MSAS or MRCS.",
+  "active_substep": "governed_start_publication",
+  "next_action": "After this governed-start publication is durably verified, reserve the AIOC FIFO implementation turn before candidate preparation, establish a causal RED for the missing MVPS-10 progression/maturation contracts, implement the bounded tranche over shared Progression/Action-Event/CAB owners, validate exact head, publish, then close out and select the verified successor in the same owner Continue.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start_candidate",
+      "evidence": "MVPS-10 start gates and dependency closure verified; candidate activates only the mvps lane and preserves independent MSAS/MRCS selectors."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
     "stop_reason": null
+  },
+  "start_gate_evidence": {
+    "roadmap_dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4",
+    "roadmap_requirements": {
+      "hard_requires": [],
+      "start_requires": [],
+      "late_bind_requires": [
+        "MNCS/shared Character-Ability-Equipment capability owner contracts",
+        "MCS environment/location projections",
+        "MCCS character presentation projections"
+      ],
+      "golden_proof_requires": [
+        "MVPS-16 radical-species conformance proof"
+      ]
+    },
+    "predecessor": "MVPS-09 completed_verified",
+    "dependency_closure": [
+      "MVPS-01..09 canonical contracts/invariants/fixtures",
+      "CAB-06 XP/reference-value policy",
+      "CAB-09 acquisition and eligibility",
+      "APW-03 immutable Character/progression Event boundary",
+      "APM-02 human-required irreversible advancement boundary",
+      "PDCP GPR Action/Event + Progression canonical mutation ownership"
+    ],
+    "owner_boundary": "MVPS-10 defines species-facing progression/maturation hooks only; canonical progression acquisition, Action/Event mutation, duplicate/stacking, costs, eligibility, and runtime mutation remain shared-owner truth."
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  },
+  "implementation_plan": {
+    "governed_start": "in_progress",
+    "red": "pending",
+    "green": "pending",
+    "publication": "pending",
+    "closeout": "pending"
   }
 }
