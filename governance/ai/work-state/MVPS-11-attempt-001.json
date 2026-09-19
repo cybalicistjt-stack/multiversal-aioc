@@ -5,8 +5,8 @@
   "title": "Social, Language and Knowledge Identity Hooks",
   "attempt_id": "MVPS-11-attempt-001",
   "lane": "mvps",
-  "status": "in_progress",
-  "implementation_authority": true,
+  "status": "completed_verified",
+  "implementation_authority": false,
   "implementation_branch": "work/mvps-11-social-language-knowledge-hooks",
   "selected_by_verified_predecessor": "MVPS-10",
   "predecessor": {
@@ -30,22 +30,25 @@
     "Progression/maturation remains MVPS-10; validation/migration remains MVPS-12; runtime active contribution projection remains MVPS-13.",
     "MVPS-12+ remain unauthorized until separately selected."
   ],
-  "active_substep": "governed_start_publication",
-  "next_action": "After this governed-start publication is durably verified, reserve the AIOC FIFO implementation turn before candidate preparation, establish a causal RED for the missing MVPS-11 social/language/knowledge contracts, implement the bounded tranche over shared Relationship/Reputation/Faction/Knowledge/Visibility/Language owners, validate exact head, publish, then close out and select the verified successor in the same owner Continue.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS-11 is closed. MVPS-12 is selected_not_started; a later MVPS-specific Continue must govern-start it before implementation authority is granted.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 6,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "governed_start_candidate",
-      "evidence": "MVPS-11 dependency closure verified; candidate activates only the mvps lane and preserves independent MSAS/MRCS selectors."
+      "seq": 6,
+      "kind": "closeout_candidate",
+      "evidence": "MVPS-11 implementation is durably merged as eb879a079acd9d426f8c3e61573c0fc2d0abdbb1 after causal RED 35441927515 and exact-head GREEN 35441991490; closeout selects MVPS-12 from fresh DAG schema 1.0.4."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MVPS-11 implementation is on AIOC main and this closeout records completed_verified plus MVPS-12 selected_not_started."
+    }
   },
   "start_gate_evidence": {
     "roadmap_dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4",
@@ -74,14 +77,36 @@
     "owner_boundary": "MVPS-11 defines species-facing social, biological-communication, learned-language and identity-knowledge hooks only. Relationship/Reputation/Faction/Law/Knowledge/Visibility/Language state and mutation remain with shared owners; culture and behavior are never inferred as immutable biology."
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "One owner Continue carried MVPS-11 through governed start, causal RED, bounded GREEN implementation, exact-head publication and closeout. A queued-only MSAS-03 coordination reservation was cancelled before activation under the active MVPS completion command; MSAS-03 selector/checkpoint/authority remained unchanged."
   },
   "implementation_plan": {
-    "governed_start": "in_progress",
-    "red": "pending",
-    "green": "pending",
-    "publication": "pending",
-    "closeout": "pending"
+    "governed_start": "completed",
+    "red": "completed",
+    "green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "completed": true,
+  "completed_at": "2026-09-19",
+  "acceptance_evidence": {
+    "governed_start_pr": 1441,
+    "governed_start_validated_head": "cb1a5f5cc37512ab6ffe7c91f9a6176363d1ed88",
+    "governed_start_validation_run": 35441748474,
+    "governed_start_merge_sha": "18403d90a0003795e92d3aae86efde4581303912",
+    "causal_red_head": "be36d560c76a6def99a2dbb4213efc7b6b637ad0",
+    "causal_red_run": 35441927515,
+    "implementation_pr": 1442,
+    "implementation_validated_head": "ddb6d94954defc8fcd253db2391b010d92d78dd0",
+    "implementation_validation_run": 35441991490,
+    "implementation_merge_sha": "eb879a079acd9d426f8c3e61573c0fc2d0abdbb1",
+    "implementation_tree": "70778a1e8a706784ae720dce9aace9f1cb27e1ef",
+    "successor": "MVPS-12",
+    "successor_state": "selected_not_started",
+    "roadmap_dependency_graph_schema": "1.0.4",
+    "msas_lane_mutated": false,
+    "mrcs_lane_mutated": false,
+    "queued_only_msas_reservation_cancelled": true
   }
 }

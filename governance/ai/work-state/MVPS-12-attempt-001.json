@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-12",
+  "title": "Validation, Migration and Import/Export",
+  "attempt_id": "MVPS-12-attempt-001",
+  "lane": "mvps",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-11",
+  "predecessor": {
+    "work_item_id": "MVPS-11",
+    "status": "completed_verified",
+    "implementation_merge_sha": "eb879a079acd9d426f8c3e61573c0fc2d0abdbb1",
+    "validation_run": 35441991490
+  },
+  "strict_successor": "MVPS-13",
+  "objective": "Define structural/behavioral/integration validators, playable/incomplete/invalid/migration-required states, version migration and historical-choice preservation.",
+  "acceptance": [
+    "missing canon is never silently fabricated",
+    "historical selections survive deprecation",
+    "migration emits receipts/discrepancies"
+  ],
+  "boundaries": [
+    "MVPS-12 owns species-facing structural/behavioral/integration validation, migration and import/export contracts only; generic migration/versioning/import-export infrastructure remains with shared owners.",
+    "Missing, source-unspecified or conflicted canon must remain explicit and may never be silently fabricated during validation or migration.",
+    "Historical CharacterSpeciesSelection receipts, exact species/version references, lineage/form selections, adjudications and provenance must survive deprecation/replacement unless an explicit migration receipt records the governed change.",
+    "Migration-required state must be distinguishable from playable, incomplete and invalid states, with explicit discrepancy/recovery evidence.",
+    "Import/export preserves stable identity, exact-version references, provenance, unresolved/conflict state and owner-domain references rather than flattening shared mechanics into species-local data.",
+    "Runtime active-contribution projection/receipts remain MVPS-13; MVPS-13+ remain unauthorized until separately selected."
+  ],
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MVPS-specific owner Continue, enter through OPS3, reserve the FIFO publication turn before candidate preparation, fresh-read MVPS-01 through MVPS-11 plus current migration/versioning/import-export owner contracts, then govern-start MVPS-12 and execute the bounded tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
