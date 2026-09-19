@@ -2,17 +2,13 @@
   "schema_version": "2.1.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
   "status": "free",
-  "generation": 271,
+  "generation": 272,
   "holder": null,
   "active_reservation_id": null,
   "turn_base": null,
   "validated_head": null,
   "validated_base": null,
   "queue": [
-    {
-      "reservation_id": "MSAS-01-attempt-001-aioc-closeout-001",
-      "holder": "MSAS-01-attempt-001-closeout"
-    },
     {
       "reservation_id": "OPS3-09-aioc-closeout-001",
       "holder": "ops3-09-lane-topology-repair"
@@ -34,5 +30,10 @@
     "validated_base": "1565432eb67cf55f7f1f38bd770a6cf01f735cfa",
     "merge_sha": "e99f9e4c0be11fadf5b14455d2f1e4ba0c1f32fc",
     "recovery_location": "operations/work-items/OPS3-09.json"
+  },
+  "last_cancelled_reservation": {
+    "reservation_id": "MSAS-01-attempt-001-aioc-closeout-001",
+    "holder": "MSAS-01-attempt-001-closeout",
+    "reason": "Owner explicitly prioritized completion of OPS3-09 while other work waits; reservation was queued-only and had no activated turn_base or prepared candidate."
   }
 }
