@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS3-10",
+  "title": "Ready-Then-Queue Publication and Lane-State Decoupling",
+  "status": "in_progress",
+  "owner_directive": "Replace the failing three-lane FIFO/held-turn system with independent lane execution plus late-binding ready-candidate integration. The shared publication mechanism is for merging ready immutable candidates only, not for doing implementation, validation, closeout or release work. Remove manual release as a queue dependency and decouple release/deployment from source integration.",
+  "reproduced_failures": [
+    "Recent completed checkpoints required repeated owner intervention: MSAS-03 recorded 5 Continue turns and 2 stall nudges; MSAS-01 recorded 4 Continue turns; MRCS-01 and MVPS-10 each required repeated owner execution commands.",
+    "Schema-2.1 FIFO activates before RED/GREEN preparation and validation; recent MSAS-03 application history held the publication turn while causal RED, GREEN candidate construction and Linux validation were performed.",
+    "AIOC coordination history required queued-reservation cancellation/reordering, active-reservation duplicate repair, and recovery-release of an already merged MVPS-10 closeout.",
+    "Governed-start, implementation publication, checkpoint/CURRENT closeout and release all compete for protected AIOC main, turning administrative state changes into repository-wide serialization.",
+    "Release/closeout currently depends on the originating executor surviving after durable merge; a stalled conversation can require another executor to recover the publication turn."
+  ],
+  "repair_scope": [
+    "Introduce ready-candidate publication state: candidates enter publication order only after an immutable head exists and prequeue validation is green.",
+    "Remove active holder/turn-base work windows from the normal publication path; no implementation, RED/GREEN construction, full tranche validation or closeout work occurs while owning a shared publication lock.",
+    "Serialize only the atomic integration/merge decision. A candidate is terminal from durable repository evidence; no separate release operation is required.",
+    "Add independent durable lane-state refs/surfaces for msas, mrcs and mvps so lane execution/progress updates do not contend on protected AIOC main.",
+    "Keep operations/CURRENT.json as the small global selector/system-policy aggregate rather than the high-frequency lane execution log.",
+    "Separate source integration from build/release/deployment status so a slow or failed release cannot block source publication.",
+    "Add regression tests for no pre-ready reservation, no holder/release lifecycle, crash safety, lane-state isolation, ready-candidate ordering and drift-sensitive integration checks.",
+    "Preserve MSAS-04, MRCS-03 and MVPS-12 selected_not_started throughout the repair."
+  ],
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start_candidate",
+      "evidence": "OPS3-10 governed-start candidate freezes new product starts while preserving MSAS-04, MRCS-03 and MVPS-12 selections."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  },
+  "implementation_authority": true,
+  "completed": false,
+  "active_substep": "governed_start_publication",
+  "next_action": "Publish this governed start through the legacy AIOC FIFO, then replace that transport with ready-candidate integration and isolated lane state, validate the new regression model, close OPS3-10 and clear the temporary product-start freeze in this same owner execution."
+}
