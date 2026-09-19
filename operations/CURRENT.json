@@ -6,24 +6,24 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 243,
+  "state_revision": 244,
   "default_lane": "product-development",
-  "active_operations_work_item": null,
-  "active_operations_work_item_path": null,
+  "active_operations_work_item": "OPS3-09",
+  "active_operations_work_item_path": "operations/work-items/OPS3-09.json",
   "product_start_freeze": {
-    "active": false,
-    "reason": "OPS3-08 completed_verified after frontier reconciliation, queue-liveness hardening, no-progress guard enforcement, direct-main writer removal, and exact-head validation/publication.",
+    "active": true,
+    "reason": "Owner-approved OPS3 lane-topology repair: replace the obsolete persistent product-development/ui-implementation/player-species topology with independent MSAS/MRCS/MVPS lanes while preserving in-progress MSAS-01 and completed UISR-11 evidence.",
     "preserved_selected_work_item": "MSAS-01",
     "preserved_attempt_id": "MSAS-01-attempt-001",
     "implementation_authority": false,
-    "cleared_by": "OPS3-08 completed_verified"
+    "cleared_by": null
   },
   "lanes": {
     "operations": {
-      "state": "completed_verified",
-      "work_item_id": "OPS3-08",
-      "work_item_path": "operations/work-items/OPS3-08.json",
-      "implementation_authority": false
+      "state": "in_progress",
+      "work_item_id": "OPS3-09",
+      "work_item_path": "operations/work-items/OPS3-09.json",
+      "implementation_authority": true
     },
     "product-development": {
       "state": "in_progress",
@@ -83,5 +83,5 @@
     "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS3.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
     "generated_main_writers": "CI/bots/generated-content jobs may not push directly to protected main; generated outputs must be present on the queue-bound candidate branch or validation fails closed."
   },
-  "next_project_action": "Execute MSAS-01 through causal RED, minimum coherent GREEN, exact-head application validation/publication, AIOC closeout, and successor reconciliation in this same owner Continue."
+  "next_project_action": "Complete OPS3-09 persistent-lane topology repair without changing MSAS-01 implementation scope or MVPS-10 selection; then clear the temporary start freeze and resume independent MSAS/MRCS/MVPS execution."
 }
