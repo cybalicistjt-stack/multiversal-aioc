@@ -6,17 +6,17 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 255,
+  "state_revision": 256,
   "default_lane": "msas",
-  "active_operations_work_item": null,
-  "active_operations_work_item_path": null,
+  "active_operations_work_item": "OPS3-10",
+  "active_operations_work_item_path": "operations/work-items/OPS3-10.json",
   "product_start_freeze": {
-    "active": false,
-    "reason": "OPS3-09 completed_verified after replacing the obsolete persistent-lane topology with independent MSAS, MRCS and MVPS lanes while preserving MSAS-01 in_progress, MRCS-01 selected_not_started, MVPS-10 selected_not_started, and UISR-11 completed history.",
-    "preserved_selected_work_item": "MSAS-01",
-    "preserved_attempt_id": "MSAS-01-attempt-001",
+    "active": true,
+    "reason": "Owner-approved OPS3-10 coordination redesign: replace early FIFO reservation/held publication turns with ready-candidate integration, isolate MSAS/MRCS/MVPS lane execution state, remove manual release as a merge dependency, and decouple release/deployment from source publication.",
+    "preserved_selected_work_item": "MSAS-04",
+    "preserved_attempt_id": "MSAS-04-attempt-001",
     "implementation_authority": false,
-    "cleared_by": "OPS3-09 completed_verified",
+    "cleared_by": null,
     "preserved_lane_selections": {
       "msas": {
         "selected_work_item": "MSAS-04",
@@ -37,10 +37,10 @@
   },
   "lanes": {
     "operations": {
-      "state": "completed_verified",
-      "work_item_id": "OPS3-09",
-      "work_item_path": "operations/work-items/OPS3-09.json",
-      "implementation_authority": false
+      "state": "in_progress",
+      "work_item_id": "OPS3-10",
+      "work_item_path": "operations/work-items/OPS3-10.json",
+      "implementation_authority": true
     },
     "msas": {
       "state": "selected_not_started",
@@ -100,7 +100,7 @@
     "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS3.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
     "generated_main_writers": "CI/bots/generated-content jobs may not push directly to protected main; generated outputs must be present on the queue-bound candidate branch or validation fails closed."
   },
-  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-04 is selected_not_started; MRCS-03 and MVPS-12 remain independently selected_not_started. Same-repository publication remains FIFO-serialized.",
+  "next_project_action": "Complete OPS3-10 ready-then-queue publication and lane-state decoupling repair; preserve MSAS-04, MRCS-03 and MVPS-12 selected_not_started and do not start product work until the operations freeze is cleared.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
