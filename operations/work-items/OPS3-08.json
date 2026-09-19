@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "work_item_id": "OPS3-08",
   "title": "Execution Liveness, Frontier Reconciliation & Stall Visibility Repair",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_directive": "Repair stale roadmap/frontier state under OPS3; preserve three parallel persistent implementation lanes; prevent an active main holder from silently sleeping; make no-progress Continue cycles visibly stalled instead of indefinitely repeating.",
   "reproduced_failures": [
     "MCCS-21 closeout selected MNCS-20 from a stale family backlog even though live terminal checkpoints already proved MNCS-20, MNCS-22 and MNCS-24 complete.",
@@ -22,21 +22,49 @@
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 5,
+    "material_progress_seq": 8,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 5,
-      "kind": "repair_candidate_prepared",
-      "evidence": "OPS3-08 candidate reconciles selector, queue liveness, direct-main writer and progress guard."
+      "seq": 8,
+      "kind": "closeout_prepared",
+      "evidence": "OPS3-08 implementation merged as 23a8cdefd0ac55b4c889b2ceb7b379f3ed06ed20; closeout clears repair freeze while preserving MSAS-01, MVPS-10 and UISR-11 lane truth."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "PR 1429 passed exact-head run 35435840294 at d806be68359fde2bd481bdf3729abb072e8f427f, merged as 23a8cdefd0ac55b4c889b2ceb7b379f3ed06ed20 with tree f6f944e4b56eaab1db543a6a32d9f976cffcc314, and the implementation FIFO turn released at schema-2.1 generation 247."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "One owner approval carried OPS3-08 through diagnosis, changed-evidence repairs, validation, implementation publication and this closeout; intermediate validation failures were diagnosed and changed before retry."
   },
-  "successor": null
+  "successor": null,
+  "implementation_authority": false,
+  "completed": true,
+  "active_substep": "completed_verified",
+  "acceptance_evidence": {
+    "implementation_pr": 1429,
+    "implementation_validated_head": "d806be68359fde2bd481bdf3729abb072e8f427f",
+    "implementation_validation_run": 35435840294,
+    "implementation_validated_tree": "f6f944e4b56eaab1db543a6a32d9f976cffcc314",
+    "implementation_merge_sha": "23a8cdefd0ac55b4c889b2ceb7b379f3ed06ed20",
+    "implementation_turn_release_generation": 247,
+    "protected_main_bypass_repaired": "be0f289a01c6e7a510aa5cf022a7694878c94b74",
+    "protections": [
+      "three persistent implementation lanes explicitly preserved",
+      "schema-2.1 active-turn liveness with 900-second idle limit",
+      "duplicate/cosmetic progress cannot renew a turn",
+      "stale unmerged turn recovery requires main==turn_base",
+      "stale holder cannot bind or merge",
+      "OPS3.NO_MATERIAL_PROGRESS makes repeated no-work Continue cycles visible",
+      "GitHub Actions generated-content publisher can no longer push protected main directly",
+      "unchanged generated-content timestamps are idempotent and no longer create validation loops",
+      "dynamic OPS3 validator supports future CURRENT-referenced repair work while preserving OPS3-01 as completed history"
+    ]
+  },
+  "next_action": "OPS3-08 is closed. Product-development is MSAS-01 selected_not_started; player-species is MVPS-10 selected_not_started; ui-implementation remains UISR-11 completed_verified. A later lane-specific owner Continue may start the selected lane under OPS3."
 }
