@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-10",
+  "title": "Species Progression and Maturation Hooks",
+  "attempt_id": "MVPS-10-attempt-001",
+  "lane": "player-species",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-09",
+  "predecessor": {
+    "work_item_id": "MVPS-09",
+    "status": "completed_verified",
+    "implementation_merge_sha": "c7f9163b380b829781dd027154b220e770ea7a79",
+    "validation_run": 35434657461
+  },
+  "strict_successor": "MVPS-11",
+  "objective": "Permit optional species progression, maturation and unlock trees through the existing progression-event model without creating a species-specific progression engine.",
+  "acceptance": [
+    "species progression is optional",
+    "all advancement is event-sourced",
+    "duplicate grants follow shared rules"
+  ],
+  "boundaries": [
+    "MVPS-10 owns species-facing progression and maturation hooks only; generic progression/Event execution remains with shared owners.",
+    "Species progression is optional and may not be assumed for every species.",
+    "Unlocks and maturation changes must be attributable to explicit Event/progression records and preserve provenance.",
+    "Duplicate or overlapping grants defer to shared stacking/replacement rules rather than species-local logic.",
+    "Forms/transformation semantics remain MVPS-09; runtime active-contribution projection/receipts remain MVPS-13.",
+    "MVPS-11+ remain unauthorized until separately selected."
+  ],
+  "active_substep": "awaiting_governed_start",
+  "next_action": "On an MVPS-specific owner Continue, enter through OPS3, reserve the FIFO publication turn before candidate preparation, fresh-read MVPS-01 through MVPS-09 plus current Progression/Event owner contracts, then govern-start MVPS-10 and execute the bounded tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

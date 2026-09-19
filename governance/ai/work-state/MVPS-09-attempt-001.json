@@ -5,8 +5,8 @@
   "title": "Forms and Transformation Semantics",
   "attempt_id": "MVPS-09-attempt-001",
   "lane": "player-species",
-  "status": "in_progress",
-  "implementation_authority": true,
+  "status": "completed_verified",
+  "implementation_authority": false,
   "implementation_branch": "work/mvps-09-forms-transformation-semantics",
   "selected_by_verified_predecessor": "MVPS-08",
   "predecessor": {
@@ -31,13 +31,16 @@
     "Species progression/maturation remains MVPS-10 and runtime active-contribution projection/receipts remain MVPS-13.",
     "MVPS-10+ remain unauthorized until separately selected."
   ],
-  "active_substep": "green_validation_pending",
-  "next_action": "Validate the reconciled MVPS-09 GREEN candidate at the active FIFO turn base, bind the exact passing head, merge, release, then reconcile the roadmap and close out.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS-09 is completed_verified. MVPS-10 is selected_not_started with no implementation branch or authority and requires a later owner Continue.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MVPS-09 causal RED, exact-head GREEN validation, FIFO publication and roadmap reconciliation are complete."
+    }
   },
   "governed_start": {
     "aioc_base_sha": "8f740213813b85af97184c42a0916b96cac603d2",
@@ -48,9 +51,9 @@
   },
   "implementation_plan": {
     "red": "completed_expected_failure",
-    "green": "implemented_validation_pending",
-    "proof": "pending",
-    "closeout": "pending"
+    "green": "completed",
+    "proof": "completed",
+    "closeout": "completed"
   },
   "causal_red": {
     "head": "17b8fcb2008e0e30742cb6afc27aacee26cae414",
@@ -63,5 +66,48 @@
     "reservation_id": "mvps-09-attempt-001-implementation-recovery-002",
     "holder": "MVPS-09-attempt-001-implementation-recovery",
     "turn_base": "4fc297449ffd176fb7ea6cb46e2386ddc8ad4e61"
+  },
+  "completion_evidence": {
+    "red": {
+      "head": "17b8fcb2008e0e30742cb6afc27aacee26cae414",
+      "validation_run": 35390307187,
+      "result": "expected_failure",
+      "observed_failure": "MVPS-09 regression failed because the four form/transformation artifacts were absent after prior gates passed."
+    },
+    "green": {
+      "validated_head": "753d1a10650222c75261bdefa9af8cd170190af9",
+      "validation_run": 35434657461,
+      "result": "success"
+    },
+    "final_fifo_publication": {
+      "turn_base": "4fc297449ffd176fb7ea6cb46e2386ddc8ad4e61",
+      "implementation_pr": 1425,
+      "implementation_merge_sha": "c7f9163b380b829781dd027154b220e770ea7a79"
+    },
+    "artifacts": [
+      "governance/application-planning/player-species/contracts/MVPS-09_FORM_DEFINITION_CONTRACT.json",
+      "governance/application-planning/player-species/contracts/MVPS-09_TRANSFORMATION_SEMANTICS_CONTRACT.json",
+      "governance/application-planning/player-species/contracts/MVPS-09_TRANSFORMATION_FIXTURES.json",
+      "governance/application-planning/player-species/contracts/MVPS-09_INVARIANTS.json"
+    ],
+    "acceptance": {
+      "transformations_preserve_base_selection_history": true,
+      "equipment_behavior_is_explicit": true,
+      "reversal_is_provenance_safe": true
+    }
+  },
+  "roadmap_reconciliation": {
+    "dependency_graph_schema": "1.0.4",
+    "cross_program_mvps_interstitial_gate": false,
+    "selected_successor": "MVPS-10",
+    "rationale": "MVPS has no hard/start gate or milestone rotation overriding strict order after MVPS-09."
+  },
+  "closeout": {
+    "completed_on": "2026-09-19",
+    "result": "completed_verified",
+    "successor": "MVPS-10",
+    "successor_state": "selected_not_started",
+    "product_lane_mutated": false,
+    "ui_lane_mutated": false
   }
 }
