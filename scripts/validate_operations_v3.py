@@ -13,7 +13,7 @@ CONTRACT = Path("operations/OPERATING_CONTRACT.md")
 CURRENT = Path("operations/CURRENT.json")
 LANES = Path("operations/LANES.json")
 REGISTRY = Path("operations/CONTROL_SURFACE_REGISTRY.json")
-OPS_WORK_ITEM = Path("operations/work-items/OPS3-01.json")
+OPS3_01_WORK_ITEM = Path("operations/work-items/OPS3-01.json")
 LEGACY_POINTER = Path("governance/ai/runtime/CURRENT_WORK_POINTER.json")
 LEGACY_AUTHORITY = Path("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
 AIOC_AGENTS = Path("AGENTS.md")
@@ -233,7 +233,19 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     current = _read_json(root, CURRENT, errors)
     lanes = _read_json(root, LANES, errors)
     registry = _read_json(root, REGISTRY, errors)
-    work_item = _read_json(root, OPS_WORK_ITEM, errors)
+    ops3_01 = _read_json(root, OPS3_01_WORK_ITEM, errors)
+    current_lanes = current.get("lanes", {}) if isinstance(current.get("lanes", {}), dict) else {}
+    operations_lane = current_lanes.get("operations", {}) if isinstance(current_lanes, dict) else {}
+    active_operations_id = current.get("active_operations_work_item")
+    active_operations_path = current.get("active_operations_work_item_path")
+    if active_operations_id is not None:
+        if not isinstance(active_operations_path, str) or not active_operations_path:
+            errors.append("active_operations_work_item_path is required while operations work is active")
+            operations_work_item = {}
+        else:
+            operations_work_item = _read_json(root, Path(active_operations_path), errors)
+    else:
+        operations_work_item = ops3_01
     legacy_pointer = _read_json(root, LEGACY_POINTER, errors)
     legacy_authority = _read_json(root, LEGACY_AUTHORITY, errors)
     project_memory = _read_json(root, PROJECT_MEMORY, errors)
@@ -256,21 +268,46 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
             errors.append(f"CURRENT {key} must equal {expected}")
 
     if current.get("status") != "completed_verified":
-        errors.append("OPS3 terminal state must remain completed_verified")
-    if current.get("active_operations_work_item") is not None:
-        errors.append("completed OPS3 must not retain an active operations work item")
-    freeze = current.get("product_start_freeze", {})
-    if not isinstance(freeze, dict) or freeze.get("active") is not False:
-        errors.append("product_start_freeze must remain cleared after OPS3 closeout")
-    if freeze.get("preserved_selected_work_item") != "MIB-17":
-        errors.append("MIB-17 selection was not preserved through Operations V3")
-    if freeze.get("implementation_authority") is not False:
-        errors.append("OPS3 closeout freeze record must preserve MIB-17 without implementation authority")
-
-    if work_item.get("work_item_id") != "OPS3-01" or work_item.get("status") != "completed_verified":
-        errors.append("OPS3-01 work item must remain completed_verified")
-    if work_item.get("implementation_authority") is not False:
+        errors.append("OPS3 system status must remain completed_verified")
+    if ops3_01.get("work_item_id") != "OPS3-01" or ops3_01.get("status") != "completed_verified":
+        errors.append("OPS3-01 historical work item must remain completed_verified")
+    if ops3_01.get("implementation_authority") is not False:
         errors.append("completed OPS3-01 must not retain implementation authority")
+
+    freeze = current.get("product_start_freeze", {})
+    if not isinstance(freeze, dict):
+        errors.append("product_start_freeze must be an object")
+        freeze = {}
+    if freeze.get("implementation_authority") is not False:
+        errors.append("product_start_freeze may preserve selection only; it cannot grant implementation authority")
+
+    product_for_freeze = current_lanes.get("product-development", {}) if isinstance(current_lanes, dict) else {}
+    if active_operations_id is not None:
+        if not isinstance(operations_lane, dict):
+            errors.append("CURRENT operations lane must be an object")
+        else:
+            if operations_lane.get("work_item_id") != active_operations_id:
+                errors.append("active operations id must match CURRENT operations lane")
+            if operations_lane.get("work_item_path") != active_operations_path:
+                errors.append("active operations path must match CURRENT operations lane")
+            if operations_lane.get("state") != "in_progress" or operations_lane.get("implementation_authority") is not True:
+                errors.append("active operations work requires in_progress state and implementation authority")
+        if operations_work_item.get("work_item_id") != active_operations_id or operations_work_item.get("status") != "in_progress":
+            errors.append("CURRENT-referenced active operations work item must exist and be in_progress")
+        if freeze.get("active") is not True:
+            errors.append("active operations repair requires product_start_freeze.active=true")
+        if isinstance(product_for_freeze, dict):
+            if freeze.get("preserved_selected_work_item") != product_for_freeze.get("selected_work_item"):
+                errors.append("operations freeze must preserve the CURRENT product selection")
+            if freeze.get("preserved_attempt_id") != product_for_freeze.get("attempt_id"):
+                errors.append("operations freeze must preserve the CURRENT product attempt")
+    else:
+        if current.get("active_operations_work_item_path") is not None:
+            errors.append("inactive operations must not retain active_operations_work_item_path")
+        if not isinstance(operations_lane, dict) or operations_lane.get("state") != "completed_verified" or operations_lane.get("implementation_authority") is not False:
+            errors.append("inactive operations lane must be completed_verified with no implementation authority")
+        if freeze.get("active") is not False:
+            errors.append("product_start_freeze must be cleared when no operations work is active")
 
     if lanes.get("operating_contract") != CONTRACT.as_posix():
         errors.append("all lanes must use the one canonical operating contract")
@@ -352,16 +389,28 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     if legacy_pointer.get("canonical_source") != CURRENT.as_posix() or legacy_pointer.get("projection_only") is not True:
         errors.append("CURRENT_WORK_POINTER must be an explicit compatibility projection from operations/CURRENT.json")
     maintenance = legacy_pointer.get("exclusive_control_plane_maintenance", {})
-    if maintenance.get("status") != "completed_verified" or maintenance.get("feature_starts_blocked") is not False:
-        errors.append("legacy pointer projection must show OPS3 completed and product freeze cleared")
+    if maintenance.get("work_item_id") != operations_lane.get("work_item_id"):
+        errors.append("legacy pointer operations work-item drift")
+    if maintenance.get("status") != operations_lane.get("state"):
+        errors.append("legacy pointer operations status drift")
+    if maintenance.get("work_item_path") != operations_lane.get("work_item_path"):
+        errors.append("legacy pointer operations path drift")
+    if maintenance.get("feature_starts_blocked") is not bool(freeze.get("active")):
+        errors.append("legacy pointer freeze projection drift")
 
     if legacy_authority.get("canonical_source") != CURRENT.as_posix() or legacy_authority.get("projection_only") is not True:
         errors.append("ACTIVE_AUTHORITY_REGISTRY must be an explicit compatibility projection from operations/CURRENT.json")
     if legacy_authority.get("canonical_door") != DOOR.as_posix():
         errors.append("legacy authority projection must identify the OPS3 canonical door")
     active_operations = legacy_authority.get("active_operations_work", {})
-    if active_operations.get("state") != "completed_verified" or active_operations.get("implementation_authority") is not False:
-        errors.append("legacy authority projection must retire OPS3 operations authority after closeout")
+    if active_operations.get("work_item") != operations_lane.get("work_item_id"):
+        errors.append("legacy authority operations work-item drift")
+    if active_operations.get("state") != operations_lane.get("state"):
+        errors.append("legacy authority operations state drift")
+    if active_operations.get("implementation_authority") is not operations_lane.get("implementation_authority"):
+        errors.append("legacy authority operations authority drift")
+    if active_operations.get("path") != operations_lane.get("work_item_path"):
+        errors.append("legacy authority operations path drift")
 
     product_lanes = current.get("lanes", {})
     product = product_lanes.get("product-development", {}) if isinstance(product_lanes, dict) else {}
@@ -435,7 +484,7 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         errors.append(f"exact-head mismatch: expected {expected_head}, observed {observed_head}")
 
     return {
-        "schema_version": "3.1.0",
+        "schema_version": "3.2.0",
         "validator": "scripts/validate_operations_v3.py",
         "status": "FAIL" if errors else "PASS",
         "canonical_door": DOOR.as_posix(),

@@ -273,20 +273,24 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertEqual(pointer["active_attempt"]["status"], product["state"])
         self.assertEqual(pointer["active_attempt"]["implementation_branch"], product["implementation_branch"])
         self.assertEqual(pointer["active_attempt"]["implementation_authority"], product["implementation_authority"])
-        self.assertEqual(pointer["exclusive_control_plane_maintenance"]["status"], "completed_verified")
-        self.assertFalse(pointer["exclusive_control_plane_maintenance"]["feature_starts_blocked"])
+        operations = current["lanes"]["operations"]
+        blocked = bool(current["product_start_freeze"]["active"])
+        self.assertEqual(pointer["exclusive_control_plane_maintenance"]["work_item_id"], operations["work_item_id"])
+        self.assertEqual(pointer["exclusive_control_plane_maintenance"]["status"], operations["state"])
+        self.assertEqual(pointer["exclusive_control_plane_maintenance"]["feature_starts_blocked"], blocked)
 
         authority = self._json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
         self.assertTrue(authority["projection_only"])
-        self.assertEqual(authority["active_operations_work"]["state"], "completed_verified")
-        self.assertFalse(authority["active_operations_work"]["implementation_authority"])
+        self.assertEqual(authority["active_operations_work"]["work_item"], operations["work_item_id"])
+        self.assertEqual(authority["active_operations_work"]["state"], operations["state"])
+        self.assertEqual(authority["active_operations_work"]["implementation_authority"], operations["implementation_authority"])
         projection = authority["preserved_product_selection"]
         self.assertEqual(projection["work_item"], product["selected_work_item"])
         self.assertEqual(projection["attempt_id"], product["attempt_id"])
         self.assertEqual(projection["state"], product["state"])
         self.assertEqual(projection["implementation_branch"], product["implementation_branch"])
         self.assertEqual(projection["implementation_authority"], product["implementation_authority"])
-        self.assertFalse(projection["feature_starts_blocked"])
+        self.assertEqual(projection["feature_starts_blocked"], blocked)
 
     def test_generated_compatibility_manifest_declares_only_two_outputs(self) -> None:
         manifest = self._json("operations/GENERATED_COMPATIBILITY_PROJECTIONS.json")
