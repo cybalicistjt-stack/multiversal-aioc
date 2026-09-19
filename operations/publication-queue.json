@@ -1,8 +1,38 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 2,
-  "ready": [],
+  "generation": 3,
+  "ready": [
+    {
+      "candidate_id": "MVPS-12-attempt-001-4b0c09a8",
+      "lane": "mvps",
+      "work_item_id": "MVPS-12",
+      "pr_number": 1449,
+      "head_sha": "4b0c09a833bf601799641d58f79207c6de0cb93d",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "4b0c09a833bf601799641d58f79207c6de0cb93d",
+        "run_id": "35473801265"
+      },
+      "write_set": [
+        ".github/workflows/validate-repository-health.yml",
+        "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+        "governance/application-planning/player-species/contracts/MVPS-12_INVARIANTS.json",
+        "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json",
+        "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json",
+        "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_MIGRATION_IMPORT_EXPORT_FIXTURES.json",
+        "tests/control_plane/test_mvps12_validation_migration_import_export.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "5f716e245c6cfdf065a5bf53374f594ac6315a59",
+        "species_definition_contract_sha": "current-main",
+        "character_species_selection_contract_sha": "current-main",
+        "a4_character_validation_port_sha": "e9ff9fc335994a66953d02fd1133f2de0ebecf8b",
+        "a4_character_migration_port_sha": "b8a6cc2c36f7b9bdc8efda770d9dd33327b7b812",
+        "a4_character_export_port_sha": "5d2fa5769509fedc6c9a0461a50ca6bec1d758f9"
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
