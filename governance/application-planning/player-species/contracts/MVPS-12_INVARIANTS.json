@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "MVPS-12.Invariants",
+  "status": "implementation_ready_contract",
+  "runtime_projection_created": false,
+  "runtime_projection_owner": "MVPS-13",
+  "invariants": [
+    {
+      "id": "MVPS12-I01-no-missing-canon-fabrication",
+      "rule": "Missing, source-unspecified, hidden or conflicted species facts remain explicit findings/unresolved state; validation, migration and import may not synthesize canon or defaults to force completion."
+    },
+    {
+      "id": "MVPS12-I02-explicit-validation-state",
+      "rule": "Every species/selection validation result distinguishes playable, incomplete, invalid and migration_required; a single active/inactive boolean is insufficient."
+    },
+    {
+      "id": "MVPS12-I03-history-preserved",
+      "rule": "CharacterSpeciesSelection history preserves exact species/version, lineage/form/adaptation/choice selections, adjudications, grant/progression receipts and provenance through deprecation, replacement, pack loss and migration."
+    },
+    {
+      "id": "MVPS12-I04-no-silent-replacement",
+      "rule": "An incompatible or superseded species/version is never silently substituted; replacement requires an explicit target, authority/source evidence and attributable migration receipt/event while retaining the original history."
+    },
+    {
+      "id": "MVPS12-I05-migration-receipt-or-discrepancy",
+      "rule": "A governed migration emits a machine-readable receipt on success or an explicit discrepancy/recovery record for unresolved, incompatible, interrupted or blocked state."
+    },
+    {
+      "id": "MVPS12-I06-round-trip-preserves-references",
+      "rule": "Species import/export preserves stable identity, exact version refs, provenance, unresolved/conflict state and owner-domain references; shared mechanics are not flattened into species-local data."
+    },
+    {
+      "id": "MVPS12-I07-shared-owner-delegation",
+      "rule": "A4 Character validation/migration/export, generic persistence migration, and authoring import/export owners retain execution/mutation authority; MVPS-12 supplies species-facing contracts, adapters/findings and fixtures only."
+    },
+    {
+      "id": "MVPS12-I08-runtime-projection-remains-mvps13",
+      "rule": "MVPS-12 does not compute current active species contributions or grant projections; deterministic runtime projection and active grant receipts remain MVPS-13."
+    }
+  ],
+  "enforcement": {
+    "regression_test": "tests/control_plane/test_mvps12_validation_migration_import_export.py",
+    "ci_step": "Run MVPS-12 validation migration import-export regressions",
+    "generic_validation_engine_created": false,
+    "generic_migration_engine_created": false,
+    "generic_import_export_engine_created": false
+  }
+}

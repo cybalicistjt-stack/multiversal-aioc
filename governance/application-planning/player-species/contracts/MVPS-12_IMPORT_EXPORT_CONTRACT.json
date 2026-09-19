@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesImportExport",
+  "record_type": "species_import_export_contract",
+  "status": "implementation_ready_contract",
+  "purpose": "Define species-specific round-trip preservation and validation requirements for SpeciesDefinition and CharacterSpeciesSelection while delegating serialization, permissions, mapping and authoritative commit to shared import/export owners.",
+  "source_basis": [
+    "SpeciesDefinition stable identity/version/provenance and shared-owner reference model",
+    "CharacterSpeciesSelection references-and-receipts storage policy",
+    "A4 CharacterExportPort permission-filtered portable export",
+    "Authoring ImportMappingPort collision preview/commit",
+    "RoleFilteredContentExportPort historical-source and hidden-content rules",
+    "DevelopmentBible migration-and-import original-input/provenance/preview/receipt requirements"
+  ],
+  "supported_species_surfaces": [
+    "SpeciesDefinition content record",
+    "CharacterSpeciesSelection within permission-filtered Character export",
+    "lineage/form/adaptation/choice/grant/provenance references",
+    "unresolved/conflict/migration-required metadata"
+  ],
+  "export_requirements": {
+    "permission_filtered_projection_only": true,
+    "include_stable_identity_and_exact_versions": true,
+    "include_provenance_bundle_or_refs": true,
+    "include_owner_domain_refs": true,
+    "include_unresolved_and_conflict_state": true,
+    "include_historical_source_refs_when_allowed": true,
+    "raw_hidden_or_forbidden_material_serialized": false,
+    "content_digest_or_checksum_required": true
+  },
+  "import_preview_requirements": {
+    "preserve_original_input_hash_or_checksum": true,
+    "preserve_original_artifact_or_bounded_reference": true,
+    "classify_format_version_authority_and_provenance": true,
+    "validate_in_staging_before_commit": true,
+    "preview_collisions_missing_dependencies_incompatible_versions_and_unresolved_refs": true,
+    "stable_id_collision_requires_explicit_mapping_or_rejection": true,
+    "authoritative_commit_requires_shared_owner_validation": true
+  },
+  "round_trip_guarantees": {
+    "stable_identity": true,
+    "exact_version_refs": true,
+    "provenance": true,
+    "unresolved_and_conflict_state": true,
+    "owner_domain_references": true,
+    "lineage_form_adaptation_choice_history": true,
+    "adjudication_and_grant_receipts": true
+  },
+  "flattening_policy": {
+    "shared_mechanics_copied_into_species_local_data": false,
+    "owner_domain_objects_reauthored_as_species_fields": false,
+    "normalized_compatibility_copy_may_replace_original_artifact": false
+  },
+  "character_selection_export": {
+    "definition_copy_forbidden": true,
+    "exact_species_ref_preserved": true,
+    "historical_selection_receipts_preserved": true,
+    "field_class_permission_inherited_from_character_export_owner": true
+  },
+  "permission_filter_before_export": true,
+  "hidden_information_filtered_before_counts_search_diagnostics_or_ai_derivatives": true,
+  "shared_owner_handoff": {
+    "character_export": "A4 CharacterExportPort",
+    "content_import": "Authoring ImportMappingPort",
+    "content_export": "RoleFilteredContentExportPort",
+    "authoritative_character_import_or_restore": "Character/Persistence owning domain",
+    "migration_after_import": "A4 CharacterMigrationPort"
+  },
+  "generic_import_export_engine_created": false,
+  "authoritative_import_commit_owned_by_mvps12": false,
+  "runtime_projection_created": false,
+  "runtime_projection_owner": "MVPS-13",
+  "unknown_or_conflict_policy": "preserve_and_surface_not_infer"
+}

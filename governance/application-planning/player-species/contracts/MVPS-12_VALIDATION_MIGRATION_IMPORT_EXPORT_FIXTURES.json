@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_scope": "MVPS-12 validation, migration and import/export semantic proof",
+  "non_canon": true,
+  "cases": {
+    "missing_required_canon": {
+      "input": {
+        "species_ref": "species:fragmentary@2",
+        "missing_information_refs": [
+          "source:missing-respiration-rule"
+        ],
+        "required_owner_ref": null
+      },
+      "expected": {
+        "state": "incomplete",
+        "canon_fabricated": false,
+        "blocking_finding": true,
+        "source_gap_preserved": true
+      }
+    },
+    "invalid_cross_owner_reference": {
+      "input": {
+        "species_ref": "species:example@3",
+        "capability_ref": "ability:missing@9",
+        "provenance_ref": "prov:fixture-invalid"
+      },
+      "expected": {
+        "state": "invalid",
+        "owner_domain": "Ability",
+        "reason_exposed": true,
+        "reference_invented": false
+      }
+    },
+    "deprecated_species_historical_selection": {
+      "input": {
+        "character_selection_ref": "selection:hero-species@8",
+        "species_ref": "species:legacy-winged@4",
+        "species_lifecycle": "deprecated"
+      },
+      "expected": {
+        "historical_receipt_preserved": true,
+        "exact_species_version_preserved": true,
+        "new_selection_implied": false,
+        "state": "historical_or_migration_required"
+      }
+    },
+    "explicit_version_replacement": {
+      "input": {
+        "from_species_ref": "species:amphibian@2",
+        "to_species_ref": "species:amphibian@3",
+        "replacement_source_ref": "source:errata-14",
+        "approval_ref": "approval:gm-44"
+      },
+      "expected": {
+        "silent_substitution": false,
+        "replacement_receipt_required": true,
+        "original_history_preserved": true
+      }
+    },
+    "migration_discrepancy": {
+      "input": {
+        "species_ref": "species:construct@5",
+        "missing_dependency_ref": "resource:power-core@4",
+        "target_schema_version": "6"
+      },
+      "expected": {
+        "state": "migration_required",
+        "receipt_or_discrepancy_emitted": true,
+        "discrepancy_blocking": true,
+        "missing_dependency_fabricated": false
+      }
+    },
+    "definition_round_trip": {
+      "input": {
+        "species_ref": "species:radial-alien@7",
+        "owner_refs": [
+          "morphology:radial@2",
+          "sense:polarized@1"
+        ],
+        "conflict_refs": [
+          "conflict:source-12"
+        ],
+        "provenance_refs": [
+          "prov:species-7"
+        ]
+      },
+      "expected": {
+        "stable_identity_preserved": true,
+        "exact_version_refs_preserved": true,
+        "owner_refs_preserved": true,
+        "conflict_state_preserved": true,
+        "shared_mechanics_flattened": false
+      }
+    },
+    "character_selection_round_trip": {
+      "input": {
+        "selection_ref": "selection:pc-77@3",
+        "species_ref": "species:shapeshifter@4",
+        "lineage_ref": "lineage:mist@2",
+        "form_ref": "form:mist@6",
+        "adjudication_ref": "adj:gm-7"
+      },
+      "expected": {
+        "definition_copied": false,
+        "exact_species_version_preserved": true,
+        "lineage_form_preserved": true,
+        "adjudication_preserved": true,
+        "permission_filtered": true
+      }
+    }
+  },
+  "proof_notes": [
+    "Unknown or missing canon remains unresolved/incomplete and is never manufactured to make a species playable.",
+    "Deprecated or replaced species versions do not erase historical CharacterSpeciesSelection receipts.",
+    "Migration produces either an attributable receipt or an explicit discrepancy/recovery path.",
+    "Import/export round trips references and provenance rather than copying shared mechanics into species-local records."
+  ]
+}

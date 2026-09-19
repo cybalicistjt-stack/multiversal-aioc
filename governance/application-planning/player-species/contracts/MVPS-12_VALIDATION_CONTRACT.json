@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesValidation",
+  "record_type": "species_validation_contract",
+  "status": "implementation_ready_contract",
+  "purpose": "Define species-facing structural, behavioral and integration validation without creating a second generic validation engine, and resolve explicit playable/incomplete/invalid/migration-required states from sourced findings.",
+  "source_basis": [
+    "MVPS-01 through MVPS-11 contracts and invariants",
+    "PROJECT_BIBLE_OPS3_REFERENCE.md character validation, migration and recovery requirements",
+    "A4 CharacterValidationPort canonical validation boundary",
+    "SpeciesDefinition and CharacterSpeciesSelection exact-version/provenance contracts"
+  ],
+  "validation_states": [
+    "playable",
+    "incomplete",
+    "invalid",
+    "migration_required"
+  ],
+  "validation_layers": [
+    "structural",
+    "behavioral",
+    "integration"
+  ],
+  "state_resolution": {
+    "precedence": [
+      "invalid",
+      "migration_required",
+      "incomplete",
+      "playable"
+    ],
+    "playable": "All required species/selection data and owner references are present, compatible and non-blocking for the requested use.",
+    "incomplete": "Required canon, source evidence, selection evidence or owner reference is missing/unresolved without a known contradiction; drafts may remain saveable but not playable.",
+    "invalid": "Known structural, rules, permission, provenance or integration requirements are violated.",
+    "migration_required": "Historical exact-version state remains preserved and readable, but current compatibility requires an explicit governed migration plan before authoritative current use.",
+    "no_single_active_boolean": true
+  },
+  "structural_validation": {
+    "checks": [
+      "stable species/selection identity",
+      "schema and record version presence",
+      "required fields",
+      "exact-version SpeciesDefinition reference on CharacterSpeciesSelection",
+      "source/provenance references",
+      "extension namespace and non-overriding rules",
+      "definition-versus-selection separation"
+    ],
+    "may_infer_missing_values": false
+  },
+  "behavioral_validation": {
+    "checks": [
+      "choice transaction legality and unresolved choices",
+      "lineage composition conflicts and exact-parent version",
+      "form/transformation required semantics",
+      "progression/maturation event evidence",
+      "species-origin grant source/provenance receipts",
+      "unknown/hidden social-language-knowledge state remains non-fabricated"
+    ],
+    "execution_policy": "invoke_or_consume_owner validation results; do not reimplement owner engines"
+  },
+  "integration_validation": {
+    "checks": [
+      "referenced morphology/scale/movement/sense/capability/environment/compatibility records resolve",
+      "owner-domain references are version-compatible",
+      "historical/deprecated exact-version references are preserved",
+      "migration requirement is surfaced rather than silently substituted",
+      "permission and visibility boundaries remain intact for export/import projections"
+    ],
+    "unresolved_owner_reference": "finding_with_owner_and_source_evidence"
+  },
+  "findings": {
+    "required_fields": [
+      "finding_id",
+      "validation_layer",
+      "severity",
+      "state_effect",
+      "safe_message",
+      "affected_refs",
+      "rule_source_refs",
+      "provenance_refs",
+      "owner_domain"
+    ],
+    "severities": [
+      "info",
+      "warning",
+      "blocking"
+    ],
+    "rule_source_refs_required": true,
+    "provenance_refs_required": true,
+    "hidden_or_forbidden_evidence_must_be_role_filtered": true
+  },
+  "missing_canon_policy": {
+    "fabricate_or_default_missing_canon": false,
+    "disposition": "surface_unresolved_or_incomplete_with_source_evidence",
+    "source_unspecified": "unresolved",
+    "conflicted": "explicit_conflict_finding",
+    "hidden": "permission_filtered_not_inferred"
+  },
+  "lifecycle_mapping": {
+    "species_definition": {
+      "draft": "incomplete",
+      "rules_incomplete": "incomplete",
+      "ready_for_validation": "incomplete_until_validated",
+      "valid_playable": "playable",
+      "migration_required": "migration_required",
+      "deprecated": "historical_or_migration_required_by_compatibility",
+      "retired": "historical_not_newly_selectable",
+      "archived": "historical_not_newly_selectable"
+    },
+    "character_species_selection": {
+      "draft": "incomplete",
+      "unresolved": "incomplete",
+      "ready_for_validation": "incomplete_until_validated",
+      "valid_playable": "playable",
+      "migration_required": "migration_required",
+      "retired": "historical",
+      "archived": "historical"
+    }
+  },
+  "shared_owner_handoff": {
+    "character_validation": "A4 CharacterValidationPort",
+    "migration": "A4 CharacterMigrationPort",
+    "content_import": "Authoring ImportMappingPort",
+    "content_export": "RoleFilteredContentExportPort",
+    "owner_mechanics": "Ability/Action/Effect/Condition/Resource/Modifier/Equipment/Environment/Progression/Knowledge owners"
+  },
+  "generic_validation_engine_created": false,
+  "species_runtime_mutation_owned_here": false,
+  "runtime_projection_created": false,
+  "runtime_projection_owner": "MVPS-13",
+  "extension_policy": "namespaced_non_overriding"
+}

@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesMigration",
+  "record_type": "species_migration_contract",
+  "status": "implementation_ready_contract",
+  "purpose": "Define species-facing migration planning, historical-choice preservation, explicit replacement and receipt/discrepancy requirements while delegating persistence and Character mutation to shared migration owners.",
+  "source_basis": [
+    "MVPS-01 migration-preserves-historical-selection invariant",
+    "MVPS-08 lineage composition exact-parent version and conflict semantics",
+    "MVPS-09 transformation history/reversal semantics",
+    "MVPS-10 progression/maturation immutable event history",
+    "A4 CharacterMigrationPort",
+    "DevelopmentBible migration-and-import deterministic plan/receipt requirements"
+  ],
+  "migration_scope_separation": {
+    "definition_version_migration": "evolves SpeciesDefinition/content compatibility metadata and mappings without rewriting historical character receipts",
+    "character_selection_migration": "applies an approved plan to current Character species-layer state through the Character migration owner",
+    "definition_change_is_live_state_migration": false
+  },
+  "plan_contract": {
+    "required": [
+      "species_migration_plan_id",
+      "character_or_definition_ref",
+      "from_schema_version",
+      "to_schema_version",
+      "from_species_ref",
+      "target_species_ref",
+      "selection_dispositions",
+      "dependency_findings",
+      "requires_approval",
+      "blocking_reasons",
+      "plan_digest",
+      "source_refs",
+      "provenance_refs"
+    ],
+    "preview_and_commit_same_deterministic_plan": true,
+    "stable_ids_rewritten_silently": false,
+    "unresolved_dependencies_block_or_require_explicit_adjudication": true
+  },
+  "selection_dispositions": [
+    "preserve-historical",
+    "compatible-current",
+    "requires-explicit-replacement",
+    "blocked"
+  ],
+  "historical_selection_policy": {
+    "preserve_character_species_selection_receipt": true,
+    "preserve_exact_species_version_ref": true,
+    "preserve_lineage_form_and_choice_selections": true,
+    "preserve_adjudication_and_provenance": true,
+    "preserve_grant_and_progression_history": true,
+    "deprecation_erases_historical_selection": false,
+    "entitlement_or_pack_loss_erases_history": false
+  },
+  "replacement_policy": {
+    "silent_substitution_allowed": false,
+    "explicit_target_stable_id_and_version_required": true,
+    "explicit_reason_and_source_refs_required": true,
+    "approval_or_governing_rule_required": true,
+    "original_selection_remains_historical": true,
+    "replacement_creates_attributable_receipt_or_event": true
+  },
+  "migration_receipt": {
+    "required": true,
+    "required_fields": [
+      "species_migration_receipt_id",
+      "migration_plan_id",
+      "character_or_definition_ref",
+      "from_species_ref",
+      "to_species_ref",
+      "from_schema_version",
+      "to_schema_version",
+      "before_state_ref",
+      "after_state_ref",
+      "preserved_historical_refs",
+      "applied_replacement_refs",
+      "event_or_character_migration_receipt_ref",
+      "plan_digest",
+      "verified_at",
+      "provenance_refs"
+    ],
+    "cannot_replace_owner_character_receipt": true
+  },
+  "migration_discrepancy": {
+    "required_when_unresolved_or_incompatible": true,
+    "required_fields": [
+      "discrepancy_id",
+      "kind",
+      "affected_refs",
+      "blocking",
+      "safe_message",
+      "source_refs",
+      "provenance_refs",
+      "owner_domain",
+      "recovery_options"
+    ],
+    "kinds": [
+      "missing-source",
+      "missing-dependency",
+      "incompatible-version",
+      "conflicting-canon",
+      "unknown-replacement",
+      "permission-blocked",
+      "history-integrity",
+      "owner-domain-unavailable"
+    ],
+    "silent_reconciliation_allowed": false
+  },
+  "interruption_and_recovery": {
+    "failed_or_interrupted_commit_leaves_prior_active_state_intact_or_explicitly_recoverable": true,
+    "before_state_or_checkpoint_required_when_state_changes": true,
+    "rollback_or_compensation_owned_by_shared_migration_owner": true
+  },
+  "shared_owner_handoff": {
+    "character_migration": "A4 CharacterMigrationPort",
+    "persistence_migration": "generic provider-neutral MigrationPort",
+    "canonical_character_events": "Character/Progression/Action-Event owners",
+    "content_identity_and_alias_mapping": "Authoring ImportMappingPort"
+  },
+  "generic_migration_engine_created": false,
+  "character_mutation_owned_by_mvps12": false,
+  "runtime_projection_created": false,
+  "runtime_projection_owner": "MVPS-13",
+  "unknown_or_conflict_policy": "surface_discrepancy_not_guess"
+}
