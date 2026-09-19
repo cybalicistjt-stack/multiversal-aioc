@@ -6,9 +6,9 @@
   "attempt_id": "MRCS-01-attempt-001",
   "lane": "mrcs",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/mrcs-01-studio-workspace-content-registry",
   "selected_by_owner_directive": "OPS3-09 persistent-lane topology repair",
   "selection_basis": {
     "program_order": "MRCS-01 is the first surviving PDCP-reduced MRCS tranche.",
@@ -32,12 +32,51 @@
     "MRCS-01 owns the shared workspace/schema kernel only; MRCS-03+ remain unauthorized until separately selected.",
     "MSAS and MVPS selectors, branches and implementation authority are independent and may not be rewritten by MRCS."
   ],
-  "active_substep": "awaiting_governed_start",
-  "next_action": "On an MRCS-specific owner Continue, enter through OPS3, verify current ROADMAP_DEPENDENCY_GRAPH.json MRCS start requirements plus the declared MRCS-01 dependency closure, reserve publication turns as required, then govern-start and execute MRCS-01 without pausing MSAS or MVPS.",
+  "active_substep": "governed_start_publication",
+  "next_action": "After this governed-start publication is durably verified, reserve the Multiversal-app FIFO turn, create MRCS-01 implementation branch work/mrcs-01-studio-workspace-content-registry, establish RED coverage for PDCP-MRCS-001..006, implement the workspace/schema kernel over the existing Candidate Content/Content Forge foundation, validate, publish, then close out and select MRCS-03 in the same owner Continue.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "terminal_response_allowed": true,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start_candidate",
+      "evidence": "MRCS-01 start gates verified; AIOC candidate activates only the MRCS lane and preserves MSAS/MVPS."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
     "stop_reason": null
+  },
+  "start_gate_evidence": {
+    "roadmap_dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4",
+    "four_lane_release_barrier": {
+      "SMB-07": "completed_verified",
+      "MIB-18": "completed_verified",
+      "ARI-22C": "completed_verified",
+      "CNI-13": "completed_verified",
+      "PCA-15": "completed_verified"
+    },
+    "content_forge_foundation": [
+      "Multiversal-app/apps/client-ui/src/ccti12/CandidateContentWorkspace.tsx",
+      "Multiversal-app/packages/contracts/src/entity-catalog/candidate-content-port.ts",
+      "Multiversal-app/packages/contracts/src/authoring-provenance/"
+    ],
+    "cab": "CAB-23_COMPLETION_AUDIT.md PASS — COMPLETED_VERIFIED; CAB-23_FINAL_HANDOFF.md Status COMPLETED_VERIFIED",
+    "cni_core_pack_contracts": "CNI-13 completed_verified terminal checkpoint",
+    "owner_domain_contracts": "existing packages/contracts owner-domain seams used by the application",
+    "ari": "ARI-22C completed_verified terminal checkpoint"
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  },
+  "implementation_plan": {
+    "governed_start": "in_progress",
+    "red": "pending",
+    "green": "pending",
+    "publication": "pending",
+    "closeout": "pending"
   }
 }
