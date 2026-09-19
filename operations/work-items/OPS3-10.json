@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "work_item_id": "OPS3-10",
   "title": "Ready-Then-Queue Publication and Lane-State Decoupling",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_directive": "Replace the failing three-lane FIFO/held-turn system with independent lane execution plus late-binding ready-candidate integration. The shared publication mechanism is for merging ready immutable candidates only, not for doing implementation, validation, closeout or release work. Remove manual release as a queue dependency and decouple release/deployment from source integration.",
   "reproduced_failures": [
     "Recent completed checkpoints required repeated owner intervention: MSAS-03 recorded 5 Continue turns and 2 stall nudges; MSAS-01 recorded 4 Continue turns; MRCS-01 and MVPS-10 each required repeated owner execution commands.",
@@ -24,28 +24,36 @@
     "Add executor/session interruption discipline: no silent waiting or open-ended polling, durable lane-state receipts after material side effects, and exact resume from the last receipt after a chat/tool/runtime abort."
   ],
   "execution_guard": {
-    "continue_turns": 1,
-    "stall_nudges": 0,
-    "material_progress_seq": 3,
-    "progress_at_last_owner_command": 0,
+    "continue_turns": 3,
+    "stall_nudges": 2,
+    "material_progress_seq": 4,
+    "progress_at_last_owner_command": 3,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 3,
-      "kind": "cutover_candidate",
-      "evidence": "READY-queue/lane-state implementation passed prequeue run 35449899102 at 90cf0f05ed815db6ffa0d08e11d48f0cfa7cd9c2; independent lane-state refs and repository-local READY queue refs are seeded; final legacy cutover turn is active at main 9ce9ee20603232d6bd20976eed7a9ea9f6c3d2f1."
+      "seq": 4,
+      "kind": "completed_verified_candidate",
+      "evidence": "OPS3-10 implementation PR 1447 passed final held-turn exact-head run 35449973250 and merged as ded58c33932556b60187e6299ff1a32684ea6dcc; legacy lease ref was retired/free at 535ac2f9c425aca6b817a21cb24f7f7a65ffc095; new lane-state and READY queue refs are seeded."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Ready-then-queue publication, isolated lane execution state, executor interruption recovery discipline and legacy lease retirement are implemented and validated; this closeout clears the temporary product-start freeze."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED",
+      "OPS3.STALL_NUDGE_UNRECORDED",
+      "OPS3.EXECUTOR_SESSION_ABORT"
+    ],
+    "note": "OPS3-10 product/operations results are valid, but execution required the original approval plus two owner restarts after session stalls. The second observed stall occurred after a batched checkpoint read with no legitimate blocker; the redesign makes future session continuity non-blocking."
   },
-  "implementation_authority": true,
-  "completed": false,
-  "active_substep": "full_validation_and_cutover",
-  "next_action": "Run exact-head full validation for PR 1447, repair only causal failures, seed the three lane-state refs and two ready-publication queue refs, publish the cutover through the final legacy FIFO turn, reconcile legacy transport as retired, close OPS3-10 and clear the product-start freeze.",
+  "implementation_authority": false,
+  "completed": true,
+  "active_substep": "completed_verified",
+  "next_action": "OPS3-10 is closed. Resume MSAS-04, MRCS-03 or MVPS-12 only when explicitly requested; start/resume on that lane's independent execution-state ref and publish only immutable green READY candidates.",
   "acceptance_evidence": {
     "causal_red_run": 35447089860,
     "causal_red_head": "eeab617869265d5cd030e21ab4ff8822455f93fc",
@@ -60,6 +68,13 @@
       "ops3-publication-queue/cybalicistjt-stack-multiversal-aioc",
       "ops3-publication-queue/cybalicistjt-stack-multiversal-app"
     ],
-    "final_legacy_turn_base": "9ce9ee20603232d6bd20976eed7a9ea9f6c3d2f1"
+    "final_legacy_turn_base": "9ce9ee20603232d6bd20976eed7a9ea9f6c3d2f1",
+    "implementation_pr": 1447,
+    "final_legacy_validation_run": 35449973250,
+    "final_legacy_validated_head": "b34f97bdd1c2a1b932f9e8deab0a617b33704a6c",
+    "implementation_merge_sha": "ded58c33932556b60187e6299ff1a32684ea6dcc",
+    "legacy_coordination_retired_ref": "535ac2f9c425aca6b817a21cb24f7f7a65ffc095",
+    "new_publication_model": "READY candidates only; no holder, turn_base, release, or recovery-release",
+    "executor_stall_recovery": "durable lane-state receipts plus fresh evidence resume; no silent waiting/polling"
   }
 }
