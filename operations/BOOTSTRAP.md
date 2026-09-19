@@ -26,12 +26,12 @@ Read `operations/LANES.json` and choose exactly one lane that matches the user's
 - A bare `Continue` resumes the lane already established by the conversation. If this is a new conversation, use `CURRENT.json` and the user's opening request to resolve the lane.
 - Lane selection changes scope and source bundle only. It never changes the global operating contract.
 - The persistent implementation lanes are `msas`, `mrcs`, and `mvps`. They may hold implementation authority at the same time. A conversation still selects exactly one lane; selecting it does **not** pause, revoke, or rewrite another lane merely because both change product code. Completed UISR history is not a persistent implementation lane.
-- When active lanes share a repository, they use separate implementation branches and the FIFO publication queue serializes `main` mutation. Each lane reserves a turn; only the active head prepares/reconciles/validates its publication candidate against the fresh turn base.
+- Active lanes work independently on separate implementation branches and separate lane-state refs. Shared-repository publication is serialized only after a lane has an immutable, prevalidated READY candidate; no lane reserves future access to `main`.
 - Do not load or mutate another lane merely because it exists; cross-lane reads are limited to explicit dependencies, publication conflicts, or owner-directed coordination.
 
 ## 4. Load only the lane's active work record
 
-For a persistent lane, read the work-item/checkpoint path named by `CURRENT.json`. For an on-demand lane, use only the sources named by `LANES.json` plus the user's request.
+For a persistent lane, read the selected work-item/checkpoint path named by `CURRENT.json`, then read that lane's `execution_state_ref` for live execution progress. `CURRENT.json` selects work; the lane-state ref records execution only and may not select a different item. For an on-demand lane, use only the sources named by `LANES.json` plus the user's request.
 
 Then reconcile the work record with live repository/PR/CI/tool evidence needed for the requested action. Repository evidence determines implementation facts; the work record determines authorization and scope.
 
@@ -60,13 +60,20 @@ Multiple owner Continues or owner stall nudges are execution-quality incidents a
 
 A repeated owner execution command on the same in-progress attempt is not a fresh cycle by default. Compare the checkpoint's material-progress sequence with the sequence observed at the prior execution command. If nothing material changed, record `OPS3.NO_MATERIAL_PROGRESS` and enter stall diagnosis/recovery before doing more ordinary work. Polling, unchanged reads, or restating status do not count as progress. Status requests must report the current progress receipt and any held publication turn so the owner can distinguish active work from a stall.
 
-## 8. Publication serialization
 
-Before any executor mutates `main` in `cybalicistjt-stack/Multiversal-app` or `cybalicistjt-stack/multiversal-aioc`, follow the FIFO publication-reservation protocol in `operations/OPERATING_CONTRACT.md` using `scripts/ops3_merge_lease.py`. This includes product merges, OPS3/control-plane closeout, `CURRENT.json` or checkpoint projection, compatibility projection, operations repair, and any contents/ref write. Protected `main` is never a direct-write surface.
+### Executor/session interruption rule
 
-Reserve one queue turn first. If another reservation is ahead, wait without rebasing/reconciling/revalidating a publication candidate. When the reservation becomes first, activate it against the fresh target `main`; only then prepare/reconcile once from that `turn_base`, validate while holding the publication window, bind the exact validated head/base, merge, verify the durable result, and release so the next reservation can activate. From activation until that exact merge or an explicit yield, target `main` is frozen at `turn_base` for every other lane and executor. If it advances anyway, treat that as an OPS3 protocol breach and diagnose the bypassing writer; do not normalize the breach by making the holder rebase/yield/re-reserve. Never force the coordination ref, skip the queue, or merge around the active holder. If the originating conversation stalls after a durable verified merge but before release, a replacement executor must record a durable recovery pointer and recovery-release that completed turn; a finished holder may not strand the FIFO queue.
+A chat/session/tool runtime is never a project dependency. Do not silently wait, sleep, or run open-ended polling loops for CI, tools, another lane, or a publication position. After each material durable side effect, record a lane-state progress receipt before beginning another substantial external-tool batch. If a tool call returns no usable result, a session aborts, or execution resumes after an interruption, fresh-read the lane-state ref plus relevant repository/PR evidence and continue from the last durable receipt; never assume an unobserved operation completed. An executor interruption is an executor/tooling incident, not permission to restart the tranche, reserve `main`, or block another lane.
 
-An activated FIFO turn also has bounded liveness. Future schema-2.1 turns carry material progress timestamps/evidence and a 900-second idle limit. A stale turn cannot merge or be cosmetically revived; a replacement executor must recovery-release it after a completed merge or recover the unmerged turn only after proving target `main` is still `turn_base`. Generated-content or CI jobs must never push directly to protected `main`; generated outputs belong in the queue-bound candidate branch.
+## 8. Ready-then-queue publication
+
+Before any executor mutates protected `main` in `cybalicistjt-stack/Multiversal-app` or `cybalicistjt-stack/multiversal-aioc`, follow the ready-candidate protocol in `operations/OPERATING_CONTRACT.md` using `scripts/ops3_merge_lease.py`.
+
+Implementation, RED/GREEN construction, full tranche validation, checkpoint progress, and release work happen **before** or outside the shared publication queue. A candidate enters FIFO order only after it has an immutable PR head and green prequeue validation for that exact head. The queue has no active holder, no `turn_base`, no publication lease, and no release operation.
+
+For the FIFO head, fresh-read target `main`, run only the drift-sensitive integration gate against that fresh base, merge the exact ready head with expected-head protection, verify the durable repository result, and reconcile the candidate from that observed merge. A failed head candidate is marked failed/removed without stranding later candidates. Build/release/deployment status never owns or blocks the source-publication queue.
+
+Persistent lane execution state lives on independent refs `ops3-lane-state/msas`, `ops3-lane-state/mrcs`, and `ops3-lane-state/mvps`; one lane's progress write cannot block another lane.
 
 ## 9. Evidence and completion
 

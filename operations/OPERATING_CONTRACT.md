@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.7.0  
+**Version:** 3.8.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -22,7 +22,7 @@ Authority is intentionally shallow:
 
 No other file is allowed to declare current work or override this chain. Compatibility projections may repeat data only when they explicitly identify `operations/CURRENT.json` as their source.
 
-Execution guards and merge leases are **validation/executor-coordination mechanisms only**. They may block an unsafe transition, but they may never select work, expand scope, or grant implementation authority.
+Execution guards, lane-state journals, and the ready-candidate publication queue are **validation/executor-coordination mechanisms only**. They may block an unsafe transition, but they may never select work, expand scope, or grant implementation authority.
 
 ## 2. GPT-first startup
 
@@ -55,9 +55,9 @@ OPS3 may keep more than one persistent implementation lane active at once when t
 - Implementation authority is lane-local. Starting or continuing one lane does not implicitly pause, revoke, reorder, or rewrite another active lane.
 - A lane may change another lane's selector/checkpoint only when the owner explicitly directs cross-lane reprioritization or when an operations-lane repair is required to restore canonical truth.
 - Active lanes that target the same repository must use distinct branches.
-- Shared-repository publication is serialized by the OPS3 FIFO publication queue. A lane reserves a publication turn first; queued lanes do not prepare/reconcile/revalidate a publication candidate until their reservation reaches the active head.
-- When a reservation becomes active, that holder owns the publication window, fresh-reads `main`, prepares/reconciles exactly once from that turn base, validates the candidate while the window is held, merges the exact validated head, then releases so the next reservation can activate.
-- A queue wait never changes lane authority. It delays only publication preparation and `main` mutation; implementation work that cannot invalidate the eventual turn-base preparation may continue independently.
+- Shared-repository publication is serialized only at the READY-candidate integration boundary. Lanes implement and run full tranche validation independently before queue entry.
+- A candidate enters FIFO publication order only with an immutable PR head and green exact-head prequeue validation. There is no reservation for future work and no active holder that freezes `main`.
+- The publication broker fresh-reads `main` for the FIFO head, runs the drift-sensitive integration gate, merges only the exact ready head, and reconciles the durable result. A failed candidate is removed without blocking later ready candidates.
 - Cross-lane reads remain minimal and evidence-driven.
 
 ## 4. Meaning of execution commands
@@ -111,88 +111,79 @@ An executor outage, quota, sandbox defect, PATH defect, or local-host problem is
 
 Never make Codex availability, a specific laptop, or a specific chat session part of product authority.
 
-## 7. Changes, validation, publication, and merge serialization
+## 7. Changes, validation, lane state, and ready-candidate publication
 
 For implementation work:
 
-1. verify the authorized repository/base/branch or create the authorized branch;
-2. make the smallest coherent change;
-3. run focused validation;
-4. run the lane's required acceptance gate;
-5. reserve a FIFO publication turn for the target repository before publication preparation;
-6. if the reservation is not first, wait without rebasing, reconciling, or repeatedly validating a publication candidate;
-7. when the reservation reaches the head, activate the turn and fresh-read target `main`; that SHA becomes the immutable `turn_base` for this publication window;
-8. only after activation, prepare/reconcile the branch exactly once from `turn_base` and run the required focused/acceptance validation while the publication window is held;
-9. bind the exact validated PR head and validated base to the active turn; `validated_base` must equal `turn_base`;
-10. merge only that exact validated PR head using an expected-head check;
-11. verify the durable `main` result/tree;
-12. release the active turn with the verified merge SHA, preserving FIFO order for queued reservations;
-13. reconcile the work record after durable side effects.
+1. resolve the selected lane/work item from `CURRENT.json`;
+2. read that lane's independent execution-state ref and start/resume the selected attempt there; starting execution does not require an AIOC-main publication;
+3. work on the lane's implementation branch and record material progress on the lane-state ref;
+4. run focused validation and the lane's full required prequeue acceptance gate on the immutable candidate head;
+5. only after the exact head is green, submit one READY candidate containing lane, work item, PR, exact head, prequeue validation receipt, and relevant write/dependency fingerprint;
+6. READY candidates are FIFO by submission order; implementation work never reserves a future position;
+7. for the FIFO head, fresh-read target `main` and run the smallest drift-sensitive integration gate against that base;
+8. if integration is green and the PR head is unchanged, merge with expected-head protection and atomic main-ref semantics;
+9. verify the durable `main` result and reconcile the queue candidate from repository evidence; **there is no release step**;
+10. if integration fails, mark/remove that head candidate with the causal failure so later READY candidates are not stranded; repair/revalidate the failed lane independently before resubmission;
+11. record lane completion on its lane-state ref; project successor/global aggregate state through a separate READY candidate only when protected-main source state actually must change;
+12. build, packaging, deployment, release, and post-merge distribution consume the merged artifact/result independently and never own the source-publication queue.
 
-### FIFO publication reservation queue
+### Independent lane execution state
 
-`main` publication in `cybalicistjt-stack/Multiversal-app` and `cybalicistjt-stack/multiversal-aioc` is serialized by a compare-and-swap FIFO reservation queue stored on dedicated non-authoritative AIOC coordination branches named:
+MSAS, MRCS, and MVPS use separate compare-and-swap coordination refs:
 
-`ops3-merge-lease/<lowercase-target-repository-slug>`
+- `ops3-lane-state/msas`
+- `ops3-lane-state/mrcs`
+- `ops3-lane-state/mvps`
 
-The queue state is modeled by `scripts/ops3_merge_lease.py`.
+The state model is implemented by `scripts/ops3_lane_state.py`.
 
-- A publisher first appends one reservation containing only `reservation_id` and `holder`. A queued reservation must not contain a prepared/validated candidate head or base.
-- Reservations are FIFO. Only the first queued reservation may activate when no turn is currently held.
-- Activation records the fresh target-main SHA as `turn_base` and removes that reservation from the queue. From activation until release, no other publisher may mutate that target `main`.
-- The active holder performs its one publication preparation/reconciliation **after activation**, from `turn_base`, then validates while the turn remains held. This is the normal path; repeated stale-base rebases caused by racing lanes are a protocol failure, not expected work.
-- After validation, the holder binds `validated_head` and `validated_base`; `validated_base` must equal `turn_base`.
-- Merge authorization requires the same active holder, exact PR head, and fresh target `main` still equal to both `turn_base` and `validated_base`. A mismatch is `OPS3.STALE_MAIN` and fails closed.
-- Release requires the same holder and a verified durable merge SHA. Release clears the active turn but preserves the remaining FIFO queue so the next reservation can activate on the newly published `main`.
-- A queued reservation may be cancelled before activation without reordering the remaining queue. An active turn may be yielded without merge only with an explicit failure/blocker reason.
-- Every queue-state mutation must build from the observed coordination-branch head and advance that ref **without force**. Competing writes from the same head must fail and re-read rather than overwrite.
-- Queue branches are executor coordination only and cannot select work, reorder product priority, or grant implementation authority.
+- `CURRENT.json` remains the global selector of which work item is authorized for each persistent lane.
+- A lane-state ref may record only execution state for the work item/attempt selected by `CURRENT.json`; it cannot select a successor, reprioritize another lane, or expand scope.
+- Starting a selected attempt, recording progress, and marking the lane attempt terminal are lane-local CAS writes and do not mutate protected `main`.
+- One lane-state ref never contains another lane's progress. A stalled or lost executor therefore cannot block execution-state updates by another lane.
+- Material durable side effects should be followed by a lane-state progress receipt before another substantial external-tool batch so replacement executors can resume without archaeology.
 
-### Protected-main mutation interlock
+### Ready-candidate publication queue
 
-FIFO is a global write interlock, not merely a merge-order convention. The protected repositories are `cybalicistjt-stack/Multiversal-app` and `cybalicistjt-stack/multiversal-aioc`.
+Protected repositories use repository-local coordination refs named:
 
-- **Every mutation of protected `main` participates.** Product publication, operations/control-plane closeout, `CURRENT.json` or checkpoint projection, compatibility projection, operations repair, emergency repair, contents-API writes, ref updates, and PR merges are all protected-main mutations.
-- **Direct writes are prohibited.** Prepare every protected-main change on a non-`main` branch and publish it only as the exact validated PR head authorized by the active FIFO turn. `update_file`, `create_file`, `delete_file`, `update_ref`, or equivalent direct mutation against protected `main` is a protocol violation even when the change appears harmless.
-- **Activation freezes the base globally.** From activation until the holder's verified exact merge or explicit yield, target `main` must remain exactly equal to `turn_base` for every other lane and executor. No second writer, including an operations/control-plane writer, may advance it.
-- **Unexpected advancement is a stop-the-line breach.** If target `main` changes while a turn is held, record `OPS3.PROTECTED_MAIN_BYPASS`, identify the bypassing write, and repair the enforcement path. The active holder must not treat repeated rebase/yield/re-reserve cycles as normal concurrency handling.
-- **Queue participation is repository-local but universal.** A lane publishing to both protected repositories needs a separate reservation/turn for each target repository. Holding one repository's turn grants no right to mutate the other repository.
-- **Branch work remains parallel.** The interlock freezes only the protected `main` ref; independent branch implementation may continue as allowed by lane authority.
+`ops3-publication-queue/<lowercase-target-repository-slug>`
 
-The executable guard in `scripts/ops3_merge_lease.py` must reject direct protected-main mutation modes and retain exact-holder/head/base checks for queue-bound PR merges.
+The queue model is implemented by `scripts/ops3_merge_lease.py` (legacy filename retained for compatibility during the OPS3-10 cutover).
 
-This is the default concurrency defense even if GitHub native merge queue/branch protection is unavailable. If a native GitHub merge queue is later enabled, it may replace the transport only if FIFO reservation, turn-base ownership, exact-head validation, and durable-verification properties are preserved.
+- Queue state contains READY immutable candidates and publication history only. Normal state has no `holder`, `turn_base`, activation phase, heartbeat, lease expiry, or release/recovery-release state.
+- Prequeue validation must be green and bound to the submitted exact head. Pending, failed, mutable, or merely anticipated work cannot enter the queue.
+- Only the FIFO head may receive merge authorization.
+- Integration authorization binds the exact candidate head to a fresh observed `main` base and a green integration receipt. Base drift invalidates that receipt and requires a new integration check; it does not force the lane to redo unrelated implementation work.
+- Direct writes to protected `main` remain prohibited. Protected-main mutation occurs only through the exact READY pull-request merge authorized by the integration gate.
+- After durable merge, any executor may reconcile the queue from the observed candidate head and merge SHA. Because there is no holder/release step, a disappearing conversation after merge cannot strand publication.
+- A causally failed FIFO head is marked failed and removed. Later READY candidates remain queued and may proceed.
+- A native GitHub merge queue may later replace the transport if it preserves exact-head readiness, FIFO integration order, fresh-base integration validation, and durable-result reconciliation.
 
+### Executor/session liveness
 
-### Active-turn liveness and no-sleep rule
+A conversation, Codex session, local process, CI poller, or connector call is replaceable execution capacity and must never become a lock.
 
-An active protected-main publication turn is a short-lived publication window, not a parking place. Schema 2.1 queue state records `hold_started_at`, `last_progress_at`, `progress_seq`, `active_phase`, `last_progress_evidence`, and `max_idle_seconds` (default 900 seconds).
+- Do not silently sleep or wait in chat for another lane, queue position, CI completion, or a tool to recover. Use direct status reads only when needed for the current transition; unchanged polling is not progress.
+- If a call produces no usable result, the session terminates unexpectedly, quota is exhausted, or the user has to restart the conversation, classify it as an executor/tooling interruption.
+- On recovery, fresh-read `CURRENT.json`, the selected lane-state ref, and only the repository/PR evidence named by the last durable receipt. Resume from that point instead of replaying the tranche.
+- A session interruption never creates publication ownership. Other lanes and READY candidates remain able to progress.
+- Repeated owner `Continue` commands or stall nudges remain execution-quality incidents and are recorded truthfully even when durable product progress survives.
 
-- Activation creates the first progress receipt. The holder records a new queue progress receipt whenever publication materially advances.
-- A progress receipt must contain changed material evidence; duplicate phase/evidence markers cannot renew the turn.
-- Once `last_progress_at` exceeds `max_idle_seconds`, the turn is `OPS3.ACTIVE_TURN_STALLED`. A stale holder may not bind, merge, or revive the turn with a cosmetic heartbeat.
-- A replacement executor fresh-reads target `main` and the queue. If the verified merge already landed, use completed-turn recovery. If `main == turn_base`, use stalled-turn recovery to release the abandoned unmerged turn while preserving FIFO reservations and a durable recovery pointer. If `main` moved unexpectedly, classify `OPS3.PROTECTED_MAIN_BYPASS`.
-- The original holder must fresh-read the queue immediately before bind/merge. If its stale turn was recovered, its former authority is gone.
-- CI, bots, generated-content publishers, compatibility generators, and post-merge jobs are not exempt. They may prepare artifacts on a branch or fail closed on drift, but may never push directly to protected `main`.
+### Protected-main interlock
 
-This liveness rule is deliberately stronger than conversational continuity: a sleeping/stalled executor loses the publication turn after the bounded idle window; it does not strand `main` indefinitely.
+The protected repositories remain `cybalicistjt-stack/Multiversal-app` and `cybalicistjt-stack/multiversal-aioc`.
 
-### Stall-safe completed-turn recovery
-
-A chat/session/executor is not allowed to become a publication dependency after the durable merge has landed.
-
-- The normal path remains: verify the merge on target `main`, release the active turn immediately, then reconcile the work record.
-- If the originating conversation stalls, disconnects, exhausts quota, or otherwise disappears **after the merge is durably present on target `main` but before release**, a replacement executor must recover the finished publication instead of leaving the queue blocked.
-- Recovery first identifies a durable recovery location for the finished work, normally the canonical active checkpoint path named by `CURRENT.json` (or another already-authoritative work record when no checkpoint exists). The recovery pointer is coordination metadata only; it does not grant scope or declare completion by itself.
-- The replacement executor fresh-reads target `main` and may recovery-release the active turn only when the observed target-main SHA exactly equals the verified merged SHA for that stranded publication. If they differ, recovery fails closed and requires diagnosis; it may not guess which work landed.
-- A recovery release records `last_recovery_handoff` on the coordination state, preserves the remaining FIFO queue unchanged, clears the stranded holder, records the verified merge SHA, and allows the next queued reservation to activate.
-- Recovery release is allowed across conversations/executors. It does not require the stalled holder to return, and it must not reopen or re-run already verified product work merely to free the queue.
-- If the work record itself still needs closeout after the queue is freed, the replacement executor resumes from the recorded recovery location under the original lane authority and completes that closeout through the normal control-plane publication rules.
-- A stalled conversation before durable merge is **not** a completed-turn recovery. The active turn must instead continue under a replacement executor or be explicitly yielded with a blocker/failure reason.
+- Every protected-main mutation must be a pull-request merge of a READY exact head authorized by the fresh-base integration gate.
+- Contents/ref writes directly to protected `main` are prohibited.
+- Serialization covers only the atomic integration/merge decision; it does not freeze `main` while a lane implements or performs full validation.
+- If target `main` changes after an integration receipt was produced, that receipt is stale and the broker reruns the drift-sensitive integration gate on the new base.
+- Generated-content or CI work must prepare outputs on a candidate branch. It may not push directly to protected `main`.
 
 ### Atomic control-plane projection
 
-Multi-file governed-start and closeout updates must be projected as one repository tree, one commit, and one ref advance whenever the executor exposes Git object primitives. Sequential one-file commits are fallback-only. This prevents partial control-plane states and reduces serial round trips.
+When a global selector/successor projection really must change protected AIOC `main`, prepare its multi-file update as one tree/commit whenever possible, validate it before READY submission, and publish it through the same ready-candidate protocol. Do not use global selector publication as the live progress journal for a lane.
 
 Keep execution credentials separate from publication credentials when the execution system requires that boundary. Do not weaken security controls simply to make a worker green.
 
@@ -202,7 +193,7 @@ Classify failures before repair. Useful classes include product defect, validati
 
 A deterministic failure is not retried unchanged. Record the exact failure signature or evidence, form a falsifiable cause, apply the smallest causal repair, and rerun the smallest proof first.
 
-A lost publication-queue CAS is not a product failure. Re-read the queue; do not force-update the coordination ref, skip ahead of queued reservations, prepare a competing publication candidate, or merge around the active holder. If an active holder has stalled after a durable verified merge, use the stall-safe completed-turn recovery rule rather than waiting for that conversation to return.
+A lost publication-queue CAS is not a product failure. Re-read the READY queue and retry the coordination update from the observed generation. Never force the coordination ref or skip a READY candidate. There is no active holder to recover or wait for.
 
 If a failure is isolated to one executor, do not rewrite project governance around that executor.
 
@@ -215,7 +206,7 @@ A bounded work item may be called `completed_verified` only when:
 - requested scope is complete;
 - required validation is green for the exact candidate and recorded base;
 - required durable side effects are observed;
-- publication lease acquisition/release evidence exists when `main` was mutated, including recovery-release evidence when a stalled executor was replaced;
+- READY-candidate prequeue validation, fresh-base integration authorization, exact-head merge evidence, and durable queue reconciliation exist when protected `main` was mutated;
 - no authorized closeout action remains;
 - current operational state is reconciled.
 
@@ -249,6 +240,6 @@ A compatibility surface must state its disposition and may not invent current wo
 
 ## 13. Operations-system changes
 
-Changes to this contract, the canonical door, current-state schema, lane semantics, response guard, or publication lease protocol are operations-lane work. Product lanes stay preserved while a stop-the-line operations freeze is active.
+Changes to this contract, the canonical door, current-state schema, lane semantics, response guard, or ready-candidate publication or lane-state protocol are operations-lane work. Product lanes stay preserved while a stop-the-line operations freeze is active.
 
 The operations system should become simpler over time. A new control file is justified only when it owns data that cannot live clearly in the existing contract, current state, lane registry, work item, evidence, or adapter. New execution controls require a reproduced failure plus an executable regression before they enter the critical path.
