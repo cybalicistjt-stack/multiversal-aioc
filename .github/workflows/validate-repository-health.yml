@@ -155,6 +155,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_mvps09_form_transformation.py
 
+      - name: Run MVPS-10 species progression maturation regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps10_species_progression_maturation.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |
