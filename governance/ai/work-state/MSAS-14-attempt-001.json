@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MSAS",
+  "lane": "msas",
+  "track": "multiversal-sound-audio-studio",
+  "source_program": "MSAS",
+  "work_item_id": "MSAS-14",
+  "attempt_id": "MSAS-14-attempt-001",
+  "title": "Spatial Audio, Emitters, Zones, Occlusion & Listener Preview",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MSAS-12",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "reduced_strict_order": "MSAS-01 → MSAS-03 → MSAS-04 → MSAS-05 → MSAS-07 → MSAS-09 → MSAS-12 → MSAS-14 → MSAS-15 → MSAS-18 → MSAS-21",
+    "interstitial_override": "none",
+    "parallel_lanes": "MRCS-11 remains selected_not_started; MVPS-17 remains selected_not_started."
+  },
+  "objective": "Implement spatial-audio authoring and listener preview for emitters, zones and occlusion over explicit map/world/scene projections and AAI audio semantics, while keeping spatial placement a presentation projection rather than World truth and remaining usable without proprietary middleware.",
+  "boundaries": [
+    "MSAS-01/MSAS-03/MSAS-04/MSAS-05/MSAS-07/MSAS-09/MSAS-12 remain prior studio, semantic and voice-production foundations consumed by this tranche.",
+    "MCS/World/Environment/Location/Scene owners retain canonical geometry, placement, visibility and scene-state truth; MSAS-14 may consume explicit projections but cannot create or mutate them.",
+    "AAI retains canonical audio semantic and runtime playback/layering/mixer authority.",
+    "Spatial emitter placement is an audio presentation projection, not World placement truth.",
+    "Zone/listener/occlusion preview must keep unsupported or unavailable geometry explicit rather than fabricate spatial truth.",
+    "Preview may use synthetic or permission-filtered owner projections but cannot infer hidden gameplay/world state from audio configuration.",
+    "Spatial preview remains blocking-capable without proprietary middleware or paid/cloud providers.",
+    "Meaningful spatial/sonic information retains non-audio accessibility alternatives where applicable.",
+    "MSAS-15+ remain unauthorized until separately selected.",
+    "MRCS and MVPS lane state remains independent."
+  ],
+  "strict_successor": "MSAS-15",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an MSAS-specific owner Continue, fresh-read the MSAS-14 dependency closure and msas lane-state ref, then start and execute the bounded tranche under OPS3 v3.9 / OPS3-11.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
