@@ -68,4 +68,4 @@ Rebuilt canonical database:
 
 ## What MVPS-18 does not claim
 
-The 26 species are not yet game-ready certified. MVPS-18 guarantees that future species work has a durable, versioned canonical home and that the current identities can be rebuilt from registered sources. MVPS-19 now fills the common mechanics/morphology/physiology/environment/capability/interface dimensions without fabricating missing canon.
+The 26 species are not yet game-ready certified. MVPS-18 guarantees that future species work has a durable, versioned canonical home and that the current identities can be rebuilt from registered sources. MVPS-19 now fills the common mechanics/morphology/physiology/environment/capability/interface dimensions without fabricating missing canon. The original v0.1.0 production baseline remains immutable pre-MVPS-18 evidence; current planning uses `CORE_26_PRODUCTION_BASELINE_v0.2.0.json`.
