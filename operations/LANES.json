@@ -1,12 +1,12 @@
 {
-  "schema_version": "3.3.0",
+  "schema_version": "3.4.0",
   "canonical_door": "operations/BOOTSTRAP.md",
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "selection_rule": "User intent selects a lane; lane state never changes the global operating contract.",
   "lanes": [
     {
       "id": "msas",
-      "purpose": "Multiversal Sound & Audio Studio (MSAS): integrated creator workflow for governed sound, music, voice and audio production over existing AAI/PCA/DWC/resource/runtime contracts.",
+      "purpose": "Completed Multiversal Sound & Audio Studio (MSAS) program history. Readable for provenance/integration evidence; no persistent implementation slot or new MSAS execution authority.",
       "intent_examples": [
         "continue MSAS",
         "continue sound studio",
@@ -21,8 +21,29 @@
         "AAI/PCA/DWC and other owner contracts named by the selected MSAS item",
         "live application repository evidence limited to active MSAS scope"
       ],
-      "cross_lane_reads": "Read MRCS/OARC only for explicit dependencies or publication conflicts. MSAS execution never pauses, replaces or rewrites MRCS or OARC.",
+      "cross_lane_reads": "MSAS is terminal completed history. Read GPR/MRCS/OARC only for explicit integration evidence; do not start new MSAS implementation without a new owner-governed program.",
       "execution_state_ref": "ops3-lane-state/msas"
+    },
+    {
+      "id": "gpr",
+      "purpose": "Gameplay Pattern Runtime & Loop Minis (GPR): reusable gameplay-pattern execution/composition over frozen MAL, accepted MRCS definitions and canonical owner-domain contracts.",
+      "intent_examples": [
+        "continue GPR",
+        "continue gameplay runtime",
+        "start GPR-01",
+        "work on loop minis"
+      ],
+      "current_state_source": "operations/CURRENT.json#/lanes/gpr",
+      "source_bundle": [
+        "CURRENT-selected GPR work item/checkpoint",
+        "live lane execution state from ops3-lane-state/gpr",
+        "governance/application-planning/gameplay-pattern-runtime/GPR_PROGRAM_BACKLOG.json",
+        "governance/application-planning/preimplementation-design-closure/PDCP_GPR_FAMILY_DESIGN_CLOSURE.md",
+        "MAL/MRCS and owner-domain contracts named by the selected GPR item",
+        "live application/repository evidence limited to active GPR scope"
+      ],
+      "cross_lane_reads": "Consume completed MRCS definitions and explicit owner contracts as dependencies. Later MRCS domains may late-bind without pausing either lane; GPR-16 may not close before MRCS-21 and relevant specialist golden proofs. OARC remains independent except for explicit dependencies/publication conflicts.",
+      "execution_state_ref": "ops3-lane-state/gpr"
     },
     {
       "id": "mrcs",
@@ -155,7 +176,7 @@
     }
   ],
   "persistent_implementation_lanes": [
-    "msas",
+    "gpr",
     "mrcs",
     "oarc"
   ],
@@ -166,5 +187,5 @@
     "mvps": "Completed terminal MVPS lane/program history. It was replaced as the third persistent implementation slot by OARC on 2026-09-20.",
     "operational-assets": "Alias for canonical oarc lane."
   },
-  "parallel_persistence_rule": "MSAS, MRCS and OARC are independent persistent implementation lanes with separate milestone-only lane-state refs. Ordinary lane state records only start, complete exact-head prequeue GREEN, durable application publication and one post-closeout successor reseed. Intermediate repository/PR/CI/READY mechanics are not journaled. Shared-repository publication remains FIFO among immutable green READY candidates only."
+  "parallel_persistence_rule": "GPR, MRCS and OARC are independent persistent implementation lanes with separate milestone-only lane-state refs. Terminal MSAS remains completed history outside the persistent slots. Ordinary lane state records only start, complete exact-head prequeue GREEN, durable application publication and one post-closeout successor reseed. Intermediate repository/PR/CI/READY mechanics are not journaled. Shared-repository publication remains FIFO among immutable green READY candidates only."
 }

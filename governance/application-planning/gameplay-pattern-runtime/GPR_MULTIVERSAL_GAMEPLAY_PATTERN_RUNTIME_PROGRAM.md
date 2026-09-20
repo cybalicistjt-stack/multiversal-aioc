@@ -3,11 +3,11 @@
 **Program ID:** GPR  
 **Program name:** Gameplay Pattern Runtime & Loop Minis  
 **Version:** 0.2.0 — PDCP REDUCED  
-**Status:** OWNER-APPROVED — PLANNED FUTURE INTERSTITIAL; NOT STARTED  
-**Activation:** after MRCS effective governed golden gate  
+**Status:** OWNER-APPROVED — GPR-01 SELECTED_NOT_STARTED  
+**Activation:** concurrent start authorized after MRCS-05 + completed MAL + core owner contracts; later MRCS late-binds; GPR-16 waits for MRCS-21  
 **Successor:** MERA-01  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none
+**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-01 attempt
 
 ## Purpose
 

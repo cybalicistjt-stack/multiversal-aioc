@@ -6,7 +6,7 @@ This path remains a dependency-roadmap reference for the persistent implementati
 
 ## Live authority
 
-Every implementation conversation begins at `operations/BOOTSTRAP.md`. Live MSAS/MRCS/OARC selection comes only from `operations/CURRENT.json` and the lane-specific work item/checkpoint it references. Repository/PR/CI evidence supplies implementation facts.
+Every implementation conversation begins at `operations/BOOTSTRAP.md`. Live GPR/MRCS/OARC persistent selection comes only from `operations/CURRENT.json`; MSAS is preserved as completed history and the lane-specific work item/checkpoint it references. Repository/PR/CI evidence supplies implementation facts.
 
 ## Preserved roadmap state
 

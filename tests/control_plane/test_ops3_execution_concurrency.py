@@ -57,7 +57,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
 
     def test_ready_queue_is_fifo_without_reserving_future_work(self) -> None:
         state=PUBLICATION.free_publication_queue("cybalicistjt-stack/Multiversal-app",generation=30)
-        for cid,lane in (("a","msas"),("b","mrcs"),("c","oarc")):
+        for cid,lane in (("a","gpr"),("b","mrcs"),("c","oarc")):
             state=PUBLICATION.submit_ready_candidate(state,expected_generation=state["generation"],candidate=self.candidate(cid,lane))
         self.assertEqual([x["candidate_id"] for x in state["ready"]],["a","b","c"])
 
@@ -102,11 +102,11 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         )
 
     def test_lane_state_transport_is_sharded_by_lane(self) -> None:
-        self.assertEqual(LANE_STATE.coordination_branch("msas"),"ops3-lane-state/msas")
+        self.assertEqual(LANE_STATE.coordination_branch("gpr"),"ops3-lane-state/gpr")
         self.assertEqual(LANE_STATE.coordination_branch("mrcs"),"ops3-lane-state/mrcs")
-        a=LANE_STATE.initial_state("msas",revision=1,selected_work_item="MSAS-X",attempt_id="MSAS-X-attempt-001")
+        a=LANE_STATE.initial_state("gpr",revision=1,selected_work_item="GPR-X",attempt_id="GPR-X-attempt-001")
         b=LANE_STATE.initial_state("mrcs",revision=1,selected_work_item="MRCS-X",attempt_id="MRCS-X-attempt-001")
-        a2=LANE_STATE.start_execution(a,expected_revision=1,lane="msas",implementation_branch="work/msas-x",evidence="owner Continue")
+        a2=LANE_STATE.start_execution(a,expected_revision=1,lane="gpr",implementation_branch="work/gpr-x",evidence="owner Continue")
         self.assertEqual(a2["revision"],2)
         self.assertEqual(b["revision"],1)
         with self.assertRaises(LANE_STATE.LaneStateConflict):

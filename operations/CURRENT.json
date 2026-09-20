@@ -6,8 +6,8 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 294,
-  "default_lane": "msas",
+  "state_revision": 295,
+  "default_lane": "mrcs",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
   "product_start_freeze": {
@@ -88,6 +88,16 @@
       "implementation_authority": false,
       "activation_rule": "OARC-01 completed_verified after causal RED run 35528399109 at head bda33506e54cc2b7b00e3a512840b7aaa9fd53e5, exact-head GREEN run 35528464087 at head 51bc5b586efd3088e5346ae3bfdc77373d2a4fe2, and READY publication of PR 1498 as AIOC main merge 144769200adfcae9414c3af39c801a81d072abef. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no OARC entry or interstitial override, so strict successor OARC-02 is selected_not_started.",
       "execution_state_ref": "ops3-lane-state/oarc"
+    },
+    "gpr": {
+      "state": "selected_not_started",
+      "selected_work_item": "GPR-01",
+      "attempt_id": "GPR-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/GPR-01-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "Owner approved GPR concurrent activation on 2026-09-20 by replacing the terminal MSAS persistent execution slot. ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 gives GPR no hard requires and permits start after MRCS-05, MAL completed_verified and core owner contracts; later MRCS domains late-bind and GPR-16 remains gated on MRCS-21 plus relevant specialist golden proofs.",
+      "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
   "truth_rules": {
@@ -96,20 +106,20 @@
     "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
     "cross_program_successor_rule": "Before successor selection, consult governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json. Individual program strict_successor or backlog fields cannot skip an eligible interstitial program or override cross-program gates.",
     "executor_independence": "Executor availability never grants or revokes project authority.",
-    "parallel_lane_rule": "MSAS, MRCS and OARC execute independently on distinct implementation branches and distinct lane-state refs. One lane never reserves future access to main; shared-repository publication is serialized only among immutable READY candidates.",
+    "parallel_lane_rule": "GPR, MRCS and OARC execute independently on distinct implementation branches and distinct lane-state refs. Terminal MSAS remains readable completed history and occupies no persistent execution slot. One lane never reserves future access to main; shared-repository publication is serialized only among immutable READY candidates.",
     "protected_main_interlock": "For cybalicistjt-stack/Multiversal-app and cybalicistjt-stack/multiversal-aioc, direct main writes are prohibited. Only the FIFO READY head may merge after a green drift-sensitive integration receipt against fresh main. There is no active holder or turn_base that freezes main during implementation.",
-    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: msas, mrcs and oarc. MVPS-23 and UISR-11 are completed program history and do not occupy persistent implementation slots.",
+    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: gpr, mrcs and oarc. MSAS-21, MVPS-23 and UISR-11 are completed program history and do not occupy persistent implementation slots.",
     "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS3.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
     "generated_main_writers": "CI/bots/generated-content jobs may not push directly to protected main; generated outputs must be present on the queue-bound candidate branch or validation fails closed.",
     "ready_then_queue": "Publication order begins only after immutable exact-head prequeue validation is green. The queue has no reservation-for-future-work, active holder, heartbeat, release, or recovery-release lifecycle.",
-    "lane_state_isolation": "Live execution progress for persistent lanes is recorded on ops3-lane-state/msas, ops3-lane-state/mrcs and ops3-lane-state/oarc. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
+    "lane_state_isolation": "Live execution progress for persistent lanes is recorded on ops3-lane-state/gpr, ops3-lane-state/mrcs and ops3-lane-state/oarc. Terminal MSAS lane state is historical only. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
     "executor_interruption": "A chat/tool/session interruption is an executor incident, never a project lock. Resume from the last durable lane-state receipt and fresh repository/PR evidence; do not silently wait or replay completed phases.",
     "overinstrumentation_guard": "OPS3 uses milestone receipts, not activity receipts. Repository/PR/CI/publication-queue evidence owns mechanical transitions; status reads, polling, per-platform CI results, artifact inspection, queue mechanics and merge mechanics must not create lane-state receipts or be misclassified as material progress.",
     "lane_state_milestones": "Ordinary persistent-lane execution state is selected_not_started -> in_progress -> prequeue_green -> published, followed by one deterministic successor reseed after canonical closeout. The generic lane activity-log API is prohibited.",
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
     "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
-  "next_project_action": "MSAS remains terminal completed_verified. MRCS-16 remains independently selected_not_started. OARC-02 is selected_not_started after OARC-01 authority/handoff closure; continue only the persistent implementation lane explicitly requested by the owner.",
+  "next_project_action": "GPR-01 and MRCS-16 remain independently selected_not_started. OARC-02 remains independently selected_not_started after OARC-01 closure. Continue only the persistent implementation lane explicitly requested by the owner; GPR may proceed concurrently with later MRCS, but GPR-16 remains gated on MRCS-21.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -140,6 +150,16 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "completion_rule": "MVPS-17 through MVPS-23 completed_verified. Terminal proof MVPS23.CORE26.GAME_READY.GOLDEN.v1 certifies all 26 current species across the same 19-dimension CORE26.GAME_READY.v1 standard with zero mandatory gaps, waivers, roster drift or species-name application branches."
+    },
+    "MSAS": {
+      "program_id": "MSAS",
+      "state": "completed_verified",
+      "selected_work_item": "MSAS-21",
+      "attempt_id": "MSAS-21-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MSAS-21-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "completion_rule": "MSAS-01 through MSAS-21 completed_verified. MSAS remains readable completed program history and no longer occupies a persistent implementation slot after owner-approved GPR lane activation."
     }
   },
   "domain_authorities": {
