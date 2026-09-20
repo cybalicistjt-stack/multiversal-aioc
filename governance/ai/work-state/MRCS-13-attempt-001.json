@@ -39,10 +39,10 @@
   "active_substep": "completed_verified",
   "next_action": "MRCS-13 is completed_verified. MRCS-14 is selected_not_started under the reduced strict order. MSAS and MVPS remain independent and were not modified by this closeout.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
     "material_progress_seq": 4,
-    "progress_at_last_owner_command": 0,
+    "progress_at_last_owner_command": 4,
     "no_progress_cycles": 0,
     "last_material_progress": {
       "seq": 4,
@@ -57,9 +57,11 @@
     }
   },
   "execution_conformance": {
-    "status": "conforming",
-    "policy_violations": [],
-    "note": "MRCS-13 executed from governed start through application publication and control-plane closeout under one owner Continue."
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED"
+    ],
+    "note": "MRCS-13 required a second owner Continue before terminal response. Material progress had advanced from the initial selected_not_started state through application publication and completed_verified closeout before the second command, so OPS3.NO_MATERIAL_PROGRESS does not apply. Product and validation evidence remain valid; this correction records the execution-process incident only."
   },
   "implementation_plan": {
     "lane_start": "completed",
