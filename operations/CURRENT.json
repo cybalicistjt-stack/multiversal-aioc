@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 311,
+  "state_revision": 312,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -80,13 +80,13 @@
       "implementation_authority": "session_scoped_by_owner_request"
     },
     "oarc": {
-      "state": "selected_not_started",
+      "state": "completed_verified",
       "selected_work_item": "OARC-07",
       "attempt_id": "OARC-07-attempt-001",
       "checkpoint_path": "governance/ai/work-state/OARC-07-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "OARC-06 completed_verified after causal RED run 35536896956 at application head df27aa9a5c3ab90b7b93a5b481caca8ecf0ac1cb, bounded test-helper type correction after run 35537008531 identified client-typecheck-only failure, exact-head cross-platform GREEN run 35537101123 at application head b5ac8bfe87879f466d154622effe62b112cb4674, fresh-main clean integration against app main 1fac56244a41cd58e6cd70751d85b7d1c52c327b, and READY publication of PR 661 as application main 9bce9c663bab487a795491ddea8a5ce7bf8d8944. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no OARC entry or interstitial override, so strict successor OARC-07 is selected_not_started.",
+      "activation_rule": "OARC-07 completed_verified after causal RED run 35538487139 at application head 581d14b8c1014c280410e808e902340b69fca216, a bounded source-governance verifier repair after run 35538603856, exact-head cross-platform GREEN run 35538682911 at application head 87862dc0c85de2c3adc85fc7fdd66c8ed4781704, and READY publication of PR 663 as application main 8e738c6ed8d7582bc362aecdb59f4d312a48c9cd. Owner explicitly authorized inferred/extrapolated completion for MCH-0031 Hollowstep and SCF-0027 Orrukhal, with provenance-visible owner-approved MIB-14 definitions. OARC-07 has strict_successor null and ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no OARC interstitial/successor override, so OARC is terminal completed_verified.",
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
@@ -119,7 +119,7 @@
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
     "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
-  "next_project_action": "GPR-10 and OARC-07 remain independently selected_not_started. MRCS is terminal completed_verified. Continue only the persistent implementation lane explicitly requested by the owner; GPR-10 is the rights-safe semantic presentation/accessibility tranche and must keep presentation nonauthoritative while enforcing rights/use validation before production selection/export.",
+  "next_project_action": "GPR-10 remains independently selected_not_started. MRCS and OARC are terminal completed_verified. Continue only the persistent implementation lane explicitly requested by the owner; OARC is completed history and authorizes no successor.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -170,6 +170,16 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "completion_rule": "MRCS-01 through MRCS-21 reduced family completed_verified. Terminal MRCS-21 proves the 48-vector family closure, reduced-GPR consumption without ownership bleed, accessibility/parity, local-first operation, and optional-AI/paid-cloud independence. MRCS remains readable completed program history and authorizes no successor."
+    },
+    "OARC": {
+      "program_id": "OARC",
+      "state": "completed_verified",
+      "selected_work_item": "OARC-07",
+      "attempt_id": "OARC-07-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/OARC-07-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "completion_rule": "OARC-01 through OARC-07 completed_verified. Terminal OARC07.COVERAGE_GAP_CERTIFICATION.v1 reconciles the governed 6,708-row operational-asset source surface, certifies all six representative golden roles game-ready after two provenance-visible owner-approved MIB-14 completions, and preserves 5,587 waiting-existing-owner plus 1,079 normalization-needed rows as explicit actionable catalog gaps. OARC has no successor."
     }
   },
   "domain_authorities": {

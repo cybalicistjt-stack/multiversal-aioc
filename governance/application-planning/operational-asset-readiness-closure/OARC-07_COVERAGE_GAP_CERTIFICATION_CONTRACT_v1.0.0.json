@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "OARC07.COVERAGE_GAP_CERTIFICATION.v1",
+  "status": "current",
+  "work_item": "OARC-07",
+  "application_merge_sha": "8e738c6ed8d7582bc362aecdb59f4d312a48c9cd",
+  "result": "TERMINAL_COMPLETED_WITH_EXPLICIT_CATALOG_GAPS_AND_SIX_OF_SIX_GOLDENS",
+  "owner_exception": "OARC07.OWNER_APPROVED_COMPLETION_EXCEPTION.v1",
+  "source_surface": {
+    "total_rows": 6708,
+    "catalogs": [
+      {
+        "catalog": "Vehicles.csv",
+        "rows": 1200,
+        "sha256": "2edd4f50d18d7d629c1a268122d1d4846e3df364da9b9c45f666359ba0dd791c"
+      },
+      {
+        "catalog": "Mecha.csv",
+        "rows": 2117,
+        "sha256": "60ff6a730f5a1d50dd4622da5d199be4f753b1933acfe9d087d5bf21b4a8bf0f"
+      },
+      {
+        "catalog": "Spacecraft.csv",
+        "rows": 2311,
+        "sha256": "00ce4a9d5730ac413d22813325ff3ace7e0c7b0445e9bcd0af45aa2911962c6f"
+      },
+      {
+        "catalog": "Bases_Facilities.csv",
+        "rows": 1080,
+        "sha256": "bfc80daf90be3f6b1f28e484cccc8333bb25bdc7fa66eb935e54e2b5f7c283cb"
+      }
+    ]
+  },
+  "coverage": {
+    "counts": {
+      "game_ready": 42,
+      "normalization_needed": 1079,
+      "waiting_existing_owner": 5587,
+      "waiting_MERA": 0,
+      "waiting_MBES": 0,
+      "source_insufficient": 0
+    },
+    "reconciliation_delta": 0,
+    "readiness_numerator": 42,
+    "readiness_denominator": 6708,
+    "readiness_percent": 0.6261180679785331,
+    "percentage_definition": "game-ready classified source rows / all governed OARC-03 source rows * 100"
+  },
+  "catalog_breakdown": {
+    "Vehicles.csv": {
+      "game_ready": 7,
+      "waiting_existing_owner": 1193,
+      "normalization_needed": 0
+    },
+    "Mecha.csv": {
+      "game_ready": 21,
+      "waiting_existing_owner": 2096,
+      "normalization_needed": 0
+    },
+    "Spacecraft.csv": {
+      "game_ready": 14,
+      "waiting_existing_owner": 2297,
+      "normalization_needed": 0
+    },
+    "Bases_Facilities.csv": {
+      "game_ready": 0,
+      "waiting_existing_owner": 1,
+      "normalization_needed": 1079,
+      "row_level_split_inferred": false
+    }
+  },
+  "final_golden": {
+    "case_count": 6,
+    "game_ready_count": 6,
+    "blocked_visible_gap_count": 0,
+    "resolved_former_blockers": [
+      "mecha",
+      "spacecraft-carrier",
+      "nested-carrier-craft"
+    ]
+  },
+  "completion_condition": {
+    "deterministic_classification": true,
+    "representative_vehicle_mecha_ship_base_handoffs": true,
+    "duplicate_identity": false,
+    "hidden_authority_bleed": false,
+    "hidden_future_family_implementation": false,
+    "invented_semantics_rule": "The two named MIB-14 completions are explicitly owner-authorized inferred completion with provenance and therefore are governed owner truth, not hidden inference."
+  },
+  "remaining_actionable_gaps": [
+    {
+      "disposition": "waiting-existing-owner",
+      "rows": 5587,
+      "owner": "MIB-14",
+      "meaning": "normalized operational/module/facility targets still lack exact owner records/bindings"
+    },
+    {
+      "disposition": "normalization-needed",
+      "rows": 1079,
+      "owner": "OARC/source registry",
+      "meaning": "Bases_Facilities.csv remainder lacks governed row-level record-type registry in repository evidence"
+    }
+  ],
+  "future_families": {
+    "MERA": "not implemented; zero rows classified waiting-MERA on current evidence",
+    "MBES": "not implemented; zero rows classified waiting-MBES on current evidence"
+  },
+  "terminal": true,
+  "strict_successor": null
+}
