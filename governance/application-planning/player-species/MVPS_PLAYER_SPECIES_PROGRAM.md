@@ -2,7 +2,7 @@
 
 **Program ID:** MVPS  
 **Family:** Multiversal Player Species  
-**Status:** ACTIVE OWNER-AUTHORIZED CORE-26 PRODUCTION EXTENSION / MVPS-21 completed_verified / MVPS-22 selected_not_started  
+**Status:** ACTIVE OWNER-AUTHORIZED CORE-26 PRODUCTION EXTENSION / MVPS-22 completed_verified / MVPS-23 selected_not_started  
 **Operational authority:** none outside `operations/CURRENT.json`
 
 ## Mission
@@ -130,3 +130,10 @@ The canonical database remains 556 effective objects and now applies 135 governe
 MVPS-21 completed_verified on 2026-09-20. New current-authority presentation outputs cover all 26 Core species without rewriting the sealed historical 25-profile PPIA-06/CAPP evidence. The historical Nekron appearance profile is projected through the current Morganthyr identity migration, while Akwi receives a source-backed current profile from its v1.2.0/AKWI-01 appearance facts. Picker, authoring/search/inspection and appearance projections all use the exact Core-26 authority order and remain mechanically non-authoritative.
 
 MVPS-22 is selected next for balance, validation and cross-system certification; MVPS-23 remains the final all-26 game-ready golden proof.
+
+
+## MVPS-22 Core-26 certification result
+
+MVPS-22 completed_verified on 2026-09-20. All 26 real current species now have a common 19-dimension certification row under `MVPS22.CORE26.CERTIFICATION.v1`. Required dimensions are certified from exact-version/source-backed/shared-contract evidence; optional lineage/form/progression dimensions preserve MVPS-20 source-backed explicit-not-applicable receipts where appropriate. The tranche records zero unresolved mandatory gaps, 26 real-species cross-system fixture rows, explicit balance/adjudication status for all 26, and zero species-name runtime branches.
+
+MVPS-23 is selected as the final tranche. It must replay all 26 rows through the same standard and close the production extension only after the all-26 golden proof is exact-head green.
