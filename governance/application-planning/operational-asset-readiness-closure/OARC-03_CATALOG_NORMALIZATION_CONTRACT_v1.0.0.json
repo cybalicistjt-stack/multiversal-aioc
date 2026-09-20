@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "OARC03.CATALOG_NORMALIZATION.v1",
+  "status": "current",
+  "work_item": "OARC-03",
+  "authority_contracts": [
+    "OARC01.AUTHORITY_HANDOFF.v1",
+    "OARC02.DEFINITION_BRIDGE.v1"
+  ],
+  "application_merge_sha": "501e4c5c5359d2368f4fb4c835416a35d77aa7e4",
+  "result": "SOURCE_CATALOGS_CLASSIFIED_WITHOUT_CANONICAL_REPLACEMENT",
+  "governed_source_surface": {
+    "total_rows": 6708,
+    "catalogs": [
+      {
+        "name": "Vehicles.csv",
+        "rows": 1200,
+        "sha256": "2edd4f50d18d7d629c1a268122d1d4846e3df364da9b9c45f666359ba0dd791c"
+      },
+      {
+        "name": "Mecha.csv",
+        "rows": 2117,
+        "sha256": "60ff6a730f5a1d50dd4622da5d199be4f753b1933acfe9d087d5bf21b4a8bf0f"
+      },
+      {
+        "name": "Spacecraft.csv",
+        "rows": 2311,
+        "sha256": "00ce4a9d5730ac413d22813325ff3ace7e0c7b0445e9bcd0af45aa2911962c6f"
+      },
+      {
+        "name": "Bases_Facilities.csv",
+        "rows": 1080,
+        "sha256": "bfc80daf90be3f6b1f28e484cccc8333bb25bdc7fa66eb935e54e2b5f7c283cb"
+      }
+    ]
+  },
+  "routing_rules": [
+    "Explicit source record type controls classification.",
+    "Vehicle/mecha/ship/base/facility candidates route to MIB-14 without synthesizing owner definitions.",
+    "Support/item/material records route to MRCS-13 where applicable.",
+    "Rules/framework records route to PPIA-04/F014.",
+    "Unknown record types remain source-insufficient."
+  ],
+  "provenance_rules": [
+    "Raw source record is preserved.",
+    "Inferred, estimated, best-judgment and completed values remain mixed-source-and-authored-completion.",
+    "MIB-14 ownerReference remains null until an exact owner binding exists.",
+    "Name similarity or source grouping never creates parentage or compatibility."
+  ],
+  "forbidden_inferences": [
+    "canonical owner identity",
+    "component parentage",
+    "compatibility",
+    "installed relationship",
+    "salvage output",
+    "capacity",
+    "system presence",
+    "operating envelope"
+  ],
+  "representative_cases": [
+    "VEH-0001 Civilian Car",
+    "MCH-0031 Primax RX-07 Hollowstep",
+    "SCF-0027 Orrukhal Bastion-Class Carrier",
+    "DEF-FAC-77501B32CCA3 Mecha Workshop"
+  ],
+  "future_handoff": "OARC-04 may define source-backed operational specialization profiles over these normalized classifications, but cannot erase mixed provenance or implement MERA/MBES runtimes."
+}
