@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 284,
+  "state_revision": 285,
   "default_lane": "msas",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -29,8 +29,8 @@
         "state": "selected_not_started"
       },
       "mvps": {
-        "selected_work_item": "MVPS-19",
-        "attempt_id": "MVPS-19-attempt-001",
+        "selected_work_item": "MVPS-20",
+        "attempt_id": "MVPS-20-attempt-001",
         "state": "selected_not_started"
       }
     }
@@ -64,12 +64,12 @@
     },
     "mvps": {
       "state": "selected_not_started",
-      "selected_work_item": "MVPS-19",
-      "attempt_id": "MVPS-19-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MVPS-19-attempt-001.json",
+      "selected_work_item": "MVPS-20",
+      "attempt_id": "MVPS-20-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MVPS-20-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "MVPS-18 completed_verified after causal RED run 35516850653 at head 58ba9725b1ad139b522710decb8213c2b70f88e6, exact-head GREEN run 35517544937 at head 7d95e928b851cb5bdb8c8cc62bc62dff560af306, and READY publication of PR 1478 as application merge 617ec2f8bba6b86acaec40abcabe2b7a6c800892. All Core-26 species now have exact-version current SpeciesDefinitions and permanent versioned canon registers/source chains. MVPS-19 is selected_not_started for equal mechanics/morphology/environment completion.",
+      "activation_rule": "MVPS-19 completed_verified after causal RED run 35520537995 at head 8e4dadd8869fbc9873c714a124df379e21554900, exact-head GREEN run 35521601559 at head 7231fc002a3dfd58bf34655ebd46ad9c17e8f660, and READY publication of PR 1482 as application merge c02a76263d05b99b3357470c70fec7ea1ee97595. The owner-returned Core-26 decision packet is bound as MVPS19.CORE26.OWNER_DECISIONS.v1, all 26 current definitions/registers are v1.1.0, and the ManyToms distributed controller plus Vespin stinger-system preservation are explicit. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MVPS interstitial gate, so MVPS-20 is selected_not_started until a later MVPS-specific Continue.",
       "execution_state_ref": "ops3-lane-state/mvps"
     },
     "dwc-speech": {
@@ -109,7 +109,7 @@
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
     "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
-  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-21 is selected_not_started; MRCS-13 is selected_not_started; MVPS-19 is selected_not_started. Every executor must use milestone-only lane state and the OPS3-11 closeout fast path.",
+  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-21, MRCS-13 and MVPS-20 remain independently selected_not_started. Every executor must use milestone-only lane state and the OPS3-11 closeout fast path.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -139,8 +139,8 @@
       "status": "current_canon",
       "roster_count": 26,
       "rule": "All current-authority player-species work must resolve this authority before historical species artifacts or generated catalogs.",
-      "production_baseline_path": "governance/application-planning/player-species/CORE_26_PRODUCTION_BASELINE_v0.2.0.json",
-      "production_baseline_id": "CORE26-PRODUCTION-BASELINE-002"
+      "production_baseline_path": "governance/application-planning/player-species/CORE_26_PRODUCTION_BASELINE_v0.3.0.json",
+      "production_baseline_id": "CORE26-PRODUCTION-BASELINE-003"
     }
   }
 }

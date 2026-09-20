@@ -2,7 +2,7 @@
 
 **Program ID:** MVPS  
 **Family:** Multiversal Player Species  
-**Status:** ACTIVE OWNER-AUTHORIZED CORE-26 PRODUCTION EXTENSION / MVPS-18 completed_verified / MVPS-19 selected_not_started  
+**Status:** ACTIVE OWNER-AUTHORIZED CORE-26 PRODUCTION EXTENSION / MVPS-19 completed_verified / MVPS-20 selected_not_started  
 **Operational authority:** none outside `operations/CURRENT.json`
 
 ## Mission
@@ -104,4 +104,13 @@ MVPS-18 established a durable, versioned canon home for every Core-26 species. E
 
 The rebuilt current catalog contains 26 exact-version SpeciesDefinitions and 26 species canon registers. Morganthyr is current while Nekron remains a historical alias; Rog and Suula have source-backed current objects; Akwi is catalog-converged while preserving its AKWI-01 rules authority; and the ManyToms owner-approved dossier is now a first-class replacement source rather than a manual generated-object-only promotion.
 
-MVPS-19 therefore begins from durable identity/provenance and focuses on equal mechanics, morphology, physiology/environment, capability/natural-equipment, and interface-compatibility completion.
+MVPS-19 completed the equal mechanics, morphology, physiology/environment, capability/natural-equipment, and interface-compatibility layer across all 26 using versioned v1.1.0 source-chain updates and the owner-approved gap-resolution decisions. MVPS-20 is the strict successor for lineage/form/adaptation/progression and language/social/knowledge completion.
+
+
+## MVPS-19 Core-26 mechanics completion result
+
+MVPS-19 completed_verified on 2026-09-20. All 26 current species now have v1.1.0 definition/register updates bound to `MVPS19.CORE26.OWNER_DECISIONS.v1` and the common typed mechanics matrix. The returned owner decision packet approved 19 recommendations as written and 7 with edits; those decisions are preserved as owner-authored authority rather than misrepresented as recovered historical source text.
+
+The completion includes shared typed baseline profiles, explicit morphology/movement/sense/physiology/capability/natural-equipment/interface data, a ManyToms distributed-body controller that permits split Toms while automatically applying attention-load conditions without multiplying personhood/action economy, and preservation of the existing Vespin stinger species system for MVPS-20 progression binding. The canonical database remains 556 effective records and now applies 83 governed replacements from 114 registered sources.
+
+This is not final game-ready certification. MVPS-20 must complete applicable lineage/form/adaptation/progression and social/language/knowledge dimensions before MVPS-21 presentation regeneration and later MVPS-22/23 certification/golden proof.
