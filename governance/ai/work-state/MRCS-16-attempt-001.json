@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MRCS",
+  "lane": "mrcs",
+  "track": "multiversal-rules-content-studio",
+  "source_program": "MRCS",
+  "work_item_id": "MRCS-16",
+  "attempt_id": "MRCS-16-attempt-001",
+  "title": "System Extension, House Rule, Scope, Compatibility & Override Authoring",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MRCS-14",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "reduced_strict_order": "MRCS-14 → MRCS-16 → MRCS-17 → MRCS-19 → MRCS-21",
+    "interstitial_override": "none",
+    "parallel_lanes": "MSAS-21 remains terminal completed_verified; MVPS-23 remains terminal completed_verified."
+  },
+  "objective": "Author bounded system extensions, house rules, scopes, compatibility declarations, precedence/override records and rollback-safe activation definitions over existing owner domains without deleting prior rule history or silently changing unresolved compatibility.",
+  "acceptance": [
+    "house-rule scopes resolve explicitly",
+    "conflicting overrides remain diagnosable",
+    "disable/rollback restores prior effective-rule resolution without deleting history"
+  ],
+  "boundaries": [
+    "MRCS-01/03/04/05/08/11/12/13/14 remain the authoring foundations consumed by this tranche.",
+    "House rules and system extensions remain definition/configuration records; owning runtime domains retain execution and live-state mutation authority.",
+    "Scope, applicability, compatibility and precedence are explicit; unknown compatibility or target scope remains unresolved rather than inferred.",
+    "Conflicting override candidates remain visible and diagnosable rather than silently picking a winner.",
+    "Disable/rollback changes effective resolution while preserving immutable prior definition/version/history evidence; it does not delete source history.",
+    "MRCS-17+ remain unauthorized until separately selected.",
+    "MSAS and MVPS remain terminal completed_verified."
+  ],
+  "strict_successor": "MRCS-17",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an MRCS-specific owner Continue, fresh-read the MRCS-16 dependency closure and mrcs lane-state ref, then start and execute the bounded tranche under OPS3-11 milestone-only execution.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
