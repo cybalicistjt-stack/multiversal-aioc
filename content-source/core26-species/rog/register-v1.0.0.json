@@ -1,0 +1,61 @@
+{
+  "format": "multiversal-canonical-content-source",
+  "status": "owner-approved-canonical-incorporation",
+  "bundleId": "mv.content.core26.rog.canon-register-v1",
+  "authority": {
+    "ownerDecision": "2026-09-20 Core-26 permanent canonical register directive",
+    "bundlePart": "rog-register-v1.0.0"
+  },
+  "records": [
+    {
+      "gameObject": {
+        "id": "mv.core.species-canon-register.rog",
+        "name": "Rog Canon Register",
+        "objectType": "mv.object.species-canon-register",
+        "contentVersion": "1.0.0",
+        "register": {
+          "speciesName": "Rog",
+          "speciesDefinitionStableId": "mv.core.species.rog",
+          "authorityId": "CORE26-CURRENT-01",
+          "gameReadyStandard": "CORE26.GAME_READY.v1",
+          "sourceLedger": [
+            {
+              "role": "current_authority",
+              "title": "CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+              "repositoryPath": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+              "canonRole": "current_roster_identity_authority"
+            },
+            {
+              "role": "written_species_source",
+              "title": "The Rog v2.PDF",
+              "canonRole": "source_backed_species_material"
+            },
+            {
+              "role": "current_appearance_authority",
+              "title": "CAPP-01_SOURCE_AUTHORITY_AND_PROFILE_INDEX_v0.1.0.json",
+              "repositoryPath": "governance/application-planning/character-appearance-production/CAPP-01_SOURCE_AUTHORITY_AND_PROFILE_INDEX_v0.1.0.json",
+              "canonRole": "governed_visual_profile"
+            }
+          ],
+          "canonDomains": {
+            "identity": true,
+            "lore": "accumulate_source_backed_material",
+            "mechanics": "accumulate_source_backed_and_owner_approved_rules",
+            "appearance": "accumulate_current_authority_outputs",
+            "provenance": true,
+            "openQuestions": true,
+            "certification": true
+          },
+          "updateContract": {
+            "mode": "append_versioned_source_never_mutate_history",
+            "requiresSourcePipelineRebuild": true,
+            "requiresRegisterVersionBumpForCanonChange": true,
+            "requiresDefinitionVersionBumpWhenGameplayObjectChanges": true,
+            "requiresOwnerApprovalForCanonPromotion": true,
+            "preservePriorVersions": true
+          }
+        }
+      }
+    }
+  ]
+}

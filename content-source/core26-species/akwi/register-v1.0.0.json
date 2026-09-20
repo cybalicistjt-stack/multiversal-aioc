@@ -1,0 +1,66 @@
+{
+  "format": "multiversal-canonical-content-source",
+  "status": "owner-approved-canonical-incorporation",
+  "bundleId": "mv.content.core26.akwi.canon-register-v1",
+  "authority": {
+    "ownerDecision": "2026-09-20 Core-26 permanent canonical register directive",
+    "bundlePart": "akwi-register-v1.0.0"
+  },
+  "records": [
+    {
+      "gameObject": {
+        "id": "mv.core.species-canon-register.akwi",
+        "name": "Akwi Canon Register",
+        "objectType": "mv.object.species-canon-register",
+        "contentVersion": "1.0.0",
+        "register": {
+          "speciesName": "Akwi",
+          "speciesDefinitionStableId": "species.akwi",
+          "authorityId": "CORE26-CURRENT-01",
+          "gameReadyStandard": "CORE26.GAME_READY.v1",
+          "sourceLedger": [
+            {
+              "role": "current_authority",
+              "title": "CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+              "repositoryPath": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+              "canonRole": "current_roster_identity_authority"
+            },
+            {
+              "role": "governed_playable_species_integration",
+              "title": "AKWI-01_PLAYABLE_SPECIES_CORE_v1.0.0.md",
+              "repositoryPath": "governance/application-planning/content-integration/AKWI-01_PLAYABLE_SPECIES_CORE_v1.0.0.md",
+              "canonRole": "completed_verified_species_integration"
+            },
+            {
+              "role": "source_package",
+              "title": "Akwi Game Integration Package v0.1",
+              "canonRole": "normalized_source_backed_records"
+            },
+            {
+              "role": "source_conversation",
+              "title": "Akwi Concept Design.mht",
+              "canonRole": "source_biological_and_mechanical_assertions"
+            }
+          ],
+          "canonDomains": {
+            "identity": true,
+            "lore": "accumulate_source_backed_material",
+            "mechanics": "accumulate_source_backed_and_owner_approved_rules",
+            "appearance": "accumulate_current_authority_outputs",
+            "provenance": true,
+            "openQuestions": true,
+            "certification": true
+          },
+          "updateContract": {
+            "mode": "append_versioned_source_never_mutate_history",
+            "requiresSourcePipelineRebuild": true,
+            "requiresRegisterVersionBumpForCanonChange": true,
+            "requiresDefinitionVersionBumpWhenGameplayObjectChanges": true,
+            "requiresOwnerApprovalForCanonPromotion": true,
+            "preservePriorVersions": true
+          }
+        }
+      }
+    }
+  ]
+}
