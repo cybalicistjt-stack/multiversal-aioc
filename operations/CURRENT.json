@@ -6,21 +6,21 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 283,
+  "state_revision": 284,
   "default_lane": "msas",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
   "product_start_freeze": {
     "active": false,
     "reason": "OPS3-11 completed_verified after replacing activity-style instrumentation with milestone-only lane state, deterministic successor reseed, instrumentation-only progress rejection, and the bounded closeout fast path.",
-    "preserved_selected_work_item": "MSAS-18",
-    "preserved_attempt_id": "MSAS-18-attempt-001",
+    "preserved_selected_work_item": "MSAS-21",
+    "preserved_attempt_id": "MSAS-21-attempt-001",
     "implementation_authority": false,
     "cleared_by": "OPS3-11 completed_verified",
     "preserved_lane_selections": {
       "msas": {
-        "selected_work_item": "MSAS-18",
-        "attempt_id": "MSAS-18-attempt-001",
+        "selected_work_item": "MSAS-21",
+        "attempt_id": "MSAS-21-attempt-001",
         "state": "selected_not_started"
       },
       "mrcs": {
@@ -44,12 +44,12 @@
     },
     "msas": {
       "state": "selected_not_started",
-      "selected_work_item": "MSAS-18",
-      "attempt_id": "MSAS-18-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MSAS-18-attempt-001.json",
+      "selected_work_item": "MSAS-21",
+      "attempt_id": "MSAS-21-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MSAS-21-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "MSAS-15 completed_verified after causal RED run 35515277803 at head 4644bae4383e1e84e495f9db3c21495426cdfe81, exact-head GREEN run 35515413905 at head c4fe1cf8b4a46f80b730cea44f98d9ce93065804, fresh-base integration run 35515581130 against app main 891beda57a3173e6f6e872c17900c465d7a6b88f, and READY publication of PR 639 as app main b1f504204b6f72d622517b136448179098631e01. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MSAS rotation/interstitial gate overriding the reduced strict order, so MSAS-18 is selected_not_started until a later MSAS-specific Continue.",
+      "activation_rule": "MSAS-18 completed_verified after causal RED run 35521444982 at head 25fc30edad206872d2e4233763d9b84425893cd1, exact-head GREEN run 35521587432 at head b33589c08da205234080c43924adb1816d9fea47, and READY publication of PR 642 as app main b91165ea68645aaf9b457dd51c6807642ae5fd4c. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MSAS rotation/interstitial gate overriding the reduced strict order, so final proof tranche MSAS-21 is selected_not_started until a later MSAS-specific Continue.",
       "execution_state_ref": "ops3-lane-state/msas"
     },
     "mrcs": {
@@ -109,7 +109,7 @@
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
     "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
-  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-18, MRCS-13 and MVPS-19 remain independently selected_not_started. Every executor must use milestone-only lane state and the OPS3-11 closeout fast path.",
+  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-21 is selected_not_started; MRCS-13 is selected_not_started; MVPS-19 is selected_not_started. Every executor must use milestone-only lane state and the OPS3-11 closeout fast path.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
