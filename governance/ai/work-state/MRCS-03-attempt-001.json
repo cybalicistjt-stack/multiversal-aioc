@@ -34,17 +34,17 @@
     "MRCS-04+ remain unauthorized until separately selected.",
     "MSAS and MVPS lane selectors/branches/authority are independent and must not be rewritten by MRCS work."
   ],
-  "active_substep": "ready_queue_submission",
-  "next_action": "Submit immutable READY candidate MRCS-03-app-001 for PR 625 at head a66f677a41e5500630f9668fba3732d2fcd4aaab with prequeue validation run 35474377403; then fresh-bind integration to target main and publish only that head.",
+  "active_substep": "fresh_base_integration",
+  "next_action": "Fresh-read application main, queue FIFO head and PR 625 exact head; bind a green integration receipt to that base, mark PR ready, merge only expected head a66f677a41e5500630f9668fba3732d2fcd4aaab, verify durable main, then reconcile queue.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 7,
+    "material_progress_seq": 8,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "kind": "prequeue_green",
-      "evidence": "Run 35474377403 fully green at exact head a66f677a41e5500630f9668fba3732d2fcd4aaab across Linux, Windows and deterministic comparison."
+      "kind": "ready_queued",
+      "evidence": "MRCS-03-app-001 entered FIFO READY queue generation 3 at commit b68b0e099e61a48fefc6764379ff432ba3758377."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
