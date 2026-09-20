@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesRuntimeHandoff",
+  "record_type": "SpeciesRuntimeHandoffContract",
+  "status": "MVPS-15_CANONICAL_CONTRACT",
+  "purpose": "Bridge species reuse evidence to NPC/Creature runtime, campaign cast and session bindings as owner-domain mapping proposals without minting canonical entities, live instances or inferred unresolved mappings.",
+  "source_basis": [
+    "MNCS-22 runtime handoff",
+    "MNCS-14 species/form composition",
+    "MVPS.SpeciesRuntimeProjection",
+    "MVPS.SpeciesGrantReceiptComposition"
+  ],
+  "mncs_runtime_owner": "MNCS-22",
+  "mapping_kinds": [
+    "mncs-species-composition",
+    "runtime-binding",
+    "campaign-cast",
+    "session-binding",
+    "combat-participant",
+    "social-context",
+    "exploration-context",
+    "crafting-context"
+  ],
+  "mapping_proposal_only": true,
+  "required_mapping_fields": [
+    "mapping_id",
+    "source_entity_ref",
+    "source_species_ref",
+    "source_species_version_ref",
+    "target_owner_domain",
+    "target_owner_ref_or_null",
+    "state",
+    "provenance_refs"
+  ],
+  "states": {
+    "proposal": "target owner reference must be explicit",
+    "resolved": "target owner has returned authoritative acceptance/receipt",
+    "unresolved": "target owner reference may remain null and no value may be guessed"
+  },
+  "canonical_entity_minted": false,
+  "live_instance_minted": false,
+  "cast_membership_mutated": false,
+  "session_state_mutated": false,
+  "combat_participant_mutated": false,
+  "relationship_or_reputation_mutated": false,
+  "environment_state_mutated": false,
+  "crafting_project_or_inventory_mutated": false,
+  "unresolved_mappings_invented": false,
+  "species_source_truth_rewritten": false,
+  "late_bound_owner_dependency_remains_explicit": true,
+  "owner_acceptance_receipt_preserved": true,
+  "handoff_digest_rule": "Same canonical source references, exact versions, target-owner mapping proposals and owner receipts produce the same handoff identity regardless of presentation labels.",
+  "shared_owner_handoff": {
+    "npc_creature_runtime": "Character/NPC/Creature/runtime-owner-domains via MNCS-22",
+    "campaign_cast": "MAS/Adventure/Scene/Session-owner-domains",
+    "combat": "A7 CombatParticipantPort",
+    "social": "Relationship/Reputation/Faction/Knowledge owners",
+    "exploration": "World/Environment/Location/Scene owners",
+    "crafting": "Project/Profession/Item/Equipment/Resource owners"
+  }
+}

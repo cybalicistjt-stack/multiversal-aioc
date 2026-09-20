@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "MVPS-15.Invariants",
+  "status": "MVPS-15_CANONICAL_INVARIANTS",
+  "invariants": [
+    {
+      "id": "MVPS15-I01-single-species-canon",
+      "rule": "Player characters, NPCs and creatures reference one canonical SpeciesDefinition lineage; MVPS-15 never creates parallel NPC-only or creature-only species canon."
+    },
+    {
+      "id": "MVPS15-I02-entity-layers-remain-distinct",
+      "rule": "SpeciesDefinition, NPC/Creature definition, archetype/template and live instance identities remain distinct and may reference each other only through explicit owner-domain records."
+    },
+    {
+      "id": "MVPS15-I03-exact-version-provenance-preserved",
+      "rule": "Every species-facing reuse adapter preserves exact species/version and relevant lineage/form/adaptation/adjudication/provenance references rather than copying or flattening mechanics."
+    },
+    {
+      "id": "MVPS15-I04-mncs-owner-authority-preserved",
+      "rule": "MNCS-14 owns NPC/Creature species/form composition and MNCS/PPIA owner domains retain canonical entity authority; MVPS-15 provides references and proof only."
+    },
+    {
+      "id": "MVPS15-I05-adapters-not-domain-engines",
+      "rule": "Campaign, combat, social, exploration and crafting adapters are projection/mapping seams into their owner contracts and may not implement replacement domain engines or direct owner mutation."
+    },
+    {
+      "id": "MVPS15-I06-runtime-handoff-proposal-only",
+      "rule": "Runtime/cast/session mappings remain proposal-only until accepted by the target owner; MVPS-15 does not mint canonical entities, live instances, cast membership or session state."
+    },
+    {
+      "id": "MVPS15-I07-player-only-state-not-npc-required",
+      "rule": "CharacterSpeciesSelection, player builder state and player presentation assets are not required for NPC/Creature reuse unless a specific owner workflow explicitly requests their projection."
+    },
+    {
+      "id": "MVPS15-I08-unresolved-owner-state-not-invented",
+      "rule": "Late-bound or unresolved MNCS/MCCS/MCS/campaign/combat/social/exploration/crafting dependencies remain explicit unresolved owner references; substitutes and semantics are never guessed."
+    }
+  ],
+  "enforcement": {
+    "regression_test": "tests/control_plane/test_mvps15_npc_creature_reuse_adapters.py",
+    "ci_step": "Run MVPS-15 NPC creature reuse cross-system adapter regressions"
+  }
+}
