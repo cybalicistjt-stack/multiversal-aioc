@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MSAS",
+  "lane": "msas",
+  "track": "multiversal-sound-audio-studio",
+  "source_program": "MSAS",
+  "work_item_id": "MSAS-18",
+  "attempt_id": "MSAS-18-attempt-001",
+  "title": "Audio Asset Lifecycle, Interchange, Rights, Review & Publication",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MSAS-15",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "reduced_strict_order": "MSAS-01 → MSAS-03 → MSAS-04 → MSAS-05 → MSAS-07 → MSAS-09 → MSAS-12 → MSAS-14 → MSAS-15 → MSAS-18 → MSAS-21",
+    "interstitial_override": "none",
+    "parallel_lanes": "MRCS-12 remains selected_not_started; MVPS-18 remains selected_not_started."
+  },
+  "objective": "Implement the audio-asset lifecycle seam spanning version/variant/localization review, structured interchange and round-trip loss reporting, middleware bridge identity preservation, rights/consent/provenance/sample/voice identity evidence and governed publication intent, while delegating generic resource/review/rights infrastructure to ARI/PCA and keeping generated content candidate-only until explicit acceptance and registration.",
+  "boundaries": [
+    "MSAS-01 through MSAS-15 remain prior studio, semantic, voice, spatial and live-control foundations consumed by this tranche.",
+    "ARI plus PCA-01/PCA-15 retain generic resource identity, derivative lineage, rights/use capability, provenance, review/locking/dependency and asset-governance authority.",
+    "PCA-09 retains provider-neutral generation orchestration; generated music/SFX/voice output remains candidate content until explicit acceptance and ARI registration.",
+    "PCA-13 retains generic localization-production infrastructure; MSAS-18 reviews and binds audio variants without replacing localization authority.",
+    "Structured interchange and middleware round-trip preserve canonical AAI semantic IDs where supported and report unsupported/lossy semantics explicitly rather than silently normalizing them.",
+    "Rights, consent, sample-source and voice-identity evidence are referenced from owning authorities and may block publication when missing; MSAS does not infer permission.",
+    "Review acceptance/rejection/supersession preserves prior versions and provenance rather than deleting history.",
+    "Publication intent is governed creator state and cannot itself perform external provider publication, spend money, bypass rights gates or mutate gameplay/world truth.",
+    "Provider-off/local-first lifecycle and interchange remain blocking-capable.",
+    "Meaningful spoken/sonic content retains transcript/caption or semantic non-audio alternatives where applicable.",
+    "MSAS-21 remains unauthorized until separately selected.",
+    "MRCS and MVPS lane state remains independent."
+  ],
+  "strict_successor": "MSAS-21",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an MSAS-specific owner Continue, fresh-read the MSAS-18 dependency closure and msas lane-state ref, then start and execute the bounded tranche under OPS3 v3.10 / OPS3-11.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
