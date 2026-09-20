@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MRCS",
+  "lane": "mrcs",
+  "track": "multiversal-rules-content-studio",
+  "source_program": "MRCS",
+  "work_item_id": "MRCS-14",
+  "attempt_id": "MRCS-14-attempt-001",
+  "title": "Environment, Hazard, Encounter, Reward, Loot, Economy & World-Content Authoring",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "feature/mrcs-14-world-encounter-economy-authoring",
+  "completed": false,
+  "selected_by_verified_predecessor": "MRCS-13",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "reduced_strict_order": "MRCS-13 → MRCS-14 → MRCS-16 → MRCS-17 → MRCS-19 → MRCS-21",
+    "interstitial_override": "none",
+    "parallel_lanes": "MSAS-21 remains selected_not_started; MVPS-20 remains selected_not_started."
+  },
+  "objective": "Author environment, hazard, terrain, world-content, encounter, challenge, reward, loot, economy and service definitions with reusable tables and explicit owner references while preserving canonical World placement, encounter execution, and live economy/value authority.",
+  "acceptance": [
+    "environment definitions do not place canonical World state",
+    "encounter definitions do not execute encounters",
+    "reward/economy definitions do not grant/spend value"
+  ],
+  "boundaries": [
+    "MRCS-01/03/04/05/08/11/12/13 remain the workspace, guided-authoring, bounded-expression, mechanical-definition and cross-domain package foundations consumed by this tranche.",
+    "Environment, hazard, terrain and world-content records remain reusable definitions/packages; canonical World/location placement and live environmental state remain external owner-domain authority.",
+    "Encounter and challenge definitions may compose creature, NPC, Action, Effect, Condition, Resource, environment and reward references but cannot instantiate, start, advance or resolve a live encounter.",
+    "Reward, loot, economy and service definitions remain reusable references/tables; owned Inventory, grants, currency balances, spending, settlement and other live value state remain external owner-domain authority.",
+    "Unknown world, encounter, reward, loot or economy semantics remain unresolved rather than inferred.",
+    "MRCS-16+ remain unauthorized until separately selected.",
+    "MSAS and MVPS lane state remains independent."
+  ],
+  "strict_successor": "MRCS-16",
+  "active_substep": "red_world_encounter_economy_authoring",
+  "next_action": "Establish causal RED for PDCP-MRCS-029 through 031, then implement bounded definition-layer environment/encounter/reward/economy authoring without canonical World placement, encounter execution, or live value grant/spend authority.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start",
+      "evidence": "MRCS-14 started from application main e3bdef17ce2ce497d172479b81c35166af2226bb."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
