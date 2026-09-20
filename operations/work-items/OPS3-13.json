@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS3-13",
+  "title": "Single-Lane Zero-Coordination Fast Path and Telemetry Budget",
+  "status": "completed_verified",
+  "owner_directive": "Run one final operations pass before GPR continues: when only one lane is active, remove concurrent-writer/READY-queue/rebase work from the ordinary path; further streamline execution; and prevent recurring over-instrumentation abuse.",
+  "observed_state": {
+    "only_nonterminal_persistent_lane": "gpr",
+    "selected_work_item": "GPR-10",
+    "terminal_siblings": [
+      "MRCS-21",
+      "OARC-07"
+    ],
+    "prior_operations_baseline": "OPS3-12"
+  },
+  "external_patterns_reviewed": [
+    "GitHub protected branches: merge queues are particularly useful for busy branches receiving many pull requests from many users, and are not a universal requirement.",
+    "GitHub status-check strictness: requiring an up-to-date branch can cause additional builds; loose checks use fewer builds, while merge queues provide fresh-base safety for busy branches.",
+    "GitHub pull-request merge methods: rebase is an optional history strategy and can increase repeated conflict resolution.",
+    "OpenTelemetry sampling guidance: instrumentation has direct compute cost, engineering-maintenance cost and opportunity cost, supporting an explicit telemetry budget rather than recording every observation."
+  ],
+  "causal_red": {
+    "head_sha": "2bb261fad814e2ac0fed74819837405db58afaca",
+    "workflow_run_id": "35544381533",
+    "conclusion": "failure",
+    "proved_missing": [
+      "single-lane publication mode selector",
+      "queue-free protected-main direct validator",
+      "lane-state owner-reentry telemetry removal",
+      "coordination-observation overinstrumentation denylist"
+    ]
+  },
+  "design_decisions": [
+    "Derive single-active-lane mode once from fresh CURRENT and do not repeatedly scan terminal sibling lanes.",
+    "Exactly one nonterminal persistent lane bypasses the READY queue entirely; two or more retain FIFO READY coordination.",
+    "Single-lane protected-main mutation remains PR-only, exact-head and fresh-base, with expected-head merge protection.",
+    "Routine rebasing or update-branch work is prohibited. Actual main drift reruns only the narrow integration gate; a real conflict or repair may change the candidate head and then requires exact-head revalidation.",
+    "Owner re-entry remains checkpoint-local diagnostic input for stall detection but no longer creates a lane-state revision or interaction-count receipt.",
+    "Lane-state remains milestone-only: started, prequeue_green, published, then one successor reseed.",
+    "Lane scans, sibling scans, queue-empty checks, owner re-entry, rebase checks and mergeability polling are explicitly instrumentation-only and cannot be recorded as material progress.",
+    "The existing dependency-scoped heavy content validation from OPS3-12 is retained."
+  ],
+  "branch_protection_observation": {
+    "connection_result": "The connected GitHub App could not read branch-protection endpoints (403 administration permission required). Repository ruleset reads returned no rulesets, which is not evidence that legacy branch protection is absent.",
+    "disposition": "Fail closed: preserve PR-only protected-main mutation, exact-head validation, one fresh-main integration binding and expected-head merge protection."
+  },
+  "validation_rule": "Completion is valid only when the exact candidate head passes the required PR workflow and the durable protected-main merge is verified. Do not create another control-plane commit merely to copy workflow IDs or merge observations into this record.",
+  "implementation_authority": false,
+  "completed": true,
+  "active_substep": "completed_verified",
+  "next_action": "Resume GPR-10. While it remains the only nonterminal persistent lane, use the OPS3-13 single-lane zero-coordination fast path."
+}

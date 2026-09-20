@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any
 
 LANES = frozenset({"gpr", "mrcs", "oarc"})
-SCHEMA_VERSION = "1.1.0"
+SCHEMA_VERSION = "1.2.0"
 
 
 class LaneStateConflict(RuntimeError):
@@ -39,8 +39,6 @@ def initial_state(lane: str, *, revision: int, selected_work_item: str, attempt_
         "implementation_branch": None,
         "progress_seq": 0,
         "last_progress": None,
-        "owner_continue_count": 0,
-        "execution_incident": None,
         "terminal": False,
     }
 
@@ -72,7 +70,7 @@ def start_execution(
         raise LaneStateConflict("lane attempt is not startable")
     branch = _evidence(implementation_branch, "implementation branch")
     start_evidence = _evidence(evidence, "start evidence")
-    return {
+    result = {
         **state,
         "schema_version": SCHEMA_VERSION,
         "revision": expected_revision + 1,
@@ -80,39 +78,11 @@ def start_execution(
         "implementation_branch": branch,
         "progress_seq": 1,
         "last_progress": {"kind": "started", "evidence": start_evidence},
-        "owner_continue_count": int(state.get("owner_continue_count", 0)) + 1,
-        "execution_incident": None,
         "terminal": False,
     }
-
-
-def observe_owner_reentry(
-    state: dict[str, Any],
-    *,
-    expected_revision: int,
-    lane: str,
-    evidence: str,
-) -> dict[str, Any]:
-    """Record a repeated owner execution command without inventing material progress."""
-    _check(state, expected_revision=expected_revision, lane=lane)
-    if state.get("execution_status") not in {"in_progress", "prequeue_green", "published"}:
-        raise LaneStateConflict("owner reentry requires an active nonterminal attempt")
-    reentry_evidence = _evidence(evidence, "owner reentry evidence")
-    raw_count = state.get("owner_continue_count", 1)
-    if not isinstance(raw_count, int) or raw_count < 1:
-        raise LaneStateConflict("owner_continue_count must be a positive integer for active execution")
-    count = raw_count + 1
-    return {
-        **state,
-        "schema_version": SCHEMA_VERSION,
-        "revision": expected_revision + 1,
-        "owner_continue_count": count,
-        "execution_incident": {
-            "code": "OPS3.MULTI_CONTINUE",
-            "count": count,
-            "evidence": reentry_evidence,
-        },
-    }
+    result.pop("owner_continue_count", None)
+    result.pop("execution_incident", None)
+    return result
 
 
 def mark_prequeue_green(
@@ -236,9 +206,6 @@ def reseed_successor(
         "closeout_merge_sha": closeout_merge,
         "closeout_validation_run": closeout_run,
         "closeout_ready_candidate": closeout_candidate,
-        "owner_continue_count": int(state.get("owner_continue_count", 1)),
-        "single_continue_achieved": int(state.get("owner_continue_count", 1)) == 1,
-        **({"execution_incident": state.get("execution_incident")} if state.get("execution_incident") else {}),
     }
     return {
         "schema_version": SCHEMA_VERSION,
@@ -250,8 +217,6 @@ def reseed_successor(
         "implementation_branch": None,
         "progress_seq": 0,
         "last_progress": None,
-        "owner_continue_count": 0,
-        "execution_incident": None,
         "terminal": False,
         "last_completed": last_completed,
     }

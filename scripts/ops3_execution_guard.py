@@ -12,6 +12,8 @@ _INSTRUMENTATION_ONLY_KINDS={
     "linux_green","windows_green","cross_platform_green","artifact_inspected",
     "queue_submitted","fresh_main_read","merge_prepared","merge_verified",
     "queue_reconciled","closeout_pr_opened","closeout_prequeue_green",
+    "owner_reentry","lane_scan","sibling_scan","queue_empty_check",
+    "rebase_check","mergeability_poll",
 }
 def _guard(c): return c.get("execution_guard",{}) if isinstance(c.get("execution_guard",{}),dict) else {}
 def _conformance(c): return c.get("execution_conformance",{}) if isinstance(c.get("execution_conformance",{}),dict) else {}

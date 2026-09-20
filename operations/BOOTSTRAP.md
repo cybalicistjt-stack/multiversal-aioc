@@ -28,7 +28,7 @@ Read `operations/LANES.json` and choose exactly one lane that matches the user's
 - A bare `Continue` resumes the lane already established by the conversation. If this is a new conversation, use `CURRENT.json` and the user's opening request to resolve the lane.
 - Lane selection changes scope and source bundle only. It never changes the global operating contract.
 - The persistent implementation lanes are `gpr`, `mrcs`, and `oarc`. Terminal MSAS remains readable completed program history and does not occupy a persistent slot. They may hold implementation authority at the same time. A conversation still selects exactly one lane; selecting it does **not** pause, revoke, or rewrite another lane merely because both change product code. Completed UISR history is not a persistent implementation lane.
-- Active lanes work independently on separate implementation branches and separate lane-state refs. Shared-repository publication is serialized only after a lane has an immutable, prevalidated READY candidate; no lane reserves future access to `main`.
+- Active lanes work independently on separate implementation branches and separate lane-state refs. When two or more persistent lanes are nonterminal, shared-repository publication is serialized only after immutable, prevalidated READY candidates exist. When exactly one persistent lane is nonterminal, publication uses the single-lane direct exact-head path and no READY queue coordination is performed.
 - Do not load or mutate another lane merely because it exists; cross-lane reads are limited to explicit dependencies, publication conflicts, or owner-directed coordination.
 
 ## 4. Load only the lane's active work record
@@ -87,21 +87,21 @@ If a tool call returns no usable result, a session aborts, or execution resumes 
 
 ### Single-active-lane mode and quiet execution
 
-When exactly one persistent implementation lane is nonterminal, OPS3 enters **single-active-lane mode**. The three persistent slots remain canonical history/topology, but ordinary execution must not read, reconcile, or narrate terminal sibling lanes unless a concrete dependency or fresh-main conflict requires it.
+When exactly one persistent implementation lane is nonterminal, OPS3 enters **single-active-lane mode**. Derive that fact once from the fresh `CURRENT.json` read used for lane selection. Until an invalidating event occurs, do **not** rescan sibling lane refs, check for concurrent writers, read an empty publication queue, or perform a routine update/rebase of the implementation branch. Terminal sibling lanes remain history unless a concrete dependency or an observed fresh-`main` change requires them.
 
-The durable lane ref is the **lane-state terminal gate**. For the selected lane, `in_progress`, `prequeue_green`, or `published` means a normal terminal response to an owner execution command is forbidden even if the main-branch checkpoint is stale or still says `selected_not_started`. A repeated owner execution command against an active attempt must be recorded through the lane-state owner-reentry receipt before ordinary work resumes; it increments owner interaction truth without becoming material progress.
+The durable lane ref remains the **lane-state terminal gate**. For the selected lane, `in_progress`, `prequeue_green`, or `published` forbids a normal terminal response to an owner execution command. A repeated owner execution command may trigger checkpoint-local stall diagnosis, but it must **not** create a lane-state write merely to count the interaction. If interaction-quality telemetry is useful, aggregate it into an already-required terminal/closeout record rather than creating an activity receipt.
 
-Use **quiet execution** for governed tranches. While CI is healthy, inspect only **healthy workflow-level status** at a sparse cadence and do not narrate queued/running jobs, individual platform progress, queue mechanics, or merge mechanics. Inspect job/step/log detail only after terminal failure or a concrete unresolved failure signature. Browser/session continuity is never required: after interruption, resume from the durable lane milestone and repository evidence.
+Use **quiet execution** for governed tranches. While CI is healthy, inspect only workflow-level status at sparse, transition-driven points and do not narrate queued/running jobs, individual platform progress, queue mechanics, merge mechanics, lane scans, rebase checks, or mergeability polling. Inspect job/step/log detail only after terminal failure or a concrete unresolved failure signature. Browser/session continuity is never required: after interruption, resume from the durable lane milestone and the smallest repository evidence needed.
 
-## 8. Ready-then-queue publication
+## 8. Protected-main publication
 
-Before any executor mutates protected `main` in `cybalicistjt-stack/Multiversal-app` or `cybalicistjt-stack/multiversal-aioc`, follow the ready-candidate protocol in `operations/OPERATING_CONTRACT.md` using `scripts/ops3_merge_lease.py`.
+Before any executor mutates protected `main` in `cybalicistjt-stack/Multiversal-app` or `cybalicistjt-stack/multiversal-aioc`, preserve PR-only mutation, exact-head validation, and a fresh-base integration check.
 
-Implementation, RED/GREEN construction, full tranche validation, checkpoint progress, and release work happen **before** or outside the shared publication queue. A candidate enters FIFO order only after it has an immutable PR head and green prequeue validation for that exact head. The queue has no active holder, no `turn_base`, no publication lease, and no release operation.
+**Single-active-lane direct publication:** after the selected lane has one immutable PR head and the full required prequeue gate is green for that exact head, fresh-read target `main` once immediately before integration, run only the drift-sensitive integration gate against that base, and merge the exact PR head with expected-head protection. Do not read/write the READY queue, scan sibling lanes, or rebase/update the branch as routine preparation. If `main` changes after the integration receipt, rerun only the drift-sensitive integration gate on the new base. If an actual conflict forces the candidate head to change, invalidate the old exact-head receipt and validate the repaired head; a rebase is never required by OPS3.
 
-For the FIFO head, fresh-read target `main`, run only the drift-sensitive integration gate against that fresh base, merge the exact ready head with expected-head protection, verify the durable repository result, and reconcile the candidate from that observed merge. A failed head candidate is marked failed/removed without stranding later candidates. Build/release/deployment status never owns or blocks the source-publication queue.
+**Multi-lane publication:** only when two or more persistent implementation lanes are nonterminal, use the READY-candidate FIFO protocol implemented by `scripts/ops3_merge_lease.py`. Candidates enter only after immutable exact-head prequeue GREEN. The FIFO head fresh-reads `main`, passes the drift-sensitive integration gate, merges with expected-head protection, and is reconciled from the durable result.
 
-Persistent lane execution state lives on independent refs `ops3-lane-state/gpr`, `ops3-lane-state/mrcs`, and `ops3-lane-state/oarc`; one lane's progress write cannot block another lane.
+Build/release/deployment status never owns or blocks source publication. Persistent lane state remains isolated on `ops3-lane-state/gpr`, `ops3-lane-state/mrcs`, and `ops3-lane-state/oarc`.
 
 ## 9. Evidence and completion
 

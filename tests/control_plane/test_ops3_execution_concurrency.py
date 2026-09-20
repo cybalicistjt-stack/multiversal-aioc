@@ -220,11 +220,66 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
             [],
         )
 
-    def test_lane_state_durably_counts_owner_reentry_without_fake_progress(self) -> None:
+    def test_single_lane_publication_mode_bypasses_ready_queue(self) -> None:
+        self.assertEqual(PUBLICATION.publication_mode([]), "none")
+        self.assertEqual(PUBLICATION.publication_mode(["gpr"]), "single_lane_direct")
+        self.assertEqual(
+            PUBLICATION.publication_mode(["gpr", "mrcs"]),
+            "ready_queue",
+        )
+
+    def test_single_lane_protected_main_write_needs_exact_head_and_fresh_base_but_no_queue(self) -> None:
+        receipt = {
+            "candidate_head": "head-a",
+            "base_sha": "main-now",
+            "status": "green",
+            "run_id": "integration-a",
+        }
+        self.assertEqual(
+            PUBLICATION.validate_single_lane_protected_main_write(
+                target_repo="cybalicistjt-stack/Multiversal-app",
+                fresh_main_sha="main-now",
+                mutation_kind="pull_request_merge",
+                expected_head_sha="head-a",
+                pr_head_sha="head-a",
+                integration_receipt=receipt,
+            ),
+            [],
+        )
+        stale = PUBLICATION.validate_single_lane_protected_main_write(
+            target_repo="cybalicistjt-stack/Multiversal-app",
+            fresh_main_sha="main-moved",
+            mutation_kind="pull_request_merge",
+            expected_head_sha="head-a",
+            pr_head_sha="head-a",
+            integration_receipt=receipt,
+        )
+        self.assertIn(PUBLICATION.STALE_INTEGRATION, stale)
+        mismatch = PUBLICATION.validate_single_lane_protected_main_write(
+            target_repo="cybalicistjt-stack/Multiversal-app",
+            fresh_main_sha="main-now",
+            mutation_kind="pull_request_merge",
+            expected_head_sha="head-a",
+            pr_head_sha="head-b",
+            integration_receipt=receipt,
+        )
+        self.assertIn(PUBLICATION.HEAD_MISMATCH, mismatch)
+        direct = PUBLICATION.validate_single_lane_protected_main_write(
+            target_repo="cybalicistjt-stack/Multiversal-app",
+            fresh_main_sha="main-now",
+            mutation_kind="contents_api",
+            expected_head_sha="head-a",
+            pr_head_sha="head-a",
+            integration_receipt=receipt,
+        )
+        self.assertEqual(direct, [PUBLICATION.DIRECT_MAIN_MUTATION])
+
+    def test_lane_state_does_not_write_owner_reentry_telemetry(self) -> None:
         state = LANE_STATE.initial_state(
             "gpr", revision=1, selected_work_item="GPR-X", attempt_id="GPR-X-attempt-001"
         )
-        self.assertEqual(state.get("owner_continue_count"), 0)
+        self.assertNotIn("owner_continue_count", state)
+        self.assertNotIn("execution_incident", state)
         state = LANE_STATE.start_execution(
             state,
             expected_revision=1,
@@ -232,23 +287,41 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
             implementation_branch="work/gpr-x",
             evidence="owner Continue",
         )
-        self.assertEqual(state.get("owner_continue_count"), 1)
-        self.assertTrue(
+        self.assertNotIn("owner_continue_count", state)
+        self.assertNotIn("execution_incident", state)
+        self.assertFalse(
             hasattr(LANE_STATE, "observe_owner_reentry"),
-            "repeated owner Continue must be recorded durably on the active lane",
+            "owner reentry is diagnostic input, not a durable lane-state milestone",
         )
-        reentered = LANE_STATE.observe_owner_reentry(
-            state,
-            expected_revision=2,
-            lane="gpr",
-            evidence="owner Continue while attempt remained nonterminal",
-        )
-        self.assertEqual(reentered["owner_continue_count"], 2)
-        self.assertEqual(reentered["progress_seq"], state["progress_seq"])
-        self.assertEqual(reentered["execution_status"], "in_progress")
-        self.assertEqual(reentered["execution_incident"]["code"], "OPS3.MULTI_CONTINUE")
+        self.assertEqual(state["progress_seq"], 1)
 
-    def test_successor_reseed_preserves_continue_truth(self) -> None:
+    def test_owner_reentry_and_coordination_checks_are_not_material_progress(self) -> None:
+        checkpoint = {
+            "status": "in_progress",
+            "execution_guard": {
+                "material_progress_seq": 1,
+                "progress_at_last_owner_command": 0,
+                "no_progress_cycles": 0,
+                "last_material_progress": {"seq": 1, "kind": "started", "evidence": "started"},
+                "active_stall": False,
+            },
+            "execution_conformance": {"status": "in_progress", "policy_violations": []},
+        }
+        for kind in (
+            "owner_reentry",
+            "lane_scan",
+            "sibling_scan",
+            "queue_empty_check",
+            "rebase_check",
+            "mergeability_poll",
+        ):
+            with self.subTest(kind=kind):
+                with self.assertRaisesRegex(ValueError, EXECUTION_GUARD.OVERINSTRUMENTATION):
+                    EXECUTION_GUARD.record_material_progress(
+                        checkpoint, kind=kind, evidence="coordination observation"
+                    )
+
+    def test_successor_reseed_does_not_carry_owner_interaction_telemetry(self) -> None:
         state = LANE_STATE.initial_state(
             "gpr", revision=10, selected_work_item="GPR-X", attempt_id="GPR-X-attempt-001"
         )
@@ -256,28 +329,26 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
             state, expected_revision=10, lane="gpr",
             implementation_branch="work/gpr-x", evidence="owner Continue"
         )
-        state = LANE_STATE.observe_owner_reentry(
-            state, expected_revision=11, lane="gpr",
-            evidence="second owner Continue"
-        )
         state = LANE_STATE.mark_prequeue_green(
-            state, expected_revision=12, lane="gpr",
+            state, expected_revision=11, lane="gpr",
             candidate_head="head-x", validation_run="run-x"
         )
         state = LANE_STATE.mark_published(
-            state, expected_revision=13, lane="gpr",
+            state, expected_revision=12, lane="gpr",
             candidate_head="head-x", merge_sha="merge-x",
             ready_candidate_id="GPR-X-app-001"
         )
         next_state = LANE_STATE.reseed_successor(
-            state, expected_revision=14, lane="gpr",
+            state, expected_revision=13, lane="gpr",
             successor_work_item="GPR-Y", successor_attempt_id="GPR-Y-attempt-001",
             closeout_merge_sha="closeout-x", closeout_validation_run="closeout-run-x",
             closeout_ready_candidate_id="GPR-X-closeout-001"
         )
-        self.assertEqual(next_state["last_completed"]["owner_continue_count"], 2)
-        self.assertFalse(next_state["last_completed"]["single_continue_achieved"])
-        self.assertEqual(next_state["owner_continue_count"], 0)
+        self.assertNotIn("owner_continue_count", next_state["last_completed"])
+        self.assertNotIn("single_continue_achieved", next_state["last_completed"])
+        self.assertNotIn("execution_incident", next_state["last_completed"])
+        self.assertNotIn("owner_continue_count", next_state)
+        self.assertNotIn("execution_incident", next_state)
 
 
 if __name__ == "__main__":
