@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.RadicalSpeciesConformance",
+  "record_type": "RadicalSpeciesConformanceMatrix",
+  "status": "MVPS-16_GOLDEN_PROOF_CONTRACT",
+  "purpose": "Prove one common MVPS contract stack can represent and project eight radically different non-canon species fixtures across creation, runtime, equipment, environment, optional progression/transformation, persistence, presentation and NPC/Creature reuse without species-name dispatch or owner-authority duplication.",
+  "dispatch_policy": {
+    "core_dispatch": "typed_contracts_only",
+    "species_name_conditionals_allowed": false,
+    "species_identity_may_select_behavior": false,
+    "typed_morphology_capability_form_and_owner_refs_are_dispatch_inputs": true,
+    "explicit_not_applicable_allowed_only_for": [
+      "progression",
+      "transformation"
+    ]
+  },
+  "workflows": {
+    "creation_selection": {
+      "contract_file": "MVPS-02_CHARACTER_CREATION_TRANSACTION.json",
+      "contract_id": "MVPS.CharacterCreationSpeciesTransaction",
+      "required_for_all": true,
+      "mvps16_becomes_owner": false
+    },
+    "validation": {
+      "contract_file": "MVPS-12_VALIDATION_CONTRACT.json",
+      "contract_id": "MVPS.SpeciesValidation",
+      "required_for_all": true,
+      "mvps16_becomes_owner": false
+    },
+    "runtime_projection": {
+      "contract_file": "MVPS-13_RUNTIME_PROJECTION_CONTRACT.json",
+      "contract_id": "MVPS.SpeciesRuntimeProjection",
+      "required_for_all": true,
+      "mvps16_becomes_owner": false
+    },
+    "equipment_compatibility": {
+      "contract_file": "MVPS-07_INTERFACE_COMPATIBILITY_CONTRACT.json",
+      "contract_id": "MVPS.SpeciesInterfaceCompatibility",
+      "required_for_all": true,
+      "mvps16_becomes_owner": false
+    },
+    "environment_interaction": {
+      "contract_file": "MVPS-05_ENVIRONMENT_TOLERANCE_CONTRACT.json",
+      "contract_id": "MVPS.SpeciesEnvironmentTolerance",
+      "required_for_all": true,
+      "mvps16_becomes_owner": false
+    },
+    "progression": {
+      "contract_file": "MVPS-10_SPECIES_PROGRESSION_HOOK_CONTRACT.json",
+      "contract_id": "MVPS.SpeciesProgressionHook",
+      "required_for_all": false,
+      "mvps16_becomes_owner": false
+    },
+    "transformation": {
+      "contract_file": "MVPS-09_TRANSFORMATION_SEMANTICS_CONTRACT.json",
+      "contract_id": "MVPS.TransformationSemantics",
+      "required_for_all": false,
+      "mvps16_becomes_owner": false
+    },
+    "serialization_import_export": {
+      "contract_file": "MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+      "contract_id": "MVPS.SpeciesImportExport",
+      "required_for_all": true,
+      "mvps16_becomes_owner": false
+    },
+    "migration": {
+      "contract_file": "MVPS-12_MIGRATION_CONTRACT.json",
+      "contract_id": "MVPS.SpeciesMigration",
+      "required_for_all": true,
+      "mvps16_becomes_owner": false
+    },
+    "authoring_inspection_presentation": {
+      "contract_file": "MVPS-14_PRESENTATION_PROJECTION_CONTRACT.json",
+      "contract_id": "MVPS.SpeciesPresentationProjection",
+      "required_for_all": true,
+      "mvps16_becomes_owner": false
+    },
+    "npc_creature_reuse": {
+      "contract_file": "MVPS-15_ENTITY_REUSE_CONTRACT.json",
+      "contract_id": "MVPS.SpeciesEntityReuse",
+      "required_for_all": true,
+      "mvps16_becomes_owner": false
+    }
+  },
+  "support_contracts": [
+    {
+      "contract_file": "SPECIES_DEFINITION_CONTRACT.json",
+      "contract_id": "MVPS.SpeciesDefinition"
+    },
+    {
+      "contract_file": "CHARACTER_SPECIES_SELECTION_CONTRACT.json",
+      "contract_id": "MVPS.CharacterSpeciesSelection"
+    },
+    {
+      "contract_file": "MVPS-03_MORPHOLOGY_PROFILE_CONTRACT.json",
+      "contract_id": "MVPS.MorphologyProfile"
+    },
+    {
+      "contract_file": "MVPS-04_SCALE_MOVEMENT_SENSE_INTEGRATION.json",
+      "contract_id": "MVPS.SpeciesScaleMovementSenseIntegration"
+    },
+    {
+      "contract_file": "MVPS-06_CAPABILITY_GRANT_CONTRACT.json",
+      "contract_id": "MVPS.SpeciesCapabilityGrant"
+    },
+    {
+      "contract_file": "MVPS-06_NATURAL_EQUIPMENT_CONTRACT.json",
+      "contract_id": "MVPS.SpeciesNaturalEquipmentGrant"
+    }
+  ],
+  "golden_rules": {
+    "same_workflow_key_set_for_every_fixture": true,
+    "mandatory_workflows_must_pass": true,
+    "optional_progression_and_transformation_must_pass_or_be_explicit_not_applicable": true,
+    "equipment_success_includes_governed_explicit_incompatibility": true,
+    "unresolved_semantic_gaps_forbidden_at_close": true,
+    "owner_authority_may_not_move_to_mvps16": true
+  }
+}

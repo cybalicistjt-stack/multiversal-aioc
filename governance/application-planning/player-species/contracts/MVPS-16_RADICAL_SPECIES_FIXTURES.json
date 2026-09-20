@@ -1,0 +1,788 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_scope": "MVPS-16 terminal radical-species conformance matrix",
+  "non_canon": true,
+  "fixture_policy": {
+    "synthetic_only": true,
+    "canon_content_created": false,
+    "species_names_used_for_dispatch": false,
+    "same_common_workflow_shape_required": true
+  },
+  "fixtures": {
+    "ordinary_human": {
+      "fixture_label": "Ordinary human baseline",
+      "exact_version_species_ref": "fixture-species:ordinary-human@1",
+      "provenance_refs": [
+        "fixture-prov:ordinary-human"
+      ],
+      "morphology_ref": "fixture-morphology:ordinary-human@1",
+      "body_plan": {
+        "family": "bipedal_humanoid",
+        "symmetry": "bilateral",
+        "locomotor_limb_count": 2,
+        "manipulator_count": 2
+      },
+      "physiology_mode": "biological",
+      "capability_tags": [
+        "terrestrial",
+        "manual_dexterity"
+      ],
+      "form_refs": [],
+      "lineage_refs": [],
+      "dispatch": {
+        "method": "typed_contract_data",
+        "species_name_conditional_used": false
+      },
+      "workflow_results": {
+        "creation_selection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.CharacterCreationSpeciesTransaction"
+          ]
+        },
+        "validation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesValidation"
+          ]
+        },
+        "runtime_projection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesRuntimeProjection"
+          ]
+        },
+        "equipment_compatibility": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesInterfaceCompatibility"
+          ],
+          "outcome": "compatible_or_adapted",
+          "decision_basis": "MVPS.SpeciesInterfaceCompatibility",
+          "species_name_branch_used": false
+        },
+        "environment_interaction": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEnvironmentTolerance"
+          ]
+        },
+        "progression": {
+          "status": "not_applicable",
+          "reason": "This non-canon fixture has no species progression hook; MVPS progression is optional by contract.",
+          "evidence_refs": []
+        },
+        "transformation": {
+          "status": "not_applicable",
+          "reason": "This non-canon fixture has no alternate governed form; transformation is not required for every species.",
+          "evidence_refs": []
+        },
+        "serialization_import_export": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesImportExport"
+          ]
+        },
+        "migration": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesMigration"
+          ]
+        },
+        "authoring_inspection_presentation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesPresentationProjection"
+          ]
+        },
+        "npc_creature_reuse": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEntityReuse"
+          ]
+        }
+      }
+    },
+    "winged_humanoid": {
+      "fixture_label": "Winged humanoid",
+      "exact_version_species_ref": "fixture-species:winged-humanoid@1",
+      "provenance_refs": [
+        "fixture-prov:winged-humanoid"
+      ],
+      "morphology_ref": "fixture-morphology:winged-humanoid@1",
+      "body_plan": {
+        "family": "bipedal_humanoid_with_wings",
+        "symmetry": "bilateral",
+        "locomotor_limb_count": 2,
+        "manipulator_count": 2,
+        "wing_count": 2
+      },
+      "physiology_mode": "biological",
+      "capability_tags": [
+        "terrestrial",
+        "flight",
+        "manual_dexterity"
+      ],
+      "form_refs": [],
+      "lineage_refs": [
+        "fixture-lineage:high-altitude@1"
+      ],
+      "dispatch": {
+        "method": "typed_contract_data",
+        "species_name_conditional_used": false
+      },
+      "workflow_results": {
+        "creation_selection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.CharacterCreationSpeciesTransaction"
+          ]
+        },
+        "validation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesValidation"
+          ]
+        },
+        "runtime_projection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesRuntimeProjection"
+          ]
+        },
+        "equipment_compatibility": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesInterfaceCompatibility"
+          ],
+          "outcome": "compatible_or_adapted",
+          "decision_basis": "MVPS.SpeciesInterfaceCompatibility",
+          "species_name_branch_used": false
+        },
+        "environment_interaction": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEnvironmentTolerance"
+          ]
+        },
+        "progression": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesProgressionHook"
+          ]
+        },
+        "transformation": {
+          "status": "not_applicable",
+          "reason": "This non-canon fixture has no alternate governed form; transformation is not required for every species.",
+          "evidence_refs": []
+        },
+        "serialization_import_export": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesImportExport"
+          ]
+        },
+        "migration": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesMigration"
+          ]
+        },
+        "authoring_inspection_presentation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesPresentationProjection"
+          ]
+        },
+        "npc_creature_reuse": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEntityReuse"
+          ]
+        }
+      }
+    },
+    "aquatic_non_humanoid": {
+      "fixture_label": "Aquatic non-humanoid",
+      "exact_version_species_ref": "fixture-species:aquatic-non-humanoid@1",
+      "provenance_refs": [
+        "fixture-prov:aquatic-non-humanoid"
+      ],
+      "morphology_ref": "fixture-morphology:aquatic-non-humanoid@1",
+      "body_plan": {
+        "family": "aquatic_non_humanoid",
+        "symmetry": "bilateral",
+        "locomotor_limb_count": 0,
+        "manipulator_count": 4,
+        "fin_count": 6
+      },
+      "physiology_mode": "aquatic_biological",
+      "capability_tags": [
+        "aquatic",
+        "pressure_tolerant",
+        "underwater_sense"
+      ],
+      "form_refs": [],
+      "lineage_refs": [],
+      "dispatch": {
+        "method": "typed_contract_data",
+        "species_name_conditional_used": false
+      },
+      "workflow_results": {
+        "creation_selection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.CharacterCreationSpeciesTransaction"
+          ]
+        },
+        "validation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesValidation"
+          ]
+        },
+        "runtime_projection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesRuntimeProjection"
+          ]
+        },
+        "equipment_compatibility": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesInterfaceCompatibility"
+          ],
+          "outcome": "compatible_or_adapted",
+          "decision_basis": "MVPS.SpeciesInterfaceCompatibility",
+          "species_name_branch_used": false
+        },
+        "environment_interaction": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEnvironmentTolerance"
+          ]
+        },
+        "progression": {
+          "status": "not_applicable",
+          "reason": "This non-canon fixture has no species progression hook; MVPS progression is optional by contract.",
+          "evidence_refs": []
+        },
+        "transformation": {
+          "status": "not_applicable",
+          "reason": "This non-canon fixture has no alternate governed form; transformation is not required for every species.",
+          "evidence_refs": []
+        },
+        "serialization_import_export": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesImportExport"
+          ]
+        },
+        "migration": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesMigration"
+          ]
+        },
+        "authoring_inspection_presentation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesPresentationProjection"
+          ]
+        },
+        "npc_creature_reuse": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEntityReuse"
+          ]
+        }
+      }
+    },
+    "centaur_like_quadruped": {
+      "fixture_label": "Centaur-like quadruped",
+      "exact_version_species_ref": "fixture-species:centaur-like@1",
+      "provenance_refs": [
+        "fixture-prov:centaur-like"
+      ],
+      "morphology_ref": "fixture-morphology:centaur-like@1",
+      "body_plan": {
+        "family": "quadruped_upper_torso",
+        "symmetry": "bilateral",
+        "locomotor_limb_count": 4,
+        "manipulator_count": 2
+      },
+      "physiology_mode": "biological",
+      "capability_tags": [
+        "terrestrial",
+        "quadruped_locomotion",
+        "manual_dexterity"
+      ],
+      "form_refs": [],
+      "lineage_refs": [],
+      "dispatch": {
+        "method": "typed_contract_data",
+        "species_name_conditional_used": false
+      },
+      "workflow_results": {
+        "creation_selection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.CharacterCreationSpeciesTransaction"
+          ]
+        },
+        "validation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesValidation"
+          ]
+        },
+        "runtime_projection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesRuntimeProjection"
+          ]
+        },
+        "equipment_compatibility": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesInterfaceCompatibility"
+          ],
+          "outcome": "compatible_or_adapted",
+          "decision_basis": "MVPS.SpeciesInterfaceCompatibility",
+          "species_name_branch_used": false
+        },
+        "environment_interaction": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEnvironmentTolerance"
+          ]
+        },
+        "progression": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesProgressionHook"
+          ]
+        },
+        "transformation": {
+          "status": "not_applicable",
+          "reason": "This non-canon fixture has no alternate governed form; transformation is not required for every species.",
+          "evidence_refs": []
+        },
+        "serialization_import_export": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesImportExport"
+          ]
+        },
+        "migration": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesMigration"
+          ]
+        },
+        "authoring_inspection_presentation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesPresentationProjection"
+          ]
+        },
+        "npc_creature_reuse": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEntityReuse"
+          ]
+        }
+      }
+    },
+    "construct_android": {
+      "fixture_label": "Construct/android",
+      "exact_version_species_ref": "fixture-species:construct-android@1",
+      "provenance_refs": [
+        "fixture-prov:construct-android"
+      ],
+      "morphology_ref": "fixture-morphology:construct-android@1",
+      "body_plan": {
+        "family": "synthetic_biped",
+        "symmetry": "bilateral",
+        "locomotor_limb_count": 2,
+        "manipulator_count": 2
+      },
+      "physiology_mode": "synthetic",
+      "capability_tags": [
+        "synthetic",
+        "sealed_system",
+        "manual_dexterity"
+      ],
+      "form_refs": [],
+      "lineage_refs": [],
+      "dispatch": {
+        "method": "typed_contract_data",
+        "species_name_conditional_used": false
+      },
+      "workflow_results": {
+        "creation_selection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.CharacterCreationSpeciesTransaction"
+          ]
+        },
+        "validation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesValidation"
+          ]
+        },
+        "runtime_projection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesRuntimeProjection"
+          ]
+        },
+        "equipment_compatibility": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesInterfaceCompatibility"
+          ],
+          "outcome": "compatible_or_adapted",
+          "decision_basis": "MVPS.SpeciesInterfaceCompatibility",
+          "species_name_branch_used": false
+        },
+        "environment_interaction": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEnvironmentTolerance"
+          ]
+        },
+        "progression": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesProgressionHook"
+          ]
+        },
+        "transformation": {
+          "status": "not_applicable",
+          "reason": "This non-canon fixture has no alternate governed form; transformation is not required for every species.",
+          "evidence_refs": []
+        },
+        "serialization_import_export": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesImportExport"
+          ]
+        },
+        "migration": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesMigration"
+          ]
+        },
+        "authoring_inspection_presentation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesPresentationProjection"
+          ]
+        },
+        "npc_creature_reuse": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEntityReuse"
+          ]
+        }
+      }
+    },
+    "multi_form_shapeshifter": {
+      "fixture_label": "Multi-form shapeshifter",
+      "exact_version_species_ref": "fixture-species:multi-form-shapeshifter@1",
+      "provenance_refs": [
+        "fixture-prov:multi-form-shapeshifter"
+      ],
+      "morphology_ref": "fixture-morphology:shapeshifter-base@1",
+      "body_plan": {
+        "family": "mutable_biological",
+        "symmetry": "bilateral",
+        "locomotor_limb_count": 2,
+        "manipulator_count": 2
+      },
+      "physiology_mode": "biological_mutable",
+      "capability_tags": [
+        "form_change",
+        "adaptive_morphology"
+      ],
+      "form_refs": [
+        "fixture-form:humanoid@1",
+        "fixture-form:predator@1",
+        "fixture-form:aquatic@1"
+      ],
+      "lineage_refs": [],
+      "dispatch": {
+        "method": "typed_contract_data",
+        "species_name_conditional_used": false
+      },
+      "workflow_results": {
+        "creation_selection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.CharacterCreationSpeciesTransaction"
+          ]
+        },
+        "validation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesValidation"
+          ]
+        },
+        "runtime_projection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesRuntimeProjection"
+          ]
+        },
+        "equipment_compatibility": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesInterfaceCompatibility"
+          ],
+          "outcome": "compatible_or_adapted",
+          "decision_basis": "MVPS.SpeciesInterfaceCompatibility",
+          "species_name_branch_used": false
+        },
+        "environment_interaction": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEnvironmentTolerance"
+          ]
+        },
+        "progression": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesProgressionHook"
+          ]
+        },
+        "transformation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.TransformationSemantics"
+          ]
+        },
+        "serialization_import_export": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesImportExport"
+          ]
+        },
+        "migration": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesMigration"
+          ]
+        },
+        "authoring_inspection_presentation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesPresentationProjection"
+          ]
+        },
+        "npc_creature_reuse": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEntityReuse"
+          ]
+        }
+      }
+    },
+    "incorporeal_being": {
+      "fixture_label": "Incorporeal being",
+      "exact_version_species_ref": "fixture-species:incorporeal-being@1",
+      "provenance_refs": [
+        "fixture-prov:incorporeal-being"
+      ],
+      "morphology_ref": "fixture-morphology:incorporeal@1",
+      "body_plan": {
+        "family": "non_material_projection",
+        "symmetry": "variable",
+        "locomotor_limb_count": 0,
+        "manipulator_count": 0
+      },
+      "physiology_mode": "non_material",
+      "capability_tags": [
+        "incorporeal",
+        "phase_movement",
+        "nonrespiring"
+      ],
+      "form_refs": [],
+      "lineage_refs": [],
+      "dispatch": {
+        "method": "typed_contract_data",
+        "species_name_conditional_used": false
+      },
+      "workflow_results": {
+        "creation_selection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.CharacterCreationSpeciesTransaction"
+          ]
+        },
+        "validation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesValidation"
+          ]
+        },
+        "runtime_projection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesRuntimeProjection"
+          ]
+        },
+        "equipment_compatibility": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesInterfaceCompatibility"
+          ],
+          "outcome": "explicitly_incompatible",
+          "decision_basis": "MVPS.SpeciesInterfaceCompatibility",
+          "species_name_branch_used": false
+        },
+        "environment_interaction": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEnvironmentTolerance"
+          ]
+        },
+        "progression": {
+          "status": "not_applicable",
+          "reason": "This non-canon fixture has no species progression hook; MVPS progression is optional by contract.",
+          "evidence_refs": []
+        },
+        "transformation": {
+          "status": "not_applicable",
+          "reason": "This non-canon fixture has no alternate governed form; transformation is not required for every species.",
+          "evidence_refs": []
+        },
+        "serialization_import_export": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesImportExport"
+          ]
+        },
+        "migration": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesMigration"
+          ]
+        },
+        "authoring_inspection_presentation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesPresentationProjection"
+          ]
+        },
+        "npc_creature_reuse": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEntityReuse"
+          ]
+        }
+      }
+    },
+    "radically_alien_body_plan": {
+      "fixture_label": "Radically alien hexaradial body plan",
+      "exact_version_species_ref": "fixture-species:hexaradial-alien@1",
+      "provenance_refs": [
+        "fixture-prov:hexaradial-alien"
+      ],
+      "morphology_ref": "fixture-morphology:hexaradial-alien@1",
+      "body_plan": {
+        "family": "hexaradial_multi_limb",
+        "symmetry": "hexaradial",
+        "locomotor_limb_count": 6,
+        "manipulator_count": 3,
+        "sensory_cluster_count": 6
+      },
+      "physiology_mode": "exotic_biological",
+      "capability_tags": [
+        "hexaradial_locomotion",
+        "multi_manipulator",
+        "distributed_senses"
+      ],
+      "form_refs": [],
+      "lineage_refs": [
+        "fixture-lineage:low-gravity@1"
+      ],
+      "dispatch": {
+        "method": "typed_contract_data",
+        "species_name_conditional_used": false
+      },
+      "workflow_results": {
+        "creation_selection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.CharacterCreationSpeciesTransaction"
+          ]
+        },
+        "validation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesValidation"
+          ]
+        },
+        "runtime_projection": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesRuntimeProjection"
+          ]
+        },
+        "equipment_compatibility": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesInterfaceCompatibility"
+          ],
+          "outcome": "compatible_via_typed_interface_adapter",
+          "decision_basis": "MVPS.SpeciesInterfaceCompatibility",
+          "species_name_branch_used": false
+        },
+        "environment_interaction": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEnvironmentTolerance"
+          ]
+        },
+        "progression": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesProgressionHook"
+          ]
+        },
+        "transformation": {
+          "status": "not_applicable",
+          "reason": "This non-canon fixture has no alternate governed form; transformation is not required for every species.",
+          "evidence_refs": []
+        },
+        "serialization_import_export": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesImportExport"
+          ]
+        },
+        "migration": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesMigration"
+          ]
+        },
+        "authoring_inspection_presentation": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesPresentationProjection"
+          ]
+        },
+        "npc_creature_reuse": {
+          "status": "pass",
+          "evidence_refs": [
+            "MVPS.SpeciesEntityReuse"
+          ]
+        }
+      }
+    }
+  }
+}
