@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MRCS",
+  "lane": "mrcs",
+  "track": "multiversal-rules-content-studio",
+  "source_program": "MRCS",
+  "work_item_id": "MRCS-08",
+  "attempt_id": "MRCS-08-attempt-001",
+  "title": "Social, Identity, Species, Form & Template Package Authoring",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "feature/mrcs-08-social-identity-species-form-authoring",
+  "completed": false,
+  "selected_by_verified_predecessor": "MRCS-05",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "reduced_strict_order": "MRCS-05 → MRCS-08 → MRCS-11 → MRCS-12 → MRCS-13 → MRCS-14 → MRCS-16 → MRCS-17 → MRCS-19 → MRCS-21",
+    "interstitial_override": "none",
+    "parallel_lanes": "MSAS-12 remains selected_not_started; MVPS-15 remains selected_not_started."
+  },
+  "objective": "Author Profession, Background, Culture, Faction and other social/identity packages plus Species, Form, Archetype, Template, Variant and Trait definition composition with explicit inheritance, reference, compatibility and scoped-override behavior while preserving live Character and relationship ownership.",
+  "acceptance": [
+    "social package authoring cannot mutate live relationships",
+    "Species/Form/Template definitions remain distinct from live Characters",
+    "inheritance conflicts remain explicit",
+    "unknown compatibility remains unresolved"
+  ],
+  "boundaries": [
+    "MRCS-01/03/04/05 remain the workspace, guided authoring, bounded-expression and mechanical-definition foundations consumed by this tranche.",
+    "Profession, Background, Culture, Faction and social package definitions remain definition-layer content; relationship, reputation, standing and live social state remain external owner-domain authority.",
+    "Species, Form, Archetype, Template, Variant and Trait records remain definitions/packages distinct from live Character identity, body, form or progression state.",
+    "Inheritance and scoped override conflicts must remain explicit diagnostics requiring authored resolution; MRCS cannot silently choose a winner.",
+    "Unknown compatibility, owner data and source semantics remain unresolved rather than inferred or defaulted compatible/incompatible.",
+    "Package composition may reference governed mechanical definitions and expressions but cannot execute them or mutate runtime state.",
+    "MRCS-11+ remain unauthorized until separately selected.",
+    "MSAS and MVPS lane state remains independent."
+  ],
+  "strict_successor": "MRCS-11",
+  "active_substep": "red_social_identity_package_authoring",
+  "next_action": "Establish causal RED for PDCP-MRCS-019 through 022 on the public MRCS workspace seam, implement the bounded social/identity/species/form/template package authoring editor, then obtain exact-head prequeue GREEN.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start",
+      "evidence": "MRCS-08 started on feature/mrcs-08-social-identity-species-form-authoring from application main ce6d396595383e2dd4e29a592ec1c0ee4217c951 under OPS3-11 milestone-only execution."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
