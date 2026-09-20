@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 290,
+  "state_revision": 291,
   "default_lane": "msas",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -31,7 +31,7 @@
       "mvps": {
         "selected_work_item": "MVPS-23",
         "attempt_id": "MVPS-23-attempt-001",
-        "state": "selected_not_started"
+        "state": "completed_verified"
       }
     }
   },
@@ -63,13 +63,13 @@
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "mvps": {
-      "state": "selected_not_started",
+      "state": "completed_verified",
       "selected_work_item": "MVPS-23",
       "attempt_id": "MVPS-23-attempt-001",
       "checkpoint_path": "governance/ai/work-state/MVPS-23-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "MVPS-22 completed_verified after causal RED run 35525238528 at 4c97f5f74588485e17e22d6bc7df46b924cdc953, exact-head GREEN run 35525334403 at 910b09efbd9a86494d747a1df9a4d5f27e00a4bd, and READY publication of PR 1491 as 4947832a0a915e9aea1f4a3b8c57cc3de4e2b0da. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MVPS interstitial gate, so final tranche MVPS-23 is selected_not_started.",
+      "activation_rule": "MVPS-23 completed_verified after causal RED run 35525909854 at 030e88280343e5560b7bdf76e0e5d42dd6ed7bf0, exact-head GREEN run 35525974917 at 4049f437b814471d29c88bce907fb4ba7f18ac90, and READY publication of PR 1493 as aecbb9a60a102bfc801259d98dce43ceb1fa588c. MVPS-23 has no strict successor and fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no MVPS interstitial override, so the persistent MVPS lane is terminal completed_verified.",
       "execution_state_ref": "ops3-lane-state/mvps"
     },
     "dwc-speech": {
@@ -109,7 +109,7 @@
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
     "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
-  "next_project_action": "MSAS remains terminal completed_verified. Continue only the persistent implementation lane explicitly requested by the owner; MRCS-14 and final MVPS-23 are independently selected_not_started.",
+  "next_project_action": "MSAS and MVPS are terminal completed_verified. MRCS-14 remains independently selected_not_started; continue only the persistent implementation lane explicitly requested by the owner.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -130,6 +130,16 @@
       "implementation_branch": "work/mvps-16-radical-species-golden-proof",
       "implementation_authority": false,
       "completion_rule": "MVPS-01 through MVPS-16 foundation/architecture program remains completed_verified. Owner authorized a distinct Core-26 production/certification extension beginning at MVPS-17; the foundation closure is preserved as history and is not reopened."
+    },
+    "MVPS_CORE26_PRODUCTION_CERTIFICATION": {
+      "program_id": "MVPS_CORE26_PRODUCTION_CERTIFICATION",
+      "state": "completed_verified",
+      "selected_work_item": "MVPS-23",
+      "attempt_id": "MVPS-23-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MVPS-23-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "completion_rule": "MVPS-17 through MVPS-23 completed_verified. Terminal proof MVPS23.CORE26.GAME_READY.GOLDEN.v1 certifies all 26 current species across the same 19-dimension CORE26.GAME_READY.v1 standard with zero mandatory gaps, waivers, roster drift or species-name application branches."
     }
   },
   "domain_authorities": {
@@ -139,8 +149,8 @@
       "status": "current_canon",
       "roster_count": 26,
       "rule": "All current-authority player-species work must resolve this authority before historical species artifacts or generated catalogs.",
-      "production_baseline_path": "governance/application-planning/player-species/CORE_26_PRODUCTION_BASELINE_v0.6.0.json",
-      "production_baseline_id": "CORE26-PRODUCTION-BASELINE-006"
+      "production_baseline_path": "governance/application-planning/player-species/CORE_26_PRODUCTION_BASELINE_v0.7.0.json",
+      "production_baseline_id": "CORE26-PRODUCTION-BASELINE-007"
     }
   }
 }
