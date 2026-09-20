@@ -179,6 +179,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_mvps13_runtime_projection_grant_receipts.py
 
+      - name: Run MVPS-14 authoring search inspection presentation regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps14_authoring_search_inspection_presentation.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |

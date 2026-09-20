@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "MVPS-14.Invariants",
+  "status": "MVPS-14_CANONICAL_INVARIANTS",
+  "invariants": [
+    {
+      "id": "MVPS14-I01-ui-is-projection",
+      "rule": "Species builder, reference and GM inspector surfaces project governed owner state; UI labels, layout, controls and display state are never canonical rules authority."
+    },
+    {
+      "id": "MVPS14-I02-authoring-no-direct-canonical-write",
+      "rule": "MVPS-14 may compose authorized species authoring intent and validation previews, but canonical persistence, promotion and publication occur only through owning workflows."
+    },
+    {
+      "id": "MVPS14-I03-permission-filter-before-derived-output",
+      "rule": "Visibility filtering occurs before search, autocomplete, count, preview, dependency/cross-link derivation, export, diagnostics or AI context; hidden cardinality/topology is not leaked."
+    },
+    {
+      "id": "MVPS14-I04-provenance-validation-inspectable",
+      "rule": "Authorized inspection exposes exact identity/version plus available source/provenance, validation and migration evidence; missing/conflicted evidence remains explicit rather than fabricated."
+    },
+    {
+      "id": "MVPS14-I05-presentation-mechanically-separate",
+      "rule": "Presentation assets, names, labels, layout and visualization cannot create, replace or remove species mechanics; executable meaning remains in canonical owner records and receipts."
+    },
+    {
+      "id": "MVPS14-I06-runtime-projection-read-only",
+      "rule": "Builder and GM surfaces may consume MVPS-13 runtime contributions and grant receipts but cannot mutate, reorder or reinterpret them as source truth."
+    },
+    {
+      "id": "MVPS14-I07-hidden-canon-not-inferred",
+      "rule": "Hidden, forbidden or unknown species facts are not inferred from search gaps, counts, cross-links, assets, runtime behavior or GM-only evidence."
+    },
+    {
+      "id": "MVPS14-I08-stable-versioned-cross-links",
+      "rule": "Species cross-links preserve stable identity and exact-version semantics where required; display-name changes and presentation aliases never retarget canonical references."
+    }
+  ],
+  "enforcement": {
+    "regression_test": "tests/control_plane/test_mvps14_authoring_search_inspection_presentation.py",
+    "ci_step": "Run MVPS-14 authoring search inspection presentation regressions"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_scope": "MVPS-14 authoring, search, inspection and presentation boundary proof",
+  "non_canon": true,
+  "cases": {
+    "hidden_species_search": {
+      "input": {
+        "visible_species": [
+          "species:human@4"
+        ],
+        "hidden_species": [
+          "species:secret@2"
+        ],
+        "derived_output_authorization": {
+          "search": true,
+          "count": true,
+          "preview": false
+        }
+      },
+      "expected": {
+        "visible_result_ids": [
+          "species:human@4"
+        ],
+        "hidden_result_count": 0,
+        "hidden_cardinality_included": false,
+        "hidden_payload_delivered": false
+      }
+    },
+    "inspect_provenance_validation": {
+      "input": {
+        "species_ref": "species:aquatic@3",
+        "validation_state": "migration_required",
+        "provenance_refs": [
+          "prov:source-a"
+        ],
+        "validation_finding_refs": [
+          "finding:version-2"
+        ]
+      },
+      "expected": {
+        "exact_version_visible": true,
+        "validation_state_visible": true,
+        "provenance_visible": true,
+        "migration_state_visible": true,
+        "silent_current_version_substitution": false
+      }
+    },
+    "authoring_draft_no_publish": {
+      "input": {
+        "intent": "revise-draft",
+        "target_species_ref": "species:winged@5",
+        "authoring_decision_receipt": "authz:42",
+        "validation_preview": "validation:preview-9"
+      },
+      "expected": {
+        "draft_intent_composed": true,
+        "canonical_write_performed": false,
+        "publication_performed": false,
+        "permission_escalated": false
+      }
+    },
+    "builder_runtime_projection": {
+      "input": {
+        "character_species_selection_ref": "selection:hero@8",
+        "runtime_projection_ref": "species-projection:hero@8",
+        "unresolved_choice_refs": [
+          "choice:wingspan"
+        ],
+        "validation_state": "incomplete"
+      },
+      "expected": {
+        "runtime_projection_read_only": true,
+        "unresolved_choice_visible": true,
+        "playable_badge": false,
+        "selection_mutated": false
+      }
+    },
+    "gm_inspector_source_trace": {
+      "input": {
+        "permission_decision_ref": "perm:gm-11",
+        "species_ref": "species:construct@2",
+        "contribution_ref": "contribution:armor-shell",
+        "provenance_refs": [
+          "prov:construct-source"
+        ]
+      },
+      "expected": {
+        "provenance_visible_when_authorized": true,
+        "contribution_source_trace_visible": true,
+        "hidden_visibility_bypass": false,
+        "canonical_mutation_performed": false
+      }
+    },
+    "presentation_asset_nonmechanical": {
+      "input": {
+        "species_ref": "species:incorporeal@7",
+        "presentation_asset_ref": "asset:ghost-portrait@3",
+        "runtime_contribution_ref": "contribution:phase@7"
+      },
+      "expected": {
+        "asset_renderable": true,
+        "mechanics_changed": false,
+        "runtime_contribution_unchanged": true,
+        "asset_missing_would_not_delete_mechanic": true
+      }
+    }
+  }
+}
