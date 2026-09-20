@@ -16,7 +16,12 @@
     "reduced_tranche_count": 13,
     "receipt": "governance/application-planning/preimplementation-design-closure/PDCP_MRCS_REDUCTION_RECEIPT.json",
     "family_design_closure": "governance/application-planning/preimplementation-design-closure/PDCP_MRCS_FAMILY_DESIGN_CLOSURE.md",
-    "stable_milestones": ["MRCS-05", "MRCS-13", "MRCS-14", "MRCS-21"],
+    "stable_milestones": [
+      "MRCS-05",
+      "MRCS-13",
+      "MRCS-14",
+      "MRCS-21"
+    ],
     "capability_loss_detected": false
   },
   "execution_design": {
@@ -26,21 +31,147 @@
     "split_rule": "Split before governed start if the selected tranche cannot credibly preserve the closeout reserve.",
     "retry_rule": "Do not rerun an unchanged deterministic failure; require changed evidence before retry."
   },
-  "strict_order": ["MRCS-01","MRCS-03","MRCS-04","MRCS-05","MRCS-08","MRCS-11","MRCS-12","MRCS-13","MRCS-14","MRCS-16","MRCS-17","MRCS-19","MRCS-21"],
+  "strict_order": [
+    "MRCS-01",
+    "MRCS-03",
+    "MRCS-04",
+    "MRCS-05",
+    "MRCS-08",
+    "MRCS-11",
+    "MRCS-12",
+    "MRCS-13",
+    "MRCS-14",
+    "MRCS-16",
+    "MRCS-17",
+    "MRCS-19",
+    "MRCS-21"
+  ],
   "tranches": [
-    {"id":"MRCS-01","name":"Studio Workspace, Content Registry & Schema-Aware Forms","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MRCS-01","MRCS-02"]},
-    {"id":"MRCS-03","name":"Guided Forge Interviews, Templates, Clone/Fork & Advisory Authoring","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MRCS-03"]},
-    {"id":"MRCS-04","name":"Rule Atom, Formula, Predicate, Selector & Expression Workbench","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MRCS-04"]},
-    {"id":"MRCS-05","name":"Mechanical & Advancement Definition Authoring","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MRCS-05","MRCS-06","MRCS-07"]},
-    {"id":"MRCS-08","name":"Social, Identity, Species, Form & Template Package Authoring","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MRCS-08","MRCS-09"]},
-    {"id":"MRCS-11","name":"Magic, Power & Casting-System Authoring","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MRCS-11"]},
-    {"id":"MRCS-12","name":"Creature, Monster, NPC Role, Behavior & Combat-Package Authoring","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MRCS-12"]},
-    {"id":"MRCS-13","name":"Item, Equipment, Vehicle, Mount, Companion, Construct & Modular-Component Authoring","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MRCS-10","MRCS-13"]},
-    {"id":"MRCS-14","name":"Environment, Hazard, Encounter, Reward, Loot, Economy & World-Content Authoring","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MRCS-14","MRCS-15"]},
-    {"id":"MRCS-16","name":"System Extension, House Rule, Scope, Compatibility & Override Authoring","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MRCS-16"]},
-    {"id":"MRCS-17","name":"Dependency, Impact, Safe Refactoring, Balance & Evidence Diagnostics","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MRCS-17","MRCS-18"]},
-    {"id":"MRCS-19","name":"Import, Repair, Migration, Pack, Version, Review & Publication Lifecycle","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MRCS-19","MRCS-20"]},
-    {"id":"MRCS-21","name":"Golden Cross-Domain Definition Construction & Runtime Consumption Proof","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MRCS-21"]}
+    {
+      "id": "MRCS-01",
+      "name": "Studio Workspace, Content Registry & Schema-Aware Forms",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MRCS-01",
+        "MRCS-02"
+      ]
+    },
+    {
+      "id": "MRCS-03",
+      "name": "Guided Forge Interviews, Templates, Clone/Fork & Advisory Authoring",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MRCS-03"
+      ]
+    },
+    {
+      "id": "MRCS-04",
+      "name": "Rule Atom, Formula, Predicate, Selector & Expression Workbench",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MRCS-04"
+      ]
+    },
+    {
+      "id": "MRCS-05",
+      "name": "Mechanical & Advancement Definition Authoring",
+      "status": "selected_not_started",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MRCS-05",
+        "MRCS-06",
+        "MRCS-07"
+      ]
+    },
+    {
+      "id": "MRCS-08",
+      "name": "Social, Identity, Species, Form & Template Package Authoring",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MRCS-08",
+        "MRCS-09"
+      ]
+    },
+    {
+      "id": "MRCS-11",
+      "name": "Magic, Power & Casting-System Authoring",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MRCS-11"
+      ]
+    },
+    {
+      "id": "MRCS-12",
+      "name": "Creature, Monster, NPC Role, Behavior & Combat-Package Authoring",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MRCS-12"
+      ]
+    },
+    {
+      "id": "MRCS-13",
+      "name": "Item, Equipment, Vehicle, Mount, Companion, Construct & Modular-Component Authoring",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MRCS-10",
+        "MRCS-13"
+      ]
+    },
+    {
+      "id": "MRCS-14",
+      "name": "Environment, Hazard, Encounter, Reward, Loot, Economy & World-Content Authoring",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MRCS-14",
+        "MRCS-15"
+      ]
+    },
+    {
+      "id": "MRCS-16",
+      "name": "System Extension, House Rule, Scope, Compatibility & Override Authoring",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MRCS-16"
+      ]
+    },
+    {
+      "id": "MRCS-17",
+      "name": "Dependency, Impact, Safe Refactoring, Balance & Evidence Diagnostics",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MRCS-17",
+        "MRCS-18"
+      ]
+    },
+    {
+      "id": "MRCS-19",
+      "name": "Import, Repair, Migration, Pack, Version, Review & Publication Lifecycle",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MRCS-19",
+        "MRCS-20"
+      ]
+    },
+    {
+      "id": "MRCS-21",
+      "name": "Golden Cross-Domain Definition Construction & Runtime Consumption Proof",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MRCS-21"
+      ]
+    }
   ],
   "required_upstream": [
     "ARI family completed_verified",
@@ -57,7 +188,40 @@
     "owner-domain rule/content contracts available",
     "PDCP Packets 01..08 design_closed"
   ],
-  "integration_targets": ["Content Forge","content-db","CAB","ARI","CNI","PCA","MCS","MCCS","MNCS","MAS","MSAS","Character","Species/Form","Profession","Ability","Action/Event","Effect","Condition","Resource","Magic","Item/Inventory","Creature/NPC","Vehicle/Mount","Environment/World","Encounter","Economy","GPR","MERA","MBES","SMB-08","SMB-09","SAA"],
+  "integration_targets": [
+    "Content Forge",
+    "content-db",
+    "CAB",
+    "ARI",
+    "CNI",
+    "PCA",
+    "MCS",
+    "MCCS",
+    "MNCS",
+    "MAS",
+    "MSAS",
+    "Character",
+    "Species/Form",
+    "Profession",
+    "Ability",
+    "Action/Event",
+    "Effect",
+    "Condition",
+    "Resource",
+    "Magic",
+    "Item/Inventory",
+    "Creature/NPC",
+    "Vehicle/Mount",
+    "Environment/World",
+    "Encounter",
+    "Economy",
+    "GPR",
+    "MERA",
+    "MBES",
+    "SMB-08",
+    "SMB-09",
+    "SAA"
+  ],
   "boundaries": [
     "MRCS productizes and expands the existing Multiversal Content Forge rather than creating a parallel authoring database or canonical rules engine",
     "owner-domain contracts remain authoritative for governed definition semantics",
