@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MRCS",
+  "lane": "mrcs",
+  "track": "multiversal-rules-content-studio",
+  "source_program": "MRCS",
+  "work_item_id": "MRCS-12",
+  "attempt_id": "MRCS-12-attempt-001",
+  "title": "Creature, Monster, NPC Role, Behavior & Combat-Package Authoring",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "feature/mrcs-12-creature-npc-behavior-combat-authoring",
+  "completed": false,
+  "selected_by_verified_predecessor": "MRCS-11",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "reduced_strict_order": "MRCS-11 → MRCS-12 → MRCS-13 → MRCS-14 → MRCS-16 → MRCS-17 → MRCS-19 → MRCS-21",
+    "interstitial_override": "none",
+    "parallel_lanes": "MSAS-15 remains selected_not_started; MVPS-18 remains selected_not_started."
+  },
+  "objective": "Author creature, monster, NPC-role, behavior, combat, defense, resource, habitat and taxonomy packages as reusable definitions over existing creature/NPC/Action/combat owners without creating encounter instances or autonomously mutating NPC truth.",
+  "acceptance": [
+    "creature definitions remain distinct from encounter instances",
+    "behavior packages cannot autonomously mutate NPC truth"
+  ],
+  "boundaries": [
+    "MRCS-01/03/04/05/08/11 remain the workspace, guided-authoring, bounded-expression, mechanical-definition, package-composition and magic-definition foundations consumed by this tranche.",
+    "Creature, monster, NPC-role, behavior and combat records remain reusable definitions/packages; live NPC/creature identity, state and encounter instances remain external owner-domain authority.",
+    "Behavior packages may reference governed actions, effects, conditions, resources and predicates but cannot autonomously execute actions or mutate NPC truth.",
+    "Combat/defense/resource/habitat/taxonomy semantics remain explicit owner references or definition data and cannot silently become a parallel NPC or encounter runtime.",
+    "Unknown creature/source semantics remain unresolved rather than inferred.",
+    "MRCS-13+ remain unauthorized until separately selected.",
+    "MSAS and MVPS lane state remains independent."
+  ],
+  "strict_successor": "MRCS-13",
+  "active_substep": "red_creature_npc_behavior_combat_authoring",
+  "next_action": "Establish causal RED for PDCP-MRCS-024 and 025 against the public MRCS workspace seam, implement bounded definition-layer creature/NPC/behavior/combat package authoring over existing owner references without encounter-instance creation or autonomous NPC mutation, then obtain exact-head prequeue GREEN.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start",
+      "evidence": "MRCS-12 started on feature/mrcs-12-creature-npc-behavior-combat-authoring from application main b1f504204b6f72d622517b136448179098631e01 under OPS3-11 milestone-only execution."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
