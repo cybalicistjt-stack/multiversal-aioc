@@ -37,18 +37,18 @@
     "MSAS and MVPS lane state is independent."
   ],
   "strict_successor": "MRCS-05",
-  "active_substep": "application_ready_publication",
-  "next_action": "Submit MRCS-04-app-001 only after fresh READY-queue read; bind exact head cfb35eed06f16204e02087333ba0a10b96439d04 to fresh application main, publish with expected-head protection, reconcile the queue, then record the single published milestone.",
+  "active_substep": "control_plane_closeout_fast_path",
+  "next_action": "Fresh-read CURRENT and ROADMAP_DEPENDENCY_GRAPH, build the atomic MRCS-04 completed_verified / MRCS-05 selected_not_started projection, validate it, publish it through the AIOC READY queue, reconcile durable main, then reseed the mrcs lane state exactly once.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 2,
+    "material_progress_seq": 3,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 2,
-      "kind": "prequeue_green",
-      "evidence": "Exact application head cfb35eed06f16204e02087333ba0a10b96439d04 passed full MRCS-04 prequeue validation run 35481586076 on Linux, Windows and deterministic cross-platform comparison."
+      "seq": 3,
+      "kind": "published",
+      "evidence": "Application PR 627 exact head cfb35eed06f16204e02087333ba0a10b96439d04 is durably published as eb82b0b758a61fe010a4ab008fee4b40ee9ffe1b; app READY queue reconciled at generation 8."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
