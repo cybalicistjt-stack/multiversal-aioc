@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MSAS",
+  "lane": "msas",
+  "track": "multiversal-sound-audio-studio",
+  "source_program": "MSAS",
+  "work_item_id": "MSAS-15",
+  "attempt_id": "MSAS-15-attempt-001",
+  "title": "Session Soundboard, Cue Stack, Playlist & Live-GM Audio Control",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MSAS-14",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "reduced_strict_order": "MSAS-01 → MSAS-03 → MSAS-04 → MSAS-05 → MSAS-07 → MSAS-09 → MSAS-12 → MSAS-14 → MSAS-15 → MSAS-18 → MSAS-21",
+    "interstitial_override": "none",
+    "parallel_lanes": "MRCS-11 remains selected_not_started; MVPS-18 remains selected_not_started."
+  },
+  "objective": "Implement the audio-domain live-session control surface for soundboards, cue stacks and playlists using Packet-07 typed preview/dry-run/commit/receipt/intervention semantics and AAI runtime identities, while preventing GM audio controls from becoming generic gameplay authority or manufacturing canonical Events.",
+  "boundaries": [
+    "MSAS-01 through MSAS-14 remain prior studio, semantic, voice and spatial foundations consumed by this tranche.",
+    "AAI retains canonical cue/soundscape semantics and runtime playback/layering/mixer authority; MSAS-15 supplies the bounded live-control authoring/trigger surface over those identities.",
+    "PDCP Packet-07 retains generic preview, dry-run, commit, explanation, live-GM intervention, debug and recovery semantics; MSAS-15 consumes those typed primitives rather than inventing generic GM-control authority.",
+    "A soundboard or cue-stack trigger is audio-domain control intent and cannot manufacture a canonical gameplay Event, Scene transition, Combat change or World-state occurrence.",
+    "Preview/dry-run is visibly noncommitting and cannot be confused with committed audio control.",
+    "Playlist/cue-stack ordering, recovery and receipts remain deterministic and explicit.",
+    "Permissions/visibility filters from owning systems remain external authority and cannot be widened by the soundboard.",
+    "Local/provider-off live audio control remains blocking-capable.",
+    "Meaningful sonic cues retain non-audio accessibility alternatives where applicable.",
+    "MSAS-18+ remain unauthorized until separately selected.",
+    "MRCS and MVPS lane state remains independent."
+  ],
+  "strict_successor": "MSAS-18",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an MSAS-specific owner Continue, fresh-read the MSAS-15 dependency closure and msas lane-state ref, then start and execute the bounded tranche under OPS3 v3.9 / OPS3-11.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
