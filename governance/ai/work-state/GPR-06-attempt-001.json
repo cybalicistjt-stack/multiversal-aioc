@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "GPR",
+  "lane": "gpr",
+  "track": "gameplay-pattern-runtime",
+  "source_program": "GPR",
+  "work_item_id": "GPR-06",
+  "attempt_id": "GPR-06-attempt-001",
+  "title": "Specialist Puzzle, Sports, Vehicle, Party, Strategy, Social & Stealth Pattern Modules",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "GPR-05",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "gpr_interstitial_override": "none",
+    "strict_order": "GPR-01 → GPR-03 → GPR-05 → GPR-06 → GPR-07 → GPR-08 → GPR-09 → GPR-10 → GPR-12 → GPR-16",
+    "late_bind_requires": [
+      "later MRCS domains",
+      "MCS/MCCS/MNCS/MAS/MSAS outputs"
+    ],
+    "golden_proof_requires": [
+      "MRCS-21",
+      "relevant specialist golden proofs"
+    ],
+    "parallel_lanes": "MRCS-19 and OARC-04 remain independently selected_not_started."
+  },
+  "required_predecessor": {
+    "work_item": "GPR-05",
+    "application_merge_sha": "a22391fdb136354c5eef93b9dbfc85de4deec35b",
+    "owner_operation_schema": "GPR-05.1",
+    "deterministic_kernel_schema": "GPR-03.1",
+    "runtime_registry_schema": "GPR-01.1"
+  },
+  "objective": "Implement reusable specialist GPR modules and conformance fixtures for puzzles, sports/match possession, Vehicle/Mount play, parties/companions, tactical/strategy state, social/investigation and stealth/detection using the shared GPR-05 operation adapter and canonical owner contracts rather than bespoke game forks.",
+  "acceptance": [
+    "Every specialist module uses one declared common GPR module interface over GPR-05 operations and GPR-03 state.",
+    "Puzzle, sports, Vehicle/Mount, party/companion, tactical/strategy, social/investigation and stealth/detection semantics remain explicit module adapters rather than generic fallback guesses.",
+    "Vehicle/Mount, Character/party, Combat, World/Scene, social/knowledge and stealth/detection owner truth remains with canonical owner domains.",
+    "Specialist module outcomes are bounded GPR-local orchestration/results until explicit owner receipts establish owner mutation.",
+    "Unsupported specialist bindings and unavailable owner capabilities fail closed.",
+    "Domain-specific conformance fixtures demonstrate reusable shared contracts without bespoke runtime forks."
+  ],
+  "boundaries": [
+    "GPR-01, GPR-03 and GPR-05 remain predecessors and are not duplicated.",
+    "Specialist modules compose shared operations and owner contracts; they do not become replacement domain engines.",
+    "MRCS remains definition authority and later MRCS domains may late-bind.",
+    "GPR-07 encounter/autonomy/score/timing/loadout/skill runtime remains unauthorized.",
+    "MRCS and OARC lane state remain independent."
+  ],
+  "strict_successor": "GPR-07",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On a GPR-specific owner Continue, fresh-read GPR-06, published GPR-01/GPR-03/GPR-05 evidence, the GPR family design closure and ops3-lane-state/gpr, then execute the complete bounded specialist-module tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
