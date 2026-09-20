@@ -3,11 +3,11 @@
 **Program ID:** GPR  
 **Program name:** Gameplay Pattern Runtime & Loop Minis  
 **Version:** 0.2.0 — PDCP REDUCED  
-**Status:** ACTIVE — GPR-03 SELECTED_NOT_STARTED  
+**Status:** ACTIVE — GPR-05 SELECTED_NOT_STARTED  
 **Activation:** concurrent start authorized after MRCS-05 + completed MAL + core owner contracts; later MRCS late-binds; GPR-16 waits for MRCS-21  
 **Successor:** MERA-01  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-03 attempt
+**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-05 attempt
 
 ## Purpose
 
@@ -204,3 +204,16 @@ The registry covers semantic pattern, primitive, operation and asset-role refere
 Causal RED: run `35529417335` at `e127881c5c8ac562f225e3615356b45e83d13ec0`. Exact-head cross-platform GREEN: run `35529549717` at `a91f50f515cdd3e397dd6ee566adcff397a1d7a3`. Published application: PR #649 through READY candidate `GPR-01-app-001` as `6fc0030d952355eecea63928fcbc4736feb110f3`.
 
 The fresh roadmap DAG supplies no interstitial successor override, so GPR-03 is selected_not_started. Later MRCS domains remain late-bind dependencies and GPR-16 remains gated on MRCS-21 plus relevant specialist golden proofs.
+
+
+## GPR-03 completed deterministic-kernel result
+
+GPR-03 completed_verified on 2026-09-20. The published application contract `GPR-03.1` establishes the bounded gameplay-instance entity/input/collision/state kernel over the GPR-01 executable registry seam.
+
+GameplayInstance identity remains distinct from reusable pattern/configuration identity. Raw device controls normalize to semantic commands before transitions; presentation-frame sequence is explicitly non-authoritative. Deterministic ordering is based on governed semantic command/collision identities, with explicit deterministic seed and configuration/version binding. Entity, spawn and transition caps fail closed.
+
+Collision/trigger processing emits GPR-local outcomes only. Unsupported or unknown GPR-01 bindings remain blocked/unresolved with no generic fallback. The kernel cannot perform or prove canonical World, Combat, Action/Event or other owner-domain mutation.
+
+Causal RED: run `35530223806` at `88dc7ccf4d1209b8697f18242a33537bfcc9dbf9`. Exact-head cross-platform GREEN: run `35530339162` at `ef5d69a5e38cf24d05f6517d67ccab58cf3ddab4`. Published application: PR #651 through READY candidate `GPR-03-app-001` as `b82eb6532d9d1b0815836a9ae3e852ac8fff2839`.
+
+The fresh roadmap DAG supplies no interstitial successor override, so GPR-05 is selected_not_started. Later MRCS domains remain late-bind dependencies and GPR-16 remains gated on MRCS-21 plus relevant specialist golden proofs.
