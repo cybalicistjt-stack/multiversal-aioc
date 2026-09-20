@@ -77,7 +77,7 @@ The workflow surface proves, among other rules:
 - **Suula:** persistent adaptation markers cannot be erased; active adaptations update live appearance; nested hands/claws are first-class live state.
 - **Furashin:** preferred/live fur phenotype respects the maximum of three simultaneous colors plus pattern/texture; all Arthold rat-humanoid art binds to Furashin under OVC-027.
 - **Ratman:** remains a separate canonical Species profile despite the Arthold art-label correction.
-- **ManyToms:** one constituent identity plus cohesive collective presentation; the renderer is not required to draw exactly seventeen visible figures.
+- **ManyToms:** one constituent identity plus cohesive collective presentation; the renderer is not required to draw exactly twelve visible figures.
 - **Stygian:** optional wings may be functional or vestigial only when upstream morphology provides them; appearance cannot grant flight.
 - **The Free:** extremely broad humanoid android design is supported, but arbitrary quadrupedal/nonhumanoid topology is not.
 - **Vespin:** four arms/two legs remain intact.
