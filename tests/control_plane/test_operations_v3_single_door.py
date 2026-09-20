@@ -392,7 +392,7 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         contract=self._text("operations/OPERATING_CONTRACT.md")
         required=[
             "milestone receipts, not activity receipts",
-            "repository/PR/CI/publication-queue evidence",
+            "Repository/PR/CI/publication-queue evidence",
             "closeout fast path",
             "Do not write lane state for",
             "successor reseed",
