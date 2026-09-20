@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "MVPS-16.Invariants",
+  "status": "MVPS-16_GOLDEN_INVARIANTS",
+  "invariants": [
+    {
+      "id": "MVPS16-I01-eight-required-fixtures",
+      "rule": "Golden closure requires exactly the ordinary-human, winged-humanoid, aquatic-non-humanoid, centaur-like-quadruped, construct/android, multi-form-shapeshifter, incorporeal and radically-alien fixture classes."
+    },
+    {
+      "id": "MVPS16-I02-common-contract-shape",
+      "rule": "Every fixture is evaluated through the same workflow key set and the same referenced MVPS owner contracts; fixture-specific test branches may not replace the common matrix."
+    },
+    {
+      "id": "MVPS16-I03-no-species-name-dispatch",
+      "rule": "Core creation/runtime/equipment/environment/progression/transformation/persistence/presentation/reuse behavior is selected by typed canonical data and owner references, never species name or identity conditionals."
+    },
+    {
+      "id": "MVPS16-I04-equipment-explicit-fit-or-rejection",
+      "rule": "Equipment conformance succeeds when the common compatibility contract returns governed compatibility/adaptation or an explicit sourced incompatibility; unsupported body plans are never silently coerced."
+    },
+    {
+      "id": "MVPS16-I05-optional-progression-transform-explicit",
+      "rule": "Species progression and transformation may be absent, but absence must be explicit not_applicable under their existing optional contracts rather than inferred or treated as failure."
+    },
+    {
+      "id": "MVPS16-I06-full-lifecycle-proof",
+      "rule": "Every fixture proves mandatory creation/selection, validation, runtime projection, equipment, environment, serialization/import-export, migration, authoring/inspection/presentation and NPC/Creature reuse surfaces."
+    },
+    {
+      "id": "MVPS16-I07-owner-authority-preserved",
+      "rule": "Golden proof may consume owner contracts but never transfers canonical mutation or runtime execution authority into MVPS-16."
+    },
+    {
+      "id": "MVPS16-I08-no-unresolved-semantic-gaps",
+      "rule": "MVPS program completion is forbidden while the golden matrix has any unresolved semantic gap, guessed owner dependency, species-name dispatch requirement or unproven mandatory workflow."
+    }
+  ],
+  "enforcement": {
+    "regression_test": "tests/control_plane/test_mvps16_radical_species_golden_proof.py",
+    "ci_step": "Run MVPS-16 radical-species golden proof"
+  }
+}
