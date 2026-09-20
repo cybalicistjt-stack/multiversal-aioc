@@ -245,6 +245,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          python3 scripts/check_mvps23_core26_golden_proof.py
           python3 tests/control_plane/test_mvps23_core26_game_ready_golden_proof.py
 
       - name: Run dynamic certified-content consumer regression
