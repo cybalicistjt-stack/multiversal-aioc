@@ -6,9 +6,9 @@
   "title": "Core-26 Mechanics, Morphology and Environment Completion",
   "attempt_id": "MVPS-19-attempt-001",
   "lane": "mvps",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_branch": "work/mvps-19-core26-mechanics-baseline",
   "selected_by_verified_predecessor": "MVPS-18",
   "predecessor": {
     "work_item_id": "MVPS-18",
@@ -35,17 +35,81 @@
     "Lineage/form/progression/social completion belongs to MVPS-20 except where a typed dependency is necessary to represent the MVPS-19 mechanics correctly.",
     "Appearance/presentation regeneration belongs to MVPS-21."
   ],
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On an MVPS-specific Continue, fresh-read the 26 canon registers, current SpeciesDefinitions, CORE26.GAME_READY.v1 mechanical dimensions, and exact source evidence needed for morphology/physiology/environment/capability/interface completion; execute the bounded MVPS-19 tranche under OPS3-11.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS-20 is the strict successor. It must consume the v1.1.0 Core-26 definitions/registers, MVPS19.CORE26.OWNER_DECISIONS.v1 and MVPS19.CORE26.MECHANICS.v1 while completing applicable lineage/form/adaptation/progression and social/language/knowledge surfaces without reopening current identity or mechanics baselines.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "completed_verified_candidate",
+      "evidence": "Causal RED 35520537995 isolated missing MVPS-19 mechanics-completion artifacts at 8e4dadd8869fbc9873c714a124df379e21554900; exact-head GREEN 35521601559 passed the complete repository-health gate at 7231fc002a3dfd58bf34655ebd46ad9c17e8f660; PR 1482 published as c02a76263d05b99b3357470c70fec7ea1ee97595."
+    },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": null
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MVPS-19 application is durably published; atomic closeout selects MVPS-20."
+    }
+  },
+  "completed": true,
+  "completed_at": "2026-09-20",
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "Owner paused the tranche before canon promotion to resolve explicit species gaps, returned a completed decision packet, and then resumed execution. OPS3 lane state used only start, prequeue_green and published milestones; generated outputs were materialized on the feature branch and exact-head revalidated before READY publication."
+  },
+  "acceptance_evidence": {
+    "causal_red": {
+      "pr": 1482,
+      "head": "8e4dadd8869fbc9873c714a124df379e21554900",
+      "validation_run": 35520537995,
+      "conclusion": "failure",
+      "signature": "All preceding OPS3/MVPS gates passed and the MVPS-19 step alone failed because the owner-decision/matrix/v1.1 mechanics-completion artifacts were intentionally absent."
+    },
+    "green": {
+      "pr": 1482,
+      "validated_head": "7231fc002a3dfd58bf34655ebd46ad9c17e8f660",
+      "validation_run": 35521601559,
+      "conclusion": "success",
+      "merge_sha": "c02a76263d05b99b3357470c70fec7ea1ee97595"
+    },
+    "publication": {
+      "ready_candidate": "MVPS-19-app-001",
+      "queue_reconciled_generation": 66
+    },
+    "owner_decisions": {
+      "decision_set": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+      "source_document": "Core_26_MVPS19_Gap_Resolution_Decision_Packet_v0.1.docx",
+      "source_sha256": "370d0e38a9c10438f8720f3bf4e167c80dde2f1865ff6a028a2c9ca34af0d19b",
+      "approve_as_written": 19,
+      "approve_with_edits": 7,
+      "deferred": 0
+    },
+    "core26": {
+      "species_definition_count": 26,
+      "canon_register_count": 26,
+      "definition_version": "1.1.0",
+      "register_version": "1.1.0",
+      "mechanics_matrix": "MVPS19.CORE26.MECHANICS.v1",
+      "common_profiles": "MVPS19.COMMON_MECHANICS_PROFILES.v1",
+      "current_authority": "CORE26-CURRENT-01",
+      "game_ready_standard": "CORE26.GAME_READY.v1"
+    },
+    "special_bindings": {
+      "manytoms_controller": "MVPS19.ManyTomsDistributedController",
+      "vespin_stinger_system": "MVPS19.VespinStingerSystem"
+    },
+    "canonical_database": {
+      "effective_records": 556,
+      "source_count": 114,
+      "appended_records": 69,
+      "replacement_records": 83,
+      "supplemental_input_records": 152,
+      "semantic_fingerprint": "sha256:f190ce4bca4a2f425ccc8e42073f590f75d95672e81fd5f79c72c89c47f069ce"
+    }
   }
 }
