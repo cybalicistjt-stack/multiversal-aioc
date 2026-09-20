@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_scope": "MVPS-15 NPC/Creature species reuse and cross-system adapter integration proof",
+  "non_canon": true,
+  "cases": {
+    "npc_shared_species_reference": {
+      "input": {
+        "npc_definition_ref": "npc:guard@11",
+        "species_ref": "species:human@4",
+        "lineage_refs": [
+          "lineage:coastal@2"
+        ],
+        "provenance_refs": [
+          "prov:human-source"
+        ]
+      },
+      "expected": {
+        "duplicate_species_record_created": false,
+        "exact_species_ref_preserved": true,
+        "npc_definition_remains_distinct": true,
+        "provenance_preserved": true
+      }
+    },
+    "creature_form_composition": {
+      "input": {
+        "creature_definition_ref": "creature:shifter@6",
+        "species_ref": "species:shifter@4",
+        "form_ref": "form:hunter@3",
+        "mncs_component_slots": [
+          "species",
+          "form"
+        ]
+      },
+      "expected": {
+        "species_owner_ref_preserved": true,
+        "form_owner_ref_preserved": true,
+        "mncs14_authority_preserved": true,
+        "duplicate_biology_ledger_created": false
+      }
+    },
+    "combat_participant_adapter": {
+      "input": {
+        "entity_ref": "npc:guard@11",
+        "species_ref": "species:human@4",
+        "participant_type": "npc",
+        "encounter_ref": "encounter:bridge"
+      },
+      "expected": {
+        "a7_source_reference_preserved": true,
+        "participant_identity_distinct_from_species": true,
+        "combat_rules_reimplemented": false,
+        "canonical_combat_mutation_performed": false
+      }
+    },
+    "campaign_cast_adapter": {
+      "input": {
+        "entity_ref": "npc:merchant@7",
+        "owner_binding_ref": "mas-binding:merchant",
+        "species_ref": "species:amphibian@3"
+      },
+      "expected": {
+        "owner_binding_preserved": true,
+        "cast_membership_mutated": false,
+        "live_agenda_started": false,
+        "mapping_proposal_only": true
+      }
+    },
+    "social_adapter": {
+      "input": {
+        "entity_ref": "npc:ambassador@2",
+        "species_ref": "species:winged@5",
+        "relationship_ref": "relationship:embassy@8",
+        "knowledge_visibility_ref": "knowledge:winged-known@2"
+      },
+      "expected": {
+        "species_ref_context_only": true,
+        "relationship_owner_ref_preserved": true,
+        "culture_inferred_from_species": false,
+        "relationship_mutated": false
+      }
+    },
+    "exploration_adapter": {
+      "input": {
+        "entity_ref": "creature:aquatic-scout@2",
+        "species_ref": "species:aquatic@3",
+        "movement_ref": "movement:swim@5",
+        "tolerance_ref": "tolerance:pressure@3",
+        "environment_ref": "environment:deep-water@9"
+      },
+      "expected": {
+        "movement_and_tolerance_refs_preserved": true,
+        "environment_engine_reimplemented": false,
+        "environment_state_mutated": false
+      }
+    },
+    "crafting_adapter": {
+      "input": {
+        "entity_ref": "npc:smith@4",
+        "species_ref": "species:centaur@3",
+        "morphology_ref": "morphology:centaur@2",
+        "project_ref": "project:forge-saddle@3"
+      },
+      "expected": {
+        "morphology_ref_preserved": true,
+        "project_owner_ref_preserved": true,
+        "recipe_species_branch_created": false,
+        "inventory_mutated": false
+      }
+    },
+    "unresolved_late_bound_owner": {
+      "input": {
+        "entity_ref": "creature:unknown@1",
+        "species_ref": "species:alien@8",
+        "target_owner_domain": "MCS",
+        "target_owner_ref": null,
+        "state": "unresolved"
+      },
+      "expected": {
+        "mapping_invented": false,
+        "unresolved_state_preserved": true,
+        "substitute_owner_selected": false,
+        "source_species_ref_preserved": true
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesCrossSystemAdapters",
+  "record_type": "SpeciesCrossSystemAdapterContract",
+  "status": "MVPS-15_CANONICAL_CONTRACT",
+  "purpose": "Define species-facing mapping/projection adapters into campaign, combat, social, exploration and crafting owner domains without moving domain rule authority into MVPS.",
+  "common_adapter_contract": {
+    "required": [
+      "adapter_id",
+      "source_entity_ref",
+      "source_species_ref",
+      "source_species_version_ref",
+      "owner_domain",
+      "target_owner_ref_or_slot",
+      "provenance_refs",
+      "state"
+    ],
+    "states": [
+      "proposal",
+      "resolved",
+      "unresolved"
+    ],
+    "source_owner_refs_preserved": true,
+    "exact_species_version_preserved": true,
+    "provenance_preserved": true,
+    "unresolved_target_not_inferred": true,
+    "canonical_mutation_requires_target_owner_workflow": true
+  },
+  "adapter_domains": {
+    "campaign": {
+      "owner_contract": "MAS-07 cast/NPC agenda relationship callback planning and MAS/Adventure/Scene/Session owners",
+      "source_owner_refs_preserved": true,
+      "projection_or_mapping_only": true,
+      "canonical_owner_mutation_performed": false,
+      "domain_engine_reimplemented": false,
+      "cast_member_owner_binding_preserved": true,
+      "prepared_planning_does_not_activate_live_cast": true
+    },
+    "combat": {
+      "owner_contract": "A7 CombatParticipantPort",
+      "source_owner_refs_preserved": true,
+      "projection_or_mapping_only": true,
+      "canonical_owner_mutation_performed": false,
+      "domain_engine_reimplemented": false,
+      "participant_source_reference_preserved": true,
+      "current_projection_reference_owned_by_combat_runtime": true,
+      "participant_type_does_not_change_species_identity": true
+    },
+    "social": {
+      "owner_contract": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+      "source_owner_refs_preserved": true,
+      "projection_or_mapping_only": true,
+      "canonical_owner_mutation_performed": false,
+      "domain_engine_reimplemented": false,
+      "species_identity_is_context_not_behavior_stereotype": true,
+      "culture_and_learned_language_remain_separate": true
+    },
+    "exploration": {
+      "owner_contract": "World/Environment/Location/Scene/Movement/Sense owners",
+      "source_owner_refs_preserved": true,
+      "projection_or_mapping_only": true,
+      "canonical_owner_mutation_performed": false,
+      "domain_engine_reimplemented": false,
+      "species_tolerance_movement_sense_refs_consumed_not_reimplemented": true,
+      "environment_resolution_owned_by_environment_domain": true
+    },
+    "crafting": {
+      "owner_contract": "Project/Profession/Item/Equipment/Resource/Action owners",
+      "source_owner_refs_preserved": true,
+      "projection_or_mapping_only": true,
+      "canonical_owner_mutation_performed": false,
+      "domain_engine_reimplemented": false,
+      "morphology_interface_compatibility_consumed_by_owner": true,
+      "natural_equipment_and_capability_refs_not_copied_into_recipe": true
+    }
+  },
+  "late_bound_specialists": {
+    "MNCS": "authoritative NPC/Creature composition/runtime owner",
+    "MCCS": "presentation derivatives remain late-bound",
+    "MCS": "location/environment presentation bindings remain late-bound",
+    "unresolved_dependencies": "preserve explicit owner refs and unresolved state; never invent substitute semantics"
+  }
+}

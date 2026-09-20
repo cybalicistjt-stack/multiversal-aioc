@@ -185,6 +185,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_mvps14_authoring_search_inspection_presentation.py
 
+      - name: Run MVPS-15 NPC creature reuse cross-system adapter regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps15_npc_creature_reuse_adapters.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |

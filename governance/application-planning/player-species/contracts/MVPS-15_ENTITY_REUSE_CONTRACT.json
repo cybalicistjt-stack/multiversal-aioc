@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesEntityReuse",
+  "record_type": "SpeciesEntityReuseContract",
+  "status": "MVPS-15_CANONICAL_CONTRACT",
+  "purpose": "Reuse the same exact-version species canon for player characters, NPCs and creatures while preserving distinct species, NPC/Creature definition, archetype/template and live-instance identities and owner authority.",
+  "source_basis": [
+    "MVPS.SpeciesDefinition stable exact-version/provenance model",
+    "MVPS.SpeciesRuntimeProjection source-traceable contribution fragment",
+    "MNCS-01 Character/NPC/Creature owner-domain authority",
+    "MNCS-14 authoritative species/form composition and no-duplicate-biology-ledger rule"
+  ],
+  "identity_layers": [
+    "species_definition",
+    "npc_or_creature_definition",
+    "archetype_or_template",
+    "live_instance"
+  ],
+  "canonical_species_policy": {
+    "single_shared_species_canon": true,
+    "duplicate_npc_species_canon_allowed": false,
+    "duplicate_creature_species_canon_allowed": false,
+    "species_definition_owner_remains_species_domain": true,
+    "npc_or_creature_definition_does_not_become_species_source_truth": true,
+    "archetype_template_does_not_become_species_source_truth": true,
+    "live_instance_does_not_become_species_source_truth": true
+  },
+  "reference_policy": {
+    "exact_version_species_ref_required": true,
+    "lineage_refs_preserved_when_applicable": true,
+    "form_refs_preserved_when_applicable": true,
+    "adaptation_refs_preserved_when_applicable": true,
+    "campaign_adjudication_refs_preserved_when_applicable": true,
+    "provenance_preserved": true,
+    "species_mechanics_copied_into_npc_record": false,
+    "display_label_or_alias_not_identity": true,
+    "unresolved_refs_remain_unresolved": true
+  },
+  "mncs_handoff": {
+    "composition_owner": "MNCS-14",
+    "entity_owner": "PPIA-02/Character/NPC/Creature-owner-domains",
+    "species_form_authority": "Species/Form-owner-domains",
+    "authoritative_refs_only": true,
+    "unresolved_composition_preserved": true,
+    "duplicate_biology_ledger_created": false,
+    "canonical_npc_or_creature_mutation_owned_by_mvps15": false,
+    "species_runtime_projection_may_be_referenced_not_reauthored": true
+  },
+  "player_only_separation": {
+    "character_species_selection_required_for_npc": false,
+    "player_builder_state_required_for_npc": false,
+    "player_presentation_assets_required_for_npc": false,
+    "player_creation_transaction_required_for_npc": false,
+    "shared_species_definition_reused": true,
+    "shared_species_runtime_contribution_refs_may_be_consumed_when_owner_compatible": true,
+    "npc_or_creature_owner_may_hold_its_own_species_composition_receipt": true
+  },
+  "validation_policy": {
+    "missing_species_ref": "unresolved_or_invalid_by_owner_policy",
+    "stale_or_incompatible_version": "explicit_finding_or_migration_required",
+    "guessed_species_from_name_or_art": false,
+    "player_only_missing_state_blocks_npc": false
+  },
+  "extension_policy": "namespaced_non_overriding"
+}
