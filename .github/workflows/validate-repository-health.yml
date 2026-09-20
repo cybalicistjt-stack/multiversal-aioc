@@ -263,26 +263,6 @@ jobs:
           set -euo pipefail
           node tests/validate-content-library-staging.mjs
 
-      - name: Materialize MVPS-19 certified generated outputs onto candidate branch
-        if: github.head_ref == 'work/mvps-19-core26-mechanics-baseline'
-        shell: bash
-        run: |
-          set -euo pipefail
-          git add -A content-db \
-            evidence/content-pipeline/latest-certificate.json \
-            evidence/content-pipeline/beacon-debt-golden-diagnostics.json \
-            evidence/content-pipeline/beacon-debt-runtime-instantiated.json
-          if git diff --cached --quiet; then
-            echo 'MVPS-19 certified generated outputs already materialized.'
-            exit 0
-          fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'MVPS-19: materialize certified generated outputs'
-          git push origin HEAD:refs/heads/work/mvps-19-core26-mechanics-baseline
-          echo 'Materialized a new exact candidate head; this obsolete validation run must not be used.' >&2
-          exit 1
-
       - name: Enforce certified generated content is already in the candidate
         shell: bash
         run: |
