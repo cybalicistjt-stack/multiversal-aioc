@@ -106,11 +106,11 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertEqual(LANE_STATE.coordination_branch("mrcs"),"ops3-lane-state/mrcs")
         a=LANE_STATE.initial_state("msas",revision=1,selected_work_item="MSAS-X",attempt_id="MSAS-X-attempt-001")
         b=LANE_STATE.initial_state("mrcs",revision=1,selected_work_item="MRCS-X",attempt_id="MRCS-X-attempt-001")
-        a2=LANE_STATE.record_progress(a,expected_revision=1,lane="msas",kind="implementation",evidence="head-a")
+        a2=LANE_STATE.start_execution(a,expected_revision=1,lane="msas",implementation_branch="work/msas-x",evidence="owner Continue")
         self.assertEqual(a2["revision"],2)
         self.assertEqual(b["revision"],1)
         with self.assertRaises(LANE_STATE.LaneStateConflict):
-            LANE_STATE.record_progress(a2,expected_revision=2,lane="mrcs",kind="wrong-lane",evidence="no")
+            LANE_STATE.mark_prequeue_green(a2,expected_revision=2,lane="mrcs",candidate_head="head-a",validation_run="run-a")
 
     def test_lane_can_start_without_mutating_global_selector(self) -> None:
         state=LANE_STATE.initial_state("mvps",revision=5,selected_work_item="MVPS-12",attempt_id="MVPS-12-attempt-001")
@@ -118,6 +118,15 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertEqual(started["execution_status"],"in_progress")
         self.assertEqual(started["implementation_branch"],"work/mvps-12")
         self.assertEqual(started["selected_work_item"],"MVPS-12")
+
+    def test_execution_guard_rejects_instrumentation_only_progress_receipts(self) -> None:
+        checkpoint={"status":"in_progress","execution_guard":{"material_progress_seq":1,"progress_at_last_owner_command":0,"no_progress_cycles":0,"last_material_progress":{"seq":1,"kind":"started","evidence":"started"},"active_stall":False},"execution_conformance":{"status":"in_progress","policy_violations":[]}}
+        for kind in ("status_check","linux_green","windows_green","artifact_inspected","queue_submitted","merge_verified","queue_reconciled","closeout_pr_opened"):
+            with self.subTest(kind=kind):
+                with self.assertRaisesRegex(ValueError, EXECUTION_GUARD.OVERINSTRUMENTATION):
+                    EXECUTION_GUARD.record_material_progress(checkpoint,kind=kind,evidence="mechanical transition")
+        updated=EXECUTION_GUARD.record_material_progress(checkpoint,kind="causal_repair",evidence="failure signature changed after bounded repair")
+        self.assertEqual(updated["execution_guard"]["material_progress_seq"],2)
 
     def test_owner_continue_without_material_progress_enters_visible_stall_recovery(self) -> None:
         checkpoint={"status":"in_progress","execution_guard":{"continue_turns":1,"stall_nudges":0,"material_progress_seq":2,"progress_at_last_owner_command":2,"no_progress_cycles":0,"last_material_progress":{"seq":2,"kind":"validation","evidence":"run 7 failed"},"active_stall":False,"terminal_response_allowed":False,"stop_reason":None},"execution_conformance":{"status":"in_progress","policy_violations":[]}}
