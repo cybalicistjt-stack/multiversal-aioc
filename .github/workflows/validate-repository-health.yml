@@ -232,7 +232,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 tests/control_plane/test_mvps21_core26_current_presentation.py
+          python3 scripts/generate_mvps21_core26_presentation.py --check\n          python3 tests/control_plane/test_mvps21_core26_current_presentation.py
 
       - name: Run dynamic certified-content consumer regression
         shell: bash
