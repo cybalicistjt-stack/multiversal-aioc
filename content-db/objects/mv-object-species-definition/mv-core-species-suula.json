@@ -7,10 +7,10 @@
   "source": "Suula.PDF",
   "sourceLocator": "Suula.PDF",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_CORE26_CANONICAL_IDENTITY",
-  "reviewStatus": "CURRENT_AUTHORITY_RECONCILED",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species.suula",
     "name": "Suula",
     "objectType": "mv.object.species-definition",
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "canonStatus": "approved_current_identity",
     "sourceEvidence": {
       "writtenSource": "Suula.PDF",
@@ -39,6 +39,53 @@
           "registerStableId": "mv.core.species-canon-register.suula",
           "gameReadyStandard": "CORE26.GAME_READY.v1",
           "definitionSourceChain": "content-source/core26-species/suula/"
+        },
+        "mvps19Mechanics": {
+          "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+          "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "baselineProfile": "insectoid_biped",
+          "sizeClass": "Medium",
+          "stature": "scorpion_humanoid",
+          "morphologyMarkers": [
+            "segmented_chitin",
+            "combat_claws_with_retractable_hands",
+            "segmented_weapon_tail"
+          ],
+          "movementModes": [
+            "walk"
+          ],
+          "senses": [
+            "darkvision_60ft"
+          ],
+          "physiology": {
+            "respiration": [
+              "air"
+            ],
+            "sustenance": [
+              "food",
+              "water"
+            ],
+            "rest": "sleep",
+            "environment": "ordinary_terrestrial",
+            "adaptationOverrides": true
+          },
+          "immunities": [],
+          "capabilities": [
+            "biological_adaptation_system"
+          ],
+          "naturalEquipment": {
+            "weapons": [
+              "combat_claws",
+              "weapon_tail"
+            ],
+            "armor": "chitin_natural_armor"
+          },
+          "equipmentInterfaces": [
+            "hand_deploy_from_claw",
+            "carapace_armor_fit",
+            "weapon_tail_clearance"
+          ]
         }
       }
     }
@@ -48,11 +95,17 @@
   "testing": null,
   "provenance": {
     "authority": "Suula.PDF",
-    "sourcePath": "content-source/core26-species/suula/definition-v1.0.0.json",
-    "sourceDigest": "sha256:647e43b18f4a3fca637fb1848a394a03d9f3507e66e8027fc5e104b6086fb3e7",
-    "sourceBundleId": "mv.content.core26.suula.definition-v1",
-    "sourceBundlePart": "suula-definition-v1.0.0",
-    "sourceClass": "supplemental",
+    "sourcePath": "content-source/core26-species/suula/definition-v1.1.0.json",
+    "sourceDigest": "sha256:2af1dcc056d54045d8c1f9788c64101b23c7a801b42fa2a87b0609f883a76e44",
+    "sourceBundleId": "mv.content.core26.suula.definition-v1.1",
+    "sourceBundlePart": "suula-definition-v1.1.0",
+    "sourceClass": "replacement",
+    "replaces": {
+      "stableId": "mv.core.species.suula",
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/suula/definition-v1.0.0.json",
+      "sourceDigest": "sha256:647e43b18f4a3fca637fb1848a394a03d9f3507e66e8027fc5e104b6086fb3e7"
+    },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
 }

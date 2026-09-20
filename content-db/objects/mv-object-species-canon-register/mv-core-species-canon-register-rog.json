@@ -4,13 +4,13 @@
   "name": "Rog Canon Register",
   "objectType": "mv.object.species-canon-register",
   "developmentStage": "Structured draft",
-  "source": "mv.content.core26.rog.canon-register-v1",
-  "sourceLocator": "content-source/core26-species/rog/register-v1.0.0.json",
+  "source": "mv.content.core26.rog.canon-register-v1.1",
+  "sourceLocator": "content-source/core26-species/rog/register-v1.1.0.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "",
-  "reviewStatus": "",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species-canon-register.rog",
     "name": "Rog Canon Register",
     "objectType": "mv.object.species-canon-register",
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "register": {
       "speciesName": "Rog",
       "speciesDefinitionStableId": "mv.core.species.rog",
@@ -44,6 +44,13 @@
           "title": "CAPP-01_SOURCE_AUTHORITY_AND_PROFILE_INDEX_v0.1.0.json",
           "repositoryPath": "governance/application-planning/character-appearance-production/CAPP-01_SOURCE_AUTHORITY_AND_PROFILE_INDEX_v0.1.0.json",
           "canonRole": "governed_visual_profile"
+        },
+        {
+          "role": "owner_mechanics_decision",
+          "title": "Core_26_MVPS19_Gap_Resolution_Decision_Packet_v0.1.docx",
+          "sha256": "370d0e38a9c10438f8720f3bf4e167c80dde2f1865ff6a028a2c9ca34af0d19b",
+          "repositoryDecisionRef": "governance/application-planning/player-species/MVPS-19_OWNER_DECISIONS_v1.0.0.json",
+          "canonRole": "owner_approved_mechanics_completion"
         }
       ],
       "canonDomains": {
@@ -62,6 +69,13 @@
         "requiresDefinitionVersionBumpWhenGameplayObjectChanges": true,
         "requiresOwnerApprovalForCanonPromotion": true,
         "preservePriorVersions": true
+      },
+      "mechanicsCompletion": {
+        "status": "completed_owner_approved",
+        "mvps19DecisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+        "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+        "definitionVersion": "1.1.0",
+        "preserveTypedDispatch": true
       }
     }
   },
@@ -70,11 +84,17 @@
   "testing": null,
   "provenance": {
     "authority": "Multiversal canonical source bundle",
-    "sourcePath": "content-source/core26-species/rog/register-v1.0.0.json",
-    "sourceDigest": "sha256:1b8cb69a6557376b01717df501ad0032c3ee70260beb35fcf790bf4ed0462cd0",
-    "sourceBundleId": "mv.content.core26.rog.canon-register-v1",
-    "sourceBundlePart": "rog-register-v1.0.0",
-    "sourceClass": "supplemental",
+    "sourcePath": "content-source/core26-species/rog/register-v1.1.0.json",
+    "sourceDigest": "sha256:26b90f8735d0fae2cc6745e8139b6289004aeaa876620600330f53eef308c639",
+    "sourceBundleId": "mv.content.core26.rog.canon-register-v1.1",
+    "sourceBundlePart": "rog-register-v1.1.0",
+    "sourceClass": "replacement",
+    "replaces": {
+      "stableId": "mv.core.species-canon-register.rog",
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/rog/register-v1.0.0.json",
+      "sourceDigest": "sha256:1b8cb69a6557376b01717df501ad0032c3ee70260beb35fcf790bf4ed0462cd0"
+    },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
 }

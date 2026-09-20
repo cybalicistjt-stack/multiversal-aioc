@@ -7,10 +7,10 @@
   "source": "phase-1-8-canonical-objects",
   "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "CORE26_CURRENT_AUTHORITY_RECONCILIATION",
-  "reviewStatus": "CURRENT_AUTHORITY_RECONCILED",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -25,7 +25,7 @@
       "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
       "ingestedFromMember": "index.json"
     },
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "extensions": {
       "app.multiversal.aioc": {
         "speciesCanonRegister": {
@@ -33,6 +33,55 @@
           "registerStableId": "mv.core.species-canon-register.traiga",
           "gameReadyStandard": "CORE26.GAME_READY.v1",
           "definitionSourceChain": "content-source/core26-species/traiga/"
+        },
+        "mvps19Mechanics": {
+          "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+          "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "baselineProfile": "terrestrial_humanoid",
+          "sizeClass": "Medium",
+          "stature": "digitigrade_raptor_biped",
+          "morphologyMarkers": [
+            "digitigrade_legs",
+            "semi_prehensile_tail",
+            "large_eyes",
+            "clawed_hands_feet"
+          ],
+          "movementModes": [
+            "walk"
+          ],
+          "senses": [
+            "ordinary_playable"
+          ],
+          "physiology": {
+            "respiration": [
+              "air"
+            ],
+            "sustenance": [
+              "food",
+              "water"
+            ],
+            "rest": "sleep",
+            "environment": "ordinary_terrestrial"
+          },
+          "immunities": [],
+          "capabilities": [
+            "tail_limited_utility",
+            "claws_climbing_grip"
+          ],
+          "naturalEquipment": {
+            "weapons": [],
+            "armor": null,
+            "structural": [
+              "claws",
+              "tail"
+            ]
+          },
+          "equipmentInterfaces": [
+            "digitigrade_leg_fit",
+            "tail_clearance",
+            "claw_hand_foot_fit"
+          ]
         }
       }
     }
@@ -44,16 +93,16 @@
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
     "authority": "phase-1-8-canonical-objects",
-    "sourcePath": "content-source/core26-species/traiga/definition-v1.0.0.json",
-    "sourceDigest": "sha256:2a9b5e101b8e0cb048cd807a214647d310dcdc6e19668b9e8a9a8486c27dd184",
-    "sourceBundleId": "mv.content.core26.traiga.definition-v1",
-    "sourceBundlePart": "traiga-definition-v1.0.0",
+    "sourcePath": "content-source/core26-species/traiga/definition-v1.1.0.json",
+    "sourceDigest": "sha256:2321e82906402867aa776bcb41ca698d327128385eddb1788a12ba5b09873be4",
+    "sourceBundleId": "mv.content.core26.traiga.definition-v1.1",
+    "sourceBundlePart": "traiga-definition-v1.1.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.traiga",
-      "contentVersion": null,
-      "sourcePath": "content-source/phase-1-8-canonical-objects.json",
-      "sourceDigest": "sha256:11d3e26161a6ea1acbe8847d7c01c5f6fb09a9525dc2e2eba557d41b4c612fbb"
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/traiga/definition-v1.0.0.json",
+      "sourceDigest": "sha256:2a9b5e101b8e0cb048cd807a214647d310dcdc6e19668b9e8a9a8486c27dd184"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

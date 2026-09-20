@@ -7,10 +7,10 @@
   "source": "owner-approved-manytoms-canonical-species-dossier-v1.0.0",
   "sourceLocator": "ManyToms_Canonical_Species_Dossier_v1.0.0.docx",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_CANON",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
   "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -580,7 +580,7 @@
         "detailed named modern states, cities, universities, temples, and political parties"
       ]
     },
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "extensions": {
       "app.multiversal.aioc": {
         "speciesCanonRegister": {
@@ -588,6 +588,52 @@
           "registerStableId": "mv.core.species-canon-register.manytoms",
           "gameReadyStandard": "CORE26.GAME_READY.v1",
           "definitionSourceChain": "content-source/core26-species/manytoms/"
+        },
+        "mvps19Mechanics": {
+          "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+          "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "baselineProfile": "distributed_singular",
+          "sizeClass": "Composite",
+          "stature": "twelve_small_bodies",
+          "morphologyMarkers": [
+            "normal_complement_12",
+            "each_tom_about_one_foot",
+            "one_person_multiple_bodies"
+          ],
+          "movementModes": [
+            "distributed_controller"
+          ],
+          "senses": [
+            "aggregated_multi_body"
+          ],
+          "physiology": {
+            "respiration": [
+              "air"
+            ],
+            "sustenance": [
+              "per_body_nourishment_entity_coordinated"
+            ],
+            "rest": "rotational_or_whole_sleep",
+            "environment": "ordinary_terrestrial"
+          },
+          "immunities": [],
+          "capabilities": [
+            "distributed_singular_consciousness"
+          ],
+          "naturalEquipment": {
+            "weapons": [],
+            "armor": null
+          },
+          "equipmentInterfaces": [
+            "tom_scale_body_bound_gear",
+            "entity_owned_inventory",
+            "manytoms_scale_transport"
+          ],
+          "distributedBodyController": {
+            "contractRef": "MVPS19.ManyTomsDistributedController",
+            "automaticAttentionPenalties": true
+          }
         }
       }
     }
@@ -599,16 +645,16 @@
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
     "authority": "owner-approved-manytoms-canonical-species-dossier-v1.0.0",
-    "sourcePath": "content-source/core26-species/manytoms/definition-v1.0.0.json",
-    "sourceDigest": "sha256:32ad399e4444b3d0d30f2f64983860fd871ffc190997591ad8148d0197476a87",
-    "sourceBundleId": "mv.content.core26.manytoms.definition-v1",
-    "sourceBundlePart": "manytoms-definition-v1.0.0",
+    "sourcePath": "content-source/core26-species/manytoms/definition-v1.1.0.json",
+    "sourceDigest": "sha256:e7d707698fed522ad92236d0f77642a213792c7e5ed177f17c7b15883f7c75e9",
+    "sourceBundleId": "mv.content.core26.manytoms.definition-v1.1",
+    "sourceBundlePart": "manytoms-definition-v1.1.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.manytoms",
-      "contentVersion": null,
-      "sourcePath": "content-source/phase-1-8-canonical-objects.json",
-      "sourceDigest": "sha256:11d3e26161a6ea1acbe8847d7c01c5f6fb09a9525dc2e2eba557d41b4c612fbb"
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/manytoms/definition-v1.0.0.json",
+      "sourceDigest": "sha256:32ad399e4444b3d0d30f2f64983860fd871ffc190997591ad8148d0197476a87"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

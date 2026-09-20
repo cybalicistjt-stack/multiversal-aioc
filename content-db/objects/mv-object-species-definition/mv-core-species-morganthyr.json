@@ -7,10 +7,10 @@
   "source": "CORE26-CURRENT-01 / Nekrons vAlpha2.PDF",
   "sourceLocator": "Nekrons vAlpha2.PDF",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_CORE26_CANONICAL_IDENTITY",
-  "reviewStatus": "CURRENT_AUTHORITY_RECONCILED",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species.morganthyr",
     "name": "Morganthyr",
     "objectType": "mv.object.species-definition",
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "canonStatus": "approved_current_identity",
     "sourceEvidence": {
       "legacyCanonicalName": "Nekron",
@@ -35,6 +35,45 @@
           "registerStableId": "mv.core.species-canon-register.morganthyr",
           "gameReadyStandard": "CORE26.GAME_READY.v1",
           "definitionSourceChain": "content-source/core26-species/morganthyr/"
+        },
+        "mvps19Mechanics": {
+          "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+          "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "baselineProfile": "terrestrial_humanoid",
+          "sizeClass": "Medium",
+          "stature": "gaunt",
+          "morphologyMarkers": [
+            "pre_ascension_humanoid"
+          ],
+          "movementModes": [
+            "walk"
+          ],
+          "senses": [
+            "ordinary_human"
+          ],
+          "physiology": {
+            "respiration": [
+              "air"
+            ],
+            "sustenance": [
+              "food",
+              "water"
+            ],
+            "rest": "sleep",
+            "environment": "ordinary_terrestrial"
+          },
+          "immunities": [],
+          "capabilities": [
+            "ascension_system_mvps20"
+          ],
+          "naturalEquipment": {
+            "weapons": [],
+            "armor": null
+          },
+          "equipmentInterfaces": [
+            "standard_humanoid"
+          ]
         }
       }
     },
@@ -49,11 +88,17 @@
   "testing": null,
   "provenance": {
     "authority": "CORE26-CURRENT-01 / Nekrons vAlpha2.PDF",
-    "sourcePath": "content-source/core26-species/morganthyr/definition-v1.0.0.json",
-    "sourceDigest": "sha256:553e38cea98d5e94097ba8ce7b6a220d583001bb463b368c7b095fa102435838",
-    "sourceBundleId": "mv.content.core26.morganthyr.definition-v1",
-    "sourceBundlePart": "morganthyr-definition-v1.0.0",
-    "sourceClass": "supplemental",
+    "sourcePath": "content-source/core26-species/morganthyr/definition-v1.1.0.json",
+    "sourceDigest": "sha256:c149d589dc094c8acbe97cf50875ae182d73f556dcd71fcd69233dccf8ddecd1",
+    "sourceBundleId": "mv.content.core26.morganthyr.definition-v1.1",
+    "sourceBundlePart": "morganthyr-definition-v1.1.0",
+    "sourceClass": "replacement",
+    "replaces": {
+      "stableId": "mv.core.species.morganthyr",
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/morganthyr/definition-v1.0.0.json",
+      "sourceDigest": "sha256:553e38cea98d5e94097ba8ce7b6a220d583001bb463b368c7b095fa102435838"
+    },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
 }

@@ -4,13 +4,13 @@
   "name": "Vespin Canon Register",
   "objectType": "mv.object.species-canon-register",
   "developmentStage": "Structured draft",
-  "source": "mv.content.core26.vespin.canon-register-v1",
-  "sourceLocator": "content-source/core26-species/vespin/register-v1.0.0.json",
+  "source": "mv.content.core26.vespin.canon-register-v1.1",
+  "sourceLocator": "content-source/core26-species/vespin/register-v1.1.0.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "",
-  "reviewStatus": "",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species-canon-register.vespin",
     "name": "Vespin Canon Register",
     "objectType": "mv.object.species-canon-register",
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "register": {
       "speciesName": "Vespin",
       "speciesDefinitionStableId": "mv.core.species.vespin",
@@ -39,6 +39,13 @@
           "title": "content-source/phase-1-8-canonical-objects.json",
           "repositoryPath": "content-source/phase-1-8-canonical-objects.json",
           "canonRole": "preexisting_source_material"
+        },
+        {
+          "role": "owner_mechanics_decision",
+          "title": "Core_26_MVPS19_Gap_Resolution_Decision_Packet_v0.1.docx",
+          "sha256": "370d0e38a9c10438f8720f3bf4e167c80dde2f1865ff6a028a2c9ca34af0d19b",
+          "repositoryDecisionRef": "governance/application-planning/player-species/MVPS-19_OWNER_DECISIONS_v1.0.0.json",
+          "canonRole": "owner_approved_mechanics_completion"
         }
       ],
       "canonDomains": {
@@ -57,6 +64,13 @@
         "requiresDefinitionVersionBumpWhenGameplayObjectChanges": true,
         "requiresOwnerApprovalForCanonPromotion": true,
         "preservePriorVersions": true
+      },
+      "mechanicsCompletion": {
+        "status": "completed_owner_approved",
+        "mvps19DecisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+        "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+        "definitionVersion": "1.1.0",
+        "preserveTypedDispatch": true
       }
     }
   },
@@ -65,11 +79,17 @@
   "testing": null,
   "provenance": {
     "authority": "Multiversal canonical source bundle",
-    "sourcePath": "content-source/core26-species/vespin/register-v1.0.0.json",
-    "sourceDigest": "sha256:48b971bbc2c06d98a5efac864af4c3210ed7cc4e75e841d8f84e7949dd758540",
-    "sourceBundleId": "mv.content.core26.vespin.canon-register-v1",
-    "sourceBundlePart": "vespin-register-v1.0.0",
-    "sourceClass": "supplemental",
+    "sourcePath": "content-source/core26-species/vespin/register-v1.1.0.json",
+    "sourceDigest": "sha256:88cca0c667bb93d2805f3d82abbaa150c957ebd07b6711609584afbdcc777832",
+    "sourceBundleId": "mv.content.core26.vespin.canon-register-v1.1",
+    "sourceBundlePart": "vespin-register-v1.1.0",
+    "sourceClass": "replacement",
+    "replaces": {
+      "stableId": "mv.core.species-canon-register.vespin",
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/vespin/register-v1.0.0.json",
+      "sourceDigest": "sha256:48b971bbc2c06d98a5efac864af4c3210ed7cc4e75e841d8f84e7949dd758540"
+    },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
 }

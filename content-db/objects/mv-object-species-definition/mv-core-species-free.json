@@ -7,10 +7,10 @@
   "source": "phase-1-8-canonical-objects",
   "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "CORE26_CURRENT_AUTHORITY_RECONCILIATION",
-  "reviewStatus": "CURRENT_AUTHORITY_RECONCILED",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -25,7 +25,7 @@
       "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
       "ingestedFromMember": "index.json"
     },
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "extensions": {
       "app.multiversal.aioc": {
         "speciesCanonRegister": {
@@ -33,6 +33,47 @@
           "registerStableId": "mv.core.species-canon-register.the-free",
           "gameReadyStandard": "CORE26.GAME_READY.v1",
           "definitionSourceChain": "content-source/core26-species/the-free/"
+        },
+        "mvps19Mechanics": {
+          "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+          "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "baselineProfile": "synthetic_humanoid",
+          "sizeClass": "Medium",
+          "stature": "variable_humanoid",
+          "morphologyMarkers": [
+            "synthetic_humanoid"
+          ],
+          "movementModes": [
+            "walk"
+          ],
+          "senses": [
+            "ordinary_playable"
+          ],
+          "physiology": {
+            "respiration": [],
+            "sustenance": [
+              "energy",
+              "maintenance"
+            ],
+            "rest": "maintenance_rest_cycle",
+            "environment": "synthetic_baseline"
+          },
+          "immunities": [
+            "poison",
+            "disease"
+          ],
+          "capabilities": [
+            "synthetic_body"
+          ],
+          "naturalEquipment": {
+            "weapons": [],
+            "armor": null
+          },
+          "equipmentInterfaces": [
+            "standard_humanoid",
+            "implant_hardware_owner"
+          ]
         }
       }
     }
@@ -44,16 +85,16 @@
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
     "authority": "phase-1-8-canonical-objects",
-    "sourcePath": "content-source/core26-species/the-free/definition-v1.0.0.json",
-    "sourceDigest": "sha256:234ae32334dbdd44927dd352ffbfd6499410763be8fdd872edcbd21749cd284f",
-    "sourceBundleId": "mv.content.core26.the-free.definition-v1",
-    "sourceBundlePart": "the-free-definition-v1.0.0",
+    "sourcePath": "content-source/core26-species/the-free/definition-v1.1.0.json",
+    "sourceDigest": "sha256:f752c141cbd866a4cd9e6a7e8b57019882e4bf5333169f835111096a72e89296",
+    "sourceBundleId": "mv.content.core26.the-free.definition-v1.1",
+    "sourceBundlePart": "the-free-definition-v1.1.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.free",
-      "contentVersion": null,
-      "sourcePath": "content-source/phase-1-8-canonical-objects.json",
-      "sourceDigest": "sha256:11d3e26161a6ea1acbe8847d7c01c5f6fb09a9525dc2e2eba557d41b4c612fbb"
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/the-free/definition-v1.0.0.json",
+      "sourceDigest": "sha256:234ae32334dbdd44927dd352ffbfd6499410763be8fdd872edcbd21749cd284f"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

@@ -4,13 +4,13 @@
   "name": "Arborae Canon Register",
   "objectType": "mv.object.species-canon-register",
   "developmentStage": "Structured draft",
-  "source": "mv.content.core26.arborae.canon-register-v1",
-  "sourceLocator": "content-source/core26-species/arborae/register-v1.0.0.json",
+  "source": "mv.content.core26.arborae.canon-register-v1.1",
+  "sourceLocator": "content-source/core26-species/arborae/register-v1.1.0.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "",
-  "reviewStatus": "",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species-canon-register.arborae",
     "name": "Arborae Canon Register",
     "objectType": "mv.object.species-canon-register",
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "register": {
       "speciesName": "Arborae",
       "speciesDefinitionStableId": "mv.core.species.arborae",
@@ -39,6 +39,13 @@
           "title": "content-source/phase-1-8-canonical-objects.json",
           "repositoryPath": "content-source/phase-1-8-canonical-objects.json",
           "canonRole": "preexisting_source_material"
+        },
+        {
+          "role": "owner_mechanics_decision",
+          "title": "Core_26_MVPS19_Gap_Resolution_Decision_Packet_v0.1.docx",
+          "sha256": "370d0e38a9c10438f8720f3bf4e167c80dde2f1865ff6a028a2c9ca34af0d19b",
+          "repositoryDecisionRef": "governance/application-planning/player-species/MVPS-19_OWNER_DECISIONS_v1.0.0.json",
+          "canonRole": "owner_approved_mechanics_completion"
         }
       ],
       "canonDomains": {
@@ -57,6 +64,13 @@
         "requiresDefinitionVersionBumpWhenGameplayObjectChanges": true,
         "requiresOwnerApprovalForCanonPromotion": true,
         "preservePriorVersions": true
+      },
+      "mechanicsCompletion": {
+        "status": "completed_owner_approved",
+        "mvps19DecisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+        "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+        "definitionVersion": "1.1.0",
+        "preserveTypedDispatch": true
       }
     }
   },
@@ -65,11 +79,17 @@
   "testing": null,
   "provenance": {
     "authority": "Multiversal canonical source bundle",
-    "sourcePath": "content-source/core26-species/arborae/register-v1.0.0.json",
-    "sourceDigest": "sha256:ecac92c1b19dc4d1d391bc1c219143b17a185e20aacd9fa99a73a2bd54105796",
-    "sourceBundleId": "mv.content.core26.arborae.canon-register-v1",
-    "sourceBundlePart": "arborae-register-v1.0.0",
-    "sourceClass": "supplemental",
+    "sourcePath": "content-source/core26-species/arborae/register-v1.1.0.json",
+    "sourceDigest": "sha256:cb927105b8df90bbc3c0a585b2f0d9ada0e7afa81d8f0ae4fe9f071b4a0eac23",
+    "sourceBundleId": "mv.content.core26.arborae.canon-register-v1.1",
+    "sourceBundlePart": "arborae-register-v1.1.0",
+    "sourceClass": "replacement",
+    "replaces": {
+      "stableId": "mv.core.species-canon-register.arborae",
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/arborae/register-v1.0.0.json",
+      "sourceDigest": "sha256:ecac92c1b19dc4d1d391bc1c219143b17a185e20aacd9fa99a73a2bd54105796"
+    },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
 }

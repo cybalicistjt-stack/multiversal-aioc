@@ -7,10 +7,10 @@
   "source": "phase-1-8-canonical-objects",
   "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "CORE26_CURRENT_AUTHORITY_RECONCILIATION",
-  "reviewStatus": "CURRENT_AUTHORITY_RECONCILED",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -25,7 +25,7 @@
       "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
       "ingestedFromMember": "index.json"
     },
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "extensions": {
       "app.multiversal.aioc": {
         "speciesCanonRegister": {
@@ -33,6 +33,67 @@
           "registerStableId": "mv.core.species-canon-register.vespin",
           "gameReadyStandard": "CORE26.GAME_READY.v1",
           "definitionSourceChain": "content-source/core26-species/vespin/"
+        },
+        "mvps19Mechanics": {
+          "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+          "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "baselineProfile": "insectoid_biped",
+          "sizeClass": "Medium",
+          "stature": "four_arm_winged",
+          "morphologyMarkers": [
+            "four_arms",
+            "two_legs",
+            "compound_eyes",
+            "antennae",
+            "gossamer_wings",
+            "abdomen",
+            "stinger"
+          ],
+          "movementModes": [
+            "walk",
+            "flight"
+          ],
+          "senses": [
+            "compound_eye_hook",
+            "antenna_hook"
+          ],
+          "physiology": {
+            "respiration": [
+              "source_profile"
+            ],
+            "sustenance": [
+              "source_profile"
+            ],
+            "rest": "source_profile",
+            "environment": "ordinary_playable_unless_overridden"
+          },
+          "immunities": [],
+          "capabilities": [
+            "flight"
+          ],
+          "naturalEquipment": {
+            "weapons": [
+              "stinger"
+            ],
+            "armor": "source_bound_light_exoskeleton",
+            "stinger": {
+              "systemRef": "mv.core.trait.vespin.stinger",
+              "sourceSystem": "Vespin vAlpha2.PDF",
+              "progressionHandling": "preserve_existing_system_mvps20_progression_binding",
+              "sourceRuleCandidates": [
+                "mv.rule.feats-perks.88f04572",
+                "mv.rule.necrotic-injector-400-xp-upgrade-vital-draining.c6e39641",
+                "mv.rule.phantom-wasp-range.b7b7e0ad",
+                "mv.rule.surge-increases.66a86756"
+              ]
+            }
+          },
+          "equipmentInterfaces": [
+            "four_arm_tooling",
+            "wing_back_clearance",
+            "abdomen_stinger_clearance"
+          ]
         }
       }
     }
@@ -44,16 +105,16 @@
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
     "authority": "phase-1-8-canonical-objects",
-    "sourcePath": "content-source/core26-species/vespin/definition-v1.0.0.json",
-    "sourceDigest": "sha256:d5e6e8dcb7891bccddf2be1aa20fa7b5faccfaee336c9b0e7349f2040d42b9be",
-    "sourceBundleId": "mv.content.core26.vespin.definition-v1",
-    "sourceBundlePart": "vespin-definition-v1.0.0",
+    "sourcePath": "content-source/core26-species/vespin/definition-v1.1.0.json",
+    "sourceDigest": "sha256:80962150b09af2be494bff94ca4d5ef1a7515df8db5ac85c063974053cd65879",
+    "sourceBundleId": "mv.content.core26.vespin.definition-v1.1",
+    "sourceBundlePart": "vespin-definition-v1.1.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.vespin",
-      "contentVersion": null,
-      "sourcePath": "content-source/phase-1-8-canonical-objects.json",
-      "sourceDigest": "sha256:11d3e26161a6ea1acbe8847d7c01c5f6fb09a9525dc2e2eba557d41b4c612fbb"
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/vespin/definition-v1.0.0.json",
+      "sourceDigest": "sha256:d5e6e8dcb7891bccddf2be1aa20fa7b5faccfaee336c9b0e7349f2040d42b9be"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
