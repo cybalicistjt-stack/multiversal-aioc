@@ -1,0 +1,162 @@
+{
+  "format": "multiversal-canonical-content-source",
+  "status": "owner-authorized-canonical-replacement",
+  "bundleId": "mv.content.core26.vespin.definition-v1.2",
+  "authority": {
+    "ownerDirective": "MVPS-20 owner-authorized execution under OPS3",
+    "decisionSet": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+    "bundlePart": "vespin-definition-v1.2.0"
+  },
+  "records": [
+    {
+      "databaseId": "mv.core.species.vespin",
+      "stableId": "mv.core.species.vespin",
+      "name": "Vespin",
+      "objectType": "mv.object.species-definition",
+      "developmentStage": "Structured draft",
+      "source": "phase-1-8-canonical-objects",
+      "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
+      "promotionDecision": "OWNER_AUTHORIZED_MVPS20_OPTIONAL_DIMENSION_COMPLETION",
+      "reviewStatus": "APPROVED",
+      "contentVersion": "1.2.0",
+      "replacementOf": {
+        "stableId": "mv.core.species.vespin",
+        "expectedContentVersion": "1.1.0"
+      },
+      "manualEntry": null,
+      "gameObject": {
+        "id": "mv.core.species.vespin",
+        "name": "Vespin",
+        "objectType": "mv.object.species-definition",
+        "provenance": {
+          "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
+          "ingestedFromMember": "index.json"
+        },
+        "contentVersion": "1.2.0",
+        "extensions": {
+          "app.multiversal.aioc": {
+            "speciesCanonRegister": {
+              "authorityId": "CORE26-CURRENT-01",
+              "registerStableId": "mv.core.species-canon-register.vespin",
+              "gameReadyStandard": "CORE26.GAME_READY.v1",
+              "definitionSourceChain": "content-source/core26-species/vespin/"
+            },
+            "mvps19Mechanics": {
+              "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+              "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+              "dispatchRule": "typed_data_not_species_name",
+              "baselineProfile": "insectoid_biped",
+              "sizeClass": "Medium",
+              "stature": "four_arm_winged",
+              "morphologyMarkers": [
+                "four_arms",
+                "two_legs",
+                "compound_eyes",
+                "antennae",
+                "gossamer_wings",
+                "abdomen",
+                "stinger"
+              ],
+              "movementModes": [
+                "walk",
+                "flight"
+              ],
+              "senses": [
+                "compound_eye_hook",
+                "antenna_hook"
+              ],
+              "physiology": {
+                "respiration": [
+                  "source_profile"
+                ],
+                "sustenance": [
+                  "source_profile"
+                ],
+                "rest": "source_profile",
+                "environment": "ordinary_playable_unless_overridden"
+              },
+              "immunities": [],
+              "capabilities": [
+                "flight"
+              ],
+              "naturalEquipment": {
+                "weapons": [
+                  "stinger"
+                ],
+                "armor": "source_bound_light_exoskeleton",
+                "stinger": {
+                  "systemRef": "mv.core.trait.vespin.stinger",
+                  "sourceSystem": "Vespin vAlpha2.PDF",
+                  "progressionHandling": "preserve_existing_system_mvps20_progression_binding",
+                  "sourceRuleCandidates": [
+                    "mv.rule.feats-perks.88f04572",
+                    "mv.rule.necrotic-injector-400-xp-upgrade-vital-draining.c6e39641",
+                    "mv.rule.phantom-wasp-range.b7b7e0ad",
+                    "mv.rule.surge-increases.66a86756"
+                  ]
+                }
+              },
+              "equipmentInterfaces": [
+                "four_arm_tooling",
+                "wing_back_clearance",
+                "abdomen_stinger_clearance"
+              ]
+            },
+            "mvps20OptionalDimensions": {
+              "matrixRef": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+              "bindingSetRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+              "dispatchRule": "typed_data_not_species_name",
+              "definitionVersion": "1.2.0",
+              "dimensionStatus": {
+                "lineage_subspecies": {
+                  "applicability": "not_applicable_current_canon",
+                  "state": "explicit_not_applicable",
+                  "contractRef": "MVPS.LineageComposition",
+                  "bindingRef": null,
+                  "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+                  "sourceRefs": [
+                    "content-source/core26-species/vespin/definition-v1.1.0.json"
+                  ]
+                },
+                "forms_transformation": {
+                  "applicability": "not_applicable_current_canon",
+                  "state": "explicit_not_applicable",
+                  "contractRef": "MVPS.TransformationSemantics",
+                  "bindingRef": null,
+                  "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+                  "sourceRefs": [
+                    "content-source/core26-species/vespin/definition-v1.1.0.json"
+                  ]
+                },
+                "progression_maturation": {
+                  "applicability": "applicable",
+                  "state": "governed",
+                  "contractRef": "MVPS.SpeciesProgressionHook",
+                  "bindingRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Vespin.progression_maturation",
+                  "basis": "source_backed_special_binding",
+                  "sourceRefs": [
+                    "governance/application-planning/player-species/MVPS-19_VESPIN_STINGER_SYSTEM_BINDING_v1.0.0.json",
+                    "Vespin vAlpha2.PDF"
+                  ]
+                },
+                "social_language_knowledge": {
+                  "state": "governed",
+                  "socialContract": "MVPS.SpeciesSocialIdentityHook",
+                  "languageContract": "MVPS.SpeciesLanguageCommunicationHook",
+                  "knowledgeVisibilityContract": "MVPS.SpeciesIdentityKnowledgeHook",
+                  "cultureIsBiology": false,
+                  "biologicalCommunicationDistinctFromLearnedLanguage": true,
+                  "learnedLanguagePolicy": "explicit_source_rule_required_no_inference",
+                  "observerIdentityProjection": "permission_filtered_knowledge_projection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "validation": null,
+      "balance": null,
+      "testing": null
+    }
+  ]
+}

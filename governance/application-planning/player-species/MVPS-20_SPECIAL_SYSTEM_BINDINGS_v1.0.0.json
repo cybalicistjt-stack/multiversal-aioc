@@ -1,0 +1,242 @@
+{
+  "schema_version": "1.0.0",
+  "binding_set_id": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+  "status": "SOURCE_BACKED_CURRENT_CANON_BINDINGS",
+  "authority_refs": [
+    "CORE26-CURRENT-01",
+    "CORE26.GAME_READY.v1",
+    "MVPS19.CORE26.OWNER_DECISIONS.v1",
+    "MVPS19.CORE26.MECHANICS.v1"
+  ],
+  "contracts": {
+    "lineage_subspecies": "MVPS.LineageComposition",
+    "forms": "MVPS.FormDefinition",
+    "transformation": "MVPS.TransformationSemantics",
+    "progression": "MVPS.SpeciesProgressionHook",
+    "maturation": "MVPS.SpeciesMaturationEventHook",
+    "social": "MVPS.SpeciesSocialIdentityHook",
+    "language": "MVPS.SpeciesLanguageCommunicationHook",
+    "knowledge": "MVPS.SpeciesIdentityKnowledgeHook"
+  },
+  "global_boundaries": {
+    "dispatch_rule": "typed_data_not_species_name",
+    "missing_source": "explicit_no_fabrication",
+    "culture_is_biology": false,
+    "learned_language_is_immutable_biology": false,
+    "biological_communication_distinct_from_learned_language": true,
+    "observer_knowledge_may_restrict_identity_projection": true
+  },
+  "bindings": {
+    "Giantkin": {
+      "lineage_subspecies": {
+        "contract_ref": "MVPS.LineageComposition",
+        "values": [
+          "Grendelkin",
+          "Surtrborn",
+          "Daityr"
+        ],
+        "forbidden_legacy_labels": [
+          "Skyborn",
+          "Stoneborn",
+          "Flameborn"
+        ],
+        "source_refs": [
+          "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-021",
+          "governance/application-planning/character-appearance-production/CAPP-01_COMPLETION_REPORT.md"
+        ]
+      }
+    },
+    "Ratman": {
+      "lineage_subspecies": {
+        "contract_ref": "MVPS.LineageComposition",
+        "values": [
+          "Rattori",
+          "Nybra",
+          "Rattakar",
+          "Ratborn",
+          "Chitta",
+          "Taipanua",
+          "Ska",
+          "Muridian",
+          "Raughtt"
+        ],
+        "taxonomy_rank": "subordinate_lineage_or_subspecies_candidate",
+        "peer_core_species": false,
+        "raughtt_established_facts": [
+          "proper",
+          "aristocratic",
+          "Dominix"
+        ],
+        "exact_rank_and_detailed_biology": "source_bounded",
+        "source_refs": [
+          "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json#ratman"
+        ]
+      }
+    },
+    "Moravi": {
+      "lineage_subspecies": {
+        "contract_ref": "MVPS.LineageComposition",
+        "source_bounded_subspecies": true,
+        "detail_state": "relationship_is_source_backed; exact promoted subtype set remains source-bounded",
+        "source_refs": [
+          "governance/application-planning/parallel-preimplementation/PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md#section-7",
+          "v2/audit-data/semantic-recovery-v4/semantic-validation-tranche-05/species-validation-01.json"
+        ]
+      }
+    },
+    "Traiga": {
+      "lineage_subspecies": {
+        "contract_ref": "MVPS.LineageComposition",
+        "source_bounded_variants": true,
+        "detail_state": "source-backed variant/subspecies relationship without invented enumeration",
+        "source_refs": [
+          "governance/application-planning/parallel-preimplementation/PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md#section-7",
+          "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-009"
+        ]
+      },
+      "progression_maturation": {
+        "progression_contract_ref": "MVPS.SpeciesProgressionHook",
+        "source_bounded_adaptations": true,
+        "acquisition_owner": "Character/Progression owning domain",
+        "adaptation_execution_owner": "shared Ability/Effect/Condition/Resource owners",
+        "no_inline_cost_or_unlock_engine": true,
+        "source_refs": [
+          "governance/application-planning/parallel-preimplementation/PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md#section-7",
+          "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-009"
+        ]
+      }
+    },
+    "Stygian": {
+      "forms_transformation": {
+        "form_contract_ref": "MVPS.FormDefinition",
+        "transformation_contract_ref": "MVPS.TransformationSemantics",
+        "binding_kind": "conditional_functional_or_vestigial_wing_state",
+        "appearance_grants_flight": false,
+        "functionality_owner": "upstream morphology/capability state",
+        "source_refs": [
+          "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-001",
+          "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-002"
+        ]
+      }
+    },
+    "Vespin": {
+      "progression_maturation": {
+        "progression_contract_ref": "MVPS.SpeciesProgressionHook",
+        "base_trait_ref": "mv.core.trait.vespin.stinger",
+        "canonical_mutation_owner": "Character/Progression owning domain",
+        "preserve_existing_stinger_system": true,
+        "purchase_semantics": "shared_progression_owner_reference_and_handoff_only",
+        "source_rule_candidates": [
+          "mv.rule.feats-perks.88f04572",
+          "mv.rule.necrotic-injector-400-xp-upgrade-vital-draining.c6e39641",
+          "mv.rule.phantom-wasp-range.b7b7e0ad",
+          "mv.rule.surge-increases.66a86756"
+        ],
+        "source_refs": [
+          "governance/application-planning/player-species/MVPS-19_VESPIN_STINGER_SYSTEM_BINDING_v1.0.0.json",
+          "Vespin vAlpha2.PDF"
+        ]
+      }
+    },
+    "Kola-Ha": {
+      "forms_transformation": {
+        "contract_ref": "MVPS.FormDefinition",
+        "transformation_contract_ref": "MVPS.TransformationSemantics",
+        "biological_modification": true,
+        "form_scope": [
+          "physical",
+          "sensory",
+          "psychic",
+          "environmental"
+        ],
+        "duration_range": "temporary_adaptation_to_permanent_symbiotic_evolution",
+        "generic_equipment": false,
+        "source_refs": [
+          "governance/application-planning/parallel-preimplementation/PPIA-05_REFERENCE_CASES_v0.1.0.json#PPIA05-RC-011",
+          "Kola-Ha Bioengineering.PDF",
+          "Kola-Ha vAlpha2.PDF"
+        ]
+      }
+    },
+    "Mythragara": {
+      "forms_transformation": {
+        "form_definition_ref": "MVPS.FormDefinition",
+        "contract_ref": "MVPS.TransformationSemantics",
+        "source_forms": "source_defined_available_forms",
+        "authored_identity_surfaces": [
+          "base_humanoid",
+          "authorized_animal_forms"
+        ],
+        "derived_profile": "hybrid",
+        "reusable_form_distinct_from_current_form": true,
+        "source_refs": [
+          "governance/application-planning/parallel-preimplementation/PPIA-05_REFERENCE_CASES_v0.1.0.json#PPIA05-RC-007",
+          "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-008",
+          "Mythragara vAlpha2.PDF"
+        ]
+      }
+    },
+    "Suula": {
+      "forms_transformation": {
+        "contract_ref": "MVPS.TransformationSemantics",
+        "known_or_acquired_distinct_from_active_state": true,
+        "persistent_markers_are_history": true,
+        "source_refs": [
+          "governance/application-planning/parallel-preimplementation/PPIA-05_REFERENCE_CASES_v0.1.0.json#PPIA05-RC-009",
+          "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-011",
+          "Suula.PDF"
+        ]
+      },
+      "progression_maturation": {
+        "progression_contract_ref": "MVPS.SpeciesProgressionHook",
+        "xp_purchased_adaptations": true,
+        "supports_learning": true,
+        "supports_swapping": true,
+        "incompatibilities_governed": true,
+        "canonical_mutation_owner": "Character/Progression owning domain",
+        "source_refs": [
+          "governance/application-planning/parallel-preimplementation/PPIA-05_REFERENCE_CASES_v0.1.0.json#PPIA05-RC-009",
+          "Suula.PDF"
+        ]
+      }
+    },
+    "Morganthyr": {
+      "forms_transformation": {
+        "contract_ref": "MVPS.TransformationSemantics",
+        "current_species_name": "Morganthyr",
+        "historical_source_aliases": [
+          "Nekron",
+          "Nekrons"
+        ],
+        "outcomes": [
+          "Revenant",
+          "Sanguivore",
+          "Fragmentarii"
+        ],
+        "legacy_descriptors": [
+          "Skeletal",
+          "Vampiric",
+          "Shardmind"
+        ],
+        "transition_count_max": 1,
+        "base_identity_history_preserved": true,
+        "source_refs": [
+          "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-012",
+          "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json#identity_migrations"
+        ]
+      }
+    },
+    "ManyToms": {
+      "lineage_subspecies": {
+        "contract_ref": "MVPS.LineageComposition",
+        "source_bounded_variants": true,
+        "detail_state": "source-backed variant/subspecies/adaptation relationship; do not infer independent minds or peer species",
+        "distributed_controller_ref": "MVPS19.ManyTomsDistributedController",
+        "source_refs": [
+          "governance/application-planning/parallel-preimplementation/PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md#section-7",
+          "content-source/core26-species/manytoms/definition-v1.1.0.json"
+        ]
+      }
+    }
+  }
+}

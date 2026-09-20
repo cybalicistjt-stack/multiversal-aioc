@@ -1,0 +1,1449 @@
+{
+  "schema_version": "1.0.0",
+  "matrix_id": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+  "status": "CURRENT_CORE26_MVPS20_COMPLETION_MATRIX",
+  "authority_ref": "CORE26-CURRENT-01",
+  "standard_ref": "CORE26.GAME_READY.v1",
+  "predecessor_refs": [
+    "MVPS19.CORE26.OWNER_DECISIONS.v1",
+    "MVPS19.CORE26.MECHANICS.v1"
+  ],
+  "contracts": {
+    "lineage_subspecies": "MVPS.LineageComposition",
+    "forms_transformation": "MVPS.FormDefinition + MVPS.TransformationSemantics",
+    "progression_maturation": "MVPS.SpeciesProgressionHook + MVPS.SpeciesMaturationEventHook",
+    "social_language_knowledge": "MVPS.SpeciesSocialIdentityHook + MVPS.SpeciesLanguageCommunicationHook + MVPS.SpeciesIdentityKnowledgeHook"
+  },
+  "dimensions": [
+    "lineage_subspecies",
+    "forms_transformation",
+    "progression_maturation",
+    "social_language_knowledge"
+  ],
+  "interpretation": {
+    "not_applicable_current_canon": "No current source-backed executable hook is identified for this species/dimension. This is a current-canon applicability receipt, not a claim that future canon may never add one.",
+    "governed": "Source-backed dimension is bound to shared MVPS/shared-owner contracts without species-name runtime dispatch.",
+    "missing_source": "Must remain explicit; matrix completeness never authorizes invented content."
+  },
+  "species": [
+    {
+      "species": "Human",
+      "slug": "human",
+      "stable_id": "mv.core.species.human",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/human/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/human/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/human/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/human/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Elf",
+      "slug": "elf",
+      "stable_id": "mv.core.species.elf",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/elf/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/elf/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/elf/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/elf/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Dwarf",
+      "slug": "dwarf",
+      "stable_id": "mv.core.species.dwarf",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/dwarf/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/dwarf/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/dwarf/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/dwarf/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Goblin",
+      "slug": "goblin",
+      "stable_id": "mv.core.species.goblin",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/goblin/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/goblin/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/goblin/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/goblin/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Orc",
+      "slug": "orc",
+      "stable_id": "mv.core.species.orc",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/orc/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/orc/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/orc/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/orc/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Giantkin",
+      "slug": "giantkin",
+      "stable_id": "mv.core.species.giantkin",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "applicable",
+          "state": "governed",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Giantkin.lineage_subspecies",
+          "basis": "source_backed_special_binding",
+          "source_refs": [
+            "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-021",
+            "governance/application-planning/character-appearance-production/CAPP-01_COMPLETION_REPORT.md"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/giantkin/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/giantkin/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/giantkin/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Stygian",
+      "slug": "stygian",
+      "stable_id": "mv.core.species.stygian",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/stygian/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "applicable",
+          "state": "governed",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Stygian.forms_transformation",
+          "basis": "source_backed_special_binding",
+          "source_refs": [
+            "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-001",
+            "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-002"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/stygian/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/stygian/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Sharr",
+      "slug": "sharr",
+      "stable_id": "mv.core.species.sharr",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/sharr/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/sharr/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/sharr/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/sharr/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Gray",
+      "slug": "gray",
+      "stable_id": "mv.core.species.gray",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/gray/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/gray/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/gray/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/gray/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "The Free",
+      "slug": "the-free",
+      "stable_id": "mv.core.species.free",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/the-free/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/the-free/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/the-free/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/the-free/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Ratman",
+      "slug": "ratman",
+      "stable_id": "mv.core.species.ratmen",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "applicable",
+          "state": "governed",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Ratman.lineage_subspecies",
+          "basis": "source_backed_special_binding",
+          "source_refs": [
+            "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json#ratman"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/ratman/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/ratman/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/ratman/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Furashin",
+      "slug": "furashin",
+      "stable_id": "mv.core.species.furashin",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/furashin/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/furashin/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/furashin/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/furashin/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Rog",
+      "slug": "rog",
+      "stable_id": "mv.core.species.rog",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/rog/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/rog/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/rog/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/rog/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Rohai",
+      "slug": "rohai",
+      "stable_id": "mv.core.species.rohai",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/rohai/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/rohai/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/rohai/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/rohai/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Moravi",
+      "slug": "moravi",
+      "stable_id": "mv.core.species.moravi",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "applicable",
+          "state": "governed",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Moravi.lineage_subspecies",
+          "basis": "source_backed_special_binding",
+          "source_refs": [
+            "governance/application-planning/parallel-preimplementation/PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md#section-7",
+            "v2/audit-data/semantic-recovery-v4/semantic-validation-tranche-05/species-validation-01.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/moravi/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/moravi/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/moravi/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Vespin",
+      "slug": "vespin",
+      "stable_id": "mv.core.species.vespin",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/vespin/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/vespin/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "applicable",
+          "state": "governed",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Vespin.progression_maturation",
+          "basis": "source_backed_special_binding",
+          "source_refs": [
+            "governance/application-planning/player-species/MVPS-19_VESPIN_STINGER_SYSTEM_BINDING_v1.0.0.json",
+            "Vespin vAlpha2.PDF"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/vespin/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Rakuuta",
+      "slug": "rakuuta",
+      "stable_id": "mv.core.species.rakuuta",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/rakuuta/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/rakuuta/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/rakuuta/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/rakuuta/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Traiga",
+      "slug": "traiga",
+      "stable_id": "mv.core.species.traiga",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "applicable",
+          "state": "governed",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Traiga.lineage_subspecies",
+          "basis": "source_backed_special_binding",
+          "source_refs": [
+            "governance/application-planning/parallel-preimplementation/PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md#section-7",
+            "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-009"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/traiga/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "applicable",
+          "state": "governed",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Traiga.progression_maturation",
+          "basis": "source_backed_special_binding",
+          "source_refs": [
+            "governance/application-planning/parallel-preimplementation/PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md#section-7",
+            "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-009"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/traiga/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Kola-Ha",
+      "slug": "kola-ha",
+      "stable_id": "mv.core.species.kola-ha",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/kola-ha/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "applicable",
+          "state": "governed",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Kola-Ha.forms_transformation",
+          "basis": "source_backed_special_binding",
+          "source_refs": [
+            "governance/application-planning/parallel-preimplementation/PPIA-05_REFERENCE_CASES_v0.1.0.json#PPIA05-RC-011",
+            "Kola-Ha Bioengineering.PDF",
+            "Kola-Ha vAlpha2.PDF"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/kola-ha/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/kola-ha/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Toba-Madra",
+      "slug": "toba-madra",
+      "stable_id": "mv.core.species.toba-madra",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/toba-madra/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/toba-madra/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/toba-madra/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/toba-madra/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Arborae",
+      "slug": "arborae",
+      "stable_id": "mv.core.species.arborae",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/arborae/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/arborae/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/arborae/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/arborae/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Mythragara",
+      "slug": "mythragara",
+      "stable_id": "mv.core.species.mythragara",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/mythragara/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "applicable",
+          "state": "governed",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Mythragara.forms_transformation",
+          "basis": "source_backed_special_binding",
+          "source_refs": [
+            "governance/application-planning/parallel-preimplementation/PPIA-05_REFERENCE_CASES_v0.1.0.json#PPIA05-RC-007",
+            "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-008",
+            "Mythragara vAlpha2.PDF"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/mythragara/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/mythragara/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Suula",
+      "slug": "suula",
+      "stable_id": "mv.core.species.suula",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/suula/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "applicable",
+          "state": "governed",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Suula.forms_transformation",
+          "basis": "source_backed_special_binding",
+          "source_refs": [
+            "governance/application-planning/parallel-preimplementation/PPIA-05_REFERENCE_CASES_v0.1.0.json#PPIA05-RC-009",
+            "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-011",
+            "Suula.PDF"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "applicable",
+          "state": "governed",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Suula.progression_maturation",
+          "basis": "source_backed_special_binding",
+          "source_refs": [
+            "governance/application-planning/parallel-preimplementation/PPIA-05_REFERENCE_CASES_v0.1.0.json#PPIA05-RC-009",
+            "Suula.PDF"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/suula/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Morganthyr",
+      "slug": "morganthyr",
+      "stable_id": "mv.core.species.morganthyr",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/morganthyr/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "applicable",
+          "state": "governed",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Morganthyr.forms_transformation",
+          "basis": "source_backed_special_binding",
+          "source_refs": [
+            "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-012",
+            "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json#identity_migrations"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/morganthyr/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/morganthyr/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "ManyToms",
+      "slug": "manytoms",
+      "stable_id": "mv.core.species.manytoms",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "applicable",
+          "state": "governed",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#ManyToms.lineage_subspecies",
+          "basis": "source_backed_special_binding",
+          "source_refs": [
+            "governance/application-planning/parallel-preimplementation/PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md#section-7",
+            "content-source/core26-species/manytoms/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/manytoms/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/manytoms/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/manytoms/definition-v1.1.0.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Akwi",
+      "slug": "akwi",
+      "stable_id": "species.akwi",
+      "dispatch_rule": "typed_data_not_species_name",
+      "dimension_status": {
+        "lineage_subspecies": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.LineageComposition",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/akwi/definition-v1.1.0.json"
+          ]
+        },
+        "forms_transformation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.TransformationSemantics",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/akwi/definition-v1.1.0.json"
+          ]
+        },
+        "progression_maturation": {
+          "applicability": "not_applicable_current_canon",
+          "state": "explicit_not_applicable",
+          "contract_ref": "MVPS.SpeciesProgressionHook",
+          "binding_ref": null,
+          "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+          "source_refs": [
+            "content-source/core26-species/akwi/definition-v1.1.0.json"
+          ]
+        },
+        "social_language_knowledge": {
+          "state": "governed",
+          "social_contract": "MVPS.SpeciesSocialIdentityHook",
+          "language_contract": "MVPS.SpeciesLanguageCommunicationHook",
+          "knowledge_visibility_contract": "MVPS.SpeciesIdentityKnowledgeHook",
+          "culture_is_biology": false,
+          "biological_communication_distinct_from_learned_language": true,
+          "learned_language_policy": "explicit_source_rule_required_no_inference",
+          "observer_identity_projection": "permission_filtered_knowledge_projection",
+          "source_refs": [
+            "governance/application-planning/player-species/contracts/MVPS-11_SOCIAL_IDENTITY_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_LANGUAGE_COMMUNICATION_HOOK_CONTRACT.json",
+            "governance/application-planning/player-species/contracts/MVPS-11_KNOWLEDGE_VISIBILITY_HOOK_CONTRACT.json",
+            "content-source/core26-species/akwi/definition-v1.1.0.json"
+          ]
+        }
+      }
+    }
+  ]
+}
