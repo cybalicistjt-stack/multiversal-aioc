@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.2.0",
+  "schema_version": "3.3.0",
   "canonical_door": "operations/BOOTSTRAP.md",
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "selection_rule": "User intent selects a lane; lane state never changes the global operating contract.",
@@ -46,25 +46,26 @@
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     {
-      "id": "mvps",
-      "purpose": "Multiversal Player Species (MVPS): species as fully functioning game objects, including composition, morphology, grants, forms, adaptations, validation, projection, migration, UI/authoring and cross-system conformance.",
+      "id": "oarc",
+      "purpose": "Operational Asset Readiness Closure (OARC): game-readiness integration and certification for vehicles, mecha, spacecraft/starships, bases/platforms and their modular content without duplicating MRCS, MIB-14/D17, MERA or MBES authority.",
       "intent_examples": [
-        "continue MVPS",
-        "continue player species",
-        "implement the species object contract",
-        "work on player species game objects"
+        "continue OARC",
+        "continue operational asset readiness",
+        "make vehicles mecha ships and bases game ready",
+        "continue vehicle mecha ship base closure"
       ],
-      "current_state_source": "operations/CURRENT.json#/lanes/mvps",
+      "current_state_source": "operations/CURRENT.json#/lanes/oarc",
       "source_bundle": [
-        "CURRENT-selected MVPS work item/checkpoint",
-        "live lane execution state from ops3-lane-state/mvps",
-        "governance/application-planning/player-species/MVPS_PLAYER_SPECIES_PROGRAM.md",
-        "governance/application-planning/player-species/MVPS_PROGRAM_BACKLOG.json",
-        "Project/Feature/UI/Screen Bibles and DB-004 references named by the active MVPS item",
-        "live application repository evidence limited to active MVPS scope"
+        "CURRENT-selected OARC work item/checkpoint",
+        "live lane execution state from ops3-lane-state/oarc",
+        "governance/application-planning/operational-asset-readiness-closure/OARC_OPERATIONAL_ASSET_READINESS_CLOSURE_PROGRAM.md",
+        "governance/application-planning/operational-asset-readiness-closure/OARC_PROGRAM_BACKLOG.json",
+        "MRCS-13, MIB-14/PPIA-04/F014/D17 and other owner contracts named by the selected OARC item",
+        "MERA and MBES planning contracts only where required to preserve future-owner boundaries",
+        "live application repository evidence limited to active OARC scope"
       ],
-      "cross_lane_reads": "Consume shared owner contracts as explicit dependencies. Read MSAS/MRCS only for explicit dependencies or publication conflicts; do not mutate their selectors.",
-      "execution_state_ref": "ops3-lane-state/mvps"
+      "cross_lane_reads": "Consume MRCS definitions and existing owner contracts as explicit dependencies. Read MERA/MBES planning only to preserve reserved authority. OARC execution never pauses, replaces or rewrites MSAS or MRCS.",
+      "execution_state_ref": "ops3-lane-state/oarc"
     },
     {
       "id": "operations",
@@ -156,12 +157,14 @@
   "persistent_implementation_lanes": [
     "msas",
     "mrcs",
-    "mvps"
+    "oarc"
   ],
   "retired_lane_aliases": {
     "product-development": "Retired umbrella. Resolve explicit intent to msas, mrcs or mvps; this alias cannot select work.",
     "ui-implementation": "UISR-11 completed_verified. UISR is completed program history, not a persistent implementation lane.",
-    "player-species": "Retired alias for canonical mvps lane."
+    "player-species": "Completed MVPS program history. Player-species work no longer occupies a persistent lane; new species work requires an explicitly selected governed work item.",
+    "mvps": "Completed terminal MVPS lane/program history. It was replaced as the third persistent implementation slot by OARC on 2026-09-20.",
+    "operational-assets": "Alias for canonical oarc lane."
   },
-  "parallel_persistence_rule": "MSAS, MRCS and MVPS are independent persistent implementation lanes with separate milestone-only lane-state refs. Ordinary lane state records only start, complete exact-head prequeue GREEN, durable application publication and one post-closeout successor reseed. Intermediate repository/PR/CI/READY mechanics are not journaled. Shared-repository publication remains FIFO among immutable green READY candidates only."
+  "parallel_persistence_rule": "MSAS, MRCS and OARC are independent persistent implementation lanes with separate milestone-only lane-state refs. Ordinary lane state records only start, complete exact-head prequeue GREEN, durable application publication and one post-closeout successor reseed. Intermediate repository/PR/CI/READY mechanics are not journaled. Shared-repository publication remains FIFO among immutable green READY candidates only."
 }
