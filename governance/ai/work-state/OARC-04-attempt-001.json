@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "OARC",
+  "lane": "oarc",
+  "track": "operational-asset-readiness-closure",
+  "source_program": "OARC",
+  "work_item_id": "OARC-04",
+  "attempt_id": "OARC-04-attempt-001",
+  "title": "Operational Specialization Profiles",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "OARC-03",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "oarc_interstitial_override": "none",
+    "strict_order": "OARC-01 → OARC-02 → OARC-03 → OARC-04 → OARC-05 → OARC-06 → OARC-07",
+    "parallel_lanes": "GPR-03 and MRCS-16 remain independently selected_not_started."
+  },
+  "required_contracts": [
+    {
+      "contract_id": "OARC01.AUTHORITY_HANDOFF.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-01_AUTHORITY_HANDOFF_CONTRACT_v1.0.0.json"
+    },
+    {
+      "contract_id": "OARC02.DEFINITION_BRIDGE.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-02_DEFINITION_BRIDGE_CONTRACT_v1.0.0.json"
+    },
+    {
+      "contract_id": "OARC03.CATALOG_NORMALIZATION.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-03_CATALOG_NORMALIZATION_CONTRACT_v1.0.0.json"
+    }
+  ],
+  "objective": "Establish and validate the minimum source-backed profile data needed for ordinary vehicles, mecha, ships and bases to be playable through existing owner contracts, while leaving unsupported specialization facts unresolved and preserving future MERA/MBES boundaries.",
+  "acceptance": [
+    "Define bounded specialization profiles for vehicle, mecha, ship and base using only source-backed normalized fields and existing owner hooks.",
+    "Distinguish common operational fields from type-specific profile data rather than forcing one universal stat block.",
+    "Keep mecha heat/energy/interface, ship life-support/hangar/FTL and base facility/habitation concerns as explicit source-backed profile fields or unresolved owner hooks.",
+    "Do not invent formulas, capacities, networks, subsystem topology or construction semantics to fill sparse source rows.",
+    "Profile validation must preserve OARC-03 mixed provenance and source-insufficient classifications.",
+    "MIB-14 remains operational configuration authority; PPIA-04/F014 remains vehicle/mecha/ship operational semantics; MERA/MBES remain reserved future runtimes."
+  ],
+  "boundaries": [
+    "OARC-04 creates specialization profiles only, not a new operational runtime.",
+    "No engineering topology, dependency/failure network, diagnosis, disassembly/refit or acceptance-test runtime.",
+    "No construction, room/zone topology, utility network, habitation or settlement runtime.",
+    "No source-unspecified value becomes a default merely to make a profile complete.",
+    "GPR and MRCS lane state remains independent."
+  ],
+  "strict_successor": "OARC-05",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an OARC-specific owner Continue, fresh-read OARC-04 plus OARC01/OARC02/OARC03 contracts, MIB-14/PPIA-04 specialization owner hooks and normalized representative source records, then execute the complete bounded specialization-profile tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

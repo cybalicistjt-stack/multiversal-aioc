@@ -2,7 +2,7 @@
 
 **Program ID:** OARC  
 **Lane:** `oarc`  
-**Status:** ACTIVE — OARC-03 SELECTED_NOT_STARTED  
+**Status:** ACTIVE — OARC-04 SELECTED_NOT_STARTED  
 **Approved:** 2026-09-20  
 **Purpose:** bounded game-readiness integration and certification for vehicles, mecha, spacecraft/starships, bases/platforms and their modular content  
 **Operational authority:** only through `operations/CURRENT.json`
@@ -169,3 +169,25 @@ Causal RED: application validation run `35529025878` at `57f9a76db4c1fa3920b1ecc
 Executor-process note: during this tranche the executor over-polled healthy workflow/platform state, contrary to OPS3-11 milestone-only instrumentation rules, and initially attempted a merge-commit method that the application repository disallows. No unauthorized protected-main mutation occurred. The exact validated head was ultimately published with the repository-supported squash method. The closeout records the OPS3-11 process deviation rather than asserting full execution conformance.
 
 Fresh roadmap DAG schema 1.0.4 has no OARC override, so OARC-03 is the strict selected successor.
+
+
+## OARC-03 completed catalog-normalization result
+
+OARC-03 completed_verified on 2026-09-20. The application normalizer pins and classifies the governed operational-asset source catalogs without creating a replacement canonical catalog:
+
+- Vehicles.csv — 1,200 rows — sha256 `2edd4f50d18d7d629c1a268122d1d4846e3df364da9b9c45f666359ba0dd791c`
+- Mecha.csv — 2,117 rows — sha256 `60ff6a730f5a1d50dd4622da5d199be4f753b1933acfe9d087d5bf21b4a8bf0f`
+- Spacecraft.csv — 2,311 rows — sha256 `00ce4a9d5730ac413d22813325ff3ace7e0c7b0445e9bcd0af45aa2911962c6f`
+- Bases_Facilities.csv — 1,080 rows — sha256 `bfc80daf90be3f6b1f28e484cccc8333bb25bdc7fa66eb935e54e2b5f7c283cb`
+
+Total governed source surface: 6,708 rows.
+
+Normalization is classification and provenance preservation only. Explicit source record type controls routing. Vehicle/mecha/ship/base/facility candidates route toward MIB-14; support/item records route to MRCS-13; vehicle/mecha/ship rules-framework records route to PPIA-04/F014; unknown record types remain source-insufficient.
+
+No owner definition, live Asset, compatibility relation, parent/component relation, installed relation, salvage output, capacity, system presence or operating envelope is inferred from names, grouping or missing data. MIB-14 ownerReference stays null until an exact existing-owner binding is established.
+
+Rows containing inferred, estimated, best-judgment or completed values retain a mixed-provenance state. The Mecha Workshop representative case proves that populated fields are not automatically clean owner truth.
+
+The initial test-first candidate's workflow was cancelled when the PR head advanced, so OARC-03 does not claim a causal RED receipt. Final exact-head validation run `35529945628` passed the complete governed Linux/Windows/cross-platform gate at `8cf854839d2a03252e96f78ad5525be1e809f3e6`. Application PR #650 then passed fresh-main no-overlap integration and published through READY as `501e4c5c5359d2368f4fb4c835416a35d77aa7e4`.
+
+Fresh roadmap DAG schema 1.0.4 has no OARC override, so OARC-04 is the strict selected successor.
