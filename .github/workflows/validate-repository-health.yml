@@ -228,6 +228,12 @@ jobs:
           node scripts/build-canonical-content-database.mjs
           python3 tests/control_plane/test_mvps20_core26_optional_dimensions.py
 
+      - name: Run MVPS-21 Core-26 current presentation regeneration regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps21_core26_current_presentation.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |
