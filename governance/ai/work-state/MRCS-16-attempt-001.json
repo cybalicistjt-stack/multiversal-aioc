@@ -9,10 +9,10 @@
   "attempt_id": "MRCS-16-attempt-001",
   "title": "System Extension, House Rule, Scope, Compatibility & Override Authoring",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
   "implementation_branch": null,
-  "completed": false,
+  "completed": true,
   "selected_by_verified_predecessor": "MRCS-14",
   "selection_basis": {
     "dag_schema": "1.0.4",
@@ -36,17 +36,89 @@
     "MSAS and MVPS remain terminal completed_verified."
   ],
   "strict_successor": "MRCS-17",
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On an MRCS-specific owner Continue, fresh-read the MRCS-16 dependency closure and mrcs lane-state ref, then start and execute the bounded tranche under OPS3-11 milestone-only execution.",
+  "active_substep": "completed_verified",
+  "next_action": "MRCS-16 is completed_verified. MRCS-17 is selected_not_started under the reduced strict order; GPR-03 and OARC-03 remain independently selected_not_started and were not modified by this closeout.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 4,
+    "progress_at_last_owner_command": 3,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 4,
+      "kind": "completed_verified_candidate",
+      "evidence": "MRCS-16 causal RED run 35529134551 established the missing scoped-rule authoring seam; exact-head cross-platform GREEN run 35529840870 passed at f44fcbce6bd3c7e8c7e2746e65a1896fe452d9b4; PR 648 published through READY as application merge c9cc22ed8c3e05d415ea72a374ee1be803c2958f."
+    },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": null
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MRCS-16 implementation is durably published and this atomic closeout records completed_verified plus MRCS-17 selected_not_started."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "executor_incidents": [
+      {
+        "kind": "chat_execution_interruption",
+        "evidence": "Owner issued a second Continue while MRCS-16 remained in progress. Durable lane state stayed intact and execution resumed from the existing branch/CI evidence without replaying completed phases.",
+        "protected_main_effect": "none",
+        "recovery": "Fresh-read lane-state and live repository evidence, then resumed the same governed attempt."
+      }
+    ],
+    "note": "MRCS-16 remained one governed attempt. Deterministic failures were changed before retry: the malformed workspace separator was repaired, and Windows-only predecessor regression timing was widened from 15s to 30s without changing predecessor behavior."
+  },
+  "implementation_plan": {
+    "lane_start": "completed",
+    "red": "completed",
+    "green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "acceptance_evidence": {
+    "causal_red": {
+      "pr": 648,
+      "head": "976c05efa996755d17c4c201fb415704764b4e09",
+      "validation_run": 35529134551,
+      "conclusion": "failure",
+      "signature": "Repository health passed; focused MRCS-16 validation failed because mrcs16HouseRuleModel was intentionally absent."
+    },
+    "corrective_evidence": [
+      {
+        "validation_run": 35529301560,
+        "head": "e21ba44b8b010d7c8075452c0c57a79f53720ebd",
+        "disposition": "workspace_mount_syntax_defect",
+        "repair": "Rebuilt the MRCS workspace import/mount seam with real line separators."
+      },
+      {
+        "validation_run": 35529613882,
+        "head": "d7831c77a5d75767d8a4005f67916b8ddefb6b8a",
+        "disposition": "windows_predecessor_regression_timing",
+        "evidence": "Linux passed; Windows timed out only in existing MRCS-01 and MRCS-04 regression tests at the 15-second per-test limit.",
+        "repair": "Raised only the MRCS foundation-regression testTimeout to 30000ms; no feature or predecessor semantics changed."
+      }
+    ],
+    "green": {
+      "pr": 648,
+      "validated_head": "f44fcbce6bd3c7e8c7e2746e65a1896fe452d9b4",
+      "validation_run": 35529840870,
+      "conclusion": "success",
+      "linux": true,
+      "windows": true,
+      "deterministic_cross_platform_comparison": true,
+      "merge_method": "squash",
+      "merge_sha": "c9cc22ed8c3e05d415ea72a374ee1be803c2958f"
+    },
+    "application_ready_queue": {
+      "candidate_id": "MRCS-16-app-001",
+      "reconciled_generation": 40,
+      "ready_after_reconcile": 0
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MRCS-17",
+      "reason": "Reduced strict order is MRCS-16→MRCS-17 and the fresh dependency graph contains no MRCS interstitial override; concurrent GPR/OARC lanes remain independent."
+    }
   }
 }
