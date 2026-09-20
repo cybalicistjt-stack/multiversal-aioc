@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS3-11",
+  "title": "Execution Compression and Overinstrumentation Guard",
+  "status": "in_progress",
+  "owner_directive": "Fix overinstrumentation across the entire system from Operations V3 so every executor receives the same one-door instructions. Durable lane state is for coarse recovery milestones, not an activity log. Collapse closeout to a bounded fast path and prevent CI/job/status/queue micro-transitions from creating redundant receipts, reads, commits or narration.",
+  "reproduced_failures": [
+    "MRCS-03 completed correctly but produced a very large activity trail dominated by status reads, artifact inspections, CI/platform micro-checks, queue re-reads and lane-state receipt writes around a small number of real state transitions.",
+    "The canonical OPS3 bootstrap currently says to record a lane-state progress receipt after each material durable side effect, which encourages executors to duplicate repository/PR/CI/queue truth into the lane journal.",
+    "MRCS-03 required a second owner Continue and was correctly marked nonconforming even though product results were valid.",
+    "MRCS closeout separately recorded/inspected closeout candidate creation, prequeue validation, queue submission, integration binding, merge verification, queue reconciliation and successor reseed instead of treating these as one bounded closeout phase.",
+    "Successor reseed shape was rediscovered from another lane rather than produced deterministically by the shared lane-state helper.",
+    "This project has a months-long pattern of instrumentation/governance machinery becoming its own workload; OPS3 must explicitly optimize for fewer transitions, fewer reads and fewer durable writes."
+  ],
+  "repair_scope": [
+    "Make operations/BOOTSTRAP.md and OPERATING_CONTRACT.md explicitly prohibit overinstrumentation and define milestone receipts rather than activity receipts.",
+    "Replace generic lane-state journaling with a small state machine: selected_not_started -> in_progress -> prequeue_green -> published -> deterministic successor reseed. Ordinary attempts get no other lane-journal transitions.",
+    "Make repository/PR/CI/publication-queue state the durable evidence for intermediate mechanics; do not mirror each observation into lane state.",
+    "Add deterministic successor reseed helper so executors never inspect another lane to learn the reset shape.",
+    "Define a closeout fast path: validate closeout candidate -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No lane receipts inside that phase.",
+    "Ban lane-state writes for PR creation, CI queued/running, per-platform green, artifact inspection, queue submission, fresh-main reads, merge preparation, merge verification or queue reconciliation.",
+    "Require batching of related reads/writes and prohibit status-only microsteps from being described as material progress.",
+    "Add regression coverage based on the MRCS-03 overinstrumentation pattern and preserve the ready-then-queue architecture from OPS3-10.",
+    "Preserve MSAS-05, MRCS-04 and MVPS-13 selected_not_started throughout the repair."
+  ],
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start_candidate",
+      "evidence": "OPS3-11 start candidate freezes product starts and preserves MSAS-05, MRCS-04 and MVPS-13 while the one-door anti-overinstrumentation repair is implemented."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  },
+  "implementation_authority": true,
+  "completed": false,
+  "active_substep": "governed_start_publication",
+  "next_action": "Publish the OPS3-11 governed start through the existing READY-candidate protocol, then implement milestone-only lane state, deterministic successor reseed, closeout fast-path instructions and overinstrumentation regressions; validate and close OPS3-11 in this same owner execution."
+}

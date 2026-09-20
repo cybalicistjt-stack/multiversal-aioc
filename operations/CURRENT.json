@@ -6,17 +6,17 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 261,
+  "state_revision": 262,
   "default_lane": "msas",
-  "active_operations_work_item": null,
-  "active_operations_work_item_path": null,
+  "active_operations_work_item": "OPS3-11",
+  "active_operations_work_item_path": "operations/work-items/OPS3-11.json",
   "product_start_freeze": {
-    "active": false,
-    "reason": "OPS3-10 completed_verified after replacing early FIFO reservation/held turns with immutable READY-candidate publication, independent lane-state refs, no-release durable reconciliation, and executor/session interruption recovery discipline.",
+    "active": true,
+    "reason": "Owner-approved OPS3-11 system-wide anti-overinstrumentation repair. Product starts are temporarily frozen while the one-door contract and shared lane-state helpers are changed to milestone-only receipts and a bounded closeout fast path.",
     "preserved_selected_work_item": "MSAS-05",
     "preserved_attempt_id": "MSAS-05-attempt-001",
     "implementation_authority": false,
-    "cleared_by": "OPS3-10 completed_verified",
+    "cleared_by": null,
     "preserved_lane_selections": {
       "msas": {
         "selected_work_item": "MSAS-05",
@@ -29,18 +29,18 @@
         "state": "selected_not_started"
       },
       "mvps": {
-        "selected_work_item": "MVPS-12",
-        "attempt_id": "MVPS-12-attempt-001",
+        "selected_work_item": "MVPS-13",
+        "attempt_id": "MVPS-13-attempt-001",
         "state": "selected_not_started"
       }
     }
   },
   "lanes": {
     "operations": {
-      "state": "completed_verified",
-      "work_item_id": "OPS3-10",
-      "work_item_path": "operations/work-items/OPS3-10.json",
-      "implementation_authority": false
+      "state": "in_progress",
+      "work_item_id": "OPS3-11",
+      "work_item_path": "operations/work-items/OPS3-11.json",
+      "implementation_authority": true
     },
     "msas": {
       "state": "selected_not_started",
@@ -105,7 +105,7 @@
     "lane_state_isolation": "Live execution progress for persistent lanes is recorded on ops3-lane-state/msas, ops3-lane-state/mrcs and ops3-lane-state/mvps. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
     "executor_interruption": "A chat/tool/session interruption is an executor incident, never a project lock. Resume from the last durable lane-state receipt and fresh repository/PR evidence; do not silently wait or replay completed phases."
   },
-  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-05 is selected_not_started; MRCS-04 is selected_not_started; MVPS-13 is selected_not_started. Lane execution remains independent and only immutable green READY candidates enter shared publication order.",
+  "next_project_action": "Complete OPS3-11 anti-overinstrumentation repair from the OPS3 one door. Preserve MSAS-05, MRCS-04 and MVPS-13 selected_not_started and do not start product work until the temporary operations freeze is cleared.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
