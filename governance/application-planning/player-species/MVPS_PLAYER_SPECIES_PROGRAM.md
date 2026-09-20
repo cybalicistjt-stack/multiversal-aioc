@@ -2,7 +2,7 @@
 
 **Program ID:** MVPS  
 **Family:** Multiversal Player Species  
-**Status:** COMPLETED_VERIFIED / MVPS-16 radical-species golden proof completed_verified  
+**Status:** ACTIVE OWNER-AUTHORIZED CORE-26 PRODUCTION EXTENSION / MVPS-01…16 foundation completed_verified / MVPS-17 selected_not_started  
 **Operational authority:** none outside `operations/CURRENT.json`
 
 ## Mission
@@ -77,3 +77,17 @@ The program is grounded in the approved 2026-09-18 player-species completeness a
 MVPS-16 completed the program's common-contract proof with eight deliberately non-canon radical species fixtures: ordinary human, winged humanoid, aquatic non-humanoid, centaur-like quadruped, construct/android, multi-form shapeshifter, incorporeal being, and a radically alien hexaradial body plan. All use the same 11-workflow matrix backed by existing MVPS contracts; mandatory workflows pass, optional progression/transformation are explicit when not applicable, equipment incompatibility is a governed success path, species-name dispatch is zero, and no semantic gap remains.
 
 The persistent `mvps` OPS3 lane remains present in `completed_verified` state. MVPS-16 has no successor; future player-species work requires an explicitly selected new owner-authorized work item.
+
+## Owner-authorized Core-26 production extension
+
+On 2026-09-20 the Owner directed that the system going forward must recognize the **Core 26** as current canon and that all 26 be brought to the same game-ready standard. This does not reopen the completed MVPS-01…16 architecture proof. It creates a production/certification extension:
+
+- **MVPS-17** — Core-26 Canon Lock and Production Baseline
+- **MVPS-18** — Core-26 Canonical Object Reconciliation
+- **MVPS-19** — Core-26 Mechanics, Morphology and Environment Completion
+- **MVPS-20** — Core-26 Lineage, Form, Progression and Social Completion
+- **MVPS-21** — Core-26 Current Appearance and Presentation Regeneration
+- **MVPS-22** — Core-26 Balance, Validation and Cross-System Certification
+- **MVPS-23** — Core-26 Game-Ready Golden Proof
+
+All seven extension tranches must consume the current Core-26 authority, preserve sealed historical 25-species evidence, and apply one common certification standard to all 26 rather than allowing legacy coverage differences to define readiness.
