@@ -38,18 +38,18 @@
     "MSAS and MVPS lane state remains independent."
   ],
   "strict_successor": "MRCS-08",
-  "active_substep": "red_mechanical_advancement_authoring",
-  "next_action": "Establish causal RED for PDCP-MRCS-015 through 018 against the public MRCS workspace seam, implement the bounded owner-preserving mechanical/advancement authoring editor, then obtain exact-head prequeue GREEN.",
+  "active_substep": "ready_queue_submission",
+  "next_action": "Submit immutable MRCS-05 application candidate at exact head ed24a343e02b7c70c3e1c7b360003e0a0711612e with prequeue GREEN run 35499258424; then fresh-bind integration to application main and publish only that head.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "governed_start",
-      "evidence": "MRCS-05 started on feature/mrcs-05-mechanical-advancement-authoring from application main 79b9d4d269e63b8dc2f277ab1c43cf3db3068067 under OPS3-11 milestone-only execution."
+      "seq": 2,
+      "kind": "prequeue_green",
+      "evidence": "Exact-head MRCS-05 validation run 35499258424 passed at ed24a343e02b7c70c3e1c7b360003e0a0711612e across Linux, Windows and deterministic comparison."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
