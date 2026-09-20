@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MRCS",
+  "lane": "mrcs",
+  "track": "multiversal-rules-content-studio",
+  "source_program": "MRCS",
+  "work_item_id": "MRCS-19",
+  "attempt_id": "MRCS-19-attempt-001",
+  "title": "Import, Repair, Migration, Pack, Version, Review & Publication Lifecycle",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MRCS-17",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "reduced_strict_order": "MRCS-17 → MRCS-19 → MRCS-21",
+    "interstitial_override": "none",
+    "parallel_lanes": "GPR-05 and OARC-04 remain independently selected_not_started; MSAS-21 remains terminal completed_verified."
+  },
+  "objective": "Author the rule/content definition lifecycle and interchange seam for legacy import/repair, deterministic batch-edit preview, versioned/reversible migration where owner contracts permit, pack compilation/dependency manifests, review and permission-gated publication while deferring generic identity, rights, provenance, version/review and import-export infrastructure to ARI/PCA.",
+  "acceptance": [
+    "legacy import preserves source text and unresolved gaps rather than inventing missing semantics",
+    "batch edit previews deterministic affected-set evidence before commit",
+    "migration is versioned and reversible where the owner contract permits",
+    "Pack compilation validates dependency manifests",
+    "rights and provenance checks defer to ARI/PCA authority",
+    "publication cannot bypass approvals or permissions"
+  ],
+  "boundaries": [
+    "MRCS-19 owns rule/content domain mapping, pack compilation, dependency manifests and migration behavior; it does not create a parallel generic provenance/version/review/import-export engine.",
+    "ARI/PCA retain generic identity, source/derivative lineage, rights/use capability, provenance, version/review and import-export authority.",
+    "Legacy repair preserves source text, source values/prices, aliases/history and unresolved source gaps rather than inventing semantics.",
+    "Batch edits expose a deterministic affected-set preview before any commit path.",
+    "Migration reversibility is explicit and limited by the owning domain contract.",
+    "Unknown rights, provenance, dependencies, migration semantics or source gaps remain unresolved rather than inferred.",
+    "Publication remains approval- and permission-gated; optional AI cannot publish or canonize.",
+    "MRCS-21 remains unauthorized until separately selected; GPR and OARC lane state remains independent."
+  ],
+  "strict_successor": "MRCS-21",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an MRCS-specific owner Continue, fresh-read the MRCS-19 dependency closure and mrcs lane-state ref, then start and execute the bounded tranche under OPS3-11 milestone-only execution.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
