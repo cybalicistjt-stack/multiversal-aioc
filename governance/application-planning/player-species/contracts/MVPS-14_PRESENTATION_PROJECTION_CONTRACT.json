@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesPresentationProjection",
+  "record_type": "SpeciesPresentationProjectionContract",
+  "status": "MVPS-14_CANONICAL_CONTRACT",
+  "purpose": "Project species identity, choices, validation, provenance, grants, runtime contributions and presentation assets into builder/reference/GM surfaces without making UI a rules engine or mutation authority.",
+  "runtime_source": "MVPS.SpeciesRuntimeProjection",
+  "source_basis": [
+    "MVPS.SpeciesRuntimeProjection deterministic read-only current species contribution",
+    "MVPS.SpeciesGrantReceiptComposition source-traceable grant receipts",
+    "A4 CharacterProjectionPort permission-filtered Character workspace projection",
+    "AuthoringProjectionPort permission-filtered creator-content projection"
+  ],
+  "surface_kinds": [
+    "character_builder",
+    "gm_inspector",
+    "species_reference",
+    "authoring_preview"
+  ],
+  "projection_fields": [
+    "species_identity",
+    "exact_version_ref",
+    "lifecycle_state",
+    "validation_state",
+    "choice_state",
+    "lineage_and_form_refs",
+    "provenance_refs",
+    "source_refs",
+    "grant_receipt_refs",
+    "runtime_contribution_refs",
+    "cross_links",
+    "presentation_asset_refs"
+  ],
+  "rules_authority": {
+    "ui_executes_species_rules": false,
+    "presentation_mutates_runtime_projection": false,
+    "presentation_mutates_character_selection": false,
+    "hidden_canon_inferred": false,
+    "presentation_state_is_source_truth": false
+  },
+  "mechanical_separation": {
+    "presentation_assets_non_executable": true,
+    "labels_layout_visualization_non_authoritative": true,
+    "images_models_audio_do_not_create_mechanics": true,
+    "missing_asset_does_not_remove_canonical_mechanic": true,
+    "mechanic_changes_require_owner_record_change": true
+  },
+  "builder_projection": {
+    "consumes_governed_choice_schema_and_validation": true,
+    "unresolved_choices_remain_visible": true,
+    "incomplete_draft_saveable_when_owner_allows": true,
+    "migration_required_not_presented_as_playable": true,
+    "grant_receipts_read_only": true,
+    "runtime_contributions_read_only": true
+  },
+  "gm_inspection": {
+    "can_show_source_trace_when_authorized": true,
+    "can_show_validation_findings_when_authorized": true,
+    "can_show_migration_state_when_authorized": true,
+    "can_show_owner_handoffs_when_authorized": true,
+    "gm_view_does_not_bypass_visibility_policy": true,
+    "inspection_is_not_canonical_mutation": true
+  },
+  "permission_policy": {
+    "permission_and_character_control_checks_before_character_surface": true,
+    "creator_content_filtered_before_derived_outputs": true,
+    "hidden_fields_not_delivered_then_filtered_client_side": true,
+    "safe_unknown_or_forbidden_state_preserved": true
+  },
+  "shared_owner_handoff": {
+    "character_projection": "A4 CharacterProjectionPort",
+    "creator_content_projection": "AuthoringProjectionPort",
+    "runtime_projection": "MVPS.SpeciesRuntimeProjection",
+    "validation": "MVPS.SpeciesValidation",
+    "presentation_assets": "Presentation/Asset owners"
+  }
+}

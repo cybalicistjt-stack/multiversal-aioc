@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesSearchInspection",
+  "record_type": "SpeciesSearchInspectionContract",
+  "status": "MVPS-14_CANONICAL_CONTRACT",
+  "purpose": "Define permission-filtered species search, autocomplete, count, preview, inspection and cross-link projection so provenance/validation remain inspectable without exposing hidden content or making search a rules authority.",
+  "source_basis": [
+    "AuthoringProjectionPort derived-output authorization",
+    "KFR authoring inspection/search provenance UX filter-before-search/count/preview/AI-context behavior",
+    "MVPS.SpeciesValidation findings/provenance requirements",
+    "MVPS.SpeciesMigration exact-version historical state requirements"
+  ],
+  "permission_filtering": {
+    "filter_before_search": true,
+    "filter_before_count": true,
+    "filter_before_autocomplete": true,
+    "filter_before_preview": true,
+    "filter_before_ai_context": true,
+    "hidden_cardinality_included": false,
+    "hidden_dependency_topology_included": false,
+    "local_post_filtering_of_hidden_payload": false,
+    "derived_output_decision_receipt_required": true
+  },
+  "search_index_projection": {
+    "stable_fields": [
+      "species_id",
+      "canonical_name",
+      "aliases_when_authorized",
+      "record_version",
+      "lifecycle_state",
+      "validation_state",
+      "authorized_tags",
+      "authorized_cross_link_labels"
+    ],
+    "hidden_fields_not_indexed_for_viewer": true,
+    "deterministic_sort": [
+      "canonical_name",
+      "species_id",
+      "record_version"
+    ],
+    "query_does_not_infer_hidden_records": true,
+    "missing_provenance_not_backfilled": true
+  },
+  "inspection_projection": {
+    "required_fields": [
+      "species_id",
+      "record_version",
+      "lifecycle_state",
+      "validation_state",
+      "provenance_refs",
+      "source_refs",
+      "cross_links"
+    ],
+    "optional_fields": [
+      "validation_finding_refs",
+      "migration_discrepancy_refs",
+      "replacement_ref",
+      "lineage_refs",
+      "form_refs",
+      "adaptation_refs",
+      "runtime_projection_ref",
+      "presentation_asset_refs"
+    ],
+    "migration_state_inspectable": true,
+    "missing_or_conflicted_provenance_explicit": true,
+    "exact_version_ref_preserved": true,
+    "owner_domain_links_by_reference": true,
+    "hidden_or_forbidden_details_role_filtered": true
+  },
+  "cross_links": {
+    "stable_identity_and_version_required": true,
+    "dangling_links_surface_as_findings_not_guesses": true,
+    "permission_filter_applies_per_link": true,
+    "display_label_changes_do_not_change_target_identity": true
+  },
+  "shared_owner_handoff": {
+    "visibility_projection": "AuthoringProjectionPort",
+    "knowledge_visibility": "Knowledge/Visibility owners",
+    "provenance": "source/provenance owning records",
+    "validation": "MVPS.SpeciesValidation",
+    "migration": "MVPS.SpeciesMigration"
+  },
+  "search_engine_rule_authority_created": false,
+  "canonical_mutation_from_inspector_allowed": false
+}

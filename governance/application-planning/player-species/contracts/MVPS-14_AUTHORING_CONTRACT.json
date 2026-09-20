@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesAuthoring",
+  "record_type": "SpeciesAuthoringContract",
+  "status": "MVPS-14_CANONICAL_CONTRACT",
+  "purpose": "Define species-facing authoring intents and governed draft/validation handoffs without giving MVPS-14 direct canonical-write, publication, permission-escalation, or shared-rule execution authority.",
+  "source_basis": [
+    "MVPS.SpeciesDefinition stable identity/version/provenance and lifecycle model",
+    "MVPS.SpeciesValidation structural/behavioral/integration validation",
+    "AuthoringProjectionPort permission-filter-before-derived-output boundary",
+    "KFR authoring inspection/search provenance UX authority separation"
+  ],
+  "authority": {
+    "authoring_decision_required": true,
+    "authoring_decision_receipt_required": true,
+    "required_authority_dimension_must_match_intent": true,
+    "canonical_write_executed_by_mvps14": false,
+    "publication_performed_by_mvps14": false,
+    "permission_escalation_allowed": false,
+    "canonical_promotion_implicit": false,
+    "rule_execution_owned_by_mvps14": false
+  },
+  "intents": [
+    "create-draft",
+    "revise-draft",
+    "submit-proposal"
+  ],
+  "authoring_intent_contract": {
+    "required": [
+      "intent_id",
+      "action",
+      "target_species_ref",
+      "required_authority_dimension",
+      "source_refs",
+      "provenance_refs"
+    ],
+    "optional": [
+      "base_record_version",
+      "patch_ref",
+      "campaign_scope_ref",
+      "proposal_reason"
+    ],
+    "exact_target_identity_required_for_revision": true,
+    "hidden_target_reference_does_not_grant_access": true
+  },
+  "draft_workflow": {
+    "draft_saveable_while_incomplete": true,
+    "validation_preview_required_before_submit": true,
+    "unresolved_or_conflicted_canon_remains_explicit": true,
+    "missing_canon_may_be_fabricated": false,
+    "submit_proposal_is_not_publication": true,
+    "accepted_write_requires_owner_workflow": true
+  },
+  "editable_surfaces": [
+    "SpeciesDefinition-owned descriptive/reference fields",
+    "species-specific choice/lineage/form/adaptation references through their owner contracts",
+    "presentation asset references and labels as non-mechanical metadata",
+    "namespaced extension data subject to non-overriding policy"
+  ],
+  "forbidden_inline_authoring": [
+    "shared Ability/Action/Effect/Condition/Resource/Modifier mechanics",
+    "generic Character mutation",
+    "permission/visibility policy changes",
+    "silent exact-version replacement",
+    "hidden canon inference",
+    "direct runtime projection mutation"
+  ],
+  "derived_output_policy": {
+    "search_preview_count_autocomplete_authorized_separately": true,
+    "authoring_projection_receipt_required": true,
+    "hidden_dependency_topology_not_exposed": true
+  },
+  "shared_owner_handoff": {
+    "visibility_projection": "AuthoringProjectionPort",
+    "authoring_authority": "AuthoringAuthorityPort",
+    "validation": "MVPS.SpeciesValidation / A4 CharacterValidationPort where Character state is involved",
+    "persistence": "SpeciesDefinition/content persistence owner workflow",
+    "import_mapping": "Authoring ImportMappingPort",
+    "runtime_projection": "MVPS.SpeciesRuntimeProjection"
+  }
+}
