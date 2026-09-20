@@ -39,7 +39,7 @@ The system distinguishes baseline biology, lineage/variant, species-bounded auth
 - **Suula:** adaptation history leaves nonerasable markers; active Adaptations visibly update current appearance.
 - **Nekron:** one-time ascension into Revenant, Sanguivore or Fragmentarii; second customization derives from base.
 - **Furashin:** consciously mutable fur supports up to three simultaneous colors plus pattern/texture.
-- **ManyToms:** design one identical constituent identity and compose it as one cohesive collective.
+- **ManyToms:** design one shared constituent baseline identity for a normal twelve-Tom complement and compose it as one cohesive distributed-singular collective. Body-specific acquired variation may appear where supported; grouped/compiled presentation never creates emergent giant hands, feet, fused limbs, or larger anatomy.
 - **The Free:** very broad humanoid android grammar, but not arbitrary nonhumanoid topology.
 
 ### 4. Wardrobe and equipment are separate channels
