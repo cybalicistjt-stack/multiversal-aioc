@@ -1,8 +1,38 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 86,
-  "ready": [],
+  "generation": 87,
+  "ready": [
+    {
+      "candidate_id": "MVPS-23-app-001",
+      "lane": "mvps",
+      "work_item_id": "MVPS-23",
+      "pr_number": 1493,
+      "head_sha": "4049f437b814471d29c88bce907fb4ba7f18ac90",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "4049f437b814471d29c88bce907fb4ba7f18ac90",
+        "run_id": "35525974917"
+      },
+      "write_set": [
+        ".github/workflows/validate-repository-health.yml",
+        "governance/application-planning/player-species/MVPS-23_CORE26_GAME_READY_GOLDEN_PROOF_v1.0.0.json",
+        "scripts/check_mvps23_core26_golden_proof.py",
+        "tests/control_plane/test_mvps23_core26_game_ready_golden_proof.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "62556431c4cba3edffcc256b0a7825aa64a8bc5e",
+        "authority_id": "CORE26-CURRENT-01",
+        "standard": "CORE26.GAME_READY.v1",
+        "predecessor_matrix": "MVPS22.CORE26.CERTIFICATION.v1",
+        "species_count": 26,
+        "dimension_count": 19,
+        "application_audit_repo": "cybalicistjt-stack/Multiversal-app",
+        "application_audit_main": "e3bdef17ce2ce497d172479b81c35166af2226bb",
+        "strict_successor": null
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
