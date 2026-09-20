@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0.0",
+  "standard_id": "CORE26.GAME_READY.v1",
+  "title": "Core 26 Equal Game-Ready Species Certification Standard",
+  "status": "CURRENT_STANDARD",
+  "applies_to": [
+    "Human",
+    "Elf",
+    "Dwarf",
+    "Goblin",
+    "Orc",
+    "Giantkin",
+    "Stygian",
+    "Sharr",
+    "Gray",
+    "The Free",
+    "Ratman",
+    "Furashin",
+    "Rog",
+    "Rohai",
+    "Moravi",
+    "Vespin",
+    "Rakuuta",
+    "Traiga",
+    "Kola-Ha",
+    "Toba-Madra",
+    "Arborae",
+    "Mythragara",
+    "Suula",
+    "Morganthyr",
+    "ManyToms",
+    "Akwi"
+  ],
+  "authority_ref": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+  "equality_rule": "Every Core-26 species is measured against the same dimensions. Historical coverage, familiarity, humanoid shape, storage location or amount of recovered source material may not lower the certification bar.",
+  "dimensions": [
+    {
+      "id": "current_identity_version_provenance",
+      "requirement": "required",
+      "description": "Current canonical name/identity, exact version and provenance resolve without legacy-name ambiguity."
+    },
+    {
+      "id": "source_authority",
+      "requirement": "required",
+      "description": "Claims are sourced/owner-authorized and unresolved facts remain explicit."
+    },
+    {
+      "id": "canonical_species_definition",
+      "requirement": "required",
+      "description": "A current SpeciesDefinition or governed canonical equivalent exists and resolves through current catalogs."
+    },
+    {
+      "id": "character_creation_choices",
+      "requirement": "required",
+      "description": "Creation/selection grants, alternatives, gates and incomplete/illegal states are executable and validated."
+    },
+    {
+      "id": "morphology_body_plan",
+      "requirement": "required",
+      "description": "Body plan, limbs/manipulators, worn regions and attachment points are typed for shared consumers."
+    },
+    {
+      "id": "scale_movement_senses",
+      "requirement": "required",
+      "description": "Scale, movement and senses use shared typed capability/rules profiles."
+    },
+    {
+      "id": "physiology_lifecycle_environment",
+      "requirement": "required",
+      "description": "Executable physiology/lifecycle/environment tolerances are explicit and separate from descriptive biology."
+    },
+    {
+      "id": "capabilities_natural_equipment",
+      "requirement": "required",
+      "description": "Executable species grants and natural equipment have canonical identities and provenance."
+    },
+    {
+      "id": "equipment_vehicle_interface",
+      "requirement": "required",
+      "description": "Equipment, clothing, tools, implants, vehicles/mount interfaces produce explicit compatibility outcomes."
+    },
+    {
+      "id": "lineage_subspecies",
+      "requirement": "required_or_explicit_not_applicable",
+      "description": "Lineage/subspecies composition is governed when present; absence is explicit."
+    },
+    {
+      "id": "forms_transformation",
+      "requirement": "required_or_explicit_not_applicable",
+      "description": "Alternate forms/transformation semantics are governed when present; absence is explicit."
+    },
+    {
+      "id": "progression_maturation",
+      "requirement": "required_or_explicit_not_applicable",
+      "description": "Species progression/maturation hooks are governed when present; absence is explicit."
+    },
+    {
+      "id": "social_language_knowledge",
+      "requirement": "required",
+      "description": "Biological communication, learned language, culture, identity and observer knowledge remain correctly separated."
+    },
+    {
+      "id": "validation_migration_import_export",
+      "requirement": "required",
+      "description": "Playable/incomplete/invalid/migration states, exact-version migration and round-trip persistence are verified."
+    },
+    {
+      "id": "runtime_projection_grant_receipts",
+      "requirement": "required",
+      "description": "Runtime contribution is deterministic, source-traceable and does not corrupt base selection history."
+    },
+    {
+      "id": "authoring_search_inspection_presentation",
+      "requirement": "required",
+      "description": "Authoring/reference/search/inspection/player/GM projections are permission-aware and non-authoritative."
+    },
+    {
+      "id": "appearance_assets_accessibility",
+      "requirement": "required",
+      "description": "Current-authority appearance topology/options/assets and accessible descriptions exist or have explicit source-bounded gaps."
+    },
+    {
+      "id": "npc_creature_cross_system_reuse",
+      "requirement": "required",
+      "description": "Same species canon is reusable by NPC/Creature and campaign/combat/social/exploration/crafting adapters."
+    },
+    {
+      "id": "balance_testing_certification",
+      "requirement": "required",
+      "description": "Balance/adjudication status, integration testing and game-ready certification evidence are explicit."
+    }
+  ],
+  "certification_states": [
+    "certified",
+    "explicit_not_applicable",
+    "evidence_available_not_certified",
+    "gap",
+    "source_blocked"
+  ],
+  "certification_rule": {
+    "required_dimensions": "must be certified",
+    "required_or_explicit_not_applicable": "must be certified or carry a source-backed explicit_not_applicable receipt",
+    "overall_game_ready": "all 19 dimensions satisfy their requirement and no unresolved mandatory gap remains",
+    "no_inference": "missing canon or mechanics may not be fabricated to make a row pass"
+  },
+  "terminal_proof": "MVPS-23 must run all 26 real species records through this same standard."
+}

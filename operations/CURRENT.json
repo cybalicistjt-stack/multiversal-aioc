@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 275,
+  "state_revision": 276,
   "default_lane": "msas",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -106,7 +106,8 @@
     "executor_interruption": "A chat/tool/session interruption is an executor incident, never a project lock. Resume from the last durable lane-state receipt and fresh repository/PR evidence; do not silently wait or replay completed phases.",
     "overinstrumentation_guard": "OPS3 uses milestone receipts, not activity receipts. Repository/PR/CI/publication-queue evidence owns mechanical transitions; status reads, polling, per-platform CI results, artifact inspection, queue mechanics and merge mechanics must not create lane-state receipts or be misclassified as material progress.",
     "lane_state_milestones": "Ordinary persistent-lane execution state is selected_not_started -> in_progress -> prequeue_green -> published, followed by one deterministic successor reseed after canonical closeout. The generic lane activity-log API is prohibited.",
-    "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes."
+    "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
+    "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
   "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-12, MRCS-11 and MVPS-17 remain independently selected_not_started. Every executor must use milestone-only lane state and the OPS3-11 closeout fast path.",
   "completed_programs": {
@@ -129,6 +130,15 @@
       "implementation_branch": "work/mvps-16-radical-species-golden-proof",
       "implementation_authority": false,
       "completion_rule": "MVPS-01 through MVPS-16 foundation/architecture program remains completed_verified. Owner authorized a distinct Core-26 production/certification extension beginning at MVPS-17; the foundation closure is preserved as history and is not reopened."
+    }
+  },
+  "domain_authorities": {
+    "player_species": {
+      "path": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+      "authority_id": "CORE26-CURRENT-01",
+      "status": "current_canon",
+      "roster_count": 26,
+      "rule": "All current-authority player-species work must resolve this authority before historical species artifacts or generated catalogs."
     }
   }
 }

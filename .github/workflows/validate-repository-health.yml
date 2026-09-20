@@ -197,6 +197,13 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_mvps16_radical_species_golden_proof.py
 
+      - name: Run MVPS-17 Core-26 current-canon production baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps17_core26_current_canon_baseline.py
+          python3 tools/validate-core26-species-reconciliation.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |
