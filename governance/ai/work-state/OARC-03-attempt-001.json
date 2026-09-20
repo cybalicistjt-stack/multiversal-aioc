@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "OARC",
+  "lane": "oarc",
+  "track": "operational-asset-readiness-closure",
+  "source_program": "OARC",
+  "work_item_id": "OARC-03",
+  "attempt_id": "OARC-03-attempt-001",
+  "title": "Catalog Normalization",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "OARC-02",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "oarc_interstitial_override": "none",
+    "strict_order": "OARC-01 → OARC-02 → OARC-03 → OARC-04 → OARC-05 → OARC-06 → OARC-07",
+    "parallel_lanes": "GPR-01 and MRCS-16 remain independently selected_not_started."
+  },
+  "required_contracts": [
+    {
+      "contract_id": "OARC01.AUTHORITY_HANDOFF.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-01_AUTHORITY_HANDOFF_CONTRACT_v1.0.0.json"
+    },
+    {
+      "contract_id": "OARC02.DEFINITION_BRIDGE.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-02_DEFINITION_BRIDGE_CONTRACT_v1.0.0.json"
+    }
+  ],
+  "objective": "Normalize the real source-backed Vehicles, Mecha, Spacecraft/Starship, Bases/Facilities and associated component/item catalogs into existing MRCS/MIB-14/D17-compatible identities and references with stable provenance, while leaving source-insufficient facts explicit.",
+  "acceptance": [
+    "Enumerate governed operational-asset source registries and source counts/hashes used by normalization.",
+    "Assign each normalizable source record stable source identity, provenance and existing-owner target classification without a new OARC canonical catalog.",
+    "Use OARC02 owner-reference syntax for MIB-14-bound records.",
+    "Preserve explicit source slot/component/compatibility evidence even when current MIB-14 cannot operationalize it.",
+    "Do not infer parent-component relations, compatibility, capacities, system presence or operating envelopes from names/grouping/missing values.",
+    "Classify incomplete/unmappable rows visibly.",
+    "Keep MERA/MBES reserved runtime authority untouched."
+  ],
+  "boundaries": [
+    "OARC-03 normalizes source content only.",
+    "MRCS remains definition-authoring authority; MIB-14 operational configuration authority; D17 live Asset truth.",
+    "PPIA-04 CSV-first source authority and no-name-similarity parentage rule remain binding.",
+    "OARC02-GAP-01 and OARC02-GAP-02 remain visible.",
+    "GPR and MRCS lane state remains independent."
+  ],
+  "strict_successor": "OARC-04",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an OARC-specific owner Continue, fresh-read OARC-03, OARC01.AUTHORITY_HANDOFF.v1, OARC02.DEFINITION_BRIDGE.v1, PPIA-04/source coverage authorities and actual operational-asset source registries, then execute the complete bounded catalog-normalization tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
