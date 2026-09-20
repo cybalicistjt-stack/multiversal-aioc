@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "OARC",
+  "lane": "oarc",
+  "track": "operational-asset-readiness-closure",
+  "source_program": "OARC",
+  "work_item_id": "OARC-05",
+  "attempt_id": "OARC-05-attempt-001",
+  "title": "Containment & Large-Asset Relationships",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "OARC-04",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "oarc_interstitial_override": "none",
+    "strict_order": "OARC-01 → OARC-02 → OARC-03 → OARC-04 → OARC-05 → OARC-06 → OARC-07",
+    "parallel_lanes": "GPR-06 and MRCS-19 remain independently selected_not_started."
+  },
+  "required_contracts": [
+    {
+      "contract_id": "OARC01.AUTHORITY_HANDOFF.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-01_AUTHORITY_HANDOFF_CONTRACT_v1.0.0.json"
+    },
+    {
+      "contract_id": "OARC02.DEFINITION_BRIDGE.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-02_DEFINITION_BRIDGE_CONTRACT_v1.0.0.json"
+    },
+    {
+      "contract_id": "OARC03.CATALOG_NORMALIZATION.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-03_CATALOG_NORMALIZATION_CONTRACT_v1.0.0.json"
+    },
+    {
+      "contract_id": "OARC04.OPERATIONAL_SPECIALIZATION_PROFILES.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-04_OPERATIONAL_SPECIALIZATION_PROFILES_CONTRACT_v1.0.0.json"
+    }
+  ],
+  "objective": "Prove stable-identity large-asset relationships such as carrier → craft, base → docked mecha, vehicle → cargo and nested container → item through existing Asset/containment owners, with explicit load/dock/board/launch/transfer/remove relationships and no implied ownership transfer, duplication or containment cycles.",
+  "acceptance": [
+    "Prove carrier-to-craft, base-to-docked-mecha, vehicle-to-cargo and nested-container-to-item relationships using stable existing Asset identities.",
+    "Loading, docking, boarding, launching, transfer and removal change explicit relationships without cloning Assets or implicitly transferring ownership.",
+    "Containment validation fails closed on self-containment, arbitrary cycles, duplicate child relationships and ambiguous parentage.",
+    "Large-asset containment uses existing D17/PPIA-03/shared-assets ownership and containment seams rather than an OARC ledger.",
+    "Capacity is enforced only where the owning governed capacity model exists; unknown capacity is neither zero nor unlimited.",
+    "MERA/MBES reserved topology runtimes remain untouched."
+  ],
+  "boundaries": [
+    "OARC-05 proves relationships and handoffs only; it does not create an Asset, ownership, inventory, cargo, docking or containment ledger.",
+    "Carrier/craft, base/mecha and vehicle/cargo retain separate stable identities.",
+    "Installed component relations are not generalized into ownership transfer.",
+    "Scene deployment and launch never clone an Asset.",
+    "OARC-06 golden-case workflow proof is not started here.",
+    "GPR and MRCS lane state remains independent."
+  ],
+  "strict_successor": "OARC-06",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an OARC-specific owner Continue, fresh-read OARC-05 plus OARC01 through OARC04 contracts, the live D17/PPIA-03/shared-assets containment and ownership contracts, PPIA-04 vehicle carriage/docking/launch semantics, and representative carrier/craft/base/mecha/cargo fixtures, then execute the complete bounded relationship-proof tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
