@@ -47,8 +47,8 @@ def main() -> None:
     assert certificate["recordCount"] == EXPECTED_RECORD_COUNT
     assert certificate["baselineRecordCount"] == 487
     assert certificate["appendedRecordCount"] == 69
-    assert certificate["replacementRecordCount"] == 31
-    assert certificate["supplementalInputRecordCount"] == 100
+    assert certificate["replacementRecordCount"] == 83
+    assert certificate["supplementalInputRecordCount"] == 152
     assert certificate["gameReadiness"]["assessed"] is False
     assert "not-game-readiness" in certificate["certificationScope"]
     assert (ROOT / "content-db" / "content-record.schema.json").exists(), "clean rebuild must preserve the record schema"
@@ -89,7 +89,7 @@ def main() -> None:
 
     print(
         "Canonical content pipeline reconciliation PASS: "
-        f"{index['recordCount']} effective records; 69 appends + 31 governed replacements; Beacon Debt mechanics and exact references resolve."
+        f"{index['recordCount']} effective records; 69 appends + 83 governed replacements; Beacon Debt mechanics and exact references resolve."
     )
 
 

@@ -4,13 +4,13 @@
   "name": "Furashin Canon Register",
   "objectType": "mv.object.species-canon-register",
   "developmentStage": "Structured draft",
-  "source": "mv.content.core26.furashin.canon-register-v1",
-  "sourceLocator": "content-source/core26-species/furashin/register-v1.0.0.json",
+  "source": "mv.content.core26.furashin.canon-register-v1.1",
+  "sourceLocator": "content-source/core26-species/furashin/register-v1.1.0.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "",
-  "reviewStatus": "",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species-canon-register.furashin",
     "name": "Furashin Canon Register",
     "objectType": "mv.object.species-canon-register",
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "register": {
       "speciesName": "Furashin",
       "speciesDefinitionStableId": "mv.core.species.furashin",
@@ -39,6 +39,13 @@
           "title": "content-source/phase-1-8-canonical-objects.json",
           "repositoryPath": "content-source/phase-1-8-canonical-objects.json",
           "canonRole": "preexisting_source_material"
+        },
+        {
+          "role": "owner_mechanics_decision",
+          "title": "Core_26_MVPS19_Gap_Resolution_Decision_Packet_v0.1.docx",
+          "sha256": "370d0e38a9c10438f8720f3bf4e167c80dde2f1865ff6a028a2c9ca34af0d19b",
+          "repositoryDecisionRef": "governance/application-planning/player-species/MVPS-19_OWNER_DECISIONS_v1.0.0.json",
+          "canonRole": "owner_approved_mechanics_completion"
         }
       ],
       "canonDomains": {
@@ -57,6 +64,13 @@
         "requiresDefinitionVersionBumpWhenGameplayObjectChanges": true,
         "requiresOwnerApprovalForCanonPromotion": true,
         "preservePriorVersions": true
+      },
+      "mechanicsCompletion": {
+        "status": "completed_owner_approved",
+        "mvps19DecisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+        "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+        "definitionVersion": "1.1.0",
+        "preserveTypedDispatch": true
       }
     }
   },
@@ -65,11 +79,17 @@
   "testing": null,
   "provenance": {
     "authority": "Multiversal canonical source bundle",
-    "sourcePath": "content-source/core26-species/furashin/register-v1.0.0.json",
-    "sourceDigest": "sha256:85ba7c4fccf0bd202255a562dfc4c3b74fe75f44d6665bde5b683516f8b8e11e",
-    "sourceBundleId": "mv.content.core26.furashin.canon-register-v1",
-    "sourceBundlePart": "furashin-register-v1.0.0",
-    "sourceClass": "supplemental",
+    "sourcePath": "content-source/core26-species/furashin/register-v1.1.0.json",
+    "sourceDigest": "sha256:d4bec4fcac85eef4808e0dfe48a36523183c04c3330d408ebf49972790a98f02",
+    "sourceBundleId": "mv.content.core26.furashin.canon-register-v1.1",
+    "sourceBundlePart": "furashin-register-v1.1.0",
+    "sourceClass": "replacement",
+    "replaces": {
+      "stableId": "mv.core.species-canon-register.furashin",
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/furashin/register-v1.0.0.json",
+      "sourceDigest": "sha256:85ba7c4fccf0bd202255a562dfc4c3b74fe75f44d6665bde5b683516f8b8e11e"
+    },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
 }

@@ -4,13 +4,13 @@
   "name": "Mythragara Canon Register",
   "objectType": "mv.object.species-canon-register",
   "developmentStage": "Structured draft",
-  "source": "mv.content.core26.mythragara.canon-register-v1",
-  "sourceLocator": "content-source/core26-species/mythragara/register-v1.0.0.json",
+  "source": "mv.content.core26.mythragara.canon-register-v1.1",
+  "sourceLocator": "content-source/core26-species/mythragara/register-v1.1.0.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "",
-  "reviewStatus": "",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species-canon-register.mythragara",
     "name": "Mythragara Canon Register",
     "objectType": "mv.object.species-canon-register",
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "register": {
       "speciesName": "Mythragara",
       "speciesDefinitionStableId": "mv.core.species.mythragara",
@@ -39,6 +39,13 @@
           "title": "content-source/phase-1-8-canonical-objects.json",
           "repositoryPath": "content-source/phase-1-8-canonical-objects.json",
           "canonRole": "preexisting_source_material"
+        },
+        {
+          "role": "owner_mechanics_decision",
+          "title": "Core_26_MVPS19_Gap_Resolution_Decision_Packet_v0.1.docx",
+          "sha256": "370d0e38a9c10438f8720f3bf4e167c80dde2f1865ff6a028a2c9ca34af0d19b",
+          "repositoryDecisionRef": "governance/application-planning/player-species/MVPS-19_OWNER_DECISIONS_v1.0.0.json",
+          "canonRole": "owner_approved_mechanics_completion"
         }
       ],
       "canonDomains": {
@@ -57,6 +64,13 @@
         "requiresDefinitionVersionBumpWhenGameplayObjectChanges": true,
         "requiresOwnerApprovalForCanonPromotion": true,
         "preservePriorVersions": true
+      },
+      "mechanicsCompletion": {
+        "status": "completed_owner_approved",
+        "mvps19DecisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+        "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+        "definitionVersion": "1.1.0",
+        "preserveTypedDispatch": true
       }
     }
   },
@@ -65,11 +79,17 @@
   "testing": null,
   "provenance": {
     "authority": "Multiversal canonical source bundle",
-    "sourcePath": "content-source/core26-species/mythragara/register-v1.0.0.json",
-    "sourceDigest": "sha256:a06bc22ac33778358abf5bc6c570abbaaaf7575032c05f0f36222f67d5fb8273",
-    "sourceBundleId": "mv.content.core26.mythragara.canon-register-v1",
-    "sourceBundlePart": "mythragara-register-v1.0.0",
-    "sourceClass": "supplemental",
+    "sourcePath": "content-source/core26-species/mythragara/register-v1.1.0.json",
+    "sourceDigest": "sha256:098a9fd8e3d6055af09929498404a18a20649e3c9ca5847c40ae51864f82c277",
+    "sourceBundleId": "mv.content.core26.mythragara.canon-register-v1.1",
+    "sourceBundlePart": "mythragara-register-v1.1.0",
+    "sourceClass": "replacement",
+    "replaces": {
+      "stableId": "mv.core.species-canon-register.mythragara",
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/mythragara/register-v1.0.0.json",
+      "sourceDigest": "sha256:a06bc22ac33778358abf5bc6c570abbaaaf7575032c05f0f36222f67d5fb8273"
+    },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
 }

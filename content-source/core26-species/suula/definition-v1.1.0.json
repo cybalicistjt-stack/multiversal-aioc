@@ -1,0 +1,104 @@
+{
+  "format": "multiversal-canonical-content-source",
+  "status": "owner-approved-canonical-replacement",
+  "bundleId": "mv.content.core26.suula.definition-v1.1",
+  "authority": {
+    "ownerDecision": "2026-09-20 returned MVPS-19 gap-resolution decision packet",
+    "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+    "bundlePart": "suula-definition-v1.1.0"
+  },
+  "records": [
+    {
+      "databaseId": "mv.core.species.suula",
+      "stableId": "mv.core.species.suula",
+      "name": "Suula",
+      "objectType": "mv.object.species-definition",
+      "developmentStage": "Structured draft",
+      "source": "Suula.PDF",
+      "sourceLocator": "Suula.PDF",
+      "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+      "reviewStatus": "APPROVED",
+      "contentVersion": "1.1.0",
+      "gameObject": {
+        "id": "mv.core.species.suula",
+        "name": "Suula",
+        "objectType": "mv.object.species-definition",
+        "contentVersion": "1.1.0",
+        "canonStatus": "approved_current_identity",
+        "sourceEvidence": {
+          "writtenSource": "Suula.PDF",
+          "governedAppearanceProfile": "species.suula",
+          "governedConstraintRefs": [
+            "CAPP01-SUULA-PERSISTENT-ADAPTATIONS",
+            "CAPP01-SUULA-ACTIVE-ADAPTATIONS",
+            "CAPP01-SUULA-HAND-CLAW-POSE"
+          ]
+        },
+        "extensions": {
+          "app.multiversal.aioc": {
+            "speciesCanonRegister": {
+              "authorityId": "CORE26-CURRENT-01",
+              "registerStableId": "mv.core.species-canon-register.suula",
+              "gameReadyStandard": "CORE26.GAME_READY.v1",
+              "definitionSourceChain": "content-source/core26-species/suula/"
+            },
+            "mvps19Mechanics": {
+              "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+              "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+              "dispatchRule": "typed_data_not_species_name",
+              "baselineProfile": "insectoid_biped",
+              "sizeClass": "Medium",
+              "stature": "scorpion_humanoid",
+              "morphologyMarkers": [
+                "segmented_chitin",
+                "combat_claws_with_retractable_hands",
+                "segmented_weapon_tail"
+              ],
+              "movementModes": [
+                "walk"
+              ],
+              "senses": [
+                "darkvision_60ft"
+              ],
+              "physiology": {
+                "respiration": [
+                  "air"
+                ],
+                "sustenance": [
+                  "food",
+                  "water"
+                ],
+                "rest": "sleep",
+                "environment": "ordinary_terrestrial",
+                "adaptationOverrides": true
+              },
+              "immunities": [],
+              "capabilities": [
+                "biological_adaptation_system"
+              ],
+              "naturalEquipment": {
+                "weapons": [
+                  "combat_claws",
+                  "weapon_tail"
+                ],
+                "armor": "chitin_natural_armor"
+              },
+              "equipmentInterfaces": [
+                "hand_deploy_from_claw",
+                "carapace_armor_fit",
+                "weapon_tail_clearance"
+              ]
+            }
+          }
+        }
+      },
+      "validation": null,
+      "balance": null,
+      "testing": null,
+      "replacementOf": {
+        "stableId": "mv.core.species.suula",
+        "expectedContentVersion": "1.0.0"
+      }
+    }
+  ]
+}

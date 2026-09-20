@@ -7,10 +7,10 @@
   "source": "phase-1-8-canonical-objects",
   "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "CORE26_CURRENT_AUTHORITY_RECONCILIATION",
-  "reviewStatus": "CURRENT_AUTHORITY_RECONCILED",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -25,7 +25,7 @@
       "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
       "ingestedFromMember": "index.json"
     },
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "extensions": {
       "app.multiversal.aioc": {
         "speciesCanonRegister": {
@@ -33,6 +33,58 @@
           "registerStableId": "mv.core.species-canon-register.kola-ha",
           "gameReadyStandard": "CORE26.GAME_READY.v1",
           "definitionSourceChain": "content-source/core26-species/kola-ha/"
+        },
+        "mvps19Mechanics": {
+          "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+          "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "baselineProfile": "aquatic_humanoid",
+          "sizeClass": "Medium",
+          "stature": "aquatic_humanoid",
+          "morphologyMarkers": [
+            "gill_slits",
+            "webbed_digits",
+            "fins",
+            "tail"
+          ],
+          "movementModes": [
+            "walk",
+            "swim"
+          ],
+          "senses": [
+            "ordinary_playable"
+          ],
+          "physiology": {
+            "respiration": [
+              "air",
+              "water"
+            ],
+            "sustenance": [
+              "food",
+              "water"
+            ],
+            "rest": "sleep",
+            "environment": "amphibious_baseline"
+          },
+          "immunities": [],
+          "capabilities": [
+            "true_swim_mode"
+          ],
+          "naturalEquipment": {
+            "weapons": [],
+            "armor": null,
+            "structural": [
+              "fins",
+              "tail",
+              "webbing"
+            ]
+          },
+          "equipmentInterfaces": [
+            "aquatic_suit_armor",
+            "tail_fin_clearance",
+            "webbed_hand_foot",
+            "aquatic_seat"
+          ]
         }
       }
     }
@@ -44,16 +96,16 @@
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
     "authority": "phase-1-8-canonical-objects",
-    "sourcePath": "content-source/core26-species/kola-ha/definition-v1.0.0.json",
-    "sourceDigest": "sha256:77a2b4b868b253bb0e2a55fda138b13386bbee050b866b603a911787175681e0",
-    "sourceBundleId": "mv.content.core26.kola-ha.definition-v1",
-    "sourceBundlePart": "kola-ha-definition-v1.0.0",
+    "sourcePath": "content-source/core26-species/kola-ha/definition-v1.1.0.json",
+    "sourceDigest": "sha256:80ddd130004c0cd6fd4803eca07667b922f1826d90b818cfef1d64126a5034c9",
+    "sourceBundleId": "mv.content.core26.kola-ha.definition-v1.1",
+    "sourceBundlePart": "kola-ha-definition-v1.1.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.kola-ha",
-      "contentVersion": null,
-      "sourcePath": "content-source/phase-1-8-canonical-objects.json",
-      "sourceDigest": "sha256:11d3e26161a6ea1acbe8847d7c01c5f6fb09a9525dc2e2eba557d41b4c612fbb"
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/kola-ha/definition-v1.0.0.json",
+      "sourceDigest": "sha256:77a2b4b868b253bb0e2a55fda138b13386bbee050b866b603a911787175681e0"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

@@ -212,6 +212,14 @@ jobs:
           node scripts/build-canonical-content-database.mjs
           python3 tests/control_plane/test_mvps18_core26_canonical_registers.py
 
+      - name: Run MVPS-19 Core-26 mechanics biology and interface completion regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/materialize-content-source.mjs
+          node scripts/build-canonical-content-database.mjs
+          python3 tests/control_plane/test_mvps19_core26_mechanics_completion.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS19.ManyTomsDistributedController",
+  "status": "OWNER_APPROVED",
+  "source_canon": "ManyToms_Canonical_Species_Dossier_v1.0.0.docx",
+  "owner_decision_ref": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+  "personhood": "one_character_one_civic_identity",
+  "action_economy": "one_character_action_economy",
+  "split_controls": {
+    "allow_split_toms": true,
+    "normal_complement": 12,
+    "grouping_model": "player_groups_toms_into_location_or_task_focus_groups",
+    "attention_penalty_mode": "automatic_from_active_focus_groups",
+    "numeric_penalty_authority": "shared_attention_rules_profile",
+    "controller_output": [
+      "active_focus_group_count",
+      "attention_load_state",
+      "group_attention_state",
+      "automatic_attention_condition_refs"
+    ],
+    "body_count_grants_extra_turns": false,
+    "body_count_grants_extra_full_intellect_actions": false,
+    "ordinary_distance_does_not_break_identity": true,
+    "physical_coordination_may_degrade_with_separation": true
+  },
+  "attention_policy": {
+    "principle": "distribution_expands_access_concentration_produces_depth",
+    "automatic_behavior": "Changing active focus groups recalculates attention load and applies/removes shared attention-condition references automatically.",
+    "categories": [
+      "gathered_or_single_focus",
+      "divided_attention",
+      "highly_divided_attention",
+      "overextended_attention"
+    ],
+    "exact_numeric_modifiers": "owned_by_shared_attention_rules_profile_not_species_definition"
+  },
+  "movement": {
+    "positions_tracked_per_tom_group": true,
+    "extra_turns_from_extra_bodies": false,
+    "shared_rules_authority": "Movement/Action owner"
+  },
+  "perception": {
+    "multi_angle_input": true,
+    "one_resolution_identity": true
+  },
+  "inventory": {
+    "gear_binding": "body_bound",
+    "ownership": "entity_owned",
+    "body_count_multiplies_free_inventory": false
+  },
+  "injury_and_loss": {
+    "body_loss": "permanent_injury_to_same_person",
+    "separate_character_hp_pools": false,
+    "exact_damage_model_authority": "shared_health_condition_rules_plus_manytoms_body_count_profile",
+    "final_death": "last_surviving_Tom_dies"
+  }
+}

@@ -7,10 +7,10 @@
   "source": "The Rog v2.PDF",
   "sourceLocator": "The Rog v2.PDF",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_CORE26_CANONICAL_IDENTITY",
-  "reviewStatus": "CURRENT_AUTHORITY_RECONCILED",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species.rog",
     "name": "Rog",
     "objectType": "mv.object.species-definition",
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "canonStatus": "approved_current_identity",
     "sourceEvidence": {
       "writtenSource": "The Rog v2.PDF",
@@ -36,6 +36,49 @@
           "registerStableId": "mv.core.species-canon-register.rog",
           "gameReadyStandard": "CORE26.GAME_READY.v1",
           "definitionSourceChain": "content-source/core26-species/rog/"
+        },
+        "mvps19Mechanics": {
+          "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+          "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "baselineProfile": "terrestrial_mammalian_humanoid",
+          "sizeClass": "Medium",
+          "stature": "stocky",
+          "morphologyMarkers": [
+            "porcine_face",
+            "snout",
+            "tusks"
+          ],
+          "movementModes": [
+            "walk"
+          ],
+          "senses": [
+            "ordinary_playable"
+          ],
+          "physiology": {
+            "respiration": [
+              "air"
+            ],
+            "sustenance": [
+              "food",
+              "water"
+            ],
+            "rest": "sleep",
+            "environment": "ordinary_terrestrial"
+          },
+          "immunities": [],
+          "capabilities": [],
+          "naturalEquipment": {
+            "weapons": [],
+            "armor": null,
+            "structural": [
+              "tusks"
+            ]
+          },
+          "equipmentInterfaces": [
+            "stocky_humanoid",
+            "snout_tusk_facegear"
+          ]
         }
       }
     }
@@ -45,11 +88,17 @@
   "testing": null,
   "provenance": {
     "authority": "The Rog v2.PDF",
-    "sourcePath": "content-source/core26-species/rog/definition-v1.0.0.json",
-    "sourceDigest": "sha256:1162464fd9111b7988904114dda6b0887121fdcde1ab784da328b3921c5c5970",
-    "sourceBundleId": "mv.content.core26.rog.definition-v1",
-    "sourceBundlePart": "rog-definition-v1.0.0",
-    "sourceClass": "supplemental",
+    "sourcePath": "content-source/core26-species/rog/definition-v1.1.0.json",
+    "sourceDigest": "sha256:45d18c2f66fd7cb12f7635f59c1df6b7cd8c79b835c51fe2dc38c7fc6cf954c2",
+    "sourceBundleId": "mv.content.core26.rog.definition-v1.1",
+    "sourceBundlePart": "rog-definition-v1.1.0",
+    "sourceClass": "replacement",
+    "replaces": {
+      "stableId": "mv.core.species.rog",
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/rog/definition-v1.0.0.json",
+      "sourceDigest": "sha256:1162464fd9111b7988904114dda6b0887121fdcde1ab784da328b3921c5c5970"
+    },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
 }

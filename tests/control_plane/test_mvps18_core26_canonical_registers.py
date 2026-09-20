@@ -116,12 +116,12 @@ class MVPS18Core26CanonicalRegisterTests(unittest.TestCase):
 
     def test_manytoms_dossier_is_a_real_source_replacement_and_findable_by_source(self):
         many = self._j(ROOT / "content-db/objects/mv-object-species-definition/mv-core-species-manytoms.json")
-        self.assertEqual(many["contentVersion"], "1.0.0")
+        self.assertRegex(many["contentVersion"], r"^1\.[0-9]+\.[0-9]+$")
         self.assertEqual(many["source"], "owner-approved-manytoms-canonical-species-dossier-v1.0.0")
         self.assertEqual(many["sourceLocator"], "ManyToms_Canonical_Species_Dossier_v1.0.0.docx")
         self.assertEqual(many["gameObject"]["canonicalLore"]["coreIdentity"]["normalHealthyComplement"], 12)
         self.assertEqual(many["provenance"]["sourceClass"], "replacement")
-        self.assertIn("/manytoms/definition-v1.0.0.json", many["provenance"]["sourcePath"])
+        self.assertRegex(many["provenance"]["sourcePath"], r"/manytoms/definition-v1\.[0-9]+\.[0-9]+\.json$")
 
         by_source = self._j(BY_SOURCE)
         self.assertIn("mv.core.species.manytoms", by_source["owner-approved-manytoms-canonical-species-dossier-v1.0.0"])

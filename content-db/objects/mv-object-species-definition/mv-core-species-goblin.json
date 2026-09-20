@@ -7,10 +7,10 @@
   "source": "phase-1-8-canonical-objects",
   "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "CORE26_CURRENT_AUTHORITY_RECONCILIATION",
-  "reviewStatus": "CURRENT_AUTHORITY_RECONCILED",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -25,7 +25,7 @@
       "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
       "ingestedFromMember": "index.json"
     },
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "extensions": {
       "app.multiversal.aioc": {
         "speciesCanonRegister": {
@@ -33,6 +33,51 @@
           "registerStableId": "mv.core.species-canon-register.goblin",
           "gameReadyStandard": "CORE26.GAME_READY.v1",
           "definitionSourceChain": "content-source/core26-species/goblin/"
+        },
+        "mvps19Mechanics": {
+          "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+          "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "baselineProfile": "terrestrial_humanoid",
+          "sizeClass": "Small",
+          "stature": "wiry",
+          "morphologyMarkers": [
+            "pointed_ears",
+            "sharp_teeth_structural"
+          ],
+          "movementModes": [
+            "walk"
+          ],
+          "senses": [
+            "darkvision_60ft"
+          ],
+          "physiology": {
+            "respiration": [
+              "air"
+            ],
+            "sustenance": [
+              "food",
+              "water"
+            ],
+            "rest": "sleep",
+            "environment": "ordinary_terrestrial"
+          },
+          "immunities": [],
+          "capabilities": [
+            "nimble_escape",
+            "quick_reflexes_acrobatics",
+            "legacy_goblin_nimbleness_route_to_current_owner"
+          ],
+          "naturalEquipment": {
+            "weapons": [],
+            "armor": null,
+            "structural": [
+              "sharp_teeth"
+            ]
+          },
+          "equipmentInterfaces": [
+            "small_humanoid"
+          ]
         }
       }
     }
@@ -44,16 +89,16 @@
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
     "authority": "phase-1-8-canonical-objects",
-    "sourcePath": "content-source/core26-species/goblin/definition-v1.0.0.json",
-    "sourceDigest": "sha256:bf6b9e94ec36bfa865c4018c20af4aaa343661a9e51434eefc48e1b14c0b1546",
-    "sourceBundleId": "mv.content.core26.goblin.definition-v1",
-    "sourceBundlePart": "goblin-definition-v1.0.0",
+    "sourcePath": "content-source/core26-species/goblin/definition-v1.1.0.json",
+    "sourceDigest": "sha256:903977af0e13d0ef142f57f4aa02e433c3ea1ea9b181f1369d27c223694abaf4",
+    "sourceBundleId": "mv.content.core26.goblin.definition-v1.1",
+    "sourceBundlePart": "goblin-definition-v1.1.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.goblin",
-      "contentVersion": null,
-      "sourcePath": "content-source/phase-1-8-canonical-objects.json",
-      "sourceDigest": "sha256:11d3e26161a6ea1acbe8847d7c01c5f6fb09a9525dc2e2eba557d41b4c612fbb"
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/goblin/definition-v1.0.0.json",
+      "sourceDigest": "sha256:bf6b9e94ec36bfa865c4018c20af4aaa343661a9e51434eefc48e1b14c0b1546"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

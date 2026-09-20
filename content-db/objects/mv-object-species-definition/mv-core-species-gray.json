@@ -7,10 +7,10 @@
   "source": "phase-1-8-canonical-objects",
   "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "CORE26_CURRENT_AUTHORITY_RECONCILIATION",
-  "reviewStatus": "CURRENT_AUTHORITY_RECONCILED",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -25,7 +25,7 @@
       "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
       "ingestedFromMember": "index.json"
     },
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "extensions": {
       "app.multiversal.aioc": {
         "speciesCanonRegister": {
@@ -33,6 +33,55 @@
           "registerStableId": "mv.core.species-canon-register.gray",
           "gameReadyStandard": "CORE26.GAME_READY.v1",
           "definitionSourceChain": "content-source/core26-species/gray/"
+        },
+        "mvps19Mechanics": {
+          "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+          "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "baselineProfile": "terrestrial_humanoid",
+          "sizeClass": "Medium",
+          "stature": "slender",
+          "morphologyMarkers": [
+            "four_digits",
+            "biological_touchpads",
+            "no_external_ears",
+            "large_black_eyes"
+          ],
+          "movementModes": [
+            "walk"
+          ],
+          "senses": [
+            "low_light_vision",
+            "telepathic_communication"
+          ],
+          "physiology": {
+            "respiration": [
+              "air"
+            ],
+            "sustenance": [
+              "food",
+              "water"
+            ],
+            "rest": "sleep",
+            "environment": "ordinary_terrestrial",
+            "lifecycle": {
+              "adult_around_years": 60,
+              "lifespan_over_years": 1000
+            }
+          },
+          "immunities": [],
+          "capabilities": [
+            "psionic_affinity_source_bound_progression_separate"
+          ],
+          "naturalEquipment": {
+            "weapons": [],
+            "armor": null
+          },
+          "equipmentInterfaces": [
+            "four_digit_glove_tool",
+            "touchpad_interaction",
+            "earless_headgear"
+          ]
         }
       }
     }
@@ -44,16 +93,16 @@
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
     "authority": "phase-1-8-canonical-objects",
-    "sourcePath": "content-source/core26-species/gray/definition-v1.0.0.json",
-    "sourceDigest": "sha256:0cb2677665b104e0fc3d3d89a0ec34a8c564cf8ac930bf6a8e5f7a605c55db33",
-    "sourceBundleId": "mv.content.core26.gray.definition-v1",
-    "sourceBundlePart": "gray-definition-v1.0.0",
+    "sourcePath": "content-source/core26-species/gray/definition-v1.1.0.json",
+    "sourceDigest": "sha256:4a807e52f8426c9a63705330fae7bfb54c1d4f7fbe2091800e7717cb6bab18e0",
+    "sourceBundleId": "mv.content.core26.gray.definition-v1.1",
+    "sourceBundlePart": "gray-definition-v1.1.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.gray",
-      "contentVersion": null,
-      "sourcePath": "content-source/phase-1-8-canonical-objects.json",
-      "sourceDigest": "sha256:11d3e26161a6ea1acbe8847d7c01c5f6fb09a9525dc2e2eba557d41b4c612fbb"
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/gray/definition-v1.0.0.json",
+      "sourceDigest": "sha256:0cb2677665b104e0fc3d3d89a0ec34a8c564cf8ac930bf6a8e5f7a605c55db33"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

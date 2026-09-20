@@ -7,10 +7,10 @@
   "source": "phase-1-8-canonical-objects",
   "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "CORE26_CURRENT_AUTHORITY_RECONCILIATION",
-  "reviewStatus": "CURRENT_AUTHORITY_RECONCILED",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -25,7 +25,7 @@
       "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
       "ingestedFromMember": "index.json"
     },
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "extensions": {
       "app.multiversal.aioc": {
         "speciesCanonRegister": {
@@ -33,6 +33,55 @@
           "registerStableId": "mv.core.species-canon-register.stygian",
           "gameReadyStandard": "CORE26.GAME_READY.v1",
           "definitionSourceChain": "content-source/core26-species/stygian/"
+        },
+        "mvps19Mechanics": {
+          "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+          "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "baselineProfile": "terrestrial_humanoid",
+          "sizeClass": "Medium",
+          "stature": "standard",
+          "morphologyMarkers": [
+            "tail",
+            "optional_horns",
+            "optional_wings"
+          ],
+          "movementModes": [
+            "walk",
+            "flight_if_functional_wing_capability"
+          ],
+          "senses": [
+            "ordinary_human"
+          ],
+          "physiology": {
+            "respiration": [
+              "air"
+            ],
+            "sustenance": [
+              "food",
+              "water"
+            ],
+            "rest": "sleep",
+            "environment": "ordinary_terrestrial"
+          },
+          "immunities": [],
+          "capabilities": [
+            "functional_wing_optional"
+          ],
+          "naturalEquipment": {
+            "weapons": [],
+            "armor": null,
+            "structural": [
+              "horns_optional",
+              "clawlike_nails"
+            ]
+          },
+          "equipmentInterfaces": [
+            "tail_clearance",
+            "horn_headgear_clearance",
+            "wing_back_clearance",
+            "wing_harness_clearance"
+          ]
         }
       }
     }
@@ -44,16 +93,16 @@
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
     "authority": "phase-1-8-canonical-objects",
-    "sourcePath": "content-source/core26-species/stygian/definition-v1.0.0.json",
-    "sourceDigest": "sha256:4246e300b3ac35e5afacc7b0f8e66e97153d2f39a4bd5cdc57f0fe033950daef",
-    "sourceBundleId": "mv.content.core26.stygian.definition-v1",
-    "sourceBundlePart": "stygian-definition-v1.0.0",
+    "sourcePath": "content-source/core26-species/stygian/definition-v1.1.0.json",
+    "sourceDigest": "sha256:efc1f15fb63aab84f13a777382078c4eaafe743fc00db6159dc6e107dc9deccd",
+    "sourceBundleId": "mv.content.core26.stygian.definition-v1.1",
+    "sourceBundlePart": "stygian-definition-v1.1.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.stygian",
-      "contentVersion": null,
-      "sourcePath": "content-source/phase-1-8-canonical-objects.json",
-      "sourceDigest": "sha256:11d3e26161a6ea1acbe8847d7c01c5f6fb09a9525dc2e2eba557d41b4c612fbb"
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/stygian/definition-v1.0.0.json",
+      "sourceDigest": "sha256:4246e300b3ac35e5afacc7b0f8e66e97153d2f39a4bd5cdc57f0fe033950daef"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

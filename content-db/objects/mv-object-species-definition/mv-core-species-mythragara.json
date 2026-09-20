@@ -7,10 +7,10 @@
   "source": "phase-1-8-canonical-objects",
   "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "CORE26_CURRENT_AUTHORITY_RECONCILIATION",
-  "reviewStatus": "CURRENT_AUTHORITY_RECONCILED",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -25,7 +25,7 @@
       "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
       "ingestedFromMember": "index.json"
     },
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "extensions": {
       "app.multiversal.aioc": {
         "speciesCanonRegister": {
@@ -33,6 +33,50 @@
           "registerStableId": "mv.core.species-canon-register.mythragara",
           "gameReadyStandard": "CORE26.GAME_READY.v1",
           "definitionSourceChain": "content-source/core26-species/mythragara/"
+        },
+        "mvps19Mechanics": {
+          "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+          "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "baselineProfile": "terrestrial_mammalian_humanoid",
+          "sizeClass": "Medium",
+          "stature": "digitigrade_hyena_humanoid",
+          "morphologyMarkers": [
+            "hyena_head_muzzle",
+            "fur",
+            "mobile_ears",
+            "digitigrade_legs",
+            "tail"
+          ],
+          "movementModes": [
+            "walk"
+          ],
+          "senses": [
+            "ordinary_playable"
+          ],
+          "physiology": {
+            "respiration": [
+              "air"
+            ],
+            "sustenance": [
+              "food",
+              "water"
+            ],
+            "rest": "sleep",
+            "environment": "ordinary_terrestrial"
+          },
+          "immunities": [],
+          "capabilities": [
+            "shapeshifting_source_backed_mvps20_form_binding"
+          ],
+          "naturalEquipment": {
+            "weapons": [],
+            "armor": null
+          },
+          "equipmentInterfaces": [
+            "digitigrade_leg_fit",
+            "tail_clearance"
+          ]
         }
       }
     }
@@ -44,16 +88,16 @@
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
     "authority": "phase-1-8-canonical-objects",
-    "sourcePath": "content-source/core26-species/mythragara/definition-v1.0.0.json",
-    "sourceDigest": "sha256:e8667a0880f778344576f6e9e4ea45c10685fe5a762cd4ecf6648c8f8746fce3",
-    "sourceBundleId": "mv.content.core26.mythragara.definition-v1",
-    "sourceBundlePart": "mythragara-definition-v1.0.0",
+    "sourcePath": "content-source/core26-species/mythragara/definition-v1.1.0.json",
+    "sourceDigest": "sha256:806203e228479c09671117d6154e74dc6190ac7075a59710728c4091ad0c923a",
+    "sourceBundleId": "mv.content.core26.mythragara.definition-v1.1",
+    "sourceBundlePart": "mythragara-definition-v1.1.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.mythragara",
-      "contentVersion": null,
-      "sourcePath": "content-source/phase-1-8-canonical-objects.json",
-      "sourceDigest": "sha256:11d3e26161a6ea1acbe8847d7c01c5f6fb09a9525dc2e2eba557d41b4c612fbb"
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/mythragara/definition-v1.0.0.json",
+      "sourceDigest": "sha256:e8667a0880f778344576f6e9e4ea45c10685fe5a762cd4ecf6648c8f8746fce3"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

@@ -7,10 +7,10 @@
   "source": "phase-1-8-canonical-objects",
   "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "CORE26_CURRENT_AUTHORITY_RECONCILIATION",
-  "reviewStatus": "CURRENT_AUTHORITY_RECONCILED",
+  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -25,7 +25,7 @@
       "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
       "ingestedFromMember": "index.json"
     },
-    "contentVersion": "1.0.0",
+    "contentVersion": "1.1.0",
     "extensions": {
       "app.multiversal.aioc": {
         "speciesCanonRegister": {
@@ -33,6 +33,43 @@
           "registerStableId": "mv.core.species-canon-register.giantkin",
           "gameReadyStandard": "CORE26.GAME_READY.v1",
           "definitionSourceChain": "content-source/core26-species/giantkin/"
+        },
+        "mvps19Mechanics": {
+          "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+          "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "baselineProfile": "terrestrial_humanoid",
+          "sizeClass": "Large",
+          "stature": "very_large",
+          "morphologyMarkers": [],
+          "movementModes": [
+            "walk"
+          ],
+          "senses": [
+            "ordinary_human"
+          ],
+          "physiology": {
+            "respiration": [
+              "air"
+            ],
+            "sustenance": [
+              "food",
+              "water"
+            ],
+            "rest": "sleep",
+            "environment": "ordinary_terrestrial"
+          },
+          "immunities": [],
+          "capabilities": [
+            "scale_effects_owned_by_shared_scale_rules"
+          ],
+          "naturalEquipment": {
+            "weapons": [],
+            "armor": null
+          },
+          "equipmentInterfaces": [
+            "large_humanoid"
+          ]
         }
       }
     }
@@ -44,16 +81,16 @@
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
     "authority": "phase-1-8-canonical-objects",
-    "sourcePath": "content-source/core26-species/giantkin/definition-v1.0.0.json",
-    "sourceDigest": "sha256:baae5691674d94df4ea8f8915557bb6a23be3e830806c77eb8f3ccb42651fa14",
-    "sourceBundleId": "mv.content.core26.giantkin.definition-v1",
-    "sourceBundlePart": "giantkin-definition-v1.0.0",
+    "sourcePath": "content-source/core26-species/giantkin/definition-v1.1.0.json",
+    "sourceDigest": "sha256:c4f4f213e095cd644425dc62f66d2197aec595ed851dd9dcba6d2d8ca9933e6a",
+    "sourceBundleId": "mv.content.core26.giantkin.definition-v1.1",
+    "sourceBundlePart": "giantkin-definition-v1.1.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.giantkin",
-      "contentVersion": null,
-      "sourcePath": "content-source/phase-1-8-canonical-objects.json",
-      "sourceDigest": "sha256:11d3e26161a6ea1acbe8847d7c01c5f6fb09a9525dc2e2eba557d41b4c612fbb"
+      "contentVersion": "1.0.0",
+      "sourcePath": "content-source/core26-species/giantkin/definition-v1.0.0.json",
+      "sourceDigest": "sha256:baae5691674d94df4ea8f8915557bb6a23be3e830806c77eb8f3ccb42651fa14"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
