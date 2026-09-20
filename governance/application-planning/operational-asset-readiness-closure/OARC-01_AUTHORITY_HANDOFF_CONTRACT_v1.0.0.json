@@ -1,0 +1,361 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "OARC01.AUTHORITY_HANDOFF.v1",
+  "status": "current",
+  "work_item": "OARC-01",
+  "title": "Operational Asset Authority & Handoff Contract",
+  "approved_lane": "oarc",
+  "oarc_role": "readiness_bridge_validation_and_certification_only",
+  "scope": {
+    "operational_asset_kinds": [
+      "vehicle",
+      "platform",
+      "base",
+      "mecha",
+      "spacecraft/starship"
+    ],
+    "covered_relationships": [
+      "reusable definitions and modular components",
+      "operational configurations",
+      "owned live Asset instances",
+      "installed systems and facilities",
+      "crew/stations/control references",
+      "cargo/containment/carried craft",
+      "damage/condition/resource references",
+      "repair/refit/salvage/project handoffs",
+      "built-environment/facility handoffs"
+    ],
+    "rule": "OARC may connect, validate, normalize, classify and certify existing owner contracts; it may not become a new canonical owner runtime."
+  },
+  "source_basis": [
+    "governance/ai/work-state/MRCS-13-attempt-001.json",
+    "governance/application-planning/multiversal-rules-content-studio/MRCS_MULTIVERSAL_RULES_CONTENT_STUDIO_PROGRAM.md",
+    "governance/application-planning/multiversal-implementation-backbone/MIB_MULTIVERSAL_IMPLEMENTATION_BACKBONE_PROGRAM.md",
+    "governance/application-planning/parallel-preimplementation/PPIA-04_VEHICLE_MECHA_STARSHIP_EXPERIENCE_SPEC_v1.0.0.md",
+    "governance/application-planning/parallel-preimplementation/PPIA-04_SOURCE_AND_DESIGN_INVENTORY.md",
+    "governance/ai/work-state/SMB-05-attempt-001.json",
+    "governance/ai/work-state/SMB-06-attempt-001.json",
+    "governance/application-planning/loot-scavenge-salvage/LSS_LOOT_SCAVENGE_SALVAGE_PROGRAM.md",
+    "governance/application-planning/multiversal-engineering-refit-assembly/MERA_MULTIVERSAL_ENGINEERING_REFIT_ASSEMBLY_PROGRAM.md",
+    "governance/application-planning/multiversal-engineering-refit-assembly/MERA_PROGRAM_BACKLOG.json",
+    "governance/application-planning/multiversal-built-environment-settlement/MBES_MULTIVERSAL_BUILT_ENVIRONMENT_SETTLEMENT_PROGRAM.md",
+    "governance/application-planning/multiversal-built-environment-settlement/MBES_PROGRAM_BACKLOG.json"
+  ],
+  "authority_owners": {
+    "reusable_definition_authoring": {
+      "primary_owner": "MRCS-13",
+      "owns": [
+        "reusable item/equipment/vehicle/construct/component packages",
+        "explicit slots and component references",
+        "versioned compatibility references",
+        "linked owner-domain references"
+      ],
+      "does_not_own": [
+        "live owned inventory",
+        "live operational Asset mutation",
+        "runtime Action/Effect/Condition/Resource execution"
+      ]
+    },
+    "operational_configuration_foundation": {
+      "primary_owner": "MIB-14",
+      "owns": [
+        "vehicle/platform/base operational definition foundations",
+        "module/facility compatibility",
+        "slot/cargo/power capacity validation where governed",
+        "crew bounds and station requirements where governed",
+        "base storage/facility/workstation integration",
+        "maintenance/repair/upgrade project-request planning seams"
+      ],
+      "does_not_own": [
+        "live Asset identity",
+        "world/location truth",
+        "Character truth",
+        "Action/combat outcome truth"
+      ]
+    },
+    "live_asset_truth": {
+      "primary_owner": "D17/PPIA-03/shared-assets",
+      "owns": [
+        "live Asset identity",
+        "ownership and custody",
+        "location",
+        "inventory/cargo placement and containment",
+        "condition/state",
+        "transfer and lineage",
+        "history/recovery"
+      ],
+      "does_not_own": [
+        "vehicle-specific movement/control/station semantics",
+        "engineering diagnosis",
+        "building construction"
+      ]
+    },
+    "vehicle_mecha_ship_operations": {
+      "primary_owner": "PPIA-04/F014",
+      "owns": [
+        "vehicle/mecha/starship operational semantics",
+        "crew/station/control semantics",
+        "movement/deployment",
+        "vehicle-system damage/failure semantics",
+        "power/resource routing semantics when governed",
+        "docking/boarding/launch relations"
+      ],
+      "does_not_own": [
+        "generic Asset ownership/containment",
+        "reusable definition authoring",
+        "future engineering topology runtime"
+      ]
+    },
+    "repair_crafting_transactions": {
+      "primary_owner": "MIB-12",
+      "owns": [
+        "repair",
+        "refurbishment",
+        "remanufacture",
+        "fabrication",
+        "crafting/transformation transactions"
+      ],
+      "does_not_own": [
+        "engineering diagnosis",
+        "project time",
+        "economy pricing"
+      ]
+    },
+    "salvage_decomposition": {
+      "primary_owner": "LSS",
+      "owns": [
+        "recoverable-object decomposition",
+        "salvage",
+        "partial stripping",
+        "donor-component lineage",
+        "extraction outputs"
+      ],
+      "does_not_own": [
+        "live Inventory truth",
+        "repair transactions",
+        "un-authored salvage yield invention"
+      ]
+    },
+    "economy_truth": {
+      "primary_owner": "MIB-13/Economy",
+      "owns": [
+        "prices",
+        "markets",
+        "scarcity",
+        "contracts",
+        "property/economic settlement truth"
+      ],
+      "does_not_own": [
+        "Asset configuration",
+        "repair execution",
+        "construction topology"
+      ]
+    },
+    "project_time_truth": {
+      "primary_owner": "APW/D26",
+      "owns": [
+        "durable projects/tasks",
+        "participants/prerequisites",
+        "campaign time",
+        "cancellation/progress authority"
+      ],
+      "does_not_own": [
+        "engineering topology",
+        "crafting transaction semantics",
+        "Asset identity"
+      ]
+    },
+    "engineering_orchestration": {
+      "primary_owner": "MERA",
+      "implementation_authorized_now": false,
+      "owns_when_governed": [
+        "engineering workspace and topology projections",
+        "Asset→system→assembly→subassembly→component→interface/connection→governed network resolution",
+        "diagnosis",
+        "engineering compatibility/proposal/adapters",
+        "isolation/disassembly sequencing",
+        "repair/refit orchestration",
+        "dependency/network/failure interpretation",
+        "calibration and test/acceptance",
+        "vehicle/mecha/starship engineering adapters"
+      ],
+      "oarc_rule": "OARC may record a MERA dependency and prove a handoff boundary; it may not implement these capabilities before a MERA governed start."
+    },
+    "built_environment_orchestration": {
+      "primary_owner": "MBES",
+      "implementation_authorized_now": false,
+      "owns_when_governed": [
+        "construction gameplay/orchestration",
+        "settlement/district→site/parcel→structure→level/zone→space/room→component/fixture→connection/network built-environment resolution",
+        "functional room/space capability adapters",
+        "facility network/logistics integration",
+        "habitation/infrastructure/settlement development"
+      ],
+      "oarc_rule": "OARC may record an MBES dependency and pass accepted base/facility evidence; it may not implement these capabilities before an MBES governed start."
+    },
+    "world_environment_truth": {
+      "primary_owner": "World/Environment/Reality",
+      "owns": [
+        "canonical gravity/atmosphere/climate/ecology/terrain/world state",
+        "world-response conditions and results"
+      ],
+      "does_not_own": [
+        "operational Asset identity",
+        "reusable module definitions"
+      ]
+    },
+    "action_combat_outcomes": {
+      "primary_owner": "Action/Event/Combat/SCL",
+      "owns": [
+        "authorized action resolution",
+        "combat/damage outcome truth",
+        "strategic conflict outcomes"
+      ],
+      "does_not_own": [
+        "Asset definition authoring",
+        "engineering repair orchestration"
+      ]
+    }
+  },
+  "handoff_graph": [
+    {
+      "from": "MRCS-13",
+      "to": "MIB-14",
+      "carries": [
+        "definition identity/version",
+        "slot/component references",
+        "explicit compatibility rules",
+        "owner-domain references"
+      ],
+      "may_not_carry": [
+        "live Asset ownership",
+        "live condition",
+        "invented compatibility"
+      ]
+    },
+    {
+      "from": "MIB-14",
+      "to": "D17/PPIA-03/shared-assets",
+      "carries": [
+        "validated configuration intent",
+        "bounded live mutation intent",
+        "configuration provenance"
+      ],
+      "rule": "MIB-14 plans/validates; the live Asset owner commits authoritative instance state."
+    },
+    {
+      "from": "D17/PPIA-03/shared-assets",
+      "to": "PPIA-04/F014",
+      "carries": [
+        "stable Asset identity",
+        "ownership/custody/access facts",
+        "cargo/containment references",
+        "condition/history references"
+      ],
+      "rule": "Operational semantics consume the Asset; they do not replace generic Asset truth."
+    },
+    {
+      "from": "PPIA-04/F014 + D17 + MIB-14 + MRCS + LSS + MIB-12 + APW/D26",
+      "to": "MERA",
+      "carries": [
+        "accepted Asset snapshot",
+        "source-supported topology references",
+        "configuration",
+        "component/interface definitions",
+        "salvage/repair/project owner references"
+      ],
+      "rule": "Future MERA orchestrates engineering over owner contracts; it does not absorb their ledgers."
+    },
+    {
+      "from": "MIB-14 + MRCS + MERA + APW/D26 + MIB-12 + MIB-13 + World/Environment",
+      "to": "MBES",
+      "carries": [
+        "accepted base/facility definitions",
+        "site/context references",
+        "engineering/network interfaces",
+        "project/resource/economy/world owner references"
+      ],
+      "rule": "Future MBES composes construction/settlement gameplay; it does not replace the contributing owners."
+    }
+  ],
+  "handoff_invariants": [
+    "A reusable Definition is not a live Asset instance.",
+    "An installed-component relation does not transfer component or parent Asset ownership by implication.",
+    "Crew/station assignment does not transfer ownership.",
+    "Scene deployment or placement does not clone the Asset.",
+    "Cargo/carried-craft containment does not collapse child stable identity into the carrier.",
+    "Unknown or source-unspecified capacity, compatibility, topology, system presence, resource quantity, failure behavior or operating envelope is not zero, absent, unlimited, compatible or available.",
+    "Labels do not create room/facility mechanical capability.",
+    "Planning authority for MERA or MBES is not implementation authority."
+  ],
+  "later_oarc_field_admission": {
+    "existing_primary_owner_required": true,
+    "source_truth_state_required": true,
+    "representation_kind_required": true,
+    "mutation_path_required": true,
+    "provenance_required": true,
+    "permitted_representation_kinds": [
+      "definition",
+      "reference",
+      "live_owner_state",
+      "projection",
+      "receipt",
+      "coverage_gap"
+    ],
+    "permitted_source_truth_states": [
+      "source_backed",
+      "source_unspecified",
+      "conflicted",
+      "reference_only",
+      "owner_delegated",
+      "campaign_local",
+      "live_runtime"
+    ],
+    "missing_owner_disposition": "unresolved_owner_gap_no_implementation",
+    "source_unspecified_disposition": "unresolved_no_default_or_inference",
+    "multiple_owner_rule": "identify one primary truth owner plus explicit adapters/handoffs; do not create shared convenience authority"
+  },
+  "oarc_allowed_outputs": [
+    "owner-preserving bridge adapters",
+    "source-to-owner normalization mappings",
+    "compatibility/dependency validation that delegates meaning to the owner",
+    "coverage classification",
+    "golden conformance fixtures",
+    "handoff receipts",
+    "explicit unresolved-owner or source-insufficient gaps"
+  ],
+  "forbidden_duplicate_runtime_owners": [
+    "modular_definition_grammar",
+    "live_asset_inventory_or_cargo",
+    "vehicle_mecha_ship_primary_operation_runtime",
+    "engineering_topology_or_network_runtime",
+    "built_environment_topology_or_construction_runtime",
+    "repair_or_crafting_transaction_ledger",
+    "salvage_or_decomposition_ledger",
+    "economy_ledger",
+    "project_or_campaign_time_ledger",
+    "combat_outcome_runtime",
+    "world_or_environment_truth"
+  ],
+  "future_family_reservations": {
+    "MERA": {
+      "status": "planned_no_implementation_authority",
+      "reserved_scope": "engineering topology, diagnosis, dependency/failure/network interpretation, disassembly/refit orchestration, calibration and test/acceptance",
+      "oarc_may_record_dependency_only": true
+    },
+    "MBES": {
+      "status": "planned_no_implementation_authority",
+      "reserved_scope": "construction, built-environment topology, functional spaces, facility networks, habitation/infrastructure and settlement development",
+      "oarc_may_record_dependency_only": true
+    }
+  },
+  "tranche_bounds": {
+    "OARC-02": "Definition bridge only; no new canonical modular grammar.",
+    "OARC-03": "Catalog normalization only; source-insufficient facts remain explicit.",
+    "OARC-04": "Source-backed specialization profiles only through existing owner schemas/hooks; no MERA/MBES runtime.",
+    "OARC-05": "Stable-identity containment/relationship proof through the Asset owner; no new containment ledger.",
+    "OARC-06": "Golden workflow proof through existing owner handoffs; no convenience mutation path.",
+    "OARC-07": "Coverage/gap certification only; coverage cannot be improved by fabricated semantics."
+  },
+  "result": "AUTHORITY_AND_HANDOFF_BOUNDARIES_FROZEN"
+}
