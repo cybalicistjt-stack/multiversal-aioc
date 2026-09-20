@@ -281,7 +281,7 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     if freeze.get("implementation_authority") is not False:
         errors.append("product_start_freeze may preserve selection only; it cannot grant implementation authority")
 
-    msas_for_freeze = current_lanes.get("msas", {}) if isinstance(current_lanes, dict) else {}
+    persistent_for_freeze = ("gpr", "mrcs", "oarc")
     if active_operations_id is not None:
         if not isinstance(operations_lane, dict):
             errors.append("CURRENT operations lane must be an object")
@@ -296,11 +296,27 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
             errors.append("CURRENT-referenced active operations work item must exist and be in_progress")
         if freeze.get("active") is not True:
             errors.append("active operations repair requires product_start_freeze.active=true")
-        if isinstance(msas_for_freeze, dict):
-            if freeze.get("preserved_selected_work_item") != msas_for_freeze.get("selected_work_item"):
-                errors.append("operations freeze must preserve the CURRENT product selection")
-            if freeze.get("preserved_attempt_id") != msas_for_freeze.get("attempt_id"):
-                errors.append("operations freeze must preserve the CURRENT product attempt")
+        preserved_lanes = freeze.get("preserved_lane_selections", {})
+        if not isinstance(preserved_lanes, dict):
+            errors.append("operations freeze preserved_lane_selections must be an object")
+            preserved_lanes = {}
+        for lane_id in persistent_for_freeze:
+            lane_now = current_lanes.get(lane_id, {}) if isinstance(current_lanes, dict) else {}
+            preserved = preserved_lanes.get(lane_id, {}) if isinstance(preserved_lanes, dict) else {}
+            if not isinstance(lane_now, dict) or not isinstance(preserved, dict):
+                errors.append(f"operations freeze must preserve persistent lane {lane_id}")
+                continue
+            expected = {
+                "selected_work_item": lane_now.get("selected_work_item"),
+                "attempt_id": lane_now.get("attempt_id"),
+                "state": lane_now.get("state"),
+            }
+            for key, value in expected.items():
+                if preserved.get(key) != value:
+                    errors.append(
+                        f"operations freeze persistent lane drift for {lane_id}.{key}: "
+                        f"expected {value!r}, observed {preserved.get(key)!r}"
+                    )
     else:
         if current.get("active_operations_work_item_path") is not None:
             errors.append("inactive operations must not retain active_operations_work_item_path")

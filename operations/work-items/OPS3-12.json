@@ -41,7 +41,28 @@
   ],
   "implementation_authority": true,
   "completed": false,
-  "active_substep": "causal_red",
+  "active_substep": "implementation_validation",
   "next_action": "Observe RED from the new control-plane regressions, then implement only the bounded OPS3-12 repair.",
-  "red_sync_note": "Test-only synchronization commit created because the PR-open event produced no Actions run; no implementation behavior is included."
+  "red_sync_note": "Test-only synchronization commit created because the PR-open event produced no Actions run; no implementation behavior is included.",
+  "current_freeze": {
+    "active": true,
+    "preserved_gpr": "GPR-10",
+    "persistent_siblings": [
+      "MRCS-21 completed_verified",
+      "OARC-07 completed_verified"
+    ]
+  },
+  "red_evidence": {
+    "head": "216abc0a6b89cb70aed4b699e3a62e07b187ccaa",
+    "kind": "exact-head source-level causal RED after GitHub emitted no PR check run",
+    "missing_controls": [
+      "lane-state terminal gate",
+      "durable owner reentry recorder",
+      "durable owner continue count",
+      "dependency-scoped validation classifier",
+      "single-active-lane mode",
+      "quiet execution"
+    ],
+    "actions_event_incident": "PR #1520 open, synchronize, and reopen produced zero check runs; executor stopped polling and used exact-head source assertions plus independent core-semantics execution."
+  }
 }

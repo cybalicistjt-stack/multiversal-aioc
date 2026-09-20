@@ -64,8 +64,11 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
             self.assertEqual(operations["state"], "in_progress")
             self.assertTrue(operations["implementation_authority"])
             self.assertTrue(freeze["active"])
-            self.assertEqual(freeze["preserved_selected_work_item"], current["lanes"]["msas"]["selected_work_item"])
-            self.assertEqual(freeze["preserved_attempt_id"], current["lanes"]["msas"]["attempt_id"])
+            preserved = freeze["preserved_lane_selections"]
+            for lane_id in ("gpr", "mrcs", "oarc"):
+                self.assertEqual(preserved[lane_id]["selected_work_item"], current["lanes"][lane_id]["selected_work_item"])
+                self.assertEqual(preserved[lane_id]["attempt_id"], current["lanes"][lane_id]["attempt_id"])
+                self.assertEqual(preserved[lane_id]["state"], current["lanes"][lane_id]["state"])
 
         product = current["lanes"]["msas"]
         self.assertIn(product["state"], {"selected_not_started", "in_progress", "completed_verified"})
