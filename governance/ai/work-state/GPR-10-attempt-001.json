@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "GPR",
+  "lane": "gpr",
+  "track": "gameplay-pattern-runtime",
+  "source_program": "GPR",
+  "work_item_id": "GPR-10",
+  "attempt_id": "GPR-10-attempt-001",
+  "title": "Rights-Safe Semantic Presentation & Accessibility Projection",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "GPR-09",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "gpr_interstitial_override": "none",
+    "strict_order": "GPR-01 → GPR-03 → GPR-05 → GPR-06 → GPR-07 → GPR-08 → GPR-09 → GPR-10 → GPR-12 → GPR-16",
+    "late_bind_requires": [
+      "MCS/MCCS/MNCS/MAS/MSAS outputs"
+    ],
+    "golden_proof_requires": [
+      "relevant specialist golden proofs"
+    ],
+    "satisfied_golden_dependencies": [
+      "MRCS-21 completed_verified"
+    ],
+    "parallel_lanes": "MRCS is terminal completed_verified; OARC-07 remains independently selected_not_started."
+  },
+  "required_predecessor": {
+    "work_item": "GPR-09",
+    "application_merge_sha": "6b2aeb99ce2d53a0fe9e79c7e78c82573a5b8d83",
+    "delivery_control_schema": "GPR-09.1",
+    "loop_mini_schema": "GPR-08.1",
+    "bounded_resolution_schema": "GPR-07.1",
+    "specialist_module_schema": "GPR-06.1",
+    "owner_operation_schema": "GPR-05.1",
+    "deterministic_kernel_schema": "GPR-03.1",
+    "runtime_registry_schema": "GPR-01.1"
+  },
+  "objective": "Bind authorized semantic actor/world/object/UI/effect/audio roles to runtime presentation with rights/use validation before production selection/export, and implement camera/HUD/menu/dialogue/reticle, semantic cue, accessibility and device projections without making presentation authoritative mechanics truth.",
+  "acceptance": [
+    "Presentation bindings consume authorized semantic actor/world/object/UI/effect/audio role references and preserve their external canonical identities.",
+    "Rights/use eligibility is checked before production presentation selection, export or distributable projection; unresolved or disallowed rights fail closed.",
+    "Camera, HUD, menu, dialogue and reticle projections remain presentation-only and cannot mutate gameplay mechanics or owner truth.",
+    "Semantic visual/audio/effect cues project existing runtime meaning and do not become authoritative Action/Event or gameplay state.",
+    "Keyboard, touch, structured-text/list and screen-reader alternatives preserve essential semantic parity for supported interactions.",
+    "Device-specific projections preserve the same semantic state/outcome meaning and fail closed when a required capability has no supported accessible projection."
+  ],
+  "boundaries": [
+    "GPR-01 through GPR-09 remain predecessors and are not duplicated.",
+    "ARI/PCA and other rights/provenance owners retain rights/use authority; GPR-10 consumes validated eligibility rather than creating a parallel rights ledger.",
+    "Presentation is never authoritative mechanics truth.",
+    "Audio content/runtime authority remains with its audio owners; GPR-10 binds semantic presentation roles only.",
+    "GPR-12+ multiplayer/replay/persistence/recovery/final proof remain unauthorized.",
+    "OARC lane state remains independent."
+  ],
+  "strict_successor": "GPR-12",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On a GPR-specific owner Continue, fresh-read GPR-10, published GPR predecessor evidence, rights/provenance owner seams, the GPR family design closure and ops3-lane-state/gpr, then execute the complete bounded rights-safe presentation/accessibility tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
