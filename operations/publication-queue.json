@@ -1,8 +1,40 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 46,
-  "ready": [],
+  "generation": 47,
+  "ready": [
+    {
+      "candidate_id": "MVPS-17-app-001",
+      "lane": "mvps",
+      "work_item_id": "MVPS-17",
+      "pr_number": 1471,
+      "head_sha": "a8f031ad84cc09f87413f63c2ffd28108cc01e0a",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "a8f031ad84cc09f87413f63c2ffd28108cc01e0a",
+        "run_id": "35510233298"
+      },
+      "write_set": [
+        ".github/workflows/validate-repository-health.yml",
+        "governance/application-planning/player-species/CORE_26_GAME_READY_STANDARD_v1.0.0.json",
+        "governance/application-planning/player-species/CORE_26_PRODUCTION_BASELINE_v0.1.0.json",
+        "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+        "operations/BOOTSTRAP.md",
+        "operations/CONTROL_SURFACE_REGISTRY.json",
+        "operations/CURRENT.json",
+        "operations/OPERATING_CONTRACT.md",
+        "tests/control_plane/test_mvps17_core26_current_canon_baseline.py",
+        "tools/validate-core26-species-reconciliation.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "bef19737d78c68a9b19e1ce50b3caab7ba2d59c6",
+        "current_core26_authority_predecessor": "CORE26-01 v0.1.0",
+        "owner_directive": "Core 26 current canon + equal standards",
+        "preserved_mrcs_selection": "MRCS-11",
+        "preserved_msas_selection": "MSAS-12"
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
