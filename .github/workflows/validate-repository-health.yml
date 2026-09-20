@@ -263,27 +263,6 @@ jobs:
           set -euo pipefail
           node tests/validate-content-library-staging.mjs
 
-      - name: TEMP MVPS-19 materialize certified outputs on PR branch
-        if: github.event_name == 'pull_request'
-        shell: bash
-        run: |
-          set -euo pipefail
-          git add -A content-db \
-            evidence/content-pipeline/latest-certificate.json \
-            evidence/content-pipeline/beacon-debt-golden-diagnostics.json \
-            evidence/content-pipeline/beacon-debt-runtime-instantiated.json
-          if git diff --cached --quiet; then
-            echo 'Certified generated outputs already materialized on candidate branch.'
-            exit 0
-          fi
-          test "${{ github.event.pull_request.head.repo.full_name }}" = "${{ github.repository }}"
-          test "${{ github.event.pull_request.head.ref }}" != "main"
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'MVPS-19: materialize certified generated content'
-          git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
-          echo 'Certified generated outputs committed to the queue-bound PR branch.'
-
       - name: Enforce certified generated content is already in the candidate
         shell: bash
         run: |
