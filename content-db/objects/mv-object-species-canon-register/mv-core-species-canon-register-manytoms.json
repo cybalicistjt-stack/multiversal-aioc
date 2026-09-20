@@ -1,0 +1,87 @@
+{
+  "databaseId": "mv.core.species-canon-register.manytoms",
+  "stableId": "mv.core.species-canon-register.manytoms",
+  "name": "ManyToms Canon Register",
+  "objectType": "mv.object.species-canon-register",
+  "developmentStage": "Structured draft",
+  "source": "mv.content.core26.manytoms.canon-register-v1",
+  "sourceLocator": "content-source/core26-species/manytoms/register-v1.0.0.json",
+  "coverageStatus": "CANONICAL_OBJECT_PRESENT",
+  "promotionDecision": "",
+  "reviewStatus": "",
+  "schemaVersion": "",
+  "contentVersion": "1.0.0",
+  "packIds": [],
+  "dependencies": [],
+  "tags": [
+    "canonical-object"
+  ],
+  "manualEntry": null,
+  "gameObject": {
+    "id": "mv.core.species-canon-register.manytoms",
+    "name": "ManyToms Canon Register",
+    "objectType": "mv.object.species-canon-register",
+    "contentVersion": "1.0.0",
+    "register": {
+      "speciesName": "ManyToms",
+      "speciesDefinitionStableId": "mv.core.species.manytoms",
+      "authorityId": "CORE26-CURRENT-01",
+      "gameReadyStandard": "CORE26.GAME_READY.v1",
+      "sourceLedger": [
+        {
+          "role": "current_authority",
+          "title": "CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+          "repositoryPath": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+          "canonRole": "current_roster_identity_authority"
+        },
+        {
+          "role": "canonical_dossier",
+          "title": "ManyToms_Canonical_Species_Dossier_v1.0.0.docx",
+          "driveFileId": "1Pd9BQFYVDQBZIJBGM_Utnd_KLblHGGQ1",
+          "canonRole": "owner_approved_canonical_dossier",
+          "ownerApprovalDate": "2026-09-20"
+        },
+        {
+          "role": "development_precursor",
+          "title": "Manytomsinfo",
+          "driveFileId": "1cbrTQjYvpOBwAncFCGJqUjsCPeTzbxLTr2QwyM1Ra-s",
+          "canonRole": "development_history_not_blanket_canon"
+        },
+        {
+          "role": "legacy_species_source",
+          "title": "ManyToms vAlpha.PDF",
+          "canonRole": "superseded_where_dossier_conflicts"
+        }
+      ],
+      "canonDomains": {
+        "identity": true,
+        "lore": "accumulate_source_backed_material",
+        "mechanics": "accumulate_source_backed_and_owner_approved_rules",
+        "appearance": "accumulate_current_authority_outputs",
+        "provenance": true,
+        "openQuestions": true,
+        "certification": true
+      },
+      "updateContract": {
+        "mode": "append_versioned_source_never_mutate_history",
+        "requiresSourcePipelineRebuild": true,
+        "requiresRegisterVersionBumpForCanonChange": true,
+        "requiresDefinitionVersionBumpWhenGameplayObjectChanges": true,
+        "requiresOwnerApprovalForCanonPromotion": true,
+        "preservePriorVersions": true
+      }
+    }
+  },
+  "validation": null,
+  "balance": null,
+  "testing": null,
+  "provenance": {
+    "authority": "Multiversal canonical source bundle",
+    "sourcePath": "content-source/core26-species/manytoms/register-v1.0.0.json",
+    "sourceDigest": "sha256:9b14e74bd64d5e084087c88ea623de6917fd83a0edf45d5b589f9c9e0cd392e1",
+    "sourceBundleId": "mv.content.core26.manytoms.canon-register-v1",
+    "sourceBundlePart": "manytoms-register-v1.0.0",
+    "sourceClass": "supplemental",
+    "importedBy": "scripts/build-canonical-content-database.mjs"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "databaseId": "mv.core.species-canon-register.rohai",
+  "stableId": "mv.core.species-canon-register.rohai",
+  "name": "Rohai Canon Register",
+  "objectType": "mv.object.species-canon-register",
+  "developmentStage": "Structured draft",
+  "source": "mv.content.core26.rohai.canon-register-v1",
+  "sourceLocator": "content-source/core26-species/rohai/register-v1.0.0.json",
+  "coverageStatus": "CANONICAL_OBJECT_PRESENT",
+  "promotionDecision": "",
+  "reviewStatus": "",
+  "schemaVersion": "",
+  "contentVersion": "1.0.0",
+  "packIds": [],
+  "dependencies": [],
+  "tags": [
+    "canonical-object"
+  ],
+  "manualEntry": null,
+  "gameObject": {
+    "id": "mv.core.species-canon-register.rohai",
+    "name": "Rohai Canon Register",
+    "objectType": "mv.object.species-canon-register",
+    "contentVersion": "1.0.0",
+    "register": {
+      "speciesName": "Rohai",
+      "speciesDefinitionStableId": "mv.core.species.rohai",
+      "authorityId": "CORE26-CURRENT-01",
+      "gameReadyStandard": "CORE26.GAME_READY.v1",
+      "sourceLedger": [
+        {
+          "role": "current_authority",
+          "title": "CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+          "repositoryPath": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+          "canonRole": "current_roster_identity_authority"
+        },
+        {
+          "role": "existing_definition_source",
+          "title": "content-source/phase-1-8-canonical-objects.json",
+          "repositoryPath": "content-source/phase-1-8-canonical-objects.json",
+          "canonRole": "preexisting_source_material"
+        }
+      ],
+      "canonDomains": {
+        "identity": true,
+        "lore": "accumulate_source_backed_material",
+        "mechanics": "accumulate_source_backed_and_owner_approved_rules",
+        "appearance": "accumulate_current_authority_outputs",
+        "provenance": true,
+        "openQuestions": true,
+        "certification": true
+      },
+      "updateContract": {
+        "mode": "append_versioned_source_never_mutate_history",
+        "requiresSourcePipelineRebuild": true,
+        "requiresRegisterVersionBumpForCanonChange": true,
+        "requiresDefinitionVersionBumpWhenGameplayObjectChanges": true,
+        "requiresOwnerApprovalForCanonPromotion": true,
+        "preservePriorVersions": true
+      }
+    }
+  },
+  "validation": null,
+  "balance": null,
+  "testing": null,
+  "provenance": {
+    "authority": "Multiversal canonical source bundle",
+    "sourcePath": "content-source/core26-species/rohai/register-v1.0.0.json",
+    "sourceDigest": "sha256:89532548755500d15ef73288a472d10872052820f8a1d3d4186abf02f3b32c5c",
+    "sourceBundleId": "mv.content.core26.rohai.canon-register-v1",
+    "sourceBundlePart": "rohai-register-v1.0.0",
+    "sourceClass": "supplemental",
+    "importedBy": "scripts/build-canonical-content-database.mjs"
+  }
+}

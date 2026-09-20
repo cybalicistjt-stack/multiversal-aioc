@@ -1,0 +1,85 @@
+{
+  "databaseId": "mv.core.species-canon-register.akwi",
+  "stableId": "mv.core.species-canon-register.akwi",
+  "name": "Akwi Canon Register",
+  "objectType": "mv.object.species-canon-register",
+  "developmentStage": "Structured draft",
+  "source": "mv.content.core26.akwi.canon-register-v1",
+  "sourceLocator": "content-source/core26-species/akwi/register-v1.0.0.json",
+  "coverageStatus": "CANONICAL_OBJECT_PRESENT",
+  "promotionDecision": "",
+  "reviewStatus": "",
+  "schemaVersion": "",
+  "contentVersion": "1.0.0",
+  "packIds": [],
+  "dependencies": [],
+  "tags": [
+    "canonical-object"
+  ],
+  "manualEntry": null,
+  "gameObject": {
+    "id": "mv.core.species-canon-register.akwi",
+    "name": "Akwi Canon Register",
+    "objectType": "mv.object.species-canon-register",
+    "contentVersion": "1.0.0",
+    "register": {
+      "speciesName": "Akwi",
+      "speciesDefinitionStableId": "species.akwi",
+      "authorityId": "CORE26-CURRENT-01",
+      "gameReadyStandard": "CORE26.GAME_READY.v1",
+      "sourceLedger": [
+        {
+          "role": "current_authority",
+          "title": "CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+          "repositoryPath": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+          "canonRole": "current_roster_identity_authority"
+        },
+        {
+          "role": "governed_playable_species_integration",
+          "title": "AKWI-01_PLAYABLE_SPECIES_CORE_v1.0.0.md",
+          "repositoryPath": "governance/application-planning/content-integration/AKWI-01_PLAYABLE_SPECIES_CORE_v1.0.0.md",
+          "canonRole": "completed_verified_species_integration"
+        },
+        {
+          "role": "source_package",
+          "title": "Akwi Game Integration Package v0.1",
+          "canonRole": "normalized_source_backed_records"
+        },
+        {
+          "role": "source_conversation",
+          "title": "Akwi Concept Design.mht",
+          "canonRole": "source_biological_and_mechanical_assertions"
+        }
+      ],
+      "canonDomains": {
+        "identity": true,
+        "lore": "accumulate_source_backed_material",
+        "mechanics": "accumulate_source_backed_and_owner_approved_rules",
+        "appearance": "accumulate_current_authority_outputs",
+        "provenance": true,
+        "openQuestions": true,
+        "certification": true
+      },
+      "updateContract": {
+        "mode": "append_versioned_source_never_mutate_history",
+        "requiresSourcePipelineRebuild": true,
+        "requiresRegisterVersionBumpForCanonChange": true,
+        "requiresDefinitionVersionBumpWhenGameplayObjectChanges": true,
+        "requiresOwnerApprovalForCanonPromotion": true,
+        "preservePriorVersions": true
+      }
+    }
+  },
+  "validation": null,
+  "balance": null,
+  "testing": null,
+  "provenance": {
+    "authority": "Multiversal canonical source bundle",
+    "sourcePath": "content-source/core26-species/akwi/register-v1.0.0.json",
+    "sourceDigest": "sha256:d4a9012114acda40f329b3d4559a9a09ec7b602d2662aa650fd9a7b62afe8f05",
+    "sourceBundleId": "mv.content.core26.akwi.canon-register-v1",
+    "sourceBundlePart": "akwi-register-v1.0.0",
+    "sourceClass": "supplemental",
+    "importedBy": "scripts/build-canonical-content-database.mjs"
+  }
+}

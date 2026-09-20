@@ -1,16 +1,16 @@
 {
   "databaseId": "mv.core.species.ratmen",
   "stableId": "mv.core.species.ratmen",
-  "name": "Ratmen",
+  "name": "Ratman",
   "objectType": "mv.object.species-definition",
   "developmentStage": "Structured draft",
   "source": "phase-1-8-canonical-objects",
   "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "",
-  "reviewStatus": "",
+  "promotionDecision": "CORE26_CURRENT_AUTHORITY_RECONCILIATION",
+  "reviewStatus": "CURRENT_AUTHORITY_RECONCILED",
   "schemaVersion": "",
-  "contentVersion": "",
+  "contentVersion": "1.0.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -19,11 +19,22 @@
   "manualEntry": null,
   "gameObject": {
     "id": "mv.core.species.ratmen",
-    "name": "Ratmen",
+    "name": "Ratman",
     "objectType": "mv.object.species-definition",
     "provenance": {
       "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
       "ingestedFromMember": "index.json"
+    },
+    "contentVersion": "1.0.0",
+    "extensions": {
+      "app.multiversal.aioc": {
+        "speciesCanonRegister": {
+          "authorityId": "CORE26-CURRENT-01",
+          "registerStableId": "mv.core.species-canon-register.ratman",
+          "gameReadyStandard": "CORE26.GAME_READY.v1",
+          "definitionSourceChain": "content-source/core26-species/ratman/"
+        }
+      }
     }
   },
   "validation": null,
@@ -32,9 +43,18 @@
   "provenance": {
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
-    "authority": "Multiversal canonical source bundle",
-    "sourcePath": "content-source/phase-1-8-canonical-objects.json",
-    "sourceDigest": "sha256:11d3e26161a6ea1acbe8847d7c01c5f6fb09a9525dc2e2eba557d41b4c612fbb",
+    "authority": "phase-1-8-canonical-objects",
+    "sourcePath": "content-source/core26-species/ratman/definition-v1.0.0.json",
+    "sourceDigest": "sha256:8387a81a673bcc25ae1bf830b9d3abb6fe10acc09e1d505c5823cd4197f9fb13",
+    "sourceBundleId": "mv.content.core26.ratman.definition-v1",
+    "sourceBundlePart": "ratman-definition-v1.0.0",
+    "sourceClass": "replacement",
+    "replaces": {
+      "stableId": "mv.core.species.ratmen",
+      "contentVersion": null,
+      "sourcePath": "content-source/phase-1-8-canonical-objects.json",
+      "sourceDigest": "sha256:11d3e26161a6ea1acbe8847d7c01c5f6fb09a9525dc2e2eba557d41b4c612fbb"
+    },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
 }

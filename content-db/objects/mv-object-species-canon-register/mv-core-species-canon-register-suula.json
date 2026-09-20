@@ -1,0 +1,80 @@
+{
+  "databaseId": "mv.core.species-canon-register.suula",
+  "stableId": "mv.core.species-canon-register.suula",
+  "name": "Suula Canon Register",
+  "objectType": "mv.object.species-canon-register",
+  "developmentStage": "Structured draft",
+  "source": "mv.content.core26.suula.canon-register-v1",
+  "sourceLocator": "content-source/core26-species/suula/register-v1.0.0.json",
+  "coverageStatus": "CANONICAL_OBJECT_PRESENT",
+  "promotionDecision": "",
+  "reviewStatus": "",
+  "schemaVersion": "",
+  "contentVersion": "1.0.0",
+  "packIds": [],
+  "dependencies": [],
+  "tags": [
+    "canonical-object"
+  ],
+  "manualEntry": null,
+  "gameObject": {
+    "id": "mv.core.species-canon-register.suula",
+    "name": "Suula Canon Register",
+    "objectType": "mv.object.species-canon-register",
+    "contentVersion": "1.0.0",
+    "register": {
+      "speciesName": "Suula",
+      "speciesDefinitionStableId": "mv.core.species.suula",
+      "authorityId": "CORE26-CURRENT-01",
+      "gameReadyStandard": "CORE26.GAME_READY.v1",
+      "sourceLedger": [
+        {
+          "role": "current_authority",
+          "title": "CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+          "repositoryPath": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+          "canonRole": "current_roster_identity_authority"
+        },
+        {
+          "role": "written_species_source",
+          "title": "Suula.PDF",
+          "canonRole": "source_backed_species_material"
+        },
+        {
+          "role": "current_appearance_authority",
+          "title": "CAPP-01_SOURCE_AUTHORITY_AND_PROFILE_INDEX_v0.1.0.json",
+          "repositoryPath": "governance/application-planning/character-appearance-production/CAPP-01_SOURCE_AUTHORITY_AND_PROFILE_INDEX_v0.1.0.json",
+          "canonRole": "governed_visual_profile"
+        }
+      ],
+      "canonDomains": {
+        "identity": true,
+        "lore": "accumulate_source_backed_material",
+        "mechanics": "accumulate_source_backed_and_owner_approved_rules",
+        "appearance": "accumulate_current_authority_outputs",
+        "provenance": true,
+        "openQuestions": true,
+        "certification": true
+      },
+      "updateContract": {
+        "mode": "append_versioned_source_never_mutate_history",
+        "requiresSourcePipelineRebuild": true,
+        "requiresRegisterVersionBumpForCanonChange": true,
+        "requiresDefinitionVersionBumpWhenGameplayObjectChanges": true,
+        "requiresOwnerApprovalForCanonPromotion": true,
+        "preservePriorVersions": true
+      }
+    }
+  },
+  "validation": null,
+  "balance": null,
+  "testing": null,
+  "provenance": {
+    "authority": "Multiversal canonical source bundle",
+    "sourcePath": "content-source/core26-species/suula/register-v1.0.0.json",
+    "sourceDigest": "sha256:912a303586818d26ad96cc61b5c63530884bda00cf9182b68242e6e8da89207b",
+    "sourceBundleId": "mv.content.core26.suula.canon-register-v1",
+    "sourceBundlePart": "suula-register-v1.0.0",
+    "sourceClass": "supplemental",
+    "importedBy": "scripts/build-canonical-content-database.mjs"
+  }
+}
