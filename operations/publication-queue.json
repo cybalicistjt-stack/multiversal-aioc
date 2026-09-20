@@ -1,8 +1,38 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 78,
-  "ready": [],
+  "generation": 79,
+  "ready": [
+    {
+      "candidate_id": "MVPS-21-app-001",
+      "lane": "mvps",
+      "work_item_id": "MVPS-21",
+      "pr_number": 1489,
+      "head_sha": "a17f3f330e060087c60c96413480591211e9b5d2",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "a17f3f330e060087c60c96413480591211e9b5d2",
+        "run_id": "35524790875"
+      },
+      "write_set": [
+        ".github/workflows/validate-repository-health.yml",
+        "governance/application-planning/player-species/MVPS-21_AUTHORING_SEARCH_INSPECTION_INDEX_v1.0.0.json",
+        "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json",
+        "governance/application-planning/player-species/MVPS-21_CURRENT_CORE26_PRESENTATION_CATALOG_v1.0.0.json",
+        "governance/application-planning/player-species/MVPS-21_PRESENTATION_REGENERATION_RECEIPT_v1.0.0.json",
+        "scripts/generate_mvps21_core26_presentation.py",
+        "tests/control_plane/test_mvps21_core26_current_presentation.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "2a9d60dca5ec995e3066cfd96e4fd0db2d5bc70d",
+        "core26_authority_id": "CORE26-CURRENT-01",
+        "predecessor": "MVPS-20",
+        "presentation_overlay": "MVPS21.CORE26.APPEARANCE.v1",
+        "historical_ppia06_blob": "889e9f60513db718603a3295bd7e0867575909a6",
+        "historical_capp01_blob": "e2152e0ebe29dc70d5c503d36457092153adac5c"
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
