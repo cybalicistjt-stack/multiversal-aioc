@@ -34,17 +34,17 @@
     "MRCS-04+ remain unauthorized until separately selected.",
     "MSAS and MVPS lane selectors/branches/authority are independent and must not be rewritten by MRCS work."
   ],
-  "active_substep": "green_exact_head_validation",
-  "next_action": "Validate exact head a66f677a41e5500630f9668fba3732d2fcd4aaab under MRCS-03 profile and require full cross-platform GREEN plus deterministic comparison before READY queue submission.",
+  "active_substep": "ready_queue_submission",
+  "next_action": "Submit immutable READY candidate MRCS-03-app-001 for PR 625 at head a66f677a41e5500630f9668fba3732d2fcd4aaab with prequeue validation run 35474377403; then fresh-bind integration to target main and publish only that head.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 6,
+    "material_progress_seq": 7,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "kind": "typecheck_causal_repair",
-      "evidence": "Behavior suites green on run 35474316653; client typecheck failed on version parser intersection and was causally repaired at a66f677a41e5500630f9668fba3732d2fcd4aaab."
+      "kind": "prequeue_green",
+      "evidence": "Run 35474377403 fully green at exact head a66f677a41e5500630f9668fba3732d2fcd4aaab across Linux, Windows and deterministic comparison."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
