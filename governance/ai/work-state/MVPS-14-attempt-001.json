@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-14",
+  "title": "Authoring, Search, Inspection and Presentation",
+  "attempt_id": "MVPS-14-attempt-001",
+  "lane": "mvps",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-13",
+  "predecessor": {
+    "work_item_id": "MVPS-13",
+    "status": "completed_verified",
+    "implementation_merge_sha": "54434fb40895f35af97d58c1c6fdf0322a0bb0eb",
+    "validation_run": 35498685459
+  },
+  "strict_successor": "MVPS-15",
+  "objective": "Implement species authoring/reference surfaces, builder projection, GM inspector, cross-links, assets and permission-aware presentation.",
+  "acceptance": [
+    "UI is projection not rules authority",
+    "provenance and validation are inspectable",
+    "presentation data remains mechanically separate"
+  ],
+  "boundaries": [
+    "MVPS-14 owns species-facing authoring/reference/search/inspection/presentation contracts and projections, not canonical rule execution.",
+    "Authoring surfaces edit governed SpeciesDefinition/related species records through their owning persistence/validation paths rather than embedding rule logic in UI.",
+    "Search and inspection expose stable identity, exact versions, provenance, validation/migration state and cross-links subject to permission filtering.",
+    "Builder/GM presentation consumes MVPS-13 runtime projection and grant receipts but cannot rewrite them or infer hidden canon.",
+    "Presentation assets, labels, layout and visualization remain mechanically separate from species rules and owner-domain mechanics.",
+    "NPC/creature reuse remains MVPS-15; radical-species golden proof remains MVPS-16; MVPS-15+ remain unauthorized until separately selected."
+  ],
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "interstitial_override": "none",
+    "strict_order": "MVPS-13 → MVPS-14 → MVPS-15 → MVPS-16",
+    "parallel_lanes": "MSAS-07 and MRCS-04 remain independently selected_not_started."
+  },
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an MVPS-specific owner Continue, fresh-read the MVPS-14 dependency closure and mvps lane-state ref, then start and execute the bounded tranche under OPS3-11.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
