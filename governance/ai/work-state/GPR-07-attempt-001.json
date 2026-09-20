@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "GPR",
+  "lane": "gpr",
+  "track": "gameplay-pattern-runtime",
+  "source_program": "GPR",
+  "work_item_id": "GPR-07",
+  "attempt_id": "GPR-07-attempt-001",
+  "title": "Encounter, Autonomy, Score/Timing, Loadout & Skill-Resolution Runtime",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "GPR-06",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "gpr_interstitial_override": "none",
+    "strict_order": "GPR-01 → GPR-03 → GPR-05 → GPR-06 → GPR-07 → GPR-08 → GPR-09 → GPR-10 → GPR-12 → GPR-16",
+    "late_bind_requires": [
+      "later MRCS domains",
+      "MCS/MCCS/MNCS/MAS/MSAS outputs"
+    ],
+    "golden_proof_requires": [
+      "MRCS-21",
+      "relevant specialist golden proofs"
+    ],
+    "parallel_lanes": "MRCS-19 and OARC-05 remain independently selected_not_started."
+  },
+  "required_predecessor": {
+    "work_item": "GPR-06",
+    "application_merge_sha": "faf9d34c091ce096d910b10b61063ffd7a025ea9",
+    "specialist_module_schema": "GPR-06.1",
+    "owner_operation_schema": "GPR-05.1",
+    "deterministic_kernel_schema": "GPR-03.1",
+    "runtime_registry_schema": "GPR-01.1"
+  },
+  "objective": "Implement bounded encounter/autonomous selection, score/timing/rhythm resolution, loadout/build execution and skill-resolution adapters over the shared GPR runtime while leaving NPC psychology, AI authority, Character build truth, skill definitions and authored audio with their external owners.",
+  "acceptance": [
+    "Encounter and autonomous selection adapters operate on bounded GPR-local candidate state and explicit owner references without becoming NPC psychology or AI authority.",
+    "Score/timing/rhythm resolution uses declared semantic clocks/order and does not make presentation frames or authored audio the source of mechanics truth.",
+    "Loadout/build execution consumes explicit Character/Inventory/Progression owner references and cannot replace Character build truth.",
+    "Skill-resolution adapters consume accepted skill definitions and explicit owner operations rather than authoring or canonizing skills.",
+    "Owner-domain mutation remains receipt-bound; GPR-local encounter, score, loadout or skill outcomes cannot prove canonical mutation.",
+    "Unsupported or unavailable encounter/autonomy/score/timing/loadout/skill capabilities fail closed with no generic fallback."
+  ],
+  "boundaries": [
+    "GPR-01, GPR-03, GPR-05 and GPR-06 remain predecessors and are not duplicated.",
+    "NPC psychology and AI authority remain external; GPR owns only bounded selection/execution adapters.",
+    "Character build truth, skill definitions and authored audio remain external owner concerns.",
+    "MRCS remains definition authority and later MRCS domains may late-bind.",
+    "GPR-08+ composer, delivery, presentation, continuity and final proof remain unauthorized.",
+    "MRCS and OARC lane state remain independent."
+  ],
+  "strict_successor": "GPR-08",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On a GPR-specific owner Continue, fresh-read GPR-07, published GPR-01/GPR-03/GPR-05/GPR-06 evidence, the GPR family design closure and ops3-lane-state/gpr, then execute the complete bounded encounter/autonomy/score/timing/loadout/skill tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

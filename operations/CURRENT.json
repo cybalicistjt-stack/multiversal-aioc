@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 303,
+  "state_revision": 304,
   "default_lane": "mrcs",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -91,12 +91,12 @@
     },
     "gpr": {
       "state": "selected_not_started",
-      "selected_work_item": "GPR-06",
-      "attempt_id": "GPR-06-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/GPR-06-attempt-001.json",
+      "selected_work_item": "GPR-07",
+      "attempt_id": "GPR-07-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/GPR-07-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "GPR-05 completed_verified after causal RED run 35531204847 at head 287753ecc78b2290c1919621347a504866a7e43e, bounded test-helper type correction after run 35531314861 identified client-typecheck-only failure, exact-head cross-platform GREEN run 35531488677 at head ac379018668f0e85929320717d72063a14578105, fresh-main no-overlap integration against application main 20f65e297e47f942142b947a5c23a9ceb7458afb, and READY publication of PR 654 as application main a22391fdb136354c5eef93b9dbfc85de4deec35b. ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no interstitial override between GPR-05 and strict successor GPR-06; later MRCS domains remain late-bind dependencies and GPR-16 remains gated on MRCS-21 plus relevant specialist golden proofs.",
+      "activation_rule": "GPR-06 completed_verified after causal RED run 35532367213 at head 09280a7e47e904b9f33e37cabd0c54de0b5528b6, exact-head cross-platform GREEN run 35532445182 at head 0c2de1f7cf1c9bc41b45da69e6e57b2c68f96486, fresh-main no-overlap integration against application main 665f7a67ed1685280aa5177dd890209f325bfa01, and READY publication of PR 655 as application main faf9d34c091ce096d910b10b61063ffd7a025ea9. ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no interstitial override between GPR-06 and strict successor GPR-07; later MRCS domains remain late-bind dependencies and GPR-16 remains gated on MRCS-21 plus relevant specialist golden proofs.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -119,7 +119,7 @@
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
     "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
-  "next_project_action": "GPR-06, MRCS-19 and OARC-05 remain independently selected_not_started. Continue only the persistent implementation lane explicitly requested by the owner; OARC-05 is Containment & Large-Asset Relationships and must preserve OARC01.AUTHORITY_HANDOFF.v1 through OARC04.OPERATIONAL_SPECIALIZATION_PROFILES.v1.",
+  "next_project_action": "GPR-07, MRCS-19 and OARC-05 remain independently selected_not_started. Continue only the persistent implementation lane explicitly requested by the owner; GPR-07 is the encounter/autonomy/score-timing/loadout/skill-resolution tranche and must leave NPC psychology, AI authority, Character build truth, skill definitions and authored audio with their external owners.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
