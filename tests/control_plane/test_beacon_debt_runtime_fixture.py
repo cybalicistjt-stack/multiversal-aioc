@@ -232,7 +232,7 @@ def main():
     version_index = json.loads(VERSION_INDEX.read_text(encoding="utf-8"))
     cert = json.loads(CERT.read_text(encoding="utf-8"))
     golden = json.loads(GOLDEN.read_text(encoding="utf-8"))
-    assert cert["recordCount"] == 526
+    assert cert["recordCount"] == 556
     assert version_index["versionCount"] == 47
     assert golden["overall_state"] == "DETERMINISTIC_GOLDEN_LAUNCH_READY_PRE_RUNTIME"
     version_keys = {entry["key"] for entry in version_index["versions"]}
