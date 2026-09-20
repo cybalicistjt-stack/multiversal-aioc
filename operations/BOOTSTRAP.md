@@ -18,6 +18,8 @@ Read `operations/CURRENT.json`.
 
 `CURRENT.json` is the only mutable selector of live operational state. It identifies freezes, the active operations work item, and each lane's current state. If another source disagrees with it, `CURRENT.json` wins unless John explicitly changes the direction in the current conversation.
 
+If `CURRENT.json` names a domain authority relevant to the requested scope, load that **CURRENT-referenced domain authority** before historical domain records, generated catalogs, or sealed completion evidence. It controls current canon for that domain only; it cannot select work, grant implementation authority, or expand the lane's scope.
+
 ## 3. Select the lane from user intent
 
 Read `operations/LANES.json` and choose exactly one lane that matches the user's request.

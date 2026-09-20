@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "authority_id": "CORE26-CURRENT-01",
+  "title": "Current Core 26 Player Species Canon Authority",
+  "status": "CURRENT_CANON",
+  "effective_date": "2026-09-20",
+  "authority_scope": "Current player-species roster identity and forward-consumer canon. Historical 25-species evidence remains immutable history and cannot override this file while CURRENT.json references it.",
+  "derived_from": [
+    "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v0.1.0.json",
+    "governance/development-bible/amendments/MV-SPECIES-001_CORE_26_PLAYER_SPECIES_AUTHORITY_AMENDMENT.md",
+    "owner directive 2026-09-20: system going forward recognizes 26 as current canon and all 26 are raised to the same standard"
+  ],
+  "current_core_26": {
+    "count": 26,
+    "species": [
+      "Human",
+      "Elf",
+      "Dwarf",
+      "Goblin",
+      "Orc",
+      "Giantkin",
+      "Stygian",
+      "Sharr",
+      "Gray",
+      "The Free",
+      "Ratman",
+      "Furashin",
+      "Rog",
+      "Rohai",
+      "Moravi",
+      "Vespin",
+      "Rakuuta",
+      "Traiga",
+      "Kola-Ha",
+      "Toba-Madra",
+      "Arborae",
+      "Mythragara",
+      "Suula",
+      "Morganthyr",
+      "ManyToms",
+      "Akwi"
+    ]
+  },
+  "identity_migrations": {
+    "Nekron": {
+      "current": "Morganthyr",
+      "aliases": [
+        "Nekron",
+        "Nekrons"
+      ],
+      "singular_if_needed": "Morganth",
+      "rule": "Current-authority surfaces use Morganthyr; sealed historical evidence may retain Nekron/Nekrons only for reproducibility."
+    },
+    "Nekrons": {
+      "current": "Morganthyr",
+      "aliases": [
+        "Nekron",
+        "Nekrons"
+      ],
+      "singular_if_needed": "Morganth",
+      "rule": "Current-authority surfaces use Morganthyr; sealed historical evidence may retain Nekron/Nekrons only for reproducibility."
+    }
+  },
+  "akwi": {
+    "canonical_name": "Akwi",
+    "status": "core_playable_species",
+    "stable_id": "species.akwi",
+    "governed_integration": "AKWI-01",
+    "storage_rule": "Supplemental physical storage does not make Akwi non-core. Current catalogs/pickers/validators must treat Akwi as a peer member of the Core 26."
+  },
+  "ratman": {
+    "core_species": "Ratman",
+    "subordinate_lineages": [
+      "Rattori",
+      "Nybra",
+      "Rattakar",
+      "Ratborn",
+      "Chitta",
+      "Taipanua",
+      "Ska",
+      "Muridian",
+      "Raughtt"
+    ],
+    "lineage_count": 9,
+    "taxonomy_rule": "These are subordinate Ratman lineage/subspecies candidates, not peer Core-26 species. Exact rank and detailed biology remain source-bounded.",
+    "raughtt_bounded_facts": [
+      "proper",
+      "aristocratic",
+      "Dominix"
+    ]
+  },
+  "consumer_rules": [
+    "Every current-authority player-species picker, creator, renderer, appearance system, runtime catalog, migration path, validator, authoring/search surface, NPC/Creature adapter and certification artifact must resolve this Core-26 authority.",
+    "No current-authority consumer may treat 23 content-db objects or the sealed historical 25-profile set as the complete current roster.",
+    "No current-authority consumer may expose Nekron/Nekrons as the canonical current identity; resolve to Morganthyr while retaining historical alias provenance.",
+    "Akwi must be treated as Core-26 even where its governed runtime object remains physically supplemental until catalog convergence.",
+    "Missing current objects, mechanics, visuals or source facts must be reported as production gaps; they may not be synthesized merely to achieve 26/26."
+  ],
+  "historical_preservation": [
+    "Do not rewrite sealed PPIA-05, PPIA-06 or CAPP completion evidence merely to replace historical 25-species counts or Nekron wording.",
+    "Historical validators may reproduce historical heads, but they cannot certify current Core-26 completeness.",
+    "The old Evernote species renamed The Jee and the later Bougadahl remain outside the Core 26 unless separately owner-authorized."
+  ],
+  "production_standard_ref": "governance/application-planning/player-species/CORE_26_GAME_READY_STANDARD_v1.0.0.json"
+}

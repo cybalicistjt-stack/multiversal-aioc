@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.9.0  
+**Version:** 3.10.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -23,6 +23,10 @@ Authority is intentionally shallow:
 No other file is allowed to declare current work or override this chain. Compatibility projections may repeat data only when they explicitly identify `operations/CURRENT.json` as their source.
 
 Execution guards, lane-state journals, and the ready-candidate publication queue are **validation/executor-coordination mechanisms only**. They may block an unsafe transition, but they may never select work, expand scope, or grant implementation authority.
+
+### CURRENT-referenced domain authority
+
+`operations/CURRENT.json` may name a domain-specific canon authority for a bounded product domain. When the requested work touches that domain, load the **CURRENT-referenced domain authority** after `CURRENT.json` and before historical domain sources, generated catalogs, sealed completion evidence, or compatibility projections. The referenced authority defines current canon for that domain; **historical domain material cannot override** it. A domain authority cannot select work, change lane priority, expand scope, or grant implementation authority.
 
 ## 2. GPT-first startup
 
