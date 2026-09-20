@@ -208,6 +208,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          node scripts/materialize-content-source.mjs
+          node scripts/build-canonical-content-database.mjs
           python3 tests/control_plane/test_mvps18_core26_canonical_registers.py
 
       - name: Run dynamic certified-content consumer regression

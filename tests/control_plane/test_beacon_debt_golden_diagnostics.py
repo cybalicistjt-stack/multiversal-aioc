@@ -87,10 +87,10 @@ def main():
     by_id = {record["stableId"]: record for record in index["records"]}
     version_keys = {entry["key"] for entry in version_index["versions"]}
 
-    assert index["recordCount"] == 526, f"expected 526 effective canonical records after mechanics closure, found {index['recordCount']}"
+    assert index["recordCount"] == 556, f"expected 556 effective canonical records after Core-26 source registration, found {index['recordCount']}"
     assert version_index["versionCount"] == 47, f"expected 47 immutable exact versions, found {version_index['versionCount']}"
-    assert certificate["recordCount"] == 526
-    assert certificate["replacementRecordCount"] == 8
+    assert certificate["recordCount"] == 556
+    assert certificate["replacementRecordCount"] == 31
 
     missing = [stable_id for stable_id in ALL_IDS if stable_id not in by_id]
     assert not missing, f"Beacon Debt canonical/mechanics IDs missing: {missing}"

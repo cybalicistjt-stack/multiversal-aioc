@@ -137,7 +137,7 @@ def validate_instantiated_runtime(version_keys, cert):
     assert runtime["authority"]["productionServiceImplementationAvailable"] is False
 
     surface = runtime["canonicalSurface"]
-    assert surface["recordCount"] == cert["recordCount"] == 526
+    assert surface["recordCount"] == cert["recordCount"] == 556
     assert surface["semanticFingerprint"] == cert["semanticFingerprint"]
     assert surface["sourceDigest"] == cert["sourceDigest"]
 

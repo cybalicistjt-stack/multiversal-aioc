@@ -4,7 +4,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-EXPECTED_RECORD_COUNT = 526
+EXPECTED_RECORD_COUNT = 556
 REQUIRED_IDS = {
     "mv.setting.faction.administrative-syndicate",
     "mv.setting.faction.black-feathers",
@@ -46,9 +46,9 @@ def main() -> None:
     )
     assert certificate["recordCount"] == EXPECTED_RECORD_COUNT
     assert certificate["baselineRecordCount"] == 487
-    assert certificate["appendedRecordCount"] == 39
-    assert certificate["replacementRecordCount"] == 8
-    assert certificate["supplementalInputRecordCount"] == 47
+    assert certificate["appendedRecordCount"] == 69
+    assert certificate["replacementRecordCount"] == 31
+    assert certificate["supplementalInputRecordCount"] == 100
     assert certificate["gameReadiness"]["assessed"] is False
     assert "not-game-readiness" in certificate["certificationScope"]
     assert (ROOT / "content-db" / "content-record.schema.json").exists(), "clean rebuild must preserve the record schema"
@@ -89,7 +89,7 @@ def main() -> None:
 
     print(
         "Canonical content pipeline reconciliation PASS: "
-        f"{index['recordCount']} effective records; 39 appends + 8 governed replacements; Beacon Debt mechanics and exact references resolve."
+        f"{index['recordCount']} effective records; 69 appends + 31 governed replacements; Beacon Debt mechanics and exact references resolve."
     )
 
 
