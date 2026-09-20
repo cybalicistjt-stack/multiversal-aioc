@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0.0",
   "lane": "mrcs",
-  "revision": 19,
+  "revision": 20,
   "selected_work_item": "MRCS-05",
   "attempt_id": "MRCS-05-attempt-001",
-  "execution_status": "prequeue_green",
+  "execution_status": "published",
   "implementation_branch": "feature/mrcs-05-mechanical-advancement-authoring",
-  "progress_seq": 2,
+  "progress_seq": 3,
   "last_progress": {
-    "kind": "prequeue_green",
-    "evidence": "MRCS-05 exact head ed24a343e02b7c70c3e1c7b360003e0a0711612e passed run 35499258424: selector/health, Linux, Windows and deterministic cross-platform comparison."
+    "kind": "published",
+    "evidence": "MRCS-05-app-001 exact head ed24a343e02b7c70c3e1c7b360003e0a0711612e published as application main fd5260fa243298fa4233e025be97cea4673dc1cd after exact-head run 35499258424; application READY queue reconciled at generation 12."
   },
   "terminal": false,
   "last_completed": {
@@ -25,5 +25,10 @@
   "prequeue_green": {
     "candidate_head": "ed24a343e02b7c70c3e1c7b360003e0a0711612e",
     "validation_run": "35499258424"
+  },
+  "publication": {
+    "candidate_head": "ed24a343e02b7c70c3e1c7b360003e0a0711612e",
+    "merge_sha": "fd5260fa243298fa4233e025be97cea4673dc1cd",
+    "ready_candidate_id": "MRCS-05-app-001"
   }
 }

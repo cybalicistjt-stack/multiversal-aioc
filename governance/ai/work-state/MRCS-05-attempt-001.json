@@ -38,18 +38,18 @@
     "MSAS and MVPS lane state remains independent."
   ],
   "strict_successor": "MRCS-08",
-  "active_substep": "ready_queue_submission",
-  "next_action": "Submit immutable MRCS-05 application candidate at exact head ed24a343e02b7c70c3e1c7b360003e0a0711612e with prequeue GREEN run 35499258424; then fresh-bind integration to application main and publish only that head.",
+  "active_substep": "control_plane_closeout_fast_path",
+  "next_action": "Fresh-read CURRENT and ROADMAP_DEPENDENCY_GRAPH, build the atomic MRCS-05 completed_verified / MRCS-08 selected_not_started projection, validate it, publish it through the AIOC READY queue, reconcile durable main, then reseed the mrcs lane state exactly once.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 2,
+    "material_progress_seq": 3,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 2,
-      "kind": "prequeue_green",
-      "evidence": "Exact-head MRCS-05 validation run 35499258424 passed at ed24a343e02b7c70c3e1c7b360003e0a0711612e across Linux, Windows and deterministic comparison."
+      "seq": 3,
+      "kind": "published",
+      "evidence": "Application PR 630 exact head ed24a343e02b7c70c3e1c7b360003e0a0711612e is durably published as fd5260fa243298fa4233e025be97cea4673dc1cd; app READY queue reconciled at generation 12."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
