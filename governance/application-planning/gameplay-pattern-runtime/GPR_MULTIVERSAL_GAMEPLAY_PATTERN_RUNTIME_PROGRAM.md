@@ -3,11 +3,11 @@
 **Program ID:** GPR  
 **Program name:** Gameplay Pattern Runtime & Loop Minis  
 **Version:** 0.2.0 — PDCP REDUCED  
-**Status:** ACTIVE — GPR-05 SELECTED_NOT_STARTED  
+**Status:** ACTIVE — GPR-06 SELECTED_NOT_STARTED  
 **Activation:** concurrent start authorized after MRCS-05 + completed MAL + core owner contracts; later MRCS late-binds; GPR-16 waits for MRCS-21  
 **Successor:** MERA-01  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-05 attempt
+**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-06 attempt
 
 ## Purpose
 
@@ -217,3 +217,16 @@ Collision/trigger processing emits GPR-local outcomes only. Unsupported or unkno
 Causal RED: run `35530223806` at `88dc7ccf4d1209b8697f18242a33537bfcc9dbf9`. Exact-head cross-platform GREEN: run `35530339162` at `ef5d69a5e38cf24d05f6517d67ccab58cf3ddab4`. Published application: PR #651 through READY candidate `GPR-03-app-001` as `b82eb6532d9d1b0815836a9ae3e852ac8fff2839`.
 
 The fresh roadmap DAG supplies no interstitial successor override, so GPR-05 is selected_not_started. Later MRCS domains remain late-bind dependencies and GPR-16 remains gated on MRCS-21 plus relevant specialist golden proofs.
+
+
+## GPR-05 completed owner-operation/objective/route runtime result
+
+GPR-05 completed_verified on 2026-09-20. Published application contract `GPR-05.1` provides one common pattern-level adapter surface for traversal, combat/projectiles, ability/resource, interaction, Inventory/equipment, Economy/reward, Progression/unlock, objective/mission and World/Scene route requests over GPR-01 registry bindings and GPR-03 GameplayInstance state.
+
+Requests bind stable operation runtime IDs, GameplayInstance identity and explicit canonical owner domains. Deterministic ordering uses governed order keys/request IDs; presentation order and network-arrival order are explicitly non-authoritative. Unsupported, unknown and owner-mismatched bindings fail closed.
+
+GPR-local planning cannot prove owner mutation. A canonical owner mutation is considered committed only after an explicit matching owner receipt with owner evidence is returned. Objective and route composition remain sorted GPR-local orchestration projections and do not create canonical World/Scene/Quest truth.
+
+Causal RED: run `35531204847` at `287753ecc78b2290c1919621347a504866a7e43e`. A test-helper-only TypeScript annotation defect was diagnosed after run `35531314861` without changing production behavior or assertions. Exact-head cross-platform GREEN: run `35531488677` at `ac379018668f0e85929320717d72063a14578105`. Published application: PR #654 through READY candidate `GPR-05-app-001` as `a22391fdb136354c5eef93b9dbfc85de4deec35b`.
+
+The fresh roadmap DAG supplies no interstitial successor override, so GPR-06 is selected_not_started.
