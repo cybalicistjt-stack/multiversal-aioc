@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "GPR",
+  "lane": "gpr",
+  "track": "gameplay-pattern-runtime",
+  "source_program": "GPR",
+  "work_item_id": "GPR-05",
+  "attempt_id": "GPR-05-attempt-001",
+  "title": "Owner-Domain Gameplay Operation, Objective & Route Runtime",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "GPR-03",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "gpr_interstitial_override": "none",
+    "strict_order": "GPR-01 → GPR-03 → GPR-05 → GPR-06 → GPR-07 → GPR-08 → GPR-09 → GPR-10 → GPR-12 → GPR-16",
+    "late_bind_requires": [
+      "later MRCS domains",
+      "MCS/MCCS/MNCS/MAS/MSAS outputs"
+    ],
+    "golden_proof_requires": [
+      "MRCS-21",
+      "relevant specialist golden proofs"
+    ],
+    "parallel_lanes": "MRCS-17 and OARC-04 remain independently selected_not_started."
+  },
+  "required_predecessor": {
+    "work_item": "GPR-03",
+    "application_merge_sha": "b82eb6532d9d1b0815836a9ae3e852ac8fff2839",
+    "deterministic_kernel_schema": "GPR-03.1",
+    "runtime_registry_schema": "GPR-01.1"
+  },
+  "objective": "Implement the common owner-domain operation adapter runtime over GPR-01 registry bindings and GPR-03 deterministic instance state for traversal, combat/projectiles, abilities, Resources, interactions, Inventory/equipment, Economy/rewards, Progression/unlocks, objectives/missions and World/Scene routes, while delegating every canonical mutation to its owning domain.",
+  "acceptance": [
+    "Operation requests bind stable GPR registry IDs, GameplayInstance identity and explicit canonical owner-domain targets.",
+    "Traversal, combat/projectile, ability/resource, interaction, Inventory/equipment, Economy/reward and Progression adapters route through explicit owner seams rather than duplicate domain engines.",
+    "Objective/mission and route composition remain GPR-local orchestration and do not become canonical World/Scene/Quest truth.",
+    "Owner-domain mutation is considered committed only when an explicit owner receipt/evidence is returned; GPR-local success cannot prove owner mutation.",
+    "Unsupported, unknown or owner-mismatched operations fail closed with no generic fallback or inferred compatibility.",
+    "Declared deterministic operation ordering is stable and cannot be replaced by presentation-frame or network-arrival order."
+  ],
+  "boundaries": [
+    "GPR-01 registry and GPR-03 deterministic kernel remain predecessors and are not duplicated.",
+    "MRCS remains reusable definition authority; canonical Action/Event, Combat, Inventory, Economy, Progression, World/Scene and other owners retain mutation truth.",
+    "GPR-05 composes typed requests/outcomes and objective/route state only; it may not create parallel canonical owner ledgers.",
+    "Later MRCS domains may late-bind without pausing GPR or MRCS execution.",
+    "GPR-06+ specialist modules, delivery modes, presentation, multiplayer/replay and final golden proof remain unauthorized.",
+    "MRCS and OARC lane state remain independent."
+  ],
+  "strict_successor": "GPR-06",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On a GPR-specific owner Continue, fresh-read GPR-05, GPR-01/GPR-03 published evidence, the GPR family design closure and ops3-lane-state/gpr, then execute the complete bounded owner-domain operation/objective/route tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
