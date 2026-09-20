@@ -5,9 +5,9 @@
   "title": "Authoring, Search, Inspection and Presentation",
   "attempt_id": "MVPS-14-attempt-001",
   "lane": "mvps",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_branch": "work/mvps-14-authoring-search-inspection-presentation",
   "selected_by_verified_predecessor": "MVPS-13",
   "predecessor": {
     "work_item_id": "MVPS-13",
@@ -24,9 +24,9 @@
   ],
   "boundaries": [
     "MVPS-14 owns species-facing authoring/reference/search/inspection/presentation contracts and projections, not canonical rule execution.",
-    "Authoring surfaces edit governed SpeciesDefinition/related species records through their owning persistence/validation paths rather than embedding rule logic in UI.",
-    "Search and inspection expose stable identity, exact versions, provenance, validation/migration state and cross-links subject to permission filtering.",
-    "Builder/GM presentation consumes MVPS-13 runtime projection and grant receipts but cannot rewrite them or infer hidden canon.",
+    "Authoring surfaces compose governed intent and validation previews through owning persistence/authority paths rather than embedding direct canonical mutation or rule logic in UI.",
+    "Search and inspection expose stable identity, exact versions, provenance, validation/migration state and cross-links only after permission filtering.",
+    "Builder/GM presentation consumes MVPS-13 runtime projection and grant receipts read-only and cannot rewrite them or infer hidden canon.",
     "Presentation assets, labels, layout and visualization remain mechanically separate from species rules and owner-domain mechanics.",
     "NPC/creature reuse remains MVPS-15; radical-species golden proof remains MVPS-16; MVPS-15+ remain unauthorized until separately selected."
   ],
@@ -34,19 +34,76 @@
     "dag_schema": "1.0.4",
     "interstitial_override": "none",
     "strict_order": "MVPS-13 → MVPS-14 → MVPS-15 → MVPS-16",
-    "parallel_lanes": "MSAS-07 and MRCS-04 remain independently selected_not_started."
+    "parallel_lanes": "MSAS-09 and MRCS-05 remain independently selected_not_started."
   },
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On an MVPS-specific owner Continue, fresh-read the MVPS-14 dependency closure and mvps lane-state ref, then start and execute the bounded tranche under OPS3-11.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS-14 is completed_verified. MVPS-15 is selected_not_started; a later MVPS-specific Continue must govern-start it before implementation authority is granted.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "completed_verified_candidate",
+      "evidence": "MVPS-14 causal RED run 35499148321 established the missing authoring/search/inspection/presentation contracts at cb4cfee3e70b4ae4f19669210a5ab9d4f15f6985; after parallel-main drift the implementation was replayed onto fresh base cc6101d2bf24dc076b3e3eb56b4f67d93c059400, exact-head GREEN run 35499228433 passed at 3d6f7b37282e3bc53f9cb3031403b18bcba3c1d4, and PR 1461 published through READY as 003d6e5b423bed4608a3acac6195c5050154b87a."
+    },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": null
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MVPS-14 application implementation is durably published and this atomic closeout records completed_verified plus MVPS-15 selected_not_started."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "MVPS-14 completed within one owner Continue under OPS3-11 milestone-only instrumentation. Lane state recorded only start, prequeue_green and published before the closeout fast path; parallel main drift was handled by replaying the candidate rather than adding activity receipts."
+  },
+  "implementation_plan": {
+    "lane_start": "completed",
+    "red": "completed",
+    "fresh_base_replay": "completed",
+    "green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "completed": true,
+  "completed_at": "2026-09-20",
+  "acceptance_evidence": {
+    "causal_red": {
+      "pr": 1461,
+      "head": "cb4cfee3e70b4ae4f19669210a5ab9d4f15f6985",
+      "validation_run": 35499148321,
+      "conclusion": "failure",
+      "signature": "OPS3 and MVPS-01 through MVPS-13 passed; MVPS-14 failed because the five required authoring/search/inspection/presentation artifacts were intentionally absent."
+    },
+    "green": {
+      "pr": 1461,
+      "validated_head": "3d6f7b37282e3bc53f9cb3031403b18bcba3c1d4",
+      "validated_base": "cc6101d2bf24dc076b3e3eb56b4f67d93c059400",
+      "validation_run": 35499228433,
+      "conclusion": "success",
+      "merge_method": "merge",
+      "merge_sha": "003d6e5b423bed4608a3acac6195c5050154b87a"
+    },
+    "application_ready_queue": {
+      "candidate_id": "MVPS-14-app-001",
+      "reconciled_generation": 28,
+      "ready_after_reconcile": 0
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MVPS-15",
+      "reason": "Strict MVPS order is MVPS-14→MVPS-15 and fresh DAG contains no MVPS interstitial override."
+    },
+    "owner_boundaries": {
+      "authoring": "AuthoringProjectionPort plus owning authoring-authority/persistence workflows",
+      "character_projection": "A4 CharacterProjectionPort",
+      "runtime_species": "MVPS.SpeciesRuntimeProjection remains read-only input",
+      "visibility": "filter before search/count/autocomplete/preview/AI context",
+      "presentation": "assets/labels/layout remain mechanically non-authoritative"
+    }
   }
 }
