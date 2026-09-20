@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "OARC",
+  "lane": "oarc",
+  "track": "operational-asset-readiness-closure",
+  "source_program": "OARC",
+  "work_item_id": "OARC-02",
+  "attempt_id": "OARC-02-attempt-001",
+  "title": "MRCS-13 ↔ MIB-14 Definition Bridge",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "OARC-01",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "oarc_interstitial_override": "none",
+    "strict_order": "OARC-01 → OARC-02 → OARC-03 → OARC-04 → OARC-05 → OARC-06 → OARC-07",
+    "parallel_lanes": "MSAS remains terminal completed_verified; MRCS-16 remains independently selected_not_started."
+  },
+  "required_authority_contract": {
+    "contract_id": "OARC01.AUTHORITY_HANDOFF.v1",
+    "path": "governance/application-planning/operational-asset-readiness-closure/OARC-01_AUTHORITY_HANDOFF_CONTRACT_v1.0.0.json"
+  },
+  "objective": "Prove that MRCS-13 authored reusable item/equipment/vehicle/construct/modular-component definitions, slots, owner references and versioned compatibility can bridge into existing MIB-14 operational definitions/configurations without duplicate records, invented compatibility or a parallel modular grammar.",
+  "acceptance": [
+    "The actual MRCS-13 package/owner-reference model is mapped to the actual MIB-14 operational definition/module/facility model.",
+    "Definition identity and provenance remain stable across the bridge rather than being copied into OARC-specific canonical records.",
+    "Explicit slot/component/compatibility semantics cross the bridge without inferred compatibility or silent defaults.",
+    "Unknown or source-unspecified bridge fields remain visibly unresolved.",
+    "Any genuine representational gap is recorded as the narrowest existing-owner-compatible integration requirement rather than a new OARC runtime/schema family.",
+    "OARC01.AUTHORITY_HANDOFF.v1 field-admission and future MERA/MBES reservation rules remain satisfied."
+  ],
+  "boundaries": [
+    "MRCS-13 remains completed reusable-definition authoring authority and is not silently reopened.",
+    "MIB-14 remains operational configuration foundation authority; D17 remains live Asset truth.",
+    "OARC-02 may add a bounded adapter/bridge/validator but no second modular-definition grammar, Asset ledger or operational runtime.",
+    "MERA engineering topology/runtime and MBES built-environment topology/runtime remain reserved and unauthorized.",
+    "Source-unspecified capacities, component parentage, compatibility, system facts and operating envelopes remain unresolved rather than inferred.",
+    "MSAS and MRCS lane state remains independent."
+  ],
+  "strict_successor": "OARC-03",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an OARC-specific owner Continue, fresh-read OARC-02, OARC01.AUTHORITY_HANDOFF.v1, MRCS-13 application contracts and the live MIB-14 implementation model, then execute the complete bounded definition-bridge tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

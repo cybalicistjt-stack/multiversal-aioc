@@ -2,7 +2,7 @@
 
 **Program ID:** OARC  
 **Lane:** `oarc`  
-**Status:** OWNER-APPROVED — SELECTED_NOT_STARTED  
+**Status:** ACTIVE — OARC-02 SELECTED_NOT_STARTED  
 **Approved:** 2026-09-20  
 **Purpose:** bounded game-readiness integration and certification for vehicles, mecha, spacecraft/starships, bases/platforms and their modular content  
 **Operational authority:** only through `operations/CURRENT.json`
@@ -137,3 +137,18 @@ OARC does not:
 ## Completion condition
 
 OARC closes only when real source-backed operational-asset catalogs can be deterministically classified and representative vehicle/mecha/ship/base cases can traverse the existing runtime and owner handoffs without duplicate identity, invented semantics, authority bleed or hidden future-family implementation.
+
+
+## OARC-01 completed authority/handoff result
+
+OARC-01 completed_verified on 2026-09-20. The machine-readable contract `OARC01.AUTHORITY_HANDOFF.v1` freezes the primary owner matrix and later-OARC field-admission gate.
+
+The closure makes OARC a readiness bridge, validation and certification lane only. MRCS-13 retains reusable definition authoring; MIB-14 retains operational configuration foundations; D17/PPIA-03/shared-assets retain live Asset truth; PPIA-04/F014 retain vehicle/mecha/starship operational semantics; MIB-12, LSS, MIB-13/Economy, APW/D26, World/Environment/Reality and Action/Event/Combat/SCL retain their existing owner domains.
+
+MERA and MBES remain owner-approved planned families with no current implementation authority. OARC may record dependencies and prove handoffs to them but may not implement MERA engineering topology/network/refit runtime or MBES construction/built-environment/settlement runtime early.
+
+Every field or capability proposed by OARC-02 through OARC-07 must identify one existing primary truth owner, representation kind, source-truth state, mutation/handoff path and provenance. Missing owners remain explicit owner gaps; source-unspecified facts remain unresolved rather than defaulted or inferred.
+
+Causal RED: Operations V3 run `35528399109` at `bda33506e54cc2b7b00e3a512840b7aaa9fd53e5`. Exact-head GREEN: run `35528464087` at `51bc5b586efd3088e5346ae3bfdc77373d2a4fe2`. Published contract: PR #1498 as `144769200adfcae9414c3af39c801a81d072abef`.
+
+The fresh roadmap DAG contains no OARC override, so OARC-02 is the strict selected successor.
