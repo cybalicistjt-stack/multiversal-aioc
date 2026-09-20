@@ -34,17 +34,17 @@
     "MRCS-04+ remain unauthorized until separately selected.",
     "MSAS and MVPS lane selectors/branches/authority are independent and must not be rewritten by MRCS work."
   ],
-  "active_substep": "queue_reconciliation_and_successor_projection",
-  "next_action": "Reconcile MRCS-03-app-001 from READY queue using durable application main d2704aff2c777f31b98f00d41277fbc82594f0ff, mark lane completed_verified, then prepare MRCS-04 selected_not_started control-plane projection through protected AIOC publication.",
+  "active_substep": "control_plane_closeout",
+  "next_action": "Prepare protected AIOC closeout candidate that marks MRCS-03 completed_verified and selects MRCS-04 selected_not_started without mutating MSAS or MVPS state; validate, publish through AIOC READY queue, reconcile, then reseed the mrcs lane-state ref for MRCS-04.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 9,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 10,
+    "progress_at_last_owner_command": 6,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "kind": "application_published",
-      "evidence": "Verified durable application main d2704aff2c777f31b98f00d41277fbc82594f0ff for PR 625 from exact READY head a66f677a41e5500630f9668fba3732d2fcd4aaab."
+      "kind": "publication_reconciled",
+      "evidence": "Application queue generation 4 is reconciled empty; MRCS-03-app-001 is durably published as d2704aff2c777f31b98f00d41277fbc82594f0ff."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
