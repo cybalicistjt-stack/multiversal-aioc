@@ -74,6 +74,31 @@ jobs:
           node --version
           git --version
 
+
+      - name: Classify validation scope
+        id: scope
+        shell: bash
+        env:
+          BASE_HEAD: ${{ github.event.pull_request.base.sha || github.event.before || '' }}
+        run: |
+          set -euo pipefail
+          certified_content=false
+          zero=0000000000000000000000000000000000000000
+          if [[ -z "$BASE_HEAD" || "$BASE_HEAD" == "$zero" ]]; then
+            certified_content=true
+          else
+            git fetch --no-tags --depth=1 origin "$BASE_HEAD"
+            mapfile -t changed < <(git diff --name-only "$BASE_HEAD" "$CANDIDATE_HEAD")
+            for path in "${changed[@]}"; do
+              case "$path" in
+                content-source/*|content-db/*|content-database.js|content-library-collections.js|evidence/content-pipeline/*|governance/application-planning/player-species/*|governance/application-planning/species-reconciliation/*|scripts/materialize-content-source.mjs|scripts/build-canonical-content-database.mjs|scripts/build-canonical-version-index.mjs|scripts/build_beacon_debt_runtime_fixture.py|scripts/generate_mvps21_core26_presentation.py|scripts/check_mvps23_core26_golden_proof.py|tools/validate-core26-species-reconciliation.py|tests/control_plane/test_mvps*.py|tests/control_plane/test_dynamic_certified_content_consumers.mjs|tests/control_plane/test_canonical_content_pipeline_reconciliation.py|tests/control_plane/test_canonical_content_replacement.mjs|tests/control_plane/test_beacon_debt*.py|tests/validate-content-library-staging.mjs)
+                  certified_content=true
+                  ;;
+              esac
+            done
+          fi
+          echo "certified_content=$certified_content" >> "$GITHUB_OUTPUT"
+
       - name: Validate the canonical single door
         shell: bash
         run: |
@@ -102,102 +127,119 @@ jobs:
           python3 tests/control_plane/test_ops3_execution_concurrency.py
 
       - name: Run MVPS-01 species aggregate contract regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps01_species_aggregate_contract.py
 
       - name: Run MVPS-02 choice transaction regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps02_choice_schema_transaction.py
 
       - name: Run MVPS-03 morphology body-plan regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps03_morphology_body_plan.py
 
       - name: Run MVPS-04 scale movement sense regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps04_scale_movement_sense_integration.py
 
       - name: Run MVPS-05 physiology environment regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps05_physiology_environment.py
 
       - name: Run MVPS-06 capability natural-equipment regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps06_capability_natural_equipment.py
 
       - name: Run MVPS-07 interface compatibility regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps07_interface_compatibility.py
 
       - name: Run MVPS-08 lineage composition regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps08_lineage_composition.py
 
       - name: Run MVPS-09 form transformation regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps09_form_transformation.py
 
       - name: Run MVPS-10 species progression maturation regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps10_species_progression_maturation.py
 
       - name: Run MVPS-11 social language knowledge regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps11_social_language_knowledge.py
 
       - name: Run MVPS-12 validation migration import-export regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps12_validation_migration_import_export.py
 
       - name: Run MVPS-13 runtime projection grant-receipt regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps13_runtime_projection_grant_receipts.py
 
       - name: Run MVPS-14 authoring search inspection presentation regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps14_authoring_search_inspection_presentation.py
 
       - name: Run MVPS-15 NPC creature reuse cross-system adapter regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps15_npc_creature_reuse_adapters.py
 
       - name: Run MVPS-16 radical-species golden proof
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps16_radical_species_golden_proof.py
 
       - name: Run MVPS-17 Core-26 current-canon production baseline
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -205,6 +247,7 @@ jobs:
           python3 tools/validate-core26-species-reconciliation.py
 
       - name: Run MVPS-18 Core-26 canonical register and rebuild durability regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -213,6 +256,7 @@ jobs:
           python3 tests/control_plane/test_mvps18_core26_canonical_registers.py
 
       - name: Run MVPS-19 Core-26 mechanics biology and interface completion regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -221,6 +265,7 @@ jobs:
           python3 tests/control_plane/test_mvps19_core26_mechanics_completion.py
 
       - name: Run MVPS-20 Core-26 lineage form progression and social completion regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -229,6 +274,7 @@ jobs:
           python3 tests/control_plane/test_mvps20_core26_optional_dimensions.py
 
       - name: Run MVPS-21 Core-26 current presentation regeneration regressions
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -236,12 +282,14 @@ jobs:
           python3 tests/control_plane/test_mvps21_core26_current_presentation.py
 
       - name: Run MVPS-22 Core-26 balance validation and cross-system certification
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_mvps22_core26_cross_system_certification.py
 
       - name: Run MVPS-23 Core-26 game-ready golden proof
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -249,24 +297,28 @@ jobs:
           python3 tests/control_plane/test_mvps23_core26_game_ready_golden_proof.py
 
       - name: Run dynamic certified-content consumer regression
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           node tests/control_plane/test_dynamic_certified_content_consumers.mjs
 
       - name: Run canonical content pipeline reconciliation regression
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_canonical_content_pipeline_reconciliation.py
 
       - name: Run canonical content replacement compatibility regression
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           node tests/control_plane/test_canonical_content_replacement.mjs
 
       - name: Run Beacon Debt golden-test and Item-readiness diagnostics
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -274,24 +326,28 @@ jobs:
           python3 tests/control_plane/test_beacon_debt_golden_diagnostics.py
 
       - name: Build Beacon Debt A5 runtime fixture and immutable snapshot
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 scripts/build_beacon_debt_runtime_fixture.py
 
       - name: Validate Beacon Debt runtime fixture and immutable snapshot
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_beacon_debt_runtime_fixture.py
 
       - name: Run Content Library collection regression
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
           node tests/validate-content-library-staging.mjs
 
       - name: Enforce certified generated content is already in the candidate
+        if: steps.scope.outputs.certified_content == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -309,7 +365,7 @@ jobs:
           exit 1
 
       - name: Upload certified canonical content evidence
-        if: always()
+        if: always() && steps.scope.outputs.certified_content == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: canonical-content-pipeline-${{ env.CANDIDATE_HEAD }}

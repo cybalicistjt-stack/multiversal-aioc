@@ -45,6 +45,17 @@ def validate_progress_receipt(checkpoint):
     if seq and (not isinstance(last,dict) or last.get("seq")!=seq or not str(last.get("evidence","")).strip()): errors.append(INVALID_PROGRESS_RECEIPT)
     if cycles>0 and NO_MATERIAL_PROGRESS not in _violations(checkpoint): errors.append(NO_MATERIAL_PROGRESS)
     return sorted(set(errors))
+def validate_lane_terminal_response(lane_state: dict[str,Any])->list[str]:
+    """Hard response gate from the durable lane milestone, not the stale main checkpoint."""
+    if lane_state.get("terminal") is True:
+        return []
+    status=lane_state.get("execution_status")
+    if status=="selected_not_started":
+        return []
+    if status in {"in_progress","prequeue_green","published"}:
+        return [NONTERMINAL]
+    return [NONTERMINAL]
+
 def validate_terminal_response(checkpoint):
     errors=[]; status=checkpoint.get("status"); g=_guard(checkpoint); allowed=g.get("terminal_response_allowed") is True; reason=g.get("stop_reason")
     if status=="in_progress":
@@ -63,11 +74,17 @@ def validate_execution_conformance(checkpoint):
     if not isinstance(sn,int) or sn<0: errors.append(STALL_NUDGE)
     elif sn>0 and STALL_NUDGE not in violations and cs in {"completed_verified","conforming"}: errors.append(STALL_NUDGE)
     errors.extend(validate_progress_receipt(checkpoint)); return sorted(set(errors))
-def validate_checkpoint(checkpoint,*,terminal_response=False):
+def validate_checkpoint(checkpoint,*,terminal_response=False,lane_state=None):
     errors=validate_execution_conformance(checkpoint)
-    if terminal_response: errors.extend(validate_terminal_response(checkpoint))
+    if terminal_response:
+        errors.extend(validate_terminal_response(checkpoint))
+        if lane_state is not None:
+            errors.extend(validate_lane_terminal_response(lane_state))
     return sorted(set(errors))
 def main():
-    p=argparse.ArgumentParser(); p.add_argument("checkpoint"); p.add_argument("--terminal-response",action="store_true"); a=p.parse_args()
-    c=json.loads(Path(a.checkpoint).read_text(encoding="utf-8")); errors=validate_checkpoint(c,terminal_response=a.terminal_response); print(json.dumps({"status":"FAIL" if errors else "PASS","errors":errors},sort_keys=True)); return 1 if errors else 0
+    p=argparse.ArgumentParser(); p.add_argument("checkpoint"); p.add_argument("--terminal-response",action="store_true"); p.add_argument("--lane-state"); a=p.parse_args()
+    c=json.loads(Path(a.checkpoint).read_text(encoding="utf-8"))
+    lane_state=json.loads(Path(a.lane_state).read_text(encoding="utf-8")) if a.lane_state else None
+    errors=validate_checkpoint(c,terminal_response=a.terminal_response,lane_state=lane_state)
+    print(json.dumps({"status":"FAIL" if errors else "PASS","errors":errors},sort_keys=True)); return 1 if errors else 0
 if __name__=="__main__": raise SystemExit(main())
