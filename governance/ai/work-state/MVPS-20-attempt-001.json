@@ -6,9 +6,9 @@
   "title": "Core-26 Lineage, Form, Progression and Social Completion",
   "attempt_id": "MVPS-20-attempt-001",
   "lane": "mvps",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_branch": "work/mvps-20-lineage-form-progression-social",
   "selected_by_verified_predecessor": "MVPS-19",
   "predecessor": {
     "work_item_id": "MVPS-19",
@@ -24,8 +24,8 @@
     "culture and learned language remain separate from biology"
   ],
   "boundaries": [
-    "Consume CORE26-CURRENT-01, CORE26.GAME_READY.v1, all v1.1.0 Core-26 definitions/registers, MVPS19.CORE26.OWNER_DECISIONS.v1 and MVPS19.CORE26.MECHANICS.v1 before historical material.",
-    "Complete only lineage/subspecies, form/transformation, adaptation/progression, and social/language/knowledge identity surfaces; current identity and MVPS-19 mechanics baselines are predecessor authority.",
+    "Consume CORE26-CURRENT-01, CORE26.GAME_READY.v1, all v1.1.0 predecessor definitions/registers, MVPS19.CORE26.OWNER_DECISIONS.v1 and MVPS19.CORE26.MECHANICS.v1 before historical material.",
+    "Complete only lineage/subspecies, form/transformation, adaptation/progression, and social/language/knowledge identity surfaces; current identity and MVPS-19 mechanics baselines remain predecessor authority.",
     "Ratman subordinate lineages remain subordinate and do not become peer Core-26 species.",
     "Culture and learned language remain separate from biological communication and species identity.",
     "Preserve the full existing Vespin stinger species system and bind progression/purchase semantics through shared Progression owners rather than flattening it into one generic weapon.",
@@ -33,17 +33,88 @@
     "Missing source remains explicit unless the Owner supplies a canon decision; do not fabricate optional content for matrix completeness.",
     "Appearance/presentation regeneration belongs to MVPS-21; balance/cross-system certification belongs to MVPS-22 and final game-ready golden proof to MVPS-23."
   ],
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On an MVPS-specific Continue, fresh-read the v1.1.0 Core-26 definitions/registers, MVPS-08 through MVPS-11 contracts, the MVPS-19 decision/mechanics artifacts, and exact source evidence required for optional lineage/form/progression/social completion; execute the bounded MVPS-20 tranche under OPS3-11.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS-21 is the strict successor. It must consume the current v1.2.0 Core-26 definitions/registers plus MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1 and MVPS20.CORE26.SPECIAL_SYSTEMS.v1 while regenerating current-authority appearance, picker, authoring/search/inspection and presentation outputs without reopening mechanics authority.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 3,
+      "kind": "completed_verified_candidate",
+      "evidence": "Causal RED run 35522639707 isolated missing MVPS-20 optional-dimension artifacts at a7593b02905f2c7892cb3ab92e984694612534d0; exact-head GREEN run 35523818012 passed the complete repository-health gate at e24bc9d9cf9cccdd5c78429c77172be89590136f; PR 1485 published as 460217fb1adf8845a9fc0c16e172d642155b926c."
+    },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": null
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MVPS-20 application is durably published and reconciled; atomic closeout selects MVPS-21."
+    }
+  },
+  "completed": true,
+  "completed_at": "2026-09-20",
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "OPS3 lane state used only start, prequeue_green and published milestones. The first RED workflow exposed a checkpoint-projection setup defect and was repaired before causal RED was accepted. Generated outputs were materialized on the feature branch, the temporary helper was removed, and the exact immutable final head was revalidated before READY publication."
+  },
+  "acceptance_evidence": {
+    "causal_red": {
+      "pr": 1485,
+      "head": "a7593b02905f2c7892cb3ab92e984694612534d0",
+      "validation_run": 35522639707,
+      "conclusion": "failure",
+      "signature": "All preceding OPS3/MVPS-01..19 gates passed and MVPS-20 alone failed because its matrix, special bindings and v1.2 source-chain artifacts were intentionally absent."
+    },
+    "green": {
+      "pr": 1485,
+      "validated_head": "e24bc9d9cf9cccdd5c78429c77172be89590136f",
+      "validation_run": 35523818012,
+      "conclusion": "success",
+      "merge_sha": "460217fb1adf8845a9fc0c16e172d642155b926c"
+    },
+    "publication": {
+      "ready_candidate": "MVPS-20-app-001",
+      "queue_reconciled_generation": 75
+    },
+    "core26": {
+      "species_definition_count": 26,
+      "canon_register_count": 26,
+      "definition_version": "1.2.0",
+      "register_version": "1.2.0",
+      "optional_dimension_matrix": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+      "special_binding_set": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+      "current_authority": "CORE26-CURRENT-01",
+      "game_ready_standard": "CORE26.GAME_READY.v1"
+    },
+    "special_bindings": {
+      "giantkin_lineages": [
+        "Grendelkin",
+        "Surtrborn",
+        "Daityr"
+      ],
+      "ratman_lineage_count": 9,
+      "vespin_stinger_progression_owner": "MVPS.SpeciesProgressionHook",
+      "kola_ha_forms": "MVPS.FormDefinition",
+      "mythragara_transformations": "MVPS.TransformationSemantics",
+      "suula_progression": "MVPS.SpeciesProgressionHook",
+      "morganthyr_one_time_ascension_outcomes": [
+        "Revenant",
+        "Sanguivore",
+        "Fragmentarii"
+      ],
+      "stygian_wing_state": "conditional_functional_or_vestigial",
+      "typed_dispatch": "typed_data_not_species_name"
+    },
+    "canonical_database": {
+      "effective_records": 556,
+      "source_count": 166,
+      "appended_records": 69,
+      "replacement_records": 135,
+      "supplemental_input_records": 204,
+      "semantic_fingerprint": "sha256:2b0c3c099e9a334d819bf6307c54554dc8d4cf0ffc72a2eac4f16ec11fd1d7d9"
+    }
   }
 }
