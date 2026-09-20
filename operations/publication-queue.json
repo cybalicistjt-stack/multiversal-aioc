@@ -1,8 +1,41 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/Multiversal-app",
-  "generation": 58,
-  "ready": [],
+  "generation": 59,
+  "ready": [
+    {
+      "candidate_id": "OARC-05-app-001",
+      "lane": "oarc",
+      "work_item_id": "OARC-05",
+      "pr_number": 659,
+      "head_sha": "2fb7808e7c0d5a927ef42bc66c182625916dd64a",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "2fb7808e7c0d5a927ef42bc66c182625916dd64a",
+        "run_id": "35536121846"
+      },
+      "write_set": [
+        "apps/client-ui/src/oarc/oarc05.large-asset-relationships.integration.test.ts",
+        "governance/application-planning/operational-asset-readiness-closure/OARC-05_RELATIONSHIP_PROOF_MANIFEST_v1.0.0.json",
+        "governance/application-planning/validation-core/profiles/OARC-05.json",
+        "packages/contracts/src/shared-assets/oarc-05-large-asset-relationship-proof.ts",
+        "tools/verify_oarc_05.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "c45873b7d73c0423c4ef3280cbf5b341536e425b",
+        "fresh_main_checked_sha": "c45873b7d73c0423c4ef3280cbf5b341536e425b",
+        "fresh_main_overlap_files": [],
+        "causal_red_run": "35536003908",
+        "authority_contracts": [
+          "OARC01.AUTHORITY_HANDOFF.v1",
+          "OARC02.DEFINITION_BRIDGE.v1",
+          "OARC03.CATALOG_NORMALIZATION.v1",
+          "OARC04.OPERATIONAL_SPECIALIZATION_PROFILES.v1"
+        ],
+        "relationship_manifest": "OARC05.LARGE_ASSET_RELATIONSHIP_PROOF.v1"
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "MSAS-04-app-001",
