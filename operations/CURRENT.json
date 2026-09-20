@@ -6,17 +6,17 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 263,
+  "state_revision": 264,
   "default_lane": "msas",
-  "active_operations_work_item": "OPS3-11",
-  "active_operations_work_item_path": "operations/work-items/OPS3-11.json",
+  "active_operations_work_item": null,
+  "active_operations_work_item_path": null,
   "product_start_freeze": {
-    "active": true,
-    "reason": "Owner-approved OPS3-11 system-wide anti-overinstrumentation repair. Product starts are temporarily frozen while the one-door contract and shared lane-state helpers are changed to milestone-only receipts and a bounded closeout fast path.",
+    "active": false,
+    "reason": "OPS3-11 completed_verified after replacing activity-style instrumentation with milestone-only lane state, deterministic successor reseed, instrumentation-only progress rejection, and the bounded closeout fast path.",
     "preserved_selected_work_item": "MSAS-05",
     "preserved_attempt_id": "MSAS-05-attempt-001",
     "implementation_authority": false,
-    "cleared_by": null,
+    "cleared_by": "OPS3-11 completed_verified",
     "preserved_lane_selections": {
       "msas": {
         "selected_work_item": "MSAS-05",
@@ -37,10 +37,10 @@
   },
   "lanes": {
     "operations": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "work_item_id": "OPS3-11",
       "work_item_path": "operations/work-items/OPS3-11.json",
-      "implementation_authority": true
+      "implementation_authority": false
     },
     "msas": {
       "state": "selected_not_started",
@@ -108,7 +108,7 @@
     "lane_state_milestones": "Ordinary persistent-lane execution state is selected_not_started -> in_progress -> prequeue_green -> published, followed by one deterministic successor reseed after canonical closeout. The generic lane activity-log API is prohibited.",
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes."
   },
-  "next_project_action": "Complete OPS3-11 milestone-only instrumentation and closeout-compression repair. Product starts remain temporarily frozen; MSAS-05, MRCS-04 and MVPS-13 selections are preserved.",
+  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-05, MRCS-04 and MVPS-13 remain independently selected_not_started. Every executor must use milestone-only lane state and the closeout fast path from the OPS3 one door.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

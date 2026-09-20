@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "work_item_id": "OPS3-11",
   "title": "Execution Compression and Overinstrumentation Guard",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_directive": "Fix overinstrumentation across the entire system from Operations V3 so every executor receives the same one-door instructions. Durable lane state is for coarse recovery milestones, not an activity log. Collapse closeout to a bounded fast path and prevent CI/job/status/queue micro-transitions from creating redundant receipts, reads, commits or narration.",
   "reproduced_failures": [
     "MRCS-03 completed correctly but produced a very large activity trail dominated by status reads, artifact inspections, CI/platform micro-checks, queue re-reads and lane-state receipt writes around a small number of real state transitions.",
@@ -26,24 +26,62 @@
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "governed_start_candidate",
-      "evidence": "OPS3-11 start candidate freezes product starts and preserves MSAS-05, MRCS-04 and MVPS-13 while the one-door anti-overinstrumentation repair is implemented."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "OPS3-11 causal RED run 35479052896 reproduced the old one-door overinstrumentation rule; exact-head GREEN run 35479178530 validated the milestone-only implementation at 01d248c69950d96ac466bc2318c8bfdf5950aec5; PR 1454 merged as 246e4d8fedda5835fe3fe74ba1660fe5dc6d7605 and its READY candidate reconciled with no release step."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Milestone-only lane state, deterministic successor reseed, instrumentation-only progress rejection, one-door anti-overinstrumentation instructions and the closeout fast path are implemented and validated; this closeout clears the product-start freeze."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "OPS3-11 completed within the single owner execution command. The repair added no new control surface and replaced activity logging with explicit milestone transitions."
   },
-  "implementation_authority": true,
-  "completed": false,
-  "active_substep": "governed_start_publication",
-  "next_action": "Publish the OPS3-11 governed start through the existing READY-candidate protocol, then implement milestone-only lane state, deterministic successor reseed, closeout fast-path instructions and overinstrumentation regressions; validate and close OPS3-11 in this same owner execution."
+  "implementation_authority": false,
+  "completed": true,
+  "active_substep": "completed_verified",
+  "next_action": "OPS3-11 is closed. Resume only the owner-requested product lane; all executors enter through operations/BOOTSTRAP.md and inherit the milestone-only instrumentation rules.",
+  "acceptance_evidence": {
+    "governed_start": {
+      "pr": 1453,
+      "validated_head": "4dc14278a113636e6240d2a51d1e3ccd79f71c0f",
+      "validation_run": 35478984545,
+      "merge_sha": "38a25756c7bd7ac5b3fbb6f66f3b1dad22143513"
+    },
+    "causal_red": {
+      "pr": 1454,
+      "head": "f40011d83bf9cdb102ee66e325e3a39310b083c0",
+      "validation_run": 35479052896,
+      "conclusion": "failure",
+      "signature": "One-door regression failed because OPS3 still instructed executors to write lane receipts after each material durable side effect."
+    },
+    "implementation_green": {
+      "pr": 1454,
+      "validated_head": "01d248c69950d96ac466bc2318c8bfdf5950aec5",
+      "validation_run": 35479178530,
+      "conclusion": "success",
+      "merge_sha": "246e4d8fedda5835fe3fe74ba1660fe5dc6d7605"
+    },
+    "protections": {
+      "lane_state": "Ordinary attempt state is start -> prequeue_green -> published -> one successor reseed; generic record_progress/complete_execution APIs removed.",
+      "execution_guard": "Instrumentation-only kinds such as status/CI-platform/queue/merge micro-events are rejected as OPS3.OVERINSTRUMENTATION when offered as material progress.",
+      "one_door": "Bootstrap and contract require milestone receipts, not activity receipts; repository/PR/CI/publication-queue evidence owns intermediate mechanics.",
+      "closeout": "Validation -> READY CAS -> fresh-main check -> exact merge -> durable reconcile -> successor reseed, with no intermediate lane-state receipts.",
+      "preserved_lanes": [
+        "MSAS-05",
+        "MRCS-04",
+        "MVPS-13"
+      ],
+      "new_control_files": 0
+    }
+  }
 }
