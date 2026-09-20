@@ -38,18 +38,18 @@
     "MSAS and MVPS lane state remains independent."
   ],
   "strict_successor": "MRCS-11",
-  "active_substep": "application_ready_publication",
-  "next_action": "Submit exact GREEN application head 3881281c15c25f30632e004f6161f987f6b699f3 to the shared application READY queue when FIFO permits, bind against fresh application main, publish with expected-head protection, reconcile the queue, then execute the control-plane closeout fast path.",
+  "active_substep": "control_plane_closeout_fast_path",
+  "next_action": "Fresh-read CURRENT and ROADMAP_DEPENDENCY_GRAPH, build the atomic MRCS-08 completed_verified / MRCS-11 selected_not_started projection, validate it, publish it through the AIOC READY queue, reconcile durable main, then reseed the mrcs lane state exactly once.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 2,
+    "material_progress_seq": 3,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 2,
-      "kind": "prequeue_green",
-      "evidence": "Exact-head MRCS-08 validation run 35506843187 passed Linux, Windows and deterministic cross-platform comparison at 3881281c15c25f30632e004f6161f987f6b699f3."
+      "seq": 3,
+      "kind": "published",
+      "evidence": "Application PR 634 exact head 3881281c15c25f30632e004f6161f987f6b699f3 is durably published as 3ff9d6228745cdca6b2b348d1b6545341c2509bd; app READY queue reconciled at generation 16."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
