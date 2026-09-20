@@ -191,6 +191,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_mvps15_npc_creature_reuse_adapters.py
 
+      - name: Run MVPS-16 radical-species golden proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps16_radical_species_golden_proof.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |
