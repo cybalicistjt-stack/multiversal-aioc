@@ -1,8 +1,35 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 38,
-  "ready": [],
+  "generation": 39,
+  "ready": [
+    {
+      "candidate_id": "MVPS-16-app-001",
+      "lane": "mvps",
+      "work_item_id": "MVPS-16",
+      "pr_number": 1467,
+      "head_sha": "c74f606778edb122089311a0e393972f92a972b2",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "c74f606778edb122089311a0e393972f92a972b2",
+        "run_id": "35506980538"
+      },
+      "write_set": [
+        ".github/workflows/validate-repository-health.yml",
+        "governance/application-planning/player-species/contracts/MVPS-16_COMMON_CONFORMANCE_MATRIX.json",
+        "governance/application-planning/player-species/contracts/MVPS-16_RADICAL_SPECIES_FIXTURES.json",
+        "governance/application-planning/player-species/contracts/MVPS-16_GOLDEN_PROOF.json",
+        "governance/application-planning/player-species/contracts/MVPS-16_INVARIANTS.json",
+        "tests/control_plane/test_mvps16_radical_species_golden_proof.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "f4982d46fec3c75bcbacac5e4eda4e1621a92300",
+        "roadmap_dependency_graph_schema": "1.0.4",
+        "predecessor_merge_sha": "5275880ec11392a86b5695a7ac10b92259ad0f8f",
+        "golden_proof_requirement": "MVPS-16 radical-species conformance proof"
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
