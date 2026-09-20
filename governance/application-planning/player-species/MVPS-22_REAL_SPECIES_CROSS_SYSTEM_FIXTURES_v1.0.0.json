@@ -1,0 +1,3302 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_set_id": "MVPS22.CORE26.REAL_SPECIES_CROSS_SYSTEM.v1",
+  "status": "VERIFIED",
+  "authority_ref": "CORE26-CURRENT-01",
+  "species_count": 26,
+  "adapter_domains": [
+    "campaign",
+    "combat",
+    "crafting",
+    "exploration",
+    "social"
+  ],
+  "shared_contracts": {
+    "validation": "MVPS.SpeciesValidation",
+    "runtime": "MVPS.SpeciesRuntimeProjection",
+    "equipment": "MVPS.SpeciesInterfaceCompatibility",
+    "environment": "MVPS.SpeciesEnvironmentTolerance",
+    "migration": "MVPS.SpeciesMigration",
+    "presentation": "MVPS.SpeciesPresentationProjection",
+    "entity_reuse": "MVPS.SpeciesEntityReuse",
+    "cross_system": "MVPS.SpeciesCrossSystemAdapters"
+  },
+  "species": [
+    {
+      "species": "Human",
+      "stable_id": "mv.core.species.human",
+      "definition_source": "content-source/core26-species/human/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/human/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/human/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/human/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/human/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.human",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/human/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.human",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/human/definition-v1.2.0.json",
+            "content-source/core26-species/human/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.human",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/human/definition-v1.2.0.json",
+            "content-source/core26-species/human/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.human",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/human/definition-v1.2.0.json",
+            "content-source/core26-species/human/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.human",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/human/definition-v1.2.0.json",
+            "content-source/core26-species/human/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.human",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/human/definition-v1.2.0.json",
+            "content-source/core26-species/human/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Elf",
+      "stable_id": "mv.core.species.elf",
+      "definition_source": "content-source/core26-species/elf/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/elf/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/elf/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/elf/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/elf/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.elf",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/elf/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.elf",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/elf/definition-v1.2.0.json",
+            "content-source/core26-species/elf/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.elf",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/elf/definition-v1.2.0.json",
+            "content-source/core26-species/elf/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.elf",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/elf/definition-v1.2.0.json",
+            "content-source/core26-species/elf/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.elf",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/elf/definition-v1.2.0.json",
+            "content-source/core26-species/elf/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.elf",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/elf/definition-v1.2.0.json",
+            "content-source/core26-species/elf/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Dwarf",
+      "stable_id": "mv.core.species.dwarf",
+      "definition_source": "content-source/core26-species/dwarf/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/dwarf/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/dwarf/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/dwarf/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/dwarf/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.dwarf",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/dwarf/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.dwarf",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/dwarf/definition-v1.2.0.json",
+            "content-source/core26-species/dwarf/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.dwarf",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/dwarf/definition-v1.2.0.json",
+            "content-source/core26-species/dwarf/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.dwarf",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/dwarf/definition-v1.2.0.json",
+            "content-source/core26-species/dwarf/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.dwarf",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/dwarf/definition-v1.2.0.json",
+            "content-source/core26-species/dwarf/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.dwarf",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/dwarf/definition-v1.2.0.json",
+            "content-source/core26-species/dwarf/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Goblin",
+      "stable_id": "mv.core.species.goblin",
+      "definition_source": "content-source/core26-species/goblin/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/goblin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/goblin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/goblin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/goblin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.goblin",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/goblin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.goblin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/goblin/definition-v1.2.0.json",
+            "content-source/core26-species/goblin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.goblin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/goblin/definition-v1.2.0.json",
+            "content-source/core26-species/goblin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.goblin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/goblin/definition-v1.2.0.json",
+            "content-source/core26-species/goblin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.goblin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/goblin/definition-v1.2.0.json",
+            "content-source/core26-species/goblin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.goblin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/goblin/definition-v1.2.0.json",
+            "content-source/core26-species/goblin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Orc",
+      "stable_id": "mv.core.species.orc",
+      "definition_source": "content-source/core26-species/orc/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/orc/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/orc/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/orc/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/orc/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.orc",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/orc/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.orc",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/orc/definition-v1.2.0.json",
+            "content-source/core26-species/orc/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.orc",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/orc/definition-v1.2.0.json",
+            "content-source/core26-species/orc/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.orc",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/orc/definition-v1.2.0.json",
+            "content-source/core26-species/orc/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.orc",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/orc/definition-v1.2.0.json",
+            "content-source/core26-species/orc/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.orc",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/orc/definition-v1.2.0.json",
+            "content-source/core26-species/orc/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Giantkin",
+      "stable_id": "mv.core.species.giantkin",
+      "definition_source": "content-source/core26-species/giantkin/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/giantkin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/giantkin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/giantkin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/giantkin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.giantkin",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/giantkin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.giantkin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/giantkin/definition-v1.2.0.json",
+            "content-source/core26-species/giantkin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.giantkin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/giantkin/definition-v1.2.0.json",
+            "content-source/core26-species/giantkin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.giantkin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/giantkin/definition-v1.2.0.json",
+            "content-source/core26-species/giantkin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.giantkin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/giantkin/definition-v1.2.0.json",
+            "content-source/core26-species/giantkin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.giantkin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/giantkin/definition-v1.2.0.json",
+            "content-source/core26-species/giantkin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Stygian",
+      "stable_id": "mv.core.species.stygian",
+      "definition_source": "content-source/core26-species/stygian/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/stygian/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/stygian/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/stygian/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/stygian/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.stygian",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/stygian/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.stygian",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/stygian/definition-v1.2.0.json",
+            "content-source/core26-species/stygian/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.stygian",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/stygian/definition-v1.2.0.json",
+            "content-source/core26-species/stygian/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.stygian",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/stygian/definition-v1.2.0.json",
+            "content-source/core26-species/stygian/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.stygian",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/stygian/definition-v1.2.0.json",
+            "content-source/core26-species/stygian/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.stygian",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/stygian/definition-v1.2.0.json",
+            "content-source/core26-species/stygian/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Sharr",
+      "stable_id": "mv.core.species.sharr",
+      "definition_source": "content-source/core26-species/sharr/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/sharr/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/sharr/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/sharr/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/sharr/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.sharr",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/sharr/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.sharr",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/sharr/definition-v1.2.0.json",
+            "content-source/core26-species/sharr/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.sharr",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/sharr/definition-v1.2.0.json",
+            "content-source/core26-species/sharr/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.sharr",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/sharr/definition-v1.2.0.json",
+            "content-source/core26-species/sharr/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.sharr",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/sharr/definition-v1.2.0.json",
+            "content-source/core26-species/sharr/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.sharr",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/sharr/definition-v1.2.0.json",
+            "content-source/core26-species/sharr/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Gray",
+      "stable_id": "mv.core.species.gray",
+      "definition_source": "content-source/core26-species/gray/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/gray/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/gray/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/gray/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/gray/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.gray",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/gray/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.gray",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/gray/definition-v1.2.0.json",
+            "content-source/core26-species/gray/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.gray",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/gray/definition-v1.2.0.json",
+            "content-source/core26-species/gray/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.gray",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/gray/definition-v1.2.0.json",
+            "content-source/core26-species/gray/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.gray",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/gray/definition-v1.2.0.json",
+            "content-source/core26-species/gray/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.gray",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/gray/definition-v1.2.0.json",
+            "content-source/core26-species/gray/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "The Free",
+      "stable_id": "mv.core.species.free",
+      "definition_source": "content-source/core26-species/the-free/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/the-free/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/the-free/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/the-free/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/the-free/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.the-free",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/the-free/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.free",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/the-free/definition-v1.2.0.json",
+            "content-source/core26-species/the-free/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.free",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/the-free/definition-v1.2.0.json",
+            "content-source/core26-species/the-free/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.free",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/the-free/definition-v1.2.0.json",
+            "content-source/core26-species/the-free/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.free",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/the-free/definition-v1.2.0.json",
+            "content-source/core26-species/the-free/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.free",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/the-free/definition-v1.2.0.json",
+            "content-source/core26-species/the-free/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Ratman",
+      "stable_id": "mv.core.species.ratmen",
+      "definition_source": "content-source/core26-species/ratman/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/ratman/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/ratman/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/ratman/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/ratman/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.ratman",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/ratman/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.ratmen",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/ratman/definition-v1.2.0.json",
+            "content-source/core26-species/ratman/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.ratmen",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/ratman/definition-v1.2.0.json",
+            "content-source/core26-species/ratman/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.ratmen",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/ratman/definition-v1.2.0.json",
+            "content-source/core26-species/ratman/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.ratmen",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/ratman/definition-v1.2.0.json",
+            "content-source/core26-species/ratman/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.ratmen",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/ratman/definition-v1.2.0.json",
+            "content-source/core26-species/ratman/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Furashin",
+      "stable_id": "mv.core.species.furashin",
+      "definition_source": "content-source/core26-species/furashin/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/furashin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/furashin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/furashin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/furashin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.furashin",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/furashin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.furashin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/furashin/definition-v1.2.0.json",
+            "content-source/core26-species/furashin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.furashin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/furashin/definition-v1.2.0.json",
+            "content-source/core26-species/furashin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.furashin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/furashin/definition-v1.2.0.json",
+            "content-source/core26-species/furashin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.furashin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/furashin/definition-v1.2.0.json",
+            "content-source/core26-species/furashin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.furashin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/furashin/definition-v1.2.0.json",
+            "content-source/core26-species/furashin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Rog",
+      "stable_id": "mv.core.species.rog",
+      "definition_source": "content-source/core26-species/rog/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/rog/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/rog/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/rog/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/rog/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.rog",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/rog/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.rog",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rog/definition-v1.2.0.json",
+            "content-source/core26-species/rog/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.rog",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rog/definition-v1.2.0.json",
+            "content-source/core26-species/rog/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.rog",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rog/definition-v1.2.0.json",
+            "content-source/core26-species/rog/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.rog",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rog/definition-v1.2.0.json",
+            "content-source/core26-species/rog/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.rog",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rog/definition-v1.2.0.json",
+            "content-source/core26-species/rog/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Rohai",
+      "stable_id": "mv.core.species.rohai",
+      "definition_source": "content-source/core26-species/rohai/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/rohai/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/rohai/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/rohai/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/rohai/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.rohai",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/rohai/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.rohai",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rohai/definition-v1.2.0.json",
+            "content-source/core26-species/rohai/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.rohai",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rohai/definition-v1.2.0.json",
+            "content-source/core26-species/rohai/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.rohai",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rohai/definition-v1.2.0.json",
+            "content-source/core26-species/rohai/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.rohai",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rohai/definition-v1.2.0.json",
+            "content-source/core26-species/rohai/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.rohai",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rohai/definition-v1.2.0.json",
+            "content-source/core26-species/rohai/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Moravi",
+      "stable_id": "mv.core.species.moravi",
+      "definition_source": "content-source/core26-species/moravi/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/moravi/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/moravi/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/moravi/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/moravi/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.moravi",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/moravi/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.moravi",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/moravi/definition-v1.2.0.json",
+            "content-source/core26-species/moravi/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.moravi",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/moravi/definition-v1.2.0.json",
+            "content-source/core26-species/moravi/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.moravi",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/moravi/definition-v1.2.0.json",
+            "content-source/core26-species/moravi/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.moravi",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/moravi/definition-v1.2.0.json",
+            "content-source/core26-species/moravi/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.moravi",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/moravi/definition-v1.2.0.json",
+            "content-source/core26-species/moravi/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Vespin",
+      "stable_id": "mv.core.species.vespin",
+      "definition_source": "content-source/core26-species/vespin/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/vespin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/vespin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/vespin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/vespin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.vespin",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/vespin/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.vespin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/vespin/definition-v1.2.0.json",
+            "content-source/core26-species/vespin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.vespin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/vespin/definition-v1.2.0.json",
+            "content-source/core26-species/vespin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.vespin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/vespin/definition-v1.2.0.json",
+            "content-source/core26-species/vespin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.vespin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/vespin/definition-v1.2.0.json",
+            "content-source/core26-species/vespin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.vespin",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/vespin/definition-v1.2.0.json",
+            "content-source/core26-species/vespin/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Rakuuta",
+      "stable_id": "mv.core.species.rakuuta",
+      "definition_source": "content-source/core26-species/rakuuta/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/rakuuta/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/rakuuta/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/rakuuta/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/rakuuta/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.rakuuta",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/rakuuta/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.rakuuta",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rakuuta/definition-v1.2.0.json",
+            "content-source/core26-species/rakuuta/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.rakuuta",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rakuuta/definition-v1.2.0.json",
+            "content-source/core26-species/rakuuta/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.rakuuta",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rakuuta/definition-v1.2.0.json",
+            "content-source/core26-species/rakuuta/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.rakuuta",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rakuuta/definition-v1.2.0.json",
+            "content-source/core26-species/rakuuta/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.rakuuta",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/rakuuta/definition-v1.2.0.json",
+            "content-source/core26-species/rakuuta/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Traiga",
+      "stable_id": "mv.core.species.traiga",
+      "definition_source": "content-source/core26-species/traiga/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/traiga/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/traiga/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/traiga/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/traiga/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.traiga",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/traiga/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.traiga",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/traiga/definition-v1.2.0.json",
+            "content-source/core26-species/traiga/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.traiga",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/traiga/definition-v1.2.0.json",
+            "content-source/core26-species/traiga/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.traiga",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/traiga/definition-v1.2.0.json",
+            "content-source/core26-species/traiga/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.traiga",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/traiga/definition-v1.2.0.json",
+            "content-source/core26-species/traiga/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.traiga",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/traiga/definition-v1.2.0.json",
+            "content-source/core26-species/traiga/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Kola-Ha",
+      "stable_id": "mv.core.species.kola-ha",
+      "definition_source": "content-source/core26-species/kola-ha/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/kola-ha/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/kola-ha/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/kola-ha/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/kola-ha/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.kola-ha",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/kola-ha/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.kola-ha",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/kola-ha/definition-v1.2.0.json",
+            "content-source/core26-species/kola-ha/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.kola-ha",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/kola-ha/definition-v1.2.0.json",
+            "content-source/core26-species/kola-ha/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.kola-ha",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/kola-ha/definition-v1.2.0.json",
+            "content-source/core26-species/kola-ha/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.kola-ha",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/kola-ha/definition-v1.2.0.json",
+            "content-source/core26-species/kola-ha/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.kola-ha",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/kola-ha/definition-v1.2.0.json",
+            "content-source/core26-species/kola-ha/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Toba-Madra",
+      "stable_id": "mv.core.species.toba-madra",
+      "definition_source": "content-source/core26-species/toba-madra/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/toba-madra/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/toba-madra/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/toba-madra/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/toba-madra/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.toba-madra",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/toba-madra/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.toba-madra",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/toba-madra/definition-v1.2.0.json",
+            "content-source/core26-species/toba-madra/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.toba-madra",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/toba-madra/definition-v1.2.0.json",
+            "content-source/core26-species/toba-madra/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.toba-madra",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/toba-madra/definition-v1.2.0.json",
+            "content-source/core26-species/toba-madra/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.toba-madra",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/toba-madra/definition-v1.2.0.json",
+            "content-source/core26-species/toba-madra/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.toba-madra",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/toba-madra/definition-v1.2.0.json",
+            "content-source/core26-species/toba-madra/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Arborae",
+      "stable_id": "mv.core.species.arborae",
+      "definition_source": "content-source/core26-species/arborae/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/arborae/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/arborae/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/arborae/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/arborae/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.arborae",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/arborae/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.arborae",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/arborae/definition-v1.2.0.json",
+            "content-source/core26-species/arborae/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.arborae",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/arborae/definition-v1.2.0.json",
+            "content-source/core26-species/arborae/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.arborae",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/arborae/definition-v1.2.0.json",
+            "content-source/core26-species/arborae/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.arborae",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/arborae/definition-v1.2.0.json",
+            "content-source/core26-species/arborae/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.arborae",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/arborae/definition-v1.2.0.json",
+            "content-source/core26-species/arborae/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Mythragara",
+      "stable_id": "mv.core.species.mythragara",
+      "definition_source": "content-source/core26-species/mythragara/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/mythragara/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/mythragara/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/mythragara/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/mythragara/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.mythragara",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/mythragara/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.mythragara",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/mythragara/definition-v1.2.0.json",
+            "content-source/core26-species/mythragara/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.mythragara",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/mythragara/definition-v1.2.0.json",
+            "content-source/core26-species/mythragara/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.mythragara",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/mythragara/definition-v1.2.0.json",
+            "content-source/core26-species/mythragara/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.mythragara",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/mythragara/definition-v1.2.0.json",
+            "content-source/core26-species/mythragara/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.mythragara",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/mythragara/definition-v1.2.0.json",
+            "content-source/core26-species/mythragara/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Suula",
+      "stable_id": "mv.core.species.suula",
+      "definition_source": "content-source/core26-species/suula/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/suula/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/suula/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/suula/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/suula/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.suula",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/suula/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.suula",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/suula/definition-v1.2.0.json",
+            "content-source/core26-species/suula/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.suula",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/suula/definition-v1.2.0.json",
+            "content-source/core26-species/suula/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.suula",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/suula/definition-v1.2.0.json",
+            "content-source/core26-species/suula/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.suula",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/suula/definition-v1.2.0.json",
+            "content-source/core26-species/suula/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.suula",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/suula/definition-v1.2.0.json",
+            "content-source/core26-species/suula/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Morganthyr",
+      "stable_id": "mv.core.species.morganthyr",
+      "definition_source": "content-source/core26-species/morganthyr/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/morganthyr/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/morganthyr/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/morganthyr/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/morganthyr/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.morganthyr",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/morganthyr/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.morganthyr",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/morganthyr/definition-v1.2.0.json",
+            "content-source/core26-species/morganthyr/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.morganthyr",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/morganthyr/definition-v1.2.0.json",
+            "content-source/core26-species/morganthyr/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.morganthyr",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/morganthyr/definition-v1.2.0.json",
+            "content-source/core26-species/morganthyr/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.morganthyr",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/morganthyr/definition-v1.2.0.json",
+            "content-source/core26-species/morganthyr/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.morganthyr",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/morganthyr/definition-v1.2.0.json",
+            "content-source/core26-species/morganthyr/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "ManyToms",
+      "stable_id": "mv.core.species.manytoms",
+      "definition_source": "content-source/core26-species/manytoms/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/manytoms/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/manytoms/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/manytoms/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/manytoms/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.manytoms",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/manytoms/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "mv.core.species.manytoms",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/manytoms/definition-v1.2.0.json",
+            "content-source/core26-species/manytoms/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "mv.core.species.manytoms",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/manytoms/definition-v1.2.0.json",
+            "content-source/core26-species/manytoms/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "mv.core.species.manytoms",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/manytoms/definition-v1.2.0.json",
+            "content-source/core26-species/manytoms/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "mv.core.species.manytoms",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/manytoms/definition-v1.2.0.json",
+            "content-source/core26-species/manytoms/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "mv.core.species.manytoms",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/manytoms/definition-v1.2.0.json",
+            "content-source/core26-species/manytoms/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    },
+    {
+      "species": "Akwi",
+      "stable_id": "species.akwi",
+      "definition_source": "content-source/core26-species/akwi/definition-v1.2.0.json",
+      "definition_version": "1.2.0",
+      "creation_validation": {
+        "state": "playable",
+        "contract_ref": "MVPS.SpeciesValidation",
+        "evidence_refs": [
+          "content-source/core26-species/akwi/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_VALIDATION_CONTRACT.json"
+        ]
+      },
+      "runtime_projection": {
+        "state": "verified",
+        "contract_ref": "MVPS.SpeciesRuntimeProjection",
+        "dispatch_rule": "typed_data_not_species_name",
+        "evidence_refs": [
+          "content-source/core26-species/akwi/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-13_RUNTIME_PROJECTION_CONTRACT.json"
+        ]
+      },
+      "equipment_environment": {
+        "state": "verified",
+        "equipment_contract": "MVPS.SpeciesInterfaceCompatibility",
+        "environment_contract": "MVPS.SpeciesEnvironmentTolerance",
+        "evidence_refs": [
+          "content-source/core26-species/akwi/definition-v1.2.0.json",
+          "governance/application-planning/player-species/MVPS-19_CORE26_MECHANICS_MATRIX_v1.0.0.json"
+        ]
+      },
+      "serialization_migration": {
+        "round_trip_state": "verified",
+        "migration_state": "current_exact_version_no_migration_required",
+        "evidence_refs": [
+          "content-source/core26-species/akwi/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_IMPORT_EXPORT_CONTRACT.json",
+          "governance/application-planning/player-species/contracts/MVPS-12_MIGRATION_CONTRACT.json"
+        ]
+      },
+      "presentation": {
+        "state": "verified",
+        "appearance_profile_ref": "mvps21.appearance.akwi",
+        "mechanics_authority": false,
+        "evidence_refs": [
+          "governance/application-planning/player-species/MVPS-21_CURRENT_APPEARANCE_PROFILE_OVERLAY_v1.0.0.json"
+        ]
+      },
+      "npc_creature_reuse": {
+        "state": "verified",
+        "species_canon_reused": true,
+        "duplicate_species_canon_created": false,
+        "entity_reuse_contract": "MVPS.SpeciesEntityReuse",
+        "evidence_refs": [
+          "content-source/core26-species/akwi/definition-v1.2.0.json",
+          "governance/application-planning/player-species/contracts/MVPS-15_ENTITY_REUSE_CONTRACT.json"
+        ]
+      },
+      "adapters": {
+        "campaign": {
+          "state": "resolved",
+          "owner_domain": "MAS/Adventure/Scene/Session owners",
+          "source_species_ref": "species.akwi",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/akwi/definition-v1.2.0.json",
+            "content-source/core26-species/akwi/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "combat": {
+          "state": "resolved",
+          "owner_domain": "A7 CombatParticipantPort",
+          "source_species_ref": "species.akwi",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/akwi/definition-v1.2.0.json",
+            "content-source/core26-species/akwi/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "social": {
+          "state": "resolved",
+          "owner_domain": "Relationship/Reputation/Faction/Knowledge/Visibility owners",
+          "source_species_ref": "species.akwi",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/akwi/definition-v1.2.0.json",
+            "content-source/core26-species/akwi/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "exploration": {
+          "state": "resolved",
+          "owner_domain": "World/Environment/Location/Scene/Movement/Sense owners",
+          "source_species_ref": "species.akwi",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/akwi/definition-v1.2.0.json",
+            "content-source/core26-species/akwi/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        },
+        "crafting": {
+          "state": "resolved",
+          "owner_domain": "Project/Profession/Item/Equipment/Resource/Action owners",
+          "source_species_ref": "species.akwi",
+          "source_species_version": "1.2.0",
+          "canonical_owner_mutation_performed": false,
+          "projection_or_mapping_only": true,
+          "provenance_refs": [
+            "content-source/core26-species/akwi/definition-v1.2.0.json",
+            "content-source/core26-species/akwi/register-v1.2.0.json",
+            "governance/application-planning/player-species/contracts/MVPS-15_CROSS_SYSTEM_ADAPTER_CONTRACT.json"
+          ]
+        }
+      }
+    }
+  ]
+}
