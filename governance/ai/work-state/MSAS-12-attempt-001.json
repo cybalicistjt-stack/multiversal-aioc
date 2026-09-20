@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MSAS",
+  "lane": "msas",
+  "track": "multiversal-sound-audio-studio",
+  "source_program": "MSAS",
+  "work_item_id": "MSAS-12",
+  "attempt_id": "MSAS-12-attempt-001",
+  "title": "Dialogue, Voice, Pronunciation, Localization & Alternate-Voice Production",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MSAS-09",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "reduced_strict_order": "MSAS-01 → MSAS-03 → MSAS-04 → MSAS-05 → MSAS-07 → MSAS-09 → MSAS-12 → MSAS-14 → MSAS-15 → MSAS-18 → MSAS-21",
+    "interstitial_override": "none",
+    "parallel_lanes": "MRCS-05 remains selected_not_started; MVPS-15 remains selected_not_started."
+  },
+  "objective": "Implement dialogue/voice production authoring for casting, lines, takes, versions, governed pronunciation handoff, localization and alternate-voice binding while preserving speaker identity, prior accepted lineage, consent/rights evidence, DWC pronunciation authority, PCA-08 production/registration infrastructure, PCA-13 localization infrastructure and provider-off local production.",
+  "boundaries": [
+    "MSAS-01/MSAS-03/MSAS-04/MSAS-05/MSAS-07/MSAS-09 remain prior studio and semantic-audio foundations consumed by this tranche.",
+    "CNI/dialogue owners retain canonical dialogue text, line and speaker identity authority; MSAS-12 may author production bindings but cannot rewrite dialogue truth.",
+    "DWC speech retains constructed-language pronunciation, exact-ID and governed acoustic-model authority; MSAS consumes exact governed pronunciation identity rather than inventing pronunciation truth.",
+    "PCA-08 retains reusable voice/speech production primitives and ARI registration; PCA-13 retains generic localization-production infrastructure.",
+    "ARI retains resource identity, derivative lineage, provenance and rights/use capability.",
+    "Alternate takes and alternate voices preserve prior accepted lineage and may not silently overwrite accepted material.",
+    "Voice identity/cloning or impersonation requires explicit consent/right evidence; absence fails closed.",
+    "Language, locale, speaker and alternate-voice distinctions remain explicit across localization binding.",
+    "Meaningful spoken content carries transcript/caption or semantic non-audio alternatives where required.",
+    "Local/provider-off dialogue and voice production remains blocking-capable; paid/cloud voice generation is optional.",
+    "MSAS-14+ remain unauthorized until separately selected.",
+    "MRCS and MVPS lane state remains independent."
+  ],
+  "strict_successor": "MSAS-14",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an MSAS-specific owner Continue, fresh-read the MSAS-12 dependency closure and msas lane-state ref, then start and execute the bounded tranche under OPS3 v3.9 / OPS3-11.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
