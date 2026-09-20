@@ -204,6 +204,12 @@ jobs:
           python3 tests/control_plane/test_mvps17_core26_current_canon_baseline.py
           python3 tools/validate-core26-species-reconciliation.py
 
+      - name: Run MVPS-18 Core-26 canonical register and rebuild durability regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps18_core26_canonical_registers.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |
