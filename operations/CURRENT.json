@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 279,
+  "state_revision": 280,
   "default_lane": "msas",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -24,8 +24,8 @@
         "state": "selected_not_started"
       },
       "mrcs": {
-        "selected_work_item": "MRCS-11",
-        "attempt_id": "MRCS-11-attempt-001",
+        "selected_work_item": "MRCS-12",
+        "attempt_id": "MRCS-12-attempt-001",
         "state": "selected_not_started"
       },
       "mvps": {
@@ -54,12 +54,12 @@
     },
     "mrcs": {
       "state": "selected_not_started",
-      "selected_work_item": "MRCS-11",
-      "attempt_id": "MRCS-11-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MRCS-11-attempt-001.json",
+      "selected_work_item": "MRCS-12",
+      "attempt_id": "MRCS-12-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MRCS-12-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "MRCS-08 completed_verified after causal RED run 35506700302 at head 4799105dc1d02a08839cc299ba32bcf8f7004506, exact-head cross-platform GREEN run 35506843187 at head 3881281c15c25f30632e004f6161f987f6b699f3, and READY publication of PR 634 as application merge 3ff9d6228745cdca6b2b348d1b6545341c2509bd. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MRCS interstitial gate overriding the reduced strict order, so MRCS-11 is selected_not_started until a later MRCS-specific Continue.",
+      "activation_rule": "MRCS-11 completed_verified after causal RED run 35512843944 at head e8b2c29918441a06c226241c33cf969827bf2eb9, exact-head cross-platform GREEN run 35513477499 at head 56696532d1caf5fbb67862448e0cc6a62c17c263, fresh-base integration run 35513738236, and READY publication of PR 636 as application merge 891beda57a3173e6f6e872c17900c465d7a6b88f. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MRCS interstitial gate overriding the reduced strict order, so MRCS-12 is selected_not_started until a later MRCS-specific Continue.",
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "mvps": {
@@ -109,7 +109,7 @@
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
     "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
-  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-15 is selected_not_started; MRCS-11 is selected_not_started; MVPS-18 is selected_not_started. Every executor must use milestone-only lane state and the OPS3 closeout fast path.",
+  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-15, MRCS-12 and MVPS-18 remain independently selected_not_started. Every executor must use milestone-only lane state and the OPS3-11 closeout fast path.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
