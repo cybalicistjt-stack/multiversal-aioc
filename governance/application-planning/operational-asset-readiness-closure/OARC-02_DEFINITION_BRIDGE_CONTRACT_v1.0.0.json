@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "OARC02.DEFINITION_BRIDGE.v1",
+  "status": "current",
+  "work_item": "OARC-02",
+  "authority_contract": "OARC01.AUTHORITY_HANDOFF.v1",
+  "application_merge_sha": "8cfcdb018483b615a426d2c524f1b8d6f154a084",
+  "result": "REFERENCE_BRIDGE_SUFFICIENT_WITH_VISIBLE_METADATA_GAPS",
+  "purpose": "Resolve MRCS-13 authored definition references to existing MIB-14 owner definitions without duplicate definitions, inferred compatibility or live mutation.",
+  "owner_reference_format": "mib14:<operational|module|facility>:<stable-id>@<version>",
+  "mapping": [
+    {
+      "mrcs_package_kinds": [
+        "vehicle",
+        "construct"
+      ],
+      "mib14_record_type": "operational",
+      "operational_kind_source": "resolved MIB-14 definition.kind",
+      "package_kind_infers_operational_kind": false
+    },
+    {
+      "mrcs_package_kinds": [
+        "modular-component"
+      ],
+      "mib14_record_type": "module|facility",
+      "operational_kind_source": null,
+      "package_kind_infers_operational_kind": false
+    }
+  ],
+  "package_kind_decision": {
+    "new_mrcs_kinds_required_for_bridge": false,
+    "reasoning": "MRCS-13 packageKind remains an authoring category; typed ownerReference selects the exact MIB-14 record and MIB-14 owns vehicle/platform/base/mecha/ship operational kind.",
+    "no_schema_expansion": [
+      "base",
+      "mecha",
+      "ship"
+    ]
+  },
+  "resolution_rules": [
+    "Exact record type + stable ID + version must resolve to exactly one existing MIB-14 definition.",
+    "Missing stable ID fails owner-reference-not-found.",
+    "Existing stable ID with unmatched version fails owner-reference-version-not-found.",
+    "Source-unresolved semantics remain unresolved even if the MIB-14 owner reference exists.",
+    "GM-adjudication-required semantics do not become operationally resolved automatically.",
+    "Modular components require explicit versioned MRCS compatibility evidence.",
+    "MRCS compatibility evidence is preserved but cannot override MIB-14 operational compatibility validation.",
+    "No synthetic MIB-14 definition or live Asset mutation is created by the bridge."
+  ],
+  "preserved_authoring_evidence": [
+    "MRCS definitionId",
+    "slotReferences",
+    "componentReferences",
+    "compatibility profile ID/version",
+    "compatibleTargetReferences",
+    "incompatibleTargetReferences"
+  ],
+  "visible_representation_gaps": [
+    {
+      "gap_id": "OARC02-GAP-01",
+      "concern": "typed slot identity",
+      "disposition": "preserve_as_authoring_evidence_no_operational_inference",
+      "blocking_oarc02": false
+    },
+    {
+      "gap_id": "OARC02-GAP-02",
+      "concern": "component identity inside authored modular definitions",
+      "disposition": "preserve_as_authoring_evidence_no_operational_inference",
+      "blocking_oarc02": false
+    }
+  ],
+  "authority_preservation": {
+    "mrcs13_modified": false,
+    "mib14_owner_contract_modified": false,
+    "d17_live_mutation_requested": false,
+    "operational_compatibility_authority": "MIB-14",
+    "mera_implementation_authorized": false,
+    "mbes_implementation_authorized": false
+  }
+}

@@ -2,7 +2,7 @@
 
 **Program ID:** OARC  
 **Lane:** `oarc`  
-**Status:** ACTIVE — OARC-02 SELECTED_NOT_STARTED  
+**Status:** ACTIVE — OARC-03 SELECTED_NOT_STARTED  
 **Approved:** 2026-09-20  
 **Purpose:** bounded game-readiness integration and certification for vehicles, mecha, spacecraft/starships, bases/platforms and their modular content  
 **Operational authority:** only through `operations/CURRENT.json`
@@ -152,3 +152,20 @@ Every field or capability proposed by OARC-02 through OARC-07 must identify one 
 Causal RED: Operations V3 run `35528399109` at `bda33506e54cc2b7b00e3a512840b7aaa9fd53e5`. Exact-head GREEN: run `35528464087` at `51bc5b586efd3088e5346ae3bfdc77373d2a4fe2`. Published contract: PR #1498 as `144769200adfcae9414c3af39c801a81d072abef`.
 
 The fresh roadmap DAG contains no OARC override, so OARC-02 is the strict selected successor.
+
+
+## OARC-02 completed definition-bridge result
+
+OARC-02 completed_verified on 2026-09-20. The application bridge resolves MRCS-13 definition-layer owner references to already-existing MIB-14 operational/module/facility definitions by exact stable ID + version. It does not synthesize MIB-14 definitions, mutate live Assets, infer operational kind from MRCS package kind, or allow MRCS authoring compatibility to override MIB-14 operational validation.
+
+The current MRCS-13 package vocabulary is sufficient for this bridge without adding first-class `base`, `mecha` or `ship` package kinds: an MRCS `vehicle` or `construct` definition may reference an MIB-14 operational definition, while the resolved MIB-14 record remains authoritative for the concrete operational kind. `modular-component` resolves only to MIB-14 module/facility records.
+
+The canonical owner-reference form is `mib14:<operational|module|facility>:<stable-id>@<version>`. Unknown references, version mismatches, unresolved source semantics and GM-adjudication-required records fail closed.
+
+MRCS slot/component references and versioned authoring compatibility are preserved as authoring evidence. MIB-14 currently has no first-class typed slot-identity or component-identity field equivalent; OARC-02 records that as a visible representational gap rather than inventing operational semantics. Operational compatibility remains solely MIB-14 authority.
+
+Causal RED: application validation run `35529025878` at `57f9a76db4c1fa3920b1ecca96b71ba8740e1005` failed because the bridge module was absent. Exact-head Linux/Windows/cross-platform GREEN: run `35529105470` at `44327d61ce5740748fac94d709ed20d740214e87`. Published application: PR #647 as `8cfcdb018483b615a426d2c524f1b8d6f154a084`.
+
+Executor-process note: during this tranche the executor over-polled healthy workflow/platform state, contrary to OPS3-11 milestone-only instrumentation rules, and initially attempted a merge-commit method that the application repository disallows. No unauthorized protected-main mutation occurred. The exact validated head was ultimately published with the repository-supported squash method. The closeout records the OPS3-11 process deviation rather than asserting full execution conformance.
+
+Fresh roadmap DAG schema 1.0.4 has no OARC override, so OARC-03 is the strict selected successor.
