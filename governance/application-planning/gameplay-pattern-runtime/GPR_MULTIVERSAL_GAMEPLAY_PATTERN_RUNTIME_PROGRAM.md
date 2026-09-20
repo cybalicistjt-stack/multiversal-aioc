@@ -3,11 +3,11 @@
 **Program ID:** GPR  
 **Program name:** Gameplay Pattern Runtime & Loop Minis  
 **Version:** 0.2.0 — PDCP REDUCED  
-**Status:** ACTIVE — GPR-09 SELECTED_NOT_STARTED  
+**Status:** ACTIVE — GPR-10 SELECTED_NOT_STARTED  
 **Activation:** concurrent start authorized after MRCS-05 + completed MAL + core owner contracts; later MRCS late-binds; GPR-16 waits for MRCS-21  
 **Successor:** MERA-01  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-09 attempt
+**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-10 attempt
 
 ## Purpose
 
@@ -265,3 +265,14 @@ Draft and preview outputs remain noncanonical configuration: they do not establi
 Causal RED: run `35536420697` at `1f52059c82f34445b8af10de000f2ba27388947c`. Exact-head cross-platform GREEN: run `35536509276` at `46b02fb679cff886c4750478fb54bd6efd3221b8`. Published application: PR #660 through READY candidate `GPR-08-app-001` as `1fac56244a41cd58e6cd70751d85b7d1c52c327b`.
 
 The fresh roadmap DAG supplies no interstitial successor override, so GPR-09 is selected_not_started. GPR-09 absorbs historical GPR-09/GPR-14 and implements the seven delivery adapters plus GPR-specific Creator/GM controls, World/Map/Adventure binding and roster injection using Packet-07 shared execution-inspection semantics rather than a new generic studio framework.
+
+
+## GPR-09 completed seven-mode/Creator-GM/world-roster result
+
+GPR-09 completed_verified on 2026-09-20. The published application contract `GPR-09.1` projects all seven delivery modes over one shared GPR state/outcome model and binds GPR-specific Creator/GM execution-inspection, World/Map/Adventure references and Character roster injection without creating a parallel mechanics engine or generic studio framework.
+
+PDCP Packet-07 dispositions remain distinct. Preview, dry-run, counterfactual and commit-requested states do not prove commitment; committed status requires owner receipt evidence. GM intervention requires a typed owner-operation reference rather than wildcard mutation authority. Visibility filtering occurs before participant/target counts, diagnostics, exports and control projections. World/Map/Adventure and Character canonical identity/mutation authority remain external.
+
+Causal RED: run `35537668004` at `2ee90883348646629780646e63f9889915544d31`. Exact-head cross-platform GREEN: run `35537753561` at `329b721ec98ec0cbbdfecef26c2318aea4c6378f`. Published application: PR #662 through READY candidate `GPR-09-app-001` as `6b2aeb99ce2d53a0fe9e79c7e78c82573a5b8d83`.
+
+The fresh roadmap DAG supplies no interstitial successor override, so GPR-10 is selected_not_started.
