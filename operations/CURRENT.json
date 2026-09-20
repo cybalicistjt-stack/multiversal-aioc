@@ -6,17 +6,17 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 313,
+  "state_revision": 314,
   "default_lane": "gpr",
-  "active_operations_work_item": "OPS3-12",
-  "active_operations_work_item_path": "operations/work-items/OPS3-12.json",
+  "active_operations_work_item": null,
+  "active_operations_work_item_path": null,
   "product_start_freeze": {
-    "active": true,
-    "reason": "OPS3-12 repairs day-wide tranche fragmentation, stale checkpoint terminal gating, overpolling, and unrelated AIOC validation fanout before GPR-10 starts.",
+    "active": false,
+    "reason": "OPS3-12 completed_verified after auditing all 45 tranche closeouts from 2026-09-20 and implementing single-active-lane quiet execution, durable owner-reentry telemetry, lane-state terminal gating, and dependency-scoped AIOC validation.",
     "preserved_selected_work_item": "GPR-10",
     "preserved_attempt_id": "GPR-10-attempt-001",
     "implementation_authority": false,
-    "cleared_by": null,
+    "cleared_by": "OPS3-12 completed_verified",
     "preserved_lane_selections": {
       "gpr": {
         "selected_work_item": "GPR-10",
@@ -37,10 +37,10 @@
   },
   "lanes": {
     "operations": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "work_item_id": "OPS3-12",
       "work_item_path": "operations/work-items/OPS3-12.json",
-      "implementation_authority": true
+      "implementation_authority": false
     },
     "msas": {
       "state": "completed_verified",
@@ -117,9 +117,11 @@
     "overinstrumentation_guard": "OPS3 uses milestone receipts, not activity receipts. Repository/PR/CI/publication-queue evidence owns mechanical transitions; status reads, polling, per-platform CI results, artifact inspection, queue mechanics and merge mechanics must not create lane-state receipts or be misclassified as material progress.",
     "lane_state_milestones": "Ordinary persistent-lane execution state is selected_not_started -> in_progress -> prequeue_green -> published, followed by one deterministic successor reseed after canonical closeout. The generic lane activity-log API is prohibited.",
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
-    "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
+    "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope.",
+    "single_active_lane_mode": "When exactly one persistent implementation lane is nonterminal, ordinary execution reads and mutates only that lane plus concrete dependencies/conflicts. Terminal sibling lanes are history, not recurring reconciliation work. Healthy CI uses sparse workflow-level observation; job/step detail is failure-only.",
+    "owner_reentry_truth": "Repeated owner execution commands against an active lane are durably counted in lane state and carried into last_completed. A later checkpoint or closeout may not normalize the count back to one."
   },
-  "next_project_action": "OPS3-12 operations repair is active. GPR-10 remains selected_not_started and product implementation is frozen until the execution-reliability repair is completed_verified.",
+  "next_project_action": "GPR-10 is the only nonterminal persistent implementation lane and remains selected_not_started. MRCS and OARC are terminal completed_verified. A bare Continue in the established development lane starts GPR-10 under single-active-lane quiet execution.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
