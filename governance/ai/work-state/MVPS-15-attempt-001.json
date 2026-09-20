@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-15",
+  "title": "NPC/Creature Reuse and Cross-System Adapters",
+  "attempt_id": "MVPS-15-attempt-001",
+  "lane": "mvps",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-14",
+  "predecessor": {
+    "work_item_id": "MVPS-14",
+    "status": "completed_verified",
+    "implementation_merge_sha": "003d6e5b423bed4608a3acac6195c5050154b87a",
+    "validation_run": 35499228433
+  },
+  "strict_successor": "MVPS-16",
+  "objective": "Prove player species can be consumed by NPC/creature/campaign/combat/social/exploration/crafting systems without collapsing species, creature definition, archetype and instance.",
+  "acceptance": [
+    "no duplicate player/NPC species canon",
+    "shared entity references are preserved",
+    "cross-system adapters pass integration tests"
+  ],
+  "boundaries": [
+    "MVPS-15 owns species-facing reuse/adaptation contracts and integration proof, not a second NPC/creature engine or duplicated species canon.",
+    "SpeciesDefinition remains the shared canonical species reference; NPC/Creature Definition, archetype/template and live instance identities remain distinct layers.",
+    "Adapters preserve exact-version species, lineage/form/adaptation and provenance references rather than copying or flattening species mechanics into NPC records.",
+    "Campaign, combat, social, exploration and crafting integrations consume shared Character/Ability/Equipment/Environment/Knowledge/Action/Effect/Resource owner contracts.",
+    "Player-only creation/presentation concerns do not become NPC requirements unless an owner contract explicitly requires them.",
+    "MNCS/MCCS/MCS and other late-bound specialist owners remain authoritative for their domains; unresolved owner dependencies are surfaced rather than invented.",
+    "Radical-species golden proof remains MVPS-16; MVPS-16 remains unauthorized until separately selected."
+  ],
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "interstitial_override": "none",
+    "strict_order": "MVPS-14 → MVPS-15 → MVPS-16",
+    "parallel_lanes": "MSAS-09 and MRCS-05 remain independently selected_not_started."
+  },
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an MVPS-specific owner Continue, fresh-read the MVPS-15 dependency closure and mvps lane-state ref, then start and execute the bounded tranche under OPS3-11.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
