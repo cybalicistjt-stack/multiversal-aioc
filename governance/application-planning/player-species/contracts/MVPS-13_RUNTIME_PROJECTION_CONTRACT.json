@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesRuntimeProjection",
+  "record_type": "SpeciesRuntimeProjectionContract",
+  "status": "MVPS-13_CANONICAL_CONTRACT",
+  "purpose": "Deterministically compose the character's current species contribution from exact-version species, lineage, adaptation, campaign-adjudication and active-form inputs without rewriting source selections or duplicating shared Character/mechanics engines.",
+  "source_basis": [
+    "MVPS.SpeciesDefinition exact-version/reference model",
+    "MVPS.CharacterSpeciesSelection references-and-receipts storage policy",
+    "MVPS.LineageComposition deterministic replay and conflict semantics",
+    "MVPS.TransformationSemantics form overlay/reversal semantics",
+    "MVPS.SpeciesValidation playable/incomplete/invalid/migration_required gate",
+    "A4 CharacterProjectionPort permission-filtered Character projection boundary"
+  ],
+  "deterministic": true,
+  "input_contract": {
+    "required": [
+      "character_species_selection_ref",
+      "species_ref",
+      "lineage_refs",
+      "adaptation_refs",
+      "campaign_adjudication_refs",
+      "validation_state",
+      "projection_context_ref"
+    ],
+    "optional": [
+      "active_form_state_ref",
+      "runtime_condition_refs",
+      "shared_owner_resolution_refs"
+    ],
+    "exact_version_refs_required": true,
+    "character_species_selection_history_is_source_truth": true,
+    "definition_copy_forbidden": true,
+    "unresolved_inputs_remain_explicit": true
+  },
+  "composition_order": [
+    "base_species",
+    "lineages",
+    "adaptations",
+    "campaign_adjudications",
+    "active_form_overlay"
+  ],
+  "ordering_rules": {
+    "base_species": "single exact-version SpeciesDefinition reference",
+    "lineages": "consume MVPS-08 deterministic ordered lineage composition result",
+    "adaptations": "stable order by source layer/order then canonical record_ref",
+    "campaign_adjudications": "stable order by adjudication authority/order then adjudication_id",
+    "active_form_overlay": "applied last as an explicit temporary overlay using MVPS-09 retention/replacement semantics",
+    "semantic_conflicts_resolved_by_array_order": false,
+    "missing_order_authority": "projection_blocked_or_owner_handoff"
+  },
+  "validation_gate": {
+    "playable": "projection_allowed",
+    "incomplete": "projection_blocked",
+    "invalid": "projection_blocked",
+    "migration_required": "projection_blocked_except_explicit_historical_read",
+    "missing_or_conflicted_input_defaults_allowed": false,
+    "blocked_result_must_include_findings_refs": true
+  },
+  "active_form_policy": {
+    "overlay_only": true,
+    "source_form_and_target_form_refs_preserved": true,
+    "retained_and_replaced_contributions_explicit": true,
+    "base_species_or_lineage_rewritten": false,
+    "reversal_uses_recorded_pre_transform_state": true,
+    "equipment_and_resource_mutation_delegated_to_shared_owners": true
+  },
+  "output_contract": {
+    "required": [
+      "projection_id",
+      "character_species_selection_ref",
+      "species_ref",
+      "input_digest",
+      "projection_digest",
+      "validation_state",
+      "ordered_source_layers",
+      "active_contributions",
+      "grant_receipt_refs",
+      "owner_handoffs",
+      "source_refs",
+      "provenance_refs"
+    ],
+    "active_contribution_contract_ref": "MVPS.SpeciesGrantReceiptComposition#projected_contribution",
+    "projection_digest_rule": "Same canonical inputs, owner-resolution receipts and ordering authority produce the same projection digest regardless of executor or replay time.",
+    "source_trace_required_for_every_contribution": true,
+    "hidden_or_forbidden_sources_role_filtered_before_character_projection": true
+  },
+  "base_selection_history_preserved": true,
+  "temporary_runtime_state_mutates_base_selection": false,
+  "canonical_shared_mechanics_copied_into_projection": false,
+  "shared_owner_handoff": {
+    "character_projection": "A4 CharacterProjectionPort",
+    "character_persistence": "Character/Persistence owning domain",
+    "stacking_replacement": "Ability/Effect/Condition/Resource/Modifier/RulesProfile owners",
+    "equipment": "Item/Equipment owner workflow",
+    "resources": "Resource/Action/Effect owners",
+    "environment": "Environment owner",
+    "visibility_permissions": "Authorization/Knowledge/Visibility owners"
+  },
+  "generic_character_projection_engine_created": false,
+  "shared_mechanic_execution_owned_by_mvps13": false,
+  "character_persistence_mutation_owned_by_mvps13": false,
+  "unknown_or_conflict_policy": "block_or_handoff_not_guess",
+  "extension_policy": "namespaced_non_overriding"
+}

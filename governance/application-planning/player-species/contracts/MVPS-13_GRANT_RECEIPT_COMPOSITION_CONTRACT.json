@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "MVPS.SpeciesGrantReceiptComposition",
+  "record_type": "SpeciesProjectedContributionAndGrantReceiptContract",
+  "status": "MVPS-13_CANONICAL_CONTRACT",
+  "purpose": "Define source-traceable projected species contributions and deterministic CharacterSpeciesSelection-compatible grant receipts without resolving shared-owner stacking/replacement mechanics locally.",
+  "projected_contribution": {
+    "required_fields": [
+      "contribution_id",
+      "record_ref",
+      "owner_domain",
+      "source_layer",
+      "source_ref",
+      "source_version_ref",
+      "provenance_refs",
+      "activation_state",
+      "stacking_replacement_policy_ref"
+    ],
+    "optional_fields": [
+      "conditions_ref",
+      "choice_receipt_ref",
+      "adjudication_ref",
+      "form_state_ref",
+      "owner_resolution_receipt_ref",
+      "expiration_rule_ref",
+      "suppression_reason_ref"
+    ],
+    "source_layer_enum": [
+      "base_species",
+      "lineage",
+      "adaptation",
+      "campaign_adjudication",
+      "active_form"
+    ],
+    "activation_state_enum": [
+      "active",
+      "suppressed",
+      "conditional",
+      "owner_deferred"
+    ],
+    "inline_shared_mechanics_allowed": false,
+    "contribution_identity_rule": "Identity is derived from canonical source layer/source/version/record reference plus relevant choice/adjudication/form context, not display labels."
+  },
+  "character_species_grant_receipt": {
+    "compatible_with": "MVPS.CharacterSpeciesSelection#grant_receipts",
+    "required_fields": [
+      "grant_receipt_id",
+      "record_ref",
+      "grant_source_ref",
+      "grant_reason",
+      "grant_event_ref",
+      "permanence",
+      "activation_state",
+      "stacking_replacement_policy"
+    ],
+    "optional_fields": [
+      "expiration_rule_ref",
+      "removal_rule_ref",
+      "source_version_ref",
+      "projection_id",
+      "owner_resolution_receipt_ref",
+      "provenance_refs"
+    ],
+    "grant_reason_classes": [
+      "species",
+      "lineage",
+      "adaptation",
+      "campaign-adjudication",
+      "active-form"
+    ],
+    "grant_event_policy": "The receipt references the authoritative event/adjudication/transformation that made the grant current; MVPS-13 does not mint owner-domain events.",
+    "permanence_classes": [
+      "permanent",
+      "conditional",
+      "temporary"
+    ]
+  },
+  "receipt_identity": {
+    "stable_across_replay_for_same_inputs": true,
+    "input_digest_required": true,
+    "same_source_same_context_same_receipt_identity": true,
+    "changed_authoritative_source_or_context_requires_new_or_superseding_receipt": true,
+    "display_name_changes_do_not_change_receipt_identity": true
+  },
+  "duplicate_and_stacking_policy": {
+    "same_record_from_multiple_sources_preserved_as_distinct_source_contributions": true,
+    "local_last_write_wins": false,
+    "owner_resolution_required": true,
+    "owner_resolution_receipt_preserved": true,
+    "suppression_does_not_erase_source_history": true
+  },
+  "provenance_policy": {
+    "every_projected_contribution_has_source_and_provenance": true,
+    "every_character_visible_grant_has_recoverable_source_and_reason": true,
+    "hidden_source_details_permission_filtered_without_erasing_internal_trace": true,
+    "unresolved_source_prohibits_active_grant_fabrication": true
+  },
+  "stacking_or_replacement_resolution_owned_by_mvps13": false,
+  "character_persistence_mutation_owned_by_mvps13": false,
+  "shared_owner_handoff": {
+    "stacking_replacement": "Ability/Effect/Condition/Resource/Modifier/RulesProfile owners",
+    "grant_event": "Character/Progression/Action-Event owners",
+    "persistence": "Character/Persistence owner"
+  }
+}
