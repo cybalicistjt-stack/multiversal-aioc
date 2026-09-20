@@ -387,5 +387,21 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
 
 
 
+    def test_one_door_explicitly_guards_against_overinstrumentation(self) -> None:
+        bootstrap=self._text("operations/BOOTSTRAP.md")
+        contract=self._text("operations/OPERATING_CONTRACT.md")
+        required=[
+            "milestone receipts, not activity receipts",
+            "repository/PR/CI/publication-queue evidence",
+            "closeout fast path",
+            "Do not write lane state for",
+            "successor reseed",
+        ]
+        for phrase in required:
+            self.assertIn(phrase, bootstrap + "\n" + contract)
+        self.assertNotIn("After each material durable side effect, record a lane-state progress receipt", bootstrap)
+        self.assertNotIn("Material durable side effects should be followed by a lane-state progress receipt", contract)
+
+
 if __name__ == "__main__":
     unittest.main()
