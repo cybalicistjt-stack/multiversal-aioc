@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 265,
+  "state_revision": 266,
   "default_lane": "msas",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -29,8 +29,8 @@
         "state": "selected_not_started"
       },
       "mvps": {
-        "selected_work_item": "MVPS-13",
-        "attempt_id": "MVPS-13-attempt-001",
+        "selected_work_item": "MVPS-14",
+        "attempt_id": "MVPS-14-attempt-001",
         "state": "selected_not_started"
       }
     }
@@ -64,12 +64,12 @@
     },
     "mvps": {
       "state": "selected_not_started",
-      "selected_work_item": "MVPS-13",
-      "attempt_id": "MVPS-13-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MVPS-13-attempt-001.json",
+      "selected_work_item": "MVPS-14",
+      "attempt_id": "MVPS-14-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MVPS-14-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "MVPS-12 completed_verified after causal RED run 35473694572 at head 022b0b6fc61b5d56e9029a5f31f04fdf9254882e, exact-head GREEN run 35473801265 at head 4b0c09a833bf601799641d58f79207c6de0cb93d, and implementation publication PR 1449 as merge 6bd2438a1aba8f6847890fc079d4f6f397be8b7a. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MVPS interstitial gate overriding strict order, so MVPS-13 is selected_not_started until a later MVPS-specific Continue.",
+      "activation_rule": "MVPS-13 completed_verified after causal RED run 35498624617 at head 4fe99b027489d1d681b26fc2cced01febd63427d, exact-head GREEN run 35498685459 at head 9770260dd2cd1063845e3e0babb9456c2e173c6f, and READY publication of PR 1457 as merge 54434fb40895f35af97d58c1c6fdf0322a0bb0eb. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MVPS interstitial gate overriding strict order, so MVPS-14 is selected_not_started until a later MVPS-specific Continue.",
       "execution_state_ref": "ops3-lane-state/mvps"
     },
     "dwc-speech": {
@@ -108,7 +108,7 @@
     "lane_state_milestones": "Ordinary persistent-lane execution state is selected_not_started -> in_progress -> prequeue_green -> published, followed by one deterministic successor reseed after canonical closeout. The generic lane activity-log API is prohibited.",
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes."
   },
-  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-07 is selected_not_started; MRCS-04 is selected_not_started; MVPS-13 is selected_not_started. Every executor must use milestone-only lane state and the OPS3 closeout fast path.",
+  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-07 is selected_not_started; MRCS-04 is selected_not_started; MVPS-14 is selected_not_started. Every executor must use milestone-only lane state and the OPS3 closeout fast path.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

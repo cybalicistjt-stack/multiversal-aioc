@@ -5,9 +5,9 @@
   "title": "Runtime Projection and Grant Receipts",
   "attempt_id": "MVPS-13-attempt-001",
   "lane": "mvps",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_branch": "work/mvps-13-runtime-projection-grant-receipts",
   "selected_by_verified_predecessor": "MVPS-12",
   "predecessor": {
     "work_item_id": "MVPS-12",
@@ -24,8 +24,8 @@
   ],
   "boundaries": [
     "MVPS-13 owns deterministic current species-contribution projection and species-origin grant receipt composition only; canonical shared mechanic owners retain their state and execution authority.",
-    "Projection must consume the exact-version SpeciesDefinition and preserved CharacterSpeciesSelection history established by MVPS-01 through MVPS-12.",
-    "Lineage, form, adaptation, campaign adjudication and shared-owner contribution ordering must remain explicit and reproducible; unresolved or migration-required inputs may not be silently normalized.",
+    "Projection consumes exact-version SpeciesDefinition and preserved CharacterSpeciesSelection history established by MVPS-01 through MVPS-12.",
+    "Lineage, form, adaptation, campaign adjudication and shared-owner contribution ordering remain explicit and reproducible; unresolved or migration-required inputs are never silently normalized.",
     "Temporary form/runtime state may affect the current projection but may not rewrite base species, lineage, historical choices or migration receipts.",
     "Authoring/search/presentation remains MVPS-14; NPC/creature reuse remains MVPS-15; radical-species golden proof remains MVPS-16.",
     "MVPS-14+ remain unauthorized until separately selected."
@@ -34,19 +34,68 @@
     "dag_schema": "1.0.4",
     "interstitial_override": "none",
     "strict_order": "MVPS-12 → MVPS-13 → MVPS-14 → MVPS-15 → MVPS-16",
-    "parallel_lanes": "MSAS-05 and MRCS-03 remain independently selected_not_started."
+    "parallel_lanes": "MSAS-07 and MRCS-04 remain independently selected_not_started."
   },
-  "active_substep": "awaiting_governed_start",
-  "next_action": "On an MVPS-specific owner Continue, fresh-read the MVPS-13 dependency closure and current protected-main publication queue, then govern-start and execute the bounded tranche under OPS3.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS-13 is completed_verified. MVPS-14 is selected_not_started; a later MVPS-specific Continue must govern-start it before implementation authority is granted.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "completed_verified_candidate",
+      "evidence": "MVPS-13 causal RED run 35498624617 established the missing runtime-projection contracts; exact-head GREEN run 35498685459 passed at 9770260dd2cd1063845e3e0babb9456c2e173c6f; PR 1457 published through READY as 54434fb40895f35af97d58c1c6fdf0322a0bb0eb."
+    },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": null
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MVPS-13 application implementation is durably published and this atomic closeout records completed_verified plus MVPS-14 selected_not_started."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "MVPS-13 completed within one owner Continue under OPS3-11 milestone-only instrumentation. Lane state recorded only start, prequeue_green and published before the closeout fast path; no CI/queue/merge micro-transitions were journaled."
+  },
+  "implementation_plan": {
+    "lane_start": "completed",
+    "red": "completed",
+    "green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "completed": true,
+  "completed_at": "2026-09-20",
+  "acceptance_evidence": {
+    "causal_red": {
+      "pr": 1457,
+      "head": "4fe99b027489d1d681b26fc2cced01febd63427d",
+      "validation_run": 35498624617,
+      "conclusion": "failure",
+      "signature": "OPS3 and MVPS-01 through MVPS-12 passed; MVPS-13 failed because the four required runtime-projection contract artifacts were intentionally absent."
+    },
+    "green": {
+      "pr": 1457,
+      "validated_head": "9770260dd2cd1063845e3e0babb9456c2e173c6f",
+      "validation_run": 35498685459,
+      "conclusion": "success",
+      "merge_method": "merge",
+      "merge_sha": "54434fb40895f35af97d58c1c6fdf0322a0bb0eb"
+    },
+    "application_ready_queue": {
+      "candidate_id": "MVPS-13-app-001",
+      "reconciled_generation": 20,
+      "ready_after_reconcile": 0
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MVPS-14",
+      "reason": "Strict MVPS order is MVPS-13→MVPS-14 and fresh DAG contains no MVPS interstitial override."
+    },
+    "shared_owner_boundary": "MVPS-13 emits a deterministic species contribution fragment and CharacterSpeciesSelection-compatible grant receipts; A4 CharacterProjectionPort and shared mechanic/persistence owners retain generic Character projection, stacking/replacement resolution and authoritative mutation."
   }
 }

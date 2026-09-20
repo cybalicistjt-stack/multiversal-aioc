@@ -2,7 +2,7 @@
 
 **Program ID:** MVPS  
 **Family:** Multiversal Player Species  
-**Status:** ACTIVE PROGRAM / MVPS-12 completed_verified / MVPS-13 selected_not_started  
+**Status:** ACTIVE PROGRAM / MVPS-13 completed_verified / MVPS-14 selected_not_started  
 **Operational authority:** none outside `operations/CURRENT.json`
 
 ## Mission
