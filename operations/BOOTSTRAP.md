@@ -61,7 +61,7 @@ Multiple owner Continues or owner stall nudges are execution-quality incidents a
 A repeated owner execution command on the same in-progress attempt is not a fresh cycle by default. Compare the checkpoint's material-progress sequence with the sequence observed at the prior execution command. If nothing material changed, record `OPS3.NO_MATERIAL_PROGRESS` and enter stall diagnosis/recovery before doing more ordinary work. Polling, unchanged reads, or restating status do not count as progress. Status requests must report the current coarse milestone, any READY publication candidate, and the first unresolved blocker so the owner can distinguish active work from a stall.
 
 
-### Executor/session interruption and anti-overinstrumentation rule
+### Executor/session interruption rule + anti-overinstrumentation guard
 
 A chat/session/tool runtime is never a project dependency. Do not silently wait, sleep, or run open-ended polling loops for CI, tools, another lane, or a publication position.
 
