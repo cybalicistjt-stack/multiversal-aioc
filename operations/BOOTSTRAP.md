@@ -58,12 +58,29 @@ Before returning a normal terminal response for an execution command:
 
 Multiple owner Continues or owner stall nudges are execution-quality incidents and must be recorded truthfully; they may not be certified as clean single-Continue execution.
 
-A repeated owner execution command on the same in-progress attempt is not a fresh cycle by default. Compare the checkpoint's material-progress sequence with the sequence observed at the prior execution command. If nothing material changed, record `OPS3.NO_MATERIAL_PROGRESS` and enter stall diagnosis/recovery before doing more ordinary work. Polling, unchanged reads, or restating status do not count as progress. Status requests must report the current progress receipt and any held publication turn so the owner can distinguish active work from a stall.
+A repeated owner execution command on the same in-progress attempt is not a fresh cycle by default. Compare the checkpoint's material-progress sequence with the sequence observed at the prior execution command. If nothing material changed, record `OPS3.NO_MATERIAL_PROGRESS` and enter stall diagnosis/recovery before doing more ordinary work. Polling, unchanged reads, or restating status do not count as progress. Status requests must report the current coarse milestone, any READY publication candidate, and the first unresolved blocker so the owner can distinguish active work from a stall.
 
 
-### Executor/session interruption rule
+### Executor/session interruption and anti-overinstrumentation rule
 
-A chat/session/tool runtime is never a project dependency. Do not silently wait, sleep, or run open-ended polling loops for CI, tools, another lane, or a publication position. After each material durable side effect, record a lane-state progress receipt before beginning another substantial external-tool batch. If a tool call returns no usable result, a session aborts, or execution resumes after an interruption, fresh-read the lane-state ref plus relevant repository/PR evidence and continue from the last durable receipt; never assume an unobserved operation completed. An executor interruption is an executor/tooling incident, not permission to restart the tranche, reserve `main`, or block another lane.
+A chat/session/tool runtime is never a project dependency. Do not silently wait, sleep, or run open-ended polling loops for CI, tools, another lane, or a publication position.
+
+OPS3 uses **milestone receipts, not activity receipts**. Repository/PR/CI/publication-queue evidence is already durable truth and must not be copied into the lane journal after every observation.
+
+For an ordinary persistent-lane attempt, the lane-state ref has only these execution milestones before successor reseed:
+
+1. `start_execution` — selected attempt becomes `in_progress` and records the implementation branch;
+2. `mark_prequeue_green` — one exact immutable application head has passed the complete required prequeue gate;
+3. `mark_published` — that exact application head is durably merged and its READY candidate is reconciled;
+4. `reseed_successor` — after the control-plane closeout is durably merged/reconciled, reset the lane once to the selected successor.
+
+Do not write lane state for PR creation, workflow dispatch, CI queued/running status, individual Linux/Windows/cross-platform success, artifact or log inspection, READY queue submission, fresh-`main` reads, merge preparation, merge verification, publication-queue reconciliation, closeout PR creation, or closeout prequeue GREEN. Those are mechanical transitions already evidenced by their owning systems.
+
+The **closeout fast path** is one bounded phase: prepare/validate the atomic closeout candidate → submit READY → fresh-main integration check → exact merge → durable queue reconcile → one deterministic successor reseed. There are no lane-journal writes inside that phase before the final successor reseed.
+
+Treat a workflow run as one validation gate. While it is healthy/in-progress, inspect only workflow-level status as needed; inspect per-job logs/artifacts only after a terminal failure or when a concrete failure signature requires them. Do not narrate every mechanical tool transition as a separate milestone.
+
+If a tool call returns no usable result, a session aborts, or execution resumes after an interruption, fresh-read the lane milestone plus the repository/PR/CI/queue evidence needed to determine what happened since that milestone; never replay completed work merely because it was not mirrored into lane state. An executor interruption is an executor/tooling incident, not permission to restart the tranche, reserve `main`, or block another lane.
 
 ## 8. Ready-then-queue publication
 
