@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.11.0  
+**Version:** 3.12.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -112,6 +112,8 @@ When exactly one persistent implementation lane is nonterminal, OPS3 enters **si
 The durable lane ref is the **lane-state terminal gate**. `in_progress`, `prequeue_green`, or `published` forbids a normal terminal response to an owner execution command. Repeated owner execution commands remain useful diagnostic input for detecting stalls, but counting the interaction is not a lane milestone. Do not create a lane-state write solely for owner re-entry, stall nudges, status checks, queue checks, rebase checks, or mergeability polls. Aggregate any interaction-quality telemetry into an already-required terminal/closeout record.
 
 Use **quiet execution** for governed tranches. While CI is healthy, inspect workflow-level status only at sparse, transition-driven points. Do not narrate or persist per-job progress, lane scans, queue emptiness, fresh-main observations, rebase checks, or mergeability polling as work. Job/step/log detail is failure-driven. Browser/session interruption resumes from durable lane state plus the smallest repository/PR/CI evidence needed.
+
+Validation runners are capacity pools. Platform-specific validation may use any idle isolated self-hosted runner carrying the required label set; runner service count is a throughput choice, not a correctness dependency. Lightweight repository selection/health and deterministic receipt comparison should execute off the scarce workstation pool when no workstation-local capability is required. PR-level `cancel-in-progress` remains enabled so obsolete exact heads do not consume capacity. Cross-platform comparison is eligible only after all required platform jobs succeed; failed/cancelled platform jobs terminate that candidate without a receipt-comparison cleanup phase. Runner scheduling, cancellation, queue depth and process lifetime are not material progress.
 
 ## 6. Executor independence
 
