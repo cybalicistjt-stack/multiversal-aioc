@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.8.0  
+**Version:** 3.9.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -93,7 +93,10 @@ Once lane, work item, repository, branch, and acceptance gate are known:
 - do not search unrelated history to fill time;
 - diagnose the first material failure before retrying;
 - require changed evidence before repeating a failed operation;
-- batch related repairs before rerunning expensive terminal gates.
+- batch related repairs before rerunning expensive terminal gates;
+- treat one workflow run as one validation gate; do not journal or narrate each platform/job transition;
+- inspect job logs or artifacts only for a terminal failure or a concrete unresolved failure signature;
+- batch known reads/writes instead of turning each mechanical observation into its own tool/commit/status milestone.
 
 Research is progress only when it resolves a concrete unknown needed for the result.
 
@@ -117,15 +120,15 @@ For implementation work:
 
 1. resolve the selected lane/work item from `CURRENT.json`;
 2. read that lane's independent execution-state ref and start/resume the selected attempt there; starting execution does not require an AIOC-main publication;
-3. work on the lane's implementation branch and record material progress on the lane-state ref;
-4. run focused validation and the lane's full required prequeue acceptance gate on the immutable candidate head;
-5. only after the exact head is green, submit one READY candidate containing lane, work item, PR, exact head, prequeue validation receipt, and relevant write/dependency fingerprint;
+3. work on the lane's implementation branch without using lane state as an activity log;
+4. run focused validation and the lane's full required prequeue acceptance gate on one immutable candidate head;
+5. after the complete exact-head gate is green, write the single `prequeue_green` lane milestone and submit one READY candidate containing lane, work item, PR, exact head, validation receipt, and relevant write/dependency fingerprint;
 6. READY candidates are FIFO by submission order; implementation work never reserves a future position;
 7. for the FIFO head, fresh-read target `main` and run the smallest drift-sensitive integration gate against that base;
 8. if integration is green and the PR head is unchanged, merge with expected-head protection and atomic main-ref semantics;
-9. verify the durable `main` result and reconcile the queue candidate from repository evidence; **there is no release step**;
-10. if integration fails, mark/remove that head candidate with the causal failure so later READY candidates are not stranded; repair/revalidate the failed lane independently before resubmission;
-11. record lane completion on its lane-state ref; project successor/global aggregate state through a separate READY candidate only when protected-main source state actually must change;
+9. verify the durable `main` result, reconcile the queue candidate from repository evidence, then write the single `published` lane milestone; **there is no release step**;
+10. if integration fails, mark/remove that head candidate with the causal failure so later READY candidates are not stranded; invalidate the prequeue milestone and repair/revalidate independently before resubmission;
+11. prepare the atomic global selector/successor closeout candidate and execute the closeout fast path: validate → READY CAS → fresh-main integration check → exact merge → durable queue reconcile → one deterministic successor reseed. No lane-journal writes occur inside that closeout phase before the reseed;
 12. build, packaging, deployment, release, and post-merge distribution consume the merged artifact/result independently and never own the source-publication queue.
 
 ### Independent lane execution state
@@ -139,10 +142,25 @@ MSAS, MRCS, and MVPS use separate compare-and-swap coordination refs:
 The state model is implemented by `scripts/ops3_lane_state.py`.
 
 - `CURRENT.json` remains the global selector of which work item is authorized for each persistent lane.
-- A lane-state ref may record only execution state for the work item/attempt selected by `CURRENT.json`; it cannot select a successor, reprioritize another lane, or expand scope.
-- Starting a selected attempt, recording progress, and marking the lane attempt terminal are lane-local CAS writes and do not mutate protected `main`.
+- A lane-state ref may record only execution state for the work item/attempt selected by `CURRENT.json`; it cannot reprioritize another lane or expand scope. A successor appears in lane state only through the deterministic reseed after the matching canonical closeout selects it.
+- Lane state is a coarse recovery state machine, not an event stream. Ordinary execution has three writes only: `started`, `prequeue_green`, and `published`; `reseed_successor` is the single post-closeout reset.
+- Repository/PR/CI/publication-queue evidence owns intermediate mechanics. Do not duplicate PR creation, workflow/job states, per-platform success, artifact inspection, queue submission, fresh-main reads, merge preparation/verification, queue reconciliation, or closeout validation into lane state.
+- The generic `record_progress` and `complete_execution` lane APIs do not exist. Executors must use the explicit milestone transitions in `scripts/ops3_lane_state.py`.
 - One lane-state ref never contains another lane's progress. A stalled or lost executor therefore cannot block execution-state updates by another lane.
-- Material durable side effects should be followed by a lane-state progress receipt before another substantial external-tool batch so replacement executors can resume without archaeology.
+- Exceptional candidate invalidation may return `prequeue_green` to `in_progress` when changed repository evidence proves the exact candidate is no longer publishable; it is not a license for status journaling.
+
+### Overinstrumentation guard
+
+OPS3 protects throughput by treating instrumentation as overhead, not work.
+
+- Use **milestone receipts, not activity receipts**.
+- Do not write lane state for status reads, polling, PR creation, individual CI/platform results, artifact/log inspection, READY submission, integration binding, merge preparation, merge verification, queue reconciliation, or closeout-candidate progress.
+- Repository/PR/CI/publication-queue evidence is the source of truth for those mechanics.
+- Do not emit a user-facing progress message for every mechanical transition. Group updates around real execution phases or changed failure signatures.
+- Do not create extra commits, control files, receipts, or projections merely to prove that an executor looked at something.
+- A normal attempt's lane-state progress sequence reaches at most three before successor reseed. Additional ordinary progress receipts are a design smell and require an actual exceptional state transition, not “more visibility.”
+- Successor reseed is generated by the shared lane-state helper. Never inspect or copy another lane merely to learn reset shape.
+- The closeout fast path is validation → READY CAS → fresh-main check → exact merge → durable reconcile → successor reseed, with no intermediate lane-state receipts.
 
 ### Ready-candidate publication queue
 
@@ -167,7 +185,7 @@ A conversation, Codex session, local process, CI poller, or connector call is re
 
 - Do not silently sleep or wait in chat for another lane, queue position, CI completion, or a tool to recover. Use direct status reads only when needed for the current transition; unchanged polling is not progress.
 - If a call produces no usable result, the session terminates unexpectedly, quota is exhausted, or the user has to restart the conversation, classify it as an executor/tooling interruption.
-- On recovery, fresh-read `CURRENT.json`, the selected lane-state ref, and only the repository/PR evidence named by the last durable receipt. Resume from that point instead of replaying the tranche.
+- On recovery, fresh-read `CURRENT.json`, the selected lane-state milestone, and the smallest repository/PR/CI/queue evidence needed to determine what happened since that milestone. Resume from durable repository truth instead of replaying the tranche or requiring every intermediate action to have been journaled.
 - A session interruption never creates publication ownership. Other lanes and READY candidates remain able to progress.
 - Repeated owner `Continue` commands or stall nudges remain execution-quality incidents and are recorded truthfully even when durable product progress survives.
 
