@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "GPR",
+  "lane": "gpr",
+  "track": "gameplay-pattern-runtime",
+  "source_program": "GPR",
+  "work_item_id": "GPR-09",
+  "attempt_id": "GPR-09-attempt-001",
+  "title": "Seven Delivery Modes, Creator/GM Control & World/Roster Binding",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "GPR-08",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "gpr_interstitial_override": "none",
+    "strict_order": "GPR-01 → GPR-03 → GPR-05 → GPR-06 → GPR-07 → GPR-08 → GPR-09 → GPR-10 → GPR-12 → GPR-16",
+    "late_bind_requires": [
+      "MCS/MCCS/MNCS/MAS/MSAS outputs"
+    ],
+    "golden_proof_requires": [
+      "relevant specialist golden proofs"
+    ],
+    "satisfied_golden_dependencies": [
+      "MRCS-21 completed_verified"
+    ],
+    "parallel_lanes": "MRCS is terminal completed_verified; OARC-06 remains independently selected_not_started."
+  },
+  "required_predecessor": {
+    "work_item": "GPR-08",
+    "application_merge_sha": "1fac56244a41cd58e6cd70751d85b7d1c52c327b",
+    "loop_mini_schema": "GPR-08.1",
+    "bounded_resolution_schema": "GPR-07.1",
+    "specialist_module_schema": "GPR-06.1",
+    "owner_operation_schema": "GPR-05.1",
+    "deterministic_kernel_schema": "GPR-03.1",
+    "runtime_registry_schema": "GPR-01.1"
+  },
+  "objective": "Implement direct, cozy/low-pressure, GM-led, world-map/TTRPG bridge, embedded-minigame, user-authored loop-mini and roster-injection delivery adapters over one state/outcome model, plus GPR-specific Creator/GM test/control surfaces, World/Map/Adventure binding and Character roster injection using Packet-07 shared execution-inspection semantics.",
+  "acceptance": [
+    "All seven delivery modes project the same underlying GPR state/outcome model rather than separate mechanics engines.",
+    "Loop test/preview and Creator/GM controls reuse Packet-07 shared preview/dry-run/commit/explanation/intervention/recovery semantics instead of creating a generic studio framework.",
+    "World/Map/Adventure bindings preserve external canonical identity and mutation authority.",
+    "Character roster injection consumes explicit Character owner references and cannot replace Character truth.",
+    "Mode support is explicit and unsupported delivery modes fail closed while preserving GPR-08 authored configuration.",
+    "Visibility/permission filtering is applied before participant, target, diagnostic, preview/export or GM-control projections."
+  ],
+  "boundaries": [
+    "GPR-01 through GPR-08 remain predecessors and are not duplicated.",
+    "GPR-09 owns GPR-specific delivery/control adapters only; generic creator/debug/studio authority remains external.",
+    "World/Map/Adventure and Character owners retain canonical identity and mutation truth.",
+    "Packet-07 shared execution-inspection semantics are reused rather than reimplemented.",
+    "GPR-10+ presentation, continuity and final proof remain unauthorized.",
+    "OARC lane state remains independent."
+  ],
+  "strict_successor": "GPR-10",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On a GPR-specific owner Continue, fresh-read GPR-09, published GPR predecessor evidence, Packet-07 shared execution-inspection semantics, the GPR family design closure and ops3-lane-state/gpr, then execute the complete bounded seven-mode/Creator-GM/world-roster tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
