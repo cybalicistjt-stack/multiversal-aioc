@@ -2,7 +2,7 @@
 
 **Program ID:** MVPS  
 **Family:** Multiversal Player Species  
-**Status:** ACTIVE OWNER-AUTHORIZED CORE-26 PRODUCTION EXTENSION / MVPS-19 completed_verified / MVPS-20 selected_not_started  
+**Status:** ACTIVE OWNER-AUTHORIZED CORE-26 PRODUCTION EXTENSION / MVPS-20 completed_verified / MVPS-21 selected_not_started  
 **Operational authority:** none outside `operations/CURRENT.json`
 
 ## Mission
@@ -114,3 +114,12 @@ MVPS-19 completed_verified on 2026-09-20. All 26 current species now have v1.1.0
 The completion includes shared typed baseline profiles, explicit morphology/movement/sense/physiology/capability/natural-equipment/interface data, a ManyToms distributed-body controller that permits split Toms while automatically applying attention-load conditions without multiplying personhood/action economy, and preservation of the existing Vespin stinger species system for MVPS-20 progression binding. The canonical database remains 556 effective records and now applies 83 governed replacements from 114 registered sources.
 
 This is not final game-ready certification. MVPS-20 must complete applicable lineage/form/adaptation/progression and social/language/knowledge dimensions before MVPS-21 presentation regeneration and later MVPS-22/23 certification/golden proof.
+
+
+## MVPS-20 Core-26 optional-dimension completion result
+
+MVPS-20 completed_verified on 2026-09-20. All 26 current species now have append-only v1.2.0 definition/register updates bound to `MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1` and `MVPS20.CORE26.SPECIAL_SYSTEMS.v1`. Every species has explicit current-canon applicability receipts for lineage/subspecies, forms/transformation and progression/maturation plus governed social/language/knowledge hooks. Missing optional content remains explicit and no species received invented mechanics merely to fill the matrix.
+
+Source-backed special systems remain common-contract projections: Ratman lineages remain subordinate rather than peer species; Giantkin uses Grendelkin/Surtrborn/Daityr; Stygian wing functionality stays upstream; Vespin preserves its existing stinger system through shared Progression ownership; Kola-Ha, Mythragara, Suula, Traiga, Moravi, Morganthyr and ManyToms retain their source-bounded form/adaptation/variant semantics. Culture and learned language remain separate from biology, and runtime dispatch remains typed rather than species-name branched.
+
+The canonical database remains 556 effective objects and now applies 135 governed replacements from 166 registered sources. This is not final game-ready certification. MVPS-21 is selected next to regenerate current-authority appearance/presentation for all 26; MVPS-22 then performs balance/validation/cross-system certification and MVPS-23 runs the final game-ready golden proof.
