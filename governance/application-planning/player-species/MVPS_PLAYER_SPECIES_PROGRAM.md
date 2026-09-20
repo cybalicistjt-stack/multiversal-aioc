@@ -2,7 +2,7 @@
 
 **Program ID:** MVPS  
 **Family:** Multiversal Player Species  
-**Status:** ACTIVE PROGRAM / MVPS-15 completed_verified / MVPS-16 selected_not_started  
+**Status:** COMPLETED_VERIFIED / MVPS-16 radical-species golden proof completed_verified  
 **Operational authority:** none outside `operations/CURRENT.json`
 
 ## Mission
@@ -71,3 +71,9 @@ All eight must create, validate, equip or explicitly reject equipment through co
 ## Source basis
 
 The program is grounded in the approved 2026-09-18 player-species completeness audit and the OPS3 reference corpus: Project Bible character lifecycle/composition/progression/action/effect/resource/ability contracts, Feature Bible integration principles, UI/Screen character-builder contracts, and sanitized DB-004 game-framework references.
+
+## Terminal golden-proof closure
+
+MVPS-16 completed the program's common-contract proof with eight deliberately non-canon radical species fixtures: ordinary human, winged humanoid, aquatic non-humanoid, centaur-like quadruped, construct/android, multi-form shapeshifter, incorporeal being, and a radically alien hexaradial body plan. All use the same 11-workflow matrix backed by existing MVPS contracts; mandatory workflows pass, optional progression/transformation are explicit when not applicable, equipment incompatibility is a governed success path, species-name dispatch is zero, and no semantic gap remains.
+
+The persistent `mvps` OPS3 lane remains present in `completed_verified` state. MVPS-16 has no successor; future player-species work requires an explicitly selected new owner-authorized work item.

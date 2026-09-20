@@ -5,9 +5,9 @@
   "title": "Radical-Species Conformance and Golden Proof",
   "attempt_id": "MVPS-16-attempt-001",
   "lane": "mvps",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_branch": "work/mvps-16-radical-species-golden-proof",
   "selected_by_verified_predecessor": "MVPS-15",
   "predecessor": {
     "work_item_id": "MVPS-15",
@@ -24,12 +24,12 @@
   ],
   "boundaries": [
     "MVPS-16 owns final cross-contract conformance/golden proof for the MVPS program and may close only semantic gaps required by that proof.",
-    "The same common contracts must cover ordinary human, winged humanoid, aquatic non-humanoid, centaur-like quadruped, construct/android, multi-form shapeshifter, incorporeal being and a radically alien body plan.",
-    "Golden proof must exercise creation/selection, validation, runtime projection, equipment compatibility, environment interaction, optional progression, transformation where applicable, serialization/import-export/migration, authoring/inspection/presentation and NPC/Creature reuse.",
-    "No core proof path may branch on species name or identity; differences must resolve through typed canonical data, owner contracts and explicit capability/morphology/form references.",
-    "Shared Character/Ability/Equipment/Environment/Progression/Knowledge/Presentation/NPC-Creature owner authority remains unchanged; MVPS-16 may prove integration but not absorb those engines.",
-    "Any unresolved late-bound owner dependency needed for final proof must be surfaced as a real blocker rather than replaced by invented semantics.",
-    "MVPS-16 is the terminal planned MVPS work item; program completion may be selected only after its golden proof is completed_verified."
+    "The same common contracts cover ordinary human, winged humanoid, aquatic non-humanoid, centaur-like quadruped, construct/android, multi-form shapeshifter, incorporeal being and radically alien body-plan fixtures.",
+    "Golden proof exercises creation/selection, validation, runtime projection, equipment compatibility, environment interaction, optional progression, transformation where applicable, serialization/import-export/migration, authoring/inspection/presentation and NPC/Creature reuse.",
+    "No core proof path branches on species name or identity; differences resolve through typed canonical data, owner contracts and explicit capability/morphology/form references.",
+    "Shared Character/Ability/Equipment/Environment/Progression/Knowledge/Presentation/NPC-Creature owner authority remains unchanged.",
+    "No unresolved semantic gap remains in the MVPS-16 matrix.",
+    "MVPS-16 is terminal; no successor is invented."
   ],
   "selection_basis": {
     "dag_schema": "1.0.4",
@@ -38,17 +38,78 @@
     "golden_proof_requirement": "ROADMAP_DEPENDENCY_GRAPH.json requires MVPS-16 radical-species conformance proof for MVPS golden closure.",
     "parallel_lanes": "MSAS-12 and MRCS-08 remain independently selected_not_started."
   },
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On an MVPS-specific owner Continue, fresh-read the MVPS-16 dependency closure and mvps lane-state ref, then start and execute the bounded golden-proof tranche under OPS3-11.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS is completed_verified at terminal MVPS-16. No further MVPS implementation is authorized unless the owner selects a new work item.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "completed_verified_candidate",
+      "evidence": "MVPS-16 causal RED run 35506910710 passed OPS3 and MVPS-01 through MVPS-15 then failed on four intentionally absent golden-proof artifacts at f0b8ea10bcbd6492bf6e12427f809be928626eb8; exact-head GREEN run 35506980538 passed at c74f606778edb122089311a0e393972f92a972b2; PR 1467 published through READY as 8531c8d43d717f91abba59fbf7e3f81952fb34f6."
+    },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": null
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Terminal MVPS-16 golden proof is durably published and this atomic closeout marks the MVPS program completed_verified with no successor."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "MVPS-16 completed within one owner Continue under OPS3-11 milestone-only instrumentation. Lane state recorded start, prequeue_green and published before closeout. Because strict_successor is null, the single post-closeout lane write terminalizes the persistent lane as completed_verified instead of fabricating a successor."
+  },
+  "implementation_plan": {
+    "lane_start": "completed",
+    "causal_red": "completed",
+    "golden_matrix_implementation": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "terminal_closeout": "completed"
+  },
+  "completed": true,
+  "completed_at": "2026-09-20",
+  "acceptance_evidence": {
+    "causal_red": {
+      "pr": 1467,
+      "head": "f0b8ea10bcbd6492bf6e12427f809be928626eb8",
+      "validation_run": 35506910710,
+      "conclusion": "failure",
+      "signature": "OPS3 and MVPS-01 through MVPS-15 passed; MVPS-16 failed because the four required golden-proof artifacts were intentionally absent."
+    },
+    "green": {
+      "pr": 1467,
+      "validated_head": "c74f606778edb122089311a0e393972f92a972b2",
+      "validated_base": "f4982d46fec3c75bcbacac5e4eda4e1621a92300",
+      "validation_run": 35506980538,
+      "conclusion": "success",
+      "merge_method": "merge",
+      "merge_sha": "8531c8d43d717f91abba59fbf7e3f81952fb34f6"
+    },
+    "application_ready_queue": {
+      "candidate_id": "MVPS-16-app-001",
+      "reconciled_generation": 40,
+      "ready_after_reconcile": 0
+    },
+    "golden_proof": {
+      "matrix": "governance/application-planning/player-species/contracts/MVPS-16_COMMON_CONFORMANCE_MATRIX.json",
+      "fixtures": "governance/application-planning/player-species/contracts/MVPS-16_RADICAL_SPECIES_FIXTURES.json",
+      "proof": "governance/application-planning/player-species/contracts/MVPS-16_GOLDEN_PROOF.json",
+      "fixture_count": 8,
+      "workflow_count": 11,
+      "species_name_conditionals_required": 0,
+      "semantic_gaps_remaining": 0,
+      "owner_authority_preserved": true
+    },
+    "terminal_reconciliation": {
+      "successor": null,
+      "lane_state_after_closeout": "completed_verified",
+      "persistent_lane_preserved": true,
+      "reason": "MVPS-16 is the terminal planned MVPS work item and ROADMAP_DEPENDENCY_GRAPH.json identifies its golden proof as the final MVPS closure requirement."
+    }
   }
 }
