@@ -3,11 +3,11 @@
 **Program ID:** GPR  
 **Program name:** Gameplay Pattern Runtime & Loop Minis  
 **Version:** 0.2.0 — PDCP REDUCED  
-**Status:** OWNER-APPROVED — GPR-01 SELECTED_NOT_STARTED  
+**Status:** ACTIVE — GPR-03 SELECTED_NOT_STARTED  
 **Activation:** concurrent start authorized after MRCS-05 + completed MAL + core owner contracts; later MRCS late-binds; GPR-16 waits for MRCS-21  
 **Successor:** MERA-01  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-01 attempt
+**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-03 attempt
 
 ## Purpose
 
@@ -193,3 +193,14 @@ No GPR runtime branch or implementation authority exists until a future OPS3 gov
 ## Completion standard
 
 GPR completes only when the ten surviving tranches are `completed_verified`, `GPR-16` contains the full conformance and golden evidence, the seven delivery modes use one state/Event/outcome model, production presentation remains rights-safe/swappable, and downstream families can consume the runtime without creating parallel gameplay engines.
+
+
+## GPR-01 completed runtime-registry result
+
+GPR-01 completed_verified on 2026-09-20. The published application contract `GPR-01.1` establishes GPR as the executable registry/projection authority over accepted MRCS definitions and frozen MAL-01..10 primitives without creating another definition ledger or canonical owner runtime.
+
+The registry covers semantic pattern, primitive, operation and asset-role references; validates explicit namespaces, semantic IDs/versions, source authority and foundation evidence; produces deterministic sorted runtime IDs/receipts; and preserves explicit `supported`, `unsupported` and `unknown` states. Binding resolution fails closed on missing, mismatched, unsupported or unknown references and never treats registry presence as proof of owner mutation or gameplay occurrence.
+
+Causal RED: run `35529417335` at `e127881c5c8ac562f225e3615356b45e83d13ec0`. Exact-head cross-platform GREEN: run `35529549717` at `a91f50f515cdd3e397dd6ee566adcff397a1d7a3`. Published application: PR #649 through READY candidate `GPR-01-app-001` as `6fc0030d952355eecea63928fcbc4736feb110f3`.
+
+The fresh roadmap DAG supplies no interstitial successor override, so GPR-03 is selected_not_started. Later MRCS domains remain late-bind dependencies and GPR-16 remains gated on MRCS-21 plus relevant specialist golden proofs.
