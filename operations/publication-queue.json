@@ -1,8 +1,47 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 138,
-  "ready": [],
+  "generation": 139,
+  "ready": [
+    {
+      "candidate_id": "OPS3-12-impl-001",
+      "lane": "operations",
+      "work_item_id": "OPS3-12",
+      "pr_number": 1520,
+      "head_sha": "3568b0515ce568771b621f495505340d11f765e2",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "3568b0515ce568771b621f495505340d11f765e2",
+        "run_id": "OPS3-12-source-equivalent-gate-3568b051"
+      },
+      "write_set": [
+        ".github/workflows/validate-repository-health.yml",
+        "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
+        "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+        "operations/BOOTSTRAP.md",
+        "operations/CURRENT.json",
+        "operations/LANES.json",
+        "operations/OPERATING_CONTRACT.md",
+        "operations/work-items/OPS3-12.json",
+        "scripts/ops3_execution_guard.py",
+        "scripts/ops3_lane_state.py",
+        "scripts/validate_operations_v3.py",
+        "tests/control_plane/test_operations_v3_single_door.py",
+        "tests/control_plane/test_ops3_execution_concurrency.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "b83d5114818a053b4b7b2504e55675c19386c3b9",
+        "validation_kind": "exact-head source-equivalent gate plus independent core-semantics execution",
+        "github_actions_pr_event_incident": "PR 1520 open/synchronize/reopen yielded zero check runs",
+        "post_merge_main_validation_required": true,
+        "preserved_gpr": "GPR-10 selected_not_started",
+        "terminal_siblings": [
+          "MRCS-21",
+          "OARC-07"
+        ]
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
