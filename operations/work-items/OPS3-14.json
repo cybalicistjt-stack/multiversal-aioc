@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS3-14",
+  "title": "Validation Runner Pool Capacity and Stale-Run Containment",
+  "status": "completed_verified",
+  "owner_directive": "Add multiple self-hosted runner capacity so running processes do not block later work; keep obsolete runs from consuming validation capacity; make this durable operations behavior.",
+  "completed": true,
+  "implementation_authority": false,
+  "decisions": [
+    "Treat each self-hosted validation label set as a pool; any idle matching isolated runner service may accept a job.",
+    "Additional runner instances require separate installation/work directories and provide throughput only; correctness does not depend on runner count.",
+    "Move repository selector/health and deterministic receipt comparison to hosted Linux when they have no workstation-local dependency.",
+    "Scope concurrency to the immutable candidate head: duplicate runs of the same head cancel, while obsolete heads cannot block newer candidates; exact-head evidence prevents stale results from being consumed.",
+    "Run deterministic cross-platform comparison only after both required platform validation jobs succeed.",
+    "Do not treat runner queue/process/cancellation observations as material project progress or lane-state receipts."
+  ],
+  "application_evidence": {
+    "repository": "cybalicistjt-stack/Multiversal-app",
+    "pull_request": 665,
+    "exact_head": "6c9830416226116822253d5b2abce437974924b9",
+    "validation_run": "35545935281",
+    "validation_conclusion": "success",
+    "application_main_merge": "273b9cfa7df7d70e7918d1a70c29698e3d64382d",
+    "followup_pull_request": 666,
+    "followup_exact_head": "23a128cf28014520bc715ba2c99c053024122c85",
+    "followup_validation_run": "35546036526",
+    "followup_validation_conclusion": "success",
+    "final_application_main_merge": "8c42ae6cdc69fed4a8fd9f015e79280ae67d8488"
+  },
+  "next_action": "Resume the already-started GPR-10 tranche against the repaired validation pipeline."
+}

@@ -6,17 +6,17 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 315,
+  "state_revision": 316,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
   "product_start_freeze": {
     "active": false,
-    "reason": "OPS3-13 completed_verified after converting single-active-lane publication to a queue-free exact-head/fresh-base fast path, removing owner-reentry lane-state writes, prohibiting routine rebase/concurrency scans, and expanding the overinstrumentation denylist.",
+    "reason": "OPS3-14 completed_verified after moving lightweight validation orchestration off scarce self-hosted runners, success-gating deterministic comparison, and defining isolated same-label runner pools as capacity-only infrastructure.",
     "preserved_selected_work_item": "GPR-10",
     "preserved_attempt_id": "GPR-10-attempt-001",
     "implementation_authority": false,
-    "cleared_by": "OPS3-13 completed_verified",
+    "cleared_by": "OPS3-14 completed_verified",
     "preserved_lane_selections": {
       "gpr": {
         "selected_work_item": "GPR-10",
@@ -38,8 +38,8 @@
   "lanes": {
     "operations": {
       "state": "completed_verified",
-      "work_item_id": "OPS3-13",
-      "work_item_path": "operations/work-items/OPS3-13.json",
+      "work_item_id": "OPS3-14",
+      "work_item_path": "operations/work-items/OPS3-14.json",
       "implementation_authority": false
     },
     "msas": {
@@ -120,9 +120,12 @@
     "single_active_lane_mode": "When exactly one persistent implementation lane is nonterminal, derive that mode once and execute only that lane plus concrete dependencies. Do not rescan terminal siblings, check concurrent writers, consult an empty READY queue, or perform routine rebase/update-branch work.",
     "publication_mode_rule": "Derive publication mode once from fresh CURRENT: zero nonterminal lanes means no publication, one means single_lane_direct, two or more means ready_queue. Do not keep rescanning unless a concrete invalidating event occurs.",
     "owner_reentry_diagnostic": "Repeated owner execution commands remain diagnostic input for stall detection but must not create a lane-state write solely to count the interaction. Aggregate interaction-quality evidence only into an already-required terminal/closeout record.",
-    "no_routine_rebase": "OPS3 never requires routine rebasing. In single-active-lane mode base drift reruns only the narrow fresh-base integration gate; a candidate-head change occurs only for a real conflict or repair and then receives exact-head revalidation."
+    "no_routine_rebase": "OPS3 never requires routine rebasing. In single-active-lane mode base drift reruns only the narrow fresh-base integration gate; a candidate-head change occurs only for a real conflict or repair and then receives exact-head revalidation.",
+    "runner_pool_capacity": "Platform validation labels describe pools, not named machines. Multiple isolated self-hosted runner services may share the same required labels. Lightweight selector/health and deterministic comparison should avoid the scarce validation pool when workstation-local capabilities are unnecessary.",
+    "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
+    "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR-10 is the only nonterminal persistent implementation lane and remains selected_not_started. MRCS and OARC are terminal completed_verified. A bare Continue in the established development lane starts GPR-10 under the OPS3-13 single-lane zero-coordination fast path.",
+  "next_project_action": "Resume GPR-10 from ops3-lane-state/gpr. Its implementation candidate already exists; use the repaired validation pipeline and do not replay completed implementation work.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
