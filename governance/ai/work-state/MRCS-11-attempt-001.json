@@ -34,18 +34,18 @@
     "MSAS and MVPS lane state remains independent."
   ],
   "strict_successor": "MRCS-12",
-  "active_substep": "application_ready_publication",
-  "next_action": "Submit the immutable exact-head GREEN application candidate to FIFO READY, bind against fresh application main, publish by expected head, reconcile the queue, then mark published.",
+  "active_substep": "control_plane_closeout_fast_path",
+  "next_action": "Fresh-read CURRENT and ROADMAP_DEPENDENCY_GRAPH, build the atomic MRCS-11 completed_verified / MRCS-12 selected_not_started projection, validate it, publish it through the AIOC READY queue, reconcile durable main, then reseed the mrcs lane state exactly once.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 2,
+    "material_progress_seq": 3,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 2,
-      "kind": "prequeue_green",
-      "evidence": "Exact-head cross-platform GREEN run 35513477499 passed for candidate 56696532d1caf5fbb67862448e0cc6a62c17c263."
+      "seq": 3,
+      "kind": "published",
+      "evidence": "Application PR 636 exact head 56696532d1caf5fbb67862448e0cc6a62c17c263 is durably published as 891beda57a3173e6f6e872c17900c465d7a6b88f; app READY queue reconciled at generation 22."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
