@@ -387,6 +387,65 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
 
 
 
+    def test_oarc01_authority_handoff_contract_is_complete_and_nonduplicative(self) -> None:
+        contract = self._json(
+            "governance/application-planning/operational-asset-readiness-closure/"
+            "OARC-01_AUTHORITY_HANDOFF_CONTRACT_v1.0.0.json"
+        )
+        self.assertEqual(contract["contract_id"], "OARC01.AUTHORITY_HANDOFF.v1")
+        self.assertEqual(contract["status"], "current")
+        self.assertEqual(contract["oarc_role"], "readiness_bridge_validation_and_certification_only")
+
+        owners = contract["authority_owners"]
+        expected = {
+            "reusable_definition_authoring": "MRCS-13",
+            "operational_configuration_foundation": "MIB-14",
+            "live_asset_truth": "D17/PPIA-03/shared-assets",
+            "vehicle_mecha_ship_operations": "PPIA-04/F014",
+            "repair_crafting_transactions": "MIB-12",
+            "salvage_decomposition": "LSS",
+            "economy_truth": "MIB-13/Economy",
+            "project_time_truth": "APW/D26",
+            "engineering_orchestration": "MERA",
+            "built_environment_orchestration": "MBES",
+            "world_environment_truth": "World/Environment/Reality",
+            "action_combat_outcomes": "Action/Event/Combat/SCL",
+        }
+        self.assertEqual(
+            {key: owners[key]["primary_owner"] for key in expected},
+            expected,
+        )
+
+        self.assertFalse(owners["engineering_orchestration"]["implementation_authorized_now"])
+        self.assertFalse(owners["built_environment_orchestration"]["implementation_authorized_now"])
+
+        admission = contract["later_oarc_field_admission"]
+        self.assertTrue(admission["existing_primary_owner_required"])
+        self.assertTrue(admission["source_truth_state_required"])
+        self.assertEqual(admission["missing_owner_disposition"], "unresolved_owner_gap_no_implementation")
+        self.assertEqual(admission["source_unspecified_disposition"], "unresolved_no_default_or_inference")
+
+        forbidden = set(contract["forbidden_duplicate_runtime_owners"])
+        for required in {
+            "modular_definition_grammar",
+            "live_asset_inventory_or_cargo",
+            "engineering_topology_or_network_runtime",
+            "built_environment_topology_or_construction_runtime",
+            "repair_or_crafting_transaction_ledger",
+            "salvage_or_decomposition_ledger",
+            "economy_ledger",
+            "project_or_campaign_time_ledger",
+            "combat_outcome_runtime",
+            "world_or_environment_truth",
+        }:
+            self.assertIn(required, forbidden)
+
+        reservations = contract["future_family_reservations"]
+        self.assertEqual(reservations["MERA"]["status"], "planned_no_implementation_authority")
+        self.assertEqual(reservations["MBES"]["status"], "planned_no_implementation_authority")
+        self.assertTrue(reservations["MERA"]["oarc_may_record_dependency_only"])
+        self.assertTrue(reservations["MBES"]["oarc_may_record_dependency_only"])
+
     def test_one_door_explicitly_guards_against_overinstrumentation(self) -> None:
         bootstrap=self._text("operations/BOOTSTRAP.md")
         contract=self._text("operations/OPERATING_CONTRACT.md")
