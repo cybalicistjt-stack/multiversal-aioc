@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_scope": "MVPS-13 deterministic runtime projection and species-origin grant receipt proof",
+  "non_canon": true,
+  "cases": {
+    "deterministic_replay": {
+      "input": {
+        "character_species_selection_ref": "selection:hero@7",
+        "species_ref": "species:winged@4",
+        "lineage_refs": [
+          "lineage:highland@2"
+        ],
+        "adaptation_refs": [
+          "adaptation:cold@1"
+        ],
+        "campaign_adjudication_refs": [
+          "adj:gm-22"
+        ],
+        "validation_state": "playable"
+      },
+      "expected": {
+        "status": "projection_allowed",
+        "same_input_digest_same_projection_digest": true,
+        "contribution_order": [
+          "base_species",
+          "lineage",
+          "adaptation",
+          "campaign_adjudication"
+        ],
+        "every_contribution_source_traceable": true
+      }
+    },
+    "temporary_form_overlay": {
+      "input": {
+        "species_ref": "species:shapeshifter@4",
+        "base_lineage_ref": "lineage:mistborn@2",
+        "active_form_state_ref": "transform:mist-3",
+        "source_form_ref": "form:humanoid@1",
+        "target_form_ref": "form:mist@6"
+      },
+      "expected": {
+        "status": "projection_allowed",
+        "base_selection_history_unchanged": true,
+        "active_form_applied_last": true,
+        "temporary_contributions_traceable": true,
+        "reversal_uses_recorded_pre_transform_state": true
+      }
+    },
+    "same_grant_multiple_sources": {
+      "input": {
+        "record_ref": "ability:darkvision@3",
+        "sources": [
+          "species:nightborn@2",
+          "lineage:cavern@1"
+        ],
+        "stacking_policy_ref": "rules:vision-stacking@1"
+      },
+      "expected": {
+        "source_contributions_preserved": 2,
+        "resolution": "shared_owner_handoff",
+        "last_write_wins": false,
+        "owner_resolution_receipt_required": true
+      }
+    },
+    "migration_required_selection": {
+      "input": {
+        "character_species_selection_ref": "selection:legacy@5",
+        "validation_state": "migration_required"
+      },
+      "expected": {
+        "status": "projection_blocked",
+        "historical_read_may_be_explicit": true,
+        "silent_version_substitution": false
+      }
+    },
+    "unresolved_lineage_conflict": {
+      "input": {
+        "character_species_selection_ref": "selection:conflict@3",
+        "lineage_composition_status": "unresolved",
+        "conflict_refs": [
+          "conflict:lineage-9"
+        ]
+      },
+      "expected": {
+        "status": "projection_blocked",
+        "conflict_refs_preserved": true,
+        "winner_inferred": false
+      }
+    },
+    "campaign_adjudication": {
+      "input": {
+        "species_ref": "species:aquatic@2",
+        "adjudication_ref": "adj:campaign-11",
+        "record_ref": "ability:surface-breathing@1",
+        "provenance_ref": "prov:campaign-11"
+      },
+      "expected": {
+        "status": "projection_allowed",
+        "source_layer": "campaign_adjudication",
+        "adjudication_ref_preserved": true,
+        "contribution_traceable": true
+      }
+    }
+  }
+}

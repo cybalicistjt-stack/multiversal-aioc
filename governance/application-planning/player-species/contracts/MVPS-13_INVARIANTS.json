@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "MVPS-13.Invariants",
+  "status": "MVPS-13_CANONICAL_INVARIANTS",
+  "invariants": [
+    {
+      "id": "MVPS13-I01-deterministic-replay",
+      "rule": "The same exact-version selections, owner-resolution receipts, ordering authority and runtime form context produce the same ordered species contributions and projection digest."
+    },
+    {
+      "id": "MVPS13-I02-exact-version-inputs",
+      "rule": "Runtime species projection consumes exact-version SpeciesDefinition, lineage, form, adaptation and adjudication references; current/latest substitution is never implicit."
+    },
+    {
+      "id": "MVPS13-I03-base-history-immutable",
+      "rule": "Projection reads CharacterSpeciesSelection history and may emit current contributions/receipts, but cannot rewrite base species, lineage, choices, adjudications, migration receipts or historical grant evidence."
+    },
+    {
+      "id": "MVPS13-I04-temporary-form-overlay",
+      "rule": "Active form state is an explicit final overlay using MVPS-09 retention/replacement semantics; temporary state never becomes replacement source truth and reversal uses recorded pre-transform state."
+    },
+    {
+      "id": "MVPS13-I05-source-traceable-contributions",
+      "rule": "Every active, suppressed, conditional or owner-deferred species contribution carries canonical record identity, source layer/ref/version and provenance; character-visible grant receipts retain recoverable source and reason."
+    },
+    {
+      "id": "MVPS13-I06-shared-owner-stacking",
+      "rule": "Duplicate, stacking, suppression and replacement semantics remain with shared mechanic/rules owners; MVPS-13 preserves all source contributions and consumes their resolution receipt rather than choosing a local winner."
+    },
+    {
+      "id": "MVPS13-I07-validation-gated-projection",
+      "rule": "Incomplete, invalid, unresolved or migration-required current selections do not silently become playable runtime projections; projection is blocked or restricted to an explicit historical-read context."
+    },
+    {
+      "id": "MVPS13-I08-no-generic-character-engine",
+      "rule": "MVPS-13 emits a species contribution fragment and compatible grant receipts for the shared Character projection/persistence owners; it does not create a generic Character projection, persistence, equipment, resource, environment or effect engine."
+    }
+  ],
+  "enforcement": {
+    "regression_test": "tests/control_plane/test_mvps13_runtime_projection_grant_receipts.py",
+    "ci_step": "Run MVPS-13 runtime projection grant-receipt regressions"
+  }
+}
