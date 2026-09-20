@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "GPR",
+  "lane": "gpr",
+  "track": "gameplay-pattern-runtime",
+  "source_program": "GPR",
+  "work_item_id": "GPR-03",
+  "attempt_id": "GPR-03-attempt-001",
+  "title": "Deterministic Entity, Input, Collision & State Kernel",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "GPR-01",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "gpr_interstitial_override": "none",
+    "strict_order": "GPR-01 → GPR-03 → GPR-05 → GPR-06 → GPR-07 → GPR-08 → GPR-09 → GPR-10 → GPR-12 → GPR-16",
+    "late_bind_requires": [
+      "later MRCS domains",
+      "MCS/MCCS/MNCS/MAS/MSAS outputs"
+    ],
+    "golden_proof_requires": [
+      "MRCS-21",
+      "relevant specialist golden proofs"
+    ],
+    "parallel_lanes": "MRCS-16 and OARC-03 remain independently selected_not_started."
+  },
+  "required_predecessor": {
+    "work_item": "GPR-01",
+    "application_merge_sha": "6fc0030d952355eecea63928fcbc4736feb110f3",
+    "runtime_registry_schema": "GPR-01.1"
+  },
+  "objective": "Implement the deterministic gameplay-instance entity/input/collision/state kernel over the GPR-01 registry seam: semantic input abstraction, collision/trigger handling, declared deterministic transition ordering, seed/configuration binding and bounded runtime/authoring caps without making presentation frame order authoritative.",
+  "acceptance": [
+    "GameplayInstance identity and state remain distinct from reusable PatternDefinition and PatternConfiguration identity.",
+    "Raw device controls normalize into semantic input commands before runtime state transitions.",
+    "Deterministic modules use declared seed/configuration/version inputs and stable transition ordering independent of presentation frame order.",
+    "Collision/trigger handling consumes governed semantic references and emits bounded runtime outcomes without creating canonical World/Combat/Action truth.",
+    "Runtime and authoring caps fail closed on unbounded entity/spawn/transition configuration.",
+    "Unsupported or unknown GPR-01 registry bindings remain unresolved/unsupported rather than receiving generic fallback semantics."
+  ],
+  "boundaries": [
+    "GPR-01 remains executable registry/import authority seam and is not duplicated.",
+    "MRCS remains reusable definition authority and MAL-01..10 remain frozen.",
+    "Action/Event, Character, World/Scene, Combat, Inventory/Asset and other canonical owners retain mutation truth.",
+    "Presentation frame timing/order cannot become semantic state order.",
+    "GPR-05+ owner-domain operation routing, specialist modules, delivery modes, multiplayer/replay and final golden proof remain unauthorized.",
+    "MRCS and OARC lane state remain independent."
+  ],
+  "strict_successor": "GPR-05",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On a GPR-specific owner Continue, fresh-read GPR-03, GPR-01 published registry evidence, the GPR family design closure and ops3-lane-state/gpr, then execute the complete bounded deterministic-kernel tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
