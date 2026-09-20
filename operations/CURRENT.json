@@ -6,8 +6,8 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 305,
-  "default_lane": "mrcs",
+  "state_revision": 306,
+  "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
   "product_start_freeze": {
@@ -26,7 +26,7 @@
       "mrcs": {
         "selected_work_item": "MRCS-21",
         "attempt_id": "MRCS-21-attempt-001",
-        "state": "selected_not_started"
+        "state": "completed_verified"
       },
       "mvps": {
         "selected_work_item": "MVPS-23",
@@ -53,13 +53,13 @@
       "execution_state_ref": "ops3-lane-state/msas"
     },
     "mrcs": {
-      "state": "selected_not_started",
+      "state": "completed_verified",
       "selected_work_item": "MRCS-21",
       "attempt_id": "MRCS-21-attempt-001",
       "checkpoint_path": "governance/ai/work-state/MRCS-21-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "MRCS-19 completed_verified after causal RED run 35532407974 at head fd391ab27daf51b9c53ed121a6f7a04798395af0, final exact-head cross-platform GREEN run 35533982141 at head 1bae6fa1361b2364a98f6849abff98bacf039235, and READY publication of PR 656 as application merge daca3732be69a8b9f0d154e70ffb017ffdc83c8c. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MRCS interstitial override, so terminal tranche MRCS-21 is selected_not_started until governed start.",
+      "activation_rule": "MRCS-21 completed_verified after causal RED run 35534682741 at head 84d3f363236468cdbe1b9732332570584e9347ba, exact-head cross-platform GREEN run 35534811637 at head aee7db47aef52986d74cfabb7b179000b44c5aee, and READY publication of PR 657 as application merge 07f8eae045b935af94de2f41c67d8c7a04789749. MRCS-21 has strict_successor null and ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no MRCS interstitial/successor override, so MRCS is terminal completed_verified.",
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "dwc-speech": {
@@ -119,7 +119,7 @@
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
     "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
-  "next_project_action": "GPR-07, MRCS-21 and OARC-05 remain independently selected_not_started. Continue only the persistent implementation lane explicitly requested by the owner; MRCS-21 is the terminal golden cross-domain construction/runtime-consumption proof and must preserve owner authority while proving local-first operation with optional AI and paid/cloud providers disabled.",
+  "next_project_action": "GPR-07 and OARC-05 remain independently selected_not_started. MRCS is terminal completed_verified and no longer requires implementation work. Continue only the persistent implementation lane explicitly requested by the owner; no lane is started by this closeout.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -160,6 +160,16 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "completion_rule": "MSAS-01 through MSAS-21 completed_verified. MSAS remains readable completed program history and no longer occupies a persistent implementation slot after owner-approved GPR lane activation."
+    },
+    "MRCS": {
+      "program_id": "MRCS",
+      "state": "completed_verified",
+      "selected_work_item": "MRCS-21",
+      "attempt_id": "MRCS-21-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MRCS-21-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "completion_rule": "MRCS-01 through MRCS-21 reduced family completed_verified. Terminal MRCS-21 proves the 48-vector family closure, reduced-GPR consumption without ownership bleed, accessibility/parity, local-first operation, and optional-AI/paid-cloud independence. MRCS remains readable completed program history and authorizes no successor."
     }
   },
   "domain_authorities": {
