@@ -5,9 +5,9 @@
   "title": "NPC/Creature Reuse and Cross-System Adapters",
   "attempt_id": "MVPS-15-attempt-001",
   "lane": "mvps",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_branch": "work/mvps-15-npc-creature-reuse-adapters",
   "selected_by_verified_predecessor": "MVPS-14",
   "predecessor": {
     "work_item_id": "MVPS-14",
@@ -26,28 +26,91 @@
     "MVPS-15 owns species-facing reuse/adaptation contracts and integration proof, not a second NPC/creature engine or duplicated species canon.",
     "SpeciesDefinition remains the shared canonical species reference; NPC/Creature Definition, archetype/template and live instance identities remain distinct layers.",
     "Adapters preserve exact-version species, lineage/form/adaptation and provenance references rather than copying or flattening species mechanics into NPC records.",
-    "Campaign, combat, social, exploration and crafting integrations consume shared Character/Ability/Equipment/Environment/Knowledge/Action/Effect/Resource owner contracts.",
+    "Campaign, combat, social, exploration and crafting integrations consume shared owner contracts and remain projection/mapping seams rather than replacement domain engines.",
     "Player-only creation/presentation concerns do not become NPC requirements unless an owner contract explicitly requires them.",
-    "MNCS/MCCS/MCS and other late-bound specialist owners remain authoritative for their domains; unresolved owner dependencies are surfaced rather than invented.",
+    "MNCS-14 and MNCS-22 retain NPC/Creature composition/runtime authority; unresolved specialist dependencies remain explicit rather than invented.",
     "Radical-species golden proof remains MVPS-16; MVPS-16 remains unauthorized until separately selected."
   ],
   "selection_basis": {
     "dag_schema": "1.0.4",
     "interstitial_override": "none",
     "strict_order": "MVPS-14 → MVPS-15 → MVPS-16",
-    "parallel_lanes": "MSAS-09 and MRCS-05 remain independently selected_not_started."
+    "parallel_lanes": "MSAS-12 and MRCS-08 remain independently selected_not_started."
   },
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On an MVPS-specific owner Continue, fresh-read the MVPS-15 dependency closure and mvps lane-state ref, then start and execute the bounded tranche under OPS3-11.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS-15 is completed_verified. MVPS-16 is selected_not_started; a later MVPS-specific Continue must govern-start it before implementation authority is granted.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "completed_verified_candidate",
+      "evidence": "MVPS-15 causal RED run 35506321737 passed OPS3 and MVPS-01 through MVPS-14 then failed on intentionally absent reuse/adapter artifacts at fa4debb848a80ba19de326eb7ca8587164669d8f; exact-head GREEN run 35506384109 passed at a4622d151869f353807e8b37aa7a2dc1b688418f; PR 1465 published through READY as 5275880ec11392a86b5695a7ac10b92259ad0f8f. Closeout was replayed onto fresh main f232b7ab8a3bccef18807c8b27a504331e596247 after the earlier FIFO MRCS-05 closeout published."
+    },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": null
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MVPS-15 application implementation is durably published and this replayed atomic closeout records completed_verified plus MVPS-16 selected_not_started."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "MVPS-15 completed within one owner Continue under OPS3-11 milestone-only instrumentation. A prior closeout candidate validated on the pre-MRCS base was not published out of order; the earlier FIFO head was allowed to merge, its global queue entry was reconciled without cross-lane lane-state mutation, and MVPS closeout was replayed/revalidated on fresh main."
+  },
+  "implementation_plan": {
+    "lane_start": "completed",
+    "red": "completed",
+    "green": "completed",
+    "publication": "completed",
+    "closeout_replay_after_fifo_drift": "completed"
+  },
+  "completed": true,
+  "completed_at": "2026-09-20",
+  "acceptance_evidence": {
+    "causal_red": {
+      "pr": 1465,
+      "head": "fa4debb848a80ba19de326eb7ca8587164669d8f",
+      "validation_run": 35506321737,
+      "conclusion": "failure",
+      "signature": "OPS3 and MVPS-01 through MVPS-14 passed; MVPS-15 failed because the five required reuse/cross-system adapter artifacts were intentionally absent."
+    },
+    "green": {
+      "pr": 1465,
+      "validated_head": "a4622d151869f353807e8b37aa7a2dc1b688418f",
+      "validated_base": "2f7e01e0940e21e2e389e8650f4d9d23b72ce8ba",
+      "validation_run": 35506384109,
+      "conclusion": "success",
+      "merge_method": "merge",
+      "merge_sha": "5275880ec11392a86b5695a7ac10b92259ad0f8f"
+    },
+    "application_ready_queue": {
+      "candidate_id": "MVPS-15-app-001",
+      "reconciled_generation": 34,
+      "ready_after_reconcile": 0
+    },
+    "closeout_drift_reconciliation": {
+      "prior_validated_head": "850a35dae43d5a29538902f136cb170f4629d39f",
+      "prior_validation_run": 35506495275,
+      "reason_for_replay": "MRCS-05-closeout-001 was the earlier FIFO READY head and merged as f232b7ab8a3bccef18807c8b27a504331e596247.",
+      "replay_base": "f232b7ab8a3bccef18807c8b27a504331e596247"
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MVPS-16",
+      "reason": "Strict MVPS order is MVPS-15→MVPS-16 and fresh DAG contains no MVPS interstitial override."
+    },
+    "owner_boundaries": {
+      "species_canon": "single shared SpeciesDefinition canon",
+      "npc_creature_composition": "MNCS-14 / Species/Form-owner-domains",
+      "npc_creature_runtime": "MNCS-22 / Character-NPC-Creature runtime owners",
+      "combat": "A7 CombatParticipantPort",
+      "campaign": "MAS-07 / Adventure-Scene-Session owners",
+      "social_exploration_crafting": "existing Relationship/Knowledge/Environment/Project/Profession/Item/Resource owner domains"
+    }
   }
 }

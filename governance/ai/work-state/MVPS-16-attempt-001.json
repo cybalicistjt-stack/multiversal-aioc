@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "work_item_id": "MVPS-16",
+  "title": "Radical-Species Conformance and Golden Proof",
+  "attempt_id": "MVPS-16-attempt-001",
+  "lane": "mvps",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-15",
+  "predecessor": {
+    "work_item_id": "MVPS-15",
+    "status": "completed_verified",
+    "implementation_merge_sha": "5275880ec11392a86b5695a7ac10b92259ad0f8f",
+    "validation_run": 35506384109
+  },
+  "strict_successor": null,
+  "objective": "Run the common species contract against eight radically different species fixtures and close all remaining semantic gaps.",
+  "acceptance": [
+    "all eight fixtures pass the common conformance matrix",
+    "no species-name conditional is needed for core workflows",
+    "creation/runtime/equipment/environment/progression/transform/serialization/migration/presentation proof is recorded"
+  ],
+  "boundaries": [
+    "MVPS-16 owns final cross-contract conformance/golden proof for the MVPS program and may close only semantic gaps required by that proof.",
+    "The same common contracts must cover ordinary human, winged humanoid, aquatic non-humanoid, centaur-like quadruped, construct/android, multi-form shapeshifter, incorporeal being and a radically alien body plan.",
+    "Golden proof must exercise creation/selection, validation, runtime projection, equipment compatibility, environment interaction, optional progression, transformation where applicable, serialization/import-export/migration, authoring/inspection/presentation and NPC/Creature reuse.",
+    "No core proof path may branch on species name or identity; differences must resolve through typed canonical data, owner contracts and explicit capability/morphology/form references.",
+    "Shared Character/Ability/Equipment/Environment/Progression/Knowledge/Presentation/NPC-Creature owner authority remains unchanged; MVPS-16 may prove integration but not absorb those engines.",
+    "Any unresolved late-bound owner dependency needed for final proof must be surfaced as a real blocker rather than replaced by invented semantics.",
+    "MVPS-16 is the terminal planned MVPS work item; program completion may be selected only after its golden proof is completed_verified."
+  ],
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "interstitial_override": "none",
+    "strict_order": "MVPS-15 → MVPS-16",
+    "golden_proof_requirement": "ROADMAP_DEPENDENCY_GRAPH.json requires MVPS-16 radical-species conformance proof for MVPS golden closure.",
+    "parallel_lanes": "MSAS-12 and MRCS-08 remain independently selected_not_started."
+  },
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an MVPS-specific owner Continue, fresh-read the MVPS-16 dependency closure and mvps lane-state ref, then start and execute the bounded golden-proof tranche under OPS3-11.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
