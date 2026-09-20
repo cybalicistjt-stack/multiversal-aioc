@@ -467,5 +467,23 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertNotIn("Material durable side effects should be followed by a lane-state progress receipt", contract)
 
 
+    def test_single_active_lane_quiet_mode_and_scoped_validation_are_canonical(self) -> None:
+        bootstrap = self._text("operations/BOOTSTRAP.md")
+        contract = self._text("operations/OPERATING_CONTRACT.md")
+        combined = bootstrap + "\n" + contract
+        for phrase in (
+            "single-active-lane mode",
+            "lane-state terminal gate",
+            "healthy workflow-level status",
+            "quiet execution",
+        ):
+            self.assertIn(phrase, combined)
+
+        workflow = self._text(".github/workflows/validate-repository-health.yml")
+        self.assertIn("Classify validation scope", workflow)
+        self.assertIn("certified_content", workflow)
+        self.assertIn("steps.scope.outputs.certified_content == 'true'", workflow)
+
+
 if __name__ == "__main__":
     unittest.main()
