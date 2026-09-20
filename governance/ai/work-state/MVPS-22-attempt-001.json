@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "extension": "CORE26_PRODUCTION_CERTIFICATION",
+  "work_item_id": "MVPS-22",
+  "title": "Core-26 Balance, Validation and Cross-System Certification",
+  "attempt_id": "MVPS-22-attempt-001",
+  "lane": "mvps",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-21",
+  "predecessor": {
+    "work_item_id": "MVPS-21",
+    "status": "completed_verified",
+    "implementation_merge_sha": "dd77e96969ddf9f0ce4f85e17f41d611673b27dc",
+    "validation_run": 35524790875
+  },
+  "strict_successor": "MVPS-23",
+  "objective": "Validate/balance the real Core 26 across creation, runtime, equipment, environment, serialization/migration, presentation and NPC/Creature/cross-system reuse.",
+  "acceptance": [
+    "26/26 have validation and testing evidence",
+    "balance/adjudication status is explicit",
+    "cross-system adapters pass with real species records",
+    "no unresolved mandatory game-ready dimension remains"
+  ],
+  "boundaries": [
+    "Consume CORE26-CURRENT-01, CORE26.GAME_READY.v1, v1.2.0 species definitions/registers, MVPS-20 optional-dimension authority and MVPS-21 current presentation outputs.",
+    "Validate real Core-26 records through shared creation/runtime/equipment/environment/migration/presentation/NPC-Creature contracts; do not create species-name application branches.",
+    "Balance/adjudication gaps must be explicit; missing mandatory evidence cannot be silently waived.",
+    "Final all-26 golden proof and extension closure belong to MVPS-23."
+  ],
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an MVPS-specific Continue, fresh-read the real Core-26 records, game-ready standard, MVPS-21 presentation outputs and shared cross-system contracts; execute bounded MVPS-22 certification under OPS3.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

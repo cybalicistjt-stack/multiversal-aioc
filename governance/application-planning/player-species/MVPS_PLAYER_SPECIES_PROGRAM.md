@@ -2,7 +2,7 @@
 
 **Program ID:** MVPS  
 **Family:** Multiversal Player Species  
-**Status:** ACTIVE OWNER-AUTHORIZED CORE-26 PRODUCTION EXTENSION / MVPS-20 completed_verified / MVPS-21 selected_not_started  
+**Status:** ACTIVE OWNER-AUTHORIZED CORE-26 PRODUCTION EXTENSION / MVPS-21 completed_verified / MVPS-22 selected_not_started  
 **Operational authority:** none outside `operations/CURRENT.json`
 
 ## Mission
@@ -123,3 +123,10 @@ MVPS-20 completed_verified on 2026-09-20. All 26 current species now have append
 Source-backed special systems remain common-contract projections: Ratman lineages remain subordinate rather than peer species; Giantkin uses Grendelkin/Surtrborn/Daityr; Stygian wing functionality stays upstream; Vespin preserves its existing stinger system through shared Progression ownership; Kola-Ha, Mythragara, Suula, Traiga, Moravi, Morganthyr and ManyToms retain their source-bounded form/adaptation/variant semantics. Culture and learned language remain separate from biology, and runtime dispatch remains typed rather than species-name branched.
 
 The canonical database remains 556 effective objects and now applies 135 governed replacements from 166 registered sources. This is not final game-ready certification. MVPS-21 is selected next to regenerate current-authority appearance/presentation for all 26; MVPS-22 then performs balance/validation/cross-system certification and MVPS-23 runs the final game-ready golden proof.
+
+
+## MVPS-21 Core-26 current presentation regeneration result
+
+MVPS-21 completed_verified on 2026-09-20. New current-authority presentation outputs cover all 26 Core species without rewriting the sealed historical 25-profile PPIA-06/CAPP evidence. The historical Nekron appearance profile is projected through the current Morganthyr identity migration, while Akwi receives a source-backed current profile from its v1.2.0/AKWI-01 appearance facts. Picker, authoring/search/inspection and appearance projections all use the exact Core-26 authority order and remain mechanically non-authoritative.
+
+MVPS-22 is selected next for balance, validation and cross-system certification; MVPS-23 remains the final all-26 game-ready golden proof.

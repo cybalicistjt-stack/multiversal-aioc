@@ -6,9 +6,9 @@
   "title": "Core-26 Current Appearance and Presentation Regeneration",
   "attempt_id": "MVPS-21-attempt-001",
   "lane": "mvps",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_branch": "work/mvps-21-core26-presentation",
   "selected_by_verified_predecessor": "MVPS-20",
   "predecessor": {
     "work_item_id": "MVPS-20",
@@ -24,26 +24,57 @@
     "no current UI/catalog hard-codes 25",
     "presentation/assets remain mechanically separate"
   ],
-  "boundaries": [
-    "Consume CORE26-CURRENT-01, CORE26.GAME_READY.v1, all v1.2.0 Core-26 definitions/registers, MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1 and MVPS20.CORE26.SPECIAL_SYSTEMS.v1 before historical presentation material.",
-    "Regenerate current-authority picker, appearance, authoring/search/inspection and presentation outputs only; do not reopen MVPS-19 mechanics or MVPS-20 optional-dimension authority absent a concrete defect.",
-    "Morganthyr is current canon; Nekron/Nekrons remain historical aliases only. Akwi is a peer Core-26 species.",
-    "Historical 25-profile evidence remains sealed and reproducible but cannot define current roster completeness.",
-    "Presentation and renderer assets do not grant mechanics, anatomy, equipment ownership, lineage, form, adaptation or progression state.",
-    "No current UI, catalog, picker, validator or presentation projection may hard-code a 25-species roster.",
-    "Balance/cross-system certification belongs to MVPS-22; final game-ready golden proof belongs to MVPS-23."
-  ],
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On an MVPS-specific Continue, fresh-read the v1.2.0 Core-26 definitions/registers, MVPS-20 matrix/bindings, current appearance/presentation contracts and the current-authority presentation outputs; execute the bounded MVPS-21 regeneration tranche under OPS3-11.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS-22 is the strict successor. Validate and balance the real Core 26 across creation, runtime, equipment, environment, serialization/migration, presentation and NPC/Creature/cross-system reuse.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 3,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 3,
+      "kind": "completed_verified_candidate",
+      "evidence": "Causal RED 35524664324 failed only on absent MVPS-21 current-authority outputs; exact-head GREEN 35524790875 passed on a17f3f330e060087c60c96413480591211e9b5d2; PR 1489 published as dd77e96969ddf9f0ce4f85e17f41d611673b27dc."
+    },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": null
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MVPS-21 application durably published; atomic closeout selects MVPS-22."
+    }
+  },
+  "completed": true,
+  "completed_at": "2026-09-20",
+  "acceptance_evidence": {
+    "causal_red": {
+      "pr": 1489,
+      "head": "b0a57be4a7fa5fa0497ad26d8b01fca30d963b7d",
+      "validation_run": 35524664324,
+      "conclusion": "failure"
+    },
+    "green": {
+      "pr": 1489,
+      "validated_head": "a17f3f330e060087c60c96413480591211e9b5d2",
+      "validation_run": 35524790875,
+      "conclusion": "success",
+      "merge_sha": "dd77e96969ddf9f0ce4f85e17f41d611673b27dc"
+    },
+    "publication": {
+      "ready_candidate": "MVPS-21-app-001",
+      "queue_reconciled_generation": 80
+    },
+    "presentation": {
+      "profile_count": 26,
+      "picker_count": 26,
+      "index_count": 26,
+      "appearance_overlay": "MVPS21.CORE26.APPEARANCE.v1",
+      "catalog": "MVPS21.CORE26.PRESENTATION_CATALOG.v1",
+      "historical_ppia06_profiles": 25,
+      "historical_capp01_profiles": 25,
+      "morganthyr_identity_migration": true,
+      "akwi_current_source_profile": true,
+      "mechanics_authority": false
+    }
   }
 }
