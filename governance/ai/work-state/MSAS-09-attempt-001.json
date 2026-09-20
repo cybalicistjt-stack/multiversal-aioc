@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MSAS",
+  "lane": "msas",
+  "track": "multiversal-sound-audio-studio",
+  "source_program": "MSAS",
+  "work_item_id": "MSAS-09",
+  "attempt_id": "MSAS-09-attempt-001",
+  "title": "Semantic Audio Direction: Event/World/Combat Cue & State Graphs",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MSAS-07",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "reduced_strict_order": "MSAS-01 → MSAS-03 → MSAS-04 → MSAS-05 → MSAS-07 → MSAS-09 → MSAS-12 → MSAS-14 → MSAS-15 → MSAS-18 → MSAS-21",
+    "interstitial_override": "none",
+    "parallel_lanes": "MRCS-05 remains selected_not_started; MVPS-14 remains selected_not_started."
+  },
+  "objective": "Implement semantic audio direction graphs that bind canonical Event, World/Environment/Location/Scene and Combat phase/intensity references to AAI cue/state/switch/parameter/variation intent, without granting occurrence authority, inferring hidden owner state, mutating gameplay state or replacing AAI semantic/runtime ownership.",
+  "boundaries": [
+    "MSAS-01/MSAS-03/MSAS-04/MSAS-05/MSAS-07 remain studio, editing, mixing, music/adaptive and SFX/soundscape foundations consumed by this tranche.",
+    "AAI retains audio intent/cue/soundscape semantics, availability resolution, event-binding contracts and runtime playback/layering/mixer authority.",
+    "World, Environment, Location, Scene, Adventure, Combat and Action/Event owners retain canonical state, identity and occurrence authority.",
+    "MSAS-09 may author bindings to explicit owner projections and synthetic/permitted preview state but cannot infer hidden state or prove that an Event/combat phase/world condition occurred.",
+    "Combat phase/intensity/stinger direction is audio-authoring intent only and cannot mutate combat state.",
+    "Unknown source/owner state remains unknown rather than inferred from cue configuration.",
+    "Variation selection is deterministic only where the authored seed/policy explicitly claims determinism.",
+    "Local/provider-off semantic audio direction remains blocking-capable.",
+    "MSAS-12+ remain unauthorized until separately selected.",
+    "MRCS and MVPS lane state remains independent."
+  ],
+  "strict_successor": "MSAS-12",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an MSAS-specific owner Continue, fresh-read the MSAS-09 dependency closure and msas lane-state ref, then start and execute the bounded tranche under OPS3 v3.9 / OPS3-11.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
