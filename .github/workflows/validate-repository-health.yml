@@ -255,29 +255,6 @@ jobs:
           set -euo pipefail
           node tests/validate-content-library-staging.mjs
 
-      # MVPS-18 one-time feature-branch materializer.
-      # This is deliberately scoped to the MVPS-18 PR branch and removed after it
-      # commits the certified generated delta. It never writes protected main.
-      - name: TEMP MVPS-18 materialize certified generated outputs
-        if: github.head_ref == 'work/mvps-18-core26-canonical-registers'
-        shell: bash
-        run: |
-          set -euo pipefail
-          git add -A content-db \
-            evidence/content-pipeline/latest-certificate.json \
-            evidence/content-pipeline/beacon-debt-golden-diagnostics.json \
-            evidence/content-pipeline/beacon-debt-runtime-instantiated.json
-          if git diff --cached --quiet; then
-            echo 'MVPS-18 generated outputs are already materialized.'
-            exit 0
-          fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'MVPS-18: materialize certified canonical content outputs'
-          git push origin "HEAD:${{ github.head_ref }}"
-          echo 'Materialized generated outputs on the MVPS-18 feature branch; this run is intentionally non-terminal.'
-          exit 1
-
       - name: Enforce certified generated content is already in the candidate
         shell: bash
         run: |
