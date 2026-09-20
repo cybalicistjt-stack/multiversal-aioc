@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "exception_id": "OARC07.OWNER_APPROVED_COMPLETION_EXCEPTION.v1",
+  "status": "current",
+  "approved_on": "2026-09-20",
+  "approval_basis": "Owner explicitly authorized extrapolation, inference or other completion for the three OARC-06 blocked-visible-gap cases and prioritized completion.",
+  "supersedes": {
+    "contracts": [
+      "OARC01.AUTHORITY_HANDOFF.v1",
+      "OARC03.CATALOG_NORMALIZATION.v1",
+      "OARC06.GAME_READY_GOLDEN_CORPUS.v1"
+    ],
+    "scope_only": [
+      "source:Mecha.csv:Catalog_ID=MCH-0031",
+      "source:Spacecraft.csv:Catalog_ID=SCF-0027",
+      "OARC06-GOLDEN-NESTED-CARRIER inherited Orrukhal binding"
+    ],
+    "rule": "For these named cases only, source-unspecified operational-definition fields may be completed by explicit owner-approved inference/extrapolation when necessary to materialize an exact MIB-14 owner record. The completion must remain provenance-visible and must not rewrite the original source record."
+  },
+  "completions": [
+    {
+      "source_identity": "source:Mecha.csv:Catalog_ID=MCH-0031",
+      "owner_reference": "mib14:operational:mecha:mch-0031-hollowstep@1.0.0",
+      "provenance_id": "prov:oarc07-owner-approved-completion:mch-0031",
+      "source_backed_or_directly_normalized": [
+        "kind=mecha",
+        "label",
+        "crewMinimum=1",
+        "crewMaximum=1",
+        "slotCapacity=5 from Module_Slots",
+        "powerCapacity=60 from Max_EP as operational capacity normalization",
+        "ground/air/water movement values",
+        "light frame, recon/infiltration role"
+      ],
+      "explicitly_inferred_or_owner_completed": [
+        "cargoMassCapacity=250 because no source cargo mass field exists",
+        "requiredStations=[pilot] from pilot-count/minimum-pilot-skill semantics",
+        "location compatibility references normalized from source operating-environment semantics",
+        "operational class tags expanded to MIB-14/A8 vocabulary"
+      ]
+    },
+    {
+      "source_identity": "source:Spacecraft.csv:Catalog_ID=SCF-0027",
+      "owner_reference": "mib14:operational:ship:scf-0027-orrukhal-bastion-carrier@1.0.0",
+      "provenance_id": "prov:oarc07-owner-approved-completion:scf-0027",
+      "source_backed_or_directly_normalized": [
+        "kind=ship",
+        "label",
+        "slotCapacity=12",
+        "cargoMassCapacity=400000 from 400 source tons using explicit unit normalization",
+        "crewMinimum=200",
+        "crewMaximum=500 from source optimal crew",
+        "powerCapacity=110",
+        "fuelCapacity=400",
+        "space movement, FTL range/type and vacuum/orbital operating theater"
+      ],
+      "explicitly_inferred_or_owner_completed": [
+        "requiredStations=[commander,navigator,engineer,gunner] from source command/systems/gunnery/crew semantics",
+        "owner tags for carrier/fleet-support/mobile-basing/mount-heavy",
+        "MIB-14 movement/location reference strings normalized from source units/text"
+      ]
+    }
+  ],
+  "inherited_resolution": {
+    "golden_case": "OARC06-GOLDEN-NESTED-CARRIER",
+    "reason": "The nested relationship proof was already valid under OARC-05; its only blocker was the carrier's missing exact owner definition, resolved by the Orrukhal completion."
+  },
+  "not_authorized": [
+    "bulk inferred completion of the remaining 6,706 source rows",
+    "fabricated source provenance",
+    "MERA implementation",
+    "MBES implementation",
+    "implicit salvage outputs from Installed_Modules",
+    "rewriting original source records"
+  ]
+}

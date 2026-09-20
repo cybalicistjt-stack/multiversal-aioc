@@ -2,7 +2,7 @@
 
 **Program ID:** OARC  
 **Lane:** `oarc`  
-**Status:** ACTIVE — OARC-07 SELECTED_NOT_STARTED  
+**Status:** COMPLETED_VERIFIED — TERMINAL  
 **Approved:** 2026-09-20  
 **Purpose:** bounded game-readiness integration and certification for vehicles, mecha, spacecraft/starships, bases/platforms and their modular content  
 **Operational authority:** only through `operations/CURRENT.json`
@@ -254,3 +254,66 @@ All golden receipts are non-authoritative projections. They perform no live Asse
 Causal RED: validation run `35536896956` at `df27aa9a5c3ab90b7b93a5b481caca8ecf0ac1cb` failed the focused golden step while the production golden composer was absent. First production candidate run `35537008531` passed source governance, focused golden tests and owner regressions but found one test-helper type mismatch (`characterId` vs governed `subjectId`) in client typecheck. After that bounded fixture-only correction, exact-head Linux/Windows/cross-platform GREEN run `35537101123` passed at `b5ac8bfe87879f466d154622effe62b112cb4674`. Fresh app main had no drift. PR #661 published via squash as `9bce9c663bab487a795491ddea8a5ce7bf8d8944`.
 
 Fresh roadmap DAG schema 1.0.4 has no OARC override, so OARC-07 is the strict selected successor.
+
+
+## OARC-07 terminal coverage and gap certification result
+
+OARC-07 completed_verified on 2026-09-20 and closes the Operational Asset Readiness Closure program.
+
+### Owner-approved completion exception
+
+The owner explicitly authorized extrapolation/inference to complete the three OARC-06 blocked-visible-gap cases, prioritizing completion over preservation of those specific unresolved owner-binding gaps. OARC-07 applies that authority narrowly:
+
+- `MCH-0031` Primax RX-07 "Hollowstep" now has exact owner reference `mib14:operational:mecha:mch-0031-hollowstep@1.0.0`.
+- `SCF-0027` Orrukhal Bastion-Class Carrier now has exact owner reference `mib14:operational:ship:scf-0027-orrukhal-bastion-carrier@1.0.0`.
+- the nested Orrukhal/craft golden inherits the Orrukhal owner completion.
+
+These completions are marked `completion:owner-approved-inference` and use provenance IDs under `prov:oarc07-owner-approved-completion:*`. They supersede the earlier no-inference restriction only for these named cases. Original source truth remains preserved; inferred completion values are not relabeled as source-backed facts. No bulk completion of the remaining source catalogs is authorized.
+
+### Terminal source-surface ledger
+
+The OARC-03 governed source surface remains exactly 6,708 rows:
+
+- Vehicles.csv — 1,200;
+- Mecha.csv — 2,117;
+- Spacecraft.csv — 2,311;
+- Bases_Facilities.csv — 1,080.
+
+The terminal coverage ledger reconciles exactly:
+
+- game-ready: **42**;
+- normalization-needed: **1,079**;
+- waiting-existing-owner: **5,587**;
+- waiting-MERA: **0**;
+- waiting-MBES: **0**;
+- source-insufficient: **0**;
+- reconciliation delta: **0**.
+
+The durable catalog-row readiness percentage is **42 / 6,708 = 0.6261180679785331%**. This percentage is intentionally not inflated by analogy, bulk inference, guessed compatibility/capacity, MERA/MBES implementation or synthetic canonical content.
+
+The 1,079 normalization-needed rows are the unclassified remainder of Bases_Facilities.csv after preserving the one governed Mecha Workshop row as an existing-owner gap. OARC-07 does not invent a missing row-type split.
+
+### Final golden certification
+
+All six representative roles are now game-ready:
+
+1. ordinary vehicle — Utility Rover;
+2. mecha — Hollowstep through the owner-approved MIB-14 completion;
+3. spacecraft/carrier — Orrukhal through the owner-approved MIB-14 completion;
+4. fixed base — Workshop Outpost;
+5. mobile-base role — Field Work Platform, retaining owner kind `platform`;
+6. nested carrier/craft — Orrukhal plus explicit OARC-05 stable-identity relationship proof.
+
+Synthetic workflow scaffolding remains noncanonical. Installed modules remain non-salvage by default. Crew/pilot identity remains separate from machine Asset identity. MERA and MBES remain unimplemented future-owner families.
+
+### Verification
+
+Causal RED: validation run `35538487139` at `581d14b8c1014c280410e808e902340b69fca216`.
+
+The first implementation candidate failed only the newly added source-governance verifier in run `35538603856`; the verifier was repaired to validate the terminal manifest semantically rather than require literal source formatting.
+
+Final exact-head Linux/Windows/cross-platform GREEN: run `35538682911` at `87862dc0c85de2c3adc85fc7fdd66c8ed4781704`.
+
+PR #663 published through READY via the application repository's squash-only policy as `8e738c6ed8d7582bc362aecdb59f4d312a48c9cd`.
+
+OARC-07 has no successor. The OARC persistent slot is terminal completed_verified and may only be replaced by explicit owner/operations governance.
