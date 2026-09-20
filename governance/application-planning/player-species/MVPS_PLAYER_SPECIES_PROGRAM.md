@@ -2,7 +2,7 @@
 
 **Program ID:** MVPS  
 **Family:** Multiversal Player Species  
-**Status:** ACTIVE OWNER-AUTHORIZED CORE-26 PRODUCTION EXTENSION / MVPS-17 completed_verified / MVPS-18 selected_not_started  
+**Status:** ACTIVE OWNER-AUTHORIZED CORE-26 PRODUCTION EXTENSION / MVPS-18 completed_verified / MVPS-19 selected_not_started  
 **Operational authority:** none outside `operations/CURRENT.json`
 
 ## Mission
@@ -97,3 +97,11 @@ All seven extension tranches must consume the current Core-26 authority, preserv
 Core-26 current canon is now a `CURRENT.json`-referenced domain authority rather than a reconciliation file that future executors must rediscover. Startup and the operating contract require relevant work to load that domain authority before historical/generated species material. `CORE26.GAME_READY.v1` applies the same 19 certification dimensions to all 26 species, and the 26-row production baseline deliberately records **0 game-ready-certified species** at this new standard so prior 23-object or historical 25-profile coverage cannot be mistaken for current certification.
 
 MVPS-18 is the selected next tranche: reconcile 26/26 current canonical SpeciesDefinition identities, including Morganthyr migration, Rog/Suula object materialization and Akwi catalog convergence.
+
+## MVPS-18 canonical-register closure
+
+MVPS-18 established a durable, versioned canon home for every Core-26 species. Each species now has a permanent `content-source/core26-species/<slug>/` chain beginning with `register-v1.0.0.json` and `definition-v1.0.0.json`. Future canon work appends versions rather than replacing history, and gameplay-object changes must rebuild and certify the canonical database in the same publication candidate.
+
+The rebuilt current catalog contains 26 exact-version SpeciesDefinitions and 26 species canon registers. Morganthyr is current while Nekron remains a historical alias; Rog and Suula have source-backed current objects; Akwi is catalog-converged while preserving its AKWI-01 rules authority; and the ManyToms owner-approved dossier is now a first-class replacement source rather than a manual generated-object-only promotion.
+
+MVPS-19 therefore begins from durable identity/provenance and focuses on equal mechanics, morphology, physiology/environment, capability/natural-equipment, and interface-compatibility completion.

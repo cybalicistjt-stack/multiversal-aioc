@@ -6,9 +6,9 @@
   "title": "Core-26 Canonical Object Reconciliation",
   "attempt_id": "MVPS-18-attempt-001",
   "lane": "mvps",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_branch": "work/mvps-18-core26-canonical-registers",
   "selected_by_verified_predecessor": "MVPS-17",
   "predecessor": {
     "work_item_id": "MVPS-17",
@@ -20,29 +20,95 @@
   "objective": "Materialize and reconcile current-authority SpeciesDefinition records for all 26, including Morganthyr identity migration, Rog/Suula base objects and Akwi canonical-catalog convergence without duplicating governed mechanics.",
   "acceptance": [
     "26/26 current canonical species identities resolve to exact-version SpeciesDefinition authority",
-    "no current catalog exposes Nekron/Nekrons as canonical; historical alias provenance remains replayable",
-    "Akwi resolves as a Core-26 peer through current catalogs without duplicate mechanics",
-    "Rog and Suula receive source-backed current canonical objects",
-    "all 26 current objects are registered against CORE26-CURRENT-01 and CORE26.GAME_READY.v1"
+    "26/26 Core-26 species have permanent versioned canon registers and source-chain directories for future lore/mechanics/canon updates",
+    "no current species-definition catalog exposes Nekron/Nekrons as canonical; Nekron is a historical alias resolving to Morganthyr",
+    "Akwi resolves as a Core-26 peer through the canonical database without duplicating the governed AKWI-01 rules path",
+    "Rog and Suula have source-backed current SpeciesDefinition objects",
+    "ManyToms owner-approved dossier is a real canonical replacement source and is discoverable/rebuildable through the source registry",
+    "all 26 current objects are bound to CORE26-CURRENT-01 and CORE26.GAME_READY.v1",
+    "canonical database rebuild deterministically materializes the 26 definitions, 26 registers, and historical alias provenance"
   ],
   "boundaries": [
-    "Do not fabricate missing Rog, Suula, Morganthyr or other species facts; materialize only source-backed/owner-authorized data.",
-    "Preserve sealed historical Nekron and 25-profile evidence exactly; current catalog migration is additive/current-authority reconciliation.",
-    "Reuse AKWI-01 governed integration; do not create a second Akwi rules path.",
-    "MVPS-18 reconciles object identity/catalog presence only; deeper mechanics/biology completion is MVPS-19.",
-    "Ratman lineages remain subordinate and are not promoted to peer core species."
+    "MVPS-18 reconciles identity, exact-version objects, canonical registers and durable source chains; it does not claim the 26 are mechanically complete or game-ready certified.",
+    "Future species canon work appends versioned register/source files and rebuilds the canonical database; prior source versions are preserved.",
+    "Do not fabricate absent lore or mechanics merely to populate a register.",
+    "Preserve sealed historical 25-profile and Nekron evidence; current Morganthyr identity is additive migration authority.",
+    "Reuse AKWI-01 governed integration and source-backed Rog/Suula material; do not create parallel rules engines.",
+    "Ratman lineages remain subordinate and are not peer Core-26 species."
   ],
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On an MVPS-specific execution command, fresh-read Core-26 authority, production baseline, current content-db species objects and governed Akwi/Rog/Suula/Morganthyr evidence, then execute bounded 26/26 object reconciliation under OPS3-11.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS-19 is the strict successor. It must consume the exact-version Core-26 SpeciesDefinitions and permanent per-species canon registers/source chains rather than recreating identity or provenance.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "completed_verified_candidate",
+      "evidence": "Causal RED 35516850653 identified missing exact-version/register/source-chain coverage; exact-head GREEN 35517544937 passed the complete repository-health gate at 7d95e928b851cb5bdb8c8cc62bc62dff560af306; PR 1478 published as 617ec2f8bba6b86acaec40abcabe2b7a6c800892."
+    },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": null
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MVPS-18 application is durably published; atomic closeout selects MVPS-19."
+    }
+  },
+  "completed": true,
+  "completed_at": "2026-09-20",
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "One owner Continue executed the full MVPS-18 bounded tranche. OPS3 lane state used only start, prequeue_green and published milestones; generated outputs were materialized on the feature branch and exact-head revalidated before READY publication."
+  },
+  "acceptance_evidence": {
+    "causal_red": {
+      "pr": 1478,
+      "head": "58ba9725b1ad139b522710decb8213c2b70f88e6",
+      "validation_run": 35516850653,
+      "conclusion": "failure",
+      "signature": "MVPS-18 alone failed because per-species registers/exact-version source chains and four current definitions were absent."
+    },
+    "green": {
+      "pr": 1478,
+      "validated_head": "7d95e928b851cb5bdb8c8cc62bc62dff560af306",
+      "validation_run": 35517544937,
+      "conclusion": "success",
+      "merge_sha": "617ec2f8bba6b86acaec40abcabe2b7a6c800892"
+    },
+    "publication": {
+      "ready_candidate": "MVPS-18-app-001",
+      "queue_reconciled_generation": 58
+    },
+    "core26": {
+      "species_definition_count": 26,
+      "canon_register_count": 26,
+      "definition_version": "1.0.0",
+      "register_version": "1.0.0",
+      "current_authority": "CORE26-CURRENT-01",
+      "game_ready_standard": "CORE26.GAME_READY.v1"
+    },
+    "manytoms": {
+      "canonical_dossier": "ManyToms_Canonical_Species_Dossier_v1.0.0.docx",
+      "drive_file_id": "1Pd9BQFYVDQBZIJBGM_Utnd_KLblHGGQ1",
+      "development_precursor_drive_file_id": "1cbrTQjYvpOBwAncFCGJqUjsCPeTzbxLTr2QwyM1Ra-s",
+      "source_registry_rebuild_safe": true
+    },
+    "identities": {
+      "morganthyr_current": true,
+      "nekron_historical_alias_only": true,
+      "rog_materialized": true,
+      "suula_materialized": true,
+      "akwi_catalog_converged": true
+    },
+    "canonical_database": {
+      "effective_records": 556,
+      "source_count": 62,
+      "appended_records": 69,
+      "replacement_records": 31,
+      "supplemental_input_records": 100
+    }
   }
 }

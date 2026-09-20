@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 280,
+  "state_revision": 281,
   "default_lane": "msas",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -29,8 +29,8 @@
         "state": "selected_not_started"
       },
       "mvps": {
-        "selected_work_item": "MVPS-18",
-        "attempt_id": "MVPS-18-attempt-001",
+        "selected_work_item": "MVPS-19",
+        "attempt_id": "MVPS-19-attempt-001",
         "state": "selected_not_started"
       }
     }
@@ -64,12 +64,12 @@
     },
     "mvps": {
       "state": "selected_not_started",
-      "selected_work_item": "MVPS-18",
-      "attempt_id": "MVPS-18-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MVPS-18-attempt-001.json",
+      "selected_work_item": "MVPS-19",
+      "attempt_id": "MVPS-19-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MVPS-19-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "MVPS-17 completed_verified after causal RED run 35509983377, exact-head fresh-base GREEN run 35510233298 at a8f031ad84cc09f87413f63c2ffd28108cc01e0a, and READY publication as application merge 867564dba956e3c6fdbfddbae2fa8a54ed5ac3a9. Core-26 current canon is CURRENT-referenced and the equal game-ready standard/baseline is durable. MVPS-18 is selected_not_started to reconcile 26/26 current canonical SpeciesDefinition identities.",
+      "activation_rule": "MVPS-18 completed_verified after causal RED run 35516850653 at head 58ba9725b1ad139b522710decb8213c2b70f88e6, exact-head GREEN run 35517544937 at head 7d95e928b851cb5bdb8c8cc62bc62dff560af306, and READY publication of PR 1478 as application merge 617ec2f8bba6b86acaec40abcabe2b7a6c800892. All Core-26 species now have exact-version current SpeciesDefinitions and permanent versioned canon registers/source chains. MVPS-19 is selected_not_started for equal mechanics/morphology/environment completion.",
       "execution_state_ref": "ops3-lane-state/mvps"
     },
     "dwc-speech": {
@@ -109,7 +109,7 @@
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
     "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
-  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-15, MRCS-12 and MVPS-18 remain independently selected_not_started. Every executor must use milestone-only lane state and the OPS3-11 closeout fast path.",
+  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-15, MRCS-12 and MVPS-19 remain independently selected_not_started. MVPS-19 consumes the durable Core-26 per-species canon registers established by MVPS-18.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -138,7 +138,9 @@
       "authority_id": "CORE26-CURRENT-01",
       "status": "current_canon",
       "roster_count": 26,
-      "rule": "All current-authority player-species work must resolve this authority before historical species artifacts or generated catalogs."
+      "rule": "All current-authority player-species work must resolve this authority before historical species artifacts or generated catalogs.",
+      "production_baseline_path": "governance/application-planning/player-species/CORE_26_PRODUCTION_BASELINE_v0.2.0.json",
+      "production_baseline_id": "CORE26-PRODUCTION-BASELINE-002"
     }
   }
 }
