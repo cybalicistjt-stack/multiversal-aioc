@@ -27,7 +27,7 @@ Read `operations/LANES.json` and choose exactly one lane that matches the user's
 - Explicit requests name or imply their lane and override the default lane.
 - A bare `Continue` resumes the lane already established by the conversation. If this is a new conversation, use `CURRENT.json` and the user's opening request to resolve the lane.
 - Lane selection changes scope and source bundle only. It never changes the global operating contract.
-- The persistent implementation lanes are `msas`, `mrcs`, and `mvps`. They may hold implementation authority at the same time. A conversation still selects exactly one lane; selecting it does **not** pause, revoke, or rewrite another lane merely because both change product code. Completed UISR history is not a persistent implementation lane.
+- The persistent implementation lanes are `msas`, `mrcs`, and `oarc`. They may hold implementation authority at the same time. A conversation still selects exactly one lane; selecting it does **not** pause, revoke, or rewrite another lane merely because both change product code. Completed UISR history is not a persistent implementation lane.
 - Active lanes work independently on separate implementation branches and separate lane-state refs. Shared-repository publication is serialized only after a lane has an immutable, prevalidated READY candidate; no lane reserves future access to `main`.
 - Do not load or mutate another lane merely because it exists; cross-lane reads are limited to explicit dependencies, publication conflicts, or owner-directed coordination.
 
@@ -92,7 +92,7 @@ Implementation, RED/GREEN construction, full tranche validation, checkpoint prog
 
 For the FIFO head, fresh-read target `main`, run only the drift-sensitive integration gate against that fresh base, merge the exact ready head with expected-head protection, verify the durable repository result, and reconcile the candidate from that observed merge. A failed head candidate is marked failed/removed without stranding later candidates. Build/release/deployment status never owns or blocks the source-publication queue.
 
-Persistent lane execution state lives on independent refs `ops3-lane-state/msas`, `ops3-lane-state/mrcs`, and `ops3-lane-state/mvps`; one lane's progress write cannot block another lane.
+Persistent lane execution state lives on independent refs `ops3-lane-state/msas`, `ops3-lane-state/mrcs`, and `ops3-lane-state/oarc`; one lane's progress write cannot block another lane.
 
 ## 9. Evidence and completion
 
