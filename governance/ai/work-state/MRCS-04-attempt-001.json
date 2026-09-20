@@ -9,9 +9,9 @@
   "attempt_id": "MRCS-04-attempt-001",
   "title": "Rule Atom, Formula, Predicate, Selector & Expression Workbench",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "feature/mrcs-04-expression-workbench",
   "completed": false,
   "selected_by_verified_predecessor": "MRCS-03",
   "selection_basis": {
@@ -37,17 +37,21 @@
     "MSAS and MVPS lane state is independent."
   ],
   "strict_successor": "MRCS-05",
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On an MRCS-specific owner Continue, fresh-read the MRCS-04 dependency closure and the mrcs lane-state ref, then start and execute the bounded tranche under OPS3.",
+  "active_substep": "red_expression_workbench",
+  "next_action": "Establish causal RED for PDCP-MRCS-011 through 014 on the public MRCS workspace seam, implement only the bounded typed expression workbench, then obtain full exact-head prequeue GREEN.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start",
+      "evidence": "MRCS-04 started on feature/mrcs-04-expression-workbench from application main d2704aff2c777f31b98f00d41277fbc82594f0ff under OPS3-11 milestone-only execution."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
+    "terminal_response_allowed": false,
     "stop_reason": null
   }
 }
