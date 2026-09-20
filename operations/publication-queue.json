@@ -1,38 +1,8 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/Multiversal-app",
-  "generation": 41,
-  "ready": [
-    {
-      "candidate_id": "OARC-03-app-001",
-      "lane": "oarc",
-      "work_item_id": "OARC-03",
-      "pr_number": 650,
-      "head_sha": "8cf854839d2a03252e96f78ad5525be1e809f3e6",
-      "prequeue_validation": {
-        "status": "green",
-        "head_sha": "8cf854839d2a03252e96f78ad5525be1e809f3e6",
-        "run_id": "35529945628"
-      },
-      "write_set": [
-        "apps/client-ui/src/oarc/oarc03.catalog-normalization.integration.test.ts",
-        "governance/application-planning/operational-asset-readiness-closure/OARC-03_SOURCE_NORMALIZATION_MANIFEST_v1.0.0.json",
-        "governance/application-planning/validation-core/profiles/OARC-03.json",
-        "packages/contracts/src/vehicle-platform-base/oarc-03-catalog-normalization.ts",
-        "tools/verify_oarc_03.py"
-      ],
-      "dependency_fingerprint": {
-        "validated_base_sha": "6fc0030d952355eecea63928fcbc4736feb110f3",
-        "fresh_main_checked_sha": "c9cc22ed8c3e05d415ea72a374ee1be803c2958f",
-        "fresh_main_overlap_files": [],
-        "authority_contracts": [
-          "OARC01.AUTHORITY_HANDOFF.v1",
-          "OARC02.DEFINITION_BRIDGE.v1"
-        ],
-        "normalization_manifest": "OARC03.SOURCE_NORMALIZATION_MANIFEST.v1"
-      }
-    }
-  ],
+  "generation": 42,
+  "ready": [],
   "history": [
     {
       "candidate_id": "MSAS-04-app-001",
@@ -707,7 +677,46 @@
         "mergeable": true,
         "merge_method": "squash"
       }
+    },
+    {
+      "candidate_id": "OARC-03-app-001",
+      "lane": "oarc",
+      "work_item_id": "OARC-03",
+      "pr_number": 650,
+      "head_sha": "8cf854839d2a03252e96f78ad5525be1e809f3e6",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "8cf854839d2a03252e96f78ad5525be1e809f3e6",
+        "run_id": "35529945628"
+      },
+      "write_set": [
+        "apps/client-ui/src/oarc/oarc03.catalog-normalization.integration.test.ts",
+        "governance/application-planning/operational-asset-readiness-closure/OARC-03_SOURCE_NORMALIZATION_MANIFEST_v1.0.0.json",
+        "governance/application-planning/validation-core/profiles/OARC-03.json",
+        "packages/contracts/src/vehicle-platform-base/oarc-03-catalog-normalization.ts",
+        "tools/verify_oarc_03.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "6fc0030d952355eecea63928fcbc4736feb110f3",
+        "fresh_main_checked_sha": "c9cc22ed8c3e05d415ea72a374ee1be803c2958f",
+        "fresh_main_overlap_files": [],
+        "authority_contracts": [
+          "OARC01.AUTHORITY_HANDOFF.v1",
+          "OARC02.DEFINITION_BRIDGE.v1"
+        ],
+        "normalization_manifest": "OARC03.SOURCE_NORMALIZATION_MANIFEST.v1"
+      },
+      "status": "published",
+      "merge_sha": "501e4c5c5359d2368f4fb4c835416a35d77aa7e4",
+      "integration_receipt": {
+        "status": "green",
+        "base_sha": "c9cc22ed8c3e05d415ea72a374ee1be803c2958f",
+        "candidate_head": "8cf854839d2a03252e96f78ad5525be1e809f3e6",
+        "run_id": "fresh-main-no-overlap+github-mergeability:pr-650@c9cc22ed8c3e05d415ea72a374ee1be803c2958f",
+        "mergeable": true,
+        "merge_method": "squash"
+      }
     }
   ],
-  "last_merge_sha": "c9cc22ed8c3e05d415ea72a374ee1be803c2958f"
+  "last_merge_sha": "501e4c5c5359d2368f4fb4c835416a35d77aa7e4"
 }
