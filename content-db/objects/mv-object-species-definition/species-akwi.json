@@ -7,10 +7,10 @@
   "source": "Akwi Game Integration Package v0.1",
   "sourceLocator": "cybalicistjt-stack/Multiversal-app:apps/client-ui/src/a2/data/runtime/supplemental-objects.jsonl#species.akwi",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "promotionDecision": "OWNER_AUTHORIZED_MVPS20_OPTIONAL_DIMENSION_COMPLETION",
   "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.1.0",
+  "contentVersion": "1.2.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "species.akwi",
     "name": "Akwi",
     "objectType": "mv.object.species-definition",
-    "contentVersion": "1.1.0",
+    "contentVersion": "1.2.0",
     "canonStatus": "approved_current_identity",
     "structured": {
       "species.shortDescription": "Naturally evolved, furred humanoids whose rabbit-like skull, face, long ears, and powerful jumping anatomy are convergent traits rather than evidence of rabbit ancestry.",
@@ -160,6 +160,54 @@
             "size_range_fit",
             "claw_tool_fit"
           ]
+        },
+        "mvps20OptionalDimensions": {
+          "matrixRef": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+          "bindingSetRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "definitionVersion": "1.2.0",
+          "dimensionStatus": {
+            "lineage_subspecies": {
+              "applicability": "not_applicable_current_canon",
+              "state": "explicit_not_applicable",
+              "contractRef": "MVPS.LineageComposition",
+              "bindingRef": null,
+              "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+              "sourceRefs": [
+                "content-source/core26-species/akwi/definition-v1.1.0.json"
+              ]
+            },
+            "forms_transformation": {
+              "applicability": "not_applicable_current_canon",
+              "state": "explicit_not_applicable",
+              "contractRef": "MVPS.TransformationSemantics",
+              "bindingRef": null,
+              "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+              "sourceRefs": [
+                "content-source/core26-species/akwi/definition-v1.1.0.json"
+              ]
+            },
+            "progression_maturation": {
+              "applicability": "not_applicable_current_canon",
+              "state": "explicit_not_applicable",
+              "contractRef": "MVPS.SpeciesProgressionHook",
+              "bindingRef": null,
+              "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+              "sourceRefs": [
+                "content-source/core26-species/akwi/definition-v1.1.0.json"
+              ]
+            },
+            "social_language_knowledge": {
+              "state": "governed",
+              "socialContract": "MVPS.SpeciesSocialIdentityHook",
+              "languageContract": "MVPS.SpeciesLanguageCommunicationHook",
+              "knowledgeVisibilityContract": "MVPS.SpeciesIdentityKnowledgeHook",
+              "cultureIsBiology": false,
+              "biologicalCommunicationDistinctFromLearnedLanguage": true,
+              "learnedLanguagePolicy": "explicit_source_rule_required_no_inference",
+              "observerIdentityProjection": "permission_filtered_knowledge_projection"
+            }
+          }
         }
       }
     }
@@ -169,16 +217,16 @@
   "testing": null,
   "provenance": {
     "authority": "Akwi Game Integration Package v0.1",
-    "sourcePath": "content-source/core26-species/akwi/definition-v1.1.0.json",
-    "sourceDigest": "sha256:130be3924416cdcc5cd511049674047afb465ea8ad87b04c868339f52325d477",
-    "sourceBundleId": "mv.content.core26.akwi.definition-v1.1",
-    "sourceBundlePart": "akwi-definition-v1.1.0",
+    "sourcePath": "content-source/core26-species/akwi/definition-v1.2.0.json",
+    "sourceDigest": "sha256:53f286736734e1e50d53e8d309d318fd4e8f27fc6bcaaffd3273a4dbc2a8a47d",
+    "sourceBundleId": "mv.content.core26.akwi.definition-v1.2",
+    "sourceBundlePart": "akwi-definition-v1.2.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "species.akwi",
-      "contentVersion": "1.0.0",
-      "sourcePath": "content-source/core26-species/akwi/definition-v1.0.0.json",
-      "sourceDigest": "sha256:f7166ffde5abf2825b0b1b3acfb0be02ad7d3314863d2f14a2b9ae35d0adbcdb"
+      "contentVersion": "1.1.0",
+      "sourcePath": "content-source/core26-species/akwi/definition-v1.1.0.json",
+      "sourceDigest": "sha256:130be3924416cdcc5cd511049674047afb465ea8ad87b04c868339f52325d477"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

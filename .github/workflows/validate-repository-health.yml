@@ -220,6 +220,14 @@ jobs:
           node scripts/build-canonical-content-database.mjs
           python3 tests/control_plane/test_mvps19_core26_mechanics_completion.py
 
+      - name: Run MVPS-20 Core-26 lineage form progression and social completion regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/materialize-content-source.mjs
+          node scripts/build-canonical-content-database.mjs
+          python3 tests/control_plane/test_mvps20_core26_optional_dimensions.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |

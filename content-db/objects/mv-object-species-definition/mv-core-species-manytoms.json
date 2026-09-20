@@ -7,10 +7,10 @@
   "source": "owner-approved-manytoms-canonical-species-dossier-v1.0.0",
   "sourceLocator": "ManyToms_Canonical_Species_Dossier_v1.0.0.docx",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "promotionDecision": "OWNER_AUTHORIZED_MVPS20_OPTIONAL_DIMENSION_COMPLETION",
   "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.1.0",
+  "contentVersion": "1.2.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -580,7 +580,7 @@
         "detailed named modern states, cities, universities, temples, and political parties"
       ]
     },
-    "contentVersion": "1.1.0",
+    "contentVersion": "1.2.0",
     "extensions": {
       "app.multiversal.aioc": {
         "speciesCanonRegister": {
@@ -634,6 +634,55 @@
             "contractRef": "MVPS19.ManyTomsDistributedController",
             "automaticAttentionPenalties": true
           }
+        },
+        "mvps20OptionalDimensions": {
+          "matrixRef": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+          "bindingSetRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "definitionVersion": "1.2.0",
+          "dimensionStatus": {
+            "lineage_subspecies": {
+              "applicability": "applicable",
+              "state": "governed",
+              "contractRef": "MVPS.LineageComposition",
+              "bindingRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#ManyToms.lineage_subspecies",
+              "basis": "source_backed_special_binding",
+              "sourceRefs": [
+                "governance/application-planning/parallel-preimplementation/PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md#section-7",
+                "content-source/core26-species/manytoms/definition-v1.1.0.json"
+              ]
+            },
+            "forms_transformation": {
+              "applicability": "not_applicable_current_canon",
+              "state": "explicit_not_applicable",
+              "contractRef": "MVPS.TransformationSemantics",
+              "bindingRef": null,
+              "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+              "sourceRefs": [
+                "content-source/core26-species/manytoms/definition-v1.1.0.json"
+              ]
+            },
+            "progression_maturation": {
+              "applicability": "not_applicable_current_canon",
+              "state": "explicit_not_applicable",
+              "contractRef": "MVPS.SpeciesProgressionHook",
+              "bindingRef": null,
+              "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+              "sourceRefs": [
+                "content-source/core26-species/manytoms/definition-v1.1.0.json"
+              ]
+            },
+            "social_language_knowledge": {
+              "state": "governed",
+              "socialContract": "MVPS.SpeciesSocialIdentityHook",
+              "languageContract": "MVPS.SpeciesLanguageCommunicationHook",
+              "knowledgeVisibilityContract": "MVPS.SpeciesIdentityKnowledgeHook",
+              "cultureIsBiology": false,
+              "biologicalCommunicationDistinctFromLearnedLanguage": true,
+              "learnedLanguagePolicy": "explicit_source_rule_required_no_inference",
+              "observerIdentityProjection": "permission_filtered_knowledge_projection"
+            }
+          }
         }
       }
     }
@@ -645,16 +694,16 @@
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
     "authority": "owner-approved-manytoms-canonical-species-dossier-v1.0.0",
-    "sourcePath": "content-source/core26-species/manytoms/definition-v1.1.0.json",
-    "sourceDigest": "sha256:e7d707698fed522ad92236d0f77642a213792c7e5ed177f17c7b15883f7c75e9",
-    "sourceBundleId": "mv.content.core26.manytoms.definition-v1.1",
-    "sourceBundlePart": "manytoms-definition-v1.1.0",
+    "sourcePath": "content-source/core26-species/manytoms/definition-v1.2.0.json",
+    "sourceDigest": "sha256:0dfb93ed90baedd5e01bf5f38042a4a349fc309f80134f68651cfa03a4e9e997",
+    "sourceBundleId": "mv.content.core26.manytoms.definition-v1.2",
+    "sourceBundlePart": "manytoms-definition-v1.2.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.manytoms",
-      "contentVersion": "1.0.0",
-      "sourcePath": "content-source/core26-species/manytoms/definition-v1.0.0.json",
-      "sourceDigest": "sha256:32ad399e4444b3d0d30f2f64983860fd871ffc190997591ad8148d0197476a87"
+      "contentVersion": "1.1.0",
+      "sourcePath": "content-source/core26-species/manytoms/definition-v1.1.0.json",
+      "sourceDigest": "sha256:e7d707698fed522ad92236d0f77642a213792c7e5ed177f17c7b15883f7c75e9"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

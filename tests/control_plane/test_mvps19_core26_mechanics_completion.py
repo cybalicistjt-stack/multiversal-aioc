@@ -111,7 +111,8 @@ class MVPS19Core26MechanicsCompletionTests(unittest.TestCase):
             path = ROOT / "content-db/objects/mv-object-species-definition" / (stable_id.replace(".", "-").replace("_", "-").lower() + ".json")
             with self.subTest(species=name):
                 obj = self._j(path)
-                self.assertEqual(obj["contentVersion"], "1.1.0")
+                version = tuple(int(x) for x in obj["contentVersion"].split("."))
+                self.assertGreaterEqual(version, (1, 1, 0))
                 mech = obj["gameObject"]["extensions"]["app.multiversal.aioc"]["mvps19Mechanics"]
                 self.assertEqual(mech["matrixRef"], "MVPS19.CORE26.MECHANICS.v1")
                 self.assertEqual(mech["dispatchRule"], "typed_data_not_species_name")

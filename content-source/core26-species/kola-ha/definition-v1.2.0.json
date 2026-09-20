@@ -1,0 +1,154 @@
+{
+  "format": "multiversal-canonical-content-source",
+  "status": "owner-approved-canonical-replacement",
+  "bundleId": "mv.content.core26.kola-ha.definition-v1.2",
+  "authority": {
+    "ownerDirective": "MVPS-20 owner-authorized execution under OPS3",
+    "decisionSet": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+    "bundlePart": "kola-ha-definition-v1.2.0"
+  },
+  "records": [
+    {
+      "databaseId": "mv.core.species.kola-ha",
+      "stableId": "mv.core.species.kola-ha",
+      "name": "Kola-Ha",
+      "objectType": "mv.object.species-definition",
+      "developmentStage": "Structured draft",
+      "source": "phase-1-8-canonical-objects",
+      "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
+      "promotionDecision": "OWNER_AUTHORIZED_MVPS20_OPTIONAL_DIMENSION_COMPLETION",
+      "reviewStatus": "APPROVED",
+      "contentVersion": "1.2.0",
+      "replacementOf": {
+        "stableId": "mv.core.species.kola-ha",
+        "expectedContentVersion": "1.1.0"
+      },
+      "manualEntry": null,
+      "gameObject": {
+        "id": "mv.core.species.kola-ha",
+        "name": "Kola-Ha",
+        "objectType": "mv.object.species-definition",
+        "provenance": {
+          "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
+          "ingestedFromMember": "index.json"
+        },
+        "contentVersion": "1.2.0",
+        "extensions": {
+          "app.multiversal.aioc": {
+            "speciesCanonRegister": {
+              "authorityId": "CORE26-CURRENT-01",
+              "registerStableId": "mv.core.species-canon-register.kola-ha",
+              "gameReadyStandard": "CORE26.GAME_READY.v1",
+              "definitionSourceChain": "content-source/core26-species/kola-ha/"
+            },
+            "mvps19Mechanics": {
+              "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+              "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+              "dispatchRule": "typed_data_not_species_name",
+              "baselineProfile": "aquatic_humanoid",
+              "sizeClass": "Medium",
+              "stature": "aquatic_humanoid",
+              "morphologyMarkers": [
+                "gill_slits",
+                "webbed_digits",
+                "fins",
+                "tail"
+              ],
+              "movementModes": [
+                "walk",
+                "swim"
+              ],
+              "senses": [
+                "ordinary_playable"
+              ],
+              "physiology": {
+                "respiration": [
+                  "air",
+                  "water"
+                ],
+                "sustenance": [
+                  "food",
+                  "water"
+                ],
+                "rest": "sleep",
+                "environment": "amphibious_baseline"
+              },
+              "immunities": [],
+              "capabilities": [
+                "true_swim_mode"
+              ],
+              "naturalEquipment": {
+                "weapons": [],
+                "armor": null,
+                "structural": [
+                  "fins",
+                  "tail",
+                  "webbing"
+                ]
+              },
+              "equipmentInterfaces": [
+                "aquatic_suit_armor",
+                "tail_fin_clearance",
+                "webbed_hand_foot",
+                "aquatic_seat"
+              ]
+            },
+            "mvps20OptionalDimensions": {
+              "matrixRef": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+              "bindingSetRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+              "dispatchRule": "typed_data_not_species_name",
+              "definitionVersion": "1.2.0",
+              "dimensionStatus": {
+                "lineage_subspecies": {
+                  "applicability": "not_applicable_current_canon",
+                  "state": "explicit_not_applicable",
+                  "contractRef": "MVPS.LineageComposition",
+                  "bindingRef": null,
+                  "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+                  "sourceRefs": [
+                    "content-source/core26-species/kola-ha/definition-v1.1.0.json"
+                  ]
+                },
+                "forms_transformation": {
+                  "applicability": "applicable",
+                  "state": "governed",
+                  "contractRef": "MVPS.TransformationSemantics",
+                  "bindingRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Kola-Ha.forms_transformation",
+                  "basis": "source_backed_special_binding",
+                  "sourceRefs": [
+                    "governance/application-planning/parallel-preimplementation/PPIA-05_REFERENCE_CASES_v0.1.0.json#PPIA05-RC-011",
+                    "Kola-Ha Bioengineering.PDF",
+                    "Kola-Ha vAlpha2.PDF"
+                  ]
+                },
+                "progression_maturation": {
+                  "applicability": "not_applicable_current_canon",
+                  "state": "explicit_not_applicable",
+                  "contractRef": "MVPS.SpeciesProgressionHook",
+                  "bindingRef": null,
+                  "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+                  "sourceRefs": [
+                    "content-source/core26-species/kola-ha/definition-v1.1.0.json"
+                  ]
+                },
+                "social_language_knowledge": {
+                  "state": "governed",
+                  "socialContract": "MVPS.SpeciesSocialIdentityHook",
+                  "languageContract": "MVPS.SpeciesLanguageCommunicationHook",
+                  "knowledgeVisibilityContract": "MVPS.SpeciesIdentityKnowledgeHook",
+                  "cultureIsBiology": false,
+                  "biologicalCommunicationDistinctFromLearnedLanguage": true,
+                  "learnedLanguagePolicy": "explicit_source_rule_required_no_inference",
+                  "observerIdentityProjection": "permission_filtered_knowledge_projection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "validation": null,
+      "balance": null,
+      "testing": null
+    }
+  ]
+}

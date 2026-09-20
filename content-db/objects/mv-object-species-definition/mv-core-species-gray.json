@@ -7,10 +7,10 @@
   "source": "phase-1-8-canonical-objects",
   "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "promotionDecision": "OWNER_AUTHORIZED_MVPS20_OPTIONAL_DIMENSION_COMPLETION",
   "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.1.0",
+  "contentVersion": "1.2.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -25,7 +25,7 @@
       "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
       "ingestedFromMember": "index.json"
     },
-    "contentVersion": "1.1.0",
+    "contentVersion": "1.2.0",
     "extensions": {
       "app.multiversal.aioc": {
         "speciesCanonRegister": {
@@ -82,6 +82,54 @@
             "touchpad_interaction",
             "earless_headgear"
           ]
+        },
+        "mvps20OptionalDimensions": {
+          "matrixRef": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+          "bindingSetRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "definitionVersion": "1.2.0",
+          "dimensionStatus": {
+            "lineage_subspecies": {
+              "applicability": "not_applicable_current_canon",
+              "state": "explicit_not_applicable",
+              "contractRef": "MVPS.LineageComposition",
+              "bindingRef": null,
+              "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+              "sourceRefs": [
+                "content-source/core26-species/gray/definition-v1.1.0.json"
+              ]
+            },
+            "forms_transformation": {
+              "applicability": "not_applicable_current_canon",
+              "state": "explicit_not_applicable",
+              "contractRef": "MVPS.TransformationSemantics",
+              "bindingRef": null,
+              "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+              "sourceRefs": [
+                "content-source/core26-species/gray/definition-v1.1.0.json"
+              ]
+            },
+            "progression_maturation": {
+              "applicability": "not_applicable_current_canon",
+              "state": "explicit_not_applicable",
+              "contractRef": "MVPS.SpeciesProgressionHook",
+              "bindingRef": null,
+              "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+              "sourceRefs": [
+                "content-source/core26-species/gray/definition-v1.1.0.json"
+              ]
+            },
+            "social_language_knowledge": {
+              "state": "governed",
+              "socialContract": "MVPS.SpeciesSocialIdentityHook",
+              "languageContract": "MVPS.SpeciesLanguageCommunicationHook",
+              "knowledgeVisibilityContract": "MVPS.SpeciesIdentityKnowledgeHook",
+              "cultureIsBiology": false,
+              "biologicalCommunicationDistinctFromLearnedLanguage": true,
+              "learnedLanguagePolicy": "explicit_source_rule_required_no_inference",
+              "observerIdentityProjection": "permission_filtered_knowledge_projection"
+            }
+          }
         }
       }
     }
@@ -93,16 +141,16 @@
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
     "authority": "phase-1-8-canonical-objects",
-    "sourcePath": "content-source/core26-species/gray/definition-v1.1.0.json",
-    "sourceDigest": "sha256:4a807e52f8426c9a63705330fae7bfb54c1d4f7fbe2091800e7717cb6bab18e0",
-    "sourceBundleId": "mv.content.core26.gray.definition-v1.1",
-    "sourceBundlePart": "gray-definition-v1.1.0",
+    "sourcePath": "content-source/core26-species/gray/definition-v1.2.0.json",
+    "sourceDigest": "sha256:15f9b713f72fcbd45221e12cc082874e064b0d721fa28ba7f9e67716a5c5ba00",
+    "sourceBundleId": "mv.content.core26.gray.definition-v1.2",
+    "sourceBundlePart": "gray-definition-v1.2.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.gray",
-      "contentVersion": "1.0.0",
-      "sourcePath": "content-source/core26-species/gray/definition-v1.0.0.json",
-      "sourceDigest": "sha256:0cb2677665b104e0fc3d3d89a0ec34a8c564cf8ac930bf6a8e5f7a605c55db33"
+      "contentVersion": "1.1.0",
+      "sourcePath": "content-source/core26-species/gray/definition-v1.1.0.json",
+      "sourceDigest": "sha256:4a807e52f8426c9a63705330fae7bfb54c1d4f7fbe2091800e7717cb6bab18e0"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

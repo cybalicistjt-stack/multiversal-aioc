@@ -4,13 +4,13 @@
   "name": "Kola-Ha Canon Register",
   "objectType": "mv.object.species-canon-register",
   "developmentStage": "Structured draft",
-  "source": "mv.content.core26.kola-ha.canon-register-v1.1",
-  "sourceLocator": "content-source/core26-species/kola-ha/register-v1.1.0.json",
+  "source": "mv.content.core26.kola-ha.canon-register-v1.2",
+  "sourceLocator": "content-source/core26-species/kola-ha/register-v1.2.0.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "promotionDecision": "OWNER_AUTHORIZED_MVPS20_OPTIONAL_DIMENSION_COMPLETION",
   "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.1.0",
+  "contentVersion": "1.2.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species-canon-register.kola-ha",
     "name": "Kola-Ha Canon Register",
     "objectType": "mv.object.species-canon-register",
-    "contentVersion": "1.1.0",
+    "contentVersion": "1.2.0",
     "register": {
       "speciesName": "Kola-Ha",
       "speciesDefinitionStableId": "mv.core.species.kola-ha",
@@ -46,6 +46,13 @@
           "sha256": "370d0e38a9c10438f8720f3bf4e167c80dde2f1865ff6a028a2c9ca34af0d19b",
           "repositoryDecisionRef": "governance/application-planning/player-species/MVPS-19_OWNER_DECISIONS_v1.0.0.json",
           "canonRole": "owner_approved_mechanics_completion"
+        },
+        {
+          "role": "mvps20_optional_dimension_completion",
+          "title": "MVPS-20 Core-26 optional dimension matrix and special-system bindings",
+          "repositoryPath": "governance/application-planning/player-species/MVPS-20_CORE26_OPTIONAL_DIMENSION_MATRIX_v1.0.0.json",
+          "bindingRepositoryPath": "governance/application-planning/player-species/MVPS-20_SPECIAL_SYSTEM_BINDINGS_v1.0.0.json",
+          "canonRole": "source_backed_optional_dimension_completion"
         }
       ],
       "canonDomains": {
@@ -71,6 +78,13 @@
         "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
         "definitionVersion": "1.1.0",
         "preserveTypedDispatch": true
+      },
+      "optionalDimensionCompletion": {
+        "status": "completed_source_backed",
+        "matrixRef": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+        "bindingSetRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+        "definitionVersion": "1.2.0",
+        "preserveTypedDispatch": true
       }
     }
   },
@@ -79,16 +93,16 @@
   "testing": null,
   "provenance": {
     "authority": "Multiversal canonical source bundle",
-    "sourcePath": "content-source/core26-species/kola-ha/register-v1.1.0.json",
-    "sourceDigest": "sha256:6ac89b0157c41eb0894efbf48c765977d4e1a6107bf8a312577d1a34181006da",
-    "sourceBundleId": "mv.content.core26.kola-ha.canon-register-v1.1",
-    "sourceBundlePart": "kola-ha-register-v1.1.0",
+    "sourcePath": "content-source/core26-species/kola-ha/register-v1.2.0.json",
+    "sourceDigest": "sha256:2f2fc4fa4e334e2cfc70dc5eb070911a65e43239e4ceedff028ca2f061246400",
+    "sourceBundleId": "mv.content.core26.kola-ha.canon-register-v1.2",
+    "sourceBundlePart": "kola-ha-register-v1.2.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species-canon-register.kola-ha",
-      "contentVersion": "1.0.0",
-      "sourcePath": "content-source/core26-species/kola-ha/register-v1.0.0.json",
-      "sourceDigest": "sha256:a1a964071409cbaf851a6f24c1b6660f63bddc5ef982006f090fc467faa8b6e5"
+      "contentVersion": "1.1.0",
+      "sourcePath": "content-source/core26-species/kola-ha/register-v1.1.0.json",
+      "sourceDigest": "sha256:6ac89b0157c41eb0894efbf48c765977d4e1a6107bf8a312577d1a34181006da"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

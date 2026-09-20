@@ -7,10 +7,10 @@
   "source": "phase-1-8-canonical-objects",
   "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "promotionDecision": "OWNER_AUTHORIZED_MVPS20_OPTIONAL_DIMENSION_COMPLETION",
   "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.1.0",
+  "contentVersion": "1.2.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -25,7 +25,7 @@
       "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
       "ingestedFromMember": "index.json"
     },
-    "contentVersion": "1.1.0",
+    "contentVersion": "1.2.0",
     "extensions": {
       "app.multiversal.aioc": {
         "speciesCanonRegister": {
@@ -82,6 +82,55 @@
             "wing_back_clearance",
             "wing_harness_clearance"
           ]
+        },
+        "mvps20OptionalDimensions": {
+          "matrixRef": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+          "bindingSetRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "definitionVersion": "1.2.0",
+          "dimensionStatus": {
+            "lineage_subspecies": {
+              "applicability": "not_applicable_current_canon",
+              "state": "explicit_not_applicable",
+              "contractRef": "MVPS.LineageComposition",
+              "bindingRef": null,
+              "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+              "sourceRefs": [
+                "content-source/core26-species/stygian/definition-v1.1.0.json"
+              ]
+            },
+            "forms_transformation": {
+              "applicability": "applicable",
+              "state": "governed",
+              "contractRef": "MVPS.TransformationSemantics",
+              "bindingRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1#Stygian.forms_transformation",
+              "basis": "source_backed_special_binding",
+              "sourceRefs": [
+                "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-001",
+                "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json#OVC-002"
+              ]
+            },
+            "progression_maturation": {
+              "applicability": "not_applicable_current_canon",
+              "state": "explicit_not_applicable",
+              "contractRef": "MVPS.SpeciesProgressionHook",
+              "bindingRef": null,
+              "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+              "sourceRefs": [
+                "content-source/core26-species/stygian/definition-v1.1.0.json"
+              ]
+            },
+            "social_language_knowledge": {
+              "state": "governed",
+              "socialContract": "MVPS.SpeciesSocialIdentityHook",
+              "languageContract": "MVPS.SpeciesLanguageCommunicationHook",
+              "knowledgeVisibilityContract": "MVPS.SpeciesIdentityKnowledgeHook",
+              "cultureIsBiology": false,
+              "biologicalCommunicationDistinctFromLearnedLanguage": true,
+              "learnedLanguagePolicy": "explicit_source_rule_required_no_inference",
+              "observerIdentityProjection": "permission_filtered_knowledge_projection"
+            }
+          }
         }
       }
     }
@@ -93,16 +142,16 @@
     "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
     "ingestedFromMember": "index.json",
     "authority": "phase-1-8-canonical-objects",
-    "sourcePath": "content-source/core26-species/stygian/definition-v1.1.0.json",
-    "sourceDigest": "sha256:efc1f15fb63aab84f13a777382078c4eaafe743fc00db6159dc6e107dc9deccd",
-    "sourceBundleId": "mv.content.core26.stygian.definition-v1.1",
-    "sourceBundlePart": "stygian-definition-v1.1.0",
+    "sourcePath": "content-source/core26-species/stygian/definition-v1.2.0.json",
+    "sourceDigest": "sha256:2e91cd489678c36cdfa64a967901f0021833b8ec23e3d3307a9fbc40eda390da",
+    "sourceBundleId": "mv.content.core26.stygian.definition-v1.2",
+    "sourceBundlePart": "stygian-definition-v1.2.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.stygian",
-      "contentVersion": "1.0.0",
-      "sourcePath": "content-source/core26-species/stygian/definition-v1.0.0.json",
-      "sourceDigest": "sha256:4246e300b3ac35e5afacc7b0f8e66e97153d2f39a4bd5cdc57f0fe033950daef"
+      "contentVersion": "1.1.0",
+      "sourcePath": "content-source/core26-species/stygian/definition-v1.1.0.json",
+      "sourceDigest": "sha256:efc1f15fb63aab84f13a777382078c4eaafe743fc00db6159dc6e107dc9deccd"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

@@ -1,0 +1,97 @@
+{
+  "format": "multiversal-canonical-content-source",
+  "status": "owner-approved-canonical-replacement",
+  "bundleId": "mv.content.core26.morganthyr.canon-register-v1.2",
+  "authority": {
+    "ownerDirective": "MVPS-20 owner-authorized execution under OPS3",
+    "decisionSet": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+    "bundlePart": "morganthyr-register-v1.2.0"
+  },
+  "records": [
+    {
+      "gameObject": {
+        "id": "mv.core.species-canon-register.morganthyr",
+        "name": "Morganthyr Canon Register",
+        "objectType": "mv.object.species-canon-register",
+        "contentVersion": "1.2.0",
+        "register": {
+          "speciesName": "Morganthyr",
+          "speciesDefinitionStableId": "mv.core.species.morganthyr",
+          "authorityId": "CORE26-CURRENT-01",
+          "gameReadyStandard": "CORE26.GAME_READY.v1",
+          "sourceLedger": [
+            {
+              "role": "current_authority",
+              "title": "CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+              "repositoryPath": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+              "canonRole": "current_roster_identity_authority"
+            },
+            {
+              "role": "legacy_written_species_source",
+              "title": "Nekrons vAlpha2.PDF",
+              "canonRole": "legacy_source_under_current_morganthyr_identity"
+            },
+            {
+              "role": "identity_migration_authority",
+              "title": "MV-SPECIES-001_CORE_26_PLAYER_SPECIES_AUTHORITY_AMENDMENT.md",
+              "repositoryPath": "governance/development-bible/amendments/MV-SPECIES-001_CORE_26_PLAYER_SPECIES_AUTHORITY_AMENDMENT.md",
+              "canonRole": "owner_approved_identity_migration"
+            },
+            {
+              "role": "owner_mechanics_decision",
+              "title": "Core_26_MVPS19_Gap_Resolution_Decision_Packet_v0.1.docx",
+              "sha256": "370d0e38a9c10438f8720f3bf4e167c80dde2f1865ff6a028a2c9ca34af0d19b",
+              "repositoryDecisionRef": "governance/application-planning/player-species/MVPS-19_OWNER_DECISIONS_v1.0.0.json",
+              "canonRole": "owner_approved_mechanics_completion"
+            },
+            {
+              "role": "mvps20_optional_dimension_completion",
+              "title": "MVPS-20 Core-26 optional dimension matrix and special-system bindings",
+              "repositoryPath": "governance/application-planning/player-species/MVPS-20_CORE26_OPTIONAL_DIMENSION_MATRIX_v1.0.0.json",
+              "bindingRepositoryPath": "governance/application-planning/player-species/MVPS-20_SPECIAL_SYSTEM_BINDINGS_v1.0.0.json",
+              "canonRole": "source_backed_optional_dimension_completion"
+            }
+          ],
+          "canonDomains": {
+            "identity": true,
+            "lore": "accumulate_source_backed_material",
+            "mechanics": "accumulate_source_backed_and_owner_approved_rules",
+            "appearance": "accumulate_current_authority_outputs",
+            "provenance": true,
+            "openQuestions": true,
+            "certification": true
+          },
+          "updateContract": {
+            "mode": "append_versioned_source_never_mutate_history",
+            "requiresSourcePipelineRebuild": true,
+            "requiresRegisterVersionBumpForCanonChange": true,
+            "requiresDefinitionVersionBumpWhenGameplayObjectChanges": true,
+            "requiresOwnerApprovalForCanonPromotion": true,
+            "preservePriorVersions": true
+          },
+          "mechanicsCompletion": {
+            "status": "completed_owner_approved",
+            "mvps19DecisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+            "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+            "definitionVersion": "1.1.0",
+            "preserveTypedDispatch": true
+          },
+          "optionalDimensionCompletion": {
+            "status": "completed_source_backed",
+            "matrixRef": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+            "bindingSetRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+            "definitionVersion": "1.2.0",
+            "preserveTypedDispatch": true
+          }
+        }
+      },
+      "contentVersion": "1.2.0",
+      "replacementOf": {
+        "stableId": "mv.core.species-canon-register.morganthyr",
+        "expectedContentVersion": "1.1.0"
+      },
+      "promotionDecision": "OWNER_AUTHORIZED_MVPS20_OPTIONAL_DIMENSION_COMPLETION",
+      "reviewStatus": "APPROVED"
+    }
+  ]
+}
