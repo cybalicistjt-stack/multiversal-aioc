@@ -1,12 +1,12 @@
 {
-  "schema_version": "3.0.0",
+  "schema_version": "3.1.0",
   "system": "OPS3",
   "status": "completed_verified",
   "canonical_door": "operations/BOOTSTRAP.md",
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 291,
+  "state_revision": 292,
   "default_lane": "msas",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -62,16 +62,6 @@
       "activation_rule": "MRCS-13 completed_verified after causal RED run 35523105425 at head 9a6574bb2cedc2c252dd3e0dcc4b46fa582a368f, exact-head cross-platform GREEN run 35523201689 at head 52911f7e9015d3c1d544681235779d9de63ae229, and READY publication of PR 644 as application merge 44b0390489ad37eea035d6ccabcd611a1f61b9f1. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MRCS interstitial gate overriding the reduced strict order, so MRCS-14 is selected_not_started until a later MRCS-specific Continue.",
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
-    "mvps": {
-      "state": "completed_verified",
-      "selected_work_item": "MVPS-23",
-      "attempt_id": "MVPS-23-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MVPS-23-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "MVPS-23 completed_verified after causal RED run 35525909854 at 030e88280343e5560b7bdf76e0e5d42dd6ed7bf0, exact-head GREEN run 35525974917 at 4049f437b814471d29c88bce907fb4ba7f18ac90, and READY publication of PR 1493 as aecbb9a60a102bfc801259d98dce43ceb1fa588c. MVPS-23 has no strict successor and fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no MVPS interstitial override, so the persistent MVPS lane is terminal completed_verified.",
-      "execution_state_ref": "ops3-lane-state/mvps"
-    },
     "dwc-speech": {
       "state": "preserved_external_lane",
       "recovery_path": "governance/application-planning/dwc-speech/README.md",
@@ -88,6 +78,16 @@
     "source-provenance": {
       "state": "on_demand",
       "implementation_authority": "session_scoped_by_owner_request"
+    },
+    "oarc": {
+      "state": "selected_not_started",
+      "selected_work_item": "OARC-01",
+      "attempt_id": "OARC-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/OARC-01-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "Owner approved OARC on 2026-09-20 as the replacement for the terminal completed_verified MVPS persistent lane. OARC-01 is selected_not_started and preserves MRCS-13, MIB-14/PPIA-04/F014/D17, MERA and MBES owner boundaries before any readiness implementation begins.",
+      "execution_state_ref": "ops3-lane-state/oarc"
     }
   },
   "truth_rules": {
@@ -96,20 +96,20 @@
     "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
     "cross_program_successor_rule": "Before successor selection, consult governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json. Individual program strict_successor or backlog fields cannot skip an eligible interstitial program or override cross-program gates.",
     "executor_independence": "Executor availability never grants or revokes project authority.",
-    "parallel_lane_rule": "MSAS, MRCS and MVPS execute independently on distinct implementation branches and distinct lane-state refs. One lane never reserves future access to main; shared-repository publication is serialized only among immutable READY candidates.",
+    "parallel_lane_rule": "MSAS, MRCS and OARC execute independently on distinct implementation branches and distinct lane-state refs. One lane never reserves future access to main; shared-repository publication is serialized only among immutable READY candidates.",
     "protected_main_interlock": "For cybalicistjt-stack/Multiversal-app and cybalicistjt-stack/multiversal-aioc, direct main writes are prohibited. Only the FIFO READY head may merge after a green drift-sensitive integration receipt against fresh main. There is no active holder or turn_base that freezes main during implementation.",
-    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: msas, mrcs and mvps. UISR-11 is completed program history and does not occupy a persistent implementation slot.",
+    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: msas, mrcs and oarc. MVPS-23 and UISR-11 are completed program history and do not occupy persistent implementation slots.",
     "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS3.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
     "generated_main_writers": "CI/bots/generated-content jobs may not push directly to protected main; generated outputs must be present on the queue-bound candidate branch or validation fails closed.",
     "ready_then_queue": "Publication order begins only after immutable exact-head prequeue validation is green. The queue has no reservation-for-future-work, active holder, heartbeat, release, or recovery-release lifecycle.",
-    "lane_state_isolation": "Live execution progress for persistent lanes is recorded on ops3-lane-state/msas, ops3-lane-state/mrcs and ops3-lane-state/mvps. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
+    "lane_state_isolation": "Live execution progress for persistent lanes is recorded on ops3-lane-state/msas, ops3-lane-state/mrcs and ops3-lane-state/oarc. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
     "executor_interruption": "A chat/tool/session interruption is an executor incident, never a project lock. Resume from the last durable lane-state receipt and fresh repository/PR evidence; do not silently wait or replay completed phases.",
     "overinstrumentation_guard": "OPS3 uses milestone receipts, not activity receipts. Repository/PR/CI/publication-queue evidence owns mechanical transitions; status reads, polling, per-platform CI results, artifact inspection, queue mechanics and merge mechanics must not create lane-state receipts or be misclassified as material progress.",
     "lane_state_milestones": "Ordinary persistent-lane execution state is selected_not_started -> in_progress -> prequeue_green -> published, followed by one deterministic successor reseed after canonical closeout. The generic lane activity-log API is prohibited.",
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
     "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
-  "next_project_action": "MSAS and MVPS are terminal completed_verified. MRCS-14 remains independently selected_not_started; continue only the persistent implementation lane explicitly requested by the owner.",
+  "next_project_action": "MSAS and MVPS are terminal completed_verified. MRCS-14 remains independently selected_not_started. OARC-01 is selected_not_started as the replacement third persistent lane; continue only the persistent implementation lane explicitly requested by the owner.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
