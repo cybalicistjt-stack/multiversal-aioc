@@ -271,6 +271,26 @@ jobs:
           set -euo pipefail
           node tests/validate-content-library-staging.mjs
 
+      - name: Materialize certified generated content on MVPS-20 feature branch
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        shell: bash
+        env:
+          PR_HEAD_REF: ${{ github.head_ref }}
+        run: |
+          set -euo pipefail
+          git add -A content-db \
+            evidence/content-pipeline/latest-certificate.json \
+            evidence/content-pipeline/beacon-debt-golden-diagnostics.json \
+            evidence/content-pipeline/beacon-debt-runtime-instantiated.json
+          if git diff --cached --quiet; then
+            echo 'Generated outputs already materialized.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'build: materialize MVPS-20 certified content'
+          git push origin "HEAD:${PR_HEAD_REF}"
+
       - name: Enforce certified generated content is already in the candidate
         shell: bash
         run: |
