@@ -34,7 +34,7 @@ The Inspector/action contract preserves the special behavior proven by the Speci
 - **Nekron:** a post-transition customization exists only after the one-time upstream transition; appearance cannot trigger or choose an unavailable ascension.
 - **Suula:** persistent adaptation markers and active adaptation biology are read-only; cosmetics can be authored around them. Hand-within-claw state is live/pose state.
 - **Furashin:** preferred fur phenotype supports up to three simultaneous colors plus pattern and texture. Mechanics-owned live phenotype is not rewritten as cosmetic state. Rat-ninja reference art is owner-bound to Furashin despite filename wording.
-- **ManyToms:** one constituent identity is authored; renderer composition presents a cohesive collective instead of seventeen independent Character records.
+- **ManyToms:** one constituent identity is authored; renderer composition presents a cohesive collective instead of twelve independent Character records.
 - **Stygian:** horns/wings appear only when biologically authorized; wing appearance never grants flight and functionality remains upstream.
 - **Toba-Madra:** natural biological fur and any-color cosmetic dye are separate channels; actual cybernetics are mechanics-owned projections.
 - **The Free:** very broad humanoid android design grammar, but not arbitrary nonhumanoid topology; installed hardware remains mechanics-owned.
