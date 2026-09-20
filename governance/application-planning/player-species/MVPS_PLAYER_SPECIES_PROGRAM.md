@@ -2,7 +2,7 @@
 
 **Program ID:** MVPS  
 **Family:** Multiversal Player Species  
-**Status:** ACTIVE OWNER-AUTHORIZED CORE-26 PRODUCTION EXTENSION / MVPS-01…16 foundation completed_verified / MVPS-17 selected_not_started  
+**Status:** ACTIVE OWNER-AUTHORIZED CORE-26 PRODUCTION EXTENSION / MVPS-17 completed_verified / MVPS-18 selected_not_started  
 **Operational authority:** none outside `operations/CURRENT.json`
 
 ## Mission
@@ -91,3 +91,9 @@ On 2026-09-20 the Owner directed that the system going forward must recognize th
 - **MVPS-23** — Core-26 Game-Ready Golden Proof
 
 All seven extension tranches must consume the current Core-26 authority, preserve sealed historical 25-species evidence, and apply one common certification standard to all 26 rather than allowing legacy coverage differences to define readiness.
+
+## MVPS-17 Core-26 canon-lock result
+
+Core-26 current canon is now a `CURRENT.json`-referenced domain authority rather than a reconciliation file that future executors must rediscover. Startup and the operating contract require relevant work to load that domain authority before historical/generated species material. `CORE26.GAME_READY.v1` applies the same 19 certification dimensions to all 26 species, and the 26-row production baseline deliberately records **0 game-ready-certified species** at this new standard so prior 23-object or historical 25-profile coverage cannot be mistaken for current certification.
+
+MVPS-18 is the selected next tranche: reconcile 26/26 current canonical SpeciesDefinition identities, including Morganthyr migration, Rog/Suula object materialization and Akwi catalog convergence.

@@ -6,9 +6,9 @@
   "title": "Core-26 Canon Lock and Production Baseline",
   "attempt_id": "MVPS-17-attempt-001",
   "lane": "mvps",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_branch": "work/mvps-17-core26-canon-baseline",
   "owner_authorized_on": "2026-09-20",
   "predecessor": {
     "work_item_id": "MVPS-16",
@@ -31,20 +31,68 @@
     "Morganthyr is current canon; Nekron/Nekrons are historical aliases only.",
     "Akwi is a Core-26 peer regardless of supplemental physical storage.",
     "Ratman remains one core species; its nine recovered lineages remain subordinate and source-bounded.",
-    "MVPS-17 establishes authority, standards and baseline only; it does not fabricate missing species lore/mechanics or claim all 26 are already certified.",
-    "MVPS-18 begins actual canonical-object reconciliation."
+    "MVPS-17 establishes authority, standards and baseline only; it does not fabricate missing species lore/mechanics or claim all 26 are already certified."
   ],
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On execution, implement the Core-26 current-canon authority pointer, forward-consumer enforcement, equal production standard, and 26-species baseline using TDD, then close to MVPS-18.",
+  "active_substep": "completed_verified",
+  "next_action": "MVPS-18 is selected_not_started for Core-26 canonical object reconciliation.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "completed_verified_candidate",
+      "evidence": "Causal RED 35509983377 failed only MVPS-17. Initial GREEN 35510087746 passed, then parallel MRCS closeout moved main; the candidate was replayed onto fresh main and exact-head GREEN 35510233298 passed at a8f031ad84cc09f87413f63c2ffd28108cc01e0a. PR 1471 published as 867564dba956e3c6fdbfddbae2fa8a54ed5ac3a9."
+    },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": null
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Core-26 current authority, startup enforcement, equal standard, baseline and fail-closed validation are durably published; successor MVPS-18 is selected in this closeout."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "MVPS-17 used milestone-only lane state. Parallel MRCS publication was honored FIFO; MVPS-17 was replayed and revalidated without activity receipts."
+  },
+  "completed": true,
+  "completed_at": "2026-09-20",
+  "acceptance_evidence": {
+    "causal_red": {
+      "pr": 1471,
+      "head": "2d95f910ff7471fc80c26768595011c1c508dbf8",
+      "validation_run": 35509983377,
+      "conclusion": "failure"
+    },
+    "green": {
+      "pr": 1471,
+      "initial_green_head": "317d42848e05f232a677e3c474409f0117262242",
+      "initial_validation_run": 35510087746,
+      "replayed_green_head": "a8f031ad84cc09f87413f63c2ffd28108cc01e0a",
+      "replayed_validation_run": 35510233298,
+      "validated_base": "bef19737d78c68a9b19e1ce50b3caab7ba2d59c6",
+      "merge_sha": "867564dba956e3c6fdbfddbae2fa8a54ed5ac3a9"
+    },
+    "current_authority": {
+      "authority_id": "CORE26-CURRENT-01",
+      "roster_count": 26,
+      "path": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json"
+    },
+    "production_standard": {
+      "standard_id": "CORE26.GAME_READY.v1",
+      "dimension_count": 19,
+      "applies_to_count": 26
+    },
+    "baseline": {
+      "row_count": 26,
+      "game_ready_certified_count": 0,
+      "morganthyr_state": "legacy_nekron_object_requires_current_identity_migration",
+      "rog_state": "missing_current_content_db_object",
+      "suula_state": "missing_current_content_db_object",
+      "akwi_state": "governed_supplemental_runtime_requires_catalog_convergence"
+    }
   }
 }

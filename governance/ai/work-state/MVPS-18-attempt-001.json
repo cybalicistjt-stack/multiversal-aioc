@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "family": "MVPS",
+  "extension": "CORE26_PRODUCTION_CERTIFICATION",
+  "work_item_id": "MVPS-18",
+  "title": "Core-26 Canonical Object Reconciliation",
+  "attempt_id": "MVPS-18-attempt-001",
+  "lane": "mvps",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "selected_by_verified_predecessor": "MVPS-17",
+  "predecessor": {
+    "work_item_id": "MVPS-17",
+    "status": "completed_verified",
+    "implementation_merge_sha": "867564dba956e3c6fdbfddbae2fa8a54ed5ac3a9",
+    "validation_run": 35510233298
+  },
+  "strict_successor": "MVPS-19",
+  "objective": "Materialize and reconcile current-authority SpeciesDefinition records for all 26, including Morganthyr identity migration, Rog/Suula base objects and Akwi canonical-catalog convergence without duplicating governed mechanics.",
+  "acceptance": [
+    "26/26 current canonical species identities resolve to exact-version SpeciesDefinition authority",
+    "no current catalog exposes Nekron/Nekrons as canonical; historical alias provenance remains replayable",
+    "Akwi resolves as a Core-26 peer through current catalogs without duplicate mechanics",
+    "Rog and Suula receive source-backed current canonical objects",
+    "all 26 current objects are registered against CORE26-CURRENT-01 and CORE26.GAME_READY.v1"
+  ],
+  "boundaries": [
+    "Do not fabricate missing Rog, Suula, Morganthyr or other species facts; materialize only source-backed/owner-authorized data.",
+    "Preserve sealed historical Nekron and 25-profile evidence exactly; current catalog migration is additive/current-authority reconciliation.",
+    "Reuse AKWI-01 governed integration; do not create a second Akwi rules path.",
+    "MVPS-18 reconciles object identity/catalog presence only; deeper mechanics/biology completion is MVPS-19.",
+    "Ratman lineages remain subordinate and are not promoted to peer core species."
+  ],
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an MVPS-specific execution command, fresh-read Core-26 authority, production baseline, current content-db species objects and governed Akwi/Rog/Suula/Morganthyr evidence, then execute bounded 26/26 object reconciliation under OPS3-11.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
