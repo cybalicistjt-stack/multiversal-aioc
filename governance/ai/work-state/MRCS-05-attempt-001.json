@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MRCS",
+  "lane": "mrcs",
+  "track": "multiversal-rules-content-studio",
+  "source_program": "MRCS",
+  "work_item_id": "MRCS-05",
+  "attempt_id": "MRCS-05-attempt-001",
+  "title": "Mechanical & Advancement Definition Authoring",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MRCS-04",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "reduced_strict_order": "MRCS-04 → MRCS-05 → MRCS-08 → MRCS-11 → MRCS-12 → MRCS-13 → MRCS-14 → MRCS-16 → MRCS-17 → MRCS-19 → MRCS-21",
+    "interstitial_override": "none",
+    "parallel_lanes": "MSAS-07 remains selected_not_started; MVPS-14 remains selected_not_started."
+  },
+  "objective": "Author governed mechanical and advancement definitions for Actions, Effects, Conditions, Resources, durations/triggers, Abilities/trees/prestige/prerequisites, Attributes, Skills, Knowledges, Proficiencies and advancement packages while preserving CAB economics and owner-domain semantics.",
+  "acceptance": [
+    "Action/Effect/Condition/Resource references preserve owner semantics",
+    "ability/prerequisite authoring cannot override CAB",
+    "Attribute/Skill/Knowledge/Proficiency packages preserve owner advancement economics",
+    "stacking/interaction stays definition-driven rather than universal"
+  ],
+  "boundaries": [
+    "MRCS-01, MRCS-03 and MRCS-04 remain the workspace, guided-authoring and bounded-expression foundations consumed by this tranche.",
+    "Action, Event, Effect, Condition and Resource owner contracts retain semantic and runtime authority; MRCS authors definitions and references only.",
+    "CAB remains completed advancement/balance authority; MRCS cannot redefine prerequisite economics, tier economics, XP/training costs or prestige eligibility outside CAB-owned rules.",
+    "Attributes, Skills, Knowledges and Proficiencies retain owner advancement semantics and economics; packages may reference but not replace those owners.",
+    "Stacking, interaction, duration and trigger behavior must be explicit definition data or owner references rather than a new universal MRCS rule.",
+    "Preview and validation remain noncanonical and cannot execute live Actions/Events or mutate Character/runtime state.",
+    "MRCS-08+ remain unauthorized until separately selected.",
+    "MSAS and MVPS lane state remains independent."
+  ],
+  "strict_successor": "MRCS-08",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an MRCS-specific owner Continue, fresh-read the MRCS-05 dependency closure and mrcs lane-state ref, then start and execute the bounded tranche under OPS3-11 milestone-only execution.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
