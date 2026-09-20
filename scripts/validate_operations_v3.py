@@ -318,7 +318,7 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         errors.append("LANES lanes must be an array")
         lane_rows = []
     lane_ids = {row.get("id") for row in lane_rows if isinstance(row, dict)}
-    required_lanes = {"msas", "mrcs", "mvps", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}
+    required_lanes = {"msas", "mrcs", "oarc", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}
     if not required_lanes <= lane_ids:
         errors.append(f"missing required lanes: {sorted(required_lanes - lane_ids)}")
 
@@ -422,7 +422,7 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         checkpoint = _read_json(root, Path(checkpoint_path_value), errors)
     _validate_product_lane_projection(current, legacy_pointer, legacy_authority, checkpoint, errors)
 
-    for lane_id in ("mrcs", "mvps"):
+    for lane_id in ("mrcs", "oarc"):
         lane = product_lanes.get(lane_id, {}) if isinstance(product_lanes, dict) else {}
         if not isinstance(lane, dict):
             errors.append(f"CURRENT {lane_id} lane must be an object")
