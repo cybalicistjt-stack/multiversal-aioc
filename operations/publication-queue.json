@@ -1,8 +1,44 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/Multiversal-app",
-  "generation": 62,
-  "ready": [],
+  "generation": 63,
+  "ready": [
+    {
+      "candidate_id": "OARC-06-app-001",
+      "lane": "oarc",
+      "work_item_id": "OARC-06",
+      "pr_number": 661,
+      "head_sha": "b5ac8bfe87879f466d154622effe62b112cb4674",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "b5ac8bfe87879f466d154622effe62b112cb4674",
+        "run_id": "35537101123"
+      },
+      "write_set": [
+        "apps/client-ui/src/oarc/oarc06.game-ready-golden-cases.integration.test.ts",
+        "governance/application-planning/operational-asset-readiness-closure/OARC-06_GOLDEN_CORPUS_MANIFEST_v1.0.0.json",
+        "governance/application-planning/validation-core/profiles/OARC-06.json",
+        "packages/contracts/src/vehicle-platform-base/oarc-06-game-ready-golden-cases.ts",
+        "tools/verify_oarc_06.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "1fac56244a41cd58e6cd70751d85b7d1c52c327b",
+        "fresh_main_checked_sha": "1fac56244a41cd58e6cd70751d85b7d1c52c327b",
+        "fresh_main_overlap_files": [],
+        "causal_red_run": "35536896956",
+        "first_green_candidate_run": "35537008531",
+        "first_green_candidate_failure": "client-typecheck test-helper field only",
+        "authority_contracts": [
+          "OARC01.AUTHORITY_HANDOFF.v1",
+          "OARC02.DEFINITION_BRIDGE.v1",
+          "OARC03.CATALOG_NORMALIZATION.v1",
+          "OARC04.OPERATIONAL_SPECIALIZATION_PROFILES.v1",
+          "OARC05.LARGE_ASSET_RELATIONSHIP_PROOF.v1"
+        ],
+        "golden_manifest": "OARC06.GAME_READY_GOLDEN_CORPUS.v1"
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "MSAS-04-app-001",
