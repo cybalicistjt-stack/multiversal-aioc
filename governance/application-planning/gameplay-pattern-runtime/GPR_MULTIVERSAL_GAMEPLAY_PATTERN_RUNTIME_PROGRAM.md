@@ -3,11 +3,11 @@
 **Program ID:** GPR  
 **Program name:** Gameplay Pattern Runtime & Loop Minis  
 **Version:** 0.2.0 — PDCP REDUCED  
-**Status:** ACTIVE — GPR-07 SELECTED_NOT_STARTED  
+**Status:** ACTIVE — GPR-08 SELECTED_NOT_STARTED  
 **Activation:** concurrent start authorized after MRCS-05 + completed MAL + core owner contracts; later MRCS late-binds; GPR-16 waits for MRCS-21  
 **Successor:** MERA-01  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-07 attempt
+**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-08 attempt
 
 ## Purpose
 
@@ -241,3 +241,14 @@ Each specialist family retains explicit semantic profiles and required owner cap
 Causal RED: run `35532367213` at `09280a7e47e904b9f33e37cabd0c54de0b5528b6`. Exact-head cross-platform GREEN: run `35532445182` at `0c2de1f7cf1c9bc41b45da69e6e57b2c68f96486`. Published application: PR #655 through READY candidate `GPR-06-app-001` as `faf9d34c091ce096d910b10b61063ffd7a025ea9`.
 
 The fresh roadmap DAG supplies no interstitial successor override, so GPR-07 is selected_not_started. GPR-07 remains bounded to encounter/autonomous selection, score/timing/rhythm resolution, loadout/build execution and skill-resolution adapters; NPC psychology, AI authority, Character build truth, skill definitions and authored audio remain external owner concerns.
+
+
+## GPR-07 completed bounded-resolution result
+
+GPR-07 completed_verified on 2026-09-20. The published application contract `GPR-07.1` establishes bounded encounter/autonomous selection, semantic score/timing/rhythm resolution, loadout/build projection and skill-resolution adapters over the existing GPR runtime.
+
+Encounter/autonomous selection uses explicit bounded candidates and external owner references; GPR does not own NPC psychology or AI authority. Score/timing mechanics use declared semantic clocks and deterministic event ordering; authored audio and presentation frames remain non-authoritative projections. Loadout/build execution requires explicit Character, Inventory/Asset and Progression owner capabilities and cannot replace Character build truth. Skill resolution consumes accepted skill definitions plus GPR-05 owner operations; GPR does not author or canonize skills.
+
+Causal RED: run `35535649049` at `0091a243b3da84a05d9eac00acfeb42e37ee1318`. Exact-head cross-platform GREEN: run `35535747817` at `2024f9f1bfcb5aa3c5f8f8512b9bde37ca91f0da`. Published application: PR #658 through READY candidate `GPR-07-app-001` as `c45873b7d73c0423c4ef3280cbf5b341536e425b`.
+
+MRCS-21 is terminal completed_verified and the fresh roadmap DAG supplies no interstitial successor override, so GPR-08 is selected_not_started.
