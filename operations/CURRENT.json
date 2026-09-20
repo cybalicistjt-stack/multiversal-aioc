@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 304,
+  "state_revision": 305,
   "default_lane": "mrcs",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -24,8 +24,8 @@
         "state": "completed_verified"
       },
       "mrcs": {
-        "selected_work_item": "MRCS-19",
-        "attempt_id": "MRCS-19-attempt-001",
+        "selected_work_item": "MRCS-21",
+        "attempt_id": "MRCS-21-attempt-001",
         "state": "selected_not_started"
       },
       "mvps": {
@@ -54,12 +54,12 @@
     },
     "mrcs": {
       "state": "selected_not_started",
-      "selected_work_item": "MRCS-19",
-      "attempt_id": "MRCS-19-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MRCS-19-attempt-001.json",
+      "selected_work_item": "MRCS-21",
+      "attempt_id": "MRCS-21-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MRCS-21-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "MRCS-17 completed_verified after causal RED run 35531193609 at head 785d5af5b9ed25e7d41152b401ae2417d507bcb3, exact-head cross-platform GREEN run 35531285296 at head a79ba5eec545e5454dcaac97870ce9077a1a1260, and READY publication of PR 653 as application merge 20f65e297e47f942142b947a5c23a9ceb7458afb. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MRCS interstitial gate overriding the reduced strict order, so MRCS-19 is selected_not_started until a later MRCS-specific Continue.",
+      "activation_rule": "MRCS-19 completed_verified after causal RED run 35532407974 at head fd391ab27daf51b9c53ed121a6f7a04798395af0, final exact-head cross-platform GREEN run 35533982141 at head 1bae6fa1361b2364a98f6849abff98bacf039235, and READY publication of PR 656 as application merge daca3732be69a8b9f0d154e70ffb017ffdc83c8c. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MRCS interstitial override, so terminal tranche MRCS-21 is selected_not_started until governed start.",
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "dwc-speech": {
@@ -119,7 +119,7 @@
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
     "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
-  "next_project_action": "GPR-07, MRCS-19 and OARC-05 remain independently selected_not_started. Continue only the persistent implementation lane explicitly requested by the owner; GPR-07 is the encounter/autonomy/score-timing/loadout/skill-resolution tranche and must leave NPC psychology, AI authority, Character build truth, skill definitions and authored audio with their external owners.",
+  "next_project_action": "GPR-07, MRCS-21 and OARC-05 remain independently selected_not_started. Continue only the persistent implementation lane explicitly requested by the owner; MRCS-21 is the terminal golden cross-domain construction/runtime-consumption proof and must preserve owner authority while proving local-first operation with optional AI and paid/cloud providers disabled.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
