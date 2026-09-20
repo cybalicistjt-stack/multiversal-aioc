@@ -5,8 +5,14 @@ import argparse, json
 from copy import deepcopy
 from pathlib import Path
 from typing import Any
-NONTERMINAL="OPS3.NONTERMINAL_RESPONSE"; MULTI_CONTINUE="OPS3.MULTI_CONTINUE_UNRECORDED"; STALL_NUDGE="OPS3.STALL_NUDGE_UNRECORDED"; INVALID_BLOCKER="OPS3.INVALID_BLOCKER"; NO_MATERIAL_PROGRESS="OPS3.NO_MATERIAL_PROGRESS"; INVALID_PROGRESS_RECEIPT="OPS3.INVALID_PROGRESS_RECEIPT"
+NONTERMINAL="OPS3.NONTERMINAL_RESPONSE"; MULTI_CONTINUE="OPS3.MULTI_CONTINUE_UNRECORDED"; STALL_NUDGE="OPS3.STALL_NUDGE_UNRECORDED"; INVALID_BLOCKER="OPS3.INVALID_BLOCKER"; NO_MATERIAL_PROGRESS="OPS3.NO_MATERIAL_PROGRESS"; INVALID_PROGRESS_RECEIPT="OPS3.INVALID_PROGRESS_RECEIPT"; OVERINSTRUMENTATION="OPS3.OVERINSTRUMENTATION"
 _ALLOWED_BLOCKERS={"owner_only","external_blocker"}; _ALLOWED_TERMINAL_REASONS={"completed",*_ALLOWED_BLOCKERS}
+_INSTRUMENTATION_ONLY_KINDS={
+    "status","status_check","poll","ci_queued","ci_running","pr_opened",
+    "linux_green","windows_green","cross_platform_green","artifact_inspected",
+    "queue_submitted","fresh_main_read","merge_prepared","merge_verified",
+    "queue_reconciled","closeout_pr_opened","closeout_prequeue_green",
+}
 def _guard(c): return c.get("execution_guard",{}) if isinstance(c.get("execution_guard",{}),dict) else {}
 def _conformance(c): return c.get("execution_conformance",{}) if isinstance(c.get("execution_conformance",{}),dict) else {}
 def _violations(c):
@@ -26,6 +32,7 @@ def observe_owner_execution_command(checkpoint: dict[str,Any])->dict[str,Any]:
 def record_material_progress(checkpoint: dict[str,Any],*,kind:str,evidence:str)->dict[str,Any]:
     r=deepcopy(checkpoint); g=r.setdefault("execution_guard",{}); kind,evidence=kind.strip(),evidence.strip()
     if not kind or not evidence: raise ValueError(INVALID_PROGRESS_RECEIPT)
+    if kind.lower().replace("-", "_") in _INSTRUMENTATION_ONLY_KINDS: raise ValueError(OVERINSTRUMENTATION)
     seq=g.get("material_progress_seq",0)
     if not isinstance(seq,int) or seq<0: raise ValueError(INVALID_PROGRESS_RECEIPT)
     seq+=1; g["material_progress_seq"]=seq; g["last_material_progress"]={"seq":seq,"kind":kind,"evidence":evidence}; g["active_stall"]=False; return r

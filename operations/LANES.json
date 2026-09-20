@@ -163,5 +163,5 @@
     "ui-implementation": "UISR-11 completed_verified. UISR is completed program history, not a persistent implementation lane.",
     "player-species": "Retired alias for canonical mvps lane."
   },
-  "parallel_persistence_rule": "MSAS, MRCS and MVPS are independent persistent implementation lanes with separate lane-state refs. They implement and validate concurrently; only immutable green READY candidates enter repository-local FIFO publication order. There is no future reservation or active publication holder."
+  "parallel_persistence_rule": "MSAS, MRCS and MVPS are independent persistent implementation lanes with separate milestone-only lane-state refs. Ordinary lane state records only start, complete exact-head prequeue GREEN, durable application publication and one post-closeout successor reseed. Intermediate repository/PR/CI/READY mechanics are not journaled. Shared-repository publication remains FIFO among immutable green READY candidates only."
 }

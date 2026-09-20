@@ -106,11 +106,11 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertEqual(LANE_STATE.coordination_branch("mrcs"),"ops3-lane-state/mrcs")
         a=LANE_STATE.initial_state("msas",revision=1,selected_work_item="MSAS-X",attempt_id="MSAS-X-attempt-001")
         b=LANE_STATE.initial_state("mrcs",revision=1,selected_work_item="MRCS-X",attempt_id="MRCS-X-attempt-001")
-        a2=LANE_STATE.record_progress(a,expected_revision=1,lane="msas",kind="implementation",evidence="head-a")
+        a2=LANE_STATE.start_execution(a,expected_revision=1,lane="msas",implementation_branch="work/msas-x",evidence="owner Continue")
         self.assertEqual(a2["revision"],2)
         self.assertEqual(b["revision"],1)
         with self.assertRaises(LANE_STATE.LaneStateConflict):
-            LANE_STATE.record_progress(a2,expected_revision=2,lane="mrcs",kind="wrong-lane",evidence="no")
+            LANE_STATE.mark_prequeue_green(a2,expected_revision=2,lane="mrcs",candidate_head="head-a",validation_run="run-a")
 
     def test_lane_can_start_without_mutating_global_selector(self) -> None:
         state=LANE_STATE.initial_state("mvps",revision=5,selected_work_item="MVPS-12",attempt_id="MVPS-12-attempt-001")
@@ -119,6 +119,15 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertEqual(started["implementation_branch"],"work/mvps-12")
         self.assertEqual(started["selected_work_item"],"MVPS-12")
 
+    def test_execution_guard_rejects_instrumentation_only_progress_receipts(self) -> None:
+        checkpoint={"status":"in_progress","execution_guard":{"material_progress_seq":1,"progress_at_last_owner_command":0,"no_progress_cycles":0,"last_material_progress":{"seq":1,"kind":"started","evidence":"started"},"active_stall":False},"execution_conformance":{"status":"in_progress","policy_violations":[]}}
+        for kind in ("status_check","linux_green","windows_green","artifact_inspected","queue_submitted","merge_verified","queue_reconciled","closeout_pr_opened"):
+            with self.subTest(kind=kind):
+                with self.assertRaisesRegex(ValueError, EXECUTION_GUARD.OVERINSTRUMENTATION):
+                    EXECUTION_GUARD.record_material_progress(checkpoint,kind=kind,evidence="mechanical transition")
+        updated=EXECUTION_GUARD.record_material_progress(checkpoint,kind="causal_repair",evidence="failure signature changed after bounded repair")
+        self.assertEqual(updated["execution_guard"]["material_progress_seq"],2)
+
     def test_owner_continue_without_material_progress_enters_visible_stall_recovery(self) -> None:
         checkpoint={"status":"in_progress","execution_guard":{"continue_turns":1,"stall_nudges":0,"material_progress_seq":2,"progress_at_last_owner_command":2,"no_progress_cycles":0,"last_material_progress":{"seq":2,"kind":"validation","evidence":"run 7 failed"},"active_stall":False,"terminal_response_allowed":False,"stop_reason":None},"execution_conformance":{"status":"in_progress","policy_violations":[]}}
         updated=EXECUTION_GUARD.observe_owner_execution_command(checkpoint)
@@ -126,6 +135,68 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertIn(EXECUTION_GUARD.NO_MATERIAL_PROGRESS,updated["execution_conformance"]["policy_violations"])
         progressed=EXECUTION_GUARD.record_material_progress(updated,kind="repair",evidence="changed failing signature")
         self.assertFalse(progressed["execution_guard"]["active_stall"])
+
+    def test_lane_state_has_no_generic_activity_log_writer(self) -> None:
+        self.assertFalse(hasattr(LANE_STATE, "record_progress"))
+        self.assertFalse(hasattr(LANE_STATE, "complete_execution"))
+
+    def test_lane_state_uses_three_ordinary_attempt_milestones_only(self) -> None:
+        state=LANE_STATE.initial_state("mrcs",revision=10,selected_work_item="MRCS-04",attempt_id="MRCS-04-attempt-001")
+        state=LANE_STATE.start_execution(state,expected_revision=10,lane="mrcs",implementation_branch="work/mrcs-04",evidence="owner Continue")
+        self.assertEqual(state["execution_status"],"in_progress")
+        self.assertEqual(state["progress_seq"],1)
+
+        state=LANE_STATE.mark_prequeue_green(
+            state,expected_revision=11,lane="mrcs",
+            candidate_head="head-green",validation_run="run-green",
+        )
+        self.assertEqual(state["execution_status"],"prequeue_green")
+        self.assertEqual(state["progress_seq"],2)
+        self.assertEqual(state["prequeue_green"],{"candidate_head":"head-green","validation_run":"run-green"})
+
+        state=LANE_STATE.mark_published(
+            state,expected_revision=12,lane="mrcs",
+            candidate_head="head-green",merge_sha="merge-app",ready_candidate_id="MRCS-04-app-001",
+        )
+        self.assertEqual(state["execution_status"],"published")
+        self.assertEqual(state["progress_seq"],3)
+        self.assertEqual(state["publication"]["merge_sha"],"merge-app")
+
+    def test_successor_reseed_is_deterministic_and_resets_progress(self) -> None:
+        state=LANE_STATE.initial_state("mvps",revision=20,selected_work_item="MVPS-13",attempt_id="MVPS-13-attempt-001")
+        state=LANE_STATE.start_execution(state,expected_revision=20,lane="mvps",implementation_branch="work/mvps-13",evidence="owner Continue")
+        state=LANE_STATE.mark_prequeue_green(state,expected_revision=21,lane="mvps",candidate_head="h",validation_run="r")
+        state=LANE_STATE.mark_published(state,expected_revision=22,lane="mvps",candidate_head="h",merge_sha="m",ready_candidate_id="MVPS-13-app-001")
+        next_state=LANE_STATE.reseed_successor(
+            state,
+            expected_revision=23,
+            lane="mvps",
+            successor_work_item="MVPS-14",
+            successor_attempt_id="MVPS-14-attempt-001",
+            closeout_merge_sha="closeout",
+            closeout_validation_run="closeout-run",
+            closeout_ready_candidate_id="MVPS-13-closeout-001",
+        )
+        self.assertEqual(next_state["selected_work_item"],"MVPS-14")
+        self.assertEqual(next_state["attempt_id"],"MVPS-14-attempt-001")
+        self.assertEqual(next_state["execution_status"],"selected_not_started")
+        self.assertEqual(next_state["implementation_branch"],None)
+        self.assertEqual(next_state["progress_seq"],0)
+        self.assertEqual(next_state["last_progress"],None)
+        self.assertEqual(next_state["last_completed"]["work_item_id"],"MVPS-13")
+        self.assertEqual(next_state["last_completed"]["application_merge_sha"],"m")
+        self.assertEqual(next_state["last_completed"]["closeout_merge_sha"],"closeout")
+
+    def test_micro_transition_kinds_are_not_lane_state_api(self) -> None:
+        forbidden={
+            "linux_green","windows_green","cross_platform_green","pr_opened","ci_queued",
+            "ci_running","artifact_inspected","queue_submitted","fresh_main_read",
+            "merge_prepared","merge_verified","queue_reconciled","closeout_pr_opened",
+            "closeout_prequeue_green",
+        }
+        public={name for name in dir(LANE_STATE) if not name.startswith("_")}
+        self.assertTrue(forbidden.isdisjoint(public))
+
 
 if __name__ == "__main__":
     unittest.main()
