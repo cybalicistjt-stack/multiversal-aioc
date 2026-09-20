@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "OARC06.GAME_READY_GOLDEN_CORPUS.v1",
+  "status": "current",
+  "work_item": "OARC-06",
+  "authority_contracts": [
+    "OARC01.AUTHORITY_HANDOFF.v1",
+    "OARC02.DEFINITION_BRIDGE.v1",
+    "OARC03.CATALOG_NORMALIZATION.v1",
+    "OARC04.OPERATIONAL_SPECIALIZATION_PROFILES.v1",
+    "OARC05.LARGE_ASSET_RELATIONSHIP_PROOF.v1"
+  ],
+  "application_merge_sha": "9bce9c663bab487a795491ddea8a5ce7bf8d8944",
+  "result": "SIX_CASE_CORPUS_EXECUTED_WITH_THREE_VISIBLE_OWNER_BINDING_GAPS",
+  "required_dimensions": [
+    "definition/configuration",
+    "live identity",
+    "crew/control where applicable",
+    "cargo/resources",
+    "operation/travel/combat participation",
+    "damage state",
+    "repair/project handoff",
+    "save/reload/reconnect",
+    "provenance"
+  ],
+  "corpus_summary": {
+    "case_count": 6,
+    "game_ready_count": 3,
+    "blocked_visible_gap_count": 3,
+    "coverage_percentage_published": false
+  },
+  "cases": [
+    {
+      "case_id": "OARC06-GOLDEN-VEHICLE",
+      "role": "ordinary vehicle",
+      "basis": "MIB-14 Utility Rover",
+      "certification": "game-ready"
+    },
+    {
+      "case_id": "OARC06-GOLDEN-MECHA",
+      "role": "mecha",
+      "basis": "MCH-0031 Primax RX-07 Hollowstep",
+      "certification": "blocked-visible-gap",
+      "blocking_dimension": "definition/configuration",
+      "blocker": "no exact existing MIB-14 operational definition binding"
+    },
+    {
+      "case_id": "OARC06-GOLDEN-CARRIER",
+      "role": "spacecraft/carrier",
+      "basis": "SCF-0027 Orrukhal Bastion-Class Carrier",
+      "certification": "blocked-visible-gap",
+      "blocking_dimension": "definition/configuration",
+      "blocker": "no exact existing MIB-14 operational definition binding"
+    },
+    {
+      "case_id": "OARC06-GOLDEN-FIXED-BASE",
+      "role": "fixed base",
+      "basis": "MIB-14 Workshop Outpost",
+      "certification": "game-ready"
+    },
+    {
+      "case_id": "OARC06-GOLDEN-MOBILE-BASE-ROLE",
+      "role": "mobile base",
+      "basis": "MIB-14 Field Work Platform",
+      "owner_kind": "platform",
+      "certification": "game-ready"
+    },
+    {
+      "case_id": "OARC06-GOLDEN-NESTED-CARRIER",
+      "role": "nested carrier/craft",
+      "basis": "SCF-0027 carrier + noncanonical workflow craft scaffold + OARC-05 relationship proof",
+      "certification": "blocked-visible-gap",
+      "blocking_dimension": "definition/configuration",
+      "blocker": "carrier lacks exact existing MIB-14 operational definition binding"
+    }
+  ],
+  "guardrails": [
+    "Utility Rover golden does not claim identity with source Civilian Car VEH-0001.",
+    "Field Work Platform remains owner kind platform; mobile-base-role is a golden role label only.",
+    "Synthetic campaign Asset scaffolds never become canonical content.",
+    "Installed_Modules never becomes salvage-output authority by implication.",
+    "Unknown/source-unspecified facts remain unresolved with no convenience defaults.",
+    "Golden proof performs no owner mutation and creates no OARC runtime.",
+    "OARC-06 publishes no final all-catalog coverage percentage or OARC-07 ledger."
+  ],
+  "future_handoff": "OARC-07 must classify the full governed source surface using these golden outcomes and preserve the Hollowstep/Orrukhal MIB-14 binding blocker visibly rather than fabricating mappings to improve coverage."
+}

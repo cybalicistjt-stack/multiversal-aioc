@@ -9,16 +9,16 @@
   "attempt_id": "OARC-06-attempt-001",
   "title": "Game-Ready Golden Cases",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
   "implementation_branch": null,
-  "completed": false,
+  "completed": true,
   "selected_by_verified_predecessor": "OARC-05",
   "selection_basis": {
     "dag_schema": "1.0.4",
     "oarc_interstitial_override": "none",
     "strict_order": "OARC-01 → OARC-02 → OARC-03 → OARC-04 → OARC-05 → OARC-06 → OARC-07",
-    "parallel_lanes": "GPR-08 remains independently selected_not_started; MRCS-21 is terminal completed_verified."
+    "parallel_lanes": "GPR-09 remains independently selected_not_started; MRCS-21 is terminal completed_verified."
   },
   "required_contracts": [
     {
@@ -60,17 +60,98 @@
     "GPR remains independent and MRCS remains terminal completed history."
   ],
   "strict_successor": "OARC-07",
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On an OARC-specific owner Continue, fresh-read OARC-06 plus OARC01 through OARC05 contracts, representative ordinary vehicle/base proofs, Hollowstep, Orrukhal carrier, mobile-base evidence and existing owner handoff/runtime fixtures, then execute the complete bounded game-ready golden-case tranche.",
+  "active_substep": "completed_verified",
+  "next_action": "OARC-06 is completed_verified. OARC-07 is selected_not_started and requires a later OARC-specific owner Continue for governed start.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "completed_verified_candidate",
+      "evidence": "OARC-06 causal RED run 35536896956 proved the golden composer absent; a bounded test-helper field correction followed run 35537008531; exact-head cross-platform GREEN run 35537101123 passed at b5ac8bfe87879f466d154622effe62b112cb4674; PR 661 published through READY as application main 9bce9c663bab487a795491ddea8a5ce7bf8d8944."
+    },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": null
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "OARC-06 six-case golden corpus is durably published with visible blocked cases preserved and this atomic closeout selects OARC-07 without starting it."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming_with_bounded_test_helper_correction",
+    "policy_violations": [],
+    "note": "OPS3-11 milestone-only execution preserved one causal RED, one bounded diagnosis of a client-typecheck-only test-helper field mismatch, one exact-head governed GREEN, one application publication milestone and one bounded closeout path."
+  },
+  "implementation_plan": {
+    "lane_start": "completed",
+    "causal_red": "completed",
+    "six_case_golden_corpus": "completed",
+    "source_governance_verifier": "completed",
+    "bounded_type_fixture_correction": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "acceptance_evidence": {
+    "causal_red": {
+      "pr": 661,
+      "head": "df27aa9a5c3ab90b7b93a5b481caca8ecf0ac1cb",
+      "validation_run": 35536896956,
+      "conclusion": "failure",
+      "failure_step": "oarc06-focused-golden-cases",
+      "signature": "Required oarc-06-game-ready-golden-cases module absent at the exact test-first head."
+    },
+    "bounded_correction": {
+      "head": "de501a0ae2435a65042294ae7ba60fee726cc4a8",
+      "validation_run": 35537008531,
+      "failure_step": "client-typecheck",
+      "focused_tests": "pass",
+      "owner_regressions": "pass",
+      "correction": "Mib14CrewAssignment fixture field characterId -> governed subjectId; production golden semantics unchanged."
+    },
+    "green": {
+      "pr": 661,
+      "validated_head": "b5ac8bfe87879f466d154622effe62b112cb4674",
+      "validation_run": 35537101123,
+      "conclusion": "success",
+      "merge_method": "squash",
+      "merge_sha": "9bce9c663bab487a795491ddea8a5ce7bf8d8944",
+      "fresh_main_base": "1fac56244a41cd58e6cd70751d85b7d1c52c327b",
+      "fresh_main_overlap_files": []
+    },
+    "corpus": {
+      "case_count": 6,
+      "game_ready_count": 3,
+      "blocked_visible_gap_count": 3,
+      "game_ready_cases": [
+        "ordinary-vehicle",
+        "fixed-base",
+        "mobile-base-role-platform"
+      ],
+      "blocked_cases": [
+        "mecha",
+        "spacecraft-carrier",
+        "nested-carrier-craft"
+      ],
+      "shared_blocker": "missing exact MIB-14 operational definition binding for source-only Hollowstep/Orrukhal identity",
+      "coverage_percentage_published": false
+    },
+    "application_ready_queue": {
+      "candidate_id": "OARC-06-app-001",
+      "reconciled_generation": 64,
+      "ready_after_reconcile": 0
+    },
+    "golden_contract": {
+      "contract_id": "OARC06.GAME_READY_GOLDEN_CORPUS.v1",
+      "result": "SIX_CASE_CORPUS_EXECUTED_WITH_THREE_VISIBLE_OWNER_BINDING_GAPS"
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "oarc_dag_entry": false,
+      "selected": "OARC-07"
+    }
   }
 }

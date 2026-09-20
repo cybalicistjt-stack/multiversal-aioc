@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 309,
+  "state_revision": 310,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -81,12 +81,12 @@
     },
     "oarc": {
       "state": "selected_not_started",
-      "selected_work_item": "OARC-06",
-      "attempt_id": "OARC-06-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/OARC-06-attempt-001.json",
+      "selected_work_item": "OARC-07",
+      "attempt_id": "OARC-07-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/OARC-07-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "OARC-05 completed_verified after causal RED run 35536003908 at application head 42416e8825e13a4574c66f33ed6d5a7e5179ebc5, exact-head cross-platform GREEN run 35536121846 at application head 2fb7808e7c0d5a927ef42bc66c182625916dd64a, fresh-main clean integration against app main c45873b7d73c0423c4ef3280cbf5b341536e425b, and READY publication of PR 659 as application main c4a52cc09cc0e309453bee6c291110ed2e846198. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no OARC entry or interstitial override, so strict successor OARC-06 is selected_not_started.",
+      "activation_rule": "OARC-06 completed_verified after causal RED run 35536896956 at application head df27aa9a5c3ab90b7b93a5b481caca8ecf0ac1cb, bounded test-helper type correction after run 35537008531 identified client-typecheck-only failure, exact-head cross-platform GREEN run 35537101123 at application head b5ac8bfe87879f466d154622effe62b112cb4674, fresh-main clean integration against app main 1fac56244a41cd58e6cd70751d85b7d1c52c327b, and READY publication of PR 661 as application main 9bce9c663bab487a795491ddea8a5ce7bf8d8944. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no OARC entry or interstitial override, so strict successor OARC-07 is selected_not_started.",
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
@@ -119,7 +119,7 @@
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
     "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
-  "next_project_action": "GPR-09 and OARC-06 remain independently selected_not_started. MRCS is terminal completed_verified. Continue only the persistent implementation lane explicitly requested by the owner; GPR-09 is the seven-delivery-mode/Creator-GM/world-roster binding tranche and must reuse Packet-07 shared execution-inspection semantics rather than create another generic studio framework.",
+  "next_project_action": "GPR-09 and OARC-07 remain independently selected_not_started. MRCS is terminal completed_verified. Continue only the persistent implementation lane explicitly requested by the owner; OARC-07 is Coverage & Gap Certification and must preserve the six-case OARC-06 corpus including its three visible MIB-14 binding gaps.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

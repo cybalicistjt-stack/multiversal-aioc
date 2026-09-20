@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "OARC",
+  "lane": "oarc",
+  "track": "operational-asset-readiness-closure",
+  "source_program": "OARC",
+  "work_item_id": "OARC-07",
+  "attempt_id": "OARC-07-attempt-001",
+  "title": "Coverage & Gap Certification",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "OARC-06",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "oarc_interstitial_override": "none",
+    "strict_order": "OARC-01 → OARC-02 → OARC-03 → OARC-04 → OARC-05 → OARC-06 → OARC-07",
+    "parallel_lanes": "GPR-09 remains independently selected_not_started; MRCS-21 is terminal completed_verified."
+  },
+  "required_contracts": [
+    {
+      "contract_id": "OARC01.AUTHORITY_HANDOFF.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-01_AUTHORITY_HANDOFF_CONTRACT_v1.0.0.json"
+    },
+    {
+      "contract_id": "OARC02.DEFINITION_BRIDGE.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-02_DEFINITION_BRIDGE_CONTRACT_v1.0.0.json"
+    },
+    {
+      "contract_id": "OARC03.CATALOG_NORMALIZATION.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-03_CATALOG_NORMALIZATION_CONTRACT_v1.0.0.json"
+    },
+    {
+      "contract_id": "OARC04.OPERATIONAL_SPECIALIZATION_PROFILES.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-04_OPERATIONAL_SPECIALIZATION_PROFILES_CONTRACT_v1.0.0.json"
+    },
+    {
+      "contract_id": "OARC05.LARGE_ASSET_RELATIONSHIP_PROOF.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-05_LARGE_ASSET_RELATIONSHIP_PROOF_CONTRACT_v1.0.0.json"
+    },
+    {
+      "contract_id": "OARC06.GAME_READY_GOLDEN_CORPUS.v1",
+      "path": "governance/application-planning/operational-asset-readiness-closure/OARC-06_GAME_READY_GOLDEN_CORPUS_CONTRACT_v1.0.0.json"
+    }
+  ],
+  "objective": "Audit the full governed operational-asset source surface and classify every relevant source record as game-ready, normalization needed, waiting on an existing owner, waiting on MERA, waiting on MBES, or source-insufficient; produce the durable coverage ledger and final OARC golden certification without improving coverage through fabricated semantics.",
+  "acceptance": [
+    "Account for the full governed operational-asset source surface pinned by OARC-03, with source catalog counts/hashes reconciled to the coverage ledger.",
+    "Classify each relevant source record into exactly one final coverage disposition: game-ready, normalization needed, waiting on an existing owner, waiting on MERA, waiting on MBES, or source-insufficient.",
+    "Carry OARC-06 golden outcomes into coverage truth, including the explicit Hollowstep/Orrukhal missing exact MIB-14 owner-binding blocker.",
+    "Coverage percentages/counts must be derived from classified records only and may never be improved by source inference, guessed compatibility, guessed capacity, synthetic owner bindings or synthetic canonical content.",
+    "Publish a durable gap ledger that names the existing owner/future owner or source insufficiency responsible for every non-game-ready class.",
+    "Produce final OARC certification that distinguishes what is game-ready now from what remains blocked; do not claim MERA/MBES implementation.",
+    "Reconcile OARC program completion only if the final ledger/certification satisfies the program completion condition without duplicate authority or hidden future-family implementation."
+  ],
+  "boundaries": [
+    "OARC-07 is coverage/gap certification only; it does not create new operational definitions merely to improve coverage.",
+    "Synthetic workflow scaffolding from OARC-06 cannot count as canonical game-ready content.",
+    "Source-only mecha/ship rows without exact owner bindings cannot be counted as game-ready through analogy or name matching.",
+    "Waiting on MERA and waiting on MBES are explicit future-owner classes, not implementation authority.",
+    "No new Asset, containment, Project, repair, combat, World, economy or construction runtime.",
+    "GPR remains independent and MRCS remains terminal completed history."
+  ],
+  "strict_successor": null,
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On an OARC-specific owner Continue, fresh-read OARC-07 plus OARC01 through OARC06 contracts, the pinned OARC-03 source registries/counts/hashes, actual source-record registries needed for row classification, and existing owner-binding catalogs; then execute the complete final coverage/gap certification tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

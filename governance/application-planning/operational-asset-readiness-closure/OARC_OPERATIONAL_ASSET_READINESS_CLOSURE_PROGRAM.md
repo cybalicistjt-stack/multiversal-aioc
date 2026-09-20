@@ -2,7 +2,7 @@
 
 **Program ID:** OARC  
 **Lane:** `oarc`  
-**Status:** ACTIVE — OARC-06 SELECTED_NOT_STARTED  
+**Status:** ACTIVE — OARC-07 SELECTED_NOT_STARTED  
 **Approved:** 2026-09-20  
 **Purpose:** bounded game-readiness integration and certification for vehicles, mecha, spacecraft/starships, bases/platforms and their modular content  
 **Operational authority:** only through `operations/CURRENT.json`
@@ -227,3 +227,30 @@ MERA engineering topology and MBES built-environment topology remain unauthorize
 Causal RED: validation run `35536003908` at `42416e8825e13a4574c66f33ed6d5a7e5179ebc5` failed the focused relationship proof while the required production module was absent. Exact-head Linux/Windows/cross-platform GREEN: run `35536121846` at `2fb7808e7c0d5a927ef42bc66c182625916dd64a`. Fresh app-main drift was zero. PR #659 published via the application repository's squash-only policy as `c4a52cc09cc0e309453bee6c291110ed2e846198`.
 
 Fresh roadmap DAG schema 1.0.4 has no OARC override, so OARC-06 is the strict selected successor.
+
+
+## OARC-06 completed golden-corpus result
+
+OARC-06 completed_verified on 2026-09-20. The application now carries a deterministic six-role golden conformance corpus over the existing OARC-01 through OARC-05 owner-preserving contracts.
+
+The nine required proof dimensions are definition/configuration, live identity, crew/control where applicable, cargo/resources, operation/travel/combat participation, damage state, repair/project handoff, save/reload/reconnect and provenance.
+
+The six required golden roles are all represented:
+- ordinary vehicle — MIB-14 Utility Rover — **game-ready**;
+- mecha — MCH-0031 Primax RX-07 Hollowstep — **blocked-visible-gap**;
+- spacecraft/carrier — SCF-0027 Orrukhal Bastion-Class Carrier — **blocked-visible-gap**;
+- fixed base — MIB-14 Workshop Outpost — **game-ready**;
+- mobile base role — MIB-14 Field Work Platform — **game-ready**, while preserving owner kind `platform`;
+- nested carrier/craft — Orrukhal plus a noncanonical workflow craft scaffold — **blocked-visible-gap**.
+
+Corpus result: **3 game-ready / 3 blocked-visible-gap**. OARC-06 intentionally publishes no all-catalog coverage percentage; that belongs to OARC-07.
+
+The three blocked proofs share the same material blocker: no exact existing MIB-14 operational definition is bound to the source-only Hollowstep/Orrukhal operational identity. OARC-06 does not synthesize those definitions, reinterpret source EP/power/capacity fields into MIB-14 units, or promote workflow scaffolding to canonical content.
+
+The ordinary Utility Rover golden remains strictly MIB-14 first-party provenance; it does not claim that source Civilian Car VEH-0001 is the same definition. The mobile-base golden preserves Field Work Platform as MIB-14 kind `platform` and only uses the role label `mobile-base-role-platform`. Orrukhal `Installed_Modules` remains configuration evidence and is not salvage-output authority.
+
+All golden receipts are non-authoritative projections. They perform no live Asset, combat, resource, Project, ownership, save/reload or reconnect mutation and create no OARC runtime. MERA and MBES remain explicit future-owner seams only.
+
+Causal RED: validation run `35536896956` at `df27aa9a5c3ab90b7b93a5b481caca8ecf0ac1cb` failed the focused golden step while the production golden composer was absent. First production candidate run `35537008531` passed source governance, focused golden tests and owner regressions but found one test-helper type mismatch (`characterId` vs governed `subjectId`) in client typecheck. After that bounded fixture-only correction, exact-head Linux/Windows/cross-platform GREEN run `35537101123` passed at `b5ac8bfe87879f466d154622effe62b112cb4674`. Fresh app main had no drift. PR #661 published via squash as `9bce9c663bab487a795491ddea8a5ce7bf8d8944`.
+
+Fresh roadmap DAG schema 1.0.4 has no OARC override, so OARC-07 is the strict selected successor.
