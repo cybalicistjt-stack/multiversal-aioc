@@ -2,7 +2,7 @@
 
 **Program ID:** OARC  
 **Lane:** `oarc`  
-**Status:** ACTIVE — OARC-04 SELECTED_NOT_STARTED  
+**Status:** ACTIVE — OARC-05 SELECTED_NOT_STARTED  
 **Approved:** 2026-09-20  
 **Purpose:** bounded game-readiness integration and certification for vehicles, mecha, spacecraft/starships, bases/platforms and their modular content  
 **Operational authority:** only through `operations/CURRENT.json`
@@ -191,3 +191,20 @@ Rows containing inferred, estimated, best-judgment or completed values retain a 
 The initial test-first candidate's workflow was cancelled when the PR head advanced, so OARC-03 does not claim a causal RED receipt. Final exact-head validation run `35529945628` passed the complete governed Linux/Windows/cross-platform gate at `8cf854839d2a03252e96f78ad5525be1e809f3e6`. Application PR #650 then passed fresh-main no-overlap integration and published through READY as `501e4c5c5359d2368f4fb4c835416a35d77aa7e4`.
 
 Fresh roadmap DAG schema 1.0.4 has no OARC override, so OARC-04 is the strict selected successor.
+
+
+## OARC-04 completed operational-specialization result
+
+OARC-04 completed_verified on 2026-09-20. The application adds bounded specialization projections for ordinary vehicles, mecha, ships and bases over normalized source evidence and existing owner definitions.
+
+The specialization layer is explicitly non-authoritative. MIB-14 remains operational configuration authority, PPIA-04/F014 remains vehicle/mecha/ship operational-semantics authority, and D17 remains live Asset authority. No specialization profile mutates runtime state or creates a second operational engine.
+
+Vehicle profiles preserve raw source facts for domain, speed, maneuverability, range, module slots, fuel and terrain/weather. Mecha profiles preserve frame/class, mobility, EP/energy, interface, modules, sensors and shields while leaving heat unresolved when no direct source field exists. Ship profiles preserve class/scale/hull, shields, FTL, hangar evidence, hardpoints, power, reactor/fuel and endurance while leaving life-support capacity unresolved without a dedicated source field. Detailed ship power-grid simulation remains deferred by PPIA-04 IA-D08-003.
+
+Base specialization may project an existing MIB-14 base definition and reference-only facility evidence. Facility evidence does not imply installation. Universal habitation/housing capacity remains unresolved and continues to use the SMB-05 explicit housing-reference seam. MERA engineering topology and MBES built-environment topology remain reserved-owner seams only.
+
+Mixed OARC-03 provenance remains mixed in OARC-04. Missing facts remain source-unspecified with no default. Raw source units/text are preserved rather than silently parsed into new mechanics.
+
+Causal RED: validation run `35531146908` at `b5ed29350036e01f1478694208101bee3e733fee` failed the focused specialization profile while the required module was absent. Exact-head Linux/Windows/cross-platform GREEN: run `35531294278` at `b46f749ee83225d0acd7a3a270e2e8314b55c7f4`. Fresh app-main drift had zero overlap with the OARC-04 write set. PR #652 published via the app repository's squash-only policy as `665f7a67ed1685280aa5177dd890209f325bfa01`.
+
+Fresh roadmap DAG schema 1.0.4 has no OARC override, so OARC-05 is the strict selected successor.

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "OARC04.OPERATIONAL_SPECIALIZATION_PROFILES.v1",
+  "status": "current",
+  "work_item": "OARC-04",
+  "authority_contracts": [
+    "OARC01.AUTHORITY_HANDOFF.v1",
+    "OARC02.DEFINITION_BRIDGE.v1",
+    "OARC03.CATALOG_NORMALIZATION.v1"
+  ],
+  "application_merge_sha": "665f7a67ed1685280aa5177dd890209f325bfa01",
+  "result": "BOUNDED_PROFILES_WITH_UNRESOLVED_OWNER_HOOKS",
+  "authority_preservation": {
+    "operational_configuration": "MIB-14",
+    "vehicle_mecha_ship_operational_semantics": "PPIA-04/F014",
+    "live_asset_truth": "D17",
+    "engineering_topology": "MERA reserved; not implemented",
+    "built_environment_topology": "MBES reserved; not implemented"
+  },
+  "profile_rules": {
+    "vehicle": "Preserve raw normalized source evidence for ordinary operational specialization without new formulas or runtime behavior.",
+    "mecha": "Preserve frame/class, mobility, EP/energy, interface, modules, sensors and shields; source-absent heat remains unresolved.",
+    "ship": "Preserve class/scale/hull, shields, FTL, hangar evidence, hardpoints, power, reactor/fuel and endurance; life-support capacity remains unresolved without a dedicated source field; detailed power grid remains PPIA-04-deferred.",
+    "base": "Use existing MIB-14 base definitions for owner-backed configuration and reference-only facility evidence; universal habitation remains unresolved through SMB-05's explicit housing seam."
+  },
+  "provenance_rules": [
+    "Mixed OARC-03 provenance remains mixed-source-record.",
+    "Missing fields remain source-unspecified with defaultApplied=false.",
+    "Raw source units/text are preserved; OARC-04 does not silently parse them into new mechanical units.",
+    "Facility evidence does not imply installation.",
+    "Owner-backed MIB-14 numeric fields remain distinct from normalized source facts."
+  ],
+  "forbidden_behavior": [
+    "live Asset mutation",
+    "new operational runtime",
+    "invented heat, life-support or habitation defaults",
+    "detailed power-grid implementation",
+    "MERA engineering topology",
+    "MBES built-environment topology"
+  ],
+  "representative_cases": [
+    "VEH-0001 Civilian Car",
+    "MCH-0031 Primax RX-07 Hollowstep",
+    "SCF-0027 Orrukhal Bastion-Class Carrier",
+    "MIB-14 Workshop Outpost with Mecha Workshop reference evidence"
+  ],
+  "future_handoff": "OARC-05 may prove explicit containment and large-asset relationships using existing Asset/containment owners. Specialization profiles do not create containment ownership or live relationship state."
+}
