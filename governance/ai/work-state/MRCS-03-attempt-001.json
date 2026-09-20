@@ -34,17 +34,17 @@
     "MRCS-04+ remain unauthorized until separately selected.",
     "MSAS and MVPS lane selectors/branches/authority are independent and must not be rewritten by MRCS work."
   ],
-  "active_substep": "control_plane_closeout",
-  "next_action": "Prepare protected AIOC closeout candidate that marks MRCS-03 completed_verified and selects MRCS-04 selected_not_started without mutating MSAS or MVPS state; validate, publish through AIOC READY queue, reconcile, then reseed the mrcs lane-state ref for MRCS-04.",
+  "active_substep": "control_plane_fresh_base_integration",
+  "next_action": "Fresh-read AIOC main, PR 1452 exact head and FIFO queue; bind green integration to the observed base, merge only exact head 5fd349382a815a6472ffda53b8724a01b4cf80e9, verify durable main, reconcile queue, then reseed mrcs lane state for MRCS-04.",
   "execution_guard": {
     "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 10,
+    "material_progress_seq": 11,
     "progress_at_last_owner_command": 6,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "kind": "publication_reconciled",
-      "evidence": "Application queue generation 4 is reconciled empty; MRCS-03-app-001 is durably published as d2704aff2c777f31b98f00d41277fbc82594f0ff."
+      "kind": "control_plane_ready_queued",
+      "evidence": "MRCS-03-closeout-001 entered AIOC READY queue generation 9 at commit d37566a604cf50f8672f3a8d1866653984574c7f."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
