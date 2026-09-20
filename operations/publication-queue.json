@@ -1,8 +1,36 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 26,
-  "ready": [],
+  "generation": 27,
+  "ready": [
+    {
+      "candidate_id": "MVPS-14-app-001",
+      "lane": "mvps",
+      "work_item_id": "MVPS-14",
+      "pr_number": 1461,
+      "head_sha": "3d6f7b37282e3bc53f9cb3031403b18bcba3c1d4",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "3d6f7b37282e3bc53f9cb3031403b18bcba3c1d4",
+        "run_id": "35499228433"
+      },
+      "write_set": [
+        ".github/workflows/validate-repository-health.yml",
+        "governance/application-planning/player-species/contracts/MVPS-14_AUTHORING_CONTRACT.json",
+        "governance/application-planning/player-species/contracts/MVPS-14_SEARCH_INSPECTION_CONTRACT.json",
+        "governance/application-planning/player-species/contracts/MVPS-14_PRESENTATION_PROJECTION_CONTRACT.json",
+        "governance/application-planning/player-species/contracts/MVPS-14_AUTHORING_SEARCH_PRESENTATION_FIXTURES.json",
+        "governance/application-planning/player-species/contracts/MVPS-14_INVARIANTS.json",
+        "tests/control_plane/test_mvps14_authoring_search_inspection_presentation.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "cc6101d2bf24dc076b3e3eb56b4f67d93c059400",
+        "authoring_projection_owner": "AuthoringProjectionPort",
+        "character_projection_owner": "A4 CharacterProjectionPort",
+        "predecessor_merge_sha": "54434fb40895f35af97d58c1c6fdf0322a0bb0eb"
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
