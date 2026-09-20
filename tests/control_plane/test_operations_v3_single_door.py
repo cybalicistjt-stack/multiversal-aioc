@@ -168,9 +168,9 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
 
-    def test_msas_mrcs_and_mvps_lanes_keep_independent_authority(self) -> None:
+    def test_msas_mrcs_and_oarc_lanes_keep_independent_authority(self) -> None:
         current = self._json("operations/CURRENT.json")
-        for lane_id in ("msas", "mrcs", "mvps"):
+        for lane_id in ("msas", "mrcs", "oarc"):
             lane = current["lanes"][lane_id]
             self.assertIn(lane["state"], {"selected_not_started", "in_progress", "completed_verified"})
             checkpoint = self._json(lane["checkpoint_path"])
@@ -186,11 +186,11 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
                 self.assertTrue(lane["implementation_authority"])
                 self.assertTrue(lane["implementation_branch"])
 
-        attempts = {current["lanes"][lane_id]["attempt_id"] for lane_id in ("msas", "mrcs", "mvps")}
+        attempts = {current["lanes"][lane_id]["attempt_id"] for lane_id in ("msas", "mrcs", "oarc")}
         self.assertEqual(len(attempts), 3)
         branches = [
             current["lanes"][lane_id]["implementation_branch"]
-            for lane_id in ("msas", "mrcs", "mvps")
+            for lane_id in ("msas", "mrcs", "oarc")
             if current["lanes"][lane_id]["implementation_branch"]
         ]
         self.assertEqual(len(branches), len(set(branches)))
@@ -201,43 +201,43 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
 
         bootstrap = self._text("operations/BOOTSTRAP.md")
         contract = self._text("operations/OPERATING_CONTRACT.md")
-        for lane_id in ("msas", "mrcs", "mvps"):
+        for lane_id in ("msas", "mrcs", "oarc"):
             self.assertIn(lane_id, bootstrap)
             self.assertIn(lane_id, contract)
         self.assertIn("does **not** pause, revoke, or rewrite another lane", bootstrap)
         self.assertIn("does not implicitly pause, revoke, reorder, or rewrite another active lane", contract)
 
-    def test_mvps_lane_lifecycle_is_independent_and_checkpointed(self) -> None:
+    def test_oarc_lane_lifecycle_is_independent_and_checkpointed(self) -> None:
         current = self._json("operations/CURRENT.json")
-        mvps = current["lanes"]["mvps"]
-        self.assertTrue(mvps["selected_work_item"].startswith("MVPS-"))
-        self.assertTrue(mvps["attempt_id"].startswith(mvps["selected_work_item"] + "-attempt-"))
-        self.assertIn(mvps["state"], {"selected_not_started", "in_progress", "completed_verified"})
+        oarc = current["lanes"]["oarc"]
+        self.assertTrue(oarc["selected_work_item"].startswith("OARC-"))
+        self.assertTrue(oarc["attempt_id"].startswith(oarc["selected_work_item"] + "-attempt-"))
+        self.assertIn(oarc["state"], {"selected_not_started", "in_progress", "completed_verified"})
 
-        checkpoint = self._json(mvps["checkpoint_path"])
-        self.assertEqual(checkpoint["work_item_id"], mvps["selected_work_item"])
-        self.assertEqual(checkpoint["attempt_id"], mvps["attempt_id"])
-        self.assertEqual(checkpoint["status"], mvps["state"])
-        self.assertEqual(checkpoint["implementation_branch"], mvps["implementation_branch"])
-        self.assertEqual(checkpoint["implementation_authority"], mvps["implementation_authority"])
+        checkpoint = self._json(oarc["checkpoint_path"])
+        self.assertEqual(checkpoint["work_item_id"], oarc["selected_work_item"])
+        self.assertEqual(checkpoint["attempt_id"], oarc["attempt_id"])
+        self.assertEqual(checkpoint["status"], oarc["state"])
+        self.assertEqual(checkpoint["implementation_branch"], oarc["implementation_branch"])
+        self.assertEqual(checkpoint["implementation_authority"], oarc["implementation_authority"])
 
-        if mvps["state"] == "selected_not_started":
-            self.assertIsNone(mvps["implementation_branch"])
-            self.assertFalse(mvps["implementation_authority"])
-        elif mvps["state"] == "in_progress":
-            self.assertTrue(mvps["implementation_branch"])
-            self.assertTrue(mvps["implementation_authority"])
+        if oarc["state"] == "selected_not_started":
+            self.assertIsNone(oarc["implementation_branch"])
+            self.assertFalse(oarc["implementation_authority"])
+        elif oarc["state"] == "in_progress":
+            self.assertTrue(oarc["implementation_branch"])
+            self.assertTrue(oarc["implementation_authority"])
         else:
-            self.assertFalse(mvps["implementation_authority"])
+            self.assertFalse(oarc["implementation_authority"])
 
         msas = current["lanes"]["msas"]
         mrcs = current["lanes"]["mrcs"]
-        self.assertNotEqual(mvps["attempt_id"], msas["attempt_id"])
-        self.assertNotEqual(mvps["attempt_id"], mrcs["attempt_id"])
-        if mvps.get("implementation_branch") and msas.get("implementation_branch"):
-            self.assertNotEqual(mvps["implementation_branch"], msas["implementation_branch"])
-        if mvps.get("implementation_branch") and mrcs.get("implementation_branch"):
-            self.assertNotEqual(mvps["implementation_branch"], mrcs["implementation_branch"])
+        self.assertNotEqual(oarc["attempt_id"], msas["attempt_id"])
+        self.assertNotEqual(oarc["attempt_id"], mrcs["attempt_id"])
+        if oarc.get("implementation_branch") and msas.get("implementation_branch"):
+            self.assertNotEqual(oarc["implementation_branch"], msas["implementation_branch"])
+        if oarc.get("implementation_branch") and mrcs.get("implementation_branch"):
+            self.assertNotEqual(oarc["implementation_branch"], mrcs["implementation_branch"])
 
     def test_repository_entrypoint_has_no_independent_current_state(self) -> None:
         agents = self._text("AGENTS.md")
@@ -276,7 +276,7 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertEqual(lanes["operating_contract"], "operations/OPERATING_CONTRACT.md")
         self.assertEqual(lanes["selection_rule"], "User intent selects a lane; lane state never changes the global operating contract.")
         lane_ids = {row["id"] for row in lanes["lanes"]}
-        for required in {"msas", "mrcs", "mvps", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}:
+        for required in {"msas", "mrcs", "oarc", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}:
             self.assertIn(required, lane_ids)
 
     def test_legacy_projections_follow_canonical_product_state_without_selecting_work(self) -> None:
@@ -361,7 +361,7 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
 
     def test_three_persistent_implementation_lanes_are_never_collapsed(self) -> None:
         lanes = self._json("operations/LANES.json")
-        self.assertEqual(lanes["persistent_implementation_lanes"], ["msas","mrcs","mvps"])
+        self.assertEqual(lanes["persistent_implementation_lanes"], ["msas","mrcs","oarc"])
         current = self._json("operations/CURRENT.json")
         for lane_id in lanes["persistent_implementation_lanes"]:
             self.assertIn(lane_id, current["lanes"])
@@ -375,7 +375,7 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         current = self._json("operations/CURRENT.json")
         bootstrap = self._text("operations/BOOTSTRAP.md")
         contract = self._text("operations/OPERATING_CONTRACT.md")
-        for lane_id in ("msas", "mrcs", "mvps"):
+        for lane_id in ("msas", "mrcs", "oarc"):
             self.assertEqual(current["lanes"][lane_id]["execution_state_ref"], f"ops3-lane-state/{lane_id}")
         self.assertIn("Ready-then-queue publication", bootstrap)
         self.assertIn("ready-candidate publication queue", contract)

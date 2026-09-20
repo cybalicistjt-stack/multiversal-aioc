@@ -318,9 +318,18 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         errors.append("LANES lanes must be an array")
         lane_rows = []
     lane_ids = {row.get("id") for row in lane_rows if isinstance(row, dict)}
-    required_lanes = {"msas", "mrcs", "mvps", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}
+    required_lanes = {"msas", "mrcs", "oarc", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}
     if not required_lanes <= lane_ids:
         errors.append(f"missing required lanes: {sorted(required_lanes - lane_ids)}")
+    if "mvps" in lane_ids:
+        errors.append("terminal MVPS must remain completed history and may not reappear as a live lane")
+    if lanes.get("persistent_implementation_lanes") != ["msas", "mrcs", "oarc"]:
+        errors.append("persistent implementation slots must be exactly msas, mrcs and oarc")
+    if isinstance(current.get("lanes"), dict) and "mvps" in current["lanes"]:
+        errors.append("CURRENT must not expose terminal MVPS as a live lane after OARC replacement")
+    mvps_history = current.get("completed_programs", {}).get("MVPS_CORE26_PRODUCTION_CERTIFICATION", {})
+    if mvps_history.get("state") != "completed_verified":
+        errors.append("MVPS terminal completion history must remain preserved")
 
     surfaces = registry.get("surfaces")
     if not isinstance(surfaces, list):
@@ -422,7 +431,7 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         checkpoint = _read_json(root, Path(checkpoint_path_value), errors)
     _validate_product_lane_projection(current, legacy_pointer, legacy_authority, checkpoint, errors)
 
-    for lane_id in ("mrcs", "mvps"):
+    for lane_id in ("mrcs", "oarc"):
         lane = product_lanes.get(lane_id, {}) if isinstance(product_lanes, dict) else {}
         if not isinstance(lane, dict):
             errors.append(f"CURRENT {lane_id} lane must be an object")

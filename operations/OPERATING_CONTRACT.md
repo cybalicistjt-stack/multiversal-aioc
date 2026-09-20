@@ -50,7 +50,7 @@ When a conversation changes topics materially, reselect the lane once. Do not ca
 
 ### Parallel persistent lanes
 
-OPS3 permanently preserves three independent persistent implementation lanes: `msas`, `mrcs`, and `mvps`. A lane may be `completed_verified`, `selected_not_started`, or `in_progress`, but completion or inactivity never deletes, folds into, or revokes either of the other persistent lanes. UISR-11 remains preserved as completed program history rather than occupying one of these slots. Operations work may repair lane selectors without collapsing this three-lane topology.
+OPS3 preserves exactly three independent persistent implementation slots. The current lanes are `msas`, `mrcs`, and `oarc`. A lane may be `completed_verified`, `selected_not_started`, or `in_progress`; one lane's completion or inactivity never pauses, folds into, or revokes another active lane. After a lane is terminal `completed_verified`, the owner may explicitly replace that persistent slot through operations governance while preserving the completed program as immutable history. MVPS-23 and UISR-11 are preserved as completed program history and no longer occupy persistent slots. Operations work may repair lane selectors without collapsing this three-slot topology.
 
 
 OPS3 may keep more than one persistent implementation lane active at once when the owner has explicitly separated the work streams.
@@ -137,11 +137,11 @@ For implementation work:
 
 ### Independent lane execution state
 
-MSAS, MRCS, and MVPS use separate compare-and-swap coordination refs:
+MSAS, MRCS, and OARC use separate compare-and-swap coordination refs:
 
 - `ops3-lane-state/msas`
 - `ops3-lane-state/mrcs`
-- `ops3-lane-state/mvps`
+- `ops3-lane-state/oarc`
 
 The state model is implemented by `scripts/ops3_lane_state.py`.
 

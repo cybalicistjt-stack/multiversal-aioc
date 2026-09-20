@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "OARC",
+  "program_name": "Operational Asset Readiness Closure",
+  "lane": "oarc",
+  "status": "owner_approved_selected_not_started",
+  "approved": "2026-09-20",
+  "implementation_authority": false,
+  "tranche_execution_target_minutes": 24,
+  "minimum_closeout_reserve_minutes": 8,
+  "split_before_start_if_target_not_credible": true,
+  "strict_order": [
+    "OARC-01",
+    "OARC-02",
+    "OARC-03",
+    "OARC-04",
+    "OARC-05",
+    "OARC-06",
+    "OARC-07"
+  ],
+  "tranches": [
+    {
+      "id": "OARC-01",
+      "name": "Authority & Handoff Contract",
+      "status": "selected_not_started"
+    },
+    {
+      "id": "OARC-02",
+      "name": "MRCS-13 ↔ MIB-14 Definition Bridge",
+      "status": "planned"
+    },
+    {
+      "id": "OARC-03",
+      "name": "Catalog Normalization",
+      "status": "planned"
+    },
+    {
+      "id": "OARC-04",
+      "name": "Operational Specialization Profiles",
+      "status": "planned"
+    },
+    {
+      "id": "OARC-05",
+      "name": "Containment & Large-Asset Relationships",
+      "status": "planned"
+    },
+    {
+      "id": "OARC-06",
+      "name": "Game-Ready Golden Cases",
+      "status": "planned"
+    },
+    {
+      "id": "OARC-07",
+      "name": "Coverage & Gap Certification",
+      "status": "planned"
+    }
+  ],
+  "required_upstream": [
+    "MRCS-13 completed_verified",
+    "MIB-14 vehicle/platform/base/mecha/ship foundation available",
+    "PPIA-04/F014 vehicle/mecha/starship owner contracts available",
+    "D17 Asset/Inventory identity, condition, containment and history authority available",
+    "MIB-12 repair/crafting transaction authority available",
+    "MIB-13 economy authority available",
+    "APW/D26 Project/time authority available",
+    "LSS salvage/decomposition authority available"
+  ],
+  "future_owner_handoffs": [
+    "MERA engineering/refit family",
+    "MBES built-environment/settlement family"
+  ],
+  "execution_design": {
+    "one_continue_scope": "One owner Continue carries the selected OARC tranche through bounded implementation, required validation, durable closeout and successor selection unless an OPS3 owner-only boundary or genuine external blocker is reached.",
+    "preload_rule": "Load only the selected OARC tranche and its declared dependency closure; block unrelated roadmap work.",
+    "no_guess_rule": "Unknown or source-unspecified operational, compatibility, topology, engineering, construction or salvage semantics remain unresolved.",
+    "owner_boundary_rule": "OARC closes bridges and readiness gaps through existing owners; it does not create replacement MRCS, MIB-14/D17, MERA or MBES runtimes."
+  }
+}
