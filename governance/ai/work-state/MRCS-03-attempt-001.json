@@ -34,17 +34,17 @@
     "MRCS-04+ remain unauthorized until separately selected.",
     "MSAS and MVPS lane selectors/branches/authority are independent and must not be rewritten by MRCS work."
   ],
-  "active_substep": "fresh_base_integration",
-  "next_action": "Fresh-read application main, queue FIFO head and PR 625 exact head; bind a green integration receipt to that base, mark PR ready, merge only expected head a66f677a41e5500630f9668fba3732d2fcd4aaab, verify durable main, then reconcile queue.",
+  "active_substep": "queue_reconciliation_and_successor_projection",
+  "next_action": "Reconcile MRCS-03-app-001 from READY queue using durable application main d2704aff2c777f31b98f00d41277fbc82594f0ff, mark lane completed_verified, then prepare MRCS-04 selected_not_started control-plane projection through protected AIOC publication.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 8,
+    "material_progress_seq": 9,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "kind": "ready_queued",
-      "evidence": "MRCS-03-app-001 entered FIFO READY queue generation 3 at commit b68b0e099e61a48fefc6764379ff432ba3758377."
+      "kind": "application_published",
+      "evidence": "Verified durable application main d2704aff2c777f31b98f00d41277fbc82594f0ff for PR 625 from exact READY head a66f677a41e5500630f9668fba3732d2fcd4aaab."
     },
     "active_stall": false,
     "terminal_response_allowed": false,
