@@ -173,6 +173,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_mvps12_validation_migration_import_export.py
 
+      - name: Run MVPS-13 runtime projection grant-receipt regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_mvps13_runtime_projection_grant_receipts.py
+
       - name: Run dynamic certified-content consumer regression
         shell: bash
         run: |
