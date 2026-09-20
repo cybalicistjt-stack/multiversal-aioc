@@ -7,10 +7,10 @@
   "source": "The Rog v2.PDF",
   "sourceLocator": "The Rog v2.PDF",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "promotionDecision": "OWNER_AUTHORIZED_MVPS20_OPTIONAL_DIMENSION_COMPLETION",
   "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.1.0",
+  "contentVersion": "1.2.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species.rog",
     "name": "Rog",
     "objectType": "mv.object.species-definition",
-    "contentVersion": "1.1.0",
+    "contentVersion": "1.2.0",
     "canonStatus": "approved_current_identity",
     "sourceEvidence": {
       "writtenSource": "The Rog v2.PDF",
@@ -79,6 +79,54 @@
             "stocky_humanoid",
             "snout_tusk_facegear"
           ]
+        },
+        "mvps20OptionalDimensions": {
+          "matrixRef": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+          "bindingSetRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+          "dispatchRule": "typed_data_not_species_name",
+          "definitionVersion": "1.2.0",
+          "dimensionStatus": {
+            "lineage_subspecies": {
+              "applicability": "not_applicable_current_canon",
+              "state": "explicit_not_applicable",
+              "contractRef": "MVPS.LineageComposition",
+              "bindingRef": null,
+              "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+              "sourceRefs": [
+                "content-source/core26-species/rog/definition-v1.1.0.json"
+              ]
+            },
+            "forms_transformation": {
+              "applicability": "not_applicable_current_canon",
+              "state": "explicit_not_applicable",
+              "contractRef": "MVPS.TransformationSemantics",
+              "bindingRef": null,
+              "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+              "sourceRefs": [
+                "content-source/core26-species/rog/definition-v1.1.0.json"
+              ]
+            },
+            "progression_maturation": {
+              "applicability": "not_applicable_current_canon",
+              "state": "explicit_not_applicable",
+              "contractRef": "MVPS.SpeciesProgressionHook",
+              "bindingRef": null,
+              "basis": "no_current_source_backed_hook_identified; no mechanic synthesized",
+              "sourceRefs": [
+                "content-source/core26-species/rog/definition-v1.1.0.json"
+              ]
+            },
+            "social_language_knowledge": {
+              "state": "governed",
+              "socialContract": "MVPS.SpeciesSocialIdentityHook",
+              "languageContract": "MVPS.SpeciesLanguageCommunicationHook",
+              "knowledgeVisibilityContract": "MVPS.SpeciesIdentityKnowledgeHook",
+              "cultureIsBiology": false,
+              "biologicalCommunicationDistinctFromLearnedLanguage": true,
+              "learnedLanguagePolicy": "explicit_source_rule_required_no_inference",
+              "observerIdentityProjection": "permission_filtered_knowledge_projection"
+            }
+          }
         }
       }
     }
@@ -88,16 +136,16 @@
   "testing": null,
   "provenance": {
     "authority": "The Rog v2.PDF",
-    "sourcePath": "content-source/core26-species/rog/definition-v1.1.0.json",
-    "sourceDigest": "sha256:45d18c2f66fd7cb12f7635f59c1df6b7cd8c79b835c51fe2dc38c7fc6cf954c2",
-    "sourceBundleId": "mv.content.core26.rog.definition-v1.1",
-    "sourceBundlePart": "rog-definition-v1.1.0",
+    "sourcePath": "content-source/core26-species/rog/definition-v1.2.0.json",
+    "sourceDigest": "sha256:243a0b3b6b54c733786f612ae1ca01948efd7f52512008142a044ac37a96c245",
+    "sourceBundleId": "mv.content.core26.rog.definition-v1.2",
+    "sourceBundlePart": "rog-definition-v1.2.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species.rog",
-      "contentVersion": "1.0.0",
-      "sourcePath": "content-source/core26-species/rog/definition-v1.0.0.json",
-      "sourceDigest": "sha256:1162464fd9111b7988904114dda6b0887121fdcde1ab784da328b3921c5c5970"
+      "contentVersion": "1.1.0",
+      "sourcePath": "content-source/core26-species/rog/definition-v1.1.0.json",
+      "sourceDigest": "sha256:45d18c2f66fd7cb12f7635f59c1df6b7cd8c79b835c51fe2dc38c7fc6cf954c2"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

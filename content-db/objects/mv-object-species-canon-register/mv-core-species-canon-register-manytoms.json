@@ -4,13 +4,13 @@
   "name": "ManyToms Canon Register",
   "objectType": "mv.object.species-canon-register",
   "developmentStage": "Structured draft",
-  "source": "mv.content.core26.manytoms.canon-register-v1.1",
-  "sourceLocator": "content-source/core26-species/manytoms/register-v1.1.0.json",
+  "source": "mv.content.core26.manytoms.canon-register-v1.2",
+  "sourceLocator": "content-source/core26-species/manytoms/register-v1.2.0.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "promotionDecision": "OWNER_AUTHORIZED_MVPS20_OPTIONAL_DIMENSION_COMPLETION",
   "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.1.0",
+  "contentVersion": "1.2.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species-canon-register.manytoms",
     "name": "ManyToms Canon Register",
     "objectType": "mv.object.species-canon-register",
-    "contentVersion": "1.1.0",
+    "contentVersion": "1.2.0",
     "register": {
       "speciesName": "ManyToms",
       "speciesDefinitionStableId": "mv.core.species.manytoms",
@@ -58,6 +58,13 @@
           "sha256": "370d0e38a9c10438f8720f3bf4e167c80dde2f1865ff6a028a2c9ca34af0d19b",
           "repositoryDecisionRef": "governance/application-planning/player-species/MVPS-19_OWNER_DECISIONS_v1.0.0.json",
           "canonRole": "owner_approved_mechanics_completion"
+        },
+        {
+          "role": "mvps20_optional_dimension_completion",
+          "title": "MVPS-20 Core-26 optional dimension matrix and special-system bindings",
+          "repositoryPath": "governance/application-planning/player-species/MVPS-20_CORE26_OPTIONAL_DIMENSION_MATRIX_v1.0.0.json",
+          "bindingRepositoryPath": "governance/application-planning/player-species/MVPS-20_SPECIAL_SYSTEM_BINDINGS_v1.0.0.json",
+          "canonRole": "source_backed_optional_dimension_completion"
         }
       ],
       "canonDomains": {
@@ -83,6 +90,13 @@
         "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
         "definitionVersion": "1.1.0",
         "preserveTypedDispatch": true
+      },
+      "optionalDimensionCompletion": {
+        "status": "completed_source_backed",
+        "matrixRef": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+        "bindingSetRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+        "definitionVersion": "1.2.0",
+        "preserveTypedDispatch": true
       }
     }
   },
@@ -91,16 +105,16 @@
   "testing": null,
   "provenance": {
     "authority": "Multiversal canonical source bundle",
-    "sourcePath": "content-source/core26-species/manytoms/register-v1.1.0.json",
-    "sourceDigest": "sha256:84a4121c9cb362f92956fce274ba2a6f16910f241b70ec13db6b5e3503c913ac",
-    "sourceBundleId": "mv.content.core26.manytoms.canon-register-v1.1",
-    "sourceBundlePart": "manytoms-register-v1.1.0",
+    "sourcePath": "content-source/core26-species/manytoms/register-v1.2.0.json",
+    "sourceDigest": "sha256:ba4fab4cc877e2ffb1c686cd61164b3ee127b21fce43797014ca39e03a38f1c7",
+    "sourceBundleId": "mv.content.core26.manytoms.canon-register-v1.2",
+    "sourceBundlePart": "manytoms-register-v1.2.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species-canon-register.manytoms",
-      "contentVersion": "1.0.0",
-      "sourcePath": "content-source/core26-species/manytoms/register-v1.0.0.json",
-      "sourceDigest": "sha256:9b14e74bd64d5e084087c88ea623de6917fd83a0edf45d5b589f9c9e0cd392e1"
+      "contentVersion": "1.1.0",
+      "sourcePath": "content-source/core26-species/manytoms/register-v1.1.0.json",
+      "sourceDigest": "sha256:84a4121c9cb362f92956fce274ba2a6f16910f241b70ec13db6b5e3503c913ac"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

@@ -4,13 +4,13 @@
   "name": "Toba-Madra Canon Register",
   "objectType": "mv.object.species-canon-register",
   "developmentStage": "Structured draft",
-  "source": "mv.content.core26.toba-madra.canon-register-v1.1",
-  "sourceLocator": "content-source/core26-species/toba-madra/register-v1.1.0.json",
+  "source": "mv.content.core26.toba-madra.canon-register-v1.2",
+  "sourceLocator": "content-source/core26-species/toba-madra/register-v1.2.0.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "promotionDecision": "OWNER_AUTHORIZED_MVPS20_OPTIONAL_DIMENSION_COMPLETION",
   "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.1.0",
+  "contentVersion": "1.2.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species-canon-register.toba-madra",
     "name": "Toba-Madra Canon Register",
     "objectType": "mv.object.species-canon-register",
-    "contentVersion": "1.1.0",
+    "contentVersion": "1.2.0",
     "register": {
       "speciesName": "Toba-Madra",
       "speciesDefinitionStableId": "mv.core.species.toba-madra",
@@ -46,6 +46,13 @@
           "sha256": "370d0e38a9c10438f8720f3bf4e167c80dde2f1865ff6a028a2c9ca34af0d19b",
           "repositoryDecisionRef": "governance/application-planning/player-species/MVPS-19_OWNER_DECISIONS_v1.0.0.json",
           "canonRole": "owner_approved_mechanics_completion"
+        },
+        {
+          "role": "mvps20_optional_dimension_completion",
+          "title": "MVPS-20 Core-26 optional dimension matrix and special-system bindings",
+          "repositoryPath": "governance/application-planning/player-species/MVPS-20_CORE26_OPTIONAL_DIMENSION_MATRIX_v1.0.0.json",
+          "bindingRepositoryPath": "governance/application-planning/player-species/MVPS-20_SPECIAL_SYSTEM_BINDINGS_v1.0.0.json",
+          "canonRole": "source_backed_optional_dimension_completion"
         }
       ],
       "canonDomains": {
@@ -71,6 +78,13 @@
         "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
         "definitionVersion": "1.1.0",
         "preserveTypedDispatch": true
+      },
+      "optionalDimensionCompletion": {
+        "status": "completed_source_backed",
+        "matrixRef": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+        "bindingSetRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+        "definitionVersion": "1.2.0",
+        "preserveTypedDispatch": true
       }
     }
   },
@@ -79,16 +93,16 @@
   "testing": null,
   "provenance": {
     "authority": "Multiversal canonical source bundle",
-    "sourcePath": "content-source/core26-species/toba-madra/register-v1.1.0.json",
-    "sourceDigest": "sha256:dc8b6877cc0aefa305f9b48cd253b0b8f825bf7209a1c3332e889a17f3588ec8",
-    "sourceBundleId": "mv.content.core26.toba-madra.canon-register-v1.1",
-    "sourceBundlePart": "toba-madra-register-v1.1.0",
+    "sourcePath": "content-source/core26-species/toba-madra/register-v1.2.0.json",
+    "sourceDigest": "sha256:49966cb35f007d99ed54c0a9cce17fc2d3491a2cf230975dc39245d49120e990",
+    "sourceBundleId": "mv.content.core26.toba-madra.canon-register-v1.2",
+    "sourceBundlePart": "toba-madra-register-v1.2.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species-canon-register.toba-madra",
-      "contentVersion": "1.0.0",
-      "sourcePath": "content-source/core26-species/toba-madra/register-v1.0.0.json",
-      "sourceDigest": "sha256:adf7c9e8574ec13789473e0f8938fe6910baa87a21dbb232b622437a3cfcc1ff"
+      "contentVersion": "1.1.0",
+      "sourcePath": "content-source/core26-species/toba-madra/register-v1.1.0.json",
+      "sourceDigest": "sha256:dc8b6877cc0aefa305f9b48cd253b0b8f825bf7209a1c3332e889a17f3588ec8"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

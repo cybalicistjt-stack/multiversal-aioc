@@ -4,13 +4,13 @@
   "name": "Suula Canon Register",
   "objectType": "mv.object.species-canon-register",
   "developmentStage": "Structured draft",
-  "source": "mv.content.core26.suula.canon-register-v1.1",
-  "sourceLocator": "content-source/core26-species/suula/register-v1.1.0.json",
+  "source": "mv.content.core26.suula.canon-register-v1.2",
+  "sourceLocator": "content-source/core26-species/suula/register-v1.2.0.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "promotionDecision": "OWNER_AUTHORIZED_MVPS20_OPTIONAL_DIMENSION_COMPLETION",
   "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.1.0",
+  "contentVersion": "1.2.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species-canon-register.suula",
     "name": "Suula Canon Register",
     "objectType": "mv.object.species-canon-register",
-    "contentVersion": "1.1.0",
+    "contentVersion": "1.2.0",
     "register": {
       "speciesName": "Suula",
       "speciesDefinitionStableId": "mv.core.species.suula",
@@ -51,6 +51,13 @@
           "sha256": "370d0e38a9c10438f8720f3bf4e167c80dde2f1865ff6a028a2c9ca34af0d19b",
           "repositoryDecisionRef": "governance/application-planning/player-species/MVPS-19_OWNER_DECISIONS_v1.0.0.json",
           "canonRole": "owner_approved_mechanics_completion"
+        },
+        {
+          "role": "mvps20_optional_dimension_completion",
+          "title": "MVPS-20 Core-26 optional dimension matrix and special-system bindings",
+          "repositoryPath": "governance/application-planning/player-species/MVPS-20_CORE26_OPTIONAL_DIMENSION_MATRIX_v1.0.0.json",
+          "bindingRepositoryPath": "governance/application-planning/player-species/MVPS-20_SPECIAL_SYSTEM_BINDINGS_v1.0.0.json",
+          "canonRole": "source_backed_optional_dimension_completion"
         }
       ],
       "canonDomains": {
@@ -76,6 +83,13 @@
         "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
         "definitionVersion": "1.1.0",
         "preserveTypedDispatch": true
+      },
+      "optionalDimensionCompletion": {
+        "status": "completed_source_backed",
+        "matrixRef": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+        "bindingSetRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+        "definitionVersion": "1.2.0",
+        "preserveTypedDispatch": true
       }
     }
   },
@@ -84,16 +98,16 @@
   "testing": null,
   "provenance": {
     "authority": "Multiversal canonical source bundle",
-    "sourcePath": "content-source/core26-species/suula/register-v1.1.0.json",
-    "sourceDigest": "sha256:af990da1b901fad4434c876324b8bb1e8ab122ccb193702878aba1490c83210e",
-    "sourceBundleId": "mv.content.core26.suula.canon-register-v1.1",
-    "sourceBundlePart": "suula-register-v1.1.0",
+    "sourcePath": "content-source/core26-species/suula/register-v1.2.0.json",
+    "sourceDigest": "sha256:bbb1b3518edb04972d4fc6c487975898e0dbfca8ad7b39cef9642d9bc230ca40",
+    "sourceBundleId": "mv.content.core26.suula.canon-register-v1.2",
+    "sourceBundlePart": "suula-register-v1.2.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species-canon-register.suula",
-      "contentVersion": "1.0.0",
-      "sourcePath": "content-source/core26-species/suula/register-v1.0.0.json",
-      "sourceDigest": "sha256:912a303586818d26ad96cc61b5c63530884bda00cf9182b68242e6e8da89207b"
+      "contentVersion": "1.1.0",
+      "sourcePath": "content-source/core26-species/suula/register-v1.1.0.json",
+      "sourceDigest": "sha256:af990da1b901fad4434c876324b8bb1e8ab122ccb193702878aba1490c83210e"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }

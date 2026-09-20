@@ -4,13 +4,13 @@
   "name": "Stygian Canon Register",
   "objectType": "mv.object.species-canon-register",
   "developmentStage": "Structured draft",
-  "source": "mv.content.core26.stygian.canon-register-v1.1",
-  "sourceLocator": "content-source/core26-species/stygian/register-v1.1.0.json",
+  "source": "mv.content.core26.stygian.canon-register-v1.2",
+  "sourceLocator": "content-source/core26-species/stygian/register-v1.2.0.json",
   "coverageStatus": "CANONICAL_OBJECT_PRESENT",
-  "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+  "promotionDecision": "OWNER_AUTHORIZED_MVPS20_OPTIONAL_DIMENSION_COMPLETION",
   "reviewStatus": "APPROVED",
   "schemaVersion": "",
-  "contentVersion": "1.1.0",
+  "contentVersion": "1.2.0",
   "packIds": [],
   "dependencies": [],
   "tags": [
@@ -21,7 +21,7 @@
     "id": "mv.core.species-canon-register.stygian",
     "name": "Stygian Canon Register",
     "objectType": "mv.object.species-canon-register",
-    "contentVersion": "1.1.0",
+    "contentVersion": "1.2.0",
     "register": {
       "speciesName": "Stygian",
       "speciesDefinitionStableId": "mv.core.species.stygian",
@@ -46,6 +46,13 @@
           "sha256": "370d0e38a9c10438f8720f3bf4e167c80dde2f1865ff6a028a2c9ca34af0d19b",
           "repositoryDecisionRef": "governance/application-planning/player-species/MVPS-19_OWNER_DECISIONS_v1.0.0.json",
           "canonRole": "owner_approved_mechanics_completion"
+        },
+        {
+          "role": "mvps20_optional_dimension_completion",
+          "title": "MVPS-20 Core-26 optional dimension matrix and special-system bindings",
+          "repositoryPath": "governance/application-planning/player-species/MVPS-20_CORE26_OPTIONAL_DIMENSION_MATRIX_v1.0.0.json",
+          "bindingRepositoryPath": "governance/application-planning/player-species/MVPS-20_SPECIAL_SYSTEM_BINDINGS_v1.0.0.json",
+          "canonRole": "source_backed_optional_dimension_completion"
         }
       ],
       "canonDomains": {
@@ -71,6 +78,13 @@
         "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
         "definitionVersion": "1.1.0",
         "preserveTypedDispatch": true
+      },
+      "optionalDimensionCompletion": {
+        "status": "completed_source_backed",
+        "matrixRef": "MVPS20.CORE26.OPTIONAL_DIMENSIONS.v1",
+        "bindingSetRef": "MVPS20.CORE26.SPECIAL_SYSTEMS.v1",
+        "definitionVersion": "1.2.0",
+        "preserveTypedDispatch": true
       }
     }
   },
@@ -79,16 +93,16 @@
   "testing": null,
   "provenance": {
     "authority": "Multiversal canonical source bundle",
-    "sourcePath": "content-source/core26-species/stygian/register-v1.1.0.json",
-    "sourceDigest": "sha256:8002a30ae6ba35b5ed07fbebbd53628cda8b275e4bd424d098ad301cf6c7c841",
-    "sourceBundleId": "mv.content.core26.stygian.canon-register-v1.1",
-    "sourceBundlePart": "stygian-register-v1.1.0",
+    "sourcePath": "content-source/core26-species/stygian/register-v1.2.0.json",
+    "sourceDigest": "sha256:7ff16b405c10f64db229af32dcac30350763a78b624a6be2f1c7f4dd93f3324b",
+    "sourceBundleId": "mv.content.core26.stygian.canon-register-v1.2",
+    "sourceBundlePart": "stygian-register-v1.2.0",
     "sourceClass": "replacement",
     "replaces": {
       "stableId": "mv.core.species-canon-register.stygian",
-      "contentVersion": "1.0.0",
-      "sourcePath": "content-source/core26-species/stygian/register-v1.0.0.json",
-      "sourceDigest": "sha256:37d07ffadae9d17dd3dbbac97a0b0136330648acf1daa9ed7c8f9d0d4a83c733"
+      "contentVersion": "1.1.0",
+      "sourcePath": "content-source/core26-species/stygian/register-v1.1.0.json",
+      "sourceDigest": "sha256:8002a30ae6ba35b5ed07fbebbd53628cda8b275e4bd424d098ad301cf6c7c841"
     },
     "importedBy": "scripts/build-canonical-content-database.mjs"
   }
