@@ -198,5 +198,87 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertTrue(forbidden.isdisjoint(public))
 
 
+    def test_lane_state_is_the_hard_terminal_response_gate(self) -> None:
+        self.assertTrue(
+            hasattr(EXECUTION_GUARD, "validate_lane_terminal_response"),
+            "terminal-response enforcement must use durable lane state, not only the checkpoint",
+        )
+        for execution_status in ("in_progress", "prequeue_green", "published"):
+            with self.subTest(execution_status=execution_status):
+                errors = EXECUTION_GUARD.validate_lane_terminal_response({
+                    "execution_status": execution_status,
+                    "selected_work_item": "GPR-X",
+                    "attempt_id": "GPR-X-attempt-001",
+                })
+                self.assertIn(EXECUTION_GUARD.NONTERMINAL, errors)
+        self.assertEqual(
+            EXECUTION_GUARD.validate_lane_terminal_response({
+                "execution_status": "selected_not_started",
+                "selected_work_item": "GPR-Y",
+                "attempt_id": "GPR-Y-attempt-001",
+            }),
+            [],
+        )
+
+    def test_lane_state_durably_counts_owner_reentry_without_fake_progress(self) -> None:
+        state = LANE_STATE.initial_state(
+            "gpr", revision=1, selected_work_item="GPR-X", attempt_id="GPR-X-attempt-001"
+        )
+        self.assertEqual(state.get("owner_continue_count"), 0)
+        state = LANE_STATE.start_execution(
+            state,
+            expected_revision=1,
+            lane="gpr",
+            implementation_branch="work/gpr-x",
+            evidence="owner Continue",
+        )
+        self.assertEqual(state.get("owner_continue_count"), 1)
+        self.assertTrue(
+            hasattr(LANE_STATE, "observe_owner_reentry"),
+            "repeated owner Continue must be recorded durably on the active lane",
+        )
+        reentered = LANE_STATE.observe_owner_reentry(
+            state,
+            expected_revision=2,
+            lane="gpr",
+            evidence="owner Continue while attempt remained nonterminal",
+        )
+        self.assertEqual(reentered["owner_continue_count"], 2)
+        self.assertEqual(reentered["progress_seq"], state["progress_seq"])
+        self.assertEqual(reentered["execution_status"], "in_progress")
+        self.assertEqual(reentered["execution_incident"]["code"], "OPS3.MULTI_CONTINUE")
+
+    def test_successor_reseed_preserves_continue_truth(self) -> None:
+        state = LANE_STATE.initial_state(
+            "gpr", revision=10, selected_work_item="GPR-X", attempt_id="GPR-X-attempt-001"
+        )
+        state = LANE_STATE.start_execution(
+            state, expected_revision=10, lane="gpr",
+            implementation_branch="work/gpr-x", evidence="owner Continue"
+        )
+        state = LANE_STATE.observe_owner_reentry(
+            state, expected_revision=11, lane="gpr",
+            evidence="second owner Continue"
+        )
+        state = LANE_STATE.mark_prequeue_green(
+            state, expected_revision=12, lane="gpr",
+            candidate_head="head-x", validation_run="run-x"
+        )
+        state = LANE_STATE.mark_published(
+            state, expected_revision=13, lane="gpr",
+            candidate_head="head-x", merge_sha="merge-x",
+            ready_candidate_id="GPR-X-app-001"
+        )
+        next_state = LANE_STATE.reseed_successor(
+            state, expected_revision=14, lane="gpr",
+            successor_work_item="GPR-Y", successor_attempt_id="GPR-Y-attempt-001",
+            closeout_merge_sha="closeout-x", closeout_validation_run="closeout-run-x",
+            closeout_ready_candidate_id="GPR-X-closeout-001"
+        )
+        self.assertEqual(next_state["last_completed"]["owner_continue_count"], 2)
+        self.assertFalse(next_state["last_completed"]["single_continue_achieved"])
+        self.assertEqual(next_state["owner_continue_count"], 0)
+
+
 if __name__ == "__main__":
     unittest.main()

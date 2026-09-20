@@ -6,41 +6,41 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 312,
+  "state_revision": 313,
   "default_lane": "gpr",
-  "active_operations_work_item": null,
-  "active_operations_work_item_path": null,
+  "active_operations_work_item": "OPS3-12",
+  "active_operations_work_item_path": "operations/work-items/OPS3-12.json",
   "product_start_freeze": {
-    "active": false,
-    "reason": "OPS3-11 completed_verified after replacing activity-style instrumentation with milestone-only lane state, deterministic successor reseed, instrumentation-only progress rejection, and the bounded closeout fast path.",
-    "preserved_selected_work_item": "MSAS-21",
-    "preserved_attempt_id": "MSAS-21-attempt-001",
+    "active": true,
+    "reason": "OPS3-12 repairs day-wide tranche fragmentation, stale checkpoint terminal gating, overpolling, and unrelated AIOC validation fanout before GPR-10 starts.",
+    "preserved_selected_work_item": "GPR-10",
+    "preserved_attempt_id": "GPR-10-attempt-001",
     "implementation_authority": false,
-    "cleared_by": "OPS3-11 completed_verified",
+    "cleared_by": null,
     "preserved_lane_selections": {
-      "msas": {
-        "selected_work_item": "MSAS-21",
-        "attempt_id": "MSAS-21-attempt-001",
-        "state": "completed_verified"
+      "gpr": {
+        "selected_work_item": "GPR-10",
+        "attempt_id": "GPR-10-attempt-001",
+        "state": "selected_not_started"
       },
       "mrcs": {
         "selected_work_item": "MRCS-21",
         "attempt_id": "MRCS-21-attempt-001",
         "state": "completed_verified"
       },
-      "mvps": {
-        "selected_work_item": "MVPS-23",
-        "attempt_id": "MVPS-23-attempt-001",
+      "oarc": {
+        "selected_work_item": "OARC-07",
+        "attempt_id": "OARC-07-attempt-001",
         "state": "completed_verified"
       }
     }
   },
   "lanes": {
     "operations": {
-      "state": "completed_verified",
-      "work_item_id": "OPS3-11",
-      "work_item_path": "operations/work-items/OPS3-11.json",
-      "implementation_authority": false
+      "state": "in_progress",
+      "work_item_id": "OPS3-12",
+      "work_item_path": "operations/work-items/OPS3-12.json",
+      "implementation_authority": true
     },
     "msas": {
       "state": "completed_verified",
@@ -119,7 +119,7 @@
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes.",
     "domain_authority_rule": "When CURRENT.json names a domain authority relevant to the requested scope, that referenced authority defines current domain canon. Historical or generated domain material cannot override it; domain authority cannot select work or expand lane scope."
   },
-  "next_project_action": "GPR-10 remains independently selected_not_started. MRCS and OARC are terminal completed_verified. Continue only the persistent implementation lane explicitly requested by the owner; OARC is completed history and authorizes no successor.",
+  "next_project_action": "OPS3-12 operations repair is active. GPR-10 remains selected_not_started and product implementation is frozen until the execution-reliability repair is completed_verified.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

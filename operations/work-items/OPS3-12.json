@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS3-12",
+  "title": "Single-Lane Execution Reliability and Validation Compression",
+  "status": "in_progress",
+  "owner_directive": "Audit every tranche completed on 2026-09-20, remove reintroduced overhandling, make one owner Continue reliably span the full bounded tranche, and optimize the current single-active-lane period without weakening exact-head validation or protected-main publication.",
+  "observed_day": {
+    "tranche_closeouts": 45,
+    "recorded_single_continue": 28,
+    "recorded_multi_continue": 17,
+    "recorded_distribution": {
+      "1": 28,
+      "2": 15,
+      "3": 1,
+      "5": 1
+    },
+    "recorded_multi_continue_rate": 0.3778,
+    "measurement_limitation": "Checkpoint continue_turns undercounts known fragmentation; GPR-07 and GPR-09 are confirmed examples where later closeout data normalized the count back to one."
+  },
+  "root_causes": [
+    "Terminal-response enforcement consults checkpoint state that is stale during live execution instead of treating lane-state execution_status as the hard response gate.",
+    "Repeated owner Continues are not durably recorded at the lane-state boundary, allowing final checkpoint telemetry to undercount or erase fragmentation.",
+    "AIOC Validate Operations V3 replays the entire terminal MVPS/Core-26/content pipeline suite for ordinary GPR/OARC/MRCS closeouts unrelated to those assets.",
+    "Healthy CI has repeatedly been polled and narrated at per-platform/job granularity despite OPS3-11 prohibiting that overinstrumentation.",
+    "Parallel-lane reconciliation complexity persisted after MRCS and OARC became terminal; current execution has one nonterminal persistent lane."
+  ],
+  "external_patterns_reviewed": [
+    "GitHub REST best practices: prefer webhooks/events to polling; when polling is unavoidable, minimize frequency and data.",
+    "GitHub Actions workflow_run: event-driven continuation after workflow completion.",
+    "Temporal durable execution: resume exactly from persisted workflow state after process/session interruption.",
+    "AWS Step Functions callback/sync patterns: wait on durable external completion rather than keeping a client-side loop alive.",
+    "AWS retry guidance: bounded retries with backoff and changed evidence, not tight retry loops."
+  ],
+  "repair_scope": [
+    "Make durable lane-state execution_status the terminal-response gate.",
+    "Add owner_continue_count and exceptional owner-reentry recording to lane state without converting it back into an activity log.",
+    "Carry truthful Continue counts through successor reseed so closeout cannot silently normalize fragmentation.",
+    "Define derived single-active-lane mode and quiet execution behavior while keeping the three persistent slots as history/topology.",
+    "Scope heavy MVPS/Core-26/content-pipeline validation only to commits that touch those dependent surfaces.",
+    "Preserve exact-head Linux/Windows/deterministic application validation, READY publication, protected-main rules and bounded closeout."
+  ],
+  "implementation_authority": true,
+  "completed": false,
+  "active_substep": "implementation_validation",
+  "next_action": "Observe RED from the new control-plane regressions, then implement only the bounded OPS3-12 repair.",
+  "red_sync_note": "Test-only synchronization commit created because the PR-open event produced no Actions run; no implementation behavior is included.",
+  "current_freeze": {
+    "active": true,
+    "preserved_gpr": "GPR-10",
+    "persistent_siblings": [
+      "MRCS-21 completed_verified",
+      "OARC-07 completed_verified"
+    ]
+  },
+  "red_evidence": {
+    "head": "216abc0a6b89cb70aed4b699e3a62e07b187ccaa",
+    "kind": "exact-head source-level causal RED after GitHub emitted no PR check run",
+    "missing_controls": [
+      "lane-state terminal gate",
+      "durable owner reentry recorder",
+      "durable owner continue count",
+      "dependency-scoped validation classifier",
+      "single-active-lane mode",
+      "quiet execution"
+    ],
+    "actions_event_incident": "PR #1520 open, synchronize, and reopen produced zero check runs; executor stopped polling and used exact-head source assertions plus independent core-semantics execution."
+  }
+}

@@ -104,6 +104,15 @@ Once lane, work item, repository, branch, and acceptance gate are known:
 
 Research is progress only when it resolves a concrete unknown needed for the result.
 
+
+### Single-active-lane mode and quiet execution
+
+When exactly one persistent implementation lane is nonterminal, OPS3 enters **single-active-lane mode**. The three persistent slots remain canonical history/topology, but ordinary execution must not read, reconcile, or narrate terminal sibling lanes unless a concrete dependency or fresh-main conflict requires it.
+
+The durable lane ref is the **lane-state terminal gate**. For the selected lane, `in_progress`, `prequeue_green`, or `published` means a normal terminal response to an owner execution command is forbidden even if the main-branch checkpoint is stale or still says `selected_not_started`. A repeated owner execution command against an active attempt must be recorded through the lane-state owner-reentry receipt before ordinary work resumes; it increments owner interaction truth without becoming material progress.
+
+Use **quiet execution** for governed tranches. While CI is healthy, inspect only **healthy workflow-level status** at a sparse cadence and do not narrate queued/running jobs, individual platform progress, queue mechanics, or merge mechanics. Inspect job/step/log detail only after terminal failure or a concrete unresolved failure signature. Browser/session continuity is never required: after interruption, resume from the durable lane milestone and repository evidence.
+
 ## 6. Executor independence
 
 Executors are replaceable capabilities.

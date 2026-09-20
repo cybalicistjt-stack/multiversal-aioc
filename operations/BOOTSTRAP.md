@@ -84,6 +84,15 @@ Treat a workflow run as one validation gate. While it is healthy/in-progress, in
 
 If a tool call returns no usable result, a session aborts, or execution resumes after an interruption, fresh-read the lane milestone plus the repository/PR/CI/queue evidence needed to determine what happened since that milestone; never replay completed work merely because it was not mirrored into lane state. An executor interruption is an executor/tooling incident, not permission to restart the tranche, reserve `main`, or block another lane.
 
+
+### Single-active-lane mode and quiet execution
+
+When exactly one persistent implementation lane is nonterminal, OPS3 enters **single-active-lane mode**. The three persistent slots remain canonical history/topology, but ordinary execution must not read, reconcile, or narrate terminal sibling lanes unless a concrete dependency or fresh-main conflict requires it.
+
+The durable lane ref is the **lane-state terminal gate**. For the selected lane, `in_progress`, `prequeue_green`, or `published` means a normal terminal response to an owner execution command is forbidden even if the main-branch checkpoint is stale or still says `selected_not_started`. A repeated owner execution command against an active attempt must be recorded through the lane-state owner-reentry receipt before ordinary work resumes; it increments owner interaction truth without becoming material progress.
+
+Use **quiet execution** for governed tranches. While CI is healthy, inspect only **healthy workflow-level status** at a sparse cadence and do not narrate queued/running jobs, individual platform progress, queue mechanics, or merge mechanics. Inspect job/step/log detail only after terminal failure or a concrete unresolved failure signature. Browser/session continuity is never required: after interruption, resume from the durable lane milestone and repository evidence.
+
 ## 8. Ready-then-queue publication
 
 Before any executor mutates protected `main` in `cybalicistjt-stack/Multiversal-app` or `cybalicistjt-stack/multiversal-aioc`, follow the ready-candidate protocol in `operations/OPERATING_CONTRACT.md` using `scripts/ops3_merge_lease.py`.

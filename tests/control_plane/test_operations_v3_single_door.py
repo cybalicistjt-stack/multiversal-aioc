@@ -64,8 +64,11 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
             self.assertEqual(operations["state"], "in_progress")
             self.assertTrue(operations["implementation_authority"])
             self.assertTrue(freeze["active"])
-            self.assertEqual(freeze["preserved_selected_work_item"], current["lanes"]["msas"]["selected_work_item"])
-            self.assertEqual(freeze["preserved_attempt_id"], current["lanes"]["msas"]["attempt_id"])
+            preserved = freeze["preserved_lane_selections"]
+            for lane_id in ("gpr", "mrcs", "oarc"):
+                self.assertEqual(preserved[lane_id]["selected_work_item"], current["lanes"][lane_id]["selected_work_item"])
+                self.assertEqual(preserved[lane_id]["attempt_id"], current["lanes"][lane_id]["attempt_id"])
+                self.assertEqual(preserved[lane_id]["state"], current["lanes"][lane_id]["state"])
 
         product = current["lanes"]["msas"]
         self.assertIn(product["state"], {"selected_not_started", "in_progress", "completed_verified"})
@@ -465,6 +468,24 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
             self.assertIn(phrase, bootstrap + "\n" + contract)
         self.assertNotIn("After each material durable side effect, record a lane-state progress receipt", bootstrap)
         self.assertNotIn("Material durable side effects should be followed by a lane-state progress receipt", contract)
+
+
+    def test_single_active_lane_quiet_mode_and_scoped_validation_are_canonical(self) -> None:
+        bootstrap = self._text("operations/BOOTSTRAP.md")
+        contract = self._text("operations/OPERATING_CONTRACT.md")
+        combined = bootstrap + "\n" + contract
+        for phrase in (
+            "single-active-lane mode",
+            "lane-state terminal gate",
+            "healthy workflow-level status",
+            "quiet execution",
+        ):
+            self.assertIn(phrase, combined)
+
+        workflow = self._text(".github/workflows/validate-repository-health.yml")
+        self.assertIn("Classify validation scope", workflow)
+        self.assertIn("certified_content", workflow)
+        self.assertIn("steps.scope.outputs.certified_content == 'true'", workflow)
 
 
 if __name__ == "__main__":
