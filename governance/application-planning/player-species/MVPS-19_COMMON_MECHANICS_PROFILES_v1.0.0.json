@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0.0",
+  "profile_set_id": "MVPS19.COMMON_MECHANICS_PROFILES.v1",
+  "status": "OWNER_APPROVED",
+  "rules": [
+    "Typed profile/capability data drives behavior; species names never select execution branches.",
+    "Owner-approved ordinary baselines fill historical source silence without being misrepresented as recovered source text.",
+    "Descriptive anatomy remains non-mechanical unless a capability/natural-equipment entry explicitly grants behavior.",
+    "Exact numeric math remains with shared Movement/Sense/Ability/Action/Effect/Resource/Equipment/Environment owner profiles."
+  ],
+  "profiles": {
+    "terrestrial_humanoid": {
+      "movement": [
+        "walk"
+      ],
+      "senses": [
+        "ordinary_human"
+      ],
+      "physiology": {
+        "respiration": [
+          "air"
+        ],
+        "sustenance": [
+          "food",
+          "water"
+        ],
+        "rest": "sleep",
+        "environment": "ordinary_terrestrial"
+      },
+      "equipment": [
+        "standard_humanoid"
+      ]
+    },
+    "terrestrial_mammalian_humanoid": {
+      "movement": [
+        "walk"
+      ],
+      "senses": [
+        "ordinary_playable"
+      ],
+      "physiology": {
+        "respiration": [
+          "air"
+        ],
+        "sustenance": [
+          "food",
+          "water"
+        ],
+        "rest": "sleep",
+        "environment": "ordinary_terrestrial"
+      },
+      "equipment": [
+        "humanoid_with_anatomy_clearance"
+      ]
+    },
+    "insectoid_biped": {
+      "movement": [
+        "walk"
+      ],
+      "senses": [
+        "compound_eye_hook",
+        "antenna_hook"
+      ],
+      "physiology": {
+        "respiration": [
+          "source_profile"
+        ],
+        "sustenance": [
+          "source_profile"
+        ],
+        "rest": "source_profile",
+        "environment": "ordinary_playable_unless_overridden"
+      },
+      "equipment": [
+        "segmented_exoskeletal"
+      ]
+    },
+    "aquatic_humanoid": {
+      "movement": [
+        "walk",
+        "swim"
+      ],
+      "senses": [
+        "ordinary_playable"
+      ],
+      "physiology": {
+        "respiration": [
+          "air",
+          "water"
+        ],
+        "sustenance": [
+          "food",
+          "water"
+        ],
+        "rest": "sleep",
+        "environment": "amphibious_baseline"
+      },
+      "equipment": [
+        "aquatic_humanoid"
+      ]
+    },
+    "synthetic_humanoid": {
+      "movement": [
+        "walk"
+      ],
+      "senses": [
+        "ordinary_playable"
+      ],
+      "physiology": {
+        "respiration": [],
+        "sustenance": [
+          "energy",
+          "maintenance"
+        ],
+        "rest": "maintenance_rest_cycle",
+        "environment": "synthetic_baseline"
+      },
+      "equipment": [
+        "standard_humanoid",
+        "implant_hardware_owner"
+      ]
+    },
+    "plant_humanoid": {
+      "movement": [
+        "walk"
+      ],
+      "senses": [
+        "ordinary_playable"
+      ],
+      "physiology": {
+        "respiration": [
+          "air_gas_exchange"
+        ],
+        "sustenance": [
+          "water",
+          "minerals",
+          "light_dependent_maintenance"
+        ],
+        "rest": "dormancy_rest",
+        "environment": "plant_baseline"
+      },
+      "equipment": [
+        "humanoid_with_seasonal_growth_clearance"
+      ]
+    },
+    "distributed_singular": {
+      "movement": [
+        "distributed_controller"
+      ],
+      "senses": [
+        "aggregated_multi_body"
+      ],
+      "physiology": {
+        "respiration": [
+          "air"
+        ],
+        "sustenance": [
+          "per_body_nourishment_entity_coordinated"
+        ],
+        "rest": "rotational_or_whole_sleep",
+        "environment": "ordinary_terrestrial"
+      },
+      "equipment": [
+        "body_bound_entity_owned_inventory"
+      ]
+    }
+  }
+}
