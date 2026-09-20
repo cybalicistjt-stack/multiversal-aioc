@@ -3,11 +3,11 @@
 **Program ID:** GPR  
 **Program name:** Gameplay Pattern Runtime & Loop Minis  
 **Version:** 0.2.0 — PDCP REDUCED  
-**Status:** ACTIVE — GPR-08 SELECTED_NOT_STARTED  
+**Status:** ACTIVE — GPR-09 SELECTED_NOT_STARTED  
 **Activation:** concurrent start authorized after MRCS-05 + completed MAL + core owner contracts; later MRCS late-binds; GPR-16 waits for MRCS-21  
 **Successor:** MERA-01  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-08 attempt
+**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-09 attempt
 
 ## Purpose
 
@@ -252,3 +252,16 @@ Encounter/autonomous selection uses explicit bounded candidates and external own
 Causal RED: run `35535649049` at `0091a243b3da84a05d9eac00acfeb42e37ee1318`. Exact-head cross-platform GREEN: run `35535747817` at `2024f9f1bfcb5aa3c5f8f8512b9bde37ca91f0da`. Published application: PR #658 through READY candidate `GPR-07-app-001` as `c45873b7d73c0423c4ef3280cbf5b341536e425b`.
 
 MRCS-21 is terminal completed_verified and the fresh roadmap DAG supplies no interstitial successor override, so GPR-08 is selected_not_started.
+
+
+## GPR-08 completed loop-mini contract/composer result
+
+GPR-08 completed_verified on 2026-09-20. The published application contract `GPR-08.1` provides one versioned, data-driven loop-mini configuration schema and deterministic bounded composer for objectives, map/world references, participants/roles, operations, Resources, rules, rewards, limits, difficulty/configuration and declared delivery support.
+
+Stable GPR runtime bindings are validated through the existing registry. Unsupported or unresolved bindings and unsupported delivery declarations fail closed. Explicit authoring caps bound participants, objectives, operations, Resources, rules, rewards and map references. Semantically equivalent input ordering normalizes to the same configuration receipt.
+
+Draft and preview outputs remain noncanonical configuration: they do not establish execution, owner commit or canonical owner mutation. Generic creator/debug studio authority remains external.
+
+Causal RED: run `35536420697` at `1f52059c82f34445b8af10de000f2ba27388947c`. Exact-head cross-platform GREEN: run `35536509276` at `46b02fb679cff886c4750478fb54bd6efd3221b8`. Published application: PR #660 through READY candidate `GPR-08-app-001` as `1fac56244a41cd58e6cd70751d85b7d1c52c327b`.
+
+The fresh roadmap DAG supplies no interstitial successor override, so GPR-09 is selected_not_started. GPR-09 absorbs historical GPR-09/GPR-14 and implements the seven delivery adapters plus GPR-specific Creator/GM controls, World/Map/Adventure binding and roster injection using Packet-07 shared execution-inspection semantics rather than a new generic studio framework.
