@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 272,
+  "state_revision": 273,
   "default_lane": "msas",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -31,7 +31,7 @@
       "mvps": {
         "selected_work_item": "MVPS-16",
         "attempt_id": "MVPS-16-attempt-001",
-        "state": "selected_not_started"
+        "state": "completed_verified"
       }
     }
   },
@@ -63,13 +63,13 @@
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "mvps": {
-      "state": "selected_not_started",
+      "state": "completed_verified",
       "selected_work_item": "MVPS-16",
       "attempt_id": "MVPS-16-attempt-001",
       "checkpoint_path": "governance/ai/work-state/MVPS-16-attempt-001.json",
-      "implementation_branch": null,
+      "implementation_branch": "work/mvps-16-radical-species-golden-proof",
       "implementation_authority": false,
-      "activation_rule": "MVPS-15 completed_verified after causal RED run 35506321737 at head fa4debb848a80ba19de326eb7ca8587164669d8f, exact-head GREEN run 35506384109 at head a4622d151869f353807e8b37aa7a2dc1b688418f, and READY publication of PR 1465 as merge 5275880ec11392a86b5695a7ac10b92259ad0f8f. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 contains no MVPS interstitial gate overriding strict order, so MVPS-16 is selected_not_started until a later MVPS-specific Continue.",
+      "completion_rule": "MVPS-16 radical-species golden proof completed_verified after causal RED run 35506910710 at head f0b8ea10bcbd6492bf6e12427f809be928626eb8, exact-head GREEN run 35506980538 at head c74f606778edb122089311a0e393972f92a972b2, and READY publication of PR 1467 as merge 8531c8d43d717f91abba59fbf7e3f81952fb34f6. MVPS has no strict successor; the persistent mvps lane remains present in completed_verified state with no implementation authority.",
       "execution_state_ref": "ops3-lane-state/mvps"
     },
     "dwc-speech": {
@@ -108,7 +108,7 @@
     "lane_state_milestones": "Ordinary persistent-lane execution state is selected_not_started -> in_progress -> prequeue_green -> published, followed by one deterministic successor reseed after canonical closeout. The generic lane activity-log API is prohibited.",
     "closeout_fast_path": "After application publication, canonical closeout is one bounded phase: atomic closeout candidate validation -> READY CAS -> fresh-main integration check -> exact merge -> durable queue reconcile -> one successor reseed. No intermediate lane-state writes."
   },
-  "next_project_action": "Continue only the persistent implementation lane explicitly requested by the owner. MSAS-12 is selected_not_started; MRCS-08 is selected_not_started; MVPS-16 is selected_not_started. Every executor must use milestone-only lane state and the OPS3 closeout fast path.",
+  "next_project_action": "Continue only a persistent implementation lane explicitly requested by the owner. MSAS-12 is selected_not_started; MRCS-08 is selected_not_started; MVPS is completed_verified at terminal MVPS-16 and has no authorized successor.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -119,6 +119,16 @@
       "implementation_branch": "feature/uisr-11-showcase-skin-expansion",
       "implementation_authority": false,
       "completion_rule": "UISR-11 is completed_verified. UISR is preserved as completed program history and no longer occupies a persistent implementation lane."
+    },
+    "MVPS": {
+      "program_id": "MVPS",
+      "state": "completed_verified",
+      "selected_work_item": "MVPS-16",
+      "attempt_id": "MVPS-16-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MVPS-16-attempt-001.json",
+      "implementation_branch": "work/mvps-16-radical-species-golden-proof",
+      "implementation_authority": false,
+      "completion_rule": "MVPS-16 terminal golden proof is completed_verified. MVPS remains a preserved persistent lane in completed_verified state; any future MVPS work requires a newly selected owner-authorized work item rather than an invented successor."
     }
   }
 }
