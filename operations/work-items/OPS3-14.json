@@ -10,7 +10,7 @@
     "Treat each self-hosted validation label set as a pool; any idle matching isolated runner service may accept a job.",
     "Additional runner instances require separate installation/work directories and provide throughput only; correctness does not depend on runner count.",
     "Move repository selector/health and deterministic receipt comparison to hosted Linux when they have no workstation-local dependency.",
-    "Keep per-PR cancel-in-progress enabled so newer candidate heads supersede obsolete heads.",
+    "Scope concurrency to the immutable candidate head: duplicate runs of the same head cancel, while obsolete heads cannot block newer candidates; exact-head evidence prevents stale results from being consumed.",
     "Run deterministic cross-platform comparison only after both required platform validation jobs succeed.",
     "Do not treat runner queue/process/cancellation observations as material project progress or lane-state receipts."
   ],
@@ -20,7 +20,12 @@
     "exact_head": "6c9830416226116822253d5b2abce437974924b9",
     "validation_run": "35545935281",
     "validation_conclusion": "success",
-    "application_main_merge": "273b9cfa7df7d70e7918d1a70c29698e3d64382d"
+    "application_main_merge": "273b9cfa7df7d70e7918d1a70c29698e3d64382d",
+    "followup_pull_request": 666,
+    "followup_exact_head": "23a128cf28014520bc715ba2c99c053024122c85",
+    "followup_validation_run": "35546036526",
+    "followup_validation_conclusion": "success",
+    "final_application_main_merge": "8c42ae6cdc69fed4a8fd9f015e79280ae67d8488"
   },
   "next_action": "Resume the already-started GPR-10 tranche against the repaired validation pipeline."
 }
