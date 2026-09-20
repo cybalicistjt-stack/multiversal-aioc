@@ -2,7 +2,7 @@
 
 **Program ID:** OARC  
 **Lane:** `oarc`  
-**Status:** ACTIVE — OARC-05 SELECTED_NOT_STARTED  
+**Status:** ACTIVE — OARC-06 SELECTED_NOT_STARTED  
 **Approved:** 2026-09-20  
 **Purpose:** bounded game-readiness integration and certification for vehicles, mecha, spacecraft/starships, bases/platforms and their modular content  
 **Operational authority:** only through `operations/CURRENT.json`
@@ -208,3 +208,22 @@ Mixed OARC-03 provenance remains mixed in OARC-04. Missing facts remain source-u
 Causal RED: validation run `35531146908` at `b5ed29350036e01f1478694208101bee3e733fee` failed the focused specialization profile while the required module was absent. Exact-head Linux/Windows/cross-platform GREEN: run `35531294278` at `b46f749ee83225d0acd7a3a270e2e8314b55c7f4`. Fresh app-main drift had zero overlap with the OARC-04 write set. PR #652 published via the app repository's squash-only policy as `665f7a67ed1685280aa5177dd890209f325bfa01`.
 
 Fresh roadmap DAG schema 1.0.4 has no OARC override, so OARC-05 is the strict selected successor.
+
+
+## OARC-05 completed containment-relationship result
+
+OARC-05 completed_verified on 2026-09-20. The application adds a bounded relationship-proof projection over existing D17/PPIA-03/shared-assets containment edges and PPIA-04/F014 vehicle-carriage semantics.
+
+The proof covers carrier → carried/docked craft, base → docked mecha, vehicle → cargo and container → nested item using pre-existing stable Asset identities. Load, dock, board, launch, transfer and remove operations are represented as explicit relationship deltas only. OARC-05 performs no owner mutation and creates no Asset, ownership, cargo, docking or containment ledger.
+
+Ownership is preserved independently from relationship state. Docking, loading, boarding, transfer and launch never imply ownership transfer. Launch/deployment never creates a second child Asset identity. Moving a child between parents requires an explicit transfer.
+
+Containment fails closed for self/cyclic containment, duplicate child relationships, implicit second-parent relationships, missing Assets and removal/launch of a relationship that does not exist.
+
+Capacity is enforced only when the owning governed model supplies a known maximum, known current usage and known requested load. Unknown capacity or missing usage/load remains unresolved and is explicitly neither zero nor unlimited.
+
+MERA engineering topology and MBES built-environment topology remain unauthorized.
+
+Causal RED: validation run `35536003908` at `42416e8825e13a4574c66f33ed6d5a7e5179ebc5` failed the focused relationship proof while the required production module was absent. Exact-head Linux/Windows/cross-platform GREEN: run `35536121846` at `2fb7808e7c0d5a927ef42bc66c182625916dd64a`. Fresh app-main drift was zero. PR #659 published via the application repository's squash-only policy as `c4a52cc09cc0e309453bee6c291110ed2e846198`.
+
+Fresh roadmap DAG schema 1.0.4 has no OARC override, so OARC-06 is the strict selected successor.

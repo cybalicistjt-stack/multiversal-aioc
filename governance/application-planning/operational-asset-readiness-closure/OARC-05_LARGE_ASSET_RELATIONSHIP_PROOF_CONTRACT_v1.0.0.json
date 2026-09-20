@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "OARC05.LARGE_ASSET_RELATIONSHIP_PROOF.v1",
+  "status": "current",
+  "work_item": "OARC-05",
+  "authority_contracts": [
+    "OARC01.AUTHORITY_HANDOFF.v1",
+    "OARC02.DEFINITION_BRIDGE.v1",
+    "OARC03.CATALOG_NORMALIZATION.v1",
+    "OARC04.OPERATIONAL_SPECIALIZATION_PROFILES.v1"
+  ],
+  "application_merge_sha": "c4a52cc09cc0e309453bee6c291110ed2e846198",
+  "result": "STABLE_IDENTITY_RELATIONSHIPS_PROVED_WITHOUT_DUPLICATE_LEDGER",
+  "owners": {
+    "generic_asset_containment": "D17/PPIA-03/shared-assets",
+    "vehicle_carriage_docking_launch": "PPIA-04/F014",
+    "live_asset_identity": "D17"
+  },
+  "proved_relationships": [
+    "carrier -> carried/docked craft",
+    "base -> docked mecha",
+    "vehicle -> cargo",
+    "container -> nested item"
+  ],
+  "proved_actions": [
+    "load",
+    "dock",
+    "board",
+    "launch",
+    "transfer",
+    "remove"
+  ],
+  "invariants": [
+    "Parent and child are pre-existing stable Asset identities.",
+    "Relationship changes do not transfer ownership.",
+    "Launch or deployment does not clone a child Asset.",
+    "Moving a child between parents requires an explicit transfer.",
+    "Self-containment, arbitrary cycles, duplicate child relationships and implicit second-parent relationships fail closed.",
+    "Missing Assets and removal/launch of absent relationships fail closed.",
+    "Known governed capacity is enforced when maximum, usage and requested load are known.",
+    "Unknown capacity, usage or requested load remains unresolved and is never treated as zero or unlimited.",
+    "OARC-05 persists no owner state and creates no duplicate containment ledger."
+  ],
+  "reserved_boundaries": {
+    "MERA": "engineering topology reserved; not implemented",
+    "MBES": "built-environment topology reserved; not implemented"
+  },
+  "future_handoff": "OARC-06 may compose these verified relationship semantics into source-backed golden workflows without creating owner mutation authority or hidden MERA/MBES implementation."
+}
