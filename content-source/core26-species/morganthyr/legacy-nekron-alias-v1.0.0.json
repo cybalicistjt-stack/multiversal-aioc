@@ -1,0 +1,46 @@
+{
+  "format": "multiversal-canonical-content-source",
+  "status": "owner-approved-canonical-replacement",
+  "bundleId": "mv.content.core26.morganthyr.legacy-nekron-alias-v1",
+  "authority": {
+    "ownerDecision": "CORE26-CURRENT-01 Morganthyr current identity migration",
+    "bundlePart": "legacy-nekron-alias-v1.0.0"
+  },
+  "records": [
+    {
+      "databaseId": "mv.core.species.nekron",
+      "stableId": "mv.core.species.nekron",
+      "name": "Nekron",
+      "objectType": "mv.object.species-legacy-alias",
+      "developmentStage": "Historical alias",
+      "source": "CORE26-CURRENT-01",
+      "sourceLocator": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+      "promotionDecision": "CURRENT_IDENTITY_MIGRATED_TO_MORGANTHYR",
+      "reviewStatus": "HISTORICAL_ALIAS_ONLY",
+      "contentVersion": "1.0.0",
+      "replacementOf": {
+        "stableId": "mv.core.species.nekron",
+        "expectedContentVersion": null
+      },
+      "gameObject": {
+        "id": "mv.core.species.nekron",
+        "name": "Nekron",
+        "objectType": "mv.object.species-legacy-alias",
+        "contentVersion": "1.0.0",
+        "aliasStatus": "historical_alias_only",
+        "currentTarget": {
+          "objectId": "mv.core.species.morganthyr",
+          "objectVersion": "1.0.0"
+        },
+        "historicalSource": {
+          "writtenSource": "Nekrons vAlpha2.PDF",
+          "preservedBaselineStableId": "mv.core.species.nekron"
+        },
+        "rule": "Resolve current-authority use to Morganthyr; retain Nekron/Nekrons only for historical provenance and migration."
+      },
+      "validation": null,
+      "balance": null,
+      "testing": null
+    }
+  ]
+}

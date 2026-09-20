@@ -1,0 +1,54 @@
+{
+  "databaseId": "mv.core.species.nekron",
+  "stableId": "mv.core.species.nekron",
+  "name": "Nekron",
+  "objectType": "mv.object.species-legacy-alias",
+  "developmentStage": "Historical alias",
+  "source": "CORE26-CURRENT-01",
+  "sourceLocator": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+  "coverageStatus": "CANONICAL_OBJECT_PRESENT",
+  "promotionDecision": "CURRENT_IDENTITY_MIGRATED_TO_MORGANTHYR",
+  "reviewStatus": "HISTORICAL_ALIAS_ONLY",
+  "schemaVersion": "",
+  "contentVersion": "1.0.0",
+  "packIds": [],
+  "dependencies": [],
+  "tags": [
+    "canonical-object"
+  ],
+  "manualEntry": null,
+  "gameObject": {
+    "id": "mv.core.species.nekron",
+    "name": "Nekron",
+    "objectType": "mv.object.species-legacy-alias",
+    "contentVersion": "1.0.0",
+    "aliasStatus": "historical_alias_only",
+    "currentTarget": {
+      "objectId": "mv.core.species.morganthyr",
+      "objectVersion": "1.0.0"
+    },
+    "historicalSource": {
+      "writtenSource": "Nekrons vAlpha2.PDF",
+      "preservedBaselineStableId": "mv.core.species.nekron"
+    },
+    "rule": "Resolve current-authority use to Morganthyr; retain Nekron/Nekrons only for historical provenance and migration."
+  },
+  "validation": null,
+  "balance": null,
+  "testing": null,
+  "provenance": {
+    "authority": "CORE26-CURRENT-01",
+    "sourcePath": "content-source/core26-species/morganthyr/legacy-nekron-alias-v1.0.0.json",
+    "sourceDigest": "sha256:6ef72993f6be6e16e9daf18ce0acff9d413078b11762a9044e4f56410674a1eb",
+    "sourceBundleId": "mv.content.core26.morganthyr.legacy-nekron-alias-v1",
+    "sourceBundlePart": "legacy-nekron-alias-v1.0.0",
+    "sourceClass": "replacement",
+    "replaces": {
+      "stableId": "mv.core.species.nekron",
+      "contentVersion": null,
+      "sourcePath": "content-source/phase-1-8-canonical-objects.json",
+      "sourceDigest": "sha256:11d3e26161a6ea1acbe8847d7c01c5f6fb09a9525dc2e2eba557d41b4c612fbb"
+    },
+    "importedBy": "scripts/build-canonical-content-database.mjs"
+  }
+}

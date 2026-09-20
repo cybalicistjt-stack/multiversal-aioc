@@ -3,7 +3,7 @@
 The certified 3.0 content pipeline is authoritative:
 
 1. `scripts/materialize-content-source.mjs` materializes the preserved compressed Phase 1–8 baseline as `phase-1-8-canonical-objects.json`.
-2. `scripts/lib/canonical-content-source.mjs` loads that fixed 487-record baseline plus governed supplemental JSON bundles in this directory.
+2. `scripts/lib/canonical-content-source.mjs` loads that fixed 487-record baseline plus governed supplemental JSON bundles anywhere under this directory. Nested versioned source-chain directories are first-class canonical inputs.
 3. `scripts/build-canonical-content-database.mjs` generates `content-db/` from the effective composite canonical source set.
 4. `scripts/certify-canonical-content-pipeline.mjs` certifies exact source digests, replacement lineage, unique effective stable IDs, generated semantic fingerprint, and database counts.
 
@@ -46,3 +46,16 @@ The preserved baseline remains exactly 487 records, but the effective certified 
 **Canonical source/database certification is not Object Game Readiness certification.** It proves source-set integrity, identity/version/provenance resolution, and deterministic generation. `GAME_READY`, mechanics completeness, runtime behavior completeness, validation, and playtest status remain owned by the Object Game Readiness Program (OGR) and its domain-specific evidence.
 
 The current 516-record certified database is therefore a canonical-source snapshot, not the total Multiversal game-object corpus and not a claim that 516 objects are game-ready.
+
+## Core-26 per-species canonical source chains
+
+Every current Core-26 species owns a permanent source-chain directory under `content-source/core26-species/<species-slug>/`.
+
+Each directory begins with:
+
+- `register-v1.0.0.json` — the stable species canon register, source ledger, current definition binding, open-domain/certification bookkeeping, and update contract;
+- `definition-v1.0.0.json` — the exact-version current `SpeciesDefinition` source (a governed replacement for preexisting baseline identities or a governed incorporation for new current identities).
+
+Future canon work **adds** a new versioned source file; it does not overwrite or delete prior register/definition versions. Canon changes bump the register version. Gameplay-object changes also bump the SpeciesDefinition version. The canonical source pipeline must be rebuilt and certified in the same candidate, so generated `content-db` state can never silently lag the registered species source chain.
+
+For renamed identities, historical aliases remain versioned canonical migration objects rather than current SpeciesDefinitions. For example, Nekron is preserved as a historical alias that resolves current-authority use to Morganthyr.

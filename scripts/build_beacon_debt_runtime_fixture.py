@@ -46,7 +46,7 @@ def placement_kind(object_id):
 def main():
     candidate = json.loads(CANDIDATE.read_text(encoding="utf-8"))
     cert = json.loads(CERT.read_text(encoding="utf-8"))
-    assert cert["recordCount"] == 526
+    assert cert["recordCount"] == 556
 
     campaign = {
         "campaignId": CAMPAIGN_ID,

@@ -71,9 +71,22 @@ export async function loadCanonicalContentSource(root = process.cwd()) {
 
   const appendedEntries = [];
   const replacementEntries = [];
-  const names = (await fs.readdir(sourceDir))
-    .filter(name => name.endsWith('.json') && name !== BASELINE_FILE)
-    .sort();
+  async function discoverSupplementalJson(relativeDir = '') {
+    const absoluteDir = path.join(sourceDir, relativeDir);
+    const dirents = await fs.readdir(absoluteDir, { withFileTypes: true });
+    const found = [];
+    for (const dirent of dirents) {
+      const relativePath = path.join(relativeDir, dirent.name);
+      if (dirent.isDirectory()) {
+        found.push(...await discoverSupplementalJson(relativePath));
+      } else if (dirent.isFile() && dirent.name.endsWith('.json') && relativePath !== BASELINE_FILE) {
+        found.push(relativePath);
+      }
+    }
+    return found;
+  }
+
+  const names = (await discoverSupplementalJson()).sort();
 
   for (const name of names) {
     const filePath = path.join(sourceDir, name);

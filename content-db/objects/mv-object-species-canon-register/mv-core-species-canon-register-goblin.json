@@ -1,0 +1,75 @@
+{
+  "databaseId": "mv.core.species-canon-register.goblin",
+  "stableId": "mv.core.species-canon-register.goblin",
+  "name": "Goblin Canon Register",
+  "objectType": "mv.object.species-canon-register",
+  "developmentStage": "Structured draft",
+  "source": "mv.content.core26.goblin.canon-register-v1",
+  "sourceLocator": "content-source/core26-species/goblin/register-v1.0.0.json",
+  "coverageStatus": "CANONICAL_OBJECT_PRESENT",
+  "promotionDecision": "",
+  "reviewStatus": "",
+  "schemaVersion": "",
+  "contentVersion": "1.0.0",
+  "packIds": [],
+  "dependencies": [],
+  "tags": [
+    "canonical-object"
+  ],
+  "manualEntry": null,
+  "gameObject": {
+    "id": "mv.core.species-canon-register.goblin",
+    "name": "Goblin Canon Register",
+    "objectType": "mv.object.species-canon-register",
+    "contentVersion": "1.0.0",
+    "register": {
+      "speciesName": "Goblin",
+      "speciesDefinitionStableId": "mv.core.species.goblin",
+      "authorityId": "CORE26-CURRENT-01",
+      "gameReadyStandard": "CORE26.GAME_READY.v1",
+      "sourceLedger": [
+        {
+          "role": "current_authority",
+          "title": "CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+          "repositoryPath": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+          "canonRole": "current_roster_identity_authority"
+        },
+        {
+          "role": "existing_definition_source",
+          "title": "content-source/phase-1-8-canonical-objects.json",
+          "repositoryPath": "content-source/phase-1-8-canonical-objects.json",
+          "canonRole": "preexisting_source_material"
+        }
+      ],
+      "canonDomains": {
+        "identity": true,
+        "lore": "accumulate_source_backed_material",
+        "mechanics": "accumulate_source_backed_and_owner_approved_rules",
+        "appearance": "accumulate_current_authority_outputs",
+        "provenance": true,
+        "openQuestions": true,
+        "certification": true
+      },
+      "updateContract": {
+        "mode": "append_versioned_source_never_mutate_history",
+        "requiresSourcePipelineRebuild": true,
+        "requiresRegisterVersionBumpForCanonChange": true,
+        "requiresDefinitionVersionBumpWhenGameplayObjectChanges": true,
+        "requiresOwnerApprovalForCanonPromotion": true,
+        "preservePriorVersions": true
+      }
+    }
+  },
+  "validation": null,
+  "balance": null,
+  "testing": null,
+  "provenance": {
+    "authority": "Multiversal canonical source bundle",
+    "sourcePath": "content-source/core26-species/goblin/register-v1.0.0.json",
+    "sourceDigest": "sha256:6b659b0d0e106a367c46de231c7e0a2df1e536f6f59d2c3d55b924ee1104887d",
+    "sourceBundleId": "mv.content.core26.goblin.canon-register-v1",
+    "sourceBundlePart": "goblin-register-v1.0.0",
+    "sourceClass": "supplemental",
+    "importedBy": "scripts/build-canonical-content-database.mjs"
+  }
+}

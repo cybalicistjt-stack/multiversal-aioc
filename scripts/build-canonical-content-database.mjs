@@ -19,7 +19,7 @@ function normalizeRecord(entry, index) {
   const stableId = object.id || object.stableId || raw.stableId || raw.refId || '';
   if (!stableId) throw new Error(`Canonical record ${index} has no stable ID.`);
 
-  const objectType = object.objectKind || object.type || object.kind || raw.objectType || raw.contentType || 'Unclassified';
+  const objectType = object.objectKind || object.type || object.kind || object.objectType || raw.objectType || raw.contentType || 'Unclassified';
   const name = object.name || object.title || raw.name || stableId;
   const provenance = object.provenance || raw.provenance || {};
   const fallbackSource = entry.sourceClass === 'baseline' ? 'phase-1-8-canonical-objects' : entry.sourceBundleId;
