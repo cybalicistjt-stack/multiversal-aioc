@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.10.0  
+**Version:** 3.11.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -107,11 +107,11 @@ Research is progress only when it resolves a concrete unknown needed for the res
 
 ### Single-active-lane mode and quiet execution
 
-When exactly one persistent implementation lane is nonterminal, OPS3 enters **single-active-lane mode**. The three persistent slots remain canonical history/topology, but ordinary execution must not read, reconcile, or narrate terminal sibling lanes unless a concrete dependency or fresh-main conflict requires it.
+When exactly one persistent implementation lane is nonterminal, OPS3 enters **single-active-lane mode**. Derive this mode once from the fresh `CURRENT.json` used to select the lane. Until an invalidating event occurs, ordinary execution must not rescan terminal sibling lane refs, enumerate "concurrent writers," read an empty publication queue, or perform routine branch update/rebase work. Terminal siblings are history; read them only for a concrete dependency or after an observed repository change proves they are relevant.
 
-The durable lane ref is the **lane-state terminal gate**. For the selected lane, `in_progress`, `prequeue_green`, or `published` means a normal terminal response to an owner execution command is forbidden even if the main-branch checkpoint is stale or still says `selected_not_started`. A repeated owner execution command against an active attempt must be recorded through the lane-state owner-reentry receipt before ordinary work resumes; it increments owner interaction truth without becoming material progress.
+The durable lane ref is the **lane-state terminal gate**. `in_progress`, `prequeue_green`, or `published` forbids a normal terminal response to an owner execution command. Repeated owner execution commands remain useful diagnostic input for detecting stalls, but counting the interaction is not a lane milestone. Do not create a lane-state write solely for owner re-entry, stall nudges, status checks, queue checks, rebase checks, or mergeability polls. Aggregate any interaction-quality telemetry into an already-required terminal/closeout record.
 
-Use **quiet execution** for governed tranches. While CI is healthy, inspect only **healthy workflow-level status** at a sparse cadence and do not narrate queued/running jobs, individual platform progress, queue mechanics, or merge mechanics. Inspect job/step/log detail only after terminal failure or a concrete unresolved failure signature. Browser/session continuity is never required: after interruption, resume from the durable lane milestone and repository evidence.
+Use **quiet execution** for governed tranches. While CI is healthy, inspect workflow-level status only at sparse, transition-driven points. Do not narrate or persist per-job progress, lane scans, queue emptiness, fresh-main observations, rebase checks, or mergeability polling as work. Job/step/log detail is failure-driven. Browser/session interruption resumes from durable lane state plus the smallest repository/PR/CI evidence needed.
 
 ## 6. Executor independence
 
@@ -132,17 +132,19 @@ Never make Codex availability, a specific laptop, or a specific chat session par
 For implementation work:
 
 1. resolve the selected lane/work item from `CURRENT.json`;
-2. read that lane's independent execution-state ref and start/resume the selected attempt there; starting execution does not require an AIOC-main publication;
-3. work on the lane's implementation branch without using lane state as an activity log;
+2. read that lane's independent execution-state ref and start/resume the selected attempt;
+3. work on the lane implementation branch without using lane state as an activity log;
 4. run focused validation and the lane's full required prequeue acceptance gate on one immutable candidate head;
-5. after the complete exact-head gate is green, write the single `prequeue_green` lane milestone and submit one READY candidate containing lane, work item, PR, exact head, validation receipt, and relevant write/dependency fingerprint;
-6. READY candidates are FIFO by submission order; implementation work never reserves a future position;
-7. for the FIFO head, fresh-read target `main` and run the smallest drift-sensitive integration gate against that base;
-8. if integration is green and the PR head is unchanged, merge with expected-head protection and atomic main-ref semantics;
-9. verify the durable `main` result, reconcile the queue candidate from repository evidence, then write the single `published` lane milestone; **there is no release step**;
-10. if integration fails, mark/remove that head candidate with the causal failure so later READY candidates are not stranded; invalidate the prequeue milestone and repair/revalidate independently before resubmission;
-11. prepare the atomic global selector/successor closeout candidate and execute the closeout fast path: validate → READY CAS → fresh-main integration check → exact merge → durable queue reconcile → one deterministic successor reseed. No lane-journal writes occur inside that closeout phase before the reseed;
-12. build, packaging, deployment, release, and post-merge distribution consume the merged artifact/result independently and never own the source-publication queue.
+5. after that exact-head gate is green, write the single `prequeue_green` lane milestone.
+
+Then choose publication coordination **once** from the number of nonterminal persistent lanes observed in the same fresh `CURRENT.json` read:
+
+- **Exactly one nonterminal persistent lane — single-lane direct publication.** Do not consult or mutate the READY queue. Fresh-read target `main` once immediately before integration, run the smallest drift-sensitive integration gate against that base, and merge only the exact validated PR head with expected-head protection. Verify the durable `main` result, then write `published`. If `main` drifts after the receipt, rerun only that integration gate against the new base. Do not rebase or update the branch merely to make it current. If a real conflict requires a candidate-head change, invalidate prequeue GREEN and validate the repaired exact head.
+- **Two or more nonterminal persistent lanes — multi-lane READY queue.** Submit one immutable READY candidate containing lane, work item, PR, exact head, prequeue receipt, and relevant write/dependency fingerprint. Only the FIFO head may integrate. Fresh-read `main`, run the drift-sensitive integration gate, merge with expected-head protection, verify the durable result, reconcile the candidate, then write `published`. A causally failed head is removed so followers are not stranded.
+
+After application publication, prepare the atomic global selector/successor closeout candidate. Use the same publication mode that applies at that time: direct exact-head publication in single-active-lane mode, READY FIFO only when multiple persistent lanes are nonterminal. After durable closeout, perform one deterministic successor reseed. There are no lane-journal writes inside closeout before the reseed.
+
+Build, packaging, deployment, release, and post-merge distribution consume merged artifacts independently and never own source publication.
 
 ### Independent lane execution state
 
@@ -177,6 +179,8 @@ OPS3 protects throughput by treating instrumentation as overhead, not work.
 
 ### Ready-candidate publication queue
 
+This queue is **dormant in single-active-lane mode**. It is used only when two or more persistent implementation lanes are nonterminal and can produce competing READY candidates for protected repositories.
+
 Protected repositories use repository-local coordination refs named:
 
 `ops3-publication-queue/<lowercase-target-repository-slug>`
@@ -206,15 +210,15 @@ A conversation, Codex session, local process, CI poller, or connector call is re
 
 The protected repositories remain `cybalicistjt-stack/Multiversal-app` and `cybalicistjt-stack/multiversal-aioc`.
 
-- Every protected-main mutation must be a pull-request merge of a READY exact head authorized by the fresh-base integration gate.
-- Contents/ref writes directly to protected `main` are prohibited.
-- Serialization covers only the atomic integration/merge decision; it does not freeze `main` while a lane implements or performs full validation.
-- If target `main` changes after an integration receipt was produced, that receipt is stale and the broker reruns the drift-sensitive integration gate on the new base.
-- Generated-content or CI work must prepare outputs on a candidate branch. It may not push directly to protected `main`.
+- Every protected-main mutation is a pull-request merge of one immutable expected head. Direct contents/ref writes to protected `main` are prohibited.
+- In single-active-lane mode, no publication queue is consulted or mutated. A fresh observed `main` plus a green drift-sensitive integration receipt for the exact PR head authorizes the merge.
+- With two or more nonterminal persistent lanes, only the FIFO READY head may merge after the same fresh-base integration requirement.
+- OPS3 never requires a routine rebase. Base drift invalidates only the integration receipt; rerun the narrow integration gate. Change the candidate head only for a real conflict or repair, then revalidate that exact head.
+- Generated-content or CI work prepares outputs on the candidate branch and may not push directly to protected `main`.
 
 ### Atomic control-plane projection
 
-When a global selector/successor projection really must change protected AIOC `main`, prepare its multi-file update as one tree/commit whenever possible, validate it before READY submission, and publish it through the same ready-candidate protocol. Do not use global selector publication as the live progress journal for a lane.
+When a global selector/successor projection really must change protected AIOC `main`, prepare its multi-file update as one tree/commit whenever possible and validate it before publication. In single-active-lane mode publish it through the direct exact-head fresh-base path; use READY FIFO only when multiple persistent lanes are nonterminal. Do not use global selector publication as the live progress journal for a lane.
 
 Keep execution credentials separate from publication credentials when the execution system requires that boundary. Do not weaken security controls simply to make a worker green.
 

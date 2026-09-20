@@ -21,8 +21,21 @@ PROTECTED_REPOSITORIES = frozenset({
     "cybalicistjt-stack/multiversal-aioc",
 })
 
+NO_PUBLICATION = "none"
+SINGLE_LANE_DIRECT = "single_lane_direct"
+READY_QUEUE = "ready_queue"
+
 class PublicationConflict(RuntimeError):
     pass
+
+def publication_mode(nonterminal_persistent_lanes: list[str] | tuple[str, ...] | set[str]) -> str:
+    """Choose publication coordination once from canonical lane state."""
+    lanes = {str(lane).strip() for lane in nonterminal_persistent_lanes if str(lane).strip()}
+    if not lanes:
+        return NO_PUBLICATION
+    if len(lanes) == 1:
+        return SINGLE_LANE_DIRECT
+    return READY_QUEUE
 
 def coordination_branch(target_repo: str) -> str:
     slug = target_repo.lower().replace("/", "-").replace("_", "-")
@@ -134,6 +147,34 @@ def validate_integration_authorization(
     if integration_receipt.get("candidate_id") != candidate_id:
         errors.append(INTEGRATION_NOT_BOUND)
     if integration_receipt.get("candidate_head") != candidate.get("head_sha"):
+        errors.append(HEAD_MISMATCH)
+    if integration_receipt.get("status") != "green" or not integration_receipt.get("run_id"):
+        errors.append(INTEGRATION_NOT_BOUND)
+    if integration_receipt.get("base_sha") != fresh_main_sha:
+        errors.append(STALE_INTEGRATION)
+    return sorted(set(errors))
+
+def validate_single_lane_protected_main_write(
+    *,
+    target_repo: str,
+    fresh_main_sha: str,
+    mutation_kind: str,
+    expected_head_sha: str,
+    pr_head_sha: str,
+    integration_receipt: dict[str, Any],
+) -> list[str]:
+    """Fail-closed protected-main gate without multi-lane queue coordination."""
+    if target_repo not in PROTECTED_REPOSITORIES:
+        return []
+    if mutation_kind != "pull_request_merge":
+        return [DIRECT_MAIN_MUTATION]
+    errors: list[str] = []
+    if not expected_head_sha or pr_head_sha != expected_head_sha:
+        errors.append(HEAD_MISMATCH)
+    if not isinstance(integration_receipt, dict):
+        errors.append(INTEGRATION_NOT_BOUND)
+        return sorted(set(errors))
+    if integration_receipt.get("candidate_head") != expected_head_sha:
         errors.append(HEAD_MISMATCH)
     if integration_receipt.get("status") != "green" or not integration_receipt.get("run_id"):
         errors.append(INTEGRATION_NOT_BOUND)
