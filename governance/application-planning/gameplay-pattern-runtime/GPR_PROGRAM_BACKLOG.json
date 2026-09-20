@@ -2,8 +2,8 @@
   "schema_version": "0.2.0",
   "program_id": "GPR",
   "program_name": "Gameplay Pattern Runtime & Loop Minis",
-  "status": "owner_approved_planned",
-  "activation_after": "MRCS-21",
+  "status": "owner_approved_selected_not_started",
+  "activation_after": "MRCS-05 + MAL-01..10 completed_verified + core owner contracts; later MRCS domains late-bind; GPR-16 requires MRCS-21 and relevant specialist golden proofs",
   "successor": "MERA-01",
   "owner": "John Brandon Turner",
   "approved": "2026-09-11",
@@ -28,36 +28,153 @@
     "split_rule": "If a surviving tranche cannot credibly preserve the closeout reserve, split it before governed start rather than overrunning the execution contract.",
     "retry_rule": "Do not rerun an unchanged deterministic failure; classify the failure and require changed evidence before retry."
   },
-  "strict_order": ["GPR-01","GPR-03","GPR-05","GPR-06","GPR-07","GPR-08","GPR-09","GPR-10","GPR-12","GPR-16"],
+  "strict_order": [
+    "GPR-01",
+    "GPR-03",
+    "GPR-05",
+    "GPR-06",
+    "GPR-07",
+    "GPR-08",
+    "GPR-09",
+    "GPR-10",
+    "GPR-12",
+    "GPR-16"
+  ],
   "tranches": [
-    {"id":"GPR-01","name":"Gameplay Runtime Authority, Contract Registry & MAL/MRCS Convergence","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["GPR-01","GPR-02"]},
-    {"id":"GPR-03","name":"Deterministic Entity, Input, Collision & State Kernel","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["GPR-03"]},
-    {"id":"GPR-05","name":"Owner-Domain Gameplay Operation, Objective & Route Runtime","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["GPR-04","GPR-05"]},
-    {"id":"GPR-06","name":"Specialist Puzzle, Sports, Vehicle, Party, Strategy, Social & Stealth Pattern Modules","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["GPR-06"]},
-    {"id":"GPR-07","name":"Encounter, Autonomy, Score/Timing, Loadout & Skill-Resolution Runtime","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["GPR-07"]},
-    {"id":"GPR-08","name":"Loop-Mini Contract, Pattern Composer & Bounded Authoring Schema","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["GPR-08"]},
-    {"id":"GPR-09","name":"Seven Delivery Modes, Creator/GM Control & World/Roster Binding","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["GPR-09","GPR-14"]},
-    {"id":"GPR-10","name":"Rights-Safe Semantic Presentation & Accessibility Projection","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["GPR-10","GPR-11"]},
-    {"id":"GPR-12","name":"Multiplayer, Replay, Persistence, Recovery & Version Continuity","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["GPR-12","GPR-13"]},
-    {"id":"GPR-16","name":"Full Conformance, Golden Cross-System Runtime Proof & Downstream Handoff","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["GPR-15","GPR-16"]}
+    {
+      "id": "GPR-01",
+      "name": "Gameplay Runtime Authority, Contract Registry & MAL/MRCS Convergence",
+      "status": "selected_not_started",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "GPR-01",
+        "GPR-02"
+      ]
+    },
+    {
+      "id": "GPR-03",
+      "name": "Deterministic Entity, Input, Collision & State Kernel",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "GPR-03"
+      ]
+    },
+    {
+      "id": "GPR-05",
+      "name": "Owner-Domain Gameplay Operation, Objective & Route Runtime",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "GPR-04",
+        "GPR-05"
+      ]
+    },
+    {
+      "id": "GPR-06",
+      "name": "Specialist Puzzle, Sports, Vehicle, Party, Strategy, Social & Stealth Pattern Modules",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "GPR-06"
+      ]
+    },
+    {
+      "id": "GPR-07",
+      "name": "Encounter, Autonomy, Score/Timing, Loadout & Skill-Resolution Runtime",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "GPR-07"
+      ]
+    },
+    {
+      "id": "GPR-08",
+      "name": "Loop-Mini Contract, Pattern Composer & Bounded Authoring Schema",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "GPR-08"
+      ]
+    },
+    {
+      "id": "GPR-09",
+      "name": "Seven Delivery Modes, Creator/GM Control & World/Roster Binding",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "GPR-09",
+        "GPR-14"
+      ]
+    },
+    {
+      "id": "GPR-10",
+      "name": "Rights-Safe Semantic Presentation & Accessibility Projection",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "GPR-10",
+        "GPR-11"
+      ]
+    },
+    {
+      "id": "GPR-12",
+      "name": "Multiplayer, Replay, Persistence, Recovery & Version Continuity",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "GPR-12",
+        "GPR-13"
+      ]
+    },
+    {
+      "id": "GPR-16",
+      "name": "Full Conformance, Golden Cross-System Runtime Proof & Downstream Handoff",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "GPR-15",
+        "GPR-16"
+      ]
+    }
   ],
   "required_upstream": [
-    "ARI family completed_verified",
-    "MIB-18 completed_verified",
-    "SMB-01..07 completed_verified",
-    "CNI-01..13 completed_verified",
-    "PCA family completed_verified at its effective governed golden gate",
-    "MCS family completed_verified at its effective PDCP-reduced golden gate",
-    "MCCS family completed_verified at its effective PDCP-reduced golden gate",
-    "MNCS family completed_verified at its effective PDCP-reduced golden gate",
-    "MAS-01..21 completed_verified",
-    "MSAS family completed_verified at its effective PDCP-reduced golden gate",
-    "MRCS family completed_verified at its effective PDCP-reduced golden gate",
+    "MRCS-05 completed_verified for governed start",
     "MAL-01..10 completed_verified and frozen",
-    "Action/Event, Character, World/Scene, Combat, Inventory/Asset, Vehicle and Project owner contracts available",
+    "core Action/Event, Character, World/Scene, Combat and Inventory/Asset owner contracts available",
     "PDCP Packets 01..08 design_closed"
   ],
-  "integration_targets": ["MAL","ARI","MIB","CNI","MCS","MCCS","MNCS","MAS","MSAS","MRCS","PCA","Action/Event","Character/NPC/Creature","World/Scene/Map","Combat","Inventory/Asset","Vehicle/Mount","Project/Time","Economy","Progression","Visibility/Permissions","GM/TTRPG","MERA","MBES","MSLR","MSWI","SMB-08","SMB-09","SAA"],
+  "integration_targets": [
+    "MAL",
+    "ARI",
+    "MIB",
+    "CNI",
+    "MCS",
+    "MCCS",
+    "MNCS",
+    "MAS",
+    "MSAS",
+    "MRCS",
+    "PCA",
+    "Action/Event",
+    "Character/NPC/Creature",
+    "World/Scene/Map",
+    "Combat",
+    "Inventory/Asset",
+    "Vehicle/Mount",
+    "Project/Time",
+    "Economy",
+    "Progression",
+    "Visibility/Permissions",
+    "GM/TTRPG",
+    "MERA",
+    "MBES",
+    "MSLR",
+    "MSWI",
+    "SMB-08",
+    "SMB-09",
+    "SAA"
+  ],
   "boundaries": [
     "GPR is the reusable gameplay-pattern execution and loop-composition layer; it does not become a second Character, World, Scene, Combat, Inventory, Economy, Project, Action/Event or content-definition ledger",
     "MAL-01..10 remain completed_verified and frozen; GPR consumes MAL contracts and extends broad pattern coverage without rebuilding or rewriting MAL completion evidence",
@@ -92,5 +209,13 @@
     "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_07_CREATOR_GM_EXECUTION_DESIGN_CLOSURE.md",
     "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_08_SIMULATION_FORMAL_VALIDATION_DESIGN_CLOSURE.md",
     "governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md"
+  ],
+  "late_bind_upstream": [
+    "later MRCS domains",
+    "MCS/MCCS/MNCS/MAS/MSAS outputs and other specialist creator outputs"
+  ],
+  "golden_proof_requires": [
+    "MRCS-21 completed_verified",
+    "relevant specialist golden proofs"
   ]
 }

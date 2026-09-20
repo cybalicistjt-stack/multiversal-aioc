@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "GPR",
+  "lane": "gpr",
+  "track": "gameplay-pattern-runtime",
+  "source_program": "GPR",
+  "work_item_id": "GPR-01",
+  "attempt_id": "GPR-01-attempt-001",
+  "title": "Gameplay Runtime Authority, Contract Registry & MAL/MRCS Convergence",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_owner": "2026-09-20 owner approval replacing terminal MSAS persistent execution slot for concurrent GPR/MRCS implementation",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "replaced_terminal_lane": "MSAS-21 completed_verified",
+    "start_requires": [
+      "MRCS-05",
+      "MAL completed_verified",
+      "core Action/Event/Character/World/Combat/Inventory owner contracts"
+    ],
+    "hard_requires": [],
+    "late_bind_requires": [
+      "later MRCS domains",
+      "MCS/MCCS/MNCS/MAS/MSAS outputs"
+    ],
+    "golden_proof_requires": [
+      "MRCS-21",
+      "relevant specialist golden proofs"
+    ],
+    "parallel_lanes": "MRCS-16 remains independent; OARC remains independent."
+  },
+  "objective": "Establish the reusable GPR execution/registry authority seam over frozen MAL and accepted MRCS definitions: stable runtime IDs, namespace/schema validation, unsupported-state fail-closed behavior and owner-preserving runtime bindings without creating a parallel rules/content or canonical-domain ledger.",
+  "boundaries": [
+    "MAL-01..10 remain completed_verified and frozen; GPR reuses MAL primitives rather than reopening them.",
+    "MRCS retains reusable rule/content-definition authority; GPR imports/binds accepted definitions and may late-bind later MRCS domains.",
+    "Action/Event, Character, World/Scene, Combat, Inventory/Asset and other canonical owners retain mutation truth.",
+    "GPR-01 establishes runtime registry/import/authority seams only; it does not implement later GPR pattern modules, delivery modes or golden proof.",
+    "Unsupported definitions/operations remain unsupported; unknown owner data remains unknown.",
+    "MRCS and OARC lane state remains independent.",
+    "GPR-16 may not close before MRCS-21 and relevant specialist golden proofs."
+  ],
+  "strict_successor": "GPR-03",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On a GPR-specific owner Continue, fresh-read GPR-01, the GPR family design closure, ROADMAP_DEPENDENCY_GRAPH.json and ops3-lane-state/gpr, then execute the complete bounded tranche under OPS3 milestone-only execution.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
