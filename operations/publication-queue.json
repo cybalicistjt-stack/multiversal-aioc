@@ -1,8 +1,40 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/Multiversal-app",
-  "generation": 48,
-  "ready": [],
+  "generation": 49,
+  "ready": [
+    {
+      "candidate_id": "OARC-04-app-001",
+      "lane": "oarc",
+      "work_item_id": "OARC-04",
+      "pr_number": 652,
+      "head_sha": "b46f749ee83225d0acd7a3a270e2e8314b55c7f4",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "b46f749ee83225d0acd7a3a270e2e8314b55c7f4",
+        "run_id": "35531294278"
+      },
+      "write_set": [
+        "apps/client-ui/src/oarc/oarc04.operational-specialization-profiles.integration.test.ts",
+        "governance/application-planning/operational-asset-readiness-closure/OARC-04_SPECIALIZATION_PROFILE_MANIFEST_v1.0.0.json",
+        "governance/application-planning/validation-core/profiles/OARC-04.json",
+        "packages/contracts/src/vehicle-platform-base/oarc-04-operational-specialization-profiles.ts",
+        "tools/verify_oarc_04.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "b82eb6532d9d1b0815836a9ae3e852ac8fff2839",
+        "fresh_main_checked_sha": "a22391fdb136354c5eef93b9dbfc85de4deec35b",
+        "fresh_main_overlap_files": [],
+        "causal_red_run": "35531146908",
+        "authority_contracts": [
+          "OARC01.AUTHORITY_HANDOFF.v1",
+          "OARC02.DEFINITION_BRIDGE.v1",
+          "OARC03.CATALOG_NORMALIZATION.v1"
+        ],
+        "specialization_manifest": "OARC04.OPERATIONAL_SPECIALIZATION_PROFILES.v1"
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "MSAS-04-app-001",
