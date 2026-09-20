@@ -1,0 +1,94 @@
+{
+  "format": "multiversal-canonical-content-source",
+  "status": "owner-approved-canonical-replacement",
+  "bundleId": "mv.content.core26.orc.definition-v1.1",
+  "authority": {
+    "ownerDecision": "2026-09-20 returned MVPS-19 gap-resolution decision packet",
+    "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+    "bundlePart": "orc-definition-v1.1.0"
+  },
+  "records": [
+    {
+      "databaseId": "mv.core.species.orc",
+      "stableId": "mv.core.species.orc",
+      "name": "Orc",
+      "objectType": "mv.object.species-definition",
+      "developmentStage": "Structured draft",
+      "source": "phase-1-8-canonical-objects",
+      "sourceLocator": "content-source/phase-1-8-canonical-objects.json",
+      "promotionDecision": "OWNER_APPROVED_MVPS19_MECHANICS_COMPLETION",
+      "reviewStatus": "APPROVED",
+      "contentVersion": "1.1.0",
+      "replacementOf": {
+        "stableId": "mv.core.species.orc",
+        "expectedContentVersion": "1.0.0"
+      },
+      "manualEntry": null,
+      "gameObject": {
+        "id": "mv.core.species.orc",
+        "name": "Orc",
+        "objectType": "mv.object.species-definition",
+        "provenance": {
+          "ingestedFromArchive": "mv_pack_8d006_character-foundation_v0.1.0.pack",
+          "ingestedFromMember": "index.json"
+        },
+        "contentVersion": "1.1.0",
+        "extensions": {
+          "app.multiversal.aioc": {
+            "speciesCanonRegister": {
+              "authorityId": "CORE26-CURRENT-01",
+              "registerStableId": "mv.core.species-canon-register.orc",
+              "gameReadyStandard": "CORE26.GAME_READY.v1",
+              "definitionSourceChain": "content-source/core26-species/orc/"
+            },
+            "mvps19Mechanics": {
+              "decisionSet": "MVPS19.CORE26.OWNER_DECISIONS.v1",
+              "matrixRef": "MVPS19.CORE26.MECHANICS.v1",
+              "dispatchRule": "typed_data_not_species_name",
+              "baselineProfile": "terrestrial_humanoid",
+              "sizeClass": "Medium",
+              "stature": "large_frame",
+              "morphologyMarkers": [
+                "broad_shoulders",
+                "optional_visible_tusks"
+              ],
+              "movementModes": [
+                "walk"
+              ],
+              "senses": [
+                "ordinary_human"
+              ],
+              "physiology": {
+                "respiration": [
+                  "air"
+                ],
+                "sustenance": [
+                  "food",
+                  "water"
+                ],
+                "rest": "sleep",
+                "environment": "ordinary_terrestrial"
+              },
+              "immunities": [],
+              "capabilities": [],
+              "naturalEquipment": {
+                "weapons": [],
+                "armor": null,
+                "structural": [
+                  "strong_jaws",
+                  "optional_tusks"
+                ]
+              },
+              "equipmentInterfaces": [
+                "broad_humanoid"
+              ]
+            }
+          }
+        }
+      },
+      "validation": null,
+      "balance": null,
+      "testing": null
+    }
+  ]
+}
