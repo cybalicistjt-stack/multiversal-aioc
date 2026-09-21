@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MBES",
+  "lane": "gpr",
+  "track": "multiversal-built-environment-settlement",
+  "source_program": "MBES",
+  "work_item_id": "MBES-08",
+  "attempt_id": "MBES-08-attempt-001",
+  "title": "Facility Networks, Automation & Logistics Integration",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MBES-05",
+  "required_predecessor": {
+    "work_item": "MBES-05",
+    "status": "completed_verified",
+    "application_merge_sha": "76197ddabd809ea823ef44a7b57fb5b8a15fff05",
+    "schema": "MBES-05.1"
+  },
+  "objective": "Implement built-facility network adapters over MERA interfaces for power/fluid/air/heat/data/magic/setting-defined networks, bounded sensor/controller condition→authorized-operation bindings, Inventory storage/conveyance/routing interfaces, definition-supported throughput/capacity/priority projections, production-facility bindings to ICF/MIB-12/Economy truth, PCA-12 analysis adapters, and safe stop/failure/recovery explanations without creating a second engineering graph, automation language, inventory ledger, or production recipe engine.",
+  "acceptance": [
+    "Facility network topology references canonical MERA interfaces and owner-backed nodes/connections rather than creating an MBES engineering graph.",
+    "Automation is bounded condition→authorized operation request and cannot bypass permissions, preconditions, spending/transfer validation or human/GM decisions.",
+    "Inventory/storage/conveyance/routing adapters preserve canonical quantity and custody; routing never duplicates inventory.",
+    "Throughput/capacity/priority projections and PCA analysis are used only where explicit definitions/models support them; timeout/unsupported stays inconclusive.",
+    "Production facility capability binds accepted ICF/MIB-12/Economy recipe/operation truth rather than duplicating production logic.",
+    "Network preview, failure, safe-stop and recovery paths do not silently mutate live facility state and remain semantically accessible/provider-off."
+  ],
+  "boundaries": [
+    "MBES-01/03/05 remain sealed predecessors.",
+    "MERA retains generic engineering topology/interface/dependency/failure authority.",
+    "GPR plus target owners retain operation execution/permission authority.",
+    "Inventory/Asset retains quantity, custody, storage and item truth.",
+    "ICF/MIB-12/Economy retain production, transformation and economic truth.",
+    "PCA-12/Packet-08 retain generic flow/capacity/cycle analysis machinery.",
+    "MBES-08 creates no generic automation language, engineering graph, inventory ledger, production recipe engine, Project ledger, or provenance ledger.",
+    "MBES-12 and later MBES tranches remain unauthorized until canonical MBES-08 closeout."
+  ],
+  "strict_successor": "MBES-12",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "Awaiting owner Continue; the next Continue starts only MBES-08.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
