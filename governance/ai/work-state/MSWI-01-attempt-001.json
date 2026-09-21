@@ -79,7 +79,7 @@
   "active_substep": "completed_verified",
   "next_action": "MSWI-01 is completed_verified. MSWI-03 — Cross-System Consequence Routing, Recovery & Domain Adapter Runtime — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
     "material_progress_seq": 2,
     "progress_at_last_owner_command": 2,
@@ -97,10 +97,12 @@
     }
   },
   "execution_conformance": {
-    "status": "conforming",
-    "policy_violations": [],
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED"
+    ],
     "product_completion_valid": true,
-    "note": "MSWI-01 completed in one owner Continue. A repository policy rejected merge-commit transport after GREEN; the exact validated candidate remained unchanged and was published through the repository-supported squash method without rebase or revalidation."
+    "note": "MSWI-01 product completion remains valid. A second owner Continue was issued while the same attempt was still active; recovery resumed from durable lane/application evidence and did not replay completed work. This records the execution-quality incident without changing product completion."
   },
   "acceptance_evidence": {
     "governed_start": {
