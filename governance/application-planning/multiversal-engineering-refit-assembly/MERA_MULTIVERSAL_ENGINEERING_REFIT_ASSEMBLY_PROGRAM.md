@@ -1,12 +1,12 @@
 # MERA — Multiversal Engineering, Refit & Assembly
 
 **Program ID:** MERA  
-**Status:** ACTIVE — MERA-03 IN_PROGRESS; PDCP-REDUCED  
+**Status:** ACTIVE — MERA-05 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after GPR effective golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MBES-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-11  
-**Implementation authority:** MERA-03 only on `work/mera-03-configuration-compatibility-interchange`
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MERA-05 attempt
 
 ## Purpose
 
@@ -161,3 +161,12 @@ MERA-01 completed_verified with published contract `MERA-01.1`. The engineering 
 Causal RED run `35556187396` at `7638813e26be8ec5399c99ef97cd957275e56d40`; first implementation-head exact GREEN run `35556316867` at `e8ecbb1ceee8f37b3f7cfd6f50e6b193fa0fed77`; application publication PR #675 as `6c64b6f94c63061f6a5f582dd949a1c6d2d3d690`.
 
 MERA-03 is selected_not_started. Its closeout must reconsult the cross-program DAG because MBES-01 rotation becomes eligible once MERA-03 joins already-completed MRCS-14.
+
+
+## MERA-03 completed configuration/interchange result
+
+MERA-03 completed_verified with published contract `MERA-03.1`. Configuration proposals remain noncanonical; compatibility is explicit/versioned and never inferred from names; unknown/conflict fails closed; explicit adapter rules are bounded; blueprints require target-specific permission/version/compatibility revalidation; ARI/PCA retain generic interchange/provenance/rights/version/review authority; optional AI has no commit/publication/owner authority.
+
+Causal RED: run `35556956815` at `3705158ef40abc1c832d4bb5aa3b14517f9c4c51`. Exact-head GREEN: run `35557070342` at `0236803753934d6516b9800bf3cb66c82736ca3b`. Published application: PR #676 as `a5c31694b58e010241e636be76aaf0d97b007fbf`.
+
+Fresh roadmap reconciliation found the MBES-01 rotation milestone is satisfied, but MBES remains blocked by authoritative `hard_requires: ["MERA"]` until the MERA program completes and by MBES `activation_after: MERA-24`. MERA-05 is therefore selected_not_started.
