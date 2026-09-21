@@ -1,11 +1,11 @@
 # MBES — Multiversal Built Environment & Settlement
 
 **Program ID:** MBES  
-**Status:** ACTIVE — MBES-24 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** COMPLETED_VERIFIED — MBES-24 TERMINAL GOLDEN PROOF; PDCP-REDUCED  
 **Activation:** after the effective PDCP-reduced MERA golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** `MSLR-01`  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-24 attempt
+**Implementation authority:** retired after published MBES-24 terminal proof; MSLR-01 cross-family slot reuse requires a later owner Continue
 
 ## Purpose
 
@@ -273,3 +273,14 @@ The delivered seam projects Packet-06 district/settlement/regional built state o
 No Settlement, transport, Character, household, workforce, jobs, Project, organization, economy, property, funding or provenance ledger is created. Blocking workflows remain semantic/nonvisual, keyboard-capable and provider-off.
 
 Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-24` is selected_not_started as the reduced family golden gate; `MSLR-01` remains gated on MBES-24.
+
+
+## MBES-24 completed terminal golden proof & MSLR handoff
+
+MBES-24 completed_verified with published contract `MBES-24.1`. The terminal proof requires all twelve `MBES-GOLDEN-01..12` scenarios, the exact sealed MBES-01/03/05/08/12/14/18/20 schema set, canonical owner boundaries, Packet-06 identity/history preservation, generic Oara/non-Oara reactive-world behavior, owner-defined recovery, permission filtering, provenance/replay, semantic/nonvisual and keyboard parity, provider-off local operation, and no duplicate owner ledger or hidden canonical mutation.
+
+Causal RED run `35590039246` at `b4ea70f86d03259595d24e36cd0a29f63feec1ca` failed all 13 focused tests on Linux and hosted Windows because the terminal proof/handoff entry points were absent. Exact-head GREEN run `35590275017` at `935c9f6b33527a3987870e4963364fea57b30ea4` passed repository health, Linux, hosted Windows, MBES-24 invariants, TypeScript typecheck, focused tests and deterministic cross-platform comparison. PR #695 published as application main `7377314b962e50d23765eff1e644bd318a1966ca`.
+
+The Oara comparison uses the same generic reactive-world owner interface as the non-Oara reference world; differing responses remain owner-authorized World/Environment/Reality truth, not an Oara-only MBES engine. Scale refinement never duplicates canonical identity or fabricates past construction/occupancy Events.
+
+The MSLR handoff is explicit but non-authoritative: the MBES application neither starts nor selects MSLR. Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` identifies MSLR as hard-dependent on MBES and start-dependent on MBES-24. Those MBES-side gates become satisfied when this closeout marks MBES completed_verified. MSLR-01 is the downstream handoff target, while replacement of the terminal gpr family slot remains an owner-governed cross-family boundary requiring a later Continue.
