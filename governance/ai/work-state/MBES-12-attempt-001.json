@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MBES",
+  "lane": "gpr",
+  "track": "multiversal-built-environment-settlement",
+  "source_program": "MBES",
+  "work_item_id": "MBES-12",
+  "attempt_id": "MBES-12-attempt-001",
+  "title": "Civil Terrain, Hydrology & Land-Transformation Runtime",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MBES-08",
+  "required_predecessor": {
+    "work_item": "MBES-08",
+    "status": "completed_verified",
+    "application_merge_sha": "4f8c9292facb1ff2d06e9cb446f4d1e6d0900896",
+    "schema": "MBES-08.1"
+  },
+  "objective": "Implement Project-backed terrain and hydrology change proposals for excavation, fill, grading, tunneling, embankments, channels, reservoirs, irrigation, drainage and reclamation; bind MCS geometry and PCA analysis, validate against World/Environment owner state, commit only through owner operations, preserve provenance/original state, and build owner-defined compensation/recovery without creating a terrain, hydrology, Project, World or provenance ledger.",
+  "acceptance": [
+    "Terrain/hydrology transformations remain proposals until Project/resource/time and World/Environment owners authorize commit.",
+    "Excavation/fill/grading/tunneling/embankment/channel/reservoir/irrigation/drainage/reclamation operations use explicit accepted definitions and owner references.",
+    "MCS geometry and PCA analysis remain noncanonical preview/analysis inputs and cannot silently mutate terrain or water state.",
+    "Stale or conflicting World/Environment/Project evidence fails closed or requires revalidation.",
+    "Committed transformations preserve original-state/history/provenance and recovery uses owner-defined compensation rather than history deletion.",
+    "Consequence observations/Events are typed for later MSWI routing without direct unrelated-domain mutation.",
+    "Blocking workflows remain semantic/nonvisual, keyboard-capable and provider-off."
+  ],
+  "boundaries": [
+    "MBES-01/03/05/08 remain sealed predecessors.",
+    "World/Environment owners retain canonical terrain, water and condition truth.",
+    "APW/D26 retains Project/task/time authority; D17/Inventory and MIB-12 retain resource/transformation truth.",
+    "MCS retains geometry/map authoring; PCA-12/Packet-08 retains generic analysis authority.",
+    "MBES-12 creates no terrain, hydrology, Project, World, Inventory, economy or provenance ledger.",
+    "MBES-14 and later MBES tranches remain unauthorized until canonical MBES-12 closeout."
+  ],
+  "strict_successor": "MBES-14",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await the next owner Continue. That command may governed-start only MBES-12.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}

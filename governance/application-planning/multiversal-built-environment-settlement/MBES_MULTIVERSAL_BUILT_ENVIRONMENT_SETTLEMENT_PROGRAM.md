@@ -1,11 +1,11 @@
 # MBES — Multiversal Built Environment & Settlement
 
 **Program ID:** MBES  
-**Status:** ACTIVE — MBES-08 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MBES-12 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after the effective PDCP-reduced MERA golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** `MSLR-01`  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-08 attempt
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-12 attempt
 
 ## Purpose
 
@@ -214,3 +214,14 @@ Room/facility capability is derived only from explicit accepted requirement evid
 Staffing/access/use prerequisites reference Character/MNCS/ODL/DPL/Project owner state and environment prerequisites reference World/Environment truth. No people/job/staffing, Asset, blueprint, facility, World, environment, Project or provenance ledger is duplicated. Pointer and keyboard review paths are semantically equivalent and provider-off.
 
 Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-08` is selected_not_started as the reduced strict successor.
+
+
+## MBES-08 completed — Facility Networks, Automation & Logistics Integration
+
+MBES-08 completed_verified with application contract `MBES-08.1`. Causal RED run `35581774092` at `e82518ba30f8f56c4b5d41d03ac6a75cf4f888c0` passed repository health and failed all 12 focused tests on Linux and hosted Windows because the production facility-network entry points were absent. The initial Green head `2fbdfe314336f77a49d181c3d5b75784854ad407` passed all 12 Linux behavior tests but correctly failed source-governance validation because the verifier referenced a nonexistent MIB-12 literal. The repair changed only the verifier to the actual `bindCraftingCommitIntent` / `commit:atomic-transformation` seam. Exact-head run `35582058394` at `b0f6a469e67773cba1072c3130a88eed382cef26` then passed repository health, Linux, hosted Windows, invariants, TypeScript typecheck, focused tests and deterministic cross-platform comparison. PR #690 published as application main `4f8c9292facb1ff2d06e9cb446f4d1e6d0900896`.
+
+The implemented seam consumes MERA-10 network topology/interfaces and failure semantics without creating a second engineering graph. Sensor/controller automation is bounded to explicit condition→authorized-owner-operation bindings and provides neither unrestricted scripting nor autonomous human/GM decision authority. Storage/conveyance/routing remain D17/Inventory references. Throughput/capacity/priority derive only from explicit profiles. Production facilities bind to ICF, MIB-12 and MIB-13/Economy references without copying recipe, transformation, production or economy truth. PCA-12/Packet-08 analysis remains noncanonical.
+
+Safe-stop/recovery preserves prior Events and routes through MERA/GPR/target owners. Blocking explanations remain semantic/nonvisual, keyboard-capable and provider-off.
+
+Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-12` is selected_not_started as the reduced strict successor.

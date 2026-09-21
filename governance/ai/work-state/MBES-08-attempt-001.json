@@ -9,11 +9,11 @@
   "attempt_id": "MBES-08-attempt-001",
   "title": "Facility Networks, Automation & Logistics Integration",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/mbes-08-facility-networks-automation-logistics",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "MBES-05",
   "required_predecessor": {
     "work_item": "MBES-05",
@@ -41,21 +41,111 @@
     "MBES-12 and later MBES tranches remain unauthorized until canonical MBES-08 closeout."
   ],
   "strict_successor": "MBES-12",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for MBES-08 through the public facility-network/automation/logistics seam, then implement only the bounded owner-backed adapters required by the reduced family contract.",
+  "active_substep": "completed_verified",
+  "next_action": "MBES-08 is completed_verified. MBES-12 — Civil Terrain, Hydrology & Land-Transformation Runtime — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started MBES-08 from canonical selected_not_started state."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "MBES-08 causal RED run 35581774092 failed the 12-test focused suite on Linux and hosted Windows at e82518ba30f8f56c4b5d41d03ac6a75cf4f888c0 because production entry points were absent; implementation head 2fbdfe314336f77a49d181c3d5b75784854ad407 passed 12/12 focused tests but invariant validation correctly failed on a stale MIB-12 marker; repaired exact head b0f6a469e67773cba1072c3130a88eed382cef26 passed repository health, Linux, hosted Windows, invariants, TypeScript typecheck, focused tests and deterministic comparison in run 35582058394, then PR 690 published as application main 4f8c9292facb1ff2d06e9cb446f4d1e6d0900896."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MBES-08 facility-network/automation/logistics adapters are durably published and canonical closeout selects MBES-12 without starting it."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "note": "MBES-08 completed in one owner Continue. One bounded source-governance verifier repair aligned the invariant with the actual MIB-12 public transformation seam; production behavior was already green and was not widened."
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "causal_red": "completed",
+    "facility_network_projection": "completed",
+    "bounded_automation": "completed",
+    "inventory_logistics": "completed",
+    "explicit_capacity_profiles": "completed",
+    "production_owner_bindings": "completed",
+    "pca_analysis_adapter": "completed",
+    "safe_stop_recovery": "completed",
+    "verifier_repair": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "acceptance_evidence": {
+    "governed_start": {
+      "aioc_pr": 1556,
+      "validation_run": 35581576176,
+      "merge_sha": "9aa84e122a17d457a0e72ab22e944ecb46156c14"
+    },
+    "causal_red": {
+      "application_pr": 690,
+      "head": "e82518ba30f8f56c4b5d41d03ac6a75cf4f888c0",
+      "validation_run": 35581774092,
+      "conclusion": "failure",
+      "selector_repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "signature": "Focused MBES-08 suite executed 12 tests on Linux and hosted Windows; all 12 failed with expected null because the production facility-network entry points were absent."
+    },
+    "bounded_repair": {
+      "head": "2fbdfe314336f77a49d181c3d5b75784854ad407",
+      "validation_run": 35581961863,
+      "linux_behavior_tests": "12/12 pass",
+      "failure": "MBES-08 invariant verifier referenced a nonexistent MIB-12 literal",
+      "repair": "Verifier aligned to bindCraftingCommitIntent and commit:atomic-transformation; production behavior unchanged."
+    },
+    "green": {
+      "application_pr": 690,
+      "validated_head": "b0f6a469e67773cba1072c3130a88eed382cef26",
+      "validation_run": 35582058394,
+      "conclusion": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "4f8c9292facb1ff2d06e9cb446f4d1e6d0900896"
+    },
+    "delivered": {
+      "schema": "MBES-08.1",
+      "predecessor_schema": "MBES-05.1",
+      "mera_network_authority_preserved": true,
+      "bounded_authorized_automation": true,
+      "unrestricted_scripting_allowed": false,
+      "autonomous_human_decision_authority": false,
+      "inventory_authority_preserved": true,
+      "capacity_inference_used": false,
+      "icf_recipe_authority_preserved": true,
+      "mib12_transformation_authority_preserved": true,
+      "mib13_economy_authority_preserved": true,
+      "pca_analysis_noncanonical": true,
+      "generic_engineering_graph_created": false,
+      "automation_language_created": false,
+      "inventory_ledger_created": false,
+      "recipe_engine_created": false,
+      "economy_ledger_created": false,
+      "canonical_owner_mutation_performed": false,
+      "semantic_nonvisual_path": true,
+      "keyboard_equivalent": true,
+      "provider_off_local": true,
+      "paid_cloud_required": false,
+      "mandatory_3d_required": false
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MBES-12",
+      "interstitial_override": "none",
+      "reason": "Fresh ROADMAP_DEPENDENCY_GRAPH supplies no interstitial MBES override; the reduced strict successor after MBES-08 is MBES-12."
+    }
   }
 }
