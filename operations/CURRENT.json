@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 339,
+  "state_revision": 340,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "completed_verified",
-      "selected_work_item": "MERA-24",
-      "attempt_id": "MERA-24-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MERA-24-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "MERA-24 completed_verified after causal RED run 35576396637 at 17d5a1c95eeb74e6b12c653d9ec394861ea35ef2, exact-head GREEN run 35576642290 at 1ced719f8f0f7f72fedd310d50f1dd38468e2247, and direct publication of PR 686 as app main 8e57b254c620969080c1b6eab4ebc7ec461ad3e3. MERA is terminal completed_verified. MBES-01 is the downstream handoff target, but cross-family reuse of the terminal gpr slot requires a later owner Continue.",
+      "state": "in_progress",
+      "selected_work_item": "MBES-01",
+      "attempt_id": "MBES-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MBES-01-attempt-001.json",
+      "implementation_branch": "work/mbes-01-site-project-authority-construction-core",
+      "implementation_authority": true,
+      "activation_rule": "Owner Continue explicitly authorized reuse of the terminal gpr slot for MBES-01 after MERA-24 completed_verified. ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 hard_requires MERA and start_requires MERA-03, MRCS-14, MIB-14, and World/Environment/Project contracts; those gates are satisfied.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "MERA is terminal completed_verified. A later owner Continue may explicitly authorize reuse of the terminal gpr slot for MBES-01 after fresh DAG/start-prerequisite reconciliation; MBES has not been selected or started.",
+  "next_project_action": "MBES-01 is in progress. Complete only the reduced Site, Project, Authority & Construction Core tranche through exact-head validation/publication and verified closeout before MBES-03 may start.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MBES",
+  "lane": "gpr",
+  "track": "multiversal-built-environment-settlement",
+  "source_program": "MBES",
+  "work_item_id": "MBES-01",
+  "attempt_id": "MBES-01-attempt-001",
+  "title": "Site, Project, Authority & Construction Core",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/mbes-01-site-project-authority-construction-core",
+  "completed": false,
+  "selected_by_verified_predecessor": "MERA-24",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "hard_requires": [
+      "MERA"
+    ],
+    "start_requires": [
+      "MERA-03",
+      "MRCS-14",
+      "MIB-14",
+      "World/Environment/Project contracts"
+    ],
+    "satisfied": [
+      "MERA completed_verified",
+      "MERA-03 completed_verified",
+      "MRCS-14 completed_verified",
+      "MIB-14 available",
+      "World/Environment/Project contracts available"
+    ],
+    "reduced_strict_order": "MBES-01 → MBES-03 → MBES-05 → MBES-08 → MBES-12 → MBES-14 → MBES-18 → MBES-20 → MBES-24"
+  },
+  "required_predecessor": {
+    "work_item": "MERA-24",
+    "status": "completed_verified",
+    "application_merge_sha": "8e57b254c620969080c1b6eab4ebc7ec461ad3e3",
+    "schema": "MERA-24.1"
+  },
+  "objective": "Implement the reduced MBES opening seam: workspace/resolution shell, stable owner-backed site/parcel/structure/space/component/network references, site/claim/permission projections, versioned construction Project/task bindings, proposal dispositions with stale-owner handling, MIB-13/ODL property/funding/procurement references, and Packet-07 preview/commit/recovery hooks without creating duplicate World, Project, property, market, contract, economy, or construction ledgers.",
+  "acceptance": [
+    "Map or geometry context alone remains proposal-only and never grants construction authorization.",
+    "Valid owner-backed site permission plus current Project/resource requirements can produce a typed construction request without mutating owner state.",
+    "Revoked permission or stale site/Project/property/funding inputs invalidate preview or require revalidation rather than silently committing.",
+    "Stable site/parcel/structure/space/component/network references preserve owner identity across resolution scopes without creating duplicate World identity.",
+    "Property, funding and procurement are references/adapters to MIB-13/ODL/Economy/Project owners and are not copied into an MBES ledger.",
+    "Preview, commit and recovery dispositions preserve Packet-07 distinctions; preview is noncanonical and committed reversal is owner-defined compensation/recovery with history preserved.",
+    "Unsupported material/property/legal behavior remains unresolved rather than inferred.",
+    "Blocking construction planning is semantic/nonvisual, keyboard-capable, optional-AI independent and paid-cloud independent."
+  ],
+  "boundaries": [
+    "MERA-24 and all upstream completed programs remain sealed.",
+    "World/Environment owners retain canonical site/world identity and condition truth.",
+    "APW/D26 retains Project/task/time/participant/cancellation authority.",
+    "MIB-13/Economy/ODL retain property, prices, markets, contracts, funding/procurement and economic truth.",
+    "MCS geometry is proposal/binding input and never becomes construction truth by itself.",
+    "Packet-07 retains generic proposal/preview/commit/explanation/intervention/recovery semantics.",
+    "MBES-01 creates no Project, property, market, contract, economy, Asset, World, or provenance ledger.",
+    "MBES-03 and later MBES tranches remain unauthorized until canonical MBES-01 closeout."
+  ],
+  "strict_successor": "MBES-03",
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for MBES-01 through the public construction-core seam, then implement only the bounded site/project/authority adapters required by the reduced family contract.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner Continue explicitly authorized cross-family gpr slot reuse and governed start of MBES-01 from terminal completed_verified MERA-24."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
