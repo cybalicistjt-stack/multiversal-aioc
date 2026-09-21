@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-05",
+  "attempt_id": "SAA-05-attempt-001",
+  "title": "Character Actor Projection",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-04",
+  "required_predecessor": {
+    "work_item": "SAA-04",
+    "status": "completed_verified",
+    "application_merge_sha": "e219aeb37db308bfdee11b04b51c66debb580e04",
+    "schema": "SAA-04.1"
+  },
+  "objective": "Create a reusable SAA actor reference over existing Character/NPC/Creature owner identity and renderer-neutral appearance projections, using ARI-governed presentation resources without mutating canonical entity or appearance truth and without beginning the SAA-06 pose/expression/view selector.",
+  "acceptance": [
+    "Each SAA actor has stable actor identity and explicit reference to an existing Character/NPC/Creature owner record rather than copying canonical entity truth.",
+    "Actor projection stores versioned renderer-neutral appearance/projection references supplied by CAPP/PPIA-compatible owners and does not redefine anatomy, mechanics, equipment ownership or live state.",
+    "Renderable presentation resources are referenced through ARI identity/provenance/rights references rather than embedded or duplicated by default.",
+    "The same actor projection can be reused across pages/panels while preserving stable entity and appearance-reference identity.",
+    "Unsupported, missing or stale appearance/resource references remain explicit fail-closed projection state rather than fabricating a usable actor.",
+    "Projection emits presentation bindings consumable by SAA-03 composition without mutating Character, Scene, ARI, CAPP/PPIA or PAPT/PCA owner truth.",
+    "Actor creation and selection have keyboard/textual equivalents and do not require drag-and-drop.",
+    "Provider-off local operation is supported for locally available governed projections; optional AI and paid cloud are not required.",
+    "SAA-06 pose/expression/view/frame selection and all later SAA/export/share/SMB10B behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "Character/NPC/Creature/Species/Form owner domains retain canonical identity, anatomy, mechanics and live-state authority.",
+    "CAPP/PPIA retain renderer-neutral appearance authority; PAPT/PCA retain reusable production primitives; ARI retains resource identity, provenance and rights authority.",
+    "SAA-05 creates reusable presentation actor references only; it does not author or silently mutate canonical appearance truth.",
+    "Pose, expression, view and animation-frame variant selection belongs to SAA-06.",
+    "No export/share/publication or final Creator integration authority is granted."
+  ],
+  "strict_successor": "SAA-06",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-05.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
