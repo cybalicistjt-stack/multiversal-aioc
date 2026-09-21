@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-02",
+  "attempt_id": "SAA-02-attempt-001",
+  "title": "Panel Templates & Page Layout Grammar",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-01",
+  "required_predecessor": {
+    "work_item": "SAA-01",
+    "status": "completed_verified",
+    "application_merge_sha": "c6fd9ad9beeac1da028aadb2cd330bc68d19246a",
+    "schema": "SAA-01.1"
+  },
+  "objective": "Define deterministic page/panel layout grammar over sealed SAA-01 project/page/panel identities, including common panel grids, gutters, margins, bleed/safe-area rules and freeform panel layouts, without implementing the SAA-03 interactive composition canvas.",
+  "acceptance": [
+    "Common panel-grid templates are typed, versioned and deterministic.",
+    "Margins, gutters, bleed and safe-area values are explicit schema state with validated bounds.",
+    "Freeform panel geometry is representable without mutating SAA-01 project/page/panel identity.",
+    "Template application yields deterministic panel-layout state and stable serialization.",
+    "Reading order is explicit and independent from incidental rendering coordinates.",
+    "Layout grammar remains presentation/authoring state and does not mutate Scene, Character, ARI or other canonical owner truth.",
+    "Keyboard/textual equivalents can represent blocking layout operations for later UI consumption.",
+    "Provider-off local operation is supported; optional AI and paid cloud are not required.",
+    "SAA-03 interactive composition behavior and later SAA tranches remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01.1 remains sealed and owns project/page/panel/layer schema identity.",
+    "SAA-02 defines layout grammar only; drag/resize/crop/z-order interaction belongs to SAA-03.",
+    "ARI and source-domain owners remain authoritative.",
+    "No export/share/publication or final Creator integration authority is granted."
+  ],
+  "strict_successor": "SAA-03",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-02.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
