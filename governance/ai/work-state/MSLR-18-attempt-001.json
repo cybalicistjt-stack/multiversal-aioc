@@ -9,10 +9,10 @@
   "attempt_id": "MSLR-18-attempt-001",
   "title": "Golden Impossible-Space Proof & MSWI Handoff",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/mslr-18-golden-impossible-space-proof",
   "completed": false,
   "selected_by_verified_predecessor": "MSLR-16",
   "required_predecessor": {
@@ -46,8 +46,8 @@
   ],
   "strict_successor": null,
   "downstream_handoff": "MSWI-01",
-  "active_substep": "awaiting_governed_start",
-  "next_action": "Await the next owner Continue. That command may governed-start only MSLR-18; MSWI has not been selected or started.",
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for the complete MSLR terminal proof battery, amended impossible-space cases, exact-head family proof and non-authoritative MSWI-01 handoff.",
   "design_amendment": {
     "approved": "2026-09-21",
     "required": true,
@@ -60,12 +60,16 @@
     ]
   },
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner Continue governed-started terminal MSLR-18."
+    },
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null
