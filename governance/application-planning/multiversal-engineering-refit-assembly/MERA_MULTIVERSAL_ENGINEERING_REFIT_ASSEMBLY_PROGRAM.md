@@ -1,12 +1,12 @@
 # MERA — Multiversal Engineering, Refit & Assembly
 
 **Program ID:** MERA  
-**Status:** ACTIVE — MERA-06 IN_PROGRESS; PDCP-REDUCED  
+**Status:** ACTIVE — MERA-07 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after GPR effective golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MBES-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-11  
-**Implementation authority:** MERA-06 only on `work/mera-06-isolation-disassembly-recovery`
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MERA-07 attempt
 
 ## Purpose
 
@@ -181,3 +181,14 @@ Repair receipts remain owner history rather than acceptance. Acceptance is separ
 Causal RED: run `35557606982` at `357b77882a49cd29e7b9dbb4e0880b38d94f86c8`. Exact-head GREEN: run `35557691915` at `f2a5969e38b894855b0d442873477c94e2dd1912`. Published application: PR #677 as `13dafa2a92aab021e74f9a92b7743534ccc667fa`.
 
 Fresh roadmap reconciliation supplies no interstitial successor override. MERA-06 is selected_not_started. MBES remains blocked until MERA completes at MERA-24.
+
+
+## MERA-06 completed isolation/disassembly/recovery result
+
+MERA-06 completed_verified with published contract `MERA-06.1`. Owner-authored access/isolation prerequisites are revalidated against permission and D17 owner version; hidden requirements are filtered before aggregation and missing authored rules remain unresolved. Ordered disassembly stays noncanonical. Partial completion preserves exact owner receipts and pending steps without invented rollback.
+
+LSS retains recoverability/decomposition/salvage/donor-lineage authority, and MIB-12 retains repair/refabrication transaction authority. MERA-06 emits typed handoffs only and performs no canonical owner mutation.
+
+Causal RED: run `35558237964` at `7caddf40804673d9e75b60f75c7e2ea518a83b01`. Exact-head GREEN: run `35558334892` at `2af0d9302253bcdd96398e77b35da7f1ba022a6a`. Published application: PR #678 as `312b35e5a3dbd268611c46e3572afda550104477`.
+
+Fresh roadmap reconciliation supplies no interstitial successor override. MERA-07 is selected_not_started. MBES remains blocked until MERA completes at MERA-24.
