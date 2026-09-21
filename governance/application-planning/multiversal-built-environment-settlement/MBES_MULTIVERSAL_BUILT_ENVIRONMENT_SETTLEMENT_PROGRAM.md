@@ -1,11 +1,11 @@
 # MBES — Multiversal Built Environment & Settlement
 
 **Program ID:** MBES  
-**Status:** OWNER-APPROVED — PLANNED; PDCP-REDUCED  
+**Status:** ACTIVE — MBES-03 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after the effective PDCP-reduced MERA golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** `MSLR-01`  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-03 attempt
 
 ## Purpose
 
@@ -181,3 +181,14 @@ No dependency-graph milestone rewrite is required by the reduction:
 - MERA remains upstream under its eventual effective PDCP-reduced golden gate.
 
 This planning reduction grants no implementation authority and does not modify `operations/CURRENT.json`.
+
+
+## MBES-01 completed — Site, Project, Authority & Construction Core
+
+MBES-01 completed_verified with published application contract `MBES-01.1`. The causal RED run `35577781185` at `2359ee0b3ee6c9e497bc8d18099ae000e006073d` ran the focused suite on Linux and hosted Windows and failed all 10 tests because the construction-core entry points were absent. Exact-head GREEN run `35578026520` at `9c3e05092101d590472ac4896a5ca6416ce76af2` passed repository health, Linux, hosted Windows, MBES-01 invariants, TypeScript typecheck, focused tests and deterministic cross-platform comparison. PR #687 published as application main `590c66edc38d8a7ece39691af728fd96d3141b68`.
+
+The implemented seam preserves MIB-11/D18 World/site identity, APW/D26 Project/task authority, MIB-13 economy and ODL organization/property references, MCS geometry as proposal-only input, and PDCP Packet-07 proposal/preview/commit/recovery distinctions. Geometry never grants construction authority; permission is explicit and never inferred; stale owner evidence requires revalidation; unsupported legal/material/property facts remain unresolved; recovery preserves history; and MBES creates no duplicate World, Project, property, economy, market, contract, Asset or provenance ledger.
+
+Blocking construction planning is semantic/nonvisual, keyboard-capable and provider-off, with no paid-cloud or mandatory-3D dependency.
+
+Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-03` is selected_not_started as the reduced strict successor.
