@@ -158,3 +158,12 @@ Historical IDs remain visible in the PDCP receipt for provenance but are no long
 ## Non-authorization
 
 This reduction does not start MSLR, create an implementation branch, alter `operations/CURRENT.json`, start MSWI/SMB-08, authorize paid/cloud dependencies or change canonical Campaign state.
+
+
+## Spatial architecture amendment — 2026-09-21
+
+Owner-approved MSLR refinement preserves the nine-tranche reduction while adding an explicit three-layer model: intrinsic spatial law/geometry → optional substrate/discretization → projection/presentation. Projection changes never mutate canonical semantics, screen coordinates never establish identity, and profiles declare extent/addressing semantics including finite, quotient, unbounded and procedurally addressed/lazy spaces.
+
+Family impacts are governed by the design-closure amendment: MSLR-03 adds quotient/identification and lazy-neighborhood runtime semantics; MSLR-04 adds observer-local-frame knowledge; MSLR-08 adds isometry/frame-transport and continuous/discrete equivalence; MSLR-13 adds local-frame navigation counterplay; MSLR-14 adds fundamental-domain/transformation-group generation with optional regular {p,q} recipes; MSLR-16 explicitly covers pathfinding/pursuit/travel; and MSLR-18 adds projection-invariant hyperbolic, quotient/non-orientable, lazy-unbounded and discrete-vs-continuous golden proofs.
+
+This refinement is clean-room architecture guidance. It does not import HyperRogue GPL source or any protected external expression.
