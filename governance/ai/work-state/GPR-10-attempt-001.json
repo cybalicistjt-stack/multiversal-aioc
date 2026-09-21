@@ -9,10 +9,10 @@
   "attempt_id": "GPR-10-attempt-001",
   "title": "Rights-Safe Semantic Presentation & Accessibility Projection",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "implementation_authority": false,
   "implementation_branch": null,
-  "completed": false,
+  "completed": true,
   "selected_by_verified_predecessor": "GPR-09",
   "selection_basis": {
     "dag_schema": "1.0.4",
@@ -58,17 +58,103 @@
     "OARC lane state remains independent."
   ],
   "strict_successor": "GPR-12",
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On a GPR-specific owner Continue, fresh-read GPR-10, published GPR predecessor evidence, rights/provenance owner seams, the GPR family design closure and ops3-lane-state/gpr, then execute the complete bounded rights-safe presentation/accessibility tranche.",
+  "active_substep": "completed_verified",
+  "next_action": "GPR-10 is completed_verified. GPR-12 — Multiplayer, Replay, Persistence, Recovery & Version Continuity — is selected_not_started and requires a later GPR-specific owner Continue for governed start.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "completed_verified_candidate",
+      "evidence": "GPR-10 causal RED run 35545215293 established the missing production rights/presentation/accessibility seam at 363bb414a07112225db5ffe64b4d493b8fba10de; exact-head Linux/hosted-Windows/deterministic GREEN run 35551753557 passed at 35c1ed8ea86cf15192e41f4d09c158da459c257f; PR 664 published as application main 7c713013b1774811c5de4952d4f10eb00e2adc43."
+    },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": null
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "GPR-10 rights-safe semantic presentation/accessibility runtime is durably published and this atomic closeout selects GPR-12 without starting it."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "GPR-10 completed with causal RED, exact-head Linux/Windows/deterministic GREEN, direct protected-main publication and bounded closeout. Validation infrastructure was repaired without widening GPR-10 gameplay authority."
+  },
+  "implementation_plan": {
+    "lane_start": "completed",
+    "causal_red": "completed",
+    "rights_safe_presentation_accessibility": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "acceptance_evidence": {
+    "causal_red": {
+      "pr": 664,
+      "head": "363bb414a07112225db5ffe64b4d493b8fba10de",
+      "validation_run": 35545215293,
+      "conclusion": "cancelled_after_causal_failure",
+      "signature": "Current-family selector/repository health passed; Linux GPR-10 profile failed because the production rights-safe presentation/accessibility contract was absent. Windows was later cancelled while runner infrastructure was repaired."
+    },
+    "green": {
+      "pr": 664,
+      "validated_head": "35c1ed8ea86cf15192e41f4d09c158da459c257f",
+      "validation_run": 35551753557,
+      "conclusion": "success",
+      "linux": "success",
+      "windows": "success",
+      "windows_execution": "governed hosted windows-latest fallback",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "7c713013b1774811c5de4952d4f10eb00e2adc43"
+    },
+    "publication": {
+      "candidate_id": "GPR-10-app-001",
+      "mode": "single_lane_direct",
+      "application_merge_sha": "7c713013b1774811c5de4952d4f10eb00e2adc43"
+    },
+    "rights_safe_presentation_accessibility": {
+      "schema": "GPR-10.1",
+      "rights_authority": "ARI-11",
+      "asset_role_source_authority": "ARI/PCA",
+      "semantic_roles": [
+        "actor",
+        "world",
+        "object",
+        "ui",
+        "effect",
+        "audio"
+      ],
+      "presentation_surfaces": [
+        "camera",
+        "hud",
+        "menu",
+        "dialogue",
+        "reticle"
+      ],
+      "accessibility_modes": [
+        "keyboard",
+        "touch",
+        "structured-text-list",
+        "screen-reader"
+      ],
+      "unresolved_denied_revoked_rights_fail_closed": true,
+      "presentation_mutates_mechanics_truth": false,
+      "presentation_mutates_action_event_truth": false,
+      "canonical_owner_mutation_performed_by_gpr": false
+    },
+    "fresh_main_integration": {
+      "publication_merge_sha": "7c713013b1774811c5de4952d4f10eb00e2adc43",
+      "pr": 664,
+      "merged": true
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "interstitial_override": "none",
+      "selected": "GPR-12",
+      "reason": "GPR-10 strict_successor is GPR-12 and the roadmap DAG supplies no interstitial successor override. MRCS and OARC are terminal completed_verified."
+    }
   }
 }

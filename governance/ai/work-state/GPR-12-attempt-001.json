@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "GPR",
+  "lane": "gpr",
+  "track": "gameplay-pattern-runtime",
+  "source_program": "GPR",
+  "work_item_id": "GPR-12",
+  "attempt_id": "GPR-12-attempt-001",
+  "title": "Multiplayer, Replay, Persistence, Recovery & Version Continuity",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "GPR-10",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "gpr_interstitial_override": "none",
+    "strict_order": "GPR-01 → GPR-03 → GPR-05 → GPR-06 → GPR-07 → GPR-08 → GPR-09 → GPR-10 → GPR-12 → GPR-16",
+    "late_bind_requires": [
+      "MCS/MCCS/MNCS/MAS/MSAS outputs"
+    ],
+    "golden_proof_requires": [
+      "relevant specialist golden proofs"
+    ],
+    "satisfied_golden_dependencies": [
+      "MRCS-21 completed_verified"
+    ],
+    "parallel_lanes": "MRCS and OARC are terminal completed_verified; GPR is the only nonterminal persistent implementation lane."
+  },
+  "required_predecessor": {
+    "work_item": "GPR-10",
+    "application_merge_sha": "7c713013b1774811c5de4952d4f10eb00e2adc43",
+    "presentation_schema": "GPR-10.1",
+    "delivery_control_schema": "GPR-09.1",
+    "loop_mini_schema": "GPR-08.1",
+    "bounded_resolution_schema": "GPR-07.1",
+    "specialist_module_schema": "GPR-06.1",
+    "owner_operation_schema": "GPR-05.1",
+    "deterministic_kernel_schema": "GPR-03.1",
+    "runtime_registry_schema": "GPR-01.1"
+  },
+  "objective": "Implement gameplay-instance multiplayer/controller-slot authority, synchronization gates, deterministic replay/Event traces where declared, versioned snapshots, restore/migration, reconnect, unsupported-version/corruption behavior and bounded recovery while preserving owner-domain idempotency/version/recovery authority for owner mutations.",
+  "acceptance": [
+    "Player/controller-slot authority and multiplayer synchronization are explicit; ambiguous or unsupported authority states fail closed.",
+    "Replay/Event traces are deterministic where the selected pattern declares replay support and preserve semantic command/outcome identity.",
+    "Snapshots are versioned, restoreable and identity-safe; snapshot data does not become reusable source truth or owner-domain canon.",
+    "Migration is explicit between supported versions and unsupported-version or corrupted state fails closed with bounded diagnostics.",
+    "Reconnect and recovery preserve gameplay-instance continuity without inventing owner-domain mutation receipts or bypassing owner idempotency/version rules.",
+    "Replay, snapshot, export and recovery surfaces preserve visibility/permission filtering and do not expose hidden participants, targets or state."
+  ],
+  "boundaries": [
+    "GPR-01 through GPR-10 remain predecessors and are not duplicated.",
+    "GPR-12 owns gameplay-instance continuity only; owner-domain idempotency, versioning and recovery semantics remain authoritative for owner mutations.",
+    "Generic Packet-07 recovery semantics and PCA/Packet-08 simulation/formal-analysis authority remain external and are consumed rather than reimplemented.",
+    "Snapshots and replay traces are runtime evidence/state, not canonical content definitions or resource truth.",
+    "No mandatory paid/cloud service, 3D renderer or twitch-only input path may be introduced.",
+    "GPR-16 final conformance/golden proof/downstream handoff remains unauthorized until GPR-12 completes."
+  ],
+  "strict_successor": "GPR-16",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On a GPR-specific owner Continue, fresh-read GPR-12, GPR-10 publication evidence, owner-domain idempotency/version/recovery seams, Packet-07/Packet-08 boundaries, the GPR family design closure and ops3-lane-state/gpr, then execute the complete bounded continuity tranche.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
