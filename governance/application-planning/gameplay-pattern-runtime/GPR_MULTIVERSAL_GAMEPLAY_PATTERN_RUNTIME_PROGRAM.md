@@ -3,11 +3,11 @@
 **Program ID:** GPR  
 **Program name:** Gameplay Pattern Runtime & Loop Minis  
 **Version:** 0.2.0 — PDCP REDUCED  
-**Status:** ACTIVE — GPR-16 SELECTED_NOT_STARTED  
+**Status:** COMPLETED_VERIFIED — GPR-16 TERMINAL GOLDEN PROOF  
 **Activation:** concurrent start authorized after MRCS-05 + completed MAL + core owner contracts; later MRCS late-binds; GPR-16 waits for MRCS-21  
 **Successor:** MERA-01  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-16 attempt
+**Implementation authority:** none; GPR implementation authority is retired after terminal completion
 
 ## Purpose
 
@@ -298,3 +298,16 @@ MIB-03 remains owner-operation idempotency/version/retry/replay/recovery authori
 Causal RED run `35553806529` at `9ba36ce1d460adaee45d1abcf7f65c3dae34a3b9` established the absent production seam. Exact-head GREEN run `35553874979` passed Linux, governed hosted Windows and deterministic cross-platform comparison at `7105b3fb7fcceb7b97d4a40f5f5a32d268acd62e`. Published application: PR #673 through candidate `GPR-12-app-001` as application main `7e07bbf0961bf80bb4999ebbe1c53bf638e24176`.
 
 The fresh roadmap DAG supplies no interstitial successor override. GPR-16 is selected_not_started. Its completion remains gated on MRCS-21 plus relevant specialist golden proofs; MRCS-21 is already completed_verified.
+
+
+## GPR-16 terminal conformance/golden result
+
+GPR-16 completed_verified on 2026-09-20 and closes the reduced GPR family.
+
+The production proof contract `GPR-16.1` enforces exact 168-pattern, 85 primitive-bound operation and 672 failure/partial/cozy/GM variant coverage with zero generic fallback, plus all 48 PDCP family vectors. It consumes the completed_verified MRCS-21, MCS-21, MCCS-21, MNCS-24, MAS-21 and MSAS-21 terminal proofs as specialist evidence instead of reopening those families.
+
+Original/right-cleared vertical slices cover traversal/action, puzzle, sports/skill, tactical/strategy, Vehicle, social/investigation and stealth. All seven delivery modes must share one semantic mechanics/state/Event/outcome model. Provider-off local operation and keyboard/nonvisual/screen-reader equivalents remain blocking proof requirements. Downstream handoff receipts cover MERA, MBES, MSLR, MSWI and SMB while retaining downstream owner authority and prohibiting GPR ownership bleed.
+
+Causal RED: run `35554748383` at `c5411c14e1c3065af60f228790e2ec1d4b2c4663`. Exact-head GREEN: run `35555198316` at `12b853352ef6171f7ea14297ec1213ef727daa0a`. Published application: PR #674 as `6e213b66a0a2c03f8c32baba702cb94070a92454`.
+
+GPR-16 has no strict GPR successor. MERA-01 is the downstream consumer of the completed handoff; assigning a terminal persistent slot to MERA or another program remains an explicit owner-governance action.
