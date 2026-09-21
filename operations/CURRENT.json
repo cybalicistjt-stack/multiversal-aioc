@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 368,
+  "state_revision": 369,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "MSLR-13",
-      "attempt_id": "MSLR-13-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MSLR-13-attempt-001.json",
-      "implementation_branch": "work/mslr-13-navigation-cues-counterplay",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue governed-started CURRENT-selected amended MSLR-13. Only MSLR-13 is authorized; MSLR-14 remains blocked.",
+      "state": "selected_not_started",
+      "selected_work_item": "MSLR-14",
+      "attempt_id": "MSLR-14-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MSLR-14-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MSLR-13 completed_verified after causal RED 35597469972, exact-head GREEN 35597633424 at 16b02f67f004a7d3810c00f2ee791c39a24a97fa, and publication of PR 701 as app main 55c1c18b42c91f803dccc7e9305189cbd5f26a3e. Fresh DAG schema 1.0.4 supplies no interstitial override; amended MSLR-14 is selected_not_started.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "MSLR-13 is in progress. Complete only Navigation Aids, Anchors, Sensory Cues & Counterplay before MSLR-14 may start.",
+  "next_project_action": "MSLR-14 is selected_not_started. The next owner Continue starts only Procedural Impossible-Space Authoring, Solvability & Diagnostics; MSLR-16 remains unauthorized.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
