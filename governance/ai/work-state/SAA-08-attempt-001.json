@@ -9,11 +9,11 @@
   "attempt_id": "SAA-08-attempt-001",
   "title": "Props, Equipment, Effects & Foreground Composition",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/saa-08-props-equipment-effects-foreground-composition",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "SAA-07",
   "required_predecessor": {
     "work_item": "SAA-07",
@@ -40,29 +40,108 @@
     "No export/share/publication or final Creator integration authority is granted."
   ],
   "strict_successor": "SAA-09",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for ARI/PAPT foreground resource references, stable layer identity/z-order/panel bounds, presentation-only attachment hints, fail-closed stale/unavailable/rights/incompatible resources, zero owner-state mutation and accessible non-drag composition; then implement only SAA-08.",
+  "active_substep": "completed_verified",
+  "next_action": "SAA-08 is completed_verified. SAA-09 — Speech, Thought, Caption & Comic SFX Text — is selected_not_started without implementation authority.",
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_guard": {
-    "continue_turns": 1,
-    "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "continue_turns": 2,
+    "stall_nudges": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started SAA-08 after verified SAA-07 closeout."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "SAA-08 causal RED head 831d5c09a06f0d290a1f36d2d47c1470a2c4378b passed repository health and produced the intended Linux feature failure with the production module absent. Exact implementation head bc85c9d2896b0926cdb84c11ff8a2deabf4e96eb completed while the browser was idle and passed repository health, Linux, Windows and deterministic cross-platform comparison in run 35668317543; PR #726 published as 587bc9f5f57d91abca964c389c8edf19fd3686b2."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "SAA-08 completed_verified on exact application head bc85c9d2896b0926cdb84c11ff8a2deabf4e96eb, validation run 35668317543, merge 587bc9f5f57d91abca964c389c8edf19fd3686b2; SAA-09 selected_not_started."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true
+  },
+  "implementation_evidence": {
+    "governed_start": {
+      "aioc_pr": 1635,
+      "validation_run": 35668069377,
+      "merge_sha": "2d056a26a45b184ecf80cf235d43f1a50ab7db21",
+      "lane_start_revision": 234
+    },
+    "causal_red": {
+      "application_pr": 726,
+      "head_sha": "831d5c09a06f0d290a1f36d2d47c1470a2c4378b",
+      "validation_run": 35668241700,
+      "run_conclusion": "cancelled_after_branch_advance",
+      "repository_health": "success",
+      "linux": "failure",
+      "windows": "cancelled",
+      "deterministic_comparison": "cancelled",
+      "cause": "SAA-08 production module absent on RED head; Linux reached the feature gate before the obsolete run was cancelled."
+    },
+    "green": {
+      "application_pr": 726,
+      "validated_head": "bc85c9d2896b0926cdb84c11ff8a2deabf4e96eb",
+      "validation_run": 35668317543,
+      "conclusion": "success",
+      "application_merge_sha": "587bc9f5f57d91abca964c389c8edf19fd3686b2",
+      "lane_prequeue_revision": 235,
+      "lane_publication_revision": 236
+    },
+    "delivered": {
+      "schema": "SAA-08.1",
+      "resource_authority": "ARI",
+      "production_primitive_authority": "PAPT/PCA",
+      "canonical_equipment_inventory_authority": "Character/NPC/Creature/Inventory/Equipment owner-domains",
+      "canonical_scene_authority": "Scene/Tabletop",
+      "governed_foreground_kinds": [
+        "prop",
+        "equipment",
+        "item",
+        "effect",
+        "overlay",
+        "foreground"
+      ],
+      "stable_resource_provenance_rights_identity": true,
+      "optional_production_primitive_reference": true,
+      "stale_resource_fail_closed": true,
+      "unavailable_resource_fail_closed": true,
+      "incompatible_resource_fail_closed": true,
+      "rights_blocked_fail_closed": true,
+      "attachment_incompatible_fail_closed": true,
+      "presentation_only_attachment_hints": true,
+      "stable_layer_identity_preserved": true,
+      "z_order_preserved": true,
+      "composition_bounds_preserved": true,
+      "out_of_panel_bounds_fail_closed": true,
+      "source_bytes_copied": false,
+      "parallel_foreground_library_created": false,
+      "silent_fallback_applied": false,
+      "fabricated_coverage": false,
+      "equipment_ownership_mutation_performed": false,
+      "inventory_mutation_performed": false,
+      "actor_mutation_performed": false,
+      "anatomy_mutation_performed": false,
+      "mechanics_mutation_performed": false,
+      "live_state_mutation_performed": false,
+      "scene_placement_mutation_performed": false,
+      "ari_mutation_performed": false,
+      "source_domain_mutation_performed": false,
+      "keyboard_text_selection_available": true,
+      "keyboard_attachment_hint_available": true,
+      "drag_required": false,
+      "speech_thought_caption_comic_sfx_text_implemented": false,
+      "provider_off_local": true,
+      "optional_ai_required": false,
+      "paid_cloud_required": false
+    }
   }
 }

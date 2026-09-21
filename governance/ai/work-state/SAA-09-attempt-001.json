@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-09",
+  "attempt_id": "SAA-09-attempt-001",
+  "title": "Speech, Thought, Caption & Comic SFX Text",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-08",
+  "required_predecessor": {
+    "work_item": "SAA-08",
+    "status": "completed_verified",
+    "application_merge_sha": "587bc9f5f57d91abca964c389c8edf19fd3686b2",
+    "schema": "SAA-08.1"
+  },
+  "objective": "Implement speech balloons, thought balloons, captions, narration boxes and stylized comic sound-effect text while retaining readable content as actual text state and preserving SAA composition/owner boundaries.",
+  "acceptance": [
+    "Speech balloons, thought balloons, captions, narration boxes and comic SFX text each retain readable authored content as actual text state rather than raster-only pixels.",
+    "Text elements preserve stable SAA identity, text content, semantic text role and presentation styling separately so styling never destroys readable text.",
+    "Balloon/caption/SFX geometry and placement bind into sealed SAA composition state without rewriting panel identity, panel reading order or source-domain truth.",
+    "Text layout and overflow state are explicit and fail closed when content cannot fit rather than silently dropping or truncating authored text.",
+    "Keyboard/textual equivalents can create, edit, inspect and position every blocking text element without requiring drag gestures.",
+    "Provider-off local operation works for authored text and local typography/layout resources; optional AI and paid cloud are not required.",
+    "SAA-10 and later lettering/export/share/publication/SMB10B behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..08 predecessor contracts remain sealed.",
+    "SAA-09 owns sequential-art text presentation state only; it does not mutate Dialogue/Narrative/Character/Scene/source-domain truth.",
+    "Readable authored text remains text and may not be replaced by raster-only representation as the canonical SAA state.",
+    "No automatic semantic rewriting, speech generation, translation, export/share/publication or final Creator integration authority is granted.",
+    "SAA-10 remains blocked until verified SAA-09 closeout."
+  ],
+  "strict_successor": "SAA-10",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-09.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
