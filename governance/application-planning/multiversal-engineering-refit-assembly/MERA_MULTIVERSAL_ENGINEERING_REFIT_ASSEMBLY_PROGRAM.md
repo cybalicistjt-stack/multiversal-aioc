@@ -245,3 +245,12 @@ The causal RED proof run `35563066094` at `4a8978a5b3c01f4b99e324994a5f65cc0b0e5
 KFR-05 machine qualification remains advisory and grants no action authority. Unknown/conflicting owner, control, facility or network evidence remains unresolved; incompatible facility context stays explicitly incompatible. MERA emits typed owner-operation requests only and creates no Asset, control, facility, network, resource or provenance ledger.
 
 Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. MERA-24 is selected_not_started. MBES remains blocked until MERA completes at MERA-24.
+
+
+## MERA-24 completed terminal golden proof & MBES handoff
+
+MERA-24 completed_verified with published contract `MERA-24.1`. The terminal proof requires all 48 `MERA-PDCP-001..048` vectors, the exact sealed MERA-01/03/05/06/07/10/12/13/16 schema set, canonical owner boundaries, lost-response reconciliation before retry, preserved provenance/replay, noncanonical analysis, semantic/nonvisual and keyboard parity, provider-off local operation, and no duplicate owner ledger or hidden canonical mutation.
+
+Causal RED run `35576396637` at `17d5a1c95eeb74e6b12c653d9ec394861ea35ef2` failed the focused suite on Linux and hosted Windows because the terminal proof/handoff entry points were absent. Exact-head GREEN run `35576642290` at `1ced719f8f0f7f72fedd310d50f1dd38468e2247` passed repository health, Linux, hosted Windows, invariants, typecheck, focused tests and deterministic cross-platform comparison. PR #686 published as application main `8e57b254c620969080c1b6eab4ebc7ec461ad3e3`.
+
+The MBES handoff is explicit but non-authoritative: the MERA application neither starts nor selects MBES. Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` identifies MBES as hard-dependent on MERA and golden-proof-dependent on MERA-24; those dependencies become satisfied when this closeout marks MERA completed_verified. MBES-01 is the downstream handoff target, while replacement of the terminal gpr family slot remains an owner-governed cross-family boundary requiring a later Continue.
