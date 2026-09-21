@@ -41,10 +41,10 @@
   "active_substep": "completed_verified",
   "next_action": "MERA-24 and the reduced MERA family are completed_verified. MBES-01 is the downstream handoff target but is not automatically selected into the terminal gpr slot; a later owner Continue must explicitly authorize cross-family slot reuse and governed MBES start.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 3,
     "stall_nudges": 0,
     "material_progress_seq": 2,
-    "progress_at_last_owner_command": 1,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
       "seq": 2,
@@ -60,9 +60,11 @@
   },
   "downstream_handoff": "MBES-01",
   "execution_conformance": {
-    "status": "conforming",
-    "policy_violations": [],
-    "note": "MERA-24 remained proof/handoff only. It certified the exact 48-vector reduced-family contract, retained canonical owner boundaries, kept analysis noncanonical, preserved recovery/idempotency and accessibility/provider-off requirements, and neither selected nor started MBES inside the application layer."
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED"
+    ],
+    "note": "MERA-24 product evidence remains valid and completed_verified, but the owner had to issue two additional Continue commands after governed start. Durable product progress continued across executor/session interruptions, so this is recorded as an execution-process conformance failure rather than a product failure."
   },
   "implementation_plan": {
     "governed_start": "completed",
@@ -150,5 +152,11 @@
       "mbes_golden_proof_requires_mera24": "satisfied by published MERA-24.1 proof",
       "reason": "MERA-24 is the terminal MERA golden gate. MBES-01 consumes the handoff, but replacement of the terminal gpr family slot is an owner-governed cross-family boundary and is not auto-selected by MERA-24 closeout."
     }
+  },
+  "interaction_quality": {
+    "owner_execution_commands": 3,
+    "additional_continue_commands": 2,
+    "product_work_invalidated": false,
+    "classification": "executor/session continuity failure"
   }
 }
