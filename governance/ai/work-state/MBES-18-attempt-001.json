@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MBES",
+  "lane": "gpr",
+  "track": "multiversal-built-environment-settlement",
+  "source_program": "MBES",
+  "work_item_id": "MBES-18",
+  "attempt_id": "MBES-18-attempt-001",
+  "title": "Durability, Failure, Defense & Recovery Infrastructure",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MBES-14",
+  "required_predecessor": {
+    "work_item": "MBES-14",
+    "status": "completed_verified",
+    "application_merge_sha": "53a6541622d5b82c0f4fd9dcad13db29bba4ffaf",
+    "schema": "MBES-14.1"
+  },
+  "objective": "Implement building/infrastructure condition, damage and upkeep bindings; wear/failure/fire/contamination/disaster Event adapters; repair/retrofit/salvage/decommission owner-operation requests; defensive/security/emergency capability projections; Combat/SCL/Hazard integration without duplicate adjudication; governed evacuation/shelter/fire-suppression/quarantine capability references; and MERA dependency/failure/repair adapters with recovery receipts.",
+  "acceptance": [
+    "Building/infrastructure condition and damage remain owner-backed references rather than an MBES damage ledger.",
+    "Wear, failure, fire, contamination and disaster observations route as typed Events without duplicate Hazard/Combat adjudication.",
+    "Repair, retrofit, salvage and decommission remain owner-operation requests until canonical owners commit them.",
+    "Defense, fortification, security and emergency behavior derive only from explicit accepted capability definitions.",
+    "Evacuation, shelter, fire-suppression, quarantine and related emergency actions are governed capabilities, not universal automatic outcomes.",
+    "MERA dependency/failure/repair evidence composes through adapters without creating a second engineering graph.",
+    "Recovery receipts preserve owner history/version/provenance and fail closed on stale or conflicting evidence.",
+    "Blocking workflows remain semantic/nonvisual, keyboard-capable and provider-off."
+  ],
+  "boundaries": [
+    "MBES-01/03/05/08/12/14 remain sealed predecessors.",
+    "MERA retains dependency/failure/diagnostic/repair topology authority.",
+    "Combat, SCL, Hazard, Action/Event and target owners retain canonical adjudication/execution authority.",
+    "MIB-12/D17/Inventory retain repair/transformation/resource truth and transactions.",
+    "MBES-18 creates no damage, hazard, combat, security, engineering, resource or provenance ledger.",
+    "MBES-20 and later MBES tranches remain unauthorized until canonical MBES-18 closeout."
+  ],
+  "strict_successor": "MBES-20",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await the next owner Continue. That command may governed-start only MBES-18.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
