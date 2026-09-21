@@ -212,3 +212,18 @@ Fresh `ROADMAP_DEPENDENCY_GRAPH.json` schema `1.0.4` supersedes the older unspli
 `SMB-09 → SMB10A (Core Player/GM/product UX) → SAA-01..20 → SMB10B (final Creator/SAA integration)`.
 
 Accordingly, SMB10A is selected_not_started with no implementation authority. SAA-01, SMB10B and later SMB work remain unauthorized until their fresh gates are satisfied.
+
+
+## SMB10A completed — Core Player/GM/Product UX
+
+SMB10A completed_verified with application contract `SMB10A.1`. The first profile-bearing candidate was blocked before RED by the family selector because the normalized DAG/profile identifier `SMB10A` intentionally omits the ordinary `SMB-` prefix. A bounded selector repair explicitly allow-listed only SMB10A. Causal RED run `35628645396` at `af89cd38c09be7e0644ef3539b4b5acae4b79ddf` then passed repository health and failed all ten focused acceptance tests on Linux and hosted Windows because the product-UX contract, Player/GM primary journeys, proof and SAA-readiness handoff were absent.
+
+Final exact head `0243c9b61b1c85e504f07d1f6dd01be8ea767e2f` passed repository health, Linux, hosted Windows, focused SMB10A tests, source invariants, TypeScript typecheck and deterministic cross-platform comparison in run `35628921559`. PR #716 published it as application main `6c73d0cc6e930cde7ee2f40c7f0e3682a963a053`.
+
+The delivered proof composes the existing A3/A4/A5/A6/A7 product surfaces into eight-step Player and eight-step GM primary journeys over **The Harrowfen Signal**. It preserves fresh authorization before protected projection, audience-safe Player delivery, hidden-GM-data filtering, owner-domain mutation authority, offline/recovery/service-unavailable product states, semantic/keyboard/touch/responsive equivalents, provider-off operation where supported, and optional-AI/paid-cloud independence. It creates no replacement app shell, gameplay runtime, Campaign ledger, Character ledger or final Creator integration.
+
+SMB10A received two owner `Continue` commands while the same attempt was active. Product completion remains valid; terminal execution conformance records `OPS3.MULTI_CONTINUE_UNRECORDED`.
+
+### Owner hold at SAA boundary
+
+Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` identifies SAA as the next cross-program boundary after SMB10A, but the owner explicitly instructed **not to proceed to SAA yet**. SAA is therefore neither selected nor started by this closeout, no SAA checkpoint is created, and no SAA/SMB10B implementation authority is granted. The GPR lane closes on completed_verified SMB10A until a later explicit owner Continue releases this hold.
