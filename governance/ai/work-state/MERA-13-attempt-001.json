@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MERA",
+  "lane": "gpr",
+  "track": "multiversal-engineering-refit-assembly",
+  "source_program": "MERA",
+  "work_item_id": "MERA-13",
+  "attempt_id": "MERA-13-attempt-001",
+  "title": "Vehicle, Mecha & Starship Engineering Adapter Pack",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MERA-12",
+  "required_predecessor": {
+    "work_item": "MERA-12",
+    "status": "completed_verified",
+    "application_merge_sha": "f8c38c237757cfd3379d5efb894dc93c168e2df8",
+    "schema": "MERA-12.1"
+  },
+  "objective": "Implement one engineering adapter surface for Vehicle, Mecha and Starship over the existing PPIA-04/MIB-14/F014 owner family, with target-specific profile packs preserving distinct owner rules, identity, configuration, systems, resources, damage, repair and provenance without creating three independent engineering engines or inferring compatibility from names or visual similarity.",
+  "acceptance": [
+    "Vehicle, Mecha and Starship engineering share one MERA adapter substrate while retaining target-specific owner profiles.",
+    "PPIA-04/MIB-14/F014 owner identity, configuration, system, resource, damage, repair and provenance state remains authoritative.",
+    "Target-specific engineering behavior comes only from explicit owner/profile definitions.",
+    "Same names or visual similarity cannot create compatibility or interchangeability.",
+    "Unknown or conflicting compatibility and owner state remains unresolved for operations that require it.",
+    "MERA predecessor inspection/proposal/diagnostic/repair/network affordances compose without changing owner boundaries.",
+    "Blocking vehicle/mecha/starship engineering remains semantic/nonvisual and provider-off."
+  ],
+  "boundaries": [
+    "MERA-01/03/05/06/07/10/12 remain sealed predecessors.",
+    "PPIA-04/MIB-14/F014 retain Vehicle/Mecha/Starship identity, configuration, system, resource, damage, repair and live-operation authority.",
+    "Distinct Vehicle, Mecha and Starship rules remain in their owner definitions; MERA supplies adapters, not replacement engines.",
+    "MERA creates no second Vehicle, Mecha, Starship, inventory, crafting, resource or provenance ledger.",
+    "Compatibility and interchangeability remain explicit-definition driven; names and visual similarity confer no authority.",
+    "MERA-16+ machinery/robotics/construct/industrial adapter work remains unauthorized.",
+    "MBES remains blocked until MERA completes at MERA-24."
+  ],
+  "strict_successor": "MERA-16",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On the next owner Continue, start only MERA-13. Preload the sealed MERA predecessors, PPIA-04/MIB-14/F014 Vehicle/Mecha/Starship owner seams, explicit target-specific profiles, compatibility rules, owner-version semantics and provider-off accessibility boundaries.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
