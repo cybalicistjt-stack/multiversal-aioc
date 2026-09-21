@@ -189,3 +189,12 @@ MSLR-03 completed_verified with application contract `MSLR-03.1`. Causal RED run
 The delivered runtime supports preview/commit revalidation, typed topology operations through GPR/Action/Event, explicit quotient identifications without Portal-state substitution, authored orientation-reversing identifications with local-frame transport, bounded lazy-neighborhood evaluation for unbounded/procedural spaces, deterministic replay, owner-classified inverse/compensation recovery and stale mutation rejection. Canonical World/Location identity is never rewritten and committed Event history is never deleted by undo.
 
 Fresh DAG schema `1.0.4` supplies no interstitial override. Amended `MSLR-04` is selected_not_started with observer local-frame/orientation/discovered-identification knowledge responsibilities; `MSLR-07` remains unauthorized.
+
+
+## MSLR-04 completed — Knowledge, Observer & Spatial Discovery Runtime
+
+MSLR-04 completed_verified with contract `MSLR-04.1`. Causal RED run `35594605106` failed because production entry points were absent. The first GREEN candidate `a36745664707b52e1f15fdb372f317ec5d0c07e8` passed all 12 focused tests and invariants but exposed a TypeScript-only fixture inference error. A test-typing-only repair produced exact head `e6cec40b8d5f68be0f114e810a31fee451df6e5c`; final validation run `35594882972` passed repository health, Linux, hosted Windows, invariants, typecheck, focused tests and deterministic comparison. PR #698 published as application main `73dc20870519f34acd376df64f280abd7f859ff6`.
+
+The runtime keeps true/observable/known/suspected projections distinct, filters hidden topology before model construction, preserves wrong/incomplete participant hypotheses without changing truth, treats local-frame/orientation and discovered-identification knowledge as projections, consumes owner-authorized observer inputs, and emits evidence/knowledge proposals without self-authorizing canonical truth.
+
+Fresh DAG schema `1.0.4` supplies no interstitial override. `MSLR-07` is selected_not_started; `MSLR-08` remains unauthorized.
