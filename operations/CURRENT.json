@@ -6,21 +6,21 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 317,
+  "state_revision": 318,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
   "product_start_freeze": {
     "active": false,
     "reason": "OPS3-14 completed_verified after moving lightweight validation orchestration off scarce self-hosted runners, success-gating deterministic comparison, and defining isolated same-label runner pools as capacity-only infrastructure.",
-    "preserved_selected_work_item": "GPR-12",
-    "preserved_attempt_id": "GPR-12-attempt-001",
+    "preserved_selected_work_item": "GPR-16",
+    "preserved_attempt_id": "GPR-16-attempt-001",
     "implementation_authority": false,
     "cleared_by": "OPS3-14 completed_verified",
     "preserved_lane_selections": {
       "gpr": {
-        "selected_work_item": "GPR-12",
-        "attempt_id": "GPR-12-attempt-001",
+        "selected_work_item": "GPR-16",
+        "attempt_id": "GPR-16-attempt-001",
         "state": "selected_not_started"
       },
       "mrcs": {
@@ -91,12 +91,12 @@
     },
     "gpr": {
       "state": "selected_not_started",
-      "selected_work_item": "GPR-12",
-      "attempt_id": "GPR-12-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/GPR-12-attempt-001.json",
+      "selected_work_item": "GPR-16",
+      "attempt_id": "GPR-16-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/GPR-16-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "GPR-10 completed_verified after causal RED run 35545215293 at head 363bb414a07112225db5ffe64b4d493b8fba10de, exact-head Linux/hosted-Windows/deterministic GREEN run 35551753557 at head 35c1ed8ea86cf15192e41f4d09c158da459c257f, and direct protected-main publication of PR 664 as application main 7c713013b1774811c5de4952d4f10eb00e2adc43. ARI-11 remains rights/use authority and presentation remains non-authoritative mechanics truth. ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no interstitial override between GPR-10 and strict successor GPR-12.",
+      "activation_rule": "GPR-12 completed_verified after causal RED run 35553806529 at head 9ba36ce1d460adaee45d1abcf7f65c3dae34a3b9, exact-head Linux/hosted-Windows/deterministic GREEN run 35553874979 at head 7105b3fb7fcceb7b97d4a40f5f5a32d268acd62e, and direct protected-main publication of PR 673 as application main 7e07bbf0961bf80bb4999ebbe1c53bf638e24176. ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no interstitial override between GPR-12 and GPR-16. GPR-16 start is eligible; final completion still requires MRCS-21 plus relevant specialist golden proofs, with MRCS-21 already satisfied.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR-12 is selected_not_started. On the next GPR Continue, start only GPR-12 from ops3-lane-state/gpr; preload its declared continuity dependency closure and do not widen into GPR-16.",
+  "next_project_action": "GPR-16 is selected_not_started. On the next GPR Continue, start only GPR-16; resolve and prove its remaining specialist golden dependencies as part of the final conformance/golden/downstream-handoff tranche.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
