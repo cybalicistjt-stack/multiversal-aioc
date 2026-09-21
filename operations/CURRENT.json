@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 399,
+  "state_revision": 400,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -96,7 +96,7 @@
       "checkpoint_path": "governance/ai/work-state/SAA-01-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "MSLR-S02 completed_verified and returned the GPR slot to the owner-held SAA boundary. SAA-01 is selected_not_started only; a later explicit owner Continue is required before governed start.",
+      "activation_rule": "MSLR-S02 completed_verified and published. SMB10A/ARI/readiness gates are satisfied. Owner explicitly cleared the prior SAA hold and instructed SAA-01 to begin after S02 verification.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "SAA-01 — Comic Project, Page, Panel & Layer Schema — is selected_not_started at the owner-held boundary. Await a later explicit owner Continue before governed start.",
+  "next_project_action": "SAA-01 is selected_not_started and owner-authorized for immediate governed start. Begin Comic Project, Page, Panel & Layer Schema only.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -245,7 +245,7 @@
       "checkpoint_path": "governance/ai/work-state/MSLR-S02-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "completion_rule": "MSLR-S01 and MSLR-S02 completed_verified. Terminal supplement proof MSLR-S02.1 certifies the explicit perceptual-spatial battery over sealed MSLR-18.1/MSLR-S01.1, cross-platform deterministic replay, permission/accessibility/provider-off boundaries and a capability-only SAA-01 readiness handoff. SAA remains unstarted until a later owner Continue."
+      "completion_rule": "MSLR-S01 and MSLR-S02 completed_verified. Terminal supplement proof preserves sealed MSLR authority and emits capability-only SAA readiness without starting SAA."
     }
   },
   "domain_authorities": {
