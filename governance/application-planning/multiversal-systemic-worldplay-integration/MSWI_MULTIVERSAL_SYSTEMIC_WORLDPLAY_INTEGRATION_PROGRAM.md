@@ -1,7 +1,7 @@
 # MSWI — Multiversal Systemic Worldplay Integration
 
 **Program ID:** MSWI  
-**Status:** ACTIVE — MSWI-04 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MSWI-06 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Owner:** John Brandon Turner  
 **Approved:** 2026-09-15  
 **PDCP reduction:** 2026-09-16 — baseline 18 tranches → 7 surviving implementation/proof tranches  
@@ -284,3 +284,12 @@ MSWI-03 completed_verified with application contract `MSWI-03.1`. Causal RED run
 The delivered runtime provides exact-version consequence routes, permission-filtered dry-run envelopes, independently authoritative target-owner validation/commit outcomes, durable propagation receipts, explicit depth/deduplication/cycle controls, unresolved owner-conflict handling, distinct inverse/compensation/restoration/irreversible recovery classes, Campaign-time Project/Time delayed follow-up and residual adapters for accepted social/profession/pursuit/performance/grand-Project results. It creates no target-owner or Project ledger, never grants authority merely because a route applies, never deletes committed Event history, and remains semantic/keyboard/provider-off with optional AI nonauthoritative.
 
 Fresh roadmap authority schema `1.0.4` supplies no interstitial override. Reduced strict order selects `MSWI-04` — Ecology Succession, Food-Web, Migration & Population-Band Runtime — as selected_not_started. `MSWI-06` remains unauthorized.
+
+
+## MSWI-04 completed — Ecology Succession, Food-Web, Migration & Population-Band Runtime
+
+MSWI-04 completed_verified with application contract `MSWI-04.1`. Causal RED run `35608316999` at `7d32d6c3be9aac990a749bdc1b8b9667c0343e54` passed selector/repository health but failed all 10 focused acceptance calls on Linux and hosted Windows because the ecology/population production entry points were absent. Exact-head GREEN run `35608610970` at `0ea02f3da1831be4c262151a1c606746014dc01a` passed repository health, Linux, hosted Windows, focused tests, source invariants, TypeScript typecheck and deterministic cross-platform comparison. PR #707 published that exact validated head as application main `24681577aca04d05332ec4325bd8d505ee89f330`.
+
+The delivered runtime references MNCS/World/Environment owner facts without copying canonical ecology state; preserves exact/range/band/distribution/unknown population semantics; executes only authored succession, food-web, migration and resource-pressure rules; leaves absent carrying-capacity or invasive-species mechanics unresolved; records extirpation/extinction/recovery/restocking/conservation transitions with exact attribution; preserves Packet-06 aggregate/cohort/individual identity boundaries; and uses Campaign time rather than wall clock. Permission filtering precedes population counts and blocking workflows remain semantic, keyboard-capable and provider-off.
+
+Fresh roadmap authority schema `1.0.4` supplies no interstitial override. Reduced strict order selects `MSWI-06` — Composite Entity Role Binding Runtime — as selected_not_started. `MSWI-07` remains unauthorized.

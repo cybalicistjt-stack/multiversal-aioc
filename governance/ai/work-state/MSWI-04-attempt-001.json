@@ -9,11 +9,11 @@
   "attempt_id": "MSWI-04-attempt-001",
   "title": "Ecology Succession, Food-Web, Migration & Population-Band Runtime",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/mswi-04-ecology-population-runtime",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "MSWI-03",
   "required_predecessor": {
     "work_item": "MSWI-03",
@@ -42,21 +42,111 @@
     "MSWI-06 and later MSWI tranches remain unauthorized until canonical MSWI-04 closeout."
   ],
   "strict_successor": "MSWI-06",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for the public MSWI-04 ecology profile/population/succession/migration/refinement seam, then implement only the bounded authored-rule, uncertainty-preserving, Campaign-time ecology behavior required by the reduced family contract.",
+  "active_substep": "completed_verified",
+  "next_action": "MSWI-04 is completed_verified. MSWI-06 — Composite Entity Role Binding Runtime — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started MSWI-04 from completed_verified MSWI-03."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "MSWI-04 causal RED run 35608316999 at 7d32d6c3be9aac990a749bdc1b8b9667c0343e54 passed selector/repository health but failed all 10 focused acceptance calls on Linux and hosted Windows because the ecology/population production entry points were absent. Exact-head GREEN run 35608610970 at 0ea02f3da1831be4c262151a1c606746014dc01a passed selector/repository health, Linux, hosted Windows, focused tests, source invariants, TypeScript typecheck and deterministic cross-platform comparison. PR 707 published that exact validated head as application main 24681577aca04d05332ec4325bd8d505ee89f330."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MSWI-04 ecology succession, migration and population-band runtime is durably published; canonical closeout selects MSWI-06 without starting it."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "note": "MSWI-04 completed under one owner Continue with causal RED, one bounded production implementation, exact-head cross-platform GREEN, publication and atomic closeout."
+  },
+  "acceptance_evidence": {
+    "governed_start": {
+      "aioc_pr": 1595,
+      "validation_run": 35608059446,
+      "merge_sha": "bc2c4243438b404b9c601b31fdd129a75fe2ae5d",
+      "lane_start_revision": 162
+    },
+    "causal_red": {
+      "application_pr": 707,
+      "head": "7d32d6c3be9aac990a749bdc1b8b9667c0343e54",
+      "validation_run": 35608316999,
+      "conclusion": "failure",
+      "selector_repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "signature": "All 10 focused MSWI-04 acceptance calls reached absent ecology profile/population/transition/refinement entry points while runner preflight and toolchain succeeded."
+    },
+    "green": {
+      "application_pr": 707,
+      "validated_head": "0ea02f3da1831be4c262151a1c606746014dc01a",
+      "validation_run": 35608610970,
+      "conclusion": "success",
+      "selector_repository_health": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "24681577aca04d05332ec4325bd8d505ee89f330",
+      "lane_prequeue_revision": 163,
+      "lane_publication_revision": 164
+    },
+    "delivered": {
+      "schema": "MSWI-04.1",
+      "owner_reference_profiles": true,
+      "canonical_ecology_state_copied": false,
+      "ecology_authoring_ledger_created": false,
+      "exact_range_band_distribution_unknown_preserved": true,
+      "exact_individuals_fabricated": false,
+      "missing_authored_mechanics_remain_unresolved": true,
+      "universal_ecology_equation_invented": false,
+      "unsupported_species_relationship_invented": false,
+      "authored_succession_foodweb_migration_pressure_only": true,
+      "extirpation_extinction_recovery_restocking_conservation_attribution": true,
+      "event_history_deleted": false,
+      "packet06_semantics_preserved": true,
+      "persistent_identity_preserved": true,
+      "persistent_individuals_recaptured_into_aggregate": false,
+      "personal_history_invented": false,
+      "campaign_time_authority_preserved": true,
+      "wall_clock_campaign_authority": false,
+      "permission_filtering_before_population_counts": true,
+      "hidden_metadata_leak": false,
+      "mncs_authority_preserved": true,
+      "world_environment_authority_preserved": true,
+      "semantic_text_available": true,
+      "keyboard_equivalent": true,
+      "provider_off_local": true,
+      "optional_ai_required": false,
+      "paid_cloud_required": false
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MSWI-06",
+      "interstitial_override": "none",
+      "reason": "Fresh roadmap authority supplies no internal MSWI interstitial override. The reduced MSWI strict order selects MSWI-06 after completed MSWI-04."
+    }
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "causal_red": "completed",
+    "ecology_profile_definition": "completed",
+    "population_band_projection": "completed",
+    "authored_ecology_transitions": "completed",
+    "transition_attribution": "completed",
+    "packet06_resolution_refinement": "completed",
+    "campaign_time_progression": "completed",
+    "permission_accessibility_provider_off": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
   }
 }
