@@ -7,11 +7,11 @@
   "track": "system-maturation-buildout",
   "source_program": "SMB",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/smb-08-core-content-production",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "objective": "Use MIB content tooling to create substantial first-party governed libraries rather than relying mainly on synthetic fixtures.",
   "predecessor": {
     "work_item_id": "SMB-07",
@@ -62,15 +62,17 @@
     "correction_status": "resolved_completed",
     "current_selection_reason": "Fresh ROADMAP_DEPENDENCY_GRAPH schema 1.0.4 plus completed MSWI-18 and all concrete studio/runtime golden barriers now make SMB-08 eligible for selection."
   },
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for the bounded SMB-08 first-party governed-content production seam using existing MIB/ARI/owner-domain tooling, then implement deterministic substantial content packs without replacement authorities or fixture-only proof.",
+  "active_substep": "completed_verified",
+  "next_action": "SMB-08 is completed_verified. Fresh ROADMAP_DEPENDENCY_GRAPH schema 1.0.4 selects SMB-09 — Complete First-Party Campaign — as selected_not_started with no implementation authority; a later owner Continue is required to govern-start SMB-09.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "selected_not_started",
-    "policy_violations": []
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "note": "SMB-08 completed under one owner Continue through governed start, causal RED, bounded first-party content implementation, exact-head cross-platform validation, publication and canonical closeout."
   },
   "selected_by_verified_predecessor": "MSWI-18",
   "cross_program_activation": {
@@ -139,16 +141,97 @@
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started SMB-08 after completed_verified MSWI-18 and fresh cross-program barrier reconciliation."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "SMB-08 causal RED run 35623233326 at 6210d458652bb3772770a9d0cd5a001e65e62cf6 failed all 9 focused calls on Linux and hosted Windows because the production contract/functions/resources were absent. Exact-head GREEN run 35623621796 at 480cd4d5085c66a109e737c7cd6c0ba3e4778fed passed repository health, Linux, hosted Windows, focused tests, source invariants, TypeScript and deterministic comparison, then PR #713 published as fc945a6a338a7b1c74a6b1716249d58544b23e76."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "SMB-08 completed_verified on exact application head 480cd4d5085c66a109e737c7cd6c0ba3e4778fed, validation run 35623621796, merge fc945a6a338a7b1c74a6b1716249d58544b23e76; SMB-09 is selected_not_started without implementation authority."
+    }
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "causal_red": "completed",
+    "first_party_library": "completed",
+    "ari_resource_binding": "completed",
+    "deterministic_pack_compile": "completed",
+    "representative_play_coverage": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "implementation_evidence": {
+    "governed_start": {
+      "aioc_pr": 1605,
+      "validation_run": 35622734233,
+      "merge_sha": "a4d8961694357023579c1d8f3288b932f46d62bc",
+      "lane_start_revision": 183
+    },
+    "causal_red": {
+      "application_pr": 713,
+      "head_sha": "6210d458652bb3772770a9d0cd5a001e65e62cf6",
+      "validation_run": 35623233326,
+      "conclusion": "failure",
+      "repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "cause": "All 9 SMB-08 focused acceptance tests failed because the core content-production contract/functions/ARI bindings did not exist."
+    },
+    "green": {
+      "application_pr": 713,
+      "validated_head": "480cd4d5085c66a109e737c7cd6c0ba3e4778fed",
+      "validation_run": 35623621796,
+      "conclusion": "success",
+      "repository_health": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "fc945a6a338a7b1c74a6b1716249d58544b23e76",
+      "lane_prequeue_revision": 184,
+      "lane_publication_revision": 185
+    },
+    "delivered": {
+      "schema": "SMB-08.1",
+      "pack_id": "smb08:first-party-core",
+      "pack_title": "Harrowfen Reach First-Party Core",
+      "definition_count": 40,
+      "required_content_kind_count": 22,
+      "ari_resource_binding_count": 6,
+      "representative_play_phase_count": 9,
+      "fixture_only_content": false,
+      "original_first_party_content": true,
+      "protected_content_copied": false,
+      "compiler_authority": "MIB-05",
+      "pack_registry_authority": "pack-registry",
+      "resource_identity_authority": "ARI",
+      "canonical_mutation_authority": "Action/Event/owner-domains",
+      "replacement_content_authority_created": false,
+      "replacement_pack_registry_created": false,
+      "replacement_asset_ledger_created": false,
+      "replacement_gameplay_runtime_created": false,
+      "provider_off_local": true,
+      "optional_ai_required": false,
+      "paid_cloud_required": false
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "SMB-09",
+      "hard_requires": [
+        "SMB08"
+      ],
+      "hard_requirement_status": "completed_verified",
+      "start_requires": [],
+      "golden_proof_requires": [],
+      "implementation_authority": false,
+      "downstream_started": false
+    }
   }
 }

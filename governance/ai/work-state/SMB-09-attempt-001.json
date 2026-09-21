@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "work_item_id": "SMB-09",
+  "attempt_id": "SMB-09-attempt-001",
+  "title": "Complete First-Party Campaign",
+  "track": "system-maturation-buildout",
+  "source_program": "SMB",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SMB-08",
+  "predecessor": {
+    "work_item_id": "SMB-08",
+    "status": "completed_verified",
+    "application_pr": 713,
+    "application_validated_head": "480cd4d5085c66a109e737c7cd6c0ba3e4778fed",
+    "application_validation_run": 35623621796,
+    "application_merge_sha": "fc945a6a338a7b1c74a6b1716249d58544b23e76",
+    "schema": "SMB-08.1"
+  },
+  "strict_successor": "SAA-01",
+  "objective": "Produce one polished first-party campaign designed to exercise Multiversal end to end as an actual game experience rather than a QA corpus.",
+  "scope": {
+    "purpose": "Create and package one coherent first-party campaign over the completed content, creator-studio and runtime systems.",
+    "included": [
+      "a polished first-party Campaign with documented Player and GM paths",
+      "coherent use of the major applicable Multiversal systems",
+      "replayable Adventure/Campaign progression without developer intervention",
+      "SMB-08 first-party governed content packs as reusable content input",
+      "governed World, Adventure, Character/NPC/Creature, organization, travel, encounter, investigation, economy/crafting, vehicle/base and systemic consequence owner integrations where applicable",
+      "ARI-governed first-party presentation resources and existing studio outputs"
+    ],
+    "completion_gate": "The campaign uses the major applicable systems coherently and can be completed/replayed through documented Player/GM paths with no developer intervention."
+  },
+  "boundaries": [
+    "SMB-08 is sealed completed_verified and remains the first-party core-content-library source; SMB-09 consumes it rather than replacing or rewriting its pack authority.",
+    "The Campaign is a real first-party game experience, not a synthetic QA corpus or fixture-only proof.",
+    "Campaign/World/Adventure/owner domains retain canonical state and mutation authority; SMB-09 creates no replacement gameplay or state ledger.",
+    "Existing MCS/MCCS/MNCS/MAS/MSAS/MRCS/GPR/MERA/MBES/MSLR/MSWI capabilities are consumed through their sealed contracts rather than reimplemented.",
+    "First-party media remains ARI-governed; no SMB-only asset library or rights ledger is created.",
+    "External tester distribution, public release, paid providers, commerce and public community activation remain outside SMB-09 unless separately governed.",
+    "Normal successor is SAA-01. SAA and SMB-10 remain unauthorized until verified SMB-09 closeout and fresh roadmap reconciliation."
+  ],
+  "roadmap_activation": {
+    "dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4",
+    "hard_requires": [
+      "SMB08"
+    ],
+    "start_requires": [],
+    "golden_proof_requires": [],
+    "requirement_evidence": {
+      "SMB08": {
+        "status": "completed_verified",
+        "application_merge_sha": "fc945a6a338a7b1c74a6b1716249d58544b23e76",
+        "validation_run": 35623621796
+      }
+    },
+    "eligible": true,
+    "downstream_started": false
+  },
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await the next owner Continue. That command may governed-start only SMB-09 — Complete First-Party Campaign; SAA-01 and SMB-10 remain unauthorized.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}

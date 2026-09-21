@@ -3,7 +3,7 @@
 **Program ID:** SMB  
 **Program name:** System Maturation & Buildout  
 **Version:** 0.3.0  
-**Status:** OWNER-APPROVED — PLANNED POST-MIB SUCCESSOR  
+**Status:** ACTIVE — SMB-09 SELECTED_NOT_STARTED  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-19  
 **Beta-gate integration:** 2026-08-21  
@@ -184,3 +184,14 @@ A central SMB/BRP milestone is that four ordinary users on separate devices/loca
 The mature Creator proof also includes being able to discover eligible ARI resources, author/recover a SAA comic project and move eligible creator content through SMB-11 without provenance or rights loss.
 
 SMB is completed only when its declared release-oriented acceptance package proves a genuinely usable product rather than merely complete architecture. BRP-11 provides the earlier bounded `BETA_READY` proof required before normal SMB-17 external beta.
+
+
+## SMB-08 completed — Core Content Production
+
+SMB-08 completed_verified with application contract `SMB-08.1`. Causal RED run `35623233326` at `6210d458652bb3772770a9d0cd5a001e65e62cf6` passed repository health but failed all nine focused acceptance calls on Linux and hosted Windows because the first-party production contract/functions/ARI bindings were absent. Exact-head GREEN run `35623621796` at `480cd4d5085c66a109e737c7cd6c0ba3e4778fed` passed repository health, Linux, hosted Windows, focused tests, source invariants, TypeScript typecheck and deterministic cross-platform comparison. PR #713 published that exact validated head as application main `fc945a6a338a7b1c74a6b1716249d58544b23e76`.
+
+The delivered `smb08:first-party-core` pack contains 40 original reusable definitions across the 22 required content kinds, six ARI-only first-party media bindings, deterministic internal dependency closure and nine representative complete-play phases. It consumes MIB-05 compilation, pack-registry identity/install authority, ARI resource/provenance/rights authority and owner-domain payload/mutation authority without creating parallel ledgers or a second gameplay runtime.
+
+Fresh roadmap authority schema `1.0.4` requires only completed SMB-08 for SMB-09. SMB-09 — Complete First-Party Campaign — is therefore selected_not_started with no implementation authority. Its normal successor remains SAA-01, not SMB-10 directly.
+
+SMB-08 completed under one owner `Continue` and is execution-conforming.
