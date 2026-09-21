@@ -47,13 +47,13 @@
   ],
   "strict_successor": "SAA-01",
   "active_substep": "completed_verified",
-  "next_action": "MSLR-S02 is completed_verified. SAA-01 is the selected owner-held boundary only; a later explicit owner Continue is required before any SAA implementation start.",
+  "next_action": "MSLR-S02 is completed_verified. SAA-01 — Comic Project, Page, Panel & Layer Schema — is selected_not_started after the owner's explicit instruction cleared the prior SAA hold.",
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
     "material_progress_seq": 2,
     "progress_at_last_owner_command": 2,
@@ -61,20 +61,19 @@
     "last_material_progress": {
       "seq": 2,
       "kind": "completed_verified_candidate",
-      "evidence": "MSLR-S02 causal RED run 35632806122 failed on both platforms with the proof module absent. Candidate 1667591adc847737669e1921c6f6f3a8a97a49b3 passed all 10 focused tests and invariants but exposed a TypeScript literal-union boundary. Type-only repair head 7f0e8920d5a67d03262d46d9b6d527b895645fa5 passed exact-head cross-platform validation run 35633521461 and published as 5445c743cd88bbf5425f63c6afde30732cc0b09d."
+      "evidence": "MSLR-S02 causal RED run 35632806122 at 8df2926057039bf30b93deeff5e03653d94ef084 failed on both platforms with the proof module absent. Final exact head 7f0e8920d5a67d03262d46d9b6d527b895645fa5 passed repository health, Linux, hosted Windows and deterministic comparison in run 35633521461, then PR #718 published as 5445c743cd88bbf5425f63c6afde30732cc0b09d."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "completed",
-      "evidence": "MSLR-S02 perceptual supplement golden proof and capability-only SAA readiness handoff are durably published; SAA implementation remains unstarted."
+      "evidence": "MSLR-S02 golden proof/handoff is durably published; SAA-01 is the authorized next boundary."
     }
   },
   "execution_conformance": {
     "status": "conforming",
     "policy_violations": [],
-    "product_completion_valid": true,
-    "note": "S02 closes only the perceptual supplement proof/handoff. It does not select an implementation branch for SAA or grant SAA implementation authority."
+    "product_completion_valid": true
   },
   "acceptance_evidence": {
     "governed_start": {
@@ -92,16 +91,7 @@
       "linux": "failure",
       "windows": "failure",
       "deterministic_comparison": "skipped",
-      "signature": "The MSLR-S02 focused profile required the proof/handoff seam while the proof module was absent."
-    },
-    "type_boundary_repair": {
-      "candidate_head": "1667591adc847737669e1921c6f6f3a8a97a49b3",
-      "validation_run": 35633156071,
-      "focused_tests_passed": true,
-      "invariants_passed": true,
-      "defect": "TypeScript rejected string membership against the literal-union expected vector array.",
-      "repair": "Widened the local expected-vector comparison array to string[]; runtime proof behavior was unchanged.",
-      "production_behavior_changed": false
+      "signature": "MSLR-S02 proof/handoff module absent on the RED head."
     },
     "green": {
       "validated_head": "7f0e8920d5a67d03262d46d9b6d527b895645fa5",
@@ -113,38 +103,25 @@
     },
     "delivered": {
       "schema": "MSLR-S02.1",
-      "explicit_vector_count": 12,
-      "vector_status_inferred": false,
-      "sealed_schemas": [
+      "explicit_golden_vector_count": 12,
+      "sealed_basis": [
         "MSLR-18.1",
         "MSLR-S01.1"
       ],
       "permission_filtering_before_counts": true,
       "hidden_topology_leak": false,
       "hidden_cardinality_leak": false,
-      "relations": [
-        "ambiguous",
-        "contradictory",
-        "exact",
-        "partial",
-        "unknown"
-      ],
-      "unknown_relations_resolved_by_guessing": false,
-      "canonical_identity_invariant": true,
-      "law_fingerprint_invariant": true,
-      "local_frame_invariant": true,
-      "typed_observation_proposal": true,
+      "all_relation_states_proven": true,
+      "presentation_identity_law_frame_invariant": true,
+      "typed_observation_round_trip": true,
       "traversal_authority_granted": false,
       "knowledge_truth_committed": false,
       "semantic_text_available": true,
       "keyboard_equivalent_available": true,
-      "deterministic_cross_platform_replay": true,
       "provider_off_local": true,
       "optional_ai_required": false,
       "paid_cloud_required": false,
-      "saa_target": "SAA-01",
-      "saa_selected_for_implementation": false,
-      "saa_start_performed": false,
+      "saa_readiness_evidence_only": true,
       "saa_implementation_authority_granted": false,
       "final_creator_integration_performed": false,
       "canonical_owner_mutation_performed": false

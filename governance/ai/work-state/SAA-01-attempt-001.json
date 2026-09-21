@@ -10,43 +10,55 @@
   "title": "Comic Project, Page, Panel & Layer Schema",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "status": "selected_not_started",
-  "owner_selected": false,
+  "owner_selected": true,
   "implementation_authority": false,
   "implementation_branch": null,
   "completed": false,
-  "selected_by_verified_predecessor": "MSLR-S02",
-  "required_predecessor": {
-    "work_item": "MSLR-S02",
-    "status": "completed_verified",
-    "application_merge_sha": "5445c743cd88bbf5425f63c6afde30732cc0b09d",
-    "schema": "MSLR-S02.1"
+  "selected_by_owner_after_verified_predecessor": "MSLR-S02",
+  "activation_evidence": {
+    "mslr_s02": {
+      "status": "completed_verified",
+      "application_merge_sha": "5445c743cd88bbf5425f63c6afde30732cc0b09d",
+      "schema": "MSLR-S02.1"
+    },
+    "smb10a": {
+      "status": "completed_verified",
+      "application_merge_sha": "6c73d0cc6e930cde7ee2f40c7f0e3682a963a053",
+      "schema": "SMB10A.1"
+    },
+    "ari": {
+      "status": "completed_verified",
+      "terminal_work_item": "ARI-22C",
+      "application_merge_sha": "6c63a5f33665623f6e439fd2b65a899cf6001291"
+    },
+    "readiness_handoff": "SMB10A.SAA.READINESS.v1",
+    "owner_hold_cleared_by_current_instruction": true
   },
-  "start_requires": [
-    "ARI-22 completed_verified",
-    "SMB-09 completed_verified",
-    "SMB10A",
-    "Character/CAPP/PAPT/MAI/Scene projections"
-  ],
-  "objective": "Define stable comic project, page, panel and layer identity; governed ARI resource references; transform state; text elements; and output metadata without embedding source assets by default.",
+  "objective": "Define stable comic project, page, panel and layer contracts with ARI resource references, presentation-only transform state, text elements and output metadata, without embedding source assets by default or taking authority from Character, Scene, ARI, rights/provenance or later SAA composition tranches.",
   "acceptance": [
-    "Project, page, panel and layer records have stable identities and deterministic serializable structure.",
-    "Composition references governed ARI resources by stable reference rather than duplicating source assets by default.",
-    "Layer schema carries presentation transform state without mutating Character, Scene, MAI or source-resource truth.",
-    "Text elements remain explicit text state rather than flattened-only image content.",
-    "Output metadata preserves provenance/resource lineage and does not grant publishing or redistribution rights.",
-    "Unknown or unsupported resource capabilities remain explicit rather than fabricated.",
-    "No implementation starts until a later explicit owner Continue verifies the SAA start gates."
+    "Project, page, panel and layer identities are explicit, stable and versioned with deterministic ordering/serialization.",
+    "Layers reference ARI-governed resources by identity/provenance reference rather than embedding source asset bytes by default.",
+    "Schema defines presentation-only transform state sufficient for later composition behavior without implementing the SAA-03 canvas.",
+    "Text elements remain actual typed text state with stable identity rather than raster-only presentation.",
+    "Output metadata is typed and deterministic without granting export/share/publication authority.",
+    "Character, Scene, map and other source-domain truth remain references; SAA-01 creates no replacement canonical owner state.",
+    "Rights/capability references are preserved for later operation filtering; SAA-01 does not invent a parallel rights ledger.",
+    "Round-trip serialization preserves project/page/panel/layer identity, ordering, references, transforms, text and metadata.",
+    "Provider-off local operation is supported; optional AI and paid cloud are not required.",
+    "SAA-02+ behavior, public sharing, marketplace, external tester distribution and final Creator integration remain unauthorized."
   ],
   "boundaries": [
-    "ARI remains resource/provenance authority and source assets are referenced rather than privately duplicated by default.",
-    "Character/CAPP/PAPT appearance, MAI/Scene spatial truth and Story/CSW narrative truth remain with their owners.",
-    "Rights filtering must precede requested transform/export/share operations.",
-    "AI remains proposal-only and cannot silently author canonical state.",
-    "SAA selection is a control-plane successor seed only; this checkpoint grants no implementation authority."
+    "SAA-01 defines schema only; panel layout grammar belongs to SAA-02 and interactive layer composition behavior belongs to SAA-03.",
+    "ARI remains resource identity/provenance/rights authority; SAA references ARI resources instead of duplicating them by default.",
+    "Character/CAPP/PAPT and MAI/Scene remain canonical appearance/spatial owners; SAA stores presentation references only.",
+    "Transform fields are presentation state and do not mutate source assets or canonical Scene/Character truth.",
+    "Third-party transform/export/share operations require later independent rights-capability enforcement.",
+    "AI remains proposal-only and is not required for SAA-01.",
+    "No SAA successor or SMB10B implementation authority is granted by selection."
   ],
   "strict_successor": "SAA-02",
   "active_substep": "awaiting_governed_start",
-  "next_action": "Await a later explicit owner Continue. Then verify SAA start gates and governed-start SAA-01; do not start from this closeout.",
+  "next_action": "The owner's current instruction authorizes governed start of SAA-01 immediately after this S02 closeout/selection becomes canonical.",
   "owner_interaction_observation": {
     "continue_turns": 0,
     "stall_nudges": 0
