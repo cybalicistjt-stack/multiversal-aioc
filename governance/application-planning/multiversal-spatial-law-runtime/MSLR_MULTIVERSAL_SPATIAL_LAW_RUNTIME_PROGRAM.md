@@ -252,3 +252,20 @@ MSLR-18 completed_verified with contract `MSLR-18.1`. Causal RED run `3560161118
 The terminal family proof covers all 45 closed PDCP-MSLR vectors and the eight sealed predecessor schemas. It proves deterministic replay with immutable Event history, permission filtering before participant projections/diagnostics, accessibility/provider-off operation, projection invariance, specialized true hyperbolic tiling without universalizing regular tiling math, quotient/non-orientable topology with stable identity/local-frame semantics, bounded lazy practically-unbounded represented space without exhaustive enumeration, discrete/continuous realization equivalence, and clean-room source boundaries.
 
 The typed handoff exposes MSLR Events, observations and deltas to `MSWI-01` without selecting, starting or granting implementation authority to MSWI. MSLR implementation authority is retired. Cross-family reuse of the terminal GPR slot requires a later explicit owner Continue.
+
+
+## Post-closure perceptual-spatial supplement registered — 2026-09-21
+
+A separate owner-directed planning supplement is registered at:
+
+- `MSLR_POST_CLOSURE_PERCEPTUAL_SPATIAL_SUPPLEMENT_2026-09-21.md`
+- `MSLR_POST_CLOSURE_SUPPLEMENT_BACKLOG.json`
+
+It preserves MSLR-18 as the sealed terminal proof and does **not** reopen the MSLR-01..18 family, alter its 45-vector certification, change the MSWI handoff, modify `operations/CURRENT.json`, or grant implementation authority.
+
+The supplement retains two future bounded additive units only:
+
+- `MSLR-S01` — Perceptual Spatial Reification & Correspondence Runtime
+- `MSLR-S02` — Perceptual Spatial Supplement Golden Proof & Handoff
+
+These units capture the clean-room, genuinely additive capability cluster identified from a later external-game review: projection-conditioned state commitment, representation-to-space materialization, projection-aligned correspondence, and recursive homologous-instance state propagation/scale reindexing. They require a later explicit owner-governed start and have no automatic roadmap activation.
