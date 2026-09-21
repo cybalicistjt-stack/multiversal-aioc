@@ -7,8 +7,8 @@
   "track": "system-maturation-buildout",
   "source_program": "SMB",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "planned",
-  "owner_selected": false,
+  "status": "selected_not_started",
+  "owner_selected": true,
   "implementation_authority": false,
   "implementation_branch": null,
   "completed": false,
@@ -57,18 +57,94 @@
     "SMB-09 and later work remain unauthorized."
   ],
   "selection_correction": {
-    "reason": "Revision 20 followed the SMB-only successor projection instead of the cross-program dependency graph.",
+    "reason": "Historical revision 20 followed the SMB-only successor projection before the required CNI/PCA/studio-runtime/MERA/MBES/MSLR/MSWI dependency block completed.",
     "correct_successor_after_smb07": "CNI-01",
-    "correction_status": "resolved_verified_pending_merge"
+    "correction_status": "resolved_completed",
+    "current_selection_reason": "Fresh ROADMAP_DEPENDENCY_GRAPH schema 1.0.4 plus completed MSWI-18 and all concrete studio/runtime golden barriers now make SMB-08 eligible for selection."
   },
-  "active_substep": null,
-  "next_action": "Remain planned and unselected until the cross-program roadmap gates make SMB-08 eligible after the CNI/PCA/specialist/MERA/MBES block.",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await the next owner Continue. That command may governed-start only SMB-08 — Core Content Production; SMB-09 remains unauthorized.",
   "owner_interaction_observation": {
     "continue_turns": 0,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "planned",
+    "status": "selected_not_started",
     "policy_violations": []
+  },
+  "selected_by_verified_predecessor": "MSWI-18",
+  "cross_program_activation": {
+    "roadmap_dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4",
+    "start_requires": [
+      "required studio/runtime golden barriers",
+      "MSWI-18"
+    ],
+    "barrier_evidence": {
+      "CNI-13": {
+        "status": "completed_verified",
+        "application_merge_sha": "d85e5ef1ad37b29fc930a82d28244705b92e6be8"
+      },
+      "PCA-16": {
+        "status": "completed_verified",
+        "application_merge_sha": "f6ad609c51eff7cb59ccec35709b3ca267fe3006"
+      },
+      "MCS-21": {
+        "status": "completed_verified",
+        "application_merge_sha": "da02b910fd8552745d40554b6a6a0c43ea55c34c"
+      },
+      "MCCS-21": {
+        "status": "completed_verified",
+        "application_merge_sha": "66056727303f95fa1e01df837afc1a1080b7fc42"
+      },
+      "MNCS-24": {
+        "status": "completed_verified",
+        "application_merge_sha": "d781b59da41b794a966ecd096c1d7703c7c7b077"
+      },
+      "MAS-21": {
+        "status": "completed_verified",
+        "application_merge_sha": "b45300455174dee7086334a1550ef37de31dca93"
+      },
+      "MSAS-21": {
+        "status": "completed_verified"
+      },
+      "MRCS-21": {
+        "status": "completed_verified"
+      },
+      "GPR-16": {
+        "status": "completed_verified",
+        "application_merge_sha": "6e213b66a0a2c03f8c32baba702cb94070a92454"
+      },
+      "MERA-24": {
+        "status": "completed_verified",
+        "application_merge_sha": "8e57b254c620969080c1b6eab4ebc7ec461ad3e3"
+      },
+      "MBES-24": {
+        "status": "completed_verified",
+        "application_merge_sha": "7377314b962e50d23765eff1e644bd318a1966ca"
+      },
+      "MSLR-18": {
+        "status": "completed_verified",
+        "application_merge_sha": "b3d0449bb89961bcbbf4d476c011d17f50c3425e"
+      },
+      "MSWI-18": {
+        "status": "completed_verified",
+        "application_merge_sha": "c9c6261a7cfdfae10e980c7d1afdf166142693d5",
+        "validation_run": 35621083959
+      }
+    },
+    "capability_handoff": "governance/application-planning/multiversal-systemic-worldplay-integration/MSWI-18_SMB08_CAPABILITY_HANDOFF.json",
+    "eligible": true,
+    "downstream_started": false
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
   }
 }
