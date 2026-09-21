@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 393,
+  "state_revision": 394,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "SMB10A",
       "attempt_id": "SMB10A-attempt-001",
       "checkpoint_path": "governance/ai/work-state/SMB10A-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "SMB-09 completed_verified on exact application head d8908cabe0124f9fcf12bbbf5bbd4908cc3d6a07, validation run 35626411468, publication 6b99d4038405d06fa4cb32d75c36945bcb96fe66. Fresh ROADMAP_DEPENDENCY_GRAPH schema 1.0.4 gives SMB10A hard_requires SMB09, now satisfied, while SAA start-requires SMB10A. SMB10A is selected_not_started only; a later owner Continue is required for governed start.",
+      "implementation_branch": "work/smb10a-core-player-gm-product-ux",
+      "implementation_authority": true,
+      "activation_rule": "Owner Continue governed-started SMB10A from completed_verified SMB-09. Only Core Player/GM/Product UX is authorized; SAA-01, SMB10B and later SMB work remain unauthorized.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "SMB10A is selected_not_started. The next owner Continue starts only SMB10A — Core Player/GM/Product UX; SAA-01, SMB10B and later SMB work remain unauthorized.",
+  "next_project_action": "SMB10A is in progress. Complete only Core Player/GM/Product UX through exact-head validation/publication and canonical closeout before SAA may be selected.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
