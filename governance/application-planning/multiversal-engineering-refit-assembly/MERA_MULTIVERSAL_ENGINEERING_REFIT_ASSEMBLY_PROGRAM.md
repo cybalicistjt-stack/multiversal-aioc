@@ -1,12 +1,12 @@
 # MERA — Multiversal Engineering, Refit & Assembly
 
 **Program ID:** MERA  
-**Status:** ACTIVE — MERA-16 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MERA-24 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after GPR effective golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MBES-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-11  
-**Implementation authority:** none until an owner Continue starts the CURRENT-selected MERA-16 attempt
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MERA-24 attempt
 
 ## Purpose
 
@@ -234,3 +234,14 @@ Resolved compatibility delegates to MIB-14 configuration validation; unknown/con
 Causal RED: run `35561460476` at `8677ab26e60128978255b02e61e30966d941728b`. Exact-head GREEN: run `35561663356` at `200a7e7cd7dce7c6873b04f4293d4b40082ab598`. Published application: PR #682 as `bc0fe362e14eee6beccae8d552b2743bdfc2eb76`.
 
 Fresh roadmap reconciliation supplies no interstitial successor override. MERA-16 is selected_not_started. MBES remains blocked until MERA completes at MERA-24.
+
+
+## MERA-16 completed machinery/robotics/construct/industrial adapter result
+
+MERA-16 completed_verified with published contract `MERA-16.1`. Machinery, robotics, constructs and industrial systems share one distinct non-vehicle MERA adapter substrate while explicit profiles preserve D17 Asset identity and versioned autonomy/control, facility and network authority references. PPIA-04 Vehicle semantics are not silently applied.
+
+The causal RED proof run `35563066094` at `4a8978a5b3c01f4b99e324994a5f65cc0b0e5648` reached the focused suite on Linux and hosted Windows; all 15 tests failed because the production adapter entry points were absent. The implementation then passed the 15-test runtime contract and invariant verifier, exposed one bounded test-helper TypeScript annotation defect, and was repaired without widening production scope. Exact-head GREEN run `35563073154` passed Linux, governed hosted Windows, invariants, typecheck, focused tests and deterministic cross-platform comparison at `2459bc432f34cc0846465a5e074fced5f0952f77`. PR #685 published as application main `9c785e24cbb3b1682149cca491ea5e5527073753`.
+
+KFR-05 machine qualification remains advisory and grants no action authority. Unknown/conflicting owner, control, facility or network evidence remains unresolved; incompatible facility context stays explicitly incompatible. MERA emits typed owner-operation requests only and creates no Asset, control, facility, network, resource or provenance ledger.
+
+Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. MERA-24 is selected_not_started. MBES remains blocked until MERA completes at MERA-24.
