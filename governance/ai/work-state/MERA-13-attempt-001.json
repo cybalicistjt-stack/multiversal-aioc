@@ -9,10 +9,10 @@
   "attempt_id": "MERA-13-attempt-001",
   "title": "Vehicle, Mecha & Starship Engineering Adapter Pack",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "owner_selected": false,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/mera-13-vehicle-mecha-starship-engineering-adapters",
   "completed": false,
   "selected_by_verified_predecessor": "MERA-12",
   "required_predecessor": {
@@ -41,17 +41,21 @@
     "MBES remains blocked until MERA completes at MERA-24."
   ],
   "strict_successor": "MERA-16",
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On the next owner Continue, start only MERA-13. Preload the sealed MERA predecessors, PPIA-04/MIB-14/F014 Vehicle/Mecha/Starship owner seams, explicit target-specific profiles, compatibility rules, owner-version semantics and provider-off accessibility boundaries.",
+  "active_substep": "governed_started",
+  "next_action": "Execute MERA-13 only through causal RED, bounded shared Vehicle/Mecha/Starship engineering adapters with target-specific owner profiles, exact-head validation, publication, canonical closeout and MERA-16 selection.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start",
+      "evidence": "Owner Continue started CURRENT-selected MERA-13 from completed_verified MERA-12."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
+    "terminal_response_allowed": false,
     "stop_reason": null
   }
 }
