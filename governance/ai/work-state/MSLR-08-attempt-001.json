@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MSLR",
+  "lane": "gpr",
+  "track": "multiversal-spatial-law-runtime",
+  "source_program": "MSLR",
+  "work_item_id": "MSLR-08",
+  "attempt_id": "MSLR-08-attempt-001",
+  "title": "Metric, Scale, Containment & Orientation Transform Runtime",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MSLR-07",
+  "required_predecessor": {
+    "work_item": "MSLR-07",
+    "status": "completed_verified",
+    "application_merge_sha": "b043d8ddeb0de68c8bbce59eca084f43abf51a11",
+    "schema": "MSLR-07.1"
+  },
+  "objective": "Implement metric transforms; recursive/nested/bigger-inside containment transforms; scale relationships; orientation/gravity frames; entry/exit transform semantics; movement/range/projectile/scene adapters; identity-preserving nesting; and the owner-approved isometry/frame-transport plus continuous-geometry/discrete-substrate equivalence semantics.",
+  "acceptance": [
+    "Metric transforms explicitly define distance/range semantics without conflating topology.",
+    "Recursive/nested/bigger-inside containment preserves canonical identity across containment depth.",
+    "Scale relationships are explicit and compose deterministically with metric/containment rules.",
+    "Orientation/gravity frames and entry/exit frame transport are explicit runtime state.",
+    "Isometries/frame transport may return to the same canonical location with a different local frame when the authored law permits it.",
+    "Continuous geometry and discrete traversal substrates can prove equivalent realization of the same accepted spatial law.",
+    "Movement, range, projectile and scene adapters consume the same accepted law semantics.",
+    "Blocking transform workflows remain semantic/nonvisual, keyboard-capable, provider-off and paid-cloud independent."
+  ],
+  "boundaries": [
+    "MSLR-01/03/04/07 and upstream completed programs remain sealed.",
+    "Topology remains distinct from metric geometry.",
+    "World/Reality/Scene/Location owners retain canonical identity.",
+    "MCS remains projection authority; projected coordinates are not intrinsic metric truth.",
+    "GPR/Action/Event retain generic execution and immutable Event history.",
+    "MSLR-13 and later tranches remain unauthorized until MSLR-08 closeout."
+  ],
+  "strict_successor": "MSLR-13",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await the next owner Continue. That command may governed-start only MSLR-08.",
+  "design_amendment": {
+    "approved": "2026-09-21",
+    "required": true,
+    "impacts": [
+      "isometry-frame-transport",
+      "continuous-discrete-law-realization-equivalence"
+    ]
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
