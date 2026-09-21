@@ -2,7 +2,7 @@
   "schema_version": "0.2.0",
   "program_id": "MBES",
   "program_name": "Multiversal Built Environment & Settlement",
-  "status": "owner_approved_planned",
+  "status": "in_progress",
   "activation_after": "MERA-24",
   "successor": "MSLR-01",
   "owner": "John Brandon Turner",
@@ -27,17 +27,129 @@
     "split_rule": "If the selected tranche cannot credibly leave the closeout reserve intact, split it before governed start rather than overrunning the tranche.",
     "retry_rule": "Do not rerun an unchanged deterministic failure; classify the failure and require changed evidence before retry."
   },
-  "strict_order": ["MBES-01","MBES-03","MBES-05","MBES-08","MBES-12","MBES-14","MBES-18","MBES-20","MBES-24"],
+  "strict_order": [
+    "MBES-01",
+    "MBES-03",
+    "MBES-05",
+    "MBES-08",
+    "MBES-12",
+    "MBES-14",
+    "MBES-18",
+    "MBES-20",
+    "MBES-24"
+  ],
   "tranches": [
-    {"id":"MBES-01","name":"Site, Project, Authority & Construction Core","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MBES-01","MBES-02"],"absorbed_owner_residuals":["MBES-22"]},
-    {"id":"MBES-03","name":"Material Requirements & Structural Build Assembly","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MBES-03","MBES-04"]},
-    {"id":"MBES-05","name":"Functional Spaces, Furnishing & Reusable Blueprint Assemblies","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MBES-05","MBES-06","MBES-07"],"absorbed_owner_residuals":["MBES-17"]},
-    {"id":"MBES-08","name":"Facility Networks, Automation & Logistics Integration","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MBES-08","MBES-09","MBES-10"],"absorbed_owner_residuals":["MBES-11"]},
-    {"id":"MBES-12","name":"Civil Terrain, Hydrology & Land-Transformation Runtime","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MBES-12","MBES-13"]},
-    {"id":"MBES-14","name":"Environment Conditions, Externalities, Habitability & Reactive-World Integration","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MBES-14","MBES-15","MBES-16"]},
-    {"id":"MBES-18","name":"Durability, Failure, Defense & Recovery Infrastructure","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MBES-18","MBES-19"]},
-    {"id":"MBES-20","name":"Settlement, Transport & Regional Development Integration","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MBES-20","MBES-21","MBES-23"],"absorbed_owner_residuals":["MBES-17","MBES-22"]},
-    {"id":"MBES-24","name":"Golden Cross-Scale Building, Settlement & Reactive-World Proof","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MBES-24"],"absorbed_owner_residuals":["MBES-11","MBES-17","MBES-22"]}
+    {
+      "id": "MBES-01",
+      "name": "Site, Project, Authority & Construction Core",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MBES-01",
+        "MBES-02"
+      ],
+      "absorbed_owner_residuals": [
+        "MBES-22"
+      ]
+    },
+    {
+      "id": "MBES-03",
+      "name": "Material Requirements & Structural Build Assembly",
+      "status": "selected_not_started",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MBES-03",
+        "MBES-04"
+      ]
+    },
+    {
+      "id": "MBES-05",
+      "name": "Functional Spaces, Furnishing & Reusable Blueprint Assemblies",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MBES-05",
+        "MBES-06",
+        "MBES-07"
+      ],
+      "absorbed_owner_residuals": [
+        "MBES-17"
+      ]
+    },
+    {
+      "id": "MBES-08",
+      "name": "Facility Networks, Automation & Logistics Integration",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MBES-08",
+        "MBES-09",
+        "MBES-10"
+      ],
+      "absorbed_owner_residuals": [
+        "MBES-11"
+      ]
+    },
+    {
+      "id": "MBES-12",
+      "name": "Civil Terrain, Hydrology & Land-Transformation Runtime",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MBES-12",
+        "MBES-13"
+      ]
+    },
+    {
+      "id": "MBES-14",
+      "name": "Environment Conditions, Externalities, Habitability & Reactive-World Integration",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MBES-14",
+        "MBES-15",
+        "MBES-16"
+      ]
+    },
+    {
+      "id": "MBES-18",
+      "name": "Durability, Failure, Defense & Recovery Infrastructure",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MBES-18",
+        "MBES-19"
+      ]
+    },
+    {
+      "id": "MBES-20",
+      "name": "Settlement, Transport & Regional Development Integration",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MBES-20",
+        "MBES-21",
+        "MBES-23"
+      ],
+      "absorbed_owner_residuals": [
+        "MBES-17",
+        "MBES-22"
+      ]
+    },
+    {
+      "id": "MBES-24",
+      "name": "Golden Cross-Scale Building, Settlement & Reactive-World Proof",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MBES-24"
+      ],
+      "absorbed_owner_residuals": [
+        "MBES-11",
+        "MBES-17",
+        "MBES-22"
+      ]
+    }
   ],
   "required_upstream": [
     "ARI family completed_verified",
@@ -63,7 +175,43 @@
     "PDCP Packets 04, 06, 07 and 08 design_closed"
   ],
   "integration_targets": [
-    "MIB-14","MIB-12","MIB-13","APW/D26","CEL/APM","ICF","MCS","MRCS","MERA","GPR","PCA","ARI","World","Environment","Reality/Branch","SSA","Scene","Combat","Action/Event","Inventory/Asset","Character/NPC","MNCS","DPL","Species/Form","ODL","SCL","Faction/Organization","Settlement","Economy","Exploration","Visibility/Permissions","Accessibility","MSLR","MSWI","SMB-08","SMB-09","SAA"
+    "MIB-14",
+    "MIB-12",
+    "MIB-13",
+    "APW/D26",
+    "CEL/APM",
+    "ICF",
+    "MCS",
+    "MRCS",
+    "MERA",
+    "GPR",
+    "PCA",
+    "ARI",
+    "World",
+    "Environment",
+    "Reality/Branch",
+    "SSA",
+    "Scene",
+    "Combat",
+    "Action/Event",
+    "Inventory/Asset",
+    "Character/NPC",
+    "MNCS",
+    "DPL",
+    "Species/Form",
+    "ODL",
+    "SCL",
+    "Faction/Organization",
+    "Settlement",
+    "Economy",
+    "Exploration",
+    "Visibility/Permissions",
+    "Accessibility",
+    "MSLR",
+    "MSWI",
+    "SMB-08",
+    "SMB-09",
+    "SAA"
   ],
   "boundaries": [
     "MBES is the player/GM built-environment and settlement gameplay/orchestration layer; it does not replace canonical World, Environment, Character, Inventory, Economy, Project, Action/Event, Settlement or organization owners",
