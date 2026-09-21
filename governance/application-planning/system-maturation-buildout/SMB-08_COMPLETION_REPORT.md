@@ -16,4 +16,4 @@ The implementation creates no replacement content authority, pack registry, asse
 
 Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` gives SMB-09 only the hard requirement `SMB08`; with SMB-08 completed_verified, SMB-09 — Complete First-Party Campaign — is selected_not_started. No SMB-09, SAA-01 or SMB-10 implementation authority is granted by this closeout.
 
-SMB-08 completed under one owner `Continue` and is execution-conforming.
+SMB-08 received three owner `Continue` commands in the same intended execution sequence, including two prompts dropped from the visible chat surface. Product completion remains valid; the terminal checkpoint records `OPS3.MULTI_CONTINUE_UNRECORDED`. Recovery consumed durable completed_verified application/closeout/lane evidence, replayed no completed phases, and did not govern-start SMB-09.
