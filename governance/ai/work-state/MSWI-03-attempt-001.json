@@ -47,7 +47,7 @@
   "active_substep": "completed_verified",
   "next_action": "MSWI-03 is completed_verified. MSWI-04 — Ecology Succession, Food-Web, Migration & Population-Band Runtime — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
     "material_progress_seq": 2,
     "progress_at_last_owner_command": 2,
@@ -65,10 +65,12 @@
     }
   },
   "execution_conformance": {
-    "status": "conforming",
-    "policy_violations": [],
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED"
+    ],
     "product_completion_valid": true,
-    "note": "MSWI-03 completed under one owner Continue. The only repair after production behavior passed focused tests was a causal test-fixture TypeScript inference correction; product scope was not widened and the repaired exact head received the full gate."
+    "note": "MSWI-03 product completion remains valid. A second owner Continue was issued while the same attempt was still active; recovery resumed from durable exact-head, application and lane-state evidence without replaying completed phases. Stale lane-state writes were rejected by the fast-forward interlock rather than forced."
   },
   "acceptance_evidence": {
     "governed_start": {
