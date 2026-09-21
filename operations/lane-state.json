@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "gpr",
-  "revision": 221,
+  "revision": 222,
   "selected_work_item": "SAA-05",
   "attempt_id": "SAA-05-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/saa-05-character-actor-projection",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Owner Continue governed-started SAA-05; OPS3 PR #1629 validated by run 35644812222 and merged as 2dfb67fb3c8556ea848297e0cf8192973898531d."
+    "kind": "prequeue_green",
+    "evidence": "SAA-05 exact head 42e1553f60c8c542097e1ba7043332a63e7f9a43 passed Validate Current Family run 35645250511 on Linux, Windows and deterministic cross-platform comparison."
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,9 @@
     "closeout_merge_sha": "9b2e230c0133451b706deeed53f05735c86f49ba",
     "closeout_validation_run": "35644247012",
     "closeout_ready_candidate": "SAA-04-closeout-001"
+  },
+  "prequeue_green": {
+    "candidate_head": "42e1553f60c8c542097e1ba7043332a63e7f9a43",
+    "validation_run": "35645250511"
   }
 }
