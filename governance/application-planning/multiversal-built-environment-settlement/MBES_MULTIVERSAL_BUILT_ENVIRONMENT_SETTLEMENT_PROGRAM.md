@@ -1,11 +1,11 @@
 # MBES — Multiversal Built Environment & Settlement
 
 **Program ID:** MBES  
-**Status:** ACTIVE — MBES-18 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MBES-20 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after the effective PDCP-reduced MERA golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** `MSLR-01`  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-18 attempt
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-20 attempt
 
 ## Purpose
 
@@ -251,3 +251,14 @@ Habitability is derived from explicit shelter, sealing, life-support and resilie
 No Environment, World, consequence, habitability, response or provenance ledger is created and no hidden canonical owner mutation occurs.
 
 Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-18` is selected_not_started as the reduced strict successor.
+
+
+## MBES-18 completed — Durability, Failure, Defense & Recovery Infrastructure
+
+MBES-18 completed_verified with application contract `MBES-18.1`. Causal RED run `35586701249` at `fff81404177469918a0ed18fb29372607daae9f2` passed repository health and failed all 12 focused tests on Linux and hosted Windows because the production seam was absent. Initial Green workflow `35586922726` at `cae2c882491fbb25e8b82fb0fd8a16b31638faa8` was cancelled by a stale-run cleanup race after cancelling obsolete intermediate run `35586917940`; application validation had not begun. A documentation-only hazard visibility clarification produced exact candidate `72828011f95c4dd3ad89b0dfd3acf49e5e22993a` without changing production behavior or tests. Exact-head run `35587013652` then passed repository health, Linux, hosted Windows, source invariants, TypeScript typecheck, focused tests and deterministic cross-platform comparison. PR #693 published as application main `363c7a9462a1773968528bf4258e445efb36c051`.
+
+The delivered seam projects owner-backed durability/condition references; routes wear, failure, fire, contamination and disaster as typed Action/Event-facing observations; emits repair, retrofit, salvage and decommission requests to MIB-12/D17 owners; projects explicit defense/security/emergency capabilities; preserves Combat/A7, SCL and Hazard adjudication ownership; composes MERA dependency/failure/repair evidence without a second engineering graph; and preserves owner history/version/provenance in recovery receipts.
+
+No damage, hazard, combat, security, engineering, resource or provenance ledger is created. No universal failure propagation, repair or emergency rule is invented. Hidden hazard existence/count/payload remains protected by owner visibility filtering.
+
+Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-20` is selected_not_started as the reduced strict successor.

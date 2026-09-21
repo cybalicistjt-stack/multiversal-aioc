@@ -9,11 +9,11 @@
   "attempt_id": "MBES-18-attempt-001",
   "title": "Durability, Failure, Defense & Recovery Infrastructure",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/mbes-18-durability-failure-defense-recovery",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "MBES-14",
   "required_predecessor": {
     "work_item": "MBES-14",
@@ -41,21 +41,140 @@
     "MBES-20 and later MBES tranches remain unauthorized until canonical MBES-18 closeout."
   ],
   "strict_successor": "MBES-20",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for MBES-18 durability/failure/defense/recovery owner adapters, then implement only the PDCP-closed behavior.",
+  "active_substep": "completed_verified",
+  "next_action": "MBES-18 is completed_verified. MBES-20 — Settlement, Transport & Regional Development Integration — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started MBES-18 from canonical selected_not_started state."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "MBES-18 causal RED run 35586701249 failed all 12 focused tests on Linux and hosted Windows at fff81404177469918a0ed18fb29372607daae9f2 because the production seam was absent. Initial Green run 35586922726 at cae2c882491fbb25e8b82fb0fd8a16b31638faa8 was cancelled by a stale-run cleanup race after cancelling obsolete intermediate run 35586917940, before application validation. A documentation-only hazard visibility clarification produced exact candidate 72828011f95c4dd3ad89b0dfd3acf49e5e22993a without changing production or tests. Exact-head run 35587013652 passed repository health, Linux, hosted Windows, invariants, TypeScript typecheck, focused tests and deterministic comparison; PR 693 published as app main 363c7a9462a1773968528bf4258e445efb36c051."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MBES-18 durability/failure/defense/recovery adapters are durably published and canonical closeout selects MBES-20 without starting it."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "note": "MBES-18 completed in one owner Continue. A stale-run cleanup race cancelled one intermediate Green workflow before validation; the subsequent exact candidate changed documentation only and completed the full required gate."
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "causal_red": "completed",
+    "owner_backed_durability_state": "completed",
+    "typed_failure_events": "completed",
+    "repair_retrofit_salvage_decommission_requests": "completed",
+    "defense_emergency_capabilities": "completed",
+    "combat_scl_hazard_handoffs": "completed",
+    "mera_failure_repair_adapter": "completed",
+    "recovery_receipts": "completed",
+    "accessibility_provider_off": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "acceptance_evidence": {
+    "governed_start": {
+      "aioc_pr": 1562,
+      "validation_run": 35586540095,
+      "merge_sha": "b1a60cc4c8b98f117a820b78d663181c08493bce"
+    },
+    "causal_red": {
+      "application_pr": 693,
+      "head": "fff81404177469918a0ed18fb29372607daae9f2",
+      "validation_run": 35586701249,
+      "conclusion": "failure",
+      "selector_repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "signature": "Focused MBES-18 suite executed 12 tests; all 12 failed on the empty production seam with expected-null assertions."
+    },
+    "stale_validation_recovery": {
+      "cancelled_run": 35586922726,
+      "cancelled_head": "cae2c882491fbb25e8b82fb0fd8a16b31638faa8",
+      "obsolete_run_cancelled": 35586917940,
+      "effect": "Current workflow was cancelled by stale-run cleanup race before validation after cancelling the obsolete intermediate run.",
+      "candidate_adjustment": "Documentation-only hazard visibility boundary clarification.",
+      "product_code_changed": false,
+      "tests_changed": false
+    },
+    "green": {
+      "application_pr": 693,
+      "validated_head": "72828011f95c4dd3ad89b0dfd3acf49e5e22993a",
+      "validation_run": 35587013652,
+      "conclusion": "success",
+      "selector_repository_health": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "363c7a9462a1773968528bf4258e445efb36c051"
+    },
+    "delivered": {
+      "schema": "MBES-18.1",
+      "predecessor_schema": "MBES-14.1",
+      "engineering_authority": "MERA",
+      "event_authority": "Action/Event",
+      "transformation_authority": "MIB-12",
+      "resource_authority": "D17/Inventory",
+      "capability_authority": "MIB-14/MERA/MRCS",
+      "combat_authority": "Combat/A7",
+      "scl_authority": "SCL",
+      "hazard_authority": "Hazard",
+      "failure_kinds": [
+        "wear",
+        "failure",
+        "fire",
+        "contamination",
+        "disaster"
+      ],
+      "recovery_kinds": [
+        "repair",
+        "retrofit",
+        "salvage",
+        "decommission"
+      ],
+      "emergency_capabilities": [
+        "defense",
+        "security",
+        "evacuation",
+        "shelter",
+        "fire-suppression",
+        "quarantine"
+      ],
+      "combat_resolved_by_mbes": false,
+      "scl_resolved_by_mbes": false,
+      "hazard_resolved_by_mbes": false,
+      "transaction_performed": false,
+      "engineering_graph_created": false,
+      "damage_ledger_created": false,
+      "hazard_ledger_created": false,
+      "combat_ledger_created": false,
+      "security_ledger_created": false,
+      "resource_ledger_created": false,
+      "provenance_ledger_created": false,
+      "history_deletion_requested": false,
+      "canonical_owner_mutation_performed": false,
+      "semantic_nonvisual_path": true,
+      "keyboard_equivalent": true,
+      "provider_off_local": true,
+      "paid_cloud_required": false,
+      "mandatory_3d_required": false
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MBES-20",
+      "interstitial_override": "none",
+      "reason": "Fresh ROADMAP_DEPENDENCY_GRAPH supplies no interstitial MBES override; the reduced strict successor after MBES-18 is MBES-20."
+    }
   }
 }

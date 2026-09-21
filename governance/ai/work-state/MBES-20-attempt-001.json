@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MBES",
+  "lane": "gpr",
+  "track": "multiversal-built-environment-settlement",
+  "source_program": "MBES",
+  "work_item_id": "MBES-20",
+  "attempt_id": "MBES-20-attempt-001",
+  "title": "Settlement, Transport & Regional Development Integration",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MBES-18",
+  "required_predecessor": {
+    "work_item": "MBES-18",
+    "status": "completed_verified",
+    "application_merge_sha": "363c7a9462a1773968528bf4258e445efb36c051",
+    "schema": "MBES-18.1"
+  },
+  "objective": "Implement Packet-06 district/settlement/regional built-state resolution bindings; housing/service/public-works capacity projections; road/transit/port/freight/access bindings over World/MCS/GPR owners; PCA-12 aggregate transport/capacity/congestion analysis adapters; community/faction/shared Project bindings; specialization/inter-settlement dependency projections; resident/household/workforce capacity references without owning people/jobs; Economy/ODL market/property/funding references without duplicating economic truth; and MSWI consequence Event adapters.",
+  "acceptance": [
+    "District, settlement and regional built state remain projections over canonical owner identities and Packet-06 resolution bindings.",
+    "Housing, services and public-works capacity derive from explicit owner-backed built-environment/capability evidence.",
+    "Road, transit, port, freight and access networks remain bindings over World/MCS/GPR owners rather than an MBES transport ledger.",
+    "Aggregate transport/capacity/congestion analysis uses PCA-12 only where accepted profiles support it and remains noncanonical.",
+    "Community/faction/shared Projects remain references to canonical Project/Faction/Organization owners.",
+    "Resident, household and workforce capacity references do not create Character, household, staffing or jobs truth.",
+    "Economy/ODL market/property/funding references remain owner truth rather than a duplicate economic ledger.",
+    "MSWI consequence Events remain handoffs; MBES does not directly fan out unrelated-domain mutation.",
+    "Blocking workflows remain semantic/nonvisual, keyboard-capable and provider-off."
+  ],
+  "boundaries": [
+    "MBES-01/03/05/08/12/14/18 remain sealed predecessors.",
+    "Packet-06 retains multi-resolution simulation semantics.",
+    "World/MCS/GPR retain network/world/geometry/execution ownership.",
+    "PCA-12 retains generic analysis authority.",
+    "Character/MNCS/ODL/DPL/Project retain people, household, workforce, organization, job and schedule truth.",
+    "MIB-13/Economy and ODL retain market/property/funding/economic truth.",
+    "MSWI retains unrelated-domain systemic consequence propagation.",
+    "MBES-20 creates no Settlement, transport, Character, household, workforce, Project, economy or provenance ledger.",
+    "MBES-24 remains unauthorized until canonical MBES-20 closeout."
+  ],
+  "strict_successor": "MBES-24",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await the next owner Continue. That command may governed-start only MBES-20.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
