@@ -1,12 +1,12 @@
 # MERA — Multiversal Engineering, Refit & Assembly
 
 **Program ID:** MERA  
-**Status:** ACTIVE — MERA-12 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MERA-13 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after GPR effective golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MBES-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-11  
-**Implementation authority:** none until an owner Continue starts the CURRENT-selected MERA-12 attempt
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MERA-13 attempt
 
 ## Purpose
 
@@ -214,3 +214,12 @@ PCA-12/Packet-08 retain generic graph/constraint/formal-analysis authority. MERA
 Causal RED: run `35559522065` at `fbec7a22e7bfd0d8eef87a1707f8dfbe2bc7d934`. Exact-head GREEN: run `35559618282` at `efc50ffbb30402cff6c7404b910b0f0c4cd79892`. Published application: PR #680 as `8a465ecd518792eadf325c222e6e1446bb922182`.
 
 Fresh roadmap reconciliation supplies no interstitial successor override. MERA-12 is selected_not_started. MBES remains blocked until MERA completes at MERA-24.
+
+
+## MERA-12 completed ordinary Item/equipment adapter result
+
+MERA-12 completed_verified with published contract `MERA-12.1`. D17/PPIA-03 Asset identity/history, MRCS explicit slot/compatibility definitions, MIB-12 repair/modify transactions and LSS recovered-part provenance remain authoritative. MERA creates no second inventory, equipment, crafting or Item-definition ledger.
+
+Causal RED: run `35560342322` at `2d06110300fd0219b012a97cd213c8d7518ff0c6`. Exact-head GREEN: run `35560536185` at `26dc7f566b7d75c6aa933a70ad9411bdfd1a4491`. Published application: PR #681 as `f8c38c237757cfd3379d5efb894dc93c168e2df8`.
+
+Fresh roadmap reconciliation supplies no interstitial successor override. MERA-13 is selected_not_started. MBES remains blocked until MERA completes at MERA-24.
