@@ -1,11 +1,11 @@
 # MBES — Multiversal Built Environment & Settlement
 
 **Program ID:** MBES  
-**Status:** ACTIVE — MBES-20 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MBES-24 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after the effective PDCP-reduced MERA golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** `MSLR-01`  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-20 attempt
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-24 attempt
 
 ## Purpose
 
@@ -262,3 +262,14 @@ The delivered seam projects owner-backed durability/condition references; routes
 No damage, hazard, combat, security, engineering, resource or provenance ledger is created. No universal failure propagation, repair or emergency rule is invented. Hidden hazard existence/count/payload remains protected by owner visibility filtering.
 
 Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-20` is selected_not_started as the reduced strict successor.
+
+
+## MBES-20 completed — Settlement, Transport & Regional Development Integration
+
+MBES-20 completed_verified with application contract `MBES-20.1`. Causal RED run `35588998264` at `0ebd82bb8d8b2c387b5dd7007923e518f8ac6cde` passed repository health and failed all 12 focused tests on Linux and hosted Windows because the production entry points were absent. Exact-head GREEN run `35589250353` at `fe131bd5eac85ea9fcf02000e2e9b074e7e9e207` passed repository health, Linux, hosted Windows, source invariants, TypeScript typecheck, focused tests and deterministic cross-platform comparison. PR #694 published that exact validated head as application main `81cd3db387c85054fc859d8f7d06ca36a672f897` using the repository-allowed squash method after GitHub rejected an initial disallowed merge-commit transport; the candidate head did not change.
+
+The delivered seam projects Packet-06 district/settlement/regional built state over owner identity, derives housing/service/public-works capacity only from explicit capability evidence, binds road/transit/port/freight/access to World/MCS/GPR, consumes PCA-12 for noncanonical aggregate analysis, references community/faction/shared Projects and people/economy owner state without copying it, projects specialization/inter-settlement dependencies, and emits typed Action/Event observations for later MSWI routing.
+
+No Settlement, transport, Character, household, workforce, jobs, Project, organization, economy, property, funding or provenance ledger is created. Blocking workflows remain semantic/nonvisual, keyboard-capable and provider-off.
+
+Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-24` is selected_not_started as the reduced family golden gate; `MSLR-01` remains gated on MBES-24.
