@@ -1,11 +1,11 @@
 # MBES — Multiversal Built Environment & Settlement
 
 **Program ID:** MBES  
-**Status:** ACTIVE — MBES-05 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MBES-08 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after the effective PDCP-reduced MERA golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** `MSLR-01`  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-05 attempt
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-08 attempt
 
 ## Purpose
 
@@ -203,3 +203,14 @@ The implemented seam keeps material/component/structural-rule definitions in MRC
 Structural/support/fire/pressure or comparable behavior is evaluated only from explicit governing profiles. Unsupported facts remain unresolved; MBES-03 introduces no universal real-world engineering or safety formula. Pointer and non-pointer paths produce equivalent semantic placement proposals, preview remains noncanonical, and recovery preserves owner history.
 
 Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-05` is selected_not_started as the reduced strict successor.
+
+
+## MBES-05 completed — Functional Spaces, Furnishing & Reusable Blueprint Assemblies
+
+MBES-05 completed_verified with published application contract `MBES-05.1`. Causal RED run `35580163114` at `bda1b833eadaa4afec8d3d90688edea0f7f11046` failed all 12 focused tests on Linux and hosted Windows because the production functional-space/blueprint entry points were absent. Exact-head GREEN run `35580332275` at `74a3cf1ef5d5e6eb6a42cfa4c6e8f14b66f07a8c` passed repository health, Linux, hosted Windows, MBES-05 invariants, TypeScript typecheck, focused tests and deterministic cross-platform comparison. PR #689 published as application main `76197ddabd809ea823ef44a7b57fb5b8a15fff05`.
+
+Room/facility capability is derived only from explicit accepted requirement evidence; labels never grant capability. Alternate authored requirement sets may satisfy the same capability. Furniture, fixtures and decor remain D17/Inventory-backed Asset references over MCS bindings; mechanical decor effects require explicit owner rules. Reusable assemblies preserve ARI/PCA/MRCS version/provenance/parent lineage, dependencies and explicit substitutions, and remain noncanonical until owner-authorized placement/commit.
+
+Staffing/access/use prerequisites reference Character/MNCS/ODL/DPL/Project owner state and environment prerequisites reference World/Environment truth. No people/job/staffing, Asset, blueprint, facility, World, environment, Project or provenance ledger is duplicated. Pointer and keyboard review paths are semantically equivalent and provider-off.
+
+Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-08` is selected_not_started as the reduced strict successor.
