@@ -1,7 +1,7 @@
 # MSWI — Multiversal Systemic Worldplay Integration
 
 **Program ID:** MSWI  
-**Status:** OWNER-APPROVED — PLANNED; PDCP-REDUCED  
+**Status:** ACTIVE — MSWI-03 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Owner:** John Brandon Turner  
 **Approved:** 2026-09-15  
 **PDCP reduction:** 2026-09-16 — baseline 18 tranches → 7 surviving implementation/proof tranches  
@@ -266,3 +266,12 @@ This reduced program does not:
 - authorize paid/cloud dependencies or release.
 
 Future implementation still requires ordinary OPS3 governed start.
+
+
+## MSWI-01 completed — Systemic Transformation State & Integration Core
+
+MSWI-01 completed_verified with application contract `MSWI-01.1`. Causal RED run `35603468568` at `2d7e056111d9ea58f55a76cf0c4d58f9b260d6a2` passed selector/repository health but failed the focused MSWI-01 suite on Linux and hosted Windows because the production entry points were intentionally absent. Exact-head GREEN run `35603724172` at `2c5c2d0ca84b08e6c2470c48aa761a8030a5576d` passed repository health, Linux, hosted Windows, focused tests, invariants, TypeScript typecheck and deterministic cross-platform comparison. PR #705 published that exact validated head as application main `8fa67726006237e2c68dcb1d5fb7e42c7b73b9a0`.
+
+The delivered opening seam provides reusable transformation profiles, exact owner/version integration bindings, read-only permission-filtered projections, threshold/milestone attribution, explicit stale-state detection, uncertainty-preserving owner values, MSLR-18 typed handoff consumption, migration/version safety and semantic/keyboard/provider-off inspection. It copies no mutable canonical World, Environment, Organization, Event or spatial-law state and executes no consequence-route commit runtime.
+
+Fresh roadmap authority schema `1.0.4` supplies no interstitial override. Reduced strict order selects `MSWI-03` — Cross-System Consequence Routing, Recovery & Domain Adapter Runtime — as selected_not_started. `MSWI-04` remains unauthorized.

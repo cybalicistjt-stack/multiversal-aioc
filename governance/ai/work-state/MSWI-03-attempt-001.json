@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MSWI",
+  "lane": "gpr",
+  "track": "multiversal-systemic-worldplay-integration",
+  "source_program": "MSWI",
+  "work_item_id": "MSWI-03",
+  "attempt_id": "MSWI-03-attempt-001",
+  "title": "Cross-System Consequence Routing, Recovery & Domain Adapter Runtime",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MSWI-01",
+  "required_predecessor": {
+    "work_item": "MSWI-01",
+    "status": "completed_verified",
+    "application_merge_sha": "8fa67726006237e2c68dcb1d5fb7e42c7b73b9a0",
+    "schema": "MSWI-01.1"
+  },
+  "objective": "Implement the central MSWI fan-out runtime over the sealed MSWI-01 integration core: versioned ConsequenceRouteDefinition registration, dry-run SystemicConsequenceEnvelope construction, independently authoritative target-owner validation/commit adapters, SystemicPropagationReceipt persistence, bounded route-depth/cycle/deduplication/conflict controls, explicit inverse/compensation/restoration/irreversible recovery classes, delayed Project/Time/Event follow-up, and residual adapters for accepted doctrine/social, profession/life, pursuit/performance and grand-Project outputs without recreating those owner runtimes.",
+  "acceptance": [
+    "Consequence route definitions bind exact source and target owner/domain versions and route applicability never grants target-domain authority.",
+    "SystemicConsequenceEnvelope is dry-run/proposal state that records exact route versions, candidate target operations, blocked/unresolved routes, cycle/deduplication decisions, visibility-safe explanations and staleness without proving a consequence occurred.",
+    "Every target owner independently validates and commits its own operation; SystemicPropagationReceipt records attempted, committed, rejected and blocked outcomes plus resulting owner Event IDs and versions.",
+    "Stable deduplication keys, explicit route-depth limits and cycle detection prevent unbounded automatic reaction cascades.",
+    "Conflicting target requests use the target-owner conflict policy or remain unresolved; MSWI never silently chooses canonical owner state.",
+    "Inverse operations, compensation, restoration workflows and irreversible results remain distinct, and recovery never deletes committed Event history.",
+    "Delayed consequences use Project/Time/Event authority and Campaign time rather than wall-clock scheduling or a second MSWI project ledger.",
+    "Residual adapters consume accepted doctrine/social, profession/life, pursuit, performance and grand-Project results without reimplementing those specialist runtimes.",
+    "Permission filtering occurs before route counts, search, diagnostics, explanation, AI context and export.",
+    "Blocking routing/recovery workflows remain semantic/textual, keyboard-capable, provider-off, optional-AI independent and paid-cloud independent."
+  ],
+  "boundaries": [
+    "MSWI-01 and all upstream completed programs remain sealed.",
+    "World, Environment, Organization, Economy, Character, Creature, Vehicle/Base and other target owners retain canonical mutation authority.",
+    "GPR/Action/Event retain generic execution and immutable Event history.",
+    "Project/Time owns delayed and long-running follow-up; MSWI does not create a second scheduler or Project ledger.",
+    "Religion/Culture/Organization, DPL, GPR pursuit/performance and other specialist owners retain their own runtimes; MSWI consumes accepted results only.",
+    "Automatic fan-out is bounded, permission-filtered and attributable; no route may bypass target-owner validation.",
+    "MSWI-04 and later MSWI tranches remain unauthorized until canonical MSWI-03 closeout."
+  ],
+  "strict_successor": "MSWI-04",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await the next owner Continue. That command may governed-start only MSWI-03.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}

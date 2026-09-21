@@ -27,15 +27,98 @@
     "split_rule": "If the selected tranche cannot credibly leave the closeout reserve intact, split it before governed start rather than overrunning the tranche.",
     "retry_rule": "Do not rerun an unchanged deterministic failure; classify the failure and require changed evidence before retry."
   },
-  "strict_order": ["MSWI-01", "MSWI-03", "MSWI-04", "MSWI-06", "MSWI-07", "MSWI-14", "MSWI-18"],
+  "strict_order": [
+    "MSWI-01",
+    "MSWI-03",
+    "MSWI-04",
+    "MSWI-06",
+    "MSWI-07",
+    "MSWI-14",
+    "MSWI-18"
+  ],
   "tranches": [
-    {"id":"MSWI-01","name":"Systemic Transformation State & Integration Core","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSWI-01","MSWI-02"]},
-    {"id":"MSWI-03","name":"Cross-System Consequence Routing, Recovery & Domain Adapter Runtime","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSWI-03"],"absorbed_owner_residuals":["MSWI-09","MSWI-10","MSWI-11","MSWI-13"]},
-    {"id":"MSWI-04","name":"Ecology Succession, Food-Web, Migration & Population-Band Runtime","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSWI-04","MSWI-05"]},
-    {"id":"MSWI-06","name":"Composite Entity Role Binding Runtime","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSWI-06"]},
-    {"id":"MSWI-07","name":"Biological Components, Harvest, Embodied Modification & Lineage Integration","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSWI-07","MSWI-08"]},
-    {"id":"MSWI-14","name":"Systemic Site/Scene Variant, Template & Promotion Integration","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSWI-14","MSWI-15","MSWI-16"]},
-    {"id":"MSWI-18","name":"Systemic Coverage Diagnostics, Golden Proof & SMB-08 Handoff","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSWI-17","MSWI-18"],"absorbed_owner_residuals":["MSWI-09","MSWI-10","MSWI-11","MSWI-12","MSWI-13"]}
+    {
+      "id": "MSWI-01",
+      "name": "Systemic Transformation State & Integration Core",
+      "status": "completed_verified",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSWI-01",
+        "MSWI-02"
+      ]
+    },
+    {
+      "id": "MSWI-03",
+      "name": "Cross-System Consequence Routing, Recovery & Domain Adapter Runtime",
+      "status": "selected_not_started",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSWI-03"
+      ],
+      "absorbed_owner_residuals": [
+        "MSWI-09",
+        "MSWI-10",
+        "MSWI-11",
+        "MSWI-13"
+      ]
+    },
+    {
+      "id": "MSWI-04",
+      "name": "Ecology Succession, Food-Web, Migration & Population-Band Runtime",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSWI-04",
+        "MSWI-05"
+      ]
+    },
+    {
+      "id": "MSWI-06",
+      "name": "Composite Entity Role Binding Runtime",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSWI-06"
+      ]
+    },
+    {
+      "id": "MSWI-07",
+      "name": "Biological Components, Harvest, Embodied Modification & Lineage Integration",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSWI-07",
+        "MSWI-08"
+      ]
+    },
+    {
+      "id": "MSWI-14",
+      "name": "Systemic Site/Scene Variant, Template & Promotion Integration",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSWI-14",
+        "MSWI-15",
+        "MSWI-16"
+      ]
+    },
+    {
+      "id": "MSWI-18",
+      "name": "Systemic Coverage Diagnostics, Golden Proof & SMB-08 Handoff",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSWI-17",
+        "MSWI-18"
+      ],
+      "absorbed_owner_residuals": [
+        "MSWI-09",
+        "MSWI-10",
+        "MSWI-11",
+        "MSWI-12",
+        "MSWI-13"
+      ]
+    }
   ],
   "required_upstream": [
     "ARI family completed_verified",
@@ -63,10 +146,44 @@
     "PDCP Packets 01..08 design_closed"
   ],
   "integration_targets": [
-    "World","Environment","Reality/Branch","MCS","MNCS","MCCS","MAS","MSAS","MRCS","GPR","MERA","MBES","MSLR","DPL","PCA",
-    "Character/NPC/Creature","Species/Form","Mount/Vehicle/Base","Inventory/Asset","Crafting","Project/Time","Economy","Profession",
-    "Organization/Faction","Religion/Culture","Relationship/Reputation","Action/Event","Effect","Condition","Resource","Hazard",
-    "Scene/Encounter/Exploration","Visibility/Permissions","Accessibility","ARI","SMB-08","SMB-09","SAA"
+    "World",
+    "Environment",
+    "Reality/Branch",
+    "MCS",
+    "MNCS",
+    "MCCS",
+    "MAS",
+    "MSAS",
+    "MRCS",
+    "GPR",
+    "MERA",
+    "MBES",
+    "MSLR",
+    "DPL",
+    "PCA",
+    "Character/NPC/Creature",
+    "Species/Form",
+    "Mount/Vehicle/Base",
+    "Inventory/Asset",
+    "Crafting",
+    "Project/Time",
+    "Economy",
+    "Profession",
+    "Organization/Faction",
+    "Religion/Culture",
+    "Relationship/Reputation",
+    "Action/Event",
+    "Effect",
+    "Condition",
+    "Resource",
+    "Hazard",
+    "Scene/Encounter/Exploration",
+    "Visibility/Permissions",
+    "Accessibility",
+    "ARI",
+    "SMB-08",
+    "SMB-09",
+    "SAA"
   ],
   "boundaries": [
     "MSWI is the cross-domain consequence orchestration and persistent-world-response family; it does not become a second World, Environment, Character, Creature, Vehicle, Base, Project, Economy, Organization, Religion, Culture, Action/Event or content-definition ledger",
