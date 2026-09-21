@@ -194,4 +194,4 @@ The delivered `smb08:first-party-core` pack contains 40 original reusable defini
 
 Fresh roadmap authority schema `1.0.4` requires only completed SMB-08 for SMB-09. SMB-09 — Complete First-Party Campaign — is therefore selected_not_started with no implementation authority. Its normal successor remains SAA-01, not SMB-10 directly.
 
-SMB-08 completed under one owner `Continue` and is execution-conforming.
+SMB-08 received two owner `Continue` commands while the same attempt was active. Product completion remains valid; the terminal checkpoint records `OPS3.MULTI_CONTINUE_UNRECORDED`. Recovery consumed durable exact-head/application/closeout evidence without replaying completed phases, closed obsolete duplicate PR #714 without merge, and repaired the stale post-closeout GPR lane write back to the canonical SMB-09 selected_not_started state.

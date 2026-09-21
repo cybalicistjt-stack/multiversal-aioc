@@ -65,14 +65,16 @@
   "active_substep": "completed_verified",
   "next_action": "SMB-08 is completed_verified. Fresh ROADMAP_DEPENDENCY_GRAPH schema 1.0.4 selects SMB-09 — Complete First-Party Campaign — as selected_not_started with no implementation authority; a later owner Continue is required to govern-start SMB-09.",
   "owner_interaction_observation": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "conforming",
-    "policy_violations": [],
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED"
+    ],
     "product_completion_valid": true,
-    "note": "SMB-08 completed under one owner Continue through governed start, causal RED, bounded first-party content implementation, exact-head cross-platform validation, publication and canonical closeout."
+    "note": "SMB-08 product completion remains valid. A second owner Continue arrived while the same attempt was still active. Recovery consumed durable exact-head application/canonical-closeout evidence rather than replaying completed phases; obsolete duplicate application PR #714 was closed without merge, and a stale post-closeout lane prequeue write was repaired to the canonical SMB-09 selected_not_started state at lane revision 188."
   },
   "selected_by_verified_predecessor": "MSWI-18",
   "cross_program_activation": {
@@ -139,7 +141,7 @@
     "downstream_started": false
   },
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
     "material_progress_seq": 2,
     "progress_at_last_owner_command": 2,
