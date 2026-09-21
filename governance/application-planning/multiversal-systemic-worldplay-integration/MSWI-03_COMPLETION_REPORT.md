@@ -12,3 +12,8 @@ Causal RED run `35605234821` at `c3aa124edece14caaef8c06a4b1effdd7ab62cc9` faile
 The contract proves exact-version route binding without authority transfer, dry-run envelopes that do not imply consequences occurred, target-owner validation/commit receipts, bounded depth/deduplication/cycle behavior, unresolved conflict preservation, distinct recovery classes with immutable Event history, Campaign-time Project/Time delayed follow-up, residual specialist-owner adapters, permission-first route visibility and provider-off accessible operation.
 
 Fresh roadmap authority schema `1.0.4` selects `MSWI-04` as selected_not_started. MSWI-06 remains unauthorized.
+
+
+## Execution-quality note
+
+This attempt received two owner `Continue` commands while active. Product completion remains valid because recovery consumed durable exact-head and lane-state evidence rather than replaying completed work. The terminal checkpoint records `OPS3.MULTI_CONTINUE_UNRECORDED`; stale lane-state writes were rejected by the fast-forward interlock and were not forced.
