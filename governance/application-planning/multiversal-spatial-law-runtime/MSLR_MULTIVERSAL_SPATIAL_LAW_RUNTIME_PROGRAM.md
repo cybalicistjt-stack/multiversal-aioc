@@ -1,7 +1,7 @@
 # MSLR — Multiversal Spatial Law Runtime
 
 **Program ID:** MSLR  
-**Status:** ACTIVE — MSLR-03 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MSLR-18 SELECTED_NOT_STARTED; PDCP-REDUCED
 **Activation:** after MBES-24 under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MSWI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -234,3 +234,12 @@ MSLR-14 completed_verified with contract `MSLR-14.1`. Causal RED run `3559844406
 The runtime preserves PCA-02/PCA-03/PCA-12 ownership, creates deterministic noncanonical candidates, supports bounded fundamental-domain + explicit transformation/group generation, provides specialized regular Schläfli `{p,q}` spherical/Euclidean/hyperbolic validation without treating it as a universal MSLR rule, reports advisory reachability/solvability/contradiction/cycle diagnostics without silent repair, reuses Packet-07 noncommitting creator preview semantics, keeps MCS specialist views presentational, and only creates governed promotion requests for validated solvable candidates with provenance.
 
 Fresh DAG schema `1.0.4` supplies no interstitial override. Amended `MSLR-16` is selected_not_started; `MSLR-18` remains unauthorized.
+
+
+## MSLR-16 completed — Multi-Resolution Cross-System Spatial Runtime Integration
+
+MSLR-16 completed_verified with contract `MSLR-16.1`. Causal RED run `35599529474` at `853884ea2c7506d6bf6c4056c46cfc412c5226b3` failed on the absent production seam. Exact-head GREEN run `35599701354` at `008db08cac34ccfe71d6574f8f7b481473e83a3f` passed selector/repository health, Linux, hosted Windows, focused tests, invariants, TypeScript typecheck and deterministic comparison. PR #703 published as application main `deab83e2ec5e5b19959e6cf7d18e125523f161a7`.
+
+One accepted spatial-law fingerprint now drives D28 travel/pathfinding/pursuit route semantics, Combat/Exploration tactical movement, Combat/A7 combat/range, an MBES-20 non-combat owner adapter, and MCS presentation-resolution checks without creating duplicate canonical spatial state. Semantic drift fails explicitly instead of being normalized.
+
+Fresh DAG schema `1.0.4` supplies no interstitial override. Terminal `MSLR-18` is selected_not_started; MSWI remains downstream only and is not selected or started.
