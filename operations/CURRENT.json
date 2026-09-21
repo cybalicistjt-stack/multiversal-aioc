@@ -6,22 +6,22 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 328,
+  "state_revision": 329,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
   "product_start_freeze": {
     "active": false,
     "reason": "OPS3-14 completed_verified after moving lightweight validation orchestration off scarce self-hosted runners, success-gating deterministic comparison, and defining isolated same-label runner pools as capacity-only infrastructure.",
-    "preserved_selected_work_item": "MERA-07",
-    "preserved_attempt_id": "MERA-07-attempt-001",
+    "preserved_selected_work_item": "MERA-10",
+    "preserved_attempt_id": "MERA-10-attempt-001",
     "implementation_authority": false,
     "cleared_by": "OPS3-14 completed_verified",
     "preserved_lane_selections": {
       "gpr": {
-        "selected_work_item": "MERA-07",
-        "attempt_id": "MERA-07-attempt-001",
-        "state": "in_progress"
+        "selected_work_item": "MERA-10",
+        "attempt_id": "MERA-10-attempt-001",
+        "state": "selected_not_started"
       },
       "mrcs": {
         "selected_work_item": "MRCS-21",
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "MERA-07",
-      "attempt_id": "MERA-07-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MERA-07-attempt-001.json",
-      "implementation_branch": "work/mera-07-repair-wear-maintenance-emergency",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue governed-started MERA-07 from completed_verified MERA-06. Scope is profile-driven repair/wear/service interpretation and emergency patch/bypass/substitute/jury-rig orchestration only; MIB-12/LSS/D17/MRCS/APW/DPL remain canonical owners.",
+      "state": "selected_not_started",
+      "selected_work_item": "MERA-10",
+      "attempt_id": "MERA-10-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MERA-10-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MERA-07 completed_verified after causal RED run 35558861384 at 1dd0cffb849d7e0635adae111a500d27c14b703e, first implementation-head exact GREEN run 35558950768 at cae6c233b0561faf8e3c32c067d9956671f0cf73, and protected-main publication of PR 679 as 72b1a80d2dcc1e07a653b9824835353d4298cf8c. Fresh ROADMAP_DEPENDENCY_GRAPH schema 1.0.4 supplies no MERA-07/MERA-10 interstitial override. MBES remains blocked until MERA-24.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "Execute MERA-07 only through causal RED, bounded implementation, exact-head publication, closeout and MERA-10 selection. MBES remains blocked until MERA-24.",
+  "next_project_action": "MERA-10 is selected_not_started. On the next Continue, start only MERA-10 dependency/network/failure/graceful-degradation runtime. MBES remains blocked until MERA completes at MERA-24.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
