@@ -9,11 +9,11 @@
   "attempt_id": "MBES-12-attempt-001",
   "title": "Civil Terrain, Hydrology & Land-Transformation Runtime",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/mbes-12-terrain-hydrology-land-transformation",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "MBES-08",
   "required_predecessor": {
     "work_item": "MBES-08",
@@ -40,21 +40,130 @@
     "MBES-14 and later MBES tranches remain unauthorized until canonical MBES-12 closeout."
   ],
   "strict_successor": "MBES-14",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for MBES-12 terrain/hydrology proposals through the public owner-backed land-transformation seam, then implement only the reduced PDCP-closed behavior.",
+  "active_substep": "completed_verified",
+  "next_action": "MBES-12 is completed_verified. MBES-14 — Environment Conditions, Externalities, Habitability & Reactive-World Integration — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started MBES-12 from canonical selected_not_started state."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "MBES-12 causal RED run 35582955905 failed all 12 focused tests on Linux and hosted Windows at 20e754f98de25c62abaef8a45d0016f21e466090 because production entry points were absent. Exact implementation head 29de20ba1b5d5ce1029ef191158b2c5ae7b52ef6 passed repository health, Linux, hosted Windows, invariants, TypeScript typecheck, focused tests and deterministic comparison in run 35583127856, then PR 691 published as application main 5d49eeb04b1e4f6d2fc9efea180e910f9f09bf7e. Obsolete intermediate run 35583117342 temporarily held the Windows concurrency group and was cancelled; no product repair or revalidation-head mutation resulted."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MBES-12 terrain/hydrology land-transformation adapters are durably published and canonical closeout selects MBES-14 without starting it."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "note": "MBES-12 completed in one owner Continue. One stale intermediate validation run briefly blocked the hosted Windows concurrency group; it was cancelled by the workflow and the exact-head candidate then completed the required cross-platform gate without product changes."
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "causal_red": "completed",
+    "terrain_hydrology_proposal_schema": "completed",
+    "explicit_land_operations": "completed",
+    "mcs_geometry_adapter": "completed",
+    "pca_analysis_adapter": "completed",
+    "project_resource_time_requests": "completed",
+    "owner_version_conflict_handling": "completed",
+    "provenance_history_recovery": "completed",
+    "consequence_event_emission": "completed",
+    "accessibility_provider_off": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "acceptance_evidence": {
+    "governed_start": {
+      "aioc_pr": 1558,
+      "validation_run": 35582756107,
+      "merge_sha": "fa73ced693f56388f8cd75c1d4876462e8daa01a"
+    },
+    "causal_red": {
+      "application_pr": 691,
+      "head": "20e754f98de25c62abaef8a45d0016f21e466090",
+      "validation_run": 35582955905,
+      "conclusion": "failure",
+      "selector_repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "signature": "Focused MBES-12 suite executed 12 tests on Linux and hosted Windows; all 12 failed with expected null because the terrain/hydrology production entry points were absent."
+    },
+    "stale_validation_recovery": {
+      "obsolete_run": 35583117342,
+      "obsolete_head": "d7cb522edaa38c9c073b461cb96d511b58586fae",
+      "disposition": "cancelled",
+      "effect": "Temporarily occupied the hosted Windows concurrency group for PR 691; exact-head run 35583127856 resumed after cancellation.",
+      "product_code_changed": false
+    },
+    "green": {
+      "application_pr": 691,
+      "validated_head": "29de20ba1b5d5ce1029ef191158b2c5ae7b52ef6",
+      "validation_run": 35583127856,
+      "conclusion": "success",
+      "selector_repository_health": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "5d49eeb04b1e4f6d2fc9efea180e910f9f09bf7e"
+    },
+    "delivered": {
+      "schema": "MBES-12.1",
+      "predecessor_schema": "MBES-08.1",
+      "world_authority": "MIB-11/D18",
+      "environment_authority": "Environment",
+      "project_authority": "APW/D26",
+      "geometry_authority": "MCS-08",
+      "analysis_authority": "PCA-12/PDCP-PACKET-08",
+      "inventory_authority": "D17/Inventory",
+      "transformation_authority": "MIB-12",
+      "event_authority": "Action/Event",
+      "explicit_operation_kinds": [
+        "excavation",
+        "fill",
+        "grading",
+        "tunneling",
+        "embankment",
+        "channel",
+        "reservoir",
+        "irrigation",
+        "drainage",
+        "reclamation"
+      ],
+      "stale_conflict_fail_closed": true,
+      "original_state_history_provenance_preserved": true,
+      "owner_defined_compensation_recovery": true,
+      "mswi_consequence_routing_deferred": true,
+      "terrain_ledger_created": false,
+      "hydrology_ledger_created": false,
+      "project_ledger_created": false,
+      "world_ledger_created": false,
+      "inventory_ledger_created": false,
+      "provenance_ledger_created": false,
+      "universal_engineering_formula_used": false,
+      "universal_hydrology_formula_used": false,
+      "canonical_owner_mutation_performed": false,
+      "semantic_nonvisual_path": true,
+      "keyboard_equivalent": true,
+      "provider_off_local": true,
+      "paid_cloud_required": false,
+      "mandatory_3d_required": false
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MBES-14",
+      "interstitial_override": "none",
+      "reason": "Fresh ROADMAP_DEPENDENCY_GRAPH supplies no interstitial MBES override; the reduced strict successor after MBES-12 is MBES-14."
+    }
   }
 }
