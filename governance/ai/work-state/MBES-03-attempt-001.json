@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MBES",
+  "lane": "gpr",
+  "track": "multiversal-built-environment-settlement",
+  "source_program": "MBES",
+  "work_item_id": "MBES-03",
+  "attempt_id": "MBES-03-attempt-001",
+  "title": "Material Requirements & Structural Build Assembly",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MBES-01",
+  "required_predecessor": {
+    "work_item": "MBES-01",
+    "status": "completed_verified",
+    "application_merge_sha": "590c66edc38d8a7ece39691af728fd96d3141b68",
+    "schema": "MBES-01.1"
+  },
+  "objective": "Implement definition-driven construction requirement/material/structural assembly adapters: MRCS material/component rule references, cost/labor/time/resource request assembly, foundations/walls/floors/roofs/openings/vertical-access placement proposals over MCS spatial bindings, explicit owner-profile structural/support/pressure/fire/etc. evaluation only when definitions provide it, accessible non-pointer placement/editing, and commit/diff/recovery receipts without inventing real-world engineering formulas or duplicate owner state.",
+  "acceptance": [
+    "Construction requirements reference canonical MRCS material/component/rule definitions instead of copying a rules or materials ledger.",
+    "Cost, labor, time and resource requirements remain typed requests/references to their canonical Project, Inventory/Asset, MIB-12 and MIB-13 owners.",
+    "Foundation, wall, floor, roof, opening and vertical-access placement remains a proposal over MCS spatial bindings until owner-authorized commit.",
+    "Structural, support, pressure, fire and comparable requirement evaluation occurs only when an explicit governing owner profile supplies the rule; unsupported behavior remains unresolved.",
+    "Pointer and non-pointer construction paths produce equivalent semantic placement proposals.",
+    "Commit, diff and recovery receipts preserve Packet-07 distinctions, owner history and explicit versioning without hidden mutation.",
+    "Sealed MBES-01 site/project/authority bindings compose without ownership bleed or duplicate World identity."
+  ],
+  "boundaries": [
+    "MBES-01 and all upstream completed programs remain sealed.",
+    "MRCS retains canonical material, component, structural-rule and reusable-definition authority.",
+    "MCS retains map/interior/spatial geometry authority; geometry never becomes construction truth by itself.",
+    "APW/D26 retains Project/time authority; Inventory/Asset, MIB-12 and MIB-13 retain resource, transformation and economic transaction authority.",
+    "MBES-03 introduces no universal real-world structural, fire, pressure or safety formula.",
+    "Unknown or unsupported material/structural behavior remains unresolved.",
+    "MBES-03 creates no second materials, Project, resource, World, economy or provenance ledger.",
+    "MBES-05 and later MBES tranches remain unauthorized until canonical MBES-03 closeout."
+  ],
+  "strict_successor": "MBES-05",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "Awaiting owner Continue; the next Continue starts only MBES-03.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
