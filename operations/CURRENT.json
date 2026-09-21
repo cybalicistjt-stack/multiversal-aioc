@@ -6,22 +6,22 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 319,
+  "state_revision": 320,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
   "product_start_freeze": {
     "active": false,
     "reason": "OPS3-14 completed_verified after moving lightweight validation orchestration off scarce self-hosted runners, success-gating deterministic comparison, and defining isolated same-label runner pools as capacity-only infrastructure.",
-    "preserved_selected_work_item": "GPR-16",
-    "preserved_attempt_id": "GPR-16-attempt-001",
+    "preserved_selected_work_item": "MERA-01",
+    "preserved_attempt_id": "MERA-01-attempt-001",
     "implementation_authority": false,
     "cleared_by": "OPS3-14 completed_verified",
     "preserved_lane_selections": {
       "gpr": {
-        "selected_work_item": "GPR-16",
-        "attempt_id": "GPR-16-attempt-001",
-        "state": "completed_verified"
+        "selected_work_item": "MERA-01",
+        "attempt_id": "MERA-01-attempt-001",
+        "state": "in_progress"
       },
       "mrcs": {
         "selected_work_item": "MRCS-21",
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "completed_verified",
-      "selected_work_item": "GPR-16",
-      "attempt_id": "GPR-16-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/GPR-16-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "GPR-16 completed_verified after causal RED run 35554748383 at head c5411c14e1c3065af60f228790e2ec1d4b2c4663, exact-head Linux/hosted-Windows/deterministic GREEN run 35555198316 at head 12b853352ef6171f7ea14297ec1213ef727daa0a, and direct protected-main publication of PR 674 as application main 6e213b66a0a2c03f8c32baba702cb94070a92454. Terminal proof covers exact 168/85/672 conformance, all 48 GPR PDCP vectors, completed MRCS-21/MCS-21/MCCS-21/MNCS-24/MAS-21/MSAS-21 specialist proofs, original/right-cleared vertical slices, seven-mode parity, provider-off/accessibility and MERA/MBES/MSLR/MSWI/SMB owner-safe handoff. GPR-16 has no strict successor.",
+      "state": "in_progress",
+      "selected_work_item": "MERA-01",
+      "attempt_id": "MERA-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MERA-01-attempt-001.json",
+      "implementation_branch": "work/mera-01-engineering-workspace-topology-core",
+      "implementation_authority": true,
+      "activation_rule": "Owner Continue after terminal GPR-16 explicitly authorized reuse of the terminal gpr persistent slot for MERA-01. ROADMAP_DEPENDENCY_GRAPH schema 1.0.4 MERA start requirements are satisfied: GPR-05, MRCS-13, MIB-12, MIB-13, MIB-14, LSS, Project/Profession contracts; GPR-16 also supplied the terminal downstream handoff. GPR remains immutable completed program history.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR is terminal completed_verified. MERA-01 has the GPR downstream handoff but no persistent implementation lane is reassigned automatically; the owner must explicitly authorize replacement of a terminal persistent slot before new-family implementation starts.",
+  "next_project_action": "Execute MERA-01 only through causal RED, bounded workspace/topology/authority implementation, exact-head validation, publication, canonical closeout and MERA-03 selection.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

@@ -2,12 +2,12 @@
   "schema_version": "0.2.0",
   "program_id": "MERA",
   "program_name": "Multiversal Engineering, Refit & Assembly",
-  "status": "owner_approved_planned",
+  "status": "in_progress",
   "activation_after": "GPR-16",
   "successor": "MBES-01",
   "owner": "John Brandon Turner",
   "approved": "2026-09-11",
-  "implementation_authority": false,
+  "implementation_authority": true,
   "tranche_execution_target_minutes": 24,
   "minimum_closeout_reserve_minutes": 8,
   "split_before_start_if_target_not_credible": true,
@@ -27,18 +27,144 @@
     "split_rule": "If the selected tranche cannot credibly leave the closeout reserve intact, split it before governed start rather than overrunning the tranche.",
     "retry_rule": "Do not rerun an unchanged deterministic failure; classify the failure and require changed evidence before retry."
   },
-  "strict_order": ["MERA-01","MERA-03","MERA-05","MERA-06","MERA-07","MERA-10","MERA-12","MERA-13","MERA-16","MERA-24"],
+  "strict_order": [
+    "MERA-01",
+    "MERA-03",
+    "MERA-05",
+    "MERA-06",
+    "MERA-07",
+    "MERA-10",
+    "MERA-12",
+    "MERA-13",
+    "MERA-16",
+    "MERA-24"
+  ],
   "tranches": [
-    {"id":"MERA-01","name":"Engineering Workspace, Topology, Authority & Resolution Core","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MERA-01","MERA-02"]},
-    {"id":"MERA-03","name":"Configuration Proposal, Compatibility, Blueprint & Interchange Adapters","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MERA-03","MERA-04","MERA-23"]},
-    {"id":"MERA-05","name":"Diagnostics, Calibration, Test & Acceptance Runtime","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MERA-05","MERA-09","MERA-22"]},
-    {"id":"MERA-06","name":"Isolation, Access, Safe Disassembly & Recovery Handoff","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MERA-06"],"absorbed_owner_residuals":["MERA-17","MERA-18","MERA-19"]},
-    {"id":"MERA-07","name":"Repair, Wear, Maintenance & Emergency Engineering","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MERA-07","MERA-08","MERA-20"],"absorbed_owner_residuals":["MERA-17","MERA-18","MERA-19","MERA-21"]},
-    {"id":"MERA-10","name":"Dependency, Network, Failure & Graceful-Degradation Runtime","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MERA-10","MERA-11"]},
-    {"id":"MERA-12","name":"Item, Weapon, Armor, Tool & Equipment Engineering Adapters","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MERA-12"]},
-    {"id":"MERA-13","name":"Vehicle, Mecha & Starship Engineering Adapter Pack","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MERA-13","MERA-14","MERA-15"],"absorbed_owner_residuals":["MERA-19","MERA-21"]},
-    {"id":"MERA-16","name":"Machinery, Robotics, Constructs & Industrial-System Engineering Adapters","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MERA-16"],"absorbed_owner_residuals":["MERA-19","MERA-21"]},
-    {"id":"MERA-24","name":"Golden Cross-Domain Engineering Proof & MBES Handoff","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MERA-24"],"absorbed_owner_residuals":["MERA-17","MERA-18","MERA-19","MERA-21"]}
+    {
+      "id": "MERA-01",
+      "name": "Engineering Workspace, Topology, Authority & Resolution Core",
+      "status": "in_progress",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MERA-01",
+        "MERA-02"
+      ]
+    },
+    {
+      "id": "MERA-03",
+      "name": "Configuration Proposal, Compatibility, Blueprint & Interchange Adapters",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MERA-03",
+        "MERA-04",
+        "MERA-23"
+      ]
+    },
+    {
+      "id": "MERA-05",
+      "name": "Diagnostics, Calibration, Test & Acceptance Runtime",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MERA-05",
+        "MERA-09",
+        "MERA-22"
+      ]
+    },
+    {
+      "id": "MERA-06",
+      "name": "Isolation, Access, Safe Disassembly & Recovery Handoff",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MERA-06"
+      ],
+      "absorbed_owner_residuals": [
+        "MERA-17",
+        "MERA-18",
+        "MERA-19"
+      ]
+    },
+    {
+      "id": "MERA-07",
+      "name": "Repair, Wear, Maintenance & Emergency Engineering",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MERA-07",
+        "MERA-08",
+        "MERA-20"
+      ],
+      "absorbed_owner_residuals": [
+        "MERA-17",
+        "MERA-18",
+        "MERA-19",
+        "MERA-21"
+      ]
+    },
+    {
+      "id": "MERA-10",
+      "name": "Dependency, Network, Failure & Graceful-Degradation Runtime",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MERA-10",
+        "MERA-11"
+      ]
+    },
+    {
+      "id": "MERA-12",
+      "name": "Item, Weapon, Armor, Tool & Equipment Engineering Adapters",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MERA-12"
+      ]
+    },
+    {
+      "id": "MERA-13",
+      "name": "Vehicle, Mecha & Starship Engineering Adapter Pack",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MERA-13",
+        "MERA-14",
+        "MERA-15"
+      ],
+      "absorbed_owner_residuals": [
+        "MERA-19",
+        "MERA-21"
+      ]
+    },
+    {
+      "id": "MERA-16",
+      "name": "Machinery, Robotics, Constructs & Industrial-System Engineering Adapters",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MERA-16"
+      ],
+      "absorbed_owner_residuals": [
+        "MERA-19",
+        "MERA-21"
+      ]
+    },
+    {
+      "id": "MERA-24",
+      "name": "Golden Cross-Domain Engineering Proof & MBES Handoff",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MERA-24"
+      ],
+      "absorbed_owner_residuals": [
+        "MERA-17",
+        "MERA-18",
+        "MERA-19",
+        "MERA-21"
+      ]
+    }
   ],
   "required_upstream": [
     "ARI family completed_verified",
@@ -64,7 +190,35 @@
     "PDCP Packets 04, 07 and 08 design_closed"
   ],
   "integration_targets": [
-    "LSS","PPIA-03","D17","MIB-12","MIB-13","MIB-14","PPIA-04","F014","APW/D26","DPL","Profession","MRCS","GPR","PCA","ARI","Item/Inventory/Asset","Vehicle","Mecha","Spacecraft/Starship","Base/Platform","Action/Event","Effect","Condition","Resource","Hazard","World/Environment","MBES","SMB-08","SMB-09"
+    "LSS",
+    "PPIA-03",
+    "D17",
+    "MIB-12",
+    "MIB-13",
+    "MIB-14",
+    "PPIA-04",
+    "F014",
+    "APW/D26",
+    "DPL",
+    "Profession",
+    "MRCS",
+    "GPR",
+    "PCA",
+    "ARI",
+    "Item/Inventory/Asset",
+    "Vehicle",
+    "Mecha",
+    "Spacecraft/Starship",
+    "Base/Platform",
+    "Action/Event",
+    "Effect",
+    "Condition",
+    "Resource",
+    "Hazard",
+    "World/Environment",
+    "MBES",
+    "SMB-08",
+    "SMB-09"
   ],
   "boundaries": [
     "MERA is the player/GM engineering/refit/rebuild/assembly orchestration layer; it does not become a second Item/Asset, crafting, salvage, vehicle, Profession, Project, economy, facility or rules ledger",
