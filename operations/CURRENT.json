@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 356,
+  "state_revision": 357,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "selected_work_item": "MBES-24",
       "attempt_id": "MBES-24-attempt-001",
       "checkpoint_path": "governance/ai/work-state/MBES-24-attempt-001.json",
-      "implementation_branch": "work/mbes-24-golden-cross-scale-proof",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue governed-started the CURRENT-selected MBES-24 attempt after verified MBES-20 closeout. Only MBES-24 is authorized; MSLR-01 remains blocked.",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MBES-24 completed_verified after causal RED run 35590039246 at b4ea70f86d03259595d24e36cd0a29f63feec1ca, exact-head GREEN run 35590275017 at 935c9f6b33527a3987870e4963364fea57b30ea4, and publication of PR 695 as application main 7377314b962e50d23765eff1e644bd318a1966ca. MBES is terminal completed_verified. MSLR-01 is the downstream handoff target, but cross-family reuse of the terminal gpr slot requires a later owner Continue.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "MBES-24 is in progress. Complete only the Golden Cross-Scale Building, Settlement & Reactive-World Proof through exact-head validation/publication and verified terminal MBES closeout before MSLR-01 may start.",
+  "next_project_action": "MBES is terminal completed_verified. A later owner Continue may explicitly authorize reuse of the terminal gpr slot for MSLR-01 after fresh DAG/start-prerequisite reconciliation; MSLR has not been selected or started.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -206,6 +206,16 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "completion_rule": "MERA-01 through MERA-24 PDCP-reduced family completed_verified. Terminal MERA-24 proves all 48 golden vectors, canonical owner absorptions, accessibility/provider-off operation, recovery/idempotency, provenance/replay and the non-duplicating MBES handoff. MBES-01 is downstream but terminal gpr slot reuse requires explicit owner governance."
+    },
+    "MBES": {
+      "program_id": "MBES",
+      "state": "completed_verified",
+      "selected_work_item": "MBES-24",
+      "attempt_id": "MBES-24-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MBES-24-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "completion_rule": "MBES-01 through MBES-24 PDCP-reduced family completed_verified. Terminal MBES-24 proves all 12 cross-scale family scenarios, the eight sealed predecessor schemas, Packet-06 identity/history, generic Oara/non-Oara reactive-world behavior, canonical owner absorptions, permission/accessibility/provider-off operation, provenance/recovery, and the non-authoritative MSLR handoff. MSLR-01 is downstream but terminal gpr slot reuse requires explicit owner governance."
     }
   },
   "domain_authorities": {
