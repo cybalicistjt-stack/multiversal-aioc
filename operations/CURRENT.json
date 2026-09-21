@@ -6,22 +6,22 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 322,
+  "state_revision": 323,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
   "product_start_freeze": {
     "active": false,
     "reason": "OPS3-14 completed_verified after moving lightweight validation orchestration off scarce self-hosted runners, success-gating deterministic comparison, and defining isolated same-label runner pools as capacity-only infrastructure.",
-    "preserved_selected_work_item": "MERA-03",
-    "preserved_attempt_id": "MERA-03-attempt-001",
+    "preserved_selected_work_item": "MERA-05",
+    "preserved_attempt_id": "MERA-05-attempt-001",
     "implementation_authority": false,
     "cleared_by": "OPS3-14 completed_verified",
     "preserved_lane_selections": {
       "gpr": {
-        "selected_work_item": "MERA-03",
-        "attempt_id": "MERA-03-attempt-001",
-        "state": "in_progress"
+        "selected_work_item": "MERA-05",
+        "attempt_id": "MERA-05-attempt-001",
+        "state": "selected_not_started"
       },
       "mrcs": {
         "selected_work_item": "MRCS-21",
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "MERA-03",
-      "attempt_id": "MERA-03-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MERA-03-attempt-001.json",
-      "implementation_branch": "work/mera-03-configuration-compatibility-interchange",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue governed-started MERA-03 from completed_verified MERA-01. Scope is reduced MERA-03 only (historical 03/04/23): configuration proposals/diffs, compatibility/interface/adapter/substitution evaluation, blueprint/preset references, and engineering interchange over Packet-07 and ARI/PCA infrastructure.",
+      "state": "selected_not_started",
+      "selected_work_item": "MERA-05",
+      "attempt_id": "MERA-05-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MERA-05-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MERA-03 completed_verified after causal RED run 35556956815 at 3705158ef40abc1c832d4bb5aa3b14517f9c4c51, exact-head GREEN run 35557070342 at 0236803753934d6516b9800bf3cb66c82736ca3b, and protected-main publication of PR 676 as a5c31694b58e010241e636be76aaf0d97b007fbf. Fresh DAG reconciliation: MBES-01 milestone MERA-03 + MRCS-14 is satisfied, but MBES hard_requires MERA is not; MBES backlog activation_after remains MERA-24. Reduced MERA strict order therefore selects MERA-05.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "Execute MERA-03 only. At closeout, reconsult ROADMAP_DEPENDENCY_GRAPH because MBES-01 becomes eligible at MERA-03 + already-completed MRCS-14.",
+  "next_project_action": "MERA-05 is selected_not_started. On the next Continue, start only MERA-05 diagnostics/calibration/test/acceptance runtime. MBES-01 remains blocked until MERA completes at MERA-24.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
