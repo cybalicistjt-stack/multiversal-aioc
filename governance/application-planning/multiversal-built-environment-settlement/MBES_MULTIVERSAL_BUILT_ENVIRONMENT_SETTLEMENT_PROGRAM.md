@@ -1,11 +1,11 @@
 # MBES — Multiversal Built Environment & Settlement
 
 **Program ID:** MBES  
-**Status:** ACTIVE — MBES-12 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MBES-14 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after the effective PDCP-reduced MERA golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** `MSLR-01`  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-12 attempt
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-14 attempt
 
 ## Purpose
 
@@ -225,3 +225,16 @@ The implemented seam consumes MERA-10 network topology/interfaces and failure se
 Safe-stop/recovery preserves prior Events and routes through MERA/GPR/target owners. Blocking explanations remain semantic/nonvisual, keyboard-capable and provider-off.
 
 Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-12` is selected_not_started as the reduced strict successor.
+
+
+## MBES-12 completed — Civil Terrain, Hydrology & Land-Transformation Runtime
+
+MBES-12 completed_verified with application contract `MBES-12.1`. Causal RED run `35582955905` at `20e754f98de25c62abaef8a45d0016f21e466090` passed repository health and failed all 12 focused tests on Linux and hosted Windows because the production terrain/hydrology entry points were absent. Exact-head GREEN run `35583127856` at `29de20ba1b5d5ce1029ef191158b2c5ae7b52ef6` passed repository health, Linux, hosted Windows, source invariants, TypeScript typecheck, focused tests and deterministic cross-platform comparison. PR #691 published as application main `5d49eeb04b1e4f6d2fc9efea180e910f9f09bf7e`.
+
+An obsolete intermediate validation run `35583117342` briefly occupied the hosted Windows concurrency group; it was cancelled and the exact-head candidate completed validation without product changes.
+
+The delivered seam supports excavation, fill, grading, tunneling, embankments, channels, reservoirs, irrigation, drainage and reclamation as explicit Project-backed proposals. MCS-08 geometry and PCA-12/Packet-08 analysis remain noncanonical. World/Environment owner versions and conflicts fail closed; APW/D26, D17/Inventory and MIB-12 retain Project/resource/transformation authority. Original terrain/hydrology state, Event history and provenance are preserved, recovery uses owner-defined compensation, and consequence observations are typed for later MSWI routing without direct unrelated-domain mutation.
+
+No duplicate terrain, hydrology, Project, World, Inventory or provenance ledger is created. No universal engineering or hydrology formula is invented. Blocking workflows remain semantic/nonvisual, keyboard-capable and provider-off.
+
+Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-14` is selected_not_started as the reduced strict successor.
