@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MERA",
+  "lane": "gpr",
+  "track": "multiversal-engineering-refit-assembly",
+  "source_program": "MERA",
+  "work_item_id": "MERA-16",
+  "attempt_id": "MERA-16-attempt-001",
+  "title": "Machinery, Robotics, Constructs & Industrial-System Engineering Adapter Pack",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MERA-13",
+  "required_predecessor": {
+    "work_item": "MERA-13",
+    "status": "completed_verified",
+    "application_merge_sha": "bc0fe362e14eee6beccae8d552b2743bdfc2eb76",
+    "schema": "MERA-13.1"
+  },
+  "objective": "Implement the distinct machinery, robotics, constructs and industrial-system engineering adapter seam over their existing owner, autonomy/control and facility contexts without collapsing those domains into PPIA-04 Vehicle semantics or creating parallel owner ledgers.",
+  "acceptance": [
+    "Machinery, robotics, constructs and industrial systems use a distinct MERA adapter seam where their owner/control/facility bindings differ from PPIA-04 Vehicle semantics.",
+    "Existing owner identity, autonomy/control, facility and network state remains authoritative.",
+    "Target-specific engineering behavior comes only from explicit owner/profile definitions.",
+    "Unknown or conflicting owner/control/facility evidence remains unresolved for operations that require it.",
+    "Sealed MERA predecessor affordances compose without changing owner boundaries.",
+    "Blocking machinery/robotics/construct/industrial engineering remains semantic/nonvisual and provider-off."
+  ],
+  "boundaries": [
+    "MERA-01/03/05/06/07/10/12/13 remain sealed predecessors.",
+    "MERA-16 does not replace machinery, robotics, construct, industrial, autonomy/control or facility owner domains.",
+    "PPIA-04 Vehicle semantics are not silently applied where these targets bind different owner/control/facility contracts.",
+    "MERA creates no second machinery, robotics, construct, industrial, control, facility, resource or provenance ledger.",
+    "MERA-24 golden cross-domain proof remains unauthorized until MERA-16 completes.",
+    "MBES remains blocked until MERA completes at MERA-24."
+  ],
+  "strict_successor": "MERA-24",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On the next owner Continue, start only MERA-16. Preload sealed MERA predecessors plus the explicit machinery/robotics/construct/industrial owner, autonomy/control, facility/network, compatibility, owner-version and provider-off accessibility seams required by the selected item.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

@@ -1,12 +1,12 @@
 # MERA — Multiversal Engineering, Refit & Assembly
 
 **Program ID:** MERA  
-**Status:** ACTIVE — MERA-13 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MERA-16 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after GPR effective golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MBES-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-11  
-**Implementation authority:** none until an owner Continue starts the CURRENT-selected MERA-13 attempt
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MERA-16 attempt
 
 ## Purpose
 
@@ -223,3 +223,14 @@ MERA-12 completed_verified with published contract `MERA-12.1`. D17/PPIA-03 Asse
 Causal RED: run `35560342322` at `2d06110300fd0219b012a97cd213c8d7518ff0c6`. Exact-head GREEN: run `35560536185` at `26dc7f566b7d75c6aa933a70ad9411bdfd1a4491`. Published application: PR #681 as `f8c38c237757cfd3379d5efb894dc93c168e2df8`.
 
 Fresh roadmap reconciliation supplies no interstitial successor override. MERA-13 is selected_not_started. MBES remains blocked until MERA completes at MERA-24.
+
+
+## MERA-13 completed Vehicle/Mecha/Starship adapter result
+
+MERA-13 completed_verified with published contract `MERA-13.1`. Vehicle, Mecha and Starship use one shared MERA adapter substrate while explicit target profiles bind them to the existing PPIA-04/MIB-14/F014 owner family. Live identity, configuration, systems, resources, operational state, damage, repair and provenance remain owner state.
+
+Resolved compatibility delegates to MIB-14 configuration validation; unknown/conflicting evidence remains unresolved. Names and visual similarity create no compatibility or interchangeability. MERA emits typed owner requests only and creates no parallel vehicle, mecha, starship, configuration, resource, repair or provenance ledger.
+
+Causal RED: run `35561460476` at `8677ab26e60128978255b02e61e30966d941728b`. Exact-head GREEN: run `35561663356` at `200a7e7cd7dce7c6873b04f4293d4b40082ab598`. Published application: PR #682 as `bc0fe362e14eee6beccae8d552b2743bdfc2eb76`.
+
+Fresh roadmap reconciliation supplies no interstitial successor override. MERA-16 is selected_not_started. MBES remains blocked until MERA completes at MERA-24.

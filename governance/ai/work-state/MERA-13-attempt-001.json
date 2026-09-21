@@ -9,11 +9,11 @@
   "attempt_id": "MERA-13-attempt-001",
   "title": "Vehicle, Mecha & Starship Engineering Adapter Pack",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/mera-13-vehicle-mecha-starship-engineering-adapters",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "MERA-12",
   "required_predecessor": {
     "work_item": "MERA-12",
@@ -41,21 +41,91 @@
     "MBES remains blocked until MERA completes at MERA-24."
   ],
   "strict_successor": "MERA-16",
-  "active_substep": "governed_started",
-  "next_action": "Execute MERA-13 only through causal RED, bounded shared Vehicle/Mecha/Starship engineering adapters with target-specific owner profiles, exact-head validation, publication, canonical closeout and MERA-16 selection.",
+  "active_substep": "completed_verified",
+  "next_action": "MERA-13 is completed_verified. MERA-16 — Machinery, Robotics, Constructs & Industrial-System Engineering Adapters — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "governed_start",
-      "evidence": "Owner Continue started CURRENT-selected MERA-13 from completed_verified MERA-12."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "MERA-13 causal RED run 35561460476 failed Linux and hosted Windows at 8677ab26e60128978255b02e61e30966d941728b with 11/11 focused tests returning null because production entry points were absent; first implementation head 200a7e7cd7dce7c6873b04f4293d4b40082ab598 passed selector/health, Linux, hosted Windows, MERA-13 invariants, typecheck, focused tests and deterministic comparison in run 35561663356; PR 682 published as application main bc0fe362e14eee6beccae8d552b2743bdfc2eb76."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MERA-13 Vehicle/Mecha/Starship engineering adapters are durably published and canonical closeout selects MERA-16 without starting it."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "MERA-13 remained one shared adapter substrate over PPIA-04/MIB-14/F014. Target-specific behavior stayed explicit-profile/owner-definition driven; MIB-14 retained compatibility/configuration evaluation and all live owner state. No vehicle, mecha, starship, configuration, resource, repair or provenance ledger was duplicated."
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "causal_red": "completed",
+    "shared_operational_target_projection": "completed",
+    "explicit_target_profiles": "completed",
+    "mib14_compatibility_delegation": "completed",
+    "typed_owner_requests": "completed",
+    "predecessor_composition": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "acceptance_evidence": {
+    "governed_start": {
+      "aioc_pr": 1542,
+      "validation_run": 35561301372,
+      "merge_sha": "004843feb29bf4aee799b7cce46e9cec86f3f88d"
+    },
+    "causal_red": {
+      "application_pr": 682,
+      "head": "8677ab26e60128978255b02e61e30966d941728b",
+      "validation_run": 35561460476,
+      "conclusion": "failure",
+      "selector_repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "signature": "Focused MERA-13 suite executed 11 tests on Linux and hosted Windows and all 11 failed because the production adapter entry points were absent."
+    },
+    "green": {
+      "application_pr": 682,
+      "validated_head": "200a7e7cd7dce7c6873b04f4293d4b40082ab598",
+      "validation_run": 35561663356,
+      "conclusion": "success",
+      "linux": "success",
+      "windows": "success",
+      "windows_execution": "governed hosted windows-latest fallback",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "bc0fe362e14eee6beccae8d552b2743bdfc2eb76"
+    },
+    "delivered": {
+      "schema": "MERA-13.1",
+      "shared_vehicle_mecha_starship_adapter_substrate": true,
+      "explicit_target_specific_owner_profiles": true,
+      "ppia04_mib14_f014_live_authority_preserved": true,
+      "mib14_configuration_compatibility_delegated": true,
+      "name_visual_similarity_used": false,
+      "unknown_conflicting_owner_evidence_unresolved": true,
+      "typed_owner_requests_only": true,
+      "parallel_platform_ledgers_created": false,
+      "semantic_nonvisual_path": true,
+      "paid_cloud_required": false,
+      "canonical_owner_mutation_performed": false
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MERA-16",
+      "interstitial_override": "none",
+      "mbes_start_eligible": false,
+      "reason": "ROADMAP_DEPENDENCY_GRAPH keeps MBES hard-requiring MERA and golden-proof-requiring MERA-24; the PDCP-reduced MERA strict successor after MERA-13 is MERA-16."
+    }
   }
 }
