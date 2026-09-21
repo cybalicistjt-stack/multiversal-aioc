@@ -9,11 +9,11 @@
   "attempt_id": "MSWI-06-attempt-001",
   "title": "Composite Entity Role Binding Runtime",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/mswi-06-composite-role-binding-runtime",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "MSWI-04",
   "required_predecessor": {
     "work_item": "MSWI-04",
@@ -42,21 +42,107 @@
     "MSWI-07 and later MSWI tranches remain unauthorized until canonical MSWI-06 closeout."
   ],
   "strict_successor": "MSWI-07",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for the public MSWI-06 composite-role binding/projection/transition seam, then implement only bounded stable-identity, exact-owner-role, compatibility, ownership-control-custody, shared-state reference and role lifecycle behavior.",
+  "active_substep": "completed_verified",
+  "next_action": "MSWI-06 is completed_verified. MSWI-07 — Biological Components, Harvest, Embodied Modification & Lineage Integration — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started MSWI-06 from completed_verified MSWI-04."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "MSWI-06 causal RED run 35609957779 at 899154f3e15ae91e075594b173deb1c7396828d0 passed selector/repository health but failed all 10 focused acceptance calls on Linux and hosted Windows because the composite-role production entry points were absent. Exact-head GREEN run 35610269065 at 0c14060031951a88201fad5ceb962ae49f3c79b5 passed selector/repository health, Linux, hosted Windows, focused tests, source invariants, TypeScript typecheck and deterministic cross-platform comparison. PR 708 published that exact validated head as application main e36469c6ef6ad4e5bab682a9f5f963e912b3c36a."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MSWI-06 composite entity role binding runtime is durably published; canonical closeout selects MSWI-07 without starting it."
+    }
+  },
+  "execution_conformance": {
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED"
+    ],
+    "product_completion_valid": true,
+    "note": "MSWI-06 product completion remains valid. A second owner Continue was issued while the same attempt was still active; recovery resumed from durable exact-head, application and lane-state evidence without replaying completed phases."
+  },
+  "acceptance_evidence": {
+    "governed_start": {
+      "aioc_pr": 1597,
+      "validation_run": 35609661622,
+      "merge_sha": "4ab7bc5d7ef66e883b365664cd7c8026373fbdde",
+      "lane_start_revision": 166
+    },
+    "causal_red": {
+      "application_pr": 708,
+      "head": "899154f3e15ae91e075594b173deb1c7396828d0",
+      "validation_run": 35609957779,
+      "conclusion": "failure",
+      "selector_repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "signature": "All 10 focused MSWI-06 acceptance calls reached absent composite role binding/projection/lifecycle entry points while runner preflight and toolchain succeeded."
+    },
+    "green": {
+      "application_pr": 708,
+      "validated_head": "0c14060031951a88201fad5ceb962ae49f3c79b5",
+      "validation_run": 35610269065,
+      "conclusion": "success",
+      "selector_repository_health": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "e36469c6ef6ad4e5bab682a9f5f963e912b3c36a",
+      "lane_prequeue_revision": 167,
+      "lane_publication_revision": 168
+    },
+    "delivered": {
+      "schema": "MSWI-06.1",
+      "stable_entity_identity_preserved": true,
+      "exact_version_owner_role_bindings": true,
+      "compatibility_inferred": false,
+      "missing_compatibility_remains_unresolved": true,
+      "ownership_control_custody_distinct": true,
+      "authority_dimensions_collapsed": false,
+      "role_binding_transfers_owner_authority": false,
+      "shared_mutable_state_copied_across_owners": false,
+      "role_local_state_remains_owner_local": true,
+      "role_lifecycle_attributable": true,
+      "stable_identity_deleted_on_role_remove": false,
+      "unrelated_role_state_rewritten": false,
+      "event_history_deleted": false,
+      "permission_filtering_before_role_counts": true,
+      "hidden_metadata_leak": false,
+      "canonical_owner_state_copied": false,
+      "second_owner_ledger_created": false,
+      "canonical_owner_mutation_performed": false,
+      "semantic_text_available": true,
+      "keyboard_equivalent": true,
+      "provider_off_local": true,
+      "optional_ai_required": false,
+      "paid_cloud_required": false
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MSWI-07",
+      "interstitial_override": "none",
+      "reason": "Fresh roadmap authority supplies no internal MSWI interstitial override. The reduced MSWI strict order selects MSWI-07 after completed MSWI-06."
+    }
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "causal_red": "completed",
+    "composite_role_binding_definition": "completed",
+    "compatibility_evaluation": "completed",
+    "permission_safe_projection": "completed",
+    "role_lifecycle_transition": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
   }
 }
