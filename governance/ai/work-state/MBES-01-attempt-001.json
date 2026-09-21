@@ -66,7 +66,7 @@
   "active_substep": "completed_verified",
   "next_action": "MBES-01 is completed_verified. MBES-03 — Material Requirements & Structural Build Assembly — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
     "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
@@ -74,28 +74,31 @@
     "last_material_progress": {
       "seq": 2,
       "kind": "completed_verified_candidate",
-      "evidence": "MBES-01 causal RED run 35577781185 failed Linux and hosted Windows focused tests at 2359ee0b3ee6c9e497bc8d18099ae000e006073d because the production construction-core entry points were absent and returned null; exact-head GREEN run 35578026520 passed selector/health, Linux, hosted Windows, MBES-01 invariants, typecheck, focused tests and deterministic comparison at 9c3e05092101d590472ac4896a5ca6416ce76af2; PR 687 published as application main 590c66edc38d8a7ece39691af728fd96d3141b68."
+      "evidence": "MBES-01 causal RED run 35577781185 failed the 10-test focused suite on Linux and hosted Windows at 2359ee0b3ee6c9e497bc8d18099ae000e006073d because the production seam was empty; exact head 9c3e05092101d590472ac4896a5ca6416ce76af2 passed repository health, Linux, hosted Windows, invariant verification, typecheck, focused tests and deterministic cross-platform comparison in run 35578026520, then PR 687 published as application main 590c66edc38d8a7ece39691af728fd96d3141b68."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "completed",
-      "evidence": "MBES-01 owner-backed site/project/authority construction core is durably published and the reduced strict successor MBES-03 is selected_not_started."
+      "evidence": "MBES-01 construction-core adapters are durably published and canonical closeout selects MBES-03 without starting it."
     }
   },
   "execution_conformance": {
-    "status": "conforming",
-    "policy_violations": [],
-    "note": "MBES-01 remained bounded to the reduced opening construction seam. One owner Continue carried governed start through causal RED, implementation, exact-head GREEN, publication and closeout; no duplicate owner ledger, queue scan or routine rebase was introduced."
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED"
+    ],
+    "product_completion_valid": true,
+    "note": "MBES-01 required a second owner Continue after durable progress had advanced through exact-head GREEN and application publication. OPS3.NO_MATERIAL_PROGRESS does not apply; product and validation evidence remain valid, and the extra Continue is recorded as an execution-process conformance failure."
   },
   "implementation_plan": {
     "governed_start": "completed",
     "causal_red": "completed",
     "owner_backed_workspace_projection": "completed",
-    "permission_and_stale_handling": "completed",
-    "project_economy_reference_adapters": "completed",
+    "permission_and_stale_owner_handling": "completed",
+    "typed_project_request": "completed",
     "packet07_preview_commit_recovery": "completed",
-    "accessibility_provider_off": "completed",
+    "owner_boundary_invariants": "completed",
     "exact_head_green": "completed",
     "publication": "completed",
     "closeout": "completed"
@@ -115,7 +118,7 @@
       "linux": "failure",
       "windows": "failure",
       "deterministic_comparison": "skipped",
-      "signature": "Both platform focused MBES-01 suites executed 10 tests and all 10 failed because the production construction-core functions were absent and dynamic calls returned null."
+      "signature": "Focused MBES-01 suite executed 10 tests on Linux and hosted Windows; all 10 failed with expected null because the production construction-core entry points were absent."
     },
     "green": {
       "application_pr": 687,
@@ -127,38 +130,29 @@
       "deterministic_comparison": "success",
       "application_merge_sha": "590c66edc38d8a7ece39691af728fd96d3141b68"
     },
-    "publication": {
-      "candidate_id": "MBES-01-app-001",
-      "mode": "single_lane_direct",
-      "application_merge_sha": "590c66edc38d8a7ece39691af728fd96d3141b68"
-    },
-    "contract": {
+    "delivered": {
       "schema": "MBES-01.1",
-      "world_authority": "MIB-11/D18",
-      "project_authority": "APW/D26",
-      "economy_authority": "MIB-13",
-      "organization_authority": "ODL",
-      "packet07_authority": "PDCP-PACKET-07",
-      "geometry_grants_construction_authority": false,
-      "permission_inferred": false,
-      "stale_owner_evidence_requires_revalidation": true,
-      "unsupported_owner_facts_inferred": false,
-      "duplicate_world_identity_created": false,
+      "owner_backed_resolution_shell": true,
+      "world_identity_duplicated": false,
       "project_ledger_created": false,
       "property_ledger_created": false,
       "economy_ledger_created": false,
-      "canonical_owner_mutation_performed": false,
-      "semantic_nonvisual_parity": true,
+      "permission_inference_used": false,
+      "stale_owner_revalidation": true,
+      "packet07_preview_noncanonical": true,
+      "recovery_history_preserved": true,
+      "unsupported_owner_facts_inferred": false,
+      "semantic_nonvisual_path": true,
       "keyboard_equivalent": true,
-      "provider_off_local_operation": true,
       "paid_cloud_required": false,
-      "mandatory_3d_renderer_required": false
+      "mandatory_3d_required": false,
+      "canonical_owner_mutation_performed": false
     },
-    "terminal_reconciliation": {
+    "successor_reconciliation": {
       "dag_schema": "1.0.4",
+      "selected": "MBES-03",
       "interstitial_override": "none",
-      "strict_successor": "MBES-03",
-      "successor_selected": true
+      "reason": "Fresh ROADMAP_DEPENDENCY_GRAPH supplies no interstitial MBES override; the PDCP-reduced strict successor after MBES-01 is MBES-03."
     }
   }
 }
