@@ -3,11 +3,11 @@
 **Program ID:** GPR  
 **Program name:** Gameplay Pattern Runtime & Loop Minis  
 **Version:** 0.2.0 — PDCP REDUCED  
-**Status:** ACTIVE — GPR-12 SELECTED_NOT_STARTED  
+**Status:** ACTIVE — GPR-16 SELECTED_NOT_STARTED  
 **Activation:** concurrent start authorized after MRCS-05 + completed MAL + core owner contracts; later MRCS late-binds; GPR-16 waits for MRCS-21  
 **Successor:** MERA-01  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-12 attempt
+**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-16 attempt
 
 ## Purpose
 
@@ -287,3 +287,14 @@ Production selection, export and distributable projection fail closed when requi
 Causal RED run `35545215293` at `363bb414a07112225db5ffe64b4d493b8fba10de` established the absent production seam before runner infrastructure cancellation. Exact-head GREEN run `35551753557` passed Linux, governed hosted Windows and deterministic cross-platform comparison at `35c1ed8ea86cf15192e41f4d09c158da459c257f`. Published application: PR #664 through candidate `GPR-10-app-001` as application main `7c713013b1774811c5de4952d4f10eb00e2adc43`.
 
 The fresh roadmap DAG supplies no interstitial successor override, so GPR-12 — Multiplayer, Replay, Persistence, Recovery & Version Continuity — is selected_not_started.
+
+
+## GPR-12 completed multiplayer/replay/persistence/recovery result
+
+GPR-12 completed_verified on 2026-09-20. Published application contract `GPR-12.1` unifies multiplayer/controller-slot authority, authoritative command ordering, deterministic semantic replay, versioned snapshots, explicit migration, restore, reconnect and bounded recovery over one gameplay-instance continuity seam.
+
+MIB-03 remains owner-operation idempotency/version/retry/replay/recovery authority. GPR-12 creates no owner mutation receipt and cannot treat network arrival order, rendering frames, snapshot data or replay evidence as canonical owner truth. Corrupt or unsupported snapshots, incomplete migration paths and ambiguous retry outcomes fail closed without partial live mutation. Continuity evidence is visibility-filtered before derived lists, counts, diagnostics and exports.
+
+Causal RED run `35553806529` at `9ba36ce1d460adaee45d1abcf7f65c3dae34a3b9` established the absent production seam. Exact-head GREEN run `35553874979` passed Linux, governed hosted Windows and deterministic cross-platform comparison at `7105b3fb7fcceb7b97d4a40f5f5a32d268acd62e`. Published application: PR #673 through candidate `GPR-12-app-001` as application main `7e07bbf0961bf80bb4999ebbe1c53bf638e24176`.
+
+The fresh roadmap DAG supplies no interstitial successor override. GPR-16 is selected_not_started. Its completion remains gated on MRCS-21 plus relevant specialist golden proofs; MRCS-21 is already completed_verified.
