@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "gpr",
-  "revision": 193,
+  "revision": 194,
   "selected_work_item": "SMB10A",
   "attempt_id": "SMB10A-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/smb10a-core-player-gm-product-ux",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Owner Continue governed-started SMB10A from completed_verified SMB-09."
+    "kind": "prequeue_green",
+    "evidence": "Exact application head 0243c9b61b1c85e504f07d1f6dd01be8ea767e2f passed full SMB10A validation run 35628921559 attempt 2 after infrastructure-only artifact-finalization retry."
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,10 @@
     "closeout_merge_sha": "e6f351fc5c19b930665133c251c790ee63d429c6",
     "closeout_validation_run": "35627160051",
     "closeout_ready_candidate": "SMB-09-closeout-001"
+  },
+  "prequeue_green": {
+    "candidate_head": "0243c9b61b1c85e504f07d1f6dd01be8ea767e2f",
+    "validation_run": "35628921559",
+    "run_attempt": 2
   }
 }
