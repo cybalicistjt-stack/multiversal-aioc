@@ -1,7 +1,7 @@
 # MSWI — Multiversal Systemic Worldplay Integration
 
 **Program ID:** MSWI  
-**Status:** ACTIVE — MSWI-14 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MSWI-18 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Owner:** John Brandon Turner  
 **Approved:** 2026-09-15  
 **PDCP reduction:** 2026-09-16 — baseline 18 tranches → 7 surviving implementation/proof tranches  
@@ -315,3 +315,14 @@ The delivered runtime references source-authored components without inventing an
 This attempt received two owner `Continue` commands while active. Product completion remains valid; the terminal checkpoint records `OPS3.MULTI_CONTINUE_UNRECORDED` and recovery consumed durable exact-head/lane evidence without replaying completed work.
 
 Fresh roadmap authority schema `1.0.4` supplies no interstitial override. Reduced strict order selects `MSWI-14` — Systemic Site/Scene Variant, Template & Promotion Integration — as selected_not_started. `MSWI-18` remains unauthorized.
+
+
+## MSWI-14 completed — Systemic Site/Scene Variant, Template & Promotion Integration
+
+MSWI-14 completed_verified with application contract `MSWI-14.1`. Causal RED run `35617526098` at `3481c8fe0e82c7e3ef6628030f248ca2b91a1c1a` passed selector/repository health but failed all 10 focused acceptance calls on Linux and hosted Windows because the site/variant/promotion/template production entry points were absent. Exact-head GREEN run `35617822017` at `c75e262c6a02acb31930805fca5d403d7b644993` passed repository health, Linux, hosted Windows, focused tests, source invariants, TypeScript typecheck and deterministic cross-platform comparison. PR #710 published that exact validated head as application main `0c7d150d9ca1a4055bf4469281b1981c999c254e`.
+
+The delivered runtime consumes exact PCA recipe/seed/cache references without recreating procedural infrastructure; preserves stable site identity across owner-backed current/historical/alternate variants; preserves presentation-owner authority; keeps ephemeral/proposed/persistent states distinct; refuses generation-as-canon; requires explicit GM/owner promotion against exact owner versions; emits attributable promotion receipts; and binds versioned transformation Campaign templates without runtime forks or genre authority.
+
+This attempt completed under one owner `Continue` and is execution-conforming.
+
+Fresh roadmap authority schema `1.0.4` supplies no interstitial override. Reduced strict order selects terminal `MSWI-18` — Systemic Coverage Diagnostics, Golden Proof & SMB-08 Handoff — as selected_not_started.
