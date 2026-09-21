@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MERA",
+  "lane": "gpr",
+  "track": "multiversal-engineering-refit-assembly",
+  "source_program": "MERA",
+  "work_item_id": "MERA-06",
+  "attempt_id": "MERA-06-attempt-001",
+  "title": "Isolation, Access, Safe Disassembly & Recovery Handoff",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MERA-05",
+  "required_predecessor": {
+    "work_item": "MERA-05",
+    "status": "completed_verified",
+    "application_merge_sha": "13dafa2a92aab021e74f9a92b7743534ccc667fa",
+    "schema": "MERA-05.1"
+  },
+  "objective": "Implement owner-defined access/isolation/de-energization/depressurization/support/environment prerequisites, governed disassembly sequencing, partial-disassembly state and typed recovery handoff to LSS/MIB-12 without inventing safety procedures, salvage outputs, donor lineage, repair transactions or owner mutation truth.",
+  "acceptance": [
+    "Access/isolation/disassembly prerequisites come only from authored owner definitions; absent rules remain unresolved rather than invented.",
+    "Required de-energization, depressurization, support and environmental prerequisites fail closed when unsatisfied.",
+    "Disassembly plans are ordered, noncanonical work plans over pinned Asset identity/version and grant no mutation authority.",
+    "Partial disassembly preserves exact completed owner receipts and unrecovered state instead of guessing rollback or all-or-nothing success.",
+    "Recoverable-state handoff to LSS is exact and cannot invent salvage outputs, recoverability or donor lineage.",
+    "Repair/refabrication handoff to MIB-12 is typed but MERA-06 does not perform repair/fabrication transactions.",
+    "Permission and owner-version checks are explicit before any future owner operation handoff.",
+    "Missing/hidden prerequisites cannot leak through counts or error detail before visibility filtering.",
+    "Blocking isolation/disassembly workflows remain semantic/nonvisual and provider-off."
+  ],
+  "boundaries": [
+    "MERA-01/03/05 remain sealed predecessors.",
+    "LSS retains decomposition, salvage outputs, recoverability, donor lineage and extraction authority.",
+    "MIB-12 retains repair/refurbishment/remanufacture/fabrication transaction authority.",
+    "D17/PPIA-03 retains live Asset identity/state/history and owner receipts.",
+    "APW/D26 and DPL/Profession retain project/time/worker authority.",
+    "Packet-07 retains generic proposal/preview/commit/recovery semantics.",
+    "MERA invents no universal real-world safety/isolation procedure or standard.",
+    "MERA-07+ repair/wear/emergency behavior remains unauthorized.",
+    "MBES remains blocked until MERA completes at MERA-24."
+  ],
+  "strict_successor": "MERA-07",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On the next owner Continue, start only MERA-06. Preload MERA-01/03/05, owner-authored prerequisite definitions, LSS recovery/decomposition handoff, MIB-12 repair transaction boundary, Asset owner version/receipt semantics and Packet-07 recovery rules.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

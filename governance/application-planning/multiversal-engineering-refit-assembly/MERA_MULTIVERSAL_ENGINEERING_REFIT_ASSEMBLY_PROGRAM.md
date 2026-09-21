@@ -1,12 +1,12 @@
 # MERA — Multiversal Engineering, Refit & Assembly
 
 **Program ID:** MERA  
-**Status:** ACTIVE — MERA-05 IN_PROGRESS; PDCP-REDUCED  
+**Status:** ACTIVE — MERA-06 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after GPR effective golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MBES-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-11  
-**Implementation authority:** MERA-05 only on `work/mera-05-diagnostics-calibration-acceptance`
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MERA-06 attempt
 
 ## Purpose
 
@@ -170,3 +170,14 @@ MERA-03 completed_verified with published contract `MERA-03.1`. Configuration pr
 Causal RED: run `35556956815` at `3705158ef40abc1c832d4bb5aa3b14517f9c4c51`. Exact-head GREEN: run `35557070342` at `0236803753934d6516b9800bf3cb66c82736ca3b`. Published application: PR #676 as `a5c31694b58e010241e636be76aaf0d97b007fbf`.
 
 Fresh roadmap reconciliation found the MBES-01 rotation milestone is satisfied, but MBES remains blocked by authoritative `hard_requires: ["MERA"]` until the MERA program completes and by MBES `activation_after: MERA-24`. MERA-05 is therefore selected_not_started.
+
+
+## MERA-05 completed diagnostics/calibration/acceptance result
+
+MERA-05 completed_verified with published contract `MERA-05.1`. Diagnostic evidence preserves symptom/suspected/isolated/identified distinctions and filters hidden fault truth before projection. Calibration/tuning is restricted to authored adjustable state and cannot invent unsupported capability. PCA-12/Packet-08 results remain noncanonical analysis evidence; unknown, timeout and unsupported results stay inconclusive.
+
+Repair receipts remain owner history rather than acceptance. Acceptance is separately governed by explicit test definitions and owner-authored certification requirements; failed acceptance preserves prior successful owner receipts. Provider-off semantic/nonvisual and keyboard-capable operation remains blocking baseline.
+
+Causal RED: run `35557606982` at `357b77882a49cd29e7b9dbb4e0880b38d94f86c8`. Exact-head GREEN: run `35557691915` at `f2a5969e38b894855b0d442873477c94e2dd1912`. Published application: PR #677 as `13dafa2a92aab021e74f9a92b7743534ccc667fa`.
+
+Fresh roadmap reconciliation supplies no interstitial successor override. MERA-06 is selected_not_started. MBES remains blocked until MERA completes at MERA-24.
