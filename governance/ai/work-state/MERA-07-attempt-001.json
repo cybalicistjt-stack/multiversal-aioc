@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MERA",
+  "lane": "gpr",
+  "track": "multiversal-engineering-refit-assembly",
+  "source_program": "MERA",
+  "work_item_id": "MERA-07",
+  "attempt_id": "MERA-07-attempt-001",
+  "title": "Repair, Wear, Maintenance & Emergency Engineering",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MERA-06",
+  "required_predecessor": {
+    "work_item": "MERA-06",
+    "status": "completed_verified",
+    "application_merge_sha": "312b35e5a3dbd268611c46e3572afda550104477",
+    "schema": "MERA-06.1"
+  },
+  "objective": "Implement profile-driven repair-class orchestration, wear/reliability/service-state interpretation, maintenance operations, and emergency patch/bypass/substitute/jury-rig workflows that emit typed owner-operation requests without inventing universal repair quality, wear, service interval, jury-rig penalty, emergency bonus, permission bypass or canonical owner mutation.",
+  "acceptance": [
+    "Repair class and permitted outcomes come from owner definitions rather than universal quality bands.",
+    "Wear, reliability and service intervals remain profile-driven; absent values remain unresolved.",
+    "Maintenance due/overdue state derives only from declared owner/profile evidence and cannot invent wall-clock or service rules.",
+    "Emergency patch, bypass, substitute and jury-rig effects exist only when governed definitions explicitly provide them.",
+    "Emergency workflows cannot bypass permission, compatibility, owner-version, prerequisite or owner-operation validation.",
+    "Recovered/substitute parts preserve LSS/D17 provenance and compatibility evidence rather than becoming anonymous MERA inventory.",
+    "MIB-12 retains repair/refurbishment/remanufacture/fabrication transaction authority; MERA emits typed requests only.",
+    "Partial owner-operation success is represented by actual receipts and never guessed as universal success/failure.",
+    "Blocking repair/maintenance/emergency workflows remain semantic/nonvisual and provider-off."
+  ],
+  "boundaries": [
+    "MERA-01/03/05/06 remain sealed predecessors.",
+    "MIB-12 retains repair/refurbishment/remanufacture/fabrication/transformation transactions.",
+    "LSS retains recovered-part and donor provenance/recoverability authority.",
+    "D17/PPIA-03 retains live Asset identity/state/history.",
+    "MRCS retains reusable repair/wear/service/emergency definitions.",
+    "APW/D26 and DPL/Profession retain project/time/worker capability.",
+    "Packet-07 retains generic proposal/preview/commit/recovery semantics.",
+    "MERA has no universal reliability, wear, repair-quality, service interval, jury-rig penalty or emergency-bonus formula.",
+    "MERA-10+ dependency/network/failure and domain adapter work remains unauthorized.",
+    "MBES remains blocked until MERA completes at MERA-24."
+  ],
+  "strict_successor": "MERA-10",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On the next owner Continue, start only MERA-07. Preload MERA-01/03/05/06, MRCS repair/wear/service definitions, MIB-12 transaction seams, LSS/D17 provenance, compatibility/owner-version checks, APW/D26 and DPL/Profession prerequisite bindings, and Packet-07 recovery semantics.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
