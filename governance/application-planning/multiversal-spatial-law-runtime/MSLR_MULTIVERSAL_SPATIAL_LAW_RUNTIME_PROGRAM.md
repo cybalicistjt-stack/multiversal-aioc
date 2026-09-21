@@ -225,3 +225,12 @@ MSLR-13 completed_verified with contract `MSLR-13.1`. Causal RED run `3559746997
 The runtime binds participant navigation to local frames, anchors and breadcrumbs rather than a universal compass; preserves provenance/canonical references across frame changes; filters hidden topology before participant navigation/cue construction; requires semantic nonvisual and keyboard-equivalent blocking cues; keeps MCS/MSAS presentation handoffs non-authoritative; and routes counterplay through permissioned GPR/Action/Event operations with immutable provenance.
 
 Fresh DAG schema `1.0.4` supplies no interstitial override. Amended `MSLR-14` is selected_not_started; `MSLR-16` remains unauthorized.
+
+
+## MSLR-14 completed — Procedural Impossible-Space Authoring, Solvability & Diagnostics
+
+MSLR-14 completed_verified with contract `MSLR-14.1`. Causal RED run `35598444068` at `4d7f0d7a2478f1561e4667c8c48da22309cf17ad` failed on the absent production seam. Exact-head GREEN run `35598632185` at `7267bd02ad12f47e22f0d09c41e01dff4a5b8474` passed selector/repository health, Linux, hosted Windows, focused tests, invariants, TypeScript typecheck and deterministic comparison. PR #702 published as application main `d339d9e789fcc583f579f206a2a461ecb1e779c4`.
+
+The runtime preserves PCA-02/PCA-03/PCA-12 ownership, creates deterministic noncanonical candidates, supports bounded fundamental-domain + explicit transformation/group generation, provides specialized regular Schläfli `{p,q}` spherical/Euclidean/hyperbolic validation without treating it as a universal MSLR rule, reports advisory reachability/solvability/contradiction/cycle diagnostics without silent repair, reuses Packet-07 noncommitting creator preview semantics, keeps MCS specialist views presentational, and only creates governed promotion requests for validated solvable candidates with provenance.
+
+Fresh DAG schema `1.0.4` supplies no interstitial override. Amended `MSLR-16` is selected_not_started; `MSLR-18` remains unauthorized.

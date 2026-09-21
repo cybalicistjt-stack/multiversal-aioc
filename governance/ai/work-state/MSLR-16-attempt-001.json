@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MSLR",
+  "lane": "gpr",
+  "track": "multiversal-spatial-law-runtime",
+  "source_program": "MSLR",
+  "work_item_id": "MSLR-16",
+  "attempt_id": "MSLR-16-attempt-001",
+  "title": "Multi-Resolution Cross-System Spatial Runtime Integration",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MSLR-14",
+  "required_predecessor": {
+    "work_item": "MSLR-14",
+    "status": "completed_verified",
+    "application_merge_sha": "d339d9e789fcc583f579f206a2a461ecb1e779c4",
+    "schema": "MSLR-14.1"
+  },
+  "objective": "Implement explicit cross-system adapters proving one accepted spatial law preserves semantic meaning across abstract travel/pathfinding/pursuit, topology/tactical movement, combat/range, and at least one non-combat owner system, across multiple presentation resolutions, without treating geometry as rendering or creating duplicate owner state.",
+  "acceptance": [
+    "One accepted spatial-law fingerprint is consumed by abstract travel/pathfinding/pursuit, tactical movement, combat/range and at least one non-combat owner adapter.",
+    "Adapters preserve the same topology, metric, containment/scale, orientation/frame and contextual semantics relevant to each owner instead of reinterpreting the law per subsystem.",
+    "Projection/resolution changes do not change the accepted law fingerprint or canonical owner identity.",
+    "Travel/pathfinding/pursuit semantics demonstrate geometry affects route cost/reachability rather than rendering only.",
+    "Tactical movement demonstrates the same law affects local adjacency/frame/metric outcomes.",
+    "Combat/range demonstrates the same law affects distance/range/projectile semantics without creating combat-owned geometry truth.",
+    "At least one non-combat owner system consumes the same law through a typed adapter without duplicate canonical state.",
+    "Cross-system discrepancies fail explicit equivalence checks rather than silently normalizing semantic drift.",
+    "Blocking integration workflows remain semantic/nonvisual, keyboard-capable, provider-off and paid-cloud independent."
+  ],
+  "boundaries": [
+    "MSLR-01/03/04/07/08/13/14 and upstream completed programs remain sealed.",
+    "Travel/pathfinding/pursuit, tactical movement, combat/range and non-combat owners retain their canonical domain state and operation authority.",
+    "MCS/presentation remains projection authority; resolution or rendering cannot redefine spatial law.",
+    "GPR/Action/Event retain generic execution and immutable Event history.",
+    "MSLR-18 remains unauthorized until MSLR-16 closeout."
+  ],
+  "strict_successor": "MSLR-18",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await the next owner Continue. That command may governed-start only amended MSLR-16.",
+  "design_amendment": {
+    "approved": "2026-09-21",
+    "required": true,
+    "impacts": [
+      "pathfinding-pursuit-travel-semantic-equivalence",
+      "tactical-movement-semantic-equivalence",
+      "combat-range-semantic-equivalence",
+      "non-combat-owner-semantic-equivalence",
+      "projection-resolution-invariance"
+    ]
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
