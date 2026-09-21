@@ -9,10 +9,10 @@
   "attempt_id": "MBES-08-attempt-001",
   "title": "Facility Networks, Automation & Logistics Integration",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/mbes-08-facility-networks-automation-logistics",
   "completed": false,
   "selected_by_verified_predecessor": "MBES-05",
   "required_predecessor": {
@@ -41,15 +41,19 @@
     "MBES-12 and later MBES tranches remain unauthorized until canonical MBES-08 closeout."
   ],
   "strict_successor": "MBES-12",
-  "active_substep": "awaiting_governed_start",
-  "next_action": "Await the next owner Continue. That command may governed-start only MBES-08.",
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for MBES-08 through the public facility-network/automation/logistics seam, then implement only the bounded owner-backed adapters required by the reduced family contract.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner Continue governed-started MBES-08 from canonical selected_not_started state."
+    },
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null
