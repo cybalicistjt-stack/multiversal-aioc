@@ -216,3 +216,12 @@ MSLR-08 completed_verified with contract `MSLR-08.1`. Causal RED run `3559663787
 The runtime keeps metric geometry separate from topology, preserves canonical identity across recursive/bigger-inside containment and entry/exit transforms, composes scale and metric semantics deterministically, transports orientation/gravity frames explicitly, permits same-location/different-frame results when authored, treats continuous geometry and discrete traversal substrates as alternative realizations of one accepted law, and gives movement/range/projectile/scene adapters one shared semantic law fingerprint. MCS projection coordinates remain presentation only.
 
 Fresh DAG schema `1.0.4` supplies no interstitial override. Amended `MSLR-13` is selected_not_started; `MSLR-14` remains unauthorized.
+
+
+## MSLR-13 completed — Navigation Aids, Anchors, Sensory Cues & Counterplay
+
+MSLR-13 completed_verified with contract `MSLR-13.1`. Causal RED run `35597469972` at `af0928e139f4a90c74252349daf74d3b614446ea` failed on the absent production seam. Exact-head GREEN run `35597633424` at `16b02f67f004a7d3810c00f2ee791c39a24a97fa` passed selector/repository health, Linux, hosted Windows, focused tests, invariants, TypeScript typecheck and deterministic comparison. PR #701 published as application main `55c1c18b42c91f803dccc7e9305189cbd5f26a3e`.
+
+The runtime binds participant navigation to local frames, anchors and breadcrumbs rather than a universal compass; preserves provenance/canonical references across frame changes; filters hidden topology before participant navigation/cue construction; requires semantic nonvisual and keyboard-equivalent blocking cues; keeps MCS/MSAS presentation handoffs non-authoritative; and routes counterplay through permissioned GPR/Action/Event operations with immutable provenance.
+
+Fresh DAG schema `1.0.4` supplies no interstitial override. Amended `MSLR-14` is selected_not_started; `MSLR-16` remains unauthorized.
