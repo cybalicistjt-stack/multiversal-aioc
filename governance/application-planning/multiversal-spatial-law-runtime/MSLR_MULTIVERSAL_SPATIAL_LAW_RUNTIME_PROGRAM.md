@@ -1,7 +1,7 @@
 # MSLR — Multiversal Spatial Law Runtime
 
 **Program ID:** MSLR  
-**Status:** OWNER-APPROVED — PLANNED; PDCP-REDUCED  
+**Status:** ACTIVE — MSLR-03 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after MBES-24 under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MSWI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -167,3 +167,16 @@ Owner-approved MSLR refinement preserves the nine-tranche reduction while adding
 Family impacts are governed by the design-closure amendment: MSLR-03 adds quotient/identification and lazy-neighborhood runtime semantics; MSLR-04 adds observer-local-frame knowledge; MSLR-08 adds isometry/frame-transport and continuous/discrete equivalence; MSLR-13 adds local-frame navigation counterplay; MSLR-14 adds fundamental-domain/transformation-group generation with optional regular {p,q} recipes; MSLR-16 explicitly covers pathfinding/pursuit/travel; and MSLR-18 adds projection-invariant hyperbolic, quotient/non-orientable, lazy-unbounded and discrete-vs-continuous golden proofs.
 
 This refinement is clean-room architecture guidance. It does not import HyperRogue GPL source or any protected external expression.
+
+
+## MSLR-01 completed — Spatial-Law Profile & Runtime Core
+
+MSLR-01 completed_verified with application contract `MSLR-01.1`.
+
+During causal RED, the owner approved the 2026-09-21 spatial-architecture amendment. Operations validation run `35591893572` accepted that amendment and control-plane PR #1570 merged as `9af2b9b3ba0387017638e4cbf59a6406428fc4bf`. The original RED run `35591109017` remained evidence that the production seam was absent but was superseded for acceptance-expansion purposes. A widened causal RED run `35592037052` at `3a4179d2340bfd8c5cfb77b6682afb23db960329` then failed all 18 focused tests on Linux and hosted Windows because production entry points were still absent.
+
+Exact-head GREEN run `35592199748` at `394a942f5481227a567a62392fdf7e21eaa14ce1` passed repository health, Linux, hosted Windows, MSLR-01 invariants, TypeScript typecheck, focused tests and deterministic cross-platform comparison. PR #696 published that exact validated head as application main `268af73a46c48900f12aba26bb03ae43106bc9b7`.
+
+The delivered opening seam explicitly separates intrinsic spatial law/geometry, optional runtime substrate/discretization and projection/presentation. Projection choice/coordinates do not alter canonical semantic fingerprints; canonical identity remains owner-backed rather than coordinate-backed. Profiles declare finite, quotient, unbounded or procedurally-addressed extent semantics, and unbounded/procedural spaces require lazy bounded neighborhood addressability rather than exhaustive enumeration. Quotient extent is explicit authored identification semantics and is not inferred as a portal shortcut.
+
+The nine-tranche family reduction remains unchanged. Fresh DAG schema `1.0.4` supplies no interstitial override. `MSLR-03` is selected_not_started with the owner-approved quotient-identification, orientation-reversing connection, local walker/frame and bounded lazy-neighborhood refinements. `MSLR-04` remains unauthorized.

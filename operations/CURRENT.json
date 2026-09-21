@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 358,
+  "state_revision": 359,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "MSLR-01",
-      "attempt_id": "MSLR-01-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MSLR-01-attempt-001.json",
-      "implementation_branch": "work/mslr-01-spatial-law-profile-runtime-core",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue explicitly authorized reuse of the terminal gpr slot for MSLR-01 after MBES-24 completed_verified. ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 hard-requires MBES and start-requires MBES-24, GPR-16, MCS-21, SSA-10, ENV-16 and the relevant World/Reality/Scene/Transition/Portal/Visibility/Knowledge/Action/Event owner contracts; those gates are satisfied.",
+      "state": "selected_not_started",
+      "selected_work_item": "MSLR-03",
+      "attempt_id": "MSLR-03-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MSLR-03-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MSLR-01 completed_verified after owner-approved spatial architecture amendment validation 35591893572, widened causal RED run 35592037052 at 3a4179d2340bfd8c5cfb77b6682afb23db960329, exact-head GREEN run 35592199748 at 394a942f5481227a567a62392fdf7e21eaa14ce1, and publication of PR 696 as app main 268af73a46c48900f12aba26bb03ae43106bc9b7. Fresh DAG schema 1.0.4 supplies no interstitial override; amended MSLR-03 is selected_not_started until owner Continue.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "MSLR-01 is in progress. Complete only Spatial-Law Profile & Runtime Core through exact-head validation/publication and verified closeout before MSLR-03 may start.",
+  "next_project_action": "MSLR-03 is selected_not_started. The next owner Continue starts only amended Dynamic Topology State & Governed Spatial Operations; MSLR-04 remains unauthorized.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
