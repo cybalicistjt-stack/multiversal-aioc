@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 398,
+  "state_revision": 399,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "MSLR-S02",
-      "attempt_id": "MSLR-S02-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MSLR-S02-attempt-001.json",
-      "implementation_branch": "work/mslr-s02-perceptual-supplement-golden-handoff",
-      "implementation_authority": true,
-      "activation_rule": "Owner explicitly authorized MSLR-S02 immediately after verified MSLR-S01. Only perceptual supplement golden proof and handoff are authorized; SAA remains unstarted.",
+      "state": "selected_not_started",
+      "selected_work_item": "SAA-01",
+      "attempt_id": "SAA-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/SAA-01-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MSLR-S02 completed_verified and returned the GPR slot to the owner-held SAA boundary. SAA-01 is selected_not_started only; a later explicit owner Continue is required before governed start.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "MSLR-S02 is in progress. Complete only the perceptual supplement golden proof and non-authoritative SAA handoff; do not start SAA.",
+  "next_project_action": "SAA-01 — Comic Project, Page, Panel & Layer Schema — is selected_not_started at the owner-held boundary. Await a later explicit owner Continue before governed start.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -236,6 +236,16 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "completion_rule": "MSWI-01, MSWI-03, MSWI-04, MSWI-06, MSWI-07, MSWI-14 and MSWI-18 reduced family completed_verified. Terminal MSWI-18 proves declared-connectivity diagnostics, permission/accessibility/provider-off behavior, sealed predecessor boundaries, all 36 durable DCP golden vectors, and the non-authoritative SMB-08 capability handoff on final exact application head c096369d66f1a7ea7fc908433968b484a8013c4c / run 35621083959 / merge c9c6261a7cfdfae10e980c7d1afdf166142693d5. SMB-08 is selected_not_started and requires a later owner Continue."
+    },
+    "MSLR_SUPPLEMENT": {
+      "program_id": "MSLR-SUPPLEMENT",
+      "state": "completed_verified",
+      "selected_work_item": "MSLR-S02",
+      "attempt_id": "MSLR-S02-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MSLR-S02-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "completion_rule": "MSLR-S01 and MSLR-S02 completed_verified. Terminal supplement proof MSLR-S02.1 certifies the explicit perceptual-spatial battery over sealed MSLR-18.1/MSLR-S01.1, cross-platform deterministic replay, permission/accessibility/provider-off boundaries and a capability-only SAA-01 readiness handoff. SAA remains unstarted until a later owner Continue."
     }
   },
   "domain_authorities": {

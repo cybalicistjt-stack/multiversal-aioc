@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-01",
+  "attempt_id": "SAA-01-attempt-001",
+  "title": "Comic Project, Page, Panel & Layer Schema",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MSLR-S02",
+  "required_predecessor": {
+    "work_item": "MSLR-S02",
+    "status": "completed_verified",
+    "application_merge_sha": "5445c743cd88bbf5425f63c6afde30732cc0b09d",
+    "schema": "MSLR-S02.1"
+  },
+  "start_requires": [
+    "ARI-22 completed_verified",
+    "SMB-09 completed_verified",
+    "SMB10A",
+    "Character/CAPP/PAPT/MAI/Scene projections"
+  ],
+  "objective": "Define stable comic project, page, panel and layer identity; governed ARI resource references; transform state; text elements; and output metadata without embedding source assets by default.",
+  "acceptance": [
+    "Project, page, panel and layer records have stable identities and deterministic serializable structure.",
+    "Composition references governed ARI resources by stable reference rather than duplicating source assets by default.",
+    "Layer schema carries presentation transform state without mutating Character, Scene, MAI or source-resource truth.",
+    "Text elements remain explicit text state rather than flattened-only image content.",
+    "Output metadata preserves provenance/resource lineage and does not grant publishing or redistribution rights.",
+    "Unknown or unsupported resource capabilities remain explicit rather than fabricated.",
+    "No implementation starts until a later explicit owner Continue verifies the SAA start gates."
+  ],
+  "boundaries": [
+    "ARI remains resource/provenance authority and source assets are referenced rather than privately duplicated by default.",
+    "Character/CAPP/PAPT appearance, MAI/Scene spatial truth and Story/CSW narrative truth remain with their owners.",
+    "Rights filtering must precede requested transform/export/share operations.",
+    "AI remains proposal-only and cannot silently author canonical state.",
+    "SAA selection is a control-plane successor seed only; this checkpoint grants no implementation authority."
+  ],
+  "strict_successor": "SAA-02",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue. Then verify SAA start gates and governed-start SAA-01; do not start from this closeout.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
