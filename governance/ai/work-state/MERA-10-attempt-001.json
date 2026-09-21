@@ -9,10 +9,10 @@
   "attempt_id": "MERA-10-attempt-001",
   "title": "Dependency, Network, Failure & Graceful-Degradation Runtime",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "owner_selected": false,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/mera-10-dependency-network-failure-runtime",
   "completed": false,
   "selected_by_verified_predecessor": "MERA-07",
   "required_predecessor": {
@@ -45,17 +45,21 @@
     "MBES remains blocked until MERA completes at MERA-24."
   ],
   "strict_successor": "MERA-12",
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On the next owner Continue, start only MERA-10. Preload MERA-01/03/05/06/07, MRCS dependency/network/failure/resource definitions, PCA-12/Packet-08 analysis seams, D17/MIB-14 owner state, visibility rules and Packet-07 explanation/recovery semantics.",
+  "active_substep": "governed_started",
+  "next_action": "Execute MERA-10 only through causal RED, bounded dependency/network/failure/graceful-degradation implementation, exact-head validation, publication, canonical closeout and MERA-12 selection.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start",
+      "evidence": "Owner Continue started CURRENT-selected MERA-10 from completed_verified MERA-07."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
+    "terminal_response_allowed": false,
     "stop_reason": null
   }
 }
