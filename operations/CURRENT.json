@@ -6,21 +6,21 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 316,
+  "state_revision": 317,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
   "product_start_freeze": {
     "active": false,
     "reason": "OPS3-14 completed_verified after moving lightweight validation orchestration off scarce self-hosted runners, success-gating deterministic comparison, and defining isolated same-label runner pools as capacity-only infrastructure.",
-    "preserved_selected_work_item": "GPR-10",
-    "preserved_attempt_id": "GPR-10-attempt-001",
+    "preserved_selected_work_item": "GPR-12",
+    "preserved_attempt_id": "GPR-12-attempt-001",
     "implementation_authority": false,
     "cleared_by": "OPS3-14 completed_verified",
     "preserved_lane_selections": {
       "gpr": {
-        "selected_work_item": "GPR-10",
-        "attempt_id": "GPR-10-attempt-001",
+        "selected_work_item": "GPR-12",
+        "attempt_id": "GPR-12-attempt-001",
         "state": "selected_not_started"
       },
       "mrcs": {
@@ -91,12 +91,12 @@
     },
     "gpr": {
       "state": "selected_not_started",
-      "selected_work_item": "GPR-10",
-      "attempt_id": "GPR-10-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/GPR-10-attempt-001.json",
+      "selected_work_item": "GPR-12",
+      "attempt_id": "GPR-12-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/GPR-12-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "GPR-09 completed_verified after causal RED run 35537668004 at head 2ee90883348646629780646e63f9889915544d31, exact-head cross-platform GREEN run 35537753561 at head 329b721ec98ec0cbbdfecef26c2318aea4c6378f, fresh-main clean integration against application main 9bce9c663bab487a795491ddea8a5ce7bf8d8944, and READY publication of PR 662 as application main 6b2aeb99ce2d53a0fe9e79c7e78c82573a5b8d83. PDCP Packet-07 execution-inspection semantics were reused without creating generic studio authority. ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no interstitial override between GPR-09 and strict successor GPR-10; GPR-16 remains gated only on relevant specialist golden proofs still outstanding.",
+      "activation_rule": "GPR-10 completed_verified after causal RED run 35545215293 at head 363bb414a07112225db5ffe64b4d493b8fba10de, exact-head Linux/hosted-Windows/deterministic GREEN run 35551753557 at head 35c1ed8ea86cf15192e41f4d09c158da459c257f, and direct protected-main publication of PR 664 as application main 7c713013b1774811c5de4952d4f10eb00e2adc43. ARI-11 remains rights/use authority and presentation remains non-authoritative mechanics truth. ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no interstitial override between GPR-10 and strict successor GPR-12.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "Resume GPR-10 from ops3-lane-state/gpr. Its implementation candidate already exists; use the repaired validation pipeline and do not replay completed implementation work.",
+  "next_project_action": "GPR-12 is selected_not_started. On the next GPR Continue, start only GPR-12 from ops3-lane-state/gpr; preload its declared continuity dependency closure and do not widen into GPR-16.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
