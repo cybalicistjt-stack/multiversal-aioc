@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 400,
+  "state_revision": 401,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "SAA-01",
       "attempt_id": "SAA-01-attempt-001",
       "checkpoint_path": "governance/ai/work-state/SAA-01-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "MSLR-S02 completed_verified and published. SMB10A/ARI/readiness gates are satisfied. Owner explicitly cleared the prior SAA hold and instructed SAA-01 to begin after S02 verification.",
+      "implementation_branch": "work/saa-01-comic-project-page-panel-layer-schema",
+      "implementation_authority": true,
+      "activation_rule": "MSLR-S02 completed_verified; SMB10A/ARI/readiness gates satisfied; owner explicitly cleared the prior SAA hold and authorized SAA-01. Only the SAA-01 schema tranche is authorized.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "SAA-01 is selected_not_started and owner-authorized for immediate governed start. Begin Comic Project, Page, Panel & Layer Schema only.",
+  "next_project_action": "SAA-01 is in progress. Establish causal RED, then implement only Comic Project, Page, Panel & Layer Schema. SAA-02+ and SMB10B remain unauthorized.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
