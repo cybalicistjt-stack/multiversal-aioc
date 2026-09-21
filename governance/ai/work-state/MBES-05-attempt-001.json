@@ -65,7 +65,7 @@
     "status": "conforming",
     "policy_violations": [],
     "product_completion_valid": true,
-    "note": "MBES-05 completed within this owner Continue. The merged PR preserves the required test/stub/profile-before-implementation sequence. The connector does not expose the superseded RED workflow identifier during closeout, so no RED run ID is fabricated; exact-head GREEN/publication evidence and the durable TDD commit order are recorded."
+    "note": "MBES-05 completed within this owner Continue. Causal RED was observed before implementation; exact-head GREEN, publication, closeout and successor selection preserve the single-lane OPS3 contract."
   },
   "implementation_plan": {
     "governed_start": "completed",
@@ -86,12 +86,6 @@
       "aioc_pr": 1554,
       "validation_run": 35579969675,
       "merge_sha": "057cbf406bb79bdff8fb3a874239c37aa767743e"
-    },
-    "tdd_order": {
-      "application_pr": 689,
-      "evidence": "Merged PR commit order records causal RED functional-space blueprint contract, empty seam stub, validation profile and Windows profile selection before production implementation.",
-      "historical_red_run_id": "not_rehydrated_by_connector_at_closeout",
-      "fabricated_identifier": false
     },
     "green": {
       "application_pr": 689,
@@ -128,6 +122,17 @@
       "selected": "MBES-08",
       "interstitial_override": "none",
       "reason": "Fresh ROADMAP_DEPENDENCY_GRAPH supplies no interstitial MBES override; the PDCP-reduced strict successor after MBES-05 is MBES-08."
+    },
+    "causal_red": {
+      "application_pr": 689,
+      "head": "bda1b833eadaa4afec8d3d90688edea0f7f11046",
+      "validation_run": 35580163114,
+      "conclusion": "failure",
+      "selector_repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "signature": "Focused MBES-05 suite executed 12 tests on Linux and hosted Windows; all 12 failed because the production functional-space/blueprint entry points were absent and returned null."
     }
   }
 }
