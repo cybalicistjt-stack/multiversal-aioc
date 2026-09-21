@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MSLR",
+  "lane": "gpr",
+  "track": "multiversal-spatial-law-runtime",
+  "source_program": "MSLR",
+  "work_item_id": "MSLR-01",
+  "attempt_id": "MSLR-01-attempt-001",
+  "title": "Spatial-Law Profile & Runtime Core",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/mslr-01-spatial-law-profile-runtime-core",
+  "completed": false,
+  "selected_by_verified_predecessor": "MBES-24",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "hard_requires": [
+      "MBES"
+    ],
+    "start_requires": [
+      "MBES-24",
+      "GPR-16",
+      "MCS-21",
+      "SSA-10",
+      "ENV-16",
+      "World/Reality/Scene/Transition/Portal/Visibility/Knowledge/Action/Event owner contracts"
+    ],
+    "satisfied": [
+      "MBES completed_verified",
+      "MBES-24 completed_verified",
+      "GPR-16 completed_verified",
+      "MCS-21 completed_verified",
+      "SSA-10 completed_verified",
+      "ENV-16 completed_parallel_content_authoring",
+      "required owner contract surfaces available"
+    ],
+    "reduced_strict_order": "MSLR-01 → MSLR-03 → MSLR-04 → MSLR-07 → MSLR-08 → MSLR-13 → MSLR-14 → MSLR-16 → MSLR-18"
+  },
+  "required_predecessor": {
+    "work_item": "MBES-24",
+    "status": "completed_verified",
+    "application_merge_sha": "7377314b962e50d23765eff1e644bd318a1966ca",
+    "schema": "MBES-24.1"
+  },
+  "objective": "Implement the reduced MSLR opening seam: reusable SpatialLawProfile and dimension-rule schemas, a distinct live SpatialLawRuntimeInstance boundary, scope/invariant/composition/precedence validation, owner-reference/version compatibility bindings, a baseline normal/Euclidean profile, and migration/version hooks without creating duplicate World, Reality, Scene, Map, Environment, Action/Event, Transition, Portal, Visibility, or Knowledge ledgers.",
+  "acceptance": [
+    "Reusable profile definition and live runtime instance remain distinct and versioned.",
+    "Default Euclidean profile validates with no anomalous law state.",
+    "Topology, metric, containment/scale and orientation rules remain distinct dimensions and compose only through explicit profile semantics.",
+    "Contradictory rules without explicit precedence/resolution fail deterministically.",
+    "Unsupported dimension/property remains unresolved rather than inferred.",
+    "Owner-backed World/Reality/Scene/Transition/Portal/Visibility/Knowledge references retain canonical identity and version authority; MSLR creates no duplicate spatial ledger.",
+    "Compatibility/version checks fail closed on missing, stale or incompatible owner references.",
+    "Migration/version hooks transform profile schema representations only and do not silently mutate canonical runtime/owner state.",
+    "Blocking profile/runtime workflows remain semantic/nonvisual, keyboard-capable, provider-off, optional-AI independent, and paid-cloud independent."
+  ],
+  "boundaries": [
+    "MBES-24 and all upstream completed programs remain sealed.",
+    "World/Reality/Scene retain canonical place, reality and scene identity/state.",
+    "Transition/Portal owners retain traversal and portal truth.",
+    "Visibility/Knowledge owners retain authorization and participant-knowledge truth.",
+    "GPR/Action/Event retain generic execution, Event history and replay authority.",
+    "MCS remains map/cartographic projection authority; a map is never spatial truth.",
+    "MSLR-01 creates no second World, Reality, Scene, Map, Environment, Action/Event, Transition, Portal, Visibility or Knowledge ledger.",
+    "MSLR-03 and later MSLR tranches remain unauthorized until canonical MSLR-01 closeout."
+  ],
+  "strict_successor": "MSLR-03",
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for MSLR-01 through the public spatial-law profile/runtime-core seam, then implement only the bounded schema, validation, owner-binding and migration hooks required by the reduced family contract.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner Continue explicitly authorized cross-family gpr slot reuse and governed start of MSLR-01 from terminal completed_verified MBES-24."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
