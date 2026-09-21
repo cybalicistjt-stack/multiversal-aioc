@@ -1,7 +1,7 @@
 # MSWI — Multiversal Systemic Worldplay Integration
 
 **Program ID:** MSWI  
-**Status:** ACTIVE — MSWI-07 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MSWI-14 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Owner:** John Brandon Turner  
 **Approved:** 2026-09-15  
 **PDCP reduction:** 2026-09-16 — baseline 18 tranches → 7 surviving implementation/proof tranches  
@@ -304,3 +304,14 @@ The delivered runtime preserves one stable entity identity across exact-version 
 This attempt received two owner `Continue` commands while active. Product completion remains valid; the terminal checkpoint records `OPS3.MULTI_CONTINUE_UNRECORDED` and recovery consumed durable exact-head/lane evidence without replaying completed work.
 
 Fresh roadmap authority schema `1.0.4` supplies no interstitial override. Reduced strict order selects `MSWI-07` — Biological Components, Harvest, Embodied Modification & Lineage Integration — as selected_not_started. `MSWI-14` remains unauthorized.
+
+
+## MSWI-07 completed — Biological Components, Harvest, Embodied Modification & Lineage Integration
+
+MSWI-07 completed_verified with application contract `MSWI-07.1`. Causal RED run `35615499069` at `f8def4f0951f3a1dba7517b3c5678124b160dcc8` passed selector/repository health but failed all 11 focused acceptance calls on Linux and hosted Windows because the biological component/harvest/lineage/modification production entry points were absent. Exact-head GREEN run `35615795009` at `a705de2c91a294c3c242f81c5a75bc1ec94216af` passed repository health, Linux, hosted Windows, focused tests, source invariants, TypeScript typecheck and deterministic cross-platform comparison. PR #709 published that exact validated head as application main `faed0cf97638182ad9c43736aee13d5312214bff`.
+
+The delivered runtime references source-authored components without inventing anatomy, projects owner-backed condition/availability with permission-first filtering, binds only authored harvest outputs with conservation policy, preserves donor/source lineage into downstream owner adapters, requires explicit body-location/interface compatibility for embodied modification, preserves grant/remove/retain/reverse history, and applies identity/memory/psychological/social consequences only from explicit authored rules. It creates no second anatomy, modification or downstream processing runtime.
+
+This attempt received two owner `Continue` commands while active. Product completion remains valid; the terminal checkpoint records `OPS3.MULTI_CONTINUE_UNRECORDED` and recovery consumed durable exact-head/lane evidence without replaying completed work.
+
+Fresh roadmap authority schema `1.0.4` supplies no interstitial override. Reduced strict order selects `MSWI-14` — Systemic Site/Scene Variant, Template & Promotion Integration — as selected_not_started. `MSWI-18` remains unauthorized.
