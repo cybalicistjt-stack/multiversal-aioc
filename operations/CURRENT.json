@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 377,
+  "state_revision": 378,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "MSWI-03",
       "attempt_id": "MSWI-03-attempt-001",
       "checkpoint_path": "governance/ai/work-state/MSWI-03-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "MSWI-01 completed_verified after causal RED run 35603468568 at 2d7e056111d9ea58f55a76cf0c4d58f9b260d6a2, exact-head GREEN run 35603724172 at 2c5c2d0ca84b08e6c2470c48aa761a8030a5576d, and publication of PR 705 as application main 8fa67726006237e2c68dcb1d5fb7e42c7b73b9a0. Fresh DAG schema 1.0.4 supplies no interstitial override; reduced strict order selects MSWI-03 selected_not_started until owner Continue.",
+      "implementation_branch": "work/mswi-03-consequence-routing-recovery",
+      "implementation_authority": true,
+      "activation_rule": "Owner Continue governed-started MSWI-03 from completed_verified MSWI-01. Only Cross-System Consequence Routing, Recovery & Domain Adapter Runtime is authorized; MSWI-04 remains downstream and unauthorized.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "MSWI-03 is selected_not_started. The next owner Continue starts only Cross-System Consequence Routing, Recovery & Domain Adapter Runtime; MSWI-04 remains unauthorized.",
+  "next_project_action": "MSWI-03 is in progress. Complete only Cross-System Consequence Routing, Recovery & Domain Adapter Runtime through exact-head validation/publication and verified closeout before MSWI-04 may start.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
