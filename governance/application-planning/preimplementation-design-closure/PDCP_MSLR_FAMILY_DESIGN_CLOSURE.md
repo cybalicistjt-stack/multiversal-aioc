@@ -577,3 +577,46 @@ Automate/prove the full family battery, exact-head validation, deterministic rep
 All baseline MSLR design questions are sufficiently closed for reduction. No owner decision remains. The family can be reduced from 18 planning tranches to 9 implementation/proof tranches without losing accepted capability, provided the reduction receipt and backlog reconciliation preserve the mappings in this document.
 
 This design closure does not implement MSLR, does not start MSLR, does not alter `operations/CURRENT.json`, and grants no product implementation authority.
+
+
+## 15. Owner-approved spatial architecture amendment — 2026-09-21
+
+During the governed MSLR-01 causal-RED phase, the owner approved a family-wide architecture refinement after review of interactive hyperbolic tiling material and HyperRogue's generalized multi-geometry/projection architecture. This amendment strengthens the existing design closure; it does not add tranches, reopen upstream families, or grant authority beyond the active MSLR-01 tranche.
+
+### 15.1 Three-layer spatial model
+
+MSLR must explicitly distinguish:
+
+1. **intrinsic spatial law / geometry** — canonical MSLR law semantics such as metric, topology, containment/scale and orientation;
+2. **spatial substrate / discretization** — optional cells, semantic adjacency complexes, quotient identifications, local frames or procedurally addressed neighborhoods used for gameplay/runtime computation;
+3. **projection / presentation** — Poincaré, Klein, Euclidean-map, graph, schematic, rendered or other views supplied through MCS/presentation owners.
+
+Changing only the projection MUST NOT change canonical location identity, intrinsic distance, adjacency, containment, orientation or accepted law state. Screen/pixel coordinates are never canonical spatial identity.
+
+### 15.2 Identity, extent and addressing
+
+Canonical World/Reality/Scene/Location identity remains owner-backed and stable independently of MSLR coordinates, tiling-cell addresses or projection coordinates.
+
+Profiles MAY declare explicit extent/addressing semantics such as:
+
+- finite;
+- quotient/identified;
+- unbounded;
+- procedurally addressed / lazy-local expansion.
+
+Unbounded or exponentially growing spaces must support bounded neighborhood evaluation and lazy addressability; implementations must not require exhaustive world enumeration.
+
+### 15.3 Tranche refinements
+
+- **MSLR-01:** add first-class intrinsic-law / substrate / projection separation, projection-invariance proof, stable identity independent of coordinates, and extent/addressing semantics.
+- **MSLR-03:** add edge/region identifications, quotient topology, orientation-reversing connections where authored, local walker/frame state, and bounded/lazy neighborhood expansion.
+- **MSLR-04:** observer/navigation knowledge may include local-frame, orientation and discovered-identification state without changing true topology.
+- **MSLR-08:** make isometries and frame transport explicit; continuous geometry and discrete traversal substrates may realize the same accepted law; returning to one canonical location may yield a different local frame when the authored law permits it.
+- **MSLR-13:** navigation aids may bind to local frames, anchors, breadcrumbs and authored geometry-law responses rather than assuming global compass semantics.
+- **MSLR-14:** add fundamental-domain + transformation/group generation as a reusable MSLR authoring pattern over PCA-02/PCA-03. A regular Schläfli `{p,q}` tiling validator is permitted as one specialized generator family only; its curvature relation is not a universal MSLR rule.
+- **MSLR-16:** explicitly prove pathfinding/pursuit/travel, tactical movement and combat/range consume the same accepted law semantics rather than treating geometry as rendering.
+- **MSLR-18:** golden proof adds projection invariance, true hyperbolic tiling, quotient/non-orientable topology, bounded lazy unbounded-space operation, and discrete-vs-continuous realization of the same accepted law.
+
+### 15.4 Clean-room and source boundary
+
+The external systems are architecture/research references only. Protected source code, assets, level layouts, UI expression, save formats and proprietary/private protocols are not copied. HyperRogue's GPL-2.0 implementation is not incorporated into Multiversal by this amendment. MSLR remains a Multiversal-native abstraction over canonical owner contracts.

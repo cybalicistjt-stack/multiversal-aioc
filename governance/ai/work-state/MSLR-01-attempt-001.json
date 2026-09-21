@@ -45,11 +45,15 @@
     "application_merge_sha": "7377314b962e50d23765eff1e644bd318a1966ca",
     "schema": "MBES-24.1"
   },
-  "objective": "Implement the reduced MSLR opening seam: reusable SpatialLawProfile and dimension-rule schemas, a distinct live SpatialLawRuntimeInstance boundary, scope/invariant/composition/precedence validation, owner-reference/version compatibility bindings, a baseline normal/Euclidean profile, and migration/version hooks without creating duplicate World, Reality, Scene, Map, Environment, Action/Event, Transition, Portal, Visibility, or Knowledge ledgers.",
+  "objective": "Implement the reduced MSLR opening seam: reusable SpatialLawProfile and dimension-rule schemas; a distinct live SpatialLawRuntimeInstance boundary; explicit intrinsic-law/geometry vs substrate/discretization vs projection separation; finite/quotient/unbounded/procedurally-addressed extent semantics; scope/invariant/composition/precedence validation; stable owner identity independent of coordinates; owner-reference/version compatibility bindings; a baseline normal/Euclidean profile; projection-invariance guarantees; and migration/version hooks without creating duplicate World, Reality, Scene, Map, Environment, Action/Event, Transition, Portal, Visibility, or Knowledge ledgers.",
   "acceptance": [
     "Reusable profile definition and live runtime instance remain distinct and versioned.",
     "Default Euclidean profile validates with no anomalous law state.",
+    "Intrinsic spatial law/geometry, optional runtime substrate/discretization and projection/presentation are explicit distinct layers.",
     "Topology, metric, containment/scale and orientation rules remain distinct dimensions and compose only through explicit profile semantics.",
+    "Projection changes alone do not change canonical identity, intrinsic distance, adjacency, containment, orientation or accepted law state.",
+    "Canonical owner identity is independent of screen, floating projection, tiling-cell or runtime coordinate representation.",
+    "Profiles can declare finite, quotient, unbounded or procedurally-addressed/lazy extent semantics without requiring exhaustive enumeration.",
     "Contradictory rules without explicit precedence/resolution fail deterministically.",
     "Unsupported dimension/property remains unresolved rather than inferred.",
     "Owner-backed World/Reality/Scene/Transition/Portal/Visibility/Knowledge references retain canonical identity and version authority; MSLR creates no duplicate spatial ledger.",
@@ -65,11 +69,14 @@
     "GPR/Action/Event retain generic execution, Event history and replay authority.",
     "MCS remains map/cartographic projection authority; a map is never spatial truth.",
     "MSLR-01 creates no second World, Reality, Scene, Map, Environment, Action/Event, Transition, Portal, Visibility or Knowledge ledger.",
-    "MSLR-03 and later MSLR tranches remain unauthorized until canonical MSLR-01 closeout."
+    "MSLR-03 and later MSLR tranches remain unauthorized until canonical MSLR-01 closeout.",
+    "MSLR projection coordinates and substrate addresses are derived bindings only and never replace canonical owner identity.",
+    "Regular hyperbolic {p,q} tiling mathematics is optional specialized authoring/generator validation and is not a universal MSLR formula.",
+    "External hyperbolic/HyperRogue research informs clean-room generalized architecture only; no protected implementation, assets, maps, UI expression or save formats are copied."
   ],
   "strict_successor": "MSLR-03",
   "active_substep": "causal_red",
-  "next_action": "Establish causal RED for MSLR-01 through the public spatial-law profile/runtime-core seam, then implement only the bounded schema, validation, owner-binding and migration hooks required by the reduced family contract.",
+  "next_action": "Revise the MSLR-01 acceptance suite for the owner-approved three-layer geometry/substrate/projection architecture and extent/addressing semantics; establish a new causal RED on those widened requirements before attaching production implementation.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -84,5 +91,15 @@
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null
+  },
+  "design_amendment": {
+    "approved": "2026-09-21",
+    "owner_approved": true,
+    "reason": "Strengthen MSLR before GREEN using hyperbolic-tiling and generalized-geometry architecture lessons while preserving the nine-tranche reduction.",
+    "red_contract_must_be_reestablished": true,
+    "prior_red_run": "35591109017",
+    "prior_red_head": "5a343792f1b76fb1bdc69f582627a9d64089e65d",
+    "prior_red_disposition": "superseded_for_acceptance_expansion_only; production remained absent",
+    "tranche_count_changed": false
   }
 }

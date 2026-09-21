@@ -2,7 +2,7 @@
   "schema_version": "0.2.0",
   "program_id": "MSLR",
   "program_name": "Multiversal Spatial Law Runtime",
-  "status": "owner_approved_planned",
+  "status": "in_progress",
   "activation_after": "MBES-24",
   "successor": "MSWI-01",
   "owner": "John Brandon Turner",
@@ -28,18 +28,107 @@
     "retry_rule": "Do not rerun an unchanged deterministic failure; classify the failure and require changed evidence before retry."
   },
   "strict_order": [
-    "MSLR-01", "MSLR-03", "MSLR-04", "MSLR-07", "MSLR-08", "MSLR-13", "MSLR-14", "MSLR-16", "MSLR-18"
+    "MSLR-01",
+    "MSLR-03",
+    "MSLR-04",
+    "MSLR-07",
+    "MSLR-08",
+    "MSLR-13",
+    "MSLR-14",
+    "MSLR-16",
+    "MSLR-18"
   ],
   "tranches": [
-    {"id":"MSLR-01","name":"Spatial-Law Profile & Runtime Core","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-01","MSLR-02"]},
-    {"id":"MSLR-03","name":"Dynamic Topology State & Governed Spatial Operations","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-03","MSLR-06"]},
-    {"id":"MSLR-04","name":"Knowledge, Observer & Spatial Discovery Runtime","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-04","MSLR-05","MSLR-11"]},
-    {"id":"MSLR-07","name":"Reality-Seam, Temporal/Dream & Contextual Spatial Laws","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-07","MSLR-12"]},
-    {"id":"MSLR-08","name":"Metric, Scale, Containment & Orientation Transform Runtime","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-08","MSLR-09","MSLR-10"]},
-    {"id":"MSLR-13","name":"Navigation Aids, Anchors, Sensory Cues & Counterplay","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-13","MSLR-15"]},
-    {"id":"MSLR-14","name":"Procedural Impossible-Space Authoring, Solvability & Diagnostics","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-14","MSLR-17"]},
-    {"id":"MSLR-16","name":"Multi-Resolution Cross-System Spatial Runtime Integration","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-16"]},
-    {"id":"MSLR-18","name":"Golden Impossible-Space Proof & MSWI Handoff","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-18"]}
+    {
+      "id": "MSLR-01",
+      "name": "Spatial-Law Profile & Runtime Core",
+      "status": "in_progress",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSLR-01",
+        "MSLR-02"
+      ]
+    },
+    {
+      "id": "MSLR-03",
+      "name": "Dynamic Topology State & Governed Spatial Operations",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSLR-03",
+        "MSLR-06"
+      ]
+    },
+    {
+      "id": "MSLR-04",
+      "name": "Knowledge, Observer & Spatial Discovery Runtime",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSLR-04",
+        "MSLR-05",
+        "MSLR-11"
+      ]
+    },
+    {
+      "id": "MSLR-07",
+      "name": "Reality-Seam, Temporal/Dream & Contextual Spatial Laws",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSLR-07",
+        "MSLR-12"
+      ]
+    },
+    {
+      "id": "MSLR-08",
+      "name": "Metric, Scale, Containment & Orientation Transform Runtime",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSLR-08",
+        "MSLR-09",
+        "MSLR-10"
+      ]
+    },
+    {
+      "id": "MSLR-13",
+      "name": "Navigation Aids, Anchors, Sensory Cues & Counterplay",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSLR-13",
+        "MSLR-15"
+      ]
+    },
+    {
+      "id": "MSLR-14",
+      "name": "Procedural Impossible-Space Authoring, Solvability & Diagnostics",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSLR-14",
+        "MSLR-17"
+      ]
+    },
+    {
+      "id": "MSLR-16",
+      "name": "Multi-Resolution Cross-System Spatial Runtime Integration",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSLR-16"
+      ]
+    },
+    {
+      "id": "MSLR-18",
+      "name": "Golden Impossible-Space Proof & MSWI Handoff",
+      "status": "planned",
+      "estimated_active_minutes": 16,
+      "absorbs_baseline": [
+        "MSLR-18"
+      ]
+    }
   ],
   "required_upstream": [
     "ARI family completed_verified",
@@ -56,9 +145,35 @@
     "PCA-12 analysis workbench available for MSLR-14"
   ],
   "integration_targets": [
-    "SSA", "ENV", "MCS", "GPR", "MBES", "MSWI", "PCA", "World", "Reality/Branch", "Setting Node", "Scene", "Exploration",
-    "Action/Event", "Transition/Portal", "Visibility/Permissions", "Knowledge/Discovery", "Combat", "Movement", "Pursuit",
-    "Character/NPC/Creature", "Vehicle/Mount", "Settlement", "Project/Time", "Audio/Presentation", "Accessibility", "ARI", "SMB-08", "SMB-09", "SAA"
+    "SSA",
+    "ENV",
+    "MCS",
+    "GPR",
+    "MBES",
+    "MSWI",
+    "PCA",
+    "World",
+    "Reality/Branch",
+    "Setting Node",
+    "Scene",
+    "Exploration",
+    "Action/Event",
+    "Transition/Portal",
+    "Visibility/Permissions",
+    "Knowledge/Discovery",
+    "Combat",
+    "Movement",
+    "Pursuit",
+    "Character/NPC/Creature",
+    "Vehicle/Mount",
+    "Settlement",
+    "Project/Time",
+    "Audio/Presentation",
+    "Accessibility",
+    "ARI",
+    "SMB-08",
+    "SMB-09",
+    "SAA"
   ],
   "boundaries": [
     "MSLR is the reusable non-standard spatial-law gameplay runtime; it does not become a second World, Reality, Scene, Map, Environment, Action/Event, Transition/Portal, Knowledge or Campaign-state ledger",
@@ -94,5 +209,33 @@
     "governance/application-planning/preimplementation-design-closure/PDCP_MSLR_FAMILY_DESIGN_CLOSURE.md",
     "governance/application-planning/preimplementation-design-closure/PDCP_MSLR_REDUCTION_RECEIPT.json",
     "governance/application-planning/multiversal-spatial-law-runtime/MSLR_BENCHMARK_CAPABILITY_MATRIX.md"
-  ]
+  ],
+  "architecture_amendment_2026_09_21": {
+    "owner_approved": true,
+    "tranche_count_changed": false,
+    "sources": [
+      "Interactive Hyperbolic Tiling in the Poincare Disc — architecture/math reference",
+      "HyperRogue — generalized geometry/projection/gameplay architecture reference"
+    ],
+    "family_invariants": [
+      "intrinsic spatial law, runtime substrate/discretization and projection/presentation are distinct",
+      "projection changes do not change canonical spatial semantics",
+      "screen or floating projection coordinates never define canonical identity",
+      "profiles declare finite, quotient, unbounded or procedurally-addressed extent semantics where relevant",
+      "unbounded/exponential spaces use bounded local evaluation and lazy addressability rather than exhaustive enumeration",
+      "quotient identifications and orientation-reversing connections are first-class authored topology semantics",
+      "regular {p,q} tiling math is optional specialized generator validation, never a universal MSLR formula",
+      "clean-room architecture only; no HyperRogue GPL implementation is incorporated"
+    ],
+    "tranche_impacts": {
+      "MSLR-01": "geometry/substrate/projection separation, projection invariance, identity independence, extent/addressing",
+      "MSLR-03": "quotient identifications, local frame/walker semantics, bounded lazy neighborhood expansion",
+      "MSLR-04": "observer local-frame/orientation/discovered-identification knowledge",
+      "MSLR-08": "isometry/frame transport and continuous/discrete law realization",
+      "MSLR-13": "local-frame navigation aids and authored geometry counterplay",
+      "MSLR-14": "fundamental-domain plus transformation/group generation and optional regular {p,q} recipes",
+      "MSLR-16": "pathfinding/pursuit/travel semantic integration",
+      "MSLR-18": "projection-invariant hyperbolic/quotient/lazy-unbounded/discrete-continuous golden proof"
+    }
+  }
 }
