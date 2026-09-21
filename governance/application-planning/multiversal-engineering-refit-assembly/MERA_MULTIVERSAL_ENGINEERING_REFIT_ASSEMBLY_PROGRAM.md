@@ -1,12 +1,12 @@
 # MERA — Multiversal Engineering, Refit & Assembly
 
 **Program ID:** MERA  
-**Status:** OWNER-APPROVED — PLANNED; PDCP-REDUCED  
+**Status:** ACTIVE — MERA-01 IN_PROGRESS; PDCP-REDUCED  
 **Activation:** after GPR effective golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MBES-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-11  
-**Implementation authority:** none
+**Implementation authority:** MERA-01 only on `work/mera-01-engineering-workspace-topology-core`
 
 ## Purpose
 
