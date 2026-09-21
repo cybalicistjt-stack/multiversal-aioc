@@ -9,11 +9,11 @@
   "attempt_id": "MBES-14-attempt-001",
   "title": "Environment Conditions, Externalities, Habitability & Reactive-World Integration",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/mbes-14-environment-externalities-habitability-reactive-world",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "MBES-12",
   "required_predecessor": {
     "work_item": "MBES-12",
@@ -41,21 +41,144 @@
     "MBES-18 and later MBES tranches remain unauthorized until canonical MBES-14 closeout."
   ],
   "strict_successor": "MBES-18",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for MBES-14 environment-condition/externality/habitability/reactive-world adapters, then implement only the PDCP-closed owner-profile behavior.",
+  "active_substep": "completed_verified",
+  "next_action": "MBES-14 is completed_verified. MBES-18 — Durability, Failure, Defense & Recovery Infrastructure — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started MBES-14 from canonical selected_not_started state."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "MBES-14 causal RED run 35585323150 failed the focused environment/reactive-world suite on Linux and hosted Windows at 2d0f74e16c2bdf116f1580a0b1f5fed6b36659e8 because the production entry points were absent. Initial Green head ad44262e5875214a75f06a3ef55d3a8b1d96c1cb failed before behavior execution because the governed validation step id exceeded the validation-core 64-character limit. The bounded repair changed validation metadata/verifier markers only. Exact head 1a4b1e1440f12da8980353aa22060e467e132dab passed repository health, Linux, hosted Windows, invariants, TypeScript typecheck, focused tests and deterministic comparison in run 35585597408, then PR 692 published as application main 53a6541622d5b82c0f4fd9dcad13db29bba4ffaf."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MBES-14 environment/externality/habitability/reactive-world adapters are durably published and canonical closeout selects MBES-18 without starting it."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "note": "MBES-14 completed in one owner Continue. One bounded validation-metadata repair shortened an overlong profile step id; production behavior and test assertions were unchanged."
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "causal_red": "completed",
+    "owner_condition_profiles": "completed",
+    "externality_observations": "completed",
+    "threshold_accumulation_recovery_references": "completed",
+    "habitability_capability_projection": "completed",
+    "generic_reactive_world_routing": "completed",
+    "oara_generic_interface_proof": "completed",
+    "permission_safe_preview": "completed",
+    "accessibility_provider_off": "completed",
+    "validation_metadata_repair": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "acceptance_evidence": {
+    "governed_start": {
+      "aioc_pr": 1560,
+      "validation_run": 35585150380,
+      "merge_sha": "2e41f1c6e20507027444f989372165cc5ae59328"
+    },
+    "causal_red": {
+      "application_pr": 692,
+      "head": "2d0f74e16c2bdf116f1580a0b1f5fed6b36659e8",
+      "validation_run": 35585323150,
+      "conclusion": "failure",
+      "selector_repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "signature": "Focused MBES-14 behavior was absent from the empty production seam on both required platforms."
+    },
+    "bounded_validation_repair": {
+      "head": "ad44262e5875214a75f06a3ef55d3a8b1d96c1cb",
+      "validation_run": 35585508031,
+      "failure": "validation-core rejected an overlong focused step id before behavior execution",
+      "repair": "Shortened the governed profile step id to mbes14-focused-reactive-world and aligned the invariant verifier; production code and tests unchanged."
+    },
+    "green": {
+      "application_pr": 692,
+      "validated_head": "1a4b1e1440f12da8980353aa22060e467e132dab",
+      "validation_run": 35585597408,
+      "conclusion": "success",
+      "selector_repository_health": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "53a6541622d5b82c0f4fd9dcad13db29bba4ffaf"
+    },
+    "delivered": {
+      "schema": "MBES-14.1",
+      "predecessor_schema": "MBES-12.1",
+      "condition_kinds": [
+        "gravity",
+        "atmosphere",
+        "climate",
+        "radiation",
+        "toxicity",
+        "corrosion",
+        "ecology",
+        "magic-technology",
+        "custom"
+      ],
+      "externality_kinds": [
+        "pollution",
+        "waste",
+        "heat",
+        "noise",
+        "habitat-disruption",
+        "resource-depletion",
+        "density",
+        "land-conversion"
+      ],
+      "habitability_capabilities": [
+        "shelter",
+        "sealing",
+        "life-support",
+        "resilience"
+      ],
+      "world_authority": "MIB-11/D18",
+      "environment_authority": "Environment",
+      "reality_authority": "Reality/Branch",
+      "capability_authority": "MIB-14/MERA/MRCS",
+      "event_authority": "Action/Event",
+      "reactive_world_interface": "generic-reactive-world-owner",
+      "universal_environment_defaults_used": false,
+      "threshold_accumulation_recovery_invented": false,
+      "labels_create_capabilities": false,
+      "missing_capabilities_inferred": false,
+      "oara_special_case_engine_used": false,
+      "response_decision_performed_by_mbes": false,
+      "mswi_fanout_deferred": true,
+      "permission_safe_preview": true,
+      "environment_ledger_created": false,
+      "world_ledger_created": false,
+      "consequence_ledger_created": false,
+      "habitability_ledger_created": false,
+      "response_ledger_created": false,
+      "provenance_ledger_created": false,
+      "canonical_owner_mutation_performed": false,
+      "semantic_nonvisual_path": true,
+      "keyboard_equivalent": true,
+      "provider_off_local": true,
+      "paid_cloud_required": false,
+      "mandatory_3d_required": false
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MBES-18",
+      "interstitial_override": "none",
+      "reason": "Fresh ROADMAP_DEPENDENCY_GRAPH supplies no interstitial MBES override; the reduced strict successor after MBES-14 is MBES-18."
+    }
   }
 }

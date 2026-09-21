@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 350,
+  "state_revision": 351,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "MBES-14",
-      "attempt_id": "MBES-14-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MBES-14-attempt-001.json",
-      "implementation_branch": "work/mbes-14-environment-externalities-habitability-reactive-world",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue governed-started the CURRENT-selected MBES-14 attempt after verified MBES-12 closeout. Only MBES-14 is authorized; MBES-18+ remain blocked.",
+      "state": "selected_not_started",
+      "selected_work_item": "MBES-18",
+      "attempt_id": "MBES-18-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MBES-18-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MBES-14 completed_verified after causal RED run 35585323150 at 2d0f74e16c2bdf116f1580a0b1f5fed6b36659e8, one bounded validation-metadata repair after run 35585508031, exact-head GREEN run 35585597408 at 1a4b1e1440f12da8980353aa22060e467e132dab, and publication of PR 692 as app main 53a6541622d5b82c0f4fd9dcad13db29bba4ffaf. Fresh DAG schema 1.0.4 supplies no MBES interstitial override; MBES-18 is selected_not_started and remains unstarted until owner Continue.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "MBES-14 is in progress. Complete only Environment Conditions, Externalities, Habitability & Reactive-World Integration through exact-head validation/publication and verified closeout before MBES-18 may start.",
+  "next_project_action": "MBES-18 is selected_not_started. The next owner Continue starts only MBES-18; MBES-20 and later tranches remain unauthorized.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
