@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 336,
+  "state_revision": 337,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "MERA-16",
-      "attempt_id": "MERA-16-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MERA-16-attempt-001.json",
-      "implementation_branch": "work/mera-16-machinery-robotics-constructs-industrial-adapters",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue accepted MERA-16 governed start from verified MERA-13 predecessor bc0fe362e14eee6beccae8d552b2743bdfc2eb76. Single-lane direct mode remains active; MERA-24 and MBES remain blocked.",
+      "state": "selected_not_started",
+      "selected_work_item": "MERA-24",
+      "attempt_id": "MERA-24-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MERA-24-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MERA-16 completed_verified after causal RED run 35563066094 at head 4a8978a5b3c01f4b99e324994a5f65cc0b0e5648, repaired exact-head GREEN run 35563073154 at head 2459bc432f34cc0846465a5e074fced5f0952f77, and direct publication of PR 685 as app main 9c785e24cbb3b1682149cca491ea5e5527073753. MERA-24 is selected_not_started; MBES remains blocked until MERA-24 completes and fresh DAG reconciliation authorizes handoff.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "MERA-16 is in progress. Complete its bounded causal RED, implementation, exact-head validation/publication and atomic closeout before selecting MERA-24.",
+  "next_project_action": "Next owner Continue starts only MERA-24 — Golden Cross-Domain Engineering Proof & MBES Handoff. MBES remains blocked until MERA-24 completes_verified and fresh roadmap reconciliation authorizes the cross-program handoff.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
