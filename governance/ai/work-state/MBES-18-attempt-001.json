@@ -44,7 +44,7 @@
   "active_substep": "completed_verified",
   "next_action": "MBES-18 is completed_verified. MBES-20 — Settlement, Transport & Regional Development Integration — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
     "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
@@ -62,10 +62,12 @@
     }
   },
   "execution_conformance": {
-    "status": "conforming",
-    "policy_violations": [],
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED"
+    ],
     "product_completion_valid": true,
-    "note": "MBES-18 completed in one owner Continue. A stale-run cleanup race cancelled one intermediate Green workflow before validation; the subsequent exact candidate changed documentation only and completed the full required gate."
+    "note": "A second owner Continue arrived after material progress had advanced through governed start and causal RED. Product work remains valid. OPS3.NO_MATERIAL_PROGRESS does not apply because durable material progress had advanced before the second command; terminal conformance must record the multi-Continue violation."
   },
   "implementation_plan": {
     "governed_start": "completed",
@@ -175,6 +177,13 @@
       "selected": "MBES-20",
       "interstitial_override": "none",
       "reason": "Fresh ROADMAP_DEPENDENCY_GRAPH supplies no interstitial MBES override; the reduced strict successor after MBES-18 is MBES-20."
+    },
+    "owner_reentry": {
+      "continue_turns": 2,
+      "material_progress_at_second_owner_command": 1,
+      "no_material_progress_violation": false,
+      "multi_continue_violation": "OPS3.MULTI_CONTINUE_UNRECORDED",
+      "product_completion_valid": true
     }
   }
 }
