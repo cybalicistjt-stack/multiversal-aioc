@@ -195,3 +195,20 @@ The delivered `smb08:first-party-core` pack contains 40 original reusable defini
 Fresh roadmap authority schema `1.0.4` requires only completed SMB-08 for SMB-09. SMB-09 — Complete First-Party Campaign — is therefore selected_not_started with no implementation authority. Its normal successor remains SAA-01, not SMB-10 directly.
 
 SMB-08 received three owner `Continue` commands in the same intended execution sequence, including two prompts dropped from the visible chat surface. Product completion remains valid; the terminal checkpoint records `OPS3.MULTI_CONTINUE_UNRECORDED`. Recovery consumed durable exact-head/application/closeout/lane evidence without replaying completed phases, closed obsolete duplicate PR #714 without merge, repaired the stale post-closeout GPR lane write back to canonical SMB-09 selected_not_started, and did not govern-start SMB-09.
+
+
+## SMB-09 completed — Complete First-Party Campaign
+
+SMB-09 completed_verified with application contract `SMB-09.1`. Causal RED run `35626079098` at `eb06763b50a05e0e57f1df34c32043846ecdc720` passed repository health but failed all nine focused acceptance calls on Linux and hosted Windows because the Campaign package, audit, replay and proof surfaces were absent. Exact-head GREEN run `35626411468` at `d8908cabe0124f9fcf12bbbf5bbd4908cc3d6a07` passed repository health, Linux, hosted Windows, focused Campaign tests, source invariants, TypeScript typecheck and deterministic cross-platform comparison. PR #715 published that exact validated head as application main `6b99d4038405d06fa4cb32d75c36945bcb96fe66`.
+
+The delivered first-party Campaign, **The Harrowfen Signal**, is an original four-act, twelve-stage Harrowfen Reach campaign with complete Player and GM guidance, three deterministic replay routes/endings, explicit owner-domain transitions, all twelve required major-system coverage groups, sealed SMB-08 content references and ARI-only presentation-resource references. It is not a synthetic QA corpus, requires no developer intervention, embeds no media bytes, creates no replacement gameplay/Campaign/state ledger and performs no canonical owner mutation.
+
+SMB-09 completed under one owner `Continue` and is execution-conforming.
+
+### Normalized successor after SMB-09
+
+Fresh `ROADMAP_DEPENDENCY_GRAPH.json` schema `1.0.4` supersedes the older unsplit local wording at this boundary. `SMB10A` hard-requires `SMB09`; SAA start-requires `SMB10A`. The current normalized order is therefore:
+
+`SMB-09 → SMB10A (Core Player/GM/product UX) → SAA-01..20 → SMB10B (final Creator/SAA integration)`.
+
+Accordingly, SMB10A is selected_not_started with no implementation authority. SAA-01, SMB10B and later SMB work remain unauthorized until their fresh gates are satisfied.
