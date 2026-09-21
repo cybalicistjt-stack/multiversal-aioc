@@ -9,11 +9,11 @@
   "attempt_id": "MSWI-07-attempt-001",
   "title": "Biological Components, Harvest, Embodied Modification & Lineage Integration",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/mswi-07-biological-lineage-integration",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "MSWI-06",
   "required_predecessor": {
     "work_item": "MSWI-06",
@@ -43,21 +43,109 @@
     "MSWI-14 and later MSWI tranches remain unauthorized until canonical MSWI-07 closeout."
   ],
   "strict_successor": "MSWI-14",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for the public MSWI-07 biological component/harvest/lineage/embodied-modification seam, then implement only bounded source-authored component, harvest provenance, compatibility, lineage, lifecycle and explicit-consequence behavior.",
+  "active_substep": "completed_verified",
+  "next_action": "MSWI-07 is completed_verified. MSWI-14 — Systemic Site/Scene Variant, Template & Promotion Integration — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started MSWI-07 from completed_verified MSWI-06."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "MSWI-07 causal RED run 35615499069 at f8def4f0951f3a1dba7517b3c5678124b160dcc8 passed selector/repository health but failed all 11 focused acceptance calls on Linux and hosted Windows because the biological-lineage production entry points were absent. Exact-head GREEN run 35615795009 at a705de2c91a294c3c242f81c5a75bc1ec94216af passed selector/repository health, Linux, hosted Windows, focused tests, source invariants, TypeScript typecheck and deterministic cross-platform comparison. PR 709 published that exact validated head as application main faed0cf97638182ad9c43736aee13d5312214bff."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MSWI-07 biological components, harvest, embodied modification and lineage integration is durably published; canonical closeout selects MSWI-14 without starting it."
+    }
+  },
+  "execution_conformance": {
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED"
+    ],
+    "product_completion_valid": true,
+    "note": "MSWI-07 product completion remains valid. A second owner Continue was issued while the same attempt was still active; recovery resumed from durable exact-head, application and lane-state evidence without replaying completed phases."
+  },
+  "acceptance_evidence": {
+    "governed_start": {
+      "aioc_pr": 1599,
+      "validation_run": 35615216337,
+      "merge_sha": "58100c60484a261d14c8a59be01439f31da88750",
+      "lane_start_revision": 170
+    },
+    "causal_red": {
+      "application_pr": 709,
+      "head": "f8def4f0951f3a1dba7517b3c5678124b160dcc8",
+      "validation_run": 35615499069,
+      "conclusion": "failure",
+      "selector_repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "signature": "All 11 focused MSWI-07 acceptance calls reached absent biological component/harvest/lineage/modification entry points while runner preflight and toolchain succeeded."
+    },
+    "green": {
+      "application_pr": 709,
+      "validated_head": "a705de2c91a294c3c242f81c5a75bc1ec94216af",
+      "validation_run": 35615795009,
+      "conclusion": "success",
+      "selector_repository_health": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "faed0cf97638182ad9c43736aee13d5312214bff",
+      "lane_prequeue_revision": 171,
+      "lane_publication_revision": 172
+    },
+    "delivered": {
+      "schema": "MSWI-07.1",
+      "source_anatomy_authority_preserved": true,
+      "canonical_anatomy_state_copied": false,
+      "absent_components_invented": false,
+      "owner_backed_component_condition_availability": true,
+      "permission_filtering_before_component_counts": true,
+      "harvest_yield_invented": false,
+      "authored_harvest_rule_required": true,
+      "conservation_safe_policy_preserved": true,
+      "donor_lineage_preserved": true,
+      "downstream_runtime_reimplemented": false,
+      "explicit_body_location_compatibility_required": true,
+      "compatibility_inferred": false,
+      "grant_remove_retain_reverse_history_preserved": true,
+      "event_history_deleted": false,
+      "donor_effects_invented": false,
+      "explicit_identity_memory_psychological_social_rules_only": true,
+      "canonical_owner_mutation_performed": false,
+      "semantic_text_available": true,
+      "keyboard_equivalent": true,
+      "provider_off_local": true,
+      "optional_ai_required": false,
+      "paid_cloud_required": false
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MSWI-14",
+      "interstitial_override": "none",
+      "reason": "Fresh roadmap authority supplies no internal MSWI interstitial override. The reduced MSWI strict order selects MSWI-14 after completed MSWI-07."
+    }
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "causal_red": "completed",
+    "biological_binding_definition": "completed",
+    "component_projection": "completed",
+    "component_resolution": "completed",
+    "harvest_binding": "completed",
+    "downstream_material_adapter": "completed",
+    "embodied_modification_binding": "completed",
+    "explicit_consequence_resolution": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
   }
 }
