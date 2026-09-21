@@ -180,3 +180,12 @@ Exact-head GREEN run `35592199748` at `394a942f5481227a567a62392fdf7e21eaa14ce1`
 The delivered opening seam explicitly separates intrinsic spatial law/geometry, optional runtime substrate/discretization and projection/presentation. Projection choice/coordinates do not alter canonical semantic fingerprints; canonical identity remains owner-backed rather than coordinate-backed. Profiles declare finite, quotient, unbounded or procedurally-addressed extent semantics, and unbounded/procedural spaces require lazy bounded neighborhood addressability rather than exhaustive enumeration. Quotient extent is explicit authored identification semantics and is not inferred as a portal shortcut.
 
 The nine-tranche family reduction remains unchanged. Fresh DAG schema `1.0.4` supplies no interstitial override. `MSLR-03` is selected_not_started with the owner-approved quotient-identification, orientation-reversing connection, local walker/frame and bounded lazy-neighborhood refinements. `MSLR-04` remains unauthorized.
+
+
+## MSLR-03 completed — Dynamic Topology State & Governed Spatial Operations
+
+MSLR-03 completed_verified with application contract `MSLR-03.1`. Causal RED run `35593814865` at `d22ab9edf6c2459b88e55f7f2bee355b7ba5b6e6` failed all 10 focused tests because the production seam was absent. Exact-head GREEN run `35593990372` at `2194202e94c30a1da22210cd5ec6763080ad7c9c` passed repository health, Linux, hosted Windows, invariants, TypeScript typecheck, focused tests and deterministic comparison. PR #697 published that exact validated head as application main `86aeb0537ea1f931e655110781534dfa250345cc`.
+
+The delivered runtime supports preview/commit revalidation, typed topology operations through GPR/Action/Event, explicit quotient identifications without Portal-state substitution, authored orientation-reversing identifications with local-frame transport, bounded lazy-neighborhood evaluation for unbounded/procedural spaces, deterministic replay, owner-classified inverse/compensation recovery and stale mutation rejection. Canonical World/Location identity is never rewritten and committed Event history is never deleted by undo.
+
+Fresh DAG schema `1.0.4` supplies no interstitial override. Amended `MSLR-04` is selected_not_started with observer local-frame/orientation/discovered-identification knowledge responsibilities; `MSLR-07` remains unauthorized.
