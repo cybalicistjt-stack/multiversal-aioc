@@ -9,11 +9,11 @@
   "attempt_id": "MSWI-14-attempt-001",
   "title": "Systemic Site/Scene Variant, Template & Promotion Integration",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/mswi-14-site-variant-template-promotion",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "MSWI-07",
   "required_predecessor": {
     "work_item": "MSWI-07",
@@ -43,21 +43,107 @@
     "MSWI-18 remains unauthorized until canonical MSWI-14 closeout."
   ],
   "strict_successor": "MSWI-18",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for the public MSWI-14 candidate/variant/promotion/template seam, then implement only exact procedural references, stable site identity, owner-backed variants, presentation handoffs, promotion authorization/receipt, and versioned Campaign template bindings.",
+  "active_substep": "completed_verified",
+  "next_action": "MSWI-14 is completed_verified. MSWI-18 — Systemic Coverage Diagnostics, Golden Proof & SMB-08 Handoff — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started MSWI-14 from completed_verified MSWI-07."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "MSWI-14 causal RED run 35617526098 at 3481c8fe0e82c7e3ef6628030f248ca2b91a1c1a passed selector/repository health but failed all 10 focused acceptance calls on Linux and hosted Windows because the site/variant/promotion/template production entry points were absent. Exact-head GREEN run 35617822017 at c75e262c6a02acb31930805fca5d403d7b644993 passed selector/repository health, Linux, hosted Windows, focused tests, source invariants, TypeScript typecheck and deterministic cross-platform comparison. PR 710 published that exact validated head as application main 0c7d150d9ca1a4055bf4469281b1981c999c254e."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MSWI-14 systemic site/scene variant, template and promotion integration is durably published; canonical closeout selects MSWI-18 without starting it."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "note": "MSWI-14 completed under one owner Continue with causal RED, one bounded production implementation, exact-head cross-platform GREEN, publication and atomic closeout."
+  },
+  "acceptance_evidence": {
+    "governed_start": {
+      "aioc_pr": 1601,
+      "validation_run": 35617287413,
+      "merge_sha": "cff51e4ab83ce10f711de57c70126f1c1399b77d",
+      "lane_start_revision": 174
+    },
+    "causal_red": {
+      "application_pr": 710,
+      "head": "3481c8fe0e82c7e3ef6628030f248ca2b91a1c1a",
+      "validation_run": 35617526098,
+      "conclusion": "failure",
+      "selector_repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "signature": "All 10 focused MSWI-14 acceptance calls reached absent site/variant/promotion/template entry points while runner preflight and toolchain succeeded."
+    },
+    "green": {
+      "application_pr": 710,
+      "validated_head": "c75e262c6a02acb31930805fca5d403d7b644993",
+      "validation_run": 35617822017,
+      "conclusion": "success",
+      "selector_repository_health": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "0c7d150d9ca1a4055bf4469281b1981c999c254e",
+      "lane_prequeue_revision": 175,
+      "lane_publication_revision": 176
+    },
+    "delivered": {
+      "schema": "MSWI-14.1",
+      "exact_pca_recipe_seed_cache_references": true,
+      "generic_procedural_infrastructure_reimplemented": false,
+      "stable_site_identity_preserved": true,
+      "owner_facts_inferred": false,
+      "current_historical_alternate_variants": true,
+      "presentation_owner_authority_preserved": true,
+      "canonical_location_authority_transferred": false,
+      "ephemeral_proposed_persistent_distinct": true,
+      "generation_success_promotes_campaign_truth": false,
+      "explicit_promotion_authorization_required": true,
+      "promotion_receipt_persisted": true,
+      "exact_owner_versions_required_for_promotion": true,
+      "runtime_fork_created": false,
+      "genre_authority_created": false,
+      "permission_filtering_before_variant_counts": true,
+      "hidden_metadata_leak": false,
+      "deterministic": true,
+      "canonical_owner_mutation_performed": false,
+      "semantic_text_available": true,
+      "keyboard_equivalent": true,
+      "provider_off_local": true,
+      "optional_ai_required": false,
+      "paid_cloud_required": false
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MSWI-18",
+      "interstitial_override": "none",
+      "reason": "Fresh roadmap authority supplies no internal MSWI interstitial override. The reduced MSWI strict order selects terminal MSWI-18 after completed MSWI-14."
+    }
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "causal_red": "completed",
+    "systemic_site_candidate": "completed",
+    "owner_backed_variant_projection": "completed",
+    "presentation_handoffs": "completed",
+    "explicit_promotion_receipt": "completed",
+    "transformation_campaign_template_binding": "completed",
+    "permission_accessibility_provider_off": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
   }
 }
