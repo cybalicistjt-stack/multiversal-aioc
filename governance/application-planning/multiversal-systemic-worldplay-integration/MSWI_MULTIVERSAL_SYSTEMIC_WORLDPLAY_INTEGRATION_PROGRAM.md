@@ -1,7 +1,7 @@
 # MSWI — Multiversal Systemic Worldplay Integration
 
 **Program ID:** MSWI  
-**Status:** ACTIVE — MSWI-03 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MSWI-04 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Owner:** John Brandon Turner  
 **Approved:** 2026-09-15  
 **PDCP reduction:** 2026-09-16 — baseline 18 tranches → 7 surviving implementation/proof tranches  
@@ -275,3 +275,12 @@ MSWI-01 completed_verified with application contract `MSWI-01.1`. Causal RED run
 The delivered opening seam provides reusable transformation profiles, exact owner/version integration bindings, read-only permission-filtered projections, threshold/milestone attribution, explicit stale-state detection, uncertainty-preserving owner values, MSLR-18 typed handoff consumption, migration/version safety and semantic/keyboard/provider-off inspection. It copies no mutable canonical World, Environment, Organization, Event or spatial-law state and executes no consequence-route commit runtime.
 
 Fresh roadmap authority schema `1.0.4` supplies no interstitial override. Reduced strict order selects `MSWI-03` — Cross-System Consequence Routing, Recovery & Domain Adapter Runtime — as selected_not_started. `MSWI-04` remains unauthorized.
+
+
+## MSWI-03 completed — Cross-System Consequence Routing, Recovery & Domain Adapter Runtime
+
+MSWI-03 completed_verified with application contract `MSWI-03.1`. Causal RED run `35605234821` at `c3aa124edece14caaef8c06a4b1effdd7ab62cc9` passed selector/repository health but failed Linux and hosted Windows because the bounded routing/recovery production entry points were absent. The initial implementation head passed all 12 focused tests and invariants but exposed a test-fixture-only TypeScript inference defect; that fixture typing was repaired without changing product behavior. Exact-head GREEN run `35605829021` at `ce2354f2483c8f8891c3bef6497526455f908968` passed selector/repository health, Linux, hosted Windows and deterministic cross-platform comparison. PR #706 published that exact validated head as application main `4c2b9246df0a18fa9d0024bb4e93365d061c8dad`.
+
+The delivered runtime provides exact-version consequence routes, permission-filtered dry-run envelopes, independently authoritative target-owner validation/commit outcomes, durable propagation receipts, explicit depth/deduplication/cycle controls, unresolved owner-conflict handling, distinct inverse/compensation/restoration/irreversible recovery classes, Campaign-time Project/Time delayed follow-up and residual adapters for accepted social/profession/pursuit/performance/grand-Project results. It creates no target-owner or Project ledger, never grants authority merely because a route applies, never deletes committed Event history, and remains semantic/keyboard/provider-off with optional AI nonauthoritative.
+
+Fresh roadmap authority schema `1.0.4` supplies no interstitial override. Reduced strict order selects `MSWI-04` — Ecology Succession, Food-Web, Migration & Population-Band Runtime — as selected_not_started. `MSWI-06` remains unauthorized.
