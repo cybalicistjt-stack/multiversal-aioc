@@ -9,11 +9,11 @@
   "attempt_id": "SAA-07-attempt-001",
   "title": "Maps, Tilesets & Scene Background Projection",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/saa-07-maps-tilesets-scene-background-projection",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "SAA-06",
   "required_predecessor": {
     "work_item": "SAA-06",
@@ -40,8 +40,8 @@
     "No export/share/publication or final Creator integration authority is granted."
   ],
   "strict_successor": "SAA-08",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for governed map/tile/Scene background references, provenance/version/rights preservation, bounded crop/viewport presentation state, fail-closed unavailable/incompatible sources, SAA-02/SAA-03 composition binding and accessible selection; then implement only SAA-07.",
+  "active_substep": "completed_verified",
+  "next_action": "SAA-07 is completed_verified. SAA-08 — Props, Equipment, Effects & Foreground Composition — is selected_not_started without implementation authority.",
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
@@ -49,20 +49,86 @@
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started SAA-07 after verified SAA-06 closeout."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "SAA-07 causal RED head deff9e0b50e4a3c519fc73f5801670096a717c46 passed repository health and produced the intended Linux feature failure with the production module absent; obsolete RED Windows was cancelled after branch advance. Exact implementation head 18daee75a5b19f6e04937acd6d51aa8f727fa137 passed Linux, Windows and deterministic comparison in run 35666060193 and PR #725 published as 1a72ccfa7029441aa6811f06dc0393470d2f0caf."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "SAA-07 completed_verified on exact application head 18daee75a5b19f6e04937acd6d51aa8f727fa137, validation run 35666060193, merge 1a72ccfa7029441aa6811f06dc0393470d2f0caf; SAA-08 selected_not_started."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true
+  },
+  "implementation_evidence": {
+    "governed_start": {
+      "aioc_pr": 1633,
+      "validation_run": 35665693499,
+      "merge_sha": "f543c12d79790073cd10e3855563684b0e3e1e00",
+      "lane_start_revision": 230
+    },
+    "causal_red": {
+      "application_pr": 725,
+      "head_sha": "deff9e0b50e4a3c519fc73f5801670096a717c46",
+      "validation_run": 35665980311,
+      "run_conclusion": "cancelled_after_branch_advance",
+      "repository_health": "success",
+      "linux": "failure",
+      "windows": "cancelled",
+      "deterministic_comparison": "cancelled",
+      "cause": "SAA-07 production module absent on RED head; Linux reached the feature gate before the obsolete run was cancelled."
+    },
+    "green": {
+      "application_pr": 725,
+      "validated_head": "18daee75a5b19f6e04937acd6d51aa8f727fa137",
+      "validation_run": 35666060193,
+      "conclusion": "success",
+      "application_merge_sha": "1a72ccfa7029441aa6811f06dc0393470d2f0caf",
+      "lane_prequeue_revision": 231,
+      "lane_publication_revision": 232
+    },
+    "delivered": {
+      "schema": "SAA-07.1",
+      "map_asset_authority": "MAI-02",
+      "canonical_scene_authority": "Scene/Tabletop",
+      "resource_authority": "ARI",
+      "source_version_preserved": true,
+      "provenance_reference_preserved": true,
+      "rights_capability_reference_preserved": true,
+      "bounded_crop_projection": true,
+      "viewport_presentation_only": true,
+      "stale_source_fail_closed": true,
+      "unavailable_source_fail_closed": true,
+      "incompatible_source_fail_closed": true,
+      "rights_blocked_fail_closed": true,
+      "silent_fallback_applied": false,
+      "fabricated_background": false,
+      "panel_geometry_preserved": true,
+      "composition_bounds_preserved": true,
+      "presentation_binding_only": true,
+      "parallel_map_ledger_created": false,
+      "source_bytes_copied": false,
+      "canonical_map_geometry_mutation_performed": false,
+      "tile_topology_mutation_performed": false,
+      "scene_placement_mutation_performed": false,
+      "ari_mutation_performed": false,
+      "map_truth_mutation_performed": false,
+      "scene_truth_mutation_performed": false,
+      "keyboard_text_selection_available": true,
+      "drag_required": false,
+      "props_equipment_effects_foreground_composition_implemented": false,
+      "provider_off_local": true,
+      "optional_ai_required": false,
+      "paid_cloud_required": false
+    }
   }
 }

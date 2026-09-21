@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-08",
+  "attempt_id": "SAA-08-attempt-001",
+  "title": "Props, Equipment, Effects & Foreground Composition",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-07",
+  "required_predecessor": {
+    "work_item": "SAA-07",
+    "status": "completed_verified",
+    "application_merge_sha": "1a72ccfa7029441aa6811f06dc0393470d2f0caf",
+    "schema": "SAA-07.1"
+  },
+  "objective": "Compose ARI/PAPT props, equipment, items, effects, overlays and foreground elements as presentation-only SAA references, including attachment hints that never mutate canonical equipment ownership, actor state, Scene state, source resources or owner-domain truth.",
+  "acceptance": [
+    "Foreground composition consumes governed ARI/PAPT resource references for props, equipment, items, effects, overlays and other foreground elements rather than copying canonical owner truth or source bytes.",
+    "Each composed foreground element preserves stable resource identity plus provenance, rights/use-capability and applicable production-primitive references.",
+    "Attachment hints are explicitly presentation-only and cannot create or mutate Character/NPC/Creature equipment ownership, inventory, anatomy, mechanics, live state or Scene placement.",
+    "Unsupported, unavailable, stale, rights-blocked or incompatible resources and attachment hints fail closed with explicit state rather than fabricating coverage.",
+    "Foreground elements bind into SAA-03 composition using stable layer identity, z-order and panel bounds without rewriting sealed SAA-01..07 identities or geometry.",
+    "Keyboard/textual equivalents can inspect, select, attach and compose every blocking foreground operation without requiring drag gestures.",
+    "Provider-off local operation is supported for locally available governed resources; optional AI and paid cloud are not required.",
+    "SAA-09 and later lettering/export/share/publication/SMB10B behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..07 predecessor contracts remain sealed.",
+    "ARI retains resource identity/provenance/rights authority; PAPT/PCA retain production-primitive authority; Character/NPC/Creature/Inventory/Equipment owner domains retain canonical ownership/mechanics/live-state authority; Scene retains canonical placement truth.",
+    "SAA-08 composes presentation-only foreground references and attachment hints; it may not create canonical equipment ownership, inventory state, actor mutation or Scene mutation.",
+    "No source bytes copied into a parallel SAA foreground library by default and no silent fallback for unsupported resources.",
+    "No export/share/publication or final Creator integration authority is granted."
+  ],
+  "strict_successor": "SAA-09",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-08.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
