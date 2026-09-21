@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 323,
+  "state_revision": 324,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -21,7 +21,7 @@
       "gpr": {
         "selected_work_item": "MERA-05",
         "attempt_id": "MERA-05-attempt-001",
-        "state": "selected_not_started"
+        "state": "in_progress"
       },
       "mrcs": {
         "selected_work_item": "MRCS-21",
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "MERA-05",
       "attempt_id": "MERA-05-attempt-001",
       "checkpoint_path": "governance/ai/work-state/MERA-05-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "MERA-03 completed_verified after causal RED run 35556956815 at 3705158ef40abc1c832d4bb5aa3b14517f9c4c51, exact-head GREEN run 35557070342 at 0236803753934d6516b9800bf3cb66c82736ca3b, and protected-main publication of PR 676 as a5c31694b58e010241e636be76aaf0d97b007fbf. Fresh DAG reconciliation: MBES-01 milestone MERA-03 + MRCS-14 is satisfied, but MBES hard_requires MERA is not; MBES backlog activation_after remains MERA-24. Reduced MERA strict order therefore selects MERA-05.",
+      "implementation_branch": "work/mera-05-diagnostics-calibration-acceptance",
+      "implementation_authority": true,
+      "activation_rule": "Owner Continue governed-started MERA-05 from completed_verified MERA-03. Scope is historical MERA-05/09/22 only: inspection evidence, fault isolation, calibration/tuning/alignment, bounded test/shakedown/acceptance evidence and engineering interpretation of PCA-12/Packet-08 analyses.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "MERA-05 is selected_not_started. On the next Continue, start only MERA-05 diagnostics/calibration/test/acceptance runtime. MBES-01 remains blocked until MERA completes at MERA-24.",
+  "next_project_action": "Execute MERA-05 only through causal RED, bounded implementation, exact-head publication, closeout and MERA-06 selection. MBES remains blocked until MERA-24.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
