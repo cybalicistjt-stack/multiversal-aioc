@@ -1,7 +1,7 @@
 # MSWI — Multiversal Systemic Worldplay Integration
 
 **Program ID:** MSWI  
-**Status:** ACTIVE — MSWI-06 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MSWI-07 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Owner:** John Brandon Turner  
 **Approved:** 2026-09-15  
 **PDCP reduction:** 2026-09-16 — baseline 18 tranches → 7 surviving implementation/proof tranches  
@@ -293,3 +293,14 @@ MSWI-04 completed_verified with application contract `MSWI-04.1`. Causal RED run
 The delivered runtime references MNCS/World/Environment owner facts without copying canonical ecology state; preserves exact/range/band/distribution/unknown population semantics; executes only authored succession, food-web, migration and resource-pressure rules; leaves absent carrying-capacity or invasive-species mechanics unresolved; records extirpation/extinction/recovery/restocking/conservation transitions with exact attribution; preserves Packet-06 aggregate/cohort/individual identity boundaries; and uses Campaign time rather than wall clock. Permission filtering precedes population counts and blocking workflows remain semantic, keyboard-capable and provider-off.
 
 Fresh roadmap authority schema `1.0.4` supplies no interstitial override. Reduced strict order selects `MSWI-06` — Composite Entity Role Binding Runtime — as selected_not_started. `MSWI-07` remains unauthorized.
+
+
+## MSWI-06 completed — Composite Entity Role Binding Runtime
+
+MSWI-06 completed_verified with application contract `MSWI-06.1`. Causal RED run `35609957779` at `899154f3e15ae91e075594b173deb1c7396828d0` passed selector/repository health but failed all 10 focused acceptance calls on Linux and hosted Windows because the composite-role production entry points were absent. Exact-head GREEN run `35610269065` at `0c14060031951a88201fad5ceb962ae49f3c79b5` passed repository health, Linux, hosted Windows, focused tests, source invariants, TypeScript typecheck and deterministic cross-platform comparison. PR #708 published that exact validated head as application main `e36469c6ef6ad4e5bab682a9f5f963e912b3c36a`.
+
+The delivered runtime preserves one stable entity identity across exact-version owner-role bindings, keeps ownership/control/custody distinct, requires explicit compatibility, references shared state without copying role-local owner state, filters roles before counts, and preserves immutable history during role activation/removal/transition. It creates no second owner ledger and never transfers canonical mutation authority merely because a role is bound.
+
+This attempt received two owner `Continue` commands while active. Product completion remains valid; the terminal checkpoint records `OPS3.MULTI_CONTINUE_UNRECORDED` and recovery consumed durable exact-head/lane evidence without replaying completed work.
+
+Fresh roadmap authority schema `1.0.4` supplies no interstitial override. Reduced strict order selects `MSWI-07` — Biological Components, Harvest, Embodied Modification & Lineage Integration — as selected_not_started. `MSWI-14` remains unauthorized.
