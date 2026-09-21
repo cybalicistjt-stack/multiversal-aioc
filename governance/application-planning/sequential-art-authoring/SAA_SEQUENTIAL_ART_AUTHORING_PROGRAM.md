@@ -2,10 +2,10 @@
 
 **Program ID:** SAA  
 **Program name:** Sequential Art Authoring  
-**Version:** 0.1.0  
-**Status:** OWNER-APPROVED — PLANNED INTERSTITIAL; NOT STARTED  
-**Activation:** after SMB-09  
-**Successor:** SMB-10  
+**Version:** 0.2.0  
+**Status:** OWNER-APPROVED — IN PROGRESS; SAA-01 COMPLETED_VERIFIED; SAA-02 SELECTED_NOT_STARTED  
+**Activation:** after SMB10A under current normalized roadmap authority  
+**Successor:** SMB10B after SAA-30  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-07
 
@@ -23,8 +23,8 @@ SAA does not replace Character appearance truth, Scene truth, MAI geometry/map a
 - Pixel-style generated Character/creature/item/environment/tile assets are first-class authoring inputs when available.
 - Imported maps/tilesets may be used directly as panel backgrounds or as composition material where their rights permit.
 - Existing Scene compositions may be projected to a comic panel without making the comic the authoritative Scene state.
-- Reusable cast placements, pose/expression sets, scene/shot presets and panel templates provide the fast dress-up/staging workflow associated with Gacha-style comic creation.
-- Static comic export and digital comic presentation are separate capabilities. Digital projects may optionally bind AAI cues; static outputs simply omit audio.
+- Reusable cast placements, identity-consistent pose/expression sets, scene/shot/focus presets and saveable panel templates provide the fast dress-up/staging workflow associated with Gacha-style comic creation.
+- Static comic export, print-oriented output, responsive webtoon output and digital multimedia presentation are separate capabilities. Digital projects may optionally bind AAI/media cues; static outputs simply omit multimedia.
 - Rights filtering occurs before an asset is offered for a requested transform/export/share operation.
 
 ## Tranche sizing rule
@@ -90,8 +90,43 @@ Define dependency manifests, resource references/embedded-permitted derivatives,
 ### SAA-19 — Advisory Authoring Assistance
 Permit optional AI or deterministic assistance for shot/layout/dialogue alternatives and asset discovery through existing proposal-only authority. Suggestions never silently alter authored work or hidden/canonical state.
 
-### SAA-20 — Integrated Desktop/Mobile Golden Comic Proof
-Prove a complete comic using a mix of imported/user-owned, native and generated assets; Character actors; map/tile background; dialogue; derivative registration; rights filtering; accessibility projection; save/recovery and static export.
+### SAA-20 — Core Integrated Desktop/Mobile Golden Comic Proof
+Prove the original core SAA authoring path end to end across desktop/mobile before the professional/collaborative extension: imported/user-owned, native and generated assets; Character actors; map/tile background; dialogue; derivative registration; rights filtering; accessibility projection; save/recovery and static export. This is a core milestone, not terminal SAA closure.
+
+
+### SAA-21 — Real-Time Collaboration, Review & Multi-Device Sync
+Provide authorized coauthoring over the same comic project with role-aware edit permissions, page/panel/layer presence, review comments, explicit conflict handling, multi-device continuation and offline/reconnect recovery. Collaboration may coordinate edits but never creates a second canonical asset/provenance or source-domain ledger.
+
+### SAA-22 — Advanced Lettering, Balloon Styling & Story Text Editor
+Extend the basic SAA-09/10 text contract with speech/thought/shout/whisper and custom balloon styles, tail/border/fill controls, font fallback, kerning/spacing/alignment, batch story-dialogue editing, search/replace and speech-to-text authoring input while preserving text as editable semantic state.
+
+### SAA-23 — Pro Raster/Vector Drawing, Masks & Layer Interop
+Provide or consume governed drawing-layer capabilities for raster and editable vector strokes, pressure-aware brushes, selections, masks, clipping, layer folders/comps and non-destructive filters. Prefer PAPT/other existing studio owners where they already own the primitive; SAA owns comic-project composition semantics, not a duplicate renderer.
+
+### SAA-24 — Comic Finishing Materials, Tones, Effect Lines, Rulers & Perspective
+Expose ARI-governed comic materials such as brushes, fonts, tones/halftones, pattern/background materials and decoration stamps plus speed/action lines, perspective/symmetry/radial/snap guides and reusable effect presets. Material bytes/provenance remain ARI-owned.
+
+### SAA-25 — 3D Reference, Pose/Scene Staging & Line Extraction
+Allow governed 3D/Scene/Character reference staging for camera, pose, hand/head/body reference, props and backgrounds, plus non-authoritative image/3D-to-line or tone proposals where existing renderers support them. Reference staging never becomes Character/Scene truth.
+
+### SAA-26 — Webtoon & Responsive Scroll Authoring Preview
+Support long-scroll/webtoon project grammar, insert/remove vertical space, responsive device/smartphone preview, scroll reading-order proof and governed split/single-file export profiles without weakening ordinary page-comic identity.
+
+### SAA-27 — Print Prepress, CMYK & Bound-Book Preview
+Add print-specific output profiles: trim/bleed/safe marks, page numbering/spreads, color-space/CMYK preview or conversion through approved renderers, printer-facing checks and a local bound-book/spread preview. This does not authorize printing purchases or commercial publication.
+
+### SAA-28 — Multimedia/Interactive Comic, Localization & Accessible Read-Aloud
+Extend digital comics with optional AAI narration/cues, permitted video/animated media, hyperlinks/hotspots, captions/transcripts, speech-to-text/text-to-speech/read-aloud, translation/localization projections and accessibility metadata. Static export remains valid when multimedia is absent, and no network/provider is mandatory.
+
+### SAA-29 — Industry Interchange & Layer-Aware Roundtrip
+Add capability-filtered import/export/roundtrip for appropriate open/standard or independently supported formats, including layer-aware raster interchange, PDF/e-book style outputs where applicable and preservation of editable text/layer semantics when the format supports them. Private/proprietary formats require independently lawful support; no undocumented reverse-engineered dependency is assumed.
+
+### SAA-30 — Expanded Professional/Collaborative Golden Comic Proof
+Prove the full SAA-01..29 family in one rights-safe, provider-off-capable end-to-end project spanning page and webtoon presentation, reusable templates, actors/poses, professional lettering, materials/finishing, drawing-layer interop, collaboration/review, multi-device recovery, multimedia/accessibility/localization, print preview, industry interchange and deterministic recovery. SAA-30 is the terminal SAA golden gate consumed by SMB10B.
+
+## Competitive capability expansion
+
+SAA deliberately includes the feature classes demonstrated by Canva Comic Strip Maker, Pixton, Book Creator, Clip Studio Paint and MediBang Paint where they are relevant to Multiversal sequential-art creation. The binding capability map is maintained in `SAA_COMPETITIVE_CAPABILITY_EXPANSION_2026-09-21.md`. The comparison is clean-room and feature-level only: it does not authorize copying proprietary code, assets, protected expression, undocumented protocols or private save formats.
 
 ## Dependencies and relationships
 
@@ -110,4 +145,4 @@ Planning SAA does not authorize application implementation, public/community pub
 
 ## Completion standard
 
-SAA completes only when SAA-01..20 are `completed_verified`, users can author and recover an end-to-end comic project without developer tooling, resource/provenance identity remains intact, third-party rights are respected at use/export boundaries, accessibility-equivalent text/reading state exists, and SMB-10/11 can consume the finished authoring/package contracts instead of rebuilding them.
+SAA completes only when SAA-01..30 are `completed_verified`, users can author and recover an end-to-end comic project without developer tooling, resource/provenance identity remains intact, third-party rights are respected at use/export boundaries, accessibility-equivalent text/reading state exists, and SMB10B/SMB-11 can consume the finished authoring/package contracts instead of rebuilding them.
