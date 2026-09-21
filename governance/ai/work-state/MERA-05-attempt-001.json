@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MERA",
+  "lane": "gpr",
+  "track": "multiversal-engineering-refit-assembly",
+  "source_program": "MERA",
+  "work_item_id": "MERA-05",
+  "attempt_id": "MERA-05-attempt-001",
+  "title": "Diagnostics, Calibration, Test & Acceptance Runtime",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MERA-03",
+  "required_predecessor": {
+    "work_item": "MERA-03",
+    "status": "completed_verified",
+    "application_merge_sha": "a5c31694b58e010241e636be76aaf0d97b007fbf",
+    "schema": "MERA-03.1"
+  },
+  "objective": "Implement engineering-specific inspection evidence, fault isolation, calibration/tuning/alignment, bounded test/shakedown/acceptance evidence, and MERA interpretation of PCA-12/Packet-08 analyses without creating a generic solver, hidden-truth oracle, or owner-state mutation path.",
+  "acceptance": [
+    "Observed symptom evidence remains distinct from suspected, isolated and identified fault state.",
+    "Unavailable evidence cannot reveal hidden fault truth through diagnostics or errors.",
+    "Calibration/tuning changes only governed adjustable state and cannot invent unsupported capability.",
+    "PCA-12/Packet-08 solver or simulation output remains noncanonical evidence about a declared model.",
+    "UNKNOWN, timeout and unsupported analysis dimensions remain inconclusive rather than pass/fail.",
+    "Successful repair evidence does not itself prove acceptance; required acceptance testing remains separately governed.",
+    "Failed acceptance preserves prior successful owner receipts/history.",
+    "Owner-defined certification requirements are enforced without inventing universal real-world engineering standards.",
+    "Blocking diagnostics/test flows remain semantic/nonvisual and provider-off."
+  ],
+  "boundaries": [
+    "MERA-01 and MERA-03 remain sealed predecessors.",
+    "PCA-12/Packet-08 retain generic solver/formal-analysis machinery.",
+    "D17/PPIA-03 retain live Asset state; MIB-12 retains repair transaction authority.",
+    "MRCS retains reusable engineering/fault/test/calibration definition authority.",
+    "Packet-07 retains generic preview/explanation/recovery semantics.",
+    "MERA-06+ disassembly, repair, network/failure and domain adapter work remains unauthorized.",
+    "MBES-01 rotation milestone is satisfied but MBES start remains blocked until the MERA program completes because ROADMAP_DEPENDENCY_GRAPH hard_requires MERA and MBES backlog activation_after MERA-24."
+  ],
+  "strict_successor": "MERA-06",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On the next owner Continue, start only MERA-05. Preload MERA-01/03, the diagnostic/calibration/test portions of the MERA family closure, PCA-12/Packet-08 analysis seams, Packet-07 explanation/recovery semantics, and direct owner contracts only.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
