@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-04",
+  "attempt_id": "SAA-04-attempt-001",
+  "title": "ARI Asset Palette & Capability Filtering",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-03",
+  "required_predecessor": {
+    "work_item": "SAA-03",
+    "status": "completed_verified",
+    "application_merge_sha": "966d3656d6bdb1c9a04cb4c443def3901fb3639c",
+    "schema": "SAA-03.1"
+  },
+  "objective": "Expose one searchable SAA asset palette over ARI resources with type, collection, rights-capability and requested-operation filtering while preserving ARI as the sole reusable resource/provenance authority and without starting Character actor projection or later export/share behavior.",
+  "acceptance": [
+    "The palette queries ARI-backed resource references rather than duplicating resource bytes or creating a comic-only asset catalog.",
+    "Search and filters cover at least resource type, collection and text/query terms with deterministic result ordering.",
+    "Rights/use capability filtering occurs before a resource is offered for the requested transform/use operation.",
+    "Unsupported or forbidden requested operations fail closed and remain visible as explicit capability state rather than silently exposing the asset.",
+    "Palette results preserve ARI resource identity, provenance reference and rights-capability reference.",
+    "Selection emits a presentation/reference binding suitable for SAA-03 composition without mutating ARI or source-domain truth.",
+    "Keyboard/textual equivalents can search, filter and select assets without requiring drag-and-drop.",
+    "Provider-off local operation is supported for locally available ARI catalog state; optional AI and paid cloud are not required.",
+    "SAA-05 Character Actor Projection and later SAA/export/share/SMB10B behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01.1 identity, SAA-02.1 layout grammar and SAA-03.1 composition canvas remain sealed.",
+    "ARI remains reusable resource identity/catalog/provenance/rights authority; SAA-04 is a filtered consumer only.",
+    "No source bytes are copied into a parallel SAA asset library by default.",
+    "No Character/CAPP/PAPT appearance authority is taken; that begins with SAA-05 projection.",
+    "No export/share/publication or final Creator integration authority is granted."
+  ],
+  "strict_successor": "SAA-05",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-04.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
