@@ -1,12 +1,12 @@
 # MERA — Multiversal Engineering, Refit & Assembly
 
 **Program ID:** MERA  
-**Status:** ACTIVE — MERA-10 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MERA-10 IN_PROGRESS; PDCP-REDUCED  
 **Activation:** after GPR effective golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MBES-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-11  
-**Implementation authority:** none until an owner Continue starts the CURRENT-selected MERA-10 attempt
+**Implementation authority:** MERA-10 only on `work/mera-10-dependency-network-failure-runtime`
 
 ## Purpose
 
