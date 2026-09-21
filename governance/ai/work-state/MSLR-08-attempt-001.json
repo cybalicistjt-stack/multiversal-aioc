@@ -9,11 +9,11 @@
   "attempt_id": "MSLR-08-attempt-001",
   "title": "Metric, Scale, Containment & Orientation Transform Runtime",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/mslr-08-metric-scale-containment-orientation",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "MSLR-07",
   "required_predecessor": {
     "work_item": "MSLR-07",
@@ -41,8 +41,8 @@
     "MSLR-13 and later tranches remain unauthorized until MSLR-08 closeout."
   ],
   "strict_successor": "MSLR-13",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for metric/scale/containment/orientation transforms, frame transport, continuous/discrete law equivalence, identity-preserving nesting and shared movement/range/projectile/scene adapters.",
+  "active_substep": "completed_verified",
+  "next_action": "MSLR-08 is completed_verified. MSLR-13 — Navigation Aids, Anchors, Sensory Cues & Counterplay — is selected_not_started and awaits the next owner Continue.",
   "design_amendment": {
     "approved": "2026-09-21",
     "required": true,
@@ -54,16 +54,87 @@
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started amended MSLR-08."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "MSLR-08 causal RED run 35596637877 at e57f72080e0c77e3778bd2d6ebd9e2ccda89f121 failed on the absent production seam on Linux and Windows. Exact-head GREEN run 35596810367 at ee67410149654d6d57dde845e4831795047d1a29 passed selector/repository health, Linux, hosted Windows, focused transform tests, invariants, typecheck and deterministic comparison. PR 700 published as application main 7448770591b255a7b0b453b210a40d467d8fff1a."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MSLR-08 transform runtime is durably published; canonical closeout selects amended MSLR-13 without starting it."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "note": "Metric geometry stays distinct from topology; nesting/frame transport preserve canonical identity; projection coordinates do not own metric truth; continuous and discrete realizations are alternative implementations of one semantic law."
+  },
+  "acceptance_evidence": {
+    "governed_start": {
+      "aioc_pr": 1578,
+      "validation_run": 35596541275,
+      "merge_sha": "40e139538e54af93e2574308e9fa29ace70a886b"
+    },
+    "causal_red": {
+      "application_pr": 700,
+      "head": "e57f72080e0c77e3778bd2d6ebd9e2ccda89f121",
+      "validation_run": 35596637877,
+      "conclusion": "failure",
+      "selector_repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "signature": "MSLR-08 production entry points absent."
+    },
+    "green": {
+      "application_pr": 700,
+      "validated_head": "ee67410149654d6d57dde845e4831795047d1a29",
+      "validation_run": 35596810367,
+      "conclusion": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "7448770591b255a7b0b453b210a40d467d8fff1a"
+    },
+    "delivered": {
+      "schema": "MSLR-08.1",
+      "metric_topology_separate": true,
+      "identity_preserved_across_nesting": true,
+      "scale_metric_composition_deterministic": true,
+      "frame_transport_explicit": true,
+      "same_location_different_frame_supported": true,
+      "continuous_discrete_equivalence_explicit": true,
+      "movement_range_projectile_scene_same_law_fingerprint": true,
+      "projection_coordinates_used_for_metric": false,
+      "semantic_nonvisual_parity": true,
+      "keyboard_equivalent": true,
+      "provider_off_local": true
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "MSLR-13",
+      "interstitial_override": "none",
+      "architecture_amendment_applies": true
+    }
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "causal_red": "completed",
+    "metric_transform": "completed",
+    "containment_identity": "completed",
+    "scale_composition": "completed",
+    "orientation_gravity_frame_transport": "completed",
+    "continuous_discrete_equivalence": "completed",
+    "cross_system_adapters": "completed",
+    "projection_boundary": "completed",
+    "accessibility_provider_off": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
   }
 }

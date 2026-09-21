@@ -207,3 +207,12 @@ MSLR-07 completed_verified with contract `MSLR-07.1`. Causal RED run `3559581604
 The delivered runtime preserves explicit Reality/Environment context, separates dimensional bleed and visibility from traversal/access authority, bounds temporal resets to declared categories without deleting Event history, evaluates dream/causal/symbolic route predicates only from owner-authorized context, rejects stale context, replays declared deterministic context and filters hidden causes from participant explanations.
 
 Fresh DAG schema `1.0.4` supplies no interstitial override. Amended `MSLR-08` is selected_not_started; `MSLR-13` remains unauthorized.
+
+
+## MSLR-08 completed — Metric, Scale, Containment & Orientation Transform Runtime
+
+MSLR-08 completed_verified with contract `MSLR-08.1`. Causal RED run `35596637877` at `e57f72080e0c77e3778bd2d6ebd9e2ccda89f121` failed on the absent production seam. Exact-head GREEN run `35596810367` at `ee67410149654d6d57dde845e4831795047d1a29` passed selector/repository health, Linux, hosted Windows, focused tests, invariants, TypeScript typecheck and deterministic comparison. PR #700 published as application main `7448770591b255a7b0b453b210a40d467d8fff1a`.
+
+The runtime keeps metric geometry separate from topology, preserves canonical identity across recursive/bigger-inside containment and entry/exit transforms, composes scale and metric semantics deterministically, transports orientation/gravity frames explicitly, permits same-location/different-frame results when authored, treats continuous geometry and discrete traversal substrates as alternative realizations of one accepted law, and gives movement/range/projectile/scene adapters one shared semantic law fingerprint. MCS projection coordinates remain presentation only.
+
+Fresh DAG schema `1.0.4` supplies no interstitial override. Amended `MSLR-13` is selected_not_started; `MSLR-14` remains unauthorized.
