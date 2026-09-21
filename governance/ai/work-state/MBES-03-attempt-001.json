@@ -9,10 +9,10 @@
   "attempt_id": "MBES-03-attempt-001",
   "title": "Material Requirements & Structural Build Assembly",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/mbes-03-material-structural-build-assembly",
   "completed": false,
   "selected_by_verified_predecessor": "MBES-01",
   "required_predecessor": {
@@ -42,17 +42,21 @@
     "MBES-05 and later MBES tranches remain unauthorized until canonical MBES-03 closeout."
   ],
   "strict_successor": "MBES-05",
-  "active_substep": "awaiting_lane_start",
-  "next_action": "Awaiting owner Continue; the next Continue starts only MBES-03.",
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for MBES-03 through the public material/structural assembly seam, then implement only the bounded definition-driven construction adapters required by the reduced family contract.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner Continue governed-started MBES-03 from canonical selected_not_started state."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
+    "terminal_response_allowed": false,
     "stop_reason": null
   }
 }
