@@ -3,11 +3,11 @@
 **Program ID:** GPR  
 **Program name:** Gameplay Pattern Runtime & Loop Minis  
 **Version:** 0.2.0 — PDCP REDUCED  
-**Status:** ACTIVE — GPR-10 SELECTED_NOT_STARTED  
+**Status:** ACTIVE — GPR-12 SELECTED_NOT_STARTED  
 **Activation:** concurrent start authorized after MRCS-05 + completed MAL + core owner contracts; later MRCS late-binds; GPR-16 waits for MRCS-21  
 **Successor:** MERA-01  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-10 attempt
+**Implementation authority:** none until an owner GPR execution command starts the CURRENT-selected GPR-12 attempt
 
 ## Purpose
 
@@ -276,3 +276,14 @@ PDCP Packet-07 dispositions remain distinct. Preview, dry-run, counterfactual an
 Causal RED: run `35537668004` at `2ee90883348646629780646e63f9889915544d31`. Exact-head cross-platform GREEN: run `35537753561` at `329b721ec98ec0cbbdfecef26c2318aea4c6378f`. Published application: PR #662 through READY candidate `GPR-09-app-001` as `6b2aeb99ce2d53a0fe9e79c7e78c82573a5b8d83`.
 
 The fresh roadmap DAG supplies no interstitial successor override, so GPR-10 is selected_not_started.
+
+
+## GPR-10 completed rights-safe presentation/accessibility result
+
+GPR-10 completed_verified on 2026-09-20. The published application contract `GPR-10.1` binds authorized semantic actor/world/object/UI/effect/audio roles to runtime presentation while ARI-11 remains rights/use authority and ARI/PCA remains resource/asset-role source authority.
+
+Production selection, export and distributable projection fail closed when required rights are unknown, denied, revoked or mismatched. Camera, HUD, menu, dialogue and reticle projections carry existing semantic state/outcome meaning only and cannot mutate mechanics or Action/Event truth. Visual/audio/effect cues remain semantic projections, and required accessible keyboard, touch, structured-text/list and screen-reader paths preserve semantic action/state/outcome parity.
+
+Causal RED run `35545215293` at `363bb414a07112225db5ffe64b4d493b8fba10de` established the absent production seam before runner infrastructure cancellation. Exact-head GREEN run `35551753557` passed Linux, governed hosted Windows and deterministic cross-platform comparison at `35c1ed8ea86cf15192e41f4d09c158da459c257f`. Published application: PR #664 through candidate `GPR-10-app-001` as application main `7c713013b1774811c5de4952d4f10eb00e2adc43`.
+
+The fresh roadmap DAG supplies no interstitial successor override, so GPR-12 — Multiplayer, Replay, Persistence, Recovery & Version Continuity — is selected_not_started.
