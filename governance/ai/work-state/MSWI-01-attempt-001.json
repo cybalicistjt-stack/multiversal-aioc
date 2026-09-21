@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MSWI",
+  "lane": "gpr",
+  "track": "multiversal-systemic-worldplay-integration",
+  "source_program": "MSWI",
+  "work_item_id": "MSWI-01",
+  "attempt_id": "MSWI-01-attempt-001",
+  "title": "Systemic Transformation State & Integration Core",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/mswi-01-systemic-transformation-core",
+  "completed": false,
+  "selected_by_verified_predecessor": "MSLR-18",
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "hard_requires": [
+      "MBES",
+      "MSLR"
+    ],
+    "start_requires": [
+      "MSLR-18",
+      "GPR-16",
+      "MNCS-24",
+      "DPL completed_verified",
+      "MIB-09",
+      "MIB-12",
+      "MIB-14",
+      "APW/D26",
+      "World/Environment/Organization owner contracts"
+    ],
+    "satisfied": [
+      "MBES completed_verified",
+      "MSLR completed_verified",
+      "MSLR-18 completed_verified",
+      "GPR-16 completed_verified",
+      "MNCS-24 completed_verified",
+      "DPL-14 completed_verified",
+      "MIB-09 completed_verified",
+      "MIB-12 completed_verified",
+      "MIB-14 completed_verified",
+      "APW/D26 Campaign Activity and Project/Time contract surfaces available",
+      "required World/Environment/Organization owner contract surfaces available"
+    ],
+    "reduced_strict_order": "MSWI-01 → MSWI-03 → MSWI-04 → MSWI-06 → MSWI-07 → MSWI-14 → MSWI-18"
+  },
+  "required_predecessor": {
+    "work_item": "MSLR-18",
+    "status": "completed_verified",
+    "application_merge_sha": "b3d0449bb89961bcbbf4d476c011d17f50c3425e",
+    "schema": "MSLR-18.1"
+  },
+  "objective": "Implement the reduced MSWI opening seam: reusable SystemicTransformationProfileDefinition and read-only SystemicTransformationProjection contracts, exact owner/version references, threshold and milestone attribution, integration-registry bindings, deterministic validation and stale-state handling, migration/version compatibility, and inspectable semantic API/UI projections without copying mutable World, Environment, Organization or other owner-domain canonical state.",
+  "acceptance": [
+    "SystemicTransformationProfileDefinition is reusable, versioned and contains only references to owner-backed transformation dimensions, route/profile metadata and policy; it does not copy mutable canonical owner state.",
+    "SystemicTransformationProjection is read-only, binds exact owner versions, exposes supplied qualitative/quantitative bands without invention, and becomes explicitly stale when required owner versions change.",
+    "Transformation thresholds and milestones remain attributable to exact profile/rule/source versions and unresolved dimensions remain unresolved rather than inferred.",
+    "Integration registry bindings identify exact owner/domain interfaces and reject missing, stale or incompatible owner references deterministically.",
+    "Profile/projection schema migration updates integration representation only and never silently mutates canonical Campaign/world/owner state or reinterprets historical receipts.",
+    "Permission filtering precedes participant-facing transformation projection, explanation, counts, search, AI context and export.",
+    "Inspectable transformation API/UI exposes accessible textual/semantic state and provenance without requiring color, animation, maps, audio, AI or paid/cloud services.",
+    "MSLR typed Events/observations/deltas can bind into the transformation integration seam without MSWI taking spatial-law ownership.",
+    "Provider-off deterministic tests prove canonical/projection separation, stale-version behavior, unresolved data handling and owner-boundary preservation."
+  ],
+  "boundaries": [
+    "MSLR-18 and all upstream completed programs remain sealed.",
+    "World, Environment, Reality/Branch, Organization and other source domains retain canonical mutable state authority.",
+    "GPR/Action/Event retain generic execution and immutable Event history; MSWI begins only from accepted owner Events/changes or explicit previews.",
+    "MSWI-01 creates integration definitions and read-only projections only; consequence routing/commit runtime remains unauthorized until MSWI-03.",
+    "MCS/MAS/MCCS/MSAS remain presentation/authoring owners; visible presentation is not canonical world mutation.",
+    "No hidden route, dimension or owner-state existence may leak through projection counts, search, diagnostics, AI context or export.",
+    "Optional AI remains advisory and no paid/cloud provider is required for blocking workflows.",
+    "MSWI-03 and later MSWI tranches remain unauthorized until canonical MSWI-01 closeout."
+  ],
+  "strict_successor": "MSWI-03",
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for MSWI-01 through the public systemic-transformation profile/projection seam, then implement only the bounded schema, validation, owner-binding, stale-state, migration and inspectable projection behavior required by the reduced family contract.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner Continue explicitly authorized cross-family gpr slot reuse and governed start of MSWI-01 from terminal completed_verified MSLR-18."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
