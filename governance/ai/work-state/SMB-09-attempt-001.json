@@ -7,11 +7,11 @@
   "track": "system-maturation-buildout",
   "source_program": "SMB",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/smb-09-first-party-campaign",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "SMB-08",
   "predecessor": {
     "work_item_id": "SMB-08",
@@ -22,7 +22,7 @@
     "application_merge_sha": "fc945a6a338a7b1c74a6b1716249d58544b23e76",
     "schema": "SMB-08.1"
   },
-  "strict_successor": "SAA-01",
+  "strict_successor": "SMB10A",
   "objective": "Produce one polished first-party campaign designed to exercise Multiversal end to end as an actual game experience rather than a QA corpus.",
   "scope": {
     "purpose": "Create and package one coherent first-party campaign over the completed content, creator-studio and runtime systems.",
@@ -62,29 +62,134 @@
     "eligible": true,
     "downstream_started": false
   },
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for the bounded SMB-09 first-party Campaign package/player-path/GM-path/replay seam, then implement only governed Campaign composition over sealed owner-domain, studio/runtime and SMB-08 content authorities.",
+  "active_substep": "completed_verified",
+  "next_action": "SMB-09 is completed_verified. Fresh ROADMAP_DEPENDENCY_GRAPH schema 1.0.4 selects SMB10A — Core Player/GM/Product UX — as selected_not_started because SMB10A hard-requires SMB09 and SAA start-requires SMB10A. A later owner Continue is required to govern-start SMB10A.",
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "note": "SMB-09 completed under one owner Continue through governed start, causal RED, bounded first-party Campaign composition, exact-head cross-platform validation, publication and atomic closeout."
   },
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started SMB-09 from completed_verified SMB-08."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "SMB-09 causal RED run 35626079098 at eb06763b50a05e0e57f1df34c32043846ecdc720 failed all 9 focused calls on Linux and hosted Windows because the Campaign package/audit/replay/proof surfaces were absent. Exact-head GREEN run 35626411468 at d8908cabe0124f9fcf12bbbf5bbd4908cc3d6a07 passed repository health, Linux, hosted Windows, focused Campaign tests, source invariants, TypeScript typecheck and deterministic comparison, then PR #715 published as 6b99d4038405d06fa4cb32d75c36945bcb96fe66."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "SMB-09 completed_verified on exact application head d8908cabe0124f9fcf12bbbf5bbd4908cc3d6a07, validation run 35626411468, merge 6b99d4038405d06fa4cb32d75c36945bcb96fe66; SMB10A is selected_not_started without implementation authority."
+    }
+  },
+  "successor_normalization": {
+    "authority": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4",
+    "prior_local_projection": "SAA-01",
+    "normalized_successor": "SMB10A",
+    "reason": "SMB10A hard-requires SMB09, while SAA start-requires SMB10A. The roadmap normalization explicitly places Core Player/GM/product UX before SAA and final Creator/SAA integration after SAA.",
+    "saa_selected": false,
+    "smb10b_selected": false
+  },
+  "implementation_evidence": {
+    "governed_start": {
+      "aioc_pr": 1610,
+      "validation_run": 35625759556,
+      "merge_sha": "08e4882666e0069ff2679623a463b085bbd3845b",
+      "lane_start_revision": 189
+    },
+    "causal_red": {
+      "application_pr": 715,
+      "head_sha": "eb06763b50a05e0e57f1df34c32043846ecdc720",
+      "validation_run": 35626079098,
+      "conclusion": "failure",
+      "repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "cause": "All 9 SMB-09 focused acceptance tests failed because the first-party Campaign contract/package/audit/replay/proof surfaces did not exist."
+    },
+    "green": {
+      "application_pr": 715,
+      "validated_head": "d8908cabe0124f9fcf12bbbf5bbd4908cc3d6a07",
+      "validation_run": 35626411468,
+      "conclusion": "success",
+      "repository_health": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "6b99d4038405d06fa4cb32d75c36945bcb96fe66",
+      "lane_prequeue_revision": 190,
+      "lane_publication_revision": 191
+    },
+    "delivered": {
+      "schema": "SMB-09.1",
+      "campaign_id": "smb09:campaign:harrowfen-signal",
+      "campaign_title": "The Harrowfen Signal",
+      "world_definition_id": "world:harrowfen-reach",
+      "opening_adventure_definition_id": "adventure:lanterns-at-low-tide",
+      "act_count": 4,
+      "stage_count": 12,
+      "ending_count": 3,
+      "documented_player_path": true,
+      "documented_gm_path": true,
+      "required_major_system_count": 12,
+      "replay_routes": [
+        "warden",
+        "glasswright",
+        "shared"
+      ],
+      "fixture_only_campaign": false,
+      "original_first_party_campaign": true,
+      "developer_intervention_required": false,
+      "smb08_pack_mutated": false,
+      "embedded_media_bytes": false,
+      "ari_resource_authority_preserved": true,
+      "replacement_gameplay_runtime_created": false,
+      "replacement_campaign_ledger_created": false,
+      "replacement_owner_state_created": false,
+      "canonical_owner_mutation_performed": false,
+      "provider_off_local": true,
+      "optional_ai_required": false,
+      "paid_cloud_required": false,
+      "external_tester_distribution_performed": false,
+      "public_release_performed": false
+    },
+    "successor_reconciliation": {
+      "dag_schema": "1.0.4",
+      "selected": "SMB10A",
+      "hard_requires": [
+        "SMB09"
+      ],
+      "hard_requirement_status": "completed_verified",
+      "saa_start_requires": [
+        "SMB10A",
+        "ARI",
+        "Character/CAPP/PAPT/MAI/Scene projections"
+      ],
+      "implementation_authority": false,
+      "downstream_started": false
+    }
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "causal_red": "completed",
+    "first_party_campaign_package": "completed",
+    "player_gm_paths": "completed",
+    "replay_branches_endings": "completed",
+    "sealed_content_ari_integration": "completed",
+    "major_system_coverage": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
   }
 }

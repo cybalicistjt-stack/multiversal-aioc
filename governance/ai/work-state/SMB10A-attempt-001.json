@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "work_item_id": "SMB10A",
+  "attempt_id": "SMB10A-attempt-001",
+  "title": "Core Player/GM/Product UX",
+  "track": "system-maturation-buildout",
+  "source_program": "SMB",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SMB-09",
+  "predecessor": {
+    "work_item_id": "SMB-09",
+    "status": "completed_verified",
+    "application_pr": 715,
+    "application_validated_head": "d8908cabe0124f9fcf12bbbf5bbd4908cc3d6a07",
+    "application_validation_run": 35626411468,
+    "application_merge_sha": "6b99d4038405d06fa4cb32d75c36945bcb96fe66",
+    "schema": "SMB-09.1"
+  },
+  "strict_successor": "SAA-01",
+  "objective": "Complete the core Player, GM and product UX seam required before SAA: ordinary account/Campaign entry, campaign selection/resume, Character use, session-facing GM control, shared navigation/status/error/recovery patterns and accessible provider-off product flows, while deferring final Creator/SAA integration to SMB10B.",
+  "scope": {
+    "purpose": "Provide the core Player/GM/product experience seam that makes the completed Campaign usable through ordinary product workflows and unlocks SAA without prematurely folding final Creator integration into this tranche.",
+    "included": [
+      "Player Campaign discovery/join/resume and Character-facing primary journeys over sealed Campaign/owner state",
+      "GM Campaign/World/Adventure/session-facing primary journeys over sealed owner domains",
+      "shared navigation, status, validation, recovery and offline/provider-off behavior for core product use",
+      "accessible keyboard/touch/textual equivalents for blocking Player/GM journeys",
+      "SMB-09 The Harrowfen Signal as the principal first-party Campaign proof input",
+      "existing UI/system/studio projections consumed through sealed contracts rather than reimplemented"
+    ],
+    "completion_gate": "Core Player/GM/product UX proof passes across the principal ordinary-user journeys required by the ROADMAP_DEPENDENCY_GRAPH SMB10A golden gate, with no replacement Campaign/runtime authority and no dependency on SAA or SMB10B."
+  },
+  "boundaries": [
+    "SMB-09 is sealed completed_verified and remains the first-party Campaign proof input.",
+    "Campaign/World/Adventure/Character and other owner domains retain canonical state and mutation authority.",
+    "SMB10A is core Player/GM/product UX only; final Creator/SAA integration belongs to SMB10B after SAA-20.",
+    "SAA may not be govern-started until SMB10A completes and all other fresh SAA start gates are reconciled.",
+    "Existing projection/studio/runtime families remain sealed capability owners.",
+    "No external tester distribution, public release, commerce or paid-provider activation is authorized here.",
+    "Blocking core UX must remain accessible, provider-off where supported, optional-AI independent and paid-cloud independent."
+  ],
+  "roadmap_activation": {
+    "dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4",
+    "hard_requires": [
+      "SMB09"
+    ],
+    "start_requires": [],
+    "golden_proof_requires": [
+      "core Player/GM/product UX proof"
+    ],
+    "requirement_evidence": {
+      "SMB09": {
+        "status": "completed_verified",
+        "application_merge_sha": "6b99d4038405d06fa4cb32d75c36945bcb96fe66",
+        "validation_run": 35626411468
+      }
+    },
+    "eligible": true,
+    "downstream_started": false
+  },
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await the next owner Continue. That command may governed-start only SMB10A — Core Player/GM/Product UX; SAA-01, SMB10B and later SMB work remain unauthorized.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
