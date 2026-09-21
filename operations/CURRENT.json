@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 340,
+  "state_revision": 341,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "MBES-01",
-      "attempt_id": "MBES-01-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MBES-01-attempt-001.json",
-      "implementation_branch": "work/mbes-01-site-project-authority-construction-core",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue explicitly authorized reuse of the terminal gpr slot for MBES-01 after MERA-24 completed_verified. ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 hard_requires MERA and start_requires MERA-03, MRCS-14, MIB-14, and World/Environment/Project contracts; those gates are satisfied.",
+      "state": "selected_not_started",
+      "selected_work_item": "MBES-03",
+      "attempt_id": "MBES-03-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MBES-03-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "MBES-01 completed_verified after causal RED run 35577781185 at 2359ee0b3ee6c9e497bc8d18099ae000e006073d, exact-head GREEN run 35578026520 at 9c3e05092101d590472ac4896a5ca6416ce76af2, and direct publication of PR 687 as app main 590c66edc38d8a7ece39691af728fd96d3141b68. Fresh ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no MBES interstitial override; MBES-03 is the reduced strict successor and remains unstarted until owner Continue.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "MBES-01 is in progress. Complete only the reduced Site, Project, Authority & Construction Core tranche through exact-head validation/publication and verified closeout before MBES-03 may start.",
+  "next_project_action": "MBES-03 is selected_not_started. The next owner Continue starts only MBES-03; MBES-05 and later tranches remain unauthorized.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
