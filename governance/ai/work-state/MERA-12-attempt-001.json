@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MERA",
+  "lane": "gpr",
+  "track": "multiversal-engineering-refit-assembly",
+  "source_program": "MERA",
+  "work_item_id": "MERA-12",
+  "attempt_id": "MERA-12-attempt-001",
+  "title": "Item, Weapon, Armor, Tool & Equipment Engineering Adapter Pack",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MERA-10",
+  "required_predecessor": {
+    "work_item": "MERA-10",
+    "status": "completed_verified",
+    "application_merge_sha": "8a465ecd518792eadf325c222e6e1446bb922182",
+    "schema": "MERA-10.1"
+  },
+  "objective": "Implement ordinary Item/weapon/armor/tool/equipment engineering adapters over PPIA-03/D17/MIB-12/MRCS that preserve Asset identity/history, route all mutations through canonical owners, consume explicit compatibility/modularity definitions, and expose MERA inspection/proposal/repair/test affordances without creating a second Item, crafting, inventory or equipment-definition system.",
+  "acceptance": [
+    "Ordinary Item/equipment engineering projections preserve D17 Asset identity, owner version and history references.",
+    "Install/remove/repair/modify operations remain typed owner requests to D17/MIB-12 and are never committed by MERA itself.",
+    "Weapon/armor/tool modularity and slot/compatibility behavior comes only from explicit MRCS/owner definitions.",
+    "Name, category or visual similarity cannot create compatibility or interchangeable slots.",
+    "Unknown or conflicting compatibility/modularity remains unresolved and fails closed for operations requiring it.",
+    "Recovered/substitute parts preserve LSS/D17 provenance and do not become anonymous MERA inventory.",
+    "Equipment/loadout projections remain projections of owner state rather than a parallel inventory/equipment ledger.",
+    "MERA-01/03/05/06/07/10 affordances compose without changing their owner boundaries.",
+    "Blocking Item/equipment engineering remains semantic/nonvisual and provider-off."
+  ],
+  "boundaries": [
+    "MERA-01/03/05/06/07/10 remain sealed predecessors.",
+    "PPIA-03/D17 retain Item/Asset identity, ownership, custody, condition, installation/modification and history.",
+    "MIB-12 retains crafting/repair/upgrade/modify/refurbishment/remanufacture/fabrication transactions.",
+    "MRCS retains reusable Item/equipment/component/slot/compatibility/engineering definitions.",
+    "LSS retains recovered-part/donor provenance and recoverability.",
+    "GPR + Action/Event retain generic execution/replay and owner-operation receipt semantics.",
+    "MERA creates no second inventory, equipment, crafting or item-definition ledger.",
+    "MERA-13+ vehicle/mecha/starship adapter work remains unauthorized.",
+    "MBES remains blocked until MERA completes at MERA-24."
+  ],
+  "strict_successor": "MERA-13",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On the next owner Continue, start only MERA-12. Preload MERA-01/03/05/06/07/10, PPIA-03/D17 Item/Asset seams, MIB-12 repair/modify transactions, MRCS-13 item/equipment/modular-component definitions, LSS provenance and current compatibility/owner-version rules.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

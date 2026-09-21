@@ -1,12 +1,12 @@
 # MERA — Multiversal Engineering, Refit & Assembly
 
 **Program ID:** MERA  
-**Status:** ACTIVE — MERA-10 IN_PROGRESS; PDCP-REDUCED  
+**Status:** ACTIVE — MERA-12 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after GPR effective golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MBES-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-11  
-**Implementation authority:** MERA-10 only on `work/mera-10-dependency-network-failure-runtime`
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MERA-12 attempt
 
 ## Purpose
 
@@ -203,3 +203,14 @@ LSS/D17 provenance remains attached to recovered/substitute parts; MIB-12 retain
 Causal RED: run `35558861384` at `1dd0cffb849d7e0635adae111a500d27c14b703e`. Exact-head GREEN: run `35558950768` at `cae6c233b0561faf8e3c32c067d9956671f0cf73`. Published application: PR #679 as `72b1a80d2dcc1e07a653b9824835353d4298cf8c`.
 
 Fresh roadmap reconciliation supplies no interstitial successor override. MERA-10 is selected_not_started. MBES remains blocked until MERA completes at MERA-24.
+
+
+## MERA-10 completed dependency/network/failure result
+
+MERA-10 completed_verified with published contract `MERA-10.1`. Failure propagation follows explicit declared dependencies only; alternate-path protection requires explicit active relations. Coarse resource state never synthesizes finer topology, unknown/conflicting topology remains unresolved, and graceful-degradation outcomes are definition-driven.
+
+PCA-12/Packet-08 retain generic graph/constraint/formal-analysis authority. MERA analysis remains bounded and noncanonical. Visibility filtering precedes graph extraction and hidden topology cardinality is not exposed.
+
+Causal RED: run `35559522065` at `fbec7a22e7bfd0d8eef87a1707f8dfbe2bc7d934`. Exact-head GREEN: run `35559618282` at `efc50ffbb30402cff6c7404b910b0f0c4cd79892`. Published application: PR #680 as `8a465ecd518792eadf325c222e6e1446bb922182`.
+
+Fresh roadmap reconciliation supplies no interstitial successor override. MERA-12 is selected_not_started. MBES remains blocked until MERA completes at MERA-24.
