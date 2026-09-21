@@ -9,10 +9,10 @@
   "attempt_id": "SAA-06-attempt-001",
   "title": "Pose, Expression, View & Frame Selector",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "owner_selected": false,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/saa-06-pose-expression-view-frame-selector",
   "completed": false,
   "selected_by_verified_predecessor": "SAA-05",
   "required_predecessor": {
@@ -42,25 +42,29 @@
     "No export/share/publication or final Creator integration authority is granted."
   ],
   "strict_successor": "SAA-07",
-  "active_substep": "awaiting_governed_start",
-  "next_action": "Await a later explicit owner Continue before governed-starting SAA-06.",
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for explicit typed variant dimensions, owner-supplied variant IDs, deterministic ordering, stale/unavailable/rights-blocked fail-closed state, topology-safe no-fallback behavior and presentation-only selection; then implement only SAA-06.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner Continue governed-started SAA-06 after verified SAA-05 closeout."
+    },
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
