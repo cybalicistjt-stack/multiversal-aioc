@@ -198,3 +198,12 @@ MSLR-04 completed_verified with contract `MSLR-04.1`. Causal RED run `3559460510
 The runtime keeps true/observable/known/suspected projections distinct, filters hidden topology before model construction, preserves wrong/incomplete participant hypotheses without changing truth, treats local-frame/orientation and discovered-identification knowledge as projections, consumes owner-authorized observer inputs, and emits evidence/knowledge proposals without self-authorizing canonical truth.
 
 Fresh DAG schema `1.0.4` supplies no interstitial override. `MSLR-07` is selected_not_started; `MSLR-08` remains unauthorized.
+
+
+## MSLR-07 completed — Reality-Seam, Temporal/Dream & Contextual Spatial Laws
+
+MSLR-07 completed_verified with contract `MSLR-07.1`. Causal RED run `35595816047` failed on the absent production seam. Exact-head GREEN run `35595982885` at `f20ba3dd08091f8a1ac720ae0cfc2d1e65966031` passed selector/repository health, Linux, hosted Windows, focused tests, invariants, TypeScript typecheck and deterministic comparison. PR #699 published as application main `b043d8ddeb0de68c8bbce59eca084f43abf51a11`.
+
+The delivered runtime preserves explicit Reality/Environment context, separates dimensional bleed and visibility from traversal/access authority, bounds temporal resets to declared categories without deleting Event history, evaluates dream/causal/symbolic route predicates only from owner-authorized context, rejects stale context, replays declared deterministic context and filters hidden causes from participant explanations.
+
+Fresh DAG schema `1.0.4` supplies no interstitial override. Amended `MSLR-08` is selected_not_started; `MSLR-13` remains unauthorized.
