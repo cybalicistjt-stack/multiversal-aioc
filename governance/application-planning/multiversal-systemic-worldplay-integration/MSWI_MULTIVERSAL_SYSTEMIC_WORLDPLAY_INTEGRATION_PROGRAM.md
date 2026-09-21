@@ -1,7 +1,7 @@
 # MSWI — Multiversal Systemic Worldplay Integration
 
 **Program ID:** MSWI  
-**Status:** ACTIVE — MSWI-18 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** COMPLETED_VERIFIED — TERMINAL MSWI FAMILY; PDCP-REDUCED  
 **Owner:** John Brandon Turner  
 **Approved:** 2026-09-15  
 **PDCP reduction:** 2026-09-16 — baseline 18 tranches → 7 surviving implementation/proof tranches  
@@ -326,3 +326,18 @@ The delivered runtime consumes exact PCA recipe/seed/cache references without re
 This attempt completed under one owner `Continue` and is execution-conforming.
 
 Fresh roadmap authority schema `1.0.4` supplies no interstitial override. Reduced strict order selects terminal `MSWI-18` — Systemic Coverage Diagnostics, Golden Proof & SMB-08 Handoff — as selected_not_started.
+
+
+## MSWI-18 completed — Systemic Coverage Diagnostics, Golden Proof & SMB-08 Handoff
+
+MSWI-18 completed_verified with application contract `MSWI-18.1` and closes the reduced seven-tranche MSWI family.
+
+Causal RED run `35619725856` at `8a7b3290077881fb1b8430cbe5f65fe404232376` passed selector/repository health but failed all 10 focused acceptance calls on Linux and hosted Windows because the terminal diagnostics/golden/handoff entry points were absent. Initial implementation head `99253ac85d8a6f2ba79c9c8f799a38e950eb5309` passed full validation in run `35620025903` and published as `099b367087888c571191617efa2aef387963b5ae`.
+
+Before family closeout, the durable DCP requirement for an explicit automated **36-vector** golden battery was found not to be encoded fail-closed in that initial proof. The first repair head `40db22d4a86430db3bae6a70b712ad027d0706ce` was correctly rejected by validation-selection run `35620940130` because substantive application/test/verifier changes were not yet bound to the active MSWI-18 validation profile. That exact unchanged candidate was not retried. Final repair head `c096369d66f1a7ea7fc908433968b484a8013c4c` added the active-profile requirement and explicit vector receipts 1–36. Full run `35621083959` passed repository health, Linux, hosted Windows, the 36-vector focused battery, source invariants, TypeScript typecheck and deterministic cross-platform comparison. PR #712 published the repaired exact head as application main `c9c6261a7cfdfae10e980c7d1afdf166142693d5`.
+
+The terminal runtime interprets accepted PCA-12/PDCP Packet-08 connectivity evidence without recreating generic simulation/formal-analysis machinery; reports declared fan-out, loops, dead routes, duplicates and missing integrations without inventing mechanics; filters hidden topology before counts/projections; provides semantic/tabular accessible output; fails closed on missing family/vector proof; and emits `MSWI18.SMB08.CAPABILITY.v1` as capability evidence only.
+
+Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` requires SMB-08 to have both the required studio/runtime golden barriers and MSWI-18. CNI-13, PCA-16, MCS-21, MCCS-21, MNCS-24, MAS-21, MSAS-21, MRCS-21, GPR-16, MERA-24, MBES-24, MSLR-18 and MSWI-18 are all completed_verified. SMB-08 is therefore selected_not_started with no implementation authority. A later owner Continue remains mandatory before SMB-08 may start.
+
+MSWI-18 completed under one owner `Continue`; execution conformance is clean.
