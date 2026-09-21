@@ -9,11 +9,11 @@
   "attempt_id": "MBES-01-attempt-001",
   "title": "Site, Project, Authority & Construction Core",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/mbes-01-site-project-authority-construction-core",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "MERA-24",
   "selection_basis": {
     "dag_schema": "1.0.4",
@@ -63,21 +63,102 @@
     "MBES-03 and later MBES tranches remain unauthorized until canonical MBES-01 closeout."
   ],
   "strict_successor": "MBES-03",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for MBES-01 through the public construction-core seam, then implement only the bounded site/project/authority adapters required by the reduced family contract.",
+  "active_substep": "completed_verified",
+  "next_action": "MBES-01 is completed_verified. MBES-03 — Material Requirements & Structural Build Assembly — is selected_not_started and requires a later owner Continue for governed start.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue explicitly authorized cross-family gpr slot reuse and governed start of MBES-01 from terminal completed_verified MERA-24."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "MBES-01 causal RED run 35577781185 failed Linux and hosted Windows focused tests at 2359ee0b3ee6c9e497bc8d18099ae000e006073d because the production construction-core entry points were absent and returned null; exact-head GREEN run 35578026520 passed selector/health, Linux, hosted Windows, MBES-01 invariants, typecheck, focused tests and deterministic comparison at 9c3e05092101d590472ac4896a5ca6416ce76af2; PR 687 published as application main 590c66edc38d8a7ece39691af728fd96d3141b68."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MBES-01 owner-backed site/project/authority construction core is durably published and the reduced strict successor MBES-03 is selected_not_started."
+    }
+  },
+  "execution_conformance": {
+    "status": "conforming",
+    "policy_violations": [],
+    "note": "MBES-01 remained bounded to the reduced opening construction seam. One owner Continue carried governed start through causal RED, implementation, exact-head GREEN, publication and closeout; no duplicate owner ledger, queue scan or routine rebase was introduced."
+  },
+  "implementation_plan": {
+    "governed_start": "completed",
+    "causal_red": "completed",
+    "owner_backed_workspace_projection": "completed",
+    "permission_and_stale_handling": "completed",
+    "project_economy_reference_adapters": "completed",
+    "packet07_preview_commit_recovery": "completed",
+    "accessibility_provider_off": "completed",
+    "exact_head_green": "completed",
+    "publication": "completed",
+    "closeout": "completed"
+  },
+  "acceptance_evidence": {
+    "governed_start": {
+      "aioc_pr": 1549,
+      "validation_run": 35577564575,
+      "merge_sha": "55c2badc76ad23a67d80874bbb2c3af7e4103039"
+    },
+    "causal_red": {
+      "application_pr": 687,
+      "head": "2359ee0b3ee6c9e497bc8d18099ae000e006073d",
+      "validation_run": 35577781185,
+      "conclusion": "failure",
+      "selector_repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "signature": "Both platform focused MBES-01 suites executed 10 tests and all 10 failed because the production construction-core functions were absent and dynamic calls returned null."
+    },
+    "green": {
+      "application_pr": 687,
+      "validated_head": "9c3e05092101d590472ac4896a5ca6416ce76af2",
+      "validation_run": 35578026520,
+      "conclusion": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "590c66edc38d8a7ece39691af728fd96d3141b68"
+    },
+    "publication": {
+      "candidate_id": "MBES-01-app-001",
+      "mode": "single_lane_direct",
+      "application_merge_sha": "590c66edc38d8a7ece39691af728fd96d3141b68"
+    },
+    "contract": {
+      "schema": "MBES-01.1",
+      "world_authority": "MIB-11/D18",
+      "project_authority": "APW/D26",
+      "economy_authority": "MIB-13",
+      "organization_authority": "ODL",
+      "packet07_authority": "PDCP-PACKET-07",
+      "geometry_grants_construction_authority": false,
+      "permission_inferred": false,
+      "stale_owner_evidence_requires_revalidation": true,
+      "unsupported_owner_facts_inferred": false,
+      "duplicate_world_identity_created": false,
+      "project_ledger_created": false,
+      "property_ledger_created": false,
+      "economy_ledger_created": false,
+      "canonical_owner_mutation_performed": false,
+      "semantic_nonvisual_parity": true,
+      "keyboard_equivalent": true,
+      "provider_off_local_operation": true,
+      "paid_cloud_required": false,
+      "mandatory_3d_renderer_required": false
+    },
+    "terminal_reconciliation": {
+      "dag_schema": "1.0.4",
+      "interstitial_override": "none",
+      "strict_successor": "MBES-03",
+      "successor_selected": true
+    }
   }
 }
