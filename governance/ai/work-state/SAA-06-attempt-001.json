@@ -9,11 +9,11 @@
   "attempt_id": "SAA-06-attempt-001",
   "title": "Pose, Expression, View & Frame Selector",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/saa-06-pose-expression-view-frame-selector",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "SAA-05",
   "required_predecessor": {
     "work_item": "SAA-05",
@@ -42,29 +42,103 @@
     "No export/share/publication or final Creator integration authority is granted."
   ],
   "strict_successor": "SAA-07",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for explicit typed variant dimensions, owner-supplied variant IDs, deterministic ordering, stale/unavailable/rights-blocked fail-closed state, topology-safe no-fallback behavior and presentation-only selection; then implement only SAA-06.",
+  "active_substep": "completed_verified",
+  "next_action": "SAA-06 is completed_verified. SAA-07 — Maps, Tilesets & Scene Background Projection — is selected_not_started without implementation authority.",
   "owner_interaction_observation": {
-    "continue_turns": 1,
-    "stall_nudges": 0
+    "continue_turns": 3,
+    "stall_nudges": 2
   },
   "execution_guard": {
-    "continue_turns": 1,
-    "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "continue_turns": 3,
+    "stall_nudges": 2,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started SAA-06 after verified SAA-05 closeout."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "SAA-06 causal RED head c1d147d36f8d19a68ee913b5440f55ac832ccace passed repository health and failed Linux/Windows with the production module absent. Initial implementation head f834a2301ee26ed26245edfa73847ebdc4af3bff exposed one placeholder identity-preservation assertion defect. Repaired head a7bd6aa9af4745af7fed35eb24fec1c132d20f55 passed Linux, Windows and deterministic cross-platform comparison in run 35649267129 and PR #724 published as 1d823cce784ad932a0ce85a1576e4518a3d44a12."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "SAA-06 completed_verified on exact application head a7bd6aa9af4745af7fed35eb24fec1c132d20f55, validation run 35649267129, merge 1d823cce784ad932a0ce85a1576e4518a3d44a12; SAA-07 selected_not_started."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true
+  },
+  "implementation_evidence": {
+    "governed_start": {
+      "aioc_pr": 1631,
+      "validation_run": 35646660115,
+      "merge_sha": "cb56fc63cafb6d7cbd14401287329f0ddc39078b",
+      "lane_start_revision": 225
+    },
+    "causal_red": {
+      "application_pr": 724,
+      "head_sha": "c1d147d36f8d19a68ee913b5440f55ac832ccace",
+      "validation_run": 35646967661,
+      "conclusion": "failure",
+      "repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "cause": "SAA-06 production module absent on RED head."
+    },
+    "repair_cycle": {
+      "head_sha": "f834a2301ee26ed26245edfa73847ebdc4af3bff",
+      "validation_run": 35649123007,
+      "failing_step": "saa-06-focused",
+      "cause": "Focused test incorrectly required stableActorIdentityPreserved to be undefined; bounded repair made identity preservation explicit true in both contract and test.",
+      "repair_head": "a7bd6aa9af4745af7fed35eb24fec1c132d20f55"
+    },
+    "green": {
+      "application_pr": 724,
+      "validated_head": "a7bd6aa9af4745af7fed35eb24fec1c132d20f55",
+      "validation_run": 35649267129,
+      "conclusion": "success",
+      "application_merge_sha": "1d823cce784ad932a0ce85a1576e4518a3d44a12",
+      "lane_prequeue_revision": 226,
+      "lane_publication_revision": 227
+    },
+    "delivered": {
+      "schema": "SAA-06.1",
+      "dimensions": [
+        "pose",
+        "expression",
+        "view",
+        "frame"
+      ],
+      "deterministic_ordering": true,
+      "owner_supplied_variant_identity": true,
+      "stable_actor_identity_preserved": true,
+      "stable_owner_identity_preserved": true,
+      "stable_appearance_reference_preserved": true,
+      "stale_owner_projection_fail_closed": true,
+      "unavailable_missing_revoked_unknown_fail_closed": true,
+      "rights_blocked_fail_closed": true,
+      "topology_incompatible_fail_closed": true,
+      "silent_default_applied": false,
+      "humanoid_fallback_applied": false,
+      "fabricated_coverage": false,
+      "presentation_binding_only": true,
+      "canonical_entity_mutation_performed": false,
+      "canonical_appearance_mutation_performed": false,
+      "runtime_pose_mutation_performed": false,
+      "runtime_action_mutation_performed": false,
+      "ari_mutation_performed": false,
+      "scene_truth_mutation_performed": false,
+      "papt_pca_mutation_performed": false,
+      "keyboard_text_selection_available": true,
+      "drag_required": false,
+      "scene_background_projection_implemented": false,
+      "provider_off_local": true,
+      "optional_ai_required": false,
+      "paid_cloud_required": false
+    }
   }
 }

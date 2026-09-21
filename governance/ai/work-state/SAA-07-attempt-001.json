@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-07",
+  "attempt_id": "SAA-07-attempt-001",
+  "title": "Maps, Tilesets & Scene Background Projection",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-06",
+  "required_predecessor": {
+    "work_item": "SAA-06",
+    "status": "completed_verified",
+    "application_merge_sha": "1d823cce784ad932a0ce85a1576e4518a3d44a12",
+    "schema": "SAA-06.1"
+  },
+  "objective": "Use MAI/ARI maps, tile families, Scene renders or bounded map crops as panel-background presentation references while preserving map, Scene, ARI and source-domain ownership boundaries and without starting later SAA staging/export authority.",
+  "acceptance": [
+    "Background projection consumes governed map, tileset, tile-family, Scene-render or bounded-map-crop references rather than copying canonical map or Scene truth into SAA.",
+    "Each projected background preserves source identity, provenance/version references and applicable rights/use-capability references.",
+    "Bounded crop/viewport state is presentation-only and does not mutate canonical map geometry, tile topology, Scene placement or source resources.",
+    "Map/tile/Scene compatibility and unsupported or unavailable source states remain explicit and fail closed instead of fabricating coverage.",
+    "Projection can bind a governed background reference to SAA page/panel composition while preserving SAA-02 panel geometry and SAA-03 composition boundaries.",
+    "Keyboard/textual equivalents can inspect, choose and bind background projections without requiring drag gestures.",
+    "Provider-off local operation is supported for locally available governed sources; optional AI and paid cloud are not required.",
+    "Later SAA staging, lettering, export/share/publication and SMB10B authority remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..06 predecessor contracts remain sealed.",
+    "MAI/map owners retain canonical map/tile/geometry authority; Scene retains canonical scene composition/placement/live-state authority; ARI retains resource identity/provenance/rights authority.",
+    "SAA-07 creates panel-background presentation projections only and may not mutate map, Scene, ARI or other source-domain truth.",
+    "No silent fallback from unavailable map/Scene sources to fabricated backgrounds.",
+    "No export/share/publication or final Creator integration authority is granted."
+  ],
+  "strict_successor": "SAA-08",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-07.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
