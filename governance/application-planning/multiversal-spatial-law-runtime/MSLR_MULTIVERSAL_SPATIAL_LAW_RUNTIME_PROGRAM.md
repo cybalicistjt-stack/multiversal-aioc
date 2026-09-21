@@ -1,7 +1,7 @@
 # MSLR — Multiversal Spatial Law Runtime
 
 **Program ID:** MSLR  
-**Status:** ACTIVE — MSLR-18 SELECTED_NOT_STARTED; PDCP-REDUCED
+**Status:** COMPLETED_VERIFIED — MSLR-18 TERMINAL GOLDEN PROOF; PDCP-REDUCED
 **Activation:** after MBES-24 under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MSWI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -243,3 +243,12 @@ MSLR-16 completed_verified with contract `MSLR-16.1`. Causal RED run `3559952947
 One accepted spatial-law fingerprint now drives D28 travel/pathfinding/pursuit route semantics, Combat/Exploration tactical movement, Combat/A7 combat/range, an MBES-20 non-combat owner adapter, and MCS presentation-resolution checks without creating duplicate canonical spatial state. Semantic drift fails explicitly instead of being normalized.
 
 Fresh DAG schema `1.0.4` supplies no interstitial override. Terminal `MSLR-18` is selected_not_started; MSWI remains downstream only and is not selected or started.
+
+
+## MSLR-18 completed — Terminal Golden Impossible-Space Proof & MSWI Handoff
+
+MSLR-18 completed_verified with contract `MSLR-18.1`. Causal RED run `35601611183` at `f32f4c2faa4cbb1ed153fae23e774a1be2f561ac` failed on the absent terminal production seam. Exact-head GREEN run `35601852820` at `6fce27a88257f6a4401a0390704ebb299c4f3397` passed selector/repository health, Linux, hosted Windows, the focused terminal proof, source invariants, TypeScript typecheck and deterministic comparison. PR #704 published as application main `b3d0449bb89961bcbbf4d476c011d17f50c3425e`.
+
+The terminal family proof covers all 45 closed PDCP-MSLR vectors and the eight sealed predecessor schemas. It proves deterministic replay with immutable Event history, permission filtering before participant projections/diagnostics, accessibility/provider-off operation, projection invariance, specialized true hyperbolic tiling without universalizing regular tiling math, quotient/non-orientable topology with stable identity/local-frame semantics, bounded lazy practically-unbounded represented space without exhaustive enumeration, discrete/continuous realization equivalence, and clean-room source boundaries.
+
+The typed handoff exposes MSLR Events, observations and deltas to `MSWI-01` without selecting, starting or granting implementation authority to MSWI. MSLR implementation authority is retired. Cross-family reuse of the terminal GPR slot requires a later explicit owner Continue.
