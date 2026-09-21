@@ -23,7 +23,7 @@ SMB is owner-approved and roadmap-planned, but it is not selected while MIB rema
 
 SMB does not by itself activate tester distribution, public release, paid providers, production infrastructure, public community features or commerce. Each tranche must still satisfy the authority and validation rules that apply when it is selected.
 
-**Owner-approved beta gate:** SMB-01 through SMB-16 execute before BRP — Beta Readiness & Product Operations, with SAA-01..20 inserted between SMB-09 and SMB-10. BRP-01 through BRP-11 then prove the product safe/supportable enough for normal external-beta activation. SMB-17 follows completed BRP-11; SMB-18 follows SMB-17. This interposition preserves SMB tranche numbering.
+**Owner-approved beta gate:** SMB-01 through SMB-16 execute before BRP — Beta Readiness & Product Operations, with SAA-01..30 inserted between SMB-09 and SMB-10. BRP-01 through BRP-11 then prove the product safe/supportable enough for normal external-beta activation. SMB-17 follows completed BRP-11; SMB-18 follows SMB-17. This interposition preserves SMB tranche numbering.
 
 ## 3. Tranche plan
 
@@ -95,13 +95,13 @@ SMB does not by itself activate tester distribution, public release, paid provid
 
 ### Interstitial SAA — Sequential Art Authoring
 
-After SMB-09, execute owner-approved **SAA-01..20** from `governance/application-planning/sequential-art-authoring/SAA_SEQUENTIAL_ART_AUTHORING_PROGRAM.md` and `SAA_PROGRAM_BACKLOG.json`.
+After SMB-09, execute owner-approved **SAA-01..30** from `governance/application-planning/sequential-art-authoring/SAA_SEQUENTIAL_ART_AUTHORING_PROGRAM.md` and `SAA_PROGRAM_BACKLOG.json`.
 
-SAA consumes the ARI universal resource library plus Character/CAPP/PAPT/MAI/Scene/AAI projections to provide user-authored comics/sequential art. SAA does not own public sharing or marketplace authority. SAA-20 completion restores the SMB sequence at SMB-10.
+SAA consumes the ARI universal resource library plus Character/CAPP/PAPT/MAI/Scene/AAI projections to provide user-authored comics/sequential art. SAA does not own public sharing or marketplace authority. SAA-30 completion restores the SMB sequence at SMB-10.
 
 ### SMB-10 — Full Player / GM / Creator Product UX
 
-**Purpose:** turn MIB Workbench primitives and completed domain authoring engines, including SAA, into finished production screens and workflows.
+**Purpose:** turn MIB Workbench primitives and completed domain authoring engines, including the completed SAA-01..30 family, into finished production screens and workflows.
 
 **Scope:** Characters, Campaign control, encounters, Worlds, clues, relationships, inventories, crafting, trade, vehicles, bases, Adventures, creator tools, **SAA comic/sequential-art authoring**, Personal workspace, notifications, recovery and mobile/desktop layouts.
 
@@ -173,7 +173,7 @@ SAA consumes the ARI universal resource library plus Character/CAPP/PAPT/MAI/Sce
 
 ## 4. Strict default order
 
-`SMB-01 → SMB-02 → SMB-03 → SMB-04 → SMB-05 → SMB-06 → SMB-07 → SMB-08 → SMB-09 → SAA-01..20 → SMB-10 → SMB-11 → SMB-12 → SMB-13 → SMB-14 → SMB-15 → SMB-16 → BRP-01 → BRP-02 → BRP-03 → BRP-04 → BRP-05 → BRP-06 → BRP-07 → BRP-08 → BRP-09 → BRP-10 → BRP-11 → SMB-17 → SMB-18`
+`SMB-01 → SMB-02 → SMB-03 → SMB-04 → SMB-05 → SMB-06 → SMB-07 → SMB-08 → SMB-09 → SAA-01..30 → SMB-10 → SMB-11 → SMB-12 → SMB-13 → SMB-14 → SMB-15 → SMB-16 → BRP-01 → BRP-02 → BRP-03 → BRP-04 → BRP-05 → BRP-06 → BRP-07 → BRP-08 → BRP-09 → BRP-10 → BRP-11 → SMB-17 → SMB-18`
 
 The owner may later re-order tranches when MIB-18 exposes real dependency/environment conditions, but any change must be canonicalized before execution. SAA may not be silently removed from the SMB-09→SMB-10 boundary without a later explicit owner decision.
 
@@ -209,7 +209,7 @@ SMB-09 completed under one owner `Continue` and is execution-conforming.
 
 Fresh `ROADMAP_DEPENDENCY_GRAPH.json` schema `1.0.4` supersedes the older unsplit local wording at this boundary. `SMB10A` hard-requires `SMB09`; SAA start-requires `SMB10A`. The current normalized order is therefore:
 
-`SMB-09 → SMB10A (Core Player/GM/product UX) → SAA-01..20 → SMB10B (final Creator/SAA integration)`.
+`SMB-09 → SMB10A (Core Player/GM/product UX) → SAA-01..30 → SMB10B (final Creator/SAA integration)`.
 
 Accordingly, SMB10A is selected_not_started with no implementation authority. SAA-01, SMB10B and later SMB work remain unauthorized until their fresh gates are satisfied.
 
