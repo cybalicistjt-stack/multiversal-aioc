@@ -9,10 +9,10 @@
   "attempt_id": "MERA-16-attempt-001",
   "title": "Machinery, Robotics, Constructs & Industrial-System Engineering Adapter Pack",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "owner_selected": false,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/mera-16-machinery-robotics-constructs-industrial-adapters",
   "completed": false,
   "selected_by_verified_predecessor": "MERA-13",
   "required_predecessor": {
@@ -39,17 +39,17 @@
     "MBES remains blocked until MERA completes at MERA-24."
   ],
   "strict_successor": "MERA-24",
-  "active_substep": "awaiting_lane_start",
-  "next_action": "On the next owner Continue, start only MERA-16. Preload sealed MERA predecessors plus the explicit machinery/robotics/construct/industrial owner, autonomy/control, facility/network, compatibility, owner-version and provider-off accessibility seams required by the selected item.",
+  "active_substep": "causal_red",
+  "next_action": "Establish a causal RED for the distinct machinery/robotics/construct/industrial-system engineering adapter seam, then implement only the bounded behavior required by MERA-16.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": "started",
     "active_stall": false,
-    "terminal_response_allowed": true,
+    "terminal_response_allowed": false,
     "stop_reason": null
   }
 }
