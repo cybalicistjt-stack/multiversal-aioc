@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MERA",
+  "lane": "gpr",
+  "persistent_slot_reuse": {
+    "replaced_terminal_program": "GPR",
+    "replaced_terminal_work_item": "GPR-16",
+    "authorization": "Owner Continue after GPR terminal completion explicitly authorized reuse of the terminal GPR persistent slot for MERA-01.",
+    "gpr_completion_preserved": true
+  },
+  "track": "multiversal-engineering-refit-assembly",
+  "source_program": "MERA",
+  "work_item_id": "MERA-01",
+  "attempt_id": "MERA-01-attempt-001",
+  "title": "Engineering Workspace, Topology, Authority & Resolution Core",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/mera-01-engineering-workspace-topology-core",
+  "completed": false,
+  "selection_basis": {
+    "dag_schema": "1.0.4",
+    "rotation_gate": [
+      "GPR-05",
+      "MRCS-13"
+    ],
+    "activation_after": "GPR-16 terminal handoff",
+    "satisfied_start_requirements": [
+      "GPR-05 completed_verified",
+      "MRCS-13 completed_verified",
+      "MIB-12 completed_verified",
+      "MIB-13 completed_verified",
+      "MIB-14 completed_verified",
+      "LSS-10 completed_verified",
+      "DPL/Profession completed_verified",
+      "APW/D26 Project/time contracts available",
+      "Project/Profession contracts available",
+      "GPR-16 completed_verified downstream handoff"
+    ],
+    "family_reduction": "24 baseline tranches reduced to 10 survivors with no capability loss",
+    "strict_order": "MERA-01 → MERA-03 → MERA-05 → MERA-06 → MERA-07 → MERA-10 → MERA-12 → MERA-13 → MERA-16 → MERA-24"
+  },
+  "objective": "Implement the MERA engineering workspace and authority/resolution core over source-supported Asset topology. Preserve stable owner identities, stop topology expansion at the highest supported depth, distinguish proposal/preview/live state, enforce permission-safe projections, represent unknown/conflict explicitly, and expose owner-operation binding points without creating a second Asset/component ledger.",
+  "acceptance": [
+    "Opening the engineering workspace grants no canonical mutation authority.",
+    "Topology resolution follows Asset → system → assembly → subassembly → component → interface/connection → governed network and stops at source-supported depth.",
+    "Detail expansion preserves the same Asset identity and stable owner references.",
+    "Unknown, hidden, conflicting or unsupported topology remains explicit rather than fabricated.",
+    "Visibility filtering occurs before component/system lists, counts, readiness summaries and topology projections.",
+    "Proposal/preview state is noncanonical and cannot mutate installed/live Asset state.",
+    "Owner versions and binding references are explicit so stale owner state can fail closed before future commit-capable tranches.",
+    "MERA creates no duplicate Item/Asset, crafting, salvage, Vehicle, Project, Profession or Action/Event ledger.",
+    "Blocking workspace/topology operation has semantic/nonvisual parity and requires no paid/cloud provider or 3D renderer."
+  ],
+  "boundaries": [
+    "PPIA-03/D17 retain Item/Asset identity, ownership, condition, installation/modification and history authority.",
+    "LSS retains decomposition/salvage/donor lineage authority.",
+    "MIB-12 retains repair/refurbishment/remanufacture/fabrication transaction authority.",
+    "MIB-13 retains price/market/trade/service-economy truth.",
+    "MIB-14/PPIA-04/F014 retain Vehicle/Mecha/Starship/platform/base configuration and live authority.",
+    "APW/D26 retains Project/task/time authority and DPL/Profession retains worker/profession truth.",
+    "MRCS retains reusable engineering-definition authority.",
+    "GPR + Action/Event retain generic execution/replay authority.",
+    "Packet-07 generic proposal/preview/dry-run/commit semantics remain external.",
+    "PCA-12/Packet-08 generic solver/formal-analysis authority remains external.",
+    "MERA-03+ is not implemented by this tranche."
+  ],
+  "strict_successor": "MERA-03",
+  "active_substep": "governed_started",
+  "next_action": "Execute MERA-01 only: create causal RED for workspace/topology/authority/resolution behavior, implement the bounded production contract, pass exact-head cross-platform validation, publish, close out, and select MERA-03.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start",
+      "evidence": "Owner Continue reused terminal GPR persistent slot for MERA-01 after confirming all declared start dependencies."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
