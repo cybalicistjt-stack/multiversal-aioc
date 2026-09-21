@@ -1,11 +1,11 @@
 # MBES — Multiversal Built Environment & Settlement
 
 **Program ID:** MBES  
-**Status:** ACTIVE — MBES-14 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MBES-18 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after the effective PDCP-reduced MERA golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** `MSLR-01`  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-14 attempt
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-18 attempt
 
 ## Purpose
 
@@ -238,3 +238,16 @@ The delivered seam supports excavation, fill, grading, tunneling, embankments, c
 No duplicate terrain, hydrology, Project, World, Inventory or provenance ledger is created. No universal engineering or hydrology formula is invented. Blocking workflows remain semantic/nonvisual, keyboard-capable and provider-off.
 
 Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-14` is selected_not_started as the reduced strict successor.
+
+
+## MBES-14 completed — Environment Conditions, Externalities, Habitability & Reactive-World Integration
+
+MBES-14 completed_verified with application contract `MBES-14.1`. Causal RED run `35585323150` at `2d0f74e16c2bdf116f1580a0b1f5fed6b36659e8` passed repository health and failed the focused environment/reactive-world suite on Linux and hosted Windows because the production seam was absent. The initial Green candidate `ad44262e5875214a75f06a3ef55d3a8b1d96c1cb` was rejected before behavior execution because one governed validation step id exceeded the validation-core 64-character limit. The bounded repair shortened only that profile id and aligned the verifier marker. Exact-head run `35585597408` at `1a4b1e1440f12da8980353aa22060e467e132dab` then passed repository health, Linux, hosted Windows, source invariants, TypeScript typecheck, focused tests and deterministic cross-platform comparison. PR #692 published as application main `53a6541622d5b82c0f4fd9dcad13db29bba4ffaf`.
+
+The implemented seam projects explicit owner condition profiles for gravity, atmosphere, climate, radiation, toxicity, corrosion, ecology, magic/technology and custom conditions without universal defaults. It emits owner-facing externality observations for pollution, waste, heat, noise, habitat disruption, resource depletion, density and land conversion. Threshold, accumulation and recovery references are carried only when owner profiles define them.
+
+Habitability is derived from explicit shelter, sealing, life-support and resilience capability evidence. Labels do not create capability. Reactive-world routing uses one generic owner interface for Oara and non-Oara worlds; MBES does not decide canonical response or create an Oara-only engine. Permission-safe preview remains semantic/nonvisual, keyboard-capable and provider-off.
+
+No Environment, World, consequence, habitability, response or provenance ledger is created and no hidden canonical owner mutation occurs.
+
+Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-18` is selected_not_started as the reduced strict successor.
