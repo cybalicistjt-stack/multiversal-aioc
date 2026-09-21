@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MERA",
+  "lane": "gpr",
+  "track": "multiversal-engineering-refit-assembly",
+  "source_program": "MERA",
+  "work_item_id": "MERA-03",
+  "attempt_id": "MERA-03-attempt-001",
+  "title": "Configuration Proposal, Compatibility, Blueprint & Interchange Adapters",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MERA-01",
+  "persistent_slot_reuse": {
+    "slot": "gpr",
+    "historical_completed_program": "GPR",
+    "gpr_completion_preserved": true
+  },
+  "required_predecessor": {
+    "work_item": "MERA-01",
+    "status": "completed_verified",
+    "application_merge_sha": "6c64b6f94c63061f6a5f582dd949a1c6d2d3d690",
+    "workspace_topology_schema": "MERA-01.1"
+  },
+  "objective": "Implement engineering-specific configuration proposals/diffs, compatibility/interface/adapter/substitution evaluation, saved blueprint/preset/loadout-role references and engineering-domain interchange adapters over Packet-07 and ARI/PCA common infrastructure without creating a second Asset, compatibility, review, version or publication authority.",
+  "acceptance": [
+    "Configuration proposals remain noncanonical until separately authorized owner commit.",
+    "Install/remove/substitute proposals pin target Asset identity and owner versions and revalidate before any future commit handoff.",
+    "Compatibility is explicit and definition-driven; name/visual similarity never creates compatibility.",
+    "Unknown or conflicting compatibility remains unresolved and fails closed where compatibility is required.",
+    "Explicit governed adapter/substitution rules may permit a candidate only within their declared scope.",
+    "Saved blueprints/presets cannot bypass target-specific owner/version/permission/compatibility revalidation.",
+    "Engineering import/export preserves ARI identity, rights, provenance, version and explicit lossy/unsupported semantics.",
+    "Optional AI may suggest but has no commit, compatibility, publication or owner-mutation authority.",
+    "Packet-07 retains generic proposal/preview/dry-run/commit/review semantics and ARI/PCA retains generic provenance/version/review/import-export authority."
+  ],
+  "boundaries": [
+    "MERA-01 remains the workspace/topology/authority predecessor and is not reopened.",
+    "MERA-03 absorbs historical MERA-03/04/23 only.",
+    "MRCS remains engineering/component/interface/compatibility-rule/blueprint definition authority.",
+    "D17/PPIA-03 and MIB-14/PPIA-04 retain live Asset/configuration authority.",
+    "ARI/PCA retains generic identity/rights/provenance/version/review/import-export infrastructure.",
+    "Packet-07 remains generic proposal/dry-run/commit/explanation/recovery authority.",
+    "MERA-05+ diagnostics/test/repair/runtime work remains unauthorized.",
+    "At MERA-03 closeout the roadmap DAG must be reconsulted because MBES-01 rotation becomes eligible when MERA-03 and already-completed MRCS-14 are both satisfied."
+  ],
+  "strict_successor": "MERA-05",
+  "cross_program_rotation_after_completion": "MBES-01 eligible when MERA-03 + MRCS-14 are completed; DAG takes precedence over local strict successor.",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On the next owner Continue, start only MERA-03. Preload MERA-01, MRCS-13 engineering definitions, ARI/PCA interchange/provenance seams, Packet-07 proposal semantics and relevant Asset/MIB-14 owner contracts; execute the bounded configuration/compatibility/blueprint/interchange tranche, then reconsult the roadmap DAG before successor selection.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}

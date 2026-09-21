@@ -1,12 +1,12 @@
 # MERA — Multiversal Engineering, Refit & Assembly
 
 **Program ID:** MERA  
-**Status:** ACTIVE — MERA-01 IN_PROGRESS; PDCP-REDUCED  
+**Status:** ACTIVE — MERA-03 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after GPR effective golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MBES-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-11  
-**Implementation authority:** MERA-01 only on `work/mera-01-engineering-workspace-topology-core`
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MERA-03 attempt
 
 ## Purpose
 
@@ -152,3 +152,12 @@ The family DCP records **48 golden validation vectors** (`MERA-PDCP-001..048`).
 ## Roadmap placement
 
 Cross-program activation remains governed by `ROADMAP_DEPENDENCY_GRAPH.json`. `MERA-01` remains the family start/rotation milestone and `MERA-24` remains the golden/MBES handoff milestone. Historical roadmap prose remains provenance only where it disagrees with the current DAG or PDCP-reduced strict order.
+
+
+## MERA-01 completed workspace/topology result
+
+MERA-01 completed_verified with published contract `MERA-01.1`. The engineering workspace grants no mutation authority, preserves D17/PPIA-03 Asset identity, projects only source-supported topology depth, retains unknown/conflict explicitly, filters visibility before counts/graph construction, keeps proposal state noncanonical, and pins owner versions without creating a second Asset/component ledger.
+
+Causal RED run `35556187396` at `7638813e26be8ec5399c99ef97cd957275e56d40`; first implementation-head exact GREEN run `35556316867` at `e8ecbb1ceee8f37b3f7cfd6f50e6b193fa0fed77`; application publication PR #675 as `6c64b6f94c63061f6a5f582dd949a1c6d2d3d690`.
+
+MERA-03 is selected_not_started. Its closeout must reconsult the cross-program DAG because MBES-01 rotation becomes eligible once MERA-03 joins already-completed MRCS-14.
