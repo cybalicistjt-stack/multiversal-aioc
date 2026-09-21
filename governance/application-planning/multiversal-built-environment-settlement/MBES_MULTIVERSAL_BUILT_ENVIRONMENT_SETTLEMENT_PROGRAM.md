@@ -1,11 +1,11 @@
 # MBES — Multiversal Built Environment & Settlement
 
 **Program ID:** MBES  
-**Status:** ACTIVE — MBES-03 SELECTED_NOT_STARTED; PDCP-REDUCED  
+**Status:** ACTIVE — MBES-05 SELECTED_NOT_STARTED; PDCP-REDUCED  
 **Activation:** after the effective PDCP-reduced MERA golden gate under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** `MSLR-01`  
 **Owner and final authority:** John Brandon Turner  
-**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-03 attempt
+**Implementation authority:** none until an owner Continue starts the CURRENT-selected MBES-05 attempt
 
 ## Purpose
 
@@ -192,3 +192,14 @@ The implemented seam preserves MIB-11/D18 World/site identity, APW/D26 Project/t
 Blocking construction planning is semantic/nonvisual, keyboard-capable and provider-off, with no paid-cloud or mandatory-3D dependency.
 
 Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-03` is selected_not_started as the reduced strict successor.
+
+
+## MBES-03 completed — Material Requirements & Structural Build Assembly
+
+MBES-03 completed_verified with published application contract `MBES-03.1`. Causal RED run `35578990590` at `d9c33eee933380b1e01c416e230c663aaf6b2aca` failed the focused 10-test suite on Linux and hosted Windows because the production structural-assembly entry points were absent. Exact-head GREEN run `35579212839` at `293a2a3dfea1a1cecd3bcd2c0a143ea0bb673e17` passed repository health, Linux, hosted Windows, MBES-03 invariants, TypeScript typecheck, focused tests and deterministic cross-platform comparison. PR #688 published as application main `393afbf930226fb30ce7e8ef49aac5e2a9053363`.
+
+The implemented seam keeps material/component/structural-rule definitions in MRCS, geometry/spatial bindings in MCS, Project/time in APW/D26, resource truth in D17/Inventory, transformation transactions in MIB-12 and economy truth in MIB-13. Foundations, walls, floors, roofs, openings and vertical access remain proposal-only placements until owner-authorized commit.
+
+Structural/support/fire/pressure or comparable behavior is evaluated only from explicit governing profiles. Unsupported facts remain unresolved; MBES-03 introduces no universal real-world engineering or safety formula. Pointer and non-pointer paths produce equivalent semantic placement proposals, preview remains noncanonical, and recovery preserves owner history.
+
+Fresh ROADMAP_DEPENDENCY_GRAPH schema `1.0.4` supplies no interstitial override. `MBES-05` is selected_not_started as the reduced strict successor.
