@@ -9,11 +9,11 @@
   "attempt_id": "SAA-05-attempt-001",
   "title": "Character Actor Projection",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/saa-05-character-actor-projection",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "SAA-04",
   "required_predecessor": {
     "work_item": "SAA-04",
@@ -41,8 +41,8 @@
     "No export/share/publication or final Creator integration authority is granted."
   ],
   "strict_successor": "SAA-06",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for stable actor identity, owner-record references, versioned appearance projection references, ARI presentation resources, fail-closed stale/missing states, reusable panel/page projection and accessible selection; then implement only SAA-05.",
+  "active_substep": "completed_verified",
+  "next_action": "SAA-05 is completed_verified. SAA-06 — Pose, Expression, View & Frame Selector — is selected_not_started without implementation authority.",
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
@@ -50,20 +50,90 @@
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started SAA-05 after verified SAA-04 closeout."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "SAA-05 causal RED head 7b020c78f80fc296d9909c5ca2f490f3f34f34a2 passed repository health and produced the intended Linux feature failure with the module absent. Initial implementation head e5f28c11cfca91432fd1b6b9f19ef49869466374 passed all 10 behavior tests and invariants but failed client typecheck due a test-fixture never[] inference; repaired head 42e1553f60c8c542097e1ba7043332a63e7f9a43 passed Linux, Windows and deterministic comparison in run 35645250511 and PR #723 published as f42591fa959d6fa3b318528c2077342db04c29c5."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "SAA-05 completed_verified on exact application head 42e1553f60c8c542097e1ba7043332a63e7f9a43, validation run 35645250511, merge f42591fa959d6fa3b318528c2077342db04c29c5; SAA-06 selected_not_started."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true
+  },
+  "implementation_evidence": {
+    "governed_start": {
+      "aioc_pr": 1629,
+      "validation_run": 35644812222,
+      "merge_sha": "2dfb67fb3c8556ea848297e0cf8192973898531d",
+      "lane_start_revision": 221
+    },
+    "causal_red": {
+      "application_pr": 723,
+      "head_sha": "7b020c78f80fc296d9909c5ca2f490f3f34f34a2",
+      "validation_run": 35645008374,
+      "run_conclusion": "cancelled_after_branch_advance",
+      "repository_health": "success",
+      "linux": "failure",
+      "windows": "cancelled",
+      "deterministic_comparison": "cancelled",
+      "cause": "SAA-05 production module absent on RED head; Linux reached the feature gate before the obsolete run was cancelled."
+    },
+    "repair_cycle": {
+      "head_sha": "e5f28c11cfca91432fd1b6b9f19ef49869466374",
+      "validation_run": 35645112521,
+      "conclusion": "cancelled_after_repair_head",
+      "behavior_tests": "10_passed",
+      "invariant_verifier": "passed",
+      "failing_step": "client-typecheck",
+      "cause": "Test fixture inferred unsupportedFeatures as never[]; production behavior was not the failing surface.",
+      "repair": "Typed the empty fixture array as string[] only."
+    },
+    "green": {
+      "application_pr": 723,
+      "validated_head": "42e1553f60c8c542097e1ba7043332a63e7f9a43",
+      "validation_run": 35645250511,
+      "conclusion": "success",
+      "application_merge_sha": "f42591fa959d6fa3b318528c2077342db04c29c5",
+      "lane_prequeue_revision": 222,
+      "lane_publication_revision": 223
+    },
+    "delivered": {
+      "schema": "SAA-05.1",
+      "stable_actor_identity": true,
+      "reusable_across_pages_and_panels": true,
+      "owner_reference_and_version_preserved": true,
+      "renderer_neutral_capp_ppia_projection_preserved": true,
+      "ari_resource_provenance_rights_reference_preserved": true,
+      "stale_owner_version_fail_closed": true,
+      "stale_projection_version_fail_closed": true,
+      "unavailable_or_rights_blocked_resource_fail_closed": true,
+      "unsupported_features_preserved": true,
+      "fabricated_coverage": false,
+      "silent_rebase_performed": false,
+      "presentation_binding_only": true,
+      "character_truth_mutation_performed": false,
+      "appearance_truth_mutation_performed": false,
+      "ari_mutation_performed": false,
+      "scene_truth_mutation_performed": false,
+      "papt_pca_mutation_performed": false,
+      "keyboard_text_selection_available": true,
+      "drag_required": false,
+      "pose_expression_view_frame_selector_implemented": false,
+      "export_authority_granted": false,
+      "share_authority_granted": false,
+      "provider_off_local": true,
+      "optional_ai_required": false,
+      "paid_cloud_required": false
+    }
   }
 }

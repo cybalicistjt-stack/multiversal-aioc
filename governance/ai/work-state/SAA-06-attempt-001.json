@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-06",
+  "attempt_id": "SAA-06-attempt-001",
+  "title": "Pose, Expression, View & Frame Selector",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-05",
+  "required_predecessor": {
+    "work_item": "SAA-05",
+    "status": "completed_verified",
+    "application_merge_sha": "f42591fa959d6fa3b318528c2077342db04c29c5",
+    "schema": "SAA-05.1"
+  },
+  "objective": "Select governed pose, expression, view and animation-frame variants for an existing SAA-05 actor when its referenced appearance/resource owners expose them, while preserving explicit unsupported or unavailable states and never fabricating variant coverage or mutating Character/CAPP/PPIA/PAPT/PCA/ARI truth.",
+  "acceptance": [
+    "Variant selection operates on an existing SAA-05 actor reference and preserves stable actor, owner and renderer-neutral appearance-projection identity.",
+    "Pose, expression, view and animation-frame choices reference governed owner-supplied variant identities rather than copying or inventing canonical appearance state.",
+    "Supported variant dimensions and values are explicit, typed and deterministically ordered.",
+    "Unsupported, missing, unavailable, stale or rights-blocked variants fail closed with explicit state instead of silently substituting a default.",
+    "Selecting a variant produces presentation-only actor state consumable by SAA-03 composition without mutating Character/NPC/Creature, CAPP/PPIA, PAPT/PCA, ARI or Scene truth.",
+    "Nonhuman and topology-specific actors never receive silent humanoid pose/expression/view fallback.",
+    "Keyboard/textual equivalents can inspect and select every blocking variant choice without requiring drag gestures.",
+    "Provider-off local operation is supported for locally available governed variants; optional AI and paid cloud are not required.",
+    "SAA-07 maps/tilesets/Scene background projection and all later SAA/export/share/SMB10B behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-05.1 actor projection identity and all SAA-01..04 predecessor contracts remain sealed.",
+    "Character/NPC/Creature/Species/Form owner domains retain canonical identity, anatomy, mechanics and live state.",
+    "CAPP/PPIA retain renderer-neutral appearance authority; PAPT/PCA retain production/rig primitives; ARI retains resource identity/provenance/rights authority.",
+    "SAA-06 selects only owner-exposed presentation variants; it may not synthesize unsupported coverage or silently mutate actor/appearance truth.",
+    "Maps, tilesets and Scene background projection begin with SAA-07.",
+    "No export/share/publication or final Creator integration authority is granted."
+  ],
+  "strict_successor": "SAA-07",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-06.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
