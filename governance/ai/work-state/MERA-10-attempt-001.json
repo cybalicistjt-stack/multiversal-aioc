@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "MERA",
+  "lane": "gpr",
+  "track": "multiversal-engineering-refit-assembly",
+  "source_program": "MERA",
+  "work_item_id": "MERA-10",
+  "attempt_id": "MERA-10-attempt-001",
+  "title": "Dependency, Network, Failure & Graceful-Degradation Runtime",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "MERA-07",
+  "required_predecessor": {
+    "work_item": "MERA-07",
+    "status": "completed_verified",
+    "application_merge_sha": "72b1a80d2dcc1e07a653b9824835353d4298cf8c",
+    "schema": "MERA-07.1"
+  },
+  "objective": "Implement engineering-domain dependency/network topology adapters, declared redundancy and alternate paths, bounded failure propagation, isolation and graceful-degradation interpretation, and setting-defined resource/control interface bindings without inventing unknown topology or taking generic graph/constraint-analysis authority from PCA-12/Packet-08.",
+  "acceptance": [
+    "Failure propagates only along explicitly declared dependency relations.",
+    "Redundant or alternate paths prevent propagation only when definitions explicitly declare and satisfy them.",
+    "Coarse resource state such as power/fuel/heat/fluid/ammunition/data/control/magical supply does not imply finer network topology that is absent from source definitions.",
+    "Unknown or conflicting topology remains unresolved and blocks only operations requiring that topology.",
+    "Cycles and graph analyses are bounded, noncanonical engineering evidence rather than live owner state.",
+    "Isolation/graceful-degradation state comes only from declared engineering definitions and accepted owner evidence.",
+    "PCA-12/Packet-08 retain generic graph/constraint/formal-analysis machinery; MERA supplies model adapters and interpretation only.",
+    "Visibility filtering occurs before dependency/network lists, counts, graph extraction and analysis input.",
+    "Blocking network/failure workflows remain semantic/nonvisual and provider-off."
+  ],
+  "boundaries": [
+    "MERA-01/03/05/06/07 remain sealed predecessors.",
+    "PCA-12/Packet-08 retain generic graph, constraint, optimization and formal-analysis authority.",
+    "MRCS retains reusable system/interface/dependency/redundancy/failure/resource definitions.",
+    "D17/PPIA-03 and MIB-14/PPIA-04/F014 retain live Asset/platform/resource/configuration state.",
+    "GPR + Action/Event retain generic execution/replay authority.",
+    "MERA cannot infer detailed circuit, bus, pipe, fuel, thermal, data, control or magical topology from a coarse resource label.",
+    "Unknown topology stays unknown; no universal cascade, redundancy or graceful-degradation formula is introduced.",
+    "MERA-12+ domain adapter work remains unauthorized.",
+    "MBES remains blocked until MERA completes at MERA-24."
+  ],
+  "strict_successor": "MERA-12",
+  "active_substep": "awaiting_lane_start",
+  "next_action": "On the next owner Continue, start only MERA-10. Preload MERA-01/03/05/06/07, MRCS dependency/network/failure/resource definitions, PCA-12/Packet-08 analysis seams, D17/MIB-14 owner state, visibility rules and Packet-07 explanation/recovery semantics.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  }
+}
