@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-18",
+  "attempt_id": "SAA-18-attempt-001",
+  "title": "Comic Project Packaging Contract",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-17",
+  "required_predecessor": {
+    "work_item": "SAA-17",
+    "status": "completed_verified",
+    "application_merge_sha": "a6df45319128d9e017e3d2864500b700d6bc839c",
+    "schema": "SAA-17.1"
+  },
+  "objective": "Define deterministic comic-project dependency manifests, resource references or explicitly permitted embedded derivatives, version compatibility and import/export handoff for later SMB-11 controlled sharing without turning packaging into publication authority.",
+  "acceptance": [
+    "Package identity preserves stable SAA project/version identity and a deterministic dependency manifest.",
+    "Package dependencies preserve external resource identities and distinguish reference-only resources from explicitly permitted embedded derivatives.",
+    "Embedding never includes source bytes or derivatives unless independent rights/provenance state explicitly permits that package use.",
+    "Package schema/version compatibility is explicit and incompatible or unknown versions fail closed without silent migration or repair.",
+    "Import/export handoff preserves SAA identities, history/version lineage, accessibility metadata and dependency references without mutating owner-domain truth.",
+    "Packaging remains provider-off local and does not itself publish, share, upload, register new canonical assets or infer permissions.",
+    "SAA-19 and later advisory/share/publication/SMB10B behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..17 predecessor contracts remain sealed.",
+    "SAA-18 owns project packaging metadata and deterministic import/export handoff only; ARI retains resource/provenance/rights authority and owner domains retain canonical truth.",
+    "Reference-only dependencies stay references; embedded content requires independently permitted derivative/package rights and cannot silently substitute unavailable source state.",
+    "No silent version migration, compatibility repair, canonical asset registration, sharing/publication or external upload authority is granted.",
+    "Later SMB-11 controlled sharing may consume this package contract but is not started or authorized here.",
+    "SAA-19 remains blocked until verified SAA-18 closeout."
+  ],
+  "strict_successor": "SAA-19",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-18.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
