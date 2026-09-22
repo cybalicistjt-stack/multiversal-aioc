@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-26",
+  "attempt_id": "SAA-26-attempt-001",
+  "title": "Webtoon & Responsive Scroll Authoring Preview",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-25",
+  "required_predecessor": {
+    "work_item": "SAA-25",
+    "status": "completed_verified",
+    "application_merge_sha": "48793194d2344957b0e855ef5a055208060d10f6",
+    "schema": "SAA-25.1"
+  },
+  "objective": "Support long-scroll/webtoon project grammar, insert/remove vertical space, responsive device/smartphone preview, scroll reading-order proof and governed split/single-file export profiles without weakening ordinary page-comic identity.",
+  "acceptance": [
+    "Long-scroll/webtoon authoring extends existing SAA project/page/panel/layer identity rather than creating a parallel comic document model.",
+    "Insert/remove vertical space operations are explicit reversible authoring operations with stable affected panel/layer identities.",
+    "Responsive device and smartphone preview are presentation projections only and cannot mutate canonical page/panel/layer state.",
+    "Scroll reading-order proof is deterministic and preserves explicit authoring order across responsive projections.",
+    "Split and single-file webtoon export profiles are explicit governed profiles and do not silently authorize publication or network upload.",
+    "Ordinary page-comic identity remains valid and unchanged when scroll/webtoon presentation is absent.",
+    "SAA-25 reference staging and all earlier Character/Scene/ARI/PAPT/PCA authority boundaries remain sealed.",
+    "SAA-27 and later print/multimedia/interchange/publication behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..25 predecessor contracts remain sealed.",
+    "SAA-26 owns long-scroll/webtoon authoring grammar and responsive preview/export-profile semantics only.",
+    "No duplicate comic document, page/panel/layer, Character, Scene, ARI, renderer or narrative ledger may be created.",
+    "Preview projections cannot become canonical layout truth or silently rewrite ordinary page-comic identity.",
+    "Export profiles do not authorize commercial publication, provider upload or external side effects.",
+    "Provider-off/local authoring and preview remain valid.",
+    "SAA-27 remains blocked until verified SAA-26 closeout."
+  ],
+  "strict_successor": "SAA-27",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-26.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}

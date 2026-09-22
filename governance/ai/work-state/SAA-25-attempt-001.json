@@ -9,11 +9,11 @@
   "attempt_id": "SAA-25-attempt-001",
   "title": "3D Reference, Pose/Scene Staging & Line Extraction",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/saa-25-3d-reference-pose-scene-staging-line-extraction",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "SAA-24",
   "required_predecessor": {
     "work_item": "SAA-24",
@@ -42,8 +42,8 @@
     "SAA-26 remains blocked until verified SAA-25 closeout."
   ],
   "strict_successor": "SAA-26",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for governed Character/Scene/ARI reference staging, explicit camera/pose/prop/background authoring metadata, existing renderer/primitive ownership, and non-authoritative line/tone extraction proposals; then implement only SAA-25.",
+  "active_substep": "completed_verified",
+  "next_action": "SAA-25 is completed_verified. SAA-26 — Webtoon & Responsive Scroll Authoring Preview — is selected_not_started without implementation authority.",
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
@@ -51,20 +51,83 @@
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started SAA-25 after verified SAA-24 closeout."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "SAA-25 causal RED head e8c17f4b0cccb16ee9126640b28e7938953ed5ff passed repository health and failed Linux/Windows because the SAA-25 production module was absent. Exact implementation head 2cc3f28adcf6a0450aabc5ff61c7563125276dea passed repository health, Linux, hosted Windows and deterministic cross-platform comparison in run 35739388375; PR #743 published as 48793194d2344957b0e855ef5a055208060d10f6."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "SAA-25 completed_verified on exact application head 2cc3f28adcf6a0450aabc5ff61c7563125276dea, validation run 35739388375, merge 48793194d2344957b0e855ef5a055208060d10f6; SAA-26 selected_not_started."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "execution_quality_note": "SAA-25 completed in one owner Continue after the durable governed start. Existing RED and GREEN evidence were resumed rather than replayed after owner re-entry."
+  },
+  "implementation_evidence": {
+    "governed_start": {
+      "aioc_pr": 1668,
+      "validation_run": 35738525274,
+      "merge_sha": "4be4d00ded00bf417f4a7a6df5f8c97524db04bd",
+      "lane_start_revision": 302
+    },
+    "causal_red": {
+      "application_pr": 743,
+      "head_sha": "e8c17f4b0cccb16ee9126640b28e7938953ed5ff",
+      "validation_run": 35738916585,
+      "conclusion": "failure",
+      "repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "cause": "SAA-25 production contract absent; focused test import could not resolve saa-25-3d-reference-pose-scene-staging-line-extraction."
+    },
+    "green": {
+      "application_pr": 743,
+      "validated_head": "2cc3f28adcf6a0450aabc5ff61c7563125276dea",
+      "validation_run": 35739388375,
+      "conclusion": "success",
+      "repository_health": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "48793194d2344957b0e855ef5a055208060d10f6",
+      "lane_prequeue_revision": 303,
+      "lane_publication_revision": 304
+    },
+    "delivered": {
+      "schema": "SAA-25.1",
+      "character_authority": "Character/CAPP/PPIA",
+      "scene_authority": "Scene/Tabletop",
+      "resource_authority": "ARI",
+      "renderer_authority": "PAPT/PCA",
+      "stable_owner_identity_preserved": true,
+      "reference_staging_metadata_only": true,
+      "camera_pose_scene_staging": true,
+      "proposal_lineage_preserved": true,
+      "automatic_drawing_replacement_performed": false,
+      "character_truth_mutation_performed": false,
+      "scene_truth_mutation_performed": false,
+      "narrative_truth_mutation_performed": false,
+      "ari_mutation_performed": false,
+      "canonical_layer_identity_rewritten": false,
+      "duplicate_character_ledger_created": false,
+      "duplicate_scene_ledger_created": false,
+      "duplicate_renderer_created": false,
+      "duplicate_3d_engine_created": false,
+      "fabricated_renderer_coverage": false,
+      "provider_off_local": true,
+      "provider_call_required": false,
+      "paid_cloud_required": false,
+      "webtoon_authoring_implemented": false
+    }
   }
 }
