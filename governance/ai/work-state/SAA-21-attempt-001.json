@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-21",
+  "attempt_id": "SAA-21-attempt-001",
+  "title": "Real-Time Collaboration, Review & Multi-Device Sync",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-20",
+  "required_predecessor": {
+    "work_item": "SAA-20",
+    "status": "completed_verified",
+    "application_merge_sha": "64acc426b763f39d3a80671d305eb5a9aca38bde",
+    "schema": "SAA-20.1"
+  },
+  "objective": "Provide authorized coauthoring over the same comic project with role-aware edit permissions, page/panel/layer presence, review comments, explicit conflict handling, multi-device continuation and offline/reconnect recovery without creating a second canonical asset/provenance or source-domain ledger.",
+  "acceptance": [
+    "Collaboration sessions preserve one stable SAA project/version identity and explicit participant/session identity.",
+    "Role-aware edit permissions explicitly authorize or reject project/page/panel/layer operations before mutation.",
+    "Presence and review-comment state remain collaboration metadata and do not become canonical Character, Scene, Dialogue, ARI, AAI or narrative truth.",
+    "Concurrent edit conflicts are explicit and deterministic; no last-writer-wins or silent conflict repair is inferred.",
+    "Multi-device continuation preserves project/version, history cursor, page/panel/layer identity and authorized participant state.",
+    "Offline/reconnect recovery uses explicit base/head lineage and fails stale or incompatible reconnection closed rather than silently rebasing.",
+    "Provider-off/local single-user operation remains valid and collaboration is not required for core authoring.",
+    "SAA-22 and later professional lettering/drawing/share/publication behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..20 predecessor contracts remain sealed.",
+    "SAA-21 owns collaboration coordination metadata only; canonical project edits still flow through governed SAA edit/history authority.",
+    "Collaboration cannot create duplicate asset/provenance, Character, Scene, Dialogue, AAI, narrative or source-domain ledgers.",
+    "No silent conflict resolution, silent rebase, fabricated permissions or automatic owner-truth mutation is allowed.",
+    "Collaboration remains optional; provider-off single-user operation must remain usable.",
+    "No advanced lettering/drawing, sharing/publication, external upload or final Creator integration authority is granted.",
+    "SAA-22 remains blocked until verified SAA-21 closeout."
+  ],
+  "strict_successor": "SAA-22",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-21.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}

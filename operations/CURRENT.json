@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 439,
+  "state_revision": 440,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "SAA-20",
-      "attempt_id": "SAA-20-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/SAA-20-attempt-001.json",
-      "implementation_branch": "work/saa-20-core-integrated-desktop-mobile-golden-comic-proof",
-      "implementation_authority": true,
-      "activation_rule": "SAA-19 completed_verified. Owner Continue governed-started SAA-20 — Core Integrated Desktop/Mobile Golden Comic Proof. SAA-21+ remain blocked.",
+      "state": "selected_not_started",
+      "selected_work_item": "SAA-21",
+      "attempt_id": "SAA-21-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/SAA-21-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "SAA-20 completed_verified after causal RED, exact-head cross-platform GREEN and application publication. ROADMAP_DEPENDENCY_GRAPH.json supplies no SAA interstitial override; SAA-21 is the strict successor and is selected_not_started only.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "SAA-20 is in progress. Complete the core integrated desktop/mobile golden comic proof only; SAA-21+ remain unauthorized.",
+  "next_project_action": "SAA-21 — Real-Time Collaboration, Review & Multi-Device Sync — is selected_not_started. A later owner Continue is required for governed start.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
