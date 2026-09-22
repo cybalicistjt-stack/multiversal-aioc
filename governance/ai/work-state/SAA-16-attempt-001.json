@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-16",
+  "attempt_id": "SAA-16-attempt-001",
+  "title": "Optional Digital-Comic Audio Cue Lane",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-15",
+  "required_predecessor": {
+    "work_item": "SAA-15",
+    "status": "completed_verified",
+    "application_merge_sha": "3fc56538791293aea33cea160a3dcc853102d95e",
+    "schema": "SAA-15.1"
+  },
+  "objective": "Bind AAI resources/cues to pages, panels and transitions for optional digital presentation only while keeping audio nonblocking and preventing embedding/export unless independent rights allow it.",
+  "acceptance": [
+    "Audio cue bindings preserve stable SAA project/page/panel or transition target identity and stable external AAI resource/cue identity.",
+    "AAI remains authoritative for audio source/resource identity, cue semantics, playback/layering and audio preparation; SAA stores presentation bindings only.",
+    "Audio remains optional and nonblocking: absence or unavailability of optional audio cannot invalidate the visual comic project, static reading order or SAA-15 visual export baseline.",
+    "Available audio references preserve explicit version, availability and compatibility state and fail binding/playback preparation closed when stale, missing, revoked or incompatible.",
+    "Embedding or export of bound audio is prohibited unless independent ARI/AAI rights evidence explicitly allows the required capability; permission is never inferred from binding or availability.",
+    "Provider-off visual comic operation remains supported and SAA performs no synthesis, provider calls or canonical AAI mutation.",
+    "SAA-17 and later accessibility/package/share/publication/SMB10B behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..15 predecessor contracts remain sealed.",
+    "SAA-16 owns optional SAA presentation bindings to existing AAI resources/cues only; AAI retains audio identity, semantics, playback and preparation authority.",
+    "Audio is a late-bind optional lane and may not become a prerequisite for visual authoring, visual reading or SAA-15 static export.",
+    "No audio synthesis, source mutation, rights fabrication, automatic embedding/export, sharing/publication or final Creator integration authority is granted.",
+    "SAA-17 remains blocked until verified SAA-16 closeout."
+  ],
+  "strict_successor": "SAA-17",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-16.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
