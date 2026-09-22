@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 458,
+  "state_revision": 459,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "selected_work_item": "SAA-30",
       "attempt_id": "SAA-30-attempt-001",
       "checkpoint_path": "governance/ai/work-state/SAA-30-attempt-001.json",
-      "implementation_branch": "work/saa-30-expanded-professional-collaborative-golden-proof",
-      "implementation_authority": true,
-      "activation_rule": "SAA-29 completed_verified. Owner Continue governed-started terminal SAA-30 — Expanded Professional/Collaborative Golden Comic Proof. SMB10B/SMB-11 remain blocked until verified SAA-30 closeout.",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "SAA-30 completed_verified after assertion-based causal RED run 35755957630 at 80471977271e3540c46143e7295e62e813dd4f25, exact-head cross-platform GREEN run 35756389420 at 53a6ea907097cd40cb77e5d0334decdcfefd2e4f, and direct single-lane publication of PR #748 as application main 87326251d32fb543049988464625e06e17bce941. SAA-30 has strict_successor null and emits capability-only SMB10B/SMB-11 handoff; downstream slot reuse requires later explicit owner governance.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "SAA-30 terminal golden proof is in progress. Complete SAA proof/integration only; SMB10B and SMB-11 remain unauthorized.",
+  "next_project_action": "SAA is terminal completed_verified. SMB10B and SMB-11 may consume SAA30 capability evidence, but neither is selected or started. A later owner Continue may authorize cross-family GPR-slot reuse only after fresh DAG/start-prerequisite reconciliation.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -246,6 +246,16 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "completion_rule": "MSLR-S01 and MSLR-S02 completed_verified. Terminal supplement proof preserves sealed MSLR authority and emits capability-only SAA readiness without starting SAA."
+    },
+    "SAA": {
+      "program_id": "SAA",
+      "state": "completed_verified",
+      "selected_work_item": "SAA-30",
+      "attempt_id": "SAA-30-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/SAA-30-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "completion_rule": "SAA-01 through SAA-30 completed_verified. Terminal SAA-30.1 proves one rights-safe provider-off professional/collaborative comic lineage across stable page/webtoon identity, collaboration/recovery, accessibility/localization, prepress/interchange and deterministic recovery. SAA30.DOWNSTREAM.CAPABILITY.v1 makes the finished authoring/package contracts consumable by SMB10B and SMB-11 without granting implementation, publication or automatic lane-reuse authority."
     }
   },
   "domain_authorities": {
