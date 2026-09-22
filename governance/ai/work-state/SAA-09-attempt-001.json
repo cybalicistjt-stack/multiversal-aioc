@@ -9,11 +9,11 @@
   "attempt_id": "SAA-09-attempt-001",
   "title": "Speech, Thought, Caption & Comic SFX Text",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/saa-09-speech-thought-caption-comic-sfx-text",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "SAA-08",
   "required_predecessor": {
     "work_item": "SAA-08",
@@ -39,29 +39,100 @@
     "SAA-10 remains blocked until verified SAA-09 closeout."
   ],
   "strict_successor": "SAA-10",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for stable text-element identity, semantic text roles, readable canonical text state, separated presentation styling, explicit layout/overflow failure, sealed panel/composition geometry and accessible keyboard/text editing; then implement only SAA-09.",
+  "active_substep": "completed_verified",
+  "next_action": "SAA-09 is completed_verified. SAA-10 — Bubble Tails, Actor Anchoring & Readability Assistance — is selected_not_started without implementation authority.",
   "owner_interaction_observation": {
-    "continue_turns": 1,
-    "stall_nudges": 0
+    "continue_turns": 2,
+    "stall_nudges": 1
   },
   "execution_guard": {
-    "continue_turns": 1,
-    "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "continue_turns": 2,
+    "stall_nudges": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started SAA-09 after verified SAA-08 closeout."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "SAA-09 causal RED head 89d350651bc29828cc5c429bdb57ff4b1095b3ce passed repository health and produced the intended Linux feature failure before obsolete work was cancelled. Exact implementation head 2c6e2cdf4273ecb58d110db1b78612aee3b0869d completed while the browser was idle and passed repository health, Linux, Windows and deterministic cross-platform comparison in run 35674571027; PR #727 published as 6ac3b40837ba948de3c2b2a18a35577a5d61e1ea."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "SAA-09 completed_verified on exact application head 2c6e2cdf4273ecb58d110db1b78612aee3b0869d, validation run 35674571027, merge 6ac3b40837ba948de3c2b2a18a35577a5d61e1ea; SAA-10 selected_not_started."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true
+  },
+  "implementation_evidence": {
+    "governed_start": {
+      "aioc_pr": 1637,
+      "validation_run": 35674344771,
+      "merge_sha": "d7bd1951c2581edfce5e5fa4dd57353e58cc8893",
+      "lane_start_revision": 238
+    },
+    "causal_red": {
+      "application_pr": 727,
+      "head_sha": "89d350651bc29828cc5c429bdb57ff4b1095b3ce",
+      "validation_run": 35674508853,
+      "run_conclusion": "cancelled_after_branch_advance",
+      "repository_health": "success",
+      "linux": "failure",
+      "windows": "cancelled",
+      "deterministic_comparison": "cancelled",
+      "cause": "SAA-09 production module absent on RED head; Linux reached the feature gate before obsolete work was cancelled."
+    },
+    "green": {
+      "application_pr": 727,
+      "validated_head": "2c6e2cdf4273ecb58d110db1b78612aee3b0869d",
+      "validation_run": 35674571027,
+      "conclusion": "success",
+      "application_merge_sha": "6ac3b40837ba948de3c2b2a18a35577a5d61e1ea",
+      "lane_prequeue_revision": 239,
+      "lane_publication_revision": 240
+    },
+    "delivered": {
+      "schema": "SAA-09.1",
+      "text_roles": [
+        "speech",
+        "thought",
+        "caption",
+        "narration",
+        "sfx"
+      ],
+      "canonical_state_is_text": true,
+      "raster_only_canonical_state": false,
+      "text_and_style_separated": true,
+      "authored_text_rewritten": false,
+      "authored_text_truncated": false,
+      "authored_text_dropped": false,
+      "automatic_semantic_rewrite_performed": false,
+      "automatic_translation_performed": false,
+      "speech_generation_performed": false,
+      "explicit_overflow_state": true,
+      "silent_overflow_repair_performed": false,
+      "panel_identity_preserved": true,
+      "panel_reading_order_preserved": true,
+      "composition_bounds_preserved": true,
+      "silent_placement_repair_performed": false,
+      "dialogue_truth_mutation_performed": false,
+      "narrative_truth_mutation_performed": false,
+      "character_truth_mutation_performed": false,
+      "scene_truth_mutation_performed": false,
+      "source_domain_mutation_performed": false,
+      "keyboard_text_creation_available": true,
+      "keyboard_text_editing_available": true,
+      "keyboard_text_positioning_available": true,
+      "textual_inspection_available": true,
+      "drag_required": false,
+      "bubble_tails_actor_anchoring_readability_assistance_implemented": false,
+      "provider_off_local": true,
+      "optional_ai_required": false,
+      "paid_cloud_required": false
+    }
   }
 }
