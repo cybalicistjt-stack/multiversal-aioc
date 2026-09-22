@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 431,
+  "state_revision": 432,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "SAA-16",
-      "attempt_id": "SAA-16-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/SAA-16-attempt-001.json",
-      "implementation_branch": "work/saa-16-optional-digital-comic-audio-cue-lane",
-      "implementation_authority": true,
-      "activation_rule": "SAA-15 completed_verified. Owner Continue governed-started SAA-16 — Optional Digital-Comic Audio Cue Lane. AAI remains late-bind optional authority; SAA-17+ remain blocked.",
+      "state": "selected_not_started",
+      "selected_work_item": "SAA-17",
+      "attempt_id": "SAA-17-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/SAA-17-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "SAA-16 completed_verified after causal RED, exact-head cross-platform GREEN and application publication. ROADMAP_DEPENDENCY_GRAPH.json supplies no SAA interstitial override; SAA-17 is the strict successor and is selected_not_started only.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "SAA-16 is in progress. Complete optional nonblocking digital-comic audio presentation bindings only; SAA-17+ remain unauthorized.",
+  "next_project_action": "SAA-17 — Reading Order, Alt Description & Text Projection — is selected_not_started. A later owner Continue is required for governed start.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
