@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-28",
+  "attempt_id": "SAA-28-attempt-001",
+  "title": "Multimedia/Interactive Comic, Localization & Accessible Read-Aloud",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-27",
+  "required_predecessor": {
+    "work_item": "SAA-27",
+    "status": "completed_verified",
+    "application_merge_sha": "57a7f1ed1ae16cd888be9351731fb772abf3a909",
+    "schema": "SAA-27.1"
+  },
+  "objective": "Extend digital comics with optional AAI narration/cues, permitted video/animated media, hyperlinks/hotspots, captions/transcripts, speech-to-text/text-to-speech/read-aloud, translation/localization projections and accessibility metadata while keeping static export valid and requiring no network/provider.",
+  "acceptance": [
+    "Optional narration/audio-cue references preserve existing AAI authority and do not create a duplicate audio/narration ledger.",
+    "Video or animated media references are capability/rights-filtered governed resources and do not create a parallel ARI asset/provenance ledger.",
+    "Hyperlinks and hotspots remain explicit interactive presentation metadata and cannot silently mutate comic, Character, Scene, Dialogue or narrative truth.",
+    "Captions, transcripts, speech-to-text, text-to-speech and read-aloud remain explicit accessibility/authoring projections with source lineage and no silent owner-truth mutation.",
+    "Translation/localization outputs remain locale-specific projections linked to source text rather than replacements for canonical authored text.",
+    "Accessibility metadata and controls are explicit, deterministic and usable without requiring pointer-only or audio-only interaction.",
+    "Static export remains valid when multimedia/interactive/localization features are absent, and provider-off/local operation remains a valid core path.",
+    "SAA-29 and later industry-interchange/publication behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..27 predecessor contracts remain sealed.",
+    "SAA-28 owns multimedia/interactive presentation, localization projection and accessibility/read-aloud semantics only; AAI, ARI, Dialogue and other source-domain owners remain canonical.",
+    "No duplicate audio, asset/provenance, Dialogue, Character, Scene, page/panel/layer or narrative ledger may be created.",
+    "No provider/network is mandatory, and interactive metadata cannot itself authorize external network side effects or publication.",
+    "Generated captions/transcripts/translations/speech projections cannot silently overwrite canonical source text or owner truth.",
+    "Static/non-multimedia export remains valid.",
+    "SAA-29 remains blocked until verified SAA-28 closeout."
+  ],
+  "strict_successor": "SAA-29",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-28.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
