@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-23",
+  "attempt_id": "SAA-23-attempt-001",
+  "title": "Pro Raster/Vector Drawing, Masks & Layer Interop",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-22",
+  "required_predecessor": {
+    "work_item": "SAA-22",
+    "status": "completed_verified",
+    "application_merge_sha": "c32e877e22daffca2ef2a6baa23e416b4810b31e",
+    "schema": "SAA-22.1"
+  },
+  "objective": "Provide or consume governed drawing-layer capabilities for raster and editable vector strokes, pressure-aware brushes, selections, masks, clipping, layer folders/comps and non-destructive filters while preferring PAPT or other existing studio owners for primitives and keeping SAA limited to comic-project composition semantics rather than a duplicate renderer.",
+  "acceptance": [
+    "Raster and editable-vector drawing state integrates with existing SAA page/panel/layer identity instead of creating a parallel comic document model.",
+    "Pressure-aware brush operations remain explicit governed drawing operations with deterministic project/layer targets.",
+    "Selections, masks and clipping preserve source layer identity and remain reversible/non-destructive where declared.",
+    "Layer folders/comps compose existing governed SAA layers without replacing canonical project/layer identity.",
+    "Non-destructive filters retain their source relationship and cannot silently bake over canonical source state.",
+    "Existing PAPT or other studio primitive owners are consumed where applicable; SAA does not create a duplicate generic renderer or brush engine.",
+    "Provider-off/local authoring remains valid for core drawing-layer workflows.",
+    "SAA-24 and later finishing/3D/scroll/print/multimedia/interchange/publication behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..22 predecessor contracts remain sealed.",
+    "SAA-23 owns comic-project drawing/layer interoperability semantics only; reusable primitive drawing/rendering authority remains with existing studio owners where already established.",
+    "No duplicate generic renderer, brush engine, asset ledger, Character/Scene/Dialogue/ARI/AAI or narrative ledger may be created.",
+    "Masks, clipping and filters cannot silently mutate source-domain truth or discard recoverable layer state.",
+    "No proprietary vendor code, private formats, assets, protected expression or undocumented protocols may be copied.",
+    "Provider-off/local operation remains valid.",
+    "SAA-24 remains blocked until verified SAA-23 closeout."
+  ],
+  "strict_successor": "SAA-24",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-23.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
