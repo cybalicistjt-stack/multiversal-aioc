@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-25",
+  "attempt_id": "SAA-25-attempt-001",
+  "title": "3D Reference, Pose/Scene Staging & Line Extraction",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-24",
+  "required_predecessor": {
+    "work_item": "SAA-24",
+    "status": "completed_verified",
+    "application_merge_sha": "58b8dec49c3512d24da4807ab702b390bd3ef0d3",
+    "schema": "SAA-24.1"
+  },
+  "objective": "Allow governed 3D/Scene/Character reference staging for camera, pose, hand/head/body reference, props and backgrounds, plus non-authoritative image/3D-to-line or tone proposals where existing renderers support them. Reference staging never becomes Character/Scene truth.",
+  "acceptance": [
+    "3D, Scene and Character reference staging binds to existing governed owner identities and versions rather than creating duplicate Character, Scene or asset truth.",
+    "Camera, pose, hand/head/body, prop and background reference state remains explicit authoring reference/staging metadata.",
+    "Existing renderer or production primitive owners are consumed where available; SAA does not create a duplicate generic 3D renderer or scene engine.",
+    "Image/3D-to-line or tone results are explicit non-authoritative proposals with source/reference lineage and cannot silently replace editable drawing/layer state.",
+    "Reference staging never mutates canonical Character pose/appearance, Scene placement or narrative truth.",
+    "SAA-24 ARI material/provenance and SAA-23 drawing/layer authority boundaries remain sealed.",
+    "Provider-off/local authoring remains valid when governed local reference assets/renderers are available.",
+    "SAA-26 and later webtoon/print/multimedia/interchange/publication behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..24 predecessor contracts remain sealed.",
+    "SAA-25 owns comic-authoring reference/staging semantics only; canonical Character, Scene, asset/material and renderer authority remains with existing owners.",
+    "Line/tone extraction outputs remain proposals until explicitly accepted through governed SAA drawing/edit authority.",
+    "No duplicate Character, Scene, ARI, renderer, 3D engine or narrative ledger may be created.",
+    "No proprietary vendor code, private formats, assets, protected expression or undocumented protocols may be copied.",
+    "Provider-off/local operation remains valid where governed local capabilities exist.",
+    "SAA-26 remains blocked until verified SAA-25 closeout."
+  ],
+  "strict_successor": "SAA-26",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-25.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
