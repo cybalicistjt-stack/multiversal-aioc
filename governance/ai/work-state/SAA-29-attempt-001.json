@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-29",
+  "attempt_id": "SAA-29-attempt-001",
+  "title": "Industry Interchange & Layer-Aware Roundtrip",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-28",
+  "required_predecessor": {
+    "work_item": "SAA-28",
+    "status": "completed_verified",
+    "application_merge_sha": "df84811fd64cd2a566a1c0382c0cbe084a5c4a90",
+    "schema": "SAA-28.1"
+  },
+  "objective": "Add capability-filtered import/export/roundtrip for appropriate open/standard or independently supported formats, including layer-aware raster interchange, PDF/e-book style outputs where applicable and preservation of editable text/layer semantics when the format supports them. Private/proprietary formats require independently lawful support; no undocumented reverse-engineered dependency is assumed.",
+  "acceptance": [
+    "Interchange format support is explicit and capability-filtered; unsupported or proprietary/private formats fail closed unless independently lawful/documented support exists.",
+    "Layer-aware raster interchange preserves stable project/page/panel/layer identity and editable layer semantics whenever the selected format supports them.",
+    "Editable text semantics are preserved when the selected interchange format supports editable text; unsupported semantics degrade explicitly rather than silently flattening owner truth.",
+    "PDF/e-book style outputs are governed export projections only and do not themselves authorize publication, upload, distribution or commercial release.",
+    "Roundtrip import/export retains explicit source/version/provenance lineage and deterministic compatibility findings.",
+    "Project/template remix or fork lineage remains explicit and provenance-preserving rather than replacing source ownership history.",
+    "Provider-off/local operation remains valid for supported local documented formats and no undocumented reverse-engineered dependency is required.",
+    "SAA-30 terminal professional/collaborative golden proof remains unauthorized until verified SAA-29 closeout."
+  ],
+  "boundaries": [
+    "SAA-01..28 predecessor contracts remain sealed.",
+    "SAA-29 owns interchange/roundtrip semantics only; canonical comic, ARI asset/provenance, Dialogue/text, renderer and other source-domain owners remain canonical.",
+    "No duplicate asset/provenance, page/panel/layer, Dialogue/text, Character, Scene, audio, renderer or narrative ledger may be created.",
+    "Private/proprietary formats require independently lawful documented support; no copying of proprietary code, assets, protected expression, undocumented protocols or private save formats is authorized.",
+    "Lossy or unsupported interchange semantics must be explicit and fail/degrade visibly rather than silently mutating canonical source state.",
+    "Export does not grant publication, distribution, provider upload or commercial release authority.",
+    "SAA-30 remains blocked until verified SAA-29 closeout."
+  ],
+  "strict_successor": "SAA-30",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-29.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
