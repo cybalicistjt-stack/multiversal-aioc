@@ -9,11 +9,11 @@
   "attempt_id": "SAA-14-attempt-001",
   "title": "Composition-to-ARI Derivative Registration",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/saa-14-composition-to-ari-derivative-registration",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "SAA-13",
   "required_predecessor": {
     "work_item": "SAA-13",
@@ -39,8 +39,8 @@
     "SAA-15 remains blocked until verified SAA-14 closeout."
   ],
   "strict_successor": "SAA-15",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for exact SAA source identity, renderer/compositor metadata, governed source-resource provenance and fail-closed rights lineage; then implement only SAA-14.",
+  "active_substep": "completed_verified",
+  "next_action": "SAA-14 is completed_verified. SAA-15 — Static Image & Multipage Export — is selected_not_started without implementation authority.",
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
@@ -48,20 +48,83 @@
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner authorized continuing to SAA-14 after verified SAA-13 closeout."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "SAA-14 causal RED head 6d10d575b2bce922c465b31df452c83fa5866800 passed repository health and failed Linux/Windows because the SAA-14 production module was absent. Exact implementation head b3e23fc2786020998942f2b59135b0e56d7ae862 passed repository health, Linux, Windows and deterministic cross-platform comparison in run 35685144760; PR #732 published as c97d121f829e837c675be9cc6017eee804cf184e."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "SAA-14 completed_verified on exact application head b3e23fc2786020998942f2b59135b0e56d7ae862, validation run 35685144760, merge c97d121f829e837c675be9cc6017eee804cf184e; SAA-15 selected_not_started."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true
+  },
+  "implementation_evidence": {
+    "governed_start": {
+      "aioc_pr": 1647,
+      "validation_run": 35684895665,
+      "merge_sha": "bbf5b2df251ee8526551c51374ea456e009e4edd",
+      "lane_start_revision": 258
+    },
+    "causal_red": {
+      "application_pr": 732,
+      "head_sha": "6d10d575b2bce922c465b31df452c83fa5866800",
+      "validation_run": 35685012570,
+      "conclusion": "failure",
+      "repository_health": "success",
+      "linux": "failure",
+      "windows": "failure",
+      "deterministic_comparison": "skipped",
+      "cause": "SAA-14 production contract absent; focused test import could not resolve saa-14-composition-to-ari-derivative-registration."
+    },
+    "green": {
+      "application_pr": 732,
+      "validated_head": "b3e23fc2786020998942f2b59135b0e56d7ae862",
+      "validation_run": 35685144760,
+      "conclusion": "success",
+      "repository_health": "success",
+      "linux": "success",
+      "windows": "success",
+      "deterministic_comparison": "success",
+      "application_merge_sha": "c97d121f829e837c675be9cc6017eee804cf184e",
+      "lane_prequeue_revision": 259,
+      "lane_publication_revision": 260
+    },
+    "delivered": {
+      "schema": "SAA-14.1",
+      "derivative_registration_handoff_prepared": true,
+      "ari_resource_identity_authority": "ARI-02",
+      "ari_derivative_lineage_authority": "ARI-03",
+      "ari_rights_authority": "ARI-11",
+      "ari_registration_authority": "ARI",
+      "exact_saa_source_identity": true,
+      "renderer_compositor_versions_explicit": true,
+      "byte_addressed_source_lineage": true,
+      "transform_rights_evidence_explicit": true,
+      "stale_rights_fail_closed": true,
+      "unavailable_source_fail_closed": true,
+      "incompatible_source_fail_closed": true,
+      "denied_revoked_unknown_transform_fail_closed": true,
+      "ari_registration_performed": false,
+      "parallel_asset_library_created": false,
+      "source_truth_copied": false,
+      "source_truth_mutation_performed": false,
+      "fabricated_permission": false,
+      "fabricated_provenance": false,
+      "silent_rights_repair_performed": false,
+      "silent_lineage_repair_performed": false,
+      "provider_off_local": true,
+      "optional_ai_required": false,
+      "paid_cloud_required": false
+    }
   }
 }
