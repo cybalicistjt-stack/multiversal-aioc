@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SMB",
+  "lane": "gpr",
+  "track": "system-maturation-buildout",
+  "source_program": "SMB",
+  "work_item_id": "SMB-13",
+  "attempt_id": "SMB-13-attempt-001",
+  "title": "Remote Internal Alpha Productization",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SMB-12",
+  "required_predecessor": {
+    "work_item": "SMB-12",
+    "status": "completed_verified",
+    "application_merge_sha": "1bbf7a5fda63bb195857d124377a82ea9fc80c4f",
+    "schema": "SMB-12.1"
+  },
+  "roadmap_activation": {
+    "dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
+    "dag_schema": "1.0.5",
+    "interstitial_override": null,
+    "strict_program_successor": "SMB-13"
+  },
+  "objective": "Make remote testing nearly frictionless for non-developer testers through installer/onboarding, role setup, guided scenarios, automatic evidence capture, diagnostics, bug bundles, instructions, version verification and update flow.",
+  "acceptance": [
+    "Invited testers on supported environments can install, join, execute assigned scenarios and return actionable evidence without developer hand-holding."
+  ],
+  "boundaries": [
+    "SMB-13 is selected_not_started only and has no implementation authority until a later owner Continue.",
+    "SMB-12 remains sealed completed predecessor evidence; optional AI is not promoted into a blocking product dependency.",
+    "SMB-14 and later work remain unauthorized until verified SMB-13 closeout.",
+    "Selection does not itself authorize public release, commerce, marketplace/community publication or unrelated owner-domain mutation."
+  ],
+  "strict_successor": "SMB-14",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SMB-13.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
