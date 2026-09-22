@@ -7,10 +7,10 @@
   "ops3_disposition": "PLANNING_ONLY",
   "ops3_rule": "This backlog describes the approved SMB sequence but cannot select current work, grant implementation authority, or override operations/CURRENT.json or ROADMAP_DEPENDENCY_GRAPH.json.",
   "activation_rule": "SMB activated after completed_verified MIB-18. Each tranche still requires canonical OPS3 selection and governed start before implementation authority exists. Cross-program interstitial programs may be required between SMB tranches by ROADMAP_DEPENDENCY_GRAPH.json.",
-  "current_item": "SMB10B",
-  "current_attempt": "SMB10B-attempt-001",
-  "next_smb_item": "SMB10B",
-  "interstitial_handoff": "SAA-30 completed_verified; SMB10B governed-started by owner Continue.",
+  "current_item": null,
+  "current_attempt": null,
+  "next_smb_item": "SMB-11",
+  "interstitial_handoff": "SAA-30 and SMB10B completed_verified; normalized SMB-10 is complete and SMB-11 is selected_not_started.",
   "tranches": [
     {
       "id": "SMB-01",
@@ -60,12 +60,12 @@
     {
       "id": "SMB-10",
       "name": "Full Player / GM / Creator Product UX",
-      "status": "planned"
+      "status": "completed_verified"
     },
     {
       "id": "SMB-11",
       "name": "Content Creation & Sharing Pipeline",
-      "status": "planned"
+      "status": "selected_not_started"
     },
     {
       "id": "SMB-12",
@@ -134,26 +134,27 @@
     "real-money integration outside approved commercial work"
   ],
   "roadmap_normalization": {
-    "authority": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4",
+    "authority": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.5",
     "current_projection": [
       "SMB-09",
       "SMB10A",
-      "SAA-01..20",
-      "SMB10B"
+      "SAA-01..30",
+      "SMB10B",
+      "SMB-11"
     ],
-    "rule": "Core Player/GM/product UX is SMB10A. SAA follows that seam. SMB10B closes final Creator/SAA integration.",
+    "rule": "SMB10A completed the core Player/GM product UX, SAA-01..30 completed the authoring engine, and SMB10B completed the final Creator/SAA product integration. SMB-11 is the next ordinary SMB tranche.",
     "legacy_unsplit_smb10_remains_planning_label": true
   },
   "normalized_interstitial_status": {
     "work_item": "SMB10B",
-    "status": "in_progress",
-    "application_merge_sha": "6c73d0cc6e930cde7ee2f40c7f0e3682a963a053",
-    "application_validation_run": "35628921559",
+    "status": "completed_verified",
+    "application_merge_sha": "65f1ba555a4b508321e32812db5a962dd9e59ff8",
+    "application_validation_run": "35763094535",
     "owner_continue_turns": 2,
     "product_completion_valid": true,
     "predecessor_smb10a": "completed_verified",
     "predecessor_saa30": "completed_verified",
-    "implementation_authority": true
+    "implementation_authority": false
   },
   "post_smb10a_owner_hold": {
     "active": false,
@@ -163,5 +164,5 @@
     "instruction": "Released by later owner Continue and satisfied through completed SAA-01..30.",
     "next_action": "SMB10B is the active final Creator/SAA integration seam."
   },
-  "next_action": "Complete SMB10B final Creator/SAA product integration only. SMB-11 remains unauthorized until verified SMB10B closeout."
+  "next_action": "SMB10B completed_verified. SMB-11 — Content Creation & Sharing Pipeline — is selected_not_started and requires a later owner Continue for governed start."
 }
