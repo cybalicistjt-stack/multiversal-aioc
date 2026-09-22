@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-14",
+  "attempt_id": "SAA-14-attempt-001",
+  "title": "Composition-to-ARI Derivative Registration",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-13",
+  "required_predecessor": {
+    "work_item": "SAA-13",
+    "status": "completed_verified",
+    "application_merge_sha": "a49530967dbfe51bb237bbbe2d8968759482be2d",
+    "schema": "SAA-13.1"
+  },
+  "objective": "Allow an authored panel, pose or composite render to become a new ARI derivative with exact source references, renderer/compositor version and rights lineage while preserving ARI as asset/provenance authority.",
+  "acceptance": [
+    "Derivative-registration requests preserve stable source SAA project/page/panel, pose or composite identity and enumerate the governed source resources used.",
+    "Renderer/compositor identity and version are explicit registration inputs rather than inferred metadata.",
+    "ARI derivative provenance preserves exact source-resource references and parent lineage without copying or rewriting source-domain truth.",
+    "Rights/capability lineage is explicit and missing, stale, denied or incompatible source rights fail closed without fabricated permission.",
+    "Successful handoff registers through ARI authority rather than creating a parallel SAA asset library or replacement provenance record.",
+    "Provider-off local preparation remains supported; optional AI and paid cloud are not required for derivative-registration metadata.",
+    "SAA-15 and later export/share/publication/SMB10B behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..13 predecessor contracts remain sealed.",
+    "SAA-14 owns the SAA-to-ARI derivative-registration handoff only; ARI retains derivative asset identity, provenance, rights and lifecycle authority.",
+    "Registration may reference rendered derivative bytes but may not mutate source ARI resources, Character/Scene/narrative truth or historical SAA versions.",
+    "No parallel asset library, rights fabrication, automatic semantic rewriting, export/share/publication or final Creator integration authority is granted.",
+    "SAA-15 remains blocked until verified SAA-14 closeout."
+  ],
+  "strict_successor": "SAA-15",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-14.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
