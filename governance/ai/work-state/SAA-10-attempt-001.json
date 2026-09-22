@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-10",
+  "attempt_id": "SAA-10-attempt-001",
+  "title": "Bubble Tails, Actor Anchoring & Readability Assistance",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-09",
+  "required_predecessor": {
+    "work_item": "SAA-09",
+    "status": "completed_verified",
+    "application_merge_sha": "6ac3b40837ba948de3c2b2a18a35577a5d61e1ea",
+    "schema": "SAA-09.1"
+  },
+  "objective": "Bind optional speech/thought balloon tails to governed actor or anchor references and provide collision/readability warnings and suggestions without silently rewriting authored text, text geometry, actor truth or panel composition.",
+  "acceptance": [
+    "Bubble tails are optional presentation-only geometry bound to an existing SAA-09 text element and a governed actor/anchor reference; they never create or mutate canonical actor, Character/NPC/Creature or Scene relationships.",
+    "Actor anchoring preserves stable actor/owner identity from prior SAA actor projection contracts and fails closed when the target actor/anchor is missing, stale, unavailable or incompatible.",
+    "Tail geometry remains bounded to the target panel/composition and does not silently rewrite SAA-09 text geometry, SAA-03 composition bounds or panel reading order.",
+    "Collision and readability analysis produces explicit warnings/suggestions only; it may not silently move, resize, reflow, truncate or rewrite authored dialogue/text/layout.",
+    "Readability checks retain actual readable text state and report issues such as overlap, tail crossing, off-panel placement or insufficient separation without rasterizing canonical text.",
+    "Keyboard/textual equivalents can inspect, create, remove, retarget and adjust tails/anchors and review warnings without requiring drag gestures.",
+    "Provider-off local operation is supported; optional AI and paid cloud are not required.",
+    "SAA-11 and later text/lettering/export/share/publication/SMB10B behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..09 predecessor contracts remain sealed.",
+    "SAA-10 owns presentation-only tail/anchor/readability-assistance state; Character/NPC/Creature, Dialogue/Narrative and Scene owner domains retain canonical truth.",
+    "Warnings and suggestions are advisory only and cannot silently alter authored text, text geometry, actor projection, panel geometry, reading order or source-domain state.",
+    "No automatic semantic rewriting, translation, speech generation, export/share/publication or final Creator integration authority is granted.",
+    "SAA-11 remains blocked until verified SAA-10 closeout."
+  ],
+  "strict_successor": "SAA-11",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-10.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
