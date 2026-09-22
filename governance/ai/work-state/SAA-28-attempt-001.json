@@ -9,10 +9,10 @@
   "attempt_id": "SAA-28-attempt-001",
   "title": "Multimedia/Interactive Comic, Localization & Accessible Read-Aloud",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "owner_selected": false,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/saa-28-multimedia-interactive-localization-accessible-read-aloud",
   "completed": false,
   "selected_by_verified_predecessor": "SAA-27",
   "required_predecessor": {
@@ -42,25 +42,29 @@
     "SAA-29 remains blocked until verified SAA-28 closeout."
   ],
   "strict_successor": "SAA-29",
-  "active_substep": "awaiting_governed_start",
-  "next_action": "Await a later explicit owner Continue before governed-starting SAA-28.",
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for optional AAI narration/cues, ARI-governed video/animated media, hyperlinks/hotspots, captions/transcripts, STT/TTS/read-aloud, locale projections and deterministic accessibility metadata while preserving static export and provider-off operation; then implement only SAA-28.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner Continue governed-started SAA-28 after verified SAA-27 closeout."
+    },
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
