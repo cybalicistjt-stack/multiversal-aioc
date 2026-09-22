@@ -9,11 +9,11 @@
   "attempt_id": "SMB-12-attempt-001",
   "title": "Real Optional AI Integrations",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/smb-12-real-optional-ai-integrations",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "SMB-11",
   "required_predecessor": {
     "work_item": "SMB-11",
@@ -47,29 +47,68 @@
     "SMB-13 remains blocked until verified SMB-12 closeout."
   ],
   "strict_successor": "SMB-13",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for optional provider integration strictly through MIB-15, provider-off/fake-provider parity, advisory proposal outputs, capability-driven replaceable providers, explicit cost/privacy/provenance controls, and fail-closed unavailable/incompatible providers; then implement only SMB-12.",
+  "active_substep": "completed_verified",
+  "next_action": "SMB-12 is completed_verified. SMB-13 — Remote Internal Alpha Productization — is selected_not_started without implementation authority.",
   "owner_interaction_observation": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0
   },
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue governed-started SMB-12 after verified SMB-11 closeout."
+      "seq": 2,
+      "kind": "completed_verified_candidate",
+      "evidence": "Causal RED run 35771552218 at head 85470ef25e0888519f4d3b351fdb4aa99ead845f failed before production integration landed. Repaired exact head be0759ae050791d38cbf4692a46cf42ee1ac70f5 passed Validate Current Family run 35771972261 and PR #752 merged with expected-head protection as 1bbf7a5fda63bb195857d124377a82ea9fc80c4f after a fresh-main no-drift integration check."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "SMB-12 completed_verified on head be0759ae050791d38cbf4692a46cf42ee1ac70f5, run 35771972261, merge 1bbf7a5fda63bb195857d124377a82ea9fc80c4f; SMB-13 selected_not_started."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED"
+    ],
+    "product_completion_valid": true,
+    "note": "SMB-12 product evidence is valid. A second owner Continue was required across executor/chat continuity; recovery resumed from durable exact-head/PR/CI/lane evidence without replaying completed work."
+  },
+  "implementation_evidence": {
+    "governed_start": {
+      "aioc_pr": 1684,
+      "validation_run": 35771132063,
+      "merge_sha": "7a38902c3dada2309f673dc5aae42ccb720050d1",
+      "lane_start_revision": 334
+    },
+    "causal_red": {
+      "application_pr": 752,
+      "head_sha": "85470ef25e0888519f4d3b351fdb4aa99ead845f",
+      "validation_run": 35771552218,
+      "conclusion": "failure",
+      "cause": "Pre-implementation SMB-12 candidate failed before the production optional-AI integration module landed."
+    },
+    "green": {
+      "application_pr": 752,
+      "validated_head": "be0759ae050791d38cbf4692a46cf42ee1ac70f5",
+      "validation_run": 35771972261,
+      "conclusion": "success",
+      "application_merge_sha": "1bbf7a5fda63bb195857d124377a82ea9fc80c4f",
+      "fresh_main_base": "0e9641ea7dc9c6d60fe8b3d6a3c3186bdbd8ea69",
+      "integration_check": "candidate ahead 7, behind 0, merge base equal to fresh main; exact-head merge protected by expected head SHA",
+      "lane_prequeue_revision": 335,
+      "lane_publication_revision": 336
+    }
+  },
+  "interaction_quality": {
+    "owner_execution_commands": 2,
+    "additional_continue_commands": 1,
+    "product_work_invalidated": false,
+    "classification": "executor/session continuity failure"
   }
 }
