@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-27",
+  "attempt_id": "SAA-27-attempt-001",
+  "title": "Print Prepress, CMYK & Bound-Book Preview",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-26",
+  "required_predecessor": {
+    "work_item": "SAA-26",
+    "status": "completed_verified",
+    "application_merge_sha": "9eda24747c766a1d951fe20d197ef710d076998c",
+    "schema": "SAA-26.1"
+  },
+  "objective": "Add print-specific output profiles: trim/bleed/safe marks, page numbering/spreads, color-space/CMYK preview or conversion through approved renderers, printer-facing checks and a local bound-book/spread preview. This does not authorize printing purchases or commercial publication.",
+  "acceptance": [
+    "Print profiles expose explicit trim, bleed and safe-area metadata without rewriting canonical page/panel/layer identity.",
+    "Page numbering and spread ordering derive deterministically from governed page sequence and remain presentation/export metadata.",
+    "CMYK/color-space preview or conversion uses only approved renderer/color-management capability references and does not create a duplicate renderer or color engine.",
+    "Printer-facing checks are deterministic local preflight results and cannot silently repair source content or rights state.",
+    "Bound-book/spread preview is local presentation-only state and cannot become canonical layout or publication truth.",
+    "Printing purchases, commercial publication, vendor submission and network upload remain unauthorized.",
+    "SAA-26 page/webtoon identity and all earlier ARI/PAPT/PCA/source-owner boundaries remain sealed.",
+    "SAA-28 and later multimedia/interchange/publication behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..26 predecessor contracts remain sealed.",
+    "SAA-27 owns print-prepress profile, preview and validation semantics only; canonical comic identity and approved renderer/color-management authority remain with existing owners.",
+    "No duplicate renderer, color engine, asset/material, page/panel/layer, Character, Scene, Dialogue or narrative ledger may be created.",
+    "Preview/conversion cannot silently mutate source-domain truth or rights state.",
+    "No printing purchase, commercial publication, vendor submission or network side effect is authorized.",
+    "Provider-off/local preview remains valid where approved local renderer/color-management capabilities exist.",
+    "SAA-28 remains blocked until verified SAA-27 closeout."
+  ],
+  "strict_successor": "SAA-28",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-27.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
