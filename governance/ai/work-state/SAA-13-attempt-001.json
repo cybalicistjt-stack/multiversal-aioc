@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SAA",
+  "lane": "gpr",
+  "track": "sequential-art-authoring",
+  "source_program": "SAA",
+  "work_item_id": "SAA-13",
+  "attempt_id": "SAA-13-attempt-001",
+  "title": "Reversible Edit History & Project Versioning",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SAA-12",
+  "required_predecessor": {
+    "work_item": "SAA-12",
+    "status": "completed_verified",
+    "application_merge_sha": "73b41048d41c048e6fa7c247c51e5eca1ce196d4",
+    "schema": "SAA-12.1"
+  },
+  "objective": "Provide deterministic edit commands, undo/redo, autosave and recovery boundaries, and project-version lineage for SAA authoring without mutating sealed owner-domain truth or granting later derivative/export/share authority.",
+  "acceptance": [
+    "Authoring mutations are represented as deterministic reversible commands with stable identity and replay order.",
+    "Undo and redo restore exact authored SAA presentation state without guessing or silently rewriting owner-domain references.",
+    "Autosave and recovery have explicit durable boundaries and distinguish committed project state from transient/incomplete edits.",
+    "Project versions preserve lineage, parent identity and deterministic replay/recovery relationships rather than duplicating external owner truth.",
+    "Corrupt, stale, incompatible or incomplete history/recovery state fails closed and remains inspectable instead of being silently repaired.",
+    "Keyboard/textual equivalents can inspect history, version and recovery state without requiring drag gestures.",
+    "Provider-off local operation remains supported; optional AI and paid cloud are not required.",
+    "SAA-14 and later derivative registration/export/share/publication/SMB10B behavior remain unauthorized."
+  ],
+  "boundaries": [
+    "SAA-01..12 predecessor contracts remain sealed.",
+    "SAA-13 owns SAA-local edit history, recovery boundaries and project-version lineage only; owner-domain Character, Scene, ARI, narrative and other canonical truth remain external.",
+    "Undo/redo/recovery may restore authored SAA state only and may not mutate or synthesize canonical owner-domain records.",
+    "No automatic semantic rewriting, derivative registration, export/share/publication or final Creator integration authority is granted.",
+    "SAA-14 remains blocked until verified SAA-13 closeout."
+  ],
+  "strict_successor": "SAA-14",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await a later explicit owner Continue before governed-starting SAA-13.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
