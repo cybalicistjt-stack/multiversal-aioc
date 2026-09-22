@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "gpr",
-  "revision": 326,
+  "revision": 327,
   "selected_work_item": "SMB10B",
   "attempt_id": "SMB10B-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/smb10b-final-creator-saa-integration",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Owner Continue explicitly reused terminal GPR slot for SMB10B after DAG schema 1.0.5 verified SMB10A + SAA-30 start gates; AIOC PR #1680 / validation 35758122684 / merge 73d768882ea0721aded63c999a7a6c439fae76f6."
+    "kind": "prequeue_green",
+    "evidence": "exact head c7b35934fdc070cbdfec8499f2c4b5b9cbe75126 passed prequeue validation run 35763094535"
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,9 @@
     "closeout_merge_sha": "22190d0f5784950c7f29281563788ac04c51d1f7",
     "closeout_validation_run": "35757496320",
     "closeout_ready_candidate": "SAA-30-closeout-001"
+  },
+  "prequeue_green": {
+    "candidate_head": "c7b35934fdc070cbdfec8499f2c4b5b9cbe75126",
+    "validation_run": "35763094535"
   }
 }
