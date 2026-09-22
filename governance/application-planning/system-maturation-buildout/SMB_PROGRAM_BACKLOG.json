@@ -7,10 +7,10 @@
   "ops3_disposition": "PLANNING_ONLY",
   "ops3_rule": "This backlog describes the approved SMB sequence but cannot select current work, grant implementation authority, or override operations/CURRENT.json or ROADMAP_DEPENDENCY_GRAPH.json.",
   "activation_rule": "SMB activated after completed_verified MIB-18. Each tranche still requires canonical OPS3 selection and governed start before implementation authority exists. Cross-program interstitial programs may be required between SMB tranches by ROADMAP_DEPENDENCY_GRAPH.json.",
-  "current_item": null,
-  "current_attempt": null,
-  "next_smb_item": "SMB10A",
-  "interstitial_handoff": "SAA-01 owner-held; not selected",
+  "current_item": "SMB10B",
+  "current_attempt": "SMB10B-attempt-001",
+  "next_smb_item": "SMB10B",
+  "interstitial_handoff": "SAA-30 completed_verified; SMB10B governed-started by owner Continue.",
   "tranches": [
     {
       "id": "SMB-01",
@@ -145,19 +145,23 @@
     "legacy_unsplit_smb10_remains_planning_label": true
   },
   "normalized_interstitial_status": {
-    "work_item": "SMB10A",
-    "status": "completed_verified",
+    "work_item": "SMB10B",
+    "status": "in_progress",
     "application_merge_sha": "6c73d0cc6e930cde7ee2f40c7f0e3682a963a053",
     "application_validation_run": "35628921559",
     "owner_continue_turns": 2,
-    "product_completion_valid": true
+    "product_completion_valid": true,
+    "predecessor_smb10a": "completed_verified",
+    "predecessor_saa30": "completed_verified",
+    "implementation_authority": true
   },
   "post_smb10a_owner_hold": {
-    "active": true,
+    "active": false,
     "target": "SAA-01",
-    "selected": false,
+    "selected": true,
     "implementation_authority": false,
-    "instruction": "Do not go on to SAA yet.",
-    "next_action": "Await later explicit owner Continue before SAA selection/governed start."
-  }
+    "instruction": "Released by later owner Continue and satisfied through completed SAA-01..30.",
+    "next_action": "SMB10B is the active final Creator/SAA integration seam."
+  },
+  "next_action": "Complete SMB10B final Creator/SAA product integration only. SMB-11 remains unauthorized until verified SMB10B closeout."
 }
