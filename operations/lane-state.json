@@ -1,17 +1,17 @@
 {
   "schema_version": "1.2.0",
   "lane": "gpr",
-  "revision": 325,
-  "selected_work_item": "SAA-30",
-  "attempt_id": "SAA-30-attempt-001",
-  "execution_status": "completed_verified",
-  "implementation_branch": null,
-  "progress_seq": 4,
+  "revision": 326,
+  "selected_work_item": "SMB10B",
+  "attempt_id": "SMB10B-attempt-001",
+  "execution_status": "in_progress",
+  "implementation_branch": "work/smb10b-final-creator-saa-integration",
+  "progress_seq": 1,
   "last_progress": {
-    "kind": "completed_verified",
-    "evidence": "SAA-30 terminal family closeout merged as 22190d0f5784950c7f29281563788ac04c51d1f7 after Operations V3 validation run 35757496320; SAA is terminal completed_verified and downstream SMB10B/SMB-11 remain capability-only."
+    "kind": "started",
+    "evidence": "Owner Continue explicitly reused terminal GPR slot for SMB10B after DAG schema 1.0.5 verified SMB10A + SAA-30 start gates; AIOC PR #1680 / validation 35758122684 / merge 73d768882ea0721aded63c999a7a6c439fae76f6."
   },
-  "terminal": true,
+  "terminal": false,
   "last_completed": {
     "work_item_id": "SAA-30",
     "attempt_id": "SAA-30-attempt-001",
@@ -21,14 +21,5 @@
     "closeout_merge_sha": "22190d0f5784950c7f29281563788ac04c51d1f7",
     "closeout_validation_run": "35757496320",
     "closeout_ready_candidate": "SAA-30-closeout-001"
-  },
-  "prequeue_green": {
-    "candidate_head": "53a6ea907097cd40cb77e5d0334decdcfefd2e4f",
-    "validation_run": "35756389420"
-  },
-  "publication": {
-    "candidate_head": "53a6ea907097cd40cb77e5d0334decdcfefd2e4f",
-    "merge_sha": "87326251d32fb543049988464625e06e17bce941",
-    "ready_candidate_id": "SAA-30-app-001"
   }
 }
