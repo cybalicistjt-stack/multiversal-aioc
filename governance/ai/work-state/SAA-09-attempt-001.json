@@ -9,10 +9,10 @@
   "attempt_id": "SAA-09-attempt-001",
   "title": "Speech, Thought, Caption & Comic SFX Text",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "owner_selected": false,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/saa-09-speech-thought-caption-comic-sfx-text",
   "completed": false,
   "selected_by_verified_predecessor": "SAA-08",
   "required_predecessor": {
@@ -39,25 +39,29 @@
     "SAA-10 remains blocked until verified SAA-09 closeout."
   ],
   "strict_successor": "SAA-10",
-  "active_substep": "awaiting_governed_start",
-  "next_action": "Await a later explicit owner Continue before governed-starting SAA-09.",
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for stable text-element identity, semantic text roles, readable canonical text state, separated presentation styling, explicit layout/overflow failure, sealed panel/composition geometry and accessible keyboard/text editing; then implement only SAA-09.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner Continue governed-started SAA-09 after verified SAA-08 closeout."
+    },
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
