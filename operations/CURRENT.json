@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 476,
+  "state_revision": 477,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "BRP-02",
       "attempt_id": "BRP-02-attempt-001",
       "checkpoint_path": "governance/ai/work-state/BRP-02-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "BRP-01 completed_verified on application merge fabcec322ef45bd3cde9e997c6d9f6cc6e869d8b. Strict BRP order selects BRP-02. Owner Continue is required for governed start; BRP-03+ and SMB-17+ remain blocked.",
+      "implementation_branch": "work/brp-02-account-lifecycle-consent-recovery-data-rights",
+      "implementation_authority": true,
+      "activation_rule": "BRP-01 completed_verified. Owner Continue governed-started BRP-02 — Account Lifecycle, Consent, Recovery & Data Rights. BRP-03+ and SMB-17+ remain blocked.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "BRP-02 — Account Lifecycle, Consent, Recovery & Data Rights — is selected_not_started. Await owner Continue for governed start; do not begin BRP-02 implementation yet.",
+  "next_project_action": "BRP-02 is in progress. Establish causal RED and implement only account lifecycle/consent/recovery/data-rights proof; BRP-03+ and SMB-17+ remain unauthorized.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
