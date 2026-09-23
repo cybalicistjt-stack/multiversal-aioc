@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "BRP",
+  "lane": "gpr",
+  "track": "beta-readiness-product-operations",
+  "source_program": "BRP",
+  "work_item_id": "BRP-01",
+  "attempt_id": "BRP-01-attempt-001",
+  "title": "Beta Definition, Supported Matrix & Acceptance Contract",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SMB-16",
+  "required_predecessor": {
+    "work_item": "SMB-16",
+    "status": "completed_verified",
+    "application_merge_sha": "d733d9dcdb89752fab6cd1458a530ccd24eeae90",
+    "schema": "SMB-16.1"
+  },
+  "roadmap_activation": {
+    "dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
+    "dag_schema": "1.0.5",
+    "cross_program_handoff": "SMB-16 -> BRP",
+    "interstitial_override": "BRP before SMB-17",
+    "strict_program_successor": "BRP-01"
+  },
+  "objective": "Define the exact meaning of BETA_READY: supported device/OS/browser classes, required Player/GM/Creator journeys, network conditions, campaign/content scale, stability budgets, allowed defect classes, beta entry criteria and beta exit criteria.",
+  "acceptance": [
+    "One versioned acceptance contract can deterministically classify a candidate as not-ready or eligible for the remaining BRP proof; unsupported environments and deferred capabilities are explicit."
+  ],
+  "boundaries": [
+    "SMB-01..16 and their sealed product contracts remain completed predecessor authority.",
+    "BRP-01 is selected_not_started only and has no implementation authority until governed start.",
+    "BRP defines beta-readiness evidence and operations; it does not add or replace gameplay mechanics, canonical owner truth, family-safety policy or product rights authority.",
+    "Tester distribution, public release, paid infrastructure/providers, public community activation, billing, stores and marketing claims remain unauthorized.",
+    "BRP must complete through BRP-11 BETA_READY before normal SMB-17 external-beta activation."
+  ],
+  "strict_successor": "BRP-02",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await owner Continue to govern-start BRP-01 — Beta Definition, Supported Matrix & Acceptance Contract. Do not begin implementation before authority is granted.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selected_not_started",
+      "evidence": "SMB-16 completed_verified and ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.5 requires BRP after SMB-16 before SMB-17."
+    }
+  },
+  "execution_conformance": {
+    "status": "not_started",
+    "policy_violations": []
+  }
+}
