@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 472,
+  "state_revision": 473,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "SMB-16",
       "attempt_id": "SMB-16-attempt-001",
       "checkpoint_path": "governance/ai/work-state/SMB-16-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "SMB-15 completed_verified on application merge 39a6057dd10536e638f5f091c10918d1acd76e0b. ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.5 selects SMB-16 with no interstitial override. Owner Continue is required for governed start; BRP/SMB-17+ remain blocked.",
+      "implementation_branch": "work/smb-16-accessibility-localization-device-completion",
+      "implementation_authority": true,
+      "activation_rule": "SMB-15 completed_verified. Owner Continue governed-started SMB-16 — Accessibility, Localization & Device Completion. BRP/SMB-17+ remain blocked.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "SMB-16 — Accessibility, Localization & Device Completion — is selected_not_started. Await owner Continue for governed start; do not begin SMB-16 implementation yet.",
+  "next_project_action": "SMB-16 is in progress. Establish causal RED and implement the declared accessibility/localization/device matrix only; BRP and SMB-17+ remain unauthorized.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

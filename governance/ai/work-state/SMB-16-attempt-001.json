@@ -9,10 +9,10 @@
   "attempt_id": "SMB-16-attempt-001",
   "title": "Accessibility, Localization & Device Completion",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "owner_selected": false,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/smb-16-accessibility-localization-device-completion",
   "completed": false,
   "selected_by_verified_predecessor": "SMB-15",
   "required_predecessor": {
@@ -38,28 +38,29 @@
     "ROADMAP_DEPENDENCY_GRAPH.json requires BRP after SMB-16 before SMB-17; SMB-17+, public beta/community and release remain unauthorized."
   ],
   "strict_successor": "BRP-01",
-  "active_substep": "awaiting_governed_start",
-  "next_action": "Await owner Continue to govern-start SMB-16 — Accessibility, Localization & Device Completion. Do not begin implementation before authority is granted.",
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for the supported accessibility/localization/device matrix across screen reader, keyboard/touch parity, reduced motion, high contrast, font scaling, localization, screen classes, SAA reading-order/text projection, non-drag authoring, and Apple/Mac capability when available; then implement only SMB-16.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start_candidate",
+      "evidence": "Owner Continue authorizes SMB-16 governed start after SMB-15 completed_verified."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": {
-      "kind": "selected_not_started",
-      "evidence": "SMB-15 completed_verified and roadmap DAG schema 1.0.5 selects SMB-16 with no interstitial override."
-    }
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
