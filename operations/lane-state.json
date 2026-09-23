@@ -1,27 +1,17 @@
 {
   "schema_version": "1.2.0",
   "lane": "gpr",
-  "revision": 408,
+  "revision": 409,
   "selected_work_item": "BIP-01",
   "attempt_id": "BIP-01-attempt-001",
   "execution_status": "published",
-  "implementation_branch": "work/bip-01-beta-installers",
+  "implementation_branch": null,
   "progress_seq": 3,
   "last_progress": {
     "kind": "published",
     "evidence": "BIP-01-app-001 published exact head 0029d971a2ca32508960544c84b41a93c25546dc as 816174dfa56c92a45aa8a78ce063ffb53b88e3ae; installer artifact 10770411397 verified."
   },
-  "terminal": false,
-  "last_completed": {
-    "work_item_id": "SMB-18",
-    "attempt_id": "SMB-18-attempt-001",
-    "application_merge_sha": "8a51ccce5b4bd826d3c6a6940a5aa4492cf6d36d",
-    "application_validation_run": "35887192328",
-    "application_ready_candidate": "SMB-18-app-001",
-    "closeout_merge_sha": "2bae948a9a0f668c62fee0b83ce55c5fbcd36711",
-    "closeout_validation_run": "35887763966",
-    "closeout_ready_candidate": "SMB-18-closeout-001"
-  },
+  "terminal": true,
   "prequeue_green": {
     "candidate_head": "0029d971a2ca32508960544c84b41a93c25546dc",
     "validation_run": "35900166241",
@@ -36,5 +26,24 @@
     "ready_candidate_id": "BIP-01-app-001",
     "installer_artifact_id": "10770411397",
     "installer_artifact_name": "multiversal-beta-installers"
+  },
+  "last_completed": {
+    "work_item_id": "BIP-01",
+    "attempt_id": "BIP-01-attempt-001",
+    "application_merge_sha": "816174dfa56c92a45aa8a78ce063ffb53b88e3ae",
+    "application_validation_run": "35900166241",
+    "application_ready_candidate": "BIP-01-app-001",
+    "closeout_merge_sha": "8d9814c0293668ee59e587cde8cd126f72555e00",
+    "closeout_validation_run": "35904880538",
+    "closeout_ready_candidate": "BIP-01-closeout-001"
+  },
+  "terminal_closeout": {
+    "state": "completed_verified",
+    "program": "BIP",
+    "program_status": "completed_verified",
+    "downstream_selected_work_item": null,
+    "installer_artifact_id": "10770411397",
+    "public_launch_authorized": false,
+    "store_publication_authorized": false
   }
 }
