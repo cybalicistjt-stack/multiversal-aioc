@@ -38,29 +38,42 @@
     "SMB-15 and later work remain unauthorized until verified SMB-14 closeout."
   ],
   "strict_successor": "SMB-15",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for threat/authority/privacy/family-safety matrix enforcement, cross-context private-data isolation, authorization/invitation/communication controls, child/family protections, external-content controls and ARI/SAA imported-resource abuse/right surfaces; then implement only SMB-14.",
+  "active_substep": "prequeue_validation_external_blocker",
+  "next_action": "Resume exact head a112a69f41ceb3a4fd01460316885273209b154e when a matching self-hosted Linux validation runner accepts queued run 35808993027. Do not replay SMB-14 implementation or Windows validation.",
   "owner_interaction_observation": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0
   },
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner explicitly authorized SMB-14 governed start immediately after verified SMB-13 closeout."
+      "seq": 2,
+      "kind": "exact_head_candidate_waiting_external_validation",
+      "evidence": "SMB-14 exact head a112a69f41ceb3a4fd01460316885273209b154e passed selector/repository health and hosted Windows validation in run 35808993027. Required Linux shared validation remains queued without starting; obsolete SMB-14 runs are already cancelled."
     },
-    "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "active_stall": true,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "external_blocker",
+      "evidence": "Required exact-head Linux Validation Core job 107016104101 in run 35808993027 has remained queued with no matching self-hosted Linux runner accepting it. Windows exact-head validation succeeded. RUNNER_POOL_CAPACITY.md requires both platform jobs before comparison/completion."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "blocked_external",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED"
+    ],
+    "product_completion_valid": false,
+    "note": "Implementation is not replayed. Completion remains blocked solely on required exact-head Linux validation evidence."
+  },
+  "interaction_quality": {
+    "owner_execution_commands": 2,
+    "additional_continue_commands": 1,
+    "product_work_invalidated": false,
+    "classification": "external validation runner availability"
   }
 }

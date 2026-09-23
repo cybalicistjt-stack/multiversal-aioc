@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 468,
+  "state_revision": 469,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "SMB-14 is in progress. Establish causal RED and implement security/privacy/family-safety hardening only; SMB-15+ remain unauthorized.",
+  "next_project_action": "SMB-14 implementation is at exact head a112a69f41ceb3a4fd01460316885273209b154e. Resume only required Linux validation run 35808993027 when the self-hosted Linux validation pool is available; do not replay implementation. SMB-15+ remain unauthorized.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
