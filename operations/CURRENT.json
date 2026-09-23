@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 497,
+  "state_revision": 498,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "SMB-17",
-      "attempt_id": "SMB-17-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/SMB-17-attempt-001.json",
-      "implementation_branch": "work/smb-17-external-beta-community-foundations",
-      "implementation_authority": true,
-      "activation_rule": "BRP completed_verified through BRP-11 BETA_READY. Owner Continue governed-started SMB-17 — External Beta & Community Foundations. SMB-18, public release, paid acquisition, commerce and public marketplace scope remain unauthorized.",
+      "state": "selected_not_started",
+      "selected_work_item": "SMB-18",
+      "attempt_id": "SMB-18-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/SMB-18-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "SMB-17 completed_verified on application merge 604769a68713177123ec5618d8591df0d6c3f6d4. ROADMAP_DEPENDENCY_GRAPH.json selects SMB-18. Owner Continue is required for governed start; release, stores, billing, production providers and commerce remain separately gated.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "SMB-17 is in progress. Establish causal RED and prove a controlled external cohort can operate with governed invites/private groups/creator sharing, moderation foundations and measurable feedback/support without unapproved discovery/public-marketplace scope; SMB-18 remains unauthorized.",
+  "next_project_action": "SMB-18 — Release Engineering & Commercial Productization — is selected_not_started. Await owner Continue for governed start; do not begin release/commercialization implementation yet.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SMB",
+  "lane": "gpr",
+  "track": "system-maturation-buildout",
+  "source_program": "SMB",
+  "work_item_id": "SMB-18",
+  "attempt_id": "SMB-18-attempt-001",
+  "title": "Release Engineering & Commercial Productization",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SMB-17",
+  "required_predecessor": {
+    "work_item": "SMB-17",
+    "status": "completed_verified",
+    "application_merge_sha": "604769a68713177123ec5618d8591df0d6c3f6d4",
+    "schema": "SMB-17.1"
+  },
+  "roadmap_activation": {
+    "dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
+    "dag_schema": "1.0.5",
+    "strict_program_successor": "SMB-18",
+    "golden_proof_requires": [
+      "release/commercialization proof"
+    ]
+  },
+  "objective": "Prepare Multiversal for an actual supported release after product, validation and owner gates permit it, hardening BRP beta-grade operational systems to commercial/release grade rather than duplicating them. Scope includes release packaging/channels, approved subscriptions or entitlements and billing integration, production operations, hardened backup/observability/support tooling, crash/error reporting, rollback, privacy/legal readiness, stores/distribution and launch operations.",
+  "acceptance": [
+    "A release candidate can be deployed, observed, supported, rolled back and recovered through documented production procedures with owner-approved commercial/legal dependencies satisfied."
+  ],
+  "boundaries": [
+    "SMB-01..17, BRP-01..11 and their sealed owner contracts remain completed predecessor authority.",
+    "SMB-18 is selected_not_started only and has no implementation authority until governed start.",
+    "Subscriptions, entitlements, billing, stores, paid providers, production infrastructure and launch operations must remain conditional on the explicit owner/commercial/legal gates that apply to them.",
+    "SMB-18 hardens beta-grade operational systems rather than creating duplicate identity, gameplay, content, rights, safety, observability, recovery or support authority.",
+    "Any future P3D manufacturing/print-service commerce remains separately owner/provider gated even within SMB-18."
+  ],
+  "strict_successor": null,
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await owner Continue to govern-start SMB-18 — Release Engineering & Commercial Productization. Do not begin implementation before authority is granted.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selected_not_started",
+      "evidence": "SMB-17 completed_verified and roadmap gates select SMB-18."
+    }
+  },
+  "execution_conformance": {
+    "status": "not_started",
+    "policy_violations": []
+  }
+}
