@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SMB",
+  "lane": "gpr",
+  "track": "system-maturation-buildout",
+  "source_program": "SMB",
+  "work_item_id": "SMB-15",
+  "attempt_id": "SMB-15-attempt-001",
+  "title": "Stabilization & Scale",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SMB-14",
+  "required_predecessor": {
+    "work_item": "SMB-14",
+    "status": "completed_verified",
+    "application_merge_sha": "9f2732bdf2528088fa6def3b2c1eaee88cc37e59",
+    "schema": "SMB-14.1"
+  },
+  "roadmap_activation": {
+    "dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
+    "dag_schema": "1.0.5",
+    "interstitial_override": null,
+    "strict_program_successor": "SMB-15"
+  },
+  "objective": "Make long-lived, large and degraded scenarios reliable across large Campaigns/Worlds, deep histories, large ARI resource libraries, many assets/relationships, large graphs/packs, large SAA projects, reconnect storms, storage/search growth, memory/startup/migration performance and regression reduction.",
+  "acceptance": [
+    "Published scale budgets and failure/recovery scenarios pass across supported environments."
+  ],
+  "boundaries": [
+    "SMB-01..14, SMB10A/B, SAA-01..30 and their sealed owner contracts remain completed predecessor authority.",
+    "SMB-15 is selected_not_started only and has no implementation authority until governed start.",
+    "Stabilization and scale work may optimize reliability, recovery and bounded performance but may not create parallel Campaign, World, ARI, SAA, identity, rights or canonical gameplay truth.",
+    "External beta/community activation, public release, commerce and SMB-16+ remain unauthorized until their own governed gates."
+  ],
+  "strict_successor": "SMB-16",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await owner Continue to govern-start SMB-15 — Stabilization & Scale. Do not begin implementation before authority is granted.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selected_not_started",
+      "evidence": "SMB-14 completed_verified and roadmap DAG schema 1.0.5 selects SMB-15 with no interstitial override."
+    }
+  },
+  "execution_conformance": {
+    "status": "not_started",
+    "policy_violations": []
+  }
+}
