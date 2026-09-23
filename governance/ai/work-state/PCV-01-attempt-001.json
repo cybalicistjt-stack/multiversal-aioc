@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "PCV",
+  "lane": "gpr",
+  "track": "product-convergence-real-app-validation",
+  "source_program": "PCV",
+  "work_item_id": "PCV-01",
+  "attempt_id": "PCV-01-attempt-001",
+  "title": "Real Product Spine, Persistence & Convergence Cutover",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "selected_by_owner": "2026-09-23 owner direction to plan/set up the family that takes Android + Windows to the real Multiversal app and two-person play.",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "predecessor": {
+    "work_item": "BIP-01",
+    "status": "completed_verified",
+    "application_merge_sha": "816174dfa56c92a45aa8a78ce063ffb53b88e3ae"
+  },
+  "selection_basis": {
+    "kind": "owner_explicit_terminal_slot_replacement",
+    "reason": "Installed BIP artifact proved the packaged client was still a synthetic alpha/fixture shell; owner authorized a real-product convergence family."
+  },
+  "objective": "Installed Android and Windows clients boot into the real Multiversal shell, use real persisted local identity/profile/state, load the governed Library/corpus, and no longer expose synthetic local-alpha fixtures as ordinary product data. A live-source convergence ledger classifies every user-facing implementation as integrated, stranded, internal-only, fixture/test-only, or intentionally deferred.",
+  "acceptance": [
+    "Production App entry no longer defaults to LocalAlphaIdentityAdapter, synthetic fixture campaigns/characters, or diagnostic-first navigation.",
+    "packages/local-store (or an architecture-conforming replacement at the approved boundary) contains a real durable local implementation using the canonical application-data location and SQLite/local persistence rules.",
+    "Real profile/identity, selected context, app preferences, and resumable Home state survive process/device restart.",
+    "The actual packaged Library/corpus and provenance support load successfully on Android and Windows, or a concrete missing packaged dependency is repaired rather than hidden behind a generic unavailable state.",
+    "The production shell consumes current UI-convergence + UI-system/skin work and presents mobile/desktop layouts without alpha/debug labels.",
+    "A machine-readable convergence ledger covers all current live user-facing source families, including post-Bible additions; no later feature is silently dropped."
+  ],
+  "boundaries": [
+    "Old UI/Screen/Feature Bibles are floor/reference only and may not erase later implemented features.",
+    "Current live repository, newer convergence/UI-skin decisions and current Development Bible architecture govern implementation reality.",
+    "PCV-01 must perform a real product cutover; a documentation-only inventory is insufficient.",
+    "Synthetic/local-alpha fixtures may remain for tests/dev harnesses but may not remain the ordinary packaged product path.",
+    "Do not activate paid/public/store/commercial provider scope merely to satisfy PCV-01.",
+    "PCV-02+ remain unauthorized until PCV-01 closes and successor selection occurs."
+  ],
+  "strict_successor": "PCV-02",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await owner Continue to govern-start PCV-01. On start, inventory current live product surfaces and immediately converge the production shell/persistence path; do not stop at the ledger.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selected_not_started",
+      "evidence": "Owner explicitly selected PCV family after BIP-01 installed-product failure evidence."
+    }
+  },
+  "execution_conformance": {
+    "status": "not_started",
+    "policy_violations": []
+  }
+}
