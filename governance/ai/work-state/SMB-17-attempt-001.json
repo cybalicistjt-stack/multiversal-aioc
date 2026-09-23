@@ -9,10 +9,10 @@
   "attempt_id": "SMB-17-attempt-001",
   "title": "External Beta & Community Foundations",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "owner_selected": false,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/smb-17-external-beta-community-foundations",
   "completed": false,
   "selected_by_verified_predecessor": "BRP-11",
   "required_predecessor": {
@@ -40,28 +40,29 @@
     "Public marketplace scope, public release, paid acquisition, commerce and SMB-18 remain unauthorized."
   ],
   "strict_successor": "SMB-18",
-  "active_substep": "awaiting_governed_start",
-  "next_action": "Await owner Continue to govern-start SMB-17 — External Beta & Community Foundations. Do not begin implementation before authority is granted.",
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for controlled external beta/community foundations while preserving BRP-11 BETA_READY evidence and sealed invitation/family-safety/privacy/moderation/support authorities; then implement SMB-17 only.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start_candidate",
+      "evidence": "Owner Continue authorizes SMB-17 governed start after BRP-11 completed_verified with BETA_READY."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": {
-      "kind": "selected_not_started",
-      "evidence": "BRP-11 completed_verified with BETA_READY and roadmap gates select SMB-17."
-    }
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
