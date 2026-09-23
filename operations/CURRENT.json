@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 501,
+  "state_revision": 502,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "selected_work_item": "BIP-01",
       "attempt_id": "BIP-01-attempt-001",
       "checkpoint_path": "governance/ai/work-state/BIP-01-attempt-001.json",
-      "implementation_branch": "work/bip-01-beta-installers",
-      "implementation_authority": true,
-      "activation_rule": "Owner explicitly replaced the terminal gpr slot after SMB-18 with BIP-01 — Beta Installation Packaging: Windows + Android. This authorizes beta installer/package engineering only; public launch, Microsoft Store/Google Play publication, paid distribution and production signing identities remain separately gated.",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "BIP-01 completed_verified with Windows NSIS and Android APK beta installation artifacts. No downstream BIP work is selected. Public launch, Microsoft Store/Google Play publication, paid distribution and production signing identities remain separately gated.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "BIP-01 is in progress: package the actual apps/client-ui beta as a click-to-install Windows NSIS setup executable and directly installable Android APK, with repeatable CI artifacts, checksums, clean install/upgrade evidence and no store/public-release activation.",
+  "next_project_action": "BIP-01 beta installation packaging is completed_verified. Windows and Android beta installers are available as verified artifacts. No gpr implementation work is selected.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -276,6 +276,16 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "completion_rule": "SMB-01 through SMB-18 and interstitial BRP-01 through BRP-11 are completed_verified. SMB-18.1 publishes RELEASE_CANDIDATE_READY evidence for versioned/reproducible packages, non-public candidate deployment, observability/support, rollback/recovery and fail-closed commercial/legal/provider gates. This state is not PUBLICLY_RELEASED and does not itself approve stores, billing/subscriptions, paid providers, production credentials, paid acquisition, public launch or P3D manufacturing/print-service commerce."
+    },
+    "BIP": {
+      "program_id": "BIP",
+      "state": "completed_verified",
+      "selected_work_item": "BIP-01",
+      "attempt_id": "BIP-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/BIP-01-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "completion_rule": "BIP-01 completed_verified when the actual Multiversal client produced a Windows x64 NSIS current-user installer and Android ARM64 direct-install APK with manifest/checksums on an exact validated application head. Public/store distribution and production signing remain separately gated."
     }
   },
   "domain_authorities": {
