@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "gpr",
-  "revision": 407,
+  "revision": 408,
   "selected_work_item": "BIP-01",
   "attempt_id": "BIP-01-attempt-001",
-  "execution_status": "prequeue_green",
+  "execution_status": "published",
   "implementation_branch": "work/bip-01-beta-installers",
-  "progress_seq": 2,
+  "progress_seq": 3,
   "last_progress": {
-    "kind": "prequeue_green",
-    "evidence": "exact head 0029d971a2ca32508960544c84b41a93c25546dc passed repository health, Linux, Windows native package build and deterministic comparison in run 35900166241; artifact 10770411397 contains Windows NSIS EXE, Android ARM64 APK and checksum manifest."
+    "kind": "published",
+    "evidence": "BIP-01-app-001 published exact head 0029d971a2ca32508960544c84b41a93c25546dc as 816174dfa56c92a45aa8a78ce063ffb53b88e3ae; installer artifact 10770411397 verified."
   },
   "terminal": false,
   "last_completed": {
@@ -29,5 +29,12 @@
     "installer_artifact_name": "multiversal-beta-installers",
     "windows_sha256": "e8fc2f03fed70c6afdb7497783999a3e321834f6381614adad32646572b1f4b1",
     "android_sha256": "737c57ef93ca4fe518c2698d1860b1a545f41fb5051b79365eae06aee901054d"
+  },
+  "publication": {
+    "candidate_head": "0029d971a2ca32508960544c84b41a93c25546dc",
+    "merge_sha": "816174dfa56c92a45aa8a78ce063ffb53b88e3ae",
+    "ready_candidate_id": "BIP-01-app-001",
+    "installer_artifact_id": "10770411397",
+    "installer_artifact_name": "multiversal-beta-installers"
   }
 }
