@@ -9,11 +9,11 @@
   "attempt_id": "SMB-14-attempt-001",
   "title": "Security, Privacy & Family Safety Hardening",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/smb-14-security-privacy-family-safety-hardening",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "SMB-13",
   "required_predecessor": {
     "work_item": "SMB-13",
@@ -38,42 +38,78 @@
     "SMB-15 and later work remain unauthorized until verified SMB-14 closeout."
   ],
   "strict_successor": "SMB-15",
-  "active_substep": "prequeue_validation_external_blocker",
-  "next_action": "Resume exact head a112a69f41ceb3a4fd01460316885273209b154e when a matching self-hosted Linux validation runner accepts queued run 35808993027. Do not replay SMB-14 implementation or Windows validation.",
+  "active_substep": "completed_verified",
+  "next_action": "SMB-14 is completed_verified. SMB-15 — Stabilization & Scale — is selected_not_started without implementation authority.",
   "owner_interaction_observation": {
-    "continue_turns": 2,
-    "stall_nudges": 0
+    "continue_turns": 3,
+    "stall_nudges": 1
   },
   "execution_guard": {
-    "continue_turns": 2,
-    "stall_nudges": 0,
-    "material_progress_seq": 2,
-    "progress_at_last_owner_command": 2,
+    "continue_turns": 3,
+    "stall_nudges": 1,
+    "material_progress_seq": 4,
+    "progress_at_last_owner_command": 4,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 2,
-      "kind": "exact_head_candidate_waiting_external_validation",
-      "evidence": "SMB-14 exact head a112a69f41ceb3a4fd01460316885273209b154e passed selector/repository health and hosted Windows validation in run 35808993027. Required Linux shared validation remains queued without starting; obsolete SMB-14 runs are already cancelled."
+      "seq": 4,
+      "kind": "completed_verified_candidate",
+      "evidence": "Causal RED run 35808525117 at head bfa21d61bb753c3c9d4b88b7e9a73440a4cf964d failed on the absent SMB-14 production seam. Implementation head e20f23bf2b2b70065c5670a8edcbbb890764a285 exposed one test assertion-shape defect; repaired exact head a112a69f41ceb3a4fd01460316885273209b154e passed full cross-platform run 35808993027. PR #754 merged with expected-head protection as 9f2732bdf2528088fa6def3b2c1eaee88cc37e59."
     },
-    "active_stall": true,
+    "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
-      "kind": "external_blocker",
-      "evidence": "Required exact-head Linux Validation Core job 107016104101 in run 35808993027 has remained queued with no matching self-hosted Linux runner accepting it. Windows exact-head validation succeeded. RUNNER_POOL_CAPACITY.md requires both platform jobs before comparison/completion."
+      "kind": "completed",
+      "evidence": "SMB-14 completed_verified on head a112a69f41ceb3a4fd01460316885273209b154e, run 35808993027, merge 9f2732bdf2528088fa6def3b2c1eaee88cc37e59; SMB-15 selected_not_started."
     }
   },
   "execution_conformance": {
-    "status": "blocked_external",
+    "status": "nonconforming",
     "policy_violations": [
       "OPS3.MULTI_CONTINUE_UNRECORDED"
     ],
-    "product_completion_valid": false,
-    "note": "Implementation is not replayed. Completion remains blocked solely on required exact-head Linux validation evidence."
+    "product_completion_valid": true,
+    "note": "SMB-14 product evidence is valid. Multiple owner re-entry commands were required after execution/runner interruption; recovery resumed from durable exact-head evidence without replaying implementation."
   },
   "interaction_quality": {
-    "owner_execution_commands": 2,
-    "additional_continue_commands": 1,
+    "owner_execution_commands": 4,
+    "additional_continue_commands": 2,
     "product_work_invalidated": false,
-    "classification": "external validation runner availability"
+    "classification": "executor/session continuity plus self-hosted Linux runner availability"
+  },
+  "implementation_evidence": {
+    "governed_start": {
+      "aioc_pr": 1688,
+      "validation_run": 35802804798,
+      "merge_sha": "de6d57f890d9311e7361ff2de5b05a5eb559d5be",
+      "lane_start_revision": 342
+    },
+    "causal_red": {
+      "application_pr": 754,
+      "head_sha": "bfa21d61bb753c3c9d4b88b7e9a73440a4cf964d",
+      "validation_run": 35808525117,
+      "conclusion": "failure_observed_before_stale_head_cancellation",
+      "cause": "Focused SMB-14 acceptance failed exactly because the governed production module was absent."
+    },
+    "repair_history": [
+      {
+        "head_sha": "e20f23bf2b2b70065c5670a8edcbbb890764a285",
+        "validation_run": 35808836612,
+        "cause": "Production behavior was present; the privacy regression used an ambiguous matchObject undefined-property assertion. Repair made absence explicit without weakening privacy acceptance."
+      }
+    ],
+    "green": {
+      "application_pr": 754,
+      "validated_head": "a112a69f41ceb3a4fd01460316885273209b154e",
+      "validation_run": 35808993027,
+      "conclusion": "success",
+      "linux_job": 107016104101,
+      "windows_job": 107016104209,
+      "comparison_job": 107065375528,
+      "application_merge_sha": "9f2732bdf2528088fa6def3b2c1eaee88cc37e59",
+      "fresh_main_base": "56d025fd37dd81b35121272fe9c4d23dc243c9f0",
+      "integration_check": "candidate ahead 3, behind 0, merge base equal to fresh main; exact-head squash merge protected by expected head SHA",
+      "lane_prequeue_revision": 343,
+      "lane_publication_revision": 344
+    }
   }
 }
