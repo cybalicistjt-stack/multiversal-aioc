@@ -9,10 +9,10 @@
   "attempt_id": "BRP-07-attempt-001",
   "title": "Feature Flags, Cohorts, Remote Configuration & Kill Switches",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "owner_selected": false,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/brp-07-feature-flags-cohorts-remote-config-kill-switches",
   "completed": false,
   "selected_by_verified_predecessor": "BRP-06",
   "required_predecessor": {
@@ -41,28 +41,29 @@
     "BRP must complete through BRP-11 BETA_READY before normal SMB-17 activation."
   ],
   "strict_successor": "BRP-08",
-  "active_substep": "awaiting_governed_start",
-  "next_action": "Await owner Continue to govern-start BRP-07 — Feature Flags, Cohorts, Remote Configuration & Kill Switches. Do not begin implementation before authority is granted.",
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for bounded cohort targeting, staged rollout, remote safe configuration, defect kill-switch disable/re-enable, and preservation of Campaign state, consent, permissions and family-policy authority; then implement BRP-07 only.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start_candidate",
+      "evidence": "Owner Continue authorizes BRP-07 governed start after BRP-06 completed_verified."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": {
-      "kind": "selected_not_started",
-      "evidence": "BRP-06 completed_verified and strict BRP order selects BRP-07."
-    }
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
