@@ -47,6 +47,9 @@ The September 2026 UI Implementation Convergence Handoff is especially important
 10. **Visual convergence uses current sources.** September UI convergence + later UISK/owner visual decisions outrank temporary alpha CSS.
 11. **No stranded substantial feature.** By PCV-08 every production-like user-facing implementation is integrated or explicitly classified internal/deferred with rationale.
 12. **No fake readiness labels.** BETA_READY/RELEASE_CANDIDATE_READY terminology may not be reissued until PCV-10 human installed-play proof succeeds.
+13. **Asset coverage is product coverage.** Every user-facing visual/audio/3D need must have an explicit state: primary-authored asset, parameterized/composited derivative, procedural/generated presentation, permitted imported asset, approved fallback/placeholder, or visibly unresolved.
+14. **Primary-first pixel strategy.** Pixel-art character/creature/item/token work should minimize one-off artwork by using governed primary layers, morphology/animation templates, semantic palette regions, deterministic composition and Character Designer parameters. Generated derivatives retain primary provenance.
+15. **No unresolved golden-path assets.** PCV-10 cannot pass while the representative first-party two-human play path contains unresolved required assets.
 
 ## Tranche sequence
 
@@ -61,16 +64,24 @@ Acceptance:
 - The actual packaged Library/corpus and provenance support load successfully on Android and Windows, or a concrete missing packaged dependency is repaired rather than hidden behind a generic unavailable state.
 - The production shell consumes current UI-convergence + UI-system/skin work and presents mobile/desktop layouts without alpha/debug labels.
 - A machine-readable convergence ledger covers all current live user-facing source families, including post-Bible additions; no later feature is silently dropped.
+- The convergence ledger includes an Asset Demand Ledger derived from the current engine/product surface. It enumerates required character/creature/entity, item/equipment, environment/terrain, structure/prop, map/token, effect/animation, UI/skin, audio and 3D/specialty needs and classifies each as primary-authored, parameterized/composited, procedural/generated, permitted imported, approved fallback/placeholder, or unresolved.
+- The Asset Demand Ledger records primary-art dependencies and variation dimensions so the project can quantify what must actually be authored once versus generated from primaries.
 
-### 2. PCV-02 — Real Character, Campaign, World & Scene Foundation
+### 2. PCV-02 — Real Character, Campaign, World, Scene & Pixel-Asset Foundation
 
-**Meaningful outcome:** A single user can create/open a real campaign/world, create or select a real character, establish ownership/control, prepare a scene, close the app, reopen it, and resume that same governed state.
+**Meaningful outcome:** A single user can create/open a real campaign/world, create or select a real character, establish ownership/control, prepare a scene, close the app, reopen it, and resume that same governed state. Character visuals are produced by an onboard deterministic pixel-art generator driven by Character Designer parameters and a compact governed primary-art library rather than one-off sprites for every combination.
 
 Acceptance:
 - Character creation/sheet/advancement use real repository/persistence boundaries, not fixture adapters.
 - Campaign membership, world/campaign ownership, scene preparation, first-party content selection and role-safe projections are durable.
 - Home resumes the active campaign/character/scene in <=2 interactions on phone and desktop.
 - First-party SMB-08/09 content is consumable as product data, not only golden-test input.
+- Implement the onboard pixel-art generator around governed primary parts and manifests. At minimum it supports discrete body/morphology templates, skin/fur/scale/material palettes, hair/head features, markings, clothing/armor/equipment layers, pose/animation templates, status/effect overlays and deterministic seed/output identity.
+- Character Designer selections update the generated character visual directly; generated visual state is derived presentation and never becomes character-rule truth.
+- Primary assets use semantic palette/mask regions and layer/anchor metadata so recolor, equipment substitution and compatible morphology adjustment do not require duplicate source artwork.
+- Generated derivatives retain source-primary IDs, version/checksum and provenance; cached/exported derivatives are reproducible from the same visual specification.
+- Core generation works offline/on-device without an AI/provider dependency. Optional AI-assisted art generation may supply new reviewed primaries later but is not required to render a valid character.
+- PCV-02 publishes the first governed Primary Pixel Asset Pack sufficient for representative humanoid/person-scale character creation and defines extension seams for creature/entity, item and scene families consumed by later PCV tranches.
 
 ### 3. PCV-03 — Two-Device Membership, Transport, Presence & Reconnect
 
@@ -142,6 +153,8 @@ Acceptance:
 - Search/command, notifications/approvals, settings/accessibility, diagnostics/recovery and optional AI proposal flows are reachable and permission-safe.
 - No ordinary-user surface exposes synthetic fixture labels, raw internal IDs or diagnostic-first copy unless explicitly in diagnostics.
 - Representative Android and Windows rendered evidence covers major play/authoring/utility surfaces and accessibility states.
+- Asset presentation is converged with the current skin/UI system: primary/generated pixel content, maps/tokens, item imagery, effects and approved fallbacks compose coherently with skins rather than reverting to generic empty cards.
+- Remaining asset-demand entries are either satisfied or explicitly non-golden-path deferred; no substantial product surface silently ships as an accidental blank.
 
 ### 10. PCV-10 — Two-Human Golden Campaign, Recovery & Real Beta Installer
 
@@ -154,6 +167,7 @@ Acceptance:
 - Exercise representative later/post-Bible systems appropriate to the campaign rather than proving only the old core.
 - Human-visible UI matches current convergence/skin direction on both devices and contains no alpha fixture shell.
 - Generate final Windows installer + Android APK with checksum/version manifest only after this installed two-human proof passes.
+- The representative first-party golden play path contains no unresolved required visual/audio assets; every asset need is fulfilled by shipped primary/generated content, a deliberate procedural presentation, a permitted imported asset, or an explicitly approved intentional fallback.
 
 
 ## Owner-review evidence without execution stalls
