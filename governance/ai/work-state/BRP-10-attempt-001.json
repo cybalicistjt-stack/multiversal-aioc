@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "BRP",
+  "lane": "gpr",
+  "track": "beta-readiness-product-operations",
+  "source_program": "BRP",
+  "work_item_id": "BRP-10",
+  "attempt_id": "BRP-10-attempt-001",
+  "title": "Beta Content, Balance & Real-Play Readiness Sweep",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "BRP-09",
+  "required_predecessor": {
+    "work_item": "BRP-09",
+    "status": "completed_verified",
+    "application_merge_sha": "ef66a3db6188fff8f89f64f558c427d3ddd38b11",
+    "schema": "BRP-09.1"
+  },
+  "roadmap_activation": {
+    "dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
+    "dag_schema": "1.0.5",
+    "cross_program_handoff": "SMB-16 -> BRP",
+    "interstitial_override": "BRP before SMB-17",
+    "strict_program_successor": "BRP-10"
+  },
+  "objective": "Exercise real first-party packs/campaign from SMB-08/09 rather than synthetic fixtures across character creation/progression, combat, economy, inventory, crafting, magic, downtime/cozy, travel, vehicles, companions, GM workflows, live/async transitions, failure and recovery.",
+  "acceptance": [
+    "Representative complete play is possible using production-intended content without fixture-only dependencies, and blocking balance/content/integration defects have explicit dispositions."
+  ],
+  "boundaries": [
+    "BRP-01..09 and SMB-01..16 remain sealed predecessor authority.",
+    "BRP-10 is selected_not_started only and has no implementation authority until governed start.",
+    "BRP-10 may surface tuning/content/integration defects but may not invent missing system authority; defects route to their owning domain/tranche.",
+    "Production-intended first-party content from SMB-08/09 is required; synthetic-fixture-only proof is insufficient for this tranche.",
+    "Tester distribution, public beta/community activation, release, paid providers, commerce and BRP-11+ remain unauthorized.",
+    "BRP must complete through BRP-11 BETA_READY before normal SMB-17 activation."
+  ],
+  "strict_successor": "BRP-11",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await owner Continue to govern-start BRP-10 — Beta Content, Balance & Real-Play Readiness Sweep. Do not begin implementation before authority is granted.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selected_not_started",
+      "evidence": "BRP-09 completed_verified and strict BRP order selects BRP-10."
+    }
+  },
+  "execution_conformance": {
+    "status": "not_started",
+    "policy_violations": []
+  }
+}
