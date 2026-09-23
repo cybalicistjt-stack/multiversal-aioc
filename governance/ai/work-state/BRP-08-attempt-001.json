@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "BRP",
+  "lane": "gpr",
+  "track": "beta-readiness-product-operations",
+  "source_program": "BRP",
+  "work_item_id": "BRP-08",
+  "attempt_id": "BRP-08-attempt-001",
+  "title": "Security, Abuse, Moderation & Incident Operations",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "BRP-07",
+  "required_predecessor": {
+    "work_item": "BRP-07",
+    "status": "completed_verified",
+    "application_merge_sha": "2314fde6b4ccc0d3b5c2611cea2d5a953db3991c",
+    "schema": "BRP-07.1"
+  },
+  "roadmap_activation": {
+    "dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
+    "dag_schema": "1.0.5",
+    "cross_program_handoff": "SMB-16 -> BRP",
+    "interstitial_override": "BRP before SMB-17",
+    "strict_program_successor": "BRP-08"
+  },
+  "objective": "Operationalize SMB-14 security/privacy/family hardening through authorization regression, secret/config handling, rate/abuse controls, block/report flows, moderation queues where applicable, dependency/security checks and incident runbooks.",
+  "acceptance": [
+    "Declared security/abuse/privacy incident scenarios can be detected, contained, evidenced, recovered and reviewed without unauthorized data exposure."
+  ],
+  "boundaries": [
+    "BRP-01..07 and SMB-01..16 remain sealed predecessor authority.",
+    "BRP-08 is selected_not_started only and has no implementation authority until governed start.",
+    "MIB-17/SMB-14 remain family-safety/security/privacy policy authorities; BRP-08 proves deployed enforcement and incident operation without creating parallel policy truth.",
+    "Incident evidence must preserve privacy/authorization boundaries and may not expose hidden/private cross-context data.",
+    "Tester distribution, public beta/community activation, release, paid providers, commerce and BRP-09+ remain unauthorized.",
+    "BRP must complete through BRP-11 BETA_READY before normal SMB-17 activation."
+  ],
+  "strict_successor": "BRP-09",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await owner Continue to govern-start BRP-08 — Security, Abuse, Moderation & Incident Operations. Do not begin implementation before authority is granted.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selected_not_started",
+      "evidence": "BRP-07 completed_verified and strict BRP order selects BRP-08."
+    }
+  },
+  "execution_conformance": {
+    "status": "not_started",
+    "policy_violations": []
+  }
+}

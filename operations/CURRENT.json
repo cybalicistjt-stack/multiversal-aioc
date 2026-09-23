@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 487,
+  "state_revision": 488,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "BRP-07",
-      "attempt_id": "BRP-07-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/BRP-07-attempt-001.json",
-      "implementation_branch": "work/brp-07-feature-flags-cohorts-remote-config-kill-switches",
-      "implementation_authority": true,
-      "activation_rule": "BRP-06 completed_verified. Owner Continue governed-started BRP-07 — Feature Flags, Cohorts, Remote Configuration & Kill Switches. BRP-08+ and SMB-17+ remain blocked.",
+      "state": "selected_not_started",
+      "selected_work_item": "BRP-08",
+      "attempt_id": "BRP-08-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/BRP-08-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "BRP-07 completed_verified on application merge 2314fde6b4ccc0d3b5c2611cea2d5a953db3991c. Strict BRP order selects BRP-08. Owner Continue is required for governed start; BRP-09+ and SMB-17+ remain blocked.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "BRP-07 is in progress. Establish causal RED and implement only governed feature flags/cohorts/remote config/kill switches; BRP-08+ and SMB-17+ remain unauthorized.",
+  "next_project_action": "BRP-08 — Security, Abuse, Moderation & Incident Operations — is selected_not_started. Await owner Continue for governed start; do not begin BRP-08 implementation yet.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
