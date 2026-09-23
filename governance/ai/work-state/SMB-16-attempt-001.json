@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "SMB",
+  "lane": "gpr",
+  "track": "system-maturation-buildout",
+  "source_program": "SMB",
+  "work_item_id": "SMB-16",
+  "attempt_id": "SMB-16-attempt-001",
+  "title": "Accessibility, Localization & Device Completion",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "SMB-15",
+  "required_predecessor": {
+    "work_item": "SMB-15",
+    "status": "completed_verified",
+    "application_merge_sha": "39a6057dd10536e638f5f091c10918d1acd76e0b",
+    "schema": "SMB-15.1"
+  },
+  "roadmap_activation": {
+    "dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
+    "dag_schema": "1.0.5",
+    "interstitial_override": null,
+    "strict_program_successor": "SMB-16"
+  },
+  "objective": "Complete supported-device and inclusive-use quality beyond baseline component compliance across screen readers, keyboard/touch parity, reduced motion, high contrast, font scaling, localization infrastructure, screen classes and Apple/Mac completion when its environment exists, including SAA reading-order/text projection and non-drag authoring in the supported Creator matrix.",
+  "acceptance": [
+    "Supported primary journeys pass the declared accessibility, localization and device matrix."
+  ],
+  "boundaries": [
+    "SMB-01..15, SMB10A/B, SAA-01..30 and their sealed owner contracts remain completed predecessor authority.",
+    "SMB-16 is selected_not_started only and has no implementation authority until governed start.",
+    "Accessibility/localization/device completion may adapt presentation and interaction but may not create parallel gameplay, identity, content, rights or canonical owner truth.",
+    "ROADMAP_DEPENDENCY_GRAPH.json requires BRP after SMB-16 before SMB-17; SMB-17+, public beta/community and release remain unauthorized."
+  ],
+  "strict_successor": "BRP-01",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await owner Continue to govern-start SMB-16 — Accessibility, Localization & Device Completion. Do not begin implementation before authority is granted.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selected_not_started",
+      "evidence": "SMB-15 completed_verified and roadmap DAG schema 1.0.5 selects SMB-16 with no interstitial override."
+    }
+  },
+  "execution_conformance": {
+    "status": "not_started",
+    "policy_violations": []
+  }
+}
