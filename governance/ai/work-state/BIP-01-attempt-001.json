@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "BIP",
+  "lane": "gpr",
+  "track": "beta-installation-packaging",
+  "source_program": "BIP",
+  "work_item_id": "BIP-01",
+  "attempt_id": "BIP-01-attempt-001",
+  "title": "Beta Installation Packaging — Windows + Android",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "owner_selected": true,
+  "selected_by_owner": "2026-09-23 owner direction: make the beta an automatic installation package for Windows and Android.",
+  "implementation_authority": true,
+  "implementation_branch": "work/bip-01-beta-installers",
+  "completed": false,
+  "predecessor": {
+    "work_item": "SMB-18",
+    "status": "completed_verified",
+    "application_merge_sha": "8a51ccce5b4bd826d3c6a6940a5aa4492cf6d36d",
+    "state": "RELEASE_CANDIDATE_READY"
+  },
+  "selection_basis": {
+    "kind": "owner_explicit_terminal_slot_replacement",
+    "operating_contract_rule": "A terminal persistent implementation slot may be explicitly replaced by the owner through operations governance while preserving completed program history."
+  },
+  "objective": "Turn the actual Multiversal beta client into repeatable installation artifacts: a Windows x64 NSIS setup executable and an Android installable APK, both built from the same governed beta version and release-candidate source rather than the legacy platform-spike fixture.",
+  "acceptance": [
+    "The Tauri shell packages apps/client-ui rather than the legacy desktop spike web fixture.",
+    "A Windows x64 NSIS setup executable is generated automatically and installs for the current user without requiring administrator rights.",
+    "An Android ARM64 APK is generated automatically and is signed with a stable beta-only signing identity so later beta builds can upgrade the installed beta.",
+    "The build emits SHA-256 checksums and a machine-readable manifest binding platform, version, source head and artifact.",
+    "The packaging pipeline verifies clean build/install-package creation and preserves the existing SMB-18 release/publication authority boundaries."
+  ],
+  "boundaries": [
+    "BIP-01 is beta packaging/distribution engineering, not public launch authority.",
+    "Microsoft Store and Google Play submission remain separately gated.",
+    "Windows production code-signing certificates remain separately owner/provider gated; an unsigned beta NSIS installer may be produced and must be labeled as such.",
+    "Android uses a dedicated beta-only signing identity kept off repository source; production/store signing remains separate.",
+    "Do not package the legacy apps/desktop-tauri/web spike fixture as the beta product.",
+    "Do not add billing, paid-provider, public marketplace, paid acquisition or production credential authority."
+  ],
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for real-client installer packaging and artifact automation, then implement BIP-01 through exact-head installer artifact proof.",
+  "owner_interaction_observation": {
+    "continue_turns": 1,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "owner_selected_governed_start",
+      "evidence": "Owner explicitly selected and authorized BIP-01 after terminal SMB-18."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  }
+}
