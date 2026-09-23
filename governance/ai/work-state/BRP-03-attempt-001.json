@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "BRP",
+  "lane": "gpr",
+  "track": "beta-readiness-product-operations",
+  "source_program": "BRP",
+  "work_item_id": "BRP-03",
+  "attempt_id": "BRP-03-attempt-001",
+  "title": "Guided Onboarding, Teaching, Help & Product Voice",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "BRP-02",
+  "required_predecessor": {
+    "work_item": "BRP-02",
+    "status": "completed_verified",
+    "application_merge_sha": "d6d879f22bb0e45ecfb78a5673263b4fb2add7aa",
+    "schema": "BRP-02.1"
+  },
+  "roadmap_activation": {
+    "dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
+    "dag_schema": "1.0.5",
+    "cross_program_handoff": "SMB-16 -> BRP",
+    "interstitial_override": "BRP before SMB-17",
+    "strict_program_successor": "BRP-03"
+  },
+  "objective": "Finish first-run Player, GM and Creator onboarding; guided first Campaign/session experiences; contextual teaching/help; empty states; validation/recovery/error language; searchable help; and the approved warm, knowledgeable, encouraging, restrained Multiversal product voice.",
+  "acceptance": [
+    "Primary first-run and failure/recovery journeys meet comprehension/usability acceptance and product-language review without developer explanation."
+  ],
+  "boundaries": [
+    "BRP-01..02 and SMB-01..16 remain sealed predecessor authority.",
+    "BRP-03 is selected_not_started only and has no implementation authority until governed start.",
+    "UI/Screen Design Bibles remain design authorities; BRP-03 completes product onboarding/help/voice without inventing gameplay or canonical owner truth.",
+    "Tester distribution, public beta/community activation, release, paid providers, commerce and BRP-04+ remain unauthorized.",
+    "BRP must complete through BRP-11 BETA_READY before normal SMB-17 activation."
+  ],
+  "strict_successor": "BRP-04",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await owner Continue to govern-start BRP-03 — Guided Onboarding, Teaching, Help & Product Voice. Do not begin implementation before authority is granted.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selected_not_started",
+      "evidence": "BRP-02 completed_verified and strict BRP order selects BRP-03."
+    }
+  },
+  "execution_conformance": {
+    "status": "not_started",
+    "policy_violations": []
+  }
+}
