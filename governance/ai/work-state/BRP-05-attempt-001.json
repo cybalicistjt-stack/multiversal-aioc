@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "BRP",
+  "lane": "gpr",
+  "track": "beta-readiness-product-operations",
+  "source_program": "BRP",
+  "work_item_id": "BRP-05",
+  "attempt_id": "BRP-05-attempt-001",
+  "title": "Observability, Telemetry, Crash Reporting & Privacy-Safe Evidence",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "BRP-04",
+  "required_predecessor": {
+    "work_item": "BRP-04",
+    "status": "completed_verified",
+    "application_merge_sha": "f43dc71b9b739075f14dc7e3bad0ed71f0a3906d",
+    "schema": "BRP-04.1"
+  },
+  "roadmap_activation": {
+    "dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
+    "dag_schema": "1.0.5",
+    "cross_program_handoff": "SMB-16 -> BRP",
+    "interstitial_override": "BRP before SMB-17",
+    "strict_program_successor": "BRP-05"
+  },
+  "objective": "Connect MIB-16 diagnostics to deployed beta operation: crash/error capture, correlation identifiers, product health/performance telemetry, automatic bug bundles, log redaction, evidence consent, privacy classifications and diagnostic export.",
+  "acceptance": [
+    "Declared failures can be traced from user-visible incident to actionable privacy-safe evidence without exposing hidden/private cross-context data."
+  ],
+  "boundaries": [
+    "BRP-01..04 and SMB-01..16 remain sealed predecessor authority.",
+    "BRP-05 is selected_not_started only and has no implementation authority until governed start.",
+    "MIB-16 remains diagnostics/provenance/search engineering authority; BRP-05 operationalizes privacy-safe beta evidence without creating parallel diagnostic truth.",
+    "MIB-17/SMB-14 family-safety/security/privacy boundaries remain sealed and cross-context private data may not enter telemetry or bug bundles.",
+    "Tester distribution, public beta/community activation, release, paid providers, commerce and BRP-06+ remain unauthorized.",
+    "BRP must complete through BRP-11 BETA_READY before normal SMB-17 activation."
+  ],
+  "strict_successor": "BRP-06",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await owner Continue to govern-start BRP-05 — Observability, Telemetry, Crash Reporting & Privacy-Safe Evidence. Do not begin implementation before authority is granted.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selected_not_started",
+      "evidence": "BRP-04 completed_verified and strict BRP order selects BRP-05."
+    }
+  },
+  "execution_conformance": {
+    "status": "not_started",
+    "policy_violations": []
+  }
+}
