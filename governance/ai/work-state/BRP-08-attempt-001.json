@@ -9,11 +9,11 @@
   "attempt_id": "BRP-08-attempt-001",
   "title": "Security, Abuse, Moderation & Incident Operations",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "work/brp-08-security-abuse-moderation-incident-ops",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_verified_predecessor": "BRP-07",
   "required_predecessor": {
     "work_item": "BRP-07",
@@ -41,8 +41,8 @@
     "BRP must complete through BRP-11 BETA_READY before normal SMB-17 activation."
   ],
   "strict_successor": "BRP-09",
-  "active_substep": "causal_red",
-  "next_action": "Establish causal RED for authorization regression, secret/config handling, rate/abuse controls, block/report flow, moderation queues where applicable, dependency/security checks, incident detection/containment/evidence/recovery/review, and privacy-safe incident handling; then implement BRP-08 only.",
+  "active_substep": "completed_verified",
+  "next_action": "BRP-08 is completed_verified. BRP-09 — Tester Support, Feedback, Triage & Known-Issue Workflow — is selected_not_started without implementation authority.",
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
@@ -50,20 +50,57 @@
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 3,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "governed_start_candidate",
-      "evidence": "Owner Continue authorizes BRP-08 governed start after BRP-07 completed_verified."
+      "seq": 3,
+      "kind": "completed_verified_candidate",
+      "evidence": "Causal RED run 35868497209 at head 70b464d7ddb06ae91e110225d2fdcf134d3c4ea5 failed exactly on the absent BRP-08 production seam. Exact implementation head 8a4bf18a07db7e9da708d6857fa091f89620fca2 passed cross-platform run 35868738465 and PR #764 merged with expected-head protection as 84671b195bad290a1190740e255565fe1a52155e."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "BRP-08 completed_verified on head 8a4bf18a07db7e9da708d6857fa091f89620fca2, run 35868738465, merge 84671b195bad290a1190740e255565fe1a52155e; BRP-09 selected_not_started."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "conforming",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "note": "BRP-08 completed in one owner Continue from governed start through causal RED, GREEN, exact-head publication and atomic closeout."
+  },
+  "implementation_evidence": {
+    "governed_start": {
+      "aioc_pr": 1709,
+      "validation_run": 35868061982,
+      "merge_sha": "9e5e5e7f6b875722d68a1b491d53d4e587153d28",
+      "lane_start_revision": 382
+    },
+    "causal_red": {
+      "application_pr": 764,
+      "head_sha": "70b464d7ddb06ae91e110225d2fdcf134d3c4ea5",
+      "validation_run": 35868497209,
+      "conclusion": "failure",
+      "cause": "Focused BRP-08 acceptance failed exactly because the governed production module was absent."
+    },
+    "green": {
+      "application_pr": 764,
+      "validated_head": "8a4bf18a07db7e9da708d6857fa091f89620fca2",
+      "validation_run": 35868738465,
+      "conclusion": "success",
+      "application_merge_sha": "84671b195bad290a1190740e255565fe1a52155e",
+      "fresh_main_base": "2314fde6b4ccc0d3b5c2611cea2d5a953db3991c",
+      "integration_check": "candidate ahead 2, behind 0, merge base equal to fresh main; exact-head squash merge protected by expected head SHA",
+      "lane_prequeue_revision": 383,
+      "lane_publication_revision": 384
+    }
+  },
+  "interaction_quality": {
+    "owner_execution_commands": 1,
+    "additional_continue_commands": 0,
+    "product_work_invalidated": false,
+    "classification": "single-command tranche completion"
   }
 }
