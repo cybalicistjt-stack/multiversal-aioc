@@ -7,10 +7,10 @@
   "ops3_disposition": "PLANNING_ONLY",
   "ops3_rule": "This backlog describes the approved SMB sequence but cannot select current work, grant implementation authority, or override operations/CURRENT.json or ROADMAP_DEPENDENCY_GRAPH.json.",
   "activation_rule": "SMB activated after completed_verified MIB-18. Each tranche still requires canonical OPS3 selection and governed start before implementation authority exists. Cross-program interstitial programs may be required between SMB tranches by ROADMAP_DEPENDENCY_GRAPH.json.",
-  "current_item": "SMB-16",
-  "current_attempt": "SMB-16-attempt-001",
-  "next_smb_item": "SMB-16",
-  "interstitial_handoff": "SMB-15 completed_verified; ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.5 supplies no SMB-16 interstitial override.",
+  "current_item": null,
+  "current_attempt": null,
+  "next_smb_item": "SMB-17",
+  "interstitial_handoff": "SMB-16 completed_verified; ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.5 requires BRP completion before SMB-17. BRP-01 is selected_not_started.",
   "tranches": [
     {
       "id": "SMB-01",
@@ -90,7 +90,7 @@
     {
       "id": "SMB-16",
       "name": "Accessibility, Localization & Device Completion",
-      "status": "in_progress"
+      "status": "completed_verified"
     },
     {
       "id": "SMB-17",
@@ -164,5 +164,5 @@
     "instruction": "Released by later owner Continue and satisfied through completed SAA-01..30.",
     "next_action": "SMB10B is the active final Creator/SAA integration seam."
   },
-  "next_action": "Complete SMB-16 Accessibility, Localization & Device Completion only. BRP and SMB-17+ remain unauthorized until verified SMB-16 closeout."
+  "next_action": "Complete BRP-01..11 before normal SMB-17 activation. SMB-17 remains planned and unauthorized."
 }
