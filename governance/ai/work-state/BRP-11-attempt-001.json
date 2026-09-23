@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "BRP",
+  "lane": "gpr",
+  "track": "beta-readiness-product-operations",
+  "source_program": "BRP",
+  "work_item_id": "BRP-11",
+  "attempt_id": "BRP-11-attempt-001",
+  "title": "Golden Beta Proof & Marketing Evidence Handoff",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "BRP-10",
+  "required_predecessor": {
+    "work_item": "BRP-10",
+    "status": "completed_verified",
+    "application_merge_sha": "9a41c2dc7ff1f73fc0863af61e10acc18b5ad2c8",
+    "schema": "BRP-10.1"
+  },
+  "roadmap_activation": {
+    "dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
+    "dag_schema": "1.0.5",
+    "cross_program_handoff": "SMB-16 -> BRP",
+    "interstitial_override": "BRP before SMB-17",
+    "strict_program_successor": "BRP-11"
+  },
+  "objective": "Run the end-to-end ordinary-user proof: acquire permitted beta package -> install -> account/onboarding -> create/join Campaign -> Character -> live play -> asynchronous continuation -> disconnect/reconnect -> update -> report a defect -> recover/restore -> return later and resume from the same authoritative history. Publish the versioned BETA_READY evidence package with supported-matrix results, reliability/recovery measures, unresolved issue register and product capability evidence suitable for downstream claims review.",
+  "acceptance": [
+    "The declared external-beta cohort scenario passes without developer intervention across the supported matrix. The resulting evidence may satisfy product-dependent MCB claims/demo prerequisites but does not itself authorize public launch or paid acquisition."
+  ],
+  "boundaries": [
+    "BRP-01..10 and SMB-01..16 remain sealed predecessor authority.",
+    "BRP-11 is selected_not_started only and has no implementation authority until governed start.",
+    "BETA_READY is an evidence state and does not itself authorize public launch, paid acquisition, commerce or release.",
+    "Product-dependent claims/demo prerequisites may consume verified BRP-11 evidence; MCB and marketing authority remain separate.",
+    "Normal SMB-17 activation remains blocked until verified BRP-11 BETA_READY closeout."
+  ],
+  "strict_successor": null,
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await owner Continue to govern-start BRP-11 — Golden Beta Proof & Marketing Evidence Handoff. Do not begin implementation before authority is granted.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selected_not_started",
+      "evidence": "BRP-10 completed_verified and strict BRP order selects BRP-11."
+    }
+  },
+  "execution_conformance": {
+    "status": "not_started",
+    "policy_violations": []
+  }
+}

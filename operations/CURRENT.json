@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 493,
+  "state_revision": 494,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "BRP-10",
-      "attempt_id": "BRP-10-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/BRP-10-attempt-001.json",
-      "implementation_branch": "work/brp-10-beta-content-balance-real-play-readiness",
-      "implementation_authority": true,
-      "activation_rule": "BRP-09 completed_verified. Owner Continue governed-started BRP-10 — Beta Content, Balance & Real-Play Readiness Sweep. BRP-11+ and SMB-17+ remain blocked.",
+      "state": "selected_not_started",
+      "selected_work_item": "BRP-11",
+      "attempt_id": "BRP-11-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/BRP-11-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "BRP-10 completed_verified on application merge 9a41c2dc7ff1f73fc0863af61e10acc18b5ad2c8. Strict BRP order selects BRP-11. Owner Continue is required for governed start; SMB-17+ remain blocked until verified BRP-11 BETA_READY closeout.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "BRP-10 is in progress. Establish causal RED and exercise production-intended SMB-08/09 first-party content across representative complete play, then disposition blocking balance/content/integration defects; BRP-11+ and SMB-17+ remain unauthorized.",
+  "next_project_action": "BRP-11 — Golden Beta Proof & Marketing Evidence Handoff — is selected_not_started. Await owner Continue for governed start; do not begin BRP-11 implementation yet.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
