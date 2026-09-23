@@ -2,15 +2,15 @@
   "schema_version": "0.2.1",
   "program_id": "SMB",
   "program_name": "System Maturation & Buildout",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner": "John Brandon Turner",
   "ops3_disposition": "PLANNING_ONLY",
   "ops3_rule": "This backlog describes the approved SMB sequence but cannot select current work, grant implementation authority, or override operations/CURRENT.json or ROADMAP_DEPENDENCY_GRAPH.json.",
   "activation_rule": "SMB activated after completed_verified MIB-18. Each tranche still requires canonical OPS3 selection and governed start before implementation authority exists. Cross-program interstitial programs may be required between SMB tranches by ROADMAP_DEPENDENCY_GRAPH.json.",
-  "current_item": "SMB-18",
-  "current_attempt": "SMB-18-attempt-001",
-  "next_smb_item": "SMB-18",
-  "interstitial_handoff": "BRP-01..11 completed_verified. BRP-11 published valid BETA_READY evidence on application merge c31edf7cdbadf76e10563ee25f443700088b4234. ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.5 now permits SMB-17 selection, but governed start still requires owner Continue.",
+  "current_item": null,
+  "current_attempt": null,
+  "next_smb_item": null,
+  "interstitial_handoff": null,
   "tranches": [
     {
       "id": "SMB-01",
@@ -100,7 +100,7 @@
     {
       "id": "SMB-18",
       "name": "Release Engineering & Commercial Productization",
-      "status": "in_progress"
+      "status": "completed_verified"
     }
   ],
   "default_strict_order": [
@@ -164,5 +164,5 @@
     "instruction": "Released by later owner Continue and satisfied through completed SAA-01..30.",
     "next_action": "SMB10B is the active final Creator/SAA integration seam."
   },
-  "next_action": "Complete SMB-18 release-candidate hardening only. Do not activate stores, billing/subscriptions, paid providers, production credentials, public launch or P3D commerce without their explicit approvals."
+  "next_action": "SMB-01..18 and BRP-01..11 are completed_verified through SMB-18 RELEASE_CANDIDATE_READY. No further SMB tranche is selected. Public launch and any unapproved commercial/legal/provider activation require separate explicit authority."
 }
