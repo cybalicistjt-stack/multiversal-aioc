@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "gpr",
-  "revision": 406,
+  "revision": 407,
   "selected_work_item": "BIP-01",
   "attempt_id": "BIP-01-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/bip-01-beta-installers",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Owner explicitly replaced the terminal gpr slot with BIP-01; AIOC PR #1721 validated in run 35890202358 and merged as 226716693bd756ffb9936732301bfcc418e21bfa."
+    "kind": "prequeue_green",
+    "evidence": "exact head 0029d971a2ca32508960544c84b41a93c25546dc passed repository health, Linux, Windows native package build and deterministic comparison in run 35900166241; artifact 10770411397 contains Windows NSIS EXE, Android ARM64 APK and checksum manifest."
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,13 @@
     "closeout_merge_sha": "2bae948a9a0f668c62fee0b83ce55c5fbcd36711",
     "closeout_validation_run": "35887763966",
     "closeout_ready_candidate": "SMB-18-closeout-001"
+  },
+  "prequeue_green": {
+    "candidate_head": "0029d971a2ca32508960544c84b41a93c25546dc",
+    "validation_run": "35900166241",
+    "installer_artifact_id": "10770411397",
+    "installer_artifact_name": "multiversal-beta-installers",
+    "windows_sha256": "e8fc2f03fed70c6afdb7497783999a3e321834f6381614adad32646572b1f4b1",
+    "android_sha256": "737c57ef93ca4fe518c2698d1860b1a545f41fb5051b79365eae06aee901054d"
   }
 }
