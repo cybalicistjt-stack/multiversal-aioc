@@ -9,10 +9,10 @@
   "attempt_id": "BRP-11-attempt-001",
   "title": "Golden Beta Proof & Marketing Evidence Handoff",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "owner_selected": false,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "owner_selected": true,
+  "implementation_authority": true,
+  "implementation_branch": "work/brp-11-golden-beta-proof-marketing-evidence-handoff",
   "completed": false,
   "selected_by_verified_predecessor": "BRP-10",
   "required_predecessor": {
@@ -40,28 +40,29 @@
     "Normal SMB-17 activation remains blocked until verified BRP-11 BETA_READY closeout."
   ],
   "strict_successor": null,
-  "active_substep": "awaiting_governed_start",
-  "next_action": "Await owner Continue to govern-start BRP-11 — Golden Beta Proof & Marketing Evidence Handoff. Do not begin implementation before authority is granted.",
+  "active_substep": "causal_red",
+  "next_action": "Establish causal RED for the ordinary-user beta journey across permitted package acquisition, install, account/onboarding, Campaign create/join, Character, live play, asynchronous continuation, disconnect/reconnect, update, defect report, recover/restore and later resume from the same authoritative history; then implement BRP-11 only.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start_candidate",
+      "evidence": "Owner Continue authorizes BRP-11 governed start after BRP-10 completed_verified."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": {
-      "kind": "selected_not_started",
-      "evidence": "BRP-10 completed_verified and strict BRP order selects BRP-11."
-    }
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
