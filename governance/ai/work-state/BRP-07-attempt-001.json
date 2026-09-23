@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "BRP",
+  "lane": "gpr",
+  "track": "beta-readiness-product-operations",
+  "source_program": "BRP",
+  "work_item_id": "BRP-07",
+  "attempt_id": "BRP-07-attempt-001",
+  "title": "Feature Flags, Cohorts, Remote Configuration & Kill Switches",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_verified_predecessor": "BRP-06",
+  "required_predecessor": {
+    "work_item": "BRP-06",
+    "status": "completed_verified",
+    "application_merge_sha": "4464040e8f657be7acb3c63651f934db0cffca79",
+    "schema": "BRP-06.1"
+  },
+  "roadmap_activation": {
+    "dag": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
+    "dag_schema": "1.0.5",
+    "cross_program_handoff": "SMB-16 -> BRP",
+    "interstitial_override": "BRP before SMB-17",
+    "strict_program_successor": "BRP-07"
+  },
+  "objective": "Provide governed cohort targeting, staged rollout, feature flags, remote safe configuration and kill switches for risky/experimental capabilities, including AI/community surfaces when applicable, without changing canonical game-state authority.",
+  "acceptance": [
+    "A feature can be enabled for a bounded cohort, disabled after a simulated defect and later re-enabled without corrupting Campaign state or silently changing user consent/permissions."
+  ],
+  "boundaries": [
+    "BRP-01..06 and SMB-01..16 remain sealed predecessor authority.",
+    "BRP-07 is selected_not_started only and has no implementation authority until governed start.",
+    "Feature/config rollout controls may gate capability availability but may not create canonical gameplay, Campaign, identity, consent, permission or family-policy truth.",
+    "AI/community surfaces remain subject to their existing authority and consent/family-safety boundaries; a flag cannot override them.",
+    "Tester distribution, public beta/community activation, release, paid providers, commerce and BRP-08+ remain unauthorized.",
+    "BRP must complete through BRP-11 BETA_READY before normal SMB-17 activation."
+  ],
+  "strict_successor": "BRP-08",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await owner Continue to govern-start BRP-07 — Feature Flags, Cohorts, Remote Configuration & Kill Switches. Do not begin implementation before authority is granted.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selected_not_started",
+      "evidence": "BRP-06 completed_verified and strict BRP order selects BRP-07."
+    }
+  },
+  "execution_conformance": {
+    "status": "not_started",
+    "policy_violations": []
+  }
+}
