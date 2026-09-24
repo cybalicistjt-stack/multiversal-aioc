@@ -41,7 +41,7 @@ The September 2026 UI Implementation Convergence Handoff is especially important
 4. **Preserve later work.** The original Bibles are not allowed to erase or downgrade capabilities added afterward.
 5. **Converge before rebuilding.** Existing behavioral/runtime/UI implementations are reused unless live evidence proves them unsuitable.
 6. **Synthetic harness quarantine.** Fixture/local-alpha adapters remain available for tests/dev tooling if useful, but cannot be the ordinary production entry path.
-7. **One app, transformed layouts.** Android/phone and Windows/laptop share product state/contracts; mobile is not a reduced feature product.
+7. **One app, full capability on every form factor.** Android/phone and Windows/laptop share product state/contracts and capability authority. Mobile is not a reduced feature product: every player, GM and creator capability must remain operable from a phone. Phone defaults to a responsive phone-optimized layout, and the app also provides an optional Desktop View on phone that preserves the wide desktop workspace inside a zoomable/pannable canvas rather than removing or substituting functionality.
 8. **Two-human authority proof.** Multiplayer completion requires two distinct identities/devices and role-safe projections, not two objects in one test process.
 9. **Local-first remains viable.** Paid cloud/provider activation is not a blocking prerequisite for core play; optional services stay replaceable.
 10. **Visual convergence uses current sources.** September UI convergence + later UISK/owner visual decisions outrank temporary alpha CSS.
@@ -79,6 +79,7 @@ Acceptance:
 - Character creation/sheet/advancement use real repository/persistence boundaries, not fixture adapters.
 - Campaign membership, world/campaign ownership, scene preparation, first-party content selection and role-safe projections are durable.
 - Home resumes the active campaign/character/scene in <=2 interactions on phone and desktop.
+- Every PCV-02 user-facing action remains usable at phone width with a phone-optimized layout; no Character/Campaign/World/Scene capability may be hidden behind a desktop-only implementation. Shared shell work must remain compatible with the later phone Desktop View zoom/pan mode.
 - First-party SMB-08/09 content is consumable as product data, not only golden-test input.
 - Implement the onboard pixel-art generator around governed primary parts and manifests. At minimum it supports discrete body/morphology templates, skin/fur/scale/material palettes, hair/head features, markings, clothing/armor/equipment layers, pose/animation templates, status/effect overlays and deterministic seed/output identity.
 - Character Designer selections update the generated character visual directly; generated visual state is derived presentation and never becomes character-rule truth.
@@ -160,6 +161,8 @@ Acceptance:
 Acceptance:
 - Consume the September UI Implementation Convergence Handoff and later UISK runtime/amendments as current presentation inputs; old Bibles remain floor/traceability only.
 - Global shell, Home, context navigation, inspectors, action docks, mobile transformations and current skin system are applied across real screens.
+- Implement explicit display-mode control on phone: **Phone View** uses responsive mobile-native screens and **Desktop View** renders the full desktop workspace in an in-app zoomable/pannable viewport. Both modes operate on the same product state, permissions and actions; Desktop View is not a separate product and Phone View must not remove capabilities.
+- GM and creator workflows receive the same mobile capability parity as player workflows. Desktop may expose more simultaneous panes because of screen area, but no GM/creator action is classified desktop-only.
 - Search/command, notifications/approvals, settings/accessibility, diagnostics/recovery and optional AI proposal flows are reachable and permission-safe.
 - No ordinary-user surface exposes synthetic fixture labels, raw internal IDs or diagnostic-first copy unless explicitly in diagnostics.
 - Representative Android and Windows rendered evidence covers major play/authoring/utility surfaces and accessibility states.
@@ -177,6 +180,7 @@ Acceptance:
 - Disconnect/reconnect, app restart, save/load, update-compatible install and recovery preserve campaign/session history with no duplicate actions.
 - Exercise representative later/post-Bible systems appropriate to the campaign rather than proving only the old core.
 - Human-visible UI matches current convergence/skin direction on both devices and contains no alpha fixture shell.
+- Installed Android proof exercises representative player and GM/creator capabilities in Phone View and also proves the optional Desktop View can zoom/pan through the wide workspace without losing actions, context, focus, permissions or authoritative state.
 - Generate final Windows installer + Android APK with checksum/version manifest only after this installed two-human proof passes.
 - The representative first-party golden play path contains no unresolved required visual/audio assets; every asset need is fulfilled by shipped primary/generated content, a deliberate procedural presentation, a permitted imported asset, or an explicitly approved intentional fallback.
 - Installed proof exercises Games & Wagering on Windows and Android: at least one Earth game and one Black Vegas/alien game, a persistent campaign-funded wager, an isolated Free Play wallet reset, and a two-human or host-authoritative table/reconnect path, with zero real-world-value wagering.
