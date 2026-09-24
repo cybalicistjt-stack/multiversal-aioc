@@ -42,7 +42,7 @@
   ],
   "strict_successor": "PCV-04",
   "active_substep": "installed_windows_android_physical_proof",
-  "next_action": "Install the exact-head PCV-03 Windows and Android packages built from fe09c3f001f00609bc1be3abd9b1ca29a7581151 on two separate physical devices, run one host/player join + authoritative command + duplicate replay + disconnect/reconnect sequence, export the host-derived installed-device evidence JSON, and validate it against the exact-head package manifest. Do not modify the application branch or start PCV-04 before this proof closes.",
+  "next_action": "Install the replacement exact-head PCV-03 Windows and Android packages built from 74379f0d32c04a67771fdc68eefc886259b7d8ac on two separate physical devices, run one host/player join + authoritative command + duplicate replay + disconnect/reconnect sequence, export the host-derived installed-device evidence JSON, and validate it against the exact-head package manifest. This candidate includes the repaired PCV-03 product discoverability and current UISR presentation integration. Do not modify the application branch or start PCV-04 before this proof closes.",
   "owner_interaction_observation": {
     "continue_turns": 4,
     "stall_nudges": 0
@@ -50,13 +50,13 @@
   "execution_guard": {
     "continue_turns": 4,
     "stall_nudges": 0,
-    "material_progress_seq": 4,
-    "progress_at_last_owner_command": 4,
+    "material_progress_seq": 5,
+    "progress_at_last_owner_command": 5,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 4,
-      "kind": "automated_validation_complete_exact_head_packages_built",
-      "evidence": "Application PR #775 head fe09c3f001f00609bc1be3abd9b1ca29a7581151 passed Linux, Windows and deterministic cross-platform Validation Core run 36022395867. Artifact pcv-03-installed-device-packages (10820495727) contains exact-head Windows x64 installer and Android arm64 APK. Only the required installed physical two-device evidence remains."
+      "seq": 5,
+      "kind": "replacement_exact_head_validation_complete_packages_built",
+      "evidence": "Owner inspection invalidated the prior installed candidate. Application PR #775 replacement head 74379f0d32c04a67771fdc68eefc886259b7d8ac passed Linux, Windows and deterministic cross-platform Validation Core run 36031804132. Artifact pcv-03-installed-device-packages (10824991353) contains the replacement exact-head Windows x64 installer and Android arm64 APK; local checksum verification matches both package manifests. Only the required installed physical two-device evidence remains."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
@@ -66,24 +66,24 @@
     "status": "conforming",
     "policy_violations": [],
     "automated_implementation_complete": true,
-    "automated_validation_run_id": 36022395867,
-    "exact_candidate_head": "fe09c3f001f00609bc1be3abd9b1ca29a7581151",
-    "exact_package_artifact_id": 10820495727,
+    "automated_validation_run_id": 36031804132,
+    "exact_candidate_head": "74379f0d32c04a67771fdc68eefc886259b7d8ac",
+    "exact_package_artifact_id": 10824991353,
     "physical_proof_required": true,
     "pcv04_started": false
   },
   "external_gate": {
     "kind": "installed_physical_two_device_proof",
     "state": "ready_for_operator_run",
-    "candidate_head": "fe09c3f001f00609bc1be3abd9b1ca29a7581151",
+    "candidate_head": "74379f0d32c04a67771fdc68eefc886259b7d8ac",
     "application_pr": 775,
-    "validation_run_id": 36022395867,
-    "package_artifact_id": 10820495727,
+    "validation_run_id": 36031804132,
+    "package_artifact_id": 10824991353,
     "package_artifact_name": "pcv-03-installed-device-packages",
     "package_manifest_schema": "PCV-03.PACKAGES.1",
     "requirements": [
       "Installed Windows Tauri host and installed Android Tauri player are separate physical devices.",
-      "Both use the exact-head packages built from fe09c3f001f00609bc1be3abd9b1ca29a7581151.",
+      "Both use the exact-head packages built from 74379f0d32c04a67771fdc68eefc886259b7d8ac.",
       "Player joins as a distinct canonical subject/device and sends at least one authoritative command.",
       "Re-sending the same command ID produces no second business effect.",
       "Android player disconnects and reconnects with the same stable device identity and connection ordinal >= 2.",
