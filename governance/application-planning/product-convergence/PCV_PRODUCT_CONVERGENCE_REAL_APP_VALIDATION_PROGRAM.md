@@ -50,6 +50,9 @@ The September 2026 UI Implementation Convergence Handoff is especially important
 13. **Asset coverage is product coverage.** Every user-facing visual/audio/3D need must have an explicit state: primary-authored asset, parameterized/composited derivative, procedural/generated presentation, permitted imported asset, approved fallback/placeholder, or visibly unresolved.
 14. **Primary-first pixel strategy.** Pixel-art character/creature/item/token work should minimize one-off artwork by using governed primary layers, morphology/animation templates, semantic palette regions, deterministic composition and Character Designer parameters. Generated derivatives retain primary provenance.
 15. **No unresolved golden-path assets.** PCV-10 cannot pass while the representative first-party two-human play path contains unresolved required assets.
+16. **Games and wagering reuse shared authority.** Casino/table/alien games are reusable GPR loop-mini activities that settle through canonical owner domains; Black Vegas is a flagship venue/catalog, not a separate incompatible game engine.
+17. **Two wagering contexts, one runtime.** Campaign play may stake actual in-world character/campaign wealth or other validated fictional assets and applies persistent consequences; Free Play uses an isolated arbitrary resettable wallet with no campaign mutation.
+18. **No real-world-value wagering.** Real money, paid entitlement/premium currency, cash-redeemable value, or anything convertible to those may never be accepted as a stake or payout. This restriction does not block ordinary fictional/in-world currency, items, favors or other owner-domain stakes.
 
 ## Tranche sequence
 
@@ -113,13 +116,17 @@ Acceptance:
 - Travel/survival, factions/organizations/settlements and relevant knowledge/reputation systems are integrated where current implementation supports them.
 - A cross-device session can move between noncombat and combat activities without losing authoritative context.
 
-### 6. PCV-06 — Inventory, Economy, Crafting, Vehicles, Mounts, Bases & Logistics
+### 6. PCV-06 — Inventory, Economy, Crafting, Games & Wagering, Vehicles, Mounts, Bases & Logistics
 
-**Meaningful outcome:** Long-lived shared assets and operational systems are usable in the real campaign: equipment, containers/transfers, economy/trade, crafting, vehicles/living mounts, bases/facilities and logistics persist and synchronize between users.
+**Meaningful outcome:** Long-lived shared assets and operational systems are usable in the real campaign: equipment, containers/transfers, economy/trade, crafting, reusable games/wagering activities, vehicles/living mounts, bases/facilities and logistics persist and synchronize between users.
 
 Acceptance:
 - Real inventory/equipment/container ownership and transfers are persistent and permission-safe.
 - Economy/trade/contracts/services and crafting/work queues commit through governed events and survive reconnect.
+- Implement `PCV_GAMES_WAGERING_INTEGRATION_v1.0.0.md` as a reusable Games & Wagering runtime over current GPR loop-mini/pattern execution plus canonical owner-domain settlement; do not build a Black Vegas-only parallel engine.
+- Support Campaign Play using actual validated in-world character/campaign wealth, assets or other fictional stakes with persistent consequences, and Free Play using an isolated arbitrary resettable wallet that never mutates campaign state.
+- Ship a substantial Earth casino-game starter pack plus a Black Vegas alien-game starter pack. Authoritative randomness/hidden information is recorded for replay/audit, and house/NPC/two-human participants use the current authority/continuity model.
+- Reject real-world-value stake sources and payouts: real money, paid entitlement/premium currency, cash-redeemable value, or anything convertible to those. Ordinary in-world currencies, items, favors and other owner-domain stakes remain allowed when their owning domain validates them.
 - Vehicle/mount/cargo/crew and base/facility/logistics views use current capability-driven models rather than hard-coded fantasy/space assumptions.
 - Cross-device contention/conflict behavior is explicit and recoverable.
 
@@ -132,6 +139,7 @@ Acceptance:
 - MRCS and other current rules/content-authoring implementations are surfaced where they are user-facing rather than left as isolated workbenches.
 - Campaign-local creation remains distinct from reusable/canonical publishing authority.
 - Content can be transferred/shared between the two tester identities without bypassing rights/provenance controls.
+- Games & Wagering definitions are authorable as governed reusable content: game rules, table/venue configuration, legal fictional stake classes, house rules, dealer/NPC profiles and setting/alien game packs bind through MRCS/Content Forge boundaries without duplicating runtime or owner-domain authority.
 
 ### 8. PCV-08 — Post-Bible Feature Convergence & Stranded-System Elimination
 
@@ -155,6 +163,7 @@ Acceptance:
 - Representative Android and Windows rendered evidence covers major play/authoring/utility surfaces and accessibility states.
 - Asset presentation is converged with the current skin/UI system: primary/generated pixel content, maps/tokens, item imagery, effects and approved fallbacks compose coherently with skins rather than reverting to generic empty cards.
 - Remaining asset-demand entries are either satisfied or explicitly non-golden-path deferred; no substantial product surface silently ships as an accidental blank.
+- Games & Wagering has coherent responsive phone/desktop product surfaces: a generic games browser/table flow plus venue-aware presentation such as Black Vegas, accessible hidden-information handling, clear Campaign vs Free Play context, and no real-money purchase/cash-out affordance.
 
 ### 10. PCV-10 — Two-Human Golden Campaign, Recovery & Real Beta Installer
 
@@ -168,6 +177,7 @@ Acceptance:
 - Human-visible UI matches current convergence/skin direction on both devices and contains no alpha fixture shell.
 - Generate final Windows installer + Android APK with checksum/version manifest only after this installed two-human proof passes.
 - The representative first-party golden play path contains no unresolved required visual/audio assets; every asset need is fulfilled by shipped primary/generated content, a deliberate procedural presentation, a permitted imported asset, or an explicitly approved intentional fallback.
+- Installed proof exercises Games & Wagering on Windows and Android: at least one Earth game and one Black Vegas/alien game, a persistent campaign-funded wager, an isolated Free Play wallet reset, and a two-human or host-authoritative table/reconnect path, with zero real-world-value wagering.
 
 
 ## Owner-review evidence without execution stalls
