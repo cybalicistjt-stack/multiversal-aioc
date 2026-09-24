@@ -123,9 +123,9 @@ Acceptance:
 Acceptance:
 - Real inventory/equipment/container ownership and transfers are persistent and permission-safe.
 - Economy/trade/contracts/services and crafting/work queues commit through governed events and survive reconnect.
-- Implement `PCV_GAMES_WAGERING_INTEGRATION_v1.0.0.md` as a reusable Games & Wagering runtime over current GPR loop-mini/pattern execution plus canonical owner-domain settlement; do not build a Black Vegas-only parallel engine.
+- Implement `PCV_GAMES_WAGERING_INTEGRATION_v1.1.0.md` as a reusable Games & Wagering runtime over current GPR loop-mini/pattern execution plus canonical owner-domain settlement; do not build a Black Vegas-only parallel engine.
 - Support Campaign Play using actual validated in-world character/campaign wealth, assets or other fictional stakes with persistent consequences, and Free Play using an isolated arbitrary resettable wallet that never mutates campaign state.
-- Ship a substantial Earth casino-game starter pack plus a Black Vegas alien-game starter pack. Authoritative randomness/hidden information is recorded for replay/audit, and house/NPC/two-human participants use the current authority/continuity model.
+- Ship a substantial Earth casino-game starter pack plus a Black Vegas/Multiversal starter pack, including external-event wager markets (especially races), MRC sanction/jurisdiction behavior where applicable, and culturally/economically distinct wagering such as subsistence-credit games, black-market egg/hatch pools and title-stake racing. Authoritative randomness/hidden information/external outcomes are recorded for replay/audit, and house/bookmaker/NPC/two-human participants use the current authority/continuity model.
 - Reject real-world-value stake sources and payouts: real money, paid entitlement/premium currency, cash-redeemable value, or anything convertible to those. Ordinary in-world currencies, items, favors and other owner-domain stakes remain allowed when their owning domain validates them.
 - Vehicle/mount/cargo/crew and base/facility/logistics views use current capability-driven models rather than hard-coded fantasy/space assumptions.
 - Cross-device contention/conflict behavior is explicit and recoverable.
