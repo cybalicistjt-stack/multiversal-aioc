@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "register_id": "MV-PROJECT-CANON-REGISTER-001",
   "status": "archaeology_in_progress",
   "owner": "John Brandon Turner",
@@ -1684,6 +1684,25 @@
     "orphaned_intent_audit_complete": false,
     "current_canon_index_complete": false,
     "wiring_audit_complete": false,
-    "implementation_repairs_complete": false
+    "implementation_repairs_complete": false,
+    "completion_first_reconstruction_policy_active": true
+  },
+  "reconstruction_policy": {
+    "mode": "completion_first_evidence_backed_reconstruction",
+    "rule": "Missing verbatim source is not a reason to leave a project-memory gap. Reconstruct the most evidence-consistent complete answer from surviving sources, chronology, dependencies, inherited behavior, implementation evidence and supersession chains.",
+    "prohibition": "Do not invent arbitrary unsupported detail or present reconstructed material as verbatim source.",
+    "evidence_quality": [
+      "verbatim_source",
+      "directly_supported",
+      "reconstructed_high_confidence",
+      "reconstructed_medium_confidence",
+      "reconstructed_low_confidence",
+      "indeterminate"
+    ],
+    "unresolved_threshold": "Use indeterminate/unresolved_archaeology only when active reconstruction still leaves materially different plausible interpretations that cannot responsibly be selected from available evidence.",
+    "default_gap_action": "reconstruct_and_fill",
+    "preserve_reasoning_and_provenance": true,
+    "later_contradiction_handling": "revise_or_supersede_explicitly; never silently erase the prior reconstruction",
+    "owner_ratification": "Owner/final authority may promote, correct, or replace any reconstruction."
   }
 }
