@@ -9,11 +9,11 @@
   "attempt_id": "PCV-02-attempt-001",
   "title": "Real Character, Campaign, World, Scene & Pixel-Asset Foundation",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
   "selected_by_owner": "2026-09-23 owner-approved PCV strict order; PCV-02 selected automatically after verified PCV-01 closeout.",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/pcv-02-real-foundation",
   "completed": false,
   "predecessor": {
     "work_item": "PCV-01",
@@ -42,28 +42,29 @@
     "Do not activate paid/public/store/commercial provider scope merely to satisfy PCV-02."
   ],
   "strict_successor": "PCV-03",
-  "active_substep": "awaiting_governed_start",
-  "next_action": "Await owner Continue to govern-start PCV-02. On start, implement the real character/campaign/world/scene persistence path and deterministic onboard pixel-art foundation from the PCV-01 ledgers.",
+  "active_substep": "real_state_and_pixel_foundation",
+  "next_action": "Implement real durable character/campaign/world/scene state and ownership/control, bind Home resume to that state, consume first-party SMB-08/09 content as product data, and implement the deterministic onboard pixel-art generator plus first governed Primary Pixel Asset Pack.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start",
+      "evidence": "Owner Continue on 2026-09-24 granted PCV-02 implementation authority on work/pcv-02-real-foundation."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": {
-      "kind": "selected_not_started",
-      "evidence": "PCV-01 completed_verified on application merge ab0549b42eac1d6e6c219ad79d4ee0d277ef3c00; PCV-02 selected as its strict successor."
-    }
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "conforming",
     "policy_violations": []
   }
 }
