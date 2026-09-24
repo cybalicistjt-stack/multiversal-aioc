@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 512,
+  "state_revision": 513,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "PCV-03 physical retest exposed and reproduced a data-channel-open race. Replacement head 8232e52a089360939b17e58229af192a283b3a53 fixes session connection semantics and passed exact-head validation run 36053261478. Explicit package run 36054360043 is producing the replacement Windows/Android packages. Do not retest superseded 97fe666 packages and do not start PCV-04.",
+  "next_project_action": "PCV-03 race-fix candidate 8232e52a089360939b17e58229af192a283b3a53 is validated and packaged. Use package run 36054360043 / artifact 10832224601 for the next installed Windows↔Android physical connection retest. PCV-04 remains unauthorized.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
