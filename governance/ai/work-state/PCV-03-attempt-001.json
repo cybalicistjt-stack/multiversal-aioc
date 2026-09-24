@@ -42,7 +42,7 @@
   ],
   "strict_successor": "PCV-04",
   "active_substep": "installed_windows_android_physical_proof",
-  "next_action": "Install the replacement exact-head PCV-03 Windows and Android packages built from 74379f0d32c04a67771fdc68eefc886259b7d8ac on two separate physical devices, run one host/player join + authoritative command + duplicate replay + disconnect/reconnect sequence, export the host-derived installed-device evidence JSON, and validate it against the exact-head package manifest. This candidate includes the repaired PCV-03 product discoverability and current UISR presentation integration. Do not modify the application branch or start PCV-04 before this proof closes.",
+  "next_action": "Install the repaired exact-head PCV-03 Windows and Android packages built from 74379f0d32c04a67771fdc68eefc886259b7d8ac on two separate physical devices, run one host/player join + authoritative command + duplicate replay + disconnect/reconnect sequence, export the host-derived installed-device evidence JSON, and validate it against the exact-head package manifest. The superseded fe09c3f001f00609bc1be3abd9b1ca29a7581151 package must not be used. Do not start PCV-04 before this proof closes.",
   "owner_interaction_observation": {
     "continue_turns": 4,
     "stall_nudges": 0
@@ -55,8 +55,8 @@
     "no_progress_cycles": 0,
     "last_material_progress": {
       "seq": 5,
-      "kind": "replacement_exact_head_validation_complete_packages_built",
-      "evidence": "Owner inspection invalidated the prior installed candidate. Application PR #775 replacement head 74379f0d32c04a67771fdc68eefc886259b7d8ac passed Linux, Windows and deterministic cross-platform Validation Core run 36031804132. Artifact pcv-03-installed-device-packages (10824991353) contains the replacement exact-head Windows x64 installer and Android arm64 APK; local checksum verification matches both package manifests. Only the required installed physical two-device evidence remains."
+      "kind": "installed_build_surface_repair_exact_head_validation_complete_packages_built",
+      "evidence": "Owner physical inspection invalidated the fe09c3f001f00609bc1be3abd9b1ca29a7581151 build because multiplayer was undiscoverable and Profile was inert. Application PR #775 was repaired on current UISR architecture, including the four owner-requested UISR-11 showcase packs, functional Profile, reachable Play Together/invitation flow and shared UISR presentation binding. Exact head 74379f0d32c04a67771fdc68eefc886259b7d8ac passed Linux, Windows and deterministic cross-platform Validation Core run 36031804132. Artifact pcv-03-installed-device-packages (10824991353) contains exact-head Windows x64 installer and Android arm64 APK. Only installed physical two-device evidence remains."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
@@ -81,6 +81,15 @@
     "package_artifact_id": 10824991353,
     "package_artifact_name": "pcv-03-installed-device-packages",
     "package_manifest_schema": "PCV-03.PACKAGES.1",
+    "package_hashes": {
+      "Multiversal-Beta-Windows-x64-Setup.exe": "36f05c7a64513e33f1a05dd23e9686ce2616addcb9b1498bd60f3cf3d1e5e5d4",
+      "Multiversal-Beta-Android-arm64.apk": "6f4aec8514c4473f59b6f697cea643ad61840112c7036f4729bd4078d1e4b99d"
+    },
+    "superseded_candidate": {
+      "candidate_head": "fe09c3f001f00609bc1be3abd9b1ca29a7581151",
+      "package_artifact_id": 10820495727,
+      "reason": "Owner installed-build inspection found the PCV-03 multiplayer path undiscoverable and Profile inert; superseded package is invalid for physical proof."
+    },
     "requirements": [
       "Installed Windows Tauri host and installed Android Tauri player are separate physical devices.",
       "Both use the exact-head packages built from 74379f0d32c04a67771fdc68eefc886259b7d8ac.",
