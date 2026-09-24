@@ -42,7 +42,7 @@
   ],
   "strict_successor": "PCV-04",
   "active_substep": "installed_windows_android_physical_proof",
-  "next_action": "PCV-03 physical test exposed a WebRTC state race: RTCPeerConnection could report connected before RTCDataChannel opened, causing the Android join-request to be silently skipped. Replacement head 8232e52a089360939b17e58229af192a283b3a53 fixes session connection semantics to require the data channel itself to be open. Exact-head validation run 36053261478 is green on repository health, Linux, Windows and deterministic comparison. Explicit package run 36054360043 is producing the replacement Windows/Android installed-device packages. Do not retest the superseded 97fe666 packages or start PCV-04.",
+  "next_action": "Install the exact-head PCV-03 Windows and Android packages built from 8232e52a089360939b17e58229af192a283b3a53 on two separate physical devices and repeat the private invitation/response connection proof. This candidate fixes the RTCPeerConnection-versus-RTCDataChannel race so the session does not become connected and the phone does not send join-request until the data channel is actually open. If connection succeeds, continue command/idempotency/reconnect/evidence proof. PCV-04 remains unauthorized.",
   "owner_interaction_observation": {
     "continue_turns": 4,
     "stall_nudges": 0
@@ -50,17 +50,17 @@
   "execution_guard": {
     "continue_turns": 4,
     "stall_nudges": 0,
-    "material_progress_seq": 7,
-    "progress_at_last_owner_command": 7,
+    "material_progress_seq": 8,
+    "progress_at_last_owner_command": 8,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 7,
-      "kind": "physical_data_channel_race_reproduced_and_fixed",
-      "evidence": "Owner physical retest on 97fe666 showed Connect player briefly busy then no membership connection. RED head d4ea27de2d23eaffe4f62d4e26fd93ac4ac61f49 failed because peer phase became connected before RTCDataChannel was open. Replacement head 8232e52a089360939b17e58229af192a283b3a53 requires data-channel-open before connected and passed exact-head validation run 36053261478. Replacement package run 36054360043 is active."
+      "seq": 8,
+      "kind": "data_channel_race_fix_packaged",
+      "evidence": "Replacement head 8232e52a089360939b17e58229af192a283b3a53 passed exact-head validation run 36053261478 and package run 36054360043 produced exact-head artifact 10832224601 with Windows installer and Android APK. Manifest sourceHead and independent SHA-256 verification match."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": "replacement_package_build_in_progress"
+    "stop_reason": "external_physical_device_retest_required"
   },
   "execution_conformance": {
     "status": "conforming",
@@ -68,18 +68,18 @@
     "automated_implementation_complete": true,
     "automated_validation_run_id": 36053261478,
     "exact_candidate_head": "8232e52a089360939b17e58229af192a283b3a53",
-    "exact_package_artifact_id": null,
+    "exact_package_artifact_id": 10832224601,
     "physical_proof_required": true,
     "pcv04_started": false
   },
   "external_gate": {
     "kind": "installed_physical_two_device_proof",
-    "state": "replacement_package_build_in_progress",
+    "state": "ready_for_operator_retest",
     "candidate_head": "8232e52a089360939b17e58229af192a283b3a53",
     "application_pr": 775,
     "validation_run_id": 36053261478,
-    "package_artifact_id": null,
-    "package_artifact_name": null,
+    "package_artifact_id": 10832224601,
+    "package_artifact_name": "pcv-03-installed-device-packages-8232e52a089360939b17e58229af192a283b3a53",
     "package_manifest_schema": "PCV-03.PACKAGES.1",
     "requirements": [
       "Installed Windows Tauri host and installed Android Tauri player are separate physical devices.",
