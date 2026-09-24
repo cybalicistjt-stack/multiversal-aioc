@@ -1,6 +1,6 @@
 # PCV — Product Convergence & Real-App Validation
 
-**Status:** in_progress — PCV-01 completed_verified; PCV-02 selected_not_started  
+**Status:** in_progress — PCV-01 and PCV-02 completed_verified; PCV-03 selected_not_started  
 **Lane:** gpr  
 **Owner direction:** 2026-09-23
 

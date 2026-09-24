@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "PCV",
+  "lane": "gpr",
+  "track": "product-convergence-real-app-validation",
+  "source_program": "PCV",
+  "work_item_id": "PCV-03",
+  "attempt_id": "PCV-03-attempt-001",
+  "title": "Two-Device Membership, Transport, Presence & Reconnect",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "selected_by_owner": "2026-09-23 owner-approved PCV strict order; PCV-03 selected automatically after verified PCV-02 closeout.",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "predecessor": {
+    "work_item": "PCV-02",
+    "status": "completed_verified",
+    "application_merge_sha": "28666001be412925e8d148bf47e8c6a9d9f11e93"
+  },
+  "selection_basis": {
+    "kind": "strict_successor_after_verified_predecessor",
+    "reason": "PCV-02 completed the durable single-user Character/Campaign/World/Scene and Pixel2D foundation and its approved strict_successor is PCV-03."
+  },
+  "objective": "A Windows host and Android client can join the same campaign/session as distinct subjects, exchange player-safe projections and commands, disconnect/reconnect without duplicate resolution, and retain membership/role continuity.",
+  "acceptance": [
+    "Implement the currently-placeholder session-protocol transport boundary and the minimal signaling/handshake path needed for real devices.",
+    "Preserve the canonical local-capable host-authoritative architecture: direct/manual signaling is the zero-service baseline; optional signaling/TURN/relay remains replaceable and is activated only if required for cross-location reliability.",
+    "Invitation/join, stable subject/device continuity, presence, ordered events, idempotency, resume tokens/checkpoints, authority epoch and hidden-before-publication filtering are real runtime behavior.",
+    "Android<->Windows cross-device evidence is produced from installed builds, not an in-process synthetic test."
+  ],
+  "boundaries": [
+    "Preserve PCV-01/02 real product shell, SQLite/local-first persistence, packaged Library, durable Character/Campaign/World/Scene owner state, SMB-08/09 product data and Pixel2D asset foundation.",
+    "Use the existing session/authority/continuity contracts and converge missing transport seams; do not create a parallel multiplayer authority model.",
+    "Direct/manual signaling remains the zero-service baseline. Optional signaling/TURN/relay stays replaceable and must not become a blocking paid-provider dependency.",
+    "Distinct subjects/devices, hidden-before-publication filtering, idempotency and reconnect continuity must remain explicit authority concerns.",
+    "PCV-04+ remain unauthorized until PCV-03 closes and successor selection occurs.",
+    "Do not activate public/store release, production credentials, paid providers or commercial scope merely to satisfy PCV-03."
+  ],
+  "strict_successor": "PCV-04",
+  "active_substep": "awaiting_governed_start",
+  "next_action": "Await owner Continue to govern-start PCV-03. On start, converge the real two-device membership/transport/presence/reconnect path over the durable PCV-02 product foundation.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "selected_not_started",
+      "evidence": "PCV-02 completed_verified on application merge 28666001be412925e8d148bf47e8c6a9d9f11e93; PCV-03 selected as its strict successor."
+    }
+  },
+  "execution_conformance": {
+    "status": "not_started",
+    "policy_violations": []
+  }
+}
