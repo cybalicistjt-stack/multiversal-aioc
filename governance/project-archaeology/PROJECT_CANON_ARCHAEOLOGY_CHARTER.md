@@ -82,9 +82,44 @@ The register must distinguish evidence rather than flatten it.
 5. **Planning evidence** — approved programs/backlogs not yet implemented.
 6. **Recovered source evidence** — legacy files, archives, conversation-derived source packages.
 7. **Historical/provenance-only evidence** — superseded selectors, stale handoffs, old roadmaps.
-8. **Unresolved evidence** — conflicting, missing, or insufficiently sourced claims.
+8. **Unresolved evidence** — conflicting, missing, or insufficiently sourced claims that remain genuinely indeterminate after reconstruction.
 
 No lower evidence class may silently override a higher one.
+
+### 4A. Completion-first reconstruction rule
+
+The archaeology is a **reconstruction project, not merely an extraction project**. Missing verbatim source does not by itself justify leaving a hole in project memory.
+
+For every gap, first attempt to reconstruct the missing fact, decision, scope, dependency, deliverable, successor relationship, or intended behavior from the strongest combination of:
+
+- explicit owner decisions;
+- surviving source fragments and archive material;
+- chronological predecessor/successor relationships;
+- Git history and imported repository state;
+- later artifacts that demonstrably inherited or depended on the missing element;
+- schemas, tests, contracts, manifests, UI/runtime behavior, and data shapes that encode the earlier decision;
+- supersession and migration chains;
+- independent project records that converge on the same interpretation.
+
+Reconstruction must choose the **most evidence-consistent complete interpretation**, not the most conservative empty interpretation.
+
+Every reconstructed assertion must carry an evidence-quality label:
+
+- `verbatim_source` — directly present in the original source;
+- `directly_supported` — explicitly established by surviving authoritative evidence;
+- `reconstructed_high_confidence` — not preserved verbatim, but the surviving evidence and downstream dependencies strongly determine one interpretation;
+- `reconstructed_medium_confidence` — the best-supported interpretation with limited residual ambiguity;
+- `reconstructed_low_confidence` — a necessary completion with meaningful uncertainty that does not justify leaving the system structurally incomplete;
+- `indeterminate` — two or more materially different interpretations remain plausible and available evidence cannot responsibly choose among them.
+
+Rules:
+
+1. Do **not** leave a field, phase, dependency, or intent blank merely because no single surviving document states it verbatim.
+2. Do **not** fabricate arbitrary detail. Reconstruction must be traceable to evidence, inherited behavior, chronology, or necessary system structure.
+3. When one interpretation explains all surviving evidence substantially better than alternatives, record it as the reconstruction and preserve the reasoning/provenance.
+4. When a lower-confidence reconstruction is needed for completeness, mark the uncertainty explicitly and route later contradictory evidence to supersession/revision rather than deleting the reconstruction silently.
+5. Use `indeterminate` / `unresolved_archaeology` only after active reconstruction fails to select a responsible best-supported answer.
+6. Owner ratification may promote or correct a reconstruction at any confidence level.
 
 ## 5. Canon Register disposition vocabulary
 
@@ -119,8 +154,8 @@ This gate passes only when:
 - planning-only and deferred programs are included;
 - later owner decisions after the Project Bible are incorporated;
 - all explicit supersession chains are recorded;
-- unresolved conflicts are listed rather than guessed away;
-- forgotten/orphaned intentions are surfaced explicitly;
+- conflicts and gaps are actively reconstructed to the best-supported complete answer; only genuinely indeterminate alternatives remain unresolved;
+- forgotten/orphaned intentions are surfaced explicitly and reconstructed into a usable intended state wherever the evidence permits;
 - the result is available in one machine-readable register plus a human-readable guide.
 
 ## 7. Internal Wiring / Dependency / Interconnectivity Gate
