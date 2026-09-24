@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "program_id": "PCV",
   "program_name": "Product Convergence & Real-App Validation",
   "status": "in_progress",
@@ -80,12 +80,16 @@
     },
     {
       "id": "PCV-06",
-      "name": "Inventory, Economy, Crafting, Vehicles, Mounts, Bases & Logistics",
+      "name": "Inventory, Economy, Crafting, Games & Wagering, Vehicles, Mounts, Bases & Logistics",
       "status": "blocked_by_predecessor",
-      "outcome": "Long-lived shared assets and operational systems are usable in the real campaign: equipment, containers/transfers, economy/trade, crafting, vehicles/living mounts, bases/facilities and logistics persist and synchronize between users.",
+      "outcome": "Long-lived shared assets and operational systems are usable in the real campaign: equipment, containers/transfers, economy/trade, crafting, reusable games/wagering activities, vehicles/living mounts, bases/facilities and logistics persist and synchronize between users.",
       "acceptance": [
         "Real inventory/equipment/container ownership and transfers are persistent and permission-safe.",
         "Economy/trade/contracts/services and crafting/work queues commit through governed events and survive reconnect.",
+        "Implement PCV_GAMES_WAGERING_INTEGRATION_v1.0.0.md as a reusable Games & Wagering runtime over current GPR loop-mini/pattern execution plus canonical owner-domain settlement; do not build a Black Vegas-only parallel engine.",
+        "Support Campaign Play using actual validated in-world character/campaign wealth, assets or other fictional stakes with persistent consequences, and Free Play using an isolated arbitrary resettable wallet that never mutates campaign state.",
+        "Ship a substantial Earth casino-game starter pack plus a Black Vegas alien-game starter pack. Authoritative randomness/hidden information is recorded for replay/audit, and house/NPC/two-human participants use the current authority/continuity model.",
+        "Reject real-world-value stake sources and payouts: real money, paid entitlement/premium currency, cash-redeemable value, or anything convertible to those. Ordinary in-world currencies, items, favors and other owner-domain stakes remain allowed when their owning domain validates them.",
         "Vehicle/mount/cargo/crew and base/facility/logistics views use current capability-driven models rather than hard-coded fantasy/space assumptions.",
         "Cross-device contention/conflict behavior is explicit and recoverable."
       ]
@@ -99,7 +103,8 @@
         "World/adventure/scene/content authoring, reusable Library, rules/search, dependencies, provenance/history and validation are integrated into the production shell.",
         "MRCS and other current rules/content-authoring implementations are surfaced where they are user-facing rather than left as isolated workbenches.",
         "Campaign-local creation remains distinct from reusable/canonical publishing authority.",
-        "Content can be transferred/shared between the two tester identities without bypassing rights/provenance controls."
+        "Content can be transferred/shared between the two tester identities without bypassing rights/provenance controls.",
+        "Games & Wagering definitions are authorable as governed reusable content: game rules, table/venue configuration, legal fictional stake classes, house rules, dealer/NPC profiles and setting/alien game packs bind through MRCS/Content Forge boundaries without duplicating runtime or owner-domain authority."
       ]
     },
     {
@@ -125,7 +130,8 @@
         "Search/command, notifications/approvals, settings/accessibility, diagnostics/recovery and optional AI proposal flows are reachable and permission-safe.",
         "No ordinary-user surface exposes synthetic fixture labels, raw internal IDs or diagnostic-first copy unless explicitly in diagnostics.",
         "Representative Android and Windows rendered evidence covers major play/authoring/utility surfaces and accessibility states.",
-        "Converge generated/imported/primary assets with current skins and eliminate accidental blank/generic presentation on representative product surfaces."
+        "Converge generated/imported/primary assets with current skins and eliminate accidental blank/generic presentation on representative product surfaces.",
+        "Games & Wagering has coherent responsive phone/desktop product surfaces: a generic games browser/table flow plus venue-aware presentation such as Black Vegas, accessible hidden-information handling, clear Campaign vs Free Play context, and no real-money purchase/cash-out affordance."
       ]
     },
     {
@@ -140,7 +146,8 @@
         "Exercise representative later/post-Bible systems appropriate to the campaign rather than proving only the old core.",
         "Human-visible UI matches current convergence/skin direction on both devices and contains no alpha fixture shell.",
         "Generate final Windows installer + Android APK with checksum/version manifest only after this installed two-human proof passes.",
-        "No unresolved required asset remains on the representative first-party two-human golden path."
+        "No unresolved required asset remains on the representative first-party two-human golden path.",
+        "Installed proof exercises Games & Wagering on Windows and Android: at least one Earth game and one Black Vegas/alien game, a persistent campaign-funded wager, an isolated Free Play wallet reset, and a two-human or host-authoritative table/reconnect path, with zero real-world-value wagering."
       ]
     }
   ],
@@ -158,5 +165,20 @@
   ],
   "next_item": "PCV-01",
   "completion_rule": "PCV completes only when PCV-10 proves a fresh-installed Android and Windows pair can run a real two-human Multiversal campaign using persisted governed state and representative current feature breadth. Contract-only, fixture-only, golden-data-only, isolated-workbench-only, screenshot-only, or in-process-only proof is insufficient.",
-  "next_action": "Execute PCV-01 real product spine/persistence/convergence cutover. PCV-02 remains blocked."
+  "next_action": "Execute PCV-01 real product spine/persistence/convergence cutover. PCV-02 remains blocked.",
+  "approved_cross_tranche_requirements": [
+    {
+      "id": "PCV-GW-01",
+      "name": "Games & Wagering Integration",
+      "contract": "governance/application-planning/product-convergence/PCV_GAMES_WAGERING_INTEGRATION_v1.0.0.md",
+      "owner_direction_date": "2026-09-24",
+      "primary_delivery": "PCV-06",
+      "consumed_by": [
+        "PCV-07",
+        "PCV-09",
+        "PCV-10"
+      ],
+      "current_rule": "PCV-01 tracks the journey only; PCV-06 implementation remains blocked until predecessor closeout."
+    }
+  ]
 }
