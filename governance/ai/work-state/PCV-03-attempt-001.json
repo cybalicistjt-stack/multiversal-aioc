@@ -9,11 +9,11 @@
   "attempt_id": "PCV-03-attempt-001",
   "title": "Two-Device Membership, Transport, Presence & Reconnect",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
   "selected_by_owner": "2026-09-23 owner-approved PCV strict order; PCV-03 selected automatically after verified PCV-02 closeout.",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/pcv-03-two-device",
   "completed": false,
   "predecessor": {
     "work_item": "PCV-02",
@@ -37,31 +37,33 @@
     "Direct/manual signaling remains the zero-service baseline. Optional signaling/TURN/relay stays replaceable and must not become a blocking paid-provider dependency.",
     "Distinct subjects/devices, hidden-before-publication filtering, idempotency and reconnect continuity must remain explicit authority concerns.",
     "PCV-04+ remain unauthorized until PCV-03 closes and successor selection occurs.",
-    "Do not activate public/store release, production credentials, paid providers or commercial scope merely to satisfy PCV-03."
+    "Do not activate public/store release, production credentials, paid providers or commercial scope merely to satisfy PCV-03.",
+    "Invitation/join, presence and reconnect controls must be fully usable from phone; PCV-MOBILE-01 applies and no PCV-03 action may be desktop-only."
   ],
   "strict_successor": "PCV-04",
-  "active_substep": "awaiting_governed_start",
-  "next_action": "Await owner Continue to govern-start PCV-03. On start, converge the real two-device membership/transport/presence/reconnect path over the durable PCV-02 product foundation.",
+  "active_substep": "membership_transport_presence_reconnect",
+  "next_action": "Implement real two-device membership, direct/manual signaling transport, presence and reconnect over PCV-02 durable Campaign state. Preserve host authority, hidden-before-publication filtering, idempotency, authority epoch and phone capability parity.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "governed_start",
+      "evidence": "Owner Continue on 2026-09-24 granted PCV-03 implementation authority on work/pcv-03-two-device."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": {
-      "kind": "selected_not_started",
-      "evidence": "PCV-02 completed_verified on application merge 28666001be412925e8d148bf47e8c6a9d9f11e93; PCV-03 selected as its strict successor."
-    }
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "conforming",
     "policy_violations": []
   }
 }
