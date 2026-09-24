@@ -46,13 +46,14 @@
     {
       "id": "PCV-03",
       "name": "Two-Device Membership, Transport, Presence & Reconnect",
-      "status": "selected_not_started",
+      "status": "in_progress",
       "outcome": "A Windows host and Android client can join the same campaign/session as distinct subjects, exchange player-safe projections and commands, disconnect/reconnect without duplicate resolution, and retain membership/role continuity.",
       "acceptance": [
         "Implement the currently-placeholder session-protocol transport boundary and the minimal signaling/handshake path needed for real devices.",
         "Preserve the canonical local-capable host-authoritative architecture: direct/manual signaling is the zero-service baseline; optional signaling/TURN/relay remains replaceable and is activated only if required for cross-location reliability.",
         "Invitation/join, stable subject/device continuity, presence, ordered events, idempotency, resume tokens/checkpoints, authority epoch and hidden-before-publication filtering are real runtime behavior.",
-        "Android<->Windows cross-device evidence is produced from installed builds, not an in-process synthetic test."
+        "Android<->Windows cross-device evidence is produced from installed builds, not an in-process synthetic test.",
+        "Invitation/join, presence and reconnect remain fully usable in phone-optimized layouts; no networking/session control is desktop-only."
       ]
     },
     {
@@ -169,7 +170,7 @@
   ],
   "next_item": "PCV-03",
   "completion_rule": "PCV completes only when PCV-10 proves a fresh-installed Android and Windows pair can run a real two-human Multiversal campaign using persisted governed state and representative current feature breadth. Contract-only, fixture-only, golden-data-only, isolated-workbench-only, screenshot-only, or in-process-only proof is insufficient.",
-  "next_action": "PCV-03 — Two-Device Membership, Transport, Presence & Reconnect — is selected_not_started. Await owner Continue for governed implementation start.",
+  "next_action": "Execute PCV-03 two-device membership/transport/presence/reconnect. PCV-04 remains blocked.",
   "approved_cross_tranche_requirements": [
     {
       "id": "PCV-GW-01",
