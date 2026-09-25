@@ -10897,7 +10897,7 @@
       "kind": "session_transport",
       "owner": "PCV-03A..PCV-03F",
       "disposition": "current_intent_not_yet_implemented",
-      "implementation_state": "pcv03a_pcv03b_pcv03c_pcv03d_completed_verified_pcv03e_selected_not_started",
+      "implementation_state": "pcv03a_pcv03b_pcv03c_pcv03d_pcv03e_completed_verified_pcv03f_selected_not_started",
       "product_area": null,
       "pcv_targets": [],
       "evidence": [
@@ -10907,7 +10907,8 @@
         "governance/ai/work-state/PCV-03B-attempt-001.json",
         "governance/ai/work-state/PCV-03C-attempt-001.json",
         "governance/ai/work-state/PCV-03D-attempt-001.json",
-        "governance/ai/work-state/PCV-03E-attempt-001.json"
+        "governance/ai/work-state/PCV-03E-attempt-001.json",
+        "governance/ai/work-state/PCV-03F-attempt-001.json"
       ]
     },
     {
@@ -12233,7 +12234,7 @@
       "node_type": "current_overlay_work_item",
       "label": "PCV-03E",
       "family_id": "PCV",
-      "status": "selected_not_started",
+      "status": "completed_verified",
       "evidence": [
         "PCV_PROGRAM_BACKLOG.json",
         "governance/ai/work-state/PCV-03E-attempt-001.json"
@@ -12245,11 +12246,12 @@
       "node_type": "current_overlay_work_item",
       "label": "PCV-03F",
       "family_id": "PCV",
-      "status": "blocked_by_predecessor",
+      "status": "selected_not_started",
       "evidence": [
-        "PCV_PROGRAM_BACKLOG.json"
+        "PCV_PROGRAM_BACKLOG.json",
+        "governance/ai/work-state/PCV-03F-attempt-001.json"
       ],
-      "attempt_count": 0
+      "attempt_count": 1
     },
     {
       "node_id": "WORK::PCV-04",
@@ -24295,12 +24297,12 @@
     {
       "work_item_id": "PCV-03E",
       "family_id": "PCV",
-      "status": "selected_not_started"
+      "status": "completed_verified"
     },
     {
       "work_item_id": "PCV-03F",
       "family_id": "PCV",
-      "status": "blocked_by_predecessor"
+      "status": "selected_not_started"
     },
     {
       "work_item_id": "PCV-04",

@@ -9,8 +9,8 @@
     "SMB",
     "BIP"
   ],
-  "current_item": "PCV-03E",
-  "current_attempt": "PCV-03E-attempt-001",
+  "current_item": "PCV-03F",
+  "current_attempt": "PCV-03F-attempt-001",
   "tranches": [
     {
       "id": "PCV-01",
@@ -287,7 +287,7 @@
       "id": "PCV-03E",
       "parent_tranche": "PCV-03",
       "name": "Presence, Product Context, Mobile UX & State Migration",
-      "status": "in_progress",
+      "status": "completed_verified",
       "outcome": "Advisory presence and remote Campaign continuity integrate into the ordinary product safely on phone/desktop, and unsafe pre-audit PCV-03 persisted state is retired/migrated without inheriting stale authority or secrets.",
       "acceptance": [
         "Presence is derived from the bound connection lifecycle and host time, never caller-supplied identity/authority.",
@@ -301,13 +301,19 @@
       ],
       "estimated_active_minutes": 26,
       "checkpoint_path": "governance/ai/work-state/PCV-03E-attempt-001.json",
-      "branch_rule": "Create a fresh child-specific branch from current Multiversal-app main at execution start; do not reuse PCV-03D or the historical monolithic PCV-03 branch."
+      "branch_rule": "Create a fresh child-specific branch from current Multiversal-app main at execution start; do not reuse PCV-03D or the historical monolithic PCV-03 branch.",
+      "completion_evidence": {
+        "validated_head": "a5e4e015f299ea99ebc1d5631e667a715e2e6710",
+        "validation_run": 36177826378,
+        "merge_sha": "6fb01d19d5763b00488392a564ec6b303551eb2f",
+        "closeout_audit": "passed_advisory_presence_a3_safe_context_partition_migration_accessibility"
+      }
     },
     {
       "id": "PCV-03F",
       "parent_tranche": "PCV-03",
       "name": "Exact-Head Installed Windows/Android Certification",
-      "status": "blocked_by_predecessor",
+      "status": "selected_not_started",
       "outcome": "A repaired exact-head Windows host and Android player pass automated predecessor regressions, package identity verification and causal physical-device evidence for join, authority, idempotency, hidden projection and reconnect.",
       "acceptance": [
         "Run focused A3/A5/P9/SMB/VTI predecessor regressions plus PCV-03 negative/security/recovery tests and exact-head build/native checks.",
@@ -317,7 +323,9 @@
         "Device-side evidence binds installed Windows/Android runtime/package identity to the exact package artifact rather than relying only on self-reported wire metadata.",
         "The physical Windows↔Android proof passes the strengthened verifier; only then may PCV-03 parent be considered completed_verified and PCV-04 become eligible."
       ],
-      "estimated_active_minutes": 24
+      "estimated_active_minutes": 24,
+      "checkpoint_path": "governance/ai/work-state/PCV-03F-attempt-001.json",
+      "branch_rule": "Create a fresh child-specific branch from current Multiversal-app main at execution start; do not reuse PCV-03E or the historical monolithic PCV-03 branch."
     },
     {
       "id": "PCV-04",
@@ -446,7 +454,7 @@
   ],
   "next_item": "PCV-I06",
   "completion_rule": "PCV completes only when PCV-10 proves a fresh-installed Android and Windows pair can run a real two-human Multiversal campaign using persisted governed state and representative current feature breadth. Contract-only, fixture-only, golden-data-only, isolated-workbench-only, screenshot-only, or in-process-only proof is insufficient.",
-  "next_action": "PCV-03E is in_progress on work/pcv-03e-presence-product-context-migration. PCV-03F installed certification and PCV-04 gameplay remain blocked.",
+  "next_action": "PCV-03F is selected_not_started. Await the next owner Continue; then start only exact-head installed Windows/Android package identity and causal physical-device certification from fresh Multiversal-app main. PCV-04 gameplay and public/store release remain blocked.",
   "approved_cross_tranche_requirements": [
     {
       "id": "PCV-GW-01",
