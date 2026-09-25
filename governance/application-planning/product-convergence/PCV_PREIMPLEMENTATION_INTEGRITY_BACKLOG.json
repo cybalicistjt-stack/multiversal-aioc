@@ -7,8 +7,8 @@
   "owner_direction_date": "2026-09-25",
   "predecessor": "PCV-02 completed_verified",
   "blocks_parent": "PCV-03",
-  "current_item": "PCV-I05",
-  "current_attempt": "PCV-I05-attempt-001",
+  "current_item": "PCV-I06",
+  "current_attempt": "PCV-I06-attempt-001",
   "strict_order": [
     "PCV-I01A",
     "PCV-I01B",
@@ -111,7 +111,7 @@
     {
       "id": "PCV-I05",
       "name": "Product Context, Downstream Consumers, Mobile, Packaging & Evidence Closure",
-      "status": "in_progress",
+      "status": "completed_verified",
       "objective": "Close the product/platform edges before implementation: A3-safe Home/context integration, downstream Session consumers, mobile/accessibility, package/update identity and a non-self-certifying physical evidence model.",
       "acceptance": [
         "Reconcile ProductProfile/ProductSelectedContext with A3 authorized workspace/context/Home projections and cache partitions.",
@@ -126,7 +126,7 @@
     {
       "id": "PCV-I06",
       "name": "Final No-Orphan / No-Parallel-Owner Readiness Certification",
-      "status": "blocked_by_predecessor",
+      "status": "selected_not_started",
       "objective": "Perform a fresh adversarial sweep over the completed interstitial artifacts and current repositories; allow PCV-03A to start only when all required owner/dependency/consumer/validation bindings are explicit and no unresolved implementation prerequisite remains.",
       "acceptance": [
         "Every gap register item is closed, explicitly routed to a bounded PCV-03 child, or explicitly deferred outside PCV with owner/rationale; no unowned/indeterminate blocker remains.",
@@ -140,7 +140,7 @@
     }
   ],
   "completion_rule": "PCV-PRE completes only when PCV-I01A, PCV-I01B, PCV-I01C, PCV-I02..PCV-I06 complete in strict order and PCV-I06 certifies zero unowned/unresolved PCV-03 prerequisites.",
-  "next_action": "PCV-I05 exact candidate validation active; PCV-I06 and all PCV runtime predecessor-blocked.",
+  "next_action": "PCV-I06 is selected_not_started. Start only on a later owner Continue; Multiversal-app PCV runtime remains blocked until I06 final readiness certification explicitly clears PCV-03A.",
   "prerequisite": {
     "work_item": "PIM-03",
     "status": "completed_verified",
