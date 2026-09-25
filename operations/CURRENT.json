@@ -96,7 +96,7 @@
       "checkpoint_path": "governance/ai/work-state/PCV-03F-attempt-001.json",
       "implementation_branch": "work/pcv-03f-installed-certification",
       "implementation_authority": true,
-      "activation_rule": "Owner Continue started PCV-03F from fresh Multiversal-app main 6fb01d19d5763b00488392a564ec6b303551eb2f. Authority is limited to exact-head Windows x64 NSIS and Android ARM64 package regeneration, manifest/install identity verification, device-signed installed-runtime proof, and causal PCV-03 certification receipts. Updater activation, public/store release, production credentials/signing and PCV-04 gameplay remain unauthorized.",
+      "activation_rule": "PCV-03F remains in_progress with implementation authority. Automated exact-head package construction and manifest verification completed on application head 59303d5be2fa9e6d699f8486620beef5ea682480; only fresh two-device installed physical evidence remains externally blocked. PCV-04, updater activation and public/store release remain unauthorized.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "Execute PCV-03F only on work/pcv-03f-installed-certification from fresh Multiversal-app main; close through exact-head certification/publication before PCV-04 may become eligible.",
+  "next_project_action": "PCV-03F is externally blocked only on fresh installed Windows+Android physical evidence. Exact packages and package manifest were generated and verified in run 36197087514 for application head 59303d5be2fa9e6d699f8486620beef5ea682480. Supply PCV-03.INSTALLED-EVIDENCE.2 from two distinct physical devices; PCV-04 remains blocked.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
