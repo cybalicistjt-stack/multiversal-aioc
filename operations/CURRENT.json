@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 540,
+  "state_revision": 541,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "PCV-03D",
-      "attempt_id": "PCV-03D-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/PCV-03D-attempt-001.json",
-      "implementation_branch": "work/pcv-03d-ordered-delivery-recovery",
-      "implementation_authority": true,
-      "activation_rule": "Owner Continue started PCV-03D from fresh Multiversal-app main 45642c7578716622c9d486988732beac787cdb9d. Authority is limited to serialized PCV-03-owned Session-continuity commands/events, semantic idempotency, hidden-safe viewer cursors/ACKs, checkpoint/replay integrity and current-authorization reconnect recovery; PCV-03E+, presence UX, gameplay and packaging remain unauthorized.",
+      "state": "selected_not_started",
+      "selected_work_item": "PCV-03E",
+      "attempt_id": "PCV-03E-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/PCV-03E-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "PCV-03D completed_verified on Multiversal-app main ccf0c7f9b71ed18d9d56e31d484d0689f2d85035 after exact-head run 36172723993. PCV-03E is selected_not_started and requires a later owner Continue to create a fresh application-main branch and grant bounded advisory-presence/product-context/mobile/state-migration authority.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "Execute PCV-03D only on work/pcv-03d-ordered-delivery-recovery from fresh Multiversal-app main; close through exact-head validation/publication before selecting PCV-03E.",
+  "next_project_action": "PCV-03E is selected_not_started. On the next owner Continue, start only advisory host-time presence, A3-authorized remote product context, phone/accessibility continuity and pre-audit state/credential quarantine from fresh Multiversal-app main; PCV-03F installed certification and PCV-04 gameplay remain blocked.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
