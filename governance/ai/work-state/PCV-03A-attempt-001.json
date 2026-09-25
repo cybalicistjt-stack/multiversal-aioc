@@ -10,12 +10,12 @@
   "attempt_id": "PCV-03A-attempt-001",
   "title": "Canonical Identity, Invitation & Campaign Membership",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
   "selected_by_owner": "2026-09-25 owner direction to keep going but stop overloading the original 10 PCV tranches; PCV-03 decomposed using the established lettered-work-item pattern.",
-  "implementation_authority": true,
-  "implementation_branch": "work/pcv-03a-canonical-identity-membership",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "predecessor": {
     "work_item": "PCV-02",
     "status": "completed_verified",
@@ -44,19 +44,26 @@
     "Keep direct/manual zero-service architecture viable; no paid/hosted identity or networking provider becomes mandatory.",
     "Use milestone-level OPS3 state only; no activity-journal instrumentation."
   ],
-  "active_substep": "red_green_identity_membership",
+  "active_substep": "completed_verified",
   "strict_successor": "PCV-03B",
-  "next_action": "Run the bounded PCV-03A RED→GREEN implementation on fresh Multiversal-app main; materialize only PCV-03A validation, preserve PCV-03B+ and packaging blocks, then close through exact-head publication.",
+  "next_action": "PCV-03A is completed_verified. PCV-03B is selected_not_started; await a later owner Continue before Session launch/lifecycle implementation begins.",
   "execution_guard": {
-    "continue_turns": 2,
-    "stall_nudges": 1,
-    "material_progress_seq": 2,
-    "progress_at_last_owner_command": 1,
+    "continue_turns": 3,
+    "stall_nudges": 2,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null,
-    "last_material_progress": "Valid causal RED recorded on Multiversal-app head ac8edffa91311c052a1730f3decfd5ff052d3e3b: PCV-03A focused test reached product behavior and failed because canonical identity mapping was absent.",
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "PCV-03A canonical identity, invitation and Campaign membership published on application main as 73c4ae91502086139a51fdaaf9958d293d2dd543; strict successor PCV-03B selected_not_started."
+    },
+    "last_material_progress": {
+      "seq": 3,
+      "kind": "completed_verified_candidate",
+      "evidence": "Exact Multiversal-app head bd3e12b01ee085d75ae42480b29d84f3d3f072c7 passed Linux, Windows and deterministic cross-platform validation in run 36156470345 and merged as 73c4ae91502086139a51fdaaf9958d293d2dd543."
+    },
     "process_note": "Owner re-entered after an executor interruption; valid material progress existed since the prior command, so execution resumed rather than entering no-progress diagnosis. Multi-Continue/stall-nudge evidence is preserved for closeout."
   },
   "audit_required_at_closeout": "PCV-03A must prove no duplicate Campaign membership/invitation owner remains before selecting PCV-03B.",
@@ -66,5 +73,63 @@
     "predecessor_validation_run": "36145523725",
     "predecessor_publication_merge": "fe9d2ee3ac106699ef7dace7c336ca3dbd62276f",
     "branch_rule": "Create a fresh PCV-03A branch from current Multiversal-app main at execution start; stale work/pcv-03-two-device is historical-only."
+  },
+  "implementation_evidence": {
+    "application": {
+      "pr": 776,
+      "validated_head": "bd3e12b01ee085d75ae42480b29d84f3d3f072c7",
+      "validation_run": 36156470345,
+      "conclusion": "success",
+      "linux_validation": "success",
+      "windows_validation": "success",
+      "deterministic_cross_platform_comparison": "success",
+      "merge_sha": "73c4ae91502086139a51fdaaf9958d293d2dd543",
+      "lane_prequeue_revision": 453,
+      "lane_publication_revision": 454
+    },
+    "authority": {
+      "verified_stable_subject_session": true,
+      "recipient_bound_invitation": true,
+      "atomic_idempotent_acceptance": true,
+      "raw_bearer_not_persisted": true,
+      "a5_membership_role_state_version_authority": true,
+      "pcv02_member_subject_ids_derived_only": true,
+      "mib17_smb14_policy_composition": true,
+      "peer_subject_membership_device_binding": true,
+      "native_atomic_sqlite_authority_store": true,
+      "packaging_activated": false
+    }
+  },
+  "closeout_audit": {
+    "status": "passed",
+    "application_main": "73c4ae91502086139a51fdaaf9958d293d2dd543",
+    "checks": {
+      "monolithic_pcv03_session_owner_present": false,
+      "duplicate_campaign_membership_owner_found": false,
+      "pcv02_memberSubjectIds_persisted_as_authority": false,
+      "pcv03a_a3_a5_authority_present": true,
+      "packaging_workflow_activated": false
+    },
+    "evidence": [
+      "apps/client-ui/src/product/pcv03aIdentityMembership.ts",
+      "packages/contracts/src/a3/stable-subject-session-port.ts",
+      "packages/contracts/src/a5/membership-invitation-port.ts",
+      "apps/client-ui/src/product/pcv02Foundation.ts",
+      "tools/verify_pcv_03a.py"
+    ]
+  },
+  "execution_conformance": {
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE"
+    ],
+    "product_completion_valid": true,
+    "execution_quality_note": "PCV-03A required three owner Continue turns because the executor interrupted twice after material progress. No stale selector was followed and no product work was invalidated; the interruption/nudge history is retained so this recurrence remains visible."
+  },
+  "interaction_quality": {
+    "owner_execution_commands": 3,
+    "additional_continue_commands": 2,
+    "product_work_invalidated": false,
+    "classification": "product completed successfully; repeated executor interruption caused avoidable multi-Continue continuation"
   }
 }
