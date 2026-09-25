@@ -58,6 +58,11 @@ assert dep["counts"]["work_state_families"]==73
 assert dep["counts"]["work_items"]==662
 assert dep["counts"]["canon_intent_nodes"]==len(canon["entries"])==71
 assert dep["counts"]["capability_ledger_rows"]==56
+assert dep["counts"]["current_overlay_work_items"]==len(reg["current_overlay"]["work_items"])
+# Every edge endpoint must exist; overlay work may not create dangling graph references.
+for edge in dep["edges"]:
+    assert edge["from"] in nodes, edge
+    assert edge["to"] in nodes, edge
 # Every planning group contributes structurally to the app.
 contrib={e["from"] for e in dep["edges"] if e["edge_type"]=="contributes_to_app" and e["to"]=="APP::MULTIVERSAL"}
 assert contrib=={x["group_id"] for x in reg["planning_groups"]}
@@ -66,6 +71,8 @@ assert gaps["child_registers"][0]["known_findings"]==pcv["finding_count"]==len(p
 assert all(x.get("owner") and x.get("repair") and x.get("status") for x in gaps["findings"])
 assert all(x.get("primary_interstitial") and x.get("disposition") for x in pcv["findings"])
 assert backlog["strict_order"]==["PIM-01","PIM-02","PIM-03"]
+overlay_ids={x["work_item_id"] for x in reg["current_overlay"]["work_items"]}
+assert {"PIM-01","PIM-02","PIM-03","PCV-I01A","PCV-I01B","PCV-I01C","PCV-I06","PCV-03A","PCV-03F","PCV-10"} <= overlay_ids
 # Project Source hashes are frozen integrity anchors, not authority.
 sources={x["name"]:x["sha256"] for x in reg["live_project_source_surface"]["files"]}
 assert sources["PROJECT_SOURCE_MANIFEST.md"]=="15ba1bc42c12920c245d1611ac5b95c8614a87520644230ca64c3cd43892bb2c"

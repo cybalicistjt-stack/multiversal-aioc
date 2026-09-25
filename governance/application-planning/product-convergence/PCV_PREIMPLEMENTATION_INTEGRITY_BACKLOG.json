@@ -7,10 +7,12 @@
   "owner_direction_date": "2026-09-25",
   "predecessor": "PCV-02 completed_verified",
   "blocks_parent": "PCV-03",
-  "current_item": "PCV-I01",
-  "current_attempt": "PCV-I01-attempt-001",
+  "current_item": "PCV-I01A",
+  "current_attempt": "PCV-I01A-attempt-001",
   "strict_order": [
-    "PCV-I01",
+    "PCV-I01A",
+    "PCV-I01B",
+    "PCV-I01C",
     "PCV-I02",
     "PCV-I03",
     "PCV-I04",
@@ -19,18 +21,43 @@
   ],
   "tranches": [
     {
-      "id": "PCV-I01",
-      "name": "Authority, Identity, Membership & Owner-Contract Closure",
-      "status": "in_progress",
-      "objective": "Prove and close the canonical ownership graph from local identity proof through A3 invitation and A5 Campaign membership, including family safety, device-session lifecycle and local-host versus production-service authority composition.",
+      "id": "PCV-I01A",
+      "name": "Identity, Authentication, Device & Recovery Contract Closure",
+      "status": "blocked_by_project_integrity_map",
+      "objective": "Close stable-subject authentication, local proof-of-possession, device/session continuity, recovery/rebind and BRP lifecycle ownership before remote membership or transport implementation.",
       "acceptance": [
-        "Every identity/session/invitation/membership/device authority has exactly one canonical owner and an explicit production/local-first adapter plan.",
-        "Select the zero-service local subject proof-of-possession model and recovery/rebind semantics without making device IDs authoritative.",
-        "Close A3 Invitation↔A5 Campaign-membership atomicity and membership-state transition/authentication-context contract holes.",
-        "Reconcile PCV-02 memberSubjectIds and product profile IDs as predecessor data that migrate/adapt into current owners rather than remain parallel authorities.",
-        "Map SMB-01 service-port semantics to a local-host profile while preserving the non-activated managed-production profile.",
-        "Disposition MIB-17/SMB-14 invitation/communication policy and BRP device-session/recovery requirements.",
-        "Publish field-level owner/dependency/consumer evidence; no generic 'audited' labels may substitute."
+        "Define the production-local zero-service proof-of-possession credential and canonical A3 session establishment path.",
+        "Define stable device identity as connection/recovery context without making device identity equal subject identity.",
+        "Close BRP device-session revocation/recovery/data-rights composition.",
+        "Restore or explicitly retire A3 authentication-session assurance/device/last-validation metadata with evidence.",
+        "Reconcile PCV-01 local profile identity records with IdentityServicePort, ProviderIndependentIdentityMapping and StableSubjectSessionPort.",
+        "No remote caller can assert a subjectId/identityId pair without the canonical authentication boundary."
+      ]
+    },
+    {
+      "id": "PCV-I01B",
+      "name": "Invitation, Membership, Role, Policy & Atomicity Closure",
+      "status": "blocked_by_predecessor",
+      "objective": "Close A3 invitation→A5 Campaign membership/role lifecycle, versioning, family-safety policy and atomic transaction semantics without parallel membership authority.",
+      "acceptance": [
+        "A3 acceptance and A5 membership creation/replay have one atomic coordinator and one membership authority.",
+        "Campaign membership lifecycle fields, role vocabulary, version/concurrency token and state transitions are complete and obtainable through public contracts.",
+        "MIB-17/SMB-14 invitation policy and recipient binding are composed without granting Campaign authority.",
+        "PCV-02 memberSubjectIds has an explicit migration/adapter disposition and cannot remain a competing authority.",
+        "Duplicate/replayed invitation acceptance and conflicting reuse are fail-closed and idempotent."
+      ]
+    },
+    {
+      "id": "PCV-I01C",
+      "name": "Local-Host / Production-Service Authority & Entitlement Composition Closure",
+      "status": "blocked_by_predecessor",
+      "objective": "Define one authority model shared by zero-service installed-host execution and the non-activated SMB-01 managed-production profile, including Identity/Entitlement/Persistence/SessionCommand/Realtime/Checkpoint ports.",
+      "acceptance": [
+        "Define local-host adapters/semantics for the SMB-01 service-port surface without activating hosted production.",
+        "Define 'online' as current authoritative-executor reachability across local-host and future hosted profiles.",
+        "Define local entitlement evaluation and decision references used by Campaign/Session handshake.",
+        "Prove local-host authority and future server/database authority are deployment profiles over one owner model, not competing canonical histories.",
+        "Preserve realtime as advisory and durable Event/checkpoint authority across profiles."
       ]
     },
     {
@@ -105,8 +132,8 @@
       ]
     }
   ],
-  "completion_rule": "PCV-PRE completes only when PCV-I06 certifies zero unowned/unresolved PCV-03 prerequisites and explicitly authorizes selection of PCV-03A. Completing archaeology alone or closing only the known candidate bugs is insufficient.",
-  "next_action": "Execute PCV-I01 authority/identity/membership/owner-contract closure. PCV-03A and later PCV work remain blocked.",
+  "completion_rule": "PCV-PRE completes only when PCV-I01A, PCV-I01B, PCV-I01C, PCV-I02..PCV-I06 complete in strict order and PCV-I06 certifies zero unowned/unresolved PCV-03 prerequisites.",
+  "next_action": "After PIM-03 completed_verified, execute PCV-I01A only. PCV-I01B+ and PCV-03A remain blocked.",
   "prerequisite": {
     "work_item": "PIM-03",
     "status": "in_progress",

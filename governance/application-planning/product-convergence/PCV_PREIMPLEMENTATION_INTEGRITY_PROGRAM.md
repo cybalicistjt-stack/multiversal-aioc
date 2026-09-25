@@ -40,17 +40,19 @@ No interstitial may silently implement a downstream domain just because it consu
 
 ## Sequence
 
-1. **PCV-I01 — Authority, Identity, Membership & Owner-Contract Closure**
+1. **PCV-I01A — Identity, Authentication, Device & Recovery Contract Closure
+2. PCV-I01B — Invitation, Membership, Role, Policy & Atomicity Closure
+3. PCV-I01C — Local-Host / Production-Service Authority & Entitlement Composition Closure**
    Prove and close the canonical ownership graph from local identity proof through A3 invitation and A5 Campaign membership, including family safety, device-session lifecycle and local-host versus production-service authority composition.
-2. **PCV-I02 — Data Model, Persistence, Transaction, Secret & Migration Closure**
+4. **PCV-I02 — Data Model, Persistence, Transaction, Secret & Migration Closure**
    Close the durable-state model before runtime implementation: relational logical schema, product JSON aggregates, transactions, membership/session state, secret references, migration/retirement and provider-exit/data-rights implications.
-3. **PCV-I03 — Transport, Protocol, Capability & Security Contract Closure**
+5. **PCV-I03 — Transport, Protocol, Capability & Security Contract Closure**
    Freeze the safe zero-service transport/handshake contract before code: inference-safe signaling, peer binding, versioned/bounded envelopes, policy/timeouts, exact capability/entitlement negotiation and replaceable assisted networking.
-4. **PCV-I04 — Session Event, Recovery, Idempotency, Presence & Hybrid Continuity Closure**
+6. **PCV-I04 — Session Event, Recovery, Idempotency, Presence & Hybrid Continuity Closure**
    Freeze command/Event/checkpoint/reconnect semantics so local-host, future hosted, live/async/hybrid and hidden projections share one durable history without duplicate effects or lost Events.
-5. **PCV-I05 — Product Context, Downstream Consumers, Mobile, Packaging & Evidence Closure**
+7. **PCV-I05 — Product Context, Downstream Consumers, Mobile, Packaging & Evidence Closure**
    Close the product/platform edges before implementation: A3-safe Home/context integration, downstream Session consumers, mobile/accessibility, package/update identity and a non-self-certifying physical evidence model.
-6. **PCV-I06 — Final No-Orphan / No-Parallel-Owner Readiness Certification**
+8. **PCV-I06 — Final No-Orphan / No-Parallel-Owner Readiness Certification**
    Perform a fresh adversarial sweep over the completed interstitial artifacts and current repositories; allow PCV-03A to start only when all required owner/dependency/consumer/validation bindings are explicit and no unresolved implementation prerequisite remains.
 
 ## Final gate
@@ -65,3 +67,7 @@ PCV-I06 is the only gate allowed to say the project is ready to start PCV-03A. I
 - bounded PCV-03A..03F work/validation packages are complete and non-overlapping.
 
 If new gaps are discovered during I01..I06, add them to the register and either close them in the owning interstitial or create another bounded interstitial before PCV-03A. The count of roadmap tranches is not a constraint.
+
+## PCV-I01 split note
+
+The original PCV-I01 bucket was too broad. It is preserved as superseded provenance and replaced by PCV-I01A identity/device, PCV-I01B invitation/membership/policy, and PCV-I01C local-host/service-authority composition. No runtime implementation authority is granted by this split.

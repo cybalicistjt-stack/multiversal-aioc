@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "registry_id": "PROJECT-WORK-HISTORY-REGISTRY-001",
   "status": "completion_candidate",
   "purpose": "Durably account for every discovered project work group and work item without making this registry a live execution selector.",
@@ -29,7 +29,7 @@
     "duplicate_attempt_extra_files": 5,
     "pdcp_reductions": 10,
     "known_non_work_state_groups": 14,
-    "external_lineage_groups": 8,
+    "external_lineage_groups": 9,
     "live_project_source_files": 11
   },
   "chronology": [
@@ -7839,6 +7839,14 @@
         "PROJECT_BIBLE_OPS3_REFERENCE.md",
         "historical full Project Bible preserved outside live source surface"
       ]
+    },
+    {
+      "group_id": "LINEAGE::PROJECT-INTEGRITY",
+      "name": "Project work-history and dependency integrity mapping",
+      "kind": "governance_lineage",
+      "source_refs": [
+        "governance/project-integrity/"
+      ]
     }
   ],
   "live_project_source_surface": {
@@ -7909,6 +7917,147 @@
       "recovery snapshots",
       "historical conversations",
       "retired operating packages"
+    ]
+  },
+  "current_overlay": {
+    "rule": "Append-only current work not present in the frozen 662-item archaeology inventory. Overlay identities never alter historical counts.",
+    "families": [
+      {
+        "family_id": "PIM",
+        "parent_group_ids": [
+          "LINEAGE::PROJECT-INTEGRITY"
+        ],
+        "status": "in_progress"
+      },
+      {
+        "family_id": "PCV-PRE",
+        "parent_group_ids": [
+          "PLAN::product-convergence"
+        ],
+        "status": "blocked_by_project_integrity_map"
+      }
+    ],
+    "work_items": [
+      {
+        "work_item_id": "PIM-01",
+        "family_id": "PIM",
+        "status": "completion_candidate"
+      },
+      {
+        "work_item_id": "PIM-02",
+        "family_id": "PIM",
+        "status": "completion_candidate"
+      },
+      {
+        "work_item_id": "PIM-03",
+        "family_id": "PIM",
+        "status": "in_progress"
+      },
+      {
+        "work_item_id": "PCV-I01A",
+        "family_id": "PCV-PRE",
+        "status": "blocked_by_project_integrity_map"
+      },
+      {
+        "work_item_id": "PCV-I01B",
+        "family_id": "PCV-PRE",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-I01C",
+        "family_id": "PCV-PRE",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-I02",
+        "family_id": "PCV-PRE",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-I03",
+        "family_id": "PCV-PRE",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-I04",
+        "family_id": "PCV-PRE",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-I05",
+        "family_id": "PCV-PRE",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-I06",
+        "family_id": "PCV-PRE",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-03A",
+        "family_id": "PCV",
+        "status": "blocked_by_preimplementation_integrity"
+      },
+      {
+        "work_item_id": "PCV-03B",
+        "family_id": "PCV",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-03C",
+        "family_id": "PCV",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-03D",
+        "family_id": "PCV",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-03E",
+        "family_id": "PCV",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-03F",
+        "family_id": "PCV",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-04",
+        "family_id": "PCV",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-05",
+        "family_id": "PCV",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-06",
+        "family_id": "PCV",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-07",
+        "family_id": "PCV",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-08",
+        "family_id": "PCV",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-09",
+        "family_id": "PCV",
+        "status": "blocked_by_predecessor"
+      },
+      {
+        "work_item_id": "PCV-10",
+        "family_id": "PCV",
+        "status": "blocked_by_predecessor"
+      }
     ]
   }
 }

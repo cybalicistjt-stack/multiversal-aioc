@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "map_id": "PROJECT-FEATURE-FAMILY-APP-DEPENDENCY-MAP-001",
   "status": "completion_candidate",
   "purpose": "Provide a durable graph from every discovered work item through its family/lineage to the wider Multiversal app, while keeping structural lineage distinct from source-backed runtime/product dependencies.",
@@ -10,13 +10,14 @@
     "current_authority_never_derived_from_graph": true
   },
   "counts": {
-    "nodes": 927,
-    "edges": 1189,
+    "nodes": 954,
+    "edges": 1235,
     "work_items": 662,
     "work_state_families": 73,
     "planning_groups": 83,
     "canon_intent_nodes": 71,
-    "capability_ledger_rows": 56
+    "capability_ledger_rows": 56,
+    "current_overlay_work_items": 24
   },
   "nodes": [
     {
@@ -9278,6 +9279,270 @@
       "implementation_state": "approved_owned",
       "product_area": null,
       "pcv_targets": [],
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "LINEAGE::PROJECT-INTEGRITY",
+      "node_type": "governance_lineage",
+      "label": "Project integrity mapping",
+      "evidence": [
+        "governance/project-integrity/"
+      ]
+    },
+    {
+      "node_id": "FAMILY::PIM",
+      "node_type": "current_overlay_family",
+      "label": "PIM",
+      "evidence": [
+        "PROJECT_INTEGRITY_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "FAMILY::PCV-PRE",
+      "node_type": "current_overlay_family",
+      "label": "PCV-PRE",
+      "evidence": [
+        "PCV_PREIMPLEMENTATION_INTEGRITY_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PIM-01",
+      "node_type": "current_overlay_work_item",
+      "label": "PIM-01",
+      "family_id": "PIM",
+      "status": "completion_candidate",
+      "evidence": [
+        "PROJECT_INTEGRITY_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PIM-02",
+      "node_type": "current_overlay_work_item",
+      "label": "PIM-02",
+      "family_id": "PIM",
+      "status": "completion_candidate",
+      "evidence": [
+        "PROJECT_INTEGRITY_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PIM-03",
+      "node_type": "current_overlay_work_item",
+      "label": "PIM-03",
+      "family_id": "PIM",
+      "status": "in_progress",
+      "evidence": [
+        "PROJECT_INTEGRITY_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-I01A",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-I01A",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_project_integrity_map",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-I01B",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-I01B",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-I01C",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-I01C",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-I02",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-I02",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-I03",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-I03",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-I04",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-I04",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-I05",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-I05",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-I06",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-I06",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-03A",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-03A",
+      "family_id": "PCV",
+      "status": "blocked_by_preimplementation_integrity",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-03B",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-03B",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-03C",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-03C",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-03D",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-03D",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-03E",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-03E",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-03F",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-03F",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-04",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-04",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-05",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-05",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-06",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-06",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-07",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-07",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-08",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-08",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-09",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-09",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "node_id": "WORK::PCV-10",
+      "node_type": "current_overlay_work_item",
+      "label": "PCV-10",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor",
       "evidence": [
         "PCV_PROGRAM_BACKLOG.json"
       ]
@@ -19395,6 +19660,214 @@
       ]
     },
     {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PIM-01",
+      "to": "FAMILY::PIM",
+      "evidence": [
+        "PROJECT_INTEGRITY_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PIM-02",
+      "to": "FAMILY::PIM",
+      "evidence": [
+        "PROJECT_INTEGRITY_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PIM-03",
+      "to": "FAMILY::PIM",
+      "evidence": [
+        "PROJECT_INTEGRITY_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-I01A",
+      "to": "FAMILY::PCV-PRE",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-I01B",
+      "to": "FAMILY::PCV-PRE",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-I01C",
+      "to": "FAMILY::PCV-PRE",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-I02",
+      "to": "FAMILY::PCV-PRE",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-I03",
+      "to": "FAMILY::PCV-PRE",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-I04",
+      "to": "FAMILY::PCV-PRE",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-I05",
+      "to": "FAMILY::PCV-PRE",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-I06",
+      "to": "FAMILY::PCV-PRE",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-03A",
+      "to": "FAMILY::PCV",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-03B",
+      "to": "FAMILY::PCV",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-03C",
+      "to": "FAMILY::PCV",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-03D",
+      "to": "FAMILY::PCV",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-03E",
+      "to": "FAMILY::PCV",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-03F",
+      "to": "FAMILY::PCV",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-04",
+      "to": "FAMILY::PCV",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-05",
+      "to": "FAMILY::PCV",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-06",
+      "to": "FAMILY::PCV",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-07",
+      "to": "FAMILY::PCV",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-08",
+      "to": "FAMILY::PCV",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-09",
+      "to": "FAMILY::PCV",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "member_of_current_overlay",
+      "from": "WORK::PCV-10",
+      "to": "FAMILY::PCV",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "lineage_parent",
+      "from": "FAMILY::PIM",
+      "to": "LINEAGE::PROJECT-INTEGRITY",
+      "evidence": [
+        "PROJECT_INTEGRITY_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "lineage_parent",
+      "from": "FAMILY::PCV-PRE",
+      "to": "PLAN::product-convergence",
+      "evidence": [
+        "PCV_PREIMPLEMENTATION_INTEGRITY_BACKLOG.json"
+      ]
+    },
+    {
       "edge_type": "strict_predecessor",
       "from": "WORK::PIM-01",
       "to": "WORK::PIM-02",
@@ -19413,9 +19886,169 @@
     {
       "edge_type": "strict_predecessor",
       "from": "WORK::PIM-03",
-      "to": "WORK::PCV-I01",
+      "to": "WORK::PCV-I01A",
       "evidence": [
-        "owner direction 2026-09-25"
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-I01A",
+      "to": "WORK::PCV-I01B",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-I01B",
+      "to": "WORK::PCV-I01C",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-I01C",
+      "to": "WORK::PCV-I02",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-I02",
+      "to": "WORK::PCV-I03",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-I03",
+      "to": "WORK::PCV-I04",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-I04",
+      "to": "WORK::PCV-I05",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-I05",
+      "to": "WORK::PCV-I06",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-I06",
+      "to": "WORK::PCV-03A",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-03A",
+      "to": "WORK::PCV-03B",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-03B",
+      "to": "WORK::PCV-03C",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-03C",
+      "to": "WORK::PCV-03D",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-03D",
+      "to": "WORK::PCV-03E",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-03E",
+      "to": "WORK::PCV-03F",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-03F",
+      "to": "WORK::PCV-04",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-04",
+      "to": "WORK::PCV-05",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-05",
+      "to": "WORK::PCV-06",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-06",
+      "to": "WORK::PCV-07",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-07",
+      "to": "WORK::PCV-08",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-08",
+      "to": "WORK::PCV-09",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
+      ]
+    },
+    {
+      "edge_type": "strict_predecessor",
+      "from": "WORK::PCV-09",
+      "to": "WORK::PCV-10",
+      "evidence": [
+        "PCV_PROGRAM_BACKLOG.json"
       ]
     }
   ],
@@ -20211,5 +20844,127 @@
     }
   ],
   "unresolved_structural_lineage": [],
-  "interpretation": "Every work item has a structural path to a family. Families either map to an explicit planning/lineage parent or remain explicitly standalone with evidence. Runtime/consumer dependencies are only the evidence-backed edges above; absence of such an edge is not permission to infer one."
+  "interpretation": "Every work item has a structural path to a family. Families either map to an explicit planning/lineage parent or remain explicitly standalone with evidence. Runtime/consumer dependencies are only the evidence-backed edges above; absence of such an edge is not permission to infer one.",
+  "current_overlay_work_items": [
+    {
+      "work_item_id": "PIM-01",
+      "family_id": "PIM",
+      "status": "completion_candidate"
+    },
+    {
+      "work_item_id": "PIM-02",
+      "family_id": "PIM",
+      "status": "completion_candidate"
+    },
+    {
+      "work_item_id": "PIM-03",
+      "family_id": "PIM",
+      "status": "in_progress"
+    },
+    {
+      "work_item_id": "PCV-I01A",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_project_integrity_map"
+    },
+    {
+      "work_item_id": "PCV-I01B",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-I01C",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-I02",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-I03",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-I04",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-I05",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-I06",
+      "family_id": "PCV-PRE",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-03A",
+      "family_id": "PCV",
+      "status": "blocked_by_preimplementation_integrity"
+    },
+    {
+      "work_item_id": "PCV-03B",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-03C",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-03D",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-03E",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-03F",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-04",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-05",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-06",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-07",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-08",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-09",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor"
+    },
+    {
+      "work_item_id": "PCV-10",
+      "family_id": "PCV",
+      "status": "blocked_by_predecessor"
+    }
+  ]
 }

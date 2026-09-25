@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "register_id": "PCV-PREIMPLEMENTATION-INTEGRITY-GAPS-001",
   "status": "in_progress",
   "owner_direction_date": "2026-09-25",
@@ -7,187 +7,398 @@
   "baseline_candidate": "8232e52a089360939b17e58229af192a283b3a53",
   "baseline_package_artifact_id": 10832224601,
   "baseline_disposition": "historical_pre_audit_evidence_only",
-  "finding_count": 103,
+  "finding_count": 108,
   "findings": [
     {
       "finding_id": "PCV-PRE-001",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Parallel Campaign membership authority.",
       "detail": "`pcv03Session.ts` mints and persists `Pcv03Membership` while also mutating PCV-02 `memberSubjectIds`. This bypasses the canonical A5 Campaign membership/invitation owner instead of adapting it.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01B",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-002",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Join is not A3 invitation acceptance.",
       "detail": "PCV-03 compares `invitationId + raw secret` directly, then creates membership itself. A3's lifecycle semantics—recipient binding, one-time/idempotent acceptance, decline, revoke, inference-safe preview—are not composed.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01B",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-003",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Accepted invitation remains reusable.",
       "detail": "PCV-03 writes `acceptedSubjectId` but never checks it before later acceptance. The same invitation secret can be presented again by another subject/device.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01B",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-004",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Peer is not bound to the joined subject.",
       "detail": "After a data channel opens, `command.actorId` and presence `subjectId/deviceId` remain caller-supplied. Authorization is evaluated using the claimed actor rather than the authenticated/bound connection identity. A connected member can therefore attempt to act as another active member.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01A",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-005",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Resume authorization is hard-coded current.",
       "detail": "`acceptPcv03Resume` calls the reconnect contract with `membershipActive:true` and `permissionCurrent:true` rather than rechecking current membership/authorization.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-006",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Resume device is not validated against registered device continuity.",
       "detail": "A valid subject/resume token/epoch can supply a different `deviceId`; the handler does not prove that device is an already-authorized continuity device.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01A",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-007",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "No Campaign membership state transition seam is consumed.",
       "detail": "A5 models `active | suspended | left | removed`, but PCV-03 cannot observe/enforce those states through its local membership copy. Revocation/suspension cannot reliably terminate live/resume authority.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01B",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-008",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Supported role vocabulary is not explicitly adapted.",
       "detail": "A5 uses `game-master/assistant-gm/content-creator`; the older Campaign authorization policy uses `gm/player/observer`. PCV-03 currently uses only player/observer but has no explicit fail-closed translation seam for future A5 roles.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01B",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-009",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "PCV-03 creates a parallel Session owner.",
       "detail": "It creates `Pcv03HostSession` directly from PCV-02 Campaign/Scene state rather than consuming the canonical A5 launched Session shell / immutable launch snapshot.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01C",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-010",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Paused/closed Session state is not enforced.",
       "detail": "PCV-03 join, resume, command, and presence paths have no A5 `launched | paused | closed` gate.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-011",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Old Sessions remain addressable.",
       "detail": "Starting a new host changes the `active-host` pointer but does not close the old Session or revoke its invitations/resume credentials. Old records can continue accepting traffic if addressed directly.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-012",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Session replacement/closure does not advance authority epoch or revoke credentials.",
       "detail": "The authority epoch is initialized to 1 and never participates in a real lifecycle transition.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-013",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Selected Campaign context is ignored when hosting.",
       "detail": "`ensurePcv03CampaignContext` returns the first Campaign in the foundation rather than the user's selected Campaign context.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-014",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Remote joined Campaign continuity is not integrated into ordinary product context.",
       "detail": "The player retains a PCV-03 continuity record, but the joined remote Campaign/Session is not represented as a role-safe selected-context/Home projection after restart.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-015",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Client continuity key is only `subjectId`.",
       "detail": "Multiple Campaign/Session continuities for one subject collide instead of being keyed by authoritative Campaign/Session identity.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01A",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-016",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "PCV-03 accepts arbitrary command types/payloads.",
       "detail": "Any `SessionCommand.type` and arbitrary payload can enter the generic authoritative handler. PCV-03 should expose only its bounded session-continuity/proof command schema; PCV-04 owns gameplay/action convergence.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-017",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Conflicting idempotency reuse is not detected.",
       "detail": "Reusing a processed `commandId` returns the prior receipt even if the new command type/payload differs. No payload fingerprint binds idempotency identity to semantics.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-018",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Client timestamp becomes authoritative Event time.",
       "detail": "The generic handler uses `command.submittedAt` for `occurredAt`; PCV-03 passes the phone-supplied timestamp through instead of stamping host-authoritative receipt time.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-019",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Ordered transport does not serialize asynchronous host mutations.",
       "detail": "The data channel is ordered, but each received envelope launches an independent async task. Two rapid commands can overlap reads/writes and race the compare-and-swap store.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-020",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Cross-owner join mutation is non-atomic.",
       "detail": "PCV-03 mutates the PCV-02 Campaign member list before persisting its own Session membership. A later save conflict/failure can leave the two records inconsistent.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01B",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-021",
@@ -196,7 +407,18 @@
       "detail": "`join-accepted.lastSequence` is stored as `lastAcknowledgedSequence` before the subsequent Event batch is actually received.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-022",
@@ -205,7 +427,18 @@
       "detail": "The ACK's host `lastSequence` is written into the client recovery cursor before the Event batch arrives. A disconnect between ACK and batch can cause reconnect to skip an Event permanently.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-023",
@@ -214,7 +447,18 @@
       "detail": "Incoming Events are deduplicated/sorted by ID/sequence, but the canonical ordered-delivery reducer is not used to detect gaps or trigger authoritative recovery.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-024",
@@ -223,7 +467,18 @@
       "detail": "Hidden-before-publication filtering can legitimately omit global sequence numbers. PCV-03 needs an explicit authoritative durable cursor separate from the visible Event list so secrecy does not look like loss and loss does not look like secrecy.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-025",
@@ -232,7 +487,18 @@
       "detail": "The only checkpoint is created at Session start; later commands/events never create or advance a checkpoint lifecycle.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-026",
@@ -241,7 +507,18 @@
       "detail": "The value is a predictable label (`pcv03-checkpoint:<campaign>:1:1`) and reconnect compares the checkpoint's value to itself. There is no separately trusted content digest.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-027",
@@ -250,7 +527,18 @@
       "detail": "Current architecture requires checkpoints + acknowledgments + sequence cursors + replay fingerprints for reconnect/recovery; PCV-03 has no replay fingerprint binding restored history/state.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-028",
@@ -259,7 +547,18 @@
       "detail": "The client can only establish a fresh WebRTC path by accepting another invitation offer. Membership invitation and transport rendezvous/resume should be separate after membership exists.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-029",
@@ -268,7 +567,18 @@
       "detail": "Closing the player's peer updates only local UI phase; no trusted host-side connection lifecycle updates presence.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-030",
@@ -277,7 +587,18 @@
       "detail": "Host persistence trusts caller-supplied subject/device/status/timestamp rather than deriving identity and time from the bound transport connection.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-031",
@@ -286,7 +607,18 @@
       "detail": "`envelope.at` is accepted as the durable last-seen timestamp rather than host receipt time.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-032",
@@ -295,7 +627,17 @@
       "detail": "The host embeds pack/rules/epoch in the offer; the Android client copies those same values into the join request; the host compares them to itself.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-033",
@@ -304,7 +646,17 @@
       "detail": "It does not demonstrate that the required pack, exact rules profile/runtime version, or compatible schema is actually installed.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-034",
@@ -313,7 +665,17 @@
       "detail": "The current local/online Session contract calls for membership plus entitlement snapshot/grant digest/count/pack set/rules version/authority epoch/projection scope.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-035",
@@ -322,25 +684,57 @@
       "detail": "An immutable live Session must bind an exact resolved version/snapshot, not a moving symbolic version.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-036",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Raw invitation secrets are persisted in ordinary Session JSON/SQLite.",
       "detail": "",
-      "primary_interstitial": "PCV-I03",
+      "primary_interstitial": "PCV-I02",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-037",
       "origin": "2026-09-25 adversarial candidate audit",
       "title": "Raw resume tokens are persisted in ordinary host and client document records.",
       "detail": "Current security canon requires secrets to use an approved secret store; no secure-store adapter is used here.",
-      "primary_interstitial": "PCV-I03",
+      "primary_interstitial": "PCV-I02",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-038",
@@ -349,7 +743,17 @@
       "detail": "If Web Crypto is unavailable, invitation/resume/private markers fall back to non-cryptographic randomness rather than failing closed.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-039",
@@ -358,7 +762,17 @@
       "detail": "`decodeWireEnvelope` checks only `kind` and casts arbitrary JSON to the union.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-040",
@@ -367,7 +781,17 @@
       "detail": "Unsupported major versions and unknown top-level fields cannot be rejected as required by serialization/versioning canon.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-041",
@@ -376,7 +800,17 @@
       "detail": "A connected peer can send arbitrarily large JSON/payloads. No bounded-work/backpressure/rate contract exists.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-042",
@@ -385,7 +819,17 @@
       "detail": "The transport catch block drops invalid input even though the comment claims the coordinator will return a role-safe protocol error.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-043",
@@ -394,7 +838,18 @@
       "detail": "The exporter does not record a causal proof receipt for each observation.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-044",
@@ -403,7 +858,18 @@
       "detail": "A second ordinary join can increment the ordinal and satisfy the evidence without a resume request succeeding.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-045",
@@ -412,7 +878,18 @@
       "detail": "It checks uniqueness/count consistency of processed command IDs/receipts. One ordinary command can satisfy it.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-046",
@@ -421,7 +898,18 @@
       "detail": "",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-047",
@@ -430,7 +918,18 @@
       "detail": "The Android join request self-reports `clientKind/clientRuntime/platform`; the evidence exporter later treats that as installed-runtime proof.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-048",
@@ -439,7 +938,18 @@
       "detail": "There is no device-side receipt/artifact reference binding the Android installation and observed run to the package artifact.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-049",
@@ -448,7 +958,18 @@
       "detail": "It does not bind a device-side package hash/signature/version receipt to the exact artifact SHA-256 values.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-050",
@@ -457,7 +978,18 @@
       "detail": "The current focused tests are happy-path only.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-051",
@@ -466,7 +998,18 @@
       "detail": "A repaired package using the same app data location can encounter old Session records containing raw invitation/resume credentials and stale parallel authority.",
       "primary_interstitial": "PCV-I02",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-052",
@@ -475,7 +1018,18 @@
       "detail": "The safe repair should preserve only permitted non-secret audit/history references, retire/revoke old credentials/Sessions, and require fresh governed membership/session establishment under the new schema.",
       "primary_interstitial": "PCV-I02",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-053",
@@ -484,7 +1038,18 @@
       "detail": "Showcase-skin plumbing, profile-drawer changes, Search/Notifications removal, and other presentation changes are mixed into the networking candidate. Valid work may be preserved on its owning completed/future surface, but it should not hitchhike as PCV-03 authority/transport repair.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-054",
@@ -493,16 +1058,33 @@
       "detail": "The project wiring matrix marked PCV-03 dimensions as audited/current-work without field-level owner-to-runtime proof; candidate-specific preflight must replace label-level assurance with concrete producer/owner/consumer evidence.",
       "primary_interstitial": "PCV-I06",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PIM-03"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A readiness only"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-055",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "PCV-02 Campaign membership representation is weaker than current A5 membership authority",
       "detail": "ProductCampaignFoundation persists memberSubjectIds only, with no membership identity, role/state/version/delegation semantics; the interstitial must define a migration/adapter that preserves completed PCV-02 state without retaining two membership authorities.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01B",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-056",
@@ -511,106 +1093,229 @@
       "detail": "The Phase-9 base table has campaign_member_id/campaign_id/subject_id/role/joined_at but no active/suspended/left/removed state or explicit version/update fields used by current A5 contracts.",
       "primary_interstitial": "PCV-I02",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-057",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "No production local StableSubjectSessionPort adapter exists",
       "detail": "Only local-alpha/test adapters implement A3 stable-subject session behavior; the real product profile/identity store is not an A3 authentication-session implementation.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01A",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-058",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "No production local ProviderIndependentIdentityMapping adapter is wired",
       "detail": "PCV-01 persists subjectId/identityId strings but the product does not instantiate the canonical provider-independent identity-mapping owner.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01A",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-059",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "Local product subject identity has no possession credential",
       "detail": "No production local keypair, passkey, WebAuthn credential, or equivalent proof binds possession to the durable subject/identity IDs; zero-service multiplayer needs an explicit trust bootstrap before remote subject assertions can be authenticated.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01A",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-060",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "Stable device continuity has no explicit canonical owner/persistence contract",
       "detail": "SMB-02 says device identity is connection context only, but there is no production device registry contract/schema that defines stable device binding, revocation, or relationship to an authenticated subject.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01A",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-061",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "BRP device-session management and revocation are not connected to product identity/session state",
       "detail": "BRP-02 requires current/revoked device-session evidence and ordinary-user session management, but the PCV product profile has no corresponding production owner path.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01A",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-062",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "A5 membership state transitions are modeled but no public mutation seam exists",
       "detail": "CampaignMembershipState includes active/suspended/left/removed, yet CampaignMembershipAndInvitationPort exposes issue/reissue/change-role/delegation but no suspend/leave/remove transition.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01B",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-063",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "A5 membership mutations do not carry explicit authentication-session or permission evidence",
       "detail": "The public mutation inputs carry actorSubjectId but not the A3 authentication session / permission-decision references required by A5 security text; surrounding authorization ownership must be specified.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01B",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-064",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "A3 atomic invitation acceptance is not explicitly bridged to A5 Campaign membership persistence",
       "detail": "InvitationPort promises one atomic membership+role transition, but the current public A3/A5 ports do not define the production transaction coordinator that creates/replays the A5 membership and returns its references.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01B",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-065",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "Campaign role vocabularies are not normalized across A5 and older P9 authorization",
       "detail": "A5 uses game-master/assistant-gm/content-creator while the older Campaign authorization policy uses gm/player/observer; the supported translation/fail-closed rule must be explicit.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01B",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-066",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "SMB-01 production service-port layer is not connected to the local-first host profile",
       "detail": "IdentityPort, EntitlementPort, PersistencePort, SessionCommandPort, RealtimePort and CheckpointPort have production-selected adapter plans, but no local-host adapters map PCV's zero-service execution to the same semantics.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01C",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-067",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "Selected SMB-01 server/Postgres authority and PCV local-host authority need an explicit composition rule",
       "detail": "SMB-01 selects server-command/database authority for future production while PCV requires a GM installed-client executor when hosted services are inactive; both profiles need one owner model rather than contradictory authorities.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01C",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-068",
@@ -619,7 +1324,18 @@
       "detail": "The current get/put/delete document API has optimistic single-document revision checks but no transaction/batch/query seam for atomic invitation→membership→Campaign updates or multi-record lifecycle transitions.",
       "primary_interstitial": "PCV-I02",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-069",
@@ -628,7 +1344,18 @@
       "detail": "The project has canonical Phase-9/A5 logical tables and the product has SQLite JSON documents; without a declared adapter/migration mapping they can become two durable truths.",
       "primary_interstitial": "PCV-I02",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-070",
@@ -637,7 +1364,18 @@
       "detail": "The logical schema has Sessions/commands/Events/projections/checkpoints but no explicit device-session, resume-token reference, ACK cursor, authority epoch or replay-fingerprint representation; each must be classified as canonical durable, local secret, or ephemeral connection state.",
       "primary_interstitial": "PCV-I02",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-071",
@@ -646,7 +1384,18 @@
       "detail": "A5 campaign_invitations stores recipient binding/state/expiry/operation identity but no bearer-secret digest or secure-store reference; the safe persistence strategy must be specified.",
       "primary_interstitial": "PCV-I02",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-072",
@@ -655,7 +1404,18 @@
       "detail": "Invitation/resume/local identity credential material cannot remain ordinary LocalDocumentStore JSON, but the product currently has no approved secure-store abstraction/adapter.",
       "primary_interstitial": "PCV-I02",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-073",
@@ -664,7 +1424,17 @@
       "detail": "Offer/answer tokens can contain bearer material and ICE/network metadata; they need explicit no-log/no-telemetry/no-durable-history handling and redaction rules.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-074",
@@ -673,7 +1443,17 @@
       "detail": "Current offers expose campaignId, sessionId, hostSubjectId, pack/rules data and projection scope before A3 recipient/auth checks; signaling must be inference-safe until authorization succeeds.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-075",
@@ -682,16 +1462,36 @@
       "detail": "The candidate hard-codes a 24-hour invitation expiry and connection timeouts without a named current policy owner; policy values must be explicit/configurable and host-authoritative.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-076",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "Family-safety invitation policy is not integrated",
       "detail": "MIB-17/SMB-14 can deny or require guardian approval for invitations; Campaign invitation/join must consume that product-policy decision without granting Campaign authority.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01B",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-077",
@@ -700,16 +1500,37 @@
       "detail": "SMB-14 governs communication blocking and family policy; the preflight must decide which peer/session communication capabilities it gates and at what stage.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-078",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "No production local entitlement adapter supplies the Session handshake",
       "detail": "The canonical handshake expects entitlement/grant state and A3/A5 carry entitlement decision references, while PCV currently has no production local EntitlementPort implementation for the real product profile.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01C",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-079",
@@ -718,7 +1539,17 @@
       "detail": "PCV-02 stores rulesProfileVersion=current and a lightweight pack-lock reference; Session launch/handshake need exact immutable pack/rules/runtime/entitlement identity.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-080",
@@ -727,7 +1558,18 @@
       "detail": "ProductProfile/ProductSelectedContext are read directly from productState, while A3 already defines authorization-safe workspace discovery, Personal Home and Campaign/Session context partitions.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-081",
@@ -736,7 +1578,18 @@
       "detail": "Joined remote state should appear through authorized Campaign/Session context/Home references, not by copying host authority into the player's PCV-02 owner store or an ad hoc cache.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-082",
@@ -745,7 +1598,18 @@
       "detail": "A3 provides subject/context cache partition keys and authorization evidence; PCV transport/product caches must not leak state between Campaign/Session contexts.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-083",
@@ -754,7 +1618,18 @@
       "detail": "Production synchronization expects transactional outbox + durable sequence with realtime advisory; zero-service WebRTC needs an equivalent local-host durability/delivery mapping.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-084",
@@ -763,7 +1638,18 @@
       "detail": "The logical schema separates command_id and idempotency_key while the current generic handler effectively uses commandId as processed identity; the canonical mapping and payload fingerprint conflict rule must be fixed.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-085",
@@ -772,7 +1658,18 @@
       "detail": "Pre-publication filtering can omit global Event numbers, so reconnect/ACK logic needs separate authoritative stream/projection cursors rather than assuming visible contiguity.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-086",
@@ -781,7 +1678,18 @@
       "detail": "The logical checkpoint has checksum/state/revision while current recovery expectations also require replay fingerprints and an independently trusted digest/reference.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-087",
@@ -790,7 +1698,18 @@
       "detail": "Adventure Studio session-prep/playtest contracts bind to canonical Session, SessionCheckpoint and ActionEvent authority; the repaired PCV foundation must remain consumable without MAS becoming a parallel Session owner.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-088",
@@ -799,7 +1718,18 @@
       "detail": "Existing hybrid acceptance requires disconnect, async resolution, missed-event recovery and live resume on one authoritative history; PCV recovery contracts must preserve this future consumer.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-089",
@@ -808,7 +1738,18 @@
       "detail": "VTI already has permissions/hidden-information/GM-authority and retry/result semantics; the base Session/transport contracts must preserve its adapter boundary without surfacing VTI product UI now.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-090",
@@ -817,7 +1758,18 @@
       "detail": "Sequential-art collaboration uses participant/device/project history and optional session lineage; preflight must decide whether it consumes generic transport primitives or remains a separate collaboration domain so authorities are not merged accidentally.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-091",
@@ -826,7 +1778,18 @@
       "detail": "Existing session-intelligence, sound/GM control, live-session UI, action, combat and noncombat contracts reference Session authority and must be mapped as downstream consumers without pulling their implementation into PCV-03.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-092",
@@ -835,7 +1798,18 @@
       "detail": "Remote internal-alpha productization already treats SMB-02 as remote Session authority and binds package/version/checksum/evidence; PCV certification must not create a competing distribution/join proof model.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-093",
@@ -844,7 +1818,18 @@
       "detail": "Account recovery, ownership recovery, export/delete and privacy choices require a clear disposition for local identity credentials, device sessions, remote continuity and revocation data.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-094",
@@ -853,7 +1838,18 @@
       "detail": "Current APK targets SDK 36, so no new permission is required now; the target-SDK 37 upgrade must be recorded as a future compatibility trigger rather than forgotten or prematurely added.",
       "primary_interstitial": "PCV-I05",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-095",
@@ -862,7 +1858,18 @@
       "detail": "The preflight must select an approved Tauri-compatible secure local store for Windows and Android and record its version/platform/backup/export implications before secrets are moved.",
       "primary_interstitial": "PCV-I02",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-096",
@@ -871,7 +1878,14 @@
       "detail": "The premature red test was reverted and the branch content matches 8232e52 exactly; future implementation must create a new exact candidate and must not reuse the old package/evidence identity.",
       "primary_interstitial": "PCV-I06",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PIM-03"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A readiness only"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-097",
@@ -880,7 +1894,14 @@
       "detail": "ACTIVE_FAMILY_CONTRACT and profile PCV-03 do not understand PCV-I01..I06 or PCV-03A..03F; preflight must define bounded validation profiles so each future tranche validates only the contracts it can invalidate.",
       "primary_interstitial": "PCV-I06",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PIM-03"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A readiness only"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-098",
@@ -889,7 +1910,14 @@
       "detail": "Because the application validation family still resolves PCV-03, contract-only interstitial changes in the app repo would be misclassified unless a dedicated preimplementation validation profile/branch strategy is established first.",
       "primary_interstitial": "PCV-I06",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PIM-03"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A readiness only"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-099",
@@ -898,7 +1926,14 @@
       "detail": "package-pcv03 runs only on pcv03-package labeling; governance must explicitly keep packaging disabled until PCV-03F so obsolete installers are not rebuilt during contract/audit work.",
       "primary_interstitial": "PCV-I06",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PIM-03"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A readiness only"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-100",
@@ -907,25 +1942,56 @@
       "detail": "SMB-02 and APW both prohibit mode changes from forking Campaign/Session/Event truth; local-host and eventual hosted profiles must share IDs/cursors/checkpoint semantics.",
       "primary_interstitial": "PCV-I04",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-101",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "Local identity recovery across device replacement/reinstall is unresolved",
       "detail": "A device-held local credential can prove possession on one installation, but BRP requires account/ownership recovery without administrator/database intervention; preflight must define what survives, what can be exported, and what requires a new invitation/rebind.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01A",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-102",
       "origin": "2026-09-25 deeper preimplementation audit",
       "title": "Invitation recipient binding design must distinguish proof-of-possession from device authority",
       "detail": "The earlier opaque recipient-code concept can bootstrap a join, but it must bind an authenticated local subject credential and must not let the device ID itself grant Campaign identity/role.",
-      "primary_interstitial": "PCV-I01",
+      "primary_interstitial": "PCV-I01B",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I02",
+        "PCV-I03",
+        "PCV-I04",
+        "PCV-I05"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "dependency_map_required": true
     },
     {
       "finding_id": "PCV-PRE-103",
@@ -934,7 +2000,110 @@
       "detail": "A successful DTLS/DataChannel connection proves transport continuity, not Campaign subject authority; the accepted A3/A5 subject must be bound to the peer context after authorization and revalidated on reconnect.",
       "primary_interstitial": "PCV-I03",
       "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true
+      "blocks_pcv03_implementation": true,
+      "secondary_dependencies": [
+        "PCV-I01A",
+        "PCV-I01B",
+        "PCV-I01C",
+        "PCV-I04"
+      ],
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "dependency_map_required": true
+    },
+    {
+      "finding_id": "PCV-PRE-104",
+      "origin": "2026-09-25 source-backed project-integrity dependency audit",
+      "title": "StableSubjectSession omits assurance/device-label/last-validated authorization metadata from the A3 design",
+      "detail": "A3's original authentication-session model included authentication assurance, a non-fingerprinting device/client label, last validated permissions version and last validated entitlement version. The current StableSubjectSession record omits those fields, so remote/reconnect code has no canonical place to bind or invalidate them.",
+      "primary_interstitial": "PCV-I01A",
+      "secondary_dependencies": [
+        "A3",
+        "BRP-02",
+        "PCV-03D"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "disposition": "open_preimplementation",
+      "blocks_pcv03_implementation": true,
+      "dependency_map_required": true
+    },
+    {
+      "finding_id": "PCV-PRE-105",
+      "origin": "2026-09-25 source-backed project-integrity dependency audit",
+      "title": "IdentityServicePort does not define production-local proof-of-possession authentication",
+      "detail": "IdentityServicePort can create/get/link identities, while StableSubjectSessionPort establishes a session from an already asserted subjectId+identityId pair. No canonical production-local credential verification/issuance seam proves that a remote/local caller possesses that identity before session establishment.",
+      "primary_interstitial": "PCV-I01A",
+      "secondary_dependencies": [
+        "A3",
+        "SMB-01 IdentityPort",
+        "BRP-02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "disposition": "open_preimplementation",
+      "blocks_pcv03_implementation": true,
+      "dependency_map_required": true
+    },
+    {
+      "finding_id": "PCV-PRE-106",
+      "origin": "2026-09-25 source-backed project-integrity dependency audit",
+      "title": "A5 participant projection omits the membership version required by its own role-change command",
+      "detail": "CampaignMembershipAndInvitationPort.changeMemberRole requires expectedVersion, but CampaignParticipantProjection exposes no version. A conforming caller cannot obtain the concurrency token from the same public boundary.",
+      "primary_interstitial": "PCV-I01B",
+      "secondary_dependencies": [
+        "A5",
+        "PCV-02 Campaign projection"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A"
+      ],
+      "disposition": "open_preimplementation",
+      "blocks_pcv03_implementation": true,
+      "dependency_map_required": true
+    },
+    {
+      "finding_id": "PCV-PRE-107",
+      "origin": "2026-09-25 source-backed project-integrity dependency audit",
+      "title": "Zero-service authoritative-host reachability is not defined for A3/A5 online gates",
+      "detail": "A3 invitation/workspace entry and A5 membership mutations require online=true, while PCV's approved zero-service model uses an installed GM host with no hosted backend. The contract must define online as reachability of the current authoritative executor/profile, not paid/cloud Internet availability.",
+      "primary_interstitial": "PCV-I01C",
+      "secondary_dependencies": [
+        "A3",
+        "A5",
+        "SMB-01",
+        "SMB-02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03C"
+      ],
+      "disposition": "open_preimplementation",
+      "blocks_pcv03_implementation": true,
+      "dependency_map_required": true
+    },
+    {
+      "finding_id": "PCV-PRE-108",
+      "origin": "2026-09-25 source-backed project-integrity dependency audit",
+      "title": "Current A5 membership representation loses parts of the original membership lifecycle contract",
+      "detail": "The original A3/Internal-Alpha membership model included scoped roles, effective/expiry times, granting authority, revocation and permissions version. Current A5 participant projection/base campaign_members schema does not preserve all of those fields; each must be intentionally retained, derived, or retired with evidence.",
+      "primary_interstitial": "PCV-I01B",
+      "secondary_dependencies": [
+        "A3",
+        "A5",
+        "BRP-02"
+      ],
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "disposition": "open_preimplementation",
+      "blocks_pcv03_implementation": true,
+      "dependency_map_required": true
     }
-  ]
+  ],
+  "routing_rule": "Each finding has exactly one primary closure interstitial, explicit secondary dependency families where material, and a future implementation destination. Cross-cutting dependencies never excuse duplicate owner authority."
 }

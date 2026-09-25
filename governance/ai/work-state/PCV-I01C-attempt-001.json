@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "family": "PCV-PRE",
+  "lane": "gpr",
+  "track": "pcv-preimplementation-integrity",
+  "source_program": "PCV",
+  "work_item_id": "PCV-I01C",
+  "attempt_id": "PCV-I01C-attempt-001",
+  "title": "Local-Host / Production-Service Authority & Entitlement Composition Closure",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "blocked_by_predecessor",
+  "owner_selected": true,
+  "selected_by_owner": "2026-09-25 owner direction: fully map and preserve project work/dependencies before PCV implementation; split interstitials as needed.",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "runtime_product_implementation_authority": false,
+  "completed": false,
+  "predecessor": {
+    "work_item": "PCV-I01B",
+    "status": "not_completed"
+  },
+  "objective": "Define one authority model shared by zero-service installed-host execution and the non-activated SMB-01 managed-production profile, including Identity/Entitlement/Persistence/SessionCommand/Realtime/Checkpoint ports.",
+  "acceptance": [
+    "Define local-host adapters/semantics for the SMB-01 service-port surface without activating hosted production.",
+    "Define 'online' as current authoritative-executor reachability across local-host and future hosted profiles.",
+    "Define local entitlement evaluation and decision references used by Campaign/Session handshake.",
+    "Prove local-host authority and future server/database authority are deployment profiles over one owner model, not competing canonical histories.",
+    "Preserve realtime as advisory and durable Event/checkpoint authority across profiles."
+  ],
+  "boundaries": [
+    "No Multiversal-app PCV runtime implementation is authorized.",
+    "PIM-03 must be completed_verified before PCV-I01A can receive AIOC integrity-work authority.",
+    "Later PCV-PRE and PCV-03 children remain predecessor-blocked."
+  ],
+  "strict_successor": "PCV-I02",
+  "active_substep": "blocked_by_project_integrity_map",
+  "next_action": "Wait for PIM-03 completed_verified, then follow CURRENT. Do not start product runtime implementation.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": "blocked_by_project_integrity_map"
+  }
+}
