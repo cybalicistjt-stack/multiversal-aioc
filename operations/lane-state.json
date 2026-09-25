@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "gpr",
-  "revision": 420,
+  "revision": 421,
   "selected_work_item": "PCV-I01A",
   "attempt_id": "PCV-I01A-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/pcv-preimplementation-integrity",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Reconciled stale pre-integrity PCV-03 lane state to canonical CURRENT revision 519 after PIM-03 completed_verified and AIOC main 207af6e3fec7ccefa892e74ea84e916635915858 selected PCV-I01A on work/pcv-preimplementation-integrity; obsolete work/pcv-03-two-device ref is absent."
+    "kind": "prequeue_green",
+    "evidence": "exact head 9cf027dcb6472c2badb2d133a402824bcec3939a passed prequeue validation run 36131843805"
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,9 @@
     "closeout_merge_sha": "113773b62723a1803fcb7cf6bc736ee1bf53e335",
     "closeout_validation_run": "36015597516",
     "closeout_ready_candidate": "PCV-02-closeout-001"
+  },
+  "prequeue_green": {
+    "candidate_head": "9cf027dcb6472c2badb2d133a402824bcec3939a",
+    "validation_run": "36131843805"
   }
 }
