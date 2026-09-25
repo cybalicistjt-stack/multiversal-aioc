@@ -9,11 +9,11 @@
   "attempt_id": "PCV-I04-attempt-001",
   "title": "Session Event, Recovery, Idempotency, Presence & Hybrid Continuity Closure",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
   "selected_by_owner": "2026-09-25 owner direction: fully map and preserve project work/dependencies before PCV implementation; split interstitials as needed.",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/pcv-i04-session-recovery-continuity-closure",
   "runtime_product_implementation_authority": false,
   "completed": false,
   "predecessor": {
@@ -35,16 +35,21 @@
     "PCV-I05+ and PCV-03 children remain predecessor-blocked."
   ],
   "strict_successor": "PCV-I05",
-  "active_substep": "selected_not_started",
-  "next_action": "PCV-I04 is selected_not_started. Await the next owner Continue, then execute Session Event/recovery/idempotency/presence/hybrid-continuity contract closure only. Do not start Multiversal-app PCV runtime implementation.",
+  "active_substep": "exact_candidate_validation",
+  "next_action": "Validate the exact AIOC PCV-I04 Session Event/recovery/idempotency/presence/hybrid-continuity closure candidate. Do not modify Multiversal-app runtime, execute schema migrations, start gameplay convergence or begin PCV-I05.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": "selected_not_started"
+    "terminal_response_allowed": false,
+    "stop_reason": null,
+    "last_material_progress": {
+      "seq": 2,
+      "kind": "contract_closure_candidate",
+      "evidence": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json closes the 25 PCV-I04 primary findings at contract level while preserving runtime realization for PCV-03B/03D and later product/evidence closure for PCV-I05/I06."
+    }
   }
 }

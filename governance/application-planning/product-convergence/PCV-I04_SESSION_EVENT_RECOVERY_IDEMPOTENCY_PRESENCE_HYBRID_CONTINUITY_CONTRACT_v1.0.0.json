@@ -1,0 +1,566 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "PCV-I04.SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY.v1",
+  "status": "completion_candidate",
+  "work_item_id": "PCV-I04",
+  "scope": "AIOC-only preimplementation contract closure; no Multiversal-app PCV runtime implementation, schema migration execution, networking activation, gameplay convergence or package/release mutation",
+  "source_snapshot": {
+    "aioc_main": "843407dde9da5741577fc22d25b929a4e910ebdc",
+    "multiversal_app_main": "28666001be412925e8d148bf47e8c6a9d9f11e93",
+    "application_sources": [
+      "packages/contracts/src/realtime-session.ts",
+      "packages/contracts/src/session/authoritative-session-command-handler.ts",
+      "packages/contracts/src/session/ordered-realtime-event-delivery.ts",
+      "packages/contracts/src/session/checkpoint-reconnect-restoration.ts",
+      "packages/contracts/src/session/hidden-information-response-filter.ts",
+      "packages/contracts/src/multiplayer/smb-02-remote-multiplayer.ts",
+      "packages/contracts/src/audit-export-recovery/hybrid-end-to-end-acceptance.ts",
+      "packages/contracts/src/a5/session-repository-port.ts",
+      "packages/contracts/src/a5/launch-session-port.ts",
+      "packages/contracts/src/a5/operation-status-port.ts",
+      "packages/contracts/src/production-platform/smb-01-production-platform.ts",
+      "database/migrations/0001_initial_logical_schema.json",
+      "DevelopmentBible/01-architecture/data-flow-and-state.md",
+      "DevelopmentBible/01-architecture/local-and-online-session-model.md",
+      "historical Multiversal-app PR #775 PCV-03 session/runtime candidate"
+    ],
+    "predecessor_contracts": [
+      "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
+      "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
+      "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
+      "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json",
+      "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json"
+    ]
+  },
+  "core_invariants": {
+    "one_history": "Campaign/Session/Action/Event durable truth remains one ordered history across local-host, future hosted, live, async and hybrid execution. Transport/profile/mode changes never fork Session ids, command/event ledgers or recovery authority.",
+    "one_executor": "Exactly one current Session authority executor assigns authoritative command/event order for a Session authority epoch.",
+    "realtime_advisory": "WebRTC/WebSocket delivery is advisory. A packet, ACK, presence update or connection state can never become canonical merely because it arrived first.",
+    "commands_are_intent": "Commands are proposed intent; committed Events/owner-domain records are facts. Client timestamps, revision claims, transport ordering and device identity are inputs/context only.",
+    "hidden_before_publication": "Viewer payloads are authorization-filtered before transport. Recovery metadata must not reveal hidden Event cardinality."
+  },
+  "command_identity_and_idempotency": {
+    "command_id": "Immutable unique command-attempt/operation record identity. It is never reused for a different semantic request.",
+    "idempotency_key": "Stable semantic-effect identity scoped at minimum by Session and owning operation type. A client reuses the same idempotencyKey after timeout/ambiguous delivery when it is asking whether the same intended effect committed.",
+    "payload_fingerprint": {
+      "algorithm": "sha-256",
+      "canonicalization": "RFC 8785 JSON Canonicalization Scheme over the normalized semantic tuple",
+      "tuple": [
+        "sessionId",
+        "actorSubjectId",
+        "commandSchemaVersion",
+        "commandType",
+        "normalizedPayload",
+        "expectedRevision",
+        "authorityEpoch",
+        "operation-specific authorization/version references that affect semantics"
+      ],
+      "exclusions": [
+        "transport message id",
+        "connection id",
+        "client retry count",
+        "client wall-clock timestamp",
+        "diagnostic/correlation-only metadata"
+      ],
+      "rule": "same idempotencyKey + same payloadFingerprint returns the durable prior receipt and emits no second authoritative effect; same idempotencyKey + different fingerprint is a conflict with zero mutation"
+    },
+    "duplicate_command_id_rule": "A repeated commandId must resolve to the same idempotency key/fingerprint/receipt. Any mismatch is a protocol/integrity conflict, not a new command.",
+    "ambiguous_outcome_rule": "After uncertain transport outcome, query durable operation/command status by stable identity before minting a new idempotency key.",
+    "host_time": {
+      "client_submitted_at": "advisory provenance only; may be retained as clientSubmittedAt after validation",
+      "authoritative_received_at": "host/executor receipt time",
+      "occurred_at": "host/executor commit/event time assigned inside the serialized authoritative operation",
+      "rule": "client-supplied time never becomes authoritative Event occurredAt, presence lastSeenAt, credential lifecycle time or ordering source"
+    },
+    "pcv03_command_surface": "PCV-03 runtime exposes only explicitly typed/allowlisted Session-continuity/proof commands owned by PCV-03. Unknown/arbitrary SessionCommand.type or payload is rejected. A5 pause/resume/close remains A5 SessionRepositoryPort; gameplay/action convergence remains PCV-04+ and cannot enter through a generic PCV-03 command escape hatch."
+  },
+  "serialized_mutation_and_outbox": {
+    "transaction_boundary": "PCV-I02 PersistencePort.transaction over one canonical database transaction",
+    "per_session_serialization": "Before assigning command_sequence, revision or Event sequence, lock/serialize the current Session authority row/stream for that Session. Transport ordered delivery is insufficient because asynchronous handlers may overlap.",
+    "local_sqlite": "Use one write transaction on the installed SQLite database. SQLite serializes writers; the application still owns per-Session semantic sequencing, idempotency checks and deterministic ordering inside the transaction.",
+    "managed_postgres": "Lock the current Session row/sequence allocator within the transaction (for example SELECT ... FOR UPDATE or equivalent adapter semantics) so competing writers cannot assign the same next revision/sequence or observe a half-applied command.",
+    "commit_order": [
+      "load and lock current Session lifecycle/revision/authority epoch",
+      "revalidate current A3 subject/device, A5 membership/permissions, entitlement and operation-specific authorization",
+      "resolve existing idempotency key/command identity and compare payload fingerprint",
+      "validate command schema/type and expectedRevision",
+      "assign next commandSequence and canonical host receipt time",
+      "apply all owner-domain state deltas atomically",
+      "append immutable Event(s) with contiguous global eventSequence, causation/correlation and host occurredAt",
+      "persist command/operation receipt",
+      "persist any due checkpoint/recovery metadata",
+      "insert transactional outbox record(s) with deterministic dedup keys",
+      "commit once"
+    ],
+    "rollback_rule": "Any validation, authorization, stale version, fingerprint conflict, domain mutation, Event append, checkpoint or outbox failure rolls back the authoritative operation.",
+    "outbox_rule": "Realtime dispatch occurs only after commit. The local-host SQLite profile and future PostgreSQL profile both use durable outbox/event-sequence semantics; delivery failure retries/advises from durable records and cannot roll back or recreate the committed Event.",
+    "local_direct_mapping": "Zero-service WebRTC dispatcher drains committed local outbox items or reads committed Event/projection records and pushes advisory frames. It never sends an authoritative-success frame before durable commit.",
+    "hosted_mapping": "SMB-01 Postgres transactional outbox feeds advisory realtime/WebSocket adapters with identical semantic receipts.",
+    "crash_rule": "After executor restart, pending/uncertain outbox rows and durable command receipts are resumed idempotently; committed domain/Event history is not re-applied."
+  },
+  "session_lifecycle_and_authority_epoch": {
+    "launched": {
+      "join": "allowed only after current authorization/policy/capability checks",
+      "reconnect": "allowed after current authorization and recovery validation",
+      "continuity_commands": "allowed if explicitly owned and typed"
+    },
+    "paused": {
+      "new_mutating_commands": "denied except the explicit A5 lifecycle transition that resumes/closes the Session",
+      "reconnect": "may restore an authorized read/recovery projection of the paused Session but grants no mutation authority until A5 status becomes launched",
+      "presence": "advisory connection presence may exist but cannot imply playable/mutating status"
+    },
+    "closed": {
+      "join": "denied",
+      "reconnect": "denied as live authority",
+      "commands": "denied",
+      "presence_authorization": "denied/removed",
+      "credentials": "all Session-scoped invitations, resume/rendezvous credentials and peer bindings revoked or rendered unusable",
+      "historical_read": "only through normal owner/visibility policy over durable history"
+    },
+    "active_pointer_rule": "A UI/local `active-host` pointer is a convenience projection only. Addressing an old Session id never bypasses its canonical A5 status.",
+    "replacement_rule": "Launching a new Session does not silently mutate unrelated Sessions. A UX flow that replaces/supersedes a current Session must explicitly close/handoff the old canonical Session (or use a future atomic replacement operation) and revoke its Session-scoped credentials before treating the replacement as current.",
+    "authority_epoch": {
+      "initial": 1,
+      "increments_on": [
+        "authoritative executor handoff/migration for the same Session",
+        "recovery event that deliberately establishes a new authority generation after verified checkpoint/history restoration"
+      ],
+      "does_not_increment_on": [
+        "ordinary reconnect",
+        "transport replacement",
+        "presence reconnect",
+        "live/async/hybrid presentation-mode transition"
+      ],
+      "stale_epoch": "commands, resume credentials, peer bindings and recovery claims bound to an older epoch fail closed",
+      "handoff_commit": "epoch transition is a durable audited Session operation and commits checkpoint/handoff evidence plus credential revocation/reissue metadata atomically"
+    }
+  },
+  "authoritative_event_and_viewer_delivery": {
+    "authoritative_stream": {
+      "cursor": "globalEventSequence",
+      "scope": "internal canonical Session history",
+      "rule": "Every committed Event receives one contiguous monotonically increasing sequence from the current authority executor. Sequence is assigned only inside the serialized commit."
+    },
+    "viewer_projection_stream": {
+      "reason": "A player-visible list can legitimately omit hidden global Events, so global sequence gaps cannot be used as player loss detection and exposing them can leak hidden cardinality.",
+      "identity": "viewerProjectionStreamId = Session + canonical viewer subject + projection policy/authorization epoch",
+      "server_internal_source_cursor": "sourceEventSequenceProcessed; may advance across hidden Events without being exposed as hidden cardinality",
+      "public_delivery_cursor": "projectionSequence; contiguous only over frames/events actually emitted to that viewer stream",
+      "reset_rule": "Material visibility/role/permissions changes create a new projection stream epoch or force an authorized snapshot/resync before further incremental delivery."
+    },
+    "delivery_batch": [
+      "batchId",
+      "viewerProjectionStreamId",
+      "projectionSequenceStart",
+      "projectionSequenceEnd",
+      "projection items with opaque source Event references where permitted",
+      "projection/replay fingerprint",
+      "authorityEpoch"
+    ],
+    "ack_semantics": {
+      "rule": "ACK means the receiver validated and applied the specific authorized projection batch to its recovery state. A join-accepted message, command receipt or host lastSequence is never an ACK.",
+      "advancement": "Client durable/locally recoverable projection cursor advances only after successful batch application. Host per-device ACK cursor advances only after receiving a valid ACK bound to batch/stream/fingerprint.",
+      "forbidden": "Do not copy authoritative global lastSequence into lastAcknowledgedSequence before delivery.",
+      "lost_ack": "Redelivery from the prior ACK cursor is safe; duplicate projection items are suppressed by stream/batch/event identity."
+    },
+    "gap_detection": "The client detects loss by contiguous projectionSequence within its viewer stream. The authority detects replay/source continuity using internal globalEventSequence. Hidden global Events therefore do not look like loss, and actual missing visible delivery cannot be mistaken for secrecy.",
+    "recovery_query": "Reconnect requests the last durable viewer ACK cursor/stream epoch; host revalidates authorization, advances its internal source cursor through hidden Events, and emits only currently authorized projection items."
+  },
+  "checkpoint_and_replay_integrity": {
+    "checkpoint_contents": [
+      "sessionId",
+      "launchSnapshotId/checksum",
+      "revision",
+      "lastGlobalEventSequence",
+      "authorityEpoch",
+      "schemaVersions",
+      "canonical owner state snapshot/reference",
+      "createdAt/createdBy authority metadata"
+    ],
+    "checkpoint_digest": {
+      "algorithm": "sha-256",
+      "canonicalization": "RFC 8785 JCS over canonical checkpoint contents excluding digest/fingerprint fields",
+      "stored_as": "checkpointDigest",
+      "verification": "Recompute from loaded content and compare to a trusted digest/reference obtained from canonical checkpoint metadata or a verified backup/archive manifest; never compare a value only to itself from the same untrusted payload."
+    },
+    "replay_fingerprint": {
+      "algorithm": "sha-256",
+      "definition": "JCS hash over {sessionId, authorityEpoch, checkpointRevision, checkpointLastGlobalEventSequence, checkpointDigest, ordered replay Event identities/sequences/revisions/types/content digests, resultingRevision, resultingLastGlobalEventSequence}",
+      "purpose": "Binds the exact trusted checkpoint plus exact ordered tail used to reconstruct the resulting Session state/history.",
+      "lifecycle": "Compute for every validated restore/reconnect replay target and persist/reference it in recovery evidence; recompute after additional tail Events before claiming an equivalent recovery point."
+    },
+    "event_content_digest": "Runtime implementation adds/derives a stable SHA-256 JCS content digest for each replayed canonical Event or equivalent trusted immutable-event digest so replayFingerprint is not only a list of labels.",
+    "checkpoint_roll_forward": {
+      "required_points": [
+        "initial Session launch",
+        "before/with authority-epoch handoff",
+        "graceful pause/close where a current recovery point is useful",
+        "before destructive backup/export migration boundaries"
+      ],
+      "periodic_policy": "A versioned recovery policy may checkpoint after a bounded Event count and/or maximum age. Thresholds are configuration/policy, not scattered magic constants.",
+      "rule": "Checkpoint creation never changes Event history; a checkpoint is a verified acceleration/recovery snapshot of one exact revision/sequence."
+    },
+    "restore_rule": "Restore verifies Session id, trusted checkpoint digest, schema compatibility, authority epoch/handoff evidence and contiguous canonical Event replay. Any digest, sequence, revision, schema or authorization mismatch fails closed/quarantines recovery.",
+    "backup_rule": "A restored backup does not silently resume old credentials or authority. After verified history restoration, current authorization is rechecked and a deliberate new authority epoch is established when the restored executor becomes authoritative."
+  },
+  "reconnect_and_rendezvous": {
+    "current_authorization_required": [
+      "current A3 StableSubjectSession and PCV-I01A device proof",
+      "current A5 membership active/unexpired and membershipVersion",
+      "current permissionsVersion/operation authorization",
+      "current EntitlementPort decision where required",
+      "current MIB-17/SMB-14 communication policy",
+      "Session lifecycle permits the requested recovery mode",
+      "resume/rendezvous credential is current and bound to current Session/subject/device/authorityEpoch"
+    ],
+    "caller_state_rule": "Caller-supplied revision, lastSequence, role, membershipActive, permissionCurrent, checkpoint checksum or authorityEpoch is never trusted as proof; it is at most a requested cursor/hint checked against canonical state.",
+    "invitation_separation": "An already-authorized member does not need a new Campaign membership invitation merely to establish a replacement transport. Invitation acceptance and reconnect rendezvous are separate operations.",
+    "reconnect_rendezvous": "PCV runtime supplies a short-lived single-use reconnect/rendezvous credential or equivalent authenticated signaling flow scoped to existing Session membership/device continuity. It grants transport establishment only and cannot mint membership/role.",
+    "resume_rotation": "Successful reconnect rotates/reissues Session resume/rendezvous bearer material as policy requires; stale/used credentials are revoked. Raw bearer handling follows PCV-I02/I03 secret/no-log rules.",
+    "recovery_order": [
+      "establish/bind authenticated peer per PCV-I03",
+      "revalidate current authorization/lifecycle/epoch",
+      "select and verify trusted checkpoint/replay target",
+      "restore or confirm canonical Session state",
+      "resume viewer projection from durable viewer ACK cursor",
+      "only then enable owned mutating command surface when Session is launched"
+    ]
+  },
+  "presence_projection": {
+    "authority": "none; presence is advisory session UI state",
+    "identity_source": "current PCV-I03 PeerAuthorizationBinding supplies subjectId/deviceId/transportInstanceId; presence payload cannot choose them",
+    "time_source": "authority executor receipt/connection lifecycle time; client timestamp is ignored for durable/advisory lastSeenAt",
+    "statuses": [
+      "connected",
+      "idle",
+      "reconnecting",
+      "disconnected"
+    ],
+    "connected": "derived after authenticated peer binding is established and application channel is authorized",
+    "idle": "derived by host policy from bounded inactivity; does not revoke membership",
+    "reconnecting": "bounded transient host projection after connection loss when current Session/reconnect policy permits",
+    "disconnected": "derived immediately from trusted DataChannel/transport close/failure or reconnect timeout; client does not need to send a final message",
+    "heartbeat": "If used, heartbeat carries no identity/role authority; receipt only refreshes the already-bound transport's host-side lastSeenAt.",
+    "persistence": "May retain bounded non-authoritative diagnostics/last-seen metadata, but presence is not Campaign membership, device identity, Session lifecycle or Event truth and is excluded from canonical replay requirements."
+  },
+  "hybrid_live_async_continuity": {
+    "identity": "CampaignId and SessionId remain unchanged while a Session moves between live, async and hybrid interaction cadence.",
+    "history": "All accepted async and live authoritative operations enter the same serialized Session command/Event history and monotonically advance the same revision/global Event sequence.",
+    "disconnect_rule": "Going offline/disconnected changes presence only. It does not fork/copy the Session or grant broad offline authoritative mutation.",
+    "async_resolution": "GM/owner-domain async resolution commits through the same canonical authority executor/PersistencePort transaction and is visible to returning clients only through authorized recovery projection.",
+    "return_to_live": "On return, revalidate current authorization, restore/confirm checkpoint + ordered tail, recover missed visible projection items from the durable viewer ACK cursor, then resume live transport on the same Session history.",
+    "at_most_once_effect": "Stable idempotencyKey + payloadFingerprint ensures a retry/reconnect cannot create a second accepted Action/effect; status lookup returns the first durable result.",
+    "profile_handoff": "Local-host and future hosted executors use the same Session ids, epoch, command/event sequence, checkpoint/replay and viewer-cursor semantics. Profile handoff is an authority-epoch transition over verified same-history evidence, not data import into a new ledger.",
+    "apw_compatibility": "Preserves APW-I07 live-before -> async-submitted -> disconnected -> gm-resolved -> player-returned -> live-resumed contract: the returned live cursor reflects the one committed async result, recovered missed Event evidence and no second Campaign ledger."
+  },
+  "logical_schema_runtime_delta": {
+    "owner": "PCV runtime implementation under later authorized tranche; PCV-I04 freezes semantics but does not execute migration",
+    "session_commands_additive": [
+      "payload_fingerprint",
+      "command_schema_version",
+      "authority_epoch",
+      "client_submitted_at nullable",
+      "authoritative_received_at",
+      "resulting_revision/receipt_reference or equivalent durable receipt binding",
+      "status"
+    ],
+    "session_events_additive": [
+      "revision if not otherwise durably derivable",
+      "event_schema_version",
+      "authority_epoch",
+      "content_digest",
+      "causation_command_id/idempotency reference",
+      "correlation reference"
+    ],
+    "checkpoints_additive": [
+      "last_global_event_sequence",
+      "authority_epoch",
+      "schema_versions/reference",
+      "checkpoint_digest",
+      "replay_fingerprint/reference"
+    ],
+    "recovery_metadata": "Durable viewer projection stream/cursor/ACK records from PCV-I02 classification: sourceEventSequenceProcessed internal, projectionSequence issued/acked, stream epoch/policy version, subject/device/session binding and replay fingerprint.",
+    "outbox": "Existing outbox_events remains the durable post-commit delivery source; add stable Session/Event/projection dedup/reference metadata as needed rather than creating a second realtime ledger.",
+    "migration_rule": "Use additive reviewed migration(s) after revalidating the then-current migration registry; do not rewrite 0001 history."
+  },
+  "external_sanity_checks": [
+    {
+      "source": "RFC 8785 JSON Canonicalization Scheme",
+      "url": "https://www.rfc-editor.org/rfc/rfc8785.html",
+      "checked": "2026-09-25",
+      "use": "canonical JSON provides invariant hash input for payload, checkpoint and replay fingerprints"
+    },
+    {
+      "source": "SQLite Isolation documentation",
+      "url": "https://www.sqlite.org/isolation.html",
+      "checked": "2026-09-25",
+      "use": "SQLite serializes writes and exposes only committed transactions across normal connections; local adapter still must serialize Session semantics inside one transaction"
+    },
+    {
+      "source": "SQLite Transaction documentation",
+      "url": "https://www.sqlite.org/transactional.html",
+      "checked": "2026-09-25",
+      "use": "single local transaction provides atomic all-or-nothing durable state/Event/outbox commits"
+    },
+    {
+      "source": "PostgreSQL 17 Explicit Locking",
+      "url": "https://www.postgresql.org/docs/17/explicit-locking.html",
+      "checked": "2026-09-25",
+      "use": "row-level FOR UPDATE-style locking can serialize competing managed-profile Session mutations until transaction end"
+    },
+    {
+      "source": "W3C WebRTC Recommendation RTCDataChannel",
+      "url": "https://www.w3.org/TR/webrtc/",
+      "checked": "2026-09-25",
+      "use": "ordered=true is the default transport delivery property, but application async handlers still require explicit authoritative mutation serialization"
+    }
+  ],
+  "dependency_edges": [
+    {
+      "from": "PLAN::stage-a-a5",
+      "to": "WORK::PCV-I04"
+    },
+    {
+      "from": "WORK::P9-06-016",
+      "to": "WORK::PCV-I04"
+    },
+    {
+      "from": "WORK::P9-06-017",
+      "to": "WORK::PCV-I04"
+    },
+    {
+      "from": "WORK::P9-06-018",
+      "to": "WORK::PCV-I04"
+    },
+    {
+      "from": "WORK::P9-06-019",
+      "to": "WORK::PCV-I04"
+    },
+    {
+      "from": "WORK::SMB-01",
+      "to": "WORK::PCV-I04"
+    },
+    {
+      "from": "WORK::SMB-02",
+      "to": "WORK::PCV-I04"
+    },
+    {
+      "from": "WORK::APW-I07",
+      "to": "WORK::PCV-I04"
+    },
+    {
+      "from": "WORK::PCV-02",
+      "to": "WORK::PCV-I04"
+    },
+    {
+      "from": "WORK::PCV-I02",
+      "to": "WORK::PCV-I04"
+    },
+    {
+      "from": "WORK::PCV-I03",
+      "to": "WORK::PCV-I04"
+    }
+  ],
+  "acceptance_mapping": {
+    "command_identity_idempotency_time": "command_identity_and_idempotency",
+    "serialized_transaction_outbox": "serialized_mutation_and_outbox",
+    "global_vs_viewer_cursor_ack_gap_hidden": "authoritative_event_and_viewer_delivery",
+    "checkpoint_replay_reconnect": "checkpoint_and_replay_integrity + reconnect_and_rendezvous + session_lifecycle_and_authority_epoch",
+    "advisory_presence": "presence_projection",
+    "smb02_apw_one_history": "hybrid_live_async_continuity"
+  },
+  "acceptance_checks": {
+    "command_id_idempotency_payload_fingerprint_and_host_time_defined": true,
+    "serialized_per_session_transaction_outbox_and_postcommit_realtime_defined": true,
+    "authoritative_global_event_and_hidden_safe_viewer_cursor_ack_gap_semantics_defined": true,
+    "trusted_checkpoint_digest_replay_fingerprint_and_current_authorization_reconnect_defined": true,
+    "presence_is_transport_derived_advisory_without_identity_or_membership_authority": true,
+    "smb02_and_apw_one_history_live_async_hybrid_compatibility_defined": true
+  },
+  "gap_closure": {
+    "PCV-PRE-005": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-010": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-011": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-012": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-016": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-017": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-018": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-019": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-021": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-022": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-023": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-024": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-025": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-026": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-027": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-028": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-029": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-030": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-031": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-083": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-084": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-085": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-086": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-088": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    },
+    "PCV-PRE-100": {
+      "candidate_status": "contract_closed_runtime_pending_validation",
+      "future_implementation_destination": [
+        "PCV-03B",
+        "PCV-03D"
+      ]
+    }
+  },
+  "runtime_boundary": {
+    "runtime_product_implementation_authorized": false,
+    "app_schema_migration_execution_authorized": false,
+    "gameplay_action_convergence_authorized": false,
+    "networking_service_activation_authorized": false,
+    "package_or_release_authorized": false,
+    "later_preimplementation_items_authorized": false,
+    "next_runtime_destination": "PCV-03B/PCV-03D only after PCV-I05 through PCV-I06 predecessor closure"
+  }
+}

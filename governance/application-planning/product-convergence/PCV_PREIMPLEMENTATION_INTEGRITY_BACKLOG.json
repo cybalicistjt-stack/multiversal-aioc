@@ -96,7 +96,7 @@
     {
       "id": "PCV-I04",
       "name": "Session Event, Recovery, Idempotency, Presence & Hybrid Continuity Closure",
-      "status": "selected_not_started",
+      "status": "in_progress",
       "objective": "Freeze command/Event/checkpoint/reconnect semantics so local-host, future hosted, live/async/hybrid and hidden projections share one durable history without duplicate effects or lost Events.",
       "acceptance": [
         "Define command identity versus idempotency key versus payload fingerprint and host-authoritative timestamps.",
@@ -105,7 +105,8 @@
         "Define checkpoint digest/trust/replay fingerprint lifecycle and reconnect current-authorization requirements.",
         "Define presence as connection-derived advisory state with no membership/identity authority.",
         "Prove compatibility with SMB-02 and APW one-history live/async/hybrid expectations."
-      ]
+      ],
+      "closure_contract": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json"
     },
     {
       "id": "PCV-I05",
@@ -138,7 +139,7 @@
     }
   ],
   "completion_rule": "PCV-PRE completes only when PCV-I01A, PCV-I01B, PCV-I01C, PCV-I02..PCV-I06 complete in strict order and PCV-I06 certifies zero unowned/unresolved PCV-03 prerequisites.",
-  "next_action": "PCV-I04 is selected_not_started. Start only on a later owner Continue; all Multiversal-app PCV runtime remains blocked through PCV-I06.",
+  "next_action": "PCV-I04 exact candidate validation is active. PCV-I05 and all Multiversal-app PCV runtime remain predecessor-blocked.",
   "prerequisite": {
     "work_item": "PIM-03",
     "status": "completed_verified",
