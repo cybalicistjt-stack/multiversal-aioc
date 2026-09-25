@@ -32,6 +32,7 @@ assert len(reg["planning_groups"])==83
 assert len(reg["work_state_families"])==73
 assert len(reg["work_items"])==662
 assert len({x["group_id"] for x in reg["planning_groups"]})==83
+assert all(x.get("wider_app_role") for x in reg["planning_groups"])
 assert len({x["family_id"] for x in reg["work_state_families"]})==73
 assert len({x["work_item_id"] for x in reg["work_items"]})==662
 source_paths={x["path"] for x in fam["application_planning_directories"]}

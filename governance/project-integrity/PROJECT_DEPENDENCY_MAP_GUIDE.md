@@ -39,3 +39,9 @@ This map is therefore an integrity index over existing authority, not a replacem
 ## Attempt-record evidence
 
 Every one of the 662 frozen work-item identities carries the exact current Git blob reference(s) for its historical `governance/ai/work-state/*-attempt-*.json` evidence. The registry verifies 667 frozen attempt records with exactly five duplicate-attempt extras and zero work items missing an attempt record. New PIM/PCV interstitial attempts live in the append-only current overlay and do not alter the frozen 662/667 archaeology counts.
+
+## Wider-app role classification
+
+Every planning group is explicitly classified for its relationship to the wider app. The 56 PCV capability-ledger groups retain their product area, implementation state and PCV targets. Other planning groups are classified as current canon/content authority, implemented foundation/support, consumed design lineage, governance/content support, current/planned intent, deferred future, owner-approved future program, or superseded provenance. This is a preservation classification, not execution authority.
+
+Historical intra-family predecessor detail is not guessed from numbering. The exact attempt/backlog evidence paths are retained so a dependency can be reconstructed from its source; the graph contains explicit predecessor edges only where current source evidence supports them.
