@@ -524,13 +524,13 @@
         "installed Android player"
       ],
       "observed_binding": "Automated exact-head implementation and package validation complete.",
-      "missing_or_stale_binding": "Physical proof remains required eventually, but the 5 final PCV-I06 readiness findings must close before any new runtime candidate/package can become certification evidence.",
+      "missing_or_stale_binding": "PCV preimplementation integrity is completed_verified. Installed Windows↔Android causal proof remains a bounded future PCV-03F requirement and is not a PCV-03A readiness blocker.",
       "authority_source": "PCV-03-attempt-001.json",
       "implementation_evidence": "validation run 36053261478; package artifact 10832224601",
       "user_or_system_impact": "Installed two-human continuity remains unproven.",
-      "repair_destination": "PCV-I01..PCV-I06 then PCV-03F",
+      "repair_destination": "PCV-03F",
       "validation_needed": "Export and verify PCV-03.INSTALLED-EVIDENCE.1 against exact package manifest.",
-      "status": "superseded_by_preimplementation_integrity"
+      "status": "owned_pending_pcv03f"
     },
     {
       "finding_id": "WIRE-PCV03-CANDIDATE-002",
@@ -549,9 +549,9 @@
       "authority_source": "governance/application-planning/product-convergence/PCV-03_ADVERSARIAL_CANDIDATE_AUDIT_2026-09-25.md",
       "implementation_evidence": "53 blocking findings recorded; prior candidate/package retained as historical pre-audit evidence only.",
       "user_or_system_impact": "Physical proof on the old candidate could falsely certify authority/reconnect/idempotency behavior that is incomplete or spoofable.",
-      "repair_destination": "PCV-I01..PCV-I06 strict order, then PCV-03A..PCV-03F",
+      "repair_destination": "PCV-03A..PCV-03F",
       "validation_needed": "Each child work item closes its bounded owner/runtime surface; PCV-03F performs strengthened exact-head installed certification.",
-      "status": "owned_by_pcv_preimplementation_integrity"
+      "status": "owned_routed_to_pcv03a_through_pcv03f"
     },
     {
       "finding_id": "WIRE-PCV-PRE-003",
@@ -567,13 +567,13 @@
         "PCV-03F"
       ],
       "observed_binding": "PCV-I01A/I01B/I01C/I02/I03/I04/I05 are completed_verified and PCV-I06 now supplies a field-level owner→field→consumer→negative-regression readiness candidate, child-profile definitions, stale-branch retirement and final repository sweep.",
-      "missing_or_stale_binding": "5 PCV-I06 findings remain open only until the exact readiness candidate passes Operations V3 validation and is durably published; no additional unowned implementation prerequisite was found.",
+      "missing_or_stale_binding": "No open PCV preimplementation finding remains. Runtime implementation is now bounded across PCV-03A..PCV-03F; PCV-03A is selected_not_started.",
       "authority_source": "PCV_PREIMPLEMENTATION_GAP_REGISTER.json",
       "implementation_evidence": "PCV_PREIMPLEMENTATION_INTEGRITY_PROGRAM.md; PCV_PREIMPLEMENTATION_CONSUMER_CENSUS.json; governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json",
       "user_or_system_impact": "Starting PCV-03 before closure risks parallel owners, unauthenticated local subjects, persistence splits, recovery loss, policy bypass and false-positive physical evidence.",
       "repair_destination": "PCV-I01..PCV-I06 strict order",
-      "validation_needed": "Exact-head Operations V3 validation of the PCV-I06 completion candidate, followed by atomic closeout that reduces open PCV preimplementation findings from 5 to 0 and selects PCV-03A.",
-      "status": "owned_current_work"
+      "validation_needed": "Each PCV-03 child must satisfy its bounded profile and negative-regression ownership; PCV-03F owns installed exact-head Windows/Android certification.",
+      "status": "owned_completed_verified"
     }
   ],
   "summary": {
@@ -581,11 +581,11 @@
     "partial_projection": 27,
     "test_blind_spot": 1,
     "unowned": 0,
-    "unresolved_required_bindings": 1,
+    "unresolved_required_bindings": 0,
     "silent_duplicate_owners": 0,
-    "candidate_integrity_gap": 1,
+    "candidate_integrity_gap": 0,
     "preimplementation_integrity_findings": 108,
-    "open_pcv_preimplementation_findings": 5
+    "open_pcv_preimplementation_findings": 0
   },
   "rule": "A known gap with an explicit current owner and repair destination is routed work, not unresolved archaeology. Future repair completion remains governed by its owning work item."
 }
