@@ -9,10 +9,10 @@
   "attempt_id": "PCV-03-attempt-001",
   "title": "Two-Device Membership, Transport, Presence & Reconnect",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "superseded_by_decomposition",
   "owner_selected": true,
   "selected_by_owner": "2026-09-23 owner-approved PCV strict order; PCV-03 selected automatically after verified PCV-02 closeout.",
-  "implementation_authority": true,
+  "implementation_authority": false,
   "implementation_branch": "work/pcv-03-two-device",
   "completed": false,
   "predecessor": {
@@ -40,9 +40,9 @@
     "Do not activate public/store release, production credentials, paid providers or commercial scope merely to satisfy PCV-03.",
     "Invitation/join, presence and reconnect controls must be fully usable from phone; PCV-MOBILE-01 applies and no PCV-03 action may be desktop-only."
   ],
-  "strict_successor": "PCV-04",
-  "active_substep": "installed_windows_android_physical_proof",
-  "next_action": "Project canon archaeology and wiring gates are completed_verified. Preserve exact application candidate 8232e52a089360939b17e58229af192a283b3a53 and package artifact 10832224601; complete only the installed Windows-host + Android-player physical two-device proof, export PCV-03.INSTALLED-EVIDENCE.1, and run tools/verify_pcv03_installed_evidence.py against the exact-head package manifest. PCV-04 remains unauthorized.",
+  "strict_successor": "PCV-03A",
+  "active_substep": "decomposed_into_bounded_work_items",
+  "next_action": "PCV-03 parent execution was decomposed after the 2026-09-25 adversarial candidate audit. Continue with PCV-03A-attempt-001; PCV-03B..03F and PCV-04 remain unauthorized.",
   "owner_interaction_observation": {
     "continue_turns": 4,
     "stall_nudges": 0
@@ -50,52 +50,37 @@
   "execution_guard": {
     "continue_turns": 4,
     "stall_nudges": 0,
-    "material_progress_seq": 8,
+    "material_progress_seq": 9,
     "progress_at_last_owner_command": 8,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 8,
-      "kind": "data_channel_race_fix_packaged",
-      "evidence": "Replacement head 8232e52a089360939b17e58229af192a283b3a53 passed exact-head validation run 36053261478 and package run 36054360043 produced exact-head artifact 10832224601 with Windows installer and Android APK. Manifest sourceHead and independent SHA-256 verification match."
+      "seq": 9,
+      "kind": "adversarial_candidate_audit_and_decomposition",
+      "evidence": "PCV-03 exact candidate audit recorded 53 blocking candidate-integrity findings and invalidated the prior physical-proof-ready conclusion; PCV-03 decomposed into PCV-03A..PCV-03F."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": "external_physical_two_device_proof_required"
+    "stop_reason": "superseded_by_bounded_decomposition"
   },
   "execution_conformance": {
-    "status": "conforming",
+    "status": "candidate_repair_required",
     "policy_violations": [],
-    "automated_implementation_complete": true,
+    "automated_implementation_complete": false,
     "automated_validation_run_id": 36053261478,
     "exact_candidate_head": "8232e52a089360939b17e58229af192a283b3a53",
     "exact_package_artifact_id": 10832224601,
-    "physical_proof_required": true,
-    "pcv04_started": false
+    "physical_proof_required": false,
+    "pcv04_started": false,
+    "prior_candidate_head": "8232e52a089360939b17e58229af192a283b3a53",
+    "prior_package_artifact_id": 10832224601,
+    "audit": "governance/application-planning/product-convergence/PCV-03_ADVERSARIAL_CANDIDATE_AUDIT_2026-09-25.md"
   },
   "external_gate": {
     "kind": "installed_physical_two_device_proof",
-    "state": "ready_for_installed_physical_two_device_proof",
-    "candidate_head": "8232e52a089360939b17e58229af192a283b3a53",
-    "application_pr": 775,
-    "validation_run_id": 36053261478,
-    "package_artifact_id": 10832224601,
-    "package_artifact_name": "pcv-03-installed-device-packages-8232e52a089360939b17e58229af192a283b3a53",
-    "package_manifest_schema": "PCV-03.PACKAGES.1",
-    "requirements": [
-      "Installed Windows Tauri host and installed Android Tauri player are separate physical devices.",
-      "Both use the exact-head packages built from 8232e52a089360939b17e58229af192a283b3a53.",
-      "Player joins as a distinct canonical subject/device and sends at least one authoritative command.",
-      "Re-sending the same command ID produces no second business effect.",
-      "Android player disconnects and reconnects with the same stable device identity and connection ordinal >= 2.",
-      "GM-only marker remains absent from the player projection.",
-      "Windows host exports PCV-03.INSTALLED-EVIDENCE.1 with physical-device affirmation.",
-      "tools/verify_pcv03_installed_evidence.py passes against the exact-head PCV-03 package manifest."
-    ],
-    "archaeology_prerequisite": {
-      "status": "completed_verified",
-      "merged_closeout_sha": "fbe68ef1b98e2d5669b4775fc9bf3bbd2622877d",
-      "canon_register": "governance/project-archaeology/PROJECT_CANON_REGISTER.json",
-      "wiring_register": "governance/project-archaeology/PROJECT_WIRING_DEFECT_REGISTER.json"
-    }
+    "state": "invalidated_by_candidate_audit",
+    "prior_candidate_head": "8232e52a089360939b17e58229af192a283b3a53",
+    "prior_package_artifact_id": 10832224601,
+    "disposition": "historical_pre_audit_evidence_only",
+    "replacement_gate": "PCV-03F exact-head installed Windows/Android certification after PCV-03A..PCV-03E close."
   }
 }
