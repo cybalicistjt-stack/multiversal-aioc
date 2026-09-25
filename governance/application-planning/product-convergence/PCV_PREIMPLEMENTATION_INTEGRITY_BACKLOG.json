@@ -111,7 +111,7 @@
     {
       "id": "PCV-I05",
       "name": "Product Context, Downstream Consumers, Mobile, Packaging & Evidence Closure",
-      "status": "selected_not_started",
+      "status": "in_progress",
       "objective": "Close the product/platform edges before implementation: A3-safe Home/context integration, downstream Session consumers, mobile/accessibility, package/update identity and a non-self-certifying physical evidence model.",
       "acceptance": [
         "Reconcile ProductProfile/ProductSelectedContext with A3 authorized workspace/context/Home projections and cache partitions.",
@@ -120,7 +120,8 @@
         "Define exact package/install/update/migration identity and device-side evidence needed for Windows/Android certification.",
         "Replace boolean/self-reported completion evidence with causal receipts that prove duplicate retry, real resume, player delivery and installed binary identity.",
         "Disposition unrelated PR #775 presentation/skin changes to their correct owner/scope."
-      ]
+      ],
+      "closure_contract": "governance/application-planning/product-convergence/PCV-I05_PRODUCT_CONTEXT_DOWNSTREAM_MOBILE_PACKAGING_EVIDENCE_CONTRACT_v1.0.0.json"
     },
     {
       "id": "PCV-I06",
@@ -139,7 +140,7 @@
     }
   ],
   "completion_rule": "PCV-PRE completes only when PCV-I01A, PCV-I01B, PCV-I01C, PCV-I02..PCV-I06 complete in strict order and PCV-I06 certifies zero unowned/unresolved PCV-03 prerequisites.",
-  "next_action": "PCV-I05 is selected_not_started. Start only on a later owner Continue; all Multiversal-app PCV runtime remains blocked through PCV-I06.",
+  "next_action": "PCV-I05 exact candidate validation active; PCV-I06 and all PCV runtime predecessor-blocked.",
   "prerequisite": {
     "work_item": "PIM-03",
     "status": "completed_verified",
