@@ -118,3 +118,8 @@ Multi-file governed-start/closeout projections should use one tree, one commit a
 Prefer the shortest path from current state to the requested result. Do not restart repository archaeology after the lane and work item are known. Expand context only for a concrete contradiction, failure signature, or source dependency.
 
 Historical records remain valuable for provenance and recovery, but they never become live instructions by being rediscovered.
+
+
+### Project-canon register pointer
+
+When `CURRENT.json`, a selected work item, or an explicit dependency requires whole-project canon lineage or wiring context, read `governance/project-archaeology/PROJECT_CANON_REGISTER.json` and its named companion artifacts. They are reference/integrity evidence only: they never select work, grant implementation authority, redefine `Continue`, or override `CURRENT.json`.

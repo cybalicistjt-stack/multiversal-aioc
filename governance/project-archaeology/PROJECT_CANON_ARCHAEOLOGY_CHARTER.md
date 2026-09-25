@@ -1,6 +1,6 @@
 # Multiversal Project Canon Archaeology & Wiring Audit Charter
 
-**Status:** OWNER-DIRECTED — IN PROGRESS  
+**Status:** OWNER-DIRECTED — COMPLETION CANDIDATE  
 **Owner/final authority:** John Brandon Turner  
 **Operational implementation authority:** none  
 **Purpose:** reconstruct the complete project lineage, resolve current canon, recover dropped intent, and then prove that the current project is wired to the recovered canon before ordinary product implementation resumes.
@@ -244,3 +244,8 @@ This project-wide gate is complete only when all of the following exist and reco
 - bootstrap pointer telling future conversations where to read the register without making the register a competing live work selector.
 
 Until then, archaeology status remains **IN PROGRESS**.
+
+
+## 11. Completion-candidate artifact set
+
+The reconstruction and wiring inventory are materialized in the sibling artifacts named by `PROJECT_CANON_REGISTER.json#artifact_set`. This candidate becomes `COMPLETED_VERIFIED` only after `scripts/validate_project_canon_archaeology.py` and the Operations V3 repository-health gate pass on the exact candidate head and protected-main publication is verified. Routed future PCV work is not authorized by archaeology.

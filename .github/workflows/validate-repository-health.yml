@@ -114,6 +114,10 @@ jobs:
           set -euo pipefail
           python3 scripts/validate_ops3_semantic_surfaces.py
 
+      - name: Validate project canon archaeology register
+        run: |
+          python3 scripts/validate_project_canon_archaeology.py
+
       - name: Run Operations V3 regressions
         shell: bash
         run: |
