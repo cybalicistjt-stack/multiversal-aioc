@@ -35,7 +35,9 @@
     "Installed evidence records causal receipts for distinct subject/device join, authoritative command, duplicate retry, disconnect, resume, ordered/gap-safe player delivery and hidden-before-publication filtering.",
     "A second ordinary join cannot satisfy reconnect evidence and a single command cannot satisfy duplicate-idempotency evidence.",
     "Device-side evidence binds installed Windows/Android runtime/package identity to the exact package artifact rather than relying only on self-reported wire metadata.",
-    "The physical Windows↔Android proof passes the strengthened verifier; only then may PCV-03 parent be considered completed_verified and PCV-04 become eligible."
+    "The physical Windows↔Android proof passes the strengthened verifier; only then may PCV-03 parent be considered completed_verified and PCV-04 become eligible.",
+    "Normal Campaign/Session connectivity exposes Create Campaign, a short human-friendly campaign locator/search flow, invite/connect by user id and one-click Connect; ordinary users never copy/paste raw bearer, SDP, ICE or giant signaling tokens.",
+    "Automatic rendezvous/signaling remains a replaceable non-authoritative adapter; manual signaling is retained only as hidden advanced recovery and does not appear in the ordinary Sessions journey."
   ],
   "boundaries": [
     "Certify only the repaired exact PCV-03 candidate; PCV-03F does not add gameplay, presence authority, Campaign/Session truth or a parallel recovery ledger.",
@@ -48,7 +50,9 @@
     "Do not enable Tauri updater, public/store distribution, production credentials/signing, billing/subscriptions, paid acquisition or public launch in PCV-03F.",
     "Current Android targetSdk is 36; do not add ACCESS_LOCAL_NETWORK merely for this tranche. Re-evaluate only if targetSdk reaches 37+ and LAN access requires it.",
     "PCV-04 gameplay remains unauthorized until PCV-03F closes and the PCV-03 parent is completed_verified.",
-    "Use milestone-level OPS3 state only; no activity-journal instrumentation."
+    "Use milestone-level OPS3 state only; no activity-journal instrumentation.",
+    "Owner-directed UX repair is authorized before certification because the prior candidate exposed unacceptable manual signaling. It may change Campaign/Session product presentation and signaling adapters but may not change canonical Campaign, membership, Session, Event or gameplay authority.",
+    "Campaign codes are locators, not secrets or authority. User ids are connection targets, not authentication proof. A3/A5 authorization and recipient-bound invitations still gate access underneath one-click UX."
   ],
   "validation_profile": {
     "title": "Exact-Head Installed Windows/Android Certification",
@@ -81,25 +85,22 @@
       "generic gameplay command escape hatch"
     ]
   },
-  "active_substep": "external_blocker_fresh_physical_installed_evidence",
+  "active_substep": "owner_directed_connection_ux_repair_before_certification",
   "strict_successor": "PCV-04",
-  "next_action": "Install the exact generated PCV-03F Windows x64 NSIS package and Android ARM64 APK on two distinct physical devices with distinct registered A3 device credentials; capture PCV-03.INSTALLED-EVIDENCE.2 causal receipts and rerun the exact-head verifier. Automated package construction/manifest verification is already complete.",
+  "next_action": "Repair the user-facing Campaign/Session connection flow before certification. Normal flow: Create Campaign -> easy campaign identifier -> invite/search -> Connect. Direct player connection: user id -> Connect. Raw bearer/SDP/ICE/manual response text must be absent from normal product UI; manual signaling may remain only as advanced recovery. Rebuild and certify the repaired exact head.",
   "execution_guard": {
-    "continue_turns": 5,
+    "continue_turns": 6,
     "stall_nudges": 4,
-    "material_progress_seq": 2,
-    "progress_at_last_owner_command": 1,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": {
-      "kind": "external_blocker",
-      "evidence": "Validate Current Family run 36197087514 completed Linux GREEN and exact Windows package generation/manifest verification for application head 59303d5be2fa9e6d699f8486620beef5ea682480. PCV-03F exact Windows NSIS + Android ARM64 artifacts were uploaded as artifact 10890923611; the only failing gate was pcv03f-physical-installed-evidence because no fresh installed-evidence.json from two distinct physical Windows/Android devices was present."
-    },
+    "terminal_response_allowed": false,
+    "stop_reason": null,
     "last_material_progress": {
-      "seq": 2,
-      "kind": "exact_package_identity_built",
-      "evidence": "Run 36197087514 produced and verified Multiversal-Beta-Windows-x64-Setup.exe, Multiversal-Beta-Windows-x64-Payload.exe, Multiversal-Beta-Android-arm64.apk and PCV-03F-package-manifest.json; package manifest verification passed before the external physical-device gate."
+      "seq": 3,
+      "kind": "owner_directed_pre_certification_repair",
+      "evidence": "Owner rejected exposed long-token/manual-signaling connection UX. PCV-03F final certification candidate must instead expose Create Campaign, short campaign locator/search, user-id targeting and one-click Connect while keeping raw signaling hidden."
     }
   },
   "audit_required_at_closeout": "PCV-03F must prove exact installed Windows/Android package identity with distinct device credentials and causal join/idempotency/disconnect-resume/ordered-gap-safe/hidden-projection receipts, while preserving PCV-03A..03E authority, excluding secrets/private evidence, and activating neither public release/updater nor PCV-04 gameplay before certification closes.",
@@ -123,5 +124,18 @@
     "additional_continue_commands": 4,
     "product_work_invalidated": false,
     "classification": "automated certification reached a genuine external physical-device blocker; executor polling behavior caused avoidable repeated owner intervention"
+  },
+  "owner_product_requirements": {
+    "connection_ux": {
+      "create_campaign_visible": true,
+      "campaign_locator": "short-human-friendly-searchable-identifier",
+      "invite_players": "user-id-or-campaign-code",
+      "player_campaign_search": true,
+      "connect_action": "single-click",
+      "connect_player_input": "user-id",
+      "raw_signaling_visible_to_normal_user": false,
+      "manual_signaling_scope": "advanced-recovery-only",
+      "failure_rule": "Any normal flow that requires copying/pasting bearer, SDP, ICE or giant signaling tokens fails acceptance."
+    }
   }
 }

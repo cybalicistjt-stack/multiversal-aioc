@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 544,
+  "state_revision": 545,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -96,7 +96,7 @@
       "checkpoint_path": "governance/ai/work-state/PCV-03F-attempt-001.json",
       "implementation_branch": "work/pcv-03f-installed-certification",
       "implementation_authority": true,
-      "activation_rule": "PCV-03F remains in_progress with implementation authority. Automated exact-head package construction and manifest verification completed on application head 59303d5be2fa9e6d699f8486620beef5ea682480; only fresh two-device installed physical evidence remains externally blocked. PCV-04, updater activation and public/store release remain unauthorized.",
+      "activation_rule": "PCV-03F remains in_progress with implementation authority. Owner-directed pre-certification repair supersedes the prior physical-evidence-only blocker: normal users must never handle raw invitation/SDP/ICE signaling. The certified head must provide Create Campaign, a short human-friendly campaign locator/search flow, invite/connect by user id, and one-click automatic rendezvous while retaining manual signaling only as hidden advanced recovery. The prior 59303d5b package candidate is invalidated for final certification. PCV-04, updater activation and public/store release remain unauthorized.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "PCV-03F is externally blocked only on fresh installed Windows+Android physical evidence. Exact packages and package manifest were generated and verified in run 36197087514 for application head 59303d5be2fa9e6d699f8486620beef5ea682480. Supply PCV-03.INSTALLED-EVIDENCE.2 from two distinct physical devices; PCV-04 remains blocked.",
+  "next_project_action": "Repair the PCV-03 connection UX on work/pcv-03f-installed-certification before physical certification: generic Create Campaign, easy campaign code search/invite, connect-by-user-id, and automatic hidden signaling/rendezvous. Then rerun exact-head Windows/Android package certification and fresh physical evidence. PCV-04 remains blocked.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
