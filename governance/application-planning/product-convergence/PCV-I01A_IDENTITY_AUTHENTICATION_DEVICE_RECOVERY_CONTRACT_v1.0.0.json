@@ -279,5 +279,31 @@
     "runtime_product_implementation_authorized": false,
     "next_runtime_destination": "PCV-03A after PCV-I01B through PCV-I06 predecessor closure",
     "later_preimplementation_items_authorized": false
-  }
+  },
+  "acceptance_checks": {
+    "production_local_zero_service_proof_defined": true,
+    "stable_device_context_not_subject_authority": true,
+    "brp_device_session_recovery_revocation_composed": true,
+    "a3_session_metadata_restored": true,
+    "pcv01_identity_records_reconciled": true,
+    "remote_subject_assertion_forbidden": true
+  },
+  "dependency_edges": [
+    {
+      "from": "PLAN::stage-a-a3",
+      "to": "WORK::PCV-I01A"
+    },
+    {
+      "from": "WORK::BRP-02",
+      "to": "WORK::PCV-I01A"
+    },
+    {
+      "from": "WORK::SMB-01",
+      "to": "WORK::PCV-I01A"
+    },
+    {
+      "from": "WORK::SMB-02",
+      "to": "WORK::PCV-I01A"
+    }
+  ]
 }

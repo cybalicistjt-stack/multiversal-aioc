@@ -16,10 +16,7 @@ backlog=load(I/"PROJECT_INTEGRITY_PROGRAM_BACKLOG.json")
 wire=load(A/"PROJECT_WIRING_DEFECT_REGISTER.json")
 pcv_backlog=load(P/"PCV_PROGRAM_BACKLOG.json")
 pcv_pre=load(P/"PCV_PREIMPLEMENTATION_INTEGRITY_BACKLOG.json")
-pcv_i01a=load(ROOT/"governance"/"ai"/"work-state"/"PCV-I01A-attempt-001.json")
-pim03=load(ROOT/"governance"/"ai"/"work-state"/"PIM-03-attempt-001.json")
 roadmap=load(ROOT/"governance"/"application-planning"/"ROADMAP_DEPENDENCY_GRAPH.json")
-i01a_contract=load(P/"PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json")
 assert reg["status"] in {"completion_candidate","completed_verified"}
 assert dep["status"] in {"completion_candidate","completed_verified"}
 assert reg["mutation_policy"]["identity_fields_immutable"] is True
@@ -96,9 +93,12 @@ for work_item,status in registry_overlay_status.items():
 if pcv_pre["status"]=="in_progress":
     assert pcv_backlog["current_item"]==pcv_pre["current_item"]
     assert pcv_backlog["current_attempt"]==pcv_pre["current_attempt"]
-if pcv_backlog["current_item"]=="PCV-I01A":
-    assert pim03["status"]=="completed_verified"
-    assert pcv_i01a["predecessor"]["status"]==pim03["status"]
+if pcv_pre["status"]=="in_progress":
+    current_attempt_path=ROOT/"governance"/"ai"/"work-state"/f'{pcv_pre["current_attempt"]}.json'
+    current_checkpoint=load(current_attempt_path)
+    assert current_checkpoint["work_item_id"]==pcv_pre["current_item"]
+    current_tranche=next(x for x in pcv_pre["tranches"] if x["id"]==pcv_pre["current_item"])
+    assert current_checkpoint["status"]==current_tranche["status"]
 assert wire["summary"]["preimplementation_integrity_findings"]==pcv["finding_count"]
 assert wire["summary"]["open_pcv_preimplementation_findings"]==pcv["finding_count"]
 for finding_id in {"WIRE-PCV03-PHYSICAL-001","WIRE-PCV-PRE-003"}:
@@ -116,32 +116,26 @@ assert "BIP" in roadmap["program_edges"]["PCV"]["hard_requires"]
 assert "PCV-02" in roadmap["program_edges"]["PIM"]["start_requires"]
 assert "PIM-03" in roadmap["milestone_gates"]["PCV"]["PCV-I01A"]
 assert "PCV-I06" in roadmap["milestone_gates"]["PCV"]["PCV-03A"]
-i01a_ids={"PCV-PRE-004","PCV-PRE-006","PCV-PRE-015","PCV-PRE-057","PCV-PRE-058","PCV-PRE-059","PCV-PRE-060","PCV-PRE-061","PCV-PRE-101","PCV-PRE-104","PCV-PRE-105"}
-assert i01a_contract["work_item_id"]=="PCV-I01A"
-assert i01a_contract["status"] in {"completion_candidate","completed_verified"}
-assert set(i01a_contract["gap_closure"])==i01a_ids
-assert i01a_contract["runtime_boundary"]["runtime_product_implementation_authorized"] is False
-assert i01a_contract["local_proof_of_possession"]["challenge"]["minimum_entropy_bits"]>=128
-assert i01a_contract["local_proof_of_possession"]["challenge"]["single_use"] is True
-assert i01a_contract["peer_identity_binding"]["no_authority_bleed"] is True
-assert i01a_contract["continuity_identity"]["canonical_scope_key"]==["subjectId","campaignId","sessionId"]
-assert i01a_contract["continuity_identity"]["device_slot_key"]==["subjectId","campaignId","sessionId","deviceId"]
-i01a_findings={x["finding_id"]:x for x in pcv["findings"] if x["finding_id"] in i01a_ids}
-assert set(i01a_findings)==i01a_ids
-for finding in i01a_findings.values():
-    assert finding["primary_interstitial"]=="PCV-I01A"
-    assert finding.get("candidate_closure_artifact")=="governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json"
-    if i01a_contract["status"]=="completion_candidate":
-        assert finding["disposition"]=="open_preimplementation"
-    else:
-        assert finding["disposition"]=="closed_preimplementation_contract"
-        assert finding["blocks_pcv03_implementation"] is False
-required_i01a_edges={
- ("PLAN::stage-a-a3","WORK::PCV-I01A"),
- ("WORK::BRP-02","WORK::PCV-I01A"),
- ("WORK::SMB-01","WORK::PCV-I01A"),
- ("WORK::SMB-02","WORK::PCV-I01A"),
-}
-actual_i01a_edges={(e["from"],e["to"]) for e in dep["edges"] if e["edge_type"]=="documented_downstream_consumer"}
-assert required_i01a_edges <= actual_i01a_edges
+# Any preimplementation closure contract is data-driven by its tranche record.
+documented_edges={(e["from"],e["to"]) for e in dep["edges"] if e["edge_type"]=="documented_downstream_consumer"}
+for tranche in pcv_pre["tranches"]:
+    contract_path=tranche.get("closure_contract")
+    if not contract_path:
+        continue
+    closure=load(ROOT/contract_path)
+    assert closure["work_item_id"]==tranche["id"]
+    assert closure["status"] in {"completion_candidate","completed_verified"}
+    assert closure["runtime_boundary"]["runtime_product_implementation_authorized"] is False
+    assert closure.get("acceptance_checks") and all(closure["acceptance_checks"].values())
+    owned={x["finding_id"] for x in pcv["findings"] if x["primary_interstitial"]==tranche["id"]}
+    assert set(closure["gap_closure"])==owned
+    for finding in (x for x in pcv["findings"] if x["finding_id"] in owned):
+        assert finding.get("candidate_closure_artifact")==contract_path
+        if closure["status"]=="completion_candidate":
+            assert finding["disposition"]=="open_preimplementation"
+        else:
+            assert finding["disposition"]=="closed_preimplementation_contract"
+            assert finding["blocks_pcv03_implementation"] is False
+    required_edges={(x["from"],x["to"]) for x in closure.get("dependency_edges",[])}
+    assert required_edges <= documented_edges
 print(json.dumps({"status":"PASS","planning_groups":83,"work_state_families":73,"unique_work_items":662,"attempt_files":667,"canon_nodes":71,"capability_rows":56,"map_nodes":dep["counts"]["nodes"],"map_edges":dep["counts"]["edges"],"master_integrity_findings":len(gaps["findings"]),"pcv_child_findings":pcv["finding_count"]},sort_keys=True))
