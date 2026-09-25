@@ -12,8 +12,8 @@
   "status": "in_progress",
   "owner_selected": true,
   "selected_by_owner": "2026-09-25 owner direction: do not start PCV-03 until all remaining/disconnected work is found, durably recorded, and routed; add interstitial tranches as necessary.",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/pcv-preimplementation-integrity",
   "completed": false,
   "predecessor": {
     "work_item": "PCV-02",
@@ -30,7 +30,7 @@
     "Publish field-level owner/dependency/consumer evidence; no generic 'audited' labels may substitute."
   ],
   "boundaries": [
-    "No Multiversal-app PCV runtime implementation is authorized.",
+    "Multiversal-app PCV runtime implementation is not authorized.",
     "Contract/governance reconciliation may identify required future code but must not hide it by implementing multiple later concerns in this tranche.",
     "PCV-01/02 completion is preserved; predecessor compatibility gaps are adapted/migrated, not treated as permission to rerun those programs.",
     "PCV-03A..PCV-03F and PCV-04+ remain blocked.",
@@ -49,5 +49,7 @@
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null
-  }
+  },
+  "runtime_product_implementation_authority": false,
+  "authority_scope": "AIOC-only PCV-PRE governance, contract-integrity analysis, registers and bounded authority-definition artifacts. No Multiversal-app PCV runtime implementation."
 }
