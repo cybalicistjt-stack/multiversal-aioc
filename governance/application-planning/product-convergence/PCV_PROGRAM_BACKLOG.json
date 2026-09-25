@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.3.0",
+  "schema_version": "1.4.0",
   "program_id": "PCV",
   "program_name": "Product Convergence & Real-App Validation",
   "status": "in_progress",
@@ -9,8 +9,8 @@
     "SMB",
     "BIP"
   ],
-  "current_item": "PCV-03A",
-  "current_attempt": "PCV-03A-attempt-001",
+  "current_item": "PIM-03",
+  "current_attempt": "PIM-03-attempt-001",
   "tranches": [
     {
       "id": "PCV-01",
@@ -44,10 +44,137 @@
       ]
     },
     {
+      "id": "PCV-I01A",
+      "name": "Identity, Authentication, Device & Recovery Contract Closure",
+      "status": "blocked_by_project_integrity_map",
+      "objective": "Close stable-subject authentication, local proof-of-possession, device/session continuity, recovery/rebind and BRP lifecycle ownership before remote membership or transport implementation.",
+      "acceptance": [
+        "Define the production-local zero-service proof-of-possession credential and canonical A3 session establishment path.",
+        "Define stable device identity as connection/recovery context without making device identity equal subject identity.",
+        "Close BRP device-session revocation/recovery/data-rights composition.",
+        "Restore or explicitly retire A3 authentication-session assurance/device/last-validation metadata with evidence.",
+        "Reconcile PCV-01 local profile identity records with IdentityServicePort, ProviderIndependentIdentityMapping and StableSubjectSessionPort.",
+        "No remote caller can assert a subjectId/identityId pair without the canonical authentication boundary."
+      ],
+      "interstitial": true,
+      "program": "PCV-PRE"
+    },
+    {
+      "id": "PCV-I01B",
+      "name": "Invitation, Membership, Role, Policy & Atomicity Closure",
+      "status": "blocked_by_predecessor",
+      "objective": "Close A3 invitation→A5 Campaign membership/role lifecycle, versioning, family-safety policy and atomic transaction semantics without parallel membership authority.",
+      "acceptance": [
+        "A3 acceptance and A5 membership creation/replay have one atomic coordinator and one membership authority.",
+        "Campaign membership lifecycle fields, role vocabulary, version/concurrency token and state transitions are complete and obtainable through public contracts.",
+        "MIB-17/SMB-14 invitation policy and recipient binding are composed without granting Campaign authority.",
+        "PCV-02 memberSubjectIds has an explicit migration/adapter disposition and cannot remain a competing authority.",
+        "Duplicate/replayed invitation acceptance and conflicting reuse are fail-closed and idempotent."
+      ],
+      "interstitial": true,
+      "program": "PCV-PRE"
+    },
+    {
+      "id": "PCV-I01C",
+      "name": "Local-Host / Production-Service Authority & Entitlement Composition Closure",
+      "status": "blocked_by_predecessor",
+      "objective": "Define one authority model shared by zero-service installed-host execution and the non-activated SMB-01 managed-production profile, including Identity/Entitlement/Persistence/SessionCommand/Realtime/Checkpoint ports.",
+      "acceptance": [
+        "Define local-host adapters/semantics for the SMB-01 service-port surface without activating hosted production.",
+        "Define 'online' as current authoritative-executor reachability across local-host and future hosted profiles.",
+        "Define local entitlement evaluation and decision references used by Campaign/Session handshake.",
+        "Prove local-host authority and future server/database authority are deployment profiles over one owner model, not competing canonical histories.",
+        "Preserve realtime as advisory and durable Event/checkpoint authority across profiles."
+      ],
+      "interstitial": true,
+      "program": "PCV-PRE"
+    },
+    {
+      "id": "PCV-I02",
+      "name": "Data Model, Persistence, Transaction, Secret & Migration Closure",
+      "status": "blocked_by_predecessor",
+      "objective": "Close the durable-state model before runtime implementation: relational logical schema, product JSON aggregates, transactions, membership/session state, secret references, migration/retirement and provider-exit/data-rights implications.",
+      "acceptance": [
+        "Declare one durable truth model and exact adapter mapping between canonical logical owners and the installed SQLite product store.",
+        "Provide or specify atomic transaction/batch primitives required by invitation/membership/Session operations.",
+        "Reconcile Campaign membership state/version schema and classify device/resume/ACK/epoch/replay data as canonical, local-secret or ephemeral.",
+        "Select/wire an approved Windows+Android secure-secret-store boundary and safe backup/export/delete behavior.",
+        "Define migration/retirement for pre-audit PCV-03.session.1 and any PCV-01/02 predecessor fields that change ownership.",
+        "No raw bearer/local identity credential material is allowed in ordinary documents, diagnostics or telemetry."
+      ],
+      "interstitial": true,
+      "program": "PCV-PRE"
+    },
+    {
+      "id": "PCV-I03",
+      "name": "Transport, Protocol, Capability & Security Contract Closure",
+      "status": "blocked_by_predecessor",
+      "objective": "Freeze the safe zero-service transport/handshake contract before code: inference-safe signaling, peer binding, versioned/bounded envelopes, policy/timeouts, exact capability/entitlement negotiation and replaceable assisted networking.",
+      "acceptance": [
+        "Define pre-auth and post-auth signaling fields, recipient binding and no-log sensitive token handling.",
+        "Define peer-to-authenticated-subject/device binding and transport revalidation without granting authority to SDP/device metadata.",
+        "Define explicit protocol/schema versioning, strict decoder behavior, message/batch/work bounds, backpressure and safe errors.",
+        "Resolve exact pack/rules/runtime/entitlement handshake sources from locally measured client state.",
+        "Keep manual/no-service ICE as baseline and assisted STUN/TURN/relay as replaceable optional adapters.",
+        "Record governed invitation/connection timeout policy and future Android local-network permission trigger."
+      ],
+      "interstitial": true,
+      "program": "PCV-PRE"
+    },
+    {
+      "id": "PCV-I04",
+      "name": "Session Event, Recovery, Idempotency, Presence & Hybrid Continuity Closure",
+      "status": "blocked_by_predecessor",
+      "objective": "Freeze command/Event/checkpoint/reconnect semantics so local-host, future hosted, live/async/hybrid and hidden projections share one durable history without duplicate effects or lost Events.",
+      "acceptance": [
+        "Define command identity versus idempotency key versus payload fingerprint and host-authoritative timestamps.",
+        "Define serialized per-Session mutation/transaction ordering and transactional-outbox/advisory-realtime mapping.",
+        "Define global authoritative Event sequence, viewer projection cursor, ACK timing, gap detection and hidden-event behavior.",
+        "Define checkpoint digest/trust/replay fingerprint lifecycle and reconnect current-authorization requirements.",
+        "Define presence as connection-derived advisory state with no membership/identity authority.",
+        "Prove compatibility with SMB-02 and APW one-history live/async/hybrid expectations."
+      ],
+      "interstitial": true,
+      "program": "PCV-PRE"
+    },
+    {
+      "id": "PCV-I05",
+      "name": "Product Context, Downstream Consumers, Mobile, Packaging & Evidence Closure",
+      "status": "blocked_by_predecessor",
+      "objective": "Close the product/platform edges before implementation: A3-safe Home/context integration, downstream Session consumers, mobile/accessibility, package/update identity and a non-self-certifying physical evidence model.",
+      "acceptance": [
+        "Reconcile ProductProfile/ProductSelectedContext with A3 authorized workspace/context/Home projections and cache partitions.",
+        "Classify MAS/APW/VTI/SAA/WCI/MSAS/IC/A6/A7/A9/SMB13/BRP consumers without implementing downstream domains.",
+        "Define phone/keyboard/nonvisual requirements for every PCV networking control while leaving full Desktop View to PCV-09.",
+        "Define exact package/install/update/migration identity and device-side evidence needed for Windows/Android certification.",
+        "Replace boolean/self-reported completion evidence with causal receipts that prove duplicate retry, real resume, player delivery and installed binary identity.",
+        "Disposition unrelated PR #775 presentation/skin changes to their correct owner/scope."
+      ],
+      "interstitial": true,
+      "program": "PCV-PRE"
+    },
+    {
+      "id": "PCV-I06",
+      "name": "Final No-Orphan / No-Parallel-Owner Readiness Certification",
+      "status": "blocked_by_predecessor",
+      "objective": "Perform a fresh adversarial sweep over the completed interstitial artifacts and current repositories; allow PCV-03A to start only when all required owner/dependency/consumer/validation bindings are explicit and no unresolved implementation prerequisite remains.",
+      "acceptance": [
+        "Every gap register item is closed, explicitly routed to a bounded PCV-03 child, or explicitly deferred outside PCV with owner/rationale; no unowned/indeterminate blocker remains.",
+        "Zero silent duplicate owners, authority bypasses, unresolved required dependencies, missing required consumers, persistence/secret/migration unknowns or evidence blind spots remain for PCV-03 scope.",
+        "Current canon/wiring matrix is updated with field-level PCV evidence rather than generic audit labels.",
+        "Per-child PCV-03A..03F validation profiles/negative-regression ownership are defined before implementation.",
+        "Application packaging remains disabled until PCV-03F.",
+        "A final fresh repository search for identity/membership/Session/transport/recovery/device/security/packaging consumers yields no uncatalogued required PCV dependency.",
+        "Only then may CURRENT select PCV-03A and grant implementation authority."
+      ],
+      "interstitial": true,
+      "program": "PCV-PRE"
+    },
+    {
       "id": "PCV-03A",
       "parent_tranche": "PCV-03",
       "name": "Canonical Identity, Invitation & Campaign Membership",
-      "status": "in_progress",
+      "status": "blocked_by_preimplementation_integrity",
       "outcome": "Distinct Windows/Android users join through canonical local-first subject identity, recipient-bound A3 invitation semantics and A5 Campaign membership authority, with no parallel PCV-03 membership ledger.",
       "acceptance": [
         "Bind production local profile/subject state to the canonical stable-subject session seam without making device identity or transport claims authoritative.",
@@ -248,6 +375,14 @@
   "strict_order": [
     "PCV-01",
     "PCV-02",
+    "PCV-I01A",
+    "PCV-I01B",
+    "PCV-I01C",
+    "PCV-I02",
+    "PCV-I03",
+    "PCV-I04",
+    "PCV-I05",
+    "PCV-I06",
     "PCV-03A",
     "PCV-03B",
     "PCV-03C",
@@ -262,9 +397,9 @@
     "PCV-09",
     "PCV-10"
   ],
-  "next_item": "PCV-03A",
+  "next_item": "PIM-03",
   "completion_rule": "PCV completes only when PCV-10 proves a fresh-installed Android and Windows pair can run a real two-human Multiversal campaign using persisted governed state and representative current feature breadth. Contract-only, fixture-only, golden-data-only, isolated-workbench-only, screenshot-only, or in-process-only proof is insufficient.",
-  "next_action": "Execute PCV-03A canonical identity/invitation/Campaign-membership repair. PCV-03B..03F and PCV-04 remain blocked by predecessor.",
+  "next_action": "Complete project-integrity map certification. Then PCV-I01A may resume; PCV runtime remains blocked.",
   "approved_cross_tranche_requirements": [
     {
       "id": "PCV-GW-01",
@@ -316,5 +451,24 @@
       ],
       "completion_rule": "PCV-03 parent is completed_verified only when PCV-03A through PCV-03F are completed_verified in strict order."
     }
+  },
+  "preimplementation_integrity_gate": {
+    "program": "PCV-PRE",
+    "backlog": "governance/application-planning/product-convergence/PCV_PREIMPLEMENTATION_INTEGRITY_BACKLOG.json",
+    "gap_register": "governance/application-planning/product-convergence/PCV_PREIMPLEMENTATION_GAP_REGISTER.json",
+    "consumer_census": "governance/application-planning/product-convergence/PCV_PREIMPLEMENTATION_CONSUMER_CENSUS.json",
+    "strict_order": [
+      "PCV-I01A",
+      "PCV-I01B",
+      "PCV-I01C",
+      "PCV-I02",
+      "PCV-I03",
+      "PCV-I04",
+      "PCV-I05",
+      "PCV-I06"
+    ],
+    "status": "blocked_by_project_integrity_map",
+    "blocks": "PCV-03A",
+    "rule": "PCV-03A cannot be selected or receive implementation authority until PCV-I06 completed_verified."
   }
 }

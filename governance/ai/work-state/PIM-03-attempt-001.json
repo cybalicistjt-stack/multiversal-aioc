@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "family": "PIM",
+  "lane": "gpr",
+  "work_item_id": "PIM-03",
+  "attempt_id": "PIM-03-attempt-001",
+  "title": "Integrity Validation & Mutation Guard",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "completed_verified",
+  "implementation_authority": false,
+  "implementation_branch": "work/pcv-preimplementation-integrity",
+  "runtime_product_implementation_authority": false,
+  "completed": true,
+  "predecessor": [
+    "PIM-01 completion_candidate",
+    "PIM-02 completion_candidate"
+  ],
+  "objective": "Prove exact work-history/dependency coverage and guard it against silent mutation before PCV-PRE resumes.",
+  "acceptance": [
+    "83 planning groups, 73 work-state families, 662 unique work items and 667 attempt files match the archaeology inventory exactly.",
+    "Every work item maps to exactly one family; every family has an explicit planning/lineage parent or an explicitly preserved standalone lineage.",
+    "All 71 current-canon/current-intent entries and all 56 PCV-01 capability rows are represented.",
+    "Known non-work-state families and Project Source/archive lineages are first-class records.",
+    "Every integrity gap and child scoped gap register has an owner/route; no silent zero-gap claim overrides later evidence.",
+    "Mutation policy and validator prohibit silent rename/delete/reclassification.",
+    "OPS3, archaeology validation and project-integrity validation pass on the exact candidate."
+  ],
+  "active_substep": "exact_candidate_validation",
+  "next_action": "PCV-I01A is the strict successor; no product runtime implementation is authorized.",
+  "completed_at": "2026-09-25",
+  "completion_evidence": {
+    "validation_candidate_head": "555e6ad178263f2a381b7ad03bd87158f376c653",
+    "validation_run_id": 36125172049,
+    "validation_conclusion": "success",
+    "report": "governance/project-integrity/PROJECT_WORK_HISTORY_DEPENDENCY_INTEGRITY_COMPLETION_REPORT.md"
+  }
+}

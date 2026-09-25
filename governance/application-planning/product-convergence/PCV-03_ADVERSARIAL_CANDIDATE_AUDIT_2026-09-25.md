@@ -1,6 +1,6 @@
 # PCV-03 Adversarial Candidate Audit — 2026-09-25
 
-**Status:** completed audit; candidate repair required before physical proof  
+**Status:** baseline adversarial pass complete; NOT the final preimplementation gate  
 **Audited application candidate:** `8232e52a089360939b17e58229af192a283b3a53`  
 **Application PR:** `Multiversal-app#775`  
 **Prior exact-head validation:** `36053261478`  
@@ -198,3 +198,7 @@ Repair PCV-03 in-place; do not create another multiplayer system.
 - **Old package artifact `10832224601`: preserved as historical pre-audit evidence only; do not use for completion proof.**
 - **PCV-03 remains in_progress.**
 - **PCV-04 remains unauthorized.**
+
+## Superseding preimplementation gate
+
+Owner direction on 2026-09-25 requires a deeper project/interconnectivity pass before any PCV-03 implementation. This 53-finding audit is preserved as baseline evidence but is **not sufficient to authorize implementation**. The live gate is `PCV_PREIMPLEMENTATION_INTEGRITY_PROGRAM.md` / `PCV_PREIMPLEMENTATION_GAP_REGISTER.json` with PCV-I01..PCV-I06 strict order. New findings must be added there rather than relying on this document as a closed list.

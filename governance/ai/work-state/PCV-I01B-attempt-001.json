@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "family": "PCV-PRE",
+  "lane": "gpr",
+  "track": "pcv-preimplementation-integrity",
+  "source_program": "PCV",
+  "work_item_id": "PCV-I01B",
+  "attempt_id": "PCV-I01B-attempt-001",
+  "title": "Invitation, Membership, Role, Policy & Atomicity Closure",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "blocked_by_predecessor",
+  "owner_selected": true,
+  "selected_by_owner": "2026-09-25 owner direction: fully map and preserve project work/dependencies before PCV implementation; split interstitials as needed.",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "runtime_product_implementation_authority": false,
+  "completed": false,
+  "predecessor": {
+    "work_item": "PCV-I01A",
+    "status": "not_completed"
+  },
+  "objective": "Close A3 invitation→A5 Campaign membership/role lifecycle, versioning, family-safety policy and atomic transaction semantics without parallel membership authority.",
+  "acceptance": [
+    "A3 acceptance and A5 membership creation/replay have one atomic coordinator and one membership authority.",
+    "Campaign membership lifecycle fields, role vocabulary, version/concurrency token and state transitions are complete and obtainable through public contracts.",
+    "MIB-17/SMB-14 invitation policy and recipient binding are composed without granting Campaign authority.",
+    "PCV-02 memberSubjectIds has an explicit migration/adapter disposition and cannot remain a competing authority.",
+    "Duplicate/replayed invitation acceptance and conflicting reuse are fail-closed and idempotent."
+  ],
+  "boundaries": [
+    "No Multiversal-app PCV runtime implementation is authorized.",
+    "PIM-03 must be completed_verified before PCV-I01A can receive AIOC integrity-work authority.",
+    "Later PCV-PRE and PCV-03 children remain predecessor-blocked."
+  ],
+  "strict_successor": "PCV-I01C",
+  "active_substep": "blocked_by_project_integrity_map",
+  "next_action": "Wait for PIM-03 completed_verified, then follow CURRENT. Do not start product runtime implementation.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": "blocked_by_project_integrity_map"
+  }
+}

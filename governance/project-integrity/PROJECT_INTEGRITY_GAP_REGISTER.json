@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.1.0",
+  "register_id": "PROJECT-INTEGRITY-GAPS-001",
+  "status": "completed_verified_with_scoped_children_open",
+  "purpose": "Master registry for project-history/dependency integrity gaps. Scoped implementation registers remain authoritative for their own findings.",
+  "child_registers": [
+    {
+      "register_id": "PCV-PREIMPLEMENTATION-INTEGRITY-GAPS-001",
+      "path": "governance/application-planning/product-convergence/PCV_PREIMPLEMENTATION_GAP_REGISTER.json",
+      "scope": "PCV preimplementation",
+      "known_findings": 108,
+      "status": "in_progress",
+      "authority": "scoped finding owner"
+    },
+    {
+      "register_id": "MV-PROJECT-WIRING-DEFECTS-001",
+      "path": "governance/project-archaeology/PROJECT_WIRING_DEFECT_REGISTER.json",
+      "scope": "project wiring defects",
+      "known_findings": 30,
+      "status": "reopened_candidate_specific_pcv_integrity",
+      "authority": "wiring defect evidence/routing"
+    },
+    {
+      "register_id": "MV-PROJECT-ORPHANED-INTENT-001",
+      "path": "governance/project-archaeology/PROJECT_ORPHANED_INTENT_REGISTER.json",
+      "scope": "orphaned/live intent",
+      "known_findings": 0,
+      "status": "completion_candidate",
+      "authority": "orphan-intent evidence"
+    },
+    {
+      "path": "governance/project-archaeology/PROJECT_REPAIR_ROUTING_PLAN.json",
+      "scope": "repair routes",
+      "known_findings": 8,
+      "status": "reopened_for_pcv_preimplementation_integrity",
+      "authority": "repair destination index"
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "PIM-GAP-001",
+      "title": "Work history existed across multiple inventory forms without one immutable identity registry.",
+      "status": "completed_verified",
+      "owner": "PIM-01",
+      "repair": "PROJECT_WORK_HISTORY_REGISTRY.json",
+      "blocks_pcv03": true,
+      "closed_by": "PIM-01"
+    },
+    {
+      "finding_id": "PIM-GAP-002",
+      "title": "28 work-state families did not map by exact program-id to a planning directory and required explicit lineage mapping.",
+      "status": "completed_verified",
+      "owner": "PIM-01",
+      "repair": "PROJECT_WORK_HISTORY_REGISTRY.json explicit lineage parents",
+      "blocks_pcv03": true,
+      "closed_by": "PIM-01"
+    },
+    {
+      "finding_id": "PIM-GAP-003",
+      "title": "Known non-work-state families were preserved as prose categories rather than first-class registry nodes.",
+      "status": "completed_verified",
+      "owner": "PIM-01",
+      "repair": "PROJECT_WORK_HISTORY_REGISTRY.json non_work_state_groups",
+      "blocks_pcv03": true,
+      "closed_by": "PIM-01"
+    },
+    {
+      "finding_id": "PIM-GAP-004",
+      "title": "No graph guaranteed every unique work item had a durable path through family/lineage to the wider app.",
+      "status": "completed_verified",
+      "owner": "PIM-02",
+      "repair": "PROJECT_FEATURE_FAMILY_APP_DEPENDENCY_MAP.json",
+      "blocks_pcv03": true,
+      "closed_by": "PIM-02"
+    },
+    {
+      "finding_id": "PIM-GAP-005",
+      "title": "Global archaeology wiring labels were too coarse to serve as feature-level dependency proof.",
+      "status": "routed_to_scoped_pcv_preimplementation",
+      "owner": "PIM-02/PCV-PRE",
+      "repair": "Dependency map plus scoped PCV gap register with PCV-I01A/I01B/I01C/I02..I06 ownership; candidate-specific dependencies remain open until PCV-I06.",
+      "blocks_pcv03": true,
+      "closed_by": "PIM-02 mapping layer",
+      "remaining_scope": "PCV_PREIMPLEMENTATION_GAP_REGISTER.json retains 108 detailed open findings through PCV-I01A..PCV-I06."
+    },
+    {
+      "finding_id": "PIM-GAP-006",
+      "title": "No mutation guard prohibited silent rename/delete/reclassification of recorded work identities.",
+      "status": "completed_verified",
+      "owner": "PIM-03",
+      "repair": "PROJECT_WORK_IDENTITY_IMMUTABILITY_POLICY.md + validate_project_integrity_map.py",
+      "blocks_pcv03": true,
+      "closed_by": "PIM-03"
+    },
+    {
+      "finding_id": "PIM-GAP-007",
+      "title": "Archaeology validator assumed a permanently closed wiring gate and could not represent later evidence-backed reopening.",
+      "status": "completed_verified",
+      "owner": "PIM-03",
+      "repair": "validate_project_canon_archaeology.py conditional wiring-gate validation",
+      "blocks_pcv03": true,
+      "closed_by": "PIM-03"
+    }
+  ],
+  "completion_rule": "PIM-03 may close only when repository validation proves exact inventory coverage, zero unowned structural lineage, explicit treatment of standalone historical lineages, child-gap ownership, and mutation-guard enforcement.",
+  "historical_gap_evidence": [
+    {
+      "artifact": "Multiversal_8E-008G_Source_Coverage_and_Provenance_Audit_v0.1.0.zip",
+      "sha256": "4a98058b03d3ced252f01dac3026997de2dfd0b064be6a691debb93a0c485fff",
+      "disposition": "historical source-coverage evidence; does not select current work"
+    },
+    {
+      "artifact": "PROJECT_CANON_ARCHAEOLOGY_COMPLETION_REPORT.md",
+      "disposition": "global canon reconstruction closeout; operational handoff superseded by later PIM/PCV integrity work"
+    }
+  ],
+  "closeout": {
+    "date": "2026-09-25",
+    "conclusion": "Project-level work-history/dependency preservation gaps are closed or routed. Scoped PCV implementation-integrity findings remain open by design and continue to block PCV runtime.",
+    "open_child_registers": [
+      "PCV-PREIMPLEMENTATION-INTEGRITY-GAPS-001",
+      "MV-PROJECT-WIRING-DEFECTS-001"
+    ]
+  }
+}

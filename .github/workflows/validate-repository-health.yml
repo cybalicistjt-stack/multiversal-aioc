@@ -8,6 +8,9 @@ on:
       - 'governance/ai/**'
       - 'governance/current-state/**'
       - 'governance/project-memory/**'
+      - 'governance/project-integrity/**'
+      - 'governance/project-archaeology/**'
+      - 'governance/application-planning/product-convergence/**'
       - 'governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md'
       - 'governance/application-planning/dwc-speech/**'
       - 'bridge/**'
@@ -28,6 +31,9 @@ on:
       - 'governance/ai/**'
       - 'governance/current-state/**'
       - 'governance/project-memory/**'
+      - 'governance/project-integrity/**'
+      - 'governance/project-archaeology/**'
+      - 'governance/application-planning/product-convergence/**'
       - 'governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md'
       - 'governance/application-planning/dwc-speech/**'
       - 'bridge/**'
@@ -117,6 +123,10 @@ jobs:
       - name: Validate project canon archaeology register
         run: |
           python3 scripts/validate_project_canon_archaeology.py
+
+      - name: Validate project work-history and dependency integrity
+        run: |
+          python3 scripts/validate_project_integrity_map.py
 
       - name: Run Operations V3 regressions
         shell: bash

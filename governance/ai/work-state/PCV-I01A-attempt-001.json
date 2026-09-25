@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "family": "PCV-PRE",
+  "lane": "gpr",
+  "track": "pcv-preimplementation-integrity",
+  "source_program": "PCV",
+  "work_item_id": "PCV-I01A",
+  "attempt_id": "PCV-I01A-attempt-001",
+  "title": "Identity, Authentication, Device & Recovery Contract Closure",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "in_progress",
+  "owner_selected": true,
+  "selected_by_owner": "2026-09-25 owner direction: fully map and preserve project work/dependencies before PCV implementation; split interstitials as needed.",
+  "implementation_authority": true,
+  "implementation_branch": "work/pcv-preimplementation-integrity",
+  "runtime_product_implementation_authority": false,
+  "completed": false,
+  "predecessor": {
+    "work_item": "PIM-03",
+    "status": "in_progress"
+  },
+  "objective": "Close stable-subject authentication, local proof-of-possession, device/session continuity, recovery/rebind and BRP lifecycle ownership before remote membership or transport implementation.",
+  "acceptance": [
+    "Define the production-local zero-service proof-of-possession credential and canonical A3 session establishment path.",
+    "Define stable device identity as connection/recovery context without making device identity equal subject identity.",
+    "Close BRP device-session revocation/recovery/data-rights composition.",
+    "Restore or explicitly retire A3 authentication-session assurance/device/last-validation metadata with evidence.",
+    "Reconcile PCV-01 local profile identity records with IdentityServicePort, ProviderIndependentIdentityMapping and StableSubjectSessionPort.",
+    "No remote caller can assert a subjectId/identityId pair without the canonical authentication boundary."
+  ],
+  "boundaries": [
+    "No Multiversal-app PCV runtime implementation is authorized.",
+    "PIM-03 must be completed_verified before PCV-I01A can receive AIOC integrity-work authority.",
+    "Later PCV-PRE and PCV-03 children remain predecessor-blocked."
+  ],
+  "strict_successor": "PCV-I01B",
+  "active_substep": "identity_authentication_device_recovery_contract_census",
+  "next_action": "Continue AIOC-only source-backed closure of local proof-of-possession identity, StableSubjectSession, device/session continuity and BRP recovery/revocation contracts. Update the 108-finding register and dependency map. Do not modify Multiversal-app PCV runtime.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}

@@ -1,6 +1,6 @@
 # PCV — Product Convergence & Real-App Validation
 
-**Status:** in_progress — PCV-01 and PCV-02 completed_verified; PCV-03 decomposed into bounded PCV-03A..PCV-03F work items; PCV-03A in_progress  
+**Status:** in_progress — PCV-01 and PCV-02 completed_verified; PCV-I01..PCV-I06 preimplementation integrity gate active; PCV-03A..PCV-03F blocked  
 **Lane:** gpr  
 **Owner direction:** 2026-09-23
 
@@ -71,6 +71,19 @@ The adversarial audit of application candidate `8232e52a089360939b17e58229af192a
 - **PCV-03F — Exact-Head Installed Windows/Android Certification**
 
 PCV-04 remains blocked until PCV-03F completes and the PCV-03 parent is completed_verified. Detailed candidate findings are in `PCV-03_ADVERSARIAL_CANDIDATE_AUDIT_2026-09-25.md`.
+
+### Pre-PCV-03 integrity interstitials
+
+Owner direction on 2026-09-25 inserted a mandatory preimplementation integrity series between PCV-02 and PCV-03A. The interstitials are first-class bounded work items, not prose-only notes:
+
+1. PCV-I01 — Authority, Identity, Membership & Owner-Contract Closure
+2. PCV-I02 — Data Model, Persistence, Transaction, Secret & Migration Closure
+3. PCV-I03 — Transport, Protocol, Capability & Security Contract Closure
+4. PCV-I04 — Session Event, Recovery, Idempotency, Presence & Hybrid Continuity Closure
+5. PCV-I05 — Product Context, Downstream Consumers, Mobile, Packaging & Evidence Closure
+6. PCV-I06 — Final No-Orphan / No-Parallel-Owner Readiness Certification
+
+The authoritative detail is `PCV_PREIMPLEMENTATION_INTEGRITY_PROGRAM.md`, `PCV_PREIMPLEMENTATION_INTEGRITY_BACKLOG.json`, and `PCV_PREIMPLEMENTATION_GAP_REGISTER.json`. PCV-03A receives no implementation authority until PCV-I06 closes. If another unresolved prerequisite is discovered, add/split another bounded interstitial rather than overloading a downstream tranche.
 
 ## Tranche sequence
 

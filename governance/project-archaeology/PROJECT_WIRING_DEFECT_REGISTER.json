@@ -524,13 +524,13 @@
         "installed Android player"
       ],
       "observed_binding": "Automated exact-head implementation and package validation complete.",
-      "missing_or_stale_binding": "Required separate-physical-device installed proof not yet produced.",
+      "missing_or_stale_binding": "Physical proof remains required eventually, but 103 preimplementation findings now block reuse of the old candidate/package as certification evidence.",
       "authority_source": "PCV-03-attempt-001.json",
       "implementation_evidence": "validation run 36053261478; package artifact 10832224601",
       "user_or_system_impact": "Installed two-human continuity remains unproven.",
-      "repair_destination": "PCV-03 installed physical two-device proof",
+      "repair_destination": "PCV-I01..PCV-I06 then PCV-03F",
       "validation_needed": "Export and verify PCV-03.INSTALLED-EVIDENCE.1 against exact package manifest.",
-      "status": "owned_current_work"
+      "status": "superseded_by_preimplementation_integrity"
     },
     {
       "finding_id": "WIRE-PCV03-CANDIDATE-002",
@@ -549,19 +549,43 @@
       "authority_source": "governance/application-planning/product-convergence/PCV-03_ADVERSARIAL_CANDIDATE_AUDIT_2026-09-25.md",
       "implementation_evidence": "53 blocking findings recorded; prior candidate/package retained as historical pre-audit evidence only.",
       "user_or_system_impact": "Physical proof on the old candidate could falsely certify authority/reconnect/idempotency behavior that is incomplete or spoofable.",
-      "repair_destination": "PCV-03A..PCV-03F strict order",
+      "repair_destination": "PCV-I01..PCV-I06 strict order, then PCV-03A..PCV-03F",
       "validation_needed": "Each child work item closes its bounded owner/runtime surface; PCV-03F performs strengthened exact-head installed certification.",
+      "status": "owned_by_pcv_preimplementation_integrity"
+    },
+    {
+      "finding_id": "WIRE-PCV-PRE-003",
+      "defect_class": "implicit_only_wiring",
+      "canon_entry_id": "CANON-PCV03",
+      "producer": "PCV preimplementation integrity audit",
+      "expected_consumers": [
+        "PCV-03A",
+        "PCV-03B",
+        "PCV-03C",
+        "PCV-03D",
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "observed_binding": "Project archaeology inventoried/routed global canon, but candidate-specific and predecessor cross-system wiring was not field-level complete.",
+      "missing_or_stale_binding": "103 known preimplementation findings require authority/data/transport/recovery/product/evidence disposition before runtime implementation.",
+      "authority_source": "PCV_PREIMPLEMENTATION_GAP_REGISTER.json",
+      "implementation_evidence": "PCV_PREIMPLEMENTATION_INTEGRITY_PROGRAM.md; PCV_PREIMPLEMENTATION_CONSUMER_CENSUS.json",
+      "user_or_system_impact": "Starting PCV-03 before closure risks parallel owners, unauthenticated local subjects, persistence splits, recovery loss, policy bypass and false-positive physical evidence.",
+      "repair_destination": "PCV-I01..PCV-I06 strict order",
+      "validation_needed": "PCV-I06 final fresh no-orphan/no-parallel-owner readiness certification.",
       "status": "owned_current_work"
     }
   ],
   "summary": {
-    "total": 29,
+    "total": 30,
     "partial_projection": 27,
     "test_blind_spot": 1,
     "unowned": 0,
-    "unresolved_required_bindings": 0,
+    "unresolved_required_bindings": 1,
     "silent_duplicate_owners": 0,
-    "candidate_integrity_gap": 1
+    "candidate_integrity_gap": 1,
+    "preimplementation_integrity_findings": 108,
+    "open_pcv_preimplementation_findings": 108
   },
   "rule": "A known gap with an explicit current owner and repair destination is routed work, not unresolved archaeology. Future repair completion remains governed by its owning work item."
 }
