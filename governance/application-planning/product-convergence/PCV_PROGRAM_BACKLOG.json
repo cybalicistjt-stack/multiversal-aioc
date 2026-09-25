@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "program_id": "PCV",
   "program_name": "Product Convergence & Real-App Validation",
   "status": "in_progress",
@@ -9,8 +9,8 @@
     "SMB",
     "BIP"
   ],
-  "current_item": "PCV-03",
-  "current_attempt": "PCV-03-attempt-001",
+  "current_item": "PCV-03A",
+  "current_attempt": "PCV-03A-attempt-001",
   "tranches": [
     {
       "id": "PCV-01",
@@ -44,17 +44,106 @@
       ]
     },
     {
-      "id": "PCV-03",
-      "name": "Two-Device Membership, Transport, Presence & Reconnect",
+      "id": "PCV-03A",
+      "parent_tranche": "PCV-03",
+      "name": "Canonical Identity, Invitation & Campaign Membership",
       "status": "in_progress",
-      "outcome": "A Windows host and Android client can join the same campaign/session as distinct subjects, exchange player-safe projections and commands, disconnect/reconnect without duplicate resolution, and retain membership/role continuity.",
+      "outcome": "Distinct Windows/Android users join through canonical local-first subject identity, recipient-bound A3 invitation semantics and A5 Campaign membership authority, with no parallel PCV-03 membership ledger.",
       "acceptance": [
-        "Implement the currently-placeholder session-protocol transport boundary and the minimal signaling/handshake path needed for real devices.",
-        "Preserve the canonical local-capable host-authoritative architecture: direct/manual signaling is the zero-service baseline; optional signaling/TURN/relay remains replaceable and is activated only if required for cross-location reliability.",
-        "Invitation/join, stable subject/device continuity, presence, ordered events, idempotency, resume tokens/checkpoints, authority epoch and hidden-before-publication filtering are real runtime behavior.",
-        "Android<->Windows cross-device evidence is produced from installed builds, not an in-process synthetic test.",
-        "Invitation/join, presence and reconnect remain fully usable in phone-optimized layouts; no networking/session control is desktop-only."
-      ]
+        "Bind production local profile/subject state to the canonical stable-subject session seam without making device identity or transport claims authoritative.",
+        "Implement recipient-bound, expiring, revocable, one-time/idempotent invitation acceptance through A3 semantics; raw invitation bearer material is not persisted in ordinary product documents.",
+        "Implement the local-first A5 Campaign membership adapter over durable product storage; Campaign role/state is the only membership/role authority used by PCV-03.",
+        "Support current membership states needed by PCV-03 authorization, including active/suspended/left/removed, and fail closed for unsupported role translations.",
+        "Bind accepted transport peers to the canonical subject/membership/device context so later commands/presence cannot impersonate another member.",
+        "PCV-03B+ and PCV-04 remain unauthorized until this item closes."
+      ],
+      "estimated_active_minutes": 28
+    },
+    {
+      "id": "PCV-03B",
+      "parent_tranche": "PCV-03",
+      "name": "Session Launch, Lifecycle, Persistence & Authority Epoch",
+      "status": "blocked_by_predecessor",
+      "outcome": "PCV-03 hosts one canonical A5 Session launched from an immutable validated Campaign/Scene snapshot, with durable lifecycle, close/supersession and authority-epoch behavior instead of a parallel Session shell.",
+      "acceptance": [
+        "Consume the selected PCV-02 Campaign/Scene through A5 validation, immutable launch snapshot and exactly-once launch operation semantics.",
+        "Persist and project the canonical Session shell through the approved local-first storage adapter; PCV-03 transport state references it rather than replacing it.",
+        "Enforce launched/paused/closed lifecycle on join, command, projection and resume.",
+        "Closing or superseding a Session invalidates old invitation/resume surfaces and advances continuity/authority state as required.",
+        "Preserve canonical Campaign/Session ownership with no duplicate PCV-03 authority ledger.",
+        "PCV-03C+ and PCV-04 remain unauthorized until this item closes."
+      ],
+      "estimated_active_minutes": 28
+    },
+    {
+      "id": "PCV-03C",
+      "parent_tranche": "PCV-03",
+      "name": "Secure Peer Transport, Protocol Validation & Capability Handshake",
+      "status": "blocked_by_predecessor",
+      "outcome": "The direct/manual WebRTC path is a bounded, versioned, peer-bound zero-service transport with secure secret handling and a real client-measured capability handshake.",
+      "acceptance": [
+        "Direct/manual WebRTC with no external ICE service is the first-class zero-service path; STUN/relay assistance remains optional and replaceable.",
+        "Every wire envelope has an explicit supported protocol/schema version and strict runtime validation; unknown/unsupported input fails safely.",
+        "Apply bounded message size, nesting, collection, batch and queued-work/backpressure limits.",
+        "Use approved secure storage for bearer/resume secret material; ordinary documents contain only safe references/digests.",
+        "Cryptographic secret generation fails closed when secure randomness is unavailable.",
+        "The joining client reports locally measured exact pack/rules/runtime/entitlement capability state rather than echoing host offer values.",
+        "Pre-auth signaling reveals only the minimum rendezvous material required for authorization.",
+        "PCV-03D+ and PCV-04 remain unauthorized until this item closes."
+      ],
+      "estimated_active_minutes": 30
+    },
+    {
+      "id": "PCV-03D",
+      "parent_tranche": "PCV-03",
+      "name": "Ordered Delivery, Idempotency, Checkpoint & Reconnect Recovery",
+      "status": "blocked_by_predecessor",
+      "outcome": "Commands, Events and reconnect use serialized host authority, semantic idempotency, durable cursors/checkpoints and current authorization without event loss or duplicate business effects.",
+      "acceptance": [
+        "Serialize authoritative per-Session mutations so ordered transport cannot race durable reads/writes.",
+        "Narrow PCV-03 commands to PCV-03-owned schemas and reject conflicting reuse of an idempotency key via payload fingerprint.",
+        "Use host-authoritative receipt/Event timestamps rather than client clock claims.",
+        "Separate authoritative durable stream cursor from the visible player Event list and acknowledge only state actually delivered/processed.",
+        "Consume canonical ordered delivery to detect duplicates, gaps and cross-Session input and trigger authoritative recovery.",
+        "Advance content-hashed checkpoints/replay fingerprints over Session progress.",
+        "Reconnect revalidates current identity, membership, permission and Session status; post-membership transport resume does not require issuing another Campaign invitation.",
+        "PCV-03E+ and PCV-04 remain unauthorized until this item closes."
+      ],
+      "estimated_active_minutes": 30
+    },
+    {
+      "id": "PCV-03E",
+      "parent_tranche": "PCV-03",
+      "name": "Presence, Product Context, Mobile UX & State Migration",
+      "status": "blocked_by_predecessor",
+      "outcome": "Advisory presence and remote Campaign continuity integrate into the ordinary product safely on phone/desktop, and unsafe pre-audit PCV-03 persisted state is retired/migrated without inheriting stale authority or secrets.",
+      "acceptance": [
+        "Presence is derived from the bound connection lifecycle and host time, never caller-supplied identity/authority.",
+        "Disconnect/reconnect updates advisory presence correctly while leaving membership authority separate.",
+        "Remote joined Campaign/Session continuity is represented as a role-safe local product context/cache without copying host authoritative Campaign truth into the player owner store.",
+        "Continuity keys support multiple Campaign/Session identities for one subject without collision.",
+        "Invitation/join/presence/reconnect controls pass phone-responsive, keyboard and nonvisual/accessibility checks.",
+        "Retire/quarantine pre-audit PCV-03.session.1 records and revoke old invitation/resume credentials; do not silently promote unsafe old records into the repaired authority model.",
+        "Strip or route unrelated presentation/skin changes out of the PCV-03 authority candidate.",
+        "PCV-03F and PCV-04 remain unauthorized until this item closes."
+      ],
+      "estimated_active_minutes": 26
+    },
+    {
+      "id": "PCV-03F",
+      "parent_tranche": "PCV-03",
+      "name": "Exact-Head Installed Windows/Android Certification",
+      "status": "blocked_by_predecessor",
+      "outcome": "A repaired exact-head Windows host and Android player pass automated predecessor regressions, package identity verification and causal physical-device evidence for join, authority, idempotency, hidden projection and reconnect.",
+      "acceptance": [
+        "Run focused A3/A5/P9/SMB/VTI predecessor regressions plus PCV-03 negative/security/recovery tests and exact-head build/native checks.",
+        "Regenerate Windows and Android packages only from the repaired exact candidate head and bind the manifest to exact artifact hashes.",
+        "Installed evidence records causal receipts for distinct subject/device join, authoritative command, duplicate retry, disconnect, resume, ordered/gap-safe player delivery and hidden-before-publication filtering.",
+        "A second ordinary join cannot satisfy reconnect evidence and a single command cannot satisfy duplicate-idempotency evidence.",
+        "Device-side evidence binds installed Windows/Android runtime/package identity to the exact package artifact rather than relying only on self-reported wire metadata.",
+        "The physical Windows↔Android proof passes the strengthened verifier; only then may PCV-03 parent be considered completed_verified and PCV-04 become eligible."
+      ],
+      "estimated_active_minutes": 24
     },
     {
       "id": "PCV-04",
@@ -159,7 +248,12 @@
   "strict_order": [
     "PCV-01",
     "PCV-02",
-    "PCV-03",
+    "PCV-03A",
+    "PCV-03B",
+    "PCV-03C",
+    "PCV-03D",
+    "PCV-03E",
+    "PCV-03F",
     "PCV-04",
     "PCV-05",
     "PCV-06",
@@ -168,9 +262,9 @@
     "PCV-09",
     "PCV-10"
   ],
-  "next_item": "PCV-03",
+  "next_item": "PCV-03A",
   "completion_rule": "PCV completes only when PCV-10 proves a fresh-installed Android and Windows pair can run a real two-human Multiversal campaign using persisted governed state and representative current feature breadth. Contract-only, fixture-only, golden-data-only, isolated-workbench-only, screenshot-only, or in-process-only proof is insufficient.",
-  "next_action": "Execute PCV-03 two-device membership/transport/presence/reconnect. PCV-04 remains blocked.",
+  "next_action": "Execute PCV-03A canonical identity/invitation/Campaign-membership repair. PCV-03B..03F and PCV-04 remain blocked by predecessor.",
   "approved_cross_tranche_requirements": [
     {
       "id": "PCV-GW-01",
@@ -206,5 +300,21 @@
       "version": "1.0.0",
       "scope_note": "Applies equally to player, GM and creator capabilities. Larger desktop screens may show more simultaneous panes, but capability availability, authority, persistence and actions must not differ by form factor."
     }
-  ]
+  ],
+  "parent_tranche_rules": {
+    "PCV-03": {
+      "status": "decomposed_in_progress",
+      "reason": "2026-09-25 adversarial exact-candidate audit found PCV-03 combined too many authority/runtime/proof concerns for one bounded OPS3 execution unit.",
+      "audit": "governance/application-planning/product-convergence/PCV-03_ADVERSARIAL_CANDIDATE_AUDIT_2026-09-25.md",
+      "children": [
+        "PCV-03A",
+        "PCV-03B",
+        "PCV-03C",
+        "PCV-03D",
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "completion_rule": "PCV-03 parent is completed_verified only when PCV-03A through PCV-03F are completed_verified in strict order."
+    }
+  }
 }
