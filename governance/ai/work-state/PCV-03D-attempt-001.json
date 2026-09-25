@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.2.0",
+  "control_plane": "OPS3",
+  "family": "PCV",
+  "lane": "gpr",
+  "track": "product-convergence-real-app-validation",
+  "source_program": "PCV",
+  "parent_tranche": "PCV-03",
+  "work_item_id": "PCV-03D",
+  "attempt_id": "PCV-03D-attempt-001",
+  "title": "Ordered Delivery, Idempotency, Checkpoint & Reconnect Recovery",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "selected_by_owner": "Strict successor after owner-approved PCV-03 decomposition and PCV-03C completed_verified closeout.",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "predecessor": {
+    "work_item": "PCV-03C",
+    "status": "completed_verified",
+    "application_merge_sha": "45642c7578716622c9d486988732beac787cdb9d",
+    "validation_run": 36165487078
+  },
+  "decomposition_source": {
+    "superseded_attempt": "PCV-03-attempt-001",
+    "audit": "governance/application-planning/product-convergence/PCV-03_ADVERSARIAL_CANDIDATE_AUDIT_2026-09-25.md",
+    "readiness_contract": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json"
+  },
+  "objective": "Commands, Events and reconnect use serialized host authority, semantic idempotency, durable cursors/checkpoints and current authorization without event loss or duplicate business effects.",
+  "acceptance": [
+    "Serialize authoritative per-Session mutations so ordered transport cannot race durable reads/writes.",
+    "Narrow PCV-03 commands to PCV-03-owned schemas and reject conflicting reuse of an idempotency key via payload fingerprint.",
+    "Use host-authoritative receipt/Event timestamps rather than client clock claims.",
+    "Separate authoritative durable stream cursor from the visible player Event list and acknowledge only state actually delivered/processed.",
+    "Consume canonical ordered delivery to detect duplicates, gaps and cross-Session input and trigger authoritative recovery.",
+    "Advance content-hashed checkpoints/replay fingerprints over Session progress.",
+    "Reconnect revalidates current identity, membership, permission and Session status; post-membership transport resume does not require issuing another Campaign invitation.",
+    "PCV-03E+ and PCV-04 remain unauthorized until this item closes."
+  ],
+  "boundaries": [
+    "Preserve PCV-03A canonical A3 identity/invitation and A5 Campaign membership authority, PCV-03B canonical A5 Session lifecycle/authority-epoch state, and PCV-03C peer-bound transport/protocol/capability surfaces; ordered delivery/recovery consumes them rather than replacing them.",
+    "Implement only PCV-03-owned serialized Session-continuity commands, idempotent durable Events/outbox delivery, viewer-safe cursors/ACKs, checkpoints/replay fingerprints and reconnect recovery.",
+    "Use one canonical Session history and current authority epoch; transport ordering, client timestamps, role claims and connection state never become authoritative truth.",
+    "Reconnect must revalidate current identity/device, membership, permissions, entitlement, Session lifecycle and epoch; an already-authorized member does not require a new Campaign invitation merely to replace transport.",
+    "Do not add a generic gameplay command escape hatch; gameplay/action/combat authority remains PCV-04+.",
+    "Do not implement PCV-03E presence UX, PCV-03F installed packaging/certification, or PCV-04 gameplay.",
+    "Use milestone-level OPS3 state only; no activity-journal instrumentation."
+  ],
+  "validation_profile": {
+    "title": "Ordered Delivery, Idempotency, Checkpoint & Reconnect Recovery",
+    "materialize_in_application_as": "governance/application-planning/validation-core/profiles/PCV-03D.json",
+    "required_gates": [
+      "workspace/typecheck",
+      "I04 semantic idempotency/payload-fingerprint and host-time regression",
+      "serialized per-Session transaction/outbox regression",
+      "ordered delivery duplicate/gap/cross-Session negative corpus",
+      "hidden-safe viewer projection cursor/ACK regression",
+      "checkpoint digest/replay fingerprint recovery regression",
+      "current-authorization reconnect/resume-rotation regression",
+      "PCV-03B Session lifecycle/authority-epoch regression",
+      "PCV-03C peer transport/protocol/capability regression"
+    ],
+    "forbidden_scope": [
+      "generic gameplay command escape hatch",
+      "presence UX",
+      "installed packaging"
+    ]
+  },
+  "active_substep": "selected_not_started",
+  "strict_successor": "PCV-03E",
+  "next_action": "Await the next owner Continue. Then start PCV-03D from a fresh child-specific branch based on current Multiversal-app main 45642c7578716622c9d486988732beac787cdb9d and materialize only the bounded PCV-03D validation profile.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": "selected_not_started"
+  },
+  "audit_required_at_closeout": "PCV-03D must prove one serialized authoritative Session history, semantic idempotency with payload-fingerprint conflict rejection, hidden-safe viewer recovery cursors, current-authorization reconnect, no duplicate Session/Event ledger, no generic gameplay command escape hatch, and no PCV-03E/03F activation before selecting PCV-03E.",
+  "selection_basis": {
+    "kind": "strict_successor_after_pcv03c_completed_verified",
+    "predecessor_validation_run": 36165487078,
+    "predecessor_application_merge": "45642c7578716622c9d486988732beac787cdb9d",
+    "branch_rule": "Create a fresh child-specific branch from current Multiversal-app main at execution start; do not reuse PCV-03C or the historical monolithic PCV-03 branch."
+  }
+}
