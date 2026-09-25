@@ -9,7 +9,7 @@
   "attempt_id": "PCV-I01A-attempt-001",
   "title": "Identity, Authentication, Device & Recovery Contract Closure",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "in_progress",
+  "status": "completion_candidate",
   "owner_selected": true,
   "selected_by_owner": "2026-09-25 owner direction: fully map and preserve project work/dependencies before PCV implementation; split interstitials as needed.",
   "implementation_authority": true,
@@ -35,16 +35,21 @@
     "Later PCV-PRE and PCV-03 children remain predecessor-blocked."
   ],
   "strict_successor": "PCV-I01B",
-  "active_substep": "identity_authentication_device_recovery_contract_census",
-  "next_action": "Continue AIOC-only source-backed closure of local proof-of-possession identity, StableSubjectSession, device/session continuity and BRP recovery/revocation contracts. Update the 108-finding register and dependency map. Do not modify Multiversal-app PCV runtime.",
+  "active_substep": "exact_candidate_validation",
+  "next_action": "Validate the exact AIOC candidate containing the source-backed identity/authentication/device/recovery contract and 11 finding bindings. Do not modify Multiversal-app runtime.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "active_stall": false,
     "terminal_response_allowed": false,
-    "stop_reason": null
+    "stop_reason": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "contract_closure_candidate",
+      "evidence": "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json closes the 11 PCV-I01A preimplementation findings at contract level while preserving PCV-03A runtime work."
+    }
   }
 }

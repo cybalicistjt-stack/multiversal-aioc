@@ -19,6 +19,7 @@ pcv_pre=load(P/"PCV_PREIMPLEMENTATION_INTEGRITY_BACKLOG.json")
 pcv_i01a=load(ROOT/"governance"/"ai"/"work-state"/"PCV-I01A-attempt-001.json")
 pim03=load(ROOT/"governance"/"ai"/"work-state"/"PIM-03-attempt-001.json")
 roadmap=load(ROOT/"governance"/"application-planning"/"ROADMAP_DEPENDENCY_GRAPH.json")
+i01a_contract=load(P/"PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json")
 assert reg["status"] in {"completion_candidate","completed_verified"}
 assert dep["status"] in {"completion_candidate","completed_verified"}
 assert reg["mutation_policy"]["identity_fields_immutable"] is True
@@ -115,4 +116,32 @@ assert "BIP" in roadmap["program_edges"]["PCV"]["hard_requires"]
 assert "PCV-02" in roadmap["program_edges"]["PIM"]["start_requires"]
 assert "PIM-03" in roadmap["milestone_gates"]["PCV"]["PCV-I01A"]
 assert "PCV-I06" in roadmap["milestone_gates"]["PCV"]["PCV-03A"]
+i01a_ids={"PCV-PRE-004","PCV-PRE-006","PCV-PRE-015","PCV-PRE-057","PCV-PRE-058","PCV-PRE-059","PCV-PRE-060","PCV-PRE-061","PCV-PRE-101","PCV-PRE-104","PCV-PRE-105"}
+assert i01a_contract["work_item_id"]=="PCV-I01A"
+assert i01a_contract["status"] in {"completion_candidate","completed_verified"}
+assert set(i01a_contract["gap_closure"])==i01a_ids
+assert i01a_contract["runtime_boundary"]["runtime_product_implementation_authorized"] is False
+assert i01a_contract["local_proof_of_possession"]["challenge"]["minimum_entropy_bits"]>=128
+assert i01a_contract["local_proof_of_possession"]["challenge"]["single_use"] is True
+assert i01a_contract["peer_identity_binding"]["no_authority_bleed"] is True
+assert i01a_contract["continuity_identity"]["canonical_scope_key"]==["subjectId","campaignId","sessionId"]
+assert i01a_contract["continuity_identity"]["device_slot_key"]==["subjectId","campaignId","sessionId","deviceId"]
+i01a_findings={x["finding_id"]:x for x in pcv["findings"] if x["finding_id"] in i01a_ids}
+assert set(i01a_findings)==i01a_ids
+for finding in i01a_findings.values():
+    assert finding["primary_interstitial"]=="PCV-I01A"
+    assert finding.get("candidate_closure_artifact")=="governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json"
+    if i01a_contract["status"]=="completion_candidate":
+        assert finding["disposition"]=="open_preimplementation"
+    else:
+        assert finding["disposition"]=="closed_preimplementation_contract"
+        assert finding["blocks_pcv03_implementation"] is False
+required_i01a_edges={
+ ("PLAN::stage-a-a3","WORK::PCV-I01A"),
+ ("WORK::BRP-02","WORK::PCV-I01A"),
+ ("WORK::SMB-01","WORK::PCV-I01A"),
+ ("WORK::SMB-02","WORK::PCV-I01A"),
+}
+actual_i01a_edges={(e["from"],e["to"]) for e in dep["edges"] if e["edge_type"]=="documented_downstream_consumer"}
+assert required_i01a_edges <= actual_i01a_edges
 print(json.dumps({"status":"PASS","planning_groups":83,"work_state_families":73,"unique_work_items":662,"attempt_files":667,"canon_nodes":71,"capability_rows":56,"map_nodes":dep["counts"]["nodes"],"map_edges":dep["counts"]["edges"],"master_integrity_findings":len(gaps["findings"]),"pcv_child_findings":pcv["finding_count"]},sort_keys=True))
