@@ -81,7 +81,7 @@
     {
       "id": "PCV-I03",
       "name": "Transport, Protocol, Capability & Security Contract Closure",
-      "status": "selected_not_started",
+      "status": "in_progress",
       "objective": "Freeze the safe zero-service transport/handshake contract before code: inference-safe signaling, peer binding, versioned/bounded envelopes, policy/timeouts, exact capability/entitlement negotiation and replaceable assisted networking.",
       "acceptance": [
         "Define pre-auth and post-auth signaling fields, recipient binding and no-log sensitive token handling.",
@@ -90,7 +90,8 @@
         "Resolve exact pack/rules/runtime/entitlement handshake sources from locally measured client state.",
         "Keep manual/no-service ICE as baseline and assisted STUN/TURN/relay as replaceable optional adapters.",
         "Record governed invitation/connection timeout policy and future Android local-network permission trigger."
-      ]
+      ],
+      "closure_contract": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json"
     },
     {
       "id": "PCV-I04",
@@ -137,7 +138,7 @@
     }
   ],
   "completion_rule": "PCV-PRE completes only when PCV-I01A, PCV-I01B, PCV-I01C, PCV-I02..PCV-I06 complete in strict order and PCV-I06 certifies zero unowned/unresolved PCV-03 prerequisites.",
-  "next_action": "PCV-I03 is selected_not_started. Start only on a later owner Continue; all Multiversal-app PCV runtime remains blocked through PCV-I06.",
+  "next_action": "PCV-I03 exact candidate validation is active. PCV-I04 and all Multiversal-app PCV runtime remain predecessor-blocked.",
   "prerequisite": {
     "work_item": "PIM-03",
     "status": "completed_verified",
