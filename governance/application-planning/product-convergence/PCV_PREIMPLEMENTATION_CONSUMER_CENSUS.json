@@ -93,6 +93,11 @@
       "id": "BIP",
       "role": "installed Windows/Android package identity",
       "pre_pcv_requirement": "retain exact-head packaging boundary; no packaging during preflight"
+    },
+    {
+      "id": "GPR-12",
+      "role": "gameplay-instance multiplayer/replay/persistence/recovery continuity consumer",
+      "pre_pcv_requirement": "consume canonical owner/session command, Event, checkpoint and recovery seams; GPR-12 explicitly creates no owner-domain persistence, mutation receipt, Session identity or second recovery/idempotency ledger"
     }
   ],
   "i05_classification_contract": "governance/application-planning/product-convergence/PCV-I05_PRODUCT_CONTEXT_DOWNSTREAM_MOBILE_PACKAGING_EVIDENCE_CONTRACT_v1.0.0.json",
@@ -102,5 +107,41 @@
     "validated_candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
     "validation_run_id": 36142961432,
     "conclusion": "success"
+  },
+  "i06_fresh_sweep": {
+    "status": "completion_candidate_prevalidation",
+    "repositories": {
+      "cybalicistjt-stack/multiversal-aioc": "main @ 9ddf88ae0cea9529af63c70521c8882d73ea1fb7 plus PCV-I06 candidate branch",
+      "cybalicistjt-stack/Multiversal-app": "main @ 28666001be412925e8d148bf47e8c6a9d9f11e93"
+    },
+    "search_terms": [
+      "identity",
+      "membership",
+      "Session",
+      "transport",
+      "recovery",
+      "device",
+      "security",
+      "packaging"
+    ],
+    "newly_explicit_classifications": [
+      {
+        "id": "GPR-12",
+        "classification": "downstream gameplay-instance continuity consumer",
+        "authority": "MIB-03/owner-domain and canonical Session seams remain authoritative; no PCV prerequisite owner added"
+      },
+      {
+        "id": "GATX-T07-REMOTE",
+        "classification": "historical/synthetic Internal Alpha transport adapter",
+        "authority": "explicitly consumes P9-06 authoritative Session foundations; synthetic-test access keys and remote-test transport do not become production identity, membership, Session or transport authority"
+      },
+      {
+        "id": "packages/session-protocol",
+        "classification": "structural placeholder on application main",
+        "authority": "README explicitly contains no implementation or feature logic; future PCV-03C may implement the portable protocol package under the I03 contract"
+      }
+    ],
+    "result": "no_uncatalogued_required_pcv03_dependency",
+    "rule": "Search hits are dependencies only when they own or invalidate a required PCV-03 contract. Historical adapters, structural placeholders and downstream consumers are classified explicitly rather than promoted to authority."
   }
 }

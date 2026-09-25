@@ -126,7 +126,7 @@
     {
       "id": "PCV-I06",
       "name": "Final No-Orphan / No-Parallel-Owner Readiness Certification",
-      "status": "selected_not_started",
+      "status": "in_progress",
       "objective": "Perform a fresh adversarial sweep over the completed interstitial artifacts and current repositories; allow PCV-03A to start only when all required owner/dependency/consumer/validation bindings are explicit and no unresolved implementation prerequisite remains.",
       "acceptance": [
         "Every gap register item is closed, explicitly routed to a bounded PCV-03 child, or explicitly deferred outside PCV with owner/rationale; no unowned/indeterminate blocker remains.",
@@ -136,11 +136,13 @@
         "Application packaging remains disabled until PCV-03F.",
         "A final fresh repository search for identity/membership/Session/transport/recovery/device/security/packaging consumers yields no uncatalogued required PCV dependency.",
         "Only then may CURRENT select PCV-03A and grant implementation authority."
-      ]
+      ],
+      "closure_contract": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json",
+      "candidate_state": "completion_candidate_prevalidation"
     }
   ],
   "completion_rule": "PCV-PRE completes only when PCV-I01A, PCV-I01B, PCV-I01C, PCV-I02..PCV-I06 complete in strict order and PCV-I06 certifies zero unowned/unresolved PCV-03 prerequisites.",
-  "next_action": "PCV-I06 is selected_not_started. Start only on a later owner Continue; Multiversal-app PCV runtime remains blocked until I06 final readiness certification explicitly clears PCV-03A.",
+  "next_action": "Validate the PCV-I06 final readiness certification candidate; PCV-03A remains blocked until exact-head GREEN publication and closeout.",
   "prerequisite": {
     "work_item": "PIM-03",
     "status": "completed_verified",

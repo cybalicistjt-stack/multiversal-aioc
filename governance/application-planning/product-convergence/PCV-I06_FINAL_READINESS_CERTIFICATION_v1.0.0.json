@@ -1,0 +1,497 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "PCV-I06.FINAL_READINESS_CERTIFICATION.v1",
+  "status": "completion_candidate",
+  "work_item_id": "PCV-I06",
+  "purpose": "Certify that PCV-03A may be selected only after all preimplementation owner, dependency, consumer, persistence, secret, migration, validation and packaging prerequisites are explicit and non-overlapping.",
+  "audited_repository_heads": {
+    "aioc_main_at_start": "9ddf88ae0cea9529af63c70521c8882d73ea1fb7",
+    "multiversal_app_main": "28666001be412925e8d148bf47e8c6a9d9f11e93",
+    "stale_monolithic_pr": {
+      "repository": "cybalicistjt-stack/Multiversal-app",
+      "pr_number": 775,
+      "state": "closed_unmerged",
+      "observed_closed_head": "5e08f454bf734e2bd0d50e897e9d2d039e2bd01f",
+      "historical_exact_candidate": "8232e52a089360939b17e58229af192a283b3a53",
+      "historical_package_artifact_id": 10832224601,
+      "rule": "Historical evidence only. Neither branch, candidate head nor package artifact may be reused as the PCV-03A candidate or completion evidence."
+    }
+  },
+  "predecessor_contracts": [
+    "PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
+    "PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
+    "PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
+    "PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json",
+    "PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
+    "PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
+    "PCV-I05_PRODUCT_CONTEXT_DOWNSTREAM_MOBILE_PACKAGING_EVIDENCE_CONTRACT_v1.0.0.json"
+  ],
+  "authority_matrix": {
+    "subject_identity": "A3 identity-device / IdentityServicePort / ProviderIndependentIdentityMapping / StableSubjectSessionPort",
+    "campaign_invitation": "A3 InvitationPort composed with A5 Campaign membership acceptance",
+    "campaign_membership_role": "A5 CampaignMembershipAndInvitationPort and CampaignRecord ownerSubjectId; PCV-02 memberSubjectIds is derived compatibility only",
+    "session_identity_launch_lifecycle": "A5 LaunchSessionPort / SessionRepositoryPort / immutable launch snapshot",
+    "authoritative_command_event_checkpoint": "P9 Session contracts and MIB-03 owner-domain retry/version primitives",
+    "deployment_profile": "SMB-01 provider-neutral service ports; local installed host and future managed service are profiles over one owner model",
+    "remote_presence_reconnect": "SMB-02 consumes canonical identity/membership/Session state; presence is advisory and connection-derived",
+    "family_safety_security": "MIB-17 / SMB-14 policy plus PCV-I03 transport security; none grant Campaign or Session authority",
+    "downstream_gameplay_continuity": "GPR-12 consumes canonical Session/owner receipts for gameplay-instance continuity and explicitly creates no second persistence/recovery/idempotency authority",
+    "interoperability": "VTI is an authorized adapter consumer; it does not own Session truth",
+    "installed_package_identity": "BIP package builder + BRP update/lifecycle boundaries + PCV-I05 exact-head package/device receipt contract",
+    "transport": "PCV-03C may implement the approved direct/manual WebRTC and protocol adapter only; transport metadata never becomes identity, membership, Session or gameplay authority"
+  },
+  "field_level_wiring_matrix": [
+    {
+      "field": "subjectId",
+      "owner": "A3 StableSubjectSession / identity-device",
+      "first_child": "PCV-03A",
+      "consumers": [
+        "PCV-03A",
+        "PCV-03D",
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "negative_regression": "caller-supplied subjectId cannot establish authority without current proof/session binding"
+    },
+    {
+      "field": "identityId",
+      "owner": "IdentityServicePort + ProviderIndependentIdentityMapping",
+      "first_child": "PCV-03A",
+      "consumers": [
+        "PCV-03A",
+        "PCV-03E"
+      ],
+      "negative_regression": "profile strings cannot mint a parallel production identity"
+    },
+    {
+      "field": "deviceId",
+      "owner": "A3 device binding; SMB-02 uses device only as connection/recovery context",
+      "first_child": "PCV-03A",
+      "consumers": [
+        "PCV-03A",
+        "PCV-03C",
+        "PCV-03D",
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "negative_regression": "device identity is never subject, membership or role authority"
+    },
+    {
+      "field": "invitationId / invitation secret reference",
+      "owner": "A3 InvitationPort + I01B atomic coordinator",
+      "first_child": "PCV-03A",
+      "consumers": [
+        "PCV-03A"
+      ],
+      "negative_regression": "raw invitation bearer material is never persisted in ordinary product documents; replay/conflicting reuse fails closed"
+    },
+    {
+      "field": "membershipId / role / lifecycle / version",
+      "owner": "A5 Campaign membership authority",
+      "first_child": "PCV-03A",
+      "consumers": [
+        "PCV-03A",
+        "PCV-03B",
+        "PCV-03D",
+        "PCV-03E"
+      ],
+      "negative_regression": "PCV-02 memberSubjectIds cannot be a write authority and unsupported role translation fails closed"
+    },
+    {
+      "field": "campaign ownerSubjectId",
+      "owner": "CampaignRecord",
+      "first_child": "PCV-03A",
+      "consumers": [
+        "PCV-03A",
+        "PCV-03B"
+      ],
+      "negative_regression": "Campaign ownership is not fabricated as an invitation-created membership role"
+    },
+    {
+      "field": "entitlement decision/reference",
+      "owner": "SMB-01 EntitlementPort / local entitlement evaluation",
+      "first_child": "PCV-03A",
+      "consumers": [
+        "PCV-03A",
+        "PCV-03C",
+        "PCV-03D"
+      ],
+      "negative_regression": "transport or peer claims cannot self-authorize entitlement"
+    },
+    {
+      "field": "sessionId",
+      "owner": "A5 canonical Session",
+      "first_child": "PCV-03B",
+      "consumers": [
+        "PCV-03B",
+        "PCV-03C",
+        "PCV-03D",
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "negative_regression": "PCV runtime objects cannot mint a second Session identity"
+    },
+    {
+      "field": "launchSnapshotId / launch revision",
+      "owner": "A5 LaunchSessionPort / immutable launch snapshot",
+      "first_child": "PCV-03B",
+      "consumers": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "negative_regression": "transport state cannot replace the validated Campaign/Scene launch snapshot"
+    },
+    {
+      "field": "authorityEpoch / Session revision",
+      "owner": "A5/P9 under I01C authority-profile composition",
+      "first_child": "PCV-03B",
+      "consumers": [
+        "PCV-03B",
+        "PCV-03D"
+      ],
+      "negative_regression": "stale executor/epoch cannot accept authoritative mutation"
+    },
+    {
+      "field": "commandId",
+      "owner": "P9 authoritative Session command seam",
+      "first_child": "PCV-03D",
+      "consumers": [
+        "PCV-03D",
+        "GPR-12"
+      ],
+      "negative_regression": "duplicate/cross-Session command identity is rejected without duplicate business effect"
+    },
+    {
+      "field": "idempotencyKey + payload fingerprint",
+      "owner": "P9/MIB-03 under I04 semantics",
+      "first_child": "PCV-03D",
+      "consumers": [
+        "PCV-03D",
+        "GPR-12"
+      ],
+      "negative_regression": "same idempotency key with conflicting payload fails closed"
+    },
+    {
+      "field": "authoritative Event sequence",
+      "owner": "P9 ordered durable Event stream",
+      "first_child": "PCV-03D",
+      "consumers": [
+        "PCV-03D",
+        "APW",
+        "GPR-12",
+        "VTI"
+      ],
+      "negative_regression": "gaps/duplicates cannot be hidden by player projection filtering"
+    },
+    {
+      "field": "checkpointDigest / replay fingerprint / recovery cursor",
+      "owner": "P9 checkpoint/reconnect + MIB-03 recovery semantics",
+      "first_child": "PCV-03D",
+      "consumers": [
+        "PCV-03D",
+        "APW",
+        "GPR-12",
+        "PCV-03F"
+      ],
+      "negative_regression": "self-reported or untrusted checkpoint digest cannot certify recovery"
+    },
+    {
+      "field": "resume/bearer secret",
+      "owner": "I02 SecretStorePort; ordinary records hold opaque handles/digests only",
+      "first_child": "PCV-03C",
+      "consumers": [
+        "PCV-03C",
+        "PCV-03D",
+        "PCV-03E"
+      ],
+      "negative_regression": "no plaintext fallback, diagnostics/telemetry leakage or legacy-token promotion"
+    },
+    {
+      "field": "protocol/schema version + pack/rules/runtime/entitlement capability state",
+      "owner": "I03 transport/protocol/capability contract measured from local client state",
+      "first_child": "PCV-03C",
+      "consumers": [
+        "PCV-03C",
+        "PCV-03D"
+      ],
+      "negative_regression": "unknown versions, oversized input and host-echoed client capability claims fail closed"
+    },
+    {
+      "field": "presence",
+      "owner": "SMB-02 advisory connection-derived projection",
+      "first_child": "PCV-03E",
+      "consumers": [
+        "PCV-03E"
+      ],
+      "negative_regression": "caller-supplied presence cannot create identity, membership or authority"
+    },
+    {
+      "field": "selected product Campaign/Session context",
+      "owner": "A3 authorized context + PCV-01/02 role-safe local projection",
+      "first_child": "PCV-03E",
+      "consumers": [
+        "PCV-03E"
+      ],
+      "negative_regression": "remote host truth is not copied into a player owner store as canonical Campaign state"
+    },
+    {
+      "field": "hidden-information projection scope",
+      "owner": "P9 authorization/filtering with VTI as adapter consumer",
+      "first_child": "PCV-03C",
+      "consumers": [
+        "PCV-03C",
+        "PCV-03D",
+        "PCV-03F"
+      ],
+      "negative_regression": "hidden data never appears in wire payloads, replay lists, counts, diagnostics or exports before authorization"
+    },
+    {
+      "field": "sourceHead / package manifest digest / installer or APK hash",
+      "owner": "BIP + PCV-I05 installed-package identity",
+      "first_child": "PCV-03F",
+      "consumers": [
+        "PCV-03F"
+      ],
+      "negative_regression": "sourceHead or peer JSON alone cannot prove installed binary identity"
+    },
+    {
+      "field": "installed device challenge receipt",
+      "owner": "PCV-I05 evidence contract over A3 non-exportable device credential",
+      "first_child": "PCV-03F",
+      "consumers": [
+        "PCV-03F"
+      ],
+      "negative_regression": "second ordinary join cannot satisfy reconnect proof and one command cannot satisfy duplicate-idempotency proof"
+    }
+  ],
+  "child_validation_profiles": {
+    "PCV-03A": {
+      "title": "Canonical Identity, Invitation & Campaign Membership",
+      "materialize_in_application_as": "governance/application-planning/validation-core/profiles/PCV-03A.json",
+      "required_gates": [
+        "workspace/typecheck",
+        "A3 stable-subject/authentication regression",
+        "A3 invitation lifecycle and secret-leak negative tests",
+        "A5 Campaign membership/role/version regression",
+        "PCV-02 membership projection migration regression",
+        "MIB-17/SMB-14 invitation policy negative regression",
+        "peer subject/membership/device binding negative tests"
+      ],
+      "forbidden_scope": [
+        "Session lifecycle implementation beyond fail-closed interfaces",
+        "transport implementation",
+        "packaging"
+      ]
+    },
+    "PCV-03B": {
+      "title": "Session Launch, Lifecycle, Persistence & Authority Epoch",
+      "materialize_in_application_as": "governance/application-planning/validation-core/profiles/PCV-03B.json",
+      "required_gates": [
+        "workspace/typecheck",
+        "A5 launch snapshot/Session repository regression",
+        "P9 Session persistence/authorization regression",
+        "SMB-01 local-host authority-profile regression",
+        "PCV-02 Campaign/Scene launch compatibility",
+        "stale/closed/superseded Session negative tests",
+        "authority-epoch split-brain negative tests"
+      ],
+      "forbidden_scope": [
+        "wire transport",
+        "presence UX",
+        "packaging"
+      ]
+    },
+    "PCV-03C": {
+      "title": "Secure Peer Transport, Protocol Validation & Capability Handshake",
+      "materialize_in_application_as": "governance/application-planning/validation-core/profiles/PCV-03C.json",
+      "required_gates": [
+        "workspace/typecheck",
+        "I03 protocol/schema strict-decoder regression",
+        "bounded message/backpressure negative corpus",
+        "I02 SecretStorePort no-plaintext regression",
+        "SMB-02 peer binding regression",
+        "local measured pack/rules/runtime/entitlement handshake regression",
+        "hidden-information pre-auth minimization"
+      ],
+      "forbidden_scope": [
+        "generic gameplay command escape hatch",
+        "installed packaging"
+      ]
+    },
+    "PCV-03D": {
+      "title": "Ordered Delivery, Idempotency, Checkpoint & Reconnect Recovery",
+      "materialize_in_application_as": "governance/application-planning/validation-core/profiles/PCV-03D.json",
+      "required_gates": [
+        "workspace/typecheck",
+        "P9 authoritative command/Event ordering regression",
+        "semantic idempotency conflicting-reuse negative tests",
+        "I04 checkpoint/reconnect/recovery regression",
+        "APW one-history compatibility",
+        "GPR-12 gameplay-instance continuity compatibility",
+        "authorization revalidation on reconnect",
+        "hidden-event cursor/gap regression"
+      ],
+      "forbidden_scope": [
+        "new owner-domain ledger",
+        "packaging"
+      ]
+    },
+    "PCV-03E": {
+      "title": "Presence, Product Context, Mobile UX & State Migration",
+      "materialize_in_application_as": "governance/application-planning/validation-core/profiles/PCV-03E.json",
+      "required_gates": [
+        "workspace/typecheck",
+        "SMB-02 advisory presence negative regression",
+        "A3/PCV-01/02 product-context cache partition regression",
+        "BRP-02 recovery/data-rights compatibility",
+        "I02 legacy PCV-03.session.1 quarantine/revocation migration regression",
+        "phone-responsive/keyboard/nonvisual accessibility regression",
+        "multi-Campaign/Session continuity-key collision regression"
+      ],
+      "forbidden_scope": [
+        "presentation/skin authority changes",
+        "installed packaging"
+      ]
+    },
+    "PCV-03F": {
+      "title": "Exact-Head Installed Windows/Android Certification",
+      "materialize_in_application_as": "governance/application-planning/validation-core/profiles/PCV-03F.json",
+      "required_gates": [
+        "full bounded PCV-03A..03E regressions",
+        "focused A3/A5/P9/SMB/VTI predecessor regressions",
+        "exact-head production/native build",
+        "BIP package identity/manifest verification",
+        "Windows and Android artifact/device hash/signing identity checks",
+        "distinct-device causal join/command/duplicate/disconnect/resume/gap-safe-delivery/hidden-projection evidence",
+        "strengthened installed-evidence verifier"
+      ],
+      "packaging_authority": true,
+      "forbidden_scope": [
+        "public/store release",
+        "paid provider activation",
+        "production credential activation"
+      ]
+    }
+  },
+  "validation_activation_rule": {
+    "stale_monolithic_profile": "Any PCV-03.json profile from PR #775 is historical-only and may not be copied or activated.",
+    "branch_rule": "Each PCV-03 child starts from fresh current Multiversal-app main on a newly created child-specific branch; the old work/pcv-03-two-device branch is never rebased/reused.",
+    "one_profile_rule": "The selected child materializes and changes exactly one active-family profile matching its work-item ID; substantive application changes must not fall back to another child or monolithic profile.",
+    "negative_regression_rule": "A child profile owns only regressions for contracts it can invalidate plus explicitly named direct predecessor seams; historical family suites remain inert unless listed.",
+    "cross_platform_rule": "Each implementation child remains subject to the application Validation Core exact-head Linux/Windows gate and deterministic comparison where its materialized profile requires it."
+  },
+  "packaging_gate": {
+    "application_main_observation": "Multiversal-app main 28666001be412925e8d148bf47e8c6a9d9f11e93 has no package-pcv03 workflow; the package workflow exists only on the closed stale PR #775 branch.",
+    "pcv_03a_through_03e": "Packaging workflow creation, package label activation, installer/APK regeneration and installed certification are prohibited.",
+    "pcv_03f": "PCV-03F alone may create/activate the bounded exact-head PCV-03 packaging/certification workflow and regenerate packages after A..E are closed.",
+    "old_artifact_rule": "Artifact 10832224601 is historical pre-audit evidence only."
+  },
+  "fresh_repository_sweep": {
+    "search_terms": [
+      "identity",
+      "membership",
+      "Session",
+      "transport",
+      "recovery",
+      "device",
+      "security",
+      "packaging"
+    ],
+    "repositories": [
+      "cybalicistjt-stack/multiversal-aioc",
+      "cybalicistjt-stack/Multiversal-app"
+    ],
+    "current_required_owners_accounted": [
+      "A3 identity/session/invitation/context",
+      "A5 Campaign membership/Scene/Session",
+      "P9 Session command/Event/checkpoint/recovery",
+      "MIB-03 retry/version recovery primitives",
+      "SMB-01 deployment-profile ports",
+      "SMB-02 remote multiplayer/presence/reconnect",
+      "SMB-10A/13/14 and MIB-17 UX/evidence/security-policy consumers",
+      "BRP-02/04 lifecycle/data-rights/update consumers",
+      "APW one-history continuity",
+      "GPR-12 gameplay-instance continuity consumer",
+      "MAS-16/17 reference/simulation consumer",
+      "VTI adapter consumer",
+      "SAA-21 separate collaboration authority",
+      "WCI and MSAS Session-aware consumers",
+      "IC/A6/A7/A9 live Session presentation/action/combat/noncombat consumers",
+      "PCV-01/02 product foundation",
+      "BIP installed package builder"
+    ],
+    "classified_nonowners": [
+      "GATX-T07-REMOTE is synthetic Internal Alpha transport over P9-06 and is not production authority.",
+      "packages/session-protocol is a structural placeholder on current main and contains no implementation.",
+      "GPR-12 explicitly owns gameplay-instance continuity only and creates no second owner-domain persistence/recovery/idempotency ledger."
+    ],
+    "result": "no_uncatalogued_required_pcv03_dependency_or_owner"
+  },
+  "gap_closure": {
+    "PCV-PRE-054": {
+      "candidate_status": "completion_candidate",
+      "future_implementation_destination": [
+        "PCV-03A readiness only"
+      ],
+      "resolution": "Field-level owner/field/consumer/negative-regression matrix replaces generic audited labels."
+    },
+    "PCV-PRE-096": {
+      "candidate_status": "completion_candidate",
+      "future_implementation_destination": [
+        "PCV-03A readiness only"
+      ],
+      "resolution": "Stale PR #775 closed unmerged; old branch/candidate/package identities are historical-only; PCV-03A starts from fresh main."
+    },
+    "PCV-PRE-097": {
+      "candidate_status": "completion_candidate",
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B",
+        "PCV-03C",
+        "PCV-03D",
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "resolution": "Six bounded child validation-profile contracts and negative-regression ownership sets are defined."
+    },
+    "PCV-PRE-098": {
+      "candidate_status": "completion_candidate",
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B",
+        "PCV-03C",
+        "PCV-03D",
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "resolution": "Fresh-main child branch + exactly-one-child-profile activation strategy prevents stale monolithic auto-validation."
+    },
+    "PCV-PRE-099": {
+      "candidate_status": "completion_candidate",
+      "future_implementation_destination": [
+        "PCV-03F"
+      ],
+      "resolution": "Packaging remains absent/disabled on current app main and is explicitly reserved to PCV-03F."
+    }
+  },
+  "acceptance_checks": {
+    "all_gap_items_owned_or_routed": true,
+    "no_parallel_owner_or_authority_bypass": true,
+    "no_unresolved_required_dependency_or_consumer": true,
+    "persistence_secret_migration_boundaries_explicit": true,
+    "field_level_canon_wiring_defined": true,
+    "per_child_validation_profiles_defined": true,
+    "negative_regression_ownership_defined": true,
+    "packaging_disabled_until_pcv03f": true,
+    "final_repository_sweep_complete": true,
+    "fresh_pcv03a_branch_required": true
+  },
+  "runtime_boundary": {
+    "runtime_product_implementation_authorized": false,
+    "package_build_authorized": false,
+    "hosted_provider_activation_authorized": false,
+    "public_or_store_release_authorized": false,
+    "next_runtime_destination": "PCV-03A only after this candidate passes exact-head validation, is durably published, and OPS3 closeout selects PCV-03A"
+  },
+  "dependency_edges": []
+}
