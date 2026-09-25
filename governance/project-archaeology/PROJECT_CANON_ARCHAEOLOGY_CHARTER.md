@@ -1,6 +1,6 @@
 # Multiversal Project Canon Archaeology & Wiring Audit Charter
 
-**Status:** OWNER-DIRECTED — COMPLETION CANDIDATE  
+**Status:** OWNER-DIRECTED — COMPLETED VERIFIED  
 **Owner/final authority:** John Brandon Turner  
 **Operational implementation authority:** none  
 **Purpose:** reconstruct the complete project lineage, resolve current canon, recover dropped intent, and then prove that the current project is wired to the recovered canon before ordinary product implementation resumes.
@@ -249,3 +249,12 @@ Until then, archaeology status remains **IN PROGRESS**.
 ## 11. Completion-candidate artifact set
 
 The reconstruction and wiring inventory are materialized in the sibling artifacts named by `PROJECT_CANON_REGISTER.json#artifact_set`. This candidate becomes `COMPLETED_VERIFIED` only after `scripts/validate_project_canon_archaeology.py` and the Operations V3 repository-health gate pass on the exact candidate head and protected-main publication is verified. Routed future PCV work is not authorized by archaeology.
+
+
+## 12. Verified closeout
+
+The completion candidate merged to `main` as `c03aae1112810ef8bafdb6a7aca8bfc430d7deaf`. GitHub Actions run `36080361805`, job `107900750519`, passed the project-canon archaeology validator, the OPS3 single-door/semantic-retirement checks, and the existing Operations V3 regression suite on the exact candidate head.
+
+The Canon Reconstruction Gate and the Internal Wiring / Dependency / Interconnectivity Gate are therefore **completed_verified**. Known future product-convergence gaps remain explicitly routed to their owning PCV tranches; this closeout grants no successor authority and does not claim those future repairs are already implemented.
+
+The preserved product lane resumes at PCV-03's existing installed Windows + Android physical two-device proof. PCV-04 remains unauthorized until PCV-03 itself closes.
