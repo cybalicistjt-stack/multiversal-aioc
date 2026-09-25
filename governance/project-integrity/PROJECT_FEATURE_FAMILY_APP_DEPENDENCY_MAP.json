@@ -11,7 +11,7 @@
   },
   "counts": {
     "nodes": 954,
-    "edges": 1239,
+    "edges": 1245,
     "work_items": 662,
     "work_state_families": 73,
     "planning_groups": 83,
@@ -12098,7 +12098,7 @@
       "node_type": "current_overlay_work_item",
       "label": "PCV-I01B",
       "family_id": "PCV-PRE",
-      "status": "selected_not_started",
+      "status": "completed_verified",
       "evidence": [
         "PCV_PROGRAM_BACKLOG.json",
         "governance/ai/work-state/PCV-I01B-attempt-001.json"
@@ -12110,7 +12110,7 @@
       "node_type": "current_overlay_work_item",
       "label": "PCV-I01C",
       "family_id": "PCV-PRE",
-      "status": "blocked_by_predecessor",
+      "status": "selected_not_started",
       "evidence": [
         "PCV_PROGRAM_BACKLOG.json",
         "governance/ai/work-state/PCV-I01C-attempt-001.json"
@@ -22855,6 +22855,60 @@
         "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
         "SMB-02 device-as-context and reconnect boundary"
       ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "PLAN::stage-a-a3",
+      "to": "WORK::PCV-I01B",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
+        "PCV-I01B source-backed contract closure"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "PLAN::stage-a-a5",
+      "to": "WORK::PCV-I01B",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
+        "PCV-I01B source-backed contract closure"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "WORK::MIB-17",
+      "to": "WORK::PCV-I01B",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
+        "PCV-I01B source-backed contract closure"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "WORK::SMB-14",
+      "to": "WORK::PCV-I01B",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
+        "PCV-I01B source-backed contract closure"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "WORK::BRP-02",
+      "to": "WORK::PCV-I01B",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
+        "PCV-I01B source-backed contract closure"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "WORK::PCV-02",
+      "to": "WORK::PCV-I01B",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
+        "PCV-I01B source-backed contract closure"
+      ]
     }
   ],
   "capability_surface_snapshot": [
@@ -23674,12 +23728,12 @@
     {
       "work_item_id": "PCV-I01B",
       "family_id": "PCV-PRE",
-      "status": "selected_not_started"
+      "status": "completed_verified"
     },
     {
       "work_item_id": "PCV-I01C",
       "family_id": "PCV-PRE",
-      "status": "blocked_by_predecessor"
+      "status": "selected_not_started"
     },
     {
       "work_item_id": "PCV-I02",
