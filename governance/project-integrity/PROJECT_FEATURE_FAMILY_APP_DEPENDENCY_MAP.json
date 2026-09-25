@@ -11,7 +11,7 @@
   },
   "counts": {
     "nodes": 954,
-    "edges": 1245,
+    "edges": 1252,
     "work_items": 662,
     "work_state_families": 73,
     "planning_groups": 83,
@@ -12110,7 +12110,7 @@
       "node_type": "current_overlay_work_item",
       "label": "PCV-I01C",
       "family_id": "PCV-PRE",
-      "status": "selected_not_started",
+      "status": "completed_verified",
       "evidence": [
         "PCV_PROGRAM_BACKLOG.json",
         "governance/ai/work-state/PCV-I01C-attempt-001.json"
@@ -12122,11 +12122,12 @@
       "node_type": "current_overlay_work_item",
       "label": "PCV-I02",
       "family_id": "PCV-PRE",
-      "status": "blocked_by_predecessor",
+      "status": "selected_not_started",
       "evidence": [
-        "PCV_PROGRAM_BACKLOG.json"
+        "PCV_PROGRAM_BACKLOG.json",
+        "governance/ai/work-state/PCV-I02-attempt-001.json"
       ],
-      "attempt_count": 0
+      "attempt_count": 1
     },
     {
       "node_id": "WORK::PCV-I03",
@@ -22909,6 +22910,69 @@
         "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
         "PCV-I01B source-backed contract closure"
       ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "WORK::SMB-01",
+      "to": "WORK::PCV-I01C",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
+        "PCV-I01C source-backed deployment-profile/entitlement closure"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "WORK::SMB-02",
+      "to": "WORK::PCV-I01C",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
+        "PCV-I01C source-backed deployment-profile/entitlement closure"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "PLAN::stage-a-a5",
+      "to": "WORK::PCV-I01C",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
+        "PCV-I01C source-backed deployment-profile/entitlement closure"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "WORK::PCV-01",
+      "to": "WORK::PCV-I01C",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
+        "PCV-I01C source-backed deployment-profile/entitlement closure"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "WORK::PCV-02",
+      "to": "WORK::PCV-I01C",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
+        "PCV-I01C source-backed deployment-profile/entitlement closure"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "WORK::PCV-I01A",
+      "to": "WORK::PCV-I01C",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
+        "PCV-I01C source-backed deployment-profile/entitlement closure"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "WORK::PCV-I01B",
+      "to": "WORK::PCV-I01C",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
+        "PCV-I01C source-backed deployment-profile/entitlement closure"
+      ]
     }
   ],
   "capability_surface_snapshot": [
@@ -23733,12 +23797,12 @@
     {
       "work_item_id": "PCV-I01C",
       "family_id": "PCV-PRE",
-      "status": "selected_not_started"
+      "status": "completed_verified"
     },
     {
       "work_item_id": "PCV-I02",
       "family_id": "PCV-PRE",
-      "status": "blocked_by_predecessor"
+      "status": "selected_not_started"
     },
     {
       "work_item_id": "PCV-I03",
