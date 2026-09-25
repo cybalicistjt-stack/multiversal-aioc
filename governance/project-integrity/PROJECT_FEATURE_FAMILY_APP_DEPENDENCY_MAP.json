@@ -11,7 +11,7 @@
   },
   "counts": {
     "nodes": 954,
-    "edges": 1235,
+    "edges": 1239,
     "work_items": 662,
     "work_state_families": 73,
     "planning_groups": 83,
@@ -12086,7 +12086,7 @@
       "node_type": "current_overlay_work_item",
       "label": "PCV-I01A",
       "family_id": "PCV-PRE",
-      "status": "in_progress",
+      "status": "completed_verified",
       "evidence": [
         "PCV_PROGRAM_BACKLOG.json",
         "governance/ai/work-state/PCV-I01A-attempt-001.json"
@@ -12098,7 +12098,7 @@
       "node_type": "current_overlay_work_item",
       "label": "PCV-I01B",
       "family_id": "PCV-PRE",
-      "status": "blocked_by_predecessor",
+      "status": "selected_not_started",
       "evidence": [
         "PCV_PROGRAM_BACKLOG.json",
         "governance/ai/work-state/PCV-I01B-attempt-001.json"
@@ -22819,6 +22819,42 @@
       "evidence": [
         "PCV_PROGRAM_BACKLOG.json"
       ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "PLAN::stage-a-a3",
+      "to": "WORK::PCV-I01A",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
+        "MV-IA-F003 / A3 stable subject and authentication-session authority"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "WORK::BRP-02",
+      "to": "WORK::PCV-I01A",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
+        "BRP-02 ordinary-user device-session/recovery/data-rights composition"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "WORK::SMB-01",
+      "to": "WORK::PCV-I01A",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
+        "SMB-01 IdentityPort production adapter selection boundary"
+      ]
+    },
+    {
+      "edge_type": "documented_downstream_consumer",
+      "from": "WORK::SMB-02",
+      "to": "WORK::PCV-I01A",
+      "evidence": [
+        "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
+        "SMB-02 device-as-context and reconnect boundary"
+      ]
     }
   ],
   "capability_surface_snapshot": [
@@ -23633,12 +23669,12 @@
     {
       "work_item_id": "PCV-I01A",
       "family_id": "PCV-PRE",
-      "status": "in_progress"
+      "status": "completed_verified"
     },
     {
       "work_item_id": "PCV-I01B",
       "family_id": "PCV-PRE",
-      "status": "blocked_by_predecessor"
+      "status": "selected_not_started"
     },
     {
       "work_item_id": "PCV-I01C",

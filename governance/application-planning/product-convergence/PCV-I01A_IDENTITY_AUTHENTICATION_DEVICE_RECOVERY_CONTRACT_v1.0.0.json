@@ -1,0 +1,316 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "PCV-I01A.IDENTITY_AUTHENTICATION_DEVICE_RECOVERY.v1",
+  "status": "completed_verified",
+  "work_item_id": "PCV-I01A",
+  "scope": "AIOC-only preimplementation contract closure; no Multiversal-app runtime implementation",
+  "source_snapshot": {
+    "aioc_main": "ca450f43795643b1b0a6d95db455c50ea39f1b2f",
+    "multiversal_app_main": "28666001be412925e8d148bf47e8c6a9d9f11e93",
+    "aioc_sources": [
+      "governance/application-planning/internal-alpha/feature-packets/MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md"
+    ],
+    "application_sources": [
+      "packages/contracts/src/a3/stable-subject-session-port.ts",
+      "packages/contracts/src/identity-device/identity-service-port.ts",
+      "packages/contracts/src/identity-device/provider-independent-identity-mapping.ts",
+      "packages/contracts/src/beta-readiness-product-operations/brp-02-account-lifecycle-consent-recovery-data-rights.ts",
+      "governance/application-planning/beta-readiness-product-operations/BRP-02_ACCOUNT_LIFECYCLE_CONSENT_RECOVERY_DATA_RIGHTS.md",
+      "packages/contracts/src/multiplayer/smb-02-remote-multiplayer.ts",
+      "packages/contracts/src/production-platform/smb-01-service-adapters.ts",
+      "apps/client-ui/src/product/productState.ts",
+      "apps/client-ui/src/a3/recovery/IdentityRecovery.tsx",
+      "DevelopmentBible/01-architecture/storage-sync-and-backup.md",
+      "DevelopmentBible/06-technical-standards/security-and-privacy.md"
+    ]
+  },
+  "authority": {
+    "canonical_subject_and_identity_mapping": "A3 / identity-device / ProviderIndependentIdentityMapping",
+    "identity_record_service": "IdentityServicePort",
+    "authentication_session": "A3 StableSubjectSessionPort",
+    "production_service_adapter": "SMB-01 IdentityPort; selected/provider-replaceable/not live-activated",
+    "device_context_and_remote_continuity": "SMB-02; device identity is connection/recovery context only and is never subject, membership or role authority",
+    "ordinary_user_lifecycle_recovery_and_data_rights": "BRP-02, composed over A3/identity-device",
+    "policy_boundary": "Client or device possession authenticates only the bound subject/session; Campaign membership, role, Character control, entitlement and authoritative mutation remain separate decisions."
+  },
+  "local_proof_of_possession": {
+    "baseline_credential": "per-device asymmetric signing credential bound to one canonical subject through A3/identity-device",
+    "baseline_algorithm_profile": "ECDSA P-256 with SHA-256; any future substitution requires explicit contract revision and equivalent-or-stronger approved security",
+    "private_key_rule": "Generate on-device and keep in operating-system secure key storage. Routine device private keys are non-exportable by default and never appear in ordinary product documents, logs, diagnostics, sync records or wire messages.",
+    "verifier_record": [
+      "credentialId",
+      "subjectId",
+      "identityId",
+      "deviceId",
+      "algorithm",
+      "publicKey",
+      "status",
+      "boundAt",
+      "updatedAt",
+      "revision"
+    ],
+    "challenge": {
+      "minimum_entropy_bits": 128,
+      "single_use": true,
+      "maximum_validity_seconds": 300,
+      "generated_by_verifier": true,
+      "transcript_fields": [
+        "protocolVersion",
+        "challengeId",
+        "nonce",
+        "verifierBinding",
+        "purpose",
+        "credentialId",
+        "deviceId",
+        "issuedAt",
+        "expiresAt"
+      ],
+      "reject_if": [
+        "challenge unknown",
+        "challenge expired",
+        "challenge replayed",
+        "signature invalid",
+        "credential revoked",
+        "device binding revoked",
+        "subject/identity mapping mismatch"
+      ]
+    },
+    "establishment_rule": "Production StableSubjectSession establishment MUST consume a verified authentication-proof receipt. Direct subjectId+identityId assertion remains test/local-alpha-only behavior and is forbidden for production-local or remote caller authentication.",
+    "zero_service_rule": "The local-first path does not require a hosted identity provider. SMB-01 external/provider IdentityPort remains optional and replaceable rather than a prerequisite for local proof."
+  },
+  "device_binding_registry": {
+    "canonical_owner": "A3/identity-device",
+    "record_fields": [
+      "deviceId",
+      "subjectId",
+      "credentialId",
+      "safeDeviceLabel",
+      "status",
+      "boundAt",
+      "lastAuthenticatedAt",
+      "updatedAt",
+      "revision",
+      "revokedAt",
+      "replacedByDeviceId"
+    ],
+    "status_values": [
+      "active",
+      "revoked",
+      "replaced",
+      "retired"
+    ],
+    "invariants": [
+      "deviceId is a stable installation/device-context identifier and is never a canonical subject identifier",
+      "device possession never grants Campaign membership, role, Character control, entitlement or owner authority",
+      "one active device binding belongs to exactly one canonical subject",
+      "session resume or remote reconnect must prove an active credential whose deviceId matches an active binding",
+      "replacement/reinstall creates a new deviceId and device credential; it never silently reuses a revoked device identity"
+    ]
+  },
+  "stable_subject_session_extension": {
+    "retained_fields": [
+      "sessionId",
+      "subjectId",
+      "identityId",
+      "status",
+      "issuedAt",
+      "expiresAt",
+      "updatedAt",
+      "revision",
+      "correlationId",
+      "terminalReason"
+    ],
+    "required_metadata": [
+      "authenticationAssurance",
+      "credentialId",
+      "deviceId",
+      "safeDeviceLabel",
+      "lastValidatedPermissionsVersion",
+      "lastValidatedEntitlementVersion",
+      "lastAuthenticatedAt"
+    ],
+    "authentication_assurance_values": [
+      "local-cryptographic-possession",
+      "external-provider-verified",
+      "recovery-rebind"
+    ],
+    "establishment_preconditions": [
+      "current identityId maps to subjectId",
+      "authentication proof is current and replay-safe",
+      "device binding is active",
+      "credential and device binding belong to the same subject"
+    ],
+    "invalidation_rules": [
+      "credential revocation invalidates sessions established from that credential",
+      "device revocation invalidates sessions for that device",
+      "permission or entitlement version drift forces revalidation before protected entry or mutation",
+      "session expiry, revocation and sign-out remain fail-closed"
+    ]
+  },
+  "peer_identity_binding": {
+    "receipt_fields": [
+      "connectionId",
+      "authenticationSessionId",
+      "subjectId",
+      "identityId",
+      "credentialId",
+      "deviceId",
+      "authenticatedAt",
+      "authenticationAssurance"
+    ],
+    "rule": "After authentication, transport peers are bound to this receipt. Commands, presence and reconnect derive actor/subject/device from the binding. Caller-supplied actorId, subjectId, identityId or deviceId must either be absent or exactly match the binding; mismatch rejects before authorization or mutation.",
+    "no_authority_bleed": true
+  },
+  "continuity_identity": {
+    "canonical_scope_key": [
+      "subjectId",
+      "campaignId",
+      "sessionId"
+    ],
+    "device_slot_key": [
+      "subjectId",
+      "campaignId",
+      "sessionId",
+      "deviceId"
+    ],
+    "rule": "Client continuity may not be keyed by subjectId alone. Campaign/Session identity is mandatory; per-device cursors are separated by deviceId without making device identity authoritative."
+  },
+  "recovery_and_rebind": {
+    "successful_paths": [
+      {
+        "id": "trusted-device-rebind",
+        "rule": "A current authenticated session on an active device authorizes enrollment of a replacement device credential for the same subject. The replacement receives a new deviceId; the old device may be explicitly revoked."
+      },
+      {
+        "id": "encrypted-recovery-archive",
+        "rule": "A user-created explicitly encrypted recovery archive may carry subject-preserving recovery material. Import proves recovery authority, preserves subjectId/identityId, creates a new deviceId/device credential and never silently restores a revoked device binding."
+      },
+      {
+        "id": "verified-provider-rebind",
+        "rule": "When an approved external identity binding exists, provider-verified recovery may rebind a local credential while ProviderIndependentIdentityMapping preserves the existing canonical subject. This path is optional and is not required for zero-service operation."
+      }
+    ],
+    "failure_rule": "If no governed recovery proof exists, recovery fails closed. The product must not mint a replacement canonical subject and label it recovered, merge subjects automatically, or require administrator/database intervention for the representative BRP-02 success path.",
+    "campaign_rule": "Recovery preserves identity only. Existing Campaign membership/ownership remains separately authoritative. A replacement device must be rebound; a new Campaign invitation is required only when membership/invitation authority independently requires it, not merely because the device changed.",
+    "data_rights_rule": "Export/deletion requests are subject-scoped, never device-scoped, and cannot cross context boundaries."
+  },
+  "product_profile_reconciliation": {
+    "current_state": "PCV-01 ProductProfile directly persists subjectId and identityId strings and therefore represents identifiers, not authentication proof.",
+    "required_pcv03a_migration": [
+      "Treat existing ProductProfile subjectId/identityId as migration inputs only; verify or create canonical IdentityServicePort + ProviderIndependentIdentityMapping records before use as authenticated identity.",
+      "Enroll a local proof-of-possession credential and device binding before production StableSubjectSession establishment.",
+      "Instantiate production-local adapters for IdentityServicePort, ProviderIndependentIdentityMapping, StableSubjectSessionPort, local proof verification and device binding; do not create PCV-specific parallel identity ownership.",
+      "New product profiles must create identity/mapping through canonical owner contracts rather than minting unauthenticated subject/identity strings as sufficient authority."
+    ]
+  },
+  "external_sanity_checks": [
+    {
+      "source": "W3C WebAuthn",
+      "use": "random verifier-generated challenges with sufficient entropy and replay rejection"
+    },
+    {
+      "source": "NIST SP 800-63B",
+      "use": "cryptographic proof of possession, public-key verifier records and replay-resistant challenges"
+    },
+    {
+      "source": "Android Keystore",
+      "use": "device key material can remain non-exportable and hardware-backed when available"
+    },
+    {
+      "source": "Windows CNG Key Storage",
+      "use": "isolated persistent asymmetric private-key storage"
+    }
+  ],
+  "gap_closure": {
+    "PCV-PRE-004": {
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
+      "future_implementation_destination": "PCV-03A"
+    },
+    "PCV-PRE-006": {
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
+      "future_implementation_destination": "PCV-03A"
+    },
+    "PCV-PRE-015": {
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
+      "future_implementation_destination": "PCV-03A"
+    },
+    "PCV-PRE-057": {
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
+      "future_implementation_destination": "PCV-03A"
+    },
+    "PCV-PRE-058": {
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
+      "future_implementation_destination": "PCV-03A"
+    },
+    "PCV-PRE-059": {
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
+      "future_implementation_destination": "PCV-03A"
+    },
+    "PCV-PRE-060": {
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
+      "future_implementation_destination": "PCV-03A"
+    },
+    "PCV-PRE-061": {
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
+      "future_implementation_destination": "PCV-03A"
+    },
+    "PCV-PRE-101": {
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
+      "future_implementation_destination": "PCV-03A"
+    },
+    "PCV-PRE-104": {
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
+      "future_implementation_destination": "PCV-03A"
+    },
+    "PCV-PRE-105": {
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
+      "future_implementation_destination": "PCV-03A"
+    }
+  },
+  "acceptance_mapping": {
+    "local_zero_service_proof": "local_proof_of_possession",
+    "stable_device_context": "device_binding_registry",
+    "brp_recovery_revocation": "recovery_and_rebind + stable_subject_session_extension",
+    "a3_session_metadata": "stable_subject_session_extension",
+    "pcv01_profile_reconciliation": "product_profile_reconciliation",
+    "no_remote_subject_assertion": "peer_identity_binding"
+  },
+  "runtime_boundary": {
+    "runtime_product_implementation_authorized": false,
+    "next_runtime_destination": "PCV-03A after PCV-I01B through PCV-I06 predecessor closure",
+    "later_preimplementation_items_authorized": false
+  },
+  "acceptance_checks": {
+    "production_local_zero_service_proof_defined": true,
+    "stable_device_context_not_subject_authority": true,
+    "brp_device_session_recovery_revocation_composed": true,
+    "a3_session_metadata_restored": true,
+    "pcv01_identity_records_reconciled": true,
+    "remote_subject_assertion_forbidden": true
+  },
+  "dependency_edges": [
+    {
+      "from": "PLAN::stage-a-a3",
+      "to": "WORK::PCV-I01A"
+    },
+    {
+      "from": "WORK::BRP-02",
+      "to": "WORK::PCV-I01A"
+    },
+    {
+      "from": "WORK::SMB-01",
+      "to": "WORK::PCV-I01A"
+    },
+    {
+      "from": "WORK::SMB-02",
+      "to": "WORK::PCV-I01A"
+    }
+  ],
+  "completion_evidence": {
+    "date": "2026-09-25",
+    "validated_candidate_head": "187e87c40293f505a7917721ef2a52f146f5ce98",
+    "validation_run_id": 36131650590,
+    "validation_conclusion": "success",
+    "note": "Contract-level closure only. Runtime implementation remains reserved for PCV-03A after the remaining PCV-PRE predecessors close."
+  }
+}
