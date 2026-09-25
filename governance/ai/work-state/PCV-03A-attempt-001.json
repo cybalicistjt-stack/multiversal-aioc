@@ -10,10 +10,10 @@
   "attempt_id": "PCV-03A-attempt-001",
   "title": "Canonical Identity, Invitation & Campaign Membership",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "blocked_by_preimplementation_integrity",
   "owner_selected": true,
   "selected_by_owner": "2026-09-25 owner direction to keep going but stop overloading the original 10 PCV tranches; PCV-03 decomposed using the established lettered-work-item pattern.",
-  "implementation_authority": true,
+  "implementation_authority": false,
   "implementation_branch": "work/pcv-03-two-device",
   "completed": false,
   "predecessor": {
@@ -44,18 +44,22 @@
     "Keep direct/manual zero-service architecture viable; no paid/hosted identity or networking provider becomes mandatory.",
     "Use milestone-level OPS3 state only; no activity-journal instrumentation."
   ],
-  "active_substep": "canonical_identity_invitation_campaign_membership",
+  "active_substep": "blocked_pending_pcv_preimplementation_integrity",
   "strict_successor": "PCV-03B",
-  "next_action": "On work/pcv-03-two-device, repair production local subject/session binding, A3 invitation lifecycle, A5 Campaign membership/state authority and connection-bound subject/device identity; add focused negative regressions and remove the parallel PCV-03 membership authority. Stop only when PCV-03A acceptance is exact-head green or a real external/owner-only blocker exists.",
+  "next_action": "Do not implement PCV-03A. Wait for PCV-I01..PCV-I06 to complete; then re-read CURRENT and this checkpoint before granting authority.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 0,
     "stall_nudges": 0,
     "material_progress_seq": 0,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": "blocked_by_pcv_preimplementation_integrity"
   },
-  "audit_required_at_closeout": "PCV-03A must prove no duplicate Campaign membership/invitation owner remains before selecting PCV-03B."
+  "audit_required_at_closeout": "PCV-03A must prove no duplicate Campaign membership/invitation owner remains before selecting PCV-03B.",
+  "selection_basis": {
+    "kind": "decomposed_child_blocked_by_new_interstitial_gate",
+    "reason": "Owner required a deeper durable no-gap/no-disconnected-work pass before any PCV-03 implementation."
+  }
 }
