@@ -51,7 +51,7 @@ else:
     assert all(x.get("primary_interstitial") and x.get("disposition") for x in gap["findings"])
     pim=reg.get("project_integrity_map_gate") or {}
     if pim:
-        assert pim.get("status")=="in_progress"
+        assert pim.get("status") in {"in_progress","completed_verified"}
         assert (I/"PROJECT_WORK_HISTORY_REGISTRY.json").exists()
 assert any(x["id"]=="CANON-PCV03" for x in canon["entries"])
 for n in range(4,11):
