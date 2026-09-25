@@ -1,7 +1,7 @@
 {
   "schema_version": "0.3.0",
   "register_id": "MV-PROJECT-CANON-REGISTER-001",
-  "status": "completed_verified",
+  "status": "completed_verified_canon_reconstruction_with_pcv_wiring_reaudit",
   "owner": "John Brandon Turner",
   "purpose": "Single durable project-wide genealogy, canon, supersession, intent and implementation-consumption register.",
   "authority_boundary": "This register records and resolves project canon/provenance. It does not replace operations/BOOTSTRAP.md or operations/CURRENT.json as live execution selectors.",
@@ -6402,5 +6402,13 @@
       "PCV-09",
       "PCV-10"
     ]
+  },
+  "canon_reconstruction_gate_complete": true,
+  "internal_wiring_dependency_interconnectivity_gate_complete": false,
+  "pcv_candidate_specific_wiring_gate": {
+    "status": "in_progress",
+    "reason": "Owner-directed deeper audit found candidate/predecessor wiring gaps after global archaeology closeout.",
+    "gap_register": "governance/application-planning/product-convergence/PCV_PREIMPLEMENTATION_GAP_REGISTER.json",
+    "completion_gate": "PCV-I06"
   }
 }
