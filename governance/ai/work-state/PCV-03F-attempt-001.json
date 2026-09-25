@@ -81,19 +81,26 @@
       "generic gameplay command escape hatch"
     ]
   },
-  "active_substep": "package_identity_and_causal_installed_evidence",
+  "active_substep": "external_blocker_fresh_physical_installed_evidence",
   "strict_successor": "PCV-04",
-  "next_action": "Run bounded PCV-03F certification from fresh Multiversal-app main: strengthen exact-head package manifest/install identity and causal installed-device evidence/verifier only; preserve public-release/updater/PCV-04 blocks.",
+  "next_action": "Install the exact generated PCV-03F Windows x64 NSIS package and Android ARM64 APK on two distinct physical devices with distinct registered A3 device credentials; capture PCV-03.INSTALLED-EVIDENCE.2 causal receipts and rerun the exact-head verifier. Automated package construction/manifest verification is already complete.",
   "execution_guard": {
-    "continue_turns": 1,
-    "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "continue_turns": 5,
+    "stall_nudges": 4,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null,
-    "last_material_progress": "PCV-03F execution authorized on fresh Multiversal-app main 6fb01d19d5763b00488392a564ec6b303551eb2f with child-specific branch work/pcv-03f-installed-certification."
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "external_blocker",
+      "evidence": "Validate Current Family run 36197087514 completed Linux GREEN and exact Windows package generation/manifest verification for application head 59303d5be2fa9e6d699f8486620beef5ea682480. PCV-03F exact Windows NSIS + Android ARM64 artifacts were uploaded as artifact 10890923611; the only failing gate was pcv03f-physical-installed-evidence because no fresh installed-evidence.json from two distinct physical Windows/Android devices was present."
+    },
+    "last_material_progress": {
+      "seq": 2,
+      "kind": "exact_package_identity_built",
+      "evidence": "Run 36197087514 produced and verified Multiversal-Beta-Windows-x64-Setup.exe, Multiversal-Beta-Windows-x64-Payload.exe, Multiversal-Beta-Android-arm64.apk and PCV-03F-package-manifest.json; package manifest verification passed before the external physical-device gate."
+    }
   },
   "audit_required_at_closeout": "PCV-03F must prove exact installed Windows/Android package identity with distinct device credentials and causal join/idempotency/disconnect-resume/ordered-gap-safe/hidden-projection receipts, while preserving PCV-03A..03E authority, excluding secrets/private evidence, and activating neither public release/updater nor PCV-04 gameplay before certification closes.",
   "selection_basis": {
@@ -101,5 +108,20 @@
     "predecessor_validation_run": 36177826378,
     "predecessor_application_merge": "6fb01d19d5763b00488392a564ec6b303551eb2f",
     "branch_rule": "Create a fresh child-specific branch from current Multiversal-app main at execution start; do not reuse PCV-03E or the historical monolithic PCV-03 branch."
+  },
+  "execution_conformance": {
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE",
+      "OPS3.STALL_NUDGE_UNRECORDED"
+    ],
+    "product_completion_valid": false,
+    "execution_quality_note": "PCV-03F automated work reached the physical-device evidence boundary, but the executor repeatedly polled a long-running Windows job and required repeated owner nudges instead of diagnosing/reporting the actual phase boundary promptly."
+  },
+  "interaction_quality": {
+    "owner_execution_commands": 5,
+    "additional_continue_commands": 4,
+    "product_work_invalidated": false,
+    "classification": "automated certification reached a genuine external physical-device blocker; executor polling behavior caused avoidable repeated owner intervention"
   }
 }
