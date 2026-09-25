@@ -7,8 +7,8 @@
   "owner_direction_date": "2026-09-25",
   "predecessor": "PCV-02 completed_verified",
   "blocks_parent": "PCV-03",
-  "current_item": "PCV-I02",
-  "current_attempt": "PCV-I02-attempt-001",
+  "current_item": "PCV-I03",
+  "current_attempt": "PCV-I03-attempt-001",
   "strict_order": [
     "PCV-I01A",
     "PCV-I01B",
@@ -66,7 +66,7 @@
     {
       "id": "PCV-I02",
       "name": "Data Model, Persistence, Transaction, Secret & Migration Closure",
-      "status": "selected_not_started",
+      "status": "completed_verified",
       "objective": "Close the durable-state model before runtime implementation: relational logical schema, product JSON aggregates, transactions, membership/session state, secret references, migration/retirement and provider-exit/data-rights implications.",
       "acceptance": [
         "Declare one durable truth model and exact adapter mapping between canonical logical owners and the installed SQLite product store.",
@@ -75,12 +75,13 @@
         "Select/wire an approved Windows+Android secure-secret-store boundary and safe backup/export/delete behavior.",
         "Define migration/retirement for pre-audit PCV-03.session.1 and any PCV-01/02 predecessor fields that change ownership.",
         "No raw bearer/local identity credential material is allowed in ordinary documents, diagnostics or telemetry."
-      ]
+      ],
+      "closure_contract": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json"
     },
     {
       "id": "PCV-I03",
       "name": "Transport, Protocol, Capability & Security Contract Closure",
-      "status": "blocked_by_predecessor",
+      "status": "selected_not_started",
       "objective": "Freeze the safe zero-service transport/handshake contract before code: inference-safe signaling, peer binding, versioned/bounded envelopes, policy/timeouts, exact capability/entitlement negotiation and replaceable assisted networking.",
       "acceptance": [
         "Define pre-auth and post-auth signaling fields, recipient binding and no-log sensitive token handling.",
@@ -136,7 +137,7 @@
     }
   ],
   "completion_rule": "PCV-PRE completes only when PCV-I01A, PCV-I01B, PCV-I01C, PCV-I02..PCV-I06 complete in strict order and PCV-I06 certifies zero unowned/unresolved PCV-03 prerequisites.",
-  "next_action": "PCV-I02 is selected_not_started. On the next owner Continue, begin data-model/persistence/transaction/secret/migration contract closure only; all PCV runtime remains blocked.",
+  "next_action": "PCV-I03 is selected_not_started. Start only on a later owner Continue; all Multiversal-app PCV runtime remains blocked through PCV-I06.",
   "prerequisite": {
     "work_item": "PIM-03",
     "status": "completed_verified",

@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "family": "PCV-PRE",
+  "lane": "gpr",
+  "track": "pcv-preimplementation-integrity",
+  "source_program": "PCV",
+  "work_item_id": "PCV-I03",
+  "attempt_id": "PCV-I03-attempt-001",
+  "title": "Transport, Protocol, Capability & Security Contract Closure",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "selected_by_owner": "2026-09-25 owner direction: fully map and preserve project work/dependencies before PCV implementation; split interstitials as needed.",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "runtime_product_implementation_authority": false,
+  "completed": false,
+  "predecessor": {
+    "work_item": "PCV-I02",
+    "status": "completed_verified"
+  },
+  "objective": "Freeze the safe zero-service transport/handshake contract before code: inference-safe signaling, peer binding, versioned/bounded envelopes, policy/timeouts, exact capability/entitlement negotiation and replaceable assisted networking.",
+  "acceptance": [
+    "Define pre-auth and post-auth signaling fields, recipient binding and no-log sensitive token handling.",
+    "Define peer-to-authenticated-subject/device binding and transport revalidation without granting authority to SDP/device metadata.",
+    "Define explicit protocol/schema versioning, strict decoder behavior, message/batch/work bounds, backpressure and safe errors.",
+    "Resolve exact pack/rules/runtime/entitlement handshake sources from locally measured client state.",
+    "Keep manual/no-service ICE as baseline and assisted STUN/TURN/relay as replaceable optional adapters.",
+    "Record governed invitation/connection timeout policy and future Android local-network permission trigger."
+  ],
+  "boundaries": [
+    "No Multiversal-app PCV runtime implementation is authorized.",
+    "PCV-I01A through PCV-I02 remain completed predecessor contracts and are not reopened.",
+    "PCV-I04+ and PCV-03 children remain predecessor-blocked."
+  ],
+  "strict_successor": "PCV-I04",
+  "active_substep": "selected_not_started",
+  "next_action": "PCV-I03 is selected_not_started. Await the next owner Continue, then execute transport/protocol/capability/security contract closure only. Do not start Multiversal-app PCV runtime implementation.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": "selected_not_started"
+  }
+}

@@ -9,8 +9,8 @@
     "SMB",
     "BIP"
   ],
-  "current_item": "PCV-I02",
-  "current_attempt": "PCV-I02-attempt-001",
+  "current_item": "PCV-I03",
+  "current_attempt": "PCV-I03-attempt-001",
   "tranches": [
     {
       "id": "PCV-01",
@@ -94,7 +94,7 @@
     {
       "id": "PCV-I02",
       "name": "Data Model, Persistence, Transaction, Secret & Migration Closure",
-      "status": "selected_not_started",
+      "status": "completed_verified",
       "objective": "Close the durable-state model before runtime implementation: relational logical schema, product JSON aggregates, transactions, membership/session state, secret references, migration/retirement and provider-exit/data-rights implications.",
       "acceptance": [
         "Declare one durable truth model and exact adapter mapping between canonical logical owners and the installed SQLite product store.",
@@ -105,12 +105,13 @@
         "No raw bearer/local identity credential material is allowed in ordinary documents, diagnostics or telemetry."
       ],
       "interstitial": true,
-      "program": "PCV-PRE"
+      "program": "PCV-PRE",
+      "closure_contract": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json"
     },
     {
       "id": "PCV-I03",
       "name": "Transport, Protocol, Capability & Security Contract Closure",
-      "status": "blocked_by_predecessor",
+      "status": "selected_not_started",
       "objective": "Freeze the safe zero-service transport/handshake contract before code: inference-safe signaling, peer binding, versioned/bounded envelopes, policy/timeouts, exact capability/entitlement negotiation and replaceable assisted networking.",
       "acceptance": [
         "Define pre-auth and post-auth signaling fields, recipient binding and no-log sensitive token handling.",
@@ -399,9 +400,9 @@
     "PCV-09",
     "PCV-10"
   ],
-  "next_item": "PCV-I02",
+  "next_item": "PCV-I03",
   "completion_rule": "PCV completes only when PCV-10 proves a fresh-installed Android and Windows pair can run a real two-human Multiversal campaign using persisted governed state and representative current feature breadth. Contract-only, fixture-only, golden-data-only, isolated-workbench-only, screenshot-only, or in-process-only proof is insufficient.",
-  "next_action": "PCV-I02 is selected_not_started. Start only on a later owner Continue; PCV runtime remains blocked through PCV-I06.",
+  "next_action": "PCV-I03 is selected_not_started. Start only on a later owner Continue; all Multiversal-app PCV runtime remains blocked through PCV-I06.",
   "approved_cross_tranche_requirements": [
     {
       "id": "PCV-GW-01",
