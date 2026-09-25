@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1.0",
   "register_id": "PCV-PREIMPLEMENTATION-INTEGRITY-GAPS-001",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_direction_date": "2026-09-25",
   "rule": "No PCV-03A runtime implementation may begin until PCV-I01..PCV-I06 complete in strict order. Every finding must have an owner, disposition, dependency/consumer mapping, and validation route; unresolved owner/authority/contract gaps block I06.",
   "baseline_candidate": "8232e52a089360939b17e58229af192a283b3a53",
@@ -1481,8 +1481,8 @@
       "title": "Prior archaeology wiring labels are too coarse for PCV-03",
       "detail": "The project wiring matrix marked PCV-03 dimensions as audited/current-work without field-level owner-to-runtime proof; candidate-specific preflight must replace label-level assurance with concrete producer/owner/consumer evidence.",
       "primary_interstitial": "PCV-I06",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PIM-03"
       ],
@@ -1492,8 +1492,14 @@
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json",
       "candidate_closure_work_item": "PCV-I06",
-      "candidate_status": "completion_candidate_prevalidation",
-      "candidate_resolution": "Field-level authority/field/consumer/negative-regression matrix is defined by PCV-I06."
+      "candidate_status": "closed_preimplementation_contract",
+      "candidate_resolution": "Field-level authority/field/consumer/negative-regression matrix is defined by PCV-I06.",
+      "closure_validation": {
+        "candidate_head": "74c539fdaa3761cb77188ab6ab657c3d867256de",
+        "validation_run_id": 36145523725,
+        "conclusion": "success",
+        "publication_merge": "fe9d2ee3ac106699ef7dace7c336ca3dbd62276f"
+      }
     },
     {
       "finding_id": "PCV-PRE-055",
@@ -2633,8 +2639,8 @@
       "title": "Application branch is content-restored but contains audit-only commit history",
       "detail": "The premature red test was reverted and the branch content matches 8232e52 exactly; future implementation must create a new exact candidate and must not reuse the old package/evidence identity.",
       "primary_interstitial": "PCV-I06",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PIM-03"
       ],
@@ -2644,8 +2650,14 @@
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json",
       "candidate_closure_work_item": "PCV-I06",
-      "candidate_status": "completion_candidate_prevalidation",
-      "candidate_resolution": "PR #775 is closed unmerged; its branch, old exact candidate and package artifact are historical-only and forbidden as future PCV-03A candidate identity."
+      "candidate_status": "closed_preimplementation_contract",
+      "candidate_resolution": "PR #775 is closed unmerged; its branch, old exact candidate and package artifact are historical-only and forbidden as future PCV-03A candidate identity.",
+      "closure_validation": {
+        "candidate_head": "74c539fdaa3761cb77188ab6ab657c3d867256de",
+        "validation_run_id": 36145523725,
+        "conclusion": "success",
+        "publication_merge": "fe9d2ee3ac106699ef7dace7c336ca3dbd62276f"
+      }
     },
     {
       "finding_id": "PCV-PRE-097",
@@ -2653,8 +2665,8 @@
       "title": "Validation Core is still modeled as one monolithic PCV-03 application profile",
       "detail": "ACTIVE_FAMILY_CONTRACT and profile PCV-03 do not understand PCV-I01..I06 or PCV-03A..03F; preflight must define bounded validation profiles so each future tranche validates only the contracts it can invalidate.",
       "primary_interstitial": "PCV-I06",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PIM-03"
       ],
@@ -2664,8 +2676,14 @@
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json",
       "candidate_closure_work_item": "PCV-I06",
-      "candidate_status": "completion_candidate_prevalidation",
-      "candidate_resolution": "PCV-03A..03F each receive a bounded validation-profile contract with explicit negative-regression ownership."
+      "candidate_status": "closed_preimplementation_contract",
+      "candidate_resolution": "PCV-03A..03F each receive a bounded validation-profile contract with explicit negative-regression ownership.",
+      "closure_validation": {
+        "candidate_head": "74c539fdaa3761cb77188ab6ab657c3d867256de",
+        "validation_run_id": 36145523725,
+        "conclusion": "success",
+        "publication_merge": "fe9d2ee3ac106699ef7dace7c336ca3dbd62276f"
+      }
     },
     {
       "finding_id": "PCV-PRE-098",
@@ -2673,8 +2691,8 @@
       "title": "Application validation currently auto-runs PCV-03 on substantive PR #775 changes",
       "detail": "Because the application validation family still resolves PCV-03, contract-only interstitial changes in the app repo would be misclassified unless a dedicated preimplementation validation profile/branch strategy is established first.",
       "primary_interstitial": "PCV-I06",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PIM-03"
       ],
@@ -2684,8 +2702,14 @@
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json",
       "candidate_closure_work_item": "PCV-I06",
-      "candidate_status": "completion_candidate_prevalidation",
-      "candidate_resolution": "Each child starts from fresh application main and materializes/activates exactly one child profile; the obsolete monolithic PCV-03 candidate/profile is not reusable."
+      "candidate_status": "closed_preimplementation_contract",
+      "candidate_resolution": "Each child starts from fresh application main and materializes/activates exactly one child profile; the obsolete monolithic PCV-03 candidate/profile is not reusable.",
+      "closure_validation": {
+        "candidate_head": "74c539fdaa3761cb77188ab6ab657c3d867256de",
+        "validation_run_id": 36145523725,
+        "conclusion": "success",
+        "publication_merge": "fe9d2ee3ac106699ef7dace7c336ca3dbd62276f"
+      }
     },
     {
       "finding_id": "PCV-PRE-099",
@@ -2693,8 +2717,8 @@
       "title": "Installed packaging is label-triggered and must remain disabled during preflight",
       "detail": "package-pcv03 runs only on pcv03-package labeling; governance must explicitly keep packaging disabled until PCV-03F so obsolete installers are not rebuilt during contract/audit work.",
       "primary_interstitial": "PCV-I06",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PIM-03"
       ],
@@ -2704,8 +2728,14 @@
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json",
       "candidate_closure_work_item": "PCV-I06",
-      "candidate_status": "completion_candidate_prevalidation",
-      "candidate_resolution": "Application main has no PCV-03 packaging workflow; packaging creation/activation is forbidden in PCV-03A..03E and owned only by PCV-03F."
+      "candidate_status": "closed_preimplementation_contract",
+      "candidate_resolution": "Application main has no PCV-03 packaging workflow; packaging creation/activation is forbidden in PCV-03A..03E and owned only by PCV-03F.",
+      "closure_validation": {
+        "candidate_head": "74c539fdaa3761cb77188ab6ab657c3d867256de",
+        "validation_run_id": 36145523725,
+        "conclusion": "success",
+        "publication_merge": "fe9d2ee3ac106699ef7dace7c336ca3dbd62276f"
+      }
     },
     {
       "finding_id": "PCV-PRE-100",
@@ -2949,5 +2979,13 @@
       }
     }
   ],
-  "routing_rule": "Each finding has exactly one primary closure interstitial, explicit secondary dependency families where material, and a future implementation destination. Cross-cutting dependencies never excuse duplicate owner authority."
+  "routing_rule": "Each finding has exactly one primary closure interstitial, explicit secondary dependency families where material, and a future implementation destination. Cross-cutting dependencies never excuse duplicate owner authority.",
+  "closeout": {
+    "work_item": "PCV-I06",
+    "readiness_contract": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json",
+    "known_findings": 108,
+    "open_findings": 0,
+    "validation_run_id": 36145523725,
+    "publication_merge": "fe9d2ee3ac106699ef7dace7c336ca3dbd62276f"
+  }
 }

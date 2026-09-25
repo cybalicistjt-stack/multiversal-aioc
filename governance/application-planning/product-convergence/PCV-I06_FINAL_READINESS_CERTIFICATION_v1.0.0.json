@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "contract_id": "PCV-I06.FINAL_READINESS_CERTIFICATION.v1",
-  "status": "completion_candidate",
+  "status": "completed_verified",
   "work_item_id": "PCV-I06",
   "purpose": "Certify that PCV-03A may be selected only after all preimplementation owner, dependency, consumer, persistence, secret, migration, validation and packaging prerequisites are explicit and non-overlapping.",
   "audited_repository_heads": {
@@ -425,25 +425,25 @@
       "packages/session-protocol is a structural placeholder on current main and contains no implementation.",
       "GPR-12 explicitly owns gameplay-instance continuity only and creates no second owner-domain persistence/recovery/idempotency ledger."
     ],
-    "result": "no_uncatalogued_required_pcv03_dependency_or_owner"
+    "result": "completed_verified_no_uncatalogued_required_pcv03_dependency_or_owner"
   },
   "gap_closure": {
     "PCV-PRE-054": {
-      "candidate_status": "completion_candidate",
+      "candidate_status": "closed_preimplementation_contract",
       "future_implementation_destination": [
         "PCV-03A readiness only"
       ],
       "resolution": "Field-level owner/field/consumer/negative-regression matrix replaces generic audited labels."
     },
     "PCV-PRE-096": {
-      "candidate_status": "completion_candidate",
+      "candidate_status": "closed_preimplementation_contract",
       "future_implementation_destination": [
         "PCV-03A readiness only"
       ],
       "resolution": "Stale PR #775 closed unmerged; old branch/candidate/package identities are historical-only; PCV-03A starts from fresh main."
     },
     "PCV-PRE-097": {
-      "candidate_status": "completion_candidate",
+      "candidate_status": "closed_preimplementation_contract",
       "future_implementation_destination": [
         "PCV-03A",
         "PCV-03B",
@@ -455,7 +455,7 @@
       "resolution": "Six bounded child validation-profile contracts and negative-regression ownership sets are defined."
     },
     "PCV-PRE-098": {
-      "candidate_status": "completion_candidate",
+      "candidate_status": "closed_preimplementation_contract",
       "future_implementation_destination": [
         "PCV-03A",
         "PCV-03B",
@@ -467,7 +467,7 @@
       "resolution": "Fresh-main child branch + exactly-one-child-profile activation strategy prevents stale monolithic auto-validation."
     },
     "PCV-PRE-099": {
-      "candidate_status": "completion_candidate",
+      "candidate_status": "closed_preimplementation_contract",
       "future_implementation_destination": [
         "PCV-03F"
       ],
@@ -493,5 +493,14 @@
     "public_or_store_release_authorized": false,
     "next_runtime_destination": "PCV-03A only after this candidate passes exact-head validation, is durably published, and OPS3 closeout selects PCV-03A"
   },
-  "dependency_edges": []
+  "dependency_edges": [],
+  "completion_validation": {
+    "candidate_head": "74c539fdaa3761cb77188ab6ab657c3d867256de",
+    "workflow": "Validate Operations V3",
+    "validation_run_id": 36145523725,
+    "conclusion": "success",
+    "publication_pr": 1752,
+    "publication_merge": "fe9d2ee3ac106699ef7dace7c336ca3dbd62276f",
+    "publication_mode": "single_lane_direct"
+  }
 }

@@ -2,13 +2,13 @@
   "schema_version": "1.0.0",
   "program_id": "PCV-PRE",
   "program_name": "PCV Preimplementation Integrity & Interconnectivity Closure",
-  "status": "in_progress",
+  "status": "completed_verified",
   "lane": "gpr",
   "owner_direction_date": "2026-09-25",
   "predecessor": "PCV-02 completed_verified",
   "blocks_parent": "PCV-03",
-  "current_item": "PCV-I06",
-  "current_attempt": "PCV-I06-attempt-001",
+  "current_item": null,
+  "current_attempt": null,
   "strict_order": [
     "PCV-I01A",
     "PCV-I01B",
@@ -126,7 +126,7 @@
     {
       "id": "PCV-I06",
       "name": "Final No-Orphan / No-Parallel-Owner Readiness Certification",
-      "status": "in_progress",
+      "status": "completed_verified",
       "objective": "Perform a fresh adversarial sweep over the completed interstitial artifacts and current repositories; allow PCV-03A to start only when all required owner/dependency/consumer/validation bindings are explicit and no unresolved implementation prerequisite remains.",
       "acceptance": [
         "Every gap register item is closed, explicitly routed to a bounded PCV-03 child, or explicitly deferred outside PCV with owner/rationale; no unowned/indeterminate blocker remains.",
@@ -138,14 +138,24 @@
         "Only then may CURRENT select PCV-03A and grant implementation authority."
       ],
       "closure_contract": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json",
-      "candidate_state": "completion_candidate_prevalidation"
+      "candidate_state": "completed_verified",
+      "completion_validation": {
+        "candidate_head": "74c539fdaa3761cb77188ab6ab657c3d867256de",
+        "validation_run_id": 36145523725,
+        "publication_merge": "fe9d2ee3ac106699ef7dace7c336ca3dbd62276f"
+      }
     }
   ],
   "completion_rule": "PCV-PRE completes only when PCV-I01A, PCV-I01B, PCV-I01C, PCV-I02..PCV-I06 complete in strict order and PCV-I06 certifies zero unowned/unresolved PCV-03 prerequisites.",
-  "next_action": "Validate the PCV-I06 final readiness certification candidate; PCV-03A remains blocked until exact-head GREEN publication and closeout.",
+  "next_action": "PCV-PRE is completed_verified. PCV-03A is selected_not_started in the parent PCV program and requires a later owner Continue.",
   "prerequisite": {
     "work_item": "PIM-03",
     "status": "completed_verified",
     "completion_report": "governance/project-integrity/PROJECT_WORK_HISTORY_DEPENDENCY_INTEGRITY_COMPLETION_REPORT.md"
+  },
+  "verified_closeout": {
+    "final_item": "PCV-I06",
+    "readiness_contract": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json",
+    "open_findings": 0
   }
 }

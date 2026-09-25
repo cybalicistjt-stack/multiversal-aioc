@@ -10,11 +10,11 @@
   "attempt_id": "PCV-03A-attempt-001",
   "title": "Canonical Identity, Invitation & Campaign Membership",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "blocked_by_preimplementation_integrity",
+  "status": "selected_not_started",
   "owner_selected": true,
   "selected_by_owner": "2026-09-25 owner direction to keep going but stop overloading the original 10 PCV tranches; PCV-03 decomposed using the established lettered-work-item pattern.",
   "implementation_authority": false,
-  "implementation_branch": "work/pcv-03-two-device",
+  "implementation_branch": null,
   "completed": false,
   "predecessor": {
     "work_item": "PCV-02",
@@ -44,9 +44,9 @@
     "Keep direct/manual zero-service architecture viable; no paid/hosted identity or networking provider becomes mandatory.",
     "Use milestone-level OPS3 state only; no activity-journal instrumentation."
   ],
-  "active_substep": "blocked_pending_pcv_preimplementation_integrity",
+  "active_substep": "selected_not_started",
   "strict_successor": "PCV-03B",
-  "next_action": "Do not implement PCV-03A. Wait for PCV-I01..PCV-I06 to complete; then re-read CURRENT and this checkpoint before granting authority.",
+  "next_action": "Await the next owner Continue. Then start PCV-03A from a newly created child-specific branch based on fresh Multiversal-app main; do not reuse work/pcv-03-two-device or the invalidated candidate/package identity.",
   "execution_guard": {
     "continue_turns": 0,
     "stall_nudges": 0,
@@ -55,11 +55,14 @@
     "no_progress_cycles": 0,
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": "blocked_by_pcv_preimplementation_integrity"
+    "stop_reason": "selected_not_started"
   },
   "audit_required_at_closeout": "PCV-03A must prove no duplicate Campaign membership/invitation owner remains before selecting PCV-03B.",
   "selection_basis": {
-    "kind": "decomposed_child_blocked_by_new_interstitial_gate",
-    "reason": "Owner required a deeper durable no-gap/no-disconnected-work pass before any PCV-03 implementation."
+    "kind": "strict_successor_after_pcv_i06_completed_verified",
+    "readiness_contract": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json",
+    "predecessor_validation_run": "36145523725",
+    "predecessor_publication_merge": "fe9d2ee3ac106699ef7dace7c336ca3dbd62276f",
+    "branch_rule": "Create a fresh PCV-03A branch from current Multiversal-app main at execution start; stale work/pcv-03-two-device is historical-only."
   }
 }
