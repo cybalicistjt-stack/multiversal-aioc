@@ -66,7 +66,7 @@
     {
       "id": "PCV-I02",
       "name": "Data Model, Persistence, Transaction, Secret & Migration Closure",
-      "status": "selected_not_started",
+      "status": "in_progress",
       "objective": "Close the durable-state model before runtime implementation: relational logical schema, product JSON aggregates, transactions, membership/session state, secret references, migration/retirement and provider-exit/data-rights implications.",
       "acceptance": [
         "Declare one durable truth model and exact adapter mapping between canonical logical owners and the installed SQLite product store.",
@@ -75,7 +75,8 @@
         "Select/wire an approved Windows+Android secure-secret-store boundary and safe backup/export/delete behavior.",
         "Define migration/retirement for pre-audit PCV-03.session.1 and any PCV-01/02 predecessor fields that change ownership.",
         "No raw bearer/local identity credential material is allowed in ordinary documents, diagnostics or telemetry."
-      ]
+      ],
+      "closure_contract": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json"
     },
     {
       "id": "PCV-I03",
@@ -136,7 +137,7 @@
     }
   ],
   "completion_rule": "PCV-PRE completes only when PCV-I01A, PCV-I01B, PCV-I01C, PCV-I02..PCV-I06 complete in strict order and PCV-I06 certifies zero unowned/unresolved PCV-03 prerequisites.",
-  "next_action": "PCV-I02 is selected_not_started. On the next owner Continue, begin data-model/persistence/transaction/secret/migration contract closure only; all PCV runtime remains blocked.",
+  "next_action": "PCV-I02 exact candidate validation is active. PCV-I03 and all PCV runtime remain predecessor-blocked.",
   "prerequisite": {
     "work_item": "PIM-03",
     "status": "completed_verified",
