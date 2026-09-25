@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.2.0",
+  "control_plane": "OPS3",
+  "family": "PCV",
+  "lane": "gpr",
+  "track": "product-convergence-real-app-validation",
+  "source_program": "PCV",
+  "parent_tranche": "PCV-03",
+  "work_item_id": "PCV-03A",
+  "attempt_id": "PCV-03A-attempt-001",
+  "title": "Canonical Identity, Invitation & Campaign Membership",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "owner_selected": true,
+  "selected_by_owner": "2026-09-25 owner direction to keep going but stop overloading the original 10 PCV tranches; PCV-03 decomposed using the established lettered-work-item pattern.",
+  "implementation_authority": true,
+  "implementation_branch": "work/pcv-03-two-device",
+  "completed": false,
+  "predecessor": {
+    "work_item": "PCV-02",
+    "status": "completed_verified",
+    "application_merge_sha": "28666001be412925e8d148bf47e8c6a9d9f11e93"
+  },
+  "decomposition_source": {
+    "superseded_attempt": "PCV-03-attempt-001",
+    "audit": "governance/application-planning/product-convergence/PCV-03_ADVERSARIAL_CANDIDATE_AUDIT_2026-09-25.md",
+    "invalidated_candidate_head": "8232e52a089360939b17e58229af192a283b3a53",
+    "invalidated_package_artifact_id": 10832224601
+  },
+  "objective": "Distinct Windows/Android users join through canonical local-first subject identity, recipient-bound A3 invitation semantics and A5 Campaign membership authority, with no parallel PCV-03 membership ledger.",
+  "acceptance": [
+    "Bind production local profile/subject state to the canonical stable-subject session seam without making device identity or transport claims authoritative.",
+    "Implement recipient-bound, expiring, revocable, one-time/idempotent invitation acceptance through A3 semantics; raw invitation bearer material is not persisted in ordinary product documents.",
+    "Implement the local-first A5 Campaign membership adapter over durable product storage; Campaign role/state is the only membership/role authority used by PCV-03.",
+    "Support current membership states needed by PCV-03 authorization, including active/suspended/left/removed, and fail closed for unsupported role translations.",
+    "Bind accepted transport peers to the canonical subject/membership/device context so later commands/presence cannot impersonate another member.",
+    "PCV-03B+ and PCV-04 remain unauthorized until this item closes."
+  ],
+  "boundaries": [
+    "Preserve PCV-01/02 completed product state and existing canonical A3/A5/P9/SMB owner contracts; implement adapters rather than parallel authorities.",
+    "Do not implement PCV-03B Session-lifecycle work except interfaces strictly required to keep PCV-03A compilable and fail-closed.",
+    "Do not implement gameplay/action/combat behavior; PCV-04 remains unauthorized.",
+    "Do not perform installed physical proof or regenerate completion packages in PCV-03A.",
+    "Keep direct/manual zero-service architecture viable; no paid/hosted identity or networking provider becomes mandatory.",
+    "Use milestone-level OPS3 state only; no activity-journal instrumentation."
+  ],
+  "active_substep": "canonical_identity_invitation_campaign_membership",
+  "strict_successor": "PCV-03B",
+  "next_action": "On work/pcv-03-two-device, repair production local subject/session binding, A3 invitation lifecycle, A5 Campaign membership/state authority and connection-bound subject/device identity; add focused negative regressions and remove the parallel PCV-03 membership authority. Stop only when PCV-03A acceptance is exact-head green or a real external/owner-only blocker exists.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "audit_required_at_closeout": "PCV-03A must prove no duplicate Campaign membership/invitation owner remains before selecting PCV-03B."
+}
