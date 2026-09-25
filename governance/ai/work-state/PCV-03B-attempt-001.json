@@ -66,9 +66,9 @@
   "strict_successor": "PCV-03C",
   "next_action": "PCV-03B is completed_verified. PCV-03C is selected_not_started; a later owner Continue is required before secure peer transport/protocol implementation begins.",
   "execution_guard": {
-    "continue_turns": 1,
-    "stall_nudges": 0,
-    "material_progress_seq": 3,
+    "continue_turns": 2,
+    "stall_nudges": 1,
+    "material_progress_seq": 4,
     "progress_at_last_owner_command": 3,
     "no_progress_cycles": 0,
     "active_stall": false,
@@ -78,9 +78,9 @@
       "evidence": "PCV-03B canonical Session launch/lifecycle/persistence/authority-epoch implementation published on application main as a2e4c005bb6cc5bc4f6ac7bc3c8f67daa94189d9; strict successor PCV-03C selected_not_started."
     },
     "last_material_progress": {
-      "seq": 3,
+      "seq": 4,
       "kind": "completed_verified_candidate",
-      "evidence": "Exact Multiversal-app head 121e6dff3d894f1edb16d4743f8c40c205d7f28f passed repository health, Linux, Windows and deterministic cross-platform comparison in run 36160124559 and merged as a2e4c005bb6cc5bc4f6ac7bc3c8f67daa94189d9."
+      "evidence": "PCV-03B application publication had already completed before the executor interruption: exact head 121e6dff3d894f1edb16d4743f8c40c205d7f28f passed run 36160124559 and merged as a2e4c005bb6cc5bc4f6ac7bc3c8f67daa94189d9; closeout resumed without replaying product work."
     }
   },
   "audit_required_at_closeout": "PCV-03B must prove no duplicate Session owner/authority ledger remains before selecting PCV-03C.",
@@ -146,15 +146,17 @@
     ]
   },
   "execution_conformance": {
-    "status": "conforming",
-    "policy_violations": [],
+    "status": "nonconforming",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE"
+    ],
     "product_completion_valid": true,
-    "execution_quality_note": "PCV-03B completed within one owner Continue. Lane state used only start/prequeue-green/published/successor-reseed milestones; single-lane publication used no READY queue or rebase."
+    "execution_quality_note": "PCV-03B application implementation, exact-head validation and publication completed within the first owner Continue, but the executor interrupted before control-plane closeout. A second owner Continue was required only to finish the already-due closeout/reseed; no product work was replayed or invalidated."
   },
   "interaction_quality": {
-    "owner_execution_commands": 1,
-    "additional_continue_commands": 0,
+    "owner_execution_commands": 2,
+    "additional_continue_commands": 1,
     "product_work_invalidated": false,
-    "classification": "bounded tranche completed in one owner execution command"
+    "classification": "product completed successfully; executor interruption caused avoidable extra Continue for closeout only"
   }
 }
