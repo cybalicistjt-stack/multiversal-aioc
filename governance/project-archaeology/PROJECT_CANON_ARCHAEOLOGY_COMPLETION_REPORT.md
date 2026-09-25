@@ -25,3 +25,9 @@ This does not declare every historical reconstruction verbatim; Phase 1–7 mapp
 ## Operational handoff
 
 OPS3 remains the only live selector. The preserved GPR lane resumes at `PCV-03-attempt-001`; its exact validated product candidate is not reopened. The next action is the already-required installed Windows-host + Android-client physical two-device proof. PCV-04 remains blocked by predecessor.
+
+## Later supersession note — 2026-09-25
+
+This report remains the verified **global canon-reconstruction** closeout for its historical scope. Its original operational handoff to the old PCV-03 physical proof is superseded by later owner-directed candidate-specific integrity work.
+
+A deeper exact-candidate/predecessor audit subsequently found unresolved PCV implementation wiring and contract gaps. The live authority is now OPS3 `operations/CURRENT.json`, which selects the PCV preimplementation integrity series `PCV-I01..PCV-I06`. The current gap register is `governance/application-planning/product-convergence/PCV_PREIMPLEMENTATION_GAP_REGISTER.json`. Do not use this historical handoff to skip that gate or to reuse the old PCV-03 candidate/package for completion proof.
