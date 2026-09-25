@@ -224,8 +224,8 @@
       "title": "PCV-03 creates a parallel Session owner.",
       "detail": "It creates `Pcv03HostSession` directly from PCV-02 Campaign/Scene state rather than consuming the canonical A5 launched Session shell / immutable launch snapshot.",
       "primary_interstitial": "PCV-I01C",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -238,7 +238,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01C"
+      "candidate_closure_work_item": "PCV-I01C",
+      "closed_by": "PCV-I01C",
+      "closure_validation": {
+        "candidate_head": "b2daf81c6c5216795015e31896f62b471177f30c",
+        "validation_run_id": 36134023934,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-010",
@@ -1437,8 +1443,8 @@
       "title": "SMB-01 production service-port layer is not connected to the local-first host profile",
       "detail": "IdentityPort, EntitlementPort, PersistencePort, SessionCommandPort, RealtimePort and CheckpointPort have production-selected adapter plans, but no local-host adapters map PCV's zero-service execution to the same semantics.",
       "primary_interstitial": "PCV-I01C",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1451,7 +1457,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01C"
+      "candidate_closure_work_item": "PCV-I01C",
+      "closed_by": "PCV-I01C",
+      "closure_validation": {
+        "candidate_head": "b2daf81c6c5216795015e31896f62b471177f30c",
+        "validation_run_id": 36134023934,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-067",
@@ -1459,8 +1471,8 @@
       "title": "Selected SMB-01 server/Postgres authority and PCV local-host authority need an explicit composition rule",
       "detail": "SMB-01 selects server-command/database authority for future production while PCV requires a GM installed-client executor when hosted services are inactive; both profiles need one owner model rather than contradictory authorities.",
       "primary_interstitial": "PCV-I01C",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1473,7 +1485,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01C"
+      "candidate_closure_work_item": "PCV-I01C",
+      "closed_by": "PCV-I01C",
+      "closure_validation": {
+        "candidate_head": "b2daf81c6c5216795015e31896f62b471177f30c",
+        "validation_run_id": 36134023934,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-068",
@@ -1684,8 +1702,8 @@
       "title": "No production local entitlement adapter supplies the Session handshake",
       "detail": "The canonical handshake expects entitlement/grant state and A3/A5 carry entitlement decision references, while PCV currently has no production local EntitlementPort implementation for the real product profile.",
       "primary_interstitial": "PCV-I01C",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1698,7 +1716,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01C"
+      "candidate_closure_work_item": "PCV-I01C",
+      "closed_by": "PCV-I01C",
+      "closure_validation": {
+        "candidate_head": "b2daf81c6c5216795015e31896f62b471177f30c",
+        "validation_run_id": 36134023934,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-079",
@@ -2289,11 +2313,17 @@
         "PCV-03A",
         "PCV-03C"
       ],
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01C"
+      "candidate_closure_work_item": "PCV-I01C",
+      "closed_by": "PCV-I01C",
+      "closure_validation": {
+        "candidate_head": "b2daf81c6c5216795015e31896f62b471177f30c",
+        "validation_run_id": 36134023934,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-108",

@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 523,
+  "state_revision": 524,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "in_progress",
-      "selected_work_item": "PCV-I01C",
-      "attempt_id": "PCV-I01C-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/PCV-I01C-attempt-001.json",
-      "implementation_branch": "work/pcv-preimplementation-integrity",
-      "implementation_authority": true,
-      "activation_rule": "PCV-I01B completed_verified. Owner Continue started bounded PCV-I01C AIOC local-host/production-service authority and entitlement-composition work on work/pcv-preimplementation-integrity. Multiversal-app PCV runtime remains prohibited; PCV-I02+ and PCV-03A+ remain predecessor-blocked.",
+      "state": "selected_not_started",
+      "selected_work_item": "PCV-I02",
+      "attempt_id": "PCV-I02-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/PCV-I02-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "PCV-I01C completed_verified on AIOC contract candidate b2daf81c6c5216795015e31896f62b471177f30c / Operations V3 run 36134023934. PCV-I02 is selected but not started. Multiversal-app PCV runtime remains prohibited; PCV-I03+ and PCV-03A+ remain predecessor-blocked.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "PCV-I01C: close the 5 assigned local-host/production-service authority, Session-owner, entitlement and online-semantics findings at contract level only; validate exact head, publish, then seed PCV-I02 selected_not_started.",
+  "next_project_action": "PCV-I02 is selected_not_started. On the next owner Continue, close the durable data model, persistence transactions, secret boundaries and migration/retirement semantics; do not start PCV runtime implementation.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

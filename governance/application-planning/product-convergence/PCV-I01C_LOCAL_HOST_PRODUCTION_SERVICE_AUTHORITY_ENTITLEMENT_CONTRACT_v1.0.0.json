@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "contract_id": "PCV-I01C.LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT.v1",
-  "status": "completion_candidate",
+  "status": "completed_verified",
   "work_item_id": "PCV-I01C",
   "scope": "AIOC-only preimplementation contract closure; no Multiversal-app runtime implementation or hosted activation",
   "source_snapshot": {
@@ -228,35 +228,35 @@
   },
   "gap_closure": {
     "PCV-PRE-009": {
-      "candidate_status": "contract_closed_runtime_pending",
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
       "future_implementation_destination": [
         "PCV-03A",
         "PCV-03B"
       ]
     },
     "PCV-PRE-066": {
-      "candidate_status": "contract_closed_runtime_pending",
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
       "future_implementation_destination": [
         "PCV-03A",
         "PCV-03B"
       ]
     },
     "PCV-PRE-067": {
-      "candidate_status": "contract_closed_runtime_pending",
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
       "future_implementation_destination": [
         "PCV-03A",
         "PCV-03B"
       ]
     },
     "PCV-PRE-078": {
-      "candidate_status": "contract_closed_runtime_pending",
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
       "future_implementation_destination": [
         "PCV-03A",
         "PCV-03B"
       ]
     },
     "PCV-PRE-107": {
-      "candidate_status": "contract_closed_runtime_pending",
+      "candidate_status": "completed_verified_contract_closed_runtime_pending",
       "future_implementation_destination": [
         "PCV-03A",
         "PCV-03C"
@@ -269,5 +269,12 @@
     "exact_persistence_migration_implementation_authorized": false,
     "next_runtime_destination": "PCV-03A after PCV-I02 through PCV-I06 predecessor closure",
     "later_preimplementation_items_authorized": false
+  },
+  "completion_evidence": {
+    "date": "2026-09-25",
+    "validated_candidate_head": "b2daf81c6c5216795015e31896f62b471177f30c",
+    "validation_run_id": 36134023934,
+    "validation_conclusion": "success",
+    "note": "Contract-level closure only. Concrete persistence/transaction/secret/migration realization remains PCV-I02; runtime remains PCV-03A/03B/03C after all PCV-PRE predecessors close."
   }
 }
