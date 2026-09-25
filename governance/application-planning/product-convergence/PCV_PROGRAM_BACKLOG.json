@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.3.0",
+  "schema_version": "1.4.0",
   "program_id": "PCV",
   "program_name": "Product Convergence & Real-App Validation",
   "status": "in_progress",
@@ -9,8 +9,8 @@
     "SMB",
     "BIP"
   ],
-  "current_item": "PCV-03A",
-  "current_attempt": "PCV-03A-attempt-001",
+  "current_item": "PCV-I01",
+  "current_attempt": "PCV-I01-attempt-001",
   "tranches": [
     {
       "id": "PCV-01",
@@ -47,7 +47,7 @@
       "id": "PCV-03A",
       "parent_tranche": "PCV-03",
       "name": "Canonical Identity, Invitation & Campaign Membership",
-      "status": "in_progress",
+      "status": "blocked_by_preimplementation_integrity",
       "outcome": "Distinct Windows/Android users join through canonical local-first subject identity, recipient-bound A3 invitation semantics and A5 Campaign membership authority, with no parallel PCV-03 membership ledger.",
       "acceptance": [
         "Bind production local profile/subject state to the canonical stable-subject session seam without making device identity or transport claims authoritative.",
@@ -248,6 +248,12 @@
   "strict_order": [
     "PCV-01",
     "PCV-02",
+    "PCV-I01",
+    "PCV-I02",
+    "PCV-I03",
+    "PCV-I04",
+    "PCV-I05",
+    "PCV-I06",
     "PCV-03A",
     "PCV-03B",
     "PCV-03C",
@@ -262,9 +268,9 @@
     "PCV-09",
     "PCV-10"
   ],
-  "next_item": "PCV-03A",
+  "next_item": "PCV-I01",
   "completion_rule": "PCV completes only when PCV-10 proves a fresh-installed Android and Windows pair can run a real two-human Multiversal campaign using persisted governed state and representative current feature breadth. Contract-only, fixture-only, golden-data-only, isolated-workbench-only, screenshot-only, or in-process-only proof is insufficient.",
-  "next_action": "Execute PCV-03A canonical identity/invitation/Campaign-membership repair. PCV-03B..03F and PCV-04 remain blocked by predecessor.",
+  "next_action": "Execute PCV-I01 authority/identity/membership/owner-contract closure. PCV-03A and all later PCV work remain blocked until PCV-I06.",
   "approved_cross_tranche_requirements": [
     {
       "id": "PCV-GW-01",
@@ -316,5 +322,22 @@
       ],
       "completion_rule": "PCV-03 parent is completed_verified only when PCV-03A through PCV-03F are completed_verified in strict order."
     }
+  },
+  "preimplementation_integrity_gate": {
+    "program": "PCV-PRE",
+    "backlog": "governance/application-planning/product-convergence/PCV_PREIMPLEMENTATION_INTEGRITY_BACKLOG.json",
+    "gap_register": "governance/application-planning/product-convergence/PCV_PREIMPLEMENTATION_GAP_REGISTER.json",
+    "consumer_census": "governance/application-planning/product-convergence/PCV_PREIMPLEMENTATION_CONSUMER_CENSUS.json",
+    "strict_order": [
+      "PCV-I01",
+      "PCV-I02",
+      "PCV-I03",
+      "PCV-I04",
+      "PCV-I05",
+      "PCV-I06"
+    ],
+    "status": "in_progress",
+    "blocks": "PCV-03A",
+    "rule": "PCV-03A cannot be selected or receive implementation authority until PCV-I06 completed_verified."
   }
 }
