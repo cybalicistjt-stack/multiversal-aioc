@@ -18,6 +18,7 @@ pcv_backlog=load(P/"PCV_PROGRAM_BACKLOG.json")
 pcv_pre=load(P/"PCV_PREIMPLEMENTATION_INTEGRITY_BACKLOG.json")
 pcv_i01a=load(ROOT/"governance"/"ai"/"work-state"/"PCV-I01A-attempt-001.json")
 pim03=load(ROOT/"governance"/"ai"/"work-state"/"PIM-03-attempt-001.json")
+roadmap=load(ROOT/"governance"/"application-planning"/"ROADMAP_DEPENDENCY_GRAPH.json")
 assert reg["status"] in {"completion_candidate","completed_verified"}
 assert dep["status"] in {"completion_candidate","completed_verified"}
 assert reg["mutation_policy"]["identity_fields_immutable"] is True
@@ -107,4 +108,11 @@ sources={x["name"]:x["sha256"] for x in reg["live_project_source_surface"]["file
 assert sources["PROJECT_SOURCE_MANIFEST.md"]=="15ba1bc42c12920c245d1611ac5b95c8614a87520644230ca64c3cd43892bb2c"
 assert sources["PROJECT_BIBLE_OPS3_REFERENCE.md"]=="8de341b25a51af106387c3516bbe4983a30274efb423fdca460350bb92b1748e"
 assert sources["SHA256SUMS.txt"]=="4e98b1c18ee3596b0f92efa48213e8faa4bb3f80bbc4af73da09923264e52f36"
+# New owner-selected programs/interstitials must not fall out of the cross-program DAG.
+assert {"BIP","PCV","PIM"} <= set(roadmap["nodes"])
+assert "SMB18" in roadmap["program_edges"]["BIP"]["hard_requires"]
+assert "BIP" in roadmap["program_edges"]["PCV"]["hard_requires"]
+assert "PCV-02" in roadmap["program_edges"]["PIM"]["start_requires"]
+assert "PIM-03" in roadmap["milestone_gates"]["PCV"]["PCV-I01A"]
+assert "PCV-I06" in roadmap["milestone_gates"]["PCV"]["PCV-03A"]
 print(json.dumps({"status":"PASS","planning_groups":83,"work_state_families":73,"unique_work_items":662,"attempt_files":667,"canon_nodes":71,"capability_rows":56,"map_nodes":dep["counts"]["nodes"],"map_edges":dep["counts"]["edges"],"master_integrity_findings":len(gaps["findings"]),"pcv_child_findings":pcv["finding_count"]},sort_keys=True))

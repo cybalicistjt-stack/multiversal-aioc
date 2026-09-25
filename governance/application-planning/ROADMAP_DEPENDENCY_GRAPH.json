@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.5",
+  "schema_version": "1.0.6",
   "status": "CURRENT_PLANNING_AUTHORITY",
   "graph_id": "MV-ROADMAP-DAG-001",
   "authority_rule": "This graph owns cross-program activation/dependency semantics. Historical roadmap amendments and legacy activation_after/successor fields remain provenance/compatibility projections and cannot override this graph.",
@@ -105,6 +105,15 @@
       "implementation_authority": false
     },
     "MVPS": {
+      "implementation_authority": false
+    },
+    "BIP": {
+      "implementation_authority": false
+    },
+    "PCV": {
+      "implementation_authority": false
+    },
+    "PIM": {
       "implementation_authority": false
     }
   },
@@ -533,6 +542,40 @@
       "golden_proof_requires": [
         "MVPS-16 radical-species conformance proof"
       ]
+    },
+    "BIP": {
+      "hard_requires": [
+        "SMB18"
+      ],
+      "start_requires": [
+        "SMB-18"
+      ],
+      "late_bind_requires": [],
+      "golden_proof_requires": [
+        "BIP-01 installer/package proof"
+      ]
+    },
+    "PCV": {
+      "hard_requires": [
+        "BIP"
+      ],
+      "start_requires": [
+        "BIP-01"
+      ],
+      "late_bind_requires": [],
+      "golden_proof_requires": [
+        "PCV-10 terminal product-convergence proof"
+      ]
+    },
+    "PIM": {
+      "hard_requires": [],
+      "start_requires": [
+        "PCV-02"
+      ],
+      "late_bind_requires": [],
+      "golden_proof_requires": [
+        "PIM-03 integrity-map certification"
+      ]
     }
   },
   "milestone_gates": {
@@ -627,6 +670,17 @@
         "MSLR-18",
         "GPR-16",
         "MNCS-24"
+      ]
+    },
+    "PCV": {
+      "PCV-01": [
+        "BIP-01"
+      ],
+      "PCV-I01A": [
+        "PIM-03"
+      ],
+      "PCV-03A": [
+        "PCV-I06"
       ]
     }
   },
