@@ -15,8 +15,8 @@
       "title": "Parallel Campaign membership authority.",
       "detail": "`pcv03Session.ts` mints and persists `Pcv03Membership` while also mutating PCV-02 `memberSubjectIds`. This bypasses the canonical A5 Campaign membership/invitation owner instead of adapting it.",
       "primary_interstitial": "PCV-I01B",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -28,7 +28,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-002",
@@ -36,8 +42,8 @@
       "title": "Join is not A3 invitation acceptance.",
       "detail": "PCV-03 compares `invitationId + raw secret` directly, then creates membership itself. A3's lifecycle semantics—recipient binding, one-time/idempotent acceptance, decline, revoke, inference-safe preview—are not composed.",
       "primary_interstitial": "PCV-I01B",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -49,7 +55,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-003",
@@ -57,8 +69,8 @@
       "title": "Accepted invitation remains reusable.",
       "detail": "PCV-03 writes `acceptedSubjectId` but never checks it before later acceptance. The same invitation secret can be presented again by another subject/device.",
       "primary_interstitial": "PCV-I01B",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -70,7 +82,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-004",
@@ -152,8 +170,8 @@
       "title": "No Campaign membership state transition seam is consumed.",
       "detail": "A5 models `active | suspended | left | removed`, but PCV-03 cannot observe/enforce those states through its local membership copy. Revocation/suspension cannot reliably terminate live/resume authority.",
       "primary_interstitial": "PCV-I01B",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -165,7 +183,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-008",
@@ -173,8 +197,8 @@
       "title": "Supported role vocabulary is not explicitly adapted.",
       "detail": "A5 uses `game-master/assistant-gm/content-creator`; the older Campaign authorization policy uses `gm/player/observer`. PCV-03 currently uses only player/observer but has no explicit fail-closed translation seam for future A5 roles.",
       "primary_interstitial": "PCV-I01B",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -186,7 +210,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-009",
@@ -421,8 +451,8 @@
       "title": "Cross-owner join mutation is non-atomic.",
       "detail": "PCV-03 mutates the PCV-02 Campaign member list before persisting its own Session membership. A later save conflict/failure can leave the two records inconsistent.",
       "primary_interstitial": "PCV-I01B",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -434,7 +464,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-021",
@@ -1109,8 +1145,8 @@
       "title": "PCV-02 Campaign membership representation is weaker than current A5 membership authority",
       "detail": "ProductCampaignFoundation persists memberSubjectIds only, with no membership identity, role/state/version/delegation semantics; the interstitial must define a migration/adapter that preserves completed PCV-02 state without retaining two membership authorities.",
       "primary_interstitial": "PCV-I01B",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1122,7 +1158,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-056",
@@ -1285,8 +1327,8 @@
       "title": "A5 membership state transitions are modeled but no public mutation seam exists",
       "detail": "CampaignMembershipState includes active/suspended/left/removed, yet CampaignMembershipAndInvitationPort exposes issue/reissue/change-role/delegation but no suspend/leave/remove transition.",
       "primary_interstitial": "PCV-I01B",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1298,7 +1340,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-063",
@@ -1306,8 +1354,8 @@
       "title": "A5 membership mutations do not carry explicit authentication-session or permission evidence",
       "detail": "The public mutation inputs carry actorSubjectId but not the A3 authentication session / permission-decision references required by A5 security text; surrounding authorization ownership must be specified.",
       "primary_interstitial": "PCV-I01B",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1319,7 +1367,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-064",
@@ -1327,8 +1381,8 @@
       "title": "A3 atomic invitation acceptance is not explicitly bridged to A5 Campaign membership persistence",
       "detail": "InvitationPort promises one atomic membership+role transition, but the current public A3/A5 ports do not define the production transaction coordinator that creates/replays the A5 membership and returns its references.",
       "primary_interstitial": "PCV-I01B",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1340,7 +1394,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-065",
@@ -1348,8 +1408,8 @@
       "title": "Campaign role vocabularies are not normalized across A5 and older P9 authorization",
       "detail": "A5 uses game-master/assistant-gm/content-creator while the older Campaign authorization policy uses gm/player/observer; the supported translation/fail-closed rule must be explicit.",
       "primary_interstitial": "PCV-I01B",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1361,7 +1421,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-066",
@@ -1566,8 +1632,8 @@
       "title": "Family-safety invitation policy is not integrated",
       "detail": "MIB-17/SMB-14 can deny or require guardian approval for invitations; Campaign invitation/join must consume that product-policy decision without granting Campaign authority.",
       "primary_interstitial": "PCV-I01B",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1579,7 +1645,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-077",
@@ -2076,8 +2148,8 @@
       "title": "Invitation recipient binding design must distinguish proof-of-possession from device authority",
       "detail": "The earlier opaque recipient-code concept can bootstrap a join, but it must bind an authenticated local subject credential and must not let the device ID itself grant Campaign identity/role.",
       "primary_interstitial": "PCV-I01B",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -2089,7 +2161,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-103",
@@ -2175,11 +2253,17 @@
       "future_implementation_destination": [
         "PCV-03A"
       ],
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-107",
@@ -2216,11 +2300,17 @@
         "PCV-03A",
         "PCV-03B"
       ],
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01B"
+      "candidate_closure_work_item": "PCV-I01B",
+      "closed_by": "PCV-I01B",
+      "closure_validation": {
+        "candidate_head": "55d18be75f4eeb3effc27cb8e8b46d00c1f707fd",
+        "validation_run_id": 36132771173,
+        "conclusion": "success"
+      }
     }
   ],
   "routing_rule": "Each finding has exactly one primary closure interstitial, explicit secondary dependency families where material, and a future implementation destination. Cross-cutting dependencies never excuse duplicate owner authority."
