@@ -42,7 +42,7 @@
   ],
   "strict_successor": "PCV-04",
   "active_substep": "installed_windows_android_physical_proof",
-  "next_action": "Owner-directed project-wide canon archaeology is now the controlling prerequisite before further PCV-03 physical/network repair. Preserve the current PCV-03 branch/candidate/evidence without mutation. Resume PCV-03 only after the Canon Reconstruction Gate and Internal Wiring / Dependency / Interconnectivity Gate in governance/project-archaeology/PROJECT_CANON_ARCHAEOLOGY_CHARTER.md are completed and current canon has been reconciled into the required repair routing.",
+  "next_action": "Project canon archaeology and wiring gates are completed_verified. Preserve exact application candidate 8232e52a089360939b17e58229af192a283b3a53 and package artifact 10832224601; complete only the installed Windows-host + Android-player physical two-device proof, export PCV-03.INSTALLED-EVIDENCE.1, and run tools/verify_pcv03_installed_evidence.py against the exact-head package manifest. PCV-04 remains unauthorized.",
   "owner_interaction_observation": {
     "continue_turns": 4,
     "stall_nudges": 0
@@ -60,7 +60,7 @@
     },
     "active_stall": false,
     "terminal_response_allowed": true,
-    "stop_reason": "owner_directed_project_canon_archaeology_and_wiring_audit"
+    "stop_reason": "external_physical_two_device_proof_required"
   },
   "execution_conformance": {
     "status": "conforming",
@@ -74,7 +74,7 @@
   },
   "external_gate": {
     "kind": "installed_physical_two_device_proof",
-    "state": "paused_for_project_canon_archaeology",
+    "state": "ready_for_installed_physical_two_device_proof",
     "candidate_head": "8232e52a089360939b17e58229af192a283b3a53",
     "application_pr": 775,
     "validation_run_id": 36053261478,
@@ -90,6 +90,12 @@
       "GM-only marker remains absent from the player projection.",
       "Windows host exports PCV-03.INSTALLED-EVIDENCE.1 with physical-device affirmation.",
       "tools/verify_pcv03_installed_evidence.py passes against the exact-head PCV-03 package manifest."
-    ]
+    ],
+    "archaeology_prerequisite": {
+      "status": "completed_verified",
+      "merged_closeout_sha": "fbe68ef1b98e2d5669b4775fc9bf3bbd2622877d",
+      "canon_register": "governance/project-archaeology/PROJECT_CANON_REGISTER.json",
+      "wiring_register": "governance/project-archaeology/PROJECT_WIRING_DEFECT_REGISTER.json"
+    }
   }
 }
