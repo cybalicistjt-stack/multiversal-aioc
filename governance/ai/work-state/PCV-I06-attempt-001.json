@@ -12,7 +12,7 @@
   "status": "in_progress",
   "owner_selected": true,
   "selected_by_owner": "2026-09-25 owner direction: fully map and preserve project work/dependencies before PCV implementation; split interstitials as needed.",
-  "implementation_authority": false,
+  "implementation_authority": true,
   "implementation_branch": "work/pcv-i06-final-readiness-certification",
   "runtime_product_implementation_authority": false,
   "completed": false,
@@ -36,17 +36,17 @@
     "PCV-03A..03F remain blocked until PCV-I06 final readiness certification closes all five remaining findings."
   ],
   "strict_successor": "PCV-03A",
-  "active_substep": "final_adversarial_readiness_sweep",
-  "next_action": "Complete the bounded PCV-I06 no-orphan/no-parallel-owner certification; close or explicitly route all remaining findings, define PCV-03A..03F validation ownership, keep packaging disabled until PCV-03F, and do not start Multiversal-app runtime implementation.",
+  "active_substep": "completion_candidate_prevalidation",
+  "next_action": "Validate the exact PCV-I06 readiness-certification candidate. If GREEN, publish it through the single-active-lane direct exact-head path, then perform atomic selector/successor closeout to PCV-03A.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null,
-    "last_material_progress": "PCV-I06 started on work/pcv-i06-final-readiness-certification from main 9ddf88ae0cea9529af63c70521c8882d73ea1fb7."
+    "last_material_progress": "Fresh AIOC+Multiversal-app adversarial sweep completed; stale PR #775 closed unmerged; five I06 findings have one bounded closure candidate; child validation/packaging gates are explicitly defined."
   }
 }
