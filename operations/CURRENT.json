@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 543,
+  "state_revision": 544,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -90,13 +90,13 @@
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     "gpr": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "PCV-03F",
       "attempt_id": "PCV-03F-attempt-001",
       "checkpoint_path": "governance/ai/work-state/PCV-03F-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "PCV-03E completed_verified on Multiversal-app main 6fb01d19d5763b00488392a564ec6b303551eb2f after exact-head run 36177826378. ROADMAP_DEPENDENCY_GRAPH supplies no interstitial override. PCV-03F is selected_not_started and requires a later owner Continue to create a fresh application-main branch and grant bounded exact-head installed Windows/Android certification authority.",
+      "implementation_branch": "work/pcv-03f-installed-certification",
+      "implementation_authority": true,
+      "activation_rule": "Owner Continue started PCV-03F from fresh Multiversal-app main 6fb01d19d5763b00488392a564ec6b303551eb2f. Authority is limited to exact-head Windows x64 NSIS and Android ARM64 package regeneration, manifest/install identity verification, device-signed installed-runtime proof, and causal PCV-03 certification receipts. Updater activation, public/store release, production credentials/signing and PCV-04 gameplay remain unauthorized.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "PCV-03F is selected_not_started. On the next owner Continue, start only exact-head Windows/Android package regeneration, installed-runtime identity proof and causal physical-device PCV-03 certification from fresh Multiversal-app main; PCV-04 gameplay and public/store release remain blocked.",
+  "next_project_action": "Execute PCV-03F only on work/pcv-03f-installed-certification from fresh Multiversal-app main; close through exact-head certification/publication before PCV-04 may become eligible.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
