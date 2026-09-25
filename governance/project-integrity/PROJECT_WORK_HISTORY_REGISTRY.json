@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2.0",
   "registry_id": "PROJECT-WORK-HISTORY-REGISTRY-001",
-  "status": "completion_candidate",
+  "status": "completed_verified",
   "purpose": "Durably account for every discovered project work group and work item without making this registry a live execution selector.",
   "authority_boundary": "Reference/integrity only. operations/CURRENT.json remains the sole live selector.",
   "mutation_policy": {
@@ -12683,7 +12683,7 @@
       {
         "work_item_id": "PIM-01",
         "family_id": "PIM",
-        "status": "completion_candidate",
+        "status": "completed_verified",
         "attempt_records": [
           {
             "path": "governance/ai/work-state/PIM-01-attempt-001.json",
@@ -12695,7 +12695,7 @@
       {
         "work_item_id": "PIM-02",
         "family_id": "PIM",
-        "status": "completion_candidate",
+        "status": "completed_verified",
         "attempt_records": [
           {
             "path": "governance/ai/work-state/PIM-02-attempt-001.json",
@@ -12707,7 +12707,7 @@
       {
         "work_item_id": "PIM-03",
         "family_id": "PIM",
-        "status": "in_progress",
+        "status": "completed_verified",
         "attempt_records": [
           {
             "path": "governance/ai/work-state/PIM-03-attempt-001.json",
@@ -12719,7 +12719,7 @@
       {
         "work_item_id": "PCV-I01A",
         "family_id": "PCV-PRE",
-        "status": "blocked_by_project_integrity_map",
+        "status": "in_progress",
         "attempt_records": [
           {
             "path": "governance/ai/work-state/PCV-I01A-attempt-001.json",
@@ -12894,5 +12894,22 @@
       "P9-06-008"
     ],
     "current_overlay_is_append_only": true
+  },
+  "verified_closeout": {
+    "date": "2026-09-25",
+    "validation_candidate_head": "555e6ad178263f2a381b7ad03bd87158f376c653",
+    "validation_run_id": 36125172049,
+    "validation_conclusion": "success",
+    "invariants": {
+      "planning_groups": 83,
+      "work_state_families": 73,
+      "unique_work_items": 662,
+      "attempt_files": 667,
+      "duplicate_attempt_extras": 5,
+      "pdcp_reductions": 10,
+      "non_work_state_groups": 14,
+      "project_source_files": 12,
+      "unresolved_structural_lineage": 0
+    }
   }
 }

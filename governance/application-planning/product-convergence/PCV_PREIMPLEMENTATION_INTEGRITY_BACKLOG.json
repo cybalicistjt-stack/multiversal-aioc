@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "program_id": "PCV-PRE",
   "program_name": "PCV Preimplementation Integrity & Interconnectivity Closure",
-  "status": "blocked_by_project_integrity_map",
+  "status": "in_progress",
   "lane": "gpr",
   "owner_direction_date": "2026-09-25",
   "predecessor": "PCV-02 completed_verified",
@@ -133,11 +133,10 @@
     }
   ],
   "completion_rule": "PCV-PRE completes only when PCV-I01A, PCV-I01B, PCV-I01C, PCV-I02..PCV-I06 complete in strict order and PCV-I06 certifies zero unowned/unresolved PCV-03 prerequisites.",
-  "next_action": "After PIM-03 completed_verified, execute PCV-I01A only. PCV-I01B+ and PCV-03A remain blocked.",
+  "next_action": "Execute PCV-I01A identity/authentication/device/recovery contract closure only. PCV-I01B+ and all PCV runtime implementation remain blocked.",
   "prerequisite": {
     "work_item": "PIM-03",
-    "status": "in_progress",
-    "program": "governance/project-integrity/PROJECT_INTEGRITY_PROGRAM_BACKLOG.json",
-    "rule": "No PCV-PRE interstitial resumes until PIM-03 completed_verified."
+    "status": "completed_verified",
+    "completion_report": "governance/project-integrity/PROJECT_WORK_HISTORY_DEPENDENCY_INTEGRITY_COMPLETION_REPORT.md"
   }
 }
