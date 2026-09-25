@@ -123,8 +123,8 @@
       "title": "Resume authorization is hard-coded current.",
       "detail": "`acceptPcv03Resume` calls the reconnect contract with `membershipActive:true` and `permissionCurrent:true` rather than rechecking current membership/authorization.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -137,7 +137,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-006",
@@ -254,8 +260,8 @@
       "title": "Paused/closed Session state is not enforced.",
       "detail": "PCV-03 join, resume, command, and presence paths have no A5 `launched | paused | closed` gate.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -268,7 +274,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-011",
@@ -276,8 +288,8 @@
       "title": "Old Sessions remain addressable.",
       "detail": "Starting a new host changes the `active-host` pointer but does not close the old Session or revoke its invitations/resume credentials. Old records can continue accepting traffic if addressed directly.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -290,7 +302,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-012",
@@ -298,8 +316,8 @@
       "title": "Session replacement/closure does not advance authority epoch or revoke credentials.",
       "detail": "The authority epoch is initialized to 1 and never participates in a real lifecycle transition.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -312,7 +330,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-013",
@@ -387,8 +411,8 @@
       "title": "PCV-03 accepts arbitrary command types/payloads.",
       "detail": "Any `SessionCommand.type` and arbitrary payload can enter the generic authoritative handler. PCV-03 should expose only its bounded session-continuity/proof command schema; PCV-04 owns gameplay/action convergence.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -401,7 +425,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-017",
@@ -409,8 +439,8 @@
       "title": "Conflicting idempotency reuse is not detected.",
       "detail": "Reusing a processed `commandId` returns the prior receipt even if the new command type/payload differs. No payload fingerprint binds idempotency identity to semantics.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -423,7 +453,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-018",
@@ -431,8 +467,8 @@
       "title": "Client timestamp becomes authoritative Event time.",
       "detail": "The generic handler uses `command.submittedAt` for `occurredAt`; PCV-03 passes the phone-supplied timestamp through instead of stamping host-authoritative receipt time.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -445,7 +481,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-019",
@@ -453,8 +495,8 @@
       "title": "Ordered transport does not serialize asynchronous host mutations.",
       "detail": "The data channel is ordered, but each received envelope launches an independent async task. Two rapid commands can overlap reads/writes and race the compare-and-swap store.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -467,7 +509,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-020",
@@ -502,8 +550,8 @@
       "title": "Join acceptance advances the player's acknowledged Event cursor before delivery.",
       "detail": "`join-accepted.lastSequence` is stored as `lastAcknowledgedSequence` before the subsequent Event batch is actually received.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -516,7 +564,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-022",
@@ -524,8 +578,8 @@
       "title": "Command ACK advances the Event cursor before Event delivery.",
       "detail": "The ACK's host `lastSequence` is written into the client recovery cursor before the Event batch arrives. A disconnect between ACK and batch can cause reconnect to skip an Event permanently.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -538,7 +592,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-023",
@@ -546,8 +606,8 @@
       "title": "Client Event merge does not perform gap detection.",
       "detail": "Incoming Events are deduplicated/sorted by ID/sequence, but the canonical ordered-delivery reducer is not used to detect gaps or trigger authoritative recovery.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -560,7 +620,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-024",
@@ -568,8 +634,8 @@
       "title": "Visible Events and authoritative stream cursor are conflated.",
       "detail": "Hidden-before-publication filtering can legitimately omit global sequence numbers. PCV-03 needs an explicit authoritative durable cursor separate from the visible Event list so secrecy does not look like loss and loss does not look like secrecy.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -582,7 +648,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-025",
@@ -590,8 +662,8 @@
       "title": "Checkpoint never rolls forward.",
       "detail": "The only checkpoint is created at Session start; later commands/events never create or advance a checkpoint lifecycle.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -604,7 +676,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-026",
@@ -612,8 +690,8 @@
       "title": "Checkpoint checksum is not integrity evidence.",
       "detail": "The value is a predictable label (`pcv03-checkpoint:<campaign>:1:1`) and reconnect compares the checkpoint's value to itself. There is no separately trusted content digest.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -626,7 +704,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-027",
@@ -634,8 +718,8 @@
       "title": "No replay fingerprint.",
       "detail": "Current architecture requires checkpoints + acknowledgments + sequence cursors + replay fingerprints for reconnect/recovery; PCV-03 has no replay fingerprint binding restored history/state.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -648,7 +732,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-028",
@@ -656,8 +746,8 @@
       "title": "Reconnect rendezvous is coupled to a new Campaign invitation.",
       "detail": "The client can only establish a fresh WebRTC path by accepting another invitation offer. Membership invitation and transport rendezvous/resume should be separate after membership exists.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -670,7 +760,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-029",
@@ -678,8 +774,8 @@
       "title": "Disconnect does not make host presence disconnected.",
       "detail": "Closing the player's peer updates only local UI phase; no trusted host-side connection lifecycle updates presence.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -692,7 +788,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-030",
@@ -700,8 +802,8 @@
       "title": "Presence messages are spoofable.",
       "detail": "Host persistence trusts caller-supplied subject/device/status/timestamp rather than deriving identity and time from the bound transport connection.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -714,7 +816,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-031",
@@ -722,8 +830,8 @@
       "title": "Presence time is client-authored.",
       "detail": "`envelope.at` is accepted as the durable last-seen timestamp rather than host receipt time.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -736,7 +844,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-032",
@@ -2039,8 +2153,8 @@
       "title": "SMB-01 outbox/realtime-advisory semantics are not mapped to direct WebRTC host execution",
       "detail": "Production synchronization expects transactional outbox + durable sequence with realtime advisory; zero-service WebRTC needs an equivalent local-host durability/delivery mapping.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -2053,7 +2167,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-084",
@@ -2061,8 +2181,8 @@
       "title": "Session command identity semantics are inconsistent across schema/runtime",
       "detail": "The logical schema separates command_id and idempotency_key while the current generic handler effectively uses commandId as processed identity; the canonical mapping and payload fingerprint conflict rule must be fixed.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -2075,7 +2195,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-085",
@@ -2083,8 +2209,8 @@
       "title": "Hidden global Event sequence versus viewer-visible delivery cursor is underspecified",
       "detail": "Pre-publication filtering can omit global Event numbers, so reconnect/ACK logic needs separate authoritative stream/projection cursors rather than assuming visible contiguity.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -2097,7 +2223,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-086",
@@ -2105,8 +2237,8 @@
       "title": "Checkpoint persistence lacks an explicit replay-fingerprint/trusted-digest contract",
       "detail": "The logical checkpoint has checksum/state/revision while current recovery expectations also require replay fingerprints and an independently trusted digest/reference.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -2119,7 +2251,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-087",
@@ -2147,8 +2285,8 @@
       "title": "APW hybrid live/async return depends on one Campaign/Session/Event history",
       "detail": "Existing hybrid acceptance requires disconnect, async resolution, missed-event recovery and live resume on one authoritative history; PCV recovery contracts must preserve this future consumer.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -2161,7 +2299,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-089",
@@ -2381,8 +2525,8 @@
       "title": "Later live/async/hybrid mode transitions require a single stable authority history",
       "detail": "SMB-02 and APW both prohibit mode changes from forking Campaign/Session/Event truth; local-host and eventual hosted profiles must share IDs/cursors/checkpoint semantics.",
       "primary_interstitial": "PCV-I04",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -2395,7 +2539,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I04"
+      "candidate_closure_work_item": "PCV-I04",
+      "closed_by": "PCV-I04",
+      "closure_validation": {
+        "candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+        "validation_run_id": 36139794866,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-101",

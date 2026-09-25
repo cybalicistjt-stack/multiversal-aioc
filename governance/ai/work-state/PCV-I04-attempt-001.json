@@ -9,13 +9,13 @@
   "attempt_id": "PCV-I04-attempt-001",
   "title": "Session Event, Recovery, Idempotency, Presence & Hybrid Continuity Closure",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
   "selected_by_owner": "2026-09-25 owner direction: fully map and preserve project work/dependencies before PCV implementation; split interstitials as needed.",
-  "implementation_authority": true,
+  "implementation_authority": false,
   "implementation_branch": "work/pcv-i04-session-recovery-continuity-closure",
   "runtime_product_implementation_authority": false,
-  "completed": false,
+  "completed": true,
   "predecessor": {
     "work_item": "PCV-I03",
     "status": "completed_verified"
@@ -35,21 +35,33 @@
     "PCV-I05+ and PCV-03 children remain predecessor-blocked."
   ],
   "strict_successor": "PCV-I05",
-  "active_substep": "exact_candidate_validation",
-  "next_action": "Validate the exact AIOC PCV-I04 Session Event/recovery/idempotency/presence/hybrid-continuity closure candidate. Do not modify Multiversal-app runtime, execute schema migrations, start gameplay convergence or begin PCV-I05.",
+  "active_substep": "completed_verified",
+  "next_action": "PCV-I04 is completed_verified. PCV-I05 is the strict successor and is selected_not_started; do not start it without a later owner Continue. No Multiversal-app PCV runtime implementation is authorized.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 2,
+    "material_progress_seq": 3,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "PCV-I04 recovery/idempotency/presence/hybrid continuity closure validated at exact candidate 01a626970163a6d5db0ef004b3cfd0448282b1d3 / Operations V3 run 36139794866; PCV-I05 seeded selected_not_started."
+    },
     "last_material_progress": {
-      "seq": 2,
-      "kind": "contract_closure_candidate",
-      "evidence": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json closes the 25 PCV-I04 primary findings at contract level while preserving runtime realization for PCV-03B/03D and later product/evidence closure for PCV-I05/I06."
+      "seq": 3,
+      "kind": "completed_verified_candidate",
+      "evidence": "Exact candidate 01a626970163a6d5db0ef004b3cfd0448282b1d3 passed Operations V3 run 36139794866; 25 PCV-I04 findings are contract-closed with runtime realization deferred behind PCV-I05/I06."
     }
+  },
+  "completed_at": "2026-09-25",
+  "completion_evidence": {
+    "contract": "governance/application-planning/product-convergence/PCV-I04_SESSION_EVENT_RECOVERY_IDEMPOTENCY_PRESENCE_HYBRID_CONTINUITY_CONTRACT_v1.0.0.json",
+    "validated_candidate_head": "01a626970163a6d5db0ef004b3cfd0448282b1d3",
+    "validation_run_id": 36139794866,
+    "validation_conclusion": "success",
+    "closed_finding_count": 25,
+    "remaining_open_pcv_preimplementation_findings": 26
   }
 }
