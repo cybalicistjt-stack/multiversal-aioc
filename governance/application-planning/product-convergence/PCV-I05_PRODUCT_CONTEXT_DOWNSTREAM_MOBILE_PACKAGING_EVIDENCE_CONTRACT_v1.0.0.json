@@ -1,0 +1,627 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "PCV-I05.PRODUCT_CONTEXT_DOWNSTREAM_MOBILE_PACKAGING_EVIDENCE.v1",
+  "status": "completed_verified",
+  "work_item_id": "PCV-I05",
+  "scope": "AIOC-only preimplementation contract closure; no Multiversal-app PCV runtime implementation, package build, updater activation, downstream-domain implementation, store/public release or PCV-I06 execution",
+  "source_snapshot": {
+    "aioc_main": "04e8ca2e022f73804215eaebcc8ebfb09148fdbd",
+    "multiversal_app_main": "28666001be412925e8d148bf47e8c6a9d9f11e93",
+    "application_sources": [
+      "apps/client-ui/src/product/productState.ts",
+      "packages/contracts/src/a3/context-authority.ts",
+      "apps/client-ui/src/a3/dashboard/dashboardProjection.ts",
+      "packages/contracts/src/system-maturation-buildout/smb13-remote-internal-alpha-productization.ts",
+      "packages/contracts/src/system-maturation-buildout/smb16-accessibility-localization-device-completion.ts",
+      "packages/contracts/src/beta-readiness-product-operations/brp-02-account-lifecycle-consent-recovery-data-rights.ts",
+      "packages/contracts/src/beta-readiness-product-operations/brp-04-beta-distribution-installation-updates-version-compatibility.ts",
+      "apps/desktop-tauri/src-tauri/tauri.conf.json",
+      "apps/desktop-tauri/src-tauri/gen/android/app/build.gradle.kts",
+      "apps/desktop-tauri/src-tauri/Cargo.toml",
+      "tools/build_bip01_beta_packages.ps1",
+      "historical Multiversal-app PR #775 changed-file/patch set"
+    ],
+    "consumer_census": "governance/application-planning/product-convergence/PCV_PREIMPLEMENTATION_CONSUMER_CENSUS.json"
+  },
+  "product_context_reconciliation": {
+    "authority": "A3 AuthorizedDashboardProjection -> AuthorizedContextProjection / SelectedContextReceipt owns Personal/Campaign/Session entry and context switching.",
+    "product_profile": "profileId/displayName may remain local presentation fields; subjectId/identityId are compatibility references only after current A3 binding and may not be minted as canonical authority by productState.",
+    "selected_context": "Campaign/Session selection must come from a current A3-authorized context. Character/world/scene are subordinate owner-domain selections inside that authority partition and require owner visibility/control revalidation.",
+    "hosting_rule": "Use the currently selected A3-authorized Campaign context, never the first Campaign found in a local aggregate.",
+    "remote_join": "After invitation acceptance/reconnect, current A5 membership + Session are projected back through A3 dashboard/context/Home. Restart reconstructs role-safe context from current authorization plus durable recovery metadata; it never copies host ownership into the player store.",
+    "client_storage": "ProductSelectedContext persists only safe projected ids/labels; A3 auth evidence, stable subject-session proof and service cachePartitionKey do not become ordinary client documents.",
+    "partition_rule": "Protected caches/subscriptions/recovery projections/optional-AI context remain subject+context partitioned and are cleared/closed before use after switch, sign-out, membership removal, permission drift or revocation.",
+    "pcv02_rule": "PCV-02 foundation/selected-context data becomes compatibility/display projection, not Campaign/membership/Session truth."
+  },
+  "downstream_consumer_classification": [
+    {
+      "consumer": "MAS-16/17",
+      "class": "reference/simulation consumer",
+      "rule": "Consumes canonical Session/Checkpoint/ActionEvent bindings; no Session/checkpoint/live-mutation ownership."
+    },
+    {
+      "consumer": "APW",
+      "class": "one-history continuity consumer",
+      "rule": "Consumes one Campaign/Session/Event history for live/async/return; no parallel ledger."
+    },
+    {
+      "consumer": "VTI",
+      "class": "authorized adapter consumer",
+      "rule": "Consumes role-safe Session read/write seams; VTI remains adapter/product owner."
+    },
+    {
+      "consumer": "SAA-21",
+      "class": "separate collaboration authority",
+      "rule": "May reuse generic transport/security primitives only; project/version collaboration does not merge with PCV Session truth."
+    },
+    {
+      "consumer": "WCI",
+      "class": "read/proposal consumer",
+      "rule": "Derives session intelligence from authorized committed evidence; consequential changes remain owner-operation proposals."
+    },
+    {
+      "consumer": "MSAS",
+      "class": "session-aware media/control consumer",
+      "rule": "References authorized Session context; media/control owner domains retain authority."
+    },
+    {
+      "consumer": "IC/UI Convergence",
+      "class": "presentation consumer",
+      "rule": "Consumes role-safe Session/product projections; presentation/skin/shell ownership stays outside PCV."
+    },
+    {
+      "consumer": "A6",
+      "class": "Action owner consumer",
+      "rule": "Gameplay Action validation/commit remains A6; PCV-03 exposes no generic gameplay escape hatch."
+    },
+    {
+      "consumer": "A7",
+      "class": "Combat owner consumer",
+      "rule": "Combat state/operations remain A7 while binding to one Session chronology."
+    },
+    {
+      "consumer": "A9",
+      "class": "noncombat owner/projection consumer",
+      "rule": "Investigation/Social/Exploration owners remain distinct and consume hidden-safe generic boundaries."
+    },
+    {
+      "consumer": "SMB-13",
+      "class": "internal-alpha distribution/join/evidence consumer",
+      "rule": "Retains SMB-02 remote Session authority and PCA-14 diagnostic evidence authority; PCV strengthens causal package/run evidence only."
+    },
+    {
+      "consumer": "BRP-02/04",
+      "class": "device/data-rights + distribution/update consumer",
+      "rule": "PCV composes BRP lifecycle/privacy and update/migration safety without replacing those authorities."
+    },
+    {
+      "consumer": "BIP-01",
+      "class": "package-production predecessor",
+      "rule": "PCV consumes strengthened exact-head package identity; BIP remains package builder."
+    }
+  ],
+  "networking_control_accessibility": {
+    "authority": "SMB-16/GPR-10; PCV-09 retains full Desktop View/presentation work.",
+    "global": [
+      "keyboard/touch/screen-reader/structured-text semantic parity",
+      "44 CSS px minimum target",
+      "visible logical focus and no keyboard trap",
+      "200% font scaling without critical clipping",
+      "reduced-motion and high-contrast semantic equivalents",
+      "no precision-drag-only operation",
+      "role=status/role=alert equivalent for phases/errors",
+      "sensitive signal tokens use explicit user-invoked copy/paste/share and are not auto-announced/logged",
+      "compact phone layout keeps primary connect/reconnect/recovery controls reachable"
+    ],
+    "controls": {
+      "host": [
+        "Start host Session",
+        "Create private invitation",
+        "copy invitation",
+        "paste player response",
+        "Connect player"
+      ],
+      "join": [
+        "paste invitation",
+        "Accept invite/create response",
+        "copy response",
+        "Reconnect"
+      ],
+      "session": [
+        "Send bounded continuity command",
+        "Retry same idempotency operation",
+        "Disconnect",
+        "presence/status",
+        "visible Event/recovery list"
+      ],
+      "evidence": [
+        "capture/verify/export installed-device evidence"
+      ],
+      "rule": "Every listed control has labeled keyboard/touch activation, phone layout and nonvisual state/outcome; sensitive code contents require explicit reveal/copy."
+    }
+  },
+  "package_install_update_identity": {
+    "current_facts": {
+      "identifier": "app.multiversal.beta",
+      "productName": "Multiversal Beta",
+      "productVersion": "0.1.0 from tauri.conf.json",
+      "windows": "NSIS currentUser; BIP manifest says unsigned-beta",
+      "android": "direct arm64 APK; versionName 0.1.0; versionCode 1; targetSdk 36; beta-only JKS multiversal-beta",
+      "cargoVersion": "0.0.0 crate metadata is not product version",
+      "updater": "not activated"
+    },
+    "manifest": {
+      "schema": "PCV.INSTALLED-PACKAGE-MANIFEST.1",
+      "common": [
+        "sourceHead",
+        "build run/artifact ref",
+        "applicationIdentifier",
+        "productVersion",
+        "channel",
+        "platform",
+        "arch",
+        "installer type",
+        "artifact SHA-256/size",
+        "protocol/schema compatibility",
+        "migration ids/checksums"
+      ],
+      "windows": [
+        "installed payload executable SHA-256",
+        "installScope",
+        "expected Authenticode/publisher when enabled"
+      ],
+      "android": [
+        "applicationId",
+        "versionName",
+        "versionCode",
+        "targetSdk",
+        "APK SHA-256",
+        "expected signing-certificate SHA-256/history",
+        "ABI set"
+      ],
+      "rule": "hash the distributable and the installed payload identity; sourceHead alone never proves install identity"
+    },
+    "device_receipt": {
+      "schema": "PCV.INSTALLED-DEVICE-RECEIPT.1",
+      "rule": "After authenticated PCV-I03 binding, verifier sends fresh CSPRNG challenge. Installed native client measures itself and signs the canonical receipt with its PCV-I01A non-exportable device credential; peer JSON strings cannot satisfy proof.",
+      "common": [
+        "challenge",
+        "session/subject/device/credential ids",
+        "embedded sourceHead",
+        "application id/version",
+        "native platform/arch",
+        "manifest digest",
+        "device signature"
+      ],
+      "windows": [
+        "current executable SHA-256 matched to manifest payload hash",
+        "WinVerifyTrust/publisher only when signing expected",
+        "record unsigned-beta explicitly today"
+      ],
+      "android": [
+        "PackageManager applicationId/versionName/longVersionCode",
+        "SigningInfo certificate SHA-256/history",
+        "installed base APK hash for direct APK channel and split set if future splits",
+        "match artifact/signing identity"
+      ],
+      "distinct": "Windows+Android certification requires independent challenge responses from distinct registered device credentials; human physical-device affirmation is supplementary, not primary.",
+      "boundary": "causal installed-binary evidence, not hardware attestation"
+    },
+    "update_migration": "Bind from and target package identities, verify target before apply and installed payload after apply, reference exact MIB-08 migration ids/checksums and canonical-history continuity. Preserve BRP-04 stale-client block/update and interrupted-update recovery. Android signer drift fails closed.",
+    "tauri_updater_future": "If later selected, Tauri updater signature verification is additional to artifact hash and Windows code/package identity; I05 does not enable it.",
+    "android_api37": "Current targetSdk=36, so do not add ACCESS_LOCAL_NETWORK now. When targetSdk>=37 and LAN access is used, declare/request it or use applicable system-mediated path before certification."
+  },
+  "causal_physical_evidence": {
+    "schema": "PCV-03.INSTALLED-EVIDENCE.2",
+    "rule": "Derived booleans are allowed only after a verifier resolves and checks causal receipt references. Host summaries, peer self-report and operator affirmation cannot independently certify behavior.",
+    "receipts": [
+      "Windows device-signed install receipt matched to exact manifest payload hash/sourceHead",
+      "Android device-signed install receipt matched to package version/signing/APK identity/sourceHead",
+      "distinct-device proof from two independent fresh challenges and distinct A3 device credentials",
+      "duplicate retry: first durable receipt + second same idempotencyKey/fingerprint + same prior result + zero second effect/Event",
+      "conflicting reuse: same key + different fingerprint -> conflict + zero mutation",
+      "real resume: transport-A disconnect + durable cursor/checkpoint + transport-B fresh binding + resume request/current-auth + recovered projection + no second membership",
+      "player delivery: host Event/outbox -> authorized projection batch/fingerprint -> Android signed applied-batch receipt -> host ACK",
+      "ACK-before-batch-loss: command receipt without batch does not advance client cursor; reconnect recovers missing batch",
+      "event-gap recovery: N then withheld N+1 then N+2 produces gap receipt and authoritative resume from N",
+      "stale authorization denial after canonical membership/permission transition with zero mutation",
+      "terminal invitation reuse denial with unchanged membership",
+      "actor-spoof denial against transport-bound canonical subject with zero mutation",
+      "hidden-publication proof from canonical hidden reference vs player projection/apply receipts without exposing hidden cardinality"
+    ],
+    "privacy": "Evidence obeys BRP-02/SMB-14 consent/redaction; raw invitation/resume secrets, private keys, SDP/ICE addresses, hidden payloads and cross-context private data are excluded."
+  },
+  "pr775_scope_disposition": {
+    "rule": "Never merge/cherry-pick PR #775 wholesale.",
+    "rebuild_under_pcv": [
+      "session-protocol/session runtime concepts under I03/I04",
+      "Pcv03SessionWorkspace networking journey under I05 rules",
+      "installed evidence/verifier replaced by Evidence.2",
+      "package workflow keeps BIP reuse but strengthens manifest/install identity",
+      "ProductHome/Session route/invite navigation intent rebuilt from A3-authorized context"
+    ],
+    "outside_pcv": [
+      "showcase/full-capability skin runtime and shell structural decoration",
+      "profile drawer/editor/saveProductProfile",
+      "Search/Notifications removal or rearrangement",
+      "global mobile-nav redesign beyond minimum Sessions access",
+      "generic cosmic/style substitutions"
+    ],
+    "owner_route": "Those unrelated presentation changes return to UISK/UI Convergence/product-shell owners."
+  },
+  "external_sanity_checks": [
+    {
+      "source": "Android PackageInfo/PackageManager",
+      "url": "https://developer.android.com/reference/android/content/pm/PackageInfo",
+      "checked": "2026-09-25",
+      "use": "native version/signing measurements"
+    },
+    {
+      "source": "Android 17 behavior changes",
+      "url": "https://developer.android.com/about/versions/17/behavior-changes-17",
+      "checked": "2026-09-25",
+      "use": "target API 37+ local-network permission trigger"
+    },
+    {
+      "source": "Tauri Windows Installer",
+      "url": "https://v2.tauri.app/distribute/windows-installer/",
+      "checked": "2026-09-25",
+      "use": "NSIS/current-user packaging"
+    },
+    {
+      "source": "Tauri Updater",
+      "url": "https://v2.tauri.app/plugin/updater/",
+      "checked": "2026-09-25",
+      "use": "future updater signatures mandatory"
+    },
+    {
+      "source": "Microsoft WinVerifyTrust",
+      "url": "https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-winverifytrust",
+      "checked": "2026-09-25",
+      "use": "signed Windows payload verification"
+    }
+  ],
+  "dependency_edges": [
+    {
+      "from": "PLAN::stage-a-a3",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "WORK::MAS-16",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "WORK::MAS-17",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "WORK::APW-I07",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "PLAN::virtual-tabletop-interoperability",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "WORK::SAA-21",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "WORK::WCI-04",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "FAMILY::MSAS",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "PLAN::stage-a-a6",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "PLAN::stage-a-a7",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "PLAN::stage-a-a9",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "WORK::SMB-13",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "WORK::BRP-02",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "WORK::BRP-04",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "WORK::BIP-01",
+      "to": "WORK::PCV-I05"
+    },
+    {
+      "from": "WORK::PCV-I04",
+      "to": "WORK::PCV-I05"
+    }
+  ],
+  "acceptance_checks": {
+    "product_context_a3_safe": true,
+    "downstream_consumers_classified": true,
+    "mobile_keyboard_nonvisual_defined": true,
+    "exact_package_install_update_identity_defined": true,
+    "causal_receipts_replace_self_report": true,
+    "pr775_unrelated_scope_routed": true
+  },
+  "gap_closure": {
+    "PCV-PRE-013": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-014": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-043": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-044": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-045": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-046": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-047": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-048": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-049": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-050": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-053": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-080": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-081": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-082": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-087": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-089": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-090": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-091": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-092": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-093": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-094": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03E",
+        "PCV-03F"
+      ],
+      "closure_validation": {
+        "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+        "validation_run_id": 36142961432,
+        "conclusion": "success"
+      }
+    }
+  },
+  "runtime_boundary": {
+    "runtime_product_implementation_authorized": false,
+    "package_build_authorized": false,
+    "updater_activation_authorized": false,
+    "android_permission_mutation_authorized": false,
+    "downstream_domain_implementation_authorized": false,
+    "store_or_public_release_authorized": false,
+    "pcv_i06_authorized": false
+  },
+  "completion_validation": {
+    "candidate_head": "67f0cd4c8d51cb908b1faa9420ab3d5818f3d0b8",
+    "workflow": "Validate Operations V3",
+    "validation_run_id": 36142961432,
+    "conclusion": "success"
+  }
+}
