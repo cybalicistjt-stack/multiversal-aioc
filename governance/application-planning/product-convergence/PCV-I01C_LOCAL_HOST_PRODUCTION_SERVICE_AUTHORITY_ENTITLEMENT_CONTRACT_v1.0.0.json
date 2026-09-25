@@ -1,0 +1,273 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "PCV-I01C.LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT.v1",
+  "status": "completion_candidate",
+  "work_item_id": "PCV-I01C",
+  "scope": "AIOC-only preimplementation contract closure; no Multiversal-app runtime implementation or hosted activation",
+  "source_snapshot": {
+    "aioc_main": "c71076bd2bcd11ae07d6b806458538a40f5575bb",
+    "multiversal_app_main": "28666001be412925e8d148bf47e8c6a9d9f11e93",
+    "application_sources": [
+      "packages/contracts/src/production-platform/smb-01-production-platform.ts",
+      "packages/contracts/src/production-platform/smb-01-service-adapters.ts",
+      "governance/application-planning/system-maturation-buildout/SMB-01_PRODUCTION_PLATFORM_REALIZATION.md",
+      "packages/contracts/src/a5/session-repository-port.ts",
+      "packages/contracts/src/a5/launch-snapshot-port.ts",
+      "packages/contracts/src/realtime-session.ts",
+      "packages/contracts/src/multiplayer/smb-02-remote-multiplayer.ts",
+      "packages/entitlements/src/entitlement-service-port.ts",
+      "packages/contracts/src/identity-device/entitlement-evaluator.ts",
+      "packages/contracts/src/a3/workspace-entry-port.ts",
+      "packages/contracts/src/a3/selected-context-receipt.ts",
+      "packages/local-store/src/index.ts"
+    ]
+  },
+  "authority_model": {
+    "invariant": "Deployment profile chooses where provider-neutral ports execute; it does not change owner-domain authority, canonical identifiers, durable-history semantics, authorization rules or recovery rules.",
+    "authoritative_executor_role": "Exactly one current authoritative executor per governed Campaign/Session mutation context. In local-host mode it is the installed host process selected by the governed Campaign/Session. In managed-service mode it is the selected SMB-01 service boundary.",
+    "server_term_disposition": "Existing SMB-01 'server' command authority is a semantic executor role, not a requirement that the executor be remote, cloud-hosted or paid.",
+    "durable_truth": "Authoritative owner-domain records, ordered Events and checkpoints remain durable truth. Realtime/presence/transport delivery never becomes canonical state.",
+    "split_brain_rule": "A local-host and managed-service profile may not both accept authoritative mutation for the same Campaign/Session epoch. Profile transition requires governed handoff/recovery evidence before the new executor can accept commands.",
+    "provider_authority": false
+  },
+  "deployment_profiles": {
+    "local_authoritative_host": {
+      "profile_id": "local-authoritative-host",
+      "hosted_service_required": false,
+      "paid_service_required": false,
+      "internet_required": false,
+      "executor": "installed authoritative host process",
+      "durable_store": "installed local SQLite/local-store adapter, with exact transactional/schema mechanics deferred to PCV-I02",
+      "identity": "PCV-I01A local proof-of-possession + canonical A3/identity-device records",
+      "entitlement": "local EntitlementPort adapter over trusted durable entitlement/grant records",
+      "session": "canonical A5 launch snapshot + A5 Session shell + AuthoritativeSessionPort semantics",
+      "realtime": "local/direct delivery adapter only; advisory and recoverable from durable sequence/checkpoint",
+      "checkpoint": "local durable checkpoint adapter over the canonical Session history"
+    },
+    "managed_service": {
+      "profile_id": "managed-service",
+      "activation_state": "selected_not_live_activated",
+      "executor": "SMB-01 managed authoritative service",
+      "durable_store": "SMB-01 selected PostgreSQL profile",
+      "identity": "SMB-01 IdentityPort adapter preserving provider-independent subject IDs",
+      "entitlement": "SMB-01 EntitlementPort adapter",
+      "session": "same canonical A5 launch snapshot + A5 Session shell + AuthoritativeSessionPort semantics",
+      "realtime": "SMB-01 websocket-advisory RealtimePort",
+      "checkpoint": "SMB-01 durable CheckpointPort"
+    }
+  },
+  "service_port_profile_matrix": {
+    "IdentityPort": {
+      "local_adapter_semantics": "Resolve/maintain canonical A3 subject+identity mapping and verified local credential/session from PCV-I01A; no provider SDK or device identity authority.",
+      "managed_adapter_semantics": "SMB-01 selected OIDC/provider adapter maps external identity to the same provider-independent canonical subject.",
+      "owner_domain_authority": false
+    },
+    "EntitlementPort": {
+      "local_adapter_semantics": "Evaluate locally trusted subscription/sponsored/campaign-grant records through canonical entitlement semantics and emit a versioned decision reference.",
+      "managed_adapter_semantics": "SMB-01 selected entitlement service evaluates the same grant/capability model.",
+      "owner_domain_authority": false
+    },
+    "PersistencePort": {
+      "local_adapter_semantics": "Persist canonical owner records, Events, operation receipts and checkpoints through the installed durable store; transaction/migration details are PCV-I02.",
+      "managed_adapter_semantics": "SMB-01 selected PostgreSQL persistence adapter implements the same logical owner records and invariants.",
+      "owner_domain_authority": false
+    },
+    "SessionCommandPort": {
+      "local_adapter_semantics": "Installed authoritative host validates authenticated subject, current membership/permission/entitlement, expected version and idempotency before applying a canonical command.",
+      "managed_adapter_semantics": "SMB-01 authoritative service applies the same command contract.",
+      "owner_domain_authority": false
+    },
+    "RealtimePort": {
+      "local_adapter_semantics": "Direct/local-network transport publishes already-authorized durable Events and resumes from durable sequence; delivery loss cannot erase canonical history.",
+      "managed_adapter_semantics": "SMB-01 websocket-advisory delivery follows the same ordered durable Event history.",
+      "authoritative": false
+    },
+    "CheckpointPort": {
+      "local_adapter_semantics": "Create/load content-bound durable checkpoints from canonical Session state and ordered Event sequence.",
+      "managed_adapter_semantics": "SMB-01 selected checkpoint adapter persists/retrieves the same checkpoint semantics.",
+      "owner_domain_authority": false
+    },
+    "ObjectStoragePort": {
+      "local_adapter_semantics": "Local governed asset/blob storage reference adapter where required; never owner-domain semantic authority.",
+      "managed_adapter_semantics": "SMB-01 selected S3-compatible adapter.",
+      "owner_domain_authority": false
+    },
+    "TelemetryPort": {
+      "local_adapter_semantics": "Local diagnostics/telemetry sink with hidden/private content excluded by policy; absence of remote telemetry never blocks authoritative play.",
+      "managed_adapter_semantics": "SMB-01 selected OTLP adapter.",
+      "owner_domain_authority": false
+    }
+  },
+  "online_semantics": {
+    "definition": "online=true means the current authoritative executor for the requested operation is reachable now and can perform the required fresh authorization/evaluation plus durable authoritative read or commit. It does not mean Internet access, cloud availability, paid-service availability or navigator.onLine=true.",
+    "local_host_examples": [
+      "same-process authoritative host available",
+      "loopback authoritative host available",
+      "direct LAN authoritative host reachable"
+    ],
+    "managed_service_example": "configured managed authoritative service endpoint passes its governed reachability/health boundary",
+    "online_false_when": [
+      "only cached state is available",
+      "authoritative executor cannot be reached",
+      "fresh authorization/entitlement evaluation cannot be obtained when required",
+      "durable authoritative mutation cannot be committed for a mutation request"
+    ],
+    "cached_projection_rule": "Offline/cached UI may render previously authorized safe projections where their owning contract permits it, but may not set online=true or authorize protected mutation/entry.",
+    "browser_network_hint_rule": "Generic OS/browser connectivity signals are hints only and never satisfy the authoritative-executor reachability test."
+  },
+  "entitlement_composition": {
+    "canonical_evaluator": "EntitlementServicePort / identity-device entitlement evaluation",
+    "local_baseline": "A local profile always derives free baseline capability from canonical evaluation. Subscriber/sponsored/campaign-premium capability requires locally trusted, durable grant records; caller booleans or transport claims are never entitlement evidence.",
+    "decision_reference_fields": [
+      "entitlementDecisionId",
+      "subjectId",
+      "campaignIdWhenApplicable",
+      "tier",
+      "capabilities",
+      "activeGrantIds",
+      "evaluatedAt",
+      "nextChangeAt",
+      "entitlementRulesetVersion",
+      "sourceRevisionOrDigest",
+      "executorProfileId"
+    ],
+    "handshake_rule": "Campaign/Session entry and remote join consume an entitlementDecisionReference plus entitlementRulesetVersion produced by the current authoritative executor from locally measured/trusted entitlement state. A joining client cannot echo the host offer or self-assert premium capability.",
+    "expiry_rule": "A decision is stale at nextChangeAt, grant revocation, ruleset/version change or authoritative source revision invalidation, whichever occurs first. Protected use requiring entitlement then re-evaluates before mutation/entry.",
+    "profile_parity": "Equivalent trusted entitlement/grant records and ruleset versions produce equivalent effective entitlement across local-host and managed-service profiles."
+  },
+  "session_owner_composition": {
+    "canonical_creation_path": [
+      "authorize current subject/membership/role/entitlement",
+      "validate Campaign/Scene/pack/participant inputs",
+      "create immutable A5 LaunchSnapshot",
+      "create the canonical A5 Session shell referencing that snapshot",
+      "route authoritative gameplay/session commands through AuthoritativeSessionPort/SessionCommandPort",
+      "append ordered durable Events and checkpoints",
+      "deliver permitted realtime projections from the durable history"
+    ],
+    "pcv03_host_session_disposition": "Any PCV-03 host runtime object is a transient executor/projection keyed to canonical A5 sessionId + launchSnapshotId + revision/sequence. It cannot mint an independent Session identity, membership ledger, Event history or checkpoint lineage.",
+    "transition_rule": "A5 pause/resume/close and Session revision remain canonical across deployment profiles.",
+    "reconnect_rule": "SMB-02 reconnect resumes from canonical checkpoint + durable ordered Events + current authorization/entitlement. Device/transport state never replaces Session authority."
+  },
+  "profile_transition": {
+    "same_history_required": true,
+    "required_handoff_evidence": [
+      "campaignId",
+      "sessionId",
+      "lastCommittedRevision",
+      "lastDurableSequence",
+      "checkpointReference",
+      "checkpointChecksum",
+      "authorityEpoch",
+      "sourceExecutorProfile",
+      "targetExecutorProfile",
+      "completedAt"
+    ],
+    "mutation_gate": "Target executor remains read-only/unavailable for authoritative mutation until the handoff confirms the same canonical history and establishes a strictly newer authorityEpoch.",
+    "no_automatic_merge": "Divergent local-host and managed-service histories are a conflict requiring governed recovery; they are never merged by timestamp, transport arrival order or client preference."
+  },
+  "persistence_and_transaction_boundary": {
+    "owned_by": "PCV-I02",
+    "frozen_semantics_here": [
+      "one canonical logical owner model across deployment profiles",
+      "atomic authoritative mutations",
+      "expected-version/idempotency enforcement",
+      "ordered durable Events",
+      "checkpoint recovery",
+      "authority-epoch/handoff persistence"
+    ],
+    "not_authorized_here": "No concrete SQLite schema/migration, PostgreSQL migration, secret-store implementation or runtime adapter code."
+  },
+  "external_sanity_checks": [
+    {
+      "source": "MDN Navigator.onLine / online event",
+      "use": "generic browser connectivity cannot prove a particular authoritative service is reachable; LAN connectivity can exist without Internet reachability"
+    },
+    {
+      "source": "PostgreSQL 18 transaction documentation",
+      "use": "managed persistence preserves all-or-nothing durable mutation semantics; concrete transaction implementation remains PCV-I02"
+    }
+  ],
+  "dependency_edges": [
+    {
+      "from": "WORK::SMB-01",
+      "to": "WORK::PCV-I01C"
+    },
+    {
+      "from": "WORK::SMB-02",
+      "to": "WORK::PCV-I01C"
+    },
+    {
+      "from": "PLAN::stage-a-a5",
+      "to": "WORK::PCV-I01C"
+    },
+    {
+      "from": "WORK::PCV-01",
+      "to": "WORK::PCV-I01C"
+    },
+    {
+      "from": "WORK::PCV-02",
+      "to": "WORK::PCV-I01C"
+    },
+    {
+      "from": "WORK::PCV-I01A",
+      "to": "WORK::PCV-I01C"
+    },
+    {
+      "from": "WORK::PCV-I01B",
+      "to": "WORK::PCV-I01C"
+    }
+  ],
+  "acceptance_checks": {
+    "local_host_smb01_service_port_semantics_defined": true,
+    "online_defined_as_authoritative_executor_reachability": true,
+    "local_entitlement_decision_and_handshake_defined": true,
+    "local_and_managed_profiles_share_one_owner_history_model": true,
+    "realtime_advisory_and_durable_event_checkpoint_authority_preserved": true,
+    "parallel_session_owner_forbidden": true
+  },
+  "gap_closure": {
+    "PCV-PRE-009": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ]
+    },
+    "PCV-PRE-066": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ]
+    },
+    "PCV-PRE-067": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ]
+    },
+    "PCV-PRE-078": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ]
+    },
+    "PCV-PRE-107": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03C"
+      ]
+    }
+  },
+  "runtime_boundary": {
+    "runtime_product_implementation_authorized": false,
+    "hosted_production_activation_authorized": false,
+    "exact_persistence_migration_implementation_authorized": false,
+    "next_runtime_destination": "PCV-03A after PCV-I02 through PCV-I06 predecessor closure",
+    "later_preimplementation_items_authorized": false
+  }
+}
