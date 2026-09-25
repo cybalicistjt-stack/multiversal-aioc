@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 514,
+  "state_revision": 515,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -91,12 +91,12 @@
     },
     "gpr": {
       "state": "in_progress",
-      "selected_work_item": "PCV-03",
-      "attempt_id": "PCV-03-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/PCV-03-attempt-001.json",
+      "selected_work_item": "PCV-03A",
+      "attempt_id": "PCV-03A-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/PCV-03A-attempt-001.json",
       "implementation_branch": "work/pcv-03-two-device",
       "implementation_authority": true,
-      "activation_rule": "PCV-03 governed start authorized by owner Continue. Execute only two-device membership, transport, presence and reconnect over the durable PCV-02 foundation. PCV-04+ remain unauthorized.",
+      "activation_rule": "Owner-approved PCV-03 decomposition after adversarial candidate audit. Execute only PCV-03A canonical identity, invitation and Campaign-membership repair on the existing PCV-03 implementation branch. PCV-03B..03F and PCV-04+ remain unauthorized.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -125,7 +125,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "PCV-03 RESUME AFTER VERIFIED PROJECT-ARCHAEOLOGY GATE: preserve the exact validated PCV-03 candidate and complete only the already-required installed Windows-host + Android-client physical two-device proof for membership, transport, presence, idempotency, reconnect/resume, authority continuity, and hidden-before-publication behavior. Consume the verified project-canon/wiring registers as reference integrity evidence. Do not reopen PCV-01/02, do not rebuild existing owner domains, and do not start PCV-04 until PCV-03 reaches completed_verified.",
+  "next_project_action": "PCV-03A: repair canonical local-first subject/session binding, recipient-bound A3 invitation semantics, A5 Campaign membership authority and transport peer-to-subject binding on work/pcv-03-two-device. The old exact candidate 8232e52a089360939b17e58229af192a283b3a53 and package artifact 10832224601 are historical pre-audit evidence only and must not be used for physical completion proof. Do not start PCV-03B or PCV-04.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

@@ -531,15 +531,37 @@
       "repair_destination": "PCV-03 installed physical two-device proof",
       "validation_needed": "Export and verify PCV-03.INSTALLED-EVIDENCE.1 against exact package manifest.",
       "status": "owned_current_work"
+    },
+    {
+      "finding_id": "WIRE-PCV03-CANDIDATE-002",
+      "defect_class": "authority_bypass",
+      "canon_entry_id": "CANON-PCV03",
+      "producer": "PCV-03 exact candidate 8232e52a089360939b17e58229af192a283b3a53",
+      "expected_consumers": [
+        "A3 identity/invitation",
+        "A5 Campaign membership/Session",
+        "P9 Session/Event/recovery",
+        "SMB-02 remote multiplayer",
+        "installed Windows/Android clients"
+      ],
+      "observed_binding": "Automated candidate built and passed its original focused tests, but adversarial exact-candidate tracing found duplicate authority, recovery, protocol-security, migration and evidence gaps.",
+      "missing_or_stale_binding": "Candidate-specific canonical bindings must be repaired across PCV-03A..PCV-03F before installed certification.",
+      "authority_source": "governance/application-planning/product-convergence/PCV-03_ADVERSARIAL_CANDIDATE_AUDIT_2026-09-25.md",
+      "implementation_evidence": "53 blocking findings recorded; prior candidate/package retained as historical pre-audit evidence only.",
+      "user_or_system_impact": "Physical proof on the old candidate could falsely certify authority/reconnect/idempotency behavior that is incomplete or spoofable.",
+      "repair_destination": "PCV-03A..PCV-03F strict order",
+      "validation_needed": "Each child work item closes its bounded owner/runtime surface; PCV-03F performs strengthened exact-head installed certification.",
+      "status": "owned_current_work"
     }
   ],
   "summary": {
-    "total": 28,
+    "total": 29,
     "partial_projection": 27,
     "test_blind_spot": 1,
     "unowned": 0,
     "unresolved_required_bindings": 0,
-    "silent_duplicate_owners": 0
+    "silent_duplicate_owners": 0,
+    "candidate_integrity_gap": 1
   },
   "rule": "A known gap with an explicit current owner and repair destination is routed work, not unresolved archaeology. Future repair completion remains governed by its owning work item."
 }

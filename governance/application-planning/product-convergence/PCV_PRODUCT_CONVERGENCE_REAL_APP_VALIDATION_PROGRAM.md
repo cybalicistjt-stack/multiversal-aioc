@@ -1,6 +1,6 @@
 # PCV — Product Convergence & Real-App Validation
 
-**Status:** in_progress — PCV-01 and PCV-02 completed_verified; PCV-03 selected_not_started  
+**Status:** in_progress — PCV-01 and PCV-02 completed_verified; PCV-03 decomposed into bounded PCV-03A..PCV-03F work items; PCV-03A in_progress  
 **Lane:** gpr  
 **Owner direction:** 2026-09-23
 
@@ -55,6 +55,23 @@ The September 2026 UI Implementation Convergence Handoff is especially important
 18. **No real-world-value wagering.** Real money, paid entitlement/premium currency, cash-redeemable value, or anything convertible to those may never be accepted as a stake or payout. This restriction does not block ordinary fictional/in-world currency, items, favors or other owner-domain stakes.
 19. **Regulation is modular.** MRC and other jurisdiction/regulator systems may enrich wagering, racing and event play, but the GM can disable them entirely or select a light/custom profile without disabling the underlying games, races, markets or settlement.
 
+## Bounded parent-tranche decomposition rule
+
+A numbered PCV tranche is a product-outcome parent, not a promise that every implementation concern must remain one execution unit. When live evidence shows a parent spans multiple authority domains, recovery/security boundaries, platform proofs, or cannot satisfy the OPS3 one-bounded-tranche execution discipline, it may be decomposed into first-class lettered work items (for example, PCV-03A..PCV-03F) without renumbering downstream parent outcomes. Lettered children enter the machine-readable strict order and each receives its own checkpoint, acceptance, validation and successor. The parent closes only when every child closes. This is the same bounded-work pattern already used elsewhere in project governance and prevents giant convergence buckets from defeating OPS3 throughput.
+
+### PCV-03 decomposition — owner-approved 2026-09-25
+
+The adversarial audit of application candidate `8232e52a089360939b17e58229af192a283b3a53` found the original PCV-03 parent combined too many independently provable concerns for one closure unit. The prior package artifact `10832224601` is historical pre-audit evidence only.
+
+- **PCV-03A — Canonical Identity, Invitation & Campaign Membership**
+- **PCV-03B — Session Launch, Lifecycle, Persistence & Authority Epoch**
+- **PCV-03C — Secure Peer Transport, Protocol Validation & Capability Handshake**
+- **PCV-03D — Ordered Delivery, Idempotency, Checkpoint & Reconnect Recovery**
+- **PCV-03E — Presence, Product Context, Mobile UX & State Migration**
+- **PCV-03F — Exact-Head Installed Windows/Android Certification**
+
+PCV-04 remains blocked until PCV-03F completes and the PCV-03 parent is completed_verified. Detailed candidate findings are in `PCV-03_ADVERSARIAL_CANDIDATE_AUDIT_2026-09-25.md`.
+
 ## Tranche sequence
 
 ### 1. PCV-01 — Real Product Spine, Persistence & Convergence Cutover
@@ -88,7 +105,7 @@ Acceptance:
 - Core generation works offline/on-device without an AI/provider dependency. Optional AI-assisted art generation may supply new reviewed primaries later but is not required to render a valid character.
 - PCV-02 publishes the first governed Primary Pixel Asset Pack sufficient for representative humanoid/person-scale character creation and defines extension seams for creature/entity, item and scene families consumed by later PCV tranches.
 
-### 3. PCV-03 — Two-Device Membership, Transport, Presence & Reconnect
+### 3. PCV-03 — Two-Device Membership, Transport, Presence & Reconnect (parent outcome; executed as PCV-03A..PCV-03F)
 
 **Meaningful outcome:** A Windows host and Android client can join the same campaign/session as distinct subjects, exchange player-safe projections and commands, disconnect/reconnect without duplicate resolution, and retain membership/role continuity.
 
