@@ -10,11 +10,11 @@
   "attempt_id": "PCV-03D-attempt-001",
   "title": "Ordered Delivery, Idempotency, Checkpoint & Reconnect Recovery",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
   "selected_by_owner": "Strict successor after owner-approved PCV-03 decomposition and PCV-03C completed_verified closeout.",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/pcv-03d-ordered-delivery-recovery",
   "completed": false,
   "predecessor": {
     "work_item": "PCV-03C",
@@ -67,18 +67,19 @@
       "installed packaging"
     ]
   },
-  "active_substep": "selected_not_started",
+  "active_substep": "red_green_ordered_delivery_recovery",
   "strict_successor": "PCV-03E",
-  "next_action": "Await the next owner Continue. Then start PCV-03D from a fresh child-specific branch based on current Multiversal-app main 45642c7578716622c9d486988732beac787cdb9d and materialize only the bounded PCV-03D validation profile.",
+  "next_action": "Run bounded PCV-03D RED→GREEN implementation from fresh Multiversal-app main; materialize only PCV-03D validation, preserve PCV-03E+ and gameplay/packaging blocks, then close through exact-head publication.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": "selected_not_started"
+    "terminal_response_allowed": false,
+    "stop_reason": null,
+    "last_material_progress": "PCV-03D execution authorized on fresh Multiversal-app main 45642c7578716622c9d486988732beac787cdb9d with child-specific branch work/pcv-03d-ordered-delivery-recovery."
   },
   "audit_required_at_closeout": "PCV-03D must prove one serialized authoritative Session history, semantic idempotency with payload-fingerprint conflict rejection, hidden-safe viewer recovery cursors, current-authorization reconnect, no duplicate Session/Event ledger, no generic gameplay command escape hatch, and no PCV-03E/03F activation before selecting PCV-03E.",
   "selection_basis": {
