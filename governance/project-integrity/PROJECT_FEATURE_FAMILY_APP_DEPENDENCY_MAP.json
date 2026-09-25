@@ -10897,13 +10897,14 @@
       "kind": "session_transport",
       "owner": "PCV-03A..PCV-03F",
       "disposition": "current_intent_not_yet_implemented",
-      "implementation_state": "pcv03a_selected_not_started",
+      "implementation_state": "pcv03a_completed_verified_pcv03b_selected_not_started",
       "product_area": null,
       "pcv_targets": [],
       "evidence": [
         "operations/CURRENT.json",
         "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json",
-        "governance/ai/work-state/PCV-03A-attempt-001.json"
+        "governance/ai/work-state/PCV-03A-attempt-001.json",
+        "governance/ai/work-state/PCV-03B-attempt-001.json"
       ]
     },
     {
@@ -12181,7 +12182,7 @@
       "node_type": "current_overlay_work_item",
       "label": "PCV-03A",
       "family_id": "PCV",
-      "status": "selected_not_started",
+      "status": "completed_verified",
       "evidence": [
         "PCV_PROGRAM_BACKLOG.json",
         "governance/ai/work-state/PCV-03A-attempt-001.json"
@@ -12193,11 +12194,12 @@
       "node_type": "current_overlay_work_item",
       "label": "PCV-03B",
       "family_id": "PCV",
-      "status": "blocked_by_predecessor",
+      "status": "selected_not_started",
       "evidence": [
-        "PCV_PROGRAM_BACKLOG.json"
+        "PCV_PROGRAM_BACKLOG.json",
+        "governance/ai/work-state/PCV-03B-attempt-001.json"
       ],
-      "attempt_count": 0
+      "attempt_count": 1
     },
     {
       "node_id": "WORK::PCV-03C",
@@ -24267,12 +24269,12 @@
     {
       "work_item_id": "PCV-03A",
       "family_id": "PCV",
-      "status": "selected_not_started"
+      "status": "completed_verified"
     },
     {
       "work_item_id": "PCV-03B",
       "family_id": "PCV",
-      "status": "blocked_by_predecessor"
+      "status": "selected_not_started"
     },
     {
       "work_item_id": "PCV-03C",

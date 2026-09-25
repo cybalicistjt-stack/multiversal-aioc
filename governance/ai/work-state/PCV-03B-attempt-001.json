@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.2.0",
+  "control_plane": "OPS3",
+  "family": "PCV",
+  "lane": "gpr",
+  "track": "product-convergence-real-app-validation",
+  "source_program": "PCV",
+  "parent_tranche": "PCV-03",
+  "work_item_id": "PCV-03B",
+  "attempt_id": "PCV-03B-attempt-001",
+  "title": "Session Launch, Lifecycle, Persistence & Authority Epoch",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "selected_by_owner": "Strict successor after owner-approved PCV-03 decomposition and PCV-03A completed_verified closeout.",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "predecessor": {
+    "work_item": "PCV-03A",
+    "status": "completed_verified",
+    "application_merge_sha": "73c4ae91502086139a51fdaaf9958d293d2dd543",
+    "validation_run": 36156470345
+  },
+  "decomposition_source": {
+    "superseded_attempt": "PCV-03-attempt-001",
+    "audit": "governance/application-planning/product-convergence/PCV-03_ADVERSARIAL_CANDIDATE_AUDIT_2026-09-25.md",
+    "readiness_contract": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json"
+  },
+  "objective": "PCV-03 hosts one canonical A5 Session launched from an immutable validated Campaign/Scene snapshot, with durable lifecycle, close/supersession and authority-epoch behavior instead of a parallel Session shell.",
+  "acceptance": [
+    "Consume the selected PCV-02 Campaign/Scene through A5 validation, immutable launch snapshot and exactly-once launch operation semantics.",
+    "Persist and project the canonical Session shell through the approved local-first storage adapter; PCV-03 transport state references it rather than replacing it.",
+    "Enforce launched/paused/closed lifecycle on join, command, projection and resume.",
+    "Closing or superseding a Session invalidates old invitation/resume surfaces and advances continuity/authority state as required.",
+    "Preserve canonical Campaign/Session ownership with no duplicate PCV-03 authority ledger.",
+    "PCV-03C+ and PCV-04 remain unauthorized until this item closes."
+  ],
+  "boundaries": [
+    "Preserve PCV-03A canonical A3 identity/invitation and A5 Campaign membership authority; Session lifecycle consumes those seams and must not replace them.",
+    "Preserve PCV-02 Campaign/Scene product state and launch compatibility.",
+    "Do not implement PCV-03C wire transport except fail-closed interfaces strictly required for Session lifecycle compilation.",
+    "Do not implement presence UX, gameplay/action/combat behavior, or installed packaging.",
+    "Keep local-first direct/manual architecture viable; no hosted identity/networking provider becomes mandatory.",
+    "Use milestone-level OPS3 state only; no activity-journal instrumentation."
+  ],
+  "validation_profile": {
+    "title": "Session Launch, Lifecycle, Persistence & Authority Epoch",
+    "materialize_in_application_as": "governance/application-planning/validation-core/profiles/PCV-03B.json",
+    "required_gates": [
+      "workspace/typecheck",
+      "A5 launch snapshot/Session repository regression",
+      "P9 Session persistence/authorization regression",
+      "SMB-01 local-host authority-profile regression",
+      "PCV-02 Campaign/Scene launch compatibility",
+      "stale/closed/superseded Session negative tests",
+      "authority-epoch split-brain negative tests"
+    ],
+    "forbidden_scope": [
+      "wire transport",
+      "presence UX",
+      "packaging"
+    ]
+  },
+  "active_substep": "selected_not_started",
+  "strict_successor": "PCV-03C",
+  "next_action": "Await the next owner Continue. Then start PCV-03B from a fresh child-specific branch based on current Multiversal-app main 73c4ae91502086139a51fdaaf9958d293d2dd543 and materialize only the bounded PCV-03B validation profile.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": "selected_not_started"
+  },
+  "audit_required_at_closeout": "PCV-03B must prove no duplicate Session owner/authority ledger remains before selecting PCV-03C.",
+  "selection_basis": {
+    "kind": "strict_successor_after_pcv03a_completed_verified",
+    "predecessor_validation_run": 36156470345,
+    "predecessor_application_merge": "73c4ae91502086139a51fdaaf9958d293d2dd543",
+    "branch_rule": "Create a fresh PCV-03B branch from current Multiversal-app main at execution start; do not reuse any PCV-03A or historical monolithic branch."
+  }
+}
