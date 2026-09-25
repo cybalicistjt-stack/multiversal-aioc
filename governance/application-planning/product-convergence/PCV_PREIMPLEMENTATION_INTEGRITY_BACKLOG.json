@@ -46,7 +46,8 @@
         "MIB-17/SMB-14 invitation policy and recipient binding are composed without granting Campaign authority.",
         "PCV-02 memberSubjectIds has an explicit migration/adapter disposition and cannot remain a competing authority.",
         "Duplicate/replayed invitation acceptance and conflicting reuse are fail-closed and idempotent."
-      ]
+      ],
+      "closure_contract": "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json"
     },
     {
       "id": "PCV-I01C",
@@ -134,7 +135,7 @@
     }
   ],
   "completion_rule": "PCV-PRE completes only when PCV-I01A, PCV-I01B, PCV-I01C, PCV-I02..PCV-I06 complete in strict order and PCV-I06 certifies zero unowned/unresolved PCV-03 prerequisites.",
-  "next_action": "PCV-I01B is in_progress for AIOC contract closure only. PCV-I01C+ and runtime implementation remain blocked.",
+  "next_action": "Validate the exact PCV-I01B contract-closure candidate. PCV-I01C+ and all PCV runtime implementation remain blocked.",
   "prerequisite": {
     "work_item": "PIM-03",
     "status": "completed_verified",

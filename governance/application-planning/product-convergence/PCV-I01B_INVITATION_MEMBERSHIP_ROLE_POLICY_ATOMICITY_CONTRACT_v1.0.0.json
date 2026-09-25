@@ -1,0 +1,411 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "PCV-I01B.INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY.v1",
+  "status": "completion_candidate",
+  "work_item_id": "PCV-I01B",
+  "scope": "AIOC-only preimplementation contract closure; no Multiversal-app runtime implementation",
+  "source_snapshot": {
+    "aioc_main": "53dc8edfb90c7f88550eca1f28958cbf80164c1a",
+    "multiversal_app_main": "28666001be412925e8d148bf47e8c6a9d9f11e93",
+    "application_sources": [
+      "packages/contracts/src/a3/invitation-port.ts",
+      "packages/contracts/src/a5/membership-invitation-port.ts",
+      "packages/contracts/src/a5/launch-snapshot-port.ts",
+      "packages/contracts/src/authorization/campaign-authorization-policy.ts",
+      "packages/contracts/src/family-safety/mib-i17-family-safety-policy.ts",
+      "packages/contracts/src/system-maturation-buildout/smb14-security-privacy-family-safety-hardening.ts",
+      "apps/client-ui/src/product/pcv02Foundation.ts",
+      "database/migrations/0001_initial_logical_schema.json",
+      "database/migrations/0003_a5_campaign_scene.json",
+      "fixtures/stage-a-a12/security/a12-security-source.json"
+    ],
+    "design_sources": [
+      "governance/application-planning/internal-alpha/feature-packets/MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md"
+    ]
+  },
+  "authority": {
+    "generic_invitation_lifecycle": "A3 InvitationPort",
+    "campaign_membership_and_role": "A5 CampaignMembershipAndInvitationPort over the authoritative campaign_members owner family",
+    "campaign_owner": "CampaignRecord.ownerSubjectId; Campaign ownership is not an A5 membership role and is not created by invitation acceptance",
+    "authentication_subject": "A3 StableSubjectSession / PCV-I01A proof boundary",
+    "family_safety_policy": "MIB-17 with SMB-14 invitation/security composition",
+    "legacy_authorization_adapter": "P9 campaign-authorization-policy is a compatibility authorization consumer, not membership truth",
+    "pcv02_member_subject_ids": "compatibility projection only after migration; never a second membership authority"
+  },
+  "canonical_membership": {
+    "record_fields": [
+      "membershipId",
+      "campaignId",
+      "subjectId",
+      "state",
+      "primaryRole",
+      "version",
+      "effectiveAt",
+      "expiresAt",
+      "grantedBySubjectId",
+      "sourceInvitationId",
+      "permissionsVersion",
+      "createdAt",
+      "updatedAt",
+      "suspendedAt",
+      "leftAt",
+      "removedAt"
+    ],
+    "states": [
+      "active",
+      "suspended",
+      "left",
+      "removed"
+    ],
+    "primary_roles": [
+      "player",
+      "game-master",
+      "assistant-gm",
+      "content-creator",
+      "observer"
+    ],
+    "role_normalization": "A membership has one primary Campaign participation role. Additional scoped authority is represented by separately versioned delegations/grants, not by silently unioning broad roles. This intentionally normalizes F003's 'one or more scoped roles' requirement without losing scoped authority.",
+    "owner_separation": "Campaign owner authority is derived from CampaignRecord.ownerSubjectId and is never minted or transferred by Campaign invitation/membership operations.",
+    "lifecycle_disposition": {
+      "campaign_id": "retained",
+      "subject_id": "retained",
+      "membership_status": "retained as state",
+      "scoped_roles": "normalized to one primaryRole plus explicit delegation/grant records",
+      "effective_and_expiry_times": "retained",
+      "granting_authority": "retained as grantedBySubjectId/sourceInvitationId",
+      "revocation_state": "retained through state plus transition timestamps",
+      "permissions_version": "retained",
+      "concurrency_version": "added explicitly as positive integer version"
+    },
+    "version_rule": "Every role or state transition increments membership version. Public participant/membership projections used for mutation MUST expose the current version and permissionsVersion so expectedVersion can be supplied without an out-of-band hidden read.",
+    "activity_rule": "Only active, unexpired membership may contribute Campaign membership authority. suspended/left/removed membership fails closed for entry, command and reconnect until a governed transition restores authority."
+  },
+  "state_transition_seam": {
+    "required_public_operation": "transitionMembershipState",
+    "required_input": [
+      "campaignId",
+      "membershipId",
+      "targetState",
+      "expectedVersion",
+      "actorSubjectId",
+      "authenticationSessionId",
+      "permissionDecisionReference",
+      "permissionsVersion",
+      "operationId",
+      "online",
+      "at"
+    ],
+    "allowed_transitions": [
+      "active -> suspended by currently authorized member manager",
+      "suspended -> active by currently authorized member manager",
+      "active -> left by the member subject",
+      "suspended -> left by the member subject",
+      "active -> removed by currently authorized member manager",
+      "suspended -> removed by currently authorized member manager",
+      "left -> active only through a new governed invitation acceptance",
+      "removed -> active only through a new governed invitation acceptance"
+    ],
+    "forbidden": "Generic state mutation may not reactivate left/removed membership, bypass invitation policy, or mutate ownership.",
+    "stale_version_rule": "expectedVersion mismatch fails as conflict with no mutation."
+  },
+  "mutation_authorization_context": {
+    "required_fields": [
+      "actorSubjectId",
+      "authenticationSessionId",
+      "permissionDecisionReference",
+      "permissionsVersion",
+      "operationId",
+      "online"
+    ],
+    "rule": "A5 mutation requests cannot rely on actorSubjectId alone. The canonical authenticated subject and current authorization decision must agree; authorization is revalidated deny-by-default at mutation time.",
+    "invitation_entitlement_rule": "Invitation resolve/accept also carries A3 entitlementDecisionReference and entitlementRulesetVersion where the invitation has entitlement impact.",
+    "scope": "Applies to issue/reissue invitation, role change, membership-state transition, assistant-GM delegation grant/revoke and atomic invitation acceptance coordination."
+  },
+  "role_translation": {
+    "purpose": "Fail-closed compatibility for older P9 CampaignRole consumers; this translation is not canonical membership truth.",
+    "mappings": [
+      {
+        "a5": "game-master",
+        "p9": "gm",
+        "condition": "active membership; current authorization"
+      },
+      {
+        "a5": "player",
+        "p9": "player",
+        "condition": "active membership; current authorization"
+      },
+      {
+        "a5": "observer",
+        "p9": "observer",
+        "condition": "active membership; current authorization"
+      },
+      {
+        "a5": "assistant-gm",
+        "p9": null,
+        "condition": "no direct broad gm translation; use current scoped AssistantGmDelegation and operation-specific authorization"
+      },
+      {
+        "a5": "content-creator",
+        "p9": null,
+        "condition": "no direct CampaignRole translation; use creator/workspace-specific authorization"
+      },
+      {
+        "a5": null,
+        "p9": "owner",
+        "condition": "CampaignRecord.ownerSubjectId only; never derived from membership or Owner/Admin application status"
+      }
+    ],
+    "unknown_role_rule": "Unknown, unsupported or contextually broader roles fail closed. No fallback to player, gm or owner is allowed."
+  },
+  "invitation_recipient_binding": {
+    "accepted_binding_sources": [
+      "canonical subject binding",
+      "opaque claim/reference that resolves exactly once to a canonical subject after PCV-I01A authentication"
+    ],
+    "forbidden_binding_sources": [
+      "deviceId as subject proof",
+      "transport connection identity",
+      "display name",
+      "email string without governed identity mapping",
+      "cached client subject assertion"
+    ],
+    "acceptance_rule": "A3 resolve/accept must bind recipientSubjectId to the authenticated StableSubjectSession subject. Device identity may be recorded as context but cannot satisfy recipient identity or grant Campaign role.",
+    "preauth_rule": "Before authentication, invitation preview remains inference-safe and reveals no Campaign/recipient/member identity.",
+    "owner_admin_rule": "A3 owner-admin invitation role is invalid for A5 Campaign membership and cannot transfer Campaign ownership."
+  },
+  "family_policy_composition": {
+    "capability": "invitations",
+    "required_receipt_fields": [
+      "subjectId",
+      "subjectProfileId",
+      "policyProfileId",
+      "policyVersion",
+      "decision",
+      "guardianApprovalSatisfied",
+      "invitationState",
+      "recipientSubjectId",
+      "evaluatedAt"
+    ],
+    "acceptance_gate": [
+      "MIB-17 deny blocks acceptance",
+      "MIB-17 require-guardian blocks until current matching guardian approval is satisfied",
+      "MIB-17 allow permits the policy layer to proceed but grants no Campaign authority",
+      "SMB-14 invitation lifecycle/recipient checks must agree with A3 invitation state"
+    ],
+    "no_circular_workspace_rule": "First Campaign invitation acceptance cannot require pre-existing Campaign workspace entry. PCV-03A must compose the MIB-17 decision and SMB-14 invitation/recipient hardening invariants as an invitation-specific policy gateway rather than requiring SMB-14's broader already-authorized-workspace path wholesale.",
+    "resource_authority_granted": false,
+    "guardian_campaign_authority": false
+  },
+  "atomic_acceptance_coordinator": {
+    "owner": "A3/A5 composition boundary; no PCV-specific membership owner",
+    "semantic_transaction": [
+      "validate current A3 StableSubjectSession and bind authenticated subject",
+      "resolve current A3 invitation and recipient binding",
+      "evaluate current MIB-17/SMB-14 invitation policy and entitlement impact",
+      "lock/read current invitation and A5 membership by canonical keys",
+      "create or reactivate the A5 membership with intended primary role and incremented version",
+      "mark the A3 invitation accepted with terminal accepted subject/time",
+      "persist idempotency/operation receipt and audit/outbox evidence",
+      "return A3 InvitationAcceptanceReceipt whose membershipReference/roleReference point to the A5 result"
+    ],
+    "atomicity_rule": "All authoritative writes above commit in one persistence transaction. Any authorization, policy, uniqueness, version, persistence or audit/outbox precondition failure rolls back the complete authoritative transition.",
+    "idempotency": {
+      "same_key_same_fingerprint": "Return the original acceptance result with replayed=true and perform no second membership/role effect.",
+      "same_key_different_fingerprint": "Reject as conflict with no mutation.",
+      "already_accepted_same_subject_new_key": "Return duplicate-acceptance/inference-safe failure; do not create a second membership or role effect.",
+      "already_accepted_different_subject": "Return inference-safe invitation-unavailable; do not disclose accepted subject.",
+      "revoked_expired_declined_archived_or_recipient_mismatch": "Fail closed before mutation."
+    },
+    "transaction_primitive_destination": "PCV-I02 defines the concrete installed SQLite/production service transaction primitive; PCV-I01B freezes the required all-or-nothing semantics now."
+  },
+  "pcv02_membership_migration": {
+    "current_state": "PCV-02 ProductCampaignFoundation stores memberSubjectIds without membership identity, role, lifecycle state or version.",
+    "disposition": "memberSubjectIds becomes a read-only derived compatibility projection after migration and is never an authoritative write target.",
+    "derived_projection": "campaign ownerSubjectId plus subjectIds from current active A5 memberships, de-duplicated; projection membership does not create authority.",
+    "owner_rule": "The PCV-02 owner entry is explained by CampaignRecord.ownerSubjectId, not by inventing an A5 owner membership.",
+    "legacy_nonowner_rule": "A legacy non-owner memberSubjectId without a matching A5 membership cannot be guessed to be player or any other role. It is migration-pending/quarantined until explicit role/lifecycle evidence is available.",
+    "pcv03_rule": "PCV-03A may read the derived compatibility projection for display/migration only; it must never append/remove memberSubjectIds as a membership mutation."
+  },
+  "persistence_delta_contract": {
+    "exact_schema_work_owner": "PCV-I02",
+    "campaign_members_required_logical_fields": [
+      "state",
+      "version",
+      "effective_at",
+      "expires_at",
+      "granted_by_subject_id",
+      "source_invitation_id",
+      "permissions_version",
+      "updated_at",
+      "suspended_at",
+      "left_at",
+      "removed_at"
+    ],
+    "campaign_invitations_required_logical_fields": [
+      "token_digest_or_secret_reference",
+      "resolved_recipient_subject_id",
+      "accepted_subject_id",
+      "accepted_at",
+      "declined_at",
+      "revoked_at",
+      "acceptance_idempotency_reference",
+      "version"
+    ],
+    "operation_receipt_requirement": "Durable operation/idempotency evidence must permit exact replay recovery and conflicting-reuse rejection.",
+    "raw_secret_rule": "Raw invitation bearer secrets are never stored in ordinary product documents, diagnostics, telemetry or compatibility projections."
+  },
+  "downstream_session_rule": {
+    "launch_snapshot": "A5 LaunchParticipantBinding already carries membershipVersion; PCV-03A must source it from the canonical A5 membership projection/record.",
+    "reconnect": "Suspension/removal/leave or permissions-version drift invalidates stale Session/reconnect authority even if transport/device continuity remains valid.",
+    "no_second_join_owner": "SMB-02/PCV-03 consume canonical A5 membership; they never mint a parallel session membership."
+  },
+  "external_sanity_checks": [
+    {
+      "source": "OWASP Authorization Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html",
+      "use": "deny by default and validate permissions on every request"
+    },
+    {
+      "source": "OWASP Forgot Password Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html",
+      "use": "bearer-style tokens should be cryptographically random, bounded, single-use and invalidated after use; applied here as an invitation-token sanity check"
+    },
+    {
+      "source": "PostgreSQL 18 Transaction Documentation",
+      "url": "https://www.postgresql.org/docs/18/tutorial-transactions.html",
+      "use": "multi-step authoritative acceptance must be all-or-nothing with intermediate state not visible"
+    }
+  ],
+  "dependency_edges": [
+    {
+      "from": "PLAN::stage-a-a3",
+      "to": "WORK::PCV-I01B"
+    },
+    {
+      "from": "PLAN::stage-a-a5",
+      "to": "WORK::PCV-I01B"
+    },
+    {
+      "from": "WORK::MIB-17",
+      "to": "WORK::PCV-I01B"
+    },
+    {
+      "from": "WORK::SMB-14",
+      "to": "WORK::PCV-I01B"
+    },
+    {
+      "from": "WORK::BRP-02",
+      "to": "WORK::PCV-I01B"
+    },
+    {
+      "from": "WORK::PCV-02",
+      "to": "WORK::PCV-I01B"
+    }
+  ],
+  "acceptance_checks": {
+    "atomic_a3_to_a5_acceptance_defined": true,
+    "membership_lifecycle_version_and_public_concurrency_token_defined": true,
+    "mib17_smb14_policy_composed_without_campaign_authority": true,
+    "pcv02_member_subject_ids_retired_as_parallel_authority": true,
+    "duplicate_replay_and_conflicting_reuse_fail_closed": true
+  },
+  "gap_closure": {
+    "PCV-PRE-001": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-002": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-003": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-007": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-008": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-020": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-055": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-062": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-063": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-064": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-065": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-076": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-102": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-106": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A"
+      ]
+    },
+    "PCV-PRE-108": {
+      "candidate_status": "contract_closed_runtime_pending",
+      "future_implementation_destination": [
+        "PCV-03A",
+        "PCV-03B"
+      ]
+    }
+  },
+  "runtime_boundary": {
+    "runtime_product_implementation_authorized": false,
+    "next_runtime_destination": "PCV-03A after PCV-I01C through PCV-I06 predecessor closure",
+    "exact_persistence_migration_implementation_authorized": false,
+    "later_preimplementation_items_authorized": false
+  }
+}
