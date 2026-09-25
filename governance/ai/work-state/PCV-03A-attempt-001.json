@@ -48,15 +48,16 @@
   "strict_successor": "PCV-03B",
   "next_action": "Run the bounded PCV-03A RED→GREEN implementation on fresh Multiversal-app main; materialize only PCV-03A validation, preserve PCV-03B+ and packaging blocks, then close through exact-head publication.",
   "execution_guard": {
-    "continue_turns": 1,
-    "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "continue_turns": 2,
+    "stall_nudges": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null,
-    "last_material_progress": "PCV-03A execution authorized on fresh Multiversal-app main 28666001be412925e8d148bf47e8c6a9d9f11e93 with child-specific branch work/pcv-03a-canonical-identity-membership."
+    "last_material_progress": "Valid causal RED recorded on Multiversal-app head ac8edffa91311c052a1730f3decfd5ff052d3e3b: PCV-03A focused test reached product behavior and failed because canonical identity mapping was absent.",
+    "process_note": "Owner re-entered after an executor interruption; valid material progress existed since the prior command, so execution resumed rather than entering no-progress diagnosis. Multi-Continue/stall-nudge evidence is preserved for closeout."
   },
   "audit_required_at_closeout": "PCV-03A must prove no duplicate Campaign membership/invitation owner remains before selecting PCV-03B.",
   "selection_basis": {
