@@ -100,10 +100,11 @@ if pcv_pre["status"]=="in_progress":
     current_tranche=next(x for x in pcv_pre["tranches"] if x["id"]==pcv_pre["current_item"])
     assert current_checkpoint["status"]==current_tranche["status"]
 assert wire["summary"]["preimplementation_integrity_findings"]==pcv["finding_count"]
-assert wire["summary"]["open_pcv_preimplementation_findings"]==pcv["finding_count"]
+open_pcv_findings=[x for x in pcv["findings"] if x["disposition"]=="open_preimplementation"]
+assert wire["summary"]["open_pcv_preimplementation_findings"]==len(open_pcv_findings)
 for finding_id in {"WIRE-PCV03-PHYSICAL-001","WIRE-PCV-PRE-003"}:
     finding=next(x for x in wire["findings"] if x["finding_id"]==finding_id)
-    assert str(pcv["finding_count"]) in finding["missing_or_stale_binding"]
+    assert str(len(open_pcv_findings)) in finding["missing_or_stale_binding"]
 # Project Source hashes are frozen integrity anchors, not authority.
 sources={x["name"]:x["sha256"] for x in reg["live_project_source_surface"]["files"]}
 assert sources["PROJECT_SOURCE_MANIFEST.md"]=="15ba1bc42c12920c245d1611ac5b95c8614a87520644230ca64c3cd43892bb2c"

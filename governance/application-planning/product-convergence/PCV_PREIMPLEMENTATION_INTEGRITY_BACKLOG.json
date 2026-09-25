@@ -7,8 +7,8 @@
   "owner_direction_date": "2026-09-25",
   "predecessor": "PCV-02 completed_verified",
   "blocks_parent": "PCV-03",
-  "current_item": "PCV-I01A",
-  "current_attempt": "PCV-I01A-attempt-001",
+  "current_item": "PCV-I01B",
+  "current_attempt": "PCV-I01B-attempt-001",
   "strict_order": [
     "PCV-I01A",
     "PCV-I01B",
@@ -23,7 +23,7 @@
     {
       "id": "PCV-I01A",
       "name": "Identity, Authentication, Device & Recovery Contract Closure",
-      "status": "in_progress",
+      "status": "completed_verified",
       "objective": "Close stable-subject authentication, local proof-of-possession, device/session continuity, recovery/rebind and BRP lifecycle ownership before remote membership or transport implementation.",
       "acceptance": [
         "Define the production-local zero-service proof-of-possession credential and canonical A3 session establishment path.",
@@ -38,7 +38,7 @@
     {
       "id": "PCV-I01B",
       "name": "Invitation, Membership, Role, Policy & Atomicity Closure",
-      "status": "blocked_by_predecessor",
+      "status": "selected_not_started",
       "objective": "Close A3 invitation→A5 Campaign membership/role lifecycle, versioning, family-safety policy and atomic transaction semantics without parallel membership authority.",
       "acceptance": [
         "A3 acceptance and A5 membership creation/replay have one atomic coordinator and one membership authority.",
@@ -134,7 +134,7 @@
     }
   ],
   "completion_rule": "PCV-PRE completes only when PCV-I01A, PCV-I01B, PCV-I01C, PCV-I02..PCV-I06 complete in strict order and PCV-I06 certifies zero unowned/unresolved PCV-03 prerequisites.",
-  "next_action": "Validate the exact PCV-I01A contract-closure candidate. PCV-I01B+ and all PCV runtime implementation remain blocked.",
+  "next_action": "PCV-I01B is selected_not_started. On the next owner Continue, begin invitation/membership/role/policy/atomicity contract closure only; all PCV runtime remains blocked.",
   "prerequisite": {
     "work_item": "PIM-03",
     "status": "completed_verified",

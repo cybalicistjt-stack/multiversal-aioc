@@ -72,8 +72,8 @@
       "title": "Peer is not bound to the joined subject.",
       "detail": "After a data channel opens, `command.actorId` and presence `subjectId/deviceId` remain caller-supplied. Authorization is evaluated using the claimed actor rather than the authenticated/bound connection identity. A connected member can therefore attempt to act as another active member.",
       "primary_interstitial": "PCV-I01A",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -85,7 +85,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01A"
+      "candidate_closure_work_item": "PCV-I01A",
+      "closed_by": "PCV-I01A",
+      "closure_validation": {
+        "candidate_head": "187e87c40293f505a7917721ef2a52f146f5ce98",
+        "validation_run_id": 36131650590,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-005",
@@ -113,8 +119,8 @@
       "title": "Resume device is not validated against registered device continuity.",
       "detail": "A valid subject/resume token/epoch can supply a different `deviceId`; the handler does not prove that device is an already-authorized continuity device.",
       "primary_interstitial": "PCV-I01A",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -126,7 +132,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01A"
+      "candidate_closure_work_item": "PCV-I01A",
+      "closed_by": "PCV-I01A",
+      "closure_validation": {
+        "candidate_head": "187e87c40293f505a7917721ef2a52f146f5ce98",
+        "validation_run_id": 36131650590,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-007",
@@ -292,8 +304,8 @@
       "title": "Client continuity key is only `subjectId`.",
       "detail": "Multiple Campaign/Session continuities for one subject collide instead of being keyed by authoritative Campaign/Session identity.",
       "primary_interstitial": "PCV-I01A",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -305,7 +317,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01A"
+      "candidate_closure_work_item": "PCV-I01A",
+      "closed_by": "PCV-I01A",
+      "closure_validation": {
+        "candidate_head": "187e87c40293f505a7917721ef2a52f146f5ce98",
+        "validation_run_id": 36131650590,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-016",
@@ -1118,8 +1136,8 @@
       "title": "No production local StableSubjectSessionPort adapter exists",
       "detail": "Only local-alpha/test adapters implement A3 stable-subject session behavior; the real product profile/identity store is not an A3 authentication-session implementation.",
       "primary_interstitial": "PCV-I01A",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1131,7 +1149,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01A"
+      "candidate_closure_work_item": "PCV-I01A",
+      "closed_by": "PCV-I01A",
+      "closure_validation": {
+        "candidate_head": "187e87c40293f505a7917721ef2a52f146f5ce98",
+        "validation_run_id": 36131650590,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-058",
@@ -1139,8 +1163,8 @@
       "title": "No production local ProviderIndependentIdentityMapping adapter is wired",
       "detail": "PCV-01 persists subjectId/identityId strings but the product does not instantiate the canonical provider-independent identity-mapping owner.",
       "primary_interstitial": "PCV-I01A",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1152,7 +1176,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01A"
+      "candidate_closure_work_item": "PCV-I01A",
+      "closed_by": "PCV-I01A",
+      "closure_validation": {
+        "candidate_head": "187e87c40293f505a7917721ef2a52f146f5ce98",
+        "validation_run_id": 36131650590,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-059",
@@ -1160,8 +1190,8 @@
       "title": "Local product subject identity has no possession credential",
       "detail": "No production local keypair, passkey, WebAuthn credential, or equivalent proof binds possession to the durable subject/identity IDs; zero-service multiplayer needs an explicit trust bootstrap before remote subject assertions can be authenticated.",
       "primary_interstitial": "PCV-I01A",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1173,7 +1203,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01A"
+      "candidate_closure_work_item": "PCV-I01A",
+      "closed_by": "PCV-I01A",
+      "closure_validation": {
+        "candidate_head": "187e87c40293f505a7917721ef2a52f146f5ce98",
+        "validation_run_id": 36131650590,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-060",
@@ -1181,8 +1217,8 @@
       "title": "Stable device continuity has no explicit canonical owner/persistence contract",
       "detail": "SMB-02 says device identity is connection context only, but there is no production device registry contract/schema that defines stable device binding, revocation, or relationship to an authenticated subject.",
       "primary_interstitial": "PCV-I01A",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1194,7 +1230,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01A"
+      "candidate_closure_work_item": "PCV-I01A",
+      "closed_by": "PCV-I01A",
+      "closure_validation": {
+        "candidate_head": "187e87c40293f505a7917721ef2a52f146f5ce98",
+        "validation_run_id": 36131650590,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-061",
@@ -1202,8 +1244,8 @@
       "title": "BRP device-session management and revocation are not connected to product identity/session state",
       "detail": "BRP-02 requires current/revoked device-session evidence and ordinary-user session management, but the PCV product profile has no corresponding production owner path.",
       "primary_interstitial": "PCV-I01A",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1215,7 +1257,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01A"
+      "candidate_closure_work_item": "PCV-I01A",
+      "closed_by": "PCV-I01A",
+      "closure_validation": {
+        "candidate_head": "187e87c40293f505a7917721ef2a52f146f5ce98",
+        "validation_run_id": 36131650590,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-062",
@@ -1977,8 +2025,8 @@
       "title": "Local identity recovery across device replacement/reinstall is unresolved",
       "detail": "A device-held local credential can prove possession on one installation, but BRP requires account/ownership recovery without administrator/database intervention; preflight must define what survives, what can be exported, and what requires a new invitation/rebind.",
       "primary_interstitial": "PCV-I01A",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I02",
         "PCV-I03",
@@ -1990,7 +2038,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01A"
+      "candidate_closure_work_item": "PCV-I01A",
+      "closed_by": "PCV-I01A",
+      "closure_validation": {
+        "candidate_head": "187e87c40293f505a7917721ef2a52f146f5ce98",
+        "validation_run_id": 36131650590,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-102",
@@ -2044,11 +2098,17 @@
       "future_implementation_destination": [
         "PCV-03A"
       ],
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01A"
+      "candidate_closure_work_item": "PCV-I01A",
+      "closed_by": "PCV-I01A",
+      "closure_validation": {
+        "candidate_head": "187e87c40293f505a7917721ef2a52f146f5ce98",
+        "validation_run_id": 36131650590,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-105",
@@ -2064,11 +2124,17 @@
       "future_implementation_destination": [
         "PCV-03A"
       ],
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I01A"
+      "candidate_closure_work_item": "PCV-I01A",
+      "closed_by": "PCV-I01A",
+      "closure_validation": {
+        "candidate_head": "187e87c40293f505a7917721ef2a52f146f5ce98",
+        "validation_run_id": 36131650590,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-106",
