@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "family": "PCV-PRE",
+  "lane": "gpr",
+  "track": "pcv-preimplementation-integrity",
+  "source_program": "PCV",
+  "work_item_id": "PCV-I04",
+  "attempt_id": "PCV-I04-attempt-001",
+  "title": "Session Event, Recovery, Idempotency, Presence & Hybrid Continuity Closure",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "selected_by_owner": "2026-09-25 owner direction: fully map and preserve project work/dependencies before PCV implementation; split interstitials as needed.",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "runtime_product_implementation_authority": false,
+  "completed": false,
+  "predecessor": {
+    "work_item": "PCV-I03",
+    "status": "completed_verified"
+  },
+  "objective": "Freeze command/Event/checkpoint/reconnect semantics so local-host, future hosted, live/async/hybrid and hidden projections share one durable history without duplicate effects or lost Events.",
+  "acceptance": [
+    "Define command identity versus idempotency key versus payload fingerprint and host-authoritative timestamps.",
+    "Define serialized per-Session mutation/transaction ordering and transactional-outbox/advisory-realtime mapping.",
+    "Define global authoritative Event sequence, viewer projection cursor, ACK timing, gap detection and hidden-event behavior.",
+    "Define checkpoint digest/trust/replay fingerprint lifecycle and reconnect current-authorization requirements.",
+    "Define presence as connection-derived advisory state with no membership/identity authority.",
+    "Prove compatibility with SMB-02 and APW one-history live/async/hybrid expectations."
+  ],
+  "boundaries": [
+    "No Multiversal-app PCV runtime implementation is authorized.",
+    "PCV-I01A through PCV-I03 remain completed predecessor contracts and are not reopened.",
+    "PCV-I05+ and PCV-03 children remain predecessor-blocked."
+  ],
+  "strict_successor": "PCV-I05",
+  "active_substep": "selected_not_started",
+  "next_action": "PCV-I04 is selected_not_started. Await the next owner Continue, then execute Session Event/recovery/idempotency/presence/hybrid-continuity contract closure only. Do not start Multiversal-app PCV runtime implementation.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": "selected_not_started"
+  }
+}

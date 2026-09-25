@@ -1,0 +1,579 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "PCV-I03.TRANSPORT_PROTOCOL_CAPABILITY_SECURITY.v1",
+  "status": "completed_verified",
+  "work_item_id": "PCV-I03",
+  "scope": "AIOC-only preimplementation contract closure; no Multiversal-app PCV runtime implementation, external networking activation, hosted signaling, STUN/TURN purchase, Android permission mutation or package release",
+  "source_snapshot": {
+    "aioc_main": "680d273938f91996c6c8c09afc48200afb4d1b57",
+    "multiversal_app_main": "28666001be412925e8d148bf47e8c6a9d9f11e93",
+    "historical_candidate": "Multiversal-app PR #775 / pre-audit PCV-03 exact-candidate lineage",
+    "application_sources": [
+      "packages/contracts/src/a3/stable-subject-session-port.ts",
+      "packages/contracts/src/a3/invitation-port.ts",
+      "packages/contracts/src/a5/membership-invitation-port.ts",
+      "packages/contracts/src/a5/pack-registry-lock-port.ts",
+      "packages/contracts/src/a5/launch-snapshot-port.ts",
+      "packages/contracts/src/a5/session-repository-port.ts",
+      "packages/contracts/src/family-safety/mib-i17-family-safety-policy.ts",
+      "packages/contracts/src/system-maturation-buildout/smb14-security-privacy-family-safety-hardening.ts",
+      "historical PR #775 packages/session-protocol/src/index.ts",
+      "historical PR #775 apps/client-ui/src/product/pcv03Session.ts",
+      "historical PR #775 apps/client-ui/src/product/Pcv03SessionWorkspace.tsx"
+    ],
+    "predecessor_contracts": [
+      "governance/application-planning/product-convergence/PCV-I01A_IDENTITY_AUTHENTICATION_DEVICE_RECOVERY_CONTRACT_v1.0.0.json",
+      "governance/application-planning/product-convergence/PCV-I01B_INVITATION_MEMBERSHIP_ROLE_POLICY_ATOMICITY_CONTRACT_v1.0.0.json",
+      "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
+      "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json"
+    ]
+  },
+  "authority_invariants": {
+    "encrypted_transport_is_not_identity": "A successful ICE/DTLS/SCTP/DataChannel connection proves an encrypted transport to the negotiated peer endpoint. It does not by itself prove canonical subjectId, deviceId, Campaign membership, role, entitlement or Session authority.",
+    "canonical_identity": "A3 StableSubjectSession plus PCV-I01A device proof-of-possession owns authenticated subject/device binding.",
+    "invitation_and_membership": "A3 invitation + A5 membership composition from PCV-I01B remains authoritative. Transport metadata never mints membership or role.",
+    "session_authority": "A5 Session shell/immutable launch snapshot plus P9 ordered Session history remains authority. Transport connectionId/fingerprint/SDP/ICE state is context only.",
+    "entitlement": "EntitlementPort evaluates the authenticated subject. Client self-asserted entitlement/grant claims are ignored.",
+    "family_safety": "MIB-17/SMB-14 gates invitations and communication but never grants Campaign or hidden-information authority."
+  },
+  "signaling_boundary": {
+    "manual_protocol": "MV-SIGNAL/1",
+    "offer_fields": [
+      "signalVersion",
+      "kind=offer",
+      "offerId",
+      "expiresAt",
+      "invitationBearer",
+      "sdpType=offer",
+      "sdp"
+    ],
+    "offer_forbidden_fields": [
+      "campaignId",
+      "sessionId",
+      "hostSubjectId",
+      "recipientSubjectId",
+      "membershipId",
+      "role",
+      "pack ids/versions/digests",
+      "rules profile id/version",
+      "entitlement/grant metadata",
+      "projection scope",
+      "hidden-content/cardinality metadata"
+    ],
+    "answer_fields": [
+      "signalVersion",
+      "kind=answer",
+      "offerId",
+      "offerTranscriptDigest",
+      "expiresAt",
+      "sdpType=answer",
+      "sdp"
+    ],
+    "answer_secret_rule": "The answer does not echo invitationBearer. offerId plus a digest of the canonical offer-without-bearer binds the answer to the signaling exchange.",
+    "inference_rule": "Before A3 authentication and invitation recipient resolution succeed over the encrypted channel, signaling may reveal only opaque routing/lifetime fields and WebRTC SDP/ICE material required to establish transport. No Campaign, Session, subject, pack/rules, entitlement or projection metadata is disclosed.",
+    "sensitive_material_rule": "Manual offer/answer strings are sensitive because the offer carries a bearer and both SDP descriptions may expose ICE/network metadata. They are never written to durable product history, telemetry, analytics, diagnostic bundles, crash attachments or application logs.",
+    "ui_handling": "Treat manual signaling text as a secret surface: no automatic logging, no automatic clipboard copy, explicit user action for copy/paste, redact from screenshots/diagnostic exports where feasible, and discard application-held plaintext when the exchange completes/expires.",
+    "strict_decode": "Signal tokens have strict field allow-lists, bounded encoded size, exact kind/SDP agreement, exact signalVersion and validated expiry. Unknown fields or malformed base64/JSON fail closed.",
+    "bounds": {
+      "max_encoded_bytes": 131072,
+      "max_sdp_bytes": 98304,
+      "max_sdp_lines": 512
+    }
+  },
+  "peer_identity_binding": {
+    "phase_order": [
+      "establish encrypted WebRTC DataChannel",
+      "negotiate supported application protocol version",
+      "host issues fresh transport-binding challenge nonce",
+      "joining client proves current PCV-I01A device credential possession and identifies a current A3 StableSubjectSession",
+      "host verifies credential->device->subject and StableSubjectSession subject mapping",
+      "joining client presents invitation bearer over the encrypted channel",
+      "host resolves A3 invitation recipient to the same authenticated subject and evaluates current invitation/family policy",
+      "host evaluates current A5 membership/role and entitlement state",
+      "host issues a PeerAuthorizationBinding scoped to this transport instance and authority epoch",
+      "only then disclose protected Session requirements/state"
+    ],
+    "challenge_binding": [
+      "challenge nonce",
+      "offerTranscriptDigest",
+      "current remote DTLS fingerprint digest derived from negotiated SDP",
+      "application protocol version",
+      "deviceId",
+      "stableSubjectSessionId"
+    ],
+    "device_proof_rule": "The client signs the canonical challenge with the non-exportable PCV-I01A device credential. The host verifies the registered public verifier and current A3 mapping; possession of deviceId text is insufficient.",
+    "dtls_fingerprint_rule": "DTLS fingerprint continuity is bound into the proof transcript as transport context, but fingerprint/SDP/ICE values never become canonical user identity or Campaign authorization.",
+    "binding_record": [
+      "bindingId",
+      "transportInstanceId",
+      "dtlsFingerprintDigest",
+      "subjectId",
+      "deviceId",
+      "stableSubjectSessionId",
+      "credentialId",
+      "membershipId",
+      "membershipVersion",
+      "permissionsVersion",
+      "authorityEpoch",
+      "protocolVersion",
+      "establishedAt",
+      "expiresAt"
+    ],
+    "reconnect_rule": "Every new/restarted peer transport performs a fresh challenge and revalidates current A3 session/device, invitation/resume credential as applicable, A5 membership state/version, permissions version, family communication policy and authority epoch. A prior transport binding is never copied forward."
+  },
+  "application_protocol": {
+    "protocol_name": "multiversal.session",
+    "current_version": {
+      "major": 1,
+      "minor": 0
+    },
+    "envelope_required_top_level": [
+      "protocol",
+      "schemaVersion",
+      "kind",
+      "messageId",
+      "payload"
+    ],
+    "protocol_field": {
+      "name": "multiversal.session",
+      "major": 1,
+      "minor": 0
+    },
+    "schema_version_rule": "Every envelope kind has an explicit positive integer schemaVersion. Decoder dispatches by negotiated protocol major/minor + kind + schemaVersion; unsupported major/schema fails closed.",
+    "unknown_field_rule": "Protocol v1 uses closed top-level and payload schemas. Unknown fields are rejected unless a future negotiated schema explicitly defines an extensions object.",
+    "decoder_rule": "Check encoded byte size before JSON parse, parse JSON only, validate exact object shape/types/enums/ranges/string lengths/array lengths and reject duplicate or noncanonical identifiers before handing data to any owner-domain coordinator.",
+    "preauth_kinds": [
+      "client-hello",
+      "server-hello",
+      "auth-challenge",
+      "auth-proof",
+      "invitation-proof",
+      "protocol-error"
+    ],
+    "authorized_kinds": [
+      "session-requirements",
+      "capability-proof",
+      "join-request",
+      "join-accepted",
+      "command",
+      "event-batch",
+      "ack",
+      "resume-request",
+      "presence",
+      "protocol-error"
+    ],
+    "malformed_input_rule": "Invalid input is never silently swallowed. If it is safe to reply, emit one rate-limited inference-safe protocol-error carrying only a generic code/correlation id; oversized/flooding or repeated malformed pre-auth input closes the channel without reflecting attacker-controlled content.",
+    "safe_error_codes": [
+      "invalid-message",
+      "unsupported-protocol",
+      "message-too-large",
+      "rate-limited",
+      "backpressure",
+      "authentication-required",
+      "authorization-denied",
+      "invitation-unavailable",
+      "capability-mismatch",
+      "stale-authority",
+      "reconnect-denied"
+    ],
+    "no_echo_rule": "Safe errors never echo raw message content, secret values, hidden identifiers or whether a protected Campaign/subject exists."
+  },
+  "bounded_work_policy": {
+    "policy_id": "PCV-DIRECT-SESSION-TRANSPORT-POLICY.1",
+    "max_encoded_frame_bytes": 65536,
+    "negotiated_frame_rule": "Effective maximum is min(65536, RTCSctpTransport.maxMessageSize when finite and nonzero). A peer advertising/negotiating a smaller limit wins.",
+    "max_json_depth": 16,
+    "max_object_properties": 128,
+    "max_array_items": 128,
+    "max_string_bytes": 16384,
+    "max_event_batch_events": 64,
+    "max_pending_decode_frames": 64,
+    "rate_window_ms": 10000,
+    "max_frames_per_rate_window": 120,
+    "max_command_frames_per_rate_window": 40,
+    "outbound_low_water_bytes": 262144,
+    "outbound_high_water_bytes": 1048576,
+    "outbound_hard_limit_bytes": 4194304,
+    "backpressure_rule": "At/above high-water, stop producing nonessential/prefetch frames and wait for bufferedamountlow before continuing. At hard limit or bounded application-queue overflow, fail closed/close the transport rather than allocate without bound.",
+    "batching_rule": "Event batching is bounded by both event count and encoded frame size; split into additional ordered batches rather than exceed the effective maximum.",
+    "security_reason": "Bounds apply before owner-domain command execution so malformed/hostile peers cannot turn protocol parsing or queued sends into unbounded memory/work."
+  },
+  "cryptographic_randomness": {
+    "secret_requirement": "Invitation, resume, auth challenge, offer id and other security-sensitive nonce/bearer generation uses an operating-system/Web Crypto CSPRNG only.",
+    "minimum_bearer_entropy_bits": 256,
+    "allowed_browser_primitive": "crypto.getRandomValues (or a native cryptographic primitive exposed through an approved platform port)",
+    "identifier_primitive": "crypto.randomUUID may be used for non-secret identifiers when available; identifiers do not substitute for bearer entropy.",
+    "forbidden_fallback": "Math.random, timestamps, predictable counters or concatenations of non-cryptographic randomness are forbidden for secrets/nonces. Missing CSPRNG support fails closed."
+  },
+  "capability_and_entitlement_handshake": {
+    "disclosure_stage": "Only after peer identity, invitation recipient, family invitation policy and base membership authorization succeed.",
+    "host_requirements_source": [
+      "A5SessionShellRecord.sessionId/campaignId/launchSnapshotId/launchSnapshotChecksum",
+      "A5LaunchSnapshot exact rulesProfileId/rulesProfileVersion/schemaVersions/contentDigest",
+      "CampaignPackLock exact packStableId/version/contentDigest/dependencyGraphDigest/lockDigest",
+      "current authorityEpoch from canonical Session authority",
+      "current role-safe projection scope from current A5 authorization",
+      "current host EntitlementPort decision/version references for the authenticated subject"
+    ],
+    "symbolic_version_rule": "`current`, `latest`, mutable aliases or unversioned pack/rules selectors are invalid for launch/session compatibility. PCV runtime must resolve them to exact immutable versions before A5 launch snapshot creation; existing PCV-02 symbolic values are authoring inputs only.",
+    "client_measurement": {
+      "rule": "The joining client independently measures its installed state from local package/runtime registries after receiving authorized exact requirements. It must not populate proof fields by copying the host offer/requirements object.",
+      "evidence_fields": [
+        "clientBuildId",
+        "protocolMajor/minor actually implemented",
+        "supported schemaVersions",
+        "locally installed rulesProfileId/version + content/runtime digest",
+        "locally installed pack stable ids/versions/content digests",
+        "locally computed dependencyGraphDigest/packLockDigest",
+        "platform/runtime kind"
+      ],
+      "source_reference_rule": "Evidence includes local registry/source references or locally computed digests sufficient for the adapter to prove measurement occurred; host-provided values are comparison targets only."
+    },
+    "host_entitlement_rule": "The authoritative executor independently calls current EntitlementPort for the authenticated canonical subject. Client-supplied grant counts/digests/entitlement claims are non-authoritative and ignored.",
+    "accept_rule": "Join proceeds only when protocol/schema compatibility, exact locally measured pack/rules/runtime requirements, host entitlement decision, current A5 membership and projection scope all agree. Mismatch is fail-closed and role-safe.",
+    "epoch_rule": "authorityEpoch is host-canonical state sent after authorization; the client acknowledges it but cannot prove or choose the epoch by echoing it."
+  },
+  "family_and_communication_policy": {
+    "invitation_gate": "PCV-I01B invitation-specific MIB-17/SMB-14 policy gate remains required before acceptance.",
+    "communication_gate": "Before authorizing ongoing Session DataChannel application traffic for a subject, evaluate MIB-17 capability `communication` and SMB-14 sender/target blocking semantics. Deny/unsatisfied guardian policy/blocked relationship leaves transport unauthorized and closes or limits it to safe recovery/error exchange.",
+    "revalidation": "Re-evaluate communication authorization when the peer reconnects, A3 session changes, membership/permissions version changes, family policy version changes or a block decision changes.",
+    "no_authority_escalation": "Guardian approval may satisfy family-policy capability only and never grants Campaign membership, GM authority, hidden visibility, canonical mutation authority or entitlement."
+  },
+  "transport_profiles": {
+    "baseline_zero_service": {
+      "mode": "manual-direct",
+      "ice_servers": [],
+      "signaling": "user-mediated offer/answer exchange; no hosted signaling service required",
+      "scope": "required baseline for local/same-LAN or otherwise directly reachable peers",
+      "limitation": "Direct host candidates cannot traverse every NAT/firewall topology; failure to connect is not an authorization failure."
+    },
+    "assisted_adapter": {
+      "port": "IceServiceProviderPort",
+      "optional": true,
+      "providers_selected": false,
+      "supported_capabilities": [
+        "STUN server-reflexive discovery",
+        "TURN relay"
+      ],
+      "configuration_rule": "No public STUN/TURN hostname is hard-coded into canonical protocol or policy. ICE service endpoints/credentials come from replaceable configuration/service adapters.",
+      "selection_rule": "ICE may try configured direct/STUN candidates and use TURN relay only when needed/allowed; relay choice does not change Session/identity authority.",
+      "credential_rule": "TURN credentials are bounded/ephemeral secrets and follow PCV-I02 SecretStore/no-log rules.",
+      "privacy_rule": "STUN/TURN use and ICE candidates are network metadata; logs/diagnostics use redacted path class and safe failure codes, not raw SDP/candidate addresses."
+    }
+  },
+  "governed_timeout_policy": {
+    "policy_id": "PCV-DIRECT-SESSION-TRANSPORT-POLICY.1",
+    "a3_invitation_expiry": "Owned by A3 invitation policy/record and supplied explicitly. Transport code never invents a 24-hour invitation lifetime.",
+    "manual_signal_offer_ttl_ms": 600000,
+    "ice_gathering_timeout_ms": 10000,
+    "connection_timeout_ms": 30000,
+    "authentication_handshake_timeout_ms": 15000,
+    "policy_rule": "These are versioned product defaults, not scattered constants. The authoritative host may apply a stricter configured value; it may not extend a manual offer beyond the owning A3 invitation expiry.",
+    "expiry_behavior": "Expired signaling/auth exchanges fail closed, destroy in-memory bearer material and require a fresh offer/challenge. They do not mutate invitation/membership state merely because transport timed out."
+  },
+  "android_local_network_permission": {
+    "trigger": "When an Android installed client targeting Android 17/API 37+ will discover or communicate with LAN-local peers/host ICE candidates, request ACCESS_LOCAL_NETWORK at runtime before that local-network operation.",
+    "declaration": "Declare ACCESS_LOCAL_NETWORK only when targetSdk/feature use requires it; do not add broad local-network access merely for dormant capability.",
+    "denial": "Denial/revocation is handled as a transport-path-unavailable condition with clear retry/settings guidance; never reinterpret it as authentication/membership denial and never bypass the OS permission.",
+    "assisted_path": "A future privacy-preserving system-mediated picker or relay-only path may avoid broad LAN permission when it does not access the local network; transport adapter decides from actual path requirements.",
+    "current_repo_rule": "PCV-I03 records the trigger only. Android manifest/runtime permission implementation remains blocked until the authorized PCV runtime tranche."
+  },
+  "external_sanity_checks": [
+    {
+      "source": "RFC 8827 WebRTC Security Architecture",
+      "url": "https://www.rfc-editor.org/rfc/rfc8827.html",
+      "checked": "2026-09-25",
+      "use": "WebRTC data channels are DTLS-protected, but peer/user identity requires an independent binding; SDP fingerprints and signaling are security context, not application authorization."
+    },
+    {
+      "source": "W3C WebRTC Recommendation",
+      "url": "https://www.w3.org/TR/webrtc/",
+      "checked": "2026-09-25",
+      "use": "ICE candidate addresses can reveal local network/location/fingerprinting information and are exchanged with the communicating party."
+    },
+    {
+      "source": "MDN Using WebRTC data channels",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Using_data_channels",
+      "checked": "2026-09-25",
+      "use": "Data channels buffer outbound data and have negotiated message-size limits; absent max-message-size defaults to 64 KiB."
+    },
+    {
+      "source": "MDN RTCDataChannel.bufferedAmount",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/bufferedAmount",
+      "checked": "2026-09-25",
+      "use": "bufferedAmount/bufferedamountlow provide the standard application backpressure signal."
+    },
+    {
+      "source": "RFC 8445 ICE",
+      "url": "https://www.rfc-editor.org/rfc/rfc8445.html",
+      "checked": "2026-09-25",
+      "use": "ICE supports host, STUN-derived server-reflexive and TURN-relayed candidates; deployments may disable STUN/TURN by configuration while retaining replaceability."
+    },
+    {
+      "source": "RFC 8656 TURN",
+      "url": "https://www.rfc-editor.org/rfc/rfc8656.html",
+      "checked": "2026-09-25",
+      "use": "TURN supplies a relay when direct NAT traversal is impossible and is normally used after direct paths are attempted."
+    },
+    {
+      "source": "OWASP WebSocket Security Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/WebSocket_Security_Cheat_Sheet.html",
+      "checked": "2026-09-25",
+      "use": "Treat long-lived bidirectional messages as untrusted; schema validate, bound payload size, rate limit, apply backpressure and avoid logging auth/session secrets."
+    },
+    {
+      "source": "Android 17 local network permission",
+      "url": "https://developer.android.com/privacy-and-security/local-network-permission",
+      "checked": "2026-09-25",
+      "use": "Apps targeting Android 17/API 37+ need ACCESS_LOCAL_NETWORK runtime permission for LAN discovery/communication and must handle denial/revocation."
+    }
+  ],
+  "dependency_edges": [
+    {
+      "from": "PLAN::stage-a-a3",
+      "to": "WORK::PCV-I03"
+    },
+    {
+      "from": "PLAN::stage-a-a5",
+      "to": "WORK::PCV-I03"
+    },
+    {
+      "from": "WORK::MIB-17",
+      "to": "WORK::PCV-I03"
+    },
+    {
+      "from": "WORK::SMB-14",
+      "to": "WORK::PCV-I03"
+    },
+    {
+      "from": "WORK::SMB-01",
+      "to": "WORK::PCV-I03"
+    },
+    {
+      "from": "WORK::SMB-02",
+      "to": "WORK::PCV-I03"
+    },
+    {
+      "from": "WORK::BRP-02",
+      "to": "WORK::PCV-I03"
+    },
+    {
+      "from": "WORK::PCV-02",
+      "to": "WORK::PCV-I03"
+    },
+    {
+      "from": "WORK::PCV-I01A",
+      "to": "WORK::PCV-I03"
+    },
+    {
+      "from": "WORK::PCV-I01B",
+      "to": "WORK::PCV-I03"
+    },
+    {
+      "from": "WORK::PCV-I01C",
+      "to": "WORK::PCV-I03"
+    },
+    {
+      "from": "WORK::PCV-I02",
+      "to": "WORK::PCV-I03"
+    }
+  ],
+  "acceptance_mapping": {
+    "inference_safe_signaling": "signaling_boundary + family_and_communication_policy",
+    "authenticated_peer_binding": "peer_identity_binding",
+    "versioned_bounded_protocol": "application_protocol + bounded_work_policy + cryptographic_randomness",
+    "exact_capability_entitlement": "capability_and_entitlement_handshake",
+    "replaceable_zero_service_and_assisted_networking": "transport_profiles",
+    "timeout_and_android_permission": "governed_timeout_policy + android_local_network_permission"
+  },
+  "acceptance_checks": {
+    "preauth_postauth_signaling_and_no_log_rules_defined": true,
+    "authenticated_subject_device_peer_binding_defined_without_transport_authority": true,
+    "strict_versioned_bounded_protocol_backpressure_and_safe_errors_defined": true,
+    "exact_locally_measured_pack_rules_runtime_and_host_entitlement_handshake_defined": true,
+    "zero_service_manual_ice_and_replaceable_stun_turn_adapters_defined": true,
+    "governed_timeouts_and_android_local_network_permission_trigger_defined": true
+  },
+  "gap_closure": {
+    "PCV-PRE-032": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-033": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-034": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-035": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-038": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-039": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-040": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-041": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-042": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-073": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-074": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-075": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-077": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-079": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    },
+    "PCV-PRE-103": {
+      "candidate_status": "closed_preimplementation_contract",
+      "future_implementation_destination": [
+        "PCV-03C"
+      ],
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
+    }
+  },
+  "runtime_boundary": {
+    "runtime_product_implementation_authorized": false,
+    "network_service_activation_authorized": false,
+    "external_stun_turn_provider_selected": false,
+    "android_manifest_permission_mutation_authorized": false,
+    "package_or_release_authorized": false,
+    "later_preimplementation_items_authorized": false,
+    "next_runtime_destination": "PCV-03C only after PCV-I04 through PCV-I06 predecessor closure"
+  },
+  "completion_validation": {
+    "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+    "workflow": "Validate Operations V3",
+    "validation_run_id": 36138676278,
+    "conclusion": "success"
+  }
+}
