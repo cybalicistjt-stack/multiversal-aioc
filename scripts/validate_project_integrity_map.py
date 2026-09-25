@@ -24,6 +24,10 @@ assert reg["counts"]["unique_work_items"]==662
 assert reg["counts"]["attempt_files"]==667
 assert reg["counts"]["duplicate_attempt_extra_files"]==5
 assert reg["counts"]["pdcp_reductions"]==10
+assert reg["counts"]["live_project_source_files"]==12
+assert reg["coverage_invariants"]["frozen_work_items_have_attempt_evidence"] is True
+assert reg["coverage_invariants"]["frozen_attempt_record_count"]==667
+assert sorted(reg["coverage_invariants"]["frozen_work_items_with_multiple_attempts"])==["CCTI-12","DS-008-working-series","P9-06-008"]
 assert len(reg["planning_groups"])==83
 assert len(reg["work_state_families"])==73
 assert len(reg["work_items"])==662
@@ -67,7 +71,9 @@ for edge in dep["edges"]:
 contrib={e["from"] for e in dep["edges"] if e["edge_type"]=="contributes_to_app" and e["to"]=="APP::MULTIVERSAL"}
 assert contrib=={x["group_id"] for x in reg["planning_groups"]}
 # All scoped gaps have owners and routes.
-assert gaps["child_registers"][0]["known_findings"]==pcv["finding_count"]==len(pcv["findings"])
+pcv_child=next(x for x in gaps["child_registers"] if x["register_id"]==pcv["register_id"])
+assert pcv_child["known_findings"]==pcv["finding_count"]==len(pcv["findings"])
+assert {x["scope"] for x in gaps["child_registers"]}=={"PCV preimplementation","project wiring defects","orphaned/live intent","repair routes"}
 assert all(x.get("owner") and x.get("repair") and x.get("status") for x in gaps["findings"])
 assert all(x.get("primary_interstitial") and x.get("disposition") for x in pcv["findings"])
 assert backlog["strict_order"]==["PIM-01","PIM-02","PIM-03"]
@@ -77,4 +83,5 @@ assert {"PIM-01","PIM-02","PIM-03","PCV-I01A","PCV-I01B","PCV-I01C","PCV-I06","P
 sources={x["name"]:x["sha256"] for x in reg["live_project_source_surface"]["files"]}
 assert sources["PROJECT_SOURCE_MANIFEST.md"]=="15ba1bc42c12920c245d1611ac5b95c8614a87520644230ca64c3cd43892bb2c"
 assert sources["PROJECT_BIBLE_OPS3_REFERENCE.md"]=="8de341b25a51af106387c3516bbe4983a30274efb423fdca460350bb92b1748e"
+assert sources["SHA256SUMS.txt"]=="4e98b1c18ee3596b0f92efa48213e8faa4bb3f80bbc4af73da09923264e52f36"
 print(json.dumps({"status":"PASS","planning_groups":83,"work_state_families":73,"unique_work_items":662,"attempt_files":667,"canon_nodes":71,"capability_rows":56,"map_nodes":dep["counts"]["nodes"],"map_edges":dep["counts"]["edges"],"master_integrity_findings":len(gaps["findings"]),"pcv_child_findings":pcv["finding_count"]},sort_keys=True))

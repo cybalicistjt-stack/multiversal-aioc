@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "register_id": "PROJECT-INTEGRITY-GAPS-001",
   "status": "in_progress",
   "purpose": "Master registry for project-history/dependency integrity gaps. Scoped implementation registers remain authoritative for their own findings.",
@@ -9,7 +9,31 @@
       "path": "governance/application-planning/product-convergence/PCV_PREIMPLEMENTATION_GAP_REGISTER.json",
       "scope": "PCV preimplementation",
       "known_findings": 108,
-      "status": "in_progress"
+      "status": "in_progress",
+      "authority": "scoped finding owner"
+    },
+    {
+      "register_id": "MV-PROJECT-WIRING-DEFECTS-001",
+      "path": "governance/project-archaeology/PROJECT_WIRING_DEFECT_REGISTER.json",
+      "scope": "project wiring defects",
+      "known_findings": 30,
+      "status": "reopened_candidate_specific_pcv_integrity",
+      "authority": "wiring defect evidence/routing"
+    },
+    {
+      "register_id": "MV-PROJECT-ORPHANED-INTENT-001",
+      "path": "governance/project-archaeology/PROJECT_ORPHANED_INTENT_REGISTER.json",
+      "scope": "orphaned/live intent",
+      "known_findings": 0,
+      "status": "completion_candidate",
+      "authority": "orphan-intent evidence"
+    },
+    {
+      "path": "governance/project-archaeology/PROJECT_REPAIR_ROUTING_PLAN.json",
+      "scope": "repair routes",
+      "known_findings": 8,
+      "status": "reopened_for_pcv_preimplementation_integrity",
+      "authority": "repair destination index"
     }
   ],
   "findings": [
@@ -70,5 +94,16 @@
       "blocks_pcv03": true
     }
   ],
-  "completion_rule": "PIM-03 may close only when repository validation proves exact inventory coverage, zero unowned structural lineage, explicit treatment of standalone historical lineages, child-gap ownership, and mutation-guard enforcement."
+  "completion_rule": "PIM-03 may close only when repository validation proves exact inventory coverage, zero unowned structural lineage, explicit treatment of standalone historical lineages, child-gap ownership, and mutation-guard enforcement.",
+  "historical_gap_evidence": [
+    {
+      "artifact": "Multiversal_8E-008G_Source_Coverage_and_Provenance_Audit_v0.1.0.zip",
+      "sha256": "4a98058b03d3ced252f01dac3026997de2dfd0b064be6a691debb93a0c485fff",
+      "disposition": "historical source-coverage evidence; does not select current work"
+    },
+    {
+      "artifact": "PROJECT_CANON_ARCHAEOLOGY_COMPLETION_REPORT.md",
+      "disposition": "global canon reconstruction closeout; operational handoff superseded by later PIM/PCV integrity work"
+    }
+  ]
 }

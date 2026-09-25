@@ -35,3 +35,7 @@ The validator requires exact set equality with the frozen archaeology inventory 
 - 56 PCV-01 capability rows.
 
 This map is therefore an integrity index over existing authority, not a replacement roadmap.
+
+## Attempt-record evidence
+
+Every one of the 662 frozen work-item identities carries the exact current Git blob reference(s) for its historical `governance/ai/work-state/*-attempt-*.json` evidence. The registry verifies 667 frozen attempt records with exactly five duplicate-attempt extras and zero work items missing an attempt record. New PIM/PCV interstitial attempts live in the append-only current overlay and do not alter the frozen 662/667 archaeology counts.
