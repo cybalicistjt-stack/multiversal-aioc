@@ -706,8 +706,8 @@
       "title": "Capability negotiation is an echo, not a client capability proof.",
       "detail": "The host embeds pack/rules/epoch in the offer; the Android client copies those same values into the join request; the host compares them to itself.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -719,7 +719,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-033",
@@ -727,8 +733,8 @@
       "title": "Joining device does not report locally measured installed pack/rules state.",
       "detail": "It does not demonstrate that the required pack, exact rules profile/runtime version, or compatible schema is actually installed.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -740,7 +746,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-034",
@@ -748,8 +760,8 @@
       "title": "Entitlement/grant compatibility from the canonical handshake is absent.",
       "detail": "The current local/online Session contract calls for membership plus entitlement snapshot/grant digest/count/pack set/rules version/authority epoch/projection scope.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -761,7 +773,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-035",
@@ -769,8 +787,8 @@
       "title": "PCV-02 exposes `rulesProfileVersion: \"current\"` into Session compatibility.",
       "detail": "An immutable live Session must bind an exact resolved version/snapshot, not a moving symbolic version.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -782,7 +800,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-036",
@@ -846,8 +870,8 @@
       "title": "Secret generation fails open to `Math.random`.",
       "detail": "If Web Crypto is unavailable, invitation/resume/private markers fall back to non-cryptographic randomness rather than failing closed.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -859,7 +883,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-039",
@@ -867,8 +897,8 @@
       "title": "Wire envelopes are not actually decoded/validated.",
       "detail": "`decodeWireEnvelope` checks only `kind` and casts arbitrary JSON to the union.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -880,7 +910,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-040",
@@ -888,8 +924,8 @@
       "title": "No per-envelope protocol/schema version.",
       "detail": "Unsupported major versions and unknown top-level fields cannot be rejected as required by serialization/versioning canon.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -901,7 +937,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-041",
@@ -909,8 +951,8 @@
       "title": "No message size/depth/list/batch bounds.",
       "detail": "A connected peer can send arbitrarily large JSON/payloads. No bounded-work/backpressure/rate contract exists.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -922,7 +964,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-042",
@@ -930,8 +978,8 @@
       "title": "Malformed transport input is silently swallowed.",
       "detail": "The transport catch block drops invalid input even though the comment claims the coordinator will return a role-safe protocol error.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -943,7 +991,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-043",
@@ -1697,8 +1751,8 @@
       "title": "Manual signaling tokens themselves are sensitive secret/network material",
       "detail": "Offer/answer tokens can contain bearer material and ICE/network metadata; they need explicit no-log/no-telemetry/no-durable-history handling and redaction rules.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -1710,7 +1764,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-074",
@@ -1718,8 +1778,8 @@
       "title": "Pre-authorization signaling leaks protected Campaign/Session metadata",
       "detail": "Current offers expose campaignId, sessionId, hostSubjectId, pack/rules data and projection scope before A3 recipient/auth checks; signaling must be inference-safe until authorization succeeds.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -1731,7 +1791,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-075",
@@ -1739,8 +1805,8 @@
       "title": "Invitation lifetime and transport timeout values are magic policy",
       "detail": "The candidate hard-codes a 24-hour invitation expiry and connection timeouts without a named current policy owner; policy values must be explicit/configurable and host-authoritative.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -1752,7 +1818,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-076",
@@ -1787,8 +1859,8 @@
       "title": "Communication blocking/family policy interaction with peer establishment is undispositioned",
       "detail": "SMB-14 governs communication blocking and family policy; the preflight must decide which peer/session communication capabilities it gates and at what stage.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -1800,7 +1872,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-078",
@@ -1836,8 +1914,8 @@
       "title": "Exact pack/rules capability identity is not resolved from symbolic PCV-02 state",
       "detail": "PCV-02 stores rulesProfileVersion=current and a lightweight pack-lock reference; Session launch/handshake need exact immutable pack/rules/runtime/entitlement identity.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -1849,7 +1927,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-080",
@@ -2323,8 +2407,8 @@
       "title": "Manual WebRTC identity binding must include SDP/peer lifecycle without turning transport metadata into authorization",
       "detail": "A successful DTLS/DataChannel connection proves transport continuity, not Campaign subject authority; the accepted A3/A5 subject must be bound to the peer context after authorization and revalidated on reconnect.",
       "primary_interstitial": "PCV-I03",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -2336,7 +2420,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I03_TRANSPORT_PROTOCOL_CAPABILITY_SECURITY_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I03"
+      "candidate_closure_work_item": "PCV-I03",
+      "closed_by": "PCV-I03",
+      "closure_validation": {
+        "candidate_head": "bff5c1e33b276018299ac3b2df54a6c949a33967",
+        "validation_run_id": 36138676278,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-104",
