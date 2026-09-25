@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "plan_id": "MV-PROJECT-REPAIR-ROUTING-001",
-  "status": "completion_candidate",
+  "status": "reopened_for_pcv_preimplementation_integrity",
   "routes": [
     {
       "destination": "PCV-05",
@@ -73,9 +73,18 @@
         "WIRE-PCV03-CANDIDATE-002"
       ],
       "authority_rule": "Execute only the currently selected PCV-03 child in strict order; each child is a bounded OPS3 work item and later children remain unauthorized until predecessor closeout."
+    },
+    {
+      "destination": "PCV-I01..PCV-I06 strict order",
+      "finding_ids": [
+        "WIRE-PCV-PRE-003",
+        "WIRE-PCV03-CANDIDATE-002",
+        "WIRE-PCV03-PHYSICAL-001"
+      ],
+      "authority_rule": "Preimplementation integrity work only. Runtime PCV implementation remains blocked until PCV-I06."
     }
   ],
   "unowned_repairs": [],
-  "current_first_repair": "PCV-03A canonical identity, invitation and Campaign-membership authority repair",
-  "future_repairs": "PCV-03B..PCV-03F strict predecessor order completes the decomposed PCV-03 parent; PCV-04..PCV-10 remain downstream."
+  "current_first_repair": "PCV-I01 authority, identity, membership and owner-contract closure",
+  "future_repairs": "PCV-I02..PCV-I06 strict order; only after I06 may PCV-03A..PCV-03F begin. PCV-04..PCV-10 remain downstream."
 }
