@@ -13,6 +13,11 @@ dep=load(I/"PROJECT_FEATURE_FAMILY_APP_DEPENDENCY_MAP.json")
 gaps=load(I/"PROJECT_INTEGRITY_GAP_REGISTER.json")
 pcv=load(P/"PCV_PREIMPLEMENTATION_GAP_REGISTER.json")
 backlog=load(I/"PROJECT_INTEGRITY_PROGRAM_BACKLOG.json")
+wire=load(A/"PROJECT_WIRING_DEFECT_REGISTER.json")
+pcv_backlog=load(P/"PCV_PROGRAM_BACKLOG.json")
+pcv_pre=load(P/"PCV_PREIMPLEMENTATION_INTEGRITY_BACKLOG.json")
+pcv_i01a=load(ROOT/"governance"/"ai"/"work-state"/"PCV-I01A-attempt-001.json")
+pim03=load(ROOT/"governance"/"ai"/"work-state"/"PIM-03-attempt-001.json")
 assert reg["status"] in {"completion_candidate","completed_verified"}
 assert dep["status"] in {"completion_candidate","completed_verified"}
 assert reg["mutation_policy"]["identity_fields_immutable"] is True
@@ -80,6 +85,23 @@ assert all(x.get("primary_interstitial") and x.get("disposition") for x in pcv["
 assert backlog["strict_order"]==["PIM-01","PIM-02","PIM-03"]
 overlay_ids={x["work_item_id"] for x in reg["current_overlay"]["work_items"]}
 assert {"PIM-01","PIM-02","PIM-03","PCV-I01A","PCV-I01B","PCV-I01C","PCV-I06","PCV-03A","PCV-03F","PCV-10"} <= overlay_ids
+registry_overlay_status={x["work_item_id"]:x["status"] for x in reg["current_overlay"]["work_items"]}
+dep_overlay_status={x["work_item_id"]:x["status"] for x in dep["current_overlay_work_items"]}
+assert dep_overlay_status==registry_overlay_status
+dep_node_status={x["node_id"].removeprefix("WORK::"):x.get("status") for x in dep["nodes"] if x.get("node_type")=="current_overlay_work_item"}
+for work_item,status in registry_overlay_status.items():
+    assert dep_node_status.get(work_item)==status, (work_item, dep_node_status.get(work_item), status)
+if pcv_pre["status"]=="in_progress":
+    assert pcv_backlog["current_item"]==pcv_pre["current_item"]
+    assert pcv_backlog["current_attempt"]==pcv_pre["current_attempt"]
+if pcv_backlog["current_item"]=="PCV-I01A":
+    assert pim03["status"]=="completed_verified"
+    assert pcv_i01a["predecessor"]["status"]==pim03["status"]
+assert wire["summary"]["preimplementation_integrity_findings"]==pcv["finding_count"]
+assert wire["summary"]["open_pcv_preimplementation_findings"]==pcv["finding_count"]
+for finding_id in {"WIRE-PCV03-PHYSICAL-001","WIRE-PCV-PRE-003"}:
+    finding=next(x for x in wire["findings"] if x["finding_id"]==finding_id)
+    assert str(pcv["finding_count"]) in finding["missing_or_stale_binding"]
 # Project Source hashes are frozen integrity anchors, not authority.
 sources={x["name"]:x["sha256"] for x in reg["live_project_source_surface"]["files"]}
 assert sources["PROJECT_SOURCE_MANIFEST.md"]=="15ba1bc42c12920c245d1611ac5b95c8614a87520644230ca64c3cd43892bb2c"
