@@ -1,0 +1,104 @@
+{
+  "schema_version": "0.2.0",
+  "control_plane": "OPS3",
+  "family": "PCV",
+  "lane": "gpr",
+  "track": "product-convergence-real-app-validation",
+  "source_program": "PCV",
+  "parent_tranche": "PCV-03",
+  "work_item_id": "PCV-03F",
+  "attempt_id": "PCV-03F-attempt-001",
+  "title": "Exact-Head Installed Windows/Android Certification",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "selected_by_owner": "Strict successor after owner-approved PCV-03 decomposition and PCV-03E completed_verified closeout; ROADMAP_DEPENDENCY_GRAPH supplies no interstitial override.",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "predecessor": {
+    "work_item": "PCV-03E",
+    "status": "completed_verified",
+    "application_merge_sha": "6fb01d19d5763b00488392a564ec6b303551eb2f",
+    "validation_run": 36177826378
+  },
+  "decomposition_source": {
+    "superseded_attempt": "PCV-03-attempt-001",
+    "audit": "governance/application-planning/product-convergence/PCV-03_ADVERSARIAL_CANDIDATE_AUDIT_2026-09-25.md",
+    "readiness_contract": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json"
+  },
+  "preimplementation_contract": "governance/application-planning/product-convergence/PCV-I05_PRODUCT_CONTEXT_DOWNSTREAM_MOBILE_PACKAGING_EVIDENCE_CONTRACT_v1.0.0.json",
+  "objective": "A repaired exact-head Windows host and Android player pass automated predecessor regressions, package identity verification and causal physical-device evidence for join, authority, idempotency, hidden projection and reconnect.",
+  "acceptance": [
+    "Run focused A3/A5/P9/SMB/VTI predecessor regressions plus PCV-03 negative/security/recovery tests and exact-head build/native checks.",
+    "Regenerate Windows and Android packages only from the repaired exact candidate head and bind the manifest to exact artifact hashes.",
+    "Installed evidence records causal receipts for distinct subject/device join, authoritative command, duplicate retry, disconnect, resume, ordered/gap-safe player delivery and hidden-before-publication filtering.",
+    "A second ordinary join cannot satisfy reconnect evidence and a single command cannot satisfy duplicate-idempotency evidence.",
+    "Device-side evidence binds installed Windows/Android runtime/package identity to the exact package artifact rather than relying only on self-reported wire metadata.",
+    "The physical Windows↔Android proof passes the strengthened verifier; only then may PCV-03 parent be considered completed_verified and PCV-04 become eligible."
+  ],
+  "boundaries": [
+    "Certify only the repaired exact PCV-03 candidate; PCV-03F does not add gameplay, presence authority, Campaign/Session truth or a parallel recovery ledger.",
+    "Reuse BIP-01 package-production machinery. PCV-03F strengthens exact-head package manifest/install identity and causal certification evidence rather than becoming a second package builder.",
+    "Regenerate Windows x64 NSIS current-user installer and Android ARM64 direct-install APK only from the exact candidate head; manifest binds source head, build reference, application id/version, artifact SHA-256/size, protocol/schema compatibility and migration ids/checksums.",
+    "Windows evidence binds installed executable payload SHA-256 and records unsigned-beta explicitly unless signing is actually enabled. Android evidence binds applicationId/versionName/versionCode/targetSdk, APK hash, ABI set and signing-certificate digest/history.",
+    "Installed Windows and Android proofs require distinct fresh challenges and distinct registered non-exportable A3 device credentials; peer JSON self-report or human affirmation alone cannot certify install identity.",
+    "Causal physical evidence must distinguish ordinary join from reconnect, first command from duplicate retry, transport-A disconnect from transport-B fresh binding/resume, player batch apply/ACK from host command receipt, gap detection/recovery, stale-authorization denial, terminal invitation reuse denial, actor-spoof denial and hidden-before-publication filtering.",
+    "Sensitive invitation/resume secrets, private keys, SDP/ICE addresses, hidden payloads and cross-context private data are excluded from certification evidence.",
+    "Do not enable Tauri updater, public/store distribution, production credentials/signing, billing/subscriptions, paid acquisition or public launch in PCV-03F.",
+    "Current Android targetSdk is 36; do not add ACCESS_LOCAL_NETWORK merely for this tranche. Re-evaluate only if targetSdk reaches 37+ and LAN access requires it.",
+    "PCV-04 gameplay remains unauthorized until PCV-03F closes and the PCV-03 parent is completed_verified.",
+    "Use milestone-level OPS3 state only; no activity-journal instrumentation."
+  ],
+  "validation_profile": {
+    "title": "Exact-Head Installed Windows/Android Certification",
+    "materialize_in_application_as": "governance/application-planning/validation-core/profiles/PCV-03F.json",
+    "required_gates": [
+      "workspace/typecheck and exact-head native build checks",
+      "focused A3/A5/P9/SMB/VTI predecessor regressions",
+      "PCV-03A identity/membership/context regression",
+      "PCV-03B Session lifecycle/authority-epoch regression",
+      "PCV-03C transport/protocol/security negative regression",
+      "PCV-03D idempotency/ordered-delivery/checkpoint/reconnect regression",
+      "PCV-03E presence/product-context/migration/accessibility regression",
+      "exact-head Windows NSIS and Android ARM64 package regeneration plus manifest hash verification",
+      "device-signed Windows installed-payload identity challenge verification",
+      "device-signed Android package/version/signing/APK identity challenge verification",
+      "distinct-device Windows/Android credential proof",
+      "causal ordinary-join versus reconnect receipt verification",
+      "duplicate-idempotency and conflicting-reuse zero-second-effect verification",
+      "disconnect/resume ordered/gap-safe player-delivery and ACK-before-batch recovery verification",
+      "stale authorization, invitation reuse, actor spoof and hidden-before-publication negative verification",
+      "strengthened PCV-03.INSTALLED-EVIDENCE.2 verifier"
+    ],
+    "forbidden_scope": [
+      "self-reported package identity as certification",
+      "single-device evidence satisfying Windows plus Android",
+      "ordinary join satisfying reconnect evidence",
+      "single command satisfying duplicate-idempotency evidence",
+      "public/store release",
+      "updater activation",
+      "generic gameplay command escape hatch"
+    ]
+  },
+  "active_substep": "selected_not_started",
+  "strict_successor": "PCV-04",
+  "next_action": "Await the next owner Continue. Then start PCV-03F from a fresh child-specific branch based on current Multiversal-app main 6fb01d19d5763b00488392a564ec6b303551eb2f and materialize only the bounded exact-head installed Windows/Android certification profile.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": "selected_not_started"
+  },
+  "audit_required_at_closeout": "PCV-03F must prove exact installed Windows/Android package identity with distinct device credentials and causal join/idempotency/disconnect-resume/ordered-gap-safe/hidden-projection receipts, while preserving PCV-03A..03E authority, excluding secrets/private evidence, and activating neither public release/updater nor PCV-04 gameplay before certification closes.",
+  "selection_basis": {
+    "kind": "strict_successor_after_pcv03e_completed_verified_no_roadmap_override",
+    "predecessor_validation_run": 36177826378,
+    "predecessor_application_merge": "6fb01d19d5763b00488392a564ec6b303551eb2f",
+    "branch_rule": "Create a fresh child-specific branch from current Multiversal-app main at execution start; do not reuse PCV-03E or the historical monolithic PCV-03 branch."
+  }
+}
