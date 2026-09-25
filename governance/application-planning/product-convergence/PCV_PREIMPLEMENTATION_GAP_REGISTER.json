@@ -782,8 +782,8 @@
       "title": "Raw invitation secrets are persisted in ordinary Session JSON/SQLite.",
       "detail": "",
       "primary_interstitial": "PCV-I02",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -796,7 +796,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I02"
+      "candidate_closure_work_item": "PCV-I02",
+      "closed_by": "PCV-I02",
+      "closure_validation": {
+        "candidate_head": "34f0f46dbe19b969b9a14616e8da4b05d20a0eb3",
+        "validation_run_id": 36135987622,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-037",
@@ -804,8 +810,8 @@
       "title": "Raw resume tokens are persisted in ordinary host and client document records.",
       "detail": "Current security canon requires secrets to use an approved secret store; no secure-store adapter is used here.",
       "primary_interstitial": "PCV-I02",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -818,7 +824,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I02"
+      "candidate_closure_work_item": "PCV-I02",
+      "closed_by": "PCV-I02",
+      "closure_validation": {
+        "candidate_head": "34f0f46dbe19b969b9a14616e8da4b05d20a0eb3",
+        "validation_run_id": 36135987622,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-038",
@@ -1081,8 +1093,8 @@
       "title": "No migration/retirement path exists for `PCV-03.session.1`.",
       "detail": "A repaired package using the same app data location can encounter old Session records containing raw invitation/resume credentials and stale parallel authority.",
       "primary_interstitial": "PCV-I02",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -1095,7 +1107,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I02"
+      "candidate_closure_work_item": "PCV-I02",
+      "closed_by": "PCV-I02",
+      "closure_validation": {
+        "candidate_head": "34f0f46dbe19b969b9a14616e8da4b05d20a0eb3",
+        "validation_run_id": 36135987622,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-052",
@@ -1103,8 +1121,8 @@
       "title": "Old unsafe records must not be silently upgraded into trusted new authority.",
       "detail": "The safe repair should preserve only permitted non-secret audit/history references, retire/revoke old credentials/Sessions, and require fresh governed membership/session establishment under the new schema.",
       "primary_interstitial": "PCV-I02",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -1117,7 +1135,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I02"
+      "candidate_closure_work_item": "PCV-I02",
+      "closed_by": "PCV-I02",
+      "closure_validation": {
+        "candidate_head": "34f0f46dbe19b969b9a14616e8da4b05d20a0eb3",
+        "validation_run_id": 36135987622,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-053",
@@ -1188,8 +1212,8 @@
       "title": "Logical campaign_members schema does not represent current A5 membership state/version semantics",
       "detail": "The Phase-9 base table has campaign_member_id/campaign_id/subject_id/role/joined_at but no active/suspended/left/removed state or explicit version/update fields used by current A5 contracts.",
       "primary_interstitial": "PCV-I02",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -1202,7 +1226,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I02"
+      "candidate_closure_work_item": "PCV-I02",
+      "closed_by": "PCV-I02",
+      "closure_validation": {
+        "candidate_head": "34f0f46dbe19b969b9a14616e8da4b05d20a0eb3",
+        "validation_run_id": 36135987622,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-057",
@@ -1509,8 +1539,8 @@
       "title": "LocalDocumentStore cannot express required cross-document atomic operations",
       "detail": "The current get/put/delete document API has optimistic single-document revision checks but no transaction/batch/query seam for atomic invitation→membership→Campaign updates or multi-record lifecycle transitions.",
       "primary_interstitial": "PCV-I02",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -1523,7 +1553,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I02"
+      "candidate_closure_work_item": "PCV-I02",
+      "closed_by": "PCV-I02",
+      "closure_validation": {
+        "candidate_head": "34f0f46dbe19b969b9a14616e8da4b05d20a0eb3",
+        "validation_run_id": 36135987622,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-069",
@@ -1531,8 +1567,8 @@
       "title": "Relational logical schema and PCV JSON aggregate persistence are not explicitly mapped",
       "detail": "The project has canonical Phase-9/A5 logical tables and the product has SQLite JSON documents; without a declared adapter/migration mapping they can become two durable truths.",
       "primary_interstitial": "PCV-I02",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -1545,7 +1581,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I02"
+      "candidate_closure_work_item": "PCV-I02",
+      "closed_by": "PCV-I02",
+      "closure_validation": {
+        "candidate_head": "34f0f46dbe19b969b9a14616e8da4b05d20a0eb3",
+        "validation_run_id": 36135987622,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-070",
@@ -1553,8 +1595,8 @@
       "title": "Device/resume/acknowledgment/authority-epoch/replay state lacks a durable-schema disposition",
       "detail": "The logical schema has Sessions/commands/Events/projections/checkpoints but no explicit device-session, resume-token reference, ACK cursor, authority epoch or replay-fingerprint representation; each must be classified as canonical durable, local secret, or ephemeral connection state.",
       "primary_interstitial": "PCV-I02",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -1567,7 +1609,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I02"
+      "candidate_closure_work_item": "PCV-I02",
+      "closed_by": "PCV-I02",
+      "closure_validation": {
+        "candidate_head": "34f0f46dbe19b969b9a14616e8da4b05d20a0eb3",
+        "validation_run_id": 36135987622,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-071",
@@ -1575,8 +1623,8 @@
       "title": "Campaign invitation persistence has no secret-digest/reference field",
       "detail": "A5 campaign_invitations stores recipient binding/state/expiry/operation identity but no bearer-secret digest or secure-store reference; the safe persistence strategy must be specified.",
       "primary_interstitial": "PCV-I02",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -1589,7 +1637,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I02"
+      "candidate_closure_work_item": "PCV-I02",
+      "closed_by": "PCV-I02",
+      "closure_validation": {
+        "candidate_head": "34f0f46dbe19b969b9a14616e8da4b05d20a0eb3",
+        "validation_run_id": 36135987622,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-072",
@@ -1597,8 +1651,8 @@
       "title": "No production secure-secret-store adapter is selected/wired",
       "detail": "Invitation/resume/local identity credential material cannot remain ordinary LocalDocumentStore JSON, but the product currently has no approved secure-store abstraction/adapter.",
       "primary_interstitial": "PCV-I02",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -1611,7 +1665,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I02"
+      "candidate_closure_work_item": "PCV-I02",
+      "closed_by": "PCV-I02",
+      "closure_validation": {
+        "candidate_head": "34f0f46dbe19b969b9a14616e8da4b05d20a0eb3",
+        "validation_run_id": 36135987622,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-073",
@@ -2069,8 +2129,8 @@
       "title": "Secure-storage technology choice needs current platform verification",
       "detail": "The preflight must select an approved Tauri-compatible secure local store for Windows and Android and record its version/platform/backup/export implications before secrets are moved.",
       "primary_interstitial": "PCV-I02",
-      "disposition": "open_preimplementation",
-      "blocks_pcv03_implementation": true,
+      "disposition": "closed_preimplementation_contract",
+      "blocks_pcv03_implementation": false,
       "secondary_dependencies": [
         "PCV-I01A",
         "PCV-I01B",
@@ -2083,7 +2143,13 @@
       ],
       "dependency_map_required": true,
       "candidate_closure_artifact": "governance/application-planning/product-convergence/PCV-I02_DATA_MODEL_PERSISTENCE_TRANSACTION_SECRET_MIGRATION_CONTRACT_v1.0.0.json",
-      "candidate_closure_work_item": "PCV-I02"
+      "candidate_closure_work_item": "PCV-I02",
+      "closed_by": "PCV-I02",
+      "closure_validation": {
+        "candidate_head": "34f0f46dbe19b969b9a14616e8da4b05d20a0eb3",
+        "validation_run_id": 36135987622,
+        "conclusion": "success"
+      }
     },
     {
       "finding_id": "PCV-PRE-096",
