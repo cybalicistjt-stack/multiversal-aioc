@@ -15,6 +15,24 @@ _INSTRUMENTATION_ONLY_KINDS={
     "owner_reentry","lane_scan","sibling_scan","queue_empty_check",
     "rebase_check","mergeability_poll",
 }
+UNCHANGED_WORKFLOW_OBSERVATION="OPS3.UNCHANGED_WORKFLOW_OBSERVATION"
+def classify_workflow_observation(previous: dict[str,Any]|None,current: dict[str,Any],*,independent_work_remaining: bool)->str:
+    """Transition-driven workflow observation. Never turn one healthy external run into a chat polling loop."""
+    status=str(current.get("status","")); conclusion=current.get("conclusion"); run_id=current.get("id"); head=current.get("head_sha") or current.get("head")
+    if status=="completed":
+        return "advance" if conclusion=="success" else "diagnose_failure"
+    if previous is None:
+        return "continue_independent_work" if independent_work_remaining else "observe_once_then_yield"
+    unchanged=(
+        previous.get("id")==run_id and
+        (previous.get("head_sha") or previous.get("head"))==head and
+        previous.get("status")==status and
+        previous.get("conclusion")==conclusion
+    )
+    if unchanged:
+        return "continue_independent_work" if independent_work_remaining else UNCHANGED_WORKFLOW_OBSERVATION
+    return "continue_independent_work" if independent_work_remaining else "observe_transition"
+
 def _guard(c): return c.get("execution_guard",{}) if isinstance(c.get("execution_guard",{}),dict) else {}
 def _conformance(c): return c.get("execution_conformance",{}) if isinstance(c.get("execution_conformance",{}),dict) else {}
 def _violations(c):
