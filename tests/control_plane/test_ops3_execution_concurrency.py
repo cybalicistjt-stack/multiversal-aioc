@@ -119,6 +119,31 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertEqual(started["implementation_branch"],"work/oarc-12")
         self.assertEqual(started["selected_work_item"],"OARC-12")
 
+    def test_healthy_unchanged_workflow_observation_cannot_become_polling_loop(self) -> None:
+        snapshot={"id":77,"head_sha":"head-a","status":"in_progress","conclusion":None}
+        self.assertEqual(
+            EXECUTION_GUARD.classify_workflow_observation(None,snapshot,independent_work_remaining=True),
+            "continue_independent_work",
+        )
+        self.assertEqual(
+            EXECUTION_GUARD.classify_workflow_observation(snapshot,snapshot,independent_work_remaining=True),
+            "continue_independent_work",
+        )
+        self.assertEqual(
+            EXECUTION_GUARD.classify_workflow_observation(snapshot,snapshot,independent_work_remaining=False),
+            EXECUTION_GUARD.UNCHANGED_WORKFLOW_OBSERVATION,
+        )
+
+    def test_terminal_workflow_observation_advances_or_diagnoses_instead_of_polling(self) -> None:
+        self.assertEqual(
+            EXECUTION_GUARD.classify_workflow_observation(None,{"id":1,"head_sha":"h","status":"completed","conclusion":"success"},independent_work_remaining=False),
+            "advance",
+        )
+        self.assertEqual(
+            EXECUTION_GUARD.classify_workflow_observation(None,{"id":2,"head_sha":"h","status":"completed","conclusion":"failure"},independent_work_remaining=False),
+            "diagnose_failure",
+        )
+
     def test_execution_guard_rejects_instrumentation_only_progress_receipts(self) -> None:
         checkpoint={"status":"in_progress","execution_guard":{"material_progress_seq":1,"progress_at_last_owner_command":0,"no_progress_cycles":0,"last_material_progress":{"seq":1,"kind":"started","evidence":"started"},"active_stall":False},"execution_conformance":{"status":"in_progress","policy_violations":[]}}
         for kind in ("status_check","linux_green","windows_green","artifact_inspected","queue_submitted","merge_verified","queue_reconciled","closeout_pr_opened"):

@@ -203,6 +203,7 @@ The queue model is implemented by `scripts/ops3_merge_lease.py` (legacy filename
 A conversation, Codex session, local process, CI poller, or connector call is replaceable execution capacity and must never become a lock.
 
 - Do not silently sleep or wait in chat for another lane, queue position, CI completion, or a tool to recover. Use direct status reads only when needed for the current transition; unchanged polling is not progress.
+- Workflow observation is transition-driven, not time-driven. Once a healthy run has been observed in-progress, a second unchanged observation of the same run/head/status must not start another status loop. Continue independent authorized work if any remains; otherwise preserve the durable run as the wait boundary. Terminal failure means diagnose now; terminal success means advance now.
 - If a call produces no usable result, the session terminates unexpectedly, quota is exhausted, or the user has to restart the conversation, classify it as an executor/tooling interruption.
 - On recovery, fresh-read `CURRENT.json`, the selected lane-state milestone, and the smallest repository/PR/CI/queue evidence needed to determine what happened since that milestone. Resume from durable repository truth instead of replaying the tranche or requiring every intermediate action to have been journaled.
 - A session interruption never creates publication ownership. Other lanes and READY candidates remain able to progress.

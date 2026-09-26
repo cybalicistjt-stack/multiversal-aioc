@@ -82,6 +82,8 @@ The **closeout fast path** is one bounded phase: prepare/validate the atomic clo
 
 Treat a workflow run as one validation gate. While it is healthy/in-progress, inspect only workflow-level status as needed; inspect per-job logs/artifacts only after a terminal failure or when a concrete failure signature requires them. Do not narrate every mechanical tool transition as a separate milestone.
 
+**Transition-driven observation is mandatory.** After one healthy workflow-level observation, do not re-read the same unchanged run merely because time passed. If independent authorized work remains, do that work. If no independent work remains, an unchanged healthy run is an executor wait boundary, not permission for a polling loop; resume from durable CI evidence on the next execution opportunity. A terminal failure immediately enters causal diagnosis; a terminal success immediately advances to the next governed phase.
+
 If a tool call returns no usable result, a session aborts, or execution resumes after an interruption, fresh-read the lane milestone plus the repository/PR/CI/queue evidence needed to determine what happened since that milestone; never replay completed work merely because it was not mirrored into lane state. An executor interruption is an executor/tooling incident, not permission to restart the tranche, reserve `main`, or block another lane.
 
 
