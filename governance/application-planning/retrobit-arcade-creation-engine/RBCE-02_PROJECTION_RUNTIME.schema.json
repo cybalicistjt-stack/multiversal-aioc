@@ -4,23 +4,39 @@
   "title": "RBCE-02 Retrobit 2D Projection Runtime Profile Bundle",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaId", "schemaVersion", "projectionProfiles", "movementProfiles", "constraintProfiles"],
+  "required": [
+    "schemaId",
+    "schemaVersion",
+    "projectionProfiles",
+    "movementProfiles",
+    "constraintProfiles"
+  ],
   "properties": {
-    "schemaId": { "const": "RBCE02.PROJECTION.v1" },
-    "schemaVersion": { "const": "1.0.0" },
+    "schemaId": {
+      "const": "RBCE02.PROJECTION.v1"
+    },
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
     "projectionProfiles": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/projectionProfile" }
+      "items": {
+        "$ref": "#/$defs/projectionProfile"
+      }
     },
     "movementProfiles": {
       "type": "array",
-      "items": { "$ref": "#/$defs/movementProfile" }
+      "items": {
+        "$ref": "#/$defs/movementProfile"
+      }
     },
     "constraintProfiles": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/constraintProfile" }
+      "items": {
+        "$ref": "#/$defs/constraintProfile"
+      }
     }
   },
   "$defs": {
@@ -30,10 +46,22 @@
       "pattern": "^[a-z0-9][a-z0-9._-]*:[a-z0-9][a-z0-9._:/-]*$"
     },
     "projectionKind": {
-      "enum": ["top-down-2d", "side-scroll-2d", "fixed-room-2d"]
+      "enum": [
+        "top-down-2d",
+        "side-scroll-2d",
+        "fixed-room-2d"
+      ]
     },
     "cameraPolicy": {
-      "enum": ["fixed", "follow", "bounded-follow", "room-snap", "dead-zone-follow", "look-ahead-follow", "declarative-path"]
+      "enum": [
+        "fixed",
+        "follow",
+        "bounded-follow",
+        "room-snap",
+        "dead-zone-follow",
+        "look-ahead-follow",
+        "declarative-path"
+      ]
     },
     "geometryClass": {
       "enum": [
@@ -68,51 +96,102 @@
     "projectionProfile": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["profileId", "kind", "supportedCameraPolicies", "supportedLayerRoles", "supportedGeometryClasses", "movementProfileRefs", "defaultConstraintProfileRef"],
+      "required": [
+        "profileId",
+        "kind",
+        "supportedCameraPolicies",
+        "supportedLayerRoles",
+        "supportedGeometryClasses",
+        "movementProfileRefs",
+        "defaultConstraintProfileRef"
+      ],
       "properties": {
-        "profileId": { "$ref": "#/$defs/stableRef" },
-        "kind": { "$ref": "#/$defs/projectionKind" },
+        "profileId": {
+          "$ref": "#/$defs/stableRef"
+        },
+        "kind": {
+          "$ref": "#/$defs/projectionKind"
+        },
         "supportedCameraPolicies": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "$ref": "#/$defs/cameraPolicy" }
+          "items": {
+            "$ref": "#/$defs/cameraPolicy"
+          }
         },
         "supportedLayerRoles": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "$ref": "#/$defs/layerRole" }
+          "items": {
+            "$ref": "#/$defs/layerRole"
+          }
         },
         "supportedGeometryClasses": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "$ref": "#/$defs/geometryClass" }
+          "items": {
+            "$ref": "#/$defs/geometryClass"
+          }
         },
         "movementProfileRefs": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "$ref": "#/$defs/stableRef" }
+          "items": {
+            "$ref": "#/$defs/stableRef"
+          }
         },
-        "defaultConstraintProfileRef": { "$ref": "#/$defs/stableRef" },
-        "pixelGridMode": { "enum": ["optional", "required", "disabled"] },
-        "depthOrdering": { "enum": ["explicit-layer", "explicit-layer-with-y-sort-band"] }
+        "defaultConstraintProfileRef": {
+          "$ref": "#/$defs/stableRef"
+        },
+        "pixelGridMode": {
+          "enum": [
+            "optional",
+            "required",
+            "disabled"
+          ]
+        },
+        "depthOrdering": {
+          "enum": [
+            "explicit-layer",
+            "explicit-layer-with-y-sort-band"
+          ]
+        }
       }
     },
     "movementProfile": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["profileId", "family", "gprOperationRefs", "parameterKeys"],
+      "required": [
+        "profileId",
+        "family",
+        "gprOperationRefs",
+        "parameterKeys"
+      ],
       "properties": {
-        "profileId": { "$ref": "#/$defs/stableRef" },
-        "family": { "enum": ["top-down-free", "top-down-grid", "platform-standard", "platform-floaty", "platform-heavy", "fixed-room-free"] },
+        "profileId": {
+          "$ref": "#/$defs/stableRef"
+        },
+        "family": {
+          "enum": [
+            "top-down-free",
+            "top-down-grid",
+            "platform-standard",
+            "platform-floaty",
+            "platform-heavy",
+            "fixed-room-free"
+          ]
+        },
         "gprOperationRefs": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "$ref": "#/$defs/stableRef" }
+          "items": {
+            "$ref": "#/$defs/gprRuntimeRef"
+          }
         },
         "parameterKeys": {
           "type": "array",
@@ -139,13 +218,38 @@
     "constraintProfile": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["profileId", "family", "isDefault", "gameplayMutationAllowed", "exceedPolicy", "limits"],
+      "required": [
+        "profileId",
+        "family",
+        "isDefault",
+        "gameplayMutationAllowed",
+        "exceedPolicy",
+        "limits"
+      ],
       "properties": {
-        "profileId": { "$ref": "#/$defs/stableRef" },
-        "family": { "enum": ["retrobit-standard", "8bit-inspired", "16bit-inspired", "custom"] },
-        "isDefault": { "type": "boolean" },
-        "gameplayMutationAllowed": { "const": false },
-        "exceedPolicy": { "enum": ["block", "declared-deterministic-presentation-degradation"] },
+        "profileId": {
+          "$ref": "#/$defs/stableRef"
+        },
+        "family": {
+          "enum": [
+            "retrobit-standard",
+            "8bit-inspired",
+            "16bit-inspired",
+            "custom"
+          ]
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "gameplayMutationAllowed": {
+          "const": false
+        },
+        "exceedPolicy": {
+          "enum": [
+            "block",
+            "declared-deterministic-presentation-degradation"
+          ]
+        },
         "limits": {
           "type": "object",
           "additionalProperties": false,
@@ -153,21 +257,52 @@
             "logicalResolution": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["width", "height"],
+              "required": [
+                "width",
+                "height"
+              ],
               "properties": {
-                "width": { "type": "integer", "minimum": 1 },
-                "height": { "type": "integer", "minimum": 1 }
+                "width": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 1
+                }
               }
             },
-            "paletteEntries": { "type": "integer", "minimum": 1 },
-            "visibleSpriteBudget": { "type": "integer", "minimum": 1 },
-            "tileWidth": { "type": "integer", "minimum": 1 },
-            "tileHeight": { "type": "integer", "minimum": 1 },
-            "parallaxLayerBudget": { "type": "integer", "minimum": 0 },
-            "animationFrameBudget": { "type": "integer", "minimum": 1 }
+            "paletteEntries": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "visibleSpriteBudget": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "tileWidth": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "tileHeight": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "parallaxLayerBudget": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "animationFrameBudget": {
+              "type": "integer",
+              "minimum": 1
+            }
           }
         }
       }
+    },
+    "gprRuntimeRef": {
+      "type": "string",
+      "pattern": "^gpr\\.operation:operation/[a-z0-9._/-]+@[0-9]+\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$"
     }
   }
 }
