@@ -1,0 +1,39 @@
+{
+  "programId": "RBCE",
+  "workItemId": "RBCE-02",
+  "status": "owner-approved-design-baseline",
+  "implementationAuthority": false,
+  "activationRule": "Product implementation requires explicit OPS3 selection/authorization of RBCE-02 or equivalent governed implementation work.",
+  "artifacts": [
+    {
+      "path": "governance/application-planning/retrobit-arcade-creation-engine/RBCE-02_RETROBIT_2D_PROJECTION_RUNTIME.md",
+      "role": "normative-design-spec"
+    },
+    {
+      "path": "governance/application-planning/retrobit-arcade-creation-engine/RBCE-02_PROJECTION_RUNTIME.schema.json",
+      "role": "machine-readable-structural-contract"
+    },
+    {
+      "path": "governance/application-planning/retrobit-arcade-creation-engine/RBCE-02_GOLDEN_PROFILES.fixture.json",
+      "role": "golden-profile-fixture"
+    }
+  ],
+  "lockedDecisions": [
+    "modern-2d-runtime-default",
+    "optional-retro-constraint-profiles",
+    "no-console-emulation-requirement",
+    "gpr-remains-gameplay-and-collision-outcome-authority",
+    "mai-remains-asset-and-provenance-authority",
+    "ise-semantics-reused-without-forcing-ise-renderer",
+    "three-required-projection-families",
+    "no-arbitrary-scripting",
+    "presentation-frame-rate-cannot-change-semantic-outcome",
+    "retro-constraints-cannot-delete-or-mutate-canonical-gameplay-entities"
+  ],
+  "requiredProjectionProfileRefs": [
+    "projection:top-down-2d",
+    "projection:side-scroll-2d",
+    "projection:fixed-room-2d"
+  ],
+  "defaultConstraintProfileRef": "constraint:retrobit-standard"
+}
