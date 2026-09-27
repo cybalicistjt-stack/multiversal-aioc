@@ -1,0 +1,398 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:multiversal:rbce:RBCE01.PROJECT.v1",
+  "title": "RBCE-01 Retrobit Game Project",
+  "description": "Machine-readable structural baseline for the owner-approved RBCE-01 Retrobit Game Project composition contract. Cross-reference, capability, lifecycle, rights, deterministic-normalization and owner-authority checks remain semantic validation responsibilities.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "identity",
+    "lineage",
+    "compatibility",
+    "delivery",
+    "gameplay",
+    "scenes",
+    "actors",
+    "assets",
+    "inputs",
+    "variables",
+    "outcomes",
+    "audio",
+    "accessibility",
+    "provenance",
+    "tests",
+    "publishing"
+  ],
+  "properties": {
+    "identity": { "$ref": "#/$defs/identity" },
+    "lineage": { "$ref": "#/$defs/lineage" },
+    "compatibility": { "$ref": "#/$defs/compatibility" },
+    "delivery": { "$ref": "#/$defs/delivery" },
+    "gameplay": { "$ref": "#/$defs/gameplay" },
+    "scenes": { "type": "array", "items": { "$ref": "#/$defs/scene" } },
+    "actors": { "type": "array", "items": { "$ref": "#/$defs/actor" } },
+    "assets": { "type": "array", "items": { "$ref": "#/$defs/asset" } },
+    "inputs": { "$ref": "#/$defs/inputs" },
+    "variables": { "type": "array", "items": { "$ref": "#/$defs/variable" } },
+    "outcomes": { "type": "array", "items": { "$ref": "#/$defs/outcome" } },
+    "audio": { "type": "array", "items": { "$ref": "#/$defs/audio" } },
+    "accessibility": { "$ref": "#/$defs/accessibility" },
+    "provenance": { "$ref": "#/$defs/provenance" },
+    "tests": { "type": "array", "items": { "$ref": "#/$defs/testCase" } },
+    "publishing": { "$ref": "#/$defs/publishing" }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 256,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "stableRef": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "deliveryMode": {
+      "enum": [
+        "direct-play",
+        "cozy-low-pressure",
+        "gm-led",
+        "world-map-ttrpg-bridge",
+        "embedded-minigame",
+        "user-authored-loop-mini",
+        "roster-injection"
+      ]
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["projectId", "schemaId", "projectVersion", "title", "slug", "authorRefs", "createdAt", "updatedAt"],
+      "properties": {
+        "projectId": { "$ref": "#/$defs/stableId" },
+        "schemaId": { "const": "RBCE01.PROJECT.v1" },
+        "projectVersion": { "$ref": "#/$defs/semver" },
+        "title": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "slug": { "type": "string", "maxLength": 96, "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "description": { "type": "string", "maxLength": 2000 },
+        "authorRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["originProjectId", "migrationReceipts"],
+      "properties": {
+        "originProjectId": { "$ref": "#/$defs/stableId" },
+        "parentProjectId": { "$ref": "#/$defs/stableId" },
+        "parentProjectVersion": { "$ref": "#/$defs/semver" },
+        "forkReason": { "type": "string", "maxLength": 1000 },
+        "migrationReceipts": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minRbceSchemaVersion", "gprSchemaRefs", "requiredDefinitionRefs", "requiredCapabilityRefs", "optionalCapabilityRefs"],
+      "properties": {
+        "minRbceSchemaVersion": { "$ref": "#/$defs/semver" },
+        "gprSchemaRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "requiredDefinitionRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "requiredCapabilityRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "optionalCapabilityRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true }
+      }
+    },
+    "delivery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["supportedModes", "defaultMode", "campaignEmbeddingAllowed", "standalonePlayAllowed", "rosterInjectionAllowed"],
+      "properties": {
+        "supportedModes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/deliveryMode" }, "uniqueItems": true },
+        "defaultMode": { "$ref": "#/$defs/deliveryMode" },
+        "campaignEmbeddingAllowed": { "type": "boolean" },
+        "standalonePlayAllowed": { "type": "boolean" },
+        "rosterInjectionAllowed": { "type": "boolean" }
+      }
+    },
+    "gameplay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primaryLoopMiniRef", "secondaryLoopMiniRefs", "patternRuntimeRefs", "operationRuntimeRefs", "resourceRuntimeRefs", "ruleDefinitionRefs", "objectiveDefinitionRefs", "rewardDefinitionRefs"],
+      "properties": {
+        "primaryLoopMiniRef": { "$ref": "#/$defs/stableRef" },
+        "secondaryLoopMiniRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "patternRuntimeRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "operationRuntimeRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "resourceRuntimeRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "ruleDefinitionRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "objectiveDefinitionRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "rewardDefinitionRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "difficultyRef": { "$ref": "#/$defs/stableRef" }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entryId", "locationRef"],
+      "properties": {
+        "entryId": { "$ref": "#/$defs/stableId" },
+        "locationRef": { "$ref": "#/$defs/stableRef" },
+        "facingHint": { "type": "string", "maxLength": 64 }
+      }
+    },
+    "exit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exitId", "triggerRef", "destinationSceneId", "destinationEntryId", "prerequisiteRuleRefs"],
+      "properties": {
+        "exitId": { "$ref": "#/$defs/stableId" },
+        "triggerRef": { "$ref": "#/$defs/stableRef" },
+        "destinationSceneId": { "$ref": "#/$defs/stableId" },
+        "destinationEntryId": { "$ref": "#/$defs/stableId" },
+        "prerequisiteRuleRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true }
+      }
+    },
+    "placement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["placementId", "locationRef"],
+      "properties": {
+        "placementId": { "$ref": "#/$defs/stableId" },
+        "actorDefinitionId": { "$ref": "#/$defs/stableId" },
+        "semanticObjectRef": { "$ref": "#/$defs/stableRef" },
+        "locationRef": { "$ref": "#/$defs/stableRef" },
+        "assetRoleRef": { "$ref": "#/$defs/stableId" },
+        "initialStateRef": { "$ref": "#/$defs/stableRef" },
+        "visibilityRef": { "$ref": "#/$defs/stableRef" }
+      },
+      "anyOf": [
+        { "required": ["actorDefinitionId"] },
+        { "required": ["semanticObjectRef"] }
+      ]
+    },
+    "scene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sceneId", "label", "projectionProfileRef", "entryPoints", "exits", "placements", "triggerRefs", "localVariableRefs"],
+      "properties": {
+        "sceneId": { "$ref": "#/$defs/stableId" },
+        "label": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "sceneOwnerRef": { "$ref": "#/$defs/stableRef" },
+        "mapRef": { "$ref": "#/$defs/stableRef" },
+        "projectionProfileRef": { "$ref": "#/$defs/stableRef" },
+        "boundsRef": { "$ref": "#/$defs/stableRef" },
+        "entryPoints": { "type": "array", "items": { "$ref": "#/$defs/entry" } },
+        "exits": { "type": "array", "items": { "$ref": "#/$defs/exit" } },
+        "placements": { "type": "array", "items": { "$ref": "#/$defs/placement" } },
+        "triggerRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "localVariableRefs": { "type": "array", "items": { "$ref": "#/$defs/stableId" }, "uniqueItems": true },
+        "presentationProfileRef": { "$ref": "#/$defs/stableRef" }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actorDefinitionId", "roleRuntimeRef", "definitionRefs", "controllerPolicy"],
+      "properties": {
+        "actorDefinitionId": { "$ref": "#/$defs/stableId" },
+        "roleRuntimeRef": { "$ref": "#/$defs/stableRef" },
+        "canonicalEntityRef": { "$ref": "#/$defs/stableRef" },
+        "definitionRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "defaultAssetRoleRef": { "$ref": "#/$defs/stableId" },
+        "controllerPolicy": { "enum": ["player", "gm", "runtime-bounded", "external-owner"] }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assetRoleId", "semanticRole", "maiAssetRef", "sourceClass", "requiredForPlay"],
+      "properties": {
+        "assetRoleId": { "$ref": "#/$defs/stableId" },
+        "semanticRole": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "maiAssetRef": { "$ref": "#/$defs/stableRef" },
+        "sourceClass": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "presentationProfileRef": { "$ref": "#/$defs/stableRef" },
+        "requiredForPlay": { "type": "boolean" },
+        "fallbackRoleRef": { "$ref": "#/$defs/stableId" }
+      }
+    },
+    "inputBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["physicalInputRef", "semanticCommandRef", "contextRuleRefs"],
+      "properties": {
+        "physicalInputRef": { "$ref": "#/$defs/stableRef" },
+        "semanticCommandRef": { "$ref": "#/$defs/stableRef" },
+        "contextRuleRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true }
+      }
+    },
+    "inputProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profileId", "deviceClass", "bindings"],
+      "properties": {
+        "profileId": { "$ref": "#/$defs/stableId" },
+        "deviceClass": { "enum": ["keyboard", "gamepad", "touch", "pointer", "accessibility", "custom-supported"] },
+        "bindings": { "type": "array", "items": { "$ref": "#/$defs/inputBinding" } }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commandSetRef", "profiles"],
+      "properties": {
+        "commandSetRef": { "$ref": "#/$defs/stableRef" },
+        "profiles": { "type": "array", "items": { "$ref": "#/$defs/inputProfile" } }
+      }
+    },
+    "scalar": {
+      "type": ["boolean", "integer", "number", "string"]
+    },
+    "variable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["variableId", "valueType", "defaultValue", "scope", "writePolicy"],
+      "properties": {
+        "variableId": { "$ref": "#/$defs/stableId" },
+        "valueType": { "enum": ["boolean", "integer", "number", "string", "enum", "stable-ref"] },
+        "defaultValue": { "$ref": "#/$defs/scalar" },
+        "enumValues": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true },
+        "scope": { "enum": ["scene", "run", "save", "campaign-projection"] },
+        "writePolicy": { "enum": ["gpr-transition", "owner-receipt", "gm-adjudication"] },
+        "visibilityRef": { "$ref": "#/$defs/stableRef" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "valueType": { "const": "enum" } }, "required": ["valueType"] },
+          "then": { "required": ["enumValues"] }
+        },
+        {
+          "if": { "properties": { "scope": { "const": "campaign-projection" } }, "required": ["scope"] },
+          "then": { "properties": { "writePolicy": { "enum": ["owner-receipt", "gm-adjudication"] } } }
+        }
+      ]
+    },
+    "parameterBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parameterRef", "valueRef"],
+      "properties": {
+        "parameterRef": { "$ref": "#/$defs/stableRef" },
+        "valueRef": { "$ref": "#/$defs/stableRef" }
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outcomeId", "triggerRuleRef", "ownerDomain", "operationRuntimeRef", "parameterBindings", "deliveryModes"],
+      "properties": {
+        "outcomeId": { "$ref": "#/$defs/stableId" },
+        "triggerRuleRef": { "$ref": "#/$defs/stableRef" },
+        "ownerDomain": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "operationRuntimeRef": { "$ref": "#/$defs/stableRef" },
+        "parameterBindings": { "type": "array", "items": { "$ref": "#/$defs/parameterBinding" } },
+        "deliveryModes": { "type": "array", "items": { "$ref": "#/$defs/deliveryMode" }, "uniqueItems": true }
+      }
+    },
+    "audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["audioRoleId", "semanticIntentRef", "triggerRuleRefs", "requiredForPlay"],
+      "properties": {
+        "audioRoleId": { "$ref": "#/$defs/stableId" },
+        "semanticIntentRef": { "$ref": "#/$defs/stableRef" },
+        "audioAssetRef": { "$ref": "#/$defs/stableRef" },
+        "triggerRuleRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "requiredForPlay": { "type": "boolean" }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["keyboardComplete", "reducedMotionSupported", "highContrastSupported", "scalableUiSupported"],
+      "properties": {
+        "keyboardComplete": { "type": "boolean" },
+        "nonvisualCriticalPathRef": { "$ref": "#/$defs/stableRef" },
+        "screenReaderSummaryProfileRef": { "$ref": "#/$defs/stableRef" },
+        "reducedMotionSupported": { "type": "boolean" },
+        "highContrastSupported": { "type": "boolean" },
+        "scalableUiSupported": { "type": "boolean" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["projectSourceRefs", "researchEvidenceRefs", "assetEvidenceRefs", "licenseCapabilityRefs", "protectedReferenceDependencies"],
+      "properties": {
+        "projectSourceRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "researchEvidenceRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "assetEvidenceRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "licenseCapabilityRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true },
+        "protectedReferenceDependencies": { "type": "array", "items": { "$ref": "#/$defs/stableRef" }, "uniqueItems": true }
+      }
+    },
+    "variableValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["variableId", "value"],
+      "properties": {
+        "variableId": { "$ref": "#/$defs/stableId" },
+        "value": { "$ref": "#/$defs/scalar" }
+      }
+    },
+    "testCommand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semanticCommandRef", "argumentRefs"],
+      "properties": {
+        "semanticCommandRef": { "$ref": "#/$defs/stableRef" },
+        "argumentRefs": { "type": "array", "items": { "$ref": "#/$defs/stableRef" } }
+      }
+    },
+    "testAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assertionType", "targetRef"],
+      "properties": {
+        "assertionType": { "enum": ["scene-reached", "entry-reached", "variable-equals", "outcome-proposed", "objective-state", "actor-state"] },
+        "targetRef": { "$ref": "#/$defs/stableRef" },
+        "expectedValue": { "$ref": "#/$defs/scalar" }
+      }
+    },
+    "testCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["testId", "label", "startingSceneId", "startingEntryId", "setupVariableValues", "commandSequence", "expectedAssertions", "blocking"],
+      "properties": {
+        "testId": { "$ref": "#/$defs/stableId" },
+        "label": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "seed": { "type": "string", "maxLength": 128 },
+        "startingSceneId": { "$ref": "#/$defs/stableId" },
+        "startingEntryId": { "$ref": "#/$defs/stableId" },
+        "setupVariableValues": { "type": "array", "items": { "$ref": "#/$defs/variableValue" } },
+        "commandSequence": { "type": "array", "items": { "$ref": "#/$defs/testCommand" } },
+        "expectedAssertions": { "type": "array", "items": { "$ref": "#/$defs/testAssertion" } },
+        "blocking": { "type": "boolean" }
+      }
+    },
+    "publishing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["intendedDistribution", "packageExtension", "embeddedAssetPolicy", "dependencyManifestRef", "migrationBaselineRef"],
+      "properties": {
+        "intendedDistribution": { "enum": ["local-only", "private-share", "campaign-share", "public"] },
+        "packageExtension": { "const": ".pack" },
+        "embeddedAssetPolicy": { "const": "redistributable-only" },
+        "dependencyManifestRef": { "$ref": "#/$defs/stableRef" },
+        "migrationBaselineRef": { "$ref": "#/$defs/stableRef" },
+        "publicationTargetRef": { "$ref": "#/$defs/stableRef" }
+      }
+    }
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "identity": {
+    "projectId": "retrobit-project:four-engine-test-chamber",
+    "schemaId": "RBCE01.PROJECT.v1",
+    "projectVersion": "0.1.0",
+    "title": "Four-Engine Test Chamber",
+    "slug": "four-engine-test-chamber",
+    "description": "Original RBCE-01 fixture proving top-down traversal, gated connected rooms, platform hazard recovery, and persistent branching dialogue in one project.",
+    "authorRefs": ["author:multiversal-owner"],
+    "createdAt": "2026-09-27T19:30:00Z",
+    "updatedAt": "2026-09-27T19:30:00Z"
+  },
+  "lineage": {
+    "originProjectId": "retrobit-project:four-engine-test-chamber",
+    "migrationReceipts": []
+  },
+  "compatibility": {
+    "minRbceSchemaVersion": "1.0.0",
+    "gprSchemaRefs": ["GPR03.STATE_KERNEL.v1", "GPR08.LOOP_MINI.v1"],
+    "requiredDefinitionRefs": ["definition:rbce-test-dialogue-rule", "definition:rbce-test-gate-rule"],
+    "requiredCapabilityRefs": ["capability:rbce.projection.fixed-room", "capability:rbce.projection.side-scroll", "capability:rbce.projection.top-down"],
+    "optionalCapabilityRefs": ["capability:rbce.audio"]
+  },
+  "delivery": {
+    "supportedModes": ["direct-play", "embedded-minigame", "gm-led"],
+    "defaultMode": "direct-play",
+    "campaignEmbeddingAllowed": true,
+    "standalonePlayAllowed": true,
+    "rosterInjectionAllowed": true
+  },
+  "gameplay": {
+    "primaryLoopMiniRef": "loop-mini:four-engine-test-chamber",
+    "secondaryLoopMiniRefs": [],
+    "patternRuntimeRefs": ["pattern:gated-exploration", "pattern:hazard-recovery", "pattern:social-investigation", "pattern:traversal"],
+    "operationRuntimeRefs": ["operation:interact", "operation:jump", "operation:move", "operation:propose-outcome", "operation:talk"],
+    "resourceRuntimeRefs": ["resource:checkpoint", "resource:score"],
+    "ruleDefinitionRefs": ["definition:rbce-test-dialogue-rule", "definition:rbce-test-gate-rule"],
+    "objectiveDefinitionRefs": ["objective:reach-dialogue-chamber"],
+    "rewardDefinitionRefs": ["reward:test-completion"]
+  },
+  "scenes": [
+    {
+      "sceneId": "scene:plaza",
+      "label": "Traversal Plaza",
+      "mapRef": "mai-map:rbce-four-engine-plaza",
+      "projectionProfileRef": "projection:top-down-2d",
+      "entryPoints": [{"entryId": "entry:plaza-start", "locationRef": "loc:plaza:start"}],
+      "exits": [{"exitId": "exit:plaza-to-gate", "triggerRef": "trigger:plaza-east", "destinationSceneId": "scene:gate-room", "destinationEntryId": "entry:gate-west", "prerequisiteRuleRefs": []}],
+      "placements": [{"placementId": "placement:player-plaza", "actorDefinitionId": "actor:player", "locationRef": "loc:plaza:start", "assetRoleRef": "asset-role:player"}],
+      "triggerRefs": ["trigger:plaza-east"],
+      "localVariableRefs": []
+    },
+    {
+      "sceneId": "scene:gate-room",
+      "label": "Connected Gate Room",
+      "mapRef": "mai-map:rbce-four-engine-gate-room",
+      "projectionProfileRef": "projection:fixed-room-2d",
+      "entryPoints": [{"entryId": "entry:gate-west", "locationRef": "loc:gate:west"}],
+      "exits": [{"exitId": "exit:gate-to-foundry", "triggerRef": "trigger:gate-east", "destinationSceneId": "scene:foundry", "destinationEntryId": "entry:foundry-start", "prerequisiteRuleRefs": ["definition:rbce-test-gate-rule"]}],
+      "placements": [
+        {"placementId": "placement:gatekeeper", "actorDefinitionId": "actor:gatekeeper", "locationRef": "loc:gate:center", "assetRoleRef": "asset-role:gatekeeper"},
+        {"placementId": "placement:gate-switch", "semanticObjectRef": "object:gate-switch", "locationRef": "loc:gate:switch", "assetRoleRef": "asset-role:switch"}
+      ],
+      "triggerRefs": ["trigger:gate-east", "trigger:gate-switch"],
+      "localVariableRefs": ["var:gate-unlocked"]
+    },
+    {
+      "sceneId": "scene:foundry",
+      "label": "Platform Hazard Foundry",
+      "mapRef": "mai-map:rbce-four-engine-foundry",
+      "projectionProfileRef": "projection:side-scroll-2d",
+      "entryPoints": [{"entryId": "entry:foundry-start", "locationRef": "loc:foundry:start"}],
+      "exits": [{"exitId": "exit:foundry-to-dialogue", "triggerRef": "trigger:foundry-goal", "destinationSceneId": "scene:dialogue", "destinationEntryId": "entry:dialogue-start", "prerequisiteRuleRefs": []}],
+      "placements": [
+        {"placementId": "placement:player-foundry", "actorDefinitionId": "actor:player", "locationRef": "loc:foundry:start", "assetRoleRef": "asset-role:player"},
+        {"placementId": "placement:hazard", "semanticObjectRef": "hazard:test-pit", "locationRef": "loc:foundry:pit", "assetRoleRef": "asset-role:hazard"}
+      ],
+      "triggerRefs": ["trigger:foundry-checkpoint", "trigger:foundry-goal"],
+      "localVariableRefs": ["var:last-checkpoint"]
+    },
+    {
+      "sceneId": "scene:dialogue",
+      "label": "Dialogue Chamber",
+      "mapRef": "mai-map:rbce-four-engine-dialogue",
+      "projectionProfileRef": "projection:fixed-room-2d",
+      "entryPoints": [{"entryId": "entry:dialogue-start", "locationRef": "loc:dialogue:start"}],
+      "exits": [],
+      "placements": [
+        {"placementId": "placement:player-dialogue", "actorDefinitionId": "actor:player", "locationRef": "loc:dialogue:start", "assetRoleRef": "asset-role:player"},
+        {"placementId": "placement:npc-dialogue", "actorDefinitionId": "actor:witness", "locationRef": "loc:dialogue:npc", "assetRoleRef": "asset-role:witness"}
+      ],
+      "triggerRefs": ["trigger:dialogue-begin"],
+      "localVariableRefs": ["var:dialogue-branch", "var:event-seen"]
+    }
+  ],
+  "actors": [
+    {"actorDefinitionId": "actor:player", "roleRuntimeRef": "role:player-avatar", "definitionRefs": [], "defaultAssetRoleRef": "asset-role:player", "controllerPolicy": "player"},
+    {"actorDefinitionId": "actor:gatekeeper", "roleRuntimeRef": "role:npc-gatekeeper", "definitionRefs": ["definition:rbce-test-gate-rule"], "defaultAssetRoleRef": "asset-role:gatekeeper", "controllerPolicy": "runtime-bounded"},
+    {"actorDefinitionId": "actor:witness", "roleRuntimeRef": "role:npc-dialogue", "definitionRefs": ["definition:rbce-test-dialogue-rule"], "defaultAssetRoleRef": "asset-role:witness", "controllerPolicy": "runtime-bounded"}
+  ],
+  "assets": [
+    {"assetRoleId": "asset-role:player", "semanticRole": "player visual", "maiAssetRef": "mai-asset:rbce-original-player", "sourceClass": "sprite-sheet", "requiredForPlay": true},
+    {"assetRoleId": "asset-role:gatekeeper", "semanticRole": "npc visual", "maiAssetRef": "mai-asset:rbce-original-gatekeeper", "sourceClass": "sprite-sheet", "requiredForPlay": false},
+    {"assetRoleId": "asset-role:witness", "semanticRole": "npc visual", "maiAssetRef": "mai-asset:rbce-original-witness", "sourceClass": "sprite-sheet", "requiredForPlay": false},
+    {"assetRoleId": "asset-role:switch", "semanticRole": "interactable visual", "maiAssetRef": "mai-asset:rbce-original-switch", "sourceClass": "sprite", "requiredForPlay": false},
+    {"assetRoleId": "asset-role:hazard", "semanticRole": "hazard visual", "maiAssetRef": "mai-asset:rbce-original-hazard", "sourceClass": "tile", "requiredForPlay": false}
+  ],
+  "inputs": {
+    "commandSetRef": "command-set:rbce-four-engine",
+    "profiles": [
+      {
+        "profileId": "input:keyboard",
+        "deviceClass": "keyboard",
+        "bindings": [
+          {"physicalInputRef": "key:arrow-left", "semanticCommandRef": "command:move-left", "contextRuleRefs": []},
+          {"physicalInputRef": "key:arrow-right", "semanticCommandRef": "command:move-right", "contextRuleRefs": []},
+          {"physicalInputRef": "key:space", "semanticCommandRef": "command:primary-action", "contextRuleRefs": []},
+          {"physicalInputRef": "key:enter", "semanticCommandRef": "command:interact", "contextRuleRefs": []}
+        ]
+      },
+      {
+        "profileId": "input:accessibility",
+        "deviceClass": "accessibility",
+        "bindings": [
+          {"physicalInputRef": "access:previous", "semanticCommandRef": "command:move-left", "contextRuleRefs": []},
+          {"physicalInputRef": "access:next", "semanticCommandRef": "command:move-right", "contextRuleRefs": []},
+          {"physicalInputRef": "access:activate", "semanticCommandRef": "command:primary-action", "contextRuleRefs": []},
+          {"physicalInputRef": "access:interact", "semanticCommandRef": "command:interact", "contextRuleRefs": []}
+        ]
+      }
+    ]
+  },
+  "variables": [
+    {"variableId": "var:gate-unlocked", "valueType": "boolean", "defaultValue": false, "scope": "save", "writePolicy": "gpr-transition"},
+    {"variableId": "var:last-checkpoint", "valueType": "stable-ref", "defaultValue": "checkpoint:none", "scope": "save", "writePolicy": "gpr-transition"},
+    {"variableId": "var:dialogue-branch", "valueType": "enum", "defaultValue": "unspoken", "enumValues": ["unspoken", "trust", "doubt"], "scope": "save", "writePolicy": "gpr-transition"},
+    {"variableId": "var:event-seen", "valueType": "boolean", "defaultValue": false, "scope": "save", "writePolicy": "gpr-transition"},
+    {"variableId": "var:campaign-result", "valueType": "stable-ref", "defaultValue": "result:none", "scope": "campaign-projection", "writePolicy": "owner-receipt"}
+  ],
+  "outcomes": [
+    {
+      "outcomeId": "outcome:test-completion",
+      "triggerRuleRef": "rule:test-complete",
+      "ownerDomain": "campaign/objectives",
+      "operationRuntimeRef": "operation:propose-outcome",
+      "parameterBindings": [{"parameterRef": "parameter:result", "valueRef": "var:campaign-result"}],
+      "deliveryModes": ["embedded-minigame", "gm-led"]
+    }
+  ],
+  "audio": [
+    {"audioRoleId": "audio:ambient", "semanticIntentRef": "audio-intent:ambient-loop", "triggerRuleRefs": [], "requiredForPlay": false}
+  ],
+  "accessibility": {
+    "keyboardComplete": true,
+    "nonvisualCriticalPathRef": "access-path:four-engine-critical-path",
+    "screenReaderSummaryProfileRef": "screen-reader:rbce-default",
+    "reducedMotionSupported": true,
+    "highContrastSupported": true,
+    "scalableUiSupported": true
+  },
+  "provenance": {
+    "projectSourceRefs": ["rbce-source:four-engine-original-fixture"],
+    "researchEvidenceRefs": ["rbce-research:nes-snes-pattern-study"],
+    "assetEvidenceRefs": ["rights:rbce-four-engine-original-assets"],
+    "licenseCapabilityRefs": ["license:rbce-four-engine-redistributable"],
+    "protectedReferenceDependencies": []
+  },
+  "tests": [
+    {
+      "testId": "test:top-down-transition",
+      "label": "Top-down traversal reaches gate room",
+      "seed": "rbce01-seed-a",
+      "startingSceneId": "scene:plaza",
+      "startingEntryId": "entry:plaza-start",
+      "setupVariableValues": [],
+      "commandSequence": [
+        {"semanticCommandRef": "command:move-right", "argumentRefs": []},
+        {"semanticCommandRef": "command:interact", "argumentRefs": []}
+      ],
+      "expectedAssertions": [{"assertionType": "scene-reached", "targetRef": "scene:gate-room"}],
+      "blocking": true
+    },
+    {
+      "testId": "test:gated-room",
+      "label": "Gate unlock persists and permits traversal",
+      "seed": "rbce01-seed-b",
+      "startingSceneId": "scene:gate-room",
+      "startingEntryId": "entry:gate-west",
+      "setupVariableValues": [{"variableId": "var:gate-unlocked", "value": true}],
+      "commandSequence": [{"semanticCommandRef": "command:interact", "argumentRefs": ["trigger:gate-east"]}],
+      "expectedAssertions": [
+        {"assertionType": "scene-reached", "targetRef": "scene:foundry"},
+        {"assertionType": "variable-equals", "targetRef": "var:gate-unlocked", "expectedValue": true}
+      ],
+      "blocking": true
+    },
+    {
+      "testId": "test:platform-hazard",
+      "label": "Platform hazard path reaches dialogue chamber",
+      "seed": "rbce01-seed-c",
+      "startingSceneId": "scene:foundry",
+      "startingEntryId": "entry:foundry-start",
+      "setupVariableValues": [{"variableId": "var:last-checkpoint", "value": "checkpoint:foundry-start"}],
+      "commandSequence": [
+        {"semanticCommandRef": "command:move-right", "argumentRefs": []},
+        {"semanticCommandRef": "command:primary-action", "argumentRefs": []}
+      ],
+      "expectedAssertions": [{"assertionType": "scene-reached", "targetRef": "scene:dialogue"}],
+      "blocking": true
+    },
+    {
+      "testId": "test:dialogue-state",
+      "label": "Dialogue branch and event state persist",
+      "seed": "rbce01-seed-d",
+      "startingSceneId": "scene:dialogue",
+      "startingEntryId": "entry:dialogue-start",
+      "setupVariableValues": [
+        {"variableId": "var:dialogue-branch", "value": "trust"},
+        {"variableId": "var:event-seen", "value": true}
+      ],
+      "commandSequence": [{"semanticCommandRef": "command:interact", "argumentRefs": ["trigger:dialogue-begin"]}],
+      "expectedAssertions": [
+        {"assertionType": "variable-equals", "targetRef": "var:dialogue-branch", "expectedValue": "trust"},
+        {"assertionType": "variable-equals", "targetRef": "var:event-seen", "expectedValue": true}
+      ],
+      "blocking": true
+    }
+  ],
+  "publishing": {
+    "intendedDistribution": "public",
+    "packageExtension": ".pack",
+    "embeddedAssetPolicy": "redistributable-only",
+    "dependencyManifestRef": "pack-deps:four-engine-test-chamber",
+    "migrationBaselineRef": "migration-baseline:RBCE01.PROJECT.v1",
+    "publicationTargetRef": "publication:multiversal-retrobit-arcade"
+  }
+}
