@@ -1,0 +1,111 @@
+{
+  "schemaId": "RBCE02.PROJECTION.v1",
+  "schemaVersion": "1.0.0",
+  "projectionProfiles": [
+    {
+      "profileId": "projection:top-down-2d",
+      "kind": "top-down-2d",
+      "supportedCameraPolicies": ["fixed", "follow", "bounded-follow", "room-snap", "dead-zone-follow", "look-ahead-follow"],
+      "supportedLayerRoles": ["background", "parallax-background", "terrain", "collision-overlay", "object-below-actors", "actors", "object-above-actors", "effects", "foreground", "ui-overlay"],
+      "supportedGeometryClasses": ["aabb", "circle", "convex-polygon", "tile-mask", "segment-surface", "trigger-region", "hazard-region", "spawn-marker", "checkpoint-marker", "moving-surface"],
+      "movementProfileRefs": ["movement:top-down-free", "movement:top-down-grid"],
+      "defaultConstraintProfileRef": "constraint:retrobit-standard",
+      "pixelGridMode": "optional",
+      "depthOrdering": "explicit-layer-with-y-sort-band"
+    },
+    {
+      "profileId": "projection:side-scroll-2d",
+      "kind": "side-scroll-2d",
+      "supportedCameraPolicies": ["fixed", "follow", "bounded-follow", "room-snap", "dead-zone-follow", "look-ahead-follow"],
+      "supportedLayerRoles": ["background", "parallax-background", "terrain", "collision-overlay", "object-below-actors", "actors", "object-above-actors", "effects", "foreground", "ui-overlay"],
+      "supportedGeometryClasses": ["aabb", "circle", "convex-polygon", "tile-mask", "segment-surface", "one-way-surface", "ladder-zone", "trigger-region", "hazard-region", "spawn-marker", "checkpoint-marker", "moving-surface"],
+      "movementProfileRefs": ["movement:platform-standard", "movement:platform-floaty", "movement:platform-heavy"],
+      "defaultConstraintProfileRef": "constraint:retrobit-standard",
+      "pixelGridMode": "optional",
+      "depthOrdering": "explicit-layer"
+    },
+    {
+      "profileId": "projection:fixed-room-2d",
+      "kind": "fixed-room-2d",
+      "supportedCameraPolicies": ["fixed", "room-snap", "bounded-follow"],
+      "supportedLayerRoles": ["background", "parallax-background", "terrain", "collision-overlay", "object-below-actors", "actors", "object-above-actors", "effects", "foreground", "ui-overlay"],
+      "supportedGeometryClasses": ["aabb", "circle", "convex-polygon", "tile-mask", "segment-surface", "one-way-surface", "ladder-zone", "trigger-region", "hazard-region", "spawn-marker", "checkpoint-marker", "moving-surface"],
+      "movementProfileRefs": ["movement:fixed-room-free", "movement:top-down-free", "movement:top-down-grid", "movement:platform-standard"],
+      "defaultConstraintProfileRef": "constraint:retrobit-standard",
+      "pixelGridMode": "optional",
+      "depthOrdering": "explicit-layer-with-y-sort-band"
+    }
+  ],
+  "movementProfiles": [
+    {
+      "profileId": "movement:top-down-free",
+      "family": "top-down-free",
+      "gprOperationRefs": ["gpr-operation:movement/free-2d", "gpr-operation:collision/resolve"],
+      "parameterKeys": ["acceleration", "deceleration", "friction"]
+    },
+    {
+      "profileId": "movement:top-down-grid",
+      "family": "top-down-grid",
+      "gprOperationRefs": ["gpr-operation:movement/grid-2d", "gpr-operation:collision/resolve"],
+      "parameterKeys": ["gridStep"]
+    },
+    {
+      "profileId": "movement:platform-standard",
+      "family": "platform-standard",
+      "gprOperationRefs": ["gpr-operation:movement/platform-2d", "gpr-operation:collision/resolve"],
+      "parameterKeys": ["acceleration", "deceleration", "friction", "gravityScale", "jumpImpulse", "airControl", "terminalSpeed", "coyoteWindow", "jumpBuffer", "climbSpeed", "slopeHandling"]
+    },
+    {
+      "profileId": "movement:platform-floaty",
+      "family": "platform-floaty",
+      "gprOperationRefs": ["gpr-operation:movement/platform-2d", "gpr-operation:collision/resolve"],
+      "parameterKeys": ["acceleration", "deceleration", "friction", "gravityScale", "jumpImpulse", "airControl", "terminalSpeed", "coyoteWindow", "jumpBuffer", "climbSpeed", "slopeHandling"]
+    },
+    {
+      "profileId": "movement:platform-heavy",
+      "family": "platform-heavy",
+      "gprOperationRefs": ["gpr-operation:movement/platform-2d", "gpr-operation:collision/resolve"],
+      "parameterKeys": ["acceleration", "deceleration", "friction", "gravityScale", "jumpImpulse", "airControl", "terminalSpeed", "coyoteWindow", "jumpBuffer", "climbSpeed", "slopeHandling"]
+    },
+    {
+      "profileId": "movement:fixed-room-free",
+      "family": "fixed-room-free",
+      "gprOperationRefs": ["gpr-operation:movement/free-2d", "gpr-operation:collision/resolve"],
+      "parameterKeys": ["acceleration", "deceleration", "friction", "gravityScale", "jumpImpulse", "airControl", "terminalSpeed"]
+    }
+  ],
+  "constraintProfiles": [
+    {
+      "profileId": "constraint:retrobit-standard",
+      "family": "retrobit-standard",
+      "isDefault": true,
+      "gameplayMutationAllowed": false,
+      "exceedPolicy": "block",
+      "limits": {}
+    },
+    {
+      "profileId": "constraint:8bit-inspired",
+      "family": "8bit-inspired",
+      "isDefault": false,
+      "gameplayMutationAllowed": false,
+      "exceedPolicy": "block",
+      "limits": {}
+    },
+    {
+      "profileId": "constraint:16bit-inspired",
+      "family": "16bit-inspired",
+      "isDefault": false,
+      "gameplayMutationAllowed": false,
+      "exceedPolicy": "block",
+      "limits": {}
+    },
+    {
+      "profileId": "constraint:custom",
+      "family": "custom",
+      "isDefault": false,
+      "gameplayMutationAllowed": false,
+      "exceedPolicy": "block",
+      "limits": {}
+    }
+  ]
+}
