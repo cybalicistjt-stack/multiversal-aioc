@@ -18,94 +18,333 @@
     "acceptanceWorkflows"
   ],
   "properties": {
-    "schemaId": {"const": "RBCE03.STUDIO.v1"},
-    "schemaVersion": {"const": "1.0.0"},
-    "defaultSkinId": {"const": "retrobit-classic-arcade"},
-    "modes": {"type": "array", "minItems": 4, "uniqueItems": true, "items": {"$ref": "#/$defs/studioMode"}},
-    "desktopRegions": {"type": "array", "minItems": 5, "uniqueItems": true, "items": {"$ref": "#/$defs/region"}},
-    "authoringSurfaces": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/surface"}},
-    "validationStages": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/validationStage"}},
-    "playtestContract": {"$ref": "#/$defs/playtestContract"},
-    "accessibility": {"$ref": "#/$defs/accessibility"},
-    "authoringGuarantees": {"$ref": "#/$defs/authoringGuarantees"},
-    "acceptanceWorkflows": {"type": "array", "minItems": 12, "uniqueItems": false, "items": {"$ref": "#/$defs/acceptanceWorkflow"}}
+    "schemaId": {
+      "const": "RBCE03.STUDIO.v1"
+    },
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "defaultSkinId": {
+      "const": "retrobit-classic-arcade"
+    },
+    "modes": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/studioMode"
+      }
+    },
+    "desktopRegions": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/region"
+      }
+    },
+    "authoringSurfaces": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/surface"
+      }
+    },
+    "validationStages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/validationStage"
+      }
+    },
+    "playtestContract": {
+      "$ref": "#/$defs/playtestContract"
+    },
+    "accessibility": {
+      "$ref": "#/$defs/accessibility"
+    },
+    "authoringGuarantees": {
+      "$ref": "#/$defs/authoringGuarantees"
+    },
+    "acceptanceWorkflows": {
+      "type": "array",
+      "minItems": 12,
+      "uniqueItems": false,
+      "items": {
+        "$ref": "#/$defs/acceptanceWorkflow"
+      }
+    }
   },
   "$defs": {
-    "stableRef": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*:[a-z0-9][a-z0-9._:/-]*$"},
-    "studioMode": {"type": "string", "enum": ["studio:project", "studio:build", "studio:logic", "studio:playtest"]},
-    "region": {"type": "string", "enum": ["region:project-navigator", "region:palette", "region:main-canvas", "region:inspector", "region:playtest-diagnostics"]},
+    "stableRef": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*:[a-z0-9][a-z0-9._:/-]*$"
+    },
+    "studioMode": {
+      "type": "string",
+      "enum": [
+        "studio:project",
+        "studio:build",
+        "studio:logic",
+        "studio:playtest"
+      ]
+    },
+    "region": {
+      "type": "string",
+      "enum": [
+        "region:project-navigator",
+        "region:palette",
+        "region:main-canvas",
+        "region:inspector",
+        "region:playtest-diagnostics"
+      ]
+    },
     "surface": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["surfaceId", "label", "modes", "projectAreas", "allowsArbitraryScript", "ownerMutationAuthority"],
+      "required": [
+        "surfaceId",
+        "label",
+        "modes",
+        "projectAreas",
+        "allowsArbitraryScript",
+        "ownerMutationAuthority"
+      ],
       "properties": {
-        "surfaceId": {"$ref": "#/$defs/stableRef"},
-        "label": {"type": "string", "minLength": 1},
-        "modes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/studioMode"}},
-        "projectAreas": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["identity", "lineage", "compatibility", "delivery", "gameplay", "scenes", "actors", "assets", "inputs", "variables", "outcomes", "audio", "accessibility", "provenance", "tests", "publishing"]}},
-        "allowsArbitraryScript": {"const": false},
-        "ownerMutationAuthority": {"const": false}
+        "surfaceId": {
+          "$ref": "#/$defs/stableRef"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "modes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/studioMode"
+          }
+        },
+        "projectAreas": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "identity",
+              "lineage",
+              "compatibility",
+              "delivery",
+              "gameplay",
+              "scenes",
+              "actors",
+              "assets",
+              "inputs",
+              "variables",
+              "outcomes",
+              "audio",
+              "accessibility",
+              "provenance",
+              "tests",
+              "publishing"
+            ]
+          }
+        },
+        "allowsArbitraryScript": {
+          "const": false
+        },
+        "ownerMutationAuthority": {
+          "const": false
+        }
       }
     },
     "validationStage": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["stageId", "authority", "blockingCapable"],
+      "required": [
+        "stageId",
+        "authority",
+        "blockingCapable"
+      ],
       "properties": {
-        "stageId": {"$ref": "#/$defs/stableRef"},
-        "authority": {"enum": ["RBCE-01", "RBCE", "GPR", "RBCE-02", "MAI", "owner-domain", "accessibility", "project-tests", "publishing"]},
-        "blockingCapable": {"type": "boolean"}
+        "stageId": {
+          "$ref": "#/$defs/stableRef"
+        },
+        "authority": {
+          "enum": [
+            "RBCE-01",
+            "RBCE",
+            "GPR",
+            "RBCE-02",
+            "MAI",
+            "owner-domain",
+            "accessibility",
+            "project-tests",
+            "publishing"
+          ]
+        },
+        "blockingCapable": {
+          "type": "boolean"
+        }
       }
     },
     "playtestContract": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["isolatedFromCanonicalState", "requiresDraftSnapshot", "semanticHotReloadAssumed", "campaignMutationAllowedByDefault", "operations"],
+      "required": [
+        "isolatedFromCanonicalState",
+        "requiresDraftSnapshot",
+        "semanticHotReloadAssumed",
+        "campaignMutationAllowedByDefault",
+        "operations"
+      ],
       "properties": {
-        "isolatedFromCanonicalState": {"const": true},
-        "requiresDraftSnapshot": {"const": true},
-        "semanticHotReloadAssumed": {"const": false},
-        "campaignMutationAllowedByDefault": {"const": false},
-        "operations": {"type": "array", "minItems": 5, "uniqueItems": true, "items": {"enum": ["start", "pause-when-supported", "restart-scene", "restart-run", "stop", "inspect-state", "run-project-tests", "jump-to-source", "compare-snapshot"]}}
+        "isolatedFromCanonicalState": {
+          "const": true
+        },
+        "requiresDraftSnapshot": {
+          "const": true
+        },
+        "semanticHotReloadAssumed": {
+          "const": false
+        },
+        "campaignMutationAllowedByDefault": {
+          "const": false
+        },
+        "operations": {
+          "type": "array",
+          "minItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "start",
+              "pause-when-supported",
+              "restart-scene",
+              "restart-run",
+              "stop",
+              "inspect-state",
+              "run-project-tests",
+              "jump-to-source",
+              "compare-snapshot"
+            ]
+          }
+        }
       }
     },
     "accessibility": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["keyboardAuthoring", "screenReaderLandmarks", "touchAlternatives", "nonColorDiagnostics", "highContrast", "reducedMotion", "nonPointerSpatialEditing"],
+      "required": [
+        "keyboardAuthoring",
+        "screenReaderLandmarks",
+        "touchAlternatives",
+        "nonColorDiagnostics",
+        "highContrast",
+        "reducedMotion",
+        "nonPointerSpatialEditing"
+      ],
       "properties": {
-        "keyboardAuthoring": {"const": true},
-        "screenReaderLandmarks": {"const": true},
-        "touchAlternatives": {"const": true},
-        "nonColorDiagnostics": {"const": true},
-        "highContrast": {"const": true},
-        "reducedMotion": {"const": true},
-        "nonPointerSpatialEditing": {"const": true}
+        "keyboardAuthoring": {
+          "const": true
+        },
+        "screenReaderLandmarks": {
+          "const": true
+        },
+        "touchAlternatives": {
+          "const": true
+        },
+        "nonColorDiagnostics": {
+          "const": true
+        },
+        "highContrast": {
+          "const": true
+        },
+        "reducedMotion": {
+          "const": true
+        },
+        "nonPointerSpatialEditing": {
+          "const": true
+        }
       }
     },
     "authoringGuarantees": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["autosave", "undoRedo", "commandPalette", "ruleInspector", "provenanceViewer", "offlineRecovery", "responsiveLayouts", "aiRequired"],
+      "required": [
+        "autosave",
+        "undoRedo",
+        "commandPalette",
+        "ruleInspector",
+        "provenanceViewer",
+        "offlineRecovery",
+        "responsiveLayouts",
+        "aiRequired"
+      ],
       "properties": {
-        "autosave": {"const": true},
-        "undoRedo": {"const": true},
-        "commandPalette": {"const": true},
-        "ruleInspector": {"const": true},
-        "provenanceViewer": {"const": true},
-        "offlineRecovery": {"const": true},
-        "responsiveLayouts": {"const": true},
-        "aiRequired": {"const": false}
+        "autosave": {
+          "const": true
+        },
+        "undoRedo": {
+          "const": true
+        },
+        "commandPalette": {
+          "const": true
+        },
+        "ruleInspector": {
+          "const": true
+        },
+        "provenanceViewer": {
+          "const": true
+        },
+        "offlineRecovery": {
+          "const": true
+        },
+        "responsiveLayouts": {
+          "const": true
+        },
+        "aiRequired": {
+          "const": false
+        }
       }
     },
     "acceptanceWorkflow": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["workflowId", "requiredModes", "proves"],
+      "required": [
+        "workflowId",
+        "requiredModes",
+        "proves"
+      ],
       "properties": {
-        "workflowId": {"$ref": "#/$defs/stableRef"},
-        "requiredModes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/studioMode"}},
-        "proves": {"type": "string", "enum": ["open-project", "top-down-edit", "gated-room-edit", "side-scroll-edit", "dialogue-state-edit", "constraint-swap-no-gameplay-mutation", "alternate-input-map", "run-four-project-tests", "diagnostic-repair", "playable-vs-publishable", "isolated-playtest-reset", "draft-recovery"]}
+        "workflowId": {
+          "$ref": "#/$defs/stableRef"
+        },
+        "requiredModes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/studioMode"
+          }
+        },
+        "proves": {
+          "type": "string",
+          "enum": [
+            "open-project",
+            "top-down-edit",
+            "gated-room-edit",
+            "side-scroll-edit",
+            "dialogue-state-edit",
+            "constraint-swap-no-gameplay-mutation",
+            "alternate-input-map",
+            "run-four-project-tests",
+            "diagnostic-repair",
+            "playable-vs-publishable",
+            "isolated-playtest-reset",
+            "draft-recovery"
+          ]
+        }
       }
     }
   }
