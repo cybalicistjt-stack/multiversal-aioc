@@ -1,0 +1,264 @@
+{
+  "schemaId": "RBCE03.STUDIO.v1",
+  "schemaVersion": "1.0.0",
+  "defaultSkinId": "retrobit-classic-arcade",
+  "modes": [
+    "studio:project",
+    "studio:build",
+    "studio:logic",
+    "studio:playtest"
+  ],
+  "desktopRegions": [
+    "region:project-navigator",
+    "region:palette",
+    "region:main-canvas",
+    "region:inspector",
+    "region:playtest-diagnostics"
+  ],
+  "authoringSurfaces": [
+    {
+      "surfaceId": "surface:project-settings",
+      "label": "Project Settings",
+      "modes": [
+        "studio:project"
+      ],
+      "projectAreas": [
+        "identity",
+        "lineage",
+        "compatibility",
+        "delivery",
+        "accessibility",
+        "provenance",
+        "publishing"
+      ],
+      "allowsArbitraryScript": false,
+      "ownerMutationAuthority": false
+    },
+    {
+      "surfaceId": "surface:scene-builder",
+      "label": "Scene Builder",
+      "modes": [
+        "studio:build"
+      ],
+      "projectAreas": [
+        "scenes",
+        "actors",
+        "assets"
+      ],
+      "allowsArbitraryScript": false,
+      "ownerMutationAuthority": false
+    },
+    {
+      "surfaceId": "surface:logic-composer",
+      "label": "Logic Composer",
+      "modes": [
+        "studio:logic"
+      ],
+      "projectAreas": [
+        "gameplay",
+        "inputs",
+        "variables",
+        "outcomes",
+        "audio",
+        "tests"
+      ],
+      "allowsArbitraryScript": false,
+      "ownerMutationAuthority": false
+    },
+    {
+      "surfaceId": "surface:playtest",
+      "label": "Playtest",
+      "modes": [
+        "studio:playtest"
+      ],
+      "projectAreas": [
+        "gameplay",
+        "scenes",
+        "actors",
+        "assets",
+        "inputs",
+        "variables",
+        "outcomes",
+        "audio",
+        "tests"
+      ],
+      "allowsArbitraryScript": false,
+      "ownerMutationAuthority": false
+    }
+  ],
+  "validationStages": [
+    {
+      "stageId": "validation:rbce01-structure",
+      "authority": "RBCE-01",
+      "blockingCapable": true
+    },
+    {
+      "stageId": "validation:rbce-semantic",
+      "authority": "RBCE",
+      "blockingCapable": true
+    },
+    {
+      "stageId": "validation:gpr-bindings",
+      "authority": "GPR",
+      "blockingCapable": true
+    },
+    {
+      "stageId": "validation:projection",
+      "authority": "RBCE-02",
+      "blockingCapable": true
+    },
+    {
+      "stageId": "validation:assets-rights",
+      "authority": "MAI",
+      "blockingCapable": true
+    },
+    {
+      "stageId": "validation:owner-domain",
+      "authority": "owner-domain",
+      "blockingCapable": true
+    },
+    {
+      "stageId": "validation:accessibility",
+      "authority": "accessibility",
+      "blockingCapable": true
+    },
+    {
+      "stageId": "validation:project-tests",
+      "authority": "project-tests",
+      "blockingCapable": true
+    },
+    {
+      "stageId": "validation:publishing",
+      "authority": "publishing",
+      "blockingCapable": true
+    }
+  ],
+  "playtestContract": {
+    "isolatedFromCanonicalState": true,
+    "requiresDraftSnapshot": true,
+    "semanticHotReloadAssumed": false,
+    "campaignMutationAllowedByDefault": false,
+    "operations": [
+      "start",
+      "pause-when-supported",
+      "restart-scene",
+      "restart-run",
+      "stop",
+      "inspect-state",
+      "run-project-tests",
+      "jump-to-source",
+      "compare-snapshot"
+    ]
+  },
+  "accessibility": {
+    "keyboardAuthoring": true,
+    "screenReaderLandmarks": true,
+    "touchAlternatives": true,
+    "nonColorDiagnostics": true,
+    "highContrast": true,
+    "reducedMotion": true,
+    "nonPointerSpatialEditing": true
+  },
+  "authoringGuarantees": {
+    "autosave": true,
+    "undoRedo": true,
+    "commandPalette": true,
+    "ruleInspector": true,
+    "provenanceViewer": true,
+    "offlineRecovery": true,
+    "responsiveLayouts": true,
+    "aiRequired": false
+  },
+  "acceptanceWorkflows": [
+    {
+      "workflowId": "workflow:open-project",
+      "requiredModes": [
+        "studio:project"
+      ],
+      "proves": "open-project"
+    },
+    {
+      "workflowId": "workflow:top-down-edit",
+      "requiredModes": [
+        "studio:build"
+      ],
+      "proves": "top-down-edit"
+    },
+    {
+      "workflowId": "workflow:gated-room-edit",
+      "requiredModes": [
+        "studio:build",
+        "studio:logic"
+      ],
+      "proves": "gated-room-edit"
+    },
+    {
+      "workflowId": "workflow:side-scroll-edit",
+      "requiredModes": [
+        "studio:build"
+      ],
+      "proves": "side-scroll-edit"
+    },
+    {
+      "workflowId": "workflow:dialogue-state-edit",
+      "requiredModes": [
+        "studio:logic"
+      ],
+      "proves": "dialogue-state-edit"
+    },
+    {
+      "workflowId": "workflow:constraint-swap",
+      "requiredModes": [
+        "studio:build",
+        "studio:playtest"
+      ],
+      "proves": "constraint-swap-no-gameplay-mutation"
+    },
+    {
+      "workflowId": "workflow:alternate-input",
+      "requiredModes": [
+        "studio:logic",
+        "studio:playtest"
+      ],
+      "proves": "alternate-input-map"
+    },
+    {
+      "workflowId": "workflow:project-tests",
+      "requiredModes": [
+        "studio:playtest"
+      ],
+      "proves": "run-four-project-tests"
+    },
+    {
+      "workflowId": "workflow:diagnostic-repair",
+      "requiredModes": [
+        "studio:build",
+        "studio:logic"
+      ],
+      "proves": "diagnostic-repair"
+    },
+    {
+      "workflowId": "workflow:lifecycle-distinction",
+      "requiredModes": [
+        "studio:project",
+        "studio:playtest"
+      ],
+      "proves": "playable-vs-publishable"
+    },
+    {
+      "workflowId": "workflow:isolated-reset",
+      "requiredModes": [
+        "studio:playtest"
+      ],
+      "proves": "isolated-playtest-reset"
+    },
+    {
+      "workflowId": "workflow:draft-recovery",
+      "requiredModes": [
+        "studio:project",
+        "studio:build"
+      ],
+      "proves": "draft-recovery"
+    }
+  ]
+}

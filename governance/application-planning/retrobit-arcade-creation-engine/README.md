@@ -12,5 +12,9 @@ Start here for the durable Retrobit program design.
 8. `RBCE-02_PROJECTION_RUNTIME.schema.json` — machine-readable projection/movement/constraint profile contract.
 9. `RBCE-02_GOLDEN_PROFILES.fixture.json` — golden built-in profile fixture for the three required projection families.
 10. `RBCE-02_MACHINE_CONTRACT_MANIFEST.json` — artifact registry and locked decisions for Step 2.
+11. `RBCE-03_RETROBIT_ARCADE_STUDIO.md` — normative Step 3 creator-facing Studio design.
+12. `RBCE-03_STUDIO_CONTRACT.schema.json` — machine-readable Studio modes/regions/validation/playtest contract.
+13. `RBCE-03_GOLDEN_STUDIO.fixture.json` — golden Studio contract fixture.
+14. `RBCE-03_MACHINE_CONTRACT_MANIFEST.json` — artifact registry and locked decisions for Step 3.
 
 Application implementation remains gated by OPS3 selection. This directory is durable planning/canon support, not a competing operational selector.

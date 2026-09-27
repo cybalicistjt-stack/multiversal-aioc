@@ -1,0 +1,58 @@
+{
+  "programId": "RBCE",
+  "workItemId": "RBCE-03",
+  "status": "owner-directed-design-baseline",
+  "implementationAuthority": false,
+  "activationRule": "Product implementation requires explicit OPS3 selection/authorization of RBCE-03 or equivalent governed implementation work.",
+  "artifacts": [
+    {
+      "path": "governance/application-planning/retrobit-arcade-creation-engine/RBCE-03_RETROBIT_ARCADE_STUDIO.md",
+      "role": "normative-design-spec"
+    },
+    {
+      "path": "governance/application-planning/retrobit-arcade-creation-engine/RBCE-03_STUDIO_CONTRACT.schema.json",
+      "role": "machine-readable-structural-contract"
+    },
+    {
+      "path": "governance/application-planning/retrobit-arcade-creation-engine/RBCE-03_GOLDEN_STUDIO.fixture.json",
+      "role": "golden-studio-contract-fixture"
+    }
+  ],
+  "lockedDecisions": [
+    "visual-authoring-first",
+    "desktop-primary-responsive-authoring",
+    "four-studio-modes",
+    "five-desktop-regions",
+    "no-arbitrary-scripting",
+    "playtest-isolated-from-canonical-state",
+    "continuous-typed-validation",
+    "playable-distinct-from-publishable",
+    "owner-authorities-preserved",
+    "rbce04-owns-asset-preparation",
+    "rbce05-owns-gameplay-parts-taxonomy",
+    "ai-optional-proposal-only",
+    "retrobit-classic-arcade-default-skin",
+    "accessible-non-pointer-spatial-editing"
+  ],
+  "requiredStudioModeIds": [
+    "studio:project",
+    "studio:build",
+    "studio:logic",
+    "studio:playtest"
+  ],
+  "requiredDesktopRegionIds": [
+    "region:project-navigator",
+    "region:palette",
+    "region:main-canvas",
+    "region:inspector",
+    "region:playtest-diagnostics"
+  ],
+  "sourceAlignment": {
+    "rbce01": "RBCE01.PROJECT.v1 authoring/project composition",
+    "rbce02": "RBCE02.PROJECTION.v1 projection/movement/constraint selection and playtest projection",
+    "uiBible": "workspace + inspector + validation + command palette + autosave/undo/redo + responsive authoring",
+    "screenBible": "Scene Builder + Publishing Workspace + shared authoring behaviors",
+    "projectBible": "no UI-only rules engine; validation before accepted mutation; creator uses governed schemas",
+    "skin": "retrobit-classic-arcade"
+  }
+}
