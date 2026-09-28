@@ -1,0 +1,61 @@
+{
+  "programId": "RBCE",
+  "workItemId": "RBCE-04",
+  "status": "owner-directed-design-baseline",
+  "implementationAuthority": false,
+  "activationRule": "Product implementation requires explicit OPS3 selection/authorization of RBCE-04 or equivalent governed implementation work.",
+  "artifacts": [
+    {
+      "path": "governance/application-planning/retrobit-arcade-creation-engine/RBCE-04_RETRO_ASSET_WORKBENCH.md",
+      "role": "normative-design-spec"
+    },
+    {
+      "path": "governance/application-planning/retrobit-arcade-creation-engine/RBCE-04_ASSET_WORKBENCH.schema.json",
+      "role": "machine-readable-structural-contract"
+    },
+    {
+      "path": "governance/application-planning/retrobit-arcade-creation-engine/RBCE-04_GOLDEN_ASSET_WORKBENCH.fixture.json",
+      "role": "golden-workbench-contract-fixture"
+    }
+  ],
+  "lockedDecisions": [
+    "mai-remains-canonical-asset-provenance-authority",
+    "retrobit-specific-pixel-sprite-tile-authoring-layer",
+    "original-pixel-creation-supported",
+    "imported-sources-non-destructive",
+    "persisted-byte-transforms-require-transform-permission",
+    "transform-does-not-imply-use-or-redistribution",
+    "no-provider-download-scraping-purchase-or-auth",
+    "no-arbitrary-scripting-or-plugin-runtime",
+    "no-gameplay-truth-inferred-from-pixels",
+    "rbce02-owns-runtime-projection-semantics",
+    "rbce03-consumes-handoff-assets",
+    "rbce07-owns-final-packaging-entry-points",
+    "local-first-provider-off-complete",
+    "ai-optional-proposal-only"
+  ],
+  "requiredModeIds": [
+    "asset:intake",
+    "asset:pixel-edit",
+    "asset:sprite",
+    "asset:animation",
+    "asset:tiles",
+    "asset:palette"
+  ],
+  "verificationBasis": {
+    "multiversalAppMain": "6fb01d19d5763b00488392a564ec6b303551eb2f",
+    "maiContracts": [
+      "MAI-02",
+      "MAI-06",
+      "MAI-07",
+      "MAI-08"
+    ],
+    "rbceContracts": [
+      "RBCE-01",
+      "RBCE-02",
+      "RBCE-03"
+    ],
+    "uiBible": "shared authoring/Scene Builder patterns",
+    "screenBible": "authoring workspaces + validation/provenance surfaces"
+  }
+}

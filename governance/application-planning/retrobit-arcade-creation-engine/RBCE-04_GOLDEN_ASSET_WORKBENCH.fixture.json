@@ -1,0 +1,398 @@
+{
+  "schemaId": "RBCE04.ASSET_WORKBENCH.v1",
+  "schemaVersion": "1.0.0",
+  "defaultSkinId": "retrobit-classic-arcade",
+  "modes": [
+    "asset:intake",
+    "asset:pixel-edit",
+    "asset:sprite",
+    "asset:animation",
+    "asset:tiles",
+    "asset:palette"
+  ],
+  "workbenchRoles": [
+    "retro-role:pixel-canvas",
+    "retro-role:sprite-sheet",
+    "retro-role:sprite-atlas",
+    "retro-role:animated-sprite",
+    "retro-role:tile-sheet",
+    "retro-role:tileset",
+    "retro-role:background-layer",
+    "retro-role:foreground-layer",
+    "retro-role:ui-sprite",
+    "retro-role:effect-sprite",
+    "retro-role:object-sprite"
+  ],
+  "operations": [
+    {
+      "operationId": "operation:new-pixel-canvas",
+      "modes": [
+        "asset:pixel-edit"
+      ],
+      "changesImageBytes": true,
+      "requiresTransformPermission": true,
+      "createsDerivedAsset": true,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:pencil",
+      "modes": [
+        "asset:pixel-edit"
+      ],
+      "changesImageBytes": true,
+      "requiresTransformPermission": true,
+      "createsDerivedAsset": true,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:erase",
+      "modes": [
+        "asset:pixel-edit"
+      ],
+      "changesImageBytes": true,
+      "requiresTransformPermission": true,
+      "createsDerivedAsset": true,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:fill",
+      "modes": [
+        "asset:pixel-edit"
+      ],
+      "changesImageBytes": true,
+      "requiresTransformPermission": true,
+      "createsDerivedAsset": true,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:line",
+      "modes": [
+        "asset:pixel-edit"
+      ],
+      "changesImageBytes": true,
+      "requiresTransformPermission": true,
+      "createsDerivedAsset": true,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:rectangle",
+      "modes": [
+        "asset:pixel-edit"
+      ],
+      "changesImageBytes": true,
+      "requiresTransformPermission": true,
+      "createsDerivedAsset": true,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:selection-move",
+      "modes": [
+        "asset:pixel-edit"
+      ],
+      "changesImageBytes": true,
+      "requiresTransformPermission": true,
+      "createsDerivedAsset": true,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:color-replace",
+      "modes": [
+        "asset:pixel-edit",
+        "asset:palette"
+      ],
+      "changesImageBytes": true,
+      "requiresTransformPermission": true,
+      "createsDerivedAsset": true,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:crop",
+      "modes": [
+        "asset:sprite",
+        "asset:tiles"
+      ],
+      "changesImageBytes": true,
+      "requiresTransformPermission": true,
+      "createsDerivedAsset": true,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:trim-transparent",
+      "modes": [
+        "asset:sprite"
+      ],
+      "changesImageBytes": true,
+      "requiresTransformPermission": true,
+      "createsDerivedAsset": true,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:nearest-neighbor-scale",
+      "modes": [
+        "asset:sprite",
+        "asset:tiles"
+      ],
+      "changesImageBytes": true,
+      "requiresTransformPermission": true,
+      "createsDerivedAsset": true,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:palette-remap",
+      "modes": [
+        "asset:palette"
+      ],
+      "changesImageBytes": true,
+      "requiresTransformPermission": true,
+      "createsDerivedAsset": true,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:atlas-generate",
+      "modes": [
+        "asset:sprite",
+        "asset:animation"
+      ],
+      "changesImageBytes": true,
+      "requiresTransformPermission": true,
+      "createsDerivedAsset": true,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:slice-grid",
+      "modes": [
+        "asset:sprite",
+        "asset:tiles"
+      ],
+      "changesImageBytes": false,
+      "requiresTransformPermission": false,
+      "createsDerivedAsset": false,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:slice-explicit",
+      "modes": [
+        "asset:sprite",
+        "asset:tiles"
+      ],
+      "changesImageBytes": false,
+      "requiresTransformPermission": false,
+      "createsDerivedAsset": false,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:set-anchor",
+      "modes": [
+        "asset:sprite",
+        "asset:animation"
+      ],
+      "changesImageBytes": false,
+      "requiresTransformPermission": false,
+      "createsDerivedAsset": false,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:set-draw-offset",
+      "modes": [
+        "asset:sprite",
+        "asset:animation"
+      ],
+      "changesImageBytes": false,
+      "requiresTransformPermission": false,
+      "createsDerivedAsset": false,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:animation-group",
+      "modes": [
+        "asset:animation"
+      ],
+      "changesImageBytes": false,
+      "requiresTransformPermission": false,
+      "createsDerivedAsset": false,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:tile-tag",
+      "modes": [
+        "asset:tiles"
+      ],
+      "changesImageBytes": false,
+      "requiresTransformPermission": false,
+      "createsDerivedAsset": false,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    },
+    {
+      "operationId": "operation:constraint-preview",
+      "modes": [
+        "asset:palette",
+        "asset:sprite",
+        "asset:tiles"
+      ],
+      "changesImageBytes": false,
+      "requiresTransformPermission": false,
+      "createsDerivedAsset": false,
+      "ownerMutationAuthority": false,
+      "arbitraryScript": false
+    }
+  ],
+  "permissionModel": {
+    "permissionDimensions": [
+      "ingest",
+      "useInExperience",
+      "transform",
+      "substitute",
+      "redistribute"
+    ],
+    "silenceMeansPermission": false,
+    "transformImpliesUse": false,
+    "transformImpliesRedistribute": false,
+    "networkAcquisitionAllowed": false,
+    "sourceEvidenceImmutable": true
+  },
+  "authoringGuarantees": {
+    "localFirst": true,
+    "providerOffComplete": true,
+    "aiRequired": false,
+    "undoRedo": true,
+    "autosaveRecovery": true,
+    "nonDestructiveImportedSources": true,
+    "keyboardEssentialTools": true,
+    "numericSpatialAlternative": true
+  },
+  "handoff": {
+    "boundary": "mai-handoff",
+    "targets": [
+      "MAI",
+      "RBCE-03",
+      "RBCE-02"
+    ],
+    "publishesPack": false,
+    "mutatesCanonicalGameplay": false,
+    "preservesProvenance": true,
+    "requiresDeterministicLineageReceipt": true
+  },
+  "acceptanceWorkflows": [
+    {
+      "workflowId": "workflow:original-player",
+      "proves": "original-pixel-creation",
+      "requiredModes": [
+        "asset:pixel-edit"
+      ]
+    },
+    {
+      "workflowId": "workflow:permitted-sheet-intake",
+      "proves": "evidence-aware-intake",
+      "requiredModes": [
+        "asset:intake"
+      ]
+    },
+    {
+      "workflowId": "workflow:slice-stable-frames",
+      "proves": "deterministic-slicing",
+      "requiredModes": [
+        "asset:sprite"
+      ]
+    },
+    {
+      "workflowId": "workflow:idle-walk-animation",
+      "proves": "animation-authoring",
+      "requiredModes": [
+        "asset:animation"
+      ]
+    },
+    {
+      "workflowId": "workflow:anchor-offset",
+      "proves": "anchor-offset-authoring",
+      "requiredModes": [
+        "asset:sprite"
+      ]
+    },
+    {
+      "workflowId": "workflow:terrain-sheet",
+      "proves": "tile-extraction",
+      "requiredModes": [
+        "asset:tiles"
+      ]
+    },
+    {
+      "workflowId": "workflow:terrain-visual-only",
+      "proves": "visual-terrain-no-gameplay-truth",
+      "requiredModes": [
+        "asset:tiles"
+      ]
+    },
+    {
+      "workflowId": "workflow:inspired-palette-preview",
+      "proves": "palette-constraint-preview",
+      "requiredModes": [
+        "asset:palette"
+      ]
+    },
+    {
+      "workflowId": "workflow:block-unknown-transform",
+      "proves": "transform-permission-block",
+      "requiredModes": [
+        "asset:intake",
+        "asset:palette"
+      ]
+    },
+    {
+      "workflowId": "workflow:placeholder-explicit",
+      "proves": "explicit-placeholder-policy",
+      "requiredModes": [
+        "asset:intake"
+      ]
+    },
+    {
+      "workflowId": "workflow:deterministic-atlas",
+      "proves": "deterministic-derived-atlas",
+      "requiredModes": [
+        "asset:sprite",
+        "asset:animation"
+      ]
+    },
+    {
+      "workflowId": "workflow:studio-handoff",
+      "proves": "studio-handoff-no-owner-mutation",
+      "requiredModes": [
+        "asset:sprite",
+        "asset:tiles"
+      ]
+    },
+    {
+      "workflowId": "workflow:draft-recovery",
+      "proves": "draft-recovery",
+      "requiredModes": [
+        "asset:pixel-edit"
+      ]
+    },
+    {
+      "workflowId": "workflow:provider-off",
+      "proves": "provider-off-ai-disabled",
+      "requiredModes": [
+        "asset:intake",
+        "asset:pixel-edit"
+      ]
+    }
+  ]
+}

@@ -16,5 +16,9 @@ Start here for the durable Retrobit program design.
 12. `RBCE-03_STUDIO_CONTRACT.schema.json` — machine-readable Studio modes/regions/validation/playtest contract.
 13. `RBCE-03_GOLDEN_STUDIO.fixture.json` — golden Studio contract fixture.
 14. `RBCE-03_MACHINE_CONTRACT_MANIFEST.json` — artifact registry and locked decisions for Step 3.
+15. `RBCE-04_RETRO_ASSET_WORKBENCH.md` — normative Step 4 pixel/sprite/tile asset-workbench design.
+16. `RBCE-04_ASSET_WORKBENCH.schema.json` — machine-readable workbench mode/operation/permission/handoff contract.
+17. `RBCE-04_GOLDEN_ASSET_WORKBENCH.fixture.json` — golden Retro Asset Workbench acceptance fixture.
+18. `RBCE-04_MACHINE_CONTRACT_MANIFEST.json` — artifact registry and locked decisions for Step 4.
 
 Application implementation remains gated by OPS3 selection. This directory is durable planning/canon support, not a competing operational selector.

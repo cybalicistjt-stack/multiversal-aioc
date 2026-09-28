@@ -1,0 +1,342 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:multiversal:rbce:RBCE04.ASSET_WORKBENCH.v1",
+  "title": "RBCE-04 Retro Asset Workbench Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaId",
+    "schemaVersion",
+    "defaultSkinId",
+    "modes",
+    "workbenchRoles",
+    "operations",
+    "permissionModel",
+    "authoringGuarantees",
+    "handoff",
+    "acceptanceWorkflows"
+  ],
+  "properties": {
+    "schemaId": {
+      "const": "RBCE04.ASSET_WORKBENCH.v1"
+    },
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "defaultSkinId": {
+      "const": "retrobit-classic-arcade"
+    },
+    "modes": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/mode"
+      }
+    },
+    "workbenchRoles": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/retroRole"
+      }
+    },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/operation"
+      }
+    },
+    "permissionModel": {
+      "$ref": "#/$defs/permissionModel"
+    },
+    "authoringGuarantees": {
+      "$ref": "#/$defs/authoringGuarantees"
+    },
+    "handoff": {
+      "$ref": "#/$defs/handoff"
+    },
+    "acceptanceWorkflows": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "items": {
+        "$ref": "#/$defs/workflow"
+      }
+    }
+  },
+  "$defs": {
+    "stableRef": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*:[a-z0-9][a-z0-9._:/-]*$"
+    },
+    "mode": {
+      "enum": [
+        "asset:intake",
+        "asset:pixel-edit",
+        "asset:sprite",
+        "asset:animation",
+        "asset:tiles",
+        "asset:palette"
+      ]
+    },
+    "retroRole": {
+      "enum": [
+        "retro-role:pixel-canvas",
+        "retro-role:sprite-sheet",
+        "retro-role:sprite-atlas",
+        "retro-role:animated-sprite",
+        "retro-role:tile-sheet",
+        "retro-role:tileset",
+        "retro-role:background-layer",
+        "retro-role:foreground-layer",
+        "retro-role:ui-sprite",
+        "retro-role:effect-sprite",
+        "retro-role:object-sprite"
+      ]
+    },
+    "operation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operationId",
+        "modes",
+        "changesImageBytes",
+        "requiresTransformPermission",
+        "createsDerivedAsset",
+        "ownerMutationAuthority",
+        "arbitraryScript"
+      ],
+      "properties": {
+        "operationId": {
+          "$ref": "#/$defs/stableRef"
+        },
+        "modes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/mode"
+          }
+        },
+        "changesImageBytes": {
+          "type": "boolean"
+        },
+        "requiresTransformPermission": {
+          "type": "boolean"
+        },
+        "createsDerivedAsset": {
+          "type": "boolean"
+        },
+        "ownerMutationAuthority": {
+          "const": false
+        },
+        "arbitraryScript": {
+          "const": false
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "changesImageBytes": {
+                "const": true
+              }
+            },
+            "required": [
+              "changesImageBytes"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiresTransformPermission": {
+                "const": true
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "createsDerivedAsset": {
+                "const": true
+              }
+            },
+            "required": [
+              "createsDerivedAsset"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiresTransformPermission": {
+                "const": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    "permissionModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "permissionDimensions",
+        "silenceMeansPermission",
+        "transformImpliesUse",
+        "transformImpliesRedistribute",
+        "networkAcquisitionAllowed",
+        "sourceEvidenceImmutable"
+      ],
+      "properties": {
+        "permissionDimensions": {
+          "const": [
+            "ingest",
+            "useInExperience",
+            "transform",
+            "substitute",
+            "redistribute"
+          ]
+        },
+        "silenceMeansPermission": {
+          "const": false
+        },
+        "transformImpliesUse": {
+          "const": false
+        },
+        "transformImpliesRedistribute": {
+          "const": false
+        },
+        "networkAcquisitionAllowed": {
+          "const": false
+        },
+        "sourceEvidenceImmutable": {
+          "const": true
+        }
+      }
+    },
+    "authoringGuarantees": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "localFirst",
+        "providerOffComplete",
+        "aiRequired",
+        "undoRedo",
+        "autosaveRecovery",
+        "nonDestructiveImportedSources",
+        "keyboardEssentialTools",
+        "numericSpatialAlternative"
+      ],
+      "properties": {
+        "localFirst": {
+          "const": true
+        },
+        "providerOffComplete": {
+          "const": true
+        },
+        "aiRequired": {
+          "const": false
+        },
+        "undoRedo": {
+          "const": true
+        },
+        "autosaveRecovery": {
+          "const": true
+        },
+        "nonDestructiveImportedSources": {
+          "const": true
+        },
+        "keyboardEssentialTools": {
+          "const": true
+        },
+        "numericSpatialAlternative": {
+          "const": true
+        }
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "boundary",
+        "targets",
+        "publishesPack",
+        "mutatesCanonicalGameplay",
+        "preservesProvenance",
+        "requiresDeterministicLineageReceipt"
+      ],
+      "properties": {
+        "boundary": {
+          "const": "mai-handoff"
+        },
+        "targets": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "MAI",
+              "RBCE-03",
+              "RBCE-02"
+            ]
+          }
+        },
+        "publishesPack": {
+          "const": false
+        },
+        "mutatesCanonicalGameplay": {
+          "const": false
+        },
+        "preservesProvenance": {
+          "const": true
+        },
+        "requiresDeterministicLineageReceipt": {
+          "const": true
+        }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "workflowId",
+        "proves",
+        "requiredModes"
+      ],
+      "properties": {
+        "workflowId": {
+          "$ref": "#/$defs/stableRef"
+        },
+        "proves": {
+          "enum": [
+            "original-pixel-creation",
+            "evidence-aware-intake",
+            "deterministic-slicing",
+            "animation-authoring",
+            "anchor-offset-authoring",
+            "tile-extraction",
+            "visual-terrain-no-gameplay-truth",
+            "palette-constraint-preview",
+            "transform-permission-block",
+            "explicit-placeholder-policy",
+            "deterministic-derived-atlas",
+            "studio-handoff-no-owner-mutation",
+            "draft-recovery",
+            "provider-off-ai-disabled"
+          ]
+        },
+        "requiredModes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/mode"
+          }
+        }
+      }
+    }
+  }
+}
