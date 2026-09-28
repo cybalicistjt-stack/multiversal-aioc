@@ -1,0 +1,574 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:multiversal:rbce:RBCE05.GAMEPLAY_PARTS.v1",
+  "title": "RBCE-05 Gameplay Parts Library Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaId",
+    "schemaVersion",
+    "defaultSkinId",
+    "libraryAuthority",
+    "runtimeAuthority",
+    "definitionAuthority",
+    "partForms",
+    "categories",
+    "parts",
+    "authoringGuarantees",
+    "acceptanceWorkflows"
+  ],
+  "properties": {
+    "schemaId": {
+      "const": "RBCE05.GAMEPLAY_PARTS.v1"
+    },
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "defaultSkinId": {
+      "const": "retrobit-classic-arcade"
+    },
+    "libraryAuthority": {
+      "const": "projection-only"
+    },
+    "runtimeAuthority": {
+      "const": "GPR"
+    },
+    "definitionAuthority": {
+      "const": "MRCS"
+    },
+    "partForms": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "part-form:binding",
+          "part-form:recipe"
+        ]
+      }
+    },
+    "categories": {
+      "type": "array",
+      "minItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/category"
+      }
+    },
+    "parts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/part"
+      }
+    },
+    "authoringGuarantees": {
+      "$ref": "#/$defs/guarantees"
+    },
+    "acceptanceWorkflows": {
+      "type": "array",
+      "minItems": 14,
+      "items": {
+        "$ref": "#/$defs/workflow"
+      }
+    }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*:[a-z0-9][a-z0-9._:/-]*$"
+    },
+    "runtimeRef": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*:[a-z0-9][a-z0-9._/-]*@[0-9]+(?:\\.[0-9]+){1,2}(?:-[a-z0-9.-]+)?$"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^[0-9]+(?:\\.[0-9]+){1,2}(?:-[a-z0-9.-]+)?$"
+    },
+    "category": {
+      "enum": [
+        "part-category:game-loop",
+        "part-category:objective",
+        "part-category:participant-role",
+        "part-category:action",
+        "part-category:resource",
+        "part-category:rule",
+        "part-category:reward",
+        "part-category:specialist",
+        "part-category:interaction",
+        "part-category:composite"
+      ]
+    },
+    "deliveryMode": {
+      "enum": [
+        "direct-play",
+        "cozy-low-pressure",
+        "gm-led",
+        "world-map-ttrpg-bridge",
+        "embedded-minigame",
+        "user-authored-loop-mini",
+        "roster-injection"
+      ]
+    },
+    "projectionFamily": {
+      "enum": [
+        "top-down-2d",
+        "side-scroll-2d",
+        "fixed-room-2d"
+      ]
+    },
+    "bindingKind": {
+      "enum": [
+        "binding-kind:gpr-pattern",
+        "binding-kind:gpr-primitive",
+        "binding-kind:gpr-operation",
+        "binding-kind:gpr-asset-role",
+        "binding-kind:mrcs-definition",
+        "binding-kind:owner-reference"
+      ]
+    },
+    "sourceAuthority": {
+      "enum": [
+        "MRCS",
+        "MAL-01..10",
+        "canonical-owner",
+        "ARI/PCA",
+        "owner-domain"
+      ]
+    },
+    "readiness": {
+      "enum": [
+        "ready",
+        "unresolved",
+        "unsupported"
+      ]
+    },
+    "compatibilityState": {
+      "enum": [
+        "explicit-compatible",
+        "explicit-incompatible",
+        "unknown"
+      ]
+    },
+    "duplicatePolicy": {
+      "enum": [
+        "duplicate-policy:allow",
+        "duplicate-policy:singleton",
+        "duplicate-policy:merge-by-stable-id",
+        "duplicate-policy:replace-explicitly"
+      ]
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bindingId",
+        "bindingKind",
+        "sourceAuthority",
+        "sourceReference",
+        "ownerDomain",
+        "resolutionStatus",
+        "required"
+      ],
+      "properties": {
+        "bindingId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "bindingKind": {
+          "$ref": "#/$defs/bindingKind"
+        },
+        "sourceAuthority": {
+          "$ref": "#/$defs/sourceAuthority"
+        },
+        "sourceReference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ownerDomain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resolutionStatus": {
+          "$ref": "#/$defs/readiness"
+        },
+        "required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "parameter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parameterId",
+        "label",
+        "valueType",
+        "required",
+        "targetPath",
+        "validator"
+      ],
+      "properties": {
+        "parameterId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "valueType": {
+          "enum": [
+            "boolean",
+            "integer",
+            "number",
+            "string",
+            "enum",
+            "stable-ref"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "enumValues": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "targetPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "validator": {
+          "enum": [
+            "RBCE-01",
+            "GPR",
+            "MRCS",
+            "owner-domain"
+          ]
+        }
+      }
+    },
+    "expansionTarget": {
+      "enum": [
+        "target:gpr-pattern",
+        "target:gpr-participant",
+        "target:gpr-objective",
+        "target:gpr-operation",
+        "target:gpr-resource",
+        "target:gpr-rule",
+        "target:gpr-reward",
+        "target:rbce-variable",
+        "target:rbce-outcome",
+        "target:rbce-actor-binding",
+        "target:rbce-scene-reference"
+      ]
+    },
+    "expansionStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stepId",
+        "target",
+        "sourceBindingId",
+        "parameterIds"
+      ],
+      "properties": {
+        "stepId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "target": {
+          "$ref": "#/$defs/expansionTarget"
+        },
+        "sourceBindingId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "parameterIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/stableId"
+          }
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deliveryState",
+        "deliveryModes",
+        "projectionState",
+        "projectionFamilies"
+      ],
+      "properties": {
+        "deliveryState": {
+          "$ref": "#/$defs/compatibilityState"
+        },
+        "deliveryModes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/deliveryMode"
+          }
+        },
+        "projectionState": {
+          "$ref": "#/$defs/compatibilityState"
+        },
+        "projectionFamilies": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/projectionFamily"
+          }
+        }
+      }
+    },
+    "part": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "partId",
+        "partVersion",
+        "form",
+        "category",
+        "title",
+        "summary",
+        "readiness",
+        "insertable",
+        "duplicatePolicy",
+        "sourceBindings",
+        "parameters",
+        "expansionSteps",
+        "dependencies",
+        "compatibility",
+        "provenanceRefs",
+        "allowsArbitraryScript",
+        "ownerMutationAuthority",
+        "createsCanonicalDefinition",
+        "runtimeExecutionAuthority"
+      ],
+      "properties": {
+        "partId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "partVersion": {
+          "$ref": "#/$defs/semver"
+        },
+        "form": {
+          "enum": [
+            "part-form:binding",
+            "part-form:recipe"
+          ]
+        },
+        "category": {
+          "$ref": "#/$defs/category"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "readiness": {
+          "$ref": "#/$defs/readiness"
+        },
+        "insertable": {
+          "type": "boolean"
+        },
+        "duplicatePolicy": {
+          "$ref": "#/$defs/duplicatePolicy"
+        },
+        "sourceBindings": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/parameter"
+          }
+        },
+        "expansionSteps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/expansionStep"
+          }
+        },
+        "dependencies": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/stableId"
+          }
+        },
+        "compatibility": {
+          "$ref": "#/$defs/compatibility"
+        },
+        "provenanceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "allowsArbitraryScript": {
+          "const": false
+        },
+        "ownerMutationAuthority": {
+          "const": false
+        },
+        "createsCanonicalDefinition": {
+          "const": false
+        },
+        "runtimeExecutionAuthority": {
+          "const": false
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "form": {
+                "const": "part-form:binding"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "sourceBindings": {
+                "maxItems": 1
+              },
+              "expansionSteps": {
+                "maxItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "readiness": {
+                "const": "ready"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "insertable": {
+                "const": true
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "readiness": {
+                "enum": [
+                  "unresolved",
+                  "unsupported"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "insertable": {
+                "const": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    "guarantees": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deterministicExpansion",
+        "failClosedBindings",
+        "providerOffComplete",
+        "aiRequired",
+        "arbitraryScriptAllowed",
+        "canonicalMutationAllowed",
+        "runtimeIdMintingAllowed",
+        "previewBeforeInsert",
+        "nonvisualAuthoring"
+      ],
+      "properties": {
+        "deterministicExpansion": {
+          "const": true
+        },
+        "failClosedBindings": {
+          "const": true
+        },
+        "providerOffComplete": {
+          "const": true
+        },
+        "aiRequired": {
+          "const": false
+        },
+        "arbitraryScriptAllowed": {
+          "const": false
+        },
+        "canonicalMutationAllowed": {
+          "const": false
+        },
+        "runtimeIdMintingAllowed": {
+          "const": false
+        },
+        "previewBeforeInsert": {
+          "const": true
+        },
+        "nonvisualAuthoring": {
+          "const": true
+        }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "workflowId",
+        "proves"
+      ],
+      "properties": {
+        "workflowId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "proves": {
+          "enum": [
+            "browse-human-readable",
+            "inspect-governed-source",
+            "insert-binding",
+            "configure-parameter",
+            "insert-recipe",
+            "deterministic-expansion",
+            "unresolved-blocks-insert",
+            "unsupported-blocks-insert",
+            "delivery-compatibility-filter",
+            "projection-compatibility-filter",
+            "version-pin-migration",
+            "owner-authority-preserved",
+            "accessible-nonvisual",
+            "provider-off-complete",
+            "four-engine-coverage"
+          ]
+        }
+      }
+    }
+  }
+}
