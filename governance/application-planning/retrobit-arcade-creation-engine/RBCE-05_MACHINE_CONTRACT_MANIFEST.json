@@ -1,0 +1,63 @@
+{
+  "programId": "RBCE",
+  "workItemId": "RBCE-05",
+  "status": "owner-directed-design-baseline",
+  "implementationAuthority": false,
+  "activationRule": "Product implementation requires explicit OPS3 selection/authorization of RBCE-05 or equivalent governed implementation work.",
+  "artifacts": [
+    {
+      "path": "governance/application-planning/retrobit-arcade-creation-engine/RBCE-05_GAMEPLAY_PARTS_LIBRARY.md",
+      "role": "normative-design-spec"
+    },
+    {
+      "path": "governance/application-planning/retrobit-arcade-creation-engine/RBCE-05_GAMEPLAY_PARTS_LIBRARY.schema.json",
+      "role": "machine-readable-structural-contract"
+    },
+    {
+      "path": "governance/application-planning/retrobit-arcade-creation-engine/RBCE-05_GOLDEN_GAMEPLAY_PARTS.fixture.json",
+      "role": "golden-gameplay-parts-fixture"
+    }
+  ],
+  "lockedDecisions": [
+    "gameplay-parts-are-projection-only",
+    "exactly-two-part-forms-binding-and-recipe",
+    "gpr-runtime-authority-preserved",
+    "mrcs-definition-authority-preserved",
+    "canonical-owner-operation-authority-preserved",
+    "no-runtime-id-minting",
+    "no-arbitrary-scripting",
+    "deterministic-recipe-expansion",
+    "fail-closed-unresolved-or-unsupported-bindings",
+    "evidence-driven-compatibility",
+    "explicit-duplicate-policy",
+    "version-pinned-governed-bindings",
+    "preview-before-insert",
+    "local-first-provider-off-complete",
+    "ai-optional-proposal-only",
+    "accessible-nonvisual-library"
+  ],
+  "sourceAlignment": {
+    "gpr01": "GPR-01.1 registry kinds/namespace/source-authority and fail-closed binding resolution",
+    "gpr06": "GPR-06.1 specialist module families and owner-capability/owner-receipt boundaries",
+    "gpr08": "GPR-08.1 bounded loop-mini authoring collections and seven delivery modes",
+    "mrcs13": "MRCS-13.1 explicit owner references, no semantic/compatibility inference and no canonical mutation",
+    "mrcs21": "MRCS-21 reduced-GPR consumption, cross-domain definition proof, local-first/provider independence",
+    "rbce01": "Retrobit project gameplay/variables/outcomes composition targets",
+    "rbce03": "Studio logic composer and validation/preview/insert flow"
+  },
+  "verificationAnchors": {
+    "applicationMainSha": "6fb01d19d5763b00488392a564ec6b303551eb2f",
+    "runtimeIds": [
+      "gpr.pattern:pattern/loop-mini@1.0.0",
+      "gpr.pattern:objective/collect@1.0.0",
+      "gpr.asset-role:asset-role/player@1.0.0",
+      "gpr.operation:operation/interact@1.0.0",
+      "gpr.operation:operation/move@1.0.0",
+      "gpr.primitive:resource/score@1.0.0",
+      "gpr.pattern:pattern/specialist-social-investigation@1.0.0",
+      "gpr.operation:operation/specialist-social-investigation@1.0.0",
+      "gpr.pattern:multiversal/golden/environment-hazard@1.0.0"
+    ],
+    "negativeRuntimeId": "gpr.pattern:pattern/missing-specialist@1.0.0"
+  }
+}

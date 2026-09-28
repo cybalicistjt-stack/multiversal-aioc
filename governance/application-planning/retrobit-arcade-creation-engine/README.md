@@ -20,5 +20,9 @@ Start here for the durable Retrobit program design.
 16. `RBCE-04_ASSET_WORKBENCH.schema.json` — machine-readable workbench mode/operation/permission/handoff contract.
 17. `RBCE-04_GOLDEN_ASSET_WORKBENCH.fixture.json` — golden Retro Asset Workbench acceptance fixture.
 18. `RBCE-04_MACHINE_CONTRACT_MANIFEST.json` — artifact registry and locked decisions for Step 4.
+19. `RBCE-05_GAMEPLAY_PARTS_LIBRARY.md` — normative Step 5 human-readable governed Gameplay Parts design.
+20. `RBCE-05_GAMEPLAY_PARTS_LIBRARY.schema.json` — machine-readable Gameplay Parts binding/recipe/compatibility contract.
+21. `RBCE-05_GOLDEN_GAMEPLAY_PARTS.fixture.json` — golden Gameplay Parts catalog/recipe acceptance fixture.
+22. `RBCE-05_MACHINE_CONTRACT_MANIFEST.json` — artifact registry and verification anchors for Step 5.
 
 Application implementation remains gated by OPS3 selection. This directory is durable planning/canon support, not a competing operational selector.
