@@ -24,5 +24,9 @@ Start here for the durable Retrobit program design.
 20. `RBCE-05_GAMEPLAY_PARTS_LIBRARY.schema.json` — machine-readable Gameplay Parts binding/recipe/compatibility contract.
 21. `RBCE-05_GOLDEN_GAMEPLAY_PARTS.fixture.json` — golden Gameplay Parts catalog/recipe acceptance fixture.
 22. `RBCE-05_MACHINE_CONTRACT_MANIFEST.json` — artifact registry and verification anchors for Step 5.
+23. `RBCE-06_FOUR_ENGINE_TEST_CHAMBER.md` — normative Step 6 golden-game conformance design.
+24. `RBCE-06_TEST_CHAMBER.schema.json` — machine-readable chamber/roundtrip/proof-vector contract.
+25. `RBCE-06_GOLDEN_TEST_CHAMBER.fixture.json` — golden Four-Engine Test Chamber conformance fixture.
+26. `RBCE-06_MACHINE_CONTRACT_MANIFEST.json` — artifact registry, locked decisions and verification anchors for Step 6.
 
 Application implementation remains gated by OPS3 selection. This directory is durable planning/canon support, not a competing operational selector.
