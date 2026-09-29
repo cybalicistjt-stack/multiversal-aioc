@@ -2,8 +2,8 @@
 
 **Work item:** RBCE-01  
 **Program:** Retrobit Arcade & Creation Engine (RBCE)  
-**Status:** OWNER-APPROVED STEP 1 — DESIGN SPECIFICATION STARTED  
-**Spec version:** 0.1.0  
+**Status:** OWNER-APPROVED STEP 1 — DESIGN COMPLETE / VERIFIED  
+**Spec version:** 1.0.0  
 **Owner and final authority:** John Brandon Turner  
 **Operational authority:** none; implementation requires OPS3 selection/authorization  
 **Parent charter:** `RETROBIT_ARCADE_CREATION_ENGINE_CHARTER.md`
@@ -654,6 +654,8 @@ RBCE-01 design is ready for implementation planning when the following are true:
 9. accessibility-equivalent consequential interaction is represented;
 10. an implementation plan names exact repository contracts/tests to add without starting RBCE-02 prematurely.
 
+Formal criterion-by-criterion closeout evidence is recorded in `RBCE-01_DESIGN_CLOSEOUT.md`.
+
 ## 29. Deferred to later RBCE steps
 
 RBCE-01 intentionally does not define:
@@ -672,6 +674,8 @@ Those belong to RBCE-02 through RBCE-07.
 
 ## 30. Current design conclusion
 
-The Retrobit Game Project should be a thin, explicit composition format over existing Multiversal authorities. Its key job is to make a small game **portable, inspectable, testable and editable** while preventing the creator layer from becoming a second rules engine or a rights/provenance bypass.
+The Retrobit Game Project is a thin, explicit composition format over existing Multiversal authorities. Its key job is to make a small game **portable, inspectable, testable and editable** while preventing the creator layer from becoming a second rules engine or a rights/provenance bypass.
 
-The next RBCE-01 action is implementation planning against the live GPR/MRCS/MAI/ISE contracts.
+RBCE-01 design is complete and verified for implementation planning. The implementation plan is durable at `docs/superpowers/plans/2026-09-27-retrobit-game-project-format.md`, and the machine baseline is durable in `RBCE-01_RETROBIT_GAME_PROJECT.schema.json`, `RBCE-01_FOUR_ENGINE_TEST_CHAMBER.fixture.json`, `RBCE-01_MACHINE_CONTRACT.md` and `RBCE-01_MACHINE_CONTRACT_MANIFEST.json`.
+
+This design closeout grants no product implementation authority. Application implementation remains gated by OPS3 selection/authorization. RBCE-02 through RBCE-07 have since been designed as separate successor tranches and do not alter RBCE-01's authority boundary.
