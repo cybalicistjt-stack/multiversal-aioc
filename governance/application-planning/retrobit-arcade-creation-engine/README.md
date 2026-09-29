@@ -28,5 +28,11 @@ Start here for the durable Retrobit program design.
 24. `RBCE-06_TEST_CHAMBER.schema.json` — machine-readable chamber/roundtrip/proof-vector contract.
 25. `RBCE-06_GOLDEN_TEST_CHAMBER.fixture.json` — golden Four-Engine Test Chamber conformance fixture.
 26. `RBCE-06_MACHINE_CONTRACT_MANIFEST.json` — artifact registry, locked decisions and verification anchors for Step 6.
+27. `RBCE-07_PRODUCT_ENTRY_POINTS_AND_PACKAGING.md` — normative Step 7 product routing, roster/attachment and `.pack` candidate design.
+28. `RBCE-07_PRODUCT_PACKAGING.schema.json` — machine-readable entry-point/package-candidate/import-export contract.
+29. `RBCE-07_GOLDEN_PRODUCT_PACKAGING.fixture.json` — golden product-entry and package-candidate fixture.
+30. `RBCE-07_MACHINE_CONTRACT_MANIFEST.json` — artifact registry, locked decisions and verification boundary for Step 7.
+
+RBCE-01 through RBCE-07 now form the durable owner-approved planning sequence.
 
 Application implementation remains gated by OPS3 selection. This directory is durable planning/canon support, not a competing operational selector.
