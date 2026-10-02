@@ -9,10 +9,10 @@
   "attempt_id": "CWKS-01-attempt-001",
   "title": "Structured Document Schema and Validation Foundation",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
-  "implementation_authority": true,
-  "implementation_branch": "work/cwks-01-document-schema",
-  "completed": false,
+  "status": "completed_verified",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_owner": "2026-10-02 owner approved CWKS replacing the terminal MRCS persistent slot and explicitly directed execution of Step 1.",
   "objective": "Implement the approved editor-independent CWKS v1 structured-document contract, runtime validator and focused contract tests without adding editor UI, persistence adapters, story/wiki project models or Creator Suite migrations.",
   "scope": {
@@ -41,25 +41,32 @@
     "completed_history": ["MRCS-21 completed_verified", "SAA-30 completed_verified"],
     "parallel_lane_rule": "GPR PCV-03F remains independently in_progress; CWKS may not modify or borrow the GPR implementation branch."
   },
-  "active_substep": "task_1_core_schema_red",
-  "next_action": "Create work/cwks-01-document-schema from the approved design branch, add the focused failing CWKS document-schema contract test, prove RED, then implement only the minimum core schema/validator required to make Task 1 green.",
+  "publication": {
+    "validated_head": "80e4a1284bf63663e0a2c8167690f6314882f259",
+    "validation_run": "37009379701",
+    "application_merge_sha": "c5180b9270bee9eb060be60e725d5258940e1ec5",
+    "application_pr": 786,
+    "ready_candidate_id": "CWKS-01-app-001"
+  },
+  "active_substep": "completed_verified",
+  "next_action": "CWKS-02 renderer may start only after canonical selector transition and owner-approved renderer spec/plan.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 3,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 3,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner approved the written CWKS Step 1 implementation plan and directed execution on 2026-10-02."
+      "seq": 3,
+      "kind": "published",
+      "evidence": "CWKS-01 exact validated application head 80e4a1284bf63663e0a2c8167690f6314882f259 merged through PR 786 as application main c5180b9270bee9eb060be60e725d5258940e1ec5."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": "completed_verified"
   },
   "execution_conformance": {
-    "status": "in_progress",
+    "status": "completed_verified",
     "policy_violations": []
   }
 }
