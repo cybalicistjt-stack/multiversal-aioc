@@ -57,7 +57,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
 
     def test_ready_queue_is_fifo_without_reserving_future_work(self) -> None:
         state=PUBLICATION.free_publication_queue("cybalicistjt-stack/Multiversal-app",generation=30)
-        for cid,lane in (("a","gpr"),("b","mrcs"),("c","oarc")):
+        for cid,lane in (("a","gpr"),("b","cwks"),("c","oarc")):
             state=PUBLICATION.submit_ready_candidate(state,expected_generation=state["generation"],candidate=self.candidate(cid,lane))
         self.assertEqual([x["candidate_id"] for x in state["ready"]],["a","b","c"])
 
@@ -72,7 +72,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
     def test_only_ready_head_can_merge(self) -> None:
         state=PUBLICATION.free_publication_queue("cybalicistjt-stack/Multiversal-app",generation=45)
         state=PUBLICATION.submit_ready_candidate(state,expected_generation=45,candidate=self.candidate("a"))
-        state=PUBLICATION.submit_ready_candidate(state,expected_generation=46,candidate=self.candidate("b","mrcs"))
+        state=PUBLICATION.submit_ready_candidate(state,expected_generation=46,candidate=self.candidate("b","cwks"))
         receipt={"candidate_id":"b","candidate_head":"head-b","base_sha":"main-now","status":"green","run_id":"integration-b"}
         errors=PUBLICATION.validate_integration_authorization(state,candidate_id="b",fresh_main_sha="main-now",pr_head_sha="head-b",integration_receipt=receipt)
         self.assertIn(PUBLICATION.QUEUE_ORDER,errors)
@@ -80,7 +80,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
     def test_failed_ready_candidate_does_not_strand_followers(self) -> None:
         state=PUBLICATION.free_publication_queue("cybalicistjt-stack/Multiversal-app",generation=50)
         state=PUBLICATION.submit_ready_candidate(state,expected_generation=50,candidate=self.candidate("a"))
-        state=PUBLICATION.submit_ready_candidate(state,expected_generation=51,candidate=self.candidate("b","mrcs"))
+        state=PUBLICATION.submit_ready_candidate(state,expected_generation=51,candidate=self.candidate("b","cwks"))
         state=PUBLICATION.fail_ready_candidate(state,expected_generation=52,candidate_id="a",reason="integration test failed")
         self.assertEqual([x["candidate_id"] for x in state["ready"]],["b"])
         self.assertEqual(state["history"][-1]["status"],"failed")
@@ -103,14 +103,16 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
 
     def test_lane_state_transport_is_sharded_by_lane(self) -> None:
         self.assertEqual(LANE_STATE.coordination_branch("gpr"),"ops3-lane-state/gpr")
-        self.assertEqual(LANE_STATE.coordination_branch("mrcs"),"ops3-lane-state/mrcs")
+        self.assertEqual(LANE_STATE.coordination_branch("cwks"),"ops3-lane-state/cwks")
         a=LANE_STATE.initial_state("gpr",revision=1,selected_work_item="GPR-X",attempt_id="GPR-X-attempt-001")
-        b=LANE_STATE.initial_state("mrcs",revision=1,selected_work_item="MRCS-X",attempt_id="MRCS-X-attempt-001")
+        b=LANE_STATE.initial_state("cwks",revision=1,selected_work_item="CWKS-X",attempt_id="CWKS-X-attempt-001")
         a2=LANE_STATE.start_execution(a,expected_revision=1,lane="gpr",implementation_branch="work/gpr-x",evidence="owner Continue")
         self.assertEqual(a2["revision"],2)
         self.assertEqual(b["revision"],1)
         with self.assertRaises(LANE_STATE.LaneStateConflict):
-            LANE_STATE.mark_prequeue_green(a2,expected_revision=2,lane="mrcs",candidate_head="head-a",validation_run="run-a")
+            LANE_STATE.coordination_branch("mrcs")
+        with self.assertRaises(LANE_STATE.LaneStateConflict):
+            LANE_STATE.mark_prequeue_green(a2,expected_revision=2,lane="cwks",candidate_head="head-a",validation_run="run-a")
 
     def test_lane_can_start_without_mutating_global_selector(self) -> None:
         state=LANE_STATE.initial_state("oarc",revision=5,selected_work_item="OARC-12",attempt_id="OARC-12-attempt-001")
@@ -166,13 +168,13 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertFalse(hasattr(LANE_STATE, "complete_execution"))
 
     def test_lane_state_uses_three_ordinary_attempt_milestones_only(self) -> None:
-        state=LANE_STATE.initial_state("mrcs",revision=10,selected_work_item="MRCS-04",attempt_id="MRCS-04-attempt-001")
-        state=LANE_STATE.start_execution(state,expected_revision=10,lane="mrcs",implementation_branch="work/mrcs-04",evidence="owner Continue")
+        state=LANE_STATE.initial_state("cwks",revision=10,selected_work_item="CWKS-01",attempt_id="CWKS-01-attempt-001")
+        state=LANE_STATE.start_execution(state,expected_revision=10,lane="cwks",implementation_branch="work/cwks-01-document-schema",evidence="owner approved, execute")
         self.assertEqual(state["execution_status"],"in_progress")
         self.assertEqual(state["progress_seq"],1)
 
         state=LANE_STATE.mark_prequeue_green(
-            state,expected_revision=11,lane="mrcs",
+            state,expected_revision=11,lane="cwks",
             candidate_head="head-green",validation_run="run-green",
         )
         self.assertEqual(state["execution_status"],"prequeue_green")
@@ -180,8 +182,8 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertEqual(state["prequeue_green"],{"candidate_head":"head-green","validation_run":"run-green"})
 
         state=LANE_STATE.mark_published(
-            state,expected_revision=12,lane="mrcs",
-            candidate_head="head-green",merge_sha="merge-app",ready_candidate_id="MRCS-04-app-001",
+            state,expected_revision=12,lane="cwks",
+            candidate_head="head-green",merge_sha="merge-app",ready_candidate_id="CWKS-01-app-001",
         )
         self.assertEqual(state["execution_status"],"published")
         self.assertEqual(state["progress_seq"],3)
@@ -249,7 +251,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertEqual(PUBLICATION.publication_mode([]), "none")
         self.assertEqual(PUBLICATION.publication_mode(["gpr"]), "single_lane_direct")
         self.assertEqual(
-            PUBLICATION.publication_mode(["gpr", "mrcs"]),
+            PUBLICATION.publication_mode(["gpr", "cwks"]),
             "ready_queue",
         )
 

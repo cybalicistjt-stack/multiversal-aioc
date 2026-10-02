@@ -27,7 +27,7 @@ Read `operations/LANES.json` and choose exactly one lane that matches the user's
 - Explicit requests name or imply their lane and override the default lane.
 - A bare `Continue` resumes the lane already established by the conversation. If this is a new conversation, use `CURRENT.json` and the user's opening request to resolve the lane.
 - Lane selection changes scope and source bundle only. It never changes the global operating contract.
-- The persistent implementation lanes are `gpr`, `mrcs`, and `oarc`. Terminal MSAS remains readable completed program history and does not occupy a persistent slot. They may hold implementation authority at the same time. A conversation still selects exactly one lane; selecting it does **not** pause, revoke, or rewrite another lane merely because both change product code. Completed UISR history is not a persistent implementation lane.
+- The persistent implementation lanes are `gpr`, `cwks`, and `oarc`. Terminal MSAS and MRCS remain readable completed program history and do not occupy persistent slots. They may hold implementation authority at the same time. A conversation still selects exactly one lane; selecting it does **not** pause, revoke, or rewrite another lane merely because both change product code. Completed UISR history is not a persistent implementation lane.
 - Active lanes work independently on separate implementation branches and separate lane-state refs. When two or more persistent lanes are nonterminal, shared-repository publication is serialized only after immutable, prevalidated READY candidates exist. When exactly one persistent lane is nonterminal, publication uses the single-lane direct exact-head path and no READY queue coordination is performed.
 - Do not load or mutate another lane merely because it exists; cross-lane reads are limited to explicit dependencies, publication conflicts, or owner-directed coordination.
 
@@ -105,7 +105,7 @@ Before any executor mutates protected `main` in `cybalicistjt-stack/Multiversal-
 
 **Multi-lane publication:** only when two or more persistent implementation lanes are nonterminal, use the READY-candidate FIFO protocol implemented by `scripts/ops3_merge_lease.py`. Candidates enter only after immutable exact-head prequeue GREEN. The FIFO head fresh-reads `main`, passes the drift-sensitive integration gate, merges with expected-head protection, and is reconciled from the durable result.
 
-Build/release/deployment status never owns or blocks source publication. Persistent lane state remains isolated on `ops3-lane-state/gpr`, `ops3-lane-state/mrcs`, and `ops3-lane-state/oarc`.
+Build/release/deployment status never owns or blocks source publication. Persistent lane state remains isolated on `ops3-lane-state/gpr`, `ops3-lane-state/cwks`, and `ops3-lane-state/oarc`. Terminal MSAS and MRCS lane-state refs are historical only.
 
 ## 9. Evidence and completion
 

@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "CWKS",
+  "lane": "cwks",
+  "track": "creator-writing-knowledge-system",
+  "source_program": "CWKS",
+  "work_item_id": "CWKS-01",
+  "attempt_id": "CWKS-01-attempt-001",
+  "title": "Structured Document Schema and Validation Foundation",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/cwks-01-document-schema",
+  "completed": false,
+  "selected_by_owner": "2026-10-02 owner approved CWKS replacing the terminal MRCS persistent slot and explicitly directed execution of Step 1.",
+  "objective": "Implement the approved editor-independent CWKS v1 structured-document contract, runtime validator and focused contract tests without adding editor UI, persistence adapters, story/wiki project models or Creator Suite migrations.",
+  "scope": {
+    "include": [
+      "packages/contracts/src/creator-writing/document-schema.ts",
+      "apps/client-ui/src/cwks/cwks-document-schema.contract.test.ts",
+      "versioned JSON-safe structured document envelope and nodes",
+      "unbounded positive-safe-integer heading levels",
+      "recursive writing blocks, tables and JSON-safe extension payloads",
+      "typed Multiversal resource mentions and live/snapshot embeds",
+      "pure non-mutating runtime validation and JSON round-trip proof"
+    ],
+    "exclude": [
+      "rich-text editor UI or editor-framework dependency",
+      "renderer or document outline UI",
+      "autosave/storage/database adapters",
+      "story/corkboard/storyboard/plot project models",
+      "wiki backlinks/transclusion UI",
+      "Creator Suite textarea migrations",
+      "changes to GPR Session Service scope"
+    ]
+  },
+  "dependencies": {
+    "approved_design": "cybalicistjt-stack/Multiversal-app@design/cwks-document-schema:docs/superpowers/specs/2026-10-02-cwks-document-schema-design.md",
+    "approved_plan": "cybalicistjt-stack/Multiversal-app@design/cwks-document-schema:docs/plans/2026-10-02-cwks-document-schema.md",
+    "completed_history": ["MRCS-21 completed_verified", "SAA-30 completed_verified"],
+    "parallel_lane_rule": "GPR PCV-03F remains independently in_progress; CWKS may not modify or borrow the GPR implementation branch."
+  },
+  "active_substep": "task_1_core_schema_red",
+  "next_action": "Create work/cwks-01-document-schema from the approved design branch, add the focused failing CWKS document-schema contract test, prove RED, then implement only the minimum core schema/validator required to make Task 1 green.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner approved the written CWKS Step 1 implementation plan and directed execution on 2026-10-02."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  }
+}

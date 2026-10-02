@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 546,
+  "state_revision": 547,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -59,8 +59,18 @@
       "checkpoint_path": "governance/ai/work-state/MRCS-21-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "MRCS-21 completed_verified after causal RED run 35534682741 at head 84d3f363236468cdbe1b9732332570584e9347ba, exact-head cross-platform GREEN run 35534811637 at head aee7db47aef52986d74cfabb7b179000b44c5aee, and READY publication of PR 657 as application merge 07f8eae045b935af94de2f41c67d8c7a04789749. MRCS-21 has strict_successor null and ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no MRCS interstitial/successor override, so MRCS is terminal completed_verified.",
+      "activation_rule": "MRCS-21 completed_verified after causal RED run 35534682741 at head 84d3f363236468cdbe1b9732332570584e9347ba, exact-head cross-platform GREEN run 35534811637 at head aee7db47aef52986d74cfabb7b179000b44c5aee, and READY publication of PR 657 as application merge 07f8eae045b935af94de2f41c67d8c7a04789749. MRCS-21 has strict_successor null and ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no MRCS interstitial/successor override, so MRCS is terminal completed_verified. On 2026-10-02 the owner explicitly replaced its persistent implementation slot with CWKS while preserving this MRCS compatibility/history record.",
       "execution_state_ref": "ops3-lane-state/mrcs"
+    },
+    "cwks": {
+      "state": "in_progress",
+      "selected_work_item": "CWKS-01",
+      "attempt_id": "CWKS-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/CWKS-01-attempt-001.json",
+      "implementation_branch": "work/cwks-01-document-schema",
+      "implementation_authority": true,
+      "activation_rule": "Owner approved on 2026-10-02 that CWKS replaces the terminal MRCS persistent slot while MRCS remains completed history. CWKS-01 is limited to the approved structured-document schema, dependency-free validator and focused contract tests; editor UI, storage adapters, story/wiki project models and Creator Suite migration remain outside this tranche. GPR PCV-03F remains independently in_progress.",
+      "execution_state_ref": "ops3-lane-state/cwks"
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -106,12 +116,12 @@
     "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
     "cross_program_successor_rule": "Before successor selection, consult governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json. Individual program strict_successor or backlog fields cannot skip an eligible interstitial program or override cross-program gates.",
     "executor_independence": "Executor availability never grants or revokes project authority.",
-    "parallel_lane_rule": "GPR, MRCS and OARC remain independent persistent lanes. FIFO READY publication coordination exists only while two or more persistent lanes are nonterminal. With exactly one nonterminal lane, queue/concurrent-writer coordination is dormant.",
+    "parallel_lane_rule": "GPR, CWKS and OARC remain independent persistent lanes. Terminal MRCS remains completed history. FIFO READY publication coordination exists only while two or more persistent lanes are nonterminal. With exactly one nonterminal lane, queue/concurrent-writer coordination is dormant.",
     "protected_main_interlock": "Protected main remains PR-only and exact-head. Single-active-lane mode uses one fresh-main drift-sensitive integration receipt with expected-head merge protection and no READY queue. Multi-lane mode uses FIFO READY coordination. Direct main writes remain prohibited.",
-    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: gpr, mrcs and oarc. MSAS-21, MVPS-23 and UISR-11 are completed program history and do not occupy persistent implementation slots.",
+    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: gpr, cwks and oarc. MSAS-21, MRCS-21, MVPS-23 and UISR-11 are completed program history and do not occupy persistent implementation slots.",
     "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS3.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
     "generated_main_writers": "CI/bots/generated-content jobs may not push directly to protected main; generated outputs must be present on the queue-bound candidate branch or validation fails closed.",
-    "lane_state_isolation": "Live execution progress for persistent lanes is recorded on ops3-lane-state/gpr, ops3-lane-state/mrcs and ops3-lane-state/oarc. Terminal MSAS lane state is historical only. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
+    "lane_state_isolation": "Live execution progress for persistent lanes is recorded on ops3-lane-state/gpr, ops3-lane-state/cwks and ops3-lane-state/oarc. Terminal MSAS and MRCS lane states are historical only. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
     "executor_interruption": "A chat/tool/session interruption is an executor incident, never a project lock. Resume from the last durable lane-state receipt and fresh repository/PR evidence; do not silently wait or replay completed phases.",
     "overinstrumentation_guard": "OPS3 uses milestone receipts, not activity receipts. Status reads, polling, per-platform CI results, artifact inspection, owner re-entry, sibling/lane scans, queue-empty checks, fresh-main observations, rebase checks, mergeability polling and merge mechanics are not material progress and must not create lane-state receipts.",
     "lane_state_milestones": "Ordinary persistent-lane execution state is selected_not_started -> in_progress -> prequeue_green -> published, followed by one deterministic successor reseed after canonical closeout. The generic lane activity-log API is prohibited.",
@@ -125,7 +135,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "Integrate the proved Nakama/PostgreSQL Session Service foundation into the existing A5/PCV-03 authority path on work/pcv-03f-installed-certification, beginning with an adapter and automated offline/restart/idempotency/visibility tests. Do not request another native installation until this proof and focused regressions are green. Then resume exact-head installed Windows/Android certification; PCV-04 remains blocked.",
+  "next_project_action": "GPR remains independently active on PCV-03F Session Service integration/certification. In parallel, CWKS-01 may execute only the approved structured-document schema/validator plan on work/cwks-01-document-schema; neither lane may borrow or rewrite the other's implementation scope.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -175,7 +185,7 @@
       "checkpoint_path": "governance/ai/work-state/MRCS-21-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "completion_rule": "MRCS-01 through MRCS-21 reduced family completed_verified. Terminal MRCS-21 proves the 48-vector family closure, reduced-GPR consumption without ownership bleed, accessibility/parity, local-first operation, and optional-AI/paid-cloud independence. MRCS remains readable completed program history and authorizes no successor."
+      "completion_rule": "MRCS-01 through MRCS-21 reduced family completed_verified. Terminal MRCS-21 proves the 48-vector family closure, reduced-GPR consumption without ownership bleed, accessibility/parity, local-first operation, and optional-AI/paid-cloud independence. MRCS remains readable completed program history; on 2026-10-02 its terminal persistent slot was owner-approved for replacement by CWKS."
     },
     "OARC": {
       "program_id": "OARC",
