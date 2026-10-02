@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "program_id": "MTLC",
   "program_name": "Multiversal Tabletop Lifecycle Convergence",
   "status": "OWNER_APPROVED_PLANNED",
@@ -7,13 +7,82 @@
   "authority": "planning_only_until_explicit_ops3_activation",
   "program_goal": "Make Multiversal the default operating environment for the complete TTRPG lifecycle by eliminating ordinary coordination, preparation, live-play, continuity, and between-session friction while preserving a lightweight core client and provider-neutral architecture.",
   "activation_rule": "Requires explicit owner direction plus OPS3 lane/governance selection. This backlog does not mutate operations/CURRENT.json and does not preempt active GPR or CWKS work.",
+  "friction_registry_path": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_COMMUNITY_FRICTION_REGISTRY.json",
   "global_constraints": [
     "Reuse existing canonical Multiversal systems; do not create duplicate sources of truth.",
     "Treat CWKS as a dependency for structured writing/knowledge workflows rather than recreating document editing.",
     "Recover source-backed consent and Veils material before inventing replacements.",
     "Preserve GM authority, permissions, provenance, offline/reconnect behavior, import/export, and provider neutrality.",
     "Protect mandatory app size; media-heavy resources remain optional, streamed, cached, imported, or pack-based.",
-    "Public LFG/community/marketplace surfaces require moderation, privacy, abuse, rights, and legal readiness before release."
+    "Public LFG/community/marketplace surfaces require moderation, privacy, abuse, rights, and legal readiness before release.",
+    "AI is the clerk, not the GM: assistance may retrieve, organize, summarize, convert, or propose, but it may not silently invent canon or decide governed outcomes.",
+    "Common workflows must remain useful with sparse records and progressive disclosure; capability depth must not become mandatory configuration burden.",
+    "Connective-tissue data remains portable through governed offline/reconnect, backup, restore, export, migration, privacy, and provider-exit behavior.",
+    "Mobile/tablet and hybrid-presence behavior are cross-lifecycle acceptance dimensions rather than final responsive-design polish.",
+    "Extensibility must favor explicit declarative capability/compatibility contracts and avoid silent campaign breakage from routine upgrades.",
+    "MTLC-14 must measure human prep/administration burden and campaign-memory maintenance cost in addition to technical performance."
+  ],
+  "community_requirement_overlays": [
+    {
+      "friction_id": "FRIC-001",
+      "name": "Zero-Secretary Campaign Memory",
+      "applies_to": ["MTLC-09", "MTLC-11", "MTLC-14"]
+    },
+    {
+      "friction_id": "FRIC-002",
+      "name": "Minimum Viable Prep",
+      "applies_to": ["MTLC-06", "MTLC-08", "MTLC-14"]
+    },
+    {
+      "friction_id": "FRIC-003",
+      "name": "First-Class Mobile Projection",
+      "applies_to": ["MTLC-07", "MTLC-08", "MTLC-13", "MTLC-14"]
+    },
+    {
+      "friction_id": "FRIC-004",
+      "name": "Hybrid Presence Parity",
+      "applies_to": ["MTLC-07", "MTLC-08", "MTLC-14"]
+    },
+    {
+      "friction_id": "FRIC-005",
+      "name": "Compatibility Matching, Not Mere LFG",
+      "applies_to": ["MTLC-05", "MTLC-12"]
+    },
+    {
+      "friction_id": "FRIC-006",
+      "name": "Async-Native Sessions",
+      "applies_to": ["MTLC-10", "MTLC-11", "MTLC-14"]
+    },
+    {
+      "friction_id": "FRIC-007",
+      "name": "Progressive Information Density",
+      "applies_to": ["MTLC-08", "MTLC-13", "MTLC-14"]
+    },
+    {
+      "friction_id": "FRIC-008",
+      "name": "Stable Extension Contract",
+      "applies_to": ["MTLC-11", "MTLC-12", "MTLC-14"]
+    },
+    {
+      "friction_id": "FRIC-009",
+      "name": "Clerical AI, Human Creativity",
+      "applies_to": ["MTLC-06", "MTLC-09", "MTLC-11", "MTLC-14"]
+    },
+    {
+      "friction_id": "FRIC-010",
+      "name": "Prep and Administration Budget",
+      "applies_to": ["MTLC-01", "MTLC-06", "MTLC-09", "MTLC-14"]
+    },
+    {
+      "friction_id": "FRIC-011",
+      "name": "Portable Campaign Ownership",
+      "applies_to": ["MTLC-03", "MTLC-09", "MTLC-10", "MTLC-14"]
+    },
+    {
+      "friction_id": "FRIC-012",
+      "name": "Capability Without Operational Complexity",
+      "applies_to": ["MTLC-02", "MTLC-06", "MTLC-07", "MTLC-08", "MTLC-11", "MTLC-13", "MTLC-14"]
+    }
   ],
   "work_items": [
     {
@@ -22,10 +91,12 @@
       "state": "planned",
       "depends_on": [],
       "strict_successor": "MTLC-02",
-      "responsibility": "Recover and reconcile existing connective-tissue capabilities, including legacy consent/Veils material and current CWKS, and establish the durable feature/friction registry used by every later tranche.",
+      "responsibility": "Recover and reconcile existing connective-tissue capabilities, including legacy consent/Veils material and current CWKS, and establish the durable feature/friction registry used by every later tranche. Reconcile community-derived friction evidence against current Multiversal reality before classifying any need as new work.",
       "exit_criteria": [
         "Every MTLC candidate is classified EXISTS, RECOVER, CONVERGE, ADD, INTEGRATE, DEFER, or DO_NOT_BUILD.",
         "Source/provenance and current owner are recorded for existing features.",
+        "Every community friction record has a mapped current capability/status or an explicit defer/reject rationale.",
+        "Required manual maintenance/administration is identified for major workflows so later certification can measure whether MTLC truly removes labor.",
         "No feature is declared missing solely because it was lost during historical convergence."
       ]
     },
@@ -35,10 +106,11 @@
       "state": "planned",
       "depends_on": ["MTLC-01"],
       "strict_successor": "MTLC-03",
-      "responsibility": "Let existing private groups create a campaign, recruit/invite participants, assign seats and roles, onboard guests/observers/co-GMs, and enter Multiversal without external group-management friction.",
+      "responsibility": "Let existing private groups create a campaign, recruit/invite participants, assign seats and roles, onboard guests/observers/co-GMs, and enter Multiversal without external group-management friction or exhaustive setup.",
       "exit_criteria": [
         "Existing groups can onboard through campaign invitations, links, or QR flows.",
         "Seat, role, guest, observer, co-GM, waitlist, and campaign-template workflows are coherent.",
+        "Sparse/default onboarding remains useful without forcing users to complete an encyclopedic profile.",
         "Public discovery is not required for completion."
       ]
     },
@@ -48,11 +120,12 @@
       "state": "planned",
       "depends_on": ["MTLC-02"],
       "strict_successor": "MTLC-04",
-      "responsibility": "Give every campaign a persistent communication home with chat, channels, threads, announcements, polls, files, private spaces, search, and notification controls connected to Multiversal objects.",
+      "responsibility": "Give every campaign a persistent communication home with chat, channels, threads, announcements, polls, files, private spaces, search, notification controls, and portable campaign history connected to Multiversal objects.",
       "exit_criteria": [
         "Routine campaign communication can occur inside Multiversal.",
         "Messages and attachments can be linked or converted into relevant campaign objects.",
-        "Notification controls prevent communication features from becoming disruptive."
+        "Notification controls prevent communication features from becoming disruptive.",
+        "Communication history participates in governed offline/reconnect, backup, export, privacy, and provider-exit behavior."
       ]
     },
     {
@@ -61,10 +134,11 @@
       "state": "planned",
       "depends_on": ["MTLC-03"],
       "strict_successor": "MTLC-05",
-      "responsibility": "Remove the administrative work of finding a date, confirming attendance, handling timezones and recurring sessions, rescheduling, reminding players, and coordinating bounded venue/session logistics.",
+      "responsibility": "Remove the administrative work of finding a date, confirming attendance, handling timezones and recurring sessions, rescheduling, reminding players, coordinating bounded venue/session logistics, and deciding how a campaign proceeds when attendance is incomplete.",
       "exit_criteria": [
         "Groups can poll availability and maintain recurring schedules.",
         "RSVP, late, absent, cancellation, reschedule, reminder, and timezone flows are complete.",
+        "Campaigns can define bounded run-anyway policies such as minimum quorum, approved absent-character proxy behavior, or alternate async/one-shot fallback.",
         "Calendar handoff/export and real-world logistics do not require duplicate manual entry."
       ]
     },
@@ -74,11 +148,12 @@
       "state": "planned",
       "depends_on": ["MTLC-01", "MTLC-04"],
       "strict_successor": "MTLC-06",
-      "responsibility": "Promote source-backed consent and Veils content into first-class Session Zero and ongoing table-agreement workflows, including revisitable boundaries, expectations, accessibility, and recording/streaming consent.",
+      "responsibility": "Promote source-backed consent and Veils content into first-class Session Zero and ongoing table-agreement workflows, including revisitable boundaries, expectations, accessibility, and recording/streaming consent, while preserving privacy suitable for later transparent compatibility matching.",
       "exit_criteria": [
         "Consent and Veils are source-traceable and product-visible.",
         "Campaign/table agreements can be established, reviewed, and updated without external forms.",
-        "Any additional safety mechanisms are source-audited or separately owner-approved."
+        "Any additional safety mechanisms are source-audited or separately owner-approved.",
+        "Table-fit/expectation data cannot silently become an opaque user desirability or reputation score."
       ]
     },
     {
@@ -87,11 +162,13 @@
       "state": "planned",
       "depends_on": ["MTLC-05"],
       "strict_successor": "MTLC-07",
-      "responsibility": "Centralize everything players and GMs must finish before the next session through Next Actions, GM Attention, homework, approvals, readiness checks, pack/content readiness, and session preflight.",
+      "responsibility": "Centralize everything players and GMs must finish before the next session through Next Actions, GM Attention, homework, approvals, readiness checks, pack/content readiness, session preflight, and Minimum Viable Prep that minimizes clerical workload.",
       "exit_criteria": [
         "Each participant can answer what still needs attention from one surface.",
-        "The GM can see player blockers and prep blockers without searching multiple systems.",
-        "A session Ready state reflects actual character/content/sync/prep readiness."
+        "The GM can see player blockers and likely-relevant prep without searching multiple systems.",
+        "Sparse useful NPC/scene/clue/thread records are supported; encyclopedic completion is not required.",
+        "A session Ready state reflects actual character/content/sync/prep readiness.",
+        "The workflow does not impose more mandatory clerical prep than it removes."
       ]
     },
     {
@@ -100,10 +177,12 @@
       "state": "planned",
       "depends_on": ["MTLC-06"],
       "strict_successor": "MTLC-08",
-      "responsibility": "Make session entry, presence, absence, late join, AFK, delegation, rejoin, in-person, remote, hybrid, table-display, phone-companion, voice/video integration, caption, and low-bandwidth behavior coherent.",
+      "responsibility": "Make session entry, presence, absence, late join, AFK, delegation, rejoin, in-person, remote, hybrid, table-display, role-appropriate mobile/tablet, voice/video integration, caption, and low-bandwidth behavior coherent with hybrid presence parity.",
       "exit_criteria": [
         "Participants can join, leave, return, or change devices without reconstructing state.",
         "In-person, remote, and hybrid tables share one authoritative session workflow.",
+        "Remote participants receive first-class visibility for presence, turns/reactions, dice events, handouts, map state, and reconnect continuity.",
+        "Mobile/tablet projections prioritize role-critical actions rather than compressing desktop UI.",
         "Communication/media transport choices remain provider-neutral and bounded."
       ]
     },
@@ -113,10 +192,12 @@
       "state": "planned",
       "depends_on": ["MTLC-07"],
       "strict_successor": "MTLC-09",
-      "responsibility": "Eliminate ordinary during-play tool switching through timers, dice/manual-roll entry, randomizers, map micro-utilities, handouts, audio control, user-owned rulebook/PDF access, contextual rules lookup, and a campaign Rulings Ledger.",
+      "responsibility": "Eliminate ordinary during-play tool switching through timers, dice/manual-roll entry, randomizers, map micro-utilities, handouts, audio control, user-owned rulebook/PDF access, contextual rules lookup, a campaign Rulings Ledger, progressive information density, and low-configuration common actions.",
       "exit_criteria": [
         "Common live-play utility needs are native or one-step integrations.",
         "Physical-dice tables are first-class rather than forced into digital rolling.",
+        "Dense rule/ability information can expose Full, Standard, or Essential projections where appropriate without altering canonical mechanics.",
+        "Common actions do not require users to understand specialist VTT configuration.",
         "Heavy rendering/media libraries are not bundled into the mandatory client."
       ]
     },
@@ -126,11 +207,13 @@
       "state": "planned",
       "depends_on": ["MTLC-08"],
       "strict_successor": "MTLC-10",
-      "responsibility": "Turn session end into durable campaign memory by reconciling attendance, rewards, loot, advancement, world-state changes, recap, missed-session catch-up, timelines, rulings, and real-world versus in-world time.",
+      "responsibility": "Turn session end into durable zero-secretary campaign memory by reconciling attendance, rewards, loot, advancement, world-state changes, recap, missed-session catch-up, timelines, rulings, and real-world versus in-world time without requiring duplicate journal maintenance.",
       "exit_criteria": [
         "Session finalization captures all material state changes and unresolved threads.",
         "Previously-on and missed-session catch-up respect character/player information boundaries.",
-        "The next session begins from reconciled continuity rather than human memory."
+        "Material approved play/state changes project into continuity without duplicate manual entry where technically possible.",
+        "AI-assisted recap or organization remains advisory/attributable and cannot silently invent canon.",
+        "The next session begins from reconciled continuity rather than human memory or a manually maintained second database."
       ]
     },
     {
@@ -139,9 +222,10 @@
       "state": "planned",
       "depends_on": ["MTLC-09"],
       "strict_successor": "MTLC-11",
-      "responsibility": "Structure asynchronous play, downtime, party planning, voting, loot distribution, party funds, borrowing, character admin, advancement tasks, and GM resolution queues between live sessions.",
+      "responsibility": "Structure async-native scenes/play-by-post, downtime, party planning, voting, loot distribution, party funds, borrowing, character admin, advancement tasks, and GM resolution queues between live sessions.",
       "exit_criteria": [
         "Between-session play and administration are attributable and organized inside the campaign.",
+        "Async scenes can persist across days with governed action/resolution, private parallel scenes, controlled notifications, persistent state/maps, and no live-host requirement.",
         "Approved async outcomes feed canonical state without duplicate entry.",
         "Group chat is no longer the campaign's unofficial task/loot/downtime database."
       ]
@@ -152,11 +236,13 @@
       "state": "planned",
       "depends_on": ["MTLC-10"],
       "strict_successor": "MTLC-12",
-      "responsibility": "Make Multiversal one interconnected system through quick capture, Search Everywhere, universal share/link/attach actions, Turn This Into, backlinks, governed macros, no-code automation, deep links, provider adapters, and safe extension points.",
+      "responsibility": "Make Multiversal one interconnected system through quick capture, Search Everywhere, universal share/link/attach actions, Turn This Into, backlinks, governed macros, no-code automation, deep links, provider adapters, clerical AI assistance, and stable declarative extension points.",
       "exit_criteria": [
         "Information can move between relevant Multiversal surfaces without manual re-entry.",
-        "Automation respects authority, permissions, provenance, and canonical state.",
-        "External integrations are replaceable adapters rather than sources of architectural lock-in."
+        "Automation and AI assistance respect authority, permissions, provenance, privacy, and canonical state.",
+        "External integrations are replaceable adapters rather than sources of architectural lock-in.",
+        "Extensions expose explicit capabilities, permissions, dependencies, versions, compatibility ranges, and upgrade/rollback expectations.",
+        "Routine upgrades do not silently invalidate campaign-critical extensions or packs."
       ]
     },
     {
@@ -165,9 +251,11 @@
       "state": "planned",
       "depends_on": ["MTLC-11"],
       "strict_successor": "MTLC-13",
-      "responsibility": "Add public LFG, open seats, pickup discovery, creator/community pack discovery, follows, collections, ratings/reviews where approved, and the Multiversal Exchange only alongside moderation, trust, privacy, rights, and abuse controls.",
+      "responsibility": "Add public LFG, open seats, pickup discovery, transparent compatibility dimensions, trial-table conversion, creator/community pack discovery, follows, collections, ratings/reviews where approved, and the Multiversal Exchange only alongside moderation, trust, privacy, rights, abuse, and extension-compatibility controls.",
       "exit_criteria": [
         "Public discovery has enforceable moderation and privacy boundaries.",
+        "Game discovery supports user-controlled table-fit dimensions without opaque desirability scoring.",
+        "Trial one-shots/temporary tables can graduate cleanly into persistent campaigns.",
         "Community pack discovery exposes compatibility, provenance, dependencies, and updates.",
         "Commerce remains separately gated unless owner, legal, billing, support, and dispute requirements are approved."
       ]
@@ -178,10 +266,11 @@
       "state": "planned",
       "depends_on": ["MTLC-12"],
       "strict_successor": "MTLC-14",
-      "responsibility": "Converge accessibility controls, new-player/new-GM guidance, quickstarts, mobile companion flows, print/physical outputs, convention/one-shot/pickup modes, spectator/stream-safe views, and campaign/co-GM handoff.",
+      "responsibility": "Converge accessibility controls, progressive information density, new-player/new-GM guidance, quickstarts, role-appropriate mobile companion flows, print/physical outputs, convention/one-shot/pickup modes, spectator/stream-safe views, and campaign/co-GM handoff.",
       "exit_criteria": [
         "New players and GMs can enter without expert knowledge of Multiversal.",
         "Physical, mobile, convention, spectator, and accessibility-dependent use are first-class workflows.",
+        "Information density can be reduced for accessibility/mobile/actionability without changing canonical meaning.",
         "Event/temporary play can convert cleanly into persistent campaigns when desired."
       ]
     },
@@ -191,11 +280,13 @@
       "state": "planned",
       "depends_on": ["MTLC-13"],
       "strict_successor": null,
-      "responsibility": "Certify the complete TTRPG lifecycle on supported platforms and establish permanent package-size, performance, offline/recovery, step-count, and external-friction budgets that prevent regression.",
+      "responsibility": "Certify the complete TTRPG lifecycle on supported platforms and establish permanent package-size, performance, offline/recovery, step-count, prep/administration, campaign-memory-maintenance, mobile/hybrid parity, async, extension-safety, and external-friction budgets that prevent regression.",
       "exit_criteria": [
         "The golden lifecycle from deciding to play through scheduling the next session passes on supported Windows and Android configurations.",
-        "Package/media separation, startup, memory, search, large-campaign, sync, reconnect, and recovery budgets are enforced.",
-        "Every remaining external dependency is intentional, documented, and integrated through a bounded Multiversal workflow rather than accidental app-switching friction."
+        "Package/media separation, startup, memory, search, large-campaign, sync, reconnect, recovery, mobile/tablet, hybrid, async, and extension-upgrade budgets are enforced.",
+        "Representative mandatory prep/administration time and manual campaign-memory maintenance are measured and kept within owner-approved friction budgets.",
+        "Every remaining external dependency is intentional, documented, and integrated through a bounded Multiversal workflow rather than accidental app-switching friction.",
+        "The certified product demonstrates capability without transferring hidden maintenance work back to players or GMs."
       ]
     }
   ]
