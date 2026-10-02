@@ -1,0 +1,202 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "MTLC",
+  "program_name": "Multiversal Tabletop Lifecycle Convergence",
+  "status": "OWNER_APPROVED_PLANNED",
+  "recorded_date": "2026-10-02",
+  "authority": "planning_only_until_explicit_ops3_activation",
+  "program_goal": "Make Multiversal the default operating environment for the complete TTRPG lifecycle by eliminating ordinary coordination, preparation, live-play, continuity, and between-session friction while preserving a lightweight core client and provider-neutral architecture.",
+  "activation_rule": "Requires explicit owner direction plus OPS3 lane/governance selection. This backlog does not mutate operations/CURRENT.json and does not preempt active GPR or CWKS work.",
+  "global_constraints": [
+    "Reuse existing canonical Multiversal systems; do not create duplicate sources of truth.",
+    "Treat CWKS as a dependency for structured writing/knowledge workflows rather than recreating document editing.",
+    "Recover source-backed consent and Veils material before inventing replacements.",
+    "Preserve GM authority, permissions, provenance, offline/reconnect behavior, import/export, and provider neutrality.",
+    "Protect mandatory app size; media-heavy resources remain optional, streamed, cached, imported, or pack-based.",
+    "Public LFG/community/marketplace surfaces require moderation, privacy, abuse, rights, and legal readiness before release."
+  ],
+  "work_items": [
+    {
+      "id": "MTLC-01",
+      "title": "Canon Recovery and Friction Registry",
+      "state": "planned",
+      "depends_on": [],
+      "strict_successor": "MTLC-02",
+      "responsibility": "Recover and reconcile existing connective-tissue capabilities, including legacy consent/Veils material and current CWKS, and establish the durable feature/friction registry used by every later tranche.",
+      "exit_criteria": [
+        "Every MTLC candidate is classified EXISTS, RECOVER, CONVERGE, ADD, INTEGRATE, DEFER, or DO_NOT_BUILD.",
+        "Source/provenance and current owner are recorded for existing features.",
+        "No feature is declared missing solely because it was lost during historical convergence."
+      ]
+    },
+    {
+      "id": "MTLC-02",
+      "title": "Private Table Formation and Campaign Onboarding",
+      "state": "planned",
+      "depends_on": ["MTLC-01"],
+      "strict_successor": "MTLC-03",
+      "responsibility": "Let existing private groups create a campaign, recruit/invite participants, assign seats and roles, onboard guests/observers/co-GMs, and enter Multiversal without external group-management friction.",
+      "exit_criteria": [
+        "Existing groups can onboard through campaign invitations, links, or QR flows.",
+        "Seat, role, guest, observer, co-GM, waitlist, and campaign-template workflows are coherent.",
+        "Public discovery is not required for completion."
+      ]
+    },
+    {
+      "id": "MTLC-03",
+      "title": "Campaign Lounge and Group Communication",
+      "state": "planned",
+      "depends_on": ["MTLC-02"],
+      "strict_successor": "MTLC-04",
+      "responsibility": "Give every campaign a persistent communication home with chat, channels, threads, announcements, polls, files, private spaces, search, and notification controls connected to Multiversal objects.",
+      "exit_criteria": [
+        "Routine campaign communication can occur inside Multiversal.",
+        "Messages and attachments can be linked or converted into relevant campaign objects.",
+        "Notification controls prevent communication features from becoming disruptive."
+      ]
+    },
+    {
+      "id": "MTLC-04",
+      "title": "Scheduling, Attendance, and Real-World Logistics",
+      "state": "planned",
+      "depends_on": ["MTLC-03"],
+      "strict_successor": "MTLC-05",
+      "responsibility": "Remove the administrative work of finding a date, confirming attendance, handling timezones and recurring sessions, rescheduling, reminding players, and coordinating bounded venue/session logistics.",
+      "exit_criteria": [
+        "Groups can poll availability and maintain recurring schedules.",
+        "RSVP, late, absent, cancellation, reschedule, reminder, and timezone flows are complete.",
+        "Calendar handoff/export and real-world logistics do not require duplicate manual entry."
+      ]
+    },
+    {
+      "id": "MTLC-05",
+      "title": "Session Zero, Consent, and Table Agreements",
+      "state": "planned",
+      "depends_on": ["MTLC-01", "MTLC-04"],
+      "strict_successor": "MTLC-06",
+      "responsibility": "Promote source-backed consent and Veils content into first-class Session Zero and ongoing table-agreement workflows, including revisitable boundaries, expectations, accessibility, and recording/streaming consent.",
+      "exit_criteria": [
+        "Consent and Veils are source-traceable and product-visible.",
+        "Campaign/table agreements can be established, reviewed, and updated without external forms.",
+        "Any additional safety mechanisms are source-audited or separately owner-approved."
+      ]
+    },
+    {
+      "id": "MTLC-06",
+      "title": "Readiness, Homework, and Prep Cockpits",
+      "state": "planned",
+      "depends_on": ["MTLC-05"],
+      "strict_successor": "MTLC-07",
+      "responsibility": "Centralize everything players and GMs must finish before the next session through Next Actions, GM Attention, homework, approvals, readiness checks, pack/content readiness, and session preflight.",
+      "exit_criteria": [
+        "Each participant can answer what still needs attention from one surface.",
+        "The GM can see player blockers and prep blockers without searching multiple systems.",
+        "A session Ready state reflects actual character/content/sync/prep readiness."
+      ]
+    },
+    {
+      "id": "MTLC-07",
+      "title": "Session Launch, Presence, and Table Modes",
+      "state": "planned",
+      "depends_on": ["MTLC-06"],
+      "strict_successor": "MTLC-08",
+      "responsibility": "Make session entry, presence, absence, late join, AFK, delegation, rejoin, in-person, remote, hybrid, table-display, phone-companion, voice/video integration, caption, and low-bandwidth behavior coherent.",
+      "exit_criteria": [
+        "Participants can join, leave, return, or change devices without reconstructing state.",
+        "In-person, remote, and hybrid tables share one authoritative session workflow.",
+        "Communication/media transport choices remain provider-neutral and bounded."
+      ]
+    },
+    {
+      "id": "MTLC-08",
+      "title": "Live Play Utilities, Rules, Handouts, and Media Control",
+      "state": "planned",
+      "depends_on": ["MTLC-07"],
+      "strict_successor": "MTLC-09",
+      "responsibility": "Eliminate ordinary during-play tool switching through timers, dice/manual-roll entry, randomizers, map micro-utilities, handouts, audio control, user-owned rulebook/PDF access, contextual rules lookup, and a campaign Rulings Ledger.",
+      "exit_criteria": [
+        "Common live-play utility needs are native or one-step integrations.",
+        "Physical-dice tables are first-class rather than forced into digital rolling.",
+        "Heavy rendering/media libraries are not bundled into the mandatory client."
+      ]
+    },
+    {
+      "id": "MTLC-09",
+      "title": "Session Closeout and Campaign Continuity",
+      "state": "planned",
+      "depends_on": ["MTLC-08"],
+      "strict_successor": "MTLC-10",
+      "responsibility": "Turn session end into durable campaign memory by reconciling attendance, rewards, loot, advancement, world-state changes, recap, missed-session catch-up, timelines, rulings, and real-world versus in-world time.",
+      "exit_criteria": [
+        "Session finalization captures all material state changes and unresolved threads.",
+        "Previously-on and missed-session catch-up respect character/player information boundaries.",
+        "The next session begins from reconciled continuity rather than human memory."
+      ]
+    },
+    {
+      "id": "MTLC-10",
+      "title": "Between-Session Play and Party Administration",
+      "state": "planned",
+      "depends_on": ["MTLC-09"],
+      "strict_successor": "MTLC-11",
+      "responsibility": "Structure asynchronous play, downtime, party planning, voting, loot distribution, party funds, borrowing, character admin, advancement tasks, and GM resolution queues between live sessions.",
+      "exit_criteria": [
+        "Between-session play and administration are attributable and organized inside the campaign.",
+        "Approved async outcomes feed canonical state without duplicate entry.",
+        "Group chat is no longer the campaign's unofficial task/loot/downtime database."
+      ]
+    },
+    {
+      "id": "MTLC-11",
+      "title": "Universal Connectivity, Capture, Automation, and Integrations",
+      "state": "planned",
+      "depends_on": ["MTLC-10"],
+      "strict_successor": "MTLC-12",
+      "responsibility": "Make Multiversal one interconnected system through quick capture, Search Everywhere, universal share/link/attach actions, Turn This Into, backlinks, governed macros, no-code automation, deep links, provider adapters, and safe extension points.",
+      "exit_criteria": [
+        "Information can move between relevant Multiversal surfaces without manual re-entry.",
+        "Automation respects authority, permissions, provenance, and canonical state.",
+        "External integrations are replaceable adapters rather than sources of architectural lock-in."
+      ]
+    },
+    {
+      "id": "MTLC-12",
+      "title": "Public Discovery, Community, and Creator Network",
+      "state": "planned",
+      "depends_on": ["MTLC-11"],
+      "strict_successor": "MTLC-13",
+      "responsibility": "Add public LFG, open seats, pickup discovery, creator/community pack discovery, follows, collections, ratings/reviews where approved, and the Multiversal Exchange only alongside moderation, trust, privacy, rights, and abuse controls.",
+      "exit_criteria": [
+        "Public discovery has enforceable moderation and privacy boundaries.",
+        "Community pack discovery exposes compatibility, provenance, dependencies, and updates.",
+        "Commerce remains separately gated unless owner, legal, billing, support, and dispute requirements are approved."
+      ]
+    },
+    {
+      "id": "MTLC-13",
+      "title": "Accessibility, Onboarding, Physical Output, and Event Modes",
+      "state": "planned",
+      "depends_on": ["MTLC-12"],
+      "strict_successor": "MTLC-14",
+      "responsibility": "Converge accessibility controls, new-player/new-GM guidance, quickstarts, mobile companion flows, print/physical outputs, convention/one-shot/pickup modes, spectator/stream-safe views, and campaign/co-GM handoff.",
+      "exit_criteria": [
+        "New players and GMs can enter without expert knowledge of Multiversal.",
+        "Physical, mobile, convention, spectator, and accessibility-dependent use are first-class workflows.",
+        "Event/temporary play can convert cleanly into persistent campaigns when desired."
+      ]
+    },
+    {
+      "id": "MTLC-14",
+      "title": "Golden Lifecycle Certification and Friction Budget",
+      "state": "planned",
+      "depends_on": ["MTLC-13"],
+      "strict_successor": null,
+      "responsibility": "Certify the complete TTRPG lifecycle on supported platforms and establish permanent package-size, performance, offline/recovery, step-count, and external-friction budgets that prevent regression.",
+      "exit_criteria": [
+        "The golden lifecycle from deciding to play through scheduling the next session passes on supported Windows and Android configurations.",
+        "Package/media separation, startup, memory, search, large-campaign, sync, reconnect, and recovery budgets are enforced.",
+        "Every remaining external dependency is intentional, documented, and integrated through a bounded Multiversal workflow rather than accidental app-switching friction."
+      ]
+    }
+  ]
+}
