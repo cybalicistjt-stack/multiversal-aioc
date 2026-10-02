@@ -1,1 +1,234 @@
-placeholder
+{
+  "schema_version": "1.0.0",
+  "program_id": "MTLC",
+  "title": "Community-Derived TTRPG Friction Registry",
+  "status": "OWNER_APPROVED_PLANNING_EVIDENCE",
+  "recorded_date": "2026-10-02",
+  "authority": "research_and_planning_only_until_explicit_ops3_activation",
+  "research_character": "Qualitative community evidence from public TTRPG forums and personal-source discussions. Signals identify repeated underserved needs and workflow friction; they are directional rather than statistically representative prevalence estimates.",
+  "governing_rule": "Community evidence may sharpen MTLC requirements and acceptance criteria, but it does not independently grant implementation authority, override canonical Multiversal source material, or create a new source of truth.",
+  "classification_vocabulary": [
+    "EXISTS",
+    "RECOVER",
+    "CONVERGE",
+    "ADD",
+    "INTEGRATE",
+    "DEFER",
+    "DO_NOT_BUILD"
+  ],
+  "registry": [
+    {
+      "id": "FRIC-001",
+      "name": "Zero-Secretary Campaign Memory",
+      "signal": "EXTREMELY_STRONG",
+      "observed_need": "Groups repeatedly lose NPC names, prior decisions, clues, faction relationships, rulings, loot provenance, and open threads. Manual campaign journals and wikis frequently become another job and decay over time.",
+      "product_principle": "Campaign memory should be maintained primarily as a byproduct of ordinary play and approved state changes rather than requiring a dedicated human secretary.",
+      "mapped_work_items": ["MTLC-09", "MTLC-11", "MTLC-14"],
+      "acceptance_implications": [
+        "Material session events should project into campaign history without duplicate manual entry.",
+        "Previously-on and missed-session catch-up should derive from authoritative campaign state and respect information boundaries.",
+        "Certification must measure how much manual maintenance is required to produce an accurate campaign recap."
+      ],
+      "source_examples": [
+        "https://www.reddit.com/r/rpg/comments/1u2sij3/campaign_journals/",
+        "https://www.reddit.com/r/rpg/comments/ejv1s7/"
+      ]
+    },
+    {
+      "id": "FRIC-002",
+      "name": "Minimum Viable Prep",
+      "signal": "EXTREMELY_STRONG",
+      "observed_need": "GMs repeatedly describe preparation, conversion, asset setup, rereading, bookkeeping, and campaign maintenance as workload that competes with the fun of running the game.",
+      "product_principle": "Multiversal should help the GM identify the smallest useful prep set for the next session and avoid encouraging encyclopedic preparation for its own sake.",
+      "mapped_work_items": ["MTLC-06", "MTLC-08", "MTLC-14"],
+      "acceptance_implications": [
+        "GM prep surfaces should prioritize likely-relevant NPCs, scenes, clues, open threads, player intentions, and blockers.",
+        "Data models and UI must allow sparse useful records; completeness is not a prerequisite for usefulness.",
+        "Certification must track mandatory human administration/prep imposed by Multiversal relative to play time."
+      ],
+      "source_examples": [
+        "https://www.reddit.com/r/rpg/comments/pc29t3/are_we_all_spending_too_much_time_prepping/",
+        "https://www.reddit.com/r/rpg/comments/1p36xq1/is_this_too_much_dm_prep/"
+      ]
+    },
+    {
+      "id": "FRIC-003",
+      "name": "First-Class Mobile Projection",
+      "signal": "VERY_STRONG",
+      "observed_need": "Phone and tablet users are often forced into unsupported, cramped, or desktop-derived VTT experiences even though those devices are common at physical and hybrid tables.",
+      "product_principle": "Mobile is a role-appropriate projection of Multiversal, not merely the desktop interface compressed onto a smaller screen.",
+      "mapped_work_items": ["MTLC-07", "MTLC-08", "MTLC-13", "MTLC-14"],
+      "acceptance_implications": [
+        "Player mobile flows must prioritize character actions, dice/manual roll entry, handouts, initiative, chat, notes, rules, RSVP, and safety access.",
+        "GM tablet flows must prioritize live controls, NPCs, scenes, approvals, rules, notes, timers, and improvisation.",
+        "Mobile/tablet acceptance must be evaluated across the lifecycle rather than only in MTLC-13."
+      ],
+      "source_examples": [
+        "https://www.reddit.com/r/FoundryVTT/comments/1gmtvox/",
+        "https://forums.giantitp.com/archive/index.php/t-533670.html"
+      ]
+    },
+    {
+      "id": "FRIC-004",
+      "name": "Hybrid Presence Parity",
+      "signal": "VERY_STRONG",
+      "observed_need": "Remote participants in otherwise physical tables are frequently talked over, miss visual/dice events, receive handouts late, and feel socially secondary even when basic voice/video technically works.",
+      "product_principle": "Hybrid support is a presence-parity problem, not merely an audio/video transport problem.",
+      "mapped_work_items": ["MTLC-07", "MTLC-08", "MTLC-14"],
+      "acceptance_implications": [
+        "Hybrid mode should make remote-player presence, turns, reactions, dice events, handouts, map state, and reconnect state visible to the whole table.",
+        "GM-facing cues may help avoid accidentally excluding remote participants without policing social behavior.",
+        "Golden certification must include mixed in-person/remote tables rather than only fully local and fully remote cases."
+      ],
+      "source_examples": [
+        "https://www.reddit.com/r/rpg/comments/1vdhq0w/running_a_hybrid_game_where_some_players_are_at/"
+      ]
+    },
+    {
+      "id": "FRIC-005",
+      "name": "Compatibility Matching, Not Mere LFG",
+      "signal": "VERY_STRONG",
+      "observed_need": "GMs use long advertisements, questionnaires, interviews, and trial games because discovering an open seat does not establish schedule, tone, playstyle, commitment, accessibility, or table-expectation compatibility.",
+      "product_principle": "Public discovery should help people evaluate mutual table fit without reducing humans to an opaque quality score.",
+      "mapped_work_items": ["MTLC-05", "MTLC-12"],
+      "acceptance_implications": [
+        "Discovery may match structured compatibility dimensions such as schedule, play preferences, expectations, accessibility, experience, and commitment.",
+        "Compatibility data must remain transparent and user-controlled rather than becoming a hidden reputation or desirability score.",
+        "Trial one-shots or temporary tables should be able to graduate into persistent campaigns."
+      ],
+      "source_examples": [
+        "https://www.reddit.com/r/lfg/comments/ljzqbo/",
+        "https://www.reddit.com/r/rpg/comments/n0hl6d/"
+      ]
+    },
+    {
+      "id": "FRIC-006",
+      "name": "Async-Native Sessions",
+      "signal": "STRONG",
+      "observed_need": "Busy groups often fall back to forums, Discord, documents, or fragmented play-by-post workflows because live-session tools assume everyone is present at once.",
+      "product_principle": "Asynchronous play should be a first-class session mode with durable context and authority, not a degraded live session or a pile of chat messages.",
+      "mapped_work_items": ["MTLC-10", "MTLC-11", "MTLC-14"],
+      "acceptance_implications": [
+        "Scenes may remain active across days with ordered actions, GM resolution, private parallel scenes, notifications, and persistent maps/state.",
+        "Async outcomes must reconcile into canonical campaign state through the same authority boundaries as live play.",
+        "Mobile participation and controlled notification cadence are part of async acceptance."
+      ],
+      "source_examples": [
+        "https://forum.rpg.net/index.php?threads/is-there-a-good-virtual-tabletop-for-asynchronous-play.918240/",
+        "https://paizo.com/campaigns/v5748p75j77x0/recruiting"
+      ]
+    },
+    {
+      "id": "FRIC-007",
+      "name": "Progressive Information Density",
+      "signal": "STRONG",
+      "observed_need": "Text density and complex screens create barriers for dyslexic users, new players, mobile users, and players who only need the actionable part of a rule or ability during play.",
+      "product_principle": "Complex capability should support multiple information-density projections such as Full, Standard, and Essential without changing the underlying canonical object.",
+      "mapped_work_items": ["MTLC-08", "MTLC-13", "MTLC-14"],
+      "acceptance_implications": [
+        "Rules, abilities, character information, and other dense surfaces should support concise action-first projections where appropriate.",
+        "Assistive technologies, screen readers, keyboard navigation, scalable UI, TTS/STT where approved, and non-color cues remain first-class.",
+        "Reduced information density must not hide mechanically required information or alter authority."
+      ],
+      "source_examples": [
+        "https://www.reddit.com/r/rpg/comments/1vadpvf/suggestions_for_dyslexia_friendly_ttrpgs_and_tools/",
+        "https://www.reddit.com/r/rpg/comments/14zsiyq/"
+      ]
+    },
+    {
+      "id": "FRIC-008",
+      "name": "Stable Extension Contract",
+      "signal": "VERY_STRONG_IN_ADVANCED_VTT_COMMUNITIES",
+      "observed_need": "Module-heavy VTT users report upgrade anxiety, abandoned dependencies, version pinning, and campaigns staying on old application versions because required extensions have not caught up.",
+      "product_principle": "Multiversal extensibility must favor stable declarative contracts and bounded capabilities over an ungoverned executable-plugin dependency jungle.",
+      "mapped_work_items": ["MTLC-11", "MTLC-12", "MTLC-14"],
+      "acceptance_implications": [
+        "Extensions must declare capabilities, versions, dependencies, permissions, and compatibility ranges.",
+        "Campaigns should be able to inspect compatibility before upgrading and preserve rollback/version-pin options where required.",
+        "Core updates must not silently invalidate campaign-critical extensions or packs."
+      ],
+      "source_examples": [
+        "https://www.reddit.com/r/FoundryVTT/comments/xfxyk9/"
+      ]
+    },
+    {
+      "id": "FRIC-009",
+      "name": "Clerical AI, Human Creativity",
+      "signal": "EXTREMELY_STRONG_SENTIMENT",
+      "observed_need": "Community discussion shows substantial resistance to AI replacing GM authorship, player creativity, or adjudication while remaining receptive to search, summarization, organization, recall, clerical conversion, and optional drafting assistance.",
+      "product_principle": "AI is the clerk, not the GM: it reduces drudgery and proposes assistance but does not silently invent canon, decide outcomes, or take authority from humans.",
+      "mapped_work_items": ["MTLC-06", "MTLC-09", "MTLC-11", "MTLC-14"],
+      "acceptance_implications": [
+        "AI-derived recaps, conversions, suggestions, and summaries remain attributable, reviewable, and non-authoritative until accepted where acceptance is required.",
+        "Campaign/player privacy and provider-retention boundaries remain explicit for AI context.",
+        "No MTLC tranche may make generative output a mandatory dependency for ordinary tabletop participation."
+      ],
+      "source_examples": [
+        "https://www.reddit.com/r/rpg/"
+      ]
+    },
+    {
+      "id": "FRIC-010",
+      "name": "Prep and Administration Budget",
+      "signal": "DERIVED_FROM_MULTIPLE_STRONG_SIGNALS",
+      "observed_need": "Many otherwise useful tools shift labor rather than remove it: users gain capability but must maintain metadata, modules, journals, conversions, or duplicated records to keep the capability working.",
+      "product_principle": "Multiversal must measure the human labor it imposes, not merely the number of features it provides.",
+      "mapped_work_items": ["MTLC-01", "MTLC-06", "MTLC-09", "MTLC-14"],
+      "acceptance_implications": [
+        "MTLC-01 must identify required manual maintenance for each major workflow.",
+        "MTLC-14 must establish a prep/administration friction budget, including mandatory steps and representative minutes of clerical work per session lifecycle.",
+        "A feature that saves five minutes by requiring ten minutes of bookkeeping fails the product intent even if functionally complete."
+      ],
+      "source_examples": [
+        "https://www.reddit.com/r/rpg/comments/pc29t3/are_we_all_spending_too_much_time_prepping/",
+        "https://www.reddit.com/r/rpg/comments/1u1cl1y/did_you_build_your_prep_around_your_tools_or_find/"
+      ]
+    },
+    {
+      "id": "FRIC-011",
+      "name": "Portable Campaign Ownership",
+      "signal": "STRONG_PERSISTENT",
+      "observed_need": "Users continue to seek offline campaign tools and criticize services that make campaign export, backup, migration, or ownership difficult.",
+      "product_principle": "A campaign should remain usable, recoverable, exportable, and portable; users should not feel that years of tabletop history are rented from a provider.",
+      "mapped_work_items": ["MTLC-03", "MTLC-09", "MTLC-10", "MTLC-14"],
+      "acceptance_implications": [
+        "Offline/reconnect behavior, backup, restore, readable export, and provider exit remain acceptance concerns for connective-tissue data.",
+        "Campaign communication and async history must not become non-portable silos.",
+        "Export/backup scope must continue to respect hidden information and permissions."
+      ],
+      "source_examples": [
+        "https://forum.rpg.net/index.php?threads/good-offline-campaign-management-tools.840388/",
+        "https://forum.rpg.net/index.php?threads/kanka-the-best-rpg-campaign-manager-ive-ever-seen.858418/"
+      ]
+    },
+    {
+      "id": "FRIC-012",
+      "name": "Capability Without Operational Complexity",
+      "signal": "VERY_STRONG_CROSS_CUTTING",
+      "observed_need": "Players and GMs simultaneously ask for sophisticated capabilities and simpler tools; the recurring failure mode is not depth itself but requiring users to understand configuration, module systems, file conversion, or application architecture before performing ordinary game actions.",
+      "product_principle": "Multiversal may be complex internally, but ordinary tabletop intentions should map to obvious contextual actions with progressive depth rather than mandatory configuration work.",
+      "mapped_work_items": ["MTLC-02", "MTLC-06", "MTLC-07", "MTLC-08", "MTLC-11", "MTLC-13", "MTLC-14"],
+      "acceptance_implications": [
+        "Golden flows should measure user-visible steps and configuration burden, not just technical completion.",
+        "Sparse records and defaults must remain useful without forcing exhaustive setup.",
+        "Specialist controls may exist behind progressive disclosure while the common action stays simple."
+      ],
+      "source_examples": [
+        "https://forum.rpg.net/index.php?threads/kanka-io-campaign-manager-anyone-used-it.847661/",
+        "https://www.reddit.com/r/rpg/comments/1u1cl1y/did_you_build_your_prep_around_your_tools_or_find/"
+      ]
+    }
+  ],
+  "cross_cutting_metrics_for_mtlc_14": [
+    "user-visible step count for golden lifecycle tasks",
+    "mandatory configuration steps before first useful result",
+    "representative prep/administration minutes imposed per session lifecycle",
+    "manual campaign-memory maintenance required for accurate recap/continuity",
+    "mobile/tablet parity for role-critical workflows",
+    "hybrid remote-participant parity across presence, actions, dice, handouts, maps, and reconnect",
+    "async workflow completeness without requiring a live host",
+    "extension/pack compatibility and upgrade safety",
+    "offline/reconnect/export/recovery behavior",
+    "external-app handoffs that remain intentional after MTLC completion"
+  ]
+}
