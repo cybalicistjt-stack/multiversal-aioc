@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "cwks",
-  "revision": 6,
+  "revision": 7,
   "selected_work_item": "CWKS-02",
   "attempt_id": "CWKS-02-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/cwks-02-document-renderer",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "CWKS-01 closeout merged through control-plane PR 1787 as 4a708936e13a8febe51eb434f8f91062e39adeaf after validation run 37014745980; owner approved CWKS-02 renderer execution on 2026-10-02."
+    "kind": "prequeue_green",
+    "evidence": "exact head c74832fa9c1ccca2a9acc9fc3064d7cf2e209516 passed prequeue validation run 37016838263"
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,9 @@
     "closeout_merge_sha": "4a708936e13a8febe51eb434f8f91062e39adeaf",
     "closeout_validation_run": "37014745980",
     "closeout_ready_candidate": "CWKS-01-closeout-pr-1787"
+  },
+  "prequeue_green": {
+    "candidate_head": "c74832fa9c1ccca2a9acc9fc3064d7cf2e209516",
+    "validation_run": "37016838263"
   }
 }
