@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "CWKS",
+  "lane": "cwks",
+  "track": "creator-writing-knowledge-system",
+  "source_program": "CWKS",
+  "work_item_id": "CWKS-03",
+  "attempt_id": "CWKS-03-attempt-001",
+  "title": "Structured Document Editor",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/cwks-03-document-editor",
+  "completed": false,
+  "selected_by_owner": "2026-10-02 owner approved the CWKS-03 TipTap/ProseMirror editor design and implementation plan and explicitly directed continuation into implementation.",
+  "objective": "Implement the reusable long-form CreatorDocumentV1 editor with a strict canonical TipTap/ProseMirror adapter, stable structural/text identity, deep headings, formatting and structural commands, tables, Multiversal resource authoring, safe paste, accessibility and focused cross-platform proof.",
+  "scope": {
+    "include": [
+      "apps/client-ui/src/cwks/CreatorDocumentEditor.tsx",
+      "apps/client-ui/src/cwks/creator-document-editor-types.ts",
+      "apps/client-ui/src/cwks/creator-document-editor-adapter.ts",
+      "apps/client-ui/src/cwks/creator-document-editor-extensions.ts",
+      "apps/client-ui/src/cwks/creator-document-editor-commands.ts",
+      "apps/client-ui/src/cwks/creator-document-editor.css",
+      "focused CWKS-03 editor tests under apps/client-ui/src/cwks",
+      "apps/client-ui/package.json and pnpm-lock.yaml for the minimum exact TipTap 3.31.4 dependency family",
+      "governance/application-planning/validation-core/profiles/CWKS-03.json",
+      "minimum validation-only CWKS family wiring",
+      "canonical CreatorDocumentV1 import/export and runtime validation",
+      "stable structural/text IDs, formatting, lists/tasks, callouts, code, divider and canonical tables",
+      "slash commands, Multiversal resource mentions/blocks, safe rich paste and keyboard/accessibility behavior"
+    ],
+    "exclude": [
+      "autosave, manual save transport, localStorage/database/cloud persistence or recovery journals",
+      "document outline/table of contents and collapsible heading sections",
+      "story project hierarchy, corkboard, storyboard, timeline or plot board",
+      "wiki pages, backlinks, transclusion or knowledge graph",
+      "collaborative editing, comments or review annotations",
+      "version history or named versions",
+      "Creator Suite field migration",
+      "AI writing/generation",
+      "snapshot refresh",
+      "route/navigation redesign",
+      "changes to GPR Session Service scope"
+    ]
+  },
+  "dependencies": {
+    "completed_predecessor": "CWKS-02 published as application main bfbb27e229b47e8600aa916b325c22da4d65316b",
+    "approved_design": "cybalicistjt-stack/Multiversal-app@design/cwks-03-document-editor:docs/superpowers/specs/2026-10-02-cwks-document-editor-design.md",
+    "approved_plan": "cybalicistjt-stack/Multiversal-app@design/cwks-03-document-editor:docs/superpowers/plans/2026-10-02-cwks-document-editor.md",
+    "parallel_lane_rule": "GPR PCV-03F remains independently in_progress; CWKS-03 may not modify or borrow the GPR implementation branch."
+  },
+  "active_substep": "Task 1 - TipTap dependencies, public editor types, and canonical adapter",
+  "next_action": "Create work/cwks-03-document-editor from current application main, prove the Task 1 adapter RED, then implement the minimum canonical adapter to GREEN before later editor tasks.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner approved CWKS-03 design and implementation plan and directed execution on work/cwks-03-document-editor."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  }
+}
