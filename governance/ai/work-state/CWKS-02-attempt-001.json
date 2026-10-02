@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "CWKS",
+  "lane": "cwks",
+  "track": "creator-writing-knowledge-system",
+  "source_program": "CWKS",
+  "work_item_id": "CWKS-02",
+  "attempt_id": "CWKS-02-attempt-001",
+  "title": "Structured Document Renderer",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": true,
+  "implementation_branch": "work/cwks-02-document-renderer",
+  "completed": false,
+  "selected_by_owner": "2026-10-02 owner approved the CWKS-02 renderer design and implementation plan and directed continuation into implementation.",
+  "objective": "Implement the shared read-only React renderer for validated CreatorDocumentV1 content with semantic HTML, deep heading accessibility, safe-link activation, stable node hooks, Multiversal adapter callbacks and readable fallbacks.",
+  "scope": {
+    "include": [
+      "apps/client-ui/src/cwks/CreatorDocumentRenderer.tsx",
+      "apps/client-ui/src/cwks/cwks-document-renderer.test.tsx",
+      "apps/client-ui/src/cwks/creator-document-renderer.css",
+      "governance/application-planning/validation-core/profiles/CWKS-02.json",
+      "governance/application-planning/validation-core/ACTIVE_FAMILY_CONTRACT.json",
+      "semantic rendering for all CWKS-01 block and inline node types",
+      "accessible heading levels beyond H6",
+      "safe-link activation boundary",
+      "resource/image/attachment/extension adapters and fallbacks"
+    ],
+    "exclude": [
+      "rich-text editor or editing commands",
+      "autosave/storage/database adapters",
+      "outline and collapsible-section UI",
+      "story/corkboard/storyboard/plot project models",
+      "wiki backlinks/transclusion UI",
+      "Creator Suite textarea migrations",
+      "changes to GPR Session Service scope"
+    ]
+  },
+  "dependencies": {
+    "completed_predecessor": "CWKS-01 published as application main c5180b9270bee9eb060be60e725d5258940e1ec5",
+    "approved_design": "cybalicistjt-stack/Multiversal-app@design/cwks-02-renderer-plan:docs/superpowers/specs/2026-10-02-cwks-document-renderer-design.md",
+    "approved_plan": "cybalicistjt-stack/Multiversal-app@design/cwks-02-renderer-plan:docs/superpowers/plans/2026-10-02-cwks-document-renderer.md",
+    "parallel_lane_rule": "GPR PCV-03F remains independently in_progress; CWKS-02 may not modify or borrow the GPR implementation branch."
+  },
+  "active_substep": "task_1_semantic_renderer_red",
+  "next_action": "Create work/cwks-02-document-renderer from application main c5180b9270bee9eb060be60e725d5258940e1ec5, add focused renderer tests first, prove RED, then implement only the minimum semantic renderer and safe-link helper required for Task 1 GREEN.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
