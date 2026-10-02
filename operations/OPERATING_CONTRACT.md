@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.12.0  
+**Version:** 3.13.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -50,8 +50,7 @@ When a conversation changes topics materially, reselect the lane once. Do not ca
 
 ### Parallel persistent lanes
 
-OPS3 preserves exactly three independent persistent implementation slots. The current persistent lanes are `gpr`, `mrcs`, and `oarc`. A lane may be `completed_verified`, `selected_not_started`, or `in_progress`; one lane's completion or inactivity never pauses, folds into, or revokes another active lane. After a lane is terminal `completed_verified`, the owner may explicitly replace that persistent slot through operations governance while preserving the completed program as immutable history. MSAS-21, MVPS-23 and UISR-11 are preserved as completed program history and no longer occupy persistent slots. Operations work may repair lane selectors without collapsing this three-slot topology.
-
+OPS3 preserves exactly three independent persistent implementation slots. The current persistent lanes are `gpr`, `cwks`, and `oarc`. A lane may be `completed_verified`, `selected_not_started`, or `in_progress`; one lane's completion or inactivity never pauses, folds into, or revokes another active lane. After a lane is terminal `completed_verified`, the owner may explicitly replace that persistent slot through operations governance while preserving the completed program as immutable history. MSAS-21, MRCS-21, MVPS-23 and UISR-11 are preserved as completed program history and no longer occupy persistent slots. Operations work may repair lane selectors without collapsing this three-slot topology.
 
 OPS3 may keep more than one persistent implementation lane active at once when the owner has explicitly separated the work streams.
 
@@ -104,7 +103,6 @@ Once lane, work item, repository, branch, and acceptance gate are known:
 
 Research is progress only when it resolves a concrete unknown needed for the result.
 
-
 ### Single-active-lane mode and quiet execution
 
 When exactly one persistent implementation lane is nonterminal, OPS3 enters **single-active-lane mode**. Derive this mode once from the fresh `CURRENT.json` used to select the lane. Until an invalidating event occurs, ordinary execution must not rescan terminal sibling lane refs, enumerate "concurrent writers," read an empty publication queue, or perform routine branch update/rebase work. Terminal siblings are history; read them only for a concrete dependency or after an observed repository change proves they are relevant.
@@ -150,11 +148,13 @@ Build, packaging, deployment, release, and post-merge distribution consume merge
 
 ### Independent lane execution state
 
-GPR, MRCS, and OARC use separate compare-and-swap coordination refs:
+GPR, CWKS, and OARC use separate compare-and-swap coordination refs:
 
 - `ops3-lane-state/gpr`
-- `ops3-lane-state/mrcs`
+- `ops3-lane-state/cwks`
 - `ops3-lane-state/oarc`
+
+Terminal MSAS and MRCS lane-state refs are historical only.
 
 The state model is implemented by `scripts/ops3_lane_state.py`.
 
