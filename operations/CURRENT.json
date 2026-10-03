@@ -6,40 +6,28 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 551,
+  "state_revision": 552,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
   "product_start_freeze": {
     "active": false,
-    "reason": "OPS3-14 completed_verified after moving lightweight validation orchestration off scarce self-hosted runners, success-gating deterministic comparison, and defining isolated same-label runner pools as capacity-only infrastructure.",
-    "preserved_selected_work_item": "MERA-16",
-    "preserved_attempt_id": "MERA-16-attempt-001",
+    "reason": "OPS3-15 completed_verified after owner-authorized replacement of the terminal OARC persistent slot with MTLC and governed start of MTLC-01. GPR PCV-03F and CWKS-04 remain independently active.",
+    "preserved_selected_work_item": "MTLC-01",
+    "preserved_attempt_id": "MTLC-01-attempt-001",
     "implementation_authority": false,
-    "cleared_by": "OPS3-14 completed_verified",
+    "cleared_by": "OPS3-15 completed_verified",
     "preserved_lane_selections": {
-      "gpr": {
-        "selected_work_item": "MERA-16",
-        "attempt_id": "MERA-16-attempt-001",
-        "state": "selected_not_started"
-      },
-      "mrcs": {
-        "selected_work_item": "MRCS-21",
-        "attempt_id": "MRCS-21-attempt-001",
-        "state": "completed_verified"
-      },
-      "oarc": {
-        "selected_work_item": "OARC-07",
-        "attempt_id": "OARC-07-attempt-001",
-        "state": "completed_verified"
-      }
+      "gpr": {"selected_work_item":"PCV-03F","attempt_id":"PCV-03F-attempt-001","state":"in_progress"},
+      "cwks": {"selected_work_item":"CWKS-04","attempt_id":"CWKS-04-attempt-001","state":"in_progress"},
+      "mtlc": {"selected_work_item":"MTLC-01","attempt_id":"MTLC-01-attempt-001","state":"in_progress"}
     }
   },
   "lanes": {
     "operations": {
       "state": "completed_verified",
-      "work_item_id": "OPS3-14",
-      "work_item_path": "operations/work-items/OPS3-14.json",
+      "work_item_id": "OPS3-15",
+      "work_item_path": "operations/work-items/OPS3-15.json",
       "implementation_authority": false
     },
     "msas": {
@@ -49,7 +37,7 @@
       "checkpoint_path": "governance/ai/work-state/MSAS-21-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "MSAS-21 completed_verified after causal RED run 35523077579 at head c9590df7b845f4e321bc4167f81de9228d201c9a, exact-head GREEN run 35523325422 at head ef6a2658eba5e7a1caba53f7627e59c58401df9c, fresh-base integration run 35523608585 at head 7af2697b09d9c2d4c926af8ef93401e1634a70d6 against app main 44b0390489ad37eea035d6ccabcd611a1f61b9f1, and READY publication of PR 643 as app main e3bdef17ce2ce497d172479b81c35166af2226bb. MSAS-21 has no strict successor and the fresh roadmap DAG supplies no MSAS interstitial override, so the persistent MSAS lane is terminal completed_verified.",
+      "activation_rule": "MSAS-21 completed_verified and preserved as completed history.",
       "execution_state_ref": "ops3-lane-state/msas"
     },
     "mrcs": {
@@ -59,7 +47,7 @@
       "checkpoint_path": "governance/ai/work-state/MRCS-21-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "MRCS-21 completed_verified after causal RED run 35534682741 at head 84d3f363236468cdbe1b9732332570584e9347ba, exact-head cross-platform GREEN run 35534811637 at head aee7db47aef52986d74cfabb7b179000b44c5aee, and READY publication of PR 657 as application merge 07f8eae045b935af94de2f41c67d8c7a04789749. MRCS-21 has strict_successor null and ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no MRCS interstitial/successor override, so MRCS is terminal completed_verified. On 2026-10-02 the owner explicitly replaced its persistent implementation slot with CWKS while preserving this MRCS compatibility/history record.",
+      "activation_rule": "MRCS-21 completed_verified. On 2026-10-02 its persistent implementation slot was replaced by CWKS while preserving MRCS as completed history.",
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "cwks": {
@@ -69,7 +57,7 @@
       "checkpoint_path": "governance/ai/work-state/CWKS-04-attempt-001.json",
       "implementation_branch": "work/cwks-04-outline-sections",
       "implementation_authority": true,
-      "activation_rule": "CWKS-03 completed_verified after exact-head cross-platform validation run 37055128055 on 584f276c10d5d384aff91d767f10200207dde650 and publication of PR 788 as application main ee443f1d883b76e943d0429486c21b3eba9206eb; READY candidate CWKS-03-app-001 was durably reconciled at publication queue generation 70. On 2026-10-03 the owner explicitly directed continued implementation without reopening settled process/design decisions. CWKS-04 groups the already-approved document-outline and collapsible-section work: arbitrary-depth outline derivation, nodeId-based navigation, view-only section collapse/expand, and heading-subtree reorder. Autosave/storage, story/wiki systems, Creator Suite migration, collaboration/version history, AI writing and GPR Session changes remain outside this tranche.",
+      "activation_rule": "CWKS-03 completed_verified after exact-head cross-platform validation and publication. CWKS-04 is independently in_progress for the owner-approved outline, collapsible-section and heading-subtree-reorder work; MTLC may consume completed/current CWKS contracts only through explicit dependencies.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     "dwc-speech": {
@@ -77,18 +65,9 @@
       "recovery_path": "governance/application-planning/dwc-speech/README.md",
       "implementation_authority": "resolve_from_lane_sources_when_selected"
     },
-    "content-design": {
-      "state": "on_demand",
-      "implementation_authority": "session_scoped_by_owner_request"
-    },
-    "research-evaluation": {
-      "state": "on_demand",
-      "implementation_authority": "session_scoped_by_owner_request"
-    },
-    "source-provenance": {
-      "state": "on_demand",
-      "implementation_authority": "session_scoped_by_owner_request"
-    },
+    "content-design": {"state":"on_demand","implementation_authority":"session_scoped_by_owner_request"},
+    "research-evaluation": {"state":"on_demand","implementation_authority":"session_scoped_by_owner_request"},
+    "source-provenance": {"state":"on_demand","implementation_authority":"session_scoped_by_owner_request"},
     "oarc": {
       "state": "completed_verified",
       "selected_work_item": "OARC-07",
@@ -96,8 +75,18 @@
       "checkpoint_path": "governance/ai/work-state/OARC-07-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "OARC-07 completed_verified after causal RED run 35538487139 at application head 581d14b8c1014c280410e808e902340b69fca216, a bounded source-governance verifier repair after run 35538603856, exact-head cross-platform GREEN run 35538682911 at application head 87862dc0c85de2c3adc85fc7fdd66c8ed4781704, and READY publication of PR 663 as application main 8e738c6ed8d7582bc362aecdb59f4d312a48c9cd. Owner explicitly authorized inferred/extrapolated completion for MCH-0031 Hollowstep and SCF-0027 Orrukhal, with provenance-visible owner-approved MIB-14 definitions. OARC-07 has strict_successor null and ROADMAP_DEPENDENCY_GRAPH.json schema 1.0.4 supplies no OARC interstitial/successor override, so OARC is terminal completed_verified.",
+      "activation_rule": "OARC-07 completed_verified. On 2026-10-03 the owner explicitly replaced its terminal persistent implementation slot with MTLC while preserving OARC as immutable completed program history.",
       "execution_state_ref": "ops3-lane-state/oarc"
+    },
+    "mtlc": {
+      "state": "in_progress",
+      "selected_work_item": "MTLC-01",
+      "attempt_id": "MTLC-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/MTLC-01-attempt-001.json",
+      "implementation_branch": "work/mtlc-01-canon-friction-registry",
+      "implementation_authority": true,
+      "activation_rule": "On 2026-10-03 the owner approved the Group/human-continuity architecture and directed 'Let's get started.' MTLC replaces the terminal OARC persistent slot without reopening OARC or pausing GPR/CWKS. MTLC-01 is authorized for canon/source/friction recovery and classification only; MTLC-02 product implementation is not yet authorized.",
+      "execution_state_ref": "ops3-lane-state/mtlc"
     },
     "gpr": {
       "state": "in_progress",
@@ -106,7 +95,7 @@
       "checkpoint_path": "governance/ai/work-state/PCV-03F-attempt-001.json",
       "implementation_branch": "work/pcv-03f-installed-certification",
       "implementation_authority": true,
-      "activation_rule": "PCV-03F remains in_progress with implementation authority. Owner explicitly authorized canonical A5/PCV-03B/C/D Sessions wiring and on 2026-10-02 directed an independent durable Session Service foundation before another native build. Prove and integrate durable invitations, authenticated membership, idempotent command receipts, ordered role-filtered catch-up and restart recovery with one canonical Campaign/Session/Event authority. Preserve the user-friendly invitation flow and hidden manual signaling recovery. Installed-device certification remains required for PCV-03F closeout; PCV-04, updater activation and public/store release remain unauthorized.",
+      "activation_rule": "PCV-03F remains independently in_progress with implementation authority for durable Session Service integration/certification and installed-device proof. MTLC may inspect explicit campaign/session foundations but may not mutate or borrow the GPR branch.",
       "execution_state_ref": "ops3-lane-state/gpr"
     }
   },
@@ -116,12 +105,12 @@
     "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
     "cross_program_successor_rule": "Before successor selection, consult governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json. Individual program strict_successor or backlog fields cannot skip an eligible interstitial program or override cross-program gates.",
     "executor_independence": "Executor availability never grants or revokes project authority.",
-    "parallel_lane_rule": "GPR, CWKS and OARC remain independent persistent lanes. Terminal MRCS remains completed history. FIFO READY publication coordination exists only while two or more persistent lanes are nonterminal. With exactly one nonterminal lane, queue/concurrent-writer coordination is dormant.",
+    "parallel_lane_rule": "GPR, CWKS and MTLC are independent persistent lanes. Terminal MSAS, MRCS and OARC remain completed history. FIFO READY publication coordination exists only while two or more persistent lanes are nonterminal. With exactly one nonterminal lane, queue/concurrent-writer coordination is dormant.",
     "protected_main_interlock": "Protected main remains PR-only and exact-head. Single-active-lane mode uses one fresh-main drift-sensitive integration receipt with expected-head merge protection and no READY queue. Multi-lane mode uses FIFO READY coordination. Direct main writes remain prohibited.",
-    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: gpr, cwks and oarc. MSAS-21, MRCS-21, MVPS-23 and UISR-11 are completed program history and do not occupy persistent implementation slots.",
+    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: gpr, cwks and mtlc. MSAS, MRCS, OARC, MVPS and UISR are completed program history and do not occupy persistent implementation slots.",
     "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS3.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
     "generated_main_writers": "CI/bots/generated-content jobs may not push directly to protected main; generated outputs must be present on the queue-bound candidate branch or validation fails closed.",
-    "lane_state_isolation": "Live execution progress for persistent lanes is recorded on ops3-lane-state/gpr, ops3-lane-state/cwks and ops3-lane-state/oarc. Terminal MSAS and MRCS lane states are historical only. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
+    "lane_state_isolation": "Live execution progress for persistent lanes is recorded on ops3-lane-state/gpr, ops3-lane-state/cwks and ops3-lane-state/mtlc. Terminal OARC/MSAS/MRCS lane states are historical only. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
     "executor_interruption": "A chat/tool/session interruption is an executor incident, never a project lock. Resume from the last durable lane-state receipt and fresh repository/PR evidence; do not silently wait or replay completed phases.",
     "overinstrumentation_guard": "OPS3 uses milestone receipts, not activity receipts. Status reads, polling, per-platform CI results, artifact inspection, owner re-entry, sibling/lane scans, queue-empty checks, fresh-main observations, rebase checks, mergeability polling and merge mechanics are not material progress and must not create lane-state receipts.",
     "lane_state_milestones": "Ordinary persistent-lane execution state is selected_not_started -> in_progress -> prequeue_green -> published, followed by one deterministic successor reseed after canonical closeout. The generic lane activity-log API is prohibited.",
@@ -135,178 +124,25 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR remains independently active on PCV-03F Session Service integration/certification. CWKS-04 is independently in_progress on work/cwks-04-outline-sections for the already-approved outline, section-collapse and heading-subtree-reorder work; neither lane may borrow the other's scope.",
+  "next_project_action": "GPR remains independently active on PCV-03F Session Service integration/certification; CWKS-04 remains independently active on outline/section work; MTLC-01 is independently active on canon recovery, source/friction classification and Group-lifecycle convergence. No lane may borrow another lane's implementation scope.",
   "completed_programs": {
-    "UISR": {
-      "program_id": "UISR",
-      "state": "completed_verified",
-      "selected_work_item": "UISR-11",
-      "attempt_id": "UISR-11-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/UISR-11-attempt-001.json",
-      "implementation_branch": "feature/uisr-11-showcase-skin-expansion",
-      "implementation_authority": false,
-      "completion_rule": "UISR-11 is completed_verified. UISR is preserved as completed program history and no longer occupies a persistent implementation lane."
-    },
-    "MVPS_FOUNDATION": {
-      "program_id": "MVPS_FOUNDATION",
-      "state": "completed_verified",
-      "selected_work_item": "MVPS-16",
-      "attempt_id": "MVPS-16-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MVPS-16-attempt-001.json",
-      "implementation_branch": "work/mvps-16-radical-species-golden-proof",
-      "implementation_authority": false,
-      "completion_rule": "MVPS-01 through MVPS-16 foundation/architecture program remains completed_verified. Owner authorized a distinct Core-26 production/certification extension beginning at MVPS-17; the foundation closure is preserved as history and is not reopened."
-    },
-    "MVPS_CORE26_PRODUCTION_CERTIFICATION": {
-      "program_id": "MVPS_CORE26_PRODUCTION_CERTIFICATION",
-      "state": "completed_verified",
-      "selected_work_item": "MVPS-23",
-      "attempt_id": "MVPS-23-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MVPS-23-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "MVPS-17 through MVPS-23 completed_verified. Terminal proof MVPS23.CORE26.GAME_READY.GOLDEN.v1 certifies all 26 current species across the same 19-dimension CORE26.GAME_READY.v1 standard with zero mandatory gaps, waivers, roster drift or species-name application branches."
-    },
-    "MSAS": {
-      "program_id": "MSAS",
-      "state": "completed_verified",
-      "selected_work_item": "MSAS-21",
-      "attempt_id": "MSAS-21-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MSAS-21-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "MSAS-01 through MSAS-21 completed_verified. MSAS remains readable completed program history and no longer occupies a persistent implementation slot after owner-approved GPR lane activation."
-    },
-    "MRCS": {
-      "program_id": "MRCS",
-      "state": "completed_verified",
-      "selected_work_item": "MRCS-21",
-      "attempt_id": "MRCS-21-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MRCS-21-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "MRCS-01 through MRCS-21 reduced family completed_verified. Terminal MRCS-21 proves the 48-vector family closure, reduced-GPR consumption without ownership bleed, accessibility/parity, local-first operation, and optional-AI/paid-cloud independence. MRCS remains readable completed program history; on 2026-10-02 its terminal persistent slot was owner-approved for replacement by CWKS."
-    },
-    "CWKS": {
-      "program_id": "CWKS",
-      "state": "completed_verified",
-      "selected_work_item": "CWKS-03",
-      "attempt_id": "CWKS-03-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/CWKS-03-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "CWKS-01 through CWKS-03 completed_verified. The shared CreatorDocumentV1 contract/validator, read-only renderer and TipTap/ProseMirror structured editor are published with stable identity, deep headings, canonical formatting/blocks/tables, Multiversal resource authoring, slash/resource menus, safe paste, accessibility and deterministic Linux/Windows proof. CWKS-04 is a separately selected active tranche for outline and collapsible-section behavior."
-    },
-    "OARC": {
-      "program_id": "OARC",
-      "state": "completed_verified",
-      "selected_work_item": "OARC-07",
-      "attempt_id": "OARC-07-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/OARC-07-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "OARC-01 through OARC-07 completed_verified. Terminal OARC07.COVERAGE_GAP_CERTIFICATION.v1 reconciles the governed 6,708-row operational-asset source surface, certifies all six representative golden roles game-ready after two provenance-visible owner-approved MIB-14 completions, and preserves 5,587 waiting-existing-owner plus 1,079 normalization-needed rows as explicit actionable catalog gaps. OARC has no successor."
-    },
-    "GPR": {
-      "program_id": "GPR",
-      "state": "completed_verified",
-      "selected_work_item": "GPR-16",
-      "attempt_id": "GPR-16-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/GPR-16-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "GPR-01 through GPR-16 reduced family completed_verified. Terminal GPR-16 proves exact 168-pattern/85-operation/672-variant conformance, all 48 PDCP vectors, completed specialist golden proofs, original/right-cleared cross-system execution, provider-off/accessibility, and owner-safe downstream handoff. GPR implementation authority is retired."
-    },
-    "MERA": {
-      "program_id": "MERA",
-      "state": "completed_verified",
-      "selected_work_item": "MERA-24",
-      "attempt_id": "MERA-24-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MERA-24-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "MERA-01 through MERA-24 PDCP-reduced family completed_verified. Terminal MERA-24 proves all 48 golden vectors, canonical owner absorptions, accessibility/provider-off operation, recovery/idempotency, provenance/replay and the non-duplicating MBES handoff. MBES-01 is downstream but terminal gpr slot reuse requires explicit owner governance."
-    },
-    "MBES": {
-      "program_id": "MBES",
-      "state": "completed_verified",
-      "selected_work_item": "MBES-24",
-      "attempt_id": "MBES-24-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MBES-24-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "MBES-01 through MBES-24 PDCP-reduced family completed_verified. Terminal MBES-24 proves all 12 cross-scale family scenarios, the eight sealed predecessor schemas, Packet-06 identity/history, generic Oara/non-Oara reactive-world behavior, canonical owner absorptions, permission/accessibility/provider-off operation, provenance/recovery, and the non-duplicating MSLR handoff. MSLR-01 is downstream but terminal gpr slot reuse requires explicit owner governance."
-    },
-    "MSLR": {
-      "program_id": "MSLR",
-      "state": "completed_verified",
-      "selected_work_item": "MSLR-18",
-      "attempt_id": "MSLR-18-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MSLR-18-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "MSLR-01 through MSLR-18 PDCP-reduced family completed_verified. Terminal MSLR-18 proves all 45 closed PDCP vectors, eight sealed predecessor schemas, deterministic replay/history, permission/accessibility/provider-off behavior, projection invariance, specialized true hyperbolic tiling, quotient/non-orientable topology, bounded lazy unbounded-space operation, discrete/continuous semantic equivalence, clean-room boundaries, and the non-authoritative MSWI-01 typed handoff. MSWI-01 is downstream but terminal gpr slot reuse requires explicit later owner governance."
-    },
-    "MSWI": {
-      "program_id": "MSWI",
-      "state": "completed_verified",
-      "selected_work_item": "MSWI-18",
-      "attempt_id": "MSWI-18-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MSWI-18-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "MSWI-01, MSWI-03, MSWI-04, MSWI-06, MSWI-07, MSWI-14 and MSWI-18 reduced family completed_verified. Terminal MSWI-18 proves declared-connectivity diagnostics, permission/accessibility/provider-off behavior, sealed predecessor boundaries, all 36 durable DCP golden vectors, and the non-authoritative SMB-08 capability handoff on final exact application head c096369d66f1a7ea7fc908433968b484a8013c4c / run 35621083959 / merge c9c6261a7cfdfae10e980c7d1afdf166142693d5. SMB-08 is selected_not_started and requires a later owner Continue."
-    },
-    "MSLR_SUPPLEMENT": {
-      "program_id": "MSLR-SUPPLEMENT",
-      "state": "completed_verified",
-      "selected_work_item": "MSLR-S02",
-      "attempt_id": "MSLR-S02-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/MSLR-S02-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "MSLR-S01 and MSLR-S02 completed_verified. Terminal supplement proof preserves sealed MSLR authority and emits capability-only SAA readiness without starting SAA."
-    },
-    "SAA": {
-      "program_id": "SAA",
-      "state": "completed_verified",
-      "selected_work_item": "SAA-30",
-      "attempt_id": "SAA-30-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/SAA-30-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "SAA-01 through SAA-30 completed_verified. Terminal SAA-30.1 proves one rights-safe provider-off professional/collaborative comic lineage across stable page/webtoon identity, collaboration/recovery, accessibility/localization, prepress/interchange and deterministic recovery. SAA30.DOWNSTREAM.CAPABILITY.v1 makes the finished authoring/package contracts consumable by SMB10B and SMB-11 without granting implementation, publication or automatic lane-reuse authority."
-    },
-    "BRP": {
-      "program_id": "BRP",
-      "state": "completed_verified",
-      "selected_work_item": "BRP-11",
-      "attempt_id": "BRP-11-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/BRP-11-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "BRP-01 through BRP-11 completed_verified. Terminal BRP-11.1 publishes versioned BETA_READY evidence for the declared ordinary-user external-beta cohort scenario across the supported matrix, consumes sealed BRP-01..09 completion evidence without historical fanout, retains BRP-10 production-intended real-play proof, requires bounded unresolved-issue dispositions and preserves recovery/history guarantees. BETA_READY does not itself authorize broad external beta, public launch, paid acquisition or commerce. SMB-17 is selected_not_started and requires a later owner Continue."
-    },
-    "SMB": {
-      "program_id": "SMB",
-      "state": "completed_verified",
-      "selected_work_item": "SMB-18",
-      "attempt_id": "SMB-18-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/SMB-18-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "SMB-01 through SMB-18 and interstitial BRP-01 through BRP-11 are completed_verified. SMB-18.1 publishes RELEASE_CANDIDATE_READY evidence for versioned/reproducible packages, non-public candidate deployment, observability/support, rollback/recovery and fail-closed commercial/legal/provider gates. This state is not PUBLICLY_RELEASED and does not itself approve stores, billing/subscriptions, paid providers, production credentials, paid acquisition, public launch or P3D manufacturing/print-service commerce."
-    },
-    "BIP": {
-      "program_id": "BIP",
-      "state": "completed_verified",
-      "selected_work_item": "BIP-01",
-      "attempt_id": "BIP-01-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/BIP-01-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "BIP-01 completed_verified when the actual Multiversal client produced a Windows x64 NSIS current-user installer and Android ARM64 direct-install APK with manifest/checksums on an exact validated application head. Public/store distribution and production signing remain separately gated."
-    }
+    "UISR": {"program_id":"UISR","state":"completed_verified","selected_work_item":"UISR-11","attempt_id":"UISR-11-attempt-001","checkpoint_path":"governance/ai/work-state/UISR-11-attempt-001.json","implementation_branch":"feature/uisr-11-showcase-skin-expansion","implementation_authority":false,"completion_rule":"UISR-11 completed_verified; preserved as completed program history."},
+    "MVPS_FOUNDATION": {"program_id":"MVPS_FOUNDATION","state":"completed_verified","selected_work_item":"MVPS-16","attempt_id":"MVPS-16-attempt-001","checkpoint_path":"governance/ai/work-state/MVPS-16-attempt-001.json","implementation_branch":"work/mvps-16-radical-species-golden-proof","implementation_authority":false,"completion_rule":"MVPS-01 through MVPS-16 foundation/architecture completed_verified."},
+    "MVPS_CORE26_PRODUCTION_CERTIFICATION": {"program_id":"MVPS_CORE26_PRODUCTION_CERTIFICATION","state":"completed_verified","selected_work_item":"MVPS-23","attempt_id":"MVPS-23-attempt-001","checkpoint_path":"governance/ai/work-state/MVPS-23-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"MVPS-17 through MVPS-23 completed_verified with Core-26 production/certification proof."},
+    "MSAS": {"program_id":"MSAS","state":"completed_verified","selected_work_item":"MSAS-21","attempt_id":"MSAS-21-attempt-001","checkpoint_path":"governance/ai/work-state/MSAS-21-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"MSAS-01 through MSAS-21 completed_verified; preserved as history."},
+    "MRCS": {"program_id":"MRCS","state":"completed_verified","selected_work_item":"MRCS-21","attempt_id":"MRCS-21-attempt-001","checkpoint_path":"governance/ai/work-state/MRCS-21-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"MRCS-01 through MRCS-21 completed_verified; persistent slot replaced by CWKS on 2026-10-02."},
+    "CWKS": {"program_id":"CWKS","state":"completed_verified","selected_work_item":"CWKS-03","attempt_id":"CWKS-03-attempt-001","checkpoint_path":"governance/ai/work-state/CWKS-03-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"CWKS-01 through CWKS-03 completed_verified; CWKS-04 is separately active."},
+    "OARC": {"program_id":"OARC","state":"completed_verified","selected_work_item":"OARC-07","attempt_id":"OARC-07-attempt-001","checkpoint_path":"governance/ai/work-state/OARC-07-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"OARC-01 through OARC-07 completed_verified. On 2026-10-03 its terminal persistent slot was owner-approved for replacement by MTLC; OARC remains immutable completed history."},
+    "GPR": {"program_id":"GPR","state":"completed_verified","selected_work_item":"GPR-16","attempt_id":"GPR-16-attempt-001","checkpoint_path":"governance/ai/work-state/GPR-16-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"GPR-01 through GPR-16 reduced family completed_verified; later PCV work is selected separately in the gpr persistent lane."},
+    "MERA": {"program_id":"MERA","state":"completed_verified","selected_work_item":"MERA-24","attempt_id":"MERA-24-attempt-001","checkpoint_path":"governance/ai/work-state/MERA-24-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"MERA-01 through MERA-24 completed_verified."},
+    "MBES": {"program_id":"MBES","state":"completed_verified","selected_work_item":"MBES-24","attempt_id":"MBES-24-attempt-001","checkpoint_path":"governance/ai/work-state/MBES-24-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"MBES-01 through MBES-24 completed_verified."},
+    "MSLR": {"program_id":"MSLR","state":"completed_verified","selected_work_item":"MSLR-18","attempt_id":"MSLR-18-attempt-001","checkpoint_path":"governance/ai/work-state/MSLR-18-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"MSLR-01 through MSLR-18 completed_verified."},
+    "MSWI": {"program_id":"MSWI","state":"completed_verified","selected_work_item":"MSWI-18","attempt_id":"MSWI-18-attempt-001","checkpoint_path":"governance/ai/work-state/MSWI-18-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"MSWI reduced family completed_verified."},
+    "MSLR_SUPPLEMENT": {"program_id":"MSLR-SUPPLEMENT","state":"completed_verified","selected_work_item":"MSLR-S02","attempt_id":"MSLR-S02-attempt-001","checkpoint_path":"governance/ai/work-state/MSLR-S02-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"MSLR-S01 and MSLR-S02 completed_verified."},
+    "SAA": {"program_id":"SAA","state":"completed_verified","selected_work_item":"SAA-30","attempt_id":"SAA-30-attempt-001","checkpoint_path":"governance/ai/work-state/SAA-30-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"SAA-01 through SAA-30 completed_verified."},
+    "BRP": {"program_id":"BRP","state":"completed_verified","selected_work_item":"BRP-11","attempt_id":"BRP-11-attempt-001","checkpoint_path":"governance/ai/work-state/BRP-11-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"BRP-01 through BRP-11 completed_verified."},
+    "SMB": {"program_id":"SMB","state":"completed_verified","selected_work_item":"SMB-18","attempt_id":"SMB-18-attempt-001","checkpoint_path":"governance/ai/work-state/SMB-18-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"SMB-01 through SMB-18 and BRP interstitial work completed_verified; public/commercial release remains separately gated."},
+    "BIP": {"program_id":"BIP","state":"completed_verified","selected_work_item":"BIP-01","attempt_id":"BIP-01-attempt-001","checkpoint_path":"governance/ai/work-state/BIP-01-attempt-001.json","implementation_branch":null,"implementation_authority":false,"completion_rule":"BIP-01 completed_verified for Windows x64 NSIS and Android ARM64 package proof; distribution/signing remain separately gated."}
   },
   "domain_authorities": {
     "player_species": {
