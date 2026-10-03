@@ -10,8 +10,8 @@ from __future__ import annotations
 
 from typing import Any
 
-LANES = frozenset({"gpr", "cwks", "oarc"})
-SCHEMA_VERSION = "1.2.0"
+LANES = frozenset({"gpr", "cwks", "mtlc"})
+SCHEMA_VERSION = "1.3.0"
 
 
 class LaneStateConflict(RuntimeError):
