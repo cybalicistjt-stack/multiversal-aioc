@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "CWKS",
+  "lane": "cwks",
+  "track": "creator-writing-knowledge-system",
+  "source_program": "CWKS",
+  "work_item_id": "CWKS-05",
+  "attempt_id": "CWKS-05-attempt-001",
+  "title": "Document Persistence, Autosave and Recovery",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/cwks-05-document-persistence",
+  "completed": false,
+  "selected_by_owner": "2026-10-03 owner explicitly excluded AI writing for now and directed Continue into the next writing-system implementation tranche after CWKS-04.",
+  "objective": "Make the shared CWKS document engine durable by persisting validated CreatorDocumentV1 documents through the existing provider-neutral local document store, adding autosave/recovery behavior, and failing safely on stale writes without absorbing story, wiki, collaboration, version-history, Creator Suite or AI-writing scope.",
+  "scope": {
+    "include": [
+      "provider-neutral persistence adapter for validated CreatorDocumentV1 using packages/local-store",
+      "storage metadata kept outside CreatorDocumentV1 content and keyed without narrowing the canonical documentId contract",
+      "document load/create/save/delete behavior with local-store revision compare-and-set stale-write protection",
+      "autosave coordinator with explicit clean/dirty/saving/saved/conflict/error state",
+      "recovery journal/checkpoint that preserves unsaved document content across reload/crash boundaries",
+      "recovery detection and explicit restore/discard behavior without silently overwriting the last saved document",
+      "safe validation/fail-closed behavior for corrupt or unsupported stored/recovery payloads",
+      "focused CWKS-05 persistence/autosave/recovery tests plus Linux/Windows deterministic validation"
+    ],
+    "exclude": [
+      "named version history or revision browsing UI",
+      "comments, review annotations or multiplayer/collaborative editing",
+      "story project hierarchy, corkboard, storyboard, timeline or plot board",
+      "wiki backlinks, transclusion or knowledge graph",
+      "Creator Suite field migration",
+      "AI writing, generation or AI knowledge assistance",
+      "snapshot refresh",
+      "route/navigation redesign",
+      "changes to GPR Session Service scope"
+    ]
+  },
+  "dependencies": {
+    "completed_predecessor": "CWKS-04 published as application main 19a71af405daa48eacf1bf37a555efe945507e4a after exact-head validation run 37121132037",
+    "canonical_document_contract": "CreatorDocumentV1",
+    "published_editor": "CreatorDocumentEditor",
+    "local_store_boundary": "packages/local-store/src/index.ts",
+    "parallel_lane_rule": "GPR PCV-03F remains independently in_progress; CWKS-05 may not modify or borrow the GPR implementation branch."
+  },
+  "active_substep": "Persistence contract and recovery semantics",
+  "next_action": "Create work/cwks-05-document-persistence from fresh application main, add focused failing persistence/recovery tests, then implement the minimum validated store adapter and autosave coordinator to GREEN.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner excluded AI writing and selected CWKS-05 document persistence/autosave/recovery as the next writing-system tranche."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  }
+}
