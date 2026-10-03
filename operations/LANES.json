@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.6.0",
+  "schema_version": "3.7.0",
   "canonical_door": "operations/BOOTSTRAP.md",
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "selection_rule": "User intent selects a lane; lane state never changes the global operating contract.",
@@ -7,206 +7,108 @@
     {
       "id": "msas",
       "purpose": "Completed Multiversal Sound & Audio Studio (MSAS) program history. Readable for provenance/integration evidence; no persistent implementation slot or new MSAS execution authority.",
-      "intent_examples": [
-        "continue MSAS",
-        "continue sound studio",
-        "implement MSAS-01",
-        "work on audio studio"
-      ],
+      "intent_examples": ["review completed MSAS","inspect sound studio history"],
       "current_state_source": "operations/CURRENT.json#/lanes/msas",
-      "source_bundle": [
-        "CURRENT-selected MSAS work item/checkpoint",
-        "live lane execution state from ops3-lane-state/msas",
-        "governance/application-planning/multiversal-sound-audio-studio/MSAS_PROGRAM_BACKLOG.json",
-        "AAI/PCA/DWC and other owner contracts named by the selected MSAS item",
-        "live application repository evidence limited to active MSAS scope"
-      ],
-      "cross_lane_reads": "MSAS is terminal completed history. Read GPR/CWKS/OARC only for explicit integration evidence; do not start new MSAS implementation without a new owner-governed program.",
+      "source_bundle": ["CURRENT terminal MSAS checkpoint","historical lane execution state from ops3-lane-state/msas","completed MSAS evidence required by an explicit dependency"],
+      "cross_lane_reads": "MSAS is terminal completed history; do not restart it through this compatibility lane.",
       "execution_state_ref": "ops3-lane-state/msas"
     },
     {
       "id": "gpr",
-      "purpose": "Gameplay Pattern Runtime & Loop Minis (GPR): reusable gameplay-pattern execution/composition over frozen MAL, accepted MRCS definitions and canonical owner-domain contracts.",
-      "intent_examples": [
-        "continue GPR",
-        "continue gameplay runtime",
-        "start GPR-01",
-        "work on loop minis"
-      ],
+      "purpose": "Gameplay Pattern Runtime & Loop Minis (GPR): reusable gameplay-pattern execution/composition and the current PCV session/runtime continuation selected through CURRENT.",
+      "intent_examples": ["continue GPR","continue gameplay runtime","continue PCV","work on sessions"],
       "current_state_source": "operations/CURRENT.json#/lanes/gpr",
-      "source_bundle": [
-        "CURRENT-selected GPR work item/checkpoint",
-        "live lane execution state from ops3-lane-state/gpr",
-        "governance/application-planning/gameplay-pattern-runtime/GPR_PROGRAM_BACKLOG.json",
-        "governance/application-planning/preimplementation-design-closure/PDCP_GPR_FAMILY_DESIGN_CLOSURE.md",
-        "MAL/MRCS and owner-domain contracts named by the selected GPR item",
-        "live application/repository evidence limited to active GPR scope"
-      ],
-      "cross_lane_reads": "Consume completed MRCS definitions and explicit owner contracts as dependencies. CWKS remains independent except for explicit shared-authoring integration or publication conflicts. OARC remains independent except for explicit dependencies/publication conflicts.",
+      "source_bundle": ["CURRENT-selected GPR work item/checkpoint","live lane execution state from ops3-lane-state/gpr","governance/application-planning/gameplay-pattern-runtime/GPR_PROGRAM_BACKLOG.json","owner-domain contracts named by the selected GPR item","live application/repository evidence limited to active GPR scope"],
+      "cross_lane_reads": "CWKS and MTLC remain independent except for explicit shared dependencies or publication conflicts.",
       "execution_state_ref": "ops3-lane-state/gpr"
     },
     {
       "id": "mrcs",
-      "purpose": "Completed Multiversal Rules & Content Studio (MRCS) program history. Readable for creator-system provenance and dependency evidence; no persistent implementation slot or new MRCS execution authority.",
-      "intent_examples": [
-        "review completed MRCS",
-        "inspect rules content studio history",
-        "trace MRCS authoring provenance"
-      ],
+      "purpose": "Completed Multiversal Rules & Content Studio (MRCS) program history. Readable for provenance/dependency evidence; no persistent implementation slot.",
+      "intent_examples": ["review completed MRCS","inspect rules content studio history"],
       "current_state_source": "operations/CURRENT.json#/lanes/mrcs",
-      "source_bundle": [
-        "CURRENT terminal MRCS checkpoint",
-        "historical lane execution state from ops3-lane-state/mrcs",
-        "governance/application-planning/multiversal-rules-content-studio/MRCS_MULTIVERSAL_RULES_CONTENT_STUDIO_PROGRAM.md",
-        "governance/application-planning/multiversal-rules-content-studio/MRCS_PROGRAM_BACKLOG.json",
-        "completed MRCS evidence required by an explicit dependency"
-      ],
-      "cross_lane_reads": "MRCS is terminal completed history. Read GPR/CWKS/OARC only for explicit integration evidence; do not restart MRCS implementation through this compatibility lane.",
+      "source_bundle": ["CURRENT terminal MRCS checkpoint","historical lane execution state from ops3-lane-state/mrcs","completed MRCS evidence required by an explicit dependency"],
+      "cross_lane_reads": "MRCS is terminal completed history; do not restart it through this compatibility lane.",
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     {
       "id": "cwks",
-      "purpose": "Creator Writing & Knowledge System (CWKS): shared structured-document, writing, story, wiki and knowledge substrate consumed by creator suites and other Multiversal authoring systems without taking ownership of their domain data.",
-      "intent_examples": [
-        "continue CWKS",
-        "build the writing system",
-        "implement structured documents",
-        "work on stories or wiki authoring"
-      ],
+      "purpose": "Creator Writing & Knowledge System (CWKS): shared structured-document, writing, story, wiki and knowledge substrate consumed by Multiversal authoring systems.",
+      "intent_examples": ["continue CWKS","build the writing system","implement structured documents","work on stories or wiki authoring"],
       "current_state_source": "operations/CURRENT.json#/lanes/cwks",
-      "source_bundle": [
-        "CURRENT-selected CWKS work item/checkpoint",
-        "live lane execution state from ops3-lane-state/cwks",
-        "owner-approved CWKS design and implementation plan in cybalicistjt-stack/Multiversal-app",
-        "existing creator/entity/sequential-art contracts explicitly required by the selected CWKS item",
-        "live application repository evidence limited to active CWKS scope"
-      ],
-      "cross_lane_reads": "Consume completed MRCS and other creator/entity contracts only as explicit dependencies. GPR and OARC remain independent; read them only for explicit integration evidence or publication conflicts.",
+      "source_bundle": ["CURRENT-selected CWKS work item/checkpoint","live lane execution state from ops3-lane-state/cwks","owner-approved CWKS design and implementation plan in cybalicistjt-stack/Multiversal-app","existing creator/entity contracts explicitly required by the selected CWKS item","live application repository evidence limited to active CWKS scope"],
+      "cross_lane_reads": "GPR and MTLC remain independent; read them only for explicit integration evidence or publication conflicts.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     {
       "id": "oarc",
-      "purpose": "Operational Asset Readiness Closure (OARC): game-readiness integration and certification for vehicles, mecha, spacecraft/starships, bases/platforms and their modular content without duplicating MRCS, MIB-14/D17, MERA or MBES authority.",
-      "intent_examples": [
-        "continue OARC",
-        "continue operational asset readiness",
-        "make vehicles mecha ships and bases game ready",
-        "continue vehicle mecha ship base closure"
-      ],
+      "purpose": "Completed Operational Asset Readiness Closure (OARC) program history. Readable for vehicles/mecha/spacecraft/bases provenance and dependency evidence; its persistent slot was owner-approved for replacement by MTLC on 2026-10-03.",
+      "intent_examples": ["review completed OARC","inspect operational asset readiness history"],
       "current_state_source": "operations/CURRENT.json#/lanes/oarc",
-      "source_bundle": [
-        "CURRENT-selected OARC work item/checkpoint",
-        "live lane execution state from ops3-lane-state/oarc",
-        "governance/application-planning/operational-asset-readiness-closure/OARC_OPERATIONAL_ASSET_READINESS_CLOSURE_PROGRAM.md",
-        "governance/application-planning/operational-asset-readiness-closure/OARC_PROGRAM_BACKLOG.json",
-        "MRCS-13, MIB-14/PPIA-04/F014/D17 and other owner contracts named by the selected OARC item",
-        "MERA and MBES planning contracts only where required to preserve future-owner boundaries",
-        "live application repository evidence limited to active OARC scope"
-      ],
-      "cross_lane_reads": "Consume completed MRCS definitions and existing owner contracts as explicit dependencies. Read MERA/MBES planning only to preserve reserved authority. OARC execution never pauses, replaces or rewrites GPR or CWKS.",
+      "source_bundle": ["CURRENT terminal OARC checkpoint","historical lane execution state from ops3-lane-state/oarc","governance/application-planning/operational-asset-readiness-closure/OARC_OPERATIONAL_ASSET_READINESS_CLOSURE_PROGRAM.md","governance/application-planning/operational-asset-readiness-closure/OARC_PROGRAM_BACKLOG.json","completed OARC evidence required by an explicit dependency"],
+      "cross_lane_reads": "OARC is terminal completed history. Do not restart OARC implementation through this compatibility lane.",
       "execution_state_ref": "ops3-lane-state/oarc"
+    },
+    {
+      "id": "mtlc",
+      "purpose": "Multiversal Tabletop Lifecycle Convergence (MTLC): eliminate ordinary tabletop coordination, preparation, group-continuity, live-play, campaign-memory and between-session friction by converging existing Multiversal systems and adding missing connective tissue.",
+      "intent_examples": ["continue MTLC","continue tabletop lifecycle","work on Groups","continue connective tissue","continue group accession"],
+      "current_state_source": "operations/CURRENT.json#/lanes/mtlc",
+      "source_bundle": ["CURRENT-selected MTLC work item/checkpoint","live lane execution state from ops3-lane-state/mtlc","governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_MULTIVERSAL_TABLETOP_LIFECYCLE_CONVERGENCE_PROGRAM.md","governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_PROGRAM_BACKLOG.json","governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_COMMUNITY_FRICTION_REGISTRY.json","governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_GROUP_LIFECYCLE_SPEC.md","Project/Feature/UI/Screen Bibles and source/provenance packages only where required by the selected MTLC item","live application/repository evidence limited to explicit MTLC dependencies"],
+      "cross_lane_reads": "GPR and CWKS remain independently active. MTLC may consume explicit current foundations and evidence but may not mutate or borrow their implementation branches except through a separately governed integration/publication decision.",
+      "execution_state_ref": "ops3-lane-state/mtlc"
     },
     {
       "id": "operations",
       "purpose": "Governance architecture, repositories, CI, agent behavior, execution infrastructure, validation infrastructure and operational tooling.",
-      "intent_examples": [
-        "fix governance",
-        "redesign operations",
-        "repair CI",
-        "change agent behavior",
-        "repository maintenance"
-      ],
+      "intent_examples": ["fix governance","redesign operations","repair CI","change agent behavior","repository maintenance"],
       "current_state_source": "operations/CURRENT.json#/lanes/operations",
-      "source_bundle": [
-        "operations/",
-        "only affected repository control surfaces",
-        "live repository/CI/tool evidence"
-      ],
+      "source_bundle": ["operations/","only affected repository control surfaces","live repository/CI/tool evidence"],
       "cross_lane_reads": "Implementation state may be read only to preserve or reconcile it; operations work may not silently start implementation work."
     },
     {
       "id": "content-design",
       "purpose": "Game-system evaluation, world/game content design, mechanics design and content creation that does not itself authorize software implementation.",
-      "intent_examples": [
-        "evaluate this game system",
-        "design creatures",
-        "create RPG content",
-        "work on lore"
-      ],
+      "intent_examples": ["evaluate this game system","design creatures","create RPG content","work on lore"],
       "current_state_source": "operations/CURRENT.json#/lanes/content-design",
-      "source_bundle": [
-        "user-selected game/content sources",
-        "Project/Feature/UI/Screen Bibles when relevant",
-        "canonical source material needed for the requested domain"
-      ],
+      "source_bundle": ["user-selected game/content sources","Project/Feature/UI/Screen Bibles when relevant","canonical source material needed for the requested domain"],
       "cross_lane_reads": "Do not load implementation-roadmap control state unless the user asks to integrate the result into implementation."
     },
     {
       "id": "dwc-speech",
       "purpose": "The DWC speech-synthesis project and its corpus/training/inference workflow.",
-      "intent_examples": [
-        "continue DWC",
-        "speech retrain",
-        "DWC diagnostic"
-      ],
+      "intent_examples": ["continue DWC","speech retrain","DWC diagnostic"],
       "current_state_source": "operations/CURRENT.json#/lanes/dwc-speech",
-      "source_bundle": [
-        "governance/application-planning/dwc-speech/README.md",
-        "the current DWC checkpoint/evidence named there",
-        "live DWC artifacts supplied by the user"
-      ],
+      "source_bundle": ["governance/application-planning/dwc-speech/README.md","the current DWC checkpoint/evidence named there","live DWC artifacts supplied by the user"],
       "cross_lane_reads": "Keep DWC isolated from implementation lanes unless an explicit integration task requires both."
     },
     {
       "id": "research-evaluation",
       "purpose": "External research, tools/resources evaluation, vendor/open-source comparisons and technical investigation that does not itself mutate product state.",
-      "intent_examples": [
-        "research this",
-        "compare tools",
-        "evaluate software",
-        "find resources"
-      ],
+      "intent_examples": ["research this","compare tools","evaluate software","find resources"],
       "current_state_source": "operations/CURRENT.json#/lanes/research-evaluation",
-      "source_bundle": [
-        "user-supplied research question",
-        "relevant current web/external sources",
-        "project constraints only when they affect the evaluation"
-      ],
+      "source_bundle": ["user-supplied research question","relevant current web/external sources","project constraints only when they affect the evaluation"],
       "cross_lane_reads": "Research findings become implementation or operations work only through an explicit follow-on task."
     },
     {
       "id": "source-provenance",
       "purpose": "Source ingestion, provenance, corpus coverage, licensing traceability and recovery of project source material.",
-      "intent_examples": [
-        "audit source coverage",
-        "trace provenance",
-        "review these source files",
-        "recover missing material"
-      ],
+      "intent_examples": ["audit source coverage","trace provenance","review these source files","recover missing material"],
       "current_state_source": "operations/CURRENT.json#/lanes/source-provenance",
-      "source_bundle": [
-        "SOURCE_MAP/manifest equivalents",
-        "source coverage/provenance packages",
-        "canonical repository source registries",
-        "the user-supplied files under review"
-      ],
+      "source_bundle": ["SOURCE_MAP/manifest equivalents","source coverage/provenance packages","canonical repository source registries","the user-supplied files under review"],
       "cross_lane_reads": "Source evidence may inform other lanes but does not select their work."
     }
   ],
-  "persistent_implementation_lanes": [
-    "gpr",
-    "cwks",
-    "oarc"
-  ],
+  "persistent_implementation_lanes": ["gpr","cwks","mtlc"],
   "retired_lane_aliases": {
-    "product-development": "Retired umbrella. Resolve explicit intent to gpr, cwks or oarc; this alias cannot select work.",
+    "product-development": "Retired umbrella. Resolve explicit intent to gpr, cwks or mtlc; this alias cannot select work.",
     "ui-implementation": "UISR-11 completed_verified. UISR is completed program history, not a persistent implementation lane.",
-    "player-species": "Completed MVPS program history. Player-species work no longer occupies a persistent lane; new species work requires an explicitly selected governed work item.",
-    "mvps": "Completed terminal MVPS lane/program history. It was replaced as the third persistent implementation slot by OARC on 2026-09-20.",
-    "mrcs-implementation": "MRCS-21 completed_verified. MRCS is completed program history; its former persistent slot was replaced by CWKS on 2026-10-02.",
-    "operational-assets": "Alias for canonical oarc lane."
+    "player-species": "Completed MVPS program history. New species work requires an explicitly selected governed work item.",
+    "mvps": "Completed terminal MVPS history; its former persistent slot was later occupied by OARC.",
+    "mrcs-implementation": "MRCS-21 completed_verified; its former persistent slot was replaced by CWKS on 2026-10-02.",
+    "operational-assets": "OARC completed_verified; its persistent slot was replaced by MTLC on 2026-10-03. Use OARC only as completed history unless the owner creates a new governed program."
   },
-  "parallel_persistence_rule": "GPR, CWKS and OARC are independent persistent implementation lanes with separate milestone-only lane-state refs. Terminal MSAS and MRCS remain completed history outside the persistent slots. If two or more persistent lanes are nonterminal, immutable green READY candidates use FIFO publication coordination. If exactly one persistent lane is nonterminal, the READY queue is dormant and protected-main publication uses the direct exact-head fresh-base path.",
+  "parallel_persistence_rule": "GPR, CWKS and MTLC are independent persistent implementation lanes with separate milestone-only lane-state refs. Terminal MSAS, MRCS and OARC remain completed history outside the persistent slots. If two or more persistent lanes are nonterminal, immutable green READY candidates use FIFO publication coordination. If exactly one persistent lane is nonterminal, the READY queue is dormant and protected-main publication uses the direct exact-head fresh-base path.",
   "single_active_lane_rule": "Derive single-active-lane mode once from the fresh CURRENT read. Ordinary execution reads and mutates only that lane plus concrete dependencies/conflicts; it does not rescan terminal siblings, check concurrent writers, read an empty READY queue, or perform routine rebase/update-branch work. Protected-main publication is PR-only, exact-head and fresh-base, with a narrow integration rerun only if main actually drifts.",
   "quiet_execution_rule": "Healthy CI is observed at workflow level only at sparse transition-driven points. Job/step/log inspection is failure-driven. Lane scans, queue-empty checks, rebase checks, mergeability polling and owner re-entry are not material progress and must not create lane-state receipts. Browser/session interruption resumes from durable lane state and repository evidence rather than requiring another owner Continue."
 }
