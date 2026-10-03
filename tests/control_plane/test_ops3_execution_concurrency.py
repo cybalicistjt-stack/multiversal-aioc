@@ -31,14 +31,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertIn("OPS3.STALL_NUDGE_UNRECORDED", errors)
 
     def candidate(self, cid: str, lane: str = "msas") -> dict:
-        return {
-            "candidate_id":cid,
-            "lane":lane,
-            "work_item_id":lane.upper()+"-X",
-            "pr_number":10,
-            "head_sha":"head-"+cid,
-            "prequeue_validation":{"status":"green","head_sha":"head-"+cid,"run_id":"pre-"+cid},
-        }
+        return {"candidate_id":cid,"lane":lane,"work_item_id":lane.upper()+"-X","pr_number":10,"head_sha":"head-"+cid,"prequeue_validation":{"status":"green","head_sha":"head-"+cid,"run_id":"pre-"+cid}}
 
     def test_ready_candidates_enter_order_only_after_green_prequeue_validation(self) -> None:
         state=PUBLICATION.free_publication_queue("cybalicistjt-stack/Multiversal-app",generation=10)
@@ -57,7 +50,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
 
     def test_ready_queue_is_fifo_without_reserving_future_work(self) -> None:
         state=PUBLICATION.free_publication_queue("cybalicistjt-stack/Multiversal-app",generation=30)
-        for cid,lane in (("a","gpr"),("b","cwks"),("c","oarc")):
+        for cid,lane in (("a","gpr"),("b","cwks"),("c","mtlc")):
             state=PUBLICATION.submit_ready_candidate(state,expected_generation=state["generation"],candidate=self.candidate(cid,lane))
         self.assertEqual([x["candidate_id"] for x in state["ready"]],["a","b","c"])
 
@@ -87,7 +80,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
 
     def test_durable_merge_consumes_candidate_without_release_or_recovery(self) -> None:
         state=PUBLICATION.free_publication_queue("cybalicistjt-stack/multiversal-aioc",generation=60)
-        state=PUBLICATION.submit_ready_candidate(state,expected_generation=60,candidate=self.candidate("a","oarc"))
+        state=PUBLICATION.submit_ready_candidate(state,expected_generation=60,candidate=self.candidate("a","mtlc"))
         state=PUBLICATION.reconcile_durable_publication(state,expected_generation=61,candidate_id="a",observed_head_sha="head-a",merge_sha="merge-a")
         self.assertEqual(state["ready"],[])
         self.assertEqual(state["history"][-1]["status"],"published")
@@ -96,55 +89,40 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
 
     def test_direct_protected_main_write_is_rejected(self) -> None:
         state=PUBLICATION.free_publication_queue("cybalicistjt-stack/multiversal-aioc",generation=70)
-        self.assertEqual(
-            PUBLICATION.validate_protected_main_write(state,target_repo="cybalicistjt-stack/multiversal-aioc",fresh_main_sha="main",mutation_kind="contents_api"),
-            [PUBLICATION.DIRECT_MAIN_MUTATION],
-        )
+        self.assertEqual(PUBLICATION.validate_protected_main_write(state,target_repo="cybalicistjt-stack/multiversal-aioc",fresh_main_sha="main",mutation_kind="contents_api"),[PUBLICATION.DIRECT_MAIN_MUTATION])
 
     def test_lane_state_transport_is_sharded_by_lane(self) -> None:
         self.assertEqual(LANE_STATE.coordination_branch("gpr"),"ops3-lane-state/gpr")
         self.assertEqual(LANE_STATE.coordination_branch("cwks"),"ops3-lane-state/cwks")
+        self.assertEqual(LANE_STATE.coordination_branch("mtlc"),"ops3-lane-state/mtlc")
         a=LANE_STATE.initial_state("gpr",revision=1,selected_work_item="GPR-X",attempt_id="GPR-X-attempt-001")
         b=LANE_STATE.initial_state("cwks",revision=1,selected_work_item="CWKS-X",attempt_id="CWKS-X-attempt-001")
         a2=LANE_STATE.start_execution(a,expected_revision=1,lane="gpr",implementation_branch="work/gpr-x",evidence="owner Continue")
         self.assertEqual(a2["revision"],2)
         self.assertEqual(b["revision"],1)
-        with self.assertRaises(LANE_STATE.LaneStateConflict):
-            LANE_STATE.coordination_branch("mrcs")
+        for retired in ("mrcs","oarc"):
+            with self.subTest(retired=retired):
+                with self.assertRaises(LANE_STATE.LaneStateConflict):
+                    LANE_STATE.coordination_branch(retired)
         with self.assertRaises(LANE_STATE.LaneStateConflict):
             LANE_STATE.mark_prequeue_green(a2,expected_revision=2,lane="cwks",candidate_head="head-a",validation_run="run-a")
 
     def test_lane_can_start_without_mutating_global_selector(self) -> None:
-        state=LANE_STATE.initial_state("oarc",revision=5,selected_work_item="OARC-12",attempt_id="OARC-12-attempt-001")
-        started=LANE_STATE.start_execution(state,expected_revision=5,lane="oarc",implementation_branch="work/oarc-12",evidence="owner Continue")
+        state=LANE_STATE.initial_state("mtlc",revision=5,selected_work_item="MTLC-01",attempt_id="MTLC-01-attempt-001")
+        started=LANE_STATE.start_execution(state,expected_revision=5,lane="mtlc",implementation_branch="work/mtlc-01-canon-friction-registry",evidence="owner approved MTLC start")
         self.assertEqual(started["execution_status"],"in_progress")
-        self.assertEqual(started["implementation_branch"],"work/oarc-12")
-        self.assertEqual(started["selected_work_item"],"OARC-12")
+        self.assertEqual(started["implementation_branch"],"work/mtlc-01-canon-friction-registry")
+        self.assertEqual(started["selected_work_item"],"MTLC-01")
 
     def test_healthy_unchanged_workflow_observation_cannot_become_polling_loop(self) -> None:
         snapshot={"id":77,"head_sha":"head-a","status":"in_progress","conclusion":None}
-        self.assertEqual(
-            EXECUTION_GUARD.classify_workflow_observation(None,snapshot,independent_work_remaining=True),
-            "continue_independent_work",
-        )
-        self.assertEqual(
-            EXECUTION_GUARD.classify_workflow_observation(snapshot,snapshot,independent_work_remaining=True),
-            "continue_independent_work",
-        )
-        self.assertEqual(
-            EXECUTION_GUARD.classify_workflow_observation(snapshot,snapshot,independent_work_remaining=False),
-            EXECUTION_GUARD.UNCHANGED_WORKFLOW_OBSERVATION,
-        )
+        self.assertEqual(EXECUTION_GUARD.classify_workflow_observation(None,snapshot,independent_work_remaining=True),"continue_independent_work")
+        self.assertEqual(EXECUTION_GUARD.classify_workflow_observation(snapshot,snapshot,independent_work_remaining=True),"continue_independent_work")
+        self.assertEqual(EXECUTION_GUARD.classify_workflow_observation(snapshot,snapshot,independent_work_remaining=False),EXECUTION_GUARD.UNCHANGED_WORKFLOW_OBSERVATION)
 
     def test_terminal_workflow_observation_advances_or_diagnoses_instead_of_polling(self) -> None:
-        self.assertEqual(
-            EXECUTION_GUARD.classify_workflow_observation(None,{"id":1,"head_sha":"h","status":"completed","conclusion":"success"},independent_work_remaining=False),
-            "advance",
-        )
-        self.assertEqual(
-            EXECUTION_GUARD.classify_workflow_observation(None,{"id":2,"head_sha":"h","status":"completed","conclusion":"failure"},independent_work_remaining=False),
-            "diagnose_failure",
-        )
+        self.assertEqual(EXECUTION_GUARD.classify_workflow_observation(None,{"id":1,"head_sha":"h","status":"completed","conclusion":"success"},independent_work_remaining=False),"advance")
+        self.assertEqual(EXECUTION_GUARD.classify_workflow_observation(None,{"id":2,"head_sha":"h","status":"completed","conclusion":"failure"},independent_work_remaining=False),"diagnose_failure")
 
     def test_execution_guard_rejects_instrumentation_only_progress_receipts(self) -> None:
         checkpoint={"status":"in_progress","execution_guard":{"material_progress_seq":1,"progress_at_last_owner_command":0,"no_progress_cycles":0,"last_material_progress":{"seq":1,"kind":"started","evidence":"started"},"active_stall":False},"execution_conformance":{"status":"in_progress","policy_violations":[]}}
@@ -172,210 +150,87 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         state=LANE_STATE.start_execution(state,expected_revision=10,lane="cwks",implementation_branch="work/cwks-01-document-schema",evidence="owner approved, execute")
         self.assertEqual(state["execution_status"],"in_progress")
         self.assertEqual(state["progress_seq"],1)
-
-        state=LANE_STATE.mark_prequeue_green(
-            state,expected_revision=11,lane="cwks",
-            candidate_head="head-green",validation_run="run-green",
-        )
+        state=LANE_STATE.mark_prequeue_green(state,expected_revision=11,lane="cwks",candidate_head="head-green",validation_run="run-green")
         self.assertEqual(state["execution_status"],"prequeue_green")
         self.assertEqual(state["progress_seq"],2)
         self.assertEqual(state["prequeue_green"],{"candidate_head":"head-green","validation_run":"run-green"})
-
-        state=LANE_STATE.mark_published(
-            state,expected_revision=12,lane="cwks",
-            candidate_head="head-green",merge_sha="merge-app",ready_candidate_id="CWKS-01-app-001",
-        )
+        state=LANE_STATE.mark_published(state,expected_revision=12,lane="cwks",candidate_head="head-green",merge_sha="merge-app",ready_candidate_id="CWKS-01-app-001")
         self.assertEqual(state["execution_status"],"published")
         self.assertEqual(state["progress_seq"],3)
         self.assertEqual(state["publication"]["merge_sha"],"merge-app")
 
     def test_successor_reseed_is_deterministic_and_resets_progress(self) -> None:
-        state=LANE_STATE.initial_state("oarc",revision=20,selected_work_item="OARC-13",attempt_id="OARC-13-attempt-001")
-        state=LANE_STATE.start_execution(state,expected_revision=20,lane="oarc",implementation_branch="work/oarc-13",evidence="owner Continue")
-        state=LANE_STATE.mark_prequeue_green(state,expected_revision=21,lane="oarc",candidate_head="h",validation_run="r")
-        state=LANE_STATE.mark_published(state,expected_revision=22,lane="oarc",candidate_head="h",merge_sha="m",ready_candidate_id="OARC-13-app-001")
-        next_state=LANE_STATE.reseed_successor(
-            state,
-            expected_revision=23,
-            lane="oarc",
-            successor_work_item="OARC-14",
-            successor_attempt_id="OARC-14-attempt-001",
-            closeout_merge_sha="closeout",
-            closeout_validation_run="closeout-run",
-            closeout_ready_candidate_id="OARC-13-closeout-001",
-        )
-        self.assertEqual(next_state["selected_work_item"],"OARC-14")
-        self.assertEqual(next_state["attempt_id"],"OARC-14-attempt-001")
+        state=LANE_STATE.initial_state("mtlc",revision=20,selected_work_item="MTLC-01",attempt_id="MTLC-01-attempt-001")
+        state=LANE_STATE.start_execution(state,expected_revision=20,lane="mtlc",implementation_branch="work/mtlc-01-canon-friction-registry",evidence="owner approved start")
+        state=LANE_STATE.mark_prequeue_green(state,expected_revision=21,lane="mtlc",candidate_head="h",validation_run="r")
+        state=LANE_STATE.mark_published(state,expected_revision=22,lane="mtlc",candidate_head="h",merge_sha="m",ready_candidate_id="MTLC-01-app-001")
+        next_state=LANE_STATE.reseed_successor(state,expected_revision=23,lane="mtlc",successor_work_item="MTLC-02",successor_attempt_id="MTLC-02-attempt-001",closeout_merge_sha="closeout",closeout_validation_run="closeout-run",closeout_ready_candidate_id="MTLC-01-closeout-001")
+        self.assertEqual(next_state["selected_work_item"],"MTLC-02")
+        self.assertEqual(next_state["attempt_id"],"MTLC-02-attempt-001")
         self.assertEqual(next_state["execution_status"],"selected_not_started")
         self.assertEqual(next_state["implementation_branch"],None)
         self.assertEqual(next_state["progress_seq"],0)
         self.assertEqual(next_state["last_progress"],None)
-        self.assertEqual(next_state["last_completed"]["work_item_id"],"OARC-13")
+        self.assertEqual(next_state["last_completed"]["work_item_id"],"MTLC-01")
         self.assertEqual(next_state["last_completed"]["application_merge_sha"],"m")
         self.assertEqual(next_state["last_completed"]["closeout_merge_sha"],"closeout")
 
     def test_micro_transition_kinds_are_not_lane_state_api(self) -> None:
-        forbidden={
-            "linux_green","windows_green","cross_platform_green","pr_opened","ci_queued",
-            "ci_running","artifact_inspected","queue_submitted","fresh_main_read",
-            "merge_prepared","merge_verified","queue_reconciled","closeout_pr_opened",
-            "closeout_prequeue_green",
-        }
+        forbidden={"linux_green","windows_green","cross_platform_green","pr_opened","ci_queued","ci_running","artifact_inspected","queue_submitted","fresh_main_read","merge_prepared","merge_verified","queue_reconciled","closeout_pr_opened","closeout_prequeue_green"}
         public={name for name in dir(LANE_STATE) if not name.startswith("_")}
         self.assertTrue(forbidden.isdisjoint(public))
 
-
     def test_lane_state_is_the_hard_terminal_response_gate(self) -> None:
-        self.assertTrue(
-            hasattr(EXECUTION_GUARD, "validate_lane_terminal_response"),
-            "terminal-response enforcement must use durable lane state, not only the checkpoint",
-        )
+        self.assertTrue(hasattr(EXECUTION_GUARD, "validate_lane_terminal_response"),"terminal-response enforcement must use durable lane state, not only the checkpoint")
         for execution_status in ("in_progress", "prequeue_green", "published"):
             with self.subTest(execution_status=execution_status):
-                errors = EXECUTION_GUARD.validate_lane_terminal_response({
-                    "execution_status": execution_status,
-                    "selected_work_item": "GPR-X",
-                    "attempt_id": "GPR-X-attempt-001",
-                })
+                errors = EXECUTION_GUARD.validate_lane_terminal_response({"execution_status": execution_status,"selected_work_item": "GPR-X","attempt_id": "GPR-X-attempt-001"})
                 self.assertIn(EXECUTION_GUARD.NONTERMINAL, errors)
-        self.assertEqual(
-            EXECUTION_GUARD.validate_lane_terminal_response({
-                "execution_status": "selected_not_started",
-                "selected_work_item": "GPR-Y",
-                "attempt_id": "GPR-Y-attempt-001",
-            }),
-            [],
-        )
+        self.assertEqual(EXECUTION_GUARD.validate_lane_terminal_response({"execution_status":"selected_not_started","selected_work_item":"GPR-Y","attempt_id":"GPR-Y-attempt-001"}),[])
 
     def test_single_lane_publication_mode_bypasses_ready_queue(self) -> None:
         self.assertEqual(PUBLICATION.publication_mode([]), "none")
         self.assertEqual(PUBLICATION.publication_mode(["gpr"]), "single_lane_direct")
-        self.assertEqual(
-            PUBLICATION.publication_mode(["gpr", "cwks"]),
-            "ready_queue",
-        )
+        self.assertEqual(PUBLICATION.publication_mode(["gpr", "cwks"]), "ready_queue")
 
     def test_single_lane_protected_main_write_needs_exact_head_and_fresh_base_but_no_queue(self) -> None:
-        receipt = {
-            "candidate_head": "head-a",
-            "base_sha": "main-now",
-            "status": "green",
-            "run_id": "integration-a",
-        }
-        self.assertEqual(
-            PUBLICATION.validate_single_lane_protected_main_write(
-                target_repo="cybalicistjt-stack/Multiversal-app",
-                fresh_main_sha="main-now",
-                mutation_kind="pull_request_merge",
-                expected_head_sha="head-a",
-                pr_head_sha="head-a",
-                integration_receipt=receipt,
-            ),
-            [],
-        )
-        stale = PUBLICATION.validate_single_lane_protected_main_write(
-            target_repo="cybalicistjt-stack/Multiversal-app",
-            fresh_main_sha="main-moved",
-            mutation_kind="pull_request_merge",
-            expected_head_sha="head-a",
-            pr_head_sha="head-a",
-            integration_receipt=receipt,
-        )
-        self.assertIn(PUBLICATION.STALE_INTEGRATION, stale)
-        mismatch = PUBLICATION.validate_single_lane_protected_main_write(
-            target_repo="cybalicistjt-stack/Multiversal-app",
-            fresh_main_sha="main-now",
-            mutation_kind="pull_request_merge",
-            expected_head_sha="head-a",
-            pr_head_sha="head-b",
-            integration_receipt=receipt,
-        )
-        self.assertIn(PUBLICATION.HEAD_MISMATCH, mismatch)
-        direct = PUBLICATION.validate_single_lane_protected_main_write(
-            target_repo="cybalicistjt-stack/Multiversal-app",
-            fresh_main_sha="main-now",
-            mutation_kind="contents_api",
-            expected_head_sha="head-a",
-            pr_head_sha="head-a",
-            integration_receipt=receipt,
-        )
-        self.assertEqual(direct, [PUBLICATION.DIRECT_MAIN_MUTATION])
+        receipt={"candidate_head":"head-a","base_sha":"main-now","status":"green","run_id":"integration-a"}
+        self.assertEqual(PUBLICATION.validate_single_lane_protected_main_write(target_repo="cybalicistjt-stack/Multiversal-app",fresh_main_sha="main-now",mutation_kind="pull_request_merge",expected_head_sha="head-a",pr_head_sha="head-a",integration_receipt=receipt),[])
+        stale=PUBLICATION.validate_single_lane_protected_main_write(target_repo="cybalicistjt-stack/Multiversal-app",fresh_main_sha="main-moved",mutation_kind="pull_request_merge",expected_head_sha="head-a",pr_head_sha="head-a",integration_receipt=receipt)
+        self.assertIn(PUBLICATION.STALE_INTEGRATION,stale)
+        mismatch=PUBLICATION.validate_single_lane_protected_main_write(target_repo="cybalicistjt-stack/Multiversal-app",fresh_main_sha="main-now",mutation_kind="pull_request_merge",expected_head_sha="head-a",pr_head_sha="head-b",integration_receipt=receipt)
+        self.assertIn(PUBLICATION.HEAD_MISMATCH,mismatch)
+        direct=PUBLICATION.validate_single_lane_protected_main_write(target_repo="cybalicistjt-stack/Multiversal-app",fresh_main_sha="main-now",mutation_kind="contents_api",expected_head_sha="head-a",pr_head_sha="head-a",integration_receipt=receipt)
+        self.assertEqual(direct,[PUBLICATION.DIRECT_MAIN_MUTATION])
 
     def test_lane_state_does_not_write_owner_reentry_telemetry(self) -> None:
-        state = LANE_STATE.initial_state(
-            "gpr", revision=1, selected_work_item="GPR-X", attempt_id="GPR-X-attempt-001"
-        )
-        self.assertNotIn("owner_continue_count", state)
-        self.assertNotIn("execution_incident", state)
-        state = LANE_STATE.start_execution(
-            state,
-            expected_revision=1,
-            lane="gpr",
-            implementation_branch="work/gpr-x",
-            evidence="owner Continue",
-        )
-        self.assertNotIn("owner_continue_count", state)
-        self.assertNotIn("execution_incident", state)
-        self.assertFalse(
-            hasattr(LANE_STATE, "observe_owner_reentry"),
-            "owner reentry is diagnostic input, not a durable lane-state milestone",
-        )
-        self.assertEqual(state["progress_seq"], 1)
+        state=LANE_STATE.initial_state("gpr",revision=1,selected_work_item="GPR-X",attempt_id="GPR-X-attempt-001")
+        self.assertNotIn("owner_continue_count",state)
+        self.assertNotIn("execution_incident",state)
+        state=LANE_STATE.start_execution(state,expected_revision=1,lane="gpr",implementation_branch="work/gpr-x",evidence="owner Continue")
+        self.assertNotIn("owner_continue_count",state)
+        self.assertNotIn("execution_incident",state)
+        self.assertFalse(hasattr(LANE_STATE,"observe_owner_reentry"),"owner reentry is diagnostic input, not a durable lane-state milestone")
+        self.assertEqual(state["progress_seq"],1)
 
     def test_owner_reentry_and_coordination_checks_are_not_material_progress(self) -> None:
-        checkpoint = {
-            "status": "in_progress",
-            "execution_guard": {
-                "material_progress_seq": 1,
-                "progress_at_last_owner_command": 0,
-                "no_progress_cycles": 0,
-                "last_material_progress": {"seq": 1, "kind": "started", "evidence": "started"},
-                "active_stall": False,
-            },
-            "execution_conformance": {"status": "in_progress", "policy_violations": []},
-        }
-        for kind in (
-            "owner_reentry",
-            "lane_scan",
-            "sibling_scan",
-            "queue_empty_check",
-            "rebase_check",
-            "mergeability_poll",
-        ):
+        checkpoint={"status":"in_progress","execution_guard":{"material_progress_seq":1,"progress_at_last_owner_command":0,"no_progress_cycles":0,"last_material_progress":{"seq":1,"kind":"started","evidence":"started"},"active_stall":False},"execution_conformance":{"status":"in_progress","policy_violations":[]}}
+        for kind in ("owner_reentry","lane_scan","sibling_scan","queue_empty_check","rebase_check","mergeability_poll"):
             with self.subTest(kind=kind):
-                with self.assertRaisesRegex(ValueError, EXECUTION_GUARD.OVERINSTRUMENTATION):
-                    EXECUTION_GUARD.record_material_progress(
-                        checkpoint, kind=kind, evidence="coordination observation"
-                    )
+                with self.assertRaisesRegex(ValueError,EXECUTION_GUARD.OVERINSTRUMENTATION):
+                    EXECUTION_GUARD.record_material_progress(checkpoint,kind=kind,evidence="coordination observation")
 
     def test_successor_reseed_does_not_carry_owner_interaction_telemetry(self) -> None:
-        state = LANE_STATE.initial_state(
-            "gpr", revision=10, selected_work_item="GPR-X", attempt_id="GPR-X-attempt-001"
-        )
-        state = LANE_STATE.start_execution(
-            state, expected_revision=10, lane="gpr",
-            implementation_branch="work/gpr-x", evidence="owner Continue"
-        )
-        state = LANE_STATE.mark_prequeue_green(
-            state, expected_revision=11, lane="gpr",
-            candidate_head="head-x", validation_run="run-x"
-        )
-        state = LANE_STATE.mark_published(
-            state, expected_revision=12, lane="gpr",
-            candidate_head="head-x", merge_sha="merge-x",
-            ready_candidate_id="GPR-X-app-001"
-        )
-        next_state = LANE_STATE.reseed_successor(
-            state, expected_revision=13, lane="gpr",
-            successor_work_item="GPR-Y", successor_attempt_id="GPR-Y-attempt-001",
-            closeout_merge_sha="closeout-x", closeout_validation_run="closeout-run-x",
-            closeout_ready_candidate_id="GPR-X-closeout-001"
-        )
-        self.assertNotIn("owner_continue_count", next_state["last_completed"])
-        self.assertNotIn("single_continue_achieved", next_state["last_completed"])
-        self.assertNotIn("execution_incident", next_state["last_completed"])
-        self.assertNotIn("owner_continue_count", next_state)
-        self.assertNotIn("execution_incident", next_state)
+        state=LANE_STATE.initial_state("gpr",revision=10,selected_work_item="GPR-X",attempt_id="GPR-X-attempt-001")
+        state=LANE_STATE.start_execution(state,expected_revision=10,lane="gpr",implementation_branch="work/gpr-x",evidence="owner Continue")
+        state=LANE_STATE.mark_prequeue_green(state,expected_revision=11,lane="gpr",candidate_head="head-x",validation_run="run-x")
+        state=LANE_STATE.mark_published(state,expected_revision=12,lane="gpr",candidate_head="head-x",merge_sha="merge-x",ready_candidate_id="GPR-X-app-001")
+        next_state=LANE_STATE.reseed_successor(state,expected_revision=13,lane="gpr",successor_work_item="GPR-Y",successor_attempt_id="GPR-Y-attempt-001",closeout_merge_sha="closeout-x",closeout_validation_run="closeout-run-x",closeout_ready_candidate_id="GPR-X-closeout-001")
+        self.assertNotIn("owner_continue_count",next_state["last_completed"])
+        self.assertNotIn("single_continue_achieved",next_state["last_completed"])
+        self.assertNotIn("execution_incident",next_state["last_completed"])
+        self.assertNotIn("owner_continue_count",next_state)
+        self.assertNotIn("execution_incident",next_state)
 
 
 if __name__ == "__main__":
