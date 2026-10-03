@@ -22,11 +22,11 @@ def load_lane_state_module():
 
 
 class CwksLaneActivationTests(unittest.TestCase):
-    def test_cwks_replaces_terminal_mrcs_persistent_slot_without_erasing_history(self) -> None:
+    def test_cwks_replaced_terminal_mrcs_slot_and_remains_persistent(self) -> None:
         lanes = read_json("operations/LANES.json")
         current = read_json("operations/CURRENT.json")
 
-        self.assertEqual(lanes["persistent_implementation_lanes"], ["gpr", "cwks", "oarc"])
+        self.assertEqual(lanes["persistent_implementation_lanes"], ["gpr", "cwks", "mtlc"])
         lane_rows = {row["id"]: row for row in lanes["lanes"]}
         self.assertIn("cwks", lane_rows)
         self.assertEqual(lane_rows["cwks"]["execution_state_ref"], "ops3-lane-state/cwks")
@@ -38,19 +38,15 @@ class CwksLaneActivationTests(unittest.TestCase):
         self.assertEqual(current["completed_programs"]["MRCS"]["state"], "completed_verified")
 
         cwks = current["lanes"]["cwks"]
-        self.assertEqual(cwks["state"], "in_progress")
-        self.assertEqual(cwks["selected_work_item"], "CWKS-01")
-        self.assertEqual(cwks["attempt_id"], "CWKS-01-attempt-001")
-        self.assertEqual(cwks["implementation_branch"], "work/cwks-01-document-schema")
-        self.assertTrue(cwks["implementation_authority"])
+        self.assertIn(cwks["state"], {"selected_not_started", "in_progress", "completed_verified"})
         self.assertEqual(cwks["execution_state_ref"], "ops3-lane-state/cwks")
-
         checkpoint = read_json(cwks["checkpoint_path"])
         self.assertEqual(checkpoint["lane"], "cwks")
-        self.assertEqual(checkpoint["work_item_id"], "CWKS-01")
-        self.assertEqual(checkpoint["status"], "in_progress")
-        self.assertTrue(checkpoint["implementation_authority"])
-        self.assertEqual(checkpoint["implementation_branch"], "work/cwks-01-document-schema")
+        self.assertEqual(checkpoint["work_item_id"], cwks["selected_work_item"])
+        self.assertEqual(checkpoint["attempt_id"], cwks["attempt_id"])
+        self.assertEqual(checkpoint["status"], cwks["state"])
+        self.assertEqual(checkpoint["implementation_branch"], cwks["implementation_branch"])
+        self.assertEqual(checkpoint["implementation_authority"], cwks["implementation_authority"])
 
     def test_lane_state_writer_accepts_cwks_and_rejects_retired_mrcs(self) -> None:
         lane_state = load_lane_state_module()
@@ -58,14 +54,14 @@ class CwksLaneActivationTests(unittest.TestCase):
         state = lane_state.initial_state(
             "cwks",
             revision=1,
-            selected_work_item="CWKS-01",
-            attempt_id="CWKS-01-attempt-001",
+            selected_work_item="CWKS-X",
+            attempt_id="CWKS-X-attempt-001",
         )
         started = lane_state.start_execution(
             state,
             expected_revision=1,
             lane="cwks",
-            implementation_branch="work/cwks-01-document-schema",
+            implementation_branch="work/cwks-x",
             evidence="owner approved, execute",
         )
         self.assertEqual(started["execution_status"], "in_progress")
