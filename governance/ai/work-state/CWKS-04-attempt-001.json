@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "CWKS",
+  "lane": "cwks",
+  "track": "creator-writing-knowledge-system",
+  "source_program": "CWKS",
+  "work_item_id": "CWKS-04",
+  "attempt_id": "CWKS-04-attempt-001",
+  "title": "Document Outline and Collapsible Sections",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/cwks-04-outline-sections",
+  "completed": false,
+  "selected_by_owner": "2026-10-03 owner explicitly directed continued implementation and asked to proceed efficiently through the remaining writing-system work without reopening settled process/design decisions.",
+  "objective": "Add the shared document outline and collapsible-section authoring layer on top of the published CreatorDocumentEditor: derive an arbitrary-depth heading tree, jump from outline entries to document headings, collapse/expand heading subtrees as view state only, and reorder a heading together with its full descendant section without corrupting canonical node identity.",
+  "scope": {
+    "include": [
+      "derived arbitrary-depth heading outline from CreatorDocumentV1",
+      "stable nodeId-based outline entries and editor jump/focus behavior",
+      "accessible expand/collapse controls for heading sections",
+      "collapse state kept outside persisted CreatorDocumentV1 content",
+      "heading-subtree range calculation and deterministic section reorder",
+      "drag/reorder behavior with keyboard-accessible command equivalents",
+      "outline/editor synchronization after edits and external document replacement",
+      "focused CWKS-04 tests, styling hooks, and Linux/Windows deterministic validation"
+    ],
+    "exclude": [
+      "autosave/storage/recovery journals",
+      "story project hierarchy, corkboard, storyboard, timeline or plot board",
+      "wiki backlinks/transclusion/knowledge graph",
+      "collaborative editing/comments/version history",
+      "Creator Suite migrations",
+      "AI writing/generation",
+      "snapshot refresh",
+      "route/navigation redesign",
+      "changes to GPR Session Service scope"
+    ]
+  },
+  "dependencies": {
+    "completed_predecessor": "CWKS-03 published as application main ee443f1d883b76e943d0429486c21b3eba9206eb after exact-head validation run 37055128055",
+    "canonical_document_contract": "CreatorDocumentV1",
+    "published_editor": "CreatorDocumentEditor",
+    "parallel_lane_rule": "GPR PCV-03F remains independently in_progress; CWKS-04 may not modify or borrow the GPR implementation branch."
+  },
+  "active_substep": "Outline model and heading-subtree contract",
+  "next_action": "Create work/cwks-04-outline-sections from current application main and implement the outline/subtree behavior with focused tests before wiring collapse and reorder UI.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner directed continuation into the remaining writing-system implementation; CWKS-04 groups the already-approved outline and collapsible-section steps into one bounded tranche."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  }
+}
