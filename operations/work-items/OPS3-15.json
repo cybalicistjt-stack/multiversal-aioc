@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS3-15",
+  "title": "MTLC Persistent-Slot Activation and MTLC-01 Governed Start",
+  "status": "in_progress",
+  "owner_directive": "Activate the owner-approved Multiversal Tabletop Lifecycle Convergence program and begin MTLC-01 without pausing or borrowing scope from active GPR or CWKS. Replace the completed OARC persistent slot while preserving OARC as immutable completed history.",
+  "completed": false,
+  "implementation_authority": true,
+  "scope": {
+    "include": [
+      "replace terminal OARC persistent slot with MTLC while preserving OARC history",
+      "register MTLC in LANES/CURRENT and the roadmap dependency graph",
+      "update persistent-lane helper/test enumerations from OARC to MTLC",
+      "create the MTLC-01 governed checkpoint and lane-state seed/start",
+      "durably record the approved Group/human-continuity architecture",
+      "begin MTLC-01 canon/source/friction classification"
+    ],
+    "exclude": [
+      "GPR PCV-03F implementation changes",
+      "CWKS-04 implementation changes",
+      "MTLC-02 product implementation",
+      "public community feature implementation"
+    ]
+  },
+  "acceptance": [
+    "operations/CURRENT.json selects MTLC-01 in_progress with implementation authority in the former OARC persistent slot",
+    "operations/LANES.json persistent_implementation_lanes is [gpr,cwks,mtlc] while OARC remains completed history",
+    "OPS3 lane-state helper accepts mtlc and rejects retired oarc as a persistent lane",
+    "roadmap dependency graph knows MTLC and permits its source-recovery start in parallel with GPR/CWKS",
+    "MTLC-01 checkpoint and durable Group lifecycle spec exist",
+    "control-plane tests cover the replacement semantics"
+  ],
+  "next_action": "Prepare and validate the PR-only control-plane activation candidate."
+}
