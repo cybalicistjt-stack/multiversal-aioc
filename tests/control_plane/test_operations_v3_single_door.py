@@ -90,90 +90,26 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertFalse(work_item["implementation_authority"])
 
     def test_product_lane_transition_validation_is_dynamic(self) -> None:
-        current = {
-            "lanes": {
-                "msas": {
-                    "state": "in_progress",
-                    "selected_work_item": "MIB-17",
-                    "attempt_id": "MIB-17-attempt-001",
-                    "implementation_branch": "work/mib-17-family-safety",
-                    "implementation_authority": True,
-                }
-            }
-        }
-        pointer = {
-            "active_attempt": {
-                "work_item_id": "MIB-17",
-                "attempt_id": "MIB-17-attempt-001",
-                "status": "in_progress",
-                "implementation_branch": "work/mib-17-family-safety",
-                "implementation_authority": True,
-            }
-        }
-        authority = {
-            "preserved_product_selection": {
-                "work_item": "MIB-17",
-                "attempt_id": "MIB-17-attempt-001",
-                "state": "in_progress",
-                "implementation_branch": "work/mib-17-family-safety",
-                "implementation_authority": True,
-            }
-        }
-        checkpoint = {
-            "work_item_id": "MIB-17",
-            "attempt_id": "MIB-17-attempt-001",
-            "status": "in_progress",
-            "implementation_branch": "work/mib-17-family-safety",
-            "implementation_authority": True,
-        }
+        current = {"lanes":{"msas":{"state":"in_progress","selected_work_item":"MIB-17","attempt_id":"MIB-17-attempt-001","implementation_branch":"work/mib-17-family-safety","implementation_authority":True}}}
+        pointer = {"active_attempt":{"work_item_id":"MIB-17","attempt_id":"MIB-17-attempt-001","status":"in_progress","implementation_branch":"work/mib-17-family-safety","implementation_authority":True}}
+        authority = {"preserved_product_selection":{"work_item":"MIB-17","attempt_id":"MIB-17-attempt-001","state":"in_progress","implementation_branch":"work/mib-17-family-safety","implementation_authority":True}}
+        checkpoint = {"work_item_id":"MIB-17","attempt_id":"MIB-17-attempt-001","status":"in_progress","implementation_branch":"work/mib-17-family-safety","implementation_authority":True}
         errors: list[str] = []
         _validate_product_lane_projection(current, pointer, authority, checkpoint, errors)
         self.assertEqual(errors, [])
 
     def test_selected_not_started_product_lane_is_valid_without_branch_or_authority(self) -> None:
-        current = {
-            "lanes": {
-                "msas": {
-                    "state": "selected_not_started",
-                    "selected_work_item": "MIB-18",
-                    "attempt_id": "MIB-18-attempt-001",
-                    "implementation_branch": None,
-                    "implementation_authority": False,
-                }
-            }
-        }
-        pointer = {
-            "active_attempt": {
-                "work_item_id": "MIB-18",
-                "attempt_id": "MIB-18-attempt-001",
-                "status": "selected_not_started",
-                "implementation_branch": None,
-                "implementation_authority": False,
-            }
-        }
-        authority = {
-            "preserved_product_selection": {
-                "work_item": "MIB-18",
-                "attempt_id": "MIB-18-attempt-001",
-                "state": "selected_not_started",
-                "implementation_branch": None,
-                "implementation_authority": False,
-            }
-        }
-        checkpoint = {
-            "work_item_id": "MIB-18",
-            "attempt_id": "MIB-18-attempt-001",
-            "status": "selected_not_started",
-            "implementation_branch": None,
-            "implementation_authority": False,
-        }
+        current = {"lanes":{"msas":{"state":"selected_not_started","selected_work_item":"MIB-18","attempt_id":"MIB-18-attempt-001","implementation_branch":None,"implementation_authority":False}}}
+        pointer = {"active_attempt":{"work_item_id":"MIB-18","attempt_id":"MIB-18-attempt-001","status":"selected_not_started","implementation_branch":None,"implementation_authority":False}}
+        authority = {"preserved_product_selection":{"work_item":"MIB-18","attempt_id":"MIB-18-attempt-001","state":"selected_not_started","implementation_branch":None,"implementation_authority":False}}
+        checkpoint = {"work_item_id":"MIB-18","attempt_id":"MIB-18-attempt-001","status":"selected_not_started","implementation_branch":None,"implementation_authority":False}
         errors: list[str] = []
         _validate_product_lane_projection(current, pointer, authority, checkpoint, errors)
         self.assertEqual(errors, [])
 
-    def test_gpr_cwks_and_oarc_lanes_keep_independent_authority(self) -> None:
+    def test_gpr_cwks_and_mtlc_lanes_keep_independent_authority(self) -> None:
         current = self._json("operations/CURRENT.json")
-        for lane_id in ("gpr", "cwks", "oarc"):
+        for lane_id in ("gpr", "cwks", "mtlc"):
             lane = current["lanes"][lane_id]
             self.assertIn(lane["state"], {"selected_not_started", "in_progress", "completed_verified"})
             checkpoint = self._json(lane["checkpoint_path"])
@@ -189,25 +125,18 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
                 self.assertTrue(lane["implementation_authority"])
                 self.assertTrue(lane["implementation_branch"])
 
-        attempts = {current["lanes"][lane_id]["attempt_id"] for lane_id in ("gpr", "cwks", "oarc")}
+        attempts = {current["lanes"][lane_id]["attempt_id"] for lane_id in ("gpr", "cwks", "mtlc")}
         self.assertEqual(len(attempts), 3)
-        branches = [
-            current["lanes"][lane_id]["implementation_branch"]
-            for lane_id in ("gpr", "cwks", "oarc")
-            if current["lanes"][lane_id]["implementation_branch"]
-        ]
+        branches = [current["lanes"][lane_id]["implementation_branch"] for lane_id in ("gpr", "cwks", "mtlc") if current["lanes"][lane_id]["implementation_branch"]]
         self.assertEqual(len(branches), len(set(branches)))
 
-        msas = current["lanes"]["msas"]
-        self.assertEqual(msas["state"], "completed_verified")
-        self.assertFalse(msas["implementation_authority"])
-        self.assertNotIn("msas", self._json("operations/LANES.json")["persistent_implementation_lanes"])
-
-        mrcs = current["lanes"]["mrcs"]
-        self.assertEqual(mrcs["state"], "completed_verified")
-        self.assertFalse(mrcs["implementation_authority"])
-        self.assertNotIn("mrcs", self._json("operations/LANES.json")["persistent_implementation_lanes"])
+        for retired in ("msas", "mrcs", "oarc"):
+            lane = current["lanes"][retired]
+            self.assertEqual(lane["state"], "completed_verified")
+            self.assertFalse(lane["implementation_authority"])
+            self.assertNotIn(retired, self._json("operations/LANES.json")["persistent_implementation_lanes"])
         self.assertEqual(current["completed_programs"]["MRCS"]["state"], "completed_verified")
+        self.assertEqual(current["completed_programs"]["OARC"]["state"], "completed_verified")
 
         uisr = current["completed_programs"]["UISR"]
         self.assertEqual(uisr["state"], "completed_verified")
@@ -215,43 +144,31 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
 
         bootstrap = self._text("operations/BOOTSTRAP.md")
         contract = self._text("operations/OPERATING_CONTRACT.md")
-        for lane_id in ("gpr", "cwks", "oarc"):
+        for lane_id in ("gpr", "cwks", "mtlc"):
             self.assertIn(lane_id, bootstrap)
             self.assertIn(lane_id, contract)
         self.assertIn("does **not** pause, revoke, or rewrite another lane", bootstrap)
         self.assertIn("does not implicitly pause, revoke, reorder, or rewrite another active lane", contract)
 
-    def test_oarc_lane_lifecycle_is_independent_and_checkpointed(self) -> None:
+    def test_mtlc_lane_lifecycle_is_independent_and_oarc_is_history(self) -> None:
         current = self._json("operations/CURRENT.json")
+        mtlc = current["lanes"]["mtlc"]
+        self.assertTrue(mtlc["selected_work_item"].startswith("MTLC-"))
+        self.assertTrue(mtlc["attempt_id"].startswith(mtlc["selected_work_item"] + "-attempt-"))
+        self.assertEqual(mtlc["state"], "in_progress")
+        checkpoint = self._json(mtlc["checkpoint_path"])
+        self.assertEqual(checkpoint["work_item_id"], mtlc["selected_work_item"])
+        self.assertEqual(checkpoint["attempt_id"], mtlc["attempt_id"])
+        self.assertEqual(checkpoint["status"], mtlc["state"])
+        self.assertEqual(checkpoint["implementation_branch"], mtlc["implementation_branch"])
+        self.assertEqual(checkpoint["implementation_authority"], mtlc["implementation_authority"])
+        self.assertTrue(mtlc["implementation_authority"])
+
         oarc = current["lanes"]["oarc"]
-        self.assertTrue(oarc["selected_work_item"].startswith("OARC-"))
-        self.assertTrue(oarc["attempt_id"].startswith(oarc["selected_work_item"] + "-attempt-"))
-        self.assertIn(oarc["state"], {"selected_not_started", "in_progress", "completed_verified"})
-
-        checkpoint = self._json(oarc["checkpoint_path"])
-        self.assertEqual(checkpoint["work_item_id"], oarc["selected_work_item"])
-        self.assertEqual(checkpoint["attempt_id"], oarc["attempt_id"])
-        self.assertEqual(checkpoint["status"], oarc["state"])
-        self.assertEqual(checkpoint["implementation_branch"], oarc["implementation_branch"])
-        self.assertEqual(checkpoint["implementation_authority"], oarc["implementation_authority"])
-
-        if oarc["state"] == "selected_not_started":
-            self.assertIsNone(oarc["implementation_branch"])
-            self.assertFalse(oarc["implementation_authority"])
-        elif oarc["state"] == "in_progress":
-            self.assertTrue(oarc["implementation_branch"])
-            self.assertTrue(oarc["implementation_authority"])
-        else:
-            self.assertFalse(oarc["implementation_authority"])
-
-        gpr = current["lanes"]["gpr"]
-        cwks = current["lanes"]["cwks"]
-        self.assertNotEqual(oarc["attempt_id"], gpr["attempt_id"])
-        self.assertNotEqual(oarc["attempt_id"], cwks["attempt_id"])
-        if oarc.get("implementation_branch") and gpr.get("implementation_branch"):
-            self.assertNotEqual(oarc["implementation_branch"], gpr["implementation_branch"])
-        if oarc.get("implementation_branch") and cwks.get("implementation_branch"):
-            self.assertNotEqual(oarc["implementation_branch"], cwks["implementation_branch"])
+        self.assertEqual(oarc["state"], "completed_verified")
+        self.assertFalse(oarc["implementation_authority"])
+        self.assertEqual(current["completed_programs"]["OARC"]["state"], "completed_verified")
+        self.assertNotIn("oarc", self._json("operations/LANES.json")["persistent_implementation_lanes"])
 
     def test_repository_entrypoint_has_no_independent_current_state(self) -> None:
         agents = self._text("AGENTS.md")
@@ -290,7 +207,7 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertEqual(lanes["operating_contract"], "operations/OPERATING_CONTRACT.md")
         self.assertEqual(lanes["selection_rule"], "User intent selects a lane; lane state never changes the global operating contract.")
         lane_ids = {row["id"] for row in lanes["lanes"]}
-        for required in {"msas", "gpr", "mrcs", "cwks", "oarc", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}:
+        for required in {"msas", "gpr", "mrcs", "cwks", "oarc", "mtlc", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}:
             self.assertIn(required, lane_ids)
 
     def test_legacy_projections_follow_canonical_product_state_without_selecting_work(self) -> None:
@@ -326,13 +243,7 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         manifest = self._json("operations/GENERATED_COMPATIBILITY_PROJECTIONS.json")
         self.assertEqual(manifest["canonical_source"], "operations/CURRENT.json")
         self.assertEqual(manifest["generator"], "scripts/sync_ops3_compatibility_projections.py")
-        self.assertEqual(
-            manifest["outputs"],
-            [
-                "governance/ai/runtime/CURRENT_WORK_POINTER.json",
-                "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
-            ],
-        )
+        self.assertEqual(manifest["outputs"], ["governance/ai/runtime/CURRENT_WORK_POINTER.json","governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json"])
         self.assertIn("NO OPERATIONAL AUTHORITY", manifest["authority_banner"])
 
     def test_checked_in_generated_compatibility_equals_generator_output(self) -> None:
@@ -365,17 +276,11 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
             self.assertEqual(authority["preserved_product_selection"]["implementation_authority"], product["implementation_authority"])
 
     def test_generator_write_set_is_bounded_to_declared_outputs(self) -> None:
-        self.assertEqual(
-            _GENERATOR.ALLOWED_OUTPUTS,
-            (
-                Path("governance/ai/runtime/CURRENT_WORK_POINTER.json"),
-                Path("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json"),
-            ),
-        )
+        self.assertEqual(_GENERATOR.ALLOWED_OUTPUTS, (Path("governance/ai/runtime/CURRENT_WORK_POINTER.json"),Path("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")))
 
     def test_three_persistent_implementation_lanes_are_never_collapsed(self) -> None:
         lanes = self._json("operations/LANES.json")
-        self.assertEqual(lanes["persistent_implementation_lanes"], ["gpr","cwks","oarc"])
+        self.assertEqual(lanes["persistent_implementation_lanes"], ["gpr","cwks","mtlc"])
         current = self._json("operations/CURRENT.json")
         for lane_id in lanes["persistent_implementation_lanes"]:
             self.assertIn(lane_id, current["lanes"])
@@ -389,7 +294,7 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         current = self._json("operations/CURRENT.json")
         bootstrap = self._text("operations/BOOTSTRAP.md")
         contract = self._text("operations/OPERATING_CONTRACT.md")
-        for lane_id in ("gpr", "cwks", "oarc"):
+        for lane_id in ("gpr", "cwks", "mtlc"):
             self.assertEqual(current["lanes"][lane_id]["execution_state_ref"], f"ops3-lane-state/{lane_id}")
         self.assertIn("Single-active-lane direct publication", bootstrap)
         self.assertIn("single-lane direct publication", contract)
@@ -400,58 +305,23 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertIn("A chat/session/tool runtime is never a project dependency", bootstrap)
 
     def test_oarc01_authority_handoff_contract_is_complete_and_nonduplicative(self) -> None:
-        contract = self._json(
-            "governance/application-planning/operational-asset-readiness-closure/"
-            "OARC-01_AUTHORITY_HANDOFF_CONTRACT_v1.0.0.json"
-        )
+        contract = self._json("governance/application-planning/operational-asset-readiness-closure/OARC-01_AUTHORITY_HANDOFF_CONTRACT_v1.0.0.json")
         self.assertEqual(contract["contract_id"], "OARC01.AUTHORITY_HANDOFF.v1")
         self.assertEqual(contract["status"], "current")
         self.assertEqual(contract["oarc_role"], "readiness_bridge_validation_and_certification_only")
-
         owners = contract["authority_owners"]
-        expected = {
-            "reusable_definition_authoring": "MRCS-13",
-            "operational_configuration_foundation": "MIB-14",
-            "live_asset_truth": "D17/PPIA-03/shared-assets",
-            "vehicle_mecha_ship_operations": "PPIA-04/F014",
-            "repair_crafting_transactions": "MIB-12",
-            "salvage_decomposition": "LSS",
-            "economy_truth": "MIB-13/Economy",
-            "project_time_truth": "APW/D26",
-            "engineering_orchestration": "MERA",
-            "built_environment_orchestration": "MBES",
-            "world_environment_truth": "World/Environment/Reality",
-            "action_combat_outcomes": "Action/Event/Combat/SCL",
-        }
-        self.assertEqual(
-            {key: owners[key]["primary_owner"] for key in expected},
-            expected,
-        )
-
+        expected = {"reusable_definition_authoring":"MRCS-13","operational_configuration_foundation":"MIB-14","live_asset_truth":"D17/PPIA-03/shared-assets","vehicle_mecha_ship_operations":"PPIA-04/F014","repair_crafting_transactions":"MIB-12","salvage_decomposition":"LSS","economy_truth":"MIB-13/Economy","project_time_truth":"APW/D26","engineering_orchestration":"MERA","built_environment_orchestration":"MBES","world_environment_truth":"World/Environment/Reality","action_combat_outcomes":"Action/Event/Combat/SCL"}
+        self.assertEqual({key: owners[key]["primary_owner"] for key in expected}, expected)
         self.assertFalse(owners["engineering_orchestration"]["implementation_authorized_now"])
         self.assertFalse(owners["built_environment_orchestration"]["implementation_authorized_now"])
-
         admission = contract["later_oarc_field_admission"]
         self.assertTrue(admission["existing_primary_owner_required"])
         self.assertTrue(admission["source_truth_state_required"])
         self.assertEqual(admission["missing_owner_disposition"], "unresolved_owner_gap_no_implementation")
         self.assertEqual(admission["source_unspecified_disposition"], "unresolved_no_default_or_inference")
-
         forbidden = set(contract["forbidden_duplicate_runtime_owners"])
-        for required in {
-            "modular_definition_grammar",
-            "live_asset_inventory_or_cargo",
-            "engineering_topology_or_network_runtime",
-            "built_environment_topology_or_construction_runtime",
-            "repair_or_crafting_transaction_ledger",
-            "salvage_or_decomposition_ledger",
-            "economy_ledger",
-            "project_or_campaign_time_ledger",
-            "combat_outcome_runtime",
-            "world_or_environment_truth",
-        }:
+        for required in {"modular_definition_grammar","live_asset_inventory_or_cargo","engineering_topology_or_network_runtime","built_environment_topology_or_construction_runtime","repair_or_crafting_transaction_ledger","salvage_or_decomposition_ledger","economy_ledger","project_or_campaign_time_ledger","combat_outcome_runtime","world_or_environment_truth"}:
             self.assertIn(required, forbidden)
-
         reservations = contract["future_family_reservations"]
         self.assertEqual(reservations["MERA"]["status"], "planned_no_implementation_authority")
         self.assertEqual(reservations["MBES"]["status"], "planned_no_implementation_authority")
@@ -461,13 +331,7 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
     def test_one_door_explicitly_guards_against_overinstrumentation(self) -> None:
         bootstrap=self._text("operations/BOOTSTRAP.md")
         contract=self._text("operations/OPERATING_CONTRACT.md")
-        required=[
-            "milestone receipts, not activity receipts",
-            "Repository/PR/CI/publication-queue evidence",
-            "closeout fast path",
-            "Do not write lane state for",
-            "successor reseed",
-        ]
+        required=["milestone receipts, not activity receipts","Repository/PR/CI/publication-queue evidence","closeout fast path","Do not write lane state for","successor reseed"]
         for phrase in required:
             self.assertIn(phrase, bootstrap + "\n" + contract)
         self.assertNotIn("After each material durable side effect, record a lane-state progress receipt", bootstrap)
@@ -477,15 +341,8 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         bootstrap = self._text("operations/BOOTSTRAP.md")
         contract = self._text("operations/OPERATING_CONTRACT.md")
         combined = bootstrap + "\n" + contract
-        for phrase in (
-            "single-active-lane mode",
-            "lane-state terminal gate",
-            "quiet execution",
-            "do **not** rescan sibling lane refs",
-            "routine update/rebase",
-        ):
+        for phrase in ("single-active-lane mode","lane-state terminal gate","quiet execution","do **not** rescan sibling lane refs","routine update/rebase"):
             self.assertIn(phrase, combined)
-
         workflow = self._text(".github/workflows/validate-repository-health.yml")
         self.assertIn("Classify validation scope", workflow)
         self.assertIn("certified_content", workflow)
