@@ -1,7 +1,7 @@
 # Multiversal Operations V3 Operating Contract
 
 **Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.13.0  
+**Version:** 3.14.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -50,7 +50,7 @@ When a conversation changes topics materially, reselect the lane once. Do not ca
 
 ### Parallel persistent lanes
 
-OPS3 preserves exactly three independent persistent implementation slots. The current persistent lanes are `gpr`, `cwks`, and `oarc`. A lane may be `completed_verified`, `selected_not_started`, or `in_progress`; one lane's completion or inactivity never pauses, folds into, or revokes another active lane. After a lane is terminal `completed_verified`, the owner may explicitly replace that persistent slot through operations governance while preserving the completed program as immutable history. MSAS-21, MRCS-21, MVPS-23 and UISR-11 are preserved as completed program history and no longer occupy persistent slots. Operations work may repair lane selectors without collapsing this three-slot topology.
+OPS3 preserves exactly three independent persistent implementation slots. The current persistent lanes are `gpr`, `cwks`, and `mtlc`. A lane may be `completed_verified`, `selected_not_started`, or `in_progress`; one lane's completion or inactivity never pauses, folds into, or revokes another active lane. After a lane is terminal `completed_verified`, the owner may explicitly replace that persistent slot through operations governance while preserving the completed program as immutable history. MSAS-21, MRCS-21, OARC-07, MVPS-23 and UISR-11 are preserved as completed program history and no longer occupy persistent slots. OARC's terminal slot was owner-approved for replacement by MTLC on 2026-10-03. Operations work may repair lane selectors without collapsing this three-slot topology.
 
 OPS3 may keep more than one persistent implementation lane active at once when the owner has explicitly separated the work streams.
 
@@ -148,13 +148,13 @@ Build, packaging, deployment, release, and post-merge distribution consume merge
 
 ### Independent lane execution state
 
-GPR, CWKS, and OARC use separate compare-and-swap coordination refs:
+GPR, CWKS, and MTLC use separate compare-and-swap coordination refs:
 
 - `ops3-lane-state/gpr`
 - `ops3-lane-state/cwks`
-- `ops3-lane-state/oarc`
+- `ops3-lane-state/mtlc`
 
-Terminal MSAS and MRCS lane-state refs are historical only.
+Terminal MSAS, MRCS, and OARC lane-state refs are historical only.
 
 The state model is implemented by `scripts/ops3_lane_state.py`.
 
