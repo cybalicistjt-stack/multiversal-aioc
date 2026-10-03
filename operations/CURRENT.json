@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 551,
+  "state_revision": 552,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -63,13 +63,13 @@
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "cwks": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "selected_work_item": "CWKS-04",
       "attempt_id": "CWKS-04-attempt-001",
       "checkpoint_path": "governance/ai/work-state/CWKS-04-attempt-001.json",
-      "implementation_branch": "work/cwks-04-outline-sections",
-      "implementation_authority": true,
-      "activation_rule": "CWKS-03 completed_verified after exact-head cross-platform validation run 37055128055 on 584f276c10d5d384aff91d767f10200207dde650 and publication of PR 788 as application main ee443f1d883b76e943d0429486c21b3eba9206eb; READY candidate CWKS-03-app-001 was durably reconciled at publication queue generation 70. On 2026-10-03 the owner explicitly directed continued implementation without reopening settled process/design decisions. CWKS-04 groups the already-approved document-outline and collapsible-section work: arbitrary-depth outline derivation, nodeId-based navigation, view-only section collapse/expand, and heading-subtree reorder. Autosave/storage, story/wiki systems, Creator Suite migration, collaboration/version history, AI writing and GPR Session changes remain outside this tranche.",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "CWKS-04 completed_verified after exact-head governed validation run 37121132037 on 4bb32df14e2b0578757567049679c82cd2f5597b and publication of Multiversal-app PR 790 as application main 19a71af405daa48eacf1bf37a555efe945507e4a. The tranche delivered arbitrary-depth heading outline derivation, nodeId-based navigation, view-only collapsible heading sections, and stable heading-subtree reorder with accessible controls. No CWKS successor is selected; autosave/storage, story/wiki systems, Creator Suite migration, collaboration/version history, AI writing and GPR Session work remain outside the completed tranche.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     "dwc-speech": {
@@ -135,7 +135,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR remains independently active on PCV-03F Session Service integration/certification. CWKS-04 is independently in_progress on work/cwks-04-outline-sections for the already-approved outline, section-collapse and heading-subtree-reorder work; neither lane may borrow the other's scope.",
+  "next_project_action": "GPR remains independently active on PCV-03F Session Service integration/certification. CWKS-04 is completed_verified and no CWKS successor is selected; any later writing-system tranche requires explicit owner selection before implementation authority is granted.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -190,12 +190,12 @@
     "CWKS": {
       "program_id": "CWKS",
       "state": "completed_verified",
-      "selected_work_item": "CWKS-03",
-      "attempt_id": "CWKS-03-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/CWKS-03-attempt-001.json",
+      "selected_work_item": "CWKS-04",
+      "attempt_id": "CWKS-04-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/CWKS-04-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "completion_rule": "CWKS-01 through CWKS-03 completed_verified. The shared CreatorDocumentV1 contract/validator, read-only renderer and TipTap/ProseMirror structured editor are published with stable identity, deep headings, canonical formatting/blocks/tables, Multiversal resource authoring, slash/resource menus, safe paste, accessibility and deterministic Linux/Windows proof. CWKS-04 is a separately selected active tranche for outline and collapsible-section behavior."
+      "completion_rule": "CWKS-01 through CWKS-04 completed_verified. The shared CreatorDocumentV1 contract/validator, read-only renderer, TipTap/ProseMirror structured editor, arbitrary-depth document outline, view-only collapsible heading sections, nodeId navigation, and stable heading-subtree reorder are published with focused deterministic Linux/Windows proof. No CWKS successor is selected."
     },
     "OARC": {
       "program_id": "OARC",
@@ -235,7 +235,7 @@
       "checkpoint_path": "governance/ai/work-state/MBES-24-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "completion_rule": "MBES-01 through MBES-24 PDCP-reduced family completed_verified. Terminal MBES-24 proves all 12 cross-scale family scenarios, the eight sealed predecessor schemas, Packet-06 identity/history, generic Oara/non-Oara reactive-world behavior, canonical owner absorptions, permission/accessibility/provider-off operation, provenance/recovery, and the non-duplicating MSLR handoff. MSLR-01 is downstream but terminal gpr slot reuse requires explicit owner governance."
+      "completion_rule": "MBES-01 through MBES-24 PDCP-reduced family completed_verified. Terminal MBES-24 proves all 12 cross-scale family scenarios, the eight sealed predecessor schemas, Packet-06 identity/history, generic Oara/non-Oara reactive-world behavior, canonical owner absorptions, permission/accessibility/provider-off operation, provenance/recovery, and the non-duplicating MSLR handoff. MSLR-01 is downstream but terminal gpr slot reuse requires explicit later owner governance."
     },
     "MSLR": {
       "program_id": "MSLR",
