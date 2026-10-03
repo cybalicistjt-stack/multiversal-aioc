@@ -1,0 +1,263 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "MV-CAS-SD1-PIXEL-STANDARD-001",
+  "standard_id": "CAS-SD1",
+  "status": "canonical_owner_approved",
+  "effective_date": "2026-10-03",
+  "owner_final_authority": "John Brandon Turner",
+  "domain": [
+    "Character Appearance Studio",
+    "CAPP",
+    "PAPT",
+    "Retrobit appearance derivatives"
+  ],
+  "renderer_family": "pixel-art-v1",
+  "authority": {
+    "extends": [
+      "PPIA-06_PIXEL_ART_RENDERER_CONTRACT_v0.2.0.json",
+      "CAPP-03_PIXEL_ART_ASSET_PRODUCTION_STANDARD_v0.1.0.json",
+      "CAPP-08_PORTRAIT_TOKEN_EXPORT_CONTRACT_v0.1.0.json"
+    ],
+    "precedence": "For future pixel-art-v1 work, CAS-SD1 is authoritative for logical density, native-vs-output resolution, canonical derivative sizes, and detail-reduction rules. Existing non-conflicting PPIA-06/CAPP rules remain in force.",
+    "implementation_authority": false
+  },
+  "goals": [
+    "meaningful_character_and_clothing_customization",
+    "deliberate_pixel_art_language",
+    "reduced_authored_art_burden",
+    "reduced_duplicate_raster_storage",
+    "deterministic_non_generative_core_renderer",
+    "shared_semantic_identity_across_views_and_retrobit"
+  ],
+  "profiles": {
+    "cas_sd_full_body": {
+      "native_logical": [
+        128,
+        160
+      ],
+      "standard_output": [
+        256,
+        320
+      ],
+      "output_scale": 2,
+      "safe_inset_native": 8,
+      "safe_inset_output": 16,
+      "view": "full_body_three_quarter",
+      "role": "primary_cas_standard_definition"
+    },
+    "cas_sd_portrait": {
+      "native_logical": [
+        96,
+        96
+      ],
+      "standard_output": [
+        192,
+        192
+      ],
+      "output_scale": 2,
+      "safe_inset_native": 6,
+      "safe_inset_output": 12,
+      "view": "portrait_zoom",
+      "role": "face_head_customization_and_portrait"
+    },
+    "cas_sd_token": {
+      "native_logical": [
+        64,
+        64
+      ],
+      "standard_output": [
+        128,
+        128
+      ],
+      "output_scale": 2,
+      "safe_inset_native": 4,
+      "safe_inset_output": 8,
+      "view": "tactical_token",
+      "role": "tactical_token"
+    },
+    "retrobit_detailed": {
+      "native_logical": [
+        64,
+        80
+      ],
+      "derivation": "semantic_rerender",
+      "display_scaling": "integer_nearest_neighbor_only"
+    },
+    "retrobit_normal": {
+      "native_logical": [
+        32,
+        40
+      ],
+      "derivation": "semantic_rerender",
+      "display_scaling": "integer_nearest_neighbor_only"
+    },
+    "retrobit_micro": {
+      "native_logical": [
+        16,
+        20
+      ],
+      "derivation": "semantic_rerender",
+      "display_scaling": "integer_nearest_neighbor_only"
+    }
+  },
+  "logical_pixel": {
+    "definition": "smallest authored raster unit in CAS-SD1",
+    "output_2x_adds_detail": false,
+    "output_block_for_one_logical_pixel": [
+      2,
+      2
+    ]
+  },
+  "coordinates": {
+    "origin": "top_left",
+    "x_direction": "right",
+    "y_direction": "down",
+    "anchors": "integer_logical_pixels",
+    "masks": "same_logical_coordinate_space_as_asset",
+    "occupancy_bounds": "integer_logical_pixels",
+    "palette_resolution_stage": "before_output_scaling",
+    "fractional_anchor_forbidden": true,
+    "fractional_translation_forbidden": true
+  },
+  "raster_rules": {
+    "sampling": "nearest_neighbor_only",
+    "integer_translation_only": true,
+    "integer_aligned_layer_composition": true,
+    "deterministic_layer_order": true,
+    "deterministic_mask_application": true,
+    "deterministic_palette_zone_resolution": true,
+    "forbidden": [
+      "antialiasing",
+      "bilinear_filtering",
+      "bicubic_filtering",
+      "edge_smoothing_blur",
+      "subpixel_transforms",
+      "arbitrary_angle_raster_rotation",
+      "pseudo_3d_orbit",
+      "freeform_raster_warp_for_topology_fit",
+      "silent_anatomy_approximation",
+      "silent_garment_or_equipment_fit_distortion"
+    ]
+  },
+  "storage": {
+    "source_raster_preference": "native_logical_resolution",
+    "standard_2x_output": "deterministic_derivative",
+    "derivative_storage": "cache_or_export_when_needed",
+    "second_raster_source_of_truth_forbidden": true
+  },
+  "views": {
+    "portrait_is_mandatory_crop": false,
+    "token_is_mandatory_crop": false,
+    "semantic_state_shared": true,
+    "independent_profile_rendering": true,
+    "view_may_invent_semantics": false
+  },
+  "detail_priority": [
+    "topology_and_silhouette",
+    "major_body_proportions",
+    "identity_critical_head_face_structures",
+    "hair_or_covering_silhouette",
+    "garment_silhouette_and_layering",
+    "major_palette_zones",
+    "recognizable_accessories_and_large_garment_construction",
+    "medium_markings_patterns_trim",
+    "microdetail"
+  ],
+  "clothing_readability_target": [
+    "garment_family",
+    "overall_silhouette",
+    "garment_length",
+    "sleeve_or_limb_covering_structure",
+    "neckline_or_collar_when_relevant",
+    "waist_position_or_major_fit_relationship",
+    "hem_shape",
+    "major_layering_order",
+    "major_closure_placement",
+    "major_pockets_or_panels_when_readable",
+    "footwear_silhouette",
+    "belts_and_medium_to_large_accessories",
+    "palette_zones",
+    "material_class_cues",
+    "large_pattern_or_trim_motifs",
+    "topology_accommodations"
+  ],
+  "intentionally_not_required_at_sd": [
+    "every_real_world_stitch",
+    "textile_weave_simulation",
+    "micro_embroidery",
+    "pores",
+    "individual_eyelashes",
+    "other_sub_pixel_physical_detail"
+  ],
+  "palette": {
+    "semantic_palette_zones_required": true,
+    "controlled_ramps_required": true,
+    "biological_vs_cosmetic_split": true,
+    "color_only_state_forbidden": true,
+    "universal_total_color_count": null,
+    "continuous_antialiased_gradients_in_core_sprite_layers": false
+  },
+  "topology": {
+    "logical_density_universal": true,
+    "humanoid_geometry_universal": false,
+    "compress_or_warp_to_humanoid_forbidden": true,
+    "unsupported_behavior": "explicit_partial_or_unsupported",
+    "extended_topology_profile_allowed": true,
+    "extended_topology_must_preserve_density": true
+  },
+  "renderer_boundary": {
+    "core_mode": "deterministic_asset_composition",
+    "generative_ai_required": false,
+    "ai_ml_optional_as_input_proposal_adapter": true,
+    "optional_adapter_may_commit_without_user_acceptance": false,
+    "deterministic_inputs": [
+      "semantic_appearance_choices",
+      "topology_compatible_component_assets",
+      "anchors",
+      "masks",
+      "palette_zones",
+      "occlusion_rules",
+      "wardrobe_equipment_projections",
+      "pose_view_definitions",
+      "approved_controlled_procedural_markings_or_effects"
+    ]
+  },
+  "migration": {
+    "historical_capp_assets_preserved": true,
+    "legacy_output_size_implies_sd1_native": false,
+    "silent_resampling_forbidden": true,
+    "provenance_rewrite_forbidden": true,
+    "allowed_dispositions": [
+      "verified_conforming",
+      "derive_or_reauthor_native_source",
+      "preserve_as_legacy_renderer_profile_asset",
+      "partial_or_unsupported_migration"
+    ]
+  },
+  "scope_exclusions": [
+    "application_runtime_modification",
+    "full_appearance_studio_activation",
+    "capp_engine_implementation_changes",
+    "species_biology_changes",
+    "equipment_ownership_or_mechanics_changes",
+    "complete_cas_parameter_registry",
+    "complete_fashion_garment_primitive_registry",
+    "public_marketplace_authorization",
+    "generative_ai_dependency"
+  ],
+  "required_follow_on": [
+    "map_existing_cas_capp_semantic_parameters_to_sd1_visibility",
+    "define_minimum_useful_cas_parameter_registry",
+    "define_reference_image_to_supported_parameter_proposal_workflow",
+    "update_capp_papt_density_metadata_to_consume_sd1",
+    "define_golden_reference_characters_across_difficult_topologies",
+    "verify_clothing_primitives_against_sd1",
+    "preserve_non_generative_deterministic_renderer_baseline"
+  ],
+  "visual_reference": {
+    "decision_date": "2026-10-03",
+    "status": "owner_approved_illustrative_reference",
+    "normative_over_text": false,
+    "note": "The approved comparison sheet establishes the intended readability/density target. Written and machine-readable rules control dimensions, transforms, authority, provenance and topology."
+  }
+}
