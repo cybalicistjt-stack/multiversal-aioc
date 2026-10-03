@@ -27,7 +27,7 @@ Read `operations/LANES.json` and choose exactly one lane that matches the user's
 - Explicit requests name or imply their lane and override the default lane.
 - A bare `Continue` resumes the lane already established by the conversation. If this is a new conversation, use `CURRENT.json` and the user's opening request to resolve the lane.
 - Lane selection changes scope and source bundle only. It never changes the global operating contract.
-- The persistent implementation lanes are `gpr`, `cwks`, and `oarc`. Terminal MSAS and MRCS remain readable completed program history and do not occupy persistent slots. They may hold implementation authority at the same time. A conversation still selects exactly one lane; selecting it does **not** pause, revoke, or rewrite another lane merely because both change product code. Completed UISR history is not a persistent implementation lane.
+- The persistent implementation lanes are `gpr`, `cwks`, and `mtlc`. Terminal MSAS, MRCS, and OARC remain readable completed program history and do not occupy persistent slots. GPR, CWKS, and MTLC may hold implementation authority at the same time. A conversation still selects exactly one lane; selecting it does **not** pause, revoke, or rewrite another lane merely because both change product code. Completed UISR history is not a persistent implementation lane.
 - Active lanes work independently on separate implementation branches and separate lane-state refs. When two or more persistent lanes are nonterminal, shared-repository publication is serialized only after immutable, prevalidated READY candidates exist. When exactly one persistent lane is nonterminal, publication uses the single-lane direct exact-head path and no READY queue coordination is performed.
 - Do not load or mutate another lane merely because it exists; cross-lane reads are limited to explicit dependencies, publication conflicts, or owner-directed coordination.
 
@@ -62,7 +62,6 @@ Multiple owner Continues or owner stall nudges are execution-quality incidents a
 
 A repeated owner execution command on the same in-progress attempt is not a fresh cycle by default. Compare the checkpoint's material-progress sequence with the sequence observed at the prior execution command. If nothing material changed, record `OPS3.NO_MATERIAL_PROGRESS` and enter stall diagnosis/recovery before doing more ordinary work. Polling, unchanged reads, or restating status do not count as progress. Status requests must report the current coarse milestone, any READY publication candidate, and the first unresolved blocker so the owner can distinguish active work from a stall.
 
-
 ### Executor/session interruption rule + anti-overinstrumentation guard
 
 A chat/session/tool runtime is never a project dependency. Do not silently wait, sleep, or run open-ended polling loops for CI, tools, another lane, or a publication position.
@@ -86,7 +85,6 @@ Treat a workflow run as one validation gate. While it is healthy/in-progress, in
 
 If a tool call returns no usable result, a session aborts, or execution resumes after an interruption, fresh-read the lane milestone plus the repository/PR/CI/queue evidence needed to determine what happened since that milestone; never replay completed work merely because it was not mirrored into lane state. An executor interruption is an executor/tooling incident, not permission to restart the tranche, reserve `main`, or block another lane.
 
-
 ### Single-active-lane mode and quiet execution
 
 When exactly one persistent implementation lane is nonterminal, OPS3 enters **single-active-lane mode**. Derive that fact once from the fresh `CURRENT.json` read used for lane selection. Until an invalidating event occurs, do **not** rescan sibling lane refs, check for concurrent writers, read an empty publication queue, or perform a routine update/rebase of the implementation branch. Terminal sibling lanes remain history unless a concrete dependency or an observed fresh-`main` change requires them.
@@ -105,7 +103,7 @@ Before any executor mutates protected `main` in `cybalicistjt-stack/Multiversal-
 
 **Multi-lane publication:** only when two or more persistent implementation lanes are nonterminal, use the READY-candidate FIFO protocol implemented by `scripts/ops3_merge_lease.py`. Candidates enter only after immutable exact-head prequeue GREEN. The FIFO head fresh-reads `main`, passes the drift-sensitive integration gate, merges with expected-head protection, and is reconciled from the durable result.
 
-Build/release/deployment status never owns or blocks source publication. Persistent lane state remains isolated on `ops3-lane-state/gpr`, `ops3-lane-state/cwks`, and `ops3-lane-state/oarc`. Terminal MSAS and MRCS lane-state refs are historical only.
+Build/release/deployment status never owns or blocks source publication. Persistent lane state remains isolated on `ops3-lane-state/gpr`, `ops3-lane-state/cwks`, and `ops3-lane-state/mtlc`. Terminal MSAS, MRCS, and OARC lane-state refs are historical only.
 
 ## 9. Evidence and completion
 
@@ -120,7 +118,6 @@ Multi-file governed-start/closeout projections should use one tree, one commit a
 Prefer the shortest path from current state to the requested result. Do not restart repository archaeology after the lane and work item are known. Expand context only for a concrete contradiction, failure signature, or source dependency.
 
 Historical records remain valuable for provenance and recovery, but they never become live instructions by being rediscovered.
-
 
 ### Project-canon register pointer
 
