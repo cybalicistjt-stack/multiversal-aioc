@@ -2,10 +2,10 @@
   "schema_version": "1.0.0",
   "work_item_id": "OPS3-15",
   "title": "MTLC Persistent-Slot Activation and MTLC-01 Governed Start",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_directive": "Activate the owner-approved Multiversal Tabletop Lifecycle Convergence program and begin MTLC-01 without pausing or borrowing scope from active GPR or CWKS. Replace the completed OARC persistent slot while preserving OARC as immutable completed history.",
-  "completed": false,
-  "implementation_authority": true,
+  "completed": true,
+  "implementation_authority": false,
   "scope": {
     "include": [
       "replace terminal OARC persistent slot with MTLC while preserving OARC history",
@@ -27,8 +27,17 @@
     "operations/LANES.json persistent_implementation_lanes is [gpr,cwks,mtlc] while OARC remains completed history",
     "OPS3 lane-state helper accepts mtlc and rejects retired oarc as a persistent lane",
     "roadmap dependency graph knows MTLC and permits its source-recovery start in parallel with GPR/CWKS",
-    "MTLC-01 checkpoint and durable Group lifecycle spec exist",
-    "control-plane tests cover the replacement semantics"
+    "MTLC-01 checkpoint, durable lane-state ref, work branch and Group lifecycle spec exist",
+    "control-plane tests cover the replacement semantics",
+    "canonical compatibility projections resolve from the new OPS3-15 selector state"
   ],
-  "next_action": "Prepare and validate the PR-only control-plane activation candidate."
+  "completion_evidence": {
+    "mtlc_lane_state_ref": "ops3-lane-state/mtlc",
+    "mtlc_lane_state_start_commit": "244394c5ede9d7f0e51ba8dd7f375714a4c7fe64",
+    "mtlc_work_branch": "work/mtlc-01-canon-friction-registry",
+    "checkpoint_path": "governance/ai/work-state/MTLC-01-attempt-001.json",
+    "group_spec_path": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_GROUP_LIFECYCLE_SPEC.md",
+    "validation_rule": "This completed candidate may publish only after exact-head repository/control-plane validation is green through the protected-main PR path."
+  },
+  "next_action": "Continue MTLC-01 on its isolated work branch after durable publication of this activation candidate."
 }
