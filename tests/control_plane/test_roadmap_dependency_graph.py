@@ -12,10 +12,13 @@ class RoadmapGraphTests(unittest.TestCase):
   self.assertFalse(self.projection["operational_authority"])
   self.assertEqual(self.projection["canonical_current_state"],"operations/CURRENT.json")
  def test_edge_vocabulary_and_authority(self):self.assertEqual(set(self.g["edge_types"]),{"hard_requires","start_requires","late_bind_requires","golden_proof_requires","parallel_safe_with"})
- def test_four_initial_lanes_are_not_serialized_by_each_other(self):
+ def test_initial_specialist_set_and_current_persistent_set_are_explicitly_parallel_safe(self):
   e=self.g["program_edges"];initial={"MCS","MCCS","MRCS","MSAS"}
   for n in initial:self.assertFalse(initial&set(e[n]["hard_requires"]));self.assertFalse(initial&set(e[n]["start_requires"]))
-  self.assertEqual(self.g["parallel_safe_sets"],[["MCS","MCCS","MRCS","MSAS"]])
+  self.assertIn(["MCS","MCCS","MRCS","MSAS"],self.g["parallel_safe_sets"])
+  self.assertIn(["GPR","CWKS","MTLC"],self.g["parallel_safe_sets"])
+  self.assertEqual(e["MTLC"]["parallel_safe_with"],["GPR","CWKS"])
+  self.assertEqual(e["MTLC"]["hard_requires"],[])
  def test_real_mera_mbes_causality_is_preserved(self):
   self.assertIn("MERA",self.g["program_edges"]["MBES"]["hard_requires"])
   self.assertIn("MERA-03",self.g["program_edges"]["MBES"]["start_requires"])
@@ -28,4 +31,6 @@ class RoadmapGraphTests(unittest.TestCase):
   self.assertEqual(g["rotation"]["MBES-01"],["MERA-03","MRCS-14"])
   self.assertIn("MCCS-01",self.g["program_edges"]["MNCS"]["start_requires"])
   self.assertNotIn("MCCS-02",self.g["program_edges"]["MNCS"]["start_requires"])
+ def test_mtlc02_is_gated_by_mtlc01(self):
+  self.assertEqual(self.g["milestone_gates"]["MTLC"]["MTLC-02"],["MTLC-01 completed_verified"])
 if __name__=="__main__":unittest.main()
