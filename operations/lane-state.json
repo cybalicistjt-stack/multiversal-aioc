@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "cwks",
-  "revision": 28,
+  "revision": 29,
   "selected_work_item": "CWKS-06-CORR-01",
   "attempt_id": "CWKS-06-CORR-01-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/cwks-06-planning-views-correction",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Owner approved the CWKS-06 corrective design and written amendment; implementation plan published as c3c79559d992464832ec87a3e8020d82792d0488 and corrective activation published as AIOC main 9add353ea0d795da2f0cca5856d326408e458185."
+    "kind": "prequeue_green",
+    "evidence": "exact fresh-main integration head 3f2ac27b05d73b1619abc58d2a15dd9845b3b6a2 passed governed Linux/Windows/deterministic run 37220947135; subsequent app-main drift through 5d90a6aff270ee1e2dd5e561f8ee0f31d6dbc90e touched only eight sports-rule documents and had zero overlap with the CWKS candidate."
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,9 @@
     "closeout_merge_sha": "e21a3c7bfbe0e9aa189cf6b9e75e694adc4cd56f",
     "closeout_validation_run": "37215907379",
     "closeout_ready_candidate": "CWKS-07-closeout-pr-1810"
+  },
+  "prequeue_green": {
+    "candidate_head": "3f2ac27b05d73b1619abc58d2a15dd9845b3b6a2",
+    "validation_run": "37220947135"
   }
 }
