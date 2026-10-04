@@ -1,0 +1,391 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "MV-CAS-CAPP-HANDOFF-001",
+  "contract_id": "CAS-CAPP-HANDOFF-1",
+  "status": "canonical_design_authority",
+  "effective_date": "2026-10-03",
+  "owner_final_authority": "John Brandon Turner",
+  "implementation_authority": false,
+  "authorities": {
+    "parameter_authority": "CAS-PARAM-1",
+    "pixel_standard": "CAS-SD1",
+    "appearance_authority": "CAPP/PPIA",
+    "workspace_authority": "MCCS",
+    "production_asset_authority": "PAPT/PCA",
+    "biology_topology_authority": "Species/Form/PPIA",
+    "equipment_authority": "Inventory/Asset/Equipment"
+  },
+  "purpose": "Define the deterministic renderer-neutral handoff from an accepted/editable CAS semantic appearance state into CAPP validation, asset resolution, coverage diagnostics and render-plan production without making MCCS, PAPT or raster output authoritative character truth.",
+  "request_contract": {
+    "required": [
+      "request_id",
+      "appearance_state_id",
+      "appearance_state_version",
+      "cas_parameter_authority_id",
+      "cas_parameter_authority_version",
+      "pixel_standard_id",
+      "pixel_standard_version",
+      "owner_ref",
+      "owner_domain",
+      "owner_version",
+      "species_profile_ref",
+      "form_profile_ref",
+      "topology_template_id",
+      "biology_snapshot_id",
+      "parameter_values",
+      "feature_instances",
+      "renderer_id",
+      "renderer_version",
+      "asset_pack_id",
+      "asset_pack_version",
+      "asset_lock",
+      "view_profile_id",
+      "pose_id",
+      "permission_projection_id"
+    ],
+    "optional": [
+      "lineage_profile_ref",
+      "appearance_profile_ref",
+      "presentation_wardrobe_refs",
+      "actual_equipment_projection_refs",
+      "style_profile_ref",
+      "background_profile_ref",
+      "migration_context_ref",
+      "source_import_receipt_ref"
+    ],
+    "parameter_value_shape": {
+      "parameter_id": "stable CAS-PARAM-1 ID",
+      "value_kind": [
+        "ordinal5",
+        "ordinal7",
+        "enum_ref",
+        "palette_zone_set_ref",
+        "layer_set_ref",
+        "profile_ref"
+      ],
+      "ordinal_step": "integer within declared scale when value_kind is ordinal5/ordinal7",
+      "ref_id": "stable governed ref for enum/profile/palette values",
+      "ref_ids": "ordered stable governed refs for layer-set values",
+      "authority_mode": "copied from parameter registry for validation, not user-supplied authority",
+      "provenance_ref": "optional authored/import/source provenance receipt"
+    },
+    "feature_instance_shape": {
+      "feature_instance_id": "stable appearance-state-local ID",
+      "feature_kind": "one CAS-FEATURE-TEMPLATE-001 eligible kind",
+      "source_authority_ref": "Species/Form/PPIA or authorized optional-appearance authority",
+      "anchor_ref": "topology/head/body anchor",
+      "parameter_values": "CAS feature-field values limited by feature template",
+      "state": [
+        "authored",
+        "read_only_projection",
+        "unresolved"
+      ],
+      "provenance_ref": "optional"
+    }
+  },
+  "normalization": {
+    "deterministic_sort": [
+      "parameter_values by parameter_id",
+      "feature_instances by feature_instance_id",
+      "feature parameter values by field ID",
+      "presentation wardrobe refs lexically unless explicit layer order metadata owns ordering",
+      "actual-equipment projection refs by owning equipment projection order"
+    ],
+    "no_duplicate_parameter_ids": true,
+    "no_duplicate_feature_instance_ids": true,
+    "authority_version_exact_match_required": true,
+    "pixel_standard_exact_match_required": true,
+    "unknown_parameter_behavior": "migration_or_import_review_required; never silently drop or reinterpret",
+    "canonical_semantic_hash": "SHA-256 of normalized renderer-neutral appearance state before renderer/asset/view inputs"
+  },
+  "validation_order": [
+    "validate CAS-PARAM-1 and CAS-SD1 versions",
+    "authorize owner/species/form/biology/topology snapshots",
+    "apply permission filtering before asset selection or diagnostics",
+    "validate parameter IDs, value kinds and ordinal bounds",
+    "validate Species/Form/CAPP eligibility and required/read-only constraints",
+    "validate topology-gated feature kind/cardinality/anchors",
+    "validate biological-versus-cosmetic channel separation",
+    "validate wardrobe/equipment authority distinction",
+    "normalize semantic state and compute semantic appearance hash",
+    "resolve parameter values to renderer strategies",
+    "resolve topology-compatible assets/variants/masks/palettes",
+    "apply fit/anchor/occlusion compatibility",
+    "classify per-parameter and aggregate renderer coverage",
+    "assemble deterministic ordered render plan",
+    "compute render-plan checksum",
+    "derive requested view/output only after semantic render plan is stable"
+  ],
+  "resolver_classes": [
+    {
+      "id": "CASRES-01",
+      "name": "component_family_select",
+      "use": "Discrete family/profile chooses one reusable component family.",
+      "examples": [
+        "head.shape_family",
+        "eyes.family",
+        "nose.family",
+        "covering.style_family"
+      ]
+    },
+    {
+      "id": "CASRES-02",
+      "name": "discrete_variant_select",
+      "use": "Ordinal or enum selects an authored/procedurally-approved discrete variant; no continuous raster warp.",
+      "examples": [
+        "body.shoulder_width",
+        "eyes.size",
+        "nose.width",
+        "ears.angle"
+      ]
+    },
+    {
+      "id": "CASRES-03",
+      "name": "integer_anchor_composition",
+      "use": "Authorized component anchors shift/recompose by integer logical pixels within topology/fit constraints.",
+      "examples": [
+        "body.torso_length",
+        "body.arm_length",
+        "body.leg_length"
+      ]
+    },
+    {
+      "id": "CASRES-04",
+      "name": "palette_zone_map",
+      "use": "Semantic palette-zone choice maps through controlled palette ramps without duplicating base raster geometry.",
+      "examples": [
+        "surface.palette_zone_set",
+        "surface.cosmetic_dye_layers"
+      ]
+    },
+    {
+      "id": "CASRES-05",
+      "name": "mask_pattern_overlay",
+      "use": "Pattern/marking/cosmetic state resolves to topology-compatible masks or controlled deterministic overlays.",
+      "examples": [
+        "surface.pattern_ref",
+        "surface.marking_layers",
+        "covering.pattern_ref"
+      ]
+    },
+    {
+      "id": "CASRES-06",
+      "name": "layer_or_profile_reference",
+      "use": "Parameter resolves to an ordered governed layer set or presentation profile.",
+      "examples": [
+        "wardrobe.presentation_outfit_ref",
+        "presentation.pose_ref",
+        "age.presentation_profile"
+      ]
+    },
+    {
+      "id": "CASRES-07",
+      "name": "read_only_owner_projection",
+      "use": "Visual state is projected from another owner domain and cannot be mutated by CAS.",
+      "examples": [
+        "equipment.visual_projection_ref"
+      ]
+    },
+    {
+      "id": "CASRES-08",
+      "name": "semantic_only_or_derived",
+      "use": "State remains semantic or derives other values and may not require a unique raster component.",
+      "examples": [
+        "profile/state relationships",
+        "renderer-independent metadata"
+      ]
+    }
+  ],
+  "allowed_render_operations": [
+    "select authorized component family",
+    "select discrete authored or approved deterministic variant",
+    "integer-pixel anchor translation",
+    "integer-aligned layer composition",
+    "mask application",
+    "palette-zone remap through controlled ramp",
+    "approved deterministic pattern/marking procedure",
+    "declared occlusion rule",
+    "nearest-neighbor integer output scaling"
+  ],
+  "forbidden_render_operations": [
+    "freeform continuous raster warp",
+    "subpixel translation",
+    "antialiasing as geometry repair",
+    "arbitrary rotation to fake missing view coverage",
+    "silent humanoid substitution",
+    "silent nearest-value coercion when an exact semantic value lacks coverage",
+    "invented anatomy or equipment",
+    "generative image synthesis as required core rendering"
+  ],
+  "parameter_resolution_receipt": {
+    "required": [
+      "parameter_id",
+      "semantic_value",
+      "resolver_class",
+      "support_state",
+      "resolution_refs",
+      "diagnostic_codes"
+    ],
+    "support_states": [
+      "supported",
+      "partial",
+      "unsupported",
+      "unknown",
+      "not_applicable"
+    ],
+    "rule": "Every active parameter receives an explicit resolution receipt for the requested topology/view. A parameter may be semantically valid while renderer coverage is partial/unsupported."
+  },
+  "feature_resolution_receipt": {
+    "required": [
+      "feature_instance_id",
+      "feature_kind",
+      "authority_ref",
+      "anchor_ref",
+      "support_state",
+      "resolution_refs",
+      "diagnostic_codes"
+    ]
+  },
+  "aggregate_output": {
+    "required": [
+      "semantic_appearance_hash",
+      "renderer_id",
+      "renderer_version",
+      "asset_pack_id",
+      "asset_pack_version",
+      "view_profile_id",
+      "pose_id",
+      "topology_template_id",
+      "biology_snapshot_id",
+      "parameter_resolution_receipts",
+      "feature_resolution_receipts",
+      "layers",
+      "coverage_state",
+      "fallback_state",
+      "diagnostics",
+      "permission_filter_applied",
+      "render_plan_sha256"
+    ],
+    "invariants": {
+      "character_truth_changed": false,
+      "biology_changed": false,
+      "topology_truth_changed": false,
+      "actual_equipment_changed": false,
+      "mechanics_changed": false,
+      "hidden_information_leaked": false,
+      "silent_substitution": false
+    }
+  },
+  "coverage_and_fallback": {
+    "semantic_state_survives_missing_art": true,
+    "missing_asset_behavior": "parameter/feature receipt becomes partial/unsupported/unknown with explicit demand diagnostic; semantic appearance is not rewritten",
+    "smaller_view_behavior": "CAS-SD1 detail-priority grammar may intentionally omit lower-priority detail; omission is a declared view projection loss, not semantic deletion",
+    "no_nearest_supported_value_silent_coercion": true,
+    "optional_user_action": "User may explicitly choose a supported alternative, which creates a normal CAS draft change."
+  },
+  "mccs_adapter": {
+    "rule": "MCCS carries CAS draft/workspace operations; CAS-PARAM-1 remains the semantic parameter vocabulary and CAPP remains appearance authority.",
+    "ordinal5_numeric_adapter": "MCCS numeric convenience value = ordinal_step / 2; CAS ordinal step remains authoritative.",
+    "ordinal7_numeric_adapter": "MCCS numeric convenience value = ordinal_step / 3; CAS ordinal step remains authoritative.",
+    "body_binding": "MCCS-03 morphology/silhouette can carry CAS body parameters directly through stable IDs.",
+    "structural_feature_binding": "MCCS-03/MCCS-05 carry eligible appendage/head feature structures and anchors.",
+    "head_scalar_gap": "Current MCCS-05 needs a bounded parameter/value transport or adapter for detailed CAS head/face scalars. Do not encode them as opaque filenames or invent a second CAS engine.",
+    "surface_binding": "MCCS-06 carries CAPP-resolved color/material/pattern/marking/layer references.",
+    "wardrobe_binding": "MCCS-09 carries wardrobe/equipment presentation composition and fit references.",
+    "pose_binding": "MCCS-11 carries presentation pose/expression refs.",
+    "derivative_binding": "MCCS-13 carries requested CAS-SD1 output profiles and declared projection losses."
+  },
+  "papt_demand_bridge": {
+    "emitted_when": [
+      "support_state is partial",
+      "support_state is unsupported",
+      "support_state is unknown due to missing production coverage"
+    ],
+    "demand_key_fields": [
+      "parameter_or_feature_id",
+      "semantic_value_or_family",
+      "topology_template_id",
+      "view_profile_id",
+      "resolver_class",
+      "semantic_band",
+      "required_anchor_refs",
+      "required_mask_roles"
+    ],
+    "anti_explosion_rules": [
+      "Demand reusable component families/variants, not complete baked character combinations.",
+      "Palette-only differences prefer palette-zone maps rather than duplicate geometry rasters.",
+      "Pattern/marking differences prefer masks/controlled overlays where style permits.",
+      "Independent compatible components remain composable; do not enumerate their full cross-product.",
+      "A dependent parameter cluster may request a bounded variant matrix only when independent composition cannot preserve CAS-SD1 quality.",
+      "Every produced asset remains manifested with provenance, topology/view coverage and CAS-SD1 native density."
+    ]
+  },
+  "view_profiles": {
+    "cas_sd_full_body": {
+      "native": [
+        128,
+        160
+      ],
+      "standard_output": [
+        256,
+        320
+      ]
+    },
+    "cas_sd_portrait": {
+      "native": [
+        96,
+        96
+      ],
+      "standard_output": [
+        192,
+        192
+      ]
+    },
+    "cas_sd_token": {
+      "native": [
+        64,
+        64
+      ],
+      "standard_output": [
+        128,
+        128
+      ]
+    },
+    "retrobit_detailed": {
+      "native": [
+        64,
+        80
+      ],
+      "derivation": "semantic_rerender"
+    },
+    "retrobit_normal": {
+      "native": [
+        32,
+        40
+      ],
+      "derivation": "semantic_rerender"
+    },
+    "retrobit_micro": {
+      "native": [
+        16,
+        20
+      ],
+      "derivation": "semantic_rerender"
+    }
+  },
+  "import_rule": "Reference-image/photo/sketch matching ends before this handoff. Once a user accepts or edits the proposal, the resulting state is ordinary CAS-PARAM-1 semantic state and follows the identical compile path.",
+  "boundaries": {
+    "runtime_activation": false,
+    "application_code_change": false,
+    "papt_execution": false,
+    "public_release": false,
+    "paid_provider_required": false,
+    "generative_ai_required": false
+  },
+  "next_design_outputs": [
+    "MCCS-05 bounded CAS parameter transport contract",
+    "CAPP-05 CAS-PARAM-1 input/resolution extension",
+    "PAPT parameter-driven asset demand and coverage ledger",
+    "golden CAS/CAPP/PAPT reference profiles across easy and difficult topologies"
+  ]
+}
