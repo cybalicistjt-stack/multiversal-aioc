@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 576,
+  "state_revision": 577,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -110,13 +110,13 @@
       "execution_state_ref": "ops3-lane-state/gpr"
     },
     "casi": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "selected_work_item": "CASI-08",
       "attempt_id": "CASI-08-attempt-001",
       "checkpoint_path": "operations/work-items/CASI-08.json",
-      "implementation_branch": "work/casi-08-golden-cross-topology-proof",
-      "implementation_authority": true,
-      "activation_rule": "Owner directed Continue on 2026-10-04 after CASI-07 completed_verified. CASI-08 is authorized only to implement and validate the CAS-GOLDEN-1 cross-topology integration proof over completed CASI-01 through CASI-07 behavior: deterministic manual and reference-input paths, all six CAS-SD1/Retrobit views, semantic identity consistency, difficult topology preservation, explicit unsupported coverage, authority separation and provider-off operation. CASI-08 may add certification/proof logic and fixtures but may not add new appearance semantics, a new renderer, image-generation dependency, Fashion/Garment Parameter Authority, marketplace behavior or mechanics mutation.",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "CASI-08 and the CASI program are terminal completed_verified after genuine behavioral RED run 37242880841, exact-head Linux/Windows/deterministic-comparison GREEN run 37243138675 on application head 9fabbd042df7bcbd5f4aa3a6da259758b970800f, and READY publication of Multiversal-app PR #815 as add663e17500173fe9c74c23bf3db864c9813797. Terminal CAS-GOLDEN-1 proof certifies all ten golden topology profiles across deterministic manual/reference-input paths and all six CAS-SD1/Retrobit views, with explicit unsupported coverage, no humanoid fallback, authority separation and provider-off reproduction. CASI has no successor. Fashion/Garment Parameter Authority remains separately governed and is not activated by this completion.",
       "execution_state_ref": "ops3-lane-state/casi"
     }
   },
@@ -145,7 +145,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F and CASI-08 remain independently active. CASI-08 is bounded to final CAS-GOLDEN-1 cross-topology integration proof over completed CASI behavior. Fashion/Garment Parameter Authority remains separately governed. CWKS-06-CORR-01 remains completed_verified.",
+  "next_project_action": "GPR PCV-03F remains independently in_progress. CASI is terminal completed_verified with no successor. Fashion/Garment Parameter Authority remains separately governed and unactivated. CWKS-06-CORR-01 remains completed_verified.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -316,6 +316,16 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "completion_rule": "BIP-01 completed_verified when the actual Multiversal client produced a Windows x64 NSIS current-user installer and Android ARM64 direct-install APK with manifest/checksums on an exact validated application head. Public/store distribution and production signing remain separately gated."
+    },
+    "CASI": {
+      "program_id": "CASI",
+      "state": "completed_verified",
+      "selected_work_item": "CASI-08",
+      "attempt_id": "CASI-08-attempt-001",
+      "checkpoint_path": "operations/work-items/CASI-08.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "completion_rule": "CASI-01 through CASI-08 completed_verified. Terminal CASI-08 / CAS-GOLDEN-1 cross-topology proof certifies all ten approved golden profiles through the same deterministic semantic/MCCS/CAPP/derivative architecture across manual and reference-input paths, all full-body/portrait/token/Retrobit views, explicit missing-coverage behavior, topology preservation, authority separation and provider-off reproduction. No generative AI, paid provider, new renderer, Fashion/Garment authority, marketplace behavior or mechanics mutation is required or authorized. CASI has no successor."
     }
   },
   "domain_authorities": {
