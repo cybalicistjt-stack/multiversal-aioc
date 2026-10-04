@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "cwks",
-  "revision": 23,
+  "revision": 24,
   "selected_work_item": "CWKS-07",
   "attempt_id": "CWKS-07-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/cwks-07-wiki-knowledge-core",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Owner approved the written CWKS-07 design; published plan 9114a5a9a9facc7521d1b27347bfa4bf7e919de8 and AIOC activation 994374f3b83b7c21d72db6e30f7fef044467e5f7 grant bounded implementation authority."
+    "kind": "prequeue_green",
+    "evidence": "CWKS-07 application candidate 0db7488bcc649a19405ef580707cde123b604c82 passed source-equivalent governed Linux/Windows full CWKS-01–07 plus WCI/CSW boundary regression and deterministic comparison in run 37214596183. Validation head ce7d2babe5e1997c17292ae3a523f31e327bf663 differs from the application candidate only by the temporary .github/workflows/cwks07-source-equivalent-validation.yml harness required after pull_request event delivery stopped."
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,12 @@
     "closeout_merge_sha": "46c0faa2747a9b3797e80ad3320915f56479c7bc",
     "closeout_validation_run": "37208490303",
     "closeout_ready_candidate": "CWKS-06-closeout-pr-1803"
+  },
+  "prequeue_green": {
+    "candidate_head": "0db7488bcc649a19405ef580707cde123b604c82",
+    "validation_run": "37214596183",
+    "validation_kind": "source_equivalent",
+    "validation_head": "ce7d2babe5e1997c17292ae3a523f31e327bf663",
+    "harness_only_delta": ".github/workflows/cwks07-source-equivalent-validation.yml"
   }
 }
