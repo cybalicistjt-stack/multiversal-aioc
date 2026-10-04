@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "cwks",
-  "revision": 14,
+  "revision": 15,
   "selected_work_item": "CWKS-05",
   "attempt_id": "CWKS-05-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/cwks-05-document-persistence",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Owner explicitly excluded AI writing and directed Continue into CWKS-05 document persistence, autosave and recovery on work/cwks-05-document-persistence."
+    "kind": "prequeue_green",
+    "evidence": "CWKS-05 exact head d6982a720c8bb81aee39196c12930f0cf9b76f71 passed governed Linux/Windows validation run 37128330215 after causal RED coverage for persistence, autosave/recovery, first-save crash recovery and revision-guarded deletion."
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,9 @@
     "closeout_merge_sha": "0440e129f8cb86a1b71e2803b9cd0854e5c1107f",
     "closeout_validation_run": "37122331569",
     "closeout_ready_candidate": "CWKS-04-closeout-pr-1793"
+  },
+  "prequeue_green": {
+    "candidate_head": "d6982a720c8bb81aee39196c12930f0cf9b76f71",
+    "validation_run": "37128330215"
   }
 }
