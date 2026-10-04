@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.6.0",
+  "schema_version": "3.7.0",
   "canonical_door": "operations/BOOTSTRAP.md",
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "selection_rule": "User intent selects a lane; lane state never changes the global operating contract.",
@@ -42,7 +42,7 @@
         "MAL/MRCS and owner-domain contracts named by the selected GPR item",
         "live application/repository evidence limited to active GPR scope"
       ],
-      "cross_lane_reads": "Consume completed MRCS definitions and explicit owner contracts as dependencies. CWKS remains independent except for explicit shared-authoring integration or publication conflicts. OARC remains independent except for explicit dependencies/publication conflicts.",
+      "cross_lane_reads": "Consume completed MRCS definitions and explicit owner contracts as dependencies. CWKS and CASI remain independent except for explicit integration evidence or publication conflicts. OARC remains terminal completed history.",
       "execution_state_ref": "ops3-lane-state/gpr"
     },
     {
@@ -81,7 +81,7 @@
         "existing creator/entity/sequential-art contracts explicitly required by the selected CWKS item",
         "live application repository evidence limited to active CWKS scope"
       ],
-      "cross_lane_reads": "Consume completed MRCS and other creator/entity contracts only as explicit dependencies. GPR and OARC remain independent; read them only for explicit integration evidence or publication conflicts.",
+      "cross_lane_reads": "Consume completed MRCS and other creator/entity contracts only as explicit dependencies. GPR and CASI remain independent; read them only for explicit integration evidence or publication conflicts. OARC remains terminal completed history.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     {
@@ -103,8 +103,29 @@
         "MERA and MBES planning contracts only where required to preserve future-owner boundaries",
         "live application repository evidence limited to active OARC scope"
       ],
-      "cross_lane_reads": "Consume completed MRCS definitions and existing owner contracts as explicit dependencies. Read MERA/MBES planning only to preserve reserved authority. OARC execution never pauses, replaces or rewrites GPR or CWKS.",
+      "cross_lane_reads": "OARC is terminal completed history after OARC-07. Read GPR/CWKS/CASI only for explicit historical integration evidence; do not restart OARC implementation without a new owner-governed program.",
       "execution_state_ref": "ops3-lane-state/oarc"
+    },
+    {
+      "id": "casi",
+      "purpose": "Character Appearance Standard Integration (CASI): integrate CAS-SD1 and CAS-PARAM-1 into the completed MCCS/CAPP/PAPT appearance stack and player-facing appearance path without reopening completed MCCS/OARC history.",
+      "intent_examples": [
+        "continue CASI",
+        "continue character appearance integration",
+        "implement CAS-SD1",
+        "wire CAS parameters into MCCS and CAPP"
+      ],
+      "current_state_source": "operations/CURRENT.json#/lanes/casi",
+      "source_bundle": [
+        "CURRENT-selected CASI work item/checkpoint",
+        "live lane execution state from ops3-lane-state/casi",
+        "governance/application-planning/character-appearance-standard-integration/CASI_PROGRAM_BACKLOG.json",
+        "CAS-SD1, CAS-PARAM-1, CAS-CAPP-HANDOFF and CAS integration-design closure authorities",
+        "completed MCCS/CAPP/PPIA/PAPT contracts explicitly required by the selected CASI item",
+        "live application repository evidence limited to active CASI scope"
+      ],
+      "cross_lane_reads": "Consume completed MCCS/CAPP/PPIA/PAPT authority and live application evidence only as explicit CASI dependencies. GPR and CWKS remain independent except for publication conflicts. OARC remains immutable completed history.",
+      "execution_state_ref": "ops3-lane-state/casi"
     },
     {
       "id": "operations",
@@ -196,7 +217,7 @@
   "persistent_implementation_lanes": [
     "gpr",
     "cwks",
-    "oarc"
+    "casi"
   ],
   "retired_lane_aliases": {
     "product-development": "Retired umbrella. Resolve explicit intent to gpr, cwks or oarc; this alias cannot select work.",
@@ -204,9 +225,9 @@
     "player-species": "Completed MVPS program history. Player-species work no longer occupies a persistent lane; new species work requires an explicitly selected governed work item.",
     "mvps": "Completed terminal MVPS lane/program history. It was replaced as the third persistent implementation slot by OARC on 2026-09-20.",
     "mrcs-implementation": "MRCS-21 completed_verified. MRCS is completed program history; its former persistent slot was replaced by CWKS on 2026-10-02.",
-    "operational-assets": "Alias for canonical oarc lane."
+    "operational-assets": "OARC-07 completed_verified. OARC is preserved as terminal completed history; its former persistent slot was owner-approved for CASI on 2026-10-04."
   },
-  "parallel_persistence_rule": "GPR, CWKS and OARC are independent persistent implementation lanes with separate milestone-only lane-state refs. Terminal MSAS and MRCS remain completed history outside the persistent slots. If two or more persistent lanes are nonterminal, immutable green READY candidates use FIFO publication coordination. If exactly one persistent lane is nonterminal, the READY queue is dormant and protected-main publication uses the direct exact-head fresh-base path.",
+  "parallel_persistence_rule": "GPR, CWKS and CASI are independent persistent implementation lanes with separate milestone-only lane-state refs. Terminal MSAS, MRCS and OARC remain completed history outside the persistent slots. If two or more persistent lanes are nonterminal, immutable green READY candidates use FIFO publication coordination. If exactly one persistent lane is nonterminal, the READY queue is dormant and protected-main publication uses the direct exact-head fresh-base path.",
   "single_active_lane_rule": "Derive single-active-lane mode once from the fresh CURRENT read. Ordinary execution reads and mutates only that lane plus concrete dependencies/conflicts; it does not rescan terminal siblings, check concurrent writers, read an empty READY queue, or perform routine rebase/update-branch work. Protected-main publication is PR-only, exact-head and fresh-base, with a narrow integration rerun only if main actually drifts.",
   "quiet_execution_rule": "Healthy CI is observed at workflow level only at sparse transition-driven points. Job/step/log inspection is failure-driven. Lane scans, queue-empty checks, rebase checks, mergeability polling and owner re-entry are not material progress and must not create lane-state receipts. Browser/session interruption resumes from durable lane state and repository evidence rather than requiring another owner Continue."
 }

@@ -57,7 +57,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
 
     def test_ready_queue_is_fifo_without_reserving_future_work(self) -> None:
         state=PUBLICATION.free_publication_queue("cybalicistjt-stack/Multiversal-app",generation=30)
-        for cid,lane in (("a","gpr"),("b","cwks"),("c","oarc")):
+        for cid,lane in (("a","gpr"),("b","cwks"),("c","casi")):
             state=PUBLICATION.submit_ready_candidate(state,expected_generation=state["generation"],candidate=self.candidate(cid,lane))
         self.assertEqual([x["candidate_id"] for x in state["ready"]],["a","b","c"])
 
@@ -87,7 +87,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
 
     def test_durable_merge_consumes_candidate_without_release_or_recovery(self) -> None:
         state=PUBLICATION.free_publication_queue("cybalicistjt-stack/multiversal-aioc",generation=60)
-        state=PUBLICATION.submit_ready_candidate(state,expected_generation=60,candidate=self.candidate("a","oarc"))
+        state=PUBLICATION.submit_ready_candidate(state,expected_generation=60,candidate=self.candidate("a","casi"))
         state=PUBLICATION.reconcile_durable_publication(state,expected_generation=61,candidate_id="a",observed_head_sha="head-a",merge_sha="merge-a")
         self.assertEqual(state["ready"],[])
         self.assertEqual(state["history"][-1]["status"],"published")
@@ -115,11 +115,11 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
             LANE_STATE.mark_prequeue_green(a2,expected_revision=2,lane="cwks",candidate_head="head-a",validation_run="run-a")
 
     def test_lane_can_start_without_mutating_global_selector(self) -> None:
-        state=LANE_STATE.initial_state("oarc",revision=5,selected_work_item="OARC-12",attempt_id="OARC-12-attempt-001")
-        started=LANE_STATE.start_execution(state,expected_revision=5,lane="oarc",implementation_branch="work/oarc-12",evidence="owner Continue")
+        state=LANE_STATE.initial_state("casi",revision=5,selected_work_item="CASI-01",attempt_id="CASI-01-attempt-001")
+        started=LANE_STATE.start_execution(state,expected_revision=5,lane="casi",implementation_branch="work/casi-01",evidence="owner Continue")
         self.assertEqual(started["execution_status"],"in_progress")
-        self.assertEqual(started["implementation_branch"],"work/oarc-12")
-        self.assertEqual(started["selected_work_item"],"OARC-12")
+        self.assertEqual(started["implementation_branch"],"work/casi-01")
+        self.assertEqual(started["selected_work_item"],"CASI-01")
 
     def test_healthy_unchanged_workflow_observation_cannot_become_polling_loop(self) -> None:
         snapshot={"id":77,"head_sha":"head-a","status":"in_progress","conclusion":None}
@@ -190,27 +190,27 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertEqual(state["publication"]["merge_sha"],"merge-app")
 
     def test_successor_reseed_is_deterministic_and_resets_progress(self) -> None:
-        state=LANE_STATE.initial_state("oarc",revision=20,selected_work_item="OARC-13",attempt_id="OARC-13-attempt-001")
-        state=LANE_STATE.start_execution(state,expected_revision=20,lane="oarc",implementation_branch="work/oarc-13",evidence="owner Continue")
-        state=LANE_STATE.mark_prequeue_green(state,expected_revision=21,lane="oarc",candidate_head="h",validation_run="r")
-        state=LANE_STATE.mark_published(state,expected_revision=22,lane="oarc",candidate_head="h",merge_sha="m",ready_candidate_id="OARC-13-app-001")
+        state=LANE_STATE.initial_state("casi",revision=20,selected_work_item="CASI-01",attempt_id="CASI-01-attempt-001")
+        state=LANE_STATE.start_execution(state,expected_revision=20,lane="casi",implementation_branch="work/casi-01",evidence="owner Continue")
+        state=LANE_STATE.mark_prequeue_green(state,expected_revision=21,lane="casi",candidate_head="h",validation_run="r")
+        state=LANE_STATE.mark_published(state,expected_revision=22,lane="casi",candidate_head="h",merge_sha="m",ready_candidate_id="CASI-01-app-001")
         next_state=LANE_STATE.reseed_successor(
             state,
             expected_revision=23,
-            lane="oarc",
-            successor_work_item="OARC-14",
-            successor_attempt_id="OARC-14-attempt-001",
+            lane="casi",
+            successor_work_item="CASI-02",
+            successor_attempt_id="CASI-02-attempt-001",
             closeout_merge_sha="closeout",
             closeout_validation_run="closeout-run",
-            closeout_ready_candidate_id="OARC-13-closeout-001",
+            closeout_ready_candidate_id="CASI-01-closeout-001",
         )
-        self.assertEqual(next_state["selected_work_item"],"OARC-14")
-        self.assertEqual(next_state["attempt_id"],"OARC-14-attempt-001")
+        self.assertEqual(next_state["selected_work_item"],"CASI-02")
+        self.assertEqual(next_state["attempt_id"],"CASI-02-attempt-001")
         self.assertEqual(next_state["execution_status"],"selected_not_started")
         self.assertEqual(next_state["implementation_branch"],None)
         self.assertEqual(next_state["progress_seq"],0)
         self.assertEqual(next_state["last_progress"],None)
-        self.assertEqual(next_state["last_completed"]["work_item_id"],"OARC-13")
+        self.assertEqual(next_state["last_completed"]["work_item_id"],"CASI-01")
         self.assertEqual(next_state["last_completed"]["application_merge_sha"],"m")
         self.assertEqual(next_state["last_completed"]["closeout_merge_sha"],"closeout")
 

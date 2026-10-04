@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "CASI",
+  "lane": "casi",
+  "track": "character-appearance-standard-integration",
+  "source_program": "CASI",
+  "work_item_id": "CASI-01",
+  "attempt_id": "CASI-01-attempt-001",
+  "title": "Semantic Appearance Parameter Transport Foundation",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/casi-01-semantic-parameter-transport",
+  "completed": false,
+  "selected_by_owner": "2026-10-04 owner agreed to move from CAS integration design closure into implementation and directed Continue; terminal OARC persistent slot reused for CASI.",
+  "objective": "Implement the stable CAS-PARAM-1 runtime semantic state and bounded MCCS transport adapters, including detailed head/face parameter transport, without reopening completed MCCS contracts or implementing CAPP rendering, pixel assets, UI, image matching or fashion.",
+  "scope": {
+    "include": [
+      "runtime CAS-PARAM-1 registry containing the 61 stable parameter IDs/paths, value kinds, groups and bounded scales",
+      "CAS-SD1 output-profile identifiers needed by semantic state validation",
+      "deterministic semantic appearance-state normalization/checksum",
+      "ordinal5/ordinal7 validation and normalized MCCS numeric transport",
+      "body parameter adapter to MCCS-03 morphology/silhouette IDs",
+      "bounded head/face parameter transport adjacent to MCCS-05 without modifying canonical anatomy",
+      "topology/eligibility/provenance references and explicit unresolved/unsupported state",
+      "focused tests proving uniqueness, bounds, determinism, no humanoid fallback and provider-off behavior"
+    ],
+    "exclude": [
+      "CAPP asset/component resolver implementation",
+      "pixel asset generation or PAPT execution",
+      "CAS runtime UI",
+      "reference-image/photo matching",
+      "fashion/garment construction grammar",
+      "Character mechanics/biology/equipment mutation",
+      "changes to GPR or CWKS branches"
+    ]
+  },
+  "dependencies": {
+    "completed_mccs": "MCCS-21 completed_verified / application merge 66056727303f95fa1e01df837afc1a1080b7fc42",
+    "design_authority": [
+      "CAS-SD1_PIXEL_DENSITY_AND_DETAIL_STANDARD_v1.0.0",
+      "CAS_PARAMETER_AUTHORITY_v1.0.0",
+      "CAS_CAPP_COMPILER_HANDOFF_v1.0.0",
+      "CAS_INTEGRATION_DESIGN_CLOSURE_v1.0.0"
+    ],
+    "parallel_lane_rule": "GPR PCV-03F and CWKS-05 remain independently in_progress and out of CASI scope."
+  },
+  "acceptance": [
+    "exactly 61 stable core CAS parameters are represented with unique IDs and paths",
+    "ordinal5 and ordinal7 values fail closed outside their semantic bounds",
+    "same semantic inputs produce deterministic normalized state/checksum regardless of input ordering",
+    "body adapter emits stable MCCS-03 morphology/silhouette IDs with bounded numeric transport",
+    "head transport carries detailed CAS head/face values with eligibility references and explicit unresolved/unsupported states",
+    "no adapter mutates canonical anatomy, mechanics or equipment truth",
+    "focused Linux/Windows validation and deterministic comparison are green"
+  ],
+  "active_substep": "Add causal RED tests for the missing CAS semantic parameter transport contract, then implement the minimum foundation to GREEN.",
+  "next_action": "On work/casi-01-semantic-parameter-transport, add focused failing CASI-01 tests and validation wiring before implementation.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner approved the implementation transition and CASI-01 was govern-started in the terminal OARC persistent slot."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  }
+}
