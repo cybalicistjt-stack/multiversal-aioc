@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "CASI",
+  "lane": "casi",
+  "track": "character-appearance-standard-integration",
+  "source_program": "CASI",
+  "work_item_id": "CASI-03",
+  "attempt_id": "CASI-03-attempt-001",
+  "title": "CAS-SD1 Renderer / Derivative Profiles",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_governance": "Strict CASI successor after CASI-02 completed_verified; no roadmap interstitial override applies.",
+  "objective": "Bind the owner-approved CAS-SD1 native/output profiles and semantic derivative-loss rules to deterministic appearance rendering without reopening CASI-01 semantic state or CASI-02 CAPP resolution.",
+  "scope": {
+    "include": [
+      "bind cas_sd_full_body 128x160 native to 256x320 standard output",
+      "bind cas_sd_portrait 96x96 native to 192x192 standard output",
+      "bind cas_sd_token 64x64 native to 128x128 standard output",
+      "bind Retrobit detailed/normal/micro semantic re-render profiles",
+      "declare view-specific projection losses rather than semantic deletion",
+      "nearest-neighbor integer output scaling only",
+      "focused deterministic Linux/Windows validation"
+    ],
+    "exclude": [
+      "PAPT asset generation or production execution",
+      "Character Appearance Studio runtime UI",
+      "reference-image/photo matching",
+      "fashion/garment construction grammar",
+      "freeform raster warp, subpixel placement or antialias repair",
+      "Character mechanics, biology or equipment-truth mutation"
+    ]
+  },
+  "dependencies": {
+    "predecessor": "CASI-02 completed_verified / application merge bd81ec06a9e6d0ce9a24ce9cc9e1f5e6578b8951",
+    "semantic_transport": "CASI-01 completed_verified",
+    "pixel_authority": "CAS-SD1",
+    "capp_handoff": "CAS-CAPP-HANDOFF-1"
+  },
+  "acceptance": [
+    "all six locked CAS-SD1/Retrobit profiles resolve deterministic native/output metadata",
+    "smaller profiles are semantic rerenders or declared view projections, never arbitrary bitmap shrink",
+    "projection losses are explicit and do not rewrite semantic appearance state",
+    "nearest-neighbor/integer scaling constraints are preserved",
+    "focused Linux/Windows deterministic validation is green"
+  ],
+  "active_substep": "selected_not_started",
+  "next_action": "Start only through the CASI lane under OPS3.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": "selected_not_started"
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
