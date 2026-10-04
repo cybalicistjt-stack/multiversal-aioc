@@ -9,9 +9,9 @@
   "attempt_id": "CWKS-07-attempt-001",
   "title": "Wiki & Knowledge Core",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/cwks-07-wiki-knowledge-core",
   "completed": false,
   "selected_by_owner": "2026-10-04 owner explicitly approved CWKS-07 Wiki & Knowledge Core as the next non-AI CWKS tranche and authorized continuation through the normal design/planning/implementation process; artifact-specific review gates remain enforced.",
   "objective": "Design and implement the non-AI CWKS Wiki & Knowledge Core over published CreatorDocumentV1 documents: stable wiki page/catalog identity, project/library scope, [[link]] resolution to stable page references, aliases/tags, deterministic derived backlinks, live transclusion, local persistence/recovery and an accessible reusable Wiki workspace without absorbing WCI or CSW/D29 authority.",
@@ -45,23 +45,29 @@
     "design_path": "docs/superpowers/specs/2026-10-04-cwks-wiki-knowledge-core-design.md",
     "document_contract": "CreatorDocumentV1",
     "authority_boundaries": "WCI retains canonical world/entity projection and visibility semantics; CSW/D29 retains Creator Library/Story Bible/Project Memory provenance; APW/D26 retains generic Project/time authority; Campaign/Session and other owner domains retain their truth.",
-    "parallel_lane_rule": "GPR PCV-03F and CASI-01 remain independently in_progress; CWKS-07 may not borrow either implementation branch or scope."
+    "parallel_lane_rule": "GPR PCV-03F and CASI-01 remain independently in_progress; CWKS-07 may not borrow either implementation branch or scope.",
+    "approved_design": "cybalicistjt-stack/Multiversal-app@4bfc9c24508b1d93e7fa65d4ff03375fddfede9b:docs/superpowers/specs/2026-10-04-cwks-wiki-knowledge-core-design.md",
+    "approved_plan": "cybalicistjt-stack/Multiversal-app@9114a5a9a9facc7521d1b27347bfa4bf7e919de8:docs/plans/2026-10-04-cwks-wiki-knowledge-core.md"
   },
-  "active_substep": "Written-spec review required before implementation planning",
-  "next_action": "Owner reviews the written CWKS-07 design on Multiversal-app PR #797. Implementation planning remains unauthorized until that artifact-specific review is explicit.",
+  "active_substep": "Task 1 — Wiki Catalog schema, operations, resolution and derived link graph",
+  "next_action": "Create work/cwks-07-wiki-knowledge-core from fresh application main and begin Task 1 with behavioral RED tests before production behavior.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner reviewed and approved the written CWKS-07 design; the approved implementation plan is published and bounded implementation authority is activated."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": "selected_not_started"
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
