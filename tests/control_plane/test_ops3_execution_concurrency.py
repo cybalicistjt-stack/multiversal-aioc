@@ -193,7 +193,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         state=LANE_STATE.initial_state("fga",revision=20,selected_work_item="FGA-01",attempt_id="FGA-01-attempt-001")
         state=LANE_STATE.start_execution(state,expected_revision=20,lane="fga",implementation_branch="work/fga-01",evidence="owner Continue")
         state=LANE_STATE.mark_prequeue_green(state,expected_revision=21,lane="fga",candidate_head="h",validation_run="r")
-        state=LANE_STATE.mark_published(state,expected_revision=22,lane="fga",candidate_head="h",merge_sha="m",ready_candidate_id="CASI-01-app-001")
+        state=LANE_STATE.mark_published(state,expected_revision=22,lane="fga",candidate_head="h",merge_sha="m",ready_candidate_id="FGA-01-app-001")
         next_state=LANE_STATE.reseed_successor(
             state,
             expected_revision=23,
