@@ -42,7 +42,7 @@
         "MAL/MRCS and owner-domain contracts named by the selected GPR item",
         "live application/repository evidence limited to active GPR scope"
       ],
-      "cross_lane_reads": "Consume completed MRCS definitions and explicit owner contracts as dependencies. CWKS and CASI remain independent except for explicit integration evidence or publication conflicts. OARC remains terminal completed history.",
+      "cross_lane_reads": "Consume completed MRCS definitions and explicit owner contracts as dependencies. CWKS and FGA remain independent except for explicit integration evidence or publication conflicts. OARC and CASI remain terminal completed history.",
       "execution_state_ref": "ops3-lane-state/gpr"
     },
     {
@@ -81,7 +81,7 @@
         "existing creator/entity/sequential-art contracts explicitly required by the selected CWKS item",
         "live application repository evidence limited to active CWKS scope"
       ],
-      "cross_lane_reads": "Consume completed MRCS and other creator/entity contracts only as explicit dependencies. GPR and CASI remain independent; read them only for explicit integration evidence or publication conflicts. OARC remains terminal completed history.",
+      "cross_lane_reads": "Consume completed MRCS and other creator/entity contracts only as explicit dependencies. GPR and FGA remain independent; read them only for explicit integration evidence or publication conflicts. OARC and CASI remain terminal completed history.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     {
@@ -103,7 +103,7 @@
         "MERA and MBES planning contracts only where required to preserve future-owner boundaries",
         "live application repository evidence limited to active OARC scope"
       ],
-      "cross_lane_reads": "OARC is terminal completed history after OARC-07. Read GPR/CWKS/CASI only for explicit historical integration evidence; do not restart OARC implementation without a new owner-governed program.",
+      "cross_lane_reads": "OARC is terminal completed history after OARC-07. Read GPR/CWKS/FGA/CASI only for explicit historical integration evidence; do not restart OARC implementation without a new owner-governed program.",
       "execution_state_ref": "ops3-lane-state/oarc"
     },
     {
