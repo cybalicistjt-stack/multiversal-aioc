@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 568,
+  "state_revision": 569,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -110,13 +110,13 @@
       "execution_state_ref": "ops3-lane-state/gpr"
     },
     "casi": {
-      "state": "in_progress",
-      "selected_work_item": "CASI-04",
-      "attempt_id": "CASI-04-attempt-001",
-      "checkpoint_path": "operations/work-items/CASI-04.json",
-      "implementation_branch": "work/casi-04-demand-bridge",
-      "implementation_authority": true,
-      "activation_rule": "CASI-03 completed_verified and owner directed Continue. CASI-04 is authorized only for deterministic coverage-gap to reusable production-demand receipts; PAPT execution, asset generation, CAS UI, image matching and fashion remain out of scope.",
+      "state": "selected_not_started",
+      "selected_work_item": "CASI-05",
+      "attempt_id": "CASI-05-attempt-001",
+      "checkpoint_path": "operations/work-items/CASI-05.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "CASI-04 completed_verified after exact-head validation run 37224962575 on e65282a682ff2125612417a8dfde1e77fed0b065, squash publication of Multiversal-app PR #807 as ece63dd43dd243fae688ac115d3ef82290448d0a, and READY publication reconciliation at app queue generation 88. CASI-05 is the strict successor and remains selected_not_started until CASI-lane execution starts it. CASI-05 is bounded to governed reusable fixtures/components sufficient for the approved CAS-GOLDEN-1 topology suite; CAS UI, reference-image matching and fashion remain later tranches.",
       "execution_state_ref": "ops3-lane-state/casi"
     }
   },
@@ -145,7 +145,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F and CASI-04 remain independently active. CWKS-06-CORR-01 is completed_verified; the owner-approved CWKS-08 Creator Suite migration design may proceed to written specification, but CWKS-08 implementation remains unselected and unauthorized until its written-spec review gate is satisfied.",
+  "next_project_action": "GPR PCV-03F remains independently in_progress. CASI-05 is selected_not_started as the strict Character Appearance successor after CASI-04 completed_verified; it may begin only through the CASI lane and is bounded to the CAS-GOLDEN-1 reusable appearance-pack foundation. CWKS-06-CORR-01 remains completed_verified.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
