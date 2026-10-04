@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "cwks",
-  "revision": 19,
+  "revision": 20,
   "selected_work_item": "CWKS-06",
   "attempt_id": "CWKS-06-attempt-001",
-  "execution_status": "prequeue_green",
+  "execution_status": "published",
   "implementation_branch": "work/cwks-06-story-project-core",
-  "progress_seq": 2,
+  "progress_seq": 3,
   "last_progress": {
-    "kind": "prequeue_green",
-    "evidence": "CWKS-06 exact head f74f2a82fcbc49cee33bb9c284f6a067859bb480 passed governed Linux/Windows full CWKS-01–06 regression, client typecheck, and deterministic comparison in run 37208030368."
+    "kind": "published",
+    "evidence": "CWKS-06 exact head f74f2a82fcbc49cee33bb9c284f6a067859bb480 passed governed run 37208030368 and published through Multiversal-app PR #795 as application main 028f82f93e8157f717dcb205f50c99ab7368ea4b; READY candidate CWKS-06-app-pr-795 was reconciled."
   },
   "terminal": false,
   "last_completed": {
@@ -25,5 +25,11 @@
   "prequeue_green": {
     "candidate_head": "f74f2a82fcbc49cee33bb9c284f6a067859bb480",
     "validation_run": "37208030368"
+  },
+  "publication": {
+    "candidate_head": "f74f2a82fcbc49cee33bb9c284f6a067859bb480",
+    "validation_run": "37208030368",
+    "merge_sha": "028f82f93e8157f717dcb205f50c99ab7368ea4b",
+    "ready_candidate_id": "CWKS-06-app-pr-795"
   }
 }
