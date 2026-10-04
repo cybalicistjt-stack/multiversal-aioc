@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 563,
+  "state_revision": 564,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -63,13 +63,13 @@
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "cwks": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "selected_work_item": "CWKS-07",
       "attempt_id": "CWKS-07-attempt-001",
       "checkpoint_path": "governance/ai/work-state/CWKS-07-attempt-001.json",
-      "implementation_branch": "work/cwks-07-wiki-knowledge-core",
-      "implementation_authority": true,
-      "activation_rule": "Owner explicitly reviewed and approved the written CWKS-07 Wiki & Knowledge Core specification on 2026-10-04 and directed continuation. The approved design is published in Multiversal-app at docs/superpowers/specs/2026-10-04-cwks-wiki-knowledge-core-design.md (merge 4bfc9c24508b1d93e7fa65d4ff03375fddfede9b) and the implementation plan at docs/plans/2026-10-04-cwks-wiki-knowledge-core.md (merge 9114a5a9a9facc7521d1b27347bfa4bf7e919de8). CWKS-07 authority is bounded to non-AI Wiki Catalog/page identity, project/library scope, stable [[link]] resolution through existing cwks-wiki-page mentions, aliases/tags, derived backlinks, live transclusion through existing resource embeds, local persistence/recovery, reusable Wiki workspace and governed validation. WCI/CSW/APW/Campaign authorities remain external; AI, collaboration/version-history, Story Project higher-order views, Creator Suite migration, GPR Session and CASI remain excluded.",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "CWKS-07 completed_verified after fresh-main governed validation run 37215469769 on application head 52d8a047c2a101f176792f4e6c00712c96889f01 and READY publication of Multiversal-app PR #803 as application main f22d62d9f0d36442289a5f23b4226413f56cd863, with app publication queue reconciled at generation 82. The completed tranche delivers the non-AI Wiki Catalog/page identity and scope, stable [[Wiki Link]] resource mentions, aliases/tags, derived backlinks, live cycle-safe transclusion, local persistence/recovery, accessible Wiki workspace and sealed CWKS/WCI/CSW regressions. No CWKS successor is selected. Higher-order Story Project views, collaboration/version history, Creator Suite migration and AI writing/generation remain separately gated.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     "dwc-speech": {
@@ -145,7 +145,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F, CWKS-07 and CASI-03 remain independent active lanes. CASI-03 is bounded to CAS-SD1 renderer/derivative profile binding and may not borrow PAPT, UI, reference-image or fashion scope.",
+  "next_project_action": "GPR PCV-03F and CASI-03 remain independently active. CWKS-07 is completed_verified and no CWKS successor is selected; future higher-order Story Project views, collaboration/version history, Creator Suite migration or AI writing/generation require a separate owner selection.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -200,12 +200,12 @@
     "CWKS": {
       "program_id": "CWKS",
       "state": "completed_verified",
-      "selected_work_item": "CWKS-06",
-      "attempt_id": "CWKS-06-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/CWKS-06-attempt-001.json",
+      "selected_work_item": "CWKS-07",
+      "attempt_id": "CWKS-07-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/CWKS-07-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "completion_rule": "CWKS-01 through CWKS-06 completed_verified. The shared CreatorDocumentV1 contract/validator, renderer/editor, outline/collapsible/reorder behaviors, provider-neutral document persistence/autosave/recovery, and flexible Story Project/manuscript core with deterministic tree operations, project persistence/recovery and accessible selected-document workspace are published with governed Linux/Windows deterministic proof. No later CWKS tranche is selected; AI writing/generation remains unstarted and separately gated."
+      "completion_rule": "CWKS-01 through CWKS-07 completed_verified. The shared CreatorDocumentV1 contract/renderer/editor/outline/persistence, flexible Story Project core, and non-AI Wiki & Knowledge Core with stable page identity/scope, links, aliases/tags, backlinks, live transclusion, local recovery and accessible Wiki workspace are published with governed Linux/Windows deterministic proof. No later CWKS tranche is selected; AI writing/generation remains unstarted and separately gated."
     },
     "OARC": {
       "program_id": "OARC",
