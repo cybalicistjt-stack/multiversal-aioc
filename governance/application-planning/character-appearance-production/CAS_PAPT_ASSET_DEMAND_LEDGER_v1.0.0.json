@@ -1,0 +1,382 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "MV-CAS-PAPT-DEMAND-001",
+  "ledger_id": "CAS-PAPT-DEMAND-1",
+  "status": "canonical_design_authority",
+  "effective_date": "2026-10-03",
+  "implementation_authority": false,
+  "source_authorities": [
+    "CAS-PARAM-1",
+    "CAS-CAPP-HANDOFF-1",
+    "CAS-SD1",
+    "CAPP-06",
+    "PAPT program"
+  ],
+  "baseline_parameter_counts": {
+    "body": 11,
+    "head_face": 30,
+    "covering": 7,
+    "surface": 8,
+    "age": 1,
+    "presentation": 2,
+    "wardrobe": 1,
+    "equipment": 1,
+    "total": 61
+  },
+  "demand_families": [
+    {
+      "demand_id": "PAPT-CAS-D01",
+      "name": "Body silhouette foundations",
+      "parameter_ids": [
+        "CAS-BODY-002",
+        "CAS-BODY-010",
+        "CAS-BODY-011"
+      ],
+      "resolver_classes": [
+        "CASRES-01",
+        "CASRES-02"
+      ],
+      "asset_kinds": [
+        "body_base",
+        "silhouette_variant",
+        "posture_variant"
+      ],
+      "priority": "foundation",
+      "views": [
+        "full_body",
+        "portrait",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal",
+        "retrobit_micro"
+      ]
+    },
+    {
+      "demand_id": "PAPT-CAS-D02",
+      "name": "Body proportion segment variants",
+      "parameter_ids": [
+        "CAS-BODY-001",
+        "CAS-BODY-003",
+        "CAS-BODY-004",
+        "CAS-BODY-005",
+        "CAS-BODY-006",
+        "CAS-BODY-007",
+        "CAS-BODY-008",
+        "CAS-BODY-009"
+      ],
+      "resolver_classes": [
+        "CASRES-02",
+        "CASRES-03"
+      ],
+      "asset_kinds": [
+        "torso_segment",
+        "limb_segment",
+        "anchor_profile",
+        "occupancy_bounds"
+      ],
+      "priority": "foundation",
+      "views": [
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ]
+    },
+    {
+      "demand_id": "PAPT-CAS-D03",
+      "name": "Head shape and facial foundation families",
+      "parameter_prefixes": [
+        "CAS-HEAD-"
+      ],
+      "resolver_classes": [
+        "CASRES-01",
+        "CASRES-02",
+        "CASRES-03"
+      ],
+      "asset_kinds": [
+        "head_base",
+        "face_shape_variant",
+        "jaw_chin_variant",
+        "head_anchor_profile"
+      ],
+      "priority": "foundation",
+      "views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ]
+    },
+    {
+      "demand_id": "PAPT-CAS-D04",
+      "name": "Eyes and brow families",
+      "parameter_prefixes": [
+        "CAS-EYE-",
+        "CAS-BROW-"
+      ],
+      "resolver_classes": [
+        "CASRES-01",
+        "CASRES-02"
+      ],
+      "asset_kinds": [
+        "eye_family",
+        "eye_variant",
+        "brow_family",
+        "brow_variant",
+        "palette_mask"
+      ],
+      "priority": "foundation",
+      "views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ]
+    },
+    {
+      "demand_id": "PAPT-CAS-D05",
+      "name": "Nose/snout/beak and mouth/mandible families",
+      "parameter_prefixes": [
+        "CAS-NOSE-",
+        "CAS-MOUTH-"
+      ],
+      "resolver_classes": [
+        "CASRES-01",
+        "CASRES-02"
+      ],
+      "asset_kinds": [
+        "nose_or_equivalent_family",
+        "mouth_or_equivalent_family",
+        "discrete_shape_variant",
+        "occlusion_mask"
+      ],
+      "priority": "foundation",
+      "views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ]
+    },
+    {
+      "demand_id": "PAPT-CAS-D06",
+      "name": "Ear/sensory and facial-hair families",
+      "parameter_prefixes": [
+        "CAS-EAR-",
+        "CAS-FHAIR-"
+      ],
+      "resolver_classes": [
+        "CASRES-01",
+        "CASRES-02"
+      ],
+      "asset_kinds": [
+        "ear_or_sensor_family",
+        "facial_hair_family",
+        "discrete_variant",
+        "clearance_mask"
+      ],
+      "priority": "standard",
+      "views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ]
+    },
+    {
+      "demand_id": "PAPT-CAS-D07",
+      "name": "Covering/hair/fur/feather/plant style families",
+      "parameter_prefixes": [
+        "CAS-COV-"
+      ],
+      "resolver_classes": [
+        "CASRES-01",
+        "CASRES-02",
+        "CASRES-05"
+      ],
+      "asset_kinds": [
+        "covering_family",
+        "length_variant",
+        "volume_variant",
+        "fringe_part_layer",
+        "pattern_mask",
+        "occlusion_mask"
+      ],
+      "priority": "foundation",
+      "views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal",
+        "retrobit_micro"
+      ]
+    },
+    {
+      "demand_id": "PAPT-CAS-D08",
+      "name": "Surface material, palette and marking system",
+      "parameter_prefixes": [
+        "CAS-SURF-"
+      ],
+      "resolver_classes": [
+        "CASRES-04",
+        "CASRES-05"
+      ],
+      "asset_kinds": [
+        "palette_ramp",
+        "palette_zone_mask",
+        "material_pixel_recipe",
+        "pattern_mask",
+        "marking_mask",
+        "dye_mask"
+      ],
+      "priority": "foundation",
+      "views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal",
+        "retrobit_micro"
+      ]
+    },
+    {
+      "demand_id": "PAPT-CAS-D09",
+      "name": "Topology-gated structural feature library",
+      "feature_template": "CAS-FEATURE-TEMPLATE-001",
+      "resolver_classes": [
+        "CASRES-01",
+        "CASRES-02",
+        "CASRES-03",
+        "CASRES-04",
+        "CASRES-05"
+      ],
+      "asset_kinds": [
+        "feature_family",
+        "feature_variant",
+        "anchor_profile",
+        "clearance_mask",
+        "palette_mask",
+        "pattern_mask"
+      ],
+      "priority": "foundation",
+      "views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ]
+    },
+    {
+      "demand_id": "PAPT-CAS-D10",
+      "name": "Age presentation cues",
+      "parameter_ids": [
+        "CAS-AGE-001"
+      ],
+      "resolver_classes": [
+        "CASRES-06"
+      ],
+      "asset_kinds": [
+        "age_profile",
+        "age_overlay_or_variant"
+      ],
+      "priority": "standard",
+      "views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ]
+    },
+    {
+      "demand_id": "PAPT-CAS-D11",
+      "name": "Presentation wardrobe bridge",
+      "parameter_ids": [
+        "CAS-WARD-001"
+      ],
+      "resolver_classes": [
+        "CASRES-06"
+      ],
+      "asset_kinds": [
+        "outfit_layer_set",
+        "garment_fit_variant",
+        "wardrobe_mask",
+        "occlusion_profile"
+      ],
+      "priority": "standard",
+      "views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal",
+        "retrobit_micro"
+      ],
+      "note": "Detailed garment construction vocabulary is deferred to Fashion/Garment Parameter Authority."
+    },
+    {
+      "demand_id": "PAPT-CAS-D12",
+      "name": "Actual equipment visual projection",
+      "parameter_ids": [
+        "CAS-EQUIP-001"
+      ],
+      "resolver_classes": [
+        "CASRES-07"
+      ],
+      "asset_kinds": [
+        "equipment_visual_variant",
+        "fit_profile",
+        "anchor_profile",
+        "occlusion_mask"
+      ],
+      "priority": "standard",
+      "views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ]
+    },
+    {
+      "demand_id": "PAPT-CAS-D13",
+      "name": "View-specific semantic derivatives",
+      "source": "CAS-SD1",
+      "resolver_classes": [
+        "CASRES-08"
+      ],
+      "asset_kinds": [
+        "portrait_variant",
+        "token_variant",
+        "retrobit_detailed_variant",
+        "retrobit_normal_variant",
+        "retrobit_micro_variant"
+      ],
+      "priority": "foundation",
+      "note": "Derivatives preserve semantic identity and may intentionally reduce lower-priority detail."
+    }
+  ],
+  "anti_combinatorial_rules": [
+    "Do not author a raster for each complete character combination.",
+    "Prefer reusable component families and bounded discrete variants.",
+    "Prefer palette zones/ramps over recolored duplicate geometry.",
+    "Prefer masks/overlays over baked pattern cross-products.",
+    "Use integer-anchor composition where CAS-SD1 quality is preserved.",
+    "Only create bounded dependent variant matrices when independent components cannot preserve silhouette/occlusion/fit.",
+    "Every demand row records topology/view coverage and required anchors/masks.",
+    "Missing production coverage stays a diagnostic; CAPP never rewrites semantic appearance to match the available library."
+  ],
+  "initial_golden_pack_target": {
+    "profile_suite": "CAS-GOLDEN-1",
+    "target": "Sufficient reusable coverage to render all golden profiles at full-body, portrait and token, with declared Retrobit projection behavior.",
+    "does_not_require": "complete 25-Species production coverage"
+  },
+  "boundaries": {
+    "papt_execution": false,
+    "asset_generation": false,
+    "external_spending": false,
+    "application_runtime_activation": false
+  }
+}

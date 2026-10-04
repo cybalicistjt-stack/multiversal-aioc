@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "MV-CAS-MCCS-TRANSPORT-001",
+  "contract_id": "CAS-MCCS-TRANSPORT-1",
+  "status": "canonical_design_authority",
+  "effective_date": "2026-10-03",
+  "implementation_authority": false,
+  "authorities": {
+    "cas_parameters": "CAS-PARAM-1",
+    "appearance": "CAPP/PPIA",
+    "workspace": "MCCS",
+    "topology_biology": "Species/Form/PPIA"
+  },
+  "decision": "Reuse MCCS as the generalized creator workspace. Add/adapter bounded CAS parameter transport; do not build a separate CAS engine.",
+  "existing_bindings": {
+    "body_and_proportions": "MCCS-03 morphology/silhouette",
+    "structural_appendages": "MCCS-03 appendages/modular parts",
+    "head_feature_structure": "MCCS-05 anchors/features/expression structures",
+    "surfaces": "MCCS-06 regions/layers",
+    "wardrobe_equipment": "MCCS-09 composition",
+    "pose_expression": "MCCS-11",
+    "derivatives": "MCCS-13",
+    "style_templates": "MCCS-16",
+    "forms_lifecycle": "MCCS-18",
+    "interchange": "MCCS-19"
+  },
+  "ordinal_adapter": {
+    "ordinal5": {
+      "semantic_steps": [
+        -2,
+        -1,
+        0,
+        1,
+        2
+      ],
+      "mccs_numeric_formula": "step / 2",
+      "semantic_source_remains_cas": true
+    },
+    "ordinal7": {
+      "semantic_steps": [
+        -3,
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3
+      ],
+      "mccs_numeric_formula": "step / 3",
+      "semantic_source_remains_cas": true
+    }
+  },
+  "proposed_head_parameter_transport": {
+    "target": "MCCS-05 next compatible contract version or a dedicated adapter immediately adjacent to MCCS-05",
+    "field_name": "headParameters",
+    "record_shape": {
+      "parameterId": "CAS-PARAM-1 stable ID",
+      "semanticPath": "CAS semantic path",
+      "scopeKind": [
+        "head",
+        "feature_instance"
+      ],
+      "featureInstanceId": "optional stable feature instance ID",
+      "valueKind": [
+        "ordinal5",
+        "ordinal7",
+        "enum_ref"
+      ],
+      "ordinalStep": "optional integer",
+      "refId": "optional stable enum/family ref",
+      "eligibilityRef": "CAPP/PPIA eligibility proof/ref",
+      "state": [
+        "proposal",
+        "unresolved",
+        "unsupported"
+      ]
+    },
+    "validation": [
+      "parameterId must exist in CAS-PARAM-1 and belong to head_face or eligible feature template scope",
+      "value kind must match CAS-PARAM-1",
+      "ordinal step must be in declared bounds",
+      "feature-scoped values require a compatible feature instance and anchor",
+      "eligibilityRef must resolve to current Species/Form/CAPP authority",
+      "unresolved/unsupported remains explicit",
+      "no canonical anatomy or mechanics mutation"
+    ]
+  },
+  "body_transport": {
+    "parameter_source": "CAS-PARAM-1 body group",
+    "target": "MCCS-03 morphology/silhouette arrays",
+    "stable_id_rule": "Use CAS parameter ID directly as parameterId/controlId; never derive identity from UI label.",
+    "normalized_numeric_is_transport_only": true
+  },
+  "surface_transport": {
+    "parameter_source": "CAS-PARAM-1 covering/surface groups",
+    "target": "MCCS-06 governed color/material/pattern/marking/layer refs",
+    "rule": "CAPP resolves semantic CAS values to stable refs before/while MCCS surface composition is validated; MCCS does not become palette/material authority."
+  },
+  "wardrobe_transport": {
+    "target": "MCCS-09",
+    "presentation_outfit": "CAS-WARD-001",
+    "actual_equipment_projection": "CAS-EQUIP-001",
+    "ownership_mutation": false,
+    "fit_authority": "CAPP-06 plus Species/Form/Equipment authority"
+  },
+  "image_match_rule": "Image/reference proposals enter the ordinary CAS draft first. MCCS transports accepted/proposed semantic state; it never stores image pixels as parameter truth.",
+  "boundaries": {
+    "application_code_change": false,
+    "runtime_activation": false,
+    "canonical_mutation": false,
+    "generative_ai_required": false
+  }
+}

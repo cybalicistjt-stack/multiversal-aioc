@@ -1,0 +1,159 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "MV-CAS-GOLDEN-001",
+  "suite_id": "CAS-GOLDEN-1",
+  "status": "canonical_design_authority",
+  "effective_date": "2026-10-03",
+  "implementation_authority": false,
+  "required_views": [
+    "cas_sd_full_body",
+    "cas_sd_portrait",
+    "cas_sd_token",
+    "retrobit_detailed",
+    "retrobit_normal",
+    "retrobit_micro"
+  ],
+  "profiles": [
+    {
+      "id": "CAS-GOLD-HUMAN-001",
+      "species": "Human",
+      "role": "humanoid baseline / face-body control proof",
+      "must_prove": [
+        "core body ordinal controls",
+        "humanlike head/face families and modifiers",
+        "covering/hair controls",
+        "palette/marking controls",
+        "presentation wardrobe",
+        "portrait-detail vs full-body reduction",
+        "reference-image matching target vocabulary"
+      ]
+    },
+    {
+      "id": "CAS-GOLD-GRAY-001",
+      "species": "Gray",
+      "role": "negative eligibility / absent-feature proof",
+      "must_prove": [
+        "hair controls unavailable",
+        "external-ear controls unavailable",
+        "large black almond eyes preserved",
+        "minimal nose preserved",
+        "no humanoid control substitution"
+      ]
+    },
+    {
+      "id": "CAS-GOLD-VESPIN-001",
+      "species": "Vespin",
+      "role": "four-arm + wing + abdomen garment/anchor proof",
+      "must_prove": [
+        "4 arms + 2 legs",
+        "compound eyes",
+        "antennae",
+        "wing pair",
+        "abdomen/stinger",
+        "four-arm wardrobe fit",
+        "wing-clearance occlusion",
+        "no two-arm fallback"
+      ]
+    },
+    {
+      "id": "CAS-GOLD-MORAVI-001",
+      "species": "Moravi",
+      "role": "2-arm + 4-leg six-limb proof",
+      "must_prove": [
+        "2 arms + 4 legs",
+        "compound eyes",
+        "antennae",
+        "mandibles",
+        "six-limb anchors",
+        "lower-body garment/equipment incompatibility is explicit",
+        "no biped collapse"
+      ]
+    },
+    {
+      "id": "CAS-GOLD-RAKUUTA-001",
+      "species": "Rakuuta",
+      "role": "nonhuman head identity proof",
+      "must_prove": [
+        "scaled body",
+        "beak",
+        "long tail",
+        "swept-back ears treated as ears",
+        "black raven-shaped facial feather field",
+        "horn control unavailable",
+        "portrait preserves required facial field"
+      ]
+    },
+    {
+      "id": "CAS-GOLD-ARBORAE-001",
+      "species": "Arborae",
+      "role": "seasonal profile + plant surface proof",
+      "must_prove": [
+        "four separately customizable seasonal profiles",
+        "current season remains upstream read-only",
+        "woodgrain/bark variation",
+        "moss/vines/leaves/flowers covering families",
+        "seasonal derivatives share one identity"
+      ]
+    },
+    {
+      "id": "CAS-GOLD-SUULA-001",
+      "species": "Suula",
+      "role": "nested appendage + persistent adaptation proof",
+      "must_prove": [
+        "hands nested within claws",
+        "segmented tail",
+        "persistent adaptation markers read-only",
+        "active adaptations projected read-only",
+        "hand/claw pose separated from saved identity",
+        "no flattened nested topology"
+      ]
+    },
+    {
+      "id": "CAS-GOLD-MANYTOMS-001",
+      "species": "ManyToms",
+      "role": "composite/repeated constituent proof",
+      "must_prove": [
+        "one constituent identity design replicated coherently",
+        "collective remains one entity",
+        "exact visible constituent count not required",
+        "occupancy bounds handle composite framing",
+        "no dropped constituents to fit humanoid framing"
+      ]
+    },
+    {
+      "id": "CAS-GOLD-MYTHRAGARA-001",
+      "species": "Mythragara",
+      "role": "multi-form / derived-profile proof",
+      "must_prove": [
+        "base identity",
+        "authorized animal form identity",
+        "hybrid derived rather than independently freeform",
+        "identity markings retained across forms",
+        "form-specific derivatives stale/regenerate correctly"
+      ]
+    },
+    {
+      "id": "CAS-GOLD-TOBA-MADRA-001",
+      "species": "Toba-Madra",
+      "role": "biological/cosmetic/equipment channel separation proof",
+      "must_prove": [
+        "natural biological fur channel",
+        "independent cosmetic dye overlay",
+        "bear muzzle/nose/ears/tail",
+        "actual cybernetics remain equipment projection",
+        "cosmetic plating remains presentation-only"
+      ]
+    }
+  ],
+  "acceptance_rules": [
+    "Every profile compiles through the same CAS-PARAM-1 → MCCS → CAPP path.",
+    "Every profile uses CAS-SD1 logical density.",
+    "Unsupported renderer coverage remains explicit and does not invalidate semantic appearance.",
+    "No profile receives humanoid fallback that contradicts topology.",
+    "Full-body/portrait/token derivatives share one semantic appearance hash.",
+    "Retrobit derivatives are semantic rerenders with declared detail loss.",
+    "Presentation wardrobe and actual equipment remain authority-separated.",
+    "No generative AI is required to reproduce any golden output from stored semantic state plus asset lock."
+  ],
+  "expansion_rule": "After this suite passes, add remaining Species/profile coverage in topology/feature families rather than inventing per-Species renderer forks."
+}
