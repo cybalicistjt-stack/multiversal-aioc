@@ -9,10 +9,10 @@
   "attempt_id": "CWKS-05-attempt-001",
   "title": "Document Persistence, Autosave and Recovery",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
-  "implementation_authority": true,
-  "implementation_branch": "work/cwks-05-document-persistence",
-  "completed": false,
+  "status": "completed_verified",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_owner": "2026-10-03 owner explicitly excluded AI writing for now and directed Continue into the next writing-system implementation tranche after CWKS-04.",
   "objective": "Make the shared CWKS document engine durable by persisting validated CreatorDocumentV1 documents through the existing provider-neutral local document store, adding autosave/recovery behavior, and failing safely on stale writes without absorbing story, wiki, collaboration, version-history, Creator Suite or AI-writing scope.",
   "scope": {
@@ -45,25 +45,33 @@
     "local_store_boundary": "packages/local-store/src/index.ts",
     "parallel_lane_rule": "GPR PCV-03F remains independently in_progress; CWKS-05 may not modify or borrow the GPR implementation branch."
   },
-  "active_substep": "Persistence contract and recovery semantics",
-  "next_action": "Create work/cwks-05-document-persistence from fresh application main, add focused failing persistence/recovery tests, then implement the minimum validated store adapter and autosave coordinator to GREEN.",
+  "active_substep": "completed_verified",
+  "next_action": "CWKS-06 — Story Project Core & Manuscript Structure is selected_not_started for bounded design/review. CWKS-05 requires no further implementation or publication work.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 3,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner excluded AI writing and selected CWKS-05 document persistence/autosave/recovery as the next writing-system tranche."
+      "seq": 3,
+      "kind": "published",
+      "evidence": "CWKS-05 exact head d6982a720c8bb81aee39196c12930f0cf9b76f71 passed governed Linux/Windows validation run 37128330215 and published through Multiversal-app PR #791 as application main ad833c5ad7b0e309657bb80f628d8fd7bdb9002b; READY candidate CWKS-05-app-pr-791 was reconciled at publication queue generation 72."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": "completed_verified"
   },
   "execution_conformance": {
-    "status": "in_progress",
+    "status": "completed_verified",
     "policy_violations": []
+  },
+  "completion_evidence": {
+    "validation_run": "37128330215",
+    "validated_head": "d6982a720c8bb81aee39196c12930f0cf9b76f71",
+    "application_pr": 791,
+    "application_merge_sha": "ad833c5ad7b0e309657bb80f628d8fd7bdb9002b",
+    "ready_candidate_id": "CWKS-05-app-pr-791",
+    "publication_queue_generation": 72
   }
 }
