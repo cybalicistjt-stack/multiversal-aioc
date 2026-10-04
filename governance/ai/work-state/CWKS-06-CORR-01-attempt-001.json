@@ -9,10 +9,10 @@
   "attempt_id": "CWKS-06-CORR-01-attempt-001",
   "title": "CWKS-06 Story Project Planning Views Corrective Completion",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
-  "implementation_authority": true,
-  "implementation_branch": "work/cwks-06-planning-views-correction",
-  "completed": false,
+  "status": "completed_verified",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "selected_by_owner": "2026-10-04 owner corrected the canonical CWKS roadmap so CWKS-06 includes corkboard/timeline/plot views, approved the corrective design and written amendment, and directed completion before CWKS-08.",
   "objective": "Complete the missing CWKS-06 Story Project planning views over the unchanged CreatorStoryProjectV1 model: corkboard, manuscript/story timeline and structural plot/storyboard projections with shared selection, accessible structural operations and preserved D29/WCI authority boundaries.",
   "scope": {
@@ -44,25 +44,37 @@
     "corrective_plan": "cybalicistjt-stack/Multiversal-app@c3c79559d992464832ec87a3e8020d82792d0488:docs/plans/2026-10-04-cwks-06-story-project-planning-views-correction.md",
     "parallel_lane_rule": "GPR PCV-03F remains in_progress and CASI-04 remains selected_not_started; this corrective CWKS work may not borrow their scope or branches."
   },
-  "active_substep": "Task 1 — deterministic corkboard/timeline/plot projections",
-  "next_action": "Create work/cwks-06-planning-views-correction from fresh application main and begin Task 1 with behavioral RED tests before production behavior.",
+  "active_substep": "completed_verified",
+  "next_action": "CWKS-06-CORR-01 is completed_verified. Proceed only to the owner-approved CWKS-08 written specification; do not activate CWKS-08 implementation until the written-spec review gate is explicitly approved.",
   "execution_guard": {
-    "continue_turns": 1,
-    "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 1,
+    "continue_turns": 2,
+    "stall_nudges": 2,
+    "material_progress_seq": 4,
+    "progress_at_last_owner_command": 4,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner approved the corrective written design; the implementation plan is published and bounded corrective implementation authority is being activated."
+      "seq": 4,
+      "kind": "published",
+      "evidence": "CWKS-06-CORR-01 published through Multiversal-app PR #808 as d98b98282f343aa7674975a1ae7c571083e7699c after governed fresh-main run 37220947135."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": "completed_verified"
   },
   "execution_conformance": {
-    "status": "in_progress",
+    "status": "completed_verified",
     "policy_violations": []
+  },
+  "completion_evidence": {
+    "source_candidate_head": "555a70147456f17342cb217ef749b5555db6b9a5",
+    "source_validation_run": "37218451785",
+    "fresh_main_integration_head": "3f2ac27b05d73b1619abc58d2a15dd9845b3b6a2",
+    "fresh_main_validation_run": "37220947135",
+    "application_pr": 808,
+    "application_merge_sha": "d98b98282f343aa7674975a1ae7c571083e7699c",
+    "ready_candidate_id": "CWKS-06-CORR-01-app-pr-808",
+    "application_queue_generation": 86,
+    "corrective_design_merge": "fe0925741a3df478fae6b7fc56b40f4155f65061",
+    "corrective_plan_merge": "c3c79559d992464832ec87a3e8020d82792d0488"
   }
 }

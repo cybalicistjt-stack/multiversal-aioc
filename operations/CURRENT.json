@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 567,
+  "state_revision": 568,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -63,13 +63,13 @@
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "cwks": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "selected_work_item": "CWKS-06-CORR-01",
       "attempt_id": "CWKS-06-CORR-01-attempt-001",
       "checkpoint_path": "governance/ai/work-state/CWKS-06-CORR-01-attempt-001.json",
-      "implementation_branch": "work/cwks-06-planning-views-correction",
-      "implementation_authority": true,
-      "activation_rule": "Owner explicitly corrected the canonical CWKS roadmap so CWKS-06 includes Story Project corkboard/timeline/plot views, approved the corrective design and written amendment, and directed implementation before CWKS-08. Dedicated CWKS lane state revision 28 and the corrective checkpoint remain in_progress. This projection repair restores CWKS-06-CORR-01 after CASI-04 activation was published from a stale pre-correction CURRENT snapshot while preserving CASI-04 and GPR state.",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "CWKS-06-CORR-01 completed_verified after governed source candidate run 37218451785, fresh-main integration run 37220947135 on head 3f2ac27b05d73b1619abc58d2a15dd9845b3b6a2, and publication through Multiversal-app PR #808 as merge d98b98282f343aa7674975a1ae7c571083e7699c. CWKS-06 now includes Tree/Corkboard/Timeline/Plot Story Project views over unchanged CreatorStoryProjectV1. CWKS-07 remains completed_verified. No CWKS-08 implementation authority is granted by this closeout.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     "dwc-speech": {
@@ -145,7 +145,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F, CWKS-06-CORR-01, and CASI-04 remain independently active. CWKS-06-CORR-01 is bounded to the missing Story Project corkboard/timeline/plot views; CASI-04 remains bounded to deterministic coverage-demand bridging; neither may borrow the other's scope.",
+  "next_project_action": "GPR PCV-03F and CASI-04 remain independently active. CWKS-06-CORR-01 is completed_verified; the owner-approved CWKS-08 Creator Suite migration design may proceed to written specification, but CWKS-08 implementation remains unselected and unauthorized until its written-spec review gate is satisfied.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -200,12 +200,12 @@
     "CWKS": {
       "program_id": "CWKS",
       "state": "completed_verified",
-      "selected_work_item": "CWKS-07",
-      "attempt_id": "CWKS-07-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/CWKS-07-attempt-001.json",
+      "selected_work_item": "CWKS-06-CORR-01",
+      "attempt_id": "CWKS-06-CORR-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/CWKS-06-CORR-01-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "completion_rule": "CWKS-01 through CWKS-07 completed_verified. The shared CreatorDocumentV1 contract/renderer/editor/outline/persistence, flexible Story Project core, and non-AI Wiki & Knowledge Core with stable page identity/scope, links, aliases/tags, backlinks, live transclusion, local recovery and accessible Wiki workspace are published with governed Linux/Windows deterministic proof. No later CWKS tranche is selected; AI writing/generation remains unstarted and separately gated."
+      "completion_rule": "CWKS-01 through CWKS-07 are completed_verified, including the corrective completion of CWKS-06 Story Project Tree/Corkboard/Timeline/Plot views. CWKS-07 Wiki remains published. CWKS-08 Creator Suite integration/migration is the next owner-approved design target only; comments/review/version history remain CWKS-09, collaboration remains CWKS-10, and AI writing/generation remains unstarted."
     },
     "OARC": {
       "program_id": "OARC",
