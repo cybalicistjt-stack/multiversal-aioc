@@ -1,51 +1,8 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/Multiversal-app",
-  "generation": 81,
+  "generation": 82,
   "ready": [
-    {
-      "candidate_id": "CWKS-07-app-pr-803",
-      "lane": "cwks",
-      "work_item_id": "CWKS-07",
-      "pr_number": 803,
-      "head_sha": "52d8a047c2a101f176792f4e6c00712c96889f01",
-      "prequeue_validation": {
-        "status": "green",
-        "head_sha": "52d8a047c2a101f176792f4e6c00712c96889f01",
-        "run_id": "37215469769",
-        "validation_kind": "fresh_main_integration"
-      },
-      "write_set": [
-        "apps/client-ui/src/cwks/CreatorWikiTransclusion.tsx",
-        "apps/client-ui/src/cwks/CreatorWikiWorkspace.tsx",
-        "apps/client-ui/src/cwks/creator-document-editor-extensions.ts",
-        "apps/client-ui/src/cwks/creator-document-editor-types.ts",
-        "apps/client-ui/src/cwks/creator-wiki-editor-extension.ts",
-        "apps/client-ui/src/cwks/creator-wiki-persistence.ts",
-        "apps/client-ui/src/cwks/creator-wiki-workspace-types.ts",
-        "apps/client-ui/src/cwks/creator-wiki.css",
-        "apps/client-ui/src/cwks/cwks-wiki-editor-extension.test.ts",
-        "apps/client-ui/src/cwks/cwks-wiki-links.test.ts",
-        "apps/client-ui/src/cwks/cwks-wiki-operations.test.ts",
-        "apps/client-ui/src/cwks/cwks-wiki-persistence.test.ts",
-        "apps/client-ui/src/cwks/cwks-wiki-schema.contract.test.ts",
-        "apps/client-ui/src/cwks/cwks-wiki-transclusion.test.tsx",
-        "apps/client-ui/src/cwks/cwks-wiki-workspace.test.tsx",
-        "governance/application-planning/validation-core/ACTIVE_FAMILY_CONTRACT.json",
-        "governance/application-planning/validation-core/profiles/CWKS-07.json",
-        "packages/contracts/src/creator-writing/wiki-links.ts",
-        "packages/contracts/src/creator-writing/wiki-operations.ts",
-        "packages/contracts/src/creator-writing/wiki-schema.ts"
-      ],
-      "dependency_fingerprint": {
-        "validated_candidate_head": "52d8a047c2a101f176792f4e6c00712c96889f01",
-        "fresh_main_base": "ffefb4e64fc29abf932fda2e5cafdead46ca56e9",
-        "integration_validation_run": "37215469769",
-        "predecessor_merge": "028f82f93e8157f717dcb205f50c99ab7368ea4b",
-        "preserved_gpr_selection": "PCV-03F in_progress",
-        "preserved_casi_selection": "CASI-03 in_progress"
-      }
-    },
     {
       "candidate_id": "CASI-03-app-pr-802",
       "lane": "casi",
@@ -270,7 +227,61 @@
       "status": "superseded_before_publication",
       "superseded_by": "CWKS-07-app-pr-803",
       "reason": "Direct merge exposed a real ACTIVE_FAMILY_CONTRACT.json conflict with published CASI-01/02 state. Fresh-main integration candidate rebuilt from validated CWKS-07 blobs and current multi-lane validation contract."
+    },
+    {
+      "candidate_id": "CWKS-07-app-pr-803",
+      "lane": "cwks",
+      "work_item_id": "CWKS-07",
+      "pr_number": 803,
+      "head_sha": "52d8a047c2a101f176792f4e6c00712c96889f01",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "52d8a047c2a101f176792f4e6c00712c96889f01",
+        "run_id": "37215469769",
+        "validation_kind": "fresh_main_integration"
+      },
+      "write_set": [
+        "apps/client-ui/src/cwks/CreatorWikiTransclusion.tsx",
+        "apps/client-ui/src/cwks/CreatorWikiWorkspace.tsx",
+        "apps/client-ui/src/cwks/creator-document-editor-extensions.ts",
+        "apps/client-ui/src/cwks/creator-document-editor-types.ts",
+        "apps/client-ui/src/cwks/creator-wiki-editor-extension.ts",
+        "apps/client-ui/src/cwks/creator-wiki-persistence.ts",
+        "apps/client-ui/src/cwks/creator-wiki-workspace-types.ts",
+        "apps/client-ui/src/cwks/creator-wiki.css",
+        "apps/client-ui/src/cwks/cwks-wiki-editor-extension.test.ts",
+        "apps/client-ui/src/cwks/cwks-wiki-links.test.ts",
+        "apps/client-ui/src/cwks/cwks-wiki-operations.test.ts",
+        "apps/client-ui/src/cwks/cwks-wiki-persistence.test.ts",
+        "apps/client-ui/src/cwks/cwks-wiki-schema.contract.test.ts",
+        "apps/client-ui/src/cwks/cwks-wiki-transclusion.test.tsx",
+        "apps/client-ui/src/cwks/cwks-wiki-workspace.test.tsx",
+        "governance/application-planning/validation-core/ACTIVE_FAMILY_CONTRACT.json",
+        "governance/application-planning/validation-core/profiles/CWKS-07.json",
+        "packages/contracts/src/creator-writing/wiki-links.ts",
+        "packages/contracts/src/creator-writing/wiki-operations.ts",
+        "packages/contracts/src/creator-writing/wiki-schema.ts"
+      ],
+      "dependency_fingerprint": {
+        "validated_candidate_head": "52d8a047c2a101f176792f4e6c00712c96889f01",
+        "fresh_main_base": "ffefb4e64fc29abf932fda2e5cafdead46ca56e9",
+        "integration_validation_run": "37215469769",
+        "predecessor_merge": "028f82f93e8157f717dcb205f50c99ab7368ea4b",
+        "preserved_gpr_selection": "PCV-03F in_progress",
+        "preserved_casi_selection": "CASI-03 in_progress"
+      },
+      "status": "published",
+      "merge_sha": "f22d62d9f0d36442289a5f23b4226413f56cd863",
+      "integration_receipt": {
+        "status": "green",
+        "base_sha": "ffefb4e64fc29abf932fda2e5cafdead46ca56e9",
+        "candidate_head": "52d8a047c2a101f176792f4e6c00712c96889f01",
+        "run_id": "37215469769",
+        "mergeable": true,
+        "merge_method": "squash",
+        "integration_kind": "fresh_main_rebuild_after_validation_contract_conflict"
+      }
     }
   ],
-  "last_merge_sha": "bd81ec06a9e6d0ce9a24ce9cc9e1f5e6578b8951"
+  "last_merge_sha": "f22d62d9f0d36442289a5f23b4226413f56cd863"
 }
