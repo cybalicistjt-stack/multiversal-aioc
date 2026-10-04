@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "CWKS",
+  "lane": "cwks",
+  "track": "creator-writing-knowledge-system",
+  "source_program": "CWKS",
+  "work_item_id": "CWKS-07",
+  "attempt_id": "CWKS-07-attempt-001",
+  "title": "Wiki & Knowledge Core",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_owner": "2026-10-04 owner explicitly approved CWKS-07 Wiki & Knowledge Core as the next non-AI CWKS tranche and authorized continuation through the normal design/planning/implementation process; artifact-specific review gates remain enforced.",
+  "objective": "Design and implement the non-AI CWKS Wiki & Knowledge Core over published CreatorDocumentV1 documents: stable wiki page/catalog identity, project/library scope, [[link]] resolution to stable page references, aliases/tags, deterministic derived backlinks, live transclusion, local persistence/recovery and an accessible reusable Wiki workspace without absorbing WCI or CSW/D29 authority.",
+  "scope": {
+    "include": [
+      "wiki catalog/page identity with pageId -> documentId association",
+      "library-level and project-local wiki scope",
+      "stable [[Title]] and [[Title|Label]] authoring resolution to existing cwks-wiki-page resource mentions",
+      "aliases, tags and deterministic metadata lookup",
+      "derived outgoing links/backlinks from explicit CWKS document references",
+      "live wiki transclusion using existing resource-embed mode=live with cycle/missing protection",
+      "provider-neutral local Wiki Catalog persistence/autosave/recovery with stale-write protection",
+      "accessible reusable Wiki workspace and editor integration",
+      "focused governed Linux/Windows deterministic validation and sealed predecessor regressions"
+    ],
+    "exclude": [
+      "AI writing, generation, critique, rewriting, summarization or AI context",
+      "WCI canonical entity mutation or permission/visibility authority",
+      "CSW Story Bible, CreativeFragment or Project Memory provenance authority",
+      "semantic/vector search",
+      "collaborative editing, comments or named version-history UI",
+      "Story Project corkboard, storyboard, timeline or plot-board views",
+      "Creator Suite migration",
+      "GPR Session Service or CASI semantic-appearance implementation",
+      "public publishing or marketplace behavior"
+    ]
+  },
+  "dependencies": {
+    "completed_predecessor": "CWKS-06 published as Multiversal-app main 028f82f93e8157f717dcb205f50c99ab7368ea4b with exact-head validation run 37208030368 and canonical closeout 46c0faa2747a9b3797e80ad3320915f56479c7bc.",
+    "design_pr": "cybalicistjt-stack/Multiversal-app#797",
+    "design_path": "docs/superpowers/specs/2026-10-04-cwks-wiki-knowledge-core-design.md",
+    "document_contract": "CreatorDocumentV1",
+    "authority_boundaries": "WCI retains canonical world/entity projection and visibility semantics; CSW/D29 retains Creator Library/Story Bible/Project Memory provenance; APW/D26 retains generic Project/time authority; Campaign/Session and other owner domains retain their truth.",
+    "parallel_lane_rule": "GPR PCV-03F and CASI-01 remain independently in_progress; CWKS-07 may not borrow either implementation branch or scope."
+  },
+  "active_substep": "Written-spec review required before implementation planning",
+  "next_action": "Owner reviews the written CWKS-07 design on Multiversal-app PR #797. Implementation planning remains unauthorized until that artifact-specific review is explicit.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": "selected_not_started"
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
