@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 571,
+  "state_revision": 572,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -110,13 +110,13 @@
       "execution_state_ref": "ops3-lane-state/gpr"
     },
     "casi": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "CASI-06",
       "attempt_id": "CASI-06-attempt-001",
       "checkpoint_path": "operations/work-items/CASI-06.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "CASI-05 completed_verified after governed RED run 37227970400, exact-head GREEN validation run 37232077389 on 710f9a8d5815de38928104c2139b3a15c7a462b8, and publication of Multiversal-app PR #809 as a35fa56bd253c15a63d178827c96f6818f85399a with READY reconciliation at app queue generation 90. CASI-06 is the strict successor and remains selected_not_started until a later CASI-lane Continue. CASI-06 is bounded to the player-facing Character Appearance Studio runtime surface over completed deterministic CAS/MCCS/CAPP/PAPT semantics; reference-image matching, Fashion/Garment Parameter Authority and final CASI-08 certification remain later.",
+      "implementation_branch": "work/casi-06-appearance-studio-runtime",
+      "implementation_authority": true,
+      "activation_rule": "Owner directed Continue on 2026-10-04 after CASI-05 completed_verified. CASI-06 is authorized only to wire the player-facing Character Appearance Studio runtime surface to completed MCCS workspace semantics and deterministic CAPP/CAS-SD1 preview behavior under the existing CAPP-07 implementation specification. Reference-image matching, Fashion/Garment Parameter Authority, public marketplace, generative rendering and final CASI-08 certification remain outside scope.",
       "execution_state_ref": "ops3-lane-state/casi"
     }
   },
@@ -145,7 +145,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F remains independently in_progress. CASI-06 — Character Appearance Studio Runtime Surface — is selected_not_started after CASI-05 completed_verified and requires a later owner Continue for governed start. CWKS-06-CORR-01 remains completed_verified.",
+  "next_project_action": "GPR PCV-03F and CASI-06 remain independently active. CASI-06 is bounded to the player-facing Character Appearance Studio runtime surface over completed deterministic appearance semantics and CAPP-07. Reference-image matching and Fashion remain later. CWKS-06-CORR-01 remains completed_verified.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
