@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "MV-CAS-CAPP05-EXT-001",
+  "contract_id": "CAS-CAPP05-EXT-1",
+  "status": "canonical_design_authority",
+  "effective_date": "2026-10-03",
+  "implementation_authority": false,
+  "extends": "CAPP-05_DETERMINISTIC_APPEARANCE_COMPILER_CONTRACT_v0.1.0.json",
+  "inputs_to_add": [
+    "cas_parameter_authority_id",
+    "cas_parameter_authority_version",
+    "pixel_standard_id",
+    "pixel_standard_version",
+    "semantic_appearance_hash",
+    "parameter_values",
+    "feature_instances",
+    "presentation_wardrobe_refs",
+    "actual_equipment_projection_refs",
+    "view_profile_id"
+  ],
+  "outputs_to_add": [
+    "parameter_resolution_receipts",
+    "feature_resolution_receipts",
+    "projection_losses",
+    "production_demand_diagnostics",
+    "native_logical_canvas",
+    "standard_output_canvas",
+    "logical_to_output_scale"
+  ],
+  "resolver_classes": [
+    "CASRES-01 component_family_select",
+    "CASRES-02 discrete_variant_select",
+    "CASRES-03 integer_anchor_composition",
+    "CASRES-04 palette_zone_map",
+    "CASRES-05 mask_pattern_overlay",
+    "CASRES-06 layer_or_profile_reference",
+    "CASRES-07 read_only_owner_projection",
+    "CASRES-08 semantic_only_or_derived"
+  ],
+  "exactness_rules": [
+    "CAS ordinal/enum value is semantic truth for appearance state.",
+    "No silent nearest-supported-value coercion.",
+    "Missing renderer coverage produces partial/unsupported/unknown receipts without rewriting CAS state.",
+    "Parameter resolution must be deterministic under the same CAS state, topology, renderer, asset lock, view and permission projection.",
+    "Permission filtering precedes asset selection, counts and diagnostics.",
+    "View-specific reduction may omit lower-priority detail only under CAS-SD1 projection-loss rules."
+  ],
+  "asset_resolution": {
+    "preferred": "component/variant/palette/mask composition",
+    "forbidden": "prebaked full-character cross-product as the default architecture",
+    "allowed_operations": [
+      "component family selection",
+      "discrete variant selection",
+      "integer-pixel anchored composition",
+      "mask application",
+      "controlled palette remap",
+      "approved deterministic pattern overlay",
+      "declared occlusion",
+      "nearest-neighbor integer scaling"
+    ],
+    "forbidden_operations": [
+      "freeform raster warp",
+      "subpixel placement",
+      "antialias repair",
+      "arbitrary rotation",
+      "silent topology substitution",
+      "required generative image synthesis"
+    ]
+  },
+  "coverage_to_papt": {
+    "diagnostic_prefix": "CASPAPT-DEMAND",
+    "demand_fields": [
+      "parameter_or_feature_id",
+      "semantic_value_or_family",
+      "topology_template_id",
+      "view_profile_id",
+      "resolver_class",
+      "semantic_band",
+      "required_anchor_refs",
+      "required_mask_roles"
+    ],
+    "rule": "Emit reusable production demand, not a request for a fully baked character."
+  },
+  "cas_sd1_profiles": {
+    "full_body": {
+      "native": [
+        128,
+        160
+      ],
+      "output": [
+        256,
+        320
+      ],
+      "scale": 2
+    },
+    "portrait": {
+      "native": [
+        96,
+        96
+      ],
+      "output": [
+        192,
+        192
+      ],
+      "scale": 2
+    },
+    "token": {
+      "native": [
+        64,
+        64
+      ],
+      "output": [
+        128,
+        128
+      ],
+      "scale": 2
+    },
+    "retrobit_detailed": {
+      "native": [
+        64,
+        80
+      ],
+      "derivation": "semantic_rerender"
+    },
+    "retrobit_normal": {
+      "native": [
+        32,
+        40
+      ],
+      "derivation": "semantic_rerender"
+    },
+    "retrobit_micro": {
+      "native": [
+        16,
+        20
+      ],
+      "derivation": "semantic_rerender"
+    }
+  },
+  "migration": {
+    "old_capp_canvas_is_not_automatically_native": true,
+    "legacy_asset_classification_required": true,
+    "historical_provenance_preserved": true
+  },
+  "boundaries": {
+    "application_code_change": false,
+    "runtime_activation": false,
+    "biology_mutation": false,
+    "equipment_mutation": false
+  }
+}
