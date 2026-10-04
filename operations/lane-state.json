@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "cwks",
-  "revision": 25,
+  "revision": 26,
   "selected_work_item": "CWKS-07",
   "attempt_id": "CWKS-07-attempt-001",
-  "execution_status": "prequeue_green",
+  "execution_status": "published",
   "implementation_branch": "work/cwks-07-wiki-knowledge-core",
-  "progress_seq": 3,
+  "progress_seq": 4,
   "last_progress": {
-    "kind": "prequeue_green",
-    "evidence": "CWKS-07 fresh-main integration candidate 52d8a047c2a101f176792f4e6c00712c96889f01 preserves the validated CWKS-07 source while reconciling current CASI validation-family state and passed governed Linux/Windows full CWKS-01–07 plus WCI/CSW boundary regression and deterministic comparison in run 37215469769."
+    "kind": "published",
+    "evidence": "CWKS-07 fresh-main candidate 52d8a047c2a101f176792f4e6c00712c96889f01 passed governed run 37215469769 and published through Multiversal-app PR #803 as application main f22d62d9f0d36442289a5f23b4226413f56cd863. READY candidate CWKS-07-app-pr-803 was reconciled while CASI-03 remained queued."
   },
   "terminal": false,
   "last_completed": {
@@ -27,5 +27,11 @@
     "validation_run": "37215469769",
     "validation_kind": "fresh_main_integration",
     "replaces_candidate_head": "0db7488bcc649a19405ef580707cde123b604c82"
+  },
+  "publication": {
+    "candidate_head": "52d8a047c2a101f176792f4e6c00712c96889f01",
+    "validation_run": "37215469769",
+    "merge_sha": "f22d62d9f0d36442289a5f23b4226413f56cd863",
+    "ready_candidate_id": "CWKS-07-app-pr-803"
   }
 }
