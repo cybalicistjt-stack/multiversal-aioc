@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "cwks",
-  "revision": 24,
+  "revision": 25,
   "selected_work_item": "CWKS-07",
   "attempt_id": "CWKS-07-attempt-001",
   "execution_status": "prequeue_green",
   "implementation_branch": "work/cwks-07-wiki-knowledge-core",
-  "progress_seq": 2,
+  "progress_seq": 3,
   "last_progress": {
     "kind": "prequeue_green",
-    "evidence": "CWKS-07 application candidate 0db7488bcc649a19405ef580707cde123b604c82 passed source-equivalent governed Linux/Windows full CWKS-01–07 plus WCI/CSW boundary regression and deterministic comparison in run 37214596183. Validation head ce7d2babe5e1997c17292ae3a523f31e327bf663 differs from the application candidate only by the temporary .github/workflows/cwks07-source-equivalent-validation.yml harness required after pull_request event delivery stopped."
+    "evidence": "CWKS-07 fresh-main integration candidate 52d8a047c2a101f176792f4e6c00712c96889f01 preserves the validated CWKS-07 source while reconciling current CASI validation-family state and passed governed Linux/Windows full CWKS-01–07 plus WCI/CSW boundary regression and deterministic comparison in run 37215469769."
   },
   "terminal": false,
   "last_completed": {
@@ -23,10 +23,9 @@
     "closeout_ready_candidate": "CWKS-06-closeout-pr-1803"
   },
   "prequeue_green": {
-    "candidate_head": "0db7488bcc649a19405ef580707cde123b604c82",
-    "validation_run": "37214596183",
-    "validation_kind": "source_equivalent",
-    "validation_head": "ce7d2babe5e1997c17292ae3a523f31e327bf663",
-    "harness_only_delta": ".github/workflows/cwks07-source-equivalent-validation.yml"
+    "candidate_head": "52d8a047c2a101f176792f4e6c00712c96889f01",
+    "validation_run": "37215469769",
+    "validation_kind": "fresh_main_integration",
+    "replaces_candidate_head": "0db7488bcc649a19405ef580707cde123b604c82"
   }
 }
