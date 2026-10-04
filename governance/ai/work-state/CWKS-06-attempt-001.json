@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "CWKS",
+  "lane": "cwks",
+  "track": "creator-writing-knowledge-system",
+  "source_program": "CWKS",
+  "work_item_id": "CWKS-06",
+  "attempt_id": "CWKS-06-attempt-001",
+  "title": "Story Project Core & Manuscript Structure",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_owner": "2026-10-04 owner directed Continue after CWKS-05 while explicitly keeping AI writing/generation out of the current chain. The approved CWKS document architecture identifies Story Projects as the next later CWKS subsystem after document durability.",
+  "objective": "Design the shared non-AI Story Project core that composes durable CreatorDocumentV1 documents into flexible manuscript/story structures without forcing a Series → Book → Part → Chapter → Scene chain and without taking ownership from existing Project, narrative-planning, Campaign, sequential-art, or other canonical domains.",
+  "scope": {
+    "include": [
+      "flexible story-project/manuscript hierarchy with stable story-node identity",
+      "optional semantic node kinds such as series, book, part, chapter and scene without a mandatory hierarchy chain",
+      "chapter/scene and other prose-bearing nodes may reference existing CWKS documentId values rather than duplicate document content",
+      "deterministic parent/child ordering, move/reorder semantics and hierarchy validation",
+      "manuscript navigation/projection contracts and boundaries for later multi-document composition",
+      "explicit authority boundaries against APW/D26 Project/time, CSW narrative-plan/storycraft, Campaign runtime truth and SAA comic-project ownership",
+      "bounded design, focused contract plan and acceptance criteria before implementation authority is granted"
+    ],
+    "exclude": [
+      "AI writing, generation or AI knowledge assistance",
+      "wiki backlinks, aliases, transclusion or knowledge graph",
+      "visual corkboard, storyboard, timeline or plot-board UI",
+      "collaborative editing, comments or named version-history UI",
+      "Creator Suite field migration",
+      "sequential-art native project/page/panel ownership",
+      "GPR Session Service or CASI semantic-appearance implementation",
+      "application implementation until the CWKS-06 written design is explicitly approved"
+    ]
+  },
+  "dependencies": {
+    "completed_predecessor": "CWKS-05 published as application main ad833c5ad7b0e309657bb80f628d8fd7bdb9002b after exact-head validation run 37128330215 and READY reconciliation at app queue generation 72",
+    "canonical_document_contract": "CreatorDocumentV1",
+    "approved_architecture": "cybalicistjt-stack/Multiversal-app:docs/superpowers/specs/2026-10-02-cwks-document-schema-design.md",
+    "authority_boundaries": "APW/D26 retains generic Project/time authority; CSW retains creator storycraft/narrative-planning authority; Campaign/Session owners retain runtime truth; SAA retains comic project/page/panel/layer semantics.",
+    "parallel_lane_rule": "GPR PCV-03F and CASI-01 remain independently in_progress; CWKS-06 design may not modify or borrow either implementation branch."
+  },
+  "active_substep": "Design required before implementation",
+  "next_action": "Produce and review the bounded CWKS-06 Story Project Core design. Implementation remains unauthorized until the owner explicitly approves the written design.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": "selected_not_started"
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
