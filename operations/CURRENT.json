@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 556,
+  "state_revision": 557,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -63,13 +63,13 @@
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "cwks": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "selected_work_item": "CWKS-06",
       "attempt_id": "CWKS-06-attempt-001",
       "checkpoint_path": "governance/ai/work-state/CWKS-06-attempt-001.json",
-      "implementation_branch": "work/cwks-06-story-project-core",
-      "implementation_authority": true,
-      "activation_rule": "CWKS-05 remains completed_verified. On 2026-10-04 the owner explicitly approved the CWKS-06 written Story Project Core design and the next implementation step, then directed implementation to proceed. The approved design is published in Multiversal-app at docs/superpowers/specs/2026-10-04-cwks-story-project-core-design.md (design merge b9090060c75f35ec3a19192eeb92c217bd817e1e) and the implementation plan at docs/plans/2026-10-04-cwks-story-project-core.md (plan merge 2aad9d97f4579d24dfe6035baa531e9f765565ea). CWKS-06 authority is bounded to the flexible Story Project/manuscript contract, deterministic tree operations, provider-neutral local persistence/autosave/recovery, reusable accessible workspace over existing CreatorDocumentEditor, and governed validation. Wiki, Story Bible, Plot/Adventure semantic graphs, collaboration/version history, Creator Suite migration, AI writing/generation/assistance, GPR Session and CASI remain outside this tranche.",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "CWKS-06 completed_verified after exact-head governed validation run 37208030368 on application head f74f2a82fcbc49cee33bb9c284f6a067859bb480 and READY publication of Multiversal-app PR #795 as application main 028f82f93e8157f717dcb205f50c99ab7368ea4b, with app publication queue reconciled at generation 74. The completed tranche delivers the non-AI flexible Story Project/manuscript contract, deterministic structural operations/projections, provider-neutral local persistence/autosave/recovery, accessible selected-document workspace and sealed CWKS-01–05 regressions. No CWKS successor is selected. Wiki/knowledge, higher-order Story Project views, collaboration/version history, Creator Suite migration and AI writing/generation remain separately gated.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     "dwc-speech": {
@@ -145,7 +145,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR remains independently active on PCV-03F Session Service integration/certification. CASI-01 remains independently active on semantic appearance parameter transport. CWKS-06 is independently in_progress on work/cwks-06-story-project-core for the approved non-AI Story Project contract, persistence and workspace implementation; none of the three lanes may borrow another lane's scope.",
+  "next_project_action": "GPR remains independently active on PCV-03F Session Service integration/certification. CASI-01 remains independently active on semantic appearance parameter transport. CWKS-06 is completed_verified and no CWKS successor is selected; future Wiki/knowledge, higher-order Story Project views, collaboration/version history, Creator Suite migration or AI writing/generation require a separate owner selection.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -200,12 +200,12 @@
     "CWKS": {
       "program_id": "CWKS",
       "state": "completed_verified",
-      "selected_work_item": "CWKS-05",
-      "attempt_id": "CWKS-05-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/CWKS-05-attempt-001.json",
+      "selected_work_item": "CWKS-06",
+      "attempt_id": "CWKS-06-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/CWKS-06-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "completion_rule": "CWKS-01 through CWKS-05 completed_verified. The shared CreatorDocumentV1 contract/validator, read-only renderer, structured editor, arbitrary-depth outline/collapsible sections, stable heading-subtree reorder, and provider-neutral local persistence/autosave/recovery with stale-write protection are published with deterministic Linux/Windows proof. CWKS-06 is separately selected_not_started for Story Project Core design and does not reopen these completed predecessors."
+      "completion_rule": "CWKS-01 through CWKS-06 completed_verified. The shared CreatorDocumentV1 contract/validator, renderer/editor, outline/collapsible/reorder behaviors, provider-neutral document persistence/autosave/recovery, and flexible Story Project/manuscript core with deterministic tree operations, project persistence/recovery and accessible selected-document workspace are published with governed Linux/Windows deterministic proof. No later CWKS tranche is selected; AI writing/generation remains unstarted and separately gated."
     },
     "OARC": {
       "program_id": "OARC",
