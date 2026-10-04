@@ -173,7 +173,7 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
 
     def test_gpr_cwks_and_oarc_lanes_keep_independent_authority(self) -> None:
         current = self._json("operations/CURRENT.json")
-        for lane_id in ("gpr", "cwks", "casi"):
+        for lane_id in ("gpr", "cwks", "fga"):
             lane = current["lanes"][lane_id]
             self.assertIn(lane["state"], {"selected_not_started", "in_progress", "completed_verified"})
             checkpoint = self._json(lane["checkpoint_path"])
@@ -215,7 +215,7 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
 
         bootstrap = self._text("operations/BOOTSTRAP.md")
         contract = self._text("operations/OPERATING_CONTRACT.md")
-        for lane_id in ("gpr", "cwks", "casi"):
+        for lane_id in ("gpr", "cwks", "fga"):
             self.assertIn(lane_id, bootstrap)
             self.assertIn(lane_id, contract)
         self.assertIn("does **not** pause, revoke, or rewrite another lane", bootstrap)
@@ -375,7 +375,7 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
 
     def test_three_persistent_implementation_lanes_are_never_collapsed(self) -> None:
         lanes = self._json("operations/LANES.json")
-        self.assertEqual(lanes["persistent_implementation_lanes"], ["gpr","cwks","casi"])
+        self.assertEqual(lanes["persistent_implementation_lanes"], ["gpr","cwks","fga"])
         current = self._json("operations/CURRENT.json")
         for lane_id in lanes["persistent_implementation_lanes"]:
             self.assertIn(lane_id, current["lanes"])
