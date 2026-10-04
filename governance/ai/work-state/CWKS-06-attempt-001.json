@@ -9,31 +9,34 @@
   "attempt_id": "CWKS-06-attempt-001",
   "title": "Story Project Core & Manuscript Structure",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/cwks-06-story-project-core",
   "completed": false,
-  "selected_by_owner": "2026-10-04 owner directed Continue after CWKS-05 while explicitly keeping AI writing/generation out of the current chain. The approved CWKS document architecture identifies Story Projects as the next later CWKS subsystem after document durability.",
-  "objective": "Design the shared non-AI Story Project core that composes durable CreatorDocumentV1 documents into flexible manuscript/story structures without forcing a Series → Book → Part → Chapter → Scene chain and without taking ownership from existing Project, narrative-planning, Campaign, sequential-art, or other canonical domains.",
+  "selected_by_owner": "2026-10-04 owner explicitly approved the CWKS-06 written Story Project Core specification, approved the next implementation step, and directed work through implementation. AI writing/generation remains explicitly excluded.",
+  "objective": "Implement the approved non-AI Story Project core over the published CWKS document engine: flexible arbitrary-depth manuscript structure, stable story-node/document references, deterministic structural operations and manuscript projection, provider-neutral local persistence/autosave/recovery, and an accessible reusable workspace over CreatorDocumentEditor.",
   "scope": {
     "include": [
-      "flexible story-project/manuscript hierarchy with stable story-node identity",
-      "optional semantic node kinds such as series, book, part, chapter and scene without a mandatory hierarchy chain",
-      "chapter/scene and other prose-bearing nodes may reference existing CWKS documentId values rather than duplicate document content",
-      "deterministic parent/child ordering, move/reorder semantics and hierarchy validation",
-      "manuscript navigation/projection contracts and boundaries for later multi-document composition",
-      "explicit authority boundaries against APW/D26 Project/time, CSW narrative-plan/storycraft, Campaign runtime truth and SAA comic-project ownership",
-      "bounded design, focused contract plan and acceptance criteria before implementation authority is granted"
+      "dependency-free CreatorStoryProjectV1 schema, validator and stable story-node contract",
+      "arbitrary-depth flexible manuscript tree without mandatory Series → Book → Part → Chapter → Scene hierarchy",
+      "deterministic insert/remove/move/reorder, parent/ancestor/descendant helpers and manuscript/document projections",
+      "optional documentId association without embedding or cloning CreatorDocumentV1 content",
+      "provider-neutral Story Project local-store persistence, autosave/recovery and stale-write conflict protection",
+      "accessible reusable React Story Project workspace composing the existing CreatorDocumentEditor",
+      "keyboard/touch structural controls, selected-document loading and Previous/Next manuscript navigation",
+      "focused CWKS-06 tests, sealed CWKS regressions and governed Linux/Windows deterministic validation"
     ],
     "exclude": [
-      "AI writing, generation or AI knowledge assistance",
-      "wiki backlinks, aliases, transclusion or knowledge graph",
+      "AI writing, generation, critique, rewriting, summarization or AI knowledge assistance",
+      "wiki pages, aliases, backlinks, [[links]], transclusion or knowledge graph",
+      "Story Bible or CreativeFragment lifecycle/provenance authority",
+      "Plot/Adventure semantic graph or D28 Adventure truth",
       "visual corkboard, storyboard, timeline or plot-board UI",
       "collaborative editing, comments or named version-history UI",
       "Creator Suite field migration",
-      "sequential-art native project/page/panel ownership",
+      "SAA native comic-project/page/panel ownership",
       "GPR Session Service or CASI semantic-appearance implementation",
-      "application implementation until the CWKS-06 written design is explicitly approved"
+      "public/store release work"
     ]
   },
   "dependencies": {
@@ -41,23 +44,31 @@
     "canonical_document_contract": "CreatorDocumentV1",
     "approved_architecture": "cybalicistjt-stack/Multiversal-app:docs/superpowers/specs/2026-10-02-cwks-document-schema-design.md",
     "authority_boundaries": "APW/D26 retains generic Project/time authority; CSW retains creator storycraft/narrative-planning authority; Campaign/Session owners retain runtime truth; SAA retains comic project/page/panel/layer semantics.",
-    "parallel_lane_rule": "GPR PCV-03F and CASI-01 remain independently in_progress; CWKS-06 design may not modify or borrow either implementation branch."
+    "parallel_lane_rule": "GPR PCV-03F and CASI-01 remain independently in_progress; CWKS-06 design may not modify or borrow either implementation branch.",
+    "approved_design": "cybalicistjt-stack/Multiversal-app@b9090060c75f35ec3a19192eeb92c217bd817e1e:docs/superpowers/specs/2026-10-04-cwks-story-project-core-design.md",
+    "approved_plan": "cybalicistjt-stack/Multiversal-app@2aad9d97f4579d24dfe6035baa531e9f765565ea:docs/plans/2026-10-04-cwks-story-project-core.md",
+    "local_store_boundary": "packages/local-store/src/index.ts",
+    "published_document_persistence": "apps/client-ui/src/cwks/creator-document-persistence.ts"
   },
-  "active_substep": "Design required before implementation",
-  "next_action": "Produce and review the bounded CWKS-06 Story Project Core design. Implementation remains unauthorized until the owner explicitly approves the written design.",
+  "active_substep": "Task 1 — Story Project contract, validator and deterministic tree operations",
+  "next_action": "Create work/cwks-06-story-project-core from fresh Multiversal-app main and begin Task 1 with focused failing schema/operation tests before production code.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner approved the written CWKS-06 design and implementation step; bounded Story Project implementation authority is activated."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": "selected_not_started"
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
