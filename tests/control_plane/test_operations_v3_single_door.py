@@ -215,7 +215,7 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
 
         bootstrap = self._text("operations/BOOTSTRAP.md")
         contract = self._text("operations/OPERATING_CONTRACT.md")
-        for lane_id in ("gpr", "cwks", "oarc"):
+        for lane_id in ("gpr", "cwks", "casi"):
             self.assertIn(lane_id, bootstrap)
             self.assertIn(lane_id, contract)
         self.assertIn("does **not** pause, revoke, or rewrite another lane", bootstrap)
