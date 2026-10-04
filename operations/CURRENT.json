@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 566,
+  "state_revision": 567,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -63,13 +63,13 @@
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "cwks": {
-      "state": "completed_verified",
-      "selected_work_item": "CWKS-07",
-      "attempt_id": "CWKS-07-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/CWKS-07-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "CWKS-07 completed_verified after fresh-main governed validation run 37215469769 on application head 52d8a047c2a101f176792f4e6c00712c96889f01 and READY publication of Multiversal-app PR #803 as application main f22d62d9f0d36442289a5f23b4226413f56cd863, with app publication queue reconciled at generation 82. The completed tranche delivers the non-AI Wiki Catalog/page identity and scope, stable [[Wiki Link]] resource mentions, aliases/tags, derived backlinks, live cycle-safe transclusion, local persistence/recovery, accessible Wiki workspace and sealed CWKS/WCI/CSW regressions. No CWKS successor is selected. Higher-order Story Project views, collaboration/version history, Creator Suite migration and AI writing/generation remain separately gated.",
+      "state": "in_progress",
+      "selected_work_item": "CWKS-06-CORR-01",
+      "attempt_id": "CWKS-06-CORR-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/CWKS-06-CORR-01-attempt-001.json",
+      "implementation_branch": "work/cwks-06-planning-views-correction",
+      "implementation_authority": true,
+      "activation_rule": "Owner explicitly corrected the canonical CWKS roadmap so CWKS-06 includes Story Project corkboard/timeline/plot views, approved the corrective design and written amendment, and directed implementation before CWKS-08. Dedicated CWKS lane state revision 28 and the corrective checkpoint remain in_progress. This projection repair restores CWKS-06-CORR-01 after CASI-04 activation was published from a stale pre-correction CURRENT snapshot while preserving CASI-04 and GPR state.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     "dwc-speech": {
@@ -145,7 +145,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F and CASI-04 remain independently active. CASI-04 is bounded to deterministic coverage-demand bridging and may not execute PAPT production or generate assets.",
+  "next_project_action": "GPR PCV-03F, CWKS-06-CORR-01, and CASI-04 remain independently active. CWKS-06-CORR-01 is bounded to the missing Story Project corkboard/timeline/plot views; CASI-04 remains bounded to deterministic coverage-demand bridging; neither may borrow the other's scope.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
