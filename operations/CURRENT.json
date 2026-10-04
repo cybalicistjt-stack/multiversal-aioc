@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 555,
+  "state_revision": 556,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -63,13 +63,13 @@
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "cwks": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "CWKS-06",
       "attempt_id": "CWKS-06-attempt-001",
       "checkpoint_path": "governance/ai/work-state/CWKS-06-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "CWKS-05 completed_verified after exact-head governed validation run 37128330215 on d6982a720c8bb81aee39196c12930f0cf9b76f71 and publication of Multiversal-app PR 791 as application main ad833c5ad7b0e309657bb80f628d8fd7bdb9002b; READY candidate CWKS-05-app-pr-791 was durably reconciled at app publication queue generation 72. The owner directed Continue while explicitly keeping AI writing/generation out of the current chain. The approved CWKS document architecture places Story Projects next among later CWKS subsystems, so CWKS-06 Story Project Core & Manuscript Structure is selected_not_started for bounded design/review only. Implementation authority remains false until the written design is explicitly approved. Wiki, visual story boards/timelines, collaboration/version history, Creator Suite migration, AI writing, GPR Session and CASI work remain outside this selection.",
+      "implementation_branch": "work/cwks-06-story-project-core",
+      "implementation_authority": true,
+      "activation_rule": "CWKS-05 remains completed_verified. On 2026-10-04 the owner explicitly approved the CWKS-06 written Story Project Core design and the next implementation step, then directed implementation to proceed. The approved design is published in Multiversal-app at docs/superpowers/specs/2026-10-04-cwks-story-project-core-design.md (design merge b9090060c75f35ec3a19192eeb92c217bd817e1e) and the implementation plan at docs/plans/2026-10-04-cwks-story-project-core.md (plan merge 2aad9d97f4579d24dfe6035baa531e9f765565ea). CWKS-06 authority is bounded to the flexible Story Project/manuscript contract, deterministic tree operations, provider-neutral local persistence/autosave/recovery, reusable accessible workspace over existing CreatorDocumentEditor, and governed validation. Wiki, Story Bible, Plot/Adventure semantic graphs, collaboration/version history, Creator Suite migration, AI writing/generation/assistance, GPR Session and CASI remain outside this tranche.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     "dwc-speech": {
@@ -145,7 +145,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR remains independently active on PCV-03F Session Service integration/certification. CASI-01 remains independently active on semantic appearance parameter transport. CWKS-05 is completed_verified; CWKS-06 Story Project Core & Manuscript Structure is selected_not_started for bounded non-AI design/review and has no implementation authority until explicit owner approval.",
+  "next_project_action": "GPR remains independently active on PCV-03F Session Service integration/certification. CASI-01 remains independently active on semantic appearance parameter transport. CWKS-06 is independently in_progress on work/cwks-06-story-project-core for the approved non-AI Story Project contract, persistence and workspace implementation; none of the three lanes may borrow another lane's scope.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
