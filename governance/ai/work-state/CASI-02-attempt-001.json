@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "CASI",
+  "lane": "casi",
+  "track": "character-appearance-standard-integration",
+  "source_program": "CASI",
+  "work_item_id": "CASI-02",
+  "attempt_id": "CASI-02-attempt-001",
+  "title": "CAPP Deterministic Parameter Resolution",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "selected_by_governance": "Strict CASI successor after CASI-01 completed_verified; ROADMAP_DEPENDENCY_GRAPH schema 1.0.6 supplies no CASI interstitial override.",
+  "objective": "Extend the application-side CAPP seam to resolve CAS semantic parameters into deterministic component, variant, palette and mask receipts with explicit coverage, while preserving completed MCCS/CAPP authority boundaries.",
+  "scope": {
+    "include": [
+      "consume published CASI-01 semantic appearance state and stable CAS-PARAM-1 IDs",
+      "deterministic CAPP-side component/variant/palette/mask resolution receipts",
+      "explicit supported/partial/unsupported/missing coverage states",
+      "eligibility/topology-aware resolution with no silent humanoid fallback",
+      "focused provider-off deterministic validation"
+    ],
+    "exclude": [
+      "CAS-SD1 raster renderer and derivative-profile execution",
+      "pixel asset generation or PAPT production execution",
+      "CAS runtime UI",
+      "reference-image/photo matching",
+      "fashion/garment construction grammar",
+      "Character mechanics, biology or equipment-truth mutation"
+    ]
+  },
+  "dependencies": {
+    "predecessor": "CASI-01 completed_verified / application merge 93d69adbffaf914ed9f906a4955678ee4a25a74c",
+    "completed_mccs": "MCCS-21 completed_verified",
+    "design_authority": [
+      "CAS-PARAM-1",
+      "CAS-CAPP-HANDOFF-1",
+      "CAS integration design closure"
+    ]
+  },
+  "acceptance": [
+    "same valid semantic inputs resolve to deterministic CAPP receipts",
+    "resolution preserves stable parameter/component identity and explicit coverage state",
+    "unsupported or missing coverage fails visible rather than silently coercing",
+    "no resolver mutates canonical anatomy, mechanics, biology or equipment truth",
+    "focused Linux/Windows deterministic validation is green"
+  ],
+  "active_substep": "selected_not_started",
+  "next_action": "Start only through the CASI lane under OPS3.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": "selected_not_started"
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}

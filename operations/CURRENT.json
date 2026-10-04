@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 559,
+  "state_revision": 560,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -110,13 +110,13 @@
       "execution_state_ref": "ops3-lane-state/gpr"
     },
     "casi": {
-      "state": "in_progress",
-      "selected_work_item": "CASI-01",
-      "attempt_id": "CASI-01-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/CASI-01-attempt-001.json",
-      "implementation_branch": "work/casi-01-semantic-parameter-transport",
-      "implementation_authority": true,
-      "activation_rule": "Owner explicitly agreed to the implementation transition and directed Continue on 2026-10-04 after CAS-SD1, CAS-PARAM-1, CAS/CAPP handoff and integration-design closure were published. CASI-01 reuses the terminal OARC persistent slot without reopening OARC, MCCS or CAPP completion history. Scope is limited to the semantic appearance parameter transport foundation and adapters over completed MCCS/CAPP contracts.",
+      "state": "selected_not_started",
+      "selected_work_item": "CASI-02",
+      "attempt_id": "CASI-02-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/CASI-02-attempt-001.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "CASI-01 completed_verified after exact-head Linux/Windows deterministic validation run 37209321150 and READY publication of Multiversal-app PR #796 as 93d69adbffaf914ed9f906a4955678ee4a25a74c. CASI-02 is the strict successor and the roadmap supplies no interstitial override. It remains selected_not_started until CASI-lane execution starts it under OPS3.",
       "execution_state_ref": "ops3-lane-state/casi"
     }
   },
@@ -145,7 +145,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR remains independently active on PCV-03F. CASI-01 remains independently active. CWKS-07 is independently in_progress on work/cwks-07-wiki-knowledge-core for the approved non-AI Wiki & Knowledge Core; no lane may borrow another lane's scope.",
+  "next_project_action": "GPR PCV-03F and CWKS-07 remain independently active. CASI-02 is selected_not_started as the next CASI tranche; it may activate only through the CASI lane. No lane may borrow another lane's scope.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
