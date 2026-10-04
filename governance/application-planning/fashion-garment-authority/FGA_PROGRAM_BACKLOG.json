@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "FGA",
+  "program_name": "Fashion/Garment Authority",
+  "status": "in_progress",
+  "owner": "John Brandon Turner",
+  "activation_rule": "operations/CURRENT.json only",
+  "persistent_slot_reuse": {
+    "replaced_terminal_program": "CASI",
+    "replaced_terminal_work_item": "CASI-08",
+    "authorization": "Owner explicitly directed the first Fashion feature step on 2026-10-04 after CASI terminal completion."
+  },
+  "authorities": [
+    "FGA-PARAM-1",
+    "CAS-WARD-001",
+    "CAS-SD1",
+    "CAS-PARAM-1",
+    "MCCS-09",
+    "CAPP/PPIA",
+    "PAPT",
+    "CAS-GOLDEN-1"
+  ],
+  "work_items": [
+    {
+      "id": "FGA-01",
+      "name": "Garment Semantic Vocabulary & Wardrobe Bridge Foundation",
+      "status": "in_progress"
+    },
+    {
+      "id": "FGA-02",
+      "name": "Topology Fit / Anchor / Occlusion Compilation",
+      "status": "selected_not_started"
+    },
+    {
+      "id": "FGA-03",
+      "name": "Reusable Garment Primitive & Production-Demand Bridge",
+      "status": "selected_not_started"
+    },
+    {
+      "id": "FGA-04",
+      "name": "Fashion Design Studio Runtime Surface",
+      "status": "selected_not_started"
+    },
+    {
+      "id": "FGA-05",
+      "name": "Clothing Reference to Garment Proposal Adapter",
+      "status": "selected_not_started"
+    },
+    {
+      "id": "FGA-06",
+      "name": "Golden Cross-Topology Garment Proof",
+      "status": "selected_not_started"
+    }
+  ],
+  "strict_order": [
+    "FGA-01",
+    "FGA-02",
+    "FGA-03",
+    "FGA-04",
+    "FGA-05",
+    "FGA-06"
+  ],
+  "boundaries": {
+    "equipment_truth_mutation": false,
+    "anatomy_mutation": false,
+    "oaran_style_layer_core_authority": false,
+    "clothing_reference_matching_active": false,
+    "public_marketplace": false,
+    "mall_integration": false,
+    "generative_ai_required": false
+  }
+}

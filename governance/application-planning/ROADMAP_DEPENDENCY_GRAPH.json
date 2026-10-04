@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.6",
+  "schema_version": "1.0.7",
   "status": "CURRENT_PLANNING_AUTHORITY",
   "graph_id": "MV-ROADMAP-DAG-001",
   "authority_rule": "This graph owns cross-program activation/dependency semantics. Historical roadmap amendments and legacy activation_after/successor fields remain provenance/compatibility projections and cannot override this graph.",
@@ -114,6 +114,9 @@
       "implementation_authority": false
     },
     "PIM": {
+      "implementation_authority": false
+    },
+    "FGA": {
       "implementation_authority": false
     }
   },
@@ -591,6 +594,24 @@
       ],
       "golden_proof_requires": [
         "CASI-08"
+      ]
+    },
+    "FGA": {
+      "hard_requires": [
+        "CASI"
+      ],
+      "start_requires": [
+        "CASI-08 completed_verified",
+        "CAS-WARD-001",
+        "MCCS-09",
+        "CAPP/PPIA/PAPT contracts"
+      ],
+      "late_bind_requires": [
+        "Oaran fashion/style content profiles",
+        "Mall/catalog presentation integration"
+      ],
+      "golden_proof_requires": [
+        "FGA-06"
       ]
     }
   },
