@@ -1,0 +1,1339 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "MV-CAS-PARAM-AUTH-001",
+  "authority_id": "CAS-PARAM-1",
+  "status": "canonical_design_authority",
+  "effective_date": "2026-10-03",
+  "owner_final_authority": "John Brandon Turner",
+  "purpose": "Define the finite renderer-neutral Character Appearance Studio parameter vocabulary that CAPP compiles, MCCS hosts as a creator workspace, and PAPT supplies with governed reusable pixel assets.",
+  "supersedes_or_extends": {
+    "extends": [
+      "CAS-SD1_PIXEL_DENSITY_AND_DETAIL_STANDARD_v1.0.0",
+      "CAPP-01_APPEARANCE_CHOICE_REGISTRY_v0.1.0",
+      "PPIA-06_APPEARANCE_SEMANTIC_TAXONOMY_v0.2.0",
+      "PPIA-06_APPEARANCE_STUDIO_CONTROL_SURFACE_v0.1.0"
+    ],
+    "does_not_replace": [
+      "Species/Form/PPIA biology and topology authority",
+      "Character identity/mechanics authority",
+      "Inventory/Asset/Equipment authority",
+      "CAPP renderer-neutral appearance authority",
+      "MCCS generalized creator-workspace contracts",
+      "PAPT/PCA production primitives"
+    ]
+  },
+  "architecture": {
+    "cas_role": "Player-facing and character-facing constrained appearance authoring profile over the generalized MCCS workspace.",
+    "mccs_role": "Generalized topology-first character/creature draft workspace, validation/orchestration and derivative authoring substrate.",
+    "capp_role": "Renderer-neutral appearance authority, semantic constraint/eligibility owner and deterministic appearance compiler.",
+    "papt_role": "Governed reusable pixel-asset/component production, palette/style tooling, fit/anchor/occlusion QA and derivative factory.",
+    "cas_sd1_role": "Shared pixel density/detail/rendering standard across CAS, CAPP and PAPT.",
+    "rule": "CAS is not a second engine beside MCCS; CAS is the bounded product profile and parameter language used through MCCS while CAPP remains appearance authority."
+  },
+  "audit_baseline": {
+    "capp_profiles": 25,
+    "capp_choice_surfaces": 10,
+    "capp_required_feature_contracts": 74,
+    "capp_bounded_choice_contracts": 78,
+    "capp_explicit_choice_contracts": 28,
+    "finding": "Existing CAPP/PPIA strongly defines authority, species constraints, topology and surface categories but does not yet provide a sufficiently concrete cross-species fine-grained CAS parameter vocabulary.",
+    "mccs_finding": "Current MCCS contracts provide generic numeric morphology/silhouette channels, topology/head feature structures, surface refs, wardrobe composition, pose, derivative, style, form and interchange contracts. They intentionally do not define the concrete CAS parameter vocabulary."
+  },
+  "control_scales": {
+    "ordinal5": {
+      "storage": "integer",
+      "values": [
+        -2,
+        -1,
+        0,
+        1,
+        2
+      ],
+      "neutral": 0,
+      "ui_rule": "Labels are semantic/profile-specific; raw integers need not be shown."
+    },
+    "ordinal7": {
+      "storage": "integer",
+      "values": [
+        -3,
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3
+      ],
+      "neutral": 0,
+      "ui_rule": "Primary bounded scalar for visually meaningful CAS-SD1 proportion changes."
+    },
+    "enum_ref": {
+      "storage": "stable_id",
+      "rule": "Value must resolve through the eligible profile/family registry."
+    },
+    "palette_zone_set_ref": {
+      "storage": "stable_id",
+      "rule": "Resolves semantic palette zones and controlled ramps; color alone is never the only semantic carrier."
+    },
+    "layer_set_ref": {
+      "storage": "stable_id_array",
+      "rule": "Ordered, provenance-bearing layer references."
+    },
+    "profile_ref": {
+      "storage": "stable_id",
+      "rule": "Reference to governed pose/expression/age/outfit/etc profile."
+    }
+  },
+  "scalar_rules": [
+    "CAS does not expose unconstrained floating-point sliders as canonical semantic state.",
+    "Existing MCCS numeric channels receive normalized values through an adapter derived from the canonical ordinal bucket.",
+    "A renderer may map the same semantic bucket to topology-specific assets/geometry while preserving the semantic value.",
+    "If two adjacent values cannot produce a meaningful CAS-SD1 distinction in any authorized view, the control must be collapsed rather than retaining false precision.",
+    "Microdetail that exists only below CAS-SD1 readability is not a primary CAS parameter."
+  ],
+  "parameters": [
+    {
+      "parameter_id": "CAS-BODY-001",
+      "path": "body.stature",
+      "group": "body",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-002",
+      "mccs_binding": "MCCS-03:morphology",
+      "detail_priority": 2,
+      "target_views": [
+        "full_body",
+        "portrait",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "proportion_only",
+      "authority_mode": "source_bounded_owner_authorized",
+      "notes": "Actual physical height remains owner-domain truth where mechanics/character state owns it; CAS may author only when the owning profile permits."
+    },
+    {
+      "parameter_id": "CAS-BODY-002",
+      "path": "body.build_profile",
+      "group": "body",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-002",
+      "mccs_binding": "MCCS-03:silhouette",
+      "detail_priority": 1,
+      "target_views": [
+        "full_body",
+        "portrait",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal",
+        "retrobit_micro"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Profile-specific silhouette family; never a universal humanoid body list."
+    },
+    {
+      "parameter_id": "CAS-BODY-003",
+      "path": "body.shoulder_width",
+      "group": "body",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-002",
+      "mccs_binding": "MCCS-03:morphology",
+      "detail_priority": 2,
+      "target_views": [
+        "full_body",
+        "portrait",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Relative to topology/profile baseline."
+    },
+    {
+      "parameter_id": "CAS-BODY-004",
+      "path": "body.torso_length",
+      "group": "body",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-002",
+      "mccs_binding": "MCCS-03:morphology",
+      "detail_priority": 2,
+      "target_views": [
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Relative to profile baseline."
+    },
+    {
+      "parameter_id": "CAS-BODY-005",
+      "path": "body.torso_width",
+      "group": "body",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-002",
+      "mccs_binding": "MCCS-03:morphology",
+      "detail_priority": 2,
+      "target_views": [
+        "full_body",
+        "portrait",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Relative to profile baseline."
+    },
+    {
+      "parameter_id": "CAS-BODY-006",
+      "path": "body.waist_width",
+      "group": "body",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-002",
+      "mccs_binding": "MCCS-03:morphology",
+      "detail_priority": 2,
+      "target_views": [
+        "full_body",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Omit when topology has no meaningful waist region."
+    },
+    {
+      "parameter_id": "CAS-BODY-007",
+      "path": "body.hip_width",
+      "group": "body",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-002",
+      "mccs_binding": "MCCS-03:morphology",
+      "detail_priority": 2,
+      "target_views": [
+        "full_body",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Omit when topology has no meaningful hip region."
+    },
+    {
+      "parameter_id": "CAS-BODY-008",
+      "path": "body.arm_length",
+      "group": "body",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-002",
+      "mccs_binding": "MCCS-03:morphology",
+      "detail_priority": 2,
+      "target_views": [
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Applies only to anatomies with eligible arm-class limbs; repeated limb sets may expose set-specific instances."
+    },
+    {
+      "parameter_id": "CAS-BODY-009",
+      "path": "body.leg_length",
+      "group": "body",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-002",
+      "mccs_binding": "MCCS-03:morphology",
+      "detail_priority": 2,
+      "target_views": [
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Applies only to anatomies with eligible leg-class limbs; multi-leg topologies may expose set-specific instances."
+    },
+    {
+      "parameter_id": "CAS-BODY-010",
+      "path": "body.head_scale",
+      "group": "body",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-002",
+      "mccs_binding": "MCCS-03:morphology",
+      "detail_priority": 2,
+      "target_views": [
+        "full_body",
+        "portrait",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal",
+        "retrobit_micro"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Relative to body/topology baseline."
+    },
+    {
+      "parameter_id": "CAS-BODY-011",
+      "path": "body.posture_profile",
+      "group": "body",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-002",
+      "mccs_binding": "MCCS-03:silhouette",
+      "detail_priority": 2,
+      "target_views": [
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Baseline presentation posture only; live pose/action remains runtime-owned."
+    },
+    {
+      "parameter_id": "CAS-HEAD-001",
+      "path": "head.shape_family",
+      "group": "head_face",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:feature_profile",
+      "detail_priority": 3,
+      "target_views": [
+        "full_body",
+        "portrait",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Head-topology-specific family."
+    },
+    {
+      "parameter_id": "CAS-HEAD-002",
+      "path": "head.face_width",
+      "group": "head_face",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Requires MCCS-05 scalar-parameter adapter/extension."
+    },
+    {
+      "parameter_id": "CAS-HEAD-003",
+      "path": "head.face_length",
+      "group": "head_face",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Requires MCCS-05 scalar-parameter adapter/extension."
+    },
+    {
+      "parameter_id": "CAS-HEAD-004",
+      "path": "head.forehead_height",
+      "group": "head_face",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Head-topology eligible only."
+    },
+    {
+      "parameter_id": "CAS-HEAD-005",
+      "path": "head.cheekbone_width",
+      "group": "head_face",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Head-topology eligible only."
+    },
+    {
+      "parameter_id": "CAS-HEAD-006",
+      "path": "head.cheek_fullness",
+      "group": "head_face",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Portrait-primary; omitted when the head topology has no analogous region."
+    },
+    {
+      "parameter_id": "CAS-HEAD-007",
+      "path": "head.jaw_shape_family",
+      "group": "head_face",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:feature_profile",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Human jaw assumptions forbidden on incompatible head topology."
+    },
+    {
+      "parameter_id": "CAS-HEAD-008",
+      "path": "head.jaw_width",
+      "group": "head_face",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Head-topology eligible only."
+    },
+    {
+      "parameter_id": "CAS-HEAD-009",
+      "path": "head.chin_shape_family",
+      "group": "head_face",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:feature_profile",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Omitted when topology has no chin analogue."
+    },
+    {
+      "parameter_id": "CAS-HEAD-010",
+      "path": "head.chin_length",
+      "group": "head_face",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Omitted when topology has no chin analogue."
+    },
+    {
+      "parameter_id": "CAS-EYE-001",
+      "path": "eyes.family",
+      "group": "head_face",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:feature_profile",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal",
+        "retrobit_micro"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Eye or eye-equivalent family is topology/profile bounded; non-ocular sensory plans may omit this."
+    },
+    {
+      "parameter_id": "CAS-EYE-002",
+      "path": "eyes.size",
+      "group": "head_face",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Relative to authorized eye/sensory structure baseline."
+    },
+    {
+      "parameter_id": "CAS-EYE-003",
+      "path": "eyes.spacing",
+      "group": "head_face",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Only for topologies where spacing is authorable."
+    },
+    {
+      "parameter_id": "CAS-EYE-004",
+      "path": "eyes.slant",
+      "group": "head_face",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "direct_landmark",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Only for compatible ocular structures."
+    },
+    {
+      "parameter_id": "CAS-BROW-001",
+      "path": "brows.family",
+      "group": "head_face",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:feature_profile",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Omitted when topology lacks brow-equivalent covering/structure."
+    },
+    {
+      "parameter_id": "CAS-BROW-002",
+      "path": "brows.thickness",
+      "group": "head_face",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Omitted when unavailable."
+    },
+    {
+      "parameter_id": "CAS-BROW-003",
+      "path": "brows.height",
+      "group": "head_face",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait"
+      ],
+      "reference_match_mode": "direct_landmark",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Identity placement, not live expression."
+    },
+    {
+      "parameter_id": "CAS-NOSE-001",
+      "path": "nose.family",
+      "group": "head_face",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:feature_profile",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Nose/snout/beak equivalents use topology-specific families rather than humanoid fallback."
+    },
+    {
+      "parameter_id": "CAS-NOSE-002",
+      "path": "nose.length",
+      "group": "head_face",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Feature-specific semantic mapping."
+    },
+    {
+      "parameter_id": "CAS-NOSE-003",
+      "path": "nose.width",
+      "group": "head_face",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Feature-specific semantic mapping."
+    },
+    {
+      "parameter_id": "CAS-NOSE-004",
+      "path": "nose.bridge_profile",
+      "group": "head_face",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "May be unavailable for non-humanoid head structures."
+    },
+    {
+      "parameter_id": "CAS-NOSE-005",
+      "path": "nose.projection",
+      "group": "head_face",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "3/4-view readable projection bucket, not subpixel geometry."
+    },
+    {
+      "parameter_id": "CAS-MOUTH-001",
+      "path": "mouth.family",
+      "group": "head_face",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:feature_profile",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Mouth/beak/mandible equivalents are topology bounded."
+    },
+    {
+      "parameter_id": "CAS-MOUTH-002",
+      "path": "mouth.width",
+      "group": "head_face",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Only when meaningful for the selected mouth structure."
+    },
+    {
+      "parameter_id": "CAS-MOUTH-003",
+      "path": "mouth.fullness",
+      "group": "head_face",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Lip/fullness analogue; omitted for incompatible structures."
+    },
+    {
+      "parameter_id": "CAS-EAR-001",
+      "path": "ears.family",
+      "group": "head_face",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:feature_profile",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Ear/sensory-appendage family, topology bounded."
+    },
+    {
+      "parameter_id": "CAS-EAR-002",
+      "path": "ears.size",
+      "group": "head_face",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Not exposed when ears are absent or source-owned."
+    },
+    {
+      "parameter_id": "CAS-EAR-003",
+      "path": "ears.angle",
+      "group": "head_face",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "direct_landmark",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Static identity presentation, not live ear pose."
+    },
+    {
+      "parameter_id": "CAS-FHAIR-001",
+      "path": "facial_hair.family",
+      "group": "head_face",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:feature_profile",
+      "detail_priority": 4,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Eligibility is species/profile based, never sex-hardcoded."
+    },
+    {
+      "parameter_id": "CAS-FHAIR-002",
+      "path": "facial_hair.length",
+      "group": "head_face",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-003",
+      "mccs_binding": "MCCS-05:parameter_extension",
+      "detail_priority": 4,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Only when facial-hair family exists."
+    },
+    {
+      "parameter_id": "CAS-COV-001",
+      "path": "covering.style_family",
+      "group": "covering",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-004",
+      "mccs_binding": "MCCS-06:layer_ref",
+      "detail_priority": 4,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal",
+        "retrobit_micro"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Applies to hair, mane, feather crest, fur styling, plant growth or equivalent covering families as profile permits."
+    },
+    {
+      "parameter_id": "CAS-COV-002",
+      "path": "covering.length",
+      "group": "covering",
+      "control_kind": "ordinal7",
+      "capp_surface": "P06-UI-004",
+      "mccs_binding": "CAPP:covering_parameter_to_MCCS06_ref",
+      "detail_priority": 4,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "direct_ratio",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Resolved to supported covering assets; not freeform warping."
+    },
+    {
+      "parameter_id": "CAS-COV-003",
+      "path": "covering.volume",
+      "group": "covering",
+      "control_kind": "ordinal5",
+      "capp_surface": "P06-UI-004",
+      "mccs_binding": "CAPP:covering_parameter_to_MCCS06_ref",
+      "detail_priority": 4,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Resolved to supported asset variants."
+    },
+    {
+      "parameter_id": "CAS-COV-004",
+      "path": "covering.texture",
+      "group": "covering",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-004",
+      "mccs_binding": "MCCS-06:material_or_layer_ref",
+      "detail_priority": 4,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Straight/wavy/curly/coily or species-specific equivalents only where meaningful."
+    },
+    {
+      "parameter_id": "CAS-COV-005",
+      "path": "covering.fringe_profile",
+      "group": "covering",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-004",
+      "mccs_binding": "MCCS-06:layer_ref",
+      "detail_priority": 4,
+      "target_views": [
+        "portrait",
+        "full_body"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Bangs/fringe/forelock/crest-front analogue."
+    },
+    {
+      "parameter_id": "CAS-COV-006",
+      "path": "covering.part_profile",
+      "group": "covering",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-004",
+      "mccs_binding": "MCCS-06:layer_ref",
+      "detail_priority": 4,
+      "target_views": [
+        "portrait",
+        "full_body"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Omitted when the covering family has no meaningful parting."
+    },
+    {
+      "parameter_id": "CAS-COV-007",
+      "path": "covering.pattern_ref",
+      "group": "covering",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-004",
+      "mccs_binding": "MCCS-06:pattern_ref",
+      "detail_priority": 8,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "pattern_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Species/profile bounded; reduction rules may omit in smaller derivatives."
+    },
+    {
+      "parameter_id": "CAS-SURF-001",
+      "path": "surface.material_appearance_ref",
+      "group": "surface",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-004",
+      "mccs_binding": "MCCS-06:material_ref",
+      "detail_priority": 6,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "material_classifier",
+      "authority_mode": "source_bounded_or_read_only",
+      "notes": "Presentation material appearance only; physical/canonical material remains owner-domain truth."
+    },
+    {
+      "parameter_id": "CAS-SURF-002",
+      "path": "surface.texture_ref",
+      "group": "surface",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-004",
+      "mccs_binding": "MCCS-06:material_ref",
+      "detail_priority": 6,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "texture_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Texture class rather than literal high-frequency texture map."
+    },
+    {
+      "parameter_id": "CAS-SURF-003",
+      "path": "surface.palette_zone_set",
+      "group": "surface",
+      "control_kind": "palette_zone_set_ref",
+      "capp_surface": "P06-UI-005",
+      "mccs_binding": "MCCS-06:color_ref",
+      "detail_priority": 6,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal",
+        "retrobit_micro"
+      ],
+      "reference_match_mode": "palette_proposal",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Biological and cosmetic channels remain distinct; species-defined color cardinality applies."
+    },
+    {
+      "parameter_id": "CAS-SURF-004",
+      "path": "surface.pattern_ref",
+      "group": "surface",
+      "control_kind": "enum_ref",
+      "capp_surface": "P06-UI-005",
+      "mccs_binding": "MCCS-06:pattern_ref",
+      "detail_priority": 8,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "pattern_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Large readable biological/cosmetic pattern class."
+    },
+    {
+      "parameter_id": "CAS-SURF-005",
+      "path": "surface.marking_layers",
+      "group": "surface",
+      "control_kind": "layer_set_ref",
+      "capp_surface": "P06-UI-006",
+      "mccs_binding": "MCCS-06:marking_ref",
+      "detail_priority": 8,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "marking_segmenter",
+      "authority_mode": "mixed_authored_and_source_owned",
+      "notes": "Markings retain per-layer authority/provenance."
+    },
+    {
+      "parameter_id": "CAS-SURF-006",
+      "path": "surface.cosmetic_dye_layers",
+      "group": "surface",
+      "control_kind": "layer_set_ref",
+      "capp_surface": "P06-UI-005",
+      "mccs_binding": "MCCS-06:color_or_pattern_ref",
+      "detail_priority": 6,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "palette_and_region_proposal",
+      "authority_mode": "presentation_cosmetic",
+      "notes": "Never overwrites biological base color."
+    },
+    {
+      "parameter_id": "CAS-SURF-007",
+      "path": "surface.scar_layers",
+      "group": "surface",
+      "control_kind": "layer_set_ref",
+      "capp_surface": "P06-UI-006",
+      "mccs_binding": "MCCS-06:marking_ref",
+      "detail_priority": 8,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "marking_segmenter",
+      "authority_mode": "mixed_authored_and_source_owned",
+      "notes": "Editable only when source/history authority permits."
+    },
+    {
+      "parameter_id": "CAS-SURF-008",
+      "path": "surface.tattoo_paint_makeup_layers",
+      "group": "surface",
+      "control_kind": "layer_set_ref",
+      "capp_surface": "P06-UI-006",
+      "mccs_binding": "MCCS-06:marking_ref",
+      "detail_priority": 8,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "marking_segmenter",
+      "authority_mode": "presentation_cosmetic",
+      "notes": "Topology/surface compatible only."
+    },
+    {
+      "parameter_id": "CAS-AGE-001",
+      "path": "age.presentation_profile",
+      "group": "age",
+      "control_kind": "profile_ref",
+      "capp_surface": "P06-UI-007",
+      "mccs_binding": "CAPP:age_profile_ref",
+      "detail_priority": 3,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "family_classifier",
+      "authority_mode": "source_bounded_authored_identity",
+      "notes": "Visual age cues only; chronological age/mechanics remain owner-domain truth."
+    },
+    {
+      "parameter_id": "CAS-PRES-001",
+      "path": "presentation.pose_ref",
+      "group": "presentation",
+      "control_kind": "profile_ref",
+      "capp_surface": "P06-UI-011",
+      "mccs_binding": "MCCS-11:pose",
+      "detail_priority": 9,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed"
+      ],
+      "reference_match_mode": "pose_classifier",
+      "authority_mode": "presentation_only",
+      "notes": "Not identity and never runtime action truth."
+    },
+    {
+      "parameter_id": "CAS-PRES-002",
+      "path": "presentation.expression_ref",
+      "group": "presentation",
+      "control_kind": "profile_ref",
+      "capp_surface": "P06-UI-011",
+      "mccs_binding": "MCCS-11:expression",
+      "detail_priority": 9,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token"
+      ],
+      "reference_match_mode": "expression_classifier",
+      "authority_mode": "presentation_only",
+      "notes": "Not canonical emotional state."
+    },
+    {
+      "parameter_id": "CAS-WARD-001",
+      "path": "wardrobe.presentation_outfit_ref",
+      "group": "wardrobe",
+      "control_kind": "profile_ref",
+      "capp_surface": "P06-UI-009",
+      "mccs_binding": "MCCS-09:item_composition",
+      "detail_priority": 5,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal",
+        "retrobit_micro"
+      ],
+      "reference_match_mode": "garment_classifier",
+      "authority_mode": "presentation_only",
+      "notes": "Detailed garment construction parameters are deferred to the Fashion/Garment Authority; this parameter references an outfit/presentation composition."
+    },
+    {
+      "parameter_id": "CAS-EQUIP-001",
+      "path": "equipment.visual_projection_ref",
+      "group": "equipment",
+      "control_kind": "profile_ref",
+      "capp_surface": "P06-UI-010",
+      "mccs_binding": "MCCS-09:item_composition",
+      "detail_priority": 5,
+      "target_views": [
+        "portrait",
+        "full_body",
+        "token",
+        "retrobit_detailed",
+        "retrobit_normal"
+      ],
+      "reference_match_mode": "not_inferred",
+      "authority_mode": "read_only_actual_equipment_projection",
+      "notes": "Reads authorized equipment state; CAS cannot create ownership/equip truth."
+    }
+  ],
+  "feature_instance_template": {
+    "template_id": "CAS-FEATURE-TEMPLATE-001",
+    "purpose": "Reusable topology-gated feature instance for nonhuman and optional structural features.",
+    "eligible_feature_kinds": [
+      "muzzle",
+      "snout",
+      "beak",
+      "horn",
+      "antler",
+      "tusk",
+      "mandible",
+      "antenna",
+      "crest",
+      "sensory_appendage",
+      "tail",
+      "wing",
+      "fin",
+      "gill",
+      "claw",
+      "talon",
+      "stinger",
+      "abdomen",
+      "whisker_set",
+      "plant_growth",
+      "modular_part"
+    ],
+    "fields": [
+      {
+        "id": "feature.family",
+        "kind": "enum_ref",
+        "required": true
+      },
+      {
+        "id": "feature.size",
+        "kind": "ordinal7",
+        "required": false
+      },
+      {
+        "id": "feature.length",
+        "kind": "ordinal7",
+        "required": false
+      },
+      {
+        "id": "feature.width",
+        "kind": "ordinal5",
+        "required": false
+      },
+      {
+        "id": "feature.curvature",
+        "kind": "ordinal5",
+        "required": false
+      },
+      {
+        "id": "feature.angle",
+        "kind": "ordinal5",
+        "required": false
+      },
+      {
+        "id": "feature.spread",
+        "kind": "ordinal5",
+        "required": false
+      },
+      {
+        "id": "feature.orientation_profile",
+        "kind": "enum_ref",
+        "required": false
+      },
+      {
+        "id": "feature.palette_zone_ref",
+        "kind": "enum_ref",
+        "required": false
+      },
+      {
+        "id": "feature.pattern_ref",
+        "kind": "enum_ref",
+        "required": false
+      },
+      {
+        "id": "feature.presentation_pose_ref",
+        "kind": "profile_ref",
+        "required": false
+      }
+    ],
+    "rules": [
+      "Feature kind and cardinality come from Species/Form/PPIA authority or an authorized optional appearance choice.",
+      "Fields are exposed only when the feature template declares them meaningful.",
+      "A photo/reference matcher may propose dimensions or family only after topology eligibility is known.",
+      "Feature instances never create anatomy, mechanics, flight, reach, attacks or equipment ownership.",
+      "Unsupported asset coverage preserves semantic state and reports partial/unsupported rendering."
+    ]
+  },
+  "profile_eligibility": {
+    "source": "CAPP-01 + PPIA-05/PPIA-06 + current Species/Form/profile authority",
+    "rule": "The parameter registry is a vocabulary, not a promise that every parameter exists for every character.",
+    "no_humanoid_fallback": true,
+    "unavailable_controls": "Omit or explicitly disable with reason; never synthesize human equivalents.",
+    "required_features": "Source-owned required anatomy remains required/read-only or source-bounded as specified by the owning profile."
+  },
+  "image_reference_matching": {
+    "role": "proposal_adapter_only",
+    "pipeline": [
+      "ingest authorized reference",
+      "detect/measure visible geometry and silhouette",
+      "classify supported feature families",
+      "quantize measurements into CAS ordinal/enum values",
+      "apply Species/Form/CAPP eligibility and constraints",
+      "produce ranked candidate values with confidence and unresolved fields",
+      "user reviews/edits",
+      "ordinary CAS draft validation and explicit commit"
+    ],
+    "forbidden": [
+      "changing species/topology truth from a photograph",
+      "inferring actual equipment ownership",
+      "inferring mechanics",
+      "committing without user acceptance",
+      "baking the imported image as appearance truth",
+      "requiring generative image synthesis"
+    ]
+  },
+  "integration_gaps": [
+    {
+      "id": "CAS-GAP-001",
+      "area": "MCCS-05 detailed head/face scalar transport",
+      "finding": "MCCS-05 currently models head anchors, feature kind/count and expression structures but does not carry a generic stable parameter/value map for face-shape modifiers.",
+      "required_follow_on": "Add a bounded renderer-neutral feature-parameter transport/adapter without transferring appearance authority away from CAPP."
+    },
+    {
+      "id": "CAS-GAP-002",
+      "area": "CAPP compiler parameter resolution",
+      "finding": "CAPP-05 currently compiles semantic_choice_ids and asset layers but does not explicitly resolve the CAS-PARAM-1 paths/ordinal buckets.",
+      "required_follow_on": "Define CAS parameter state input and deterministic parameter-to-asset/variant/palette resolution."
+    },
+    {
+      "id": "CAS-GAP-003",
+      "area": "CAS-SD1 density metadata",
+      "finding": "Historical CAPP canvas contracts predate the logical-pixel/native-vs-output distinction.",
+      "required_follow_on": "Update CAPP/PAPT metadata adapters to reference CAS-SD1 logical profiles without rewriting historical provenance."
+    },
+    {
+      "id": "CAS-GAP-004",
+      "area": "PAPT asset coverage",
+      "finding": "The new finite parameter vocabulary requires reusable family/variant assets and coverage declarations.",
+      "required_follow_on": "Generate a PAPT asset demand ledger from eligible parameter families and golden species/profile cases."
+    },
+    {
+      "id": "CAS-GAP-005",
+      "area": "Fashion parameter grammar",
+      "finding": "CAS-WARD-001 intentionally references governed outfits but does not yet define garment construction primitives.",
+      "required_follow_on": "Create separate Fashion/Garment Parameter Authority using CAS-SD1 and CAPP-06 fit semantics."
+    }
+  ],
+  "boundaries": {
+    "runtime_activation": false,
+    "application_code_change": false,
+    "mechanics_mutation": false,
+    "biology_mutation": false,
+    "equipment_ownership_mutation": false,
+    "public_marketplace_authorization": false,
+    "generative_ai_required": false
+  }
+}
