@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 562,
+  "state_revision": 563,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -110,13 +110,13 @@
       "execution_state_ref": "ops3-lane-state/gpr"
     },
     "casi": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "CASI-03",
       "attempt_id": "CASI-03-attempt-001",
       "checkpoint_path": "governance/ai/work-state/CASI-03-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "CASI-02 completed_verified after exact-head Linux/Windows deterministic validation run 37213069315 and READY publication of Multiversal-app PR #800 as bd81ec06a9e6d0ce9a24ce9cc9e1f5e6578b8951. CASI-03 is the strict successor and remains selected_not_started until CASI-lane execution starts it under OPS3.",
+      "implementation_branch": "work/casi-03-cas-sd1-derivative-profiles",
+      "implementation_authority": true,
+      "activation_rule": "CASI-02 completed_verified and owner directed Continue after closeout. CASI-03 is authorized only to bind the locked CAS-SD1/Retrobit output profiles and explicit projection-loss semantics over completed CASI-01/CASI-02/MCCS-13 contracts. PAPT production, CAS UI, reference-image matching and fashion remain later tranches.",
       "execution_state_ref": "ops3-lane-state/casi"
     }
   },
@@ -145,7 +145,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F and CWKS-07 remain independently active. CASI-03 is selected_not_started as the next CASI tranche; no lane may borrow another lane's scope.",
+  "next_project_action": "GPR PCV-03F, CWKS-07 and CASI-03 remain independent active lanes. CASI-03 is bounded to CAS-SD1 renderer/derivative profile binding and may not borrow PAPT, UI, reference-image or fashion scope.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
