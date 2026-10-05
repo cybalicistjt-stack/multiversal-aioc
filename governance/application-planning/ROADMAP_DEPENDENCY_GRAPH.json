@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.7",
+  "schema_version": "1.0.8",
   "status": "CURRENT_PLANNING_AUTHORITY",
   "graph_id": "MV-ROADMAP-DAG-001",
   "authority_rule": "This graph owns cross-program activation/dependency semantics. Historical roadmap amendments and legacy activation_after/successor fields remain provenance/compatibility projections and cannot override this graph.",
@@ -117,6 +117,9 @@
       "implementation_authority": false
     },
     "FGA": {
+      "implementation_authority": false
+    },
+    "FDE": {
       "implementation_authority": false
     }
   },
@@ -612,6 +615,26 @@
       ],
       "golden_proof_requires": [
         "FGA-06"
+      ]
+    },
+    "FDE": {
+      "hard_requires": [
+        "FGA"
+      ],
+      "start_requires": [
+        "FGA-06 completed_verified",
+        "FGA-04 Fashion Design Studio runtime",
+        "authorized Creator workspace shell"
+      ],
+      "late_bind_requires": [
+        "FDE-03 visual garment rendering",
+        "FDE-05 clothing-photo vision intake",
+        "FDE-06 PAPT asset realization",
+        "Oaran fashion/style content profiles",
+        "Mall/catalog presentation integration"
+      ],
+      "golden_proof_requires": [
+        "FDE-07"
       ]
     }
   },

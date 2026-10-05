@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "FDE",
+  "program_name": "Fashion Design Engine Productization",
+  "status": "in_progress",
+  "owner": "John Brandon Turner",
+  "activation_rule": "operations/CURRENT.json only",
+  "persistent_slot_reuse": {
+    "lane": "fga",
+    "replaced_terminal_program": "FGA",
+    "replaced_terminal_work_item": "FGA-06",
+    "authorization": "Owner explicitly approved the Fashion Design Engine productization program and directed Continue on 2026-10-05 after confirming terminal FGA completion."
+  },
+  "predecessor": {
+    "program_id": "FGA",
+    "state": "completed_verified",
+    "terminal_work_item": "FGA-06",
+    "application_merge_sha": "5ed234744bc26cb0677f95613c46b65fe28ae5b8",
+    "closeout_merge_sha": "26ec7dc3d2b68be3b0b31f8214d55802982319b1"
+  },
+  "work_items": [
+    {
+      "id": "FDE-01",
+      "name": "Live Studio Integration",
+      "status": "in_progress"
+    },
+    {
+      "id": "FDE-02",
+      "name": "Designer Controls & Garment Library",
+      "status": "planned"
+    },
+    {
+      "id": "FDE-03",
+      "name": "Visual Garment Preview",
+      "status": "planned"
+    },
+    {
+      "id": "FDE-04",
+      "name": "Persistent Designs & Collections",
+      "status": "planned"
+    },
+    {
+      "id": "FDE-05",
+      "name": "Clothing Photo Intake",
+      "status": "planned"
+    },
+    {
+      "id": "FDE-06",
+      "name": "Primitive / Asset Realization",
+      "status": "planned"
+    },
+    {
+      "id": "FDE-07",
+      "name": "Product Golden Proof",
+      "status": "planned"
+    }
+  ],
+  "strict_order": [
+    "FDE-01",
+    "FDE-02",
+    "FDE-03",
+    "FDE-04",
+    "FDE-05",
+    "FDE-06",
+    "FDE-07"
+  ],
+  "boundaries": {
+    "second_garment_authority": false,
+    "equipment_truth_mutation": false,
+    "anatomy_mutation": false,
+    "mechanics_mutation": false,
+    "oaran_style_content_in_core": false,
+    "mall_or_commerce": false,
+    "public_sharing": false,
+    "hidden_detail_inference": false
+  }
+}

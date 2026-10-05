@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 592,
+  "state_revision": 593,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -120,13 +120,13 @@
       "execution_state_ref": "ops3-lane-state/casi"
     },
     "fga": {
-      "state": "completed_verified",
-      "selected_work_item": "FGA-06",
-      "attempt_id": "FGA-06-attempt-001",
-      "checkpoint_path": "operations/work-items/FGA-06.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "FGA-06 and the Fashion/Garment Authority program are terminal completed_verified after behavioral RED run 37302933996, a type-only repair after run 37303271957, exact-head Linux/Windows/deterministic-comparison GREEN run 37303424354 on application head 360b8a30d78ce332eca795f3fd2d10a03ebdf3c4, and READY publication of Multiversal-app PR #824 as 5ed234744bc26cb0677f95613c46b65fe28ae5b8. Terminal CAS-GOLDEN-1 garment proof certifies all ten approved topology profiles across FGA-PARAM-1 semantics, FGA-02 topology fit/anchor/clearance/mask/occlusion, FGA-03 production-demand coverage, FGA-04 provider-off Fashion Design Studio behavior, and FGA-05 review-gated clothing-reference proposals with explicit incompatible, unresolved and unsupported states, no humanoid fallback, no hidden-detail inference and no asset-generation/PAPT/equipment/anatomy/mechanics mutation. FGA has no successor.",
+      "state": "in_progress",
+      "selected_work_item": "FDE-01",
+      "attempt_id": "FDE-01-attempt-001",
+      "checkpoint_path": "operations/work-items/FDE-01.json",
+      "implementation_branch": "work/fde-01-live-studio-integration",
+      "implementation_authority": true,
+      "activation_rule": "Owner approved the Fashion Design Engine productization program and directed Continue on 2026-10-05 after terminal FGA-06 completion. FDE-01 is authorized only to integrate the proven FGA-04 Fashion Design Studio into an authorized live Creator surface with explicit FDE session ownership and to wire existing view/history/save/load/wardrobe-proposal actions. FGA-PARAM-1/FGA-02/FGA-03/FGA-04/FGA-05/FGA-06 remain the garment authority foundation. Detailed production controls/catalogs, visual garment rendering, durable design persistence, clothing-photo vision intake, PAPT asset realization, Oaran style content, Mall/commerce/public sharing, equipment truth, anatomy and mechanics remain later or separate.",
       "execution_state_ref": "ops3-lane-state/fga"
     }
   },
@@ -136,9 +136,9 @@
     "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
     "cross_program_successor_rule": "Before successor selection, consult governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json. Individual program strict_successor or backlog fields cannot skip an eligible interstitial program or override cross-program gates.",
     "executor_independence": "Executor availability never grants or revokes project authority.",
-    "parallel_lane_rule": "GPR, CWKS and FGA remain independent persistent lanes. Terminal MRCS, OARC and CASI remain completed history. FIFO READY publication coordination exists only while two or more persistent lanes are nonterminal. With exactly one nonterminal lane, queue/concurrent-writer coordination is dormant.",
+    "parallel_lane_rule": "GPR, CWKS and the persistent fashion lane (`fga`, currently FDE) remain independent persistent lanes. Terminal FGA/CASI/MRCS/OARC remain completed history. FIFO READY publication coordination exists while two or more persistent lanes are nonterminal.",
     "protected_main_interlock": "Protected main remains PR-only and exact-head. Single-active-lane mode uses one fresh-main drift-sensitive integration receipt with expected-head merge protection and no READY queue. Multi-lane mode uses FIFO READY coordination. Direct main writes remain prohibited.",
-    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: gpr, cwks and fga. MSAS-21, MRCS-21, OARC-07, CASI-08, MVPS-23 and UISR-11 are completed program history and do not occupy persistent implementation slots.",
+    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: gpr, cwks and fga. The fga lane now hosts owner-approved FDE productization over terminal completed FGA authority. Terminal MSAS, MRCS, OARC, CASI, MVPS, UISR and FGA remain completed program history.",
     "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS3.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
     "generated_main_writers": "CI/bots/generated-content jobs may not push directly to protected main; generated outputs must be present on the queue-bound candidate branch or validation fails closed.",
     "lane_state_isolation": "Live execution progress for persistent lanes is recorded on ops3-lane-state/gpr, ops3-lane-state/cwks and ops3-lane-state/fga. Terminal MSAS, MRCS, OARC and CASI lane states are historical only. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
@@ -155,7 +155,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F and CWKS-09 remain independently in_progress. FGA is terminal completed_verified with no successor.",
+  "next_project_action": "GPR PCV-03F, CWKS-09, and fashion-lane FDE-01 are independently in_progress. FDE-01 productizes the completed FGA core by exposing the Fashion Design Studio in the authorized Creator experience; later FDE tranches remain unauthorized until selected.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
