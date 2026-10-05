@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 591,
+  "state_revision": 592,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -120,13 +120,13 @@
       "execution_state_ref": "ops3-lane-state/casi"
     },
     "fga": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "selected_work_item": "FGA-06",
       "attempt_id": "FGA-06-attempt-001",
       "checkpoint_path": "operations/work-items/FGA-06.json",
-      "implementation_branch": "work/fga-06-golden-cross-topology-proof",
-      "implementation_authority": true,
-      "activation_rule": "Owner directed Continue on 2026-10-05 after FGA-05 completed_verified. FGA-06 is authorized only to implement the deterministic Golden Cross-Topology Garment Proof across ordinary and difficult CAS-GOLDEN-1 topology profiles, exercising FGA-PARAM-1, FGA-02 fit/anchor/clearance/mask/occlusion handling, FGA-03 production-demand coverage, FGA-04 Studio behavior, and FGA-05 reviewed clothing-reference proposals. It must remain provider-off and fail closed on unsupported coverage. New garment semantics, generative rendering, PAPT execution or paid production, Oaran style authority, Mall/commerce, public sharing, equipment truth, anatomy mutation and mechanics mutation remain unauthorized.",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "FGA-06 and the Fashion/Garment Authority program are terminal completed_verified after behavioral RED run 37302933996, a type-only repair after run 37303271957, exact-head Linux/Windows/deterministic-comparison GREEN run 37303424354 on application head 360b8a30d78ce332eca795f3fd2d10a03ebdf3c4, and READY publication of Multiversal-app PR #824 as 5ed234744bc26cb0677f95613c46b65fe28ae5b8. Terminal CAS-GOLDEN-1 garment proof certifies all ten approved topology profiles across FGA-PARAM-1 semantics, FGA-02 topology fit/anchor/clearance/mask/occlusion, FGA-03 production-demand coverage, FGA-04 provider-off Fashion Design Studio behavior, and FGA-05 review-gated clothing-reference proposals with explicit incompatible, unresolved and unsupported states, no humanoid fallback, no hidden-detail inference and no asset-generation/PAPT/equipment/anatomy/mechanics mutation. FGA has no successor.",
       "execution_state_ref": "ops3-lane-state/fga"
     }
   },
@@ -155,7 +155,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F, CWKS-09, and FGA-06 are independently in_progress. CWKS-09 adds bounded review/history/comparison/recovery only; FGA-06 remains terminal garment proof; GPR remains Session certification.",
+  "next_project_action": "GPR PCV-03F and CWKS-09 remain independently in_progress. FGA is terminal completed_verified with no successor.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -326,6 +326,16 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "completion_rule": "CASI-01 through CASI-08 completed_verified. Terminal CASI-08 / CAS-GOLDEN-1 cross-topology proof certifies all ten approved golden profiles through the same deterministic semantic/MCCS/CAPP/derivative architecture across manual and reference-input paths, all full-body/portrait/token/Retrobit views, explicit missing-coverage behavior, topology preservation, authority separation and provider-off reproduction. No generative AI, paid provider, new renderer, Fashion/Garment authority, marketplace behavior or mechanics mutation is required or authorized. CASI has no successor."
+    },
+    "FGA": {
+      "program_id": "FGA",
+      "state": "completed_verified",
+      "selected_work_item": "FGA-06",
+      "attempt_id": "FGA-06-attempt-001",
+      "checkpoint_path": "operations/work-items/FGA-06.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "completion_rule": "FGA-01 through FGA-06 completed_verified. Terminal FGA-06 / CAS-GOLDEN-1 garment proof certifies all ten approved topology profiles through presentation-only FGA-PARAM-1 garment semantics, FGA-02 topology fit/anchor/clearance/mask/occlusion handling, FGA-03 reusable production-demand coverage, FGA-04 provider-off Fashion Design Studio editing/preview/save/CAS-WARD-001 proposals, and FGA-05 review-gated clothing-reference proposals across full-body/portrait/token views. Compatible, unresolved, incompatible and unsupported states remain explicit; no humanoid fallback, hidden-detail invention, generative rendering, PAPT execution, paid provider, Mall/commerce, equipment truth, anatomy mutation or mechanics mutation is required or authorized. FGA has no successor."
     }
   },
   "domain_authorities": {
