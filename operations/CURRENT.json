@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 580,
+  "state_revision": 581,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -63,13 +63,13 @@
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "cwks": {
-      "state": "completed_verified",
-      "selected_work_item": "CWKS-06-CORR-01",
-      "attempt_id": "CWKS-06-CORR-01-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/CWKS-06-CORR-01-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "CWKS-06-CORR-01 completed_verified after governed source candidate run 37218451785, fresh-main integration run 37220947135 on head 3f2ac27b05d73b1619abc58d2a15dd9845b3b6a2, and publication through Multiversal-app PR #808 as merge d98b98282f343aa7674975a1ae7c571083e7699c. CWKS-06 now includes Tree/Corkboard/Timeline/Plot Story Project views over unchanged CreatorStoryProjectV1. CWKS-07 remains completed_verified. No CWKS-08 implementation authority is granted by this closeout.",
+      "state": "in_progress",
+      "selected_work_item": "CWKS-08",
+      "attempt_id": "CWKS-08-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/CWKS-08-attempt-001.json",
+      "implementation_branch": "work/cwks-08-creator-suite-migration",
+      "implementation_authority": true,
+      "activation_rule": "Owner approved the CWKS-08 written specification and implementation plan on 2026-10-04. CWKS-08 is authorized only to integrate/migrate Creator Suite Writing Studio current prose onto the shared CWKS CreatorDocumentV1 substrate with deterministic migration, binding/repair semantics, native shared-substrate document creation, hard legacy-write interlocks, Writing Studio shared-editor cutover, explicit adjacent D29 handoffs and bounded regressions. CWKS-09 comments/review/version history, CWKS-10 collaboration, AI writing/generation, WCI/Campaign/D28 authority migration and bulk silent migration remain excluded. Specification published as Multiversal-app 83a825d0ef65eee1019b6e998ced637c4514245c; plan published as 14afcadc07cd06b10db8c2895abbe815a04cd3c9.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     "dwc-speech": {
@@ -155,7 +155,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F and FGA-02 remain independently in_progress. FGA-02 compiles deterministic topology-aware garment fit, anchors, clearances and occlusion without humanoid fallback. CWKS-06-CORR-01 and CASI-08 remain completed_verified.",
+  "next_project_action": "GPR PCV-03F, CWKS-08, and FGA-02 are independently in_progress. CWKS-08 migrates Creator Suite current prose to the shared CWKS substrate without dual-write authority; FGA-02 remains topology/fit/occlusion only; GPR remains Session certification only.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -206,16 +206,6 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "completion_rule": "MRCS-01 through MRCS-21 reduced family completed_verified. Terminal MRCS-21 proves the 48-vector family closure, reduced-GPR consumption without ownership bleed, accessibility/parity, local-first operation, and optional-AI/paid-cloud independence. MRCS remains readable completed program history; on 2026-10-02 its terminal persistent slot was owner-approved for replacement by CWKS."
-    },
-    "CWKS": {
-      "program_id": "CWKS",
-      "state": "completed_verified",
-      "selected_work_item": "CWKS-06-CORR-01",
-      "attempt_id": "CWKS-06-CORR-01-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/CWKS-06-CORR-01-attempt-001.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "completion_rule": "CWKS-01 through CWKS-07 are completed_verified, including the corrective completion of CWKS-06 Story Project Tree/Corkboard/Timeline/Plot views. CWKS-07 Wiki remains published. CWKS-08 Creator Suite integration/migration is the next owner-approved design target only; comments/review/version history remain CWKS-09, collaboration remains CWKS-10, and AI writing/generation remains unstarted."
     },
     "OARC": {
       "program_id": "OARC",
