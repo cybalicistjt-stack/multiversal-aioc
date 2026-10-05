@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.7.0",
+  "schema_version": "3.8.0",
   "canonical_door": "operations/BOOTSTRAP.md",
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "selection_rule": "User intent selects a lane; lane state never changes the global operating contract.",
@@ -128,23 +128,24 @@
     },
     {
       "id": "fga",
-      "purpose": "Fashion/Garment Authority (FGA): deterministic garment construction semantics, topology-aware fit/occlusion, reusable garment primitives, Fashion Studio authoring and bounded clothing-reference proposals over the completed CAS/MCCS/CAPP/PAPT stack.",
+      "purpose": "Persistent Fashion product lane. Terminal FGA-01 through FGA-06 remain completed garment-authority history; active successor FDE productizes that authority into the user-facing Fashion Design Engine without redefining garment truth.",
       "intent_examples": [
-        "continue FGA",
-        "continue fashion system",
-        "build garment parameters",
-        "work on Fashion Design Studio",
-        "implement clothing reference matching"
+        "continue FDE",
+        "continue fashion design engine",
+        "productize Fashion Design Studio",
+        "work on fashion system",
+        "integrate clothing-photo workflow"
       ],
       "current_state_source": "operations/CURRENT.json#/lanes/fga",
       "source_bundle": [
-        "CURRENT-selected FGA work item/checkpoint",
+        "CURRENT-selected FDE work item/checkpoint",
         "live lane execution state from ops3-lane-state/fga",
-        "governance/application-planning/fashion-garment-authority/FGA_PROGRAM_BACKLOG.json",
-        "FGA-PARAM-1 plus completed CASI/CAS-SD1/CAS-PARAM-1/CAS-WARD-001/MCCS-09/CAPP/PAPT contracts named by the selected FGA item",
-        "live application repository evidence limited to active FGA scope"
+        "governance/application-planning/fashion-design-engine/FDE_PROGRAM_BACKLOG.json",
+        "governance/application-planning/fashion-design-engine/FDE_FASHION_DESIGN_ENGINE_PROGRAM.md",
+        "terminal FGA-PARAM-1/FGA-01..06 plus completed CASI/CAS-WARD-001/MCCS-09/CAPP/PAPT contracts explicitly required by the selected FDE item",
+        "live application repository evidence limited to active FDE scope"
       ],
-      "cross_lane_reads": "Consume terminal CASI and completed MCCS/CAPP/PAPT authority only as explicit dependencies. GPR and CWKS remain independent except for publication conflicts. Mall/marketplace and commerce remain separately governed.",
+      "cross_lane_reads": "Consume terminal FGA/CASI and completed MCCS/CAPP/PAPT authority only as explicit dependencies. GPR and CWKS remain independent except for integration evidence or publication conflicts. Oaran style/content, Mall/marketplace, commerce and public sharing remain separately governed unless a selected FDE item explicitly depends on them.",
       "execution_state_ref": "ops3-lane-state/fga"
     },
     {
@@ -248,7 +249,7 @@
     "operational-assets": "OARC-07 completed_verified. OARC is preserved as terminal completed history; its former persistent slot was owner-approved for CASI on 2026-10-04.",
     "character-appearance": "CASI-08 completed_verified. CASI is preserved as terminal completed history; its persistent slot was owner-approved for FGA on 2026-10-04."
   },
-  "parallel_persistence_rule": "GPR, CWKS and FGA are independent persistent implementation lanes with separate milestone-only lane-state refs. Terminal MSAS, MRCS, OARC and CASI remain completed history outside the persistent slots. If two or more persistent lanes are nonterminal, immutable green READY candidates use FIFO publication coordination. If exactly one persistent lane is nonterminal, the READY queue is dormant and protected-main publication uses the direct exact-head fresh-base path.",
+  "parallel_persistence_rule": "GPR, CWKS and the persistent fashion lane (`fga`, currently FDE) are independent implementation lanes with separate milestone-only lane-state refs. Terminal FGA, MSAS, MRCS, OARC and CASI remain completed history. If two or more persistent lanes are nonterminal, immutable green READY candidates use FIFO publication coordination. If exactly one persistent lane is nonterminal, the READY queue is dormant and protected-main publication uses the direct exact-head fresh-base path.",
   "single_active_lane_rule": "Derive single-active-lane mode once from the fresh CURRENT read. Ordinary execution reads and mutates only that lane plus concrete dependencies/conflicts; it does not rescan terminal siblings, check concurrent writers, read an empty READY queue, or perform routine rebase/update-branch work. Protected-main publication is PR-only, exact-head and fresh-base, with a narrow integration rerun only if main actually drifts.",
   "quiet_execution_rule": "Healthy CI is observed at workflow level only at sparse transition-driven points. Job/step/log inspection is failure-driven. Lane scans, queue-empty checks, rebase checks, mergeability polling and owner re-entry are not material progress and must not create lane-state receipts. Browser/session interruption resumes from durable lane state and repository evidence rather than requiring another owner Continue."
 }
