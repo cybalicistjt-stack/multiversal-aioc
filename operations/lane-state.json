@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "fga",
-  "revision": 28,
+  "revision": 29,
   "selected_work_item": "FDE-01",
   "attempt_id": "FDE-01-attempt-001",
-  "execution_status": "prequeue_green",
+  "execution_status": "published",
   "implementation_branch": "work/fde-01-live-studio-integration",
-  "progress_seq": 2,
+  "progress_seq": 3,
   "last_progress": {
-    "kind": "prequeue_green",
-    "evidence": "FDE-01 exact application head 066636d8dfa016056b930ed57a64b9c2223ac85c passed Linux, Windows and deterministic cross-platform validation run 37387660026 after causal behavioral RED run 37387433808."
+    "kind": "published",
+    "evidence": "FDE-01-app-pr-827 published exact head 066636d8dfa016056b930ed57a64b9c2223ac85c as f47e0202302c190c3ecdb81678d4698a33e34256"
   },
   "terminal": false,
   "last_completed": {
@@ -26,5 +26,10 @@
   "prequeue_green": {
     "candidate_head": "066636d8dfa016056b930ed57a64b9c2223ac85c",
     "validation_run": "37387660026"
+  },
+  "publication": {
+    "candidate_head": "066636d8dfa016056b930ed57a64b9c2223ac85c",
+    "merge_sha": "f47e0202302c190c3ecdb81678d4698a33e34256",
+    "ready_candidate_id": "FDE-01-app-pr-827"
   }
 }
