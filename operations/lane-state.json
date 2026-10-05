@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "fga",
-  "revision": 23,
+  "revision": 24,
   "selected_work_item": "FGA-06",
   "attempt_id": "FGA-06-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/fga-06-golden-cross-topology-proof",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Owner Continue on 2026-10-05 after FGA-05 completed_verified; activation merged in multiversal-aioc as 6d765071d3225c4dcb80d2b0dc8746253dd27ad5."
+    "kind": "prequeue_green",
+    "evidence": "exact head 360b8a30d78ce332eca795f3fd2d10a03ebdf3c4 passed Linux/Windows/deterministic validation run 37303424354"
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,9 @@
     "closeout_merge_sha": "43227aa2f3a30a0d52824f1666eefcc131433dcd",
     "closeout_validation_run": "37301619425",
     "closeout_ready_candidate": "FGA-05-closeout-pr-1839"
+  },
+  "prequeue_green": {
+    "candidate_head": "360b8a30d78ce332eca795f3fd2d10a03ebdf3c4",
+    "validation_run": "37303424354"
   }
 }
