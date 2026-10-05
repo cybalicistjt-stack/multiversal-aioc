@@ -1,8 +1,34 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/Multiversal-app",
-  "generation": 100,
-  "ready": [],
+  "generation": 101,
+  "ready": [
+    {
+      "candidate_id": "FGA-03-app-pr-819",
+      "lane": "fga",
+      "work_item_id": "FGA-03",
+      "pr_number": 819,
+      "head_sha": "fd5222cb064bbbe1b19b57f48fe71dae64350879",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "fd5222cb064bbbe1b19b57f48fe71dae64350879",
+        "run_id": "37288840375"
+      },
+      "write_set": [
+        "apps/client-ui/src/fga/Fga03GarmentProductionDemand.test.ts",
+        "governance/application-planning/validation-core/ACTIVE_FAMILY_CONTRACT.json",
+        "governance/application-planning/validation-core/profiles/FGA-03.json",
+        "packages/contracts/src/fashion-garment-authority/fga-03-garment-production-demand.ts"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "fc8a747f5fd623eb96655155ee7bb96106ec5417",
+        "red_validation_run": "37288574529",
+        "green_validation_run": "37288840375",
+        "activation_merge_sha": "d589250eef7a1b7b66999d45975ca55f24ea2afb",
+        "predecessor": "FGA-02 completed_verified"
+      }
+    }
+  ],
   "history": [
     {
       "status": "history_compacted",
