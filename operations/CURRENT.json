@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 586,
+  "state_revision": 587,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -120,13 +120,13 @@
       "execution_state_ref": "ops3-lane-state/casi"
     },
     "fga": {
-      "state": "in_progress",
-      "selected_work_item": "FGA-04",
-      "attempt_id": "FGA-04-attempt-001",
-      "checkpoint_path": "operations/work-items/FGA-04.json",
-      "implementation_branch": "work/fga-04-fashion-design-studio",
-      "implementation_authority": true,
-      "activation_rule": "Owner directed Continue on 2026-10-05 after FGA-03 completed_verified. FGA-04 is authorized only to implement the creator-facing Fashion Design Studio Runtime Surface over FGA-PARAM-1 with family-gated garment controls, FGA-02 topology fit diagnostics, FGA-03 reusable primitive/coverage diagnostics, saved garment designs, deterministic CAS-WARD-001 composition, and local/provider-off editing and preview state. Clothing-reference matching or image slicing, automatic AI garment inference, PAPT asset generation or paid production execution, Oaran style catalog authority, Mall/marketplace, commerce, public sharing, equipment ownership/stats, anatomy mutation and mechanics mutation remain unauthorized.",
+      "state": "selected_not_started",
+      "selected_work_item": "FGA-05",
+      "attempt_id": "FGA-05-attempt-001",
+      "checkpoint_path": "operations/work-items/FGA-05.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "FGA-04 completed_verified after exact-head Linux/Windows/deterministic-comparison GREEN run 37294301416 on application head 4a2c409f43566015907144eac119bfec3c45ee65 and READY publication of Multiversal-app PR #821 as 4fd261bad95e3541ae1672a0ea495fa0c5ab49e1. FGA-05 is selected_not_started only: Clothing Reference to Garment Proposal Adapter. It requires a later owner Continue before implementation authority or an implementation branch may be granted.",
       "execution_state_ref": "ops3-lane-state/fga"
     }
   },
@@ -155,7 +155,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F and FGA-04 remain independently in_progress. CWKS-08 is completed_verified. CWKS-09 comments/review/version history remains unselected and requires a separate owner selection/approval before implementation authority.",
+  "next_project_action": "GPR PCV-03F remains independently in_progress. FGA-05 is selected_not_started and requires owner Continue before implementation. FGA-04 and CWKS-08 are completed_verified.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
