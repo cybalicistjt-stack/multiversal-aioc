@@ -1,0 +1,50 @@
+{
+  "lane": "cwks",
+  "work_item_id": "CWKS-09",
+  "attempt_id": "CWKS-09-attempt-001",
+  "status": "in_progress",
+  "implementation_branch": "work/cwks-09-review-history",
+  "implementation_authority": true,
+  "selected_by_owner": "2026-10-05 owner approved the CWKS-09 written design and implementation plan, approved the four recommended V1 defaults, and directed Continue.",
+  "dependencies": {
+    "specification": "cybalicistjt-stack/Multiversal-app@6682c7277f7d165bd680ed0fb86d4df11d900406:docs/superpowers/specs/2026-10-05-cwks-09-comments-review-version-history-design.md",
+    "plan": "cybalicistjt-stack/Multiversal-app@6682c7277f7d165bd680ed0fb86d4df11d900406:docs/plans/2026-10-05-cwks-09-comments-review-version-history.md",
+    "predecessor": "CWKS-01 through CWKS-08 completed_verified",
+    "parallel_lane_rule": "GPR PCV-03F and FGA-06 remain independently in_progress. CWKS-09 may not borrow their scope or branches; final publication uses READY/FIFO while multiple persistent lanes remain nonterminal."
+  },
+  "scope": {
+    "name": "Comments, Review, Version History, Comparison and Recovery",
+    "in_scope": [
+      "immutable native CreatorDocumentV1 history snapshots with stable version identity and deterministic fingerprints",
+      "five-minute bounded automatic history capture only after successful durable saves plus named/session/review/restore checkpoints",
+      "document-level and text-range comments with deterministic exact/reanchored/orphaned anchor behavior",
+      "detached human review proposals with stale-base protection and explicit accept/reject",
+      "deterministic canonical-document comparison with stable node identity and accessible diff projections",
+      "non-destructive native historical restore through CWKS-05 compare-and-swap saves",
+      "read-only D29 legacy-history presentation and explicit deterministic legacy-to-native recovery preview",
+      "reusable accessible Review & History UI across generic editor, Story Project, Wiki, and Creator Suite",
+      "provider-off Linux/Windows deterministic validation and sealed CWKS/D29 regressions"
+    ],
+    "out_of_scope": [
+      "CreatorDocumentV1 schema mutation for review metadata",
+      "collaborative live editing, presence, cursors, CRDT or OT behavior",
+      "network synchronization or remote notifications",
+      "AI critique, rewriting, summarization or generation",
+      "automatic history pruning or compaction in V1",
+      "independent review permissions authority",
+      "Story Project structural version history",
+      "Wiki catalog structural version history",
+      "reviving writable D29 WorkingDraftRecord authority",
+      "GPR implementation",
+      "FGA implementation"
+    ]
+  },
+  "defaults": {
+    "history_retention": "no automatic pruning in CWKS-09 V1",
+    "desktop_diff": "unified diff for V1 across viewport sizes",
+    "removed_comment_presentation": "durable removed state rendered as Comment removed",
+    "review_proposal_summary": "title required; summary optional"
+  },
+  "active_substep": "Task 1 — deterministic native-history contracts and fingerprinting",
+  "next_action": "Publish this activation, seed the CWKS lane-state start milestone, create work/cwks-09-review-history from fresh application main, bind the bounded CWKS-09 validation profile, and establish Task 1 behavioral RED before production history code."
+}
