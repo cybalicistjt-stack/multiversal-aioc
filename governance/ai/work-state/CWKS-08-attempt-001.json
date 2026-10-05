@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0.0",
+  "control_plane": "OPS3",
+  "family": "CWKS",
+  "lane": "cwks",
+  "track": "creator-writing-knowledge-system",
+  "source_program": "CWKS",
+  "work_item_id": "CWKS-08",
+  "attempt_id": "CWKS-08-attempt-001",
+  "title": "CWKS-08 Creator Suite Integration and Migration",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "in_progress",
+  "implementation_authority": true,
+  "implementation_branch": "work/cwks-08-creator-suite-migration",
+  "completed": false,
+  "selected_by_owner": "2026-10-04 owner approved the CWKS-08 written specification and implementation plan and directed continuation.",
+  "objective": "Unify Creator Suite Writing Studio current editable prose onto CreatorDocumentV1 while preserving D29 metadata/provenance/reference/history authority and eliminating dual current-body write paths.",
+  "scope": {
+    "include": [
+      "deterministic WritingBlock to CreatorDocumentV1 conversion and migration contracts",
+      "binding/migration persistence with idempotency and repair-required semantics",
+      "Creator Suite writing bridge and native shared-substrate creation",
+      "legacy current-body write interlocks after binding",
+      "Writing Studio cutover to CreatorDocumentEditor and CWKS autosave/recovery",
+      "explicit Guided Creation, Narrative Lab and Reuse/Remix writing handoffs",
+      "Story Project/Wiki associations by creatorDocumentId without prose copying",
+      "bounded D29/CWKS authority regressions and governed cross-platform validation",
+      "immediate retirement of CWKS validation authority after closeout"
+    ],
+    "exclude": [
+      "CWKS-09 comments/review/version history/comparison/recovery",
+      "CWKS-10 collaborative editing/presence/cursors",
+      "AI writing/generation/critique/summarization",
+      "automatic bulk migration on startup",
+      "WCI authority migration",
+      "Campaign runtime truth migration",
+      "D28 Adventure semantic migration",
+      "automatic Wiki to Story Bible conversion",
+      "automatic CWKS link to Project Memory promotion",
+      "FGA implementation",
+      "GPR implementation"
+    ]
+  },
+  "dependencies": {
+    "specification": "cybalicistjt-stack/Multiversal-app@83a825d0ef65eee1019b6e998ced637c4514245c:docs/superpowers/specs/2026-10-04-cwks-08-creator-suite-integration-migration-design.md",
+    "plan": "cybalicistjt-stack/Multiversal-app@14afcadc07cd06b10db8c2895abbe815a04cd3c9:docs/plans/2026-10-04-cwks-08-creator-suite-integration-migration.md",
+    "predecessor": "CWKS-01 through CWKS-07 completed_verified, including CWKS-06 corrective completion",
+    "parallel_lane_rule": "GPR PCV-03F and FGA-02 remain independently active; CWKS-08 may not borrow their scope or branches."
+  },
+  "active_substep": "Task 1 — migration contracts and deterministic legacy-block conversion",
+  "next_action": "Create work/cwks-08-creator-suite-migration from fresh application main, authorize exactly one CWKS-08 validation profile, and establish Task 1 behavioral RED before production conversion code.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner approved the CWKS-08 written specification and implementation plan; activation is being published with bounded scope."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": []
+  }
+}
