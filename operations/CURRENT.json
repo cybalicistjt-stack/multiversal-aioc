@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 579,
+  "state_revision": 580,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -120,13 +120,13 @@
       "execution_state_ref": "ops3-lane-state/casi"
     },
     "fga": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "FGA-02",
       "attempt_id": "FGA-02-attempt-001",
       "checkpoint_path": "operations/work-items/FGA-02.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "FGA-01 completed_verified after genuine behavioral RED run 37245722678, exact-head cross-platform GREEN run 37245841692 on application head 2a924501596f97d2269f2980440923c09ca85691, and READY publication of Multiversal-app PR #816 as 5f4070fa6f6f4b678859088f3e40bf935baa69d5. FGA-02 is selected_not_started only: Topology Fit / Anchor / Occlusion Compilation. It requires a later owner Continue before implementation authority or an implementation branch may be granted.",
+      "implementation_branch": "work/fga-02-topology-fit-occlusion",
+      "implementation_authority": true,
+      "activation_rule": "Owner directed Continue on 2026-10-04 after FGA-01 completed_verified. FGA-02 is authorized only to compile FGA-PARAM-1 garment state against owner-authoritative topology using deterministic garment anchors, fit compatibility, required openings/clearances, masks and occlusion rules, with explicit unresolved/incompatible states and no humanoid fallback. PAPT garment production, Fashion Studio UI, clothing-reference matching, Oaran style catalogs, Mall/marketplace, commerce, equipment truth, mechanics mutation and generative rendering remain later or separately governed.",
       "execution_state_ref": "ops3-lane-state/fga"
     }
   },
@@ -155,7 +155,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F remains independently in_progress. FGA-02 is selected_not_started and requires owner Continue before implementation. FGA-01 is completed_verified. CWKS-06-CORR-01 and CASI-08 remain completed_verified.",
+  "next_project_action": "GPR PCV-03F and FGA-02 remain independently in_progress. FGA-02 compiles deterministic topology-aware garment fit, anchors, clearances and occlusion without humanoid fallback. CWKS-06-CORR-01 and CASI-08 remain completed_verified.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
