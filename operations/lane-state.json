@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "cwks",
-  "revision": 33,
+  "revision": 34,
   "selected_work_item": "CWKS-08",
   "attempt_id": "CWKS-08-attempt-001",
-  "execution_status": "prequeue_green",
+  "execution_status": "published",
   "implementation_branch": "work/cwks-08-creator-suite-migration",
-  "progress_seq": 2,
+  "progress_seq": 3,
   "last_progress": {
-    "kind": "prequeue_green",
-    "evidence": "Fresh-main CWKS-08 integration head dd76ba0a269d266fb0d0bdb941a2331c4cbd9aba passed governed selector/Linux/Windows/deterministic run 37292629811. Task 6 behavioral RED was separately observed in source-equivalent hosted run 37291714147 and GREEN in 37291927698 after PR synchronize delivery failed."
+    "kind": "published",
+    "evidence": "CWKS-08 fresh-main integration head dd76ba0a269d266fb0d0bdb941a2331c4cbd9aba passed governed run 37292629811 and published through Multiversal-app PR #820 as merge 5335d516a34b318d33d03c4a78d138a14eafb0f8."
   },
   "terminal": false,
   "last_completed": {
@@ -25,5 +25,10 @@
   "prequeue_green": {
     "candidate_head": "dd76ba0a269d266fb0d0bdb941a2331c4cbd9aba",
     "validation_run": "37292629811"
+  },
+  "publication": {
+    "candidate_head": "dd76ba0a269d266fb0d0bdb941a2331c4cbd9aba",
+    "merge_sha": "5335d516a34b318d33d03c4a78d138a14eafb0f8",
+    "ready_candidate_id": "CWKS-08-app-pr-820"
   }
 }
