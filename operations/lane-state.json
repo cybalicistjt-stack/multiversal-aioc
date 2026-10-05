@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "fga",
-  "revision": 15,
+  "revision": 16,
   "selected_work_item": "FGA-04",
   "attempt_id": "FGA-04-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/fga-04-fashion-design-studio",
   "progress_seq": 2,
   "last_progress": {
-    "kind": "candidate_invalidated",
-    "evidence": "Application main advanced to 72607e5d362f82a4624defa2e42d925c4e3e4c7b with a conflicting shared ACTIVE_FAMILY_CONTRACT update after FGA-04 exact-head GREEN; old head ef8aa7f12f0c43f78ce83698fac5cf138efbdc21 is no longer publishable."
+    "kind": "prequeue_green",
+    "evidence": "exact head 4a2c409f43566015907144eac119bfec3c45ee65 passed prequeue validation run 37294301416"
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,9 @@
     "closeout_merge_sha": "e1c9f35cd0d849ddcd0c8ff869584881a4c0a3c2",
     "closeout_validation_run": "37290040526",
     "closeout_ready_candidate": "FGA-03-closeout-pr-1834"
+  },
+  "prequeue_green": {
+    "candidate_head": "4a2c409f43566015907144eac119bfec3c45ee65",
+    "validation_run": "37294301416"
   }
 }
