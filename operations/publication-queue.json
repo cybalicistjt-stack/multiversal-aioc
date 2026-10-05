@@ -1,35 +1,8 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/Multiversal-app",
-  "generation": 107,
-  "ready": [
-    {
-      "candidate_id": "FGA-04-app-pr-821",
-      "lane": "fga",
-      "work_item_id": "FGA-04",
-      "pr_number": 821,
-      "head_sha": "4a2c409f43566015907144eac119bfec3c45ee65",
-      "prequeue_validation": {
-        "status": "green",
-        "head_sha": "4a2c409f43566015907144eac119bfec3c45ee65",
-        "run_id": "37294301416"
-      },
-      "write_set": [
-        "apps/client-ui/src/fga/Fga04FashionDesignStudio.tsx",
-        "apps/client-ui/src/fga/Fga04FashionDesignStudioRuntime.test.tsx",
-        "apps/client-ui/src/fga/Fga04FashionDesignStudioRuntime.ts",
-        "governance/application-planning/validation-core/ACTIVE_FAMILY_CONTRACT.json",
-        "governance/application-planning/validation-core/profiles/FGA-04.json"
-      ],
-      "dependency_fingerprint": {
-        "validated_base_sha": "72607e5d362f82a4624defa2e42d925c4e3e4c7b",
-        "activation_merge_sha": "cc4a679d9165ce3ad142f10a87f7828fff5db544",
-        "predecessor": "FGA-03 completed_verified",
-        "invalidated_green_run": "37293792056",
-        "repaired_green_run": "37294301416"
-      }
-    }
-  ],
+  "generation": 108,
+  "ready": [],
   "history": [
     {
       "status": "history_compacted",
@@ -715,7 +688,43 @@
       },
       "status": "withdrawn",
       "reason": "Application main advanced to 72607e5d362f82a4624defa2e42d925c4e3e4c7b and the shared validation-family registry conflicts with the old exact candidate head."
+    },
+    {
+      "candidate_id": "FGA-04-app-pr-821",
+      "lane": "fga",
+      "work_item_id": "FGA-04",
+      "pr_number": 821,
+      "head_sha": "4a2c409f43566015907144eac119bfec3c45ee65",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "4a2c409f43566015907144eac119bfec3c45ee65",
+        "run_id": "37294301416"
+      },
+      "write_set": [
+        "apps/client-ui/src/fga/Fga04FashionDesignStudio.tsx",
+        "apps/client-ui/src/fga/Fga04FashionDesignStudioRuntime.test.tsx",
+        "apps/client-ui/src/fga/Fga04FashionDesignStudioRuntime.ts",
+        "governance/application-planning/validation-core/ACTIVE_FAMILY_CONTRACT.json",
+        "governance/application-planning/validation-core/profiles/FGA-04.json"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "72607e5d362f82a4624defa2e42d925c4e3e4c7b",
+        "activation_merge_sha": "cc4a679d9165ce3ad142f10a87f7828fff5db544",
+        "predecessor": "FGA-03 completed_verified",
+        "invalidated_green_run": "37293792056",
+        "repaired_green_run": "37294301416"
+      },
+      "status": "published",
+      "merge_sha": "4fd261bad95e3541ae1672a0ea495fa0c5ab49e1",
+      "integration_receipt": {
+        "status": "green",
+        "base_sha": "72607e5d362f82a4624defa2e42d925c4e3e4c7b",
+        "candidate_head": "4a2c409f43566015907144eac119bfec3c45ee65",
+        "run_id": "fresh-main-no-drift+expected-head:pr-821@72607e5d362f82a4624defa2e42d925c4e3e4c7b",
+        "mergeable": true,
+        "merge_method": "squash"
+      }
     }
   ],
-  "last_merge_sha": "5335d516a34b318d33d03c4a78d138a14eafb0f8"
+  "last_merge_sha": "4fd261bad95e3541ae1672a0ea495fa0c5ab49e1"
 }
