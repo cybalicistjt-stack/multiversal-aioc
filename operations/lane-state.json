@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "fga",
-  "revision": 27,
+  "revision": 28,
   "selected_work_item": "FDE-01",
   "attempt_id": "FDE-01-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/fde-01-live-studio-integration",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Owner-approved FDE successor program activated in the persistent fashion slot as 93f7bb9557a7afacb014fd1bfe96a6f9098da63f; FGA-06 remains terminal completed history."
+    "kind": "prequeue_green",
+    "evidence": "FDE-01 exact application head 066636d8dfa016056b930ed57a64b9c2223ac85c passed Linux, Windows and deterministic cross-platform validation run 37387660026 after causal behavioral RED run 37387433808."
   },
   "terminal": false,
   "last_completed": {
@@ -22,5 +22,9 @@
     "closeout_validation_run": "37304048954",
     "closeout_ready_candidate": "FGA-06-closeout-pr-1842",
     "terminal_proof": "CAS-GOLDEN-1/FGA-06"
+  },
+  "prequeue_green": {
+    "candidate_head": "066636d8dfa016056b930ed57a64b9c2223ac85c",
+    "validation_run": "37387660026"
   }
 }
