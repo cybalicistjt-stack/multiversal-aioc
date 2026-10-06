@@ -1,34 +1,29 @@
 {
   "schema_version": "1.2.0",
   "lane": "fga",
-  "revision": 53,
+  "revision": 54,
   "selected_work_item": "FDE-07",
   "attempt_id": "FDE-07-attempt-001",
-  "execution_status": "published",
-  "implementation_branch": "work/fde-07-product-golden-proof",
-  "progress_seq": 3,
+  "execution_status": "completed_verified",
+  "implementation_branch": null,
+  "progress_seq": 4,
   "last_progress": {
-    "kind": "published",
-    "evidence": "FDE-07-app-pr-835 published exact head c9401a5636549e804bb50911d95b18d8be74ffca as baa742752f868e960035a4239619f9ab46e15a3c"
+    "kind": "completed_verified",
+    "evidence": "FDE-07 terminal closeout published as 6a727fcabe979a00a06cf2d4e10901c096029332 after FDE-GOLDEN-1 application proof baa742752f868e960035a4239619f9ab46e15a3c and terminal registry seal 6ae4f42ea6e65b46428f188bdbe8691a0fdf4dea."
   },
-  "terminal": false,
+  "terminal": true,
   "last_completed": {
-    "work_item_id": "FDE-06",
-    "attempt_id": "FDE-06-attempt-001",
-    "application_merge_sha": "0b34cc53b5239314d8879565cdc4ce6587d8b046",
-    "application_validation_run": "37455905777",
-    "application_ready_candidate": "FDE-06-app-pr-834",
-    "closeout_merge_sha": "a4314a33a2de07b3a8e2fd0502b4285f4f2af6d0",
-    "closeout_validation_run": "37456555002",
-    "closeout_ready_candidate": "FDE-06-closeout-pr-1855"
-  },
-  "prequeue_green": {
-    "candidate_head": "c9401a5636549e804bb50911d95b18d8be74ffca",
-    "validation_run": "37464490384"
-  },
-  "publication": {
-    "candidate_head": "c9401a5636549e804bb50911d95b18d8be74ffca",
-    "merge_sha": "baa742752f868e960035a4239619f9ab46e15a3c",
-    "ready_candidate_id": "FDE-07-app-pr-835"
+    "work_item_id": "FDE-07",
+    "attempt_id": "FDE-07-attempt-001",
+    "application_merge_sha": "baa742752f868e960035a4239619f9ab46e15a3c",
+    "application_validation_run": "37464490384",
+    "application_ready_candidate": "FDE-07-app-pr-835",
+    "terminal_registry_merge_sha": "6ae4f42ea6e65b46428f188bdbe8691a0fdf4dea",
+    "terminal_registry_validation_run": "37465339872",
+    "closeout_merge_sha": "6a727fcabe979a00a06cf2d4e10901c096029332",
+    "closeout_validation_run": "37466189566",
+    "closeout_ready_candidate": "FDE-07-closeout-pr-1857",
+    "terminal_proof": "FDE-GOLDEN-1",
+    "topology_proof": "CAS-GOLDEN-1"
   }
 }
