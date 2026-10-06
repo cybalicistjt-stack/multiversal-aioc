@@ -2,9 +2,9 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-01",
   "attempt_id": "MTLC-01-attempt-001",
-  "status": "in_progress",
-  "implementation_branch": "work/mtlc-01-canon-friction-registry",
-  "implementation_authority": true,
+  "status": "completed_verified",
+  "implementation_branch": null,
+  "implementation_authority": false,
   "selected_by_owner": "2026-10-06 owner explicitly confirmed the terminal FGA/FDE lane is free and directed MTLC to continue.",
   "dependencies": {
     "program": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_MULTIVERSAL_TABLETOP_LIFECYCLE_CONVERGENCE_PROGRAM.md",
@@ -38,26 +38,42 @@
       "CWKS implementation changes"
     ]
   },
-  "active_substep": "MTLC-01 reconciliation complete — candidate publication and closeout",
-  "next_action": "Validate and publish the 70-item MTLC-01 authority traceability matrix, then close MTLC-01 and select MTLC-02 as the bounded successor. Do not begin MTLC-02 implementation until the governed successor selection is durable.",
+  "active_substep": "completed_verified",
+  "next_action": "MTLC-02 — Private Table Formation and Campaign Onboarding is selected_not_started. A future owner execution command may start it after fresh OPS3 reconciliation.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 2,
+    "material_progress_seq": 3,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed_verified",
+      "evidence": "All MTLC-01 exit criteria are satisfied by the published 70-item traceability matrix, community-friction mappings, duplicate-owner guardrails, admin-risk tagging, successor partitioning and explicit Consent/Veils recovery gap."
+    },
     "last_material_progress": {
-      "seq": 2,
-      "kind": "authority_traceability_matrix_completed",
-      "evidence": "MTLC-01_AUTHORITY_TRACEABILITY_MATRIX.json records all 70 lifecycle capabilities with dispositions, owner/source references for CONVERGE/RECOVER, manual-admin risk, all FRIC-001..012 mappings, duplicate-owner guardrails, Consent/Veils unresolved historical-source gap, and successor tranche mappings."
+      "seq": 3,
+      "kind": "mtlc01_published",
+      "evidence": "PR 1860 exact head 32986d5f0fc2a0949c2ae157ff8768726eaf12b6 passed run 37486900789 and published as 5d82590478f442cde74a7eaa1eafdfa56063c756."
     }
   },
   "execution_conformance": {
-    "status": "in_progress",
+    "status": "conforming",
     "policy_violations": [],
-    "product_completion_valid": false
+    "product_completion_valid": true
+  },
+  "completed": true,
+  "completion_evidence": {
+    "activation_merge_sha": "a60cfccf502580883ba9ee860d0034c7bbcaeb52",
+    "authority_matrix_path": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC-01_AUTHORITY_TRACEABILITY_MATRIX.json",
+    "authority_matrix_row_count": 70,
+    "consent_veils_recovery_status": "explicit unresolved historical-source gap; no source wording reconstructed from memory",
+    "application_pr": 1860,
+    "validated_head": "32986d5f0fc2a0949c2ae157ff8768726eaf12b6",
+    "validation_run": "37486900789",
+    "application_merge_sha": "5d82590478f442cde74a7eaa1eafdfa56063c756",
+    "application_ready_candidate": "MTLC-01-app-pr-1860",
+    "successor": "MTLC-02"
   }
 }
