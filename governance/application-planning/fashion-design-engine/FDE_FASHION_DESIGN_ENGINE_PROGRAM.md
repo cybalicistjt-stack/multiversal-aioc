@@ -2,7 +2,7 @@
 
 **Program ID:** FDE  
 **Version:** 0.1.0  
-**Status:** OWNER-APPROVED PRODUCTIZATION PROGRAM; activation remains OPS3 CURRENT-owned  
+**Status:** COMPLETED_VERIFIED — terminal FDE-GOLDEN-1 product proof  
 **Owner/final authority:** John Brandon Turner  
 **Persistent lane:** `fga` (fashion slot; terminal FGA remains completed history)  
 **Primary application repository:** `cybalicistjt-stack/Multiversal-app`
@@ -34,7 +34,7 @@ The terminal FGA proof established the deterministic garment model. FDE is the p
 7. **FDE-07 — Product Golden Proof**  
    End-to-end user proof: enter Studio, design from scratch, design from a clothing reference, fit difficult topologies, save/reopen, preview and compose wardrobe without authority leakage.
 
-## Product boundaries
+## Terminal certification\n\nFDE-01 through FDE-07 are completed_verified. FDE-GOLDEN-1 is the terminal product proof. No successor is automatically selected; any later fashion program or reuse of the persistent fashion lane requires explicit owner governance.\n\n## Product boundaries
 
 - FGA-01 through FGA-06 remain the only garment semantic/fit/proposal authority.
 - FDE may consume but not redefine Species/Form anatomy, equipment ownership/stats or mechanics.
