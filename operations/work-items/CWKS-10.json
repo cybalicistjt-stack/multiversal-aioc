@@ -1,0 +1,66 @@
+{
+  "lane": "cwks",
+  "work_item_id": "CWKS-10",
+  "attempt_id": "CWKS-10-attempt-001",
+  "status": "in_progress",
+  "implementation_branch": "work/cwks-10-collaborative-editing",
+  "implementation_authority": true,
+  "selected_by_owner": "2026-10-06 owner approved the CWKS-10 written design and implementation plan, later confirmed the approval was lost in a browser freeze, and directed implementation to continue.",
+  "dependencies": {
+    "specification": "cybalicistjt-stack/Multiversal-app@2e96fa8a480086c83f71cb20ddf83b87fef6fe70:docs/superpowers/specs/2026-10-06-cwks-10-collaborative-editing-design.md",
+    "plan": "cybalicistjt-stack/Multiversal-app@2e96fa8a480086c83f71cb20ddf83b87fef6fe70:docs/plans/2026-10-06-cwks-10-collaborative-editing.md",
+    "predecessor": "CWKS-01 through CWKS-09 completed_verified",
+    "parallel_lane_rule": "GPR PCV-03F remains independently in_progress; FDE remains terminal completed_verified. CWKS-10 may not borrow GPR/FDE authority. With two nonterminal persistent lanes, application publication uses FIFO READY coordination."
+  },
+  "scope": {
+    "name": "Collaborative Editing, Presence and Reconnect",
+    "in_scope": [
+      "Yjs-backed simultaneous auto-converging editing of CreatorDocumentV1 document bodies",
+      "provider-neutral collaboration contracts/admission/session lineage",
+      "ephemeral participant presence, remote carets and selections",
+      "deterministic in-memory collaboration transport for convergence testing",
+      "collaboration checkpoints, temporary disconnect/reconnect and recoverable revoked/stale-epoch local work",
+      "coalesced canonical persistence through CWKS-05 and continued CWKS-09 history/review authority",
+      "collaboration-aware TipTap undo/redo without competing ordinary history",
+      "real non-test WebSocket collaboration transport through apps/signaling using Hocuspocus",
+      "collaboration-aware historical restore and accepted-review canonical replacement via epoch transition",
+      "document-body collaboration integration for Story Project, Wiki and migrated/native Creator Suite writing",
+      "exact-head Linux/Windows deterministic convergence proof and terminal CWKS program closeout"
+    ],
+    "out_of_scope": [
+      "CreatorDocumentV1 schema mutation for collaboration metadata",
+      "public sharing, invitation UX or ACL/account authority",
+      "chat, direct messages, voice or video",
+      "mention/email/push notification delivery",
+      "AI coauthoring, critique, rewriting, summarization or generation",
+      "Story Project structural collaborative editing",
+      "Wiki catalog structural collaborative editing",
+      "collaborative detached review-proposal drafting",
+      "D29 current-body write revival",
+      "Tiptap Cloud or required paid collaboration service",
+      "custom OT implementation",
+      "timestamp or arrival-order last-writer-wins",
+      "GPR implementation",
+      "fashion/FDE implementation"
+    ]
+  },
+  "locked_defaults": {
+    "collaboration_model": "true simultaneous auto-converging CRDT",
+    "engine": "Yjs 13.6.32 behind CWKS adapter",
+    "tiptap_collaboration": "@tiptap/extension-collaboration 3.31.4 and caret 3.31.4",
+    "y_tiptap": "@tiptap/y-tiptap 3.0.9",
+    "signaling": "Hocuspocus server/provider 4.7.0 via apps/signaling",
+    "participant_cap": 32,
+    "document_update_max_bytes": 1048576,
+    "awareness_max_bytes": 65536,
+    "unsent_queue_max_bytes": 8388608,
+    "admission_token_max_bytes": 8192,
+    "save_quiet_ms": 750,
+    "max_dirty_ms": 10000,
+    "awareness_throttle_ms": 75,
+    "checkpoint_update_count": 256,
+    "checkpoint_max_age_ms": 300000
+  },
+  "active_substep": "Task 1 — collaboration dependencies and provider-neutral contracts",
+  "next_action": "Publish this activation, seed the CWKS lane-state started milestone, create work/cwks-10-collaborative-editing from fresh application main, bind the bounded CWKS-10 validation profile, and establish Task 1 behavioral RED before production contract code."
+}
