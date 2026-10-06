@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 602,
+  "state_revision": 603,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -120,13 +120,13 @@
       "execution_state_ref": "ops3-lane-state/casi"
     },
     "fga": {
-      "state": "in_progress",
-      "selected_work_item": "FDE-05",
-      "attempt_id": "FDE-05-attempt-001",
-      "checkpoint_path": "operations/work-items/FDE-05.json",
-      "implementation_branch": "work/fde-05-clothing-photo-intake",
-      "implementation_authority": true,
-      "activation_rule": "Owner directed Continue on 2026-10-06 after FDE-04 completed_verified. FDE-05 is authorized only to add local clothing-image intake, bounded visible garment region/evidence observations, review-required FGA-05 proposal mapping, and user accept/reject/correct application to the current FDE semantic draft. Hidden-detail invention, topology accommodation inference, FDE-06 asset realization/generative production, FDE-07 terminal proof, Oaran style authority, Mall/commerce/public sharing/monetization, equipment truth, anatomy and mechanics remain unauthorized.",
+      "state": "selected_not_started",
+      "selected_work_item": "FDE-06",
+      "attempt_id": "FDE-06-attempt-001",
+      "checkpoint_path": "operations/work-items/FDE-06.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "FDE-05 completed_verified after causal behavioral RED run 37450615882, exact-head Linux/Windows/deterministic-comparison GREEN run 37451006139 on application head 8b0bcc00a38fb5977d984ea7b3b93d44c6469f86, and READY publication of Multiversal-app PR #833 as e61457596151f6de138cde8c17aee034678a109e. FDE-06 is selected_not_started only: Primitive / Asset Realization. It requires a later owner Continue before implementation authority or an implementation branch may be granted.",
       "execution_state_ref": "ops3-lane-state/fga"
     }
   },
@@ -155,7 +155,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F, CWKS-09, and FDE-05 remain independently in_progress. FDE-05 is limited to Clothing Photo Intake over sealed FGA/FDE-01..04 foundations.",
+  "next_project_action": "GPR PCV-03F remains independently in_progress. FDE-06 Primitive / Asset Realization is selected_not_started and requires owner Continue before implementation. FDE-05 is completed_verified.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
