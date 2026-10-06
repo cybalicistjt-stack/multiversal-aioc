@@ -61,6 +61,29 @@
     "checkpoint_update_count": 256,
     "checkpoint_max_age_ms": 300000
   },
-  "active_substep": "Task 1 — collaboration dependencies and provider-neutral contracts",
-  "next_action": "Publish this activation, seed the CWKS lane-state started milestone, create work/cwks-10-collaborative-editing from fresh application main, bind the bounded CWKS-10 validation profile, and establish Task 1 behavioral RED before production contract code."
+  "active_substep": "Task 3 — deterministic collaboration sessions",
+  "next_action": "Continue the authorized CWKS-10 implementation through Tasks 3-10 without returning control at intermediate RED/GREEN, PR, CI, merge, queue or closeout milestones unless a genuine owner-only or external blocker is reached.",
+  "execution_guard": {
+    "continue_turns": 8,
+    "stall_nudges": 3,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 3,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null,
+    "last_material_progress": {
+      "seq": 3,
+      "kind": "task2_completed_task3_red_harness_authored",
+      "evidence": "CWKS-10 Task 2 exact-head Linux/Windows/deterministic validation passed in run 37484972544 at f51c2034284bed70784492713fb75f42e7e39255; Task 3 deterministic collaboration session tests/stubs were then authored in app commit 414e929028273ca9e2242f034c0b02e60de9bb82. Repeated owner Continues/stall nudges were caused by executor over-polling/micro-step handling and are recorded here as an execution-quality incident."
+    }
+  },
+  "execution_conformance": {
+    "status": "in_progress",
+    "policy_violations": [
+      "OPS3.MULTI_CONTINUE_UNRECORDED",
+      "OPS3.STALL_NUDGE_UNRECORDED"
+    ],
+    "product_completion_valid": false
+  }
 }
