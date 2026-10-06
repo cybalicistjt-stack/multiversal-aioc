@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "fga",
-  "revision": 40,
+  "revision": 41,
   "selected_work_item": "FDE-04",
   "attempt_id": "FDE-04-attempt-001",
-  "execution_status": "prequeue_green",
+  "execution_status": "published",
   "implementation_branch": "work/fde-04-persistent-designs-collections",
-  "progress_seq": 2,
+  "progress_seq": 3,
   "last_progress": {
-    "kind": "prequeue_green",
-    "evidence": "FDE-04 causal persistence RED run 37446153224; import-topology RED run 37447232001; exact application head afaac7ac16c5064016740af6ed2a9bffddbc0e33 passed Linux, Windows and deterministic cross-platform validation run 37447396609."
+    "kind": "published",
+    "evidence": "FDE-04-app-pr-831 published exact head afaac7ac16c5064016740af6ed2a9bffddbc0e33 as cda9a224fca34df7428b3e73ce58b7896e101d60"
   },
   "terminal": false,
   "last_completed": {
@@ -25,5 +25,10 @@
   "prequeue_green": {
     "candidate_head": "afaac7ac16c5064016740af6ed2a9bffddbc0e33",
     "validation_run": "37447396609"
+  },
+  "publication": {
+    "candidate_head": "afaac7ac16c5064016740af6ed2a9bffddbc0e33",
+    "merge_sha": "cda9a224fca34df7428b3e73ce58b7896e101d60",
+    "ready_candidate_id": "FDE-04-app-pr-831"
   }
 }
