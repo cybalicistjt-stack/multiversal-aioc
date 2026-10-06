@@ -2,11 +2,11 @@
   "schema_version": "1.1.0",
   "program_id": "MTLC",
   "program_name": "Multiversal Tabletop Lifecycle Convergence",
-  "status": "OWNER_APPROVED_PLANNED",
+  "status": "in_progress",
   "recorded_date": "2026-10-02",
-  "authority": "planning_only_until_explicit_ops3_activation",
+  "authority": "operations/CURRENT.json selects live authority; currently bounded to MTLC-01",
   "program_goal": "Make Multiversal the default operating environment for the complete TTRPG lifecycle by eliminating ordinary coordination, preparation, live-play, continuity, and between-session friction while preserving a lightweight core client and provider-neutral architecture.",
-  "activation_rule": "Requires explicit owner direction plus OPS3 lane/governance selection. This backlog does not mutate operations/CURRENT.json and does not preempt active GPR or CWKS work.",
+  "activation_rule": "Owner explicitly confirmed the terminal FGA/FDE persistent slot is free and directed MTLC to continue on 2026-10-06. CURRENT selects MTLC-01 only; later tranches require governed successor selection.",
   "friction_registry_path": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_COMMUNITY_FRICTION_REGISTRY.json",
   "global_constraints": [
     "Reuse existing canonical Multiversal systems; do not create duplicate sources of truth.",
@@ -26,69 +26,124 @@
     {
       "friction_id": "FRIC-001",
       "name": "Zero-Secretary Campaign Memory",
-      "applies_to": ["MTLC-09", "MTLC-11", "MTLC-14"]
+      "applies_to": [
+        "MTLC-09",
+        "MTLC-11",
+        "MTLC-14"
+      ]
     },
     {
       "friction_id": "FRIC-002",
       "name": "Minimum Viable Prep",
-      "applies_to": ["MTLC-06", "MTLC-08", "MTLC-14"]
+      "applies_to": [
+        "MTLC-06",
+        "MTLC-08",
+        "MTLC-14"
+      ]
     },
     {
       "friction_id": "FRIC-003",
       "name": "First-Class Mobile Projection",
-      "applies_to": ["MTLC-07", "MTLC-08", "MTLC-13", "MTLC-14"]
+      "applies_to": [
+        "MTLC-07",
+        "MTLC-08",
+        "MTLC-13",
+        "MTLC-14"
+      ]
     },
     {
       "friction_id": "FRIC-004",
       "name": "Hybrid Presence Parity",
-      "applies_to": ["MTLC-07", "MTLC-08", "MTLC-14"]
+      "applies_to": [
+        "MTLC-07",
+        "MTLC-08",
+        "MTLC-14"
+      ]
     },
     {
       "friction_id": "FRIC-005",
       "name": "Compatibility Matching, Not Mere LFG",
-      "applies_to": ["MTLC-05", "MTLC-12"]
+      "applies_to": [
+        "MTLC-05",
+        "MTLC-12"
+      ]
     },
     {
       "friction_id": "FRIC-006",
       "name": "Async-Native Sessions",
-      "applies_to": ["MTLC-10", "MTLC-11", "MTLC-14"]
+      "applies_to": [
+        "MTLC-10",
+        "MTLC-11",
+        "MTLC-14"
+      ]
     },
     {
       "friction_id": "FRIC-007",
       "name": "Progressive Information Density",
-      "applies_to": ["MTLC-08", "MTLC-13", "MTLC-14"]
+      "applies_to": [
+        "MTLC-08",
+        "MTLC-13",
+        "MTLC-14"
+      ]
     },
     {
       "friction_id": "FRIC-008",
       "name": "Stable Extension Contract",
-      "applies_to": ["MTLC-11", "MTLC-12", "MTLC-14"]
+      "applies_to": [
+        "MTLC-11",
+        "MTLC-12",
+        "MTLC-14"
+      ]
     },
     {
       "friction_id": "FRIC-009",
       "name": "Clerical AI, Human Creativity",
-      "applies_to": ["MTLC-06", "MTLC-09", "MTLC-11", "MTLC-14"]
+      "applies_to": [
+        "MTLC-06",
+        "MTLC-09",
+        "MTLC-11",
+        "MTLC-14"
+      ]
     },
     {
       "friction_id": "FRIC-010",
       "name": "Prep and Administration Budget",
-      "applies_to": ["MTLC-01", "MTLC-06", "MTLC-09", "MTLC-14"]
+      "applies_to": [
+        "MTLC-01",
+        "MTLC-06",
+        "MTLC-09",
+        "MTLC-14"
+      ]
     },
     {
       "friction_id": "FRIC-011",
       "name": "Portable Campaign Ownership",
-      "applies_to": ["MTLC-03", "MTLC-09", "MTLC-10", "MTLC-14"]
+      "applies_to": [
+        "MTLC-03",
+        "MTLC-09",
+        "MTLC-10",
+        "MTLC-14"
+      ]
     },
     {
       "friction_id": "FRIC-012",
       "name": "Capability Without Operational Complexity",
-      "applies_to": ["MTLC-02", "MTLC-06", "MTLC-07", "MTLC-08", "MTLC-11", "MTLC-13", "MTLC-14"]
+      "applies_to": [
+        "MTLC-02",
+        "MTLC-06",
+        "MTLC-07",
+        "MTLC-08",
+        "MTLC-11",
+        "MTLC-13",
+        "MTLC-14"
+      ]
     }
   ],
   "work_items": [
     {
       "id": "MTLC-01",
       "title": "Canon Recovery and Friction Registry",
-      "state": "planned",
+      "state": "in_progress",
       "depends_on": [],
       "strict_successor": "MTLC-02",
       "responsibility": "Recover and reconcile existing connective-tissue capabilities, including legacy consent/Veils material and current CWKS, and establish the durable feature/friction registry used by every later tranche. Reconcile community-derived friction evidence against current Multiversal reality before classifying any need as new work.",
@@ -104,7 +159,9 @@
       "id": "MTLC-02",
       "title": "Private Table Formation and Campaign Onboarding",
       "state": "planned",
-      "depends_on": ["MTLC-01"],
+      "depends_on": [
+        "MTLC-01"
+      ],
       "strict_successor": "MTLC-03",
       "responsibility": "Let existing private groups create a campaign, recruit/invite participants, assign seats and roles, onboard guests/observers/co-GMs, and enter Multiversal without external group-management friction or exhaustive setup.",
       "exit_criteria": [
@@ -118,7 +175,9 @@
       "id": "MTLC-03",
       "title": "Campaign Lounge and Group Communication",
       "state": "planned",
-      "depends_on": ["MTLC-02"],
+      "depends_on": [
+        "MTLC-02"
+      ],
       "strict_successor": "MTLC-04",
       "responsibility": "Give every campaign a persistent communication home with chat, channels, threads, announcements, polls, files, private spaces, search, notification controls, and portable campaign history connected to Multiversal objects.",
       "exit_criteria": [
@@ -132,7 +191,9 @@
       "id": "MTLC-04",
       "title": "Scheduling, Attendance, and Real-World Logistics",
       "state": "planned",
-      "depends_on": ["MTLC-03"],
+      "depends_on": [
+        "MTLC-03"
+      ],
       "strict_successor": "MTLC-05",
       "responsibility": "Remove the administrative work of finding a date, confirming attendance, handling timezones and recurring sessions, rescheduling, reminding players, coordinating bounded venue/session logistics, and deciding how a campaign proceeds when attendance is incomplete.",
       "exit_criteria": [
@@ -146,7 +207,10 @@
       "id": "MTLC-05",
       "title": "Session Zero, Consent, and Table Agreements",
       "state": "planned",
-      "depends_on": ["MTLC-01", "MTLC-04"],
+      "depends_on": [
+        "MTLC-01",
+        "MTLC-04"
+      ],
       "strict_successor": "MTLC-06",
       "responsibility": "Promote source-backed consent and Veils content into first-class Session Zero and ongoing table-agreement workflows, including revisitable boundaries, expectations, accessibility, and recording/streaming consent, while preserving privacy suitable for later transparent compatibility matching.",
       "exit_criteria": [
@@ -160,7 +224,9 @@
       "id": "MTLC-06",
       "title": "Readiness, Homework, and Prep Cockpits",
       "state": "planned",
-      "depends_on": ["MTLC-05"],
+      "depends_on": [
+        "MTLC-05"
+      ],
       "strict_successor": "MTLC-07",
       "responsibility": "Centralize everything players and GMs must finish before the next session through Next Actions, GM Attention, homework, approvals, readiness checks, pack/content readiness, session preflight, and Minimum Viable Prep that minimizes clerical workload.",
       "exit_criteria": [
@@ -175,7 +241,9 @@
       "id": "MTLC-07",
       "title": "Session Launch, Presence, and Table Modes",
       "state": "planned",
-      "depends_on": ["MTLC-06"],
+      "depends_on": [
+        "MTLC-06"
+      ],
       "strict_successor": "MTLC-08",
       "responsibility": "Make session entry, presence, absence, late join, AFK, delegation, rejoin, in-person, remote, hybrid, table-display, role-appropriate mobile/tablet, voice/video integration, caption, and low-bandwidth behavior coherent with hybrid presence parity.",
       "exit_criteria": [
@@ -190,7 +258,9 @@
       "id": "MTLC-08",
       "title": "Live Play Utilities, Rules, Handouts, and Media Control",
       "state": "planned",
-      "depends_on": ["MTLC-07"],
+      "depends_on": [
+        "MTLC-07"
+      ],
       "strict_successor": "MTLC-09",
       "responsibility": "Eliminate ordinary during-play tool switching through timers, dice/manual-roll entry, randomizers, map micro-utilities, handouts, audio control, user-owned rulebook/PDF access, contextual rules lookup, a campaign Rulings Ledger, progressive information density, and low-configuration common actions.",
       "exit_criteria": [
@@ -205,7 +275,9 @@
       "id": "MTLC-09",
       "title": "Session Closeout and Campaign Continuity",
       "state": "planned",
-      "depends_on": ["MTLC-08"],
+      "depends_on": [
+        "MTLC-08"
+      ],
       "strict_successor": "MTLC-10",
       "responsibility": "Turn session end into durable zero-secretary campaign memory by reconciling attendance, rewards, loot, advancement, world-state changes, recap, missed-session catch-up, timelines, rulings, and real-world versus in-world time without requiring duplicate journal maintenance.",
       "exit_criteria": [
@@ -220,7 +292,9 @@
       "id": "MTLC-10",
       "title": "Between-Session Play and Party Administration",
       "state": "planned",
-      "depends_on": ["MTLC-09"],
+      "depends_on": [
+        "MTLC-09"
+      ],
       "strict_successor": "MTLC-11",
       "responsibility": "Structure async-native scenes/play-by-post, downtime, party planning, voting, loot distribution, party funds, borrowing, character admin, advancement tasks, and GM resolution queues between live sessions.",
       "exit_criteria": [
@@ -234,7 +308,9 @@
       "id": "MTLC-11",
       "title": "Universal Connectivity, Capture, Automation, and Integrations",
       "state": "planned",
-      "depends_on": ["MTLC-10"],
+      "depends_on": [
+        "MTLC-10"
+      ],
       "strict_successor": "MTLC-12",
       "responsibility": "Make Multiversal one interconnected system through quick capture, Search Everywhere, universal share/link/attach actions, Turn This Into, backlinks, governed macros, no-code automation, deep links, provider adapters, clerical AI assistance, and stable declarative extension points.",
       "exit_criteria": [
@@ -249,7 +325,9 @@
       "id": "MTLC-12",
       "title": "Public Discovery, Community, and Creator Network",
       "state": "planned",
-      "depends_on": ["MTLC-11"],
+      "depends_on": [
+        "MTLC-11"
+      ],
       "strict_successor": "MTLC-13",
       "responsibility": "Add public LFG, open seats, pickup discovery, transparent compatibility dimensions, trial-table conversion, creator/community pack discovery, follows, collections, ratings/reviews where approved, and the Multiversal Exchange only alongside moderation, trust, privacy, rights, abuse, and extension-compatibility controls.",
       "exit_criteria": [
@@ -264,7 +342,9 @@
       "id": "MTLC-13",
       "title": "Accessibility, Onboarding, Physical Output, and Event Modes",
       "state": "planned",
-      "depends_on": ["MTLC-12"],
+      "depends_on": [
+        "MTLC-12"
+      ],
       "strict_successor": "MTLC-14",
       "responsibility": "Converge accessibility controls, progressive information density, new-player/new-GM guidance, quickstarts, role-appropriate mobile companion flows, print/physical outputs, convention/one-shot/pickup modes, spectator/stream-safe views, and campaign/co-GM handoff.",
       "exit_criteria": [
@@ -278,7 +358,9 @@
       "id": "MTLC-14",
       "title": "Golden Lifecycle Certification and Friction Budget",
       "state": "planned",
-      "depends_on": ["MTLC-13"],
+      "depends_on": [
+        "MTLC-13"
+      ],
       "strict_successor": null,
       "responsibility": "Certify the complete TTRPG lifecycle on supported platforms and establish permanent package-size, performance, offline/recovery, step-count, prep/administration, campaign-memory-maintenance, mobile/hybrid parity, async, extension-safety, and external-friction budgets that prevent regression.",
       "exit_criteria": [
@@ -289,5 +371,13 @@
         "The certified product demonstrates capability without transferring hidden maintenance work back to players or GMs."
       ]
     }
-  ]
+  ],
+  "persistent_slot_reuse": {
+    "replaced_terminal_programs": [
+      "FGA",
+      "FDE"
+    ],
+    "replaced_terminal_work_item": "FDE-07",
+    "authorization": "Owner explicitly stated the FGA/FGE lane is now free and directed MTLC to continue on 2026-10-06."
+  }
 }
