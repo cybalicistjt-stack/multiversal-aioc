@@ -61,21 +61,21 @@
     "checkpoint_update_count": 256,
     "checkpoint_max_age_ms": 300000
   },
-  "active_substep": "Task 4 — checkpoints/reconnect implementation under exact-head verification",
-  "next_action": "Finish Task 4 exact-head verification, then continue directly through Tasks 5-10 under the approved plan without returning control at intermediate validation/publication milestones.",
+  "active_substep": "Task 5 — converged canonical persistence under focused verification",
+  "next_action": "Finish Task 5 focused verification, then continue directly through Tasks 6-10. Per-task Windows waiting is not a stop condition; terminal Task 10 requires the exact-head Linux/Windows/deterministic proof.",
   "execution_guard": {
     "continue_turns": 8,
     "stall_nudges": 3,
-    "material_progress_seq": 4,
+    "material_progress_seq": 5,
     "progress_at_last_owner_command": 3,
     "no_progress_cycles": 0,
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null,
     "last_material_progress": {
-      "seq": 4,
-      "kind": "task3_completed_task4_implemented",
-      "evidence": "CWKS-10 Task 3 exact-head Linux/Windows/deterministic validation passed in run 37488780631 at 17cf0d7f0435f76487f9e607fbc8c92de051d60a. Task 4 checkpoint/reconnect RED was established in run 37489684489 and the bounded checkpoint, recoverable-work, bidirectional reconnect implementation is on application head 13ffbbf2678c4f623b8fbf9b25c77c36372e1c8a awaiting exact-head verification."
+      "seq": 5,
+      "kind": "task4_completed_task5_implemented",
+      "evidence": "Task 4 checkpoint/reconnect behavior and formatted-text split identity repair passed governed Linux validation job 112381398685 in run 37496196085 at exact head 544dfa83db8b90a6968102866de0a734686790e6. Task 5 causal RED was established in Linux job 112384312222/run 37497056288 with all 12 new persistence cases failing only on the deliberate coordinator stub while 31 predecessor tests passed. The Task 5 coordinator implementation plus provider-neutral session review-signal seam is on application head 98fd98a7c72f5bdfb525b06e865e20d8460d17cc under focused verification."
     }
   },
   "execution_conformance": {
