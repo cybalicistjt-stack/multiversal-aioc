@@ -66,7 +66,7 @@ def render_pointer(current: dict[str, Any], product: dict[str, Any], operations:
     checkpoint = context["checkpoint"]
     freeze = context.get("freeze") if isinstance(context.get("freeze"), dict) else {}
     blocked = bool(freeze.get("active"))
-    reason = freeze.get("reason") if blocked else "Operations V3 single-door cutover completed and freeze cleared"
+    reason = freeze.get("reason") if blocked else "Operations V4 single-door cutover completed and freeze cleared"
     work_item = product["selected_work_item"]
     return {
         "schema_version": "3.0.0-compat",
@@ -107,7 +107,7 @@ def render_authority(current: dict[str, Any], product: dict[str, Any], operation
         "canonical_door": current["canonical_door"],
         "canonical_contract": current["operating_contract"],
         "canonical_lane_registry": current["lane_registry"],
-        "rule": "Compatibility projection only. Operational authority is defined exclusively by Operations V3.",
+        "rule": "Compatibility projection only. Operational authority is defined exclusively by Operations V4.",
         "current": [
             {"kind": "canonical_door", "lifecycle": "CURRENT", "path": current["canonical_door"]},
             {"kind": "operating_contract", "lifecycle": "CURRENT", "path": current["operating_contract"]},
