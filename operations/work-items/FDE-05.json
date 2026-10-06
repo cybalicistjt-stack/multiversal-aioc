@@ -1,0 +1,31 @@
+{
+  "lane": "fga",
+  "program_id": "FDE",
+  "work_item_id": "FDE-05",
+  "attempt_id": "FDE-05-attempt-001",
+  "status": "selected_not_started",
+  "implementation_branch": null,
+  "implementation_authority": false,
+  "scope": {
+    "predecessor": "FDE-04 completed_verified",
+    "name": "Clothing Photo Intake",
+    "in_scope": [
+      "add user-facing local image upload/intake in the live Fashion Design Engine and preserve source-image provenance without treating pixels as garment truth",
+      "detect or accept bounded garment regions/slices and visible-feature observations suitable for the existing FGA-05 clothing-reference proposal adapter",
+      "map visible garment evidence into review-required FGA-05 parameter proposals with confidence/uncertainty and explicit ambiguous/occluded handling",
+      "allow the user to accept, reject or correct reviewed proposals before applying them to the current FDE semantic draft",
+      "never invent hidden garment details, topology accommodation, equipment truth, anatomy or mechanics from the image",
+      "keep a provider-off deterministic intake path and expose optional-provider unavailability without blocking manual review/correction",
+      "focused cross-platform tests for upload/intake, region evidence, uncertainty, proposal review, correction and Studio application"
+    ],
+    "out_of_scope": [
+      "FDE-06 PAPT asset realization, generative garment synthesis or paid production execution",
+      "FDE-07 terminal product proof",
+      "automatic hidden-detail completion",
+      "new garment semantics or a second clothing-reference authority",
+      "Oaran fashion/style content authority",
+      "Mall, marketplace, commerce, public sharing or monetization",
+      "equipment ownership/stats, anatomy or mechanics mutation"
+    ]
+  }
+}
