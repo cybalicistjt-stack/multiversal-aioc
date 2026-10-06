@@ -1,0 +1,1712 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "MTLC",
+  "work_item_id": "MTLC-01",
+  "status": "candidate_authority_reconciliation",
+  "generated_date": "2026-10-06",
+  "authority_rule": "This matrix is MTLC-01 traceability. It does not override the named owning sources. CONVERGE means reuse an existing owner/contract and add lifecycle projection where needed; ADD means a genuine MTLC-owned gap; RECOVER means historical source recovery is required; INTEGRATE means Multiversal owns workflow/context while external/provider-neutral infrastructure may carry the specialized payload; DEFER means not required for the near-term lifecycle core.",
+  "source_catalog": {
+    "F002": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F002_UNIVERSAL_OBJECT_EXPERIENCE.md",
+      "state": "current design authority",
+      "owns": "stable object identity, object actions and shared object experience"
+    },
+    "F003": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md",
+      "state": "implementation-ready authority",
+      "owns": "identity, invitations, role-aware dashboard/workspace entry, observer grants"
+    },
+    "F004": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F004_CHARACTER_CREATION_AND_ADVANCEMENT.md",
+      "state": "implementation-ready authority",
+      "owns": "character lifecycle, advancement and campaign participation"
+    },
+    "F005": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md",
+      "state": "implementation-ready authority",
+      "owns": "Campaign/Scene/Session, invitations, membership/roles, launch readiness, observer access, close/review, portability"
+    },
+    "F006": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+      "state": "implementation-ready authority",
+      "owns": "action proposal/approval, quick rules inspection, results/history/notifications/reconnect"
+    },
+    "F007": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F007_FULL_COMBAT_INTERFACE.md",
+      "state": "implementation-ready authority",
+      "owns": "full live combat interaction and role-safe projections"
+    },
+    "F008": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F008_INVENTORY_OWNERSHIP_AND_SHARED_ASSETS.md",
+      "state": "implementation-ready authority",
+      "owns": "inventory, party/shared assets, transfer/lending/ownership and asset history"
+    },
+    "F009": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F009_RELATIONSHIP_TRACKER.md",
+      "state": "completed design packet",
+      "owns": "relationship state/history/search"
+    },
+    "F010": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F010_SOCIAL_INTERACTION_MODE.md",
+      "state": "completed design packet",
+      "owns": "social interaction mode"
+    },
+    "F011": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F011_INVESTIGATION_AND_CLUE_BOARD.md",
+      "state": "completed design packet",
+      "owns": "investigation/clue/evidence workflow"
+    },
+    "F013": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F013_BOUNDED_MAPS_ZONES_AND_TACTICAL_POSITIONING.md",
+      "state": "design authority",
+      "owns": "bounded maps/zones/tactical positioning"
+    },
+    "F016": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F016_FACTIONS_REPUTATION_AND_ORGANIZATIONS.md",
+      "state": "completed design packet",
+      "owns": "factions, reputation and organizations"
+    },
+    "F020": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md",
+      "state": "design authority",
+      "owns": "permissions, visibility and hidden-information safety"
+    },
+    "F021": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md",
+      "state": "completed internal-alpha contract",
+      "owns": "autosave, reconnect, recovery and bounded offline behavior"
+    },
+    "F025": {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F025_ONBOARDING_HELP_DIAGNOSTICS_AND_ISSUE_REPORTING.md",
+      "state": "completed design packet",
+      "owns": "onboarding, contextual help, diagnostics and issue reporting"
+    },
+    "APW02": {
+      "path": "governance/application-planning/asynchronous-persistent-workspace/APW-02_ASYNCHRONOUS_ACTION_PROPOSAL_AND_GM_INBOX_CONTRACT.md",
+      "state": "completed_verified design",
+      "owns": "async action/proposal and GM inbox"
+    },
+    "APW03": {
+      "path": "governance/application-planning/asynchronous-persistent-workspace/APW-03_BETWEEN_SESSION_CAMPAIGN_ACTIVITY_AND_BOUNDED_DOWNTIME.md",
+      "state": "completed_verified design",
+      "owns": "between-session activity and downtime"
+    },
+    "APW04": {
+      "path": "governance/application-planning/asynchronous-persistent-workspace/APW-04_PERSONAL_WORKSPACE_AND_NO_CAMPAIGN_HOME.md",
+      "state": "completed_verified design",
+      "owns": "personal workspace and no-campaign home"
+    },
+    "APW06": {
+      "path": "governance/application-planning/asynchronous-persistent-workspace/APW-06_SHELL_NAVIGATION_NOTIFICATIONS_VISIBILITY_AND_SPOILER_UX.md",
+      "state": "completed_verified design",
+      "owns": "attention states, notifications, shell visibility and spoiler UX"
+    },
+    "APW07": {
+      "path": "governance/application-planning/asynchronous-persistent-workspace/APW_PROGRAM_BACKLOG.json",
+      "state": "completed_verified design family",
+      "owns": "persistence/recovery/security/hybrid acceptance architecture"
+    },
+    "WCI02": {
+      "path": "governance/application-planning/worldbuilding-campaign-intelligence/WCI_WORLDBUILDING_CAMPAIGN_INTELLIGENCE_PROGRAM.md",
+      "state": "completed_verified implementation",
+      "owns": "history, calendars, timelines, chronicles and reality explorer"
+    },
+    "WCI04": {
+      "path": "governance/application-planning/worldbuilding-campaign-intelligence/WCI_WORLDBUILDING_CAMPAIGN_INTELLIGENCE_PROGRAM.md",
+      "state": "completed_verified implementation",
+      "owns": "living campaign, GM workspace and session intelligence"
+    },
+    "WCI05": {
+      "path": "governance/application-planning/worldbuilding-campaign-intelligence/WCI_WORLDBUILDING_CAMPAIGN_INTELLIGENCE_PROGRAM.md",
+      "state": "completed_verified implementation",
+      "owns": "continuity/consequence analysis over canonical owners"
+    },
+    "CWKS": {
+      "path": "operations/CURRENT.json#/lanes/cwks",
+      "state": "current active implementation lane",
+      "owns": "CreatorDocumentV1 writing/story/wiki/knowledge substrate"
+    },
+    "GPR": {
+      "path": "operations/CURRENT.json#/lanes/gpr",
+      "state": "current active implementation lane",
+      "owns": "durable Campaign/Session invitation, membership and session-service authority currently being certified"
+    },
+    "MSAS": {
+      "path": "operations/CURRENT.json#/completed_programs/MSAS",
+      "state": "completed_verified",
+      "owns": "sound/audio studio and audio asset infrastructure"
+    },
+    "MRCS": {
+      "path": "operations/CURRENT.json#/completed_programs/MRCS",
+      "state": "completed_verified",
+      "owns": "rules/content studio, rule search/reference and content graph foundations"
+    },
+    "PDCP05": {
+      "path": "governance/application-planning/preimplementation-design-closure/PDCP_PACKET_05_PERSISTENT_HISTORY_DESIGN_CLOSURE.md",
+      "state": "design closed",
+      "owns": "persistent history ownership boundaries and campaign/project time references"
+    },
+    "GROUP": {
+      "path": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_GROUP_LIFECYCLE_SPEC.md",
+      "state": "owner-approved MTLC design input",
+      "owns": "Group human-continuity, accession, trial, guest pool, waitlists, run/seat policy and Group-vs-Campaign boundary"
+    },
+    "COMMUNITY": {
+      "path": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_COMMUNITY_FRICTION_REGISTRY.json",
+      "state": "owner-approved research evidence",
+      "owns": "community-derived friction evidence and acceptance overlays"
+    },
+    "SOURCE_GAP": {
+      "path": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC-01_CANON_FRICTION_REGISTRY.md#5A",
+      "state": "recorded recovery gap",
+      "owns": "Consent/Veils recovery disposition; current sanitized source surface does not contain original passage"
+    },
+    "FEATURE_BIBLE": {
+      "path": "ChatGPT Project Source: FEATURE_BIBLE.md",
+      "state": "reference source",
+      "owns": "cross-system feature architecture and shared runtime concepts"
+    },
+    "UI_BIBLE": {
+      "path": "ChatGPT Project Source: UI_DESIGN_BIBLE.md",
+      "state": "reference source",
+      "owns": "responsive/accessibility/UI architecture"
+    },
+    "SCREEN_BIBLE": {
+      "path": "ChatGPT Project Source: SCREEN_DESIGN_BIBLE.md",
+      "state": "reference source",
+      "owns": "screen-level interaction reference"
+    },
+    "PROJECT_BIBLE": {
+      "path": "ChatGPT Project Source: PROJECT_BIBLE_OPS3_REFERENCE.md",
+      "state": "reference source",
+      "owns": "project-wide canonical architecture reference"
+    }
+  },
+  "rows": [
+    {
+      "id": "01",
+      "capability": "Find a Game",
+      "disposition": [
+        "ADD"
+      ],
+      "cluster": "find_form",
+      "authority_sources": [
+        "GROUP",
+        "COMMUNITY"
+      ],
+      "residual_gap": "No public discovery owner exists; private-group onboarding is separate from public LFG.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-12"
+      ],
+      "community_friction_ids": [
+        "FRIC-005"
+      ]
+    },
+    {
+      "id": "02",
+      "capability": "Player and GM Profiles",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "find_form",
+      "authority_sources": [
+        "F003",
+        "GROUP"
+      ],
+      "residual_gap": "Identity/workspace profile exists; table-fit/play-preference profile fields are new and must remain user-controlled.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-02",
+        "MTLC-12"
+      ],
+      "community_friction_ids": [
+        "FRIC-005"
+      ]
+    },
+    {
+      "id": "03",
+      "capability": "Campaign Recruitment",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "find_form",
+      "authority_sources": [
+        "F005",
+        "GPR",
+        "GROUP"
+      ],
+      "residual_gap": "Invitations/membership exist; interest, trial, guest-pool and accession funnel are new.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-02",
+        "MTLC-12"
+      ],
+      "community_friction_ids": [
+        "FRIC-005"
+      ]
+    },
+    {
+      "id": "04",
+      "capability": "Session Zero",
+      "disposition": [
+        "RECOVER",
+        "CONVERGE"
+      ],
+      "cluster": "find_form",
+      "authority_sources": [
+        "SOURCE_GAP",
+        "F005",
+        "GROUP",
+        "F020"
+      ],
+      "residual_gap": "Original Consent/Veils wording must be recovered; campaign agreement workflow must reuse Campaign authority.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-05"
+      ],
+      "community_friction_ids": [
+        "FRIC-005"
+      ]
+    },
+    {
+      "id": "05",
+      "capability": "Per-Session Safety",
+      "disposition": [
+        "RECOVER",
+        "ADD"
+      ],
+      "cluster": "find_form",
+      "authority_sources": [
+        "SOURCE_GAP",
+        "F005",
+        "F020"
+      ],
+      "residual_gap": "Source audit must determine what safety tools already existed; temporary per-session controls remain a genuine workflow gap unless recovered.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-05"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "06",
+      "capability": "Scheduling",
+      "disposition": [
+        "ADD",
+        "INTEGRATE"
+      ],
+      "cluster": "human_continuity",
+      "authority_sources": [
+        "GROUP",
+        "COMMUNITY"
+      ],
+      "residual_gap": "No real-world scheduling authority exists; external-calendar handoff should be provider-neutral.",
+      "manual_admin_risk": "VERY_HIGH",
+      "successor_tranches": [
+        "MTLC-04"
+      ],
+      "community_friction_ids": [
+        "FRIC-010",
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "07",
+      "capability": "Real-World Session Logistics",
+      "disposition": [
+        "ADD"
+      ],
+      "cluster": "human_continuity",
+      "authority_sources": [
+        "GROUP"
+      ],
+      "residual_gap": "Venue, arrival, accessibility logistics, equipment and optional food coordination are new bounded Group/Game Event data.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-04"
+      ],
+      "community_friction_ids": [
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "08",
+      "capability": "Campaign Lounge",
+      "disposition": [
+        "ADD",
+        "CONVERGE"
+      ],
+      "cluster": "human_continuity",
+      "authority_sources": [
+        "F005",
+        "APW06",
+        "F020"
+      ],
+      "residual_gap": "Membership/permissions/notifications exist; persistent campaign chat/channels/threads remain new.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-03"
+      ],
+      "community_friction_ids": [
+        "FRIC-011"
+      ]
+    },
+    {
+      "id": "09",
+      "capability": "Notification Control",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "human_continuity",
+      "authority_sources": [
+        "APW06",
+        "F003",
+        "F020"
+      ],
+      "residual_gap": "Notification semantics exist; MTLC must project them consistently across Group/Campaign/session workflows.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-03",
+        "MTLC-04",
+        "MTLC-10"
+      ],
+      "community_friction_ids": [
+        "FRIC-006",
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "10",
+      "capability": "Session Readiness / Preflight",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "human_continuity",
+      "authority_sources": [
+        "F005",
+        "WCI04"
+      ],
+      "residual_gap": "F005 already validates dependencies, character eligibility and launch readiness; MTLC needs one consolidated preflight projection.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-06"
+      ],
+      "community_friction_ids": [
+        "FRIC-002",
+        "FRIC-010"
+      ]
+    },
+    {
+      "id": "11",
+      "capability": "Player Homework",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "human_continuity",
+      "authority_sources": [
+        "APW02",
+        "APW03",
+        "APW06",
+        "F004"
+      ],
+      "residual_gap": "Async tasks/attention and advancement owners exist; a clear Player-facing homework/next-due projection is still needed.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-06"
+      ],
+      "community_friction_ids": [
+        "FRIC-010",
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "12",
+      "capability": "GM Prep Cockpit",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "human_continuity",
+      "authority_sources": [
+        "F005",
+        "WCI04",
+        "WCI05",
+        "F009",
+        "F011",
+        "F016"
+      ],
+      "residual_gap": "GM workspace/session intelligence and campaign entities already exist; MTLC should compose likely-relevant prep rather than create another GM database.",
+      "manual_admin_risk": "VERY_HIGH",
+      "successor_tranches": [
+        "MTLC-06"
+      ],
+      "community_friction_ids": [
+        "FRIC-001",
+        "FRIC-002",
+        "FRIC-010"
+      ]
+    },
+    {
+      "id": "13",
+      "capability": "Session Launch",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "F005",
+        "GPR"
+      ],
+      "residual_gap": "Authoritative launch snapshot/session lifecycle already owned; MTLC adds one lifecycle entry surface only.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-07"
+      ],
+      "community_friction_ids": [
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "14",
+      "capability": "Late / Missing / AFK Players",
+      "disposition": [
+        "ADD",
+        "CONVERGE"
+      ],
+      "cluster": "human_continuity",
+      "authority_sources": [
+        "F005",
+        "GROUP",
+        "APW07"
+      ],
+      "residual_gap": "Participation/session authority exists; explicit late/AFK/absence status, proxy policy and catch-up hooks are new.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-04",
+        "MTLC-07"
+      ],
+      "community_friction_ids": [
+        "FRIC-004"
+      ]
+    },
+    {
+      "id": "15",
+      "capability": "Live Session Utility Bar",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "F006",
+        "F007",
+        "F013"
+      ],
+      "residual_gap": "Live action/combat/map controls exist by domain; common timer/randomizer/pause utilities need a shared shell.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-08"
+      ],
+      "community_friction_ids": [
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "16",
+      "capability": "Dice and Randomizers",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "F006",
+        "PROJECT_BIBLE",
+        "FEATURE_BIBLE"
+      ],
+      "residual_gap": "Governed roll/result infrastructure exists; saved generic randomizers and convenience tools require bounded UI.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-08"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "17",
+      "capability": "Physical-Dice Friendly Mode",
+      "disposition": [
+        "ADD"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "F006"
+      ],
+      "residual_gap": "Manual roll evidence exists conceptually, but a first-class physical-dice workflow remains to be designed.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-08"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "18",
+      "capability": "Voice Communication",
+      "disposition": [
+        "INTEGRATE"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "F020",
+        "APW07"
+      ],
+      "residual_gap": "Use provider-neutral transport; Multiversal owns permissions/session context and fallback, not necessarily media transport.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-07"
+      ],
+      "community_friction_ids": [
+        "FRIC-004"
+      ]
+    },
+    {
+      "id": "19",
+      "capability": "Video and Screen Sharing",
+      "disposition": [
+        "INTEGRATE"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "F020",
+        "APW07"
+      ],
+      "residual_gap": "Provider-neutral transport with Multiversal-owned context/permissions; do not build heavyweight codec stack into core.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-07"
+      ],
+      "community_friction_ids": [
+        "FRIC-004"
+      ]
+    },
+    {
+      "id": "20",
+      "capability": "Live Captions / Speech Accessibility",
+      "disposition": [
+        "INTEGRATE",
+        "CONVERGE"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "UI_BIBLE",
+        "F025",
+        "APW07"
+      ],
+      "residual_gap": "Accessibility requirements exist; speech/caption provider remains optional/provider-neutral.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-07",
+        "MTLC-13"
+      ],
+      "community_friction_ids": [
+        "FRIC-003",
+        "FRIC-007"
+      ]
+    },
+    {
+      "id": "21",
+      "capability": "Session Audio Director",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "MSAS",
+        "F005"
+      ],
+      "residual_gap": "Audio studio/asset authority exists; session-context cueing/director workflow is new connective UI.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-08"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "22",
+      "capability": "Bring-Your-Own Audio",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "MSAS"
+      ],
+      "residual_gap": "User audio asset infrastructure can be reused; session-safe import/cache/control needs convergence.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-08"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "23",
+      "capability": "In-Person Table Mode",
+      "disposition": [
+        "ADD",
+        "CONVERGE"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "F005",
+        "F006",
+        "UI_BIBLE"
+      ],
+      "residual_gap": "Session/action authority and responsive surfaces exist; table-display/companion projection is new.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-07"
+      ],
+      "community_friction_ids": [
+        "FRIC-003",
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "24",
+      "capability": "Hybrid Table Mode",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "APW07",
+        "F005",
+        "F006"
+      ],
+      "residual_gap": "Hybrid acceptance architecture exists; presence-parity table behavior remains a lifecycle feature.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-07",
+        "MTLC-08"
+      ],
+      "community_friction_ids": [
+        "FRIC-004"
+      ]
+    },
+    {
+      "id": "25",
+      "capability": "Map Micro-Utilities",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "F013",
+        "F005"
+      ],
+      "residual_gap": "Map/zone/positioning authority exists; MTLC only surfaces quick ping/ruler/template/annotation actions.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-08"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "26",
+      "capability": "Handouts",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "F005",
+        "F020",
+        "CWKS"
+      ],
+      "residual_gap": "Role-scoped notes/assets/docs exist; reveal/share/revoke handout workflow needs convergence.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-08"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "27",
+      "capability": "Personal PDF / Rulebook Library",
+      "disposition": [
+        "ADD"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "MRCS",
+        "F020"
+      ],
+      "residual_gap": "Rules authority/search exists, but user-owned PDF library/indexing is a new personal-content surface.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-08"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "28",
+      "capability": "Rules Concierge",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "MRCS",
+        "F006",
+        "F020"
+      ],
+      "residual_gap": "Quick rule inspection and rule/content authority exist; lifecycle contextualization should reuse them.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-08"
+      ],
+      "community_friction_ids": [
+        "FRIC-007"
+      ]
+    },
+    {
+      "id": "29",
+      "capability": "Rulings Ledger",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "F006",
+        "WCI02",
+        "PDCP05"
+      ],
+      "residual_gap": "Adjudication/result/history owners exist; a campaign-facing reusable rulings projection is new.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-08",
+        "MTLC-09"
+      ],
+      "community_friction_ids": [
+        "FRIC-001"
+      ]
+    },
+    {
+      "id": "30",
+      "capability": "CWKS Documents",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "CWKS"
+      ],
+      "residual_gap": "Already owned by active CWKS; MTLC must link/attach, never create a second document engine.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-03",
+        "MTLC-08",
+        "MTLC-11"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "31",
+      "capability": "Idea Inbox / Quick Capture",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "CWKS",
+        "APW04"
+      ],
+      "residual_gap": "Personal/document substrate exists; ubiquitous quick capture and conversion actions remain new.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-11"
+      ],
+      "community_friction_ids": [
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "32",
+      "capability": "Between-Session Async Play",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "human_continuity",
+      "authority_sources": [
+        "APW02",
+        "APW03",
+        "F006",
+        "F005"
+      ],
+      "residual_gap": "APW already defines async action/GM inbox and bounded downtime; MTLC should integrate, not redesign.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-10"
+      ],
+      "community_friction_ids": [
+        "FRIC-006"
+      ]
+    },
+    {
+      "id": "33",
+      "capability": "Party Planning Board",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "human_continuity",
+      "authority_sources": [
+        "APW03",
+        "CWKS"
+      ],
+      "residual_gap": "Between-session activity exists; shared objectives/votes/planning board projection remains new.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-10"
+      ],
+      "community_friction_ids": [
+        "FRIC-006"
+      ]
+    },
+    {
+      "id": "34",
+      "capability": "Loot Distribution",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "close_loop",
+      "authority_sources": [
+        "F008",
+        "APW03"
+      ],
+      "residual_gap": "Ownership/transfer/shared inventory already owns loot movement; MTLC adds closeout/planning integration.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-09",
+        "MTLC-10"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "35",
+      "capability": "Character Admin Inbox",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "close_loop",
+      "authority_sources": [
+        "F004",
+        "APW02",
+        "APW06"
+      ],
+      "residual_gap": "Advancement and attention/GM-inbox primitives exist; role-specific character admin aggregation remains new.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-06",
+        "MTLC-10"
+      ],
+      "community_friction_ids": [
+        "FRIC-010"
+      ]
+    },
+    {
+      "id": "36",
+      "capability": "Post-Session Closure",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "close_loop",
+      "authority_sources": [
+        "F005",
+        "F006",
+        "WCI04",
+        "F008"
+      ],
+      "residual_gap": "Session close/review, results/history and inventory owners exist; MTLC composes one closure flow.",
+      "manual_admin_risk": "VERY_HIGH",
+      "successor_tranches": [
+        "MTLC-09"
+      ],
+      "community_friction_ids": [
+        "FRIC-001",
+        "FRIC-010"
+      ]
+    },
+    {
+      "id": "37",
+      "capability": "Previously on Multiversal…",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "close_loop",
+      "authority_sources": [
+        "WCI02",
+        "WCI04",
+        "WCI05"
+      ],
+      "residual_gap": "History/continuity sources exist; automatic permission-safe recap projection is new.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-09"
+      ],
+      "community_friction_ids": [
+        "FRIC-001",
+        "FRIC-009"
+      ]
+    },
+    {
+      "id": "38",
+      "capability": "Missed-Session Catch-Up",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "close_loop",
+      "authority_sources": [
+        "WCI02",
+        "WCI04",
+        "F020"
+      ],
+      "residual_gap": "History/session intelligence exist; participant-knowledge-filtered catch-up workflow is new.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-09"
+      ],
+      "community_friction_ids": [
+        "FRIC-001",
+        "FRIC-004"
+      ]
+    },
+    {
+      "id": "39",
+      "capability": "Campaign Continuity Memory",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "close_loop",
+      "authority_sources": [
+        "WCI02",
+        "WCI04",
+        "WCI05",
+        "PDCP05",
+        "F009",
+        "F011",
+        "F016"
+      ],
+      "residual_gap": "Canonical history/continuity owners already exist; MTLC must turn ordinary play into low-maintenance continuity projections.",
+      "manual_admin_risk": "VERY_HIGH",
+      "successor_tranches": [
+        "MTLC-09"
+      ],
+      "community_friction_ids": [
+        "FRIC-001",
+        "FRIC-009",
+        "FRIC-010"
+      ]
+    },
+    {
+      "id": "40",
+      "capability": "World Time + Real Time",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "human_continuity",
+      "authority_sources": [
+        "WCI02",
+        "PDCP05",
+        "GROUP"
+      ],
+      "residual_gap": "Campaign/world time authority exists; real-world schedule/timezone coordination belongs to MTLC Group/Game Event.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-04",
+        "MTLC-09"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "41",
+      "capability": "GM Random Utility Drawer",
+      "disposition": [
+        "ADD"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "F006",
+        "F007"
+      ],
+      "residual_gap": "No single current owner for generic GM generators/random tables/timers; keep convenience-only and non-authoritative.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-08"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "42",
+      "capability": "No-Code Automation Studio",
+      "disposition": [
+        "ADD"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "F006",
+        "APW06",
+        "F020"
+      ],
+      "residual_gap": "Events/notifications/permissions exist; user trigger-condition-action authoring is a new governed layer.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-11"
+      ],
+      "community_friction_ids": [
+        "FRIC-008",
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "43",
+      "capability": "User Macros / Quick Actions",
+      "disposition": [
+        "ADD"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "F002",
+        "F006",
+        "F020"
+      ],
+      "residual_gap": "Stable actions exist; user-defined bounded shortcuts/macros require a safe declarative contract.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-11"
+      ],
+      "community_friction_ids": [
+        "FRIC-008",
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "44",
+      "capability": "Extension Framework",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "PROJECT_BIBLE",
+        "COMMUNITY"
+      ],
+      "residual_gap": "Pack/content extension concepts exist, but MTLC needs explicit stable capability/version/permission contracts for user extensions.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-11"
+      ],
+      "community_friction_ids": [
+        "FRIC-008"
+      ]
+    },
+    {
+      "id": "45",
+      "capability": "External Integration Hub",
+      "disposition": [
+        "INTEGRATE"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "F020",
+        "F021",
+        "COMMUNITY"
+      ],
+      "residual_gap": "Create provider-neutral adapters/deep links/webhooks without moving external service authority into core.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-11"
+      ],
+      "community_friction_ids": [
+        "FRIC-011",
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "46",
+      "capability": "Multiversal Exchange",
+      "disposition": [
+        "ADD",
+        "DEFER"
+      ],
+      "cluster": "public_ecosystem",
+      "authority_sources": [
+        "COMMUNITY"
+      ],
+      "residual_gap": "Community pack/content discovery is later; must wait for rights/moderation/public-community gates.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-12"
+      ],
+      "community_friction_ids": [
+        "FRIC-008"
+      ]
+    },
+    {
+      "id": "47",
+      "capability": "Marketplace Commerce",
+      "disposition": [
+        "DEFER"
+      ],
+      "cluster": "public_ecosystem",
+      "authority_sources": [
+        "PROJECT_BIBLE"
+      ],
+      "residual_gap": "Commerce/payments/legal/tax/revenue-share are separate commercial gates, not lifecycle-core prerequisites.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-12"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "48",
+      "capability": "Community Moderation",
+      "disposition": [
+        "ADD"
+      ],
+      "cluster": "public_ecosystem",
+      "authority_sources": [
+        "COMMUNITY",
+        "F020"
+      ],
+      "residual_gap": "Mandatory before public discovery/community; report/block/appeals/abuse/age/privacy/rights infrastructure does not currently have an MTLC product owner.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-12"
+      ],
+      "community_friction_ids": [
+        "FRIC-005"
+      ]
+    },
+    {
+      "id": "49",
+      "capability": "Observer / Spectator Role",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "F003",
+        "F005",
+        "F006"
+      ],
+      "residual_gap": "Observer grants and role-safe projections already exist; MTLC can project them into event/session entry.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-02",
+        "MTLC-07",
+        "MTLC-13"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "50",
+      "capability": "Actual-Play / Streaming Mode",
+      "disposition": [
+        "INTEGRATE",
+        "ADD"
+      ],
+      "cluster": "public_ecosystem",
+      "authority_sources": [
+        "F020",
+        "F006"
+      ],
+      "residual_gap": "Role-safe projections exist; streaming/overlay/provider integration is new and must not leak hidden/private data.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-13"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "51",
+      "capability": "Recording / Transcript Pipeline",
+      "disposition": [
+        "INTEGRATE"
+      ],
+      "cluster": "public_ecosystem",
+      "authority_sources": [
+        "F020",
+        "F021"
+      ],
+      "residual_gap": "Recording storage/STT should remain optional/provider-neutral with explicit consent/retention/export controls.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-13"
+      ],
+      "community_friction_ids": [
+        "FRIC-011"
+      ]
+    },
+    {
+      "id": "52",
+      "capability": "Convention / One-Shot Mode",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "find_form",
+      "authority_sources": [
+        "F005",
+        "GROUP"
+      ],
+      "residual_gap": "Campaign/session shell exists; temporary group/event presets, fast onboarding and cleanup are new.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-02",
+        "MTLC-13"
+      ],
+      "community_friction_ids": [
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "53",
+      "capability": "Pickup Game Mode",
+      "disposition": [
+        "ADD"
+      ],
+      "cluster": "find_form",
+      "authority_sources": [
+        "GROUP",
+        "COMMUNITY"
+      ],
+      "residual_gap": "Temporary public/private session discovery and admission is new; public use waits for moderation.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-12",
+        "MTLC-13"
+      ],
+      "community_friction_ids": [
+        "FRIC-005"
+      ]
+    },
+    {
+      "id": "54",
+      "capability": "Campaign Templates",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "close_loop",
+      "authority_sources": [
+        "F005"
+      ],
+      "residual_gap": "F005 explicitly identifies templates as later work and supports Scene templates; MTLC can converge a campaign-start template layer.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-02",
+        "MTLC-13"
+      ],
+      "community_friction_ids": [
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "55",
+      "capability": "Party / Club / Store Organizer",
+      "disposition": [
+        "CONVERGE",
+        "DEFER"
+      ],
+      "cluster": "public_ecosystem",
+      "authority_sources": [
+        "GROUP"
+      ],
+      "residual_gap": "Group architecture covers persistent parties/clubs/communities; store/business organizer responsibilities remain deferred/separately governed.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-02",
+        "MTLC-12",
+        "MTLC-13"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "56",
+      "capability": "Print / Physical Output",
+      "disposition": [
+        "ADD"
+      ],
+      "cluster": "close_loop",
+      "authority_sources": [
+        "F004",
+        "F005",
+        "CWKS"
+      ],
+      "residual_gap": "Current owners provide printable source data but a consistent print/card/handout output system remains new.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-13"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "57",
+      "capability": "Mobile Companion / Table Remote",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "live_play",
+      "authority_sources": [
+        "UI_BIBLE",
+        "F005",
+        "F006",
+        "APW07"
+      ],
+      "residual_gap": "Mobile-equivalent authority exists across features; a role-focused companion/remote projection is new.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-07",
+        "MTLC-13"
+      ],
+      "community_friction_ids": [
+        "FRIC-003",
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "58",
+      "capability": "Accessibility Control Center",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "UI_BIBLE",
+        "F025",
+        "F005",
+        "F006"
+      ],
+      "residual_gap": "Accessibility is already cross-cutting; centralized user preference/control surface remains to be composed.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-13"
+      ],
+      "community_friction_ids": [
+        "FRIC-007"
+      ]
+    },
+    {
+      "id": "59",
+      "capability": "New Player Mode",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "F025",
+        "F003",
+        "UI_BIBLE"
+      ],
+      "residual_gap": "Onboarding/help exists; simplified player lifecycle and progressive-density mode require convergence.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-13"
+      ],
+      "community_friction_ids": [
+        "FRIC-007",
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "60",
+      "capability": "New GM Mode",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "F025",
+        "WCI04",
+        "PROJECT_BIBLE"
+      ],
+      "residual_gap": "Help/GM workspace exist; guided first-campaign/first-session mode and GM Academy handoff remain additive.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-13"
+      ],
+      "community_friction_ids": [
+        "FRIC-002",
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "61",
+      "capability": "Game/System Quickstart",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "F025",
+        "MRCS"
+      ],
+      "residual_gap": "Rules/help foundations exist; system-specific quickstart bundles and role-aware learning path remain additive.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-13"
+      ],
+      "community_friction_ids": [
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "62",
+      "capability": "Next Action Center",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "human_continuity",
+      "authority_sources": [
+        "APW06",
+        "APW04",
+        "F003"
+      ],
+      "residual_gap": "APW already defines 'what needs attention' states; MTLC needs one player-facing lifecycle aggregation.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-06"
+      ],
+      "community_friction_ids": [
+        "FRIC-010",
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "63",
+      "capability": "GM Attention Center",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "human_continuity",
+      "authority_sources": [
+        "APW02",
+        "APW06",
+        "WCI04"
+      ],
+      "residual_gap": "GM inbox and session intelligence exist; MTLC needs one prioritized cross-domain attention projection.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-06"
+      ],
+      "community_friction_ids": [
+        "FRIC-002",
+        "FRIC-010"
+      ]
+    },
+    {
+      "id": "64",
+      "capability": "Search Everywhere",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "F009",
+        "WCI02",
+        "MRCS",
+        "CWKS",
+        "F020"
+      ],
+      "residual_gap": "Domain search exists; a permission-safe global search/navigation surface is still a convergence task.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-11"
+      ],
+      "community_friction_ids": [
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "65",
+      "capability": "Universal “Turn This Into…”",
+      "disposition": [
+        "ADD",
+        "CONVERGE"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "F002",
+        "CWKS",
+        "F005",
+        "F008"
+      ],
+      "residual_gap": "Stable objects/documents/campaign entities exist; cross-object conversion commands require explicit provenance and owner handoffs.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-11"
+      ],
+      "community_friction_ids": [
+        "FRIC-009",
+        "FRIC-012"
+      ]
+    },
+    {
+      "id": "66",
+      "capability": "Universal Share / Link",
+      "disposition": [
+        "ADD",
+        "CONVERGE"
+      ],
+      "cluster": "connectivity",
+      "authority_sources": [
+        "F002",
+        "F020",
+        "F003"
+      ],
+      "residual_gap": "Stable object identity and permissions exist; universal deep-link/share semantics remain to be standardized.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-11"
+      ],
+      "community_friction_ids": [
+        "FRIC-011"
+      ]
+    },
+    {
+      "id": "67",
+      "capability": "Campaign Handoff / Co-GM",
+      "disposition": [
+        "CONVERGE",
+        "ADD"
+      ],
+      "cluster": "close_loop",
+      "authority_sources": [
+        "F005",
+        "F003",
+        "WCI04"
+      ],
+      "residual_gap": "Assistant-GM roles/delegation exist; durable campaign stewardship transfer and co-GM continuity remain additive.",
+      "manual_admin_risk": "HIGH",
+      "successor_tranches": [
+        "MTLC-02",
+        "MTLC-13"
+      ],
+      "community_friction_ids": [
+        "FRIC-011"
+      ]
+    },
+    {
+      "id": "68",
+      "capability": "Support Without Leaving App",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "close_loop",
+      "authority_sources": [
+        "F025"
+      ],
+      "residual_gap": "Contextual help, diagnostics and issue reporting already have a dedicated owner; MTLC only exposes them contextually.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-13"
+      ],
+      "community_friction_ids": []
+    },
+    {
+      "id": "69",
+      "capability": "Crash / Disconnect Grace",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "close_loop",
+      "authority_sources": [
+        "F021",
+        "GPR",
+        "F006"
+      ],
+      "residual_gap": "Reconnect/recovery/idempotency are already canonical; MTLC must require them across every lifecycle surface.",
+      "manual_admin_risk": "LOW",
+      "successor_tranches": [
+        "MTLC-07",
+        "MTLC-14"
+      ],
+      "community_friction_ids": [
+        "FRIC-004",
+        "FRIC-011"
+      ]
+    },
+    {
+      "id": "70",
+      "capability": "Portable Ownership",
+      "disposition": [
+        "CONVERGE"
+      ],
+      "cluster": "close_loop",
+      "authority_sources": [
+        "F005",
+        "F021",
+        "APW07",
+        "COMMUNITY"
+      ],
+      "residual_gap": "Campaign/session portability, backup/recovery/export principles exist; MTLC must keep new connective data inside that same ownership contract.",
+      "manual_admin_risk": "MEDIUM",
+      "successor_tranches": [
+        "MTLC-03",
+        "MTLC-09",
+        "MTLC-10",
+        "MTLC-14"
+      ],
+      "community_friction_ids": [
+        "FRIC-011"
+      ]
+    }
+  ],
+  "checks": {
+    "row_count": 70,
+    "ids_unique": true,
+    "every_row_has_disposition": true,
+    "every_converge_or_recover_has_source": true,
+    "every_row_has_successor_tranche": true
+  },
+  "duplicate_owner_guardrails": [
+    "Group membership and Campaign participation remain separate; Group must not clone Campaign/Session membership authority.",
+    "MTLC does not create a second Campaign, Session, Character, inventory, relationship, faction, investigation, map, rules, document, history, notification, permission or recovery database.",
+    "CWKS remains the document/writing/knowledge substrate; MTLC links to it.",
+    "F005/GPR remain Campaign/Session/invitation/membership owners; MTLC lifecycle surfaces compose them.",
+    "APW remains the async/attention/notification design family; MTLC converges its contracts into lifecycle UX rather than redefining them.",
+    "WCI remains history/timeline/campaign-intelligence authority; MTLC recap/catch-up derives from its canonical sources.",
+    "F021/GPR remain reconnect/recovery authorities; every later MTLC tranche consumes them instead of adding local recovery logic."
+  ],
+  "source_recovery_gaps": [
+    {
+      "topic": "Consent and Veils",
+      "status": "unresolved_historical_source_gap",
+      "evidence": "Current sanitized source packages searched during MTLC-01 do not contain the original tabletop Consent/Veils passage. Full original Project Bible/MV_Master/original DB-004/recovery snapshots/historical conversations are recorded as preserved outside the current live source surface.",
+      "rule": "Preserve RECOVER. Do not reconstruct original wording from memory."
+    }
+  ]
+}
