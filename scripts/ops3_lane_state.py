@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from typing import Any
 
-LANES = frozenset({"gpr", "cwks", "fga"})
+LANES = frozenset({"gpr", "cwks", "mtlc"})
 SCHEMA_VERSION = "1.2.0"
 
 

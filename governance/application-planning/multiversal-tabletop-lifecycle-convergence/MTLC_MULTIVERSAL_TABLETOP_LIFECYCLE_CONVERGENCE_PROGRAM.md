@@ -1,8 +1,8 @@
 # Multiversal Tabletop Lifecycle Convergence (MTLC)
 
 **Program ID:** MTLC  
-**Status:** OWNER_APPROVED_PLANNED  
-**Authority:** Planning and future-program definition only. This document does not select current work, change `operations/CURRENT.json`, occupy a persistent implementation lane, or grant implementation authority.  
+**Status:** OWNER_APPROVED_ACTIVE  
+**Authority:** Program definition is owner-approved. Live implementation authority is selected only by `operations/CURRENT.json`; as of 2026-10-06 MTLC-01 is CURRENT-selected in the former terminal FGA/FDE persistent slot. This document cannot independently expand that scope.  
 **Owner and final authority:** John Brandon Turner  
 **Recorded:** 2026-10-02
 

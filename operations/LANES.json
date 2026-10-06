@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.8.0",
+  "schema_version": "3.9.0",
   "canonical_door": "operations/BOOTSTRAP.md",
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "selection_rule": "User intent selects a lane; lane state never changes the global operating contract.",
@@ -42,7 +42,7 @@
         "MAL/MRCS and owner-domain contracts named by the selected GPR item",
         "live application/repository evidence limited to active GPR scope"
       ],
-      "cross_lane_reads": "Consume completed MRCS definitions and explicit owner contracts as dependencies. CWKS and FGA remain independent except for explicit integration evidence or publication conflicts. OARC and CASI remain terminal completed history.",
+      "cross_lane_reads": "Consume completed MRCS definitions and explicit owner contracts as dependencies. CWKS and MTLC remain independent except for explicit integration evidence or publication conflicts. OARC, CASI, FGA and FDE remain terminal completed history.",
       "execution_state_ref": "ops3-lane-state/gpr"
     },
     {
@@ -81,7 +81,7 @@
         "existing creator/entity/sequential-art contracts explicitly required by the selected CWKS item",
         "live application repository evidence limited to active CWKS scope"
       ],
-      "cross_lane_reads": "Consume completed MRCS and other creator/entity contracts only as explicit dependencies. GPR and FGA remain independent; read them only for explicit integration evidence or publication conflicts. OARC and CASI remain terminal completed history.",
+      "cross_lane_reads": "Consume completed MRCS and other creator/entity contracts only as explicit dependencies. GPR and MTLC remain independent; read them only for explicit integration evidence or publication conflicts. OARC, CASI, FGA and FDE remain terminal completed history.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     {
@@ -128,7 +128,7 @@
     },
     {
       "id": "fga",
-      "purpose": "Persistent Fashion product lane. FGA-01 through FGA-06 and FDE-01 through FDE-07 are terminal completed_verified history. The slot has no selected successor and may be reused only after explicit owner governance.",
+      "purpose": "Completed Fashion/Garment Authority and Fashion Design Engine history. FGA-01 through FGA-06 and FDE-01 through FDE-07 are terminal completed_verified; no persistent implementation slot or new Fashion execution authority.",
       "intent_examples": [
         "review completed FDE",
         "inspect fashion engine",
@@ -144,8 +144,30 @@
         "terminal FGA-PARAM-1/FGA-01..06 and terminal FDE-01..07 evidence",
         "live application repository evidence only when a later owner-authorized successor explicitly consumes it"
       ],
-      "cross_lane_reads": "FGA, FDE and CASI are terminal completed history. GPR remains independent. CWKS is completed history. Oaran style/content, Mall/marketplace, commerce and public sharing remain separately governed and are not implied successors.",
+      "cross_lane_reads": "FGA, FDE and CASI are terminal completed history. MTLC occupies the former persistent fashion slot after explicit owner direction on 2026-10-06. Read GPR/CWKS/MTLC only for explicit integration evidence; do not restart Fashion implementation through this compatibility lane.",
       "execution_state_ref": "ops3-lane-state/fga"
+    },
+    {
+      "id": "mtlc",
+      "purpose": "Multiversal Tabletop Lifecycle Convergence (MTLC): eliminate connective friction across forming and maintaining groups, scheduling, preparation, session participation, continuity, between-session activity and the complete TTRPG lifecycle without duplicating existing campaign/session/character/CWKS authority.",
+      "intent_examples": [
+        "continue MTLC",
+        "continue tabletop lifecycle convergence",
+        "continue group lifecycle work",
+        "work on TTRPG connective tissue"
+      ],
+      "current_state_source": "operations/CURRENT.json#/lanes/mtlc",
+      "source_bundle": [
+        "CURRENT-selected MTLC work item/checkpoint",
+        "live lane execution state from ops3-lane-state/mtlc",
+        "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_MULTIVERSAL_TABLETOP_LIFECYCLE_CONVERGENCE_PROGRAM.md",
+        "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_PROGRAM_BACKLOG.json",
+        "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC-01_CANON_FRICTION_REGISTRY.md",
+        "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_GROUP_LIFECYCLE_SPEC.md",
+        "Feature/UI/Screen/Project Bibles and live implementation evidence explicitly required by the selected MTLC item"
+      ],
+      "cross_lane_reads": "MTLC-01 may read GPR, CWKS and completed program evidence only to reconcile existing owners and avoid duplication. It may not mutate GPR or CWKS scope. Later MTLC tranches require their own CURRENT-selected work items.",
+      "execution_state_ref": "ops3-lane-state/mtlc"
     },
     {
       "id": "operations",
@@ -237,7 +259,7 @@
   "persistent_implementation_lanes": [
     "gpr",
     "cwks",
-    "fga"
+    "mtlc"
   ],
   "retired_lane_aliases": {
     "product-development": "Retired umbrella. Resolve explicit intent to gpr, cwks or oarc; this alias cannot select work.",
@@ -246,9 +268,10 @@
     "mvps": "Completed terminal MVPS lane/program history. It was replaced as the third persistent implementation slot by OARC on 2026-09-20.",
     "mrcs-implementation": "MRCS-21 completed_verified. MRCS is completed program history; its former persistent slot was replaced by CWKS on 2026-10-02.",
     "operational-assets": "OARC-07 completed_verified. OARC is preserved as terminal completed history; its former persistent slot was owner-approved for CASI on 2026-10-04.",
-    "character-appearance": "CASI-08 completed_verified. CASI is preserved as terminal completed history; its persistent slot was owner-approved for FGA on 2026-10-04."
+    "character-appearance": "CASI-08 completed_verified. CASI is preserved as terminal completed history; its persistent slot was owner-approved for FGA on 2026-10-04.",
+    "fashion-implementation": "FGA-06 and FDE-07 completed_verified. Fashion is completed program history; its former persistent slot was owner-approved for MTLC on 2026-10-06."
   },
-  "parallel_persistence_rule": "GPR, CWKS and the persistent fashion lane (`fga`, currently FDE) are independent implementation lanes with separate milestone-only lane-state refs. Terminal FGA, MSAS, MRCS, OARC and CASI remain completed history. If two or more persistent lanes are nonterminal, immutable green READY candidates use FIFO publication coordination. If exactly one persistent lane is nonterminal, the READY queue is dormant and protected-main publication uses the direct exact-head fresh-base path.",
+  "parallel_persistence_rule": "GPR, CWKS and MTLC are independent persistent implementation lanes with separate milestone-only lane-state refs. Terminal FGA/FDE, CASI, MSAS, MRCS and OARC remain completed history. If two or more persistent lanes are nonterminal, immutable green READY candidates use FIFO publication coordination. If exactly one persistent lane is nonterminal, the READY queue is dormant and protected-main publication uses the direct exact-head fresh-base path.",
   "single_active_lane_rule": "Derive single-active-lane mode once from the fresh CURRENT read. Ordinary execution reads and mutates only that lane plus concrete dependencies/conflicts; it does not rescan terminal siblings, check concurrent writers, read an empty READY queue, or perform routine rebase/update-branch work. Protected-main publication is PR-only, exact-head and fresh-base, with a narrow integration rerun only if main actually drifts.",
   "quiet_execution_rule": "Healthy CI is observed at workflow level only at sparse transition-driven points. Job/step/log inspection is failure-driven. Lane scans, queue-empty checks, rebase checks, mergeability polling and owner re-entry are not material progress and must not create lane-state receipts. Browser/session interruption resumes from durable lane state and repository evidence rather than requiring another owner Continue."
 }

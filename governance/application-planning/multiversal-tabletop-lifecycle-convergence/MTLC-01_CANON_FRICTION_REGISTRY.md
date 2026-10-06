@@ -2,7 +2,7 @@
 
 **Program:** MTLC — Multiversal Tabletop Lifecycle Convergence  
 **Work package:** MTLC-01  
-**Status:** IN_PROGRESS_PLANNING / NO IMPLEMENTATION AUTHORITY  
+**Status:** IN_PROGRESS — CURRENT-selected MTLC-01  
 **Started:** 2026-10-04  
 **Purpose:** Establish the authoritative delta between capabilities Multiversal already owns, older source-backed material that must be recovered, features that need convergence into a coherent tabletop lifecycle, genuine additions, and integrations that should remain outside the core client.
 
@@ -138,6 +138,16 @@ Required recovery behavior:
 5. record any genuine source gap instead of fabricating original wording;
 6. only then specify missing UI/workflow around that recovered canon.
 
+## 5A. Consent/Veils recovery status — current source surface
+
+A bounded recovery search of the current sanitized source packages found **no original tabletop Consent/Veils passage**. Keyword hits for “veil” in those packages were unrelated rules/assets/locations and are not evidence for the missing table-safety material.
+
+This is recorded as a **source-surface gap, not a canon absence**.
+
+Current source-manifest evidence states that the full original Project Bible, MV_Master archive, original DB-004 package, recovery snapshots, historical conversations, and retired operating packages remain preserved outside the live Project Source surface. SOURCE_MAP likewise says full historical/recovery bundles remain outside the always-loaded source surface and should be attached when a canonical OPS3 lane requires recovery or provenance work.
+
+**Disposition:** RECOVER remains authoritative for Consent/Veils. MTLC-01 must search the preserved historical/recovery corpus when available, preserve the original terminology/provenance if found, and record an explicit unresolved gap if the underlying source cannot be recovered. Do not reconstruct the original passage from memory.
+
 ## 6. Group/human-continuity decision
 
 The approved Group architecture is recorded separately in `MTLC_GROUP_LIFECYCLE_SPEC.md`.
@@ -210,6 +220,8 @@ MTLC-01 is complete only when:
 
 ## 11. Current execution note
 
-As of 2026-10-04, OPS3 persistent implementation slots are occupied by active GPR, CWKS and CASI work. MTLC-01 is therefore proceeding as bounded planning/source-convergence work without taking implementation authority or displacing an active lane.
+As of 2026-10-06, the terminal FGA/FDE persistent slot has been owner-approved for reuse by MTLC. MTLC-01 is CURRENT-selected and in progress alongside independent GPR and CWKS work.
 
-Persistent MTLC implementation activation is a later governance action after a slot becomes available or the owner explicitly reprioritizes a live slot.
+MTLC-01 authority is deliberately narrow: recover and trace existing canon/source material, resolve every one of the 70 lifecycle items to its actual Multiversal owner/source/status, identify duplicate-owner hazards and human administration cost, and partition the resulting delta into bounded successor tranches.
+
+This activation does **not** authorize MTLC-02+ product feature implementation. Group UI, recruitment/LFG, Lounge/chat, scheduling, public community, and other later lifecycle features remain governed by their future MTLC work items.

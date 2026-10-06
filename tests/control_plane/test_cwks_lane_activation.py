@@ -26,7 +26,7 @@ class CwksLaneActivationTests(unittest.TestCase):
         lanes = read_json("operations/LANES.json")
         current = read_json("operations/CURRENT.json")
 
-        self.assertEqual(lanes["persistent_implementation_lanes"], ["gpr", "cwks", "fga"])
+        self.assertEqual(lanes["persistent_implementation_lanes"], ["gpr", "cwks", "mtlc"])
         lane_rows = {row["id"]: row for row in lanes["lanes"]}
         self.assertIn("cwks", lane_rows)
         self.assertEqual(lane_rows["cwks"]["execution_state_ref"], "ops3-lane-state/cwks")
