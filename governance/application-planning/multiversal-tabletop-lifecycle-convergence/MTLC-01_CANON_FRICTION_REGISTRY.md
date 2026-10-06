@@ -218,6 +218,27 @@ MTLC-01 is complete only when:
 7. the inventory is partitioned into bounded implementation tranches;
 8. the first implementation tranche can be selected without reopening broad archaeology.
 
+## 10A. Authority reconciliation result
+
+The authoritative 70-item reconciliation is recorded in:
+
+`governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC-01_AUTHORITY_TRACEABILITY_MATRIX.json`
+
+The matrix records for every lifecycle item:
+
+- final MTLC disposition;
+- current owner/source references for every recovered or converged capability;
+- residual product gap;
+- manual administration risk;
+- mapped community-friction evidence;
+- bounded successor tranche(s).
+
+Current disposition counts are not mutually exclusive because one capability may both reuse an existing owner and require additive lifecycle UI: **51 CONVERGE, 47 ADD, 7 INTEGRATE, 3 DEFER, and 2 RECOVER tags across 70 rows**.
+
+All twelve community-friction records (FRIC-001 through FRIC-012) are mapped into the matrix. Duplicate-owner guardrails preserve Campaign/Session, Character, inventory, relationship/faction/investigation/map, CWKS, APW, WCI, permission, notification, and recovery owners rather than creating MTLC replacements.
+
+The first bounded successor is **MTLC-02 — Private Table Formation and Campaign Onboarding**. Its implementation scope can now be selected from this matrix and the Group lifecycle specification without reopening broad feature archaeology.
+
 ## 11. Current execution note
 
 As of 2026-10-06, the terminal FGA/FDE persistent slot has been owner-approved for reuse by MTLC. MTLC-01 is CURRENT-selected and in progress alongside independent GPR and CWKS work.
