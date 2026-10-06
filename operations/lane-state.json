@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "fga",
-  "revision": 39,
+  "revision": 40,
   "selected_work_item": "FDE-04",
   "attempt_id": "FDE-04-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/fde-04-persistent-designs-collections",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Owner Continue on 2026-10-06; FDE-04 activation merged as afaf8f0aceaab33fca2647ff22ba7f33049ae12d after Operations V3 run 37445758372."
+    "kind": "prequeue_green",
+    "evidence": "FDE-04 causal persistence RED run 37446153224; import-topology RED run 37447232001; exact application head afaac7ac16c5064016740af6ed2a9bffddbc0e33 passed Linux, Windows and deterministic cross-platform validation run 37447396609."
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,9 @@
     "closeout_merge_sha": "127e378a322064f997be314bf4e489a1f852c9c3",
     "closeout_validation_run": "37441683035",
     "closeout_ready_candidate": "FDE-03-closeout-pr-1848"
+  },
+  "prequeue_green": {
+    "candidate_head": "afaac7ac16c5064016740af6ed2a9bffddbc0e33",
+    "validation_run": "37447396609"
   }
 }
