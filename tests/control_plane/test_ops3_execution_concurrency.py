@@ -191,7 +191,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
 
     def test_successor_reseed_is_deterministic_and_resets_progress(self) -> None:
         state=LANE_STATE.initial_state("mtlc",revision=20,selected_work_item="MTLC-01",attempt_id="MTLC-01-attempt-001")
-        state=LANE_STATE.start_execution(state,expected_revision=20,lane="fga",implementation_branch="work/fga-01",evidence="owner Continue")
+        state=LANE_STATE.start_execution(state,expected_revision=20,lane="mtlc",implementation_branch="work/mtlc-01",evidence="owner Continue")
         state=LANE_STATE.mark_prequeue_green(state,expected_revision=21,lane="mtlc",candidate_head="h",validation_run="r")
         state=LANE_STATE.mark_published(state,expected_revision=22,lane="mtlc",candidate_head="h",merge_sha="m",ready_candidate_id="MTLC-01-app-001")
         next_state=LANE_STATE.reseed_successor(
