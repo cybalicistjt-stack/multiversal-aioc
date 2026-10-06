@@ -1,38 +1,8 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 249,
-  "ready": [
-    {
-      "candidate_id": "MTLC-01-closeout-pr-1862",
-      "lane": "mtlc",
-      "work_item_id": "MTLC-01-closeout",
-      "pr_number": 1862,
-      "head_sha": "a6898cc6b790969964a6b81eda0869da3ec2c360",
-      "prequeue_validation": {
-        "status": "green",
-        "head_sha": "a6898cc6b790969964a6b81eda0869da3ec2c360",
-        "run_id": "37487710960"
-      },
-      "write_set": [
-        "operations/CURRENT.json",
-        "operations/work-items/MTLC-01.json",
-        "operations/work-items/MTLC-02.json",
-        "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_PROGRAM_BACKLOG.json",
-        "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC-01_CANON_FRICTION_REGISTRY.md",
-        "tests/control_plane/test_mtlc_lane_activation.py"
-      ],
-      "dependency_fingerprint": {
-        "validated_base_sha": "5d82590478f442cde74a7eaa1eafdfa56063c756",
-        "application_merge_sha": "5d82590478f442cde74a7eaa1eafdfa56063c756",
-        "application_validation_run": "37486900789",
-        "application_ready_candidate": "MTLC-01-app-pr-1860",
-        "successor": "MTLC-02 selected_not_started",
-        "preserved_gpr_selection": "PCV-03F in_progress",
-        "preserved_cwks_selection": "CWKS-10 in_progress"
-      }
-    }
-  ],
+  "generation": 250,
+  "ready": [],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
@@ -4745,7 +4715,47 @@
         "mergeable": true,
         "merge_method": "squash"
       }
+    },
+    {
+      "candidate_id": "MTLC-01-closeout-pr-1862",
+      "lane": "mtlc",
+      "work_item_id": "MTLC-01-closeout",
+      "pr_number": 1862,
+      "head_sha": "a6898cc6b790969964a6b81eda0869da3ec2c360",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "a6898cc6b790969964a6b81eda0869da3ec2c360",
+        "run_id": "37487710960"
+      },
+      "write_set": [
+        "operations/CURRENT.json",
+        "operations/work-items/MTLC-01.json",
+        "operations/work-items/MTLC-02.json",
+        "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_PROGRAM_BACKLOG.json",
+        "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC-01_CANON_FRICTION_REGISTRY.md",
+        "tests/control_plane/test_mtlc_lane_activation.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "5d82590478f442cde74a7eaa1eafdfa56063c756",
+        "application_merge_sha": "5d82590478f442cde74a7eaa1eafdfa56063c756",
+        "application_validation_run": "37486900789",
+        "application_ready_candidate": "MTLC-01-app-pr-1860",
+        "successor": "MTLC-02 selected_not_started",
+        "preserved_gpr_selection": "PCV-03F in_progress",
+        "preserved_cwks_selection": "CWKS-10 in_progress"
+      },
+      "status": "published",
+      "merge_sha": "946d0543bb159746ce91c366e0c184b26044ad53",
+      "integration_receipt": {
+        "status": "green",
+        "base_sha": "244e10c6a82c362a92447c9d898d6c733283d26a",
+        "candidate_head": "a6898cc6b790969964a6b81eda0869da3ec2c360",
+        "run_id": "37487710960",
+        "mergeable": true,
+        "merge_method": "squash",
+        "drift_note": "fresh main advanced only operations/work-items/CWKS-10.json; no overlap with MTLC closeout write set"
+      }
     }
   ],
-  "last_merge_sha": "5d82590478f442cde74a7eaa1eafdfa56063c756"
+  "last_merge_sha": "946d0543bb159746ce91c366e0c184b26044ad53"
 }
