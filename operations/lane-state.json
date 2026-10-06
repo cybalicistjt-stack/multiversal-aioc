@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "fga",
-  "revision": 51,
+  "revision": 52,
   "selected_work_item": "FDE-07",
   "attempt_id": "FDE-07-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/fde-07-product-golden-proof",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Owner Continue on 2026-10-06; FDE-07 activation merged as cb486732d87d177ad7a3337c1acbdefc06579b08 after Operations V3 run 37463728257."
+    "kind": "prequeue_green",
+    "evidence": "FDE-07 causal proof RED run 37464250986; exact application head c9401a5636549e804bb50911d95b18d8be74ffca passed Linux, Windows and deterministic cross-platform validation run 37464490384."
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,9 @@
     "closeout_merge_sha": "a4314a33a2de07b3a8e2fd0502b4285f4f2af6d0",
     "closeout_validation_run": "37456555002",
     "closeout_ready_candidate": "FDE-06-closeout-pr-1855"
+  },
+  "prequeue_green": {
+    "candidate_head": "c9401a5636549e804bb50911d95b18d8be74ffca",
+    "validation_run": "37464490384"
   }
 }
