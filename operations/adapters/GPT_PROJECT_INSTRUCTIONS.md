@@ -66,7 +66,7 @@ Use this after a conversation break when you want the repository state, not the 
 Bootstrap through current OPS3. My intended lane is `<lane>`; reconcile that intent through the canonical lane registry, then: <objective>.
 ```
 
-Persistent implementation lane names are `gpr`, `cwks`, and `fga`; other useful lanes include `operations`, `content-design`, `dwc-speech`, `research-evaluation`, and `source-provenance`. MSAS-21, MRCS-21, OARC-07, CASI-08, MVPS-23 and UISR-11 are completed program history and do not occupy persistent implementation lanes. Naming a lane is an intent hint, not authority to bypass `operations/LANES.json` or `operations/CURRENT.json`.
+Persistent implementation lane names are `gpr`, `cwks`, and `mtlc`; other useful lanes include `operations`, `content-design`, `dwc-speech`, `research-evaluation`, and `source-provenance`. MSAS-21, MRCS-21, OARC-07, CASI-08, FGA-06, FDE-07, MVPS-23 and UISR-11 are completed program history and do not occupy persistent implementation lanes. Naming a lane is an intent hint, not authority to bypass `operations/LANES.json` or `operations/CURRENT.json`.
 
 ### Diagnose an operational problem
 
