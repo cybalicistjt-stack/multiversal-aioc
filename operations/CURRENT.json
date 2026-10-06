@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 599,
+  "state_revision": 600,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -63,13 +63,13 @@
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "cwks": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "selected_work_item": "CWKS-09",
       "attempt_id": "CWKS-09-attempt-001",
       "checkpoint_path": "operations/work-items/CWKS-09.json",
-      "implementation_branch": "work/cwks-09-review-history",
-      "implementation_authority": true,
-      "activation_rule": "Owner approved the CWKS-09 written design and implementation plan and directed Continue on 2026-10-05. CWKS-09 is authorized only to add local-first comments/review, immutable native version history, deterministic comparison, and non-destructive recovery over the unified CreatorDocumentV1 substrate while preserving CWKS-05 crash recovery and read-only D29 legacy history. CWKS-10 collaboration/presence/cursors, AI writing/review/generation, new permissions authority, GPR scope, and FGA scope remain unauthorized.",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "CWKS-09 completed_verified after owner-approved design/plan merge 6682c7277f7d165bd680ed0fb86d4df11d900406, activation merge 17f50eed9a5ddd5b537068e03948f491233d9e35, causal and task-scoped RED/GREEN implementation, terminal exact-head Linux/Windows/deterministic Validation Core run 37438844605 on application head b5ea4bbd71c4721d9c87ff78cfcdb28bd9f101ad, and READY publication of Multiversal-app PR #826 as d0514d033c9c900aa23f0ec37aed8293e5c22459 at application queue generation 118. CWKS-10 collaborative editing remains unselected and receives no authority from this closeout.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     "dwc-speech": {
@@ -155,7 +155,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F, CWKS-09, and FDE-04 remain independently in_progress. FDE-04 is limited to Persistent Designs & Collections over sealed FGA/FDE-01..03 foundations.",
+  "next_project_action": "GPR PCV-03F and FDE-04 remain independently in_progress. CWKS-09 is completed_verified; CWKS-10 collaborative editing remains unselected and requires separate owner approval before any implementation authority.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -336,6 +336,16 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "completion_rule": "FGA-01 through FGA-06 completed_verified. Terminal FGA-06 / CAS-GOLDEN-1 garment proof certifies all ten approved topology profiles through presentation-only FGA-PARAM-1 garment semantics, FGA-02 topology fit/anchor/clearance/mask/occlusion handling, FGA-03 reusable production-demand coverage, FGA-04 provider-off Fashion Design Studio editing/preview/save/CAS-WARD-001 proposals, and FGA-05 review-gated clothing-reference proposals across full-body/portrait/token views. Compatible, unresolved, incompatible and unsupported states remain explicit; no humanoid fallback, hidden-detail invention, generative rendering, PAPT execution, paid provider, Mall/commerce, equipment truth, anatomy mutation or mechanics mutation is required or authorized. FGA has no successor."
+    },
+    "CWKS": {
+      "program_id": "CWKS",
+      "state": "completed_verified",
+      "selected_work_item": "CWKS-09",
+      "attempt_id": "CWKS-09-attempt-001",
+      "checkpoint_path": "operations/work-items/CWKS-09.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "completion_rule": "CWKS-01 through CWKS-09 are completed_verified. CWKS-09 adds local-first comments/review, immutable native version history, deterministic comparison, non-destructive recovery, Story/Wiki/Creator Suite Review & History integration, and read-only D29 legacy-history recovery boundaries over CreatorDocumentV1. CWKS-10 collaboration/presence/cursors and AI writing/review/generation remain unselected."
     }
   },
   "domain_authorities": {
