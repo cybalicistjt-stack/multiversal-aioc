@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "fga",
-  "revision": 43,
+  "revision": 44,
   "selected_work_item": "FDE-05",
   "attempt_id": "FDE-05-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/fde-05-clothing-photo-intake",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Owner Continue on 2026-10-06; FDE-05 activation merged as 4abb100c3580ad1adc7e0d09218c354433e7bdcf after Operations V3 run 37450096948."
+    "kind": "prequeue_green",
+    "evidence": "FDE-05 causal behavioral RED run 37450615882; exact application head 8b0bcc00a38fb5977d984ea7b3b93d44c6469f86 passed Linux, Windows and deterministic cross-platform validation run 37451006139."
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,9 @@
     "closeout_merge_sha": "0987704a76077b3f41020dbba1fdf948d6bf1b73",
     "closeout_validation_run": "37448448339",
     "closeout_ready_candidate": "FDE-04-closeout-pr-1851"
+  },
+  "prequeue_green": {
+    "candidate_head": "8b0bcc00a38fb5977d984ea7b3b93d44c6469f86",
+    "validation_run": "37451006139"
   }
 }
