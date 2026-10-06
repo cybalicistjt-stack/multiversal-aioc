@@ -1,6 +1,6 @@
 # Multiversal Operations Bootstrap
 
-**System:** Operations V3 (OPS3)  
+**System:** Operations V4 (OPS4)  
 **Status:** CANONICAL SINGLE DOOR  
 **Owner and final authority:** John Brandon Turner
 
@@ -54,20 +54,20 @@ A governed `Continue` is one bounded execution, not permission to stop after an 
 Before returning a normal terminal response for an execution command:
 
 1. fresh-read `operations/CURRENT.json` and the active checkpoint;
-2. apply `scripts/ops3_execution_guard.py` or the exact equivalent logic;
+2. apply `scripts/ops4_execution_guard.py` or the exact equivalent logic;
 3. continue working if the result is nonterminal;
 4. stop only on verified completion or a recorded owner-only/external blocker.
 
 Multiple owner Continues or owner stall nudges are execution-quality incidents and must be recorded truthfully; they may not be certified as clean single-Continue execution.
 
-A repeated owner execution command on the same in-progress attempt is not a fresh cycle by default. Compare the checkpoint's material-progress sequence with the sequence observed at the prior execution command. If nothing material changed, record `OPS3.NO_MATERIAL_PROGRESS` and enter stall diagnosis/recovery before doing more ordinary work. Polling, unchanged reads, or restating status do not count as progress. Status requests must report the current coarse milestone, any READY publication candidate, and the first unresolved blocker so the owner can distinguish active work from a stall.
+A repeated owner execution command on the same in-progress attempt is not a fresh cycle by default. Compare the checkpoint's material-progress sequence with the sequence observed at the prior execution command. If nothing material changed, record `OPS4.NO_MATERIAL_PROGRESS` and enter stall diagnosis/recovery before doing more ordinary work. Polling, unchanged reads, or restating status do not count as progress. Status requests must report the current coarse milestone, any READY publication candidate, and the first unresolved blocker so the owner can distinguish active work from a stall.
 
 
 ### Executor/session interruption rule + anti-overinstrumentation guard
 
 A chat/session/tool runtime is never a project dependency. Do not silently wait, sleep, or run open-ended polling loops for CI, tools, another lane, or a publication position.
 
-OPS3 uses **milestone receipts, not activity receipts**. Repository/PR/CI/publication-queue evidence is already durable truth and must not be copied into the lane journal after every observation.
+OPS4 uses **milestone receipts, not activity receipts**. Repository/PR/CI/publication-queue evidence is already durable truth and must not be copied into the lane journal after every observation.
 
 For an ordinary persistent-lane attempt, the lane-state ref has only these execution milestones before successor reseed:
 
@@ -84,12 +84,30 @@ Treat a workflow run as one validation gate. While it is healthy/in-progress, in
 
 **Transition-driven observation is mandatory.** After one healthy workflow-level observation, do not re-read the same unchanged run merely because time passed. If independent authorized work remains, do that work. If no independent work remains, an unchanged healthy run is an executor wait boundary, not permission for a polling loop; resume from durable CI evidence on the next execution opportunity. A terminal failure immediately enters causal diagnosis; a terminal success immediately advances to the next governed phase.
 
+
+### OPS4 agent/CI feedback gate
+
+CI is an **acceptance system, not a remote REPL**. Automatic CI may still run on commits, but an executor must not use remote CI as the ordinary way to discover basic compile, type, lint, package-test, or deterministic unit-test failures when a smaller executable surface is available.
+
+Before deliberately sending a candidate to remote acceptance:
+
+1. run the smallest available focused validation that can answer the changed behavior;
+2. if no capable local/focused executor exists, record that validation as **unavailable** with concrete evidence and allow one bounded remote preflight; unavailable is not the same as skipped;
+3. bind the remote run to one immutable candidate head;
+4. observe a healthy run once, then continue independent authorized work or treat it as an executor boundary;
+5. after terminal failure, diagnose the **first material failure** and classify it as product/configuration, transient infrastructure, or unresolved flake;
+6. product/configuration failures require a changed candidate head plus causal repair evidence before another remote acceptance run;
+7. the same failed head may not be rerun for product/configuration discovery. A transient infrastructure failure gets at most one same-head retry with concrete infrastructure evidence; a repeated infrastructure failure requires a changed executor/configuration path rather than another blind rerun;
+8. tests authored by the same agent are development evidence, not automatically sufficient acceptance for a real network/storage/process/auth/persistence/cross-platform boundary. Mock-only proof cannot certify a real boundary.
+
+Use `scripts/ops4_ci_guard.py` or exact-equivalent logic before deliberate remote validation. Its decision is execution evidence only and must **not** become a lane-state activity receipt.
+
 If a tool call returns no usable result, a session aborts, or execution resumes after an interruption, fresh-read the lane milestone plus the repository/PR/CI/queue evidence needed to determine what happened since that milestone; never replay completed work merely because it was not mirrored into lane state. An executor interruption is an executor/tooling incident, not permission to restart the tranche, reserve `main`, or block another lane.
 
 
 ### Single-active-lane mode and quiet execution
 
-When exactly one persistent implementation lane is nonterminal, OPS3 enters **single-active-lane mode**. Derive that fact once from the fresh `CURRENT.json` read used for lane selection. Until an invalidating event occurs, do **not** rescan sibling lane refs, check for concurrent writers, read an empty publication queue, or perform a routine update/rebase of the implementation branch. Terminal sibling lanes remain history unless a concrete dependency or an observed fresh-`main` change requires them.
+When exactly one persistent implementation lane is nonterminal, OPS4 enters **single-active-lane mode**. Derive that fact once from the fresh `CURRENT.json` read used for lane selection. Until an invalidating event occurs, do **not** rescan sibling lane refs, check for concurrent writers, read an empty publication queue, or perform a routine update/rebase of the implementation branch. Terminal sibling lanes remain history unless a concrete dependency or an observed fresh-`main` change requires them.
 
 The durable lane ref remains the **lane-state terminal gate**. For the selected lane, `in_progress`, `prequeue_green`, or `published` forbids a normal terminal response to an owner execution command. A repeated owner execution command may trigger checkpoint-local stall diagnosis, but it must **not** create a lane-state write merely to count the interaction. If interaction-quality telemetry is useful, aggregate it into an already-required terminal/closeout record rather than creating an activity receipt.
 
@@ -101,7 +119,7 @@ Validation capacity is a **runner pool**, not a named-runner dependency. Multipl
 
 Before any executor mutates protected `main` in `cybalicistjt-stack/Multiversal-app` or `cybalicistjt-stack/multiversal-aioc`, preserve PR-only mutation, exact-head validation, and a fresh-base integration check.
 
-**Single-active-lane direct publication:** after the selected lane has one immutable PR head and the full required prequeue gate is green for that exact head, fresh-read target `main` once immediately before integration, run only the drift-sensitive integration gate against that base, and merge the exact PR head with expected-head protection. Do not read/write the READY queue, scan sibling lanes, or rebase/update the branch as routine preparation. If `main` changes after the integration receipt, rerun only the drift-sensitive integration gate on the new base. If an actual conflict forces the candidate head to change, invalidate the old exact-head receipt and validate the repaired head; a rebase is never required by OPS3.
+**Single-active-lane direct publication:** after the selected lane has one immutable PR head and the full required prequeue gate is green for that exact head, fresh-read target `main` once immediately before integration, run only the drift-sensitive integration gate against that base, and merge the exact PR head with expected-head protection. Do not read/write the READY queue, scan sibling lanes, or rebase/update the branch as routine preparation. If `main` changes after the integration receipt, rerun only the drift-sensitive integration gate on the new base. If an actual conflict forces the candidate head to change, invalidate the old exact-head receipt and validate the repaired head; a rebase is never required by OPS4.
 
 **Multi-lane publication:** only when two or more persistent implementation lanes are nonterminal, use the READY-candidate FIFO protocol implemented by `scripts/ops3_merge_lease.py`. Candidates enter only after immutable exact-head prequeue GREEN. The FIFO head fresh-reads `main`, passes the drift-sensitive integration gate, merges with expected-head protection, and is reconciled from the durable result.
 

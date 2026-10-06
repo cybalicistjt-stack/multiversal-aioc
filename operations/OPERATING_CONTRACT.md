@@ -1,7 +1,7 @@
-# Multiversal Operations V3 Operating Contract
+# Multiversal Operations V4 Operating Contract
 
-**Document ID:** MV-OPS3-CONTRACT-001  
-**Version:** 3.13.0  
+**Document ID:** MV-OPS4-CONTRACT-001  
+**Version:** 4.0.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -50,9 +50,9 @@ When a conversation changes topics materially, reselect the lane once. Do not ca
 
 ### Parallel persistent lanes
 
-OPS3 preserves exactly three independent persistent implementation slots. The current persistent lanes are `gpr`, `cwks`, and `mtlc`. A lane may be `completed_verified`, `selected_not_started`, or `in_progress`; one lane's completion or inactivity never pauses, folds into, or revokes another active lane. After a lane is terminal `completed_verified`, the owner may explicitly replace that persistent slot through operations governance while preserving the completed program as immutable history. MSAS-21, MRCS-21, OARC-07, CASI-08, FGA-06, FDE-07, MVPS-23 and UISR-11 are preserved as completed program history and no longer occupy persistent slots. Operations work may repair lane selectors without collapsing this three-slot topology.
+OPS4 preserves exactly three independent persistent implementation slots. The current persistent lanes are `gpr`, `cwks`, and `mtlc`. A lane may be `completed_verified`, `selected_not_started`, or `in_progress`; one lane's completion or inactivity never pauses, folds into, or revokes another active lane. After a lane is terminal `completed_verified`, the owner may explicitly replace that persistent slot through operations governance while preserving the completed program as immutable history. MSAS-21, MRCS-21, OARC-07, CASI-08, FGA-06, FDE-07, MVPS-23 and UISR-11 are preserved as completed program history and no longer occupy persistent slots. Operations work may repair lane selectors without collapsing this three-slot topology.
 
-OPS3 may keep more than one persistent implementation lane active at once when the owner has explicitly separated the work streams.
+OPS4 may keep more than one persistent implementation lane active at once when the owner has explicitly separated the work streams.
 
 - Each conversation/executor still selects exactly one lane from user intent.
 - Implementation authority is lane-local. Starting or continuing one lane does not implicitly pause, revoke, reorder, or rewrite another active lane.
@@ -82,7 +82,7 @@ A status request without execution wording is read-only. `get ready` means recon
 
 Every newly governed or repaired in-progress attempt must carry a machine-readable material-progress receipt in `execution_guard`: `material_progress_seq`, `progress_at_last_owner_command`, `no_progress_cycles`, `last_material_progress`, and `active_stall`.
 
-On every additional owner execution command for an already in-progress attempt, compare `material_progress_seq` with `progress_at_last_owner_command` before beginning another ordinary cycle. If they are equal, record `OPS3.NO_MATERIAL_PROGRESS`, set `active_stall=true`, and enter diagnosis/recovery immediately. Do not begin another broad discovery, polling, validation, or retry cycle until changed evidence clears the stall. Repeated polling, re-reading unchanged sources, re-emitting status, waiting on the same deterministic failure, or recreating the same candidate is not material progress.
+On every additional owner execution command for an already in-progress attempt, compare `material_progress_seq` with `progress_at_last_owner_command` before beginning another ordinary cycle. If they are equal, record `OPS4.NO_MATERIAL_PROGRESS`, set `active_stall=true`, and enter diagnosis/recovery immediately. Do not begin another broad discovery, polling, validation, or retry cycle until changed evidence clears the stall. Repeated polling, re-reading unchanged sources, re-emitting status, waiting on the same deterministic failure, or recreating the same candidate is not material progress.
 
 A status request is read-only and must expose enough current evidence to make a stall visible: work item, active substep, material-progress sequence and last evidence, protected-main holder/phase/liveness when applicable, and the first unresolved blocker/failure. Status reporting never resets a stall or counts as progress.
 
@@ -103,9 +103,40 @@ Once lane, work item, repository, branch, and acceptance gate are known:
 
 Research is progress only when it resolves a concrete unknown needed for the result.
 
+
+### Agent/CI feedback architecture
+
+OPS4 separates the **development feedback loop** from **remote acceptance**.
+
+**Tier 0 — reasoning and static inspection.** Resolve obvious contract, API, dependency and diff questions before execution. Do not use a workflow run to answer a question available from repository evidence.
+
+**Tier 1 — focused executable feedback.** Use the smallest capable local/package/type/lint/unit/integration surface that proves the changed behavior. Prefer short feedback loops and small repair batches. When the current executor cannot run a capable focused check, record `unavailable` with concrete capability evidence; do not pretend the check passed or silently call it skipped.
+
+**Tier 2 — immutable remote candidate acceptance.** Remote CI validates an exact candidate head and environment-specific behavior. CI may trigger automatically on commits, but an executor must not deliberately treat remote CI as an interactive compile/test REPL. One head is one candidate.
+
+**Tier 3 — terminal/comprehensive acceptance.** Cross-platform, deterministic comparison, full regression, integration, release or other expensive gates run only where the selected work item requires them. A focused green check never replaces a required terminal gate.
+
+Remote-validation rules:
+
+- A deliberate remote run requires Tier-1 GREEN evidence, or a concrete Tier-1 UNAVAILABLE record.
+- After one healthy in-progress observation, unchanged polling is prohibited. Independent work continues; otherwise the run is an executor boundary.
+- On terminal failure, diagnose the first material failure before looking for additional failures.
+- Product/configuration failure kills that candidate for acceptance. The same head may not be rerun to see whether it "works this time."
+- A repaired product/configuration failure requires a new head and causal repair evidence before another remote acceptance run.
+- A demonstrably transient infrastructure failure may receive **one** same-head retry. A second infrastructure failure on that head requires a changed executor, runner, or configuration path; repeated blind retries are forbidden.
+- An unresolved flaky-test signature is not product success. One bounded rerun may classify a suspected flake, but recurring flake must be fixed, quarantined by an explicit owner-approved policy, or replaced with deterministic evidence before acceptance.
+- Batch related repairs before another expensive gate. Do not spend one CI run per obvious edit.
+- Fast deterministic checks should fail before expensive cross-platform or long-running gates whenever workflow structure allows it.
+- Obsolete candidates must not consume scarce validation capacity or block newer candidates. Concurrency/cancellation must preserve exact-head evidence.
+- Runner queue state, cancellation, and process lifetime are infrastructure facts, never material lane progress.
+
+**Independent acceptance evidence.** Tests authored as part of the same repair are useful development evidence, but a requirement that crosses a real boundary—network transport, persistence, process boundary, authentication/admission, filesystem, installed application, or cross-platform behavior—must not be certified solely by mocks or same-agent unit tests. Acceptance must include at least one independent or cross-boundary proof appropriate to the requirement, such as an existing regression, real integration test, deterministic system receipt, separate evaluator, installed/runtime proof, or required cross-platform gate.
+
+The executable policy is `scripts/ops4_ci_guard.py`. It is a validator, not an authority source and not a lane journal.
+
 ### Single-active-lane mode and quiet execution
 
-When exactly one persistent implementation lane is nonterminal, OPS3 enters **single-active-lane mode**. Derive this mode once from the fresh `CURRENT.json` used to select the lane. Until an invalidating event occurs, ordinary execution must not rescan terminal sibling lane refs, enumerate "concurrent writers," read an empty publication queue, or perform routine branch update/rebase work. Terminal siblings are history; read them only for a concrete dependency or after an observed repository change proves they are relevant.
+When exactly one persistent implementation lane is nonterminal, OPS4 enters **single-active-lane mode**. Derive this mode once from the fresh `CURRENT.json` used to select the lane. Until an invalidating event occurs, ordinary execution must not rescan terminal sibling lane refs, enumerate "concurrent writers," read an empty publication queue, or perform routine branch update/rebase work. Terminal siblings are history; read them only for a concrete dependency or after an observed repository change proves they are relevant.
 
 The durable lane ref is the **lane-state terminal gate**. `in_progress`, `prequeue_green`, or `published` forbids a normal terminal response to an owner execution command. Repeated owner execution commands remain useful diagnostic input for detecting stalls, but counting the interaction is not a lane milestone. Do not create a lane-state write solely for owner re-entry, stall nudges, status checks, queue checks, rebase checks, or mergeability polls. Aggregate any interaction-quality telemetry into an already-required terminal/closeout record.
 
@@ -168,7 +199,7 @@ The state model is implemented by `scripts/ops3_lane_state.py`.
 
 ### Overinstrumentation guard
 
-OPS3 protects throughput by treating instrumentation as overhead, not work.
+OPS4 protects throughput by treating instrumentation as overhead, not work.
 
 - Use **milestone receipts, not activity receipts**.
 - Do not write lane state for status reads, polling, PR creation, individual CI/platform results, artifact/log inspection, READY submission, integration binding, merge preparation, merge verification, queue reconciliation, or closeout-candidate progress.
@@ -187,7 +218,7 @@ Protected repositories use repository-local coordination refs named:
 
 `ops3-publication-queue/<lowercase-target-repository-slug>`
 
-The queue model is implemented by `scripts/ops3_merge_lease.py` (legacy filename retained for compatibility during the OPS3-10 cutover).
+The queue model is implemented by the migration-stable `scripts/ops3_merge_lease.py` (legacy filename retained for compatibility during the OPS4-10 cutover).
 
 - Queue state contains READY immutable candidates and publication history only. Normal state has no `holder`, `turn_base`, activation phase, heartbeat, lease expiry, or release/recovery-release state.
 - Prequeue validation must be green and bound to the submitted exact head. Pending, failed, mutable, or merely anticipated work cannot enter the queue.
@@ -216,7 +247,7 @@ The protected repositories remain `cybalicistjt-stack/Multiversal-app` and `cyba
 - Every protected-main mutation is a pull-request merge of one immutable expected head. Direct contents/ref writes to protected `main` are prohibited.
 - In single-active-lane mode, no publication queue is consulted or mutated. A fresh observed `main` plus a green drift-sensitive integration receipt for the exact PR head authorizes the merge.
 - With two or more nonterminal persistent lanes, only the FIFO READY head may merge after the same fresh-base integration requirement.
-- OPS3 never requires a routine rebase. Base drift invalidates only the integration receipt; rerun the narrow integration gate. Change the candidate head only for a real conflict or repair, then revalidate that exact head.
+- OPS4 never requires a routine rebase. Base drift invalidates only the integration receipt; rerun the narrow integration gate. Change the candidate head only for a real conflict or repair, then revalidate that exact head.
 - Generated-content or CI work prepares outputs on the candidate branch and may not push directly to protected `main`.
 
 ### Atomic control-plane projection
@@ -250,7 +281,7 @@ A bounded work item may be called `completed_verified` only when:
 
 An open PR, queued/running check, patch, local success, model exit code, product merge without control-plane closeout, or conversational assertion is nonterminal unless the work item explicitly defines it as the requested endpoint.
 
-Product completion and execution-process conformance are separate. If `continue_turns > 1`, the checkpoint may still preserve valid completed product work, but execution conformance must record `OPS3.MULTI_CONTINUE_UNRECORDED` (or an equivalent explicit multi-Continue violation) rather than falsely reporting a clean one-Continue execution. Any owner stall nudge must likewise be recorded as a process violation. `scripts/ops3_execution_guard.py` enforces these evidence rules.
+Product completion and execution-process conformance are separate. If `continue_turns > 1`, the checkpoint may still preserve valid completed product work, but execution conformance must record `OPS4.MULTI_CONTINUE_UNRECORDED` (or an equivalent explicit multi-Continue violation) rather than falsely reporting a clean one-Continue execution. Any owner stall nudge must likewise be recorded as a process violation. `scripts/ops3_execution_guard.py` enforces these evidence rules.
 
 ## 10. Owner-only boundaries
 
@@ -265,6 +296,8 @@ Never delete project history merely because it is retired from authority. Preser
 Retirement means "cannot steer live work," not "erase the record."
 
 ## 12. Projections and compatibility
+
+The existing lowercase transport identifiers `ops3-lane-state/*`, `ops3-publication-queue/*`, and the helper filename `scripts/ops3_merge_lease.py` are preserved under OPS4 as migration-stable durable identifiers while live candidates and historical receipts still reference them. Their names are compatibility artifacts only and grant no OPS3 authority. Renaming them requires a separate proved migration and is not part of OPS4-01.
 
 Legacy files may remain when tooling still expects their paths, but they must be one of:
 

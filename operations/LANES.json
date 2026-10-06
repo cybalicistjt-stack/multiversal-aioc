@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.9.0",
+  "schema_version": "4.0.0",
   "canonical_door": "operations/BOOTSTRAP.md",
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "selection_rule": "User intent selects a lane; lane state never changes the global operating contract.",
@@ -171,7 +171,7 @@
     },
     {
       "id": "operations",
-      "purpose": "Governance architecture, repositories, CI, agent behavior, execution infrastructure, validation infrastructure and operational tooling.",
+      "purpose": "Governance architecture, repositories, CI, agent behavior, agent harness design, execution infrastructure, validation feedback architecture and operational tooling.",
       "intent_examples": [
         "fix governance",
         "redesign operations",
@@ -183,7 +183,8 @@
       "source_bundle": [
         "operations/",
         "only affected repository control surfaces",
-        "live repository/CI/tool evidence"
+        "live repository/CI/tool evidence",
+        "scripts/ops4_ci_guard.py and current operations validators when CI/agent feedback behavior is in scope"
       ],
       "cross_lane_reads": "Implementation state may be read only to preserve or reconcile it; operations work may not silently start implementation work."
     },
@@ -273,5 +274,7 @@
   },
   "parallel_persistence_rule": "GPR, CWKS and MTLC are independent persistent implementation lanes with separate milestone-only lane-state refs. Terminal FGA/FDE, CASI, MSAS, MRCS and OARC remain completed history. If two or more persistent lanes are nonterminal, immutable green READY candidates use FIFO publication coordination. If exactly one persistent lane is nonterminal, the READY queue is dormant and protected-main publication uses the direct exact-head fresh-base path.",
   "single_active_lane_rule": "Derive single-active-lane mode once from the fresh CURRENT read. Ordinary execution reads and mutates only that lane plus concrete dependencies/conflicts; it does not rescan terminal siblings, check concurrent writers, read an empty READY queue, or perform routine rebase/update-branch work. Protected-main publication is PR-only, exact-head and fresh-base, with a narrow integration rerun only if main actually drifts.",
-  "quiet_execution_rule": "Healthy CI is observed at workflow level only at sparse transition-driven points. Job/step/log inspection is failure-driven. Lane scans, queue-empty checks, rebase checks, mergeability polling and owner re-entry are not material progress and must not create lane-state receipts. Browser/session interruption resumes from durable lane state and repository evidence rather than requiring another owner Continue."
+  "quiet_execution_rule": "Healthy CI is observed at workflow level only at sparse transition-driven points. Job/step/log inspection is failure-driven. Lane scans, queue-empty checks, rebase checks, mergeability polling and owner re-entry are not material progress and must not create lane-state receipts. Browser/session interruption resumes from durable lane state and repository evidence rather than requiring another owner Continue. OPS4 additionally forbids using remote CI as an interactive compile/test REPL when a smaller executable surface is available.",
+  "ops4_ci_feedback_rule": "Before deliberate remote acceptance, use the smallest capable focused check or record concrete focused-check unavailability. Bind one run to one immutable head; diagnose the first terminal failure; product/config failure requires a changed repaired head; transient infrastructure gets at most one same-head retry; real boundaries require independent/cross-boundary acceptance evidence.",
+  "ops4_transport_compatibility": "Existing ops3-lane-state/* and ops3-publication-queue/* names remain migration-stable durable identifiers under OPS4 while active/historical receipts reference them. Their names do not restore OPS3 authority."
 }

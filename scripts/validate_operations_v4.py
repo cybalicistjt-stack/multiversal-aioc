@@ -1,0 +1,575 @@
+#!/usr/bin/env python3
+"""Validate the Operations V4 single-door control plane."""
+from __future__ import annotations
+
+import argparse
+import json
+import subprocess
+from pathlib import Path
+from typing import Any
+
+DOOR = Path("operations/BOOTSTRAP.md")
+CONTRACT = Path("operations/OPERATING_CONTRACT.md")
+CURRENT = Path("operations/CURRENT.json")
+LANES = Path("operations/LANES.json")
+REGISTRY = Path("operations/CONTROL_SURFACE_REGISTRY.json")
+OPS3_01_WORK_ITEM = Path("operations/work-items/OPS3-01.json")
+OPS4_01_WORK_ITEM = Path("operations/work-items/OPS4-01.json")
+LEGACY_POINTER = Path("governance/ai/runtime/CURRENT_WORK_POINTER.json")
+LEGACY_AUTHORITY = Path("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
+AIOC_AGENTS = Path("AGENTS.md")
+LEGACY_BOOTSTRAP = Path("governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md")
+STATIC_RESTART = Path("governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt")
+PROJECT_MEMORY = Path("governance/project-memory/PROJECT_MEMORY.json")
+LEGACY_CONTROL_MATRIX = Path("governance/ai/interaction-system/enforcement/CONTROL_COVERAGE_MATRIX.json")
+LEGACY_EXECUTABLES = (
+    Path("scripts/validate-8e009-completion-governance.py"),
+    Path("scripts/_validate_repository_health_v1_6.py"),
+    Path("tools/validate_stage_a_a10_projection.py"),
+    Path("tools/validate_completion_claim_integrity.py"),
+    Path("tools/validate_stage_a_a8_supplemental_authority.py"),
+)
+FORBIDDEN_ENTRYPOINT_MARKERS = (
+    "CURRENT_WORK_POINTER",
+    "AIOC_CURRENT_STATE",
+    "execution_termination_preflight",
+    "STAGE-A-A2",
+    "MIB-17",
+    "exact next",
+)
+PROJECT_MEMORY_FORBIDDEN = (
+    "MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
+    "CURRENT_WORK_POINTER.json",
+    "CURRENT_IMPLEMENTATION_STATUS.json",
+    "ROADMAP_INDEX.json",
+    "STAGE-A-A2",
+    ".ai/current-work-order.md",
+)
+DEEP_LEGACY_ROUTE_MARKERS = (
+    "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
+    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+    "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
+    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
+    "governance/ai/runtime/ROADMAP_INDEX.json",
+    "governance/current-state/AIOC_CURRENT_STATE.md",
+    "governance/current-state/SESSION_HANDOFF.md",
+    "governance/current-state/AIOC_OPERATIONAL_HANDOFF.md",
+    "governance/ai/interaction-system/OWNER_AI_INTERACTION_CONTRACT.md",
+    "governance/ai/interaction-system/EXECUTION_TERMINATION_CONTRACT.json",
+    "execution_transaction_preflight.py",
+    "execution_termination_preflight.py",
+    "execution_state_reconciler.py",
+    "execution_context_guard.py",
+    "execution_event_ledger.py",
+    "execution_atomic_projection.py",
+    "execution_terminal_auto_proof.py",
+    "tools/continuity_state.py",
+    "tools/interaction_pilot.py",
+)
+DEEP_SCAN_PREFIXES = (
+    "scripts/",
+    "tools/",
+    ".github/",
+    ".codex/",
+    "bridge/",
+    "operations/",
+    "governance/ai/runtime/",
+    "governance/project-memory/",
+    "governance/ai/interaction-system/",
+    "governance/application-planning/dwc-speech/",
+)
+DEEP_SCAN_EXACT = {
+    "AGENTS.md",
+    "README.md",
+    "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
+}
+DEEP_SCAN_EXEMPT_EXACT = {
+    "scripts/validate_operations_v3.py",
+    "scripts/validate_operations_v4.py",
+    "scripts/validate_ops4_semantic_surfaces.py",
+    "scripts/ops4_execution_guard.py",
+    "scripts/ops4_ci_guard.py",
+    "operations/CONTROL_SURFACE_REGISTRY.json",
+    "docs/plans/2026-09-15-operations-v3-single-door.md",
+}
+HISTORICAL_BANNER = "OPS3 HISTORICAL REFERENCE / NO OPERATIONAL AUTHORITY"
+BACKGROUND_BANNER = "OPS3 BACKGROUND ONLY / NO OPERATIONAL AUTHORITY"
+TEXT_SUFFIXES = {".md", ".txt", ".json", ".py", ".sh", ".yml", ".yaml", ".toml", ".js", ".ts", ".csv"}
+
+
+def _read_json(root: Path, relative: Path, errors: list[str]) -> dict[str, Any]:
+    path = root / relative
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        errors.append(f"missing required JSON: {relative.as_posix()}")
+        return {}
+    except json.JSONDecodeError as exc:
+        errors.append(f"invalid JSON {relative.as_posix()}: {exc}")
+        return {}
+    if not isinstance(value, dict):
+        errors.append(f"expected object JSON: {relative.as_posix()}")
+        return {}
+    return value
+
+
+def _read_text(root: Path, relative: Path, errors: list[str]) -> str:
+    path = root / relative
+    try:
+        return path.read_text(encoding="utf-8")
+    except OSError as exc:
+        errors.append(f"unable to read {relative.as_posix()}: {exc}")
+        return ""
+
+
+def _git_head(root: Path, errors: list[str]) -> str | None:
+    process = subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=root, text=True,
+        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False,
+    )
+    if process.returncode:
+        errors.append(f"git rev-parse HEAD failed: {process.stdout.strip()}")
+        return None
+    return process.stdout.strip()
+
+
+def _deep_legacy_scan(root: Path, errors: list[str]) -> None:
+    for path in root.rglob("*"):
+        if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
+            continue
+        relative = path.relative_to(root).as_posix()
+        if relative in DEEP_SCAN_EXEMPT_EXACT:
+            continue
+        if not (relative.startswith(DEEP_SCAN_PREFIXES) or relative in DEEP_SCAN_EXACT):
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        hits = [marker for marker in DEEP_LEGACY_ROUTE_MARKERS if marker.lower() in text.lower()]
+        if not hits:
+            continue
+        if relative in {LEGACY_POINTER.as_posix(), LEGACY_AUTHORITY.as_posix()}:
+            continue
+        if "Operations V2" in text and "retired" in text.lower() and DOOR.as_posix() in text:
+            continue
+        if HISTORICAL_BANNER in text or BACKGROUND_BANNER in text:
+            continue
+        errors.append(f"deep legacy route contamination: {relative}: {hits}")
+
+
+def _validate_product_lane_projection(
+    current: dict[str, Any],
+    legacy_pointer: dict[str, Any],
+    legacy_authority: dict[str, Any],
+    checkpoint: dict[str, Any],
+    errors: list[str],
+) -> None:
+    lanes = current.get("lanes", {})
+    product = lanes.get("msas", {}) if isinstance(lanes, dict) else {}
+    if not isinstance(product, dict):
+        errors.append("CURRENT msas lane must be an object")
+        return
+
+    work_item = product.get("selected_work_item")
+    attempt_id = product.get("attempt_id")
+    state = product.get("state")
+    branch = product.get("implementation_branch")
+    authority = product.get("implementation_authority")
+
+    if not isinstance(work_item, str) or not work_item:
+        errors.append("CURRENT msas selected_work_item is required")
+    if not isinstance(attempt_id, str) or not attempt_id:
+        errors.append("CURRENT msas attempt_id is required")
+    if state not in {"selected_not_started", "in_progress", "completed_verified"}:
+        errors.append(f"unsupported msas state: {state}")
+    if state == "selected_not_started" and (authority is not False or branch is not None):
+        errors.append("selected_not_started MSAS work must have no implementation authority or branch")
+    if state == "in_progress" and (authority is not True or not isinstance(branch, str) or not branch):
+        errors.append("in_progress MSAS work requires implementation authority and a branch")
+    if state == "completed_verified" and authority is not False:
+        errors.append("completed_verified MSAS work must retire implementation authority")
+
+    active = legacy_pointer.get("active_attempt", {})
+    if not isinstance(active, dict):
+        errors.append("legacy pointer active_attempt must be an object")
+        active = {}
+    pointer_expected = {
+        "work_item_id": work_item,
+        "attempt_id": attempt_id,
+        "status": state,
+        "implementation_branch": branch,
+        "implementation_authority": authority,
+    }
+    for key, expected in pointer_expected.items():
+        if active.get(key) != expected:
+            errors.append(f"legacy pointer projection drift for {key}: expected {expected!r}, observed {active.get(key)!r}")
+
+    preserved = legacy_authority.get("preserved_product_selection", {})
+    if not isinstance(preserved, dict):
+        errors.append("legacy authority preserved_product_selection must be an object")
+        preserved = {}
+    authority_expected = {
+        "work_item": work_item,
+        "attempt_id": attempt_id,
+        "state": state,
+        "implementation_branch": branch,
+        "implementation_authority": authority,
+    }
+    for key, expected in authority_expected.items():
+        if preserved.get(key) != expected:
+            errors.append(f"legacy authority projection drift for {key}: expected {expected!r}, observed {preserved.get(key)!r}")
+
+    checkpoint_expected = {
+        "work_item_id": work_item,
+        "attempt_id": attempt_id,
+        "status": state,
+        "implementation_branch": branch,
+        "implementation_authority": authority,
+    }
+    for key, expected in checkpoint_expected.items():
+        if checkpoint.get(key) != expected:
+            errors.append(f"product checkpoint drift for {key}: expected {expected!r}, observed {checkpoint.get(key)!r}")
+
+
+def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
+    root = root.resolve()
+    errors: list[str] = []
+    current = _read_json(root, CURRENT, errors)
+    lanes = _read_json(root, LANES, errors)
+    registry = _read_json(root, REGISTRY, errors)
+    ops3_01 = _read_json(root, OPS3_01_WORK_ITEM, errors)
+    ops4_01 = _read_json(root, OPS4_01_WORK_ITEM, errors)
+    current_lanes = current.get("lanes", {}) if isinstance(current.get("lanes", {}), dict) else {}
+    operations_lane = current_lanes.get("operations", {}) if isinstance(current_lanes, dict) else {}
+    active_operations_id = current.get("active_operations_work_item")
+    active_operations_path = current.get("active_operations_work_item_path")
+    if active_operations_id is not None:
+        if not isinstance(active_operations_path, str) or not active_operations_path:
+            errors.append("active_operations_work_item_path is required while operations work is active")
+            operations_work_item = {}
+        else:
+            operations_work_item = _read_json(root, Path(active_operations_path), errors)
+    else:
+        operations_work_item = ops4_01
+    legacy_pointer = _read_json(root, LEGACY_POINTER, errors)
+    legacy_authority = _read_json(root, LEGACY_AUTHORITY, errors)
+    project_memory = _read_json(root, PROJECT_MEMORY, errors)
+    control_matrix = _read_json(root, LEGACY_CONTROL_MATRIX, errors)
+
+    for relative in (DOOR, CONTRACT, AIOC_AGENTS, LEGACY_BOOTSTRAP, STATIC_RESTART):
+        if not (root / relative).is_file():
+            errors.append(f"missing required file: {relative.as_posix()}")
+
+    if current.get("schema_version") != "4.0.0":
+        errors.append("operations/CURRENT.json schema_version must be 4.0.0")
+    if current.get("system") != "OPS4":
+        errors.append("operations/CURRENT.json system must be OPS4")
+    expected_refs = {
+        "canonical_door": DOOR.as_posix(),
+        "operating_contract": CONTRACT.as_posix(),
+        "lane_registry": LANES.as_posix(),
+        "control_surface_registry": REGISTRY.as_posix(),
+    }
+    for key, expected in expected_refs.items():
+        if current.get(key) != expected:
+            errors.append(f"CURRENT {key} must equal {expected}")
+
+    if current.get("status") != "completed_verified":
+        errors.append("OPS4 system status must remain completed_verified")
+    if ops3_01.get("work_item_id") != "OPS3-01" or ops3_01.get("status") != "completed_verified":
+        errors.append("OPS3-01 historical work item must remain completed_verified")
+    if ops3_01.get("implementation_authority") is not False:
+        errors.append("completed OPS3-01 must not retain implementation authority")
+    if ops4_01.get("work_item_id") != "OPS4-01" or ops4_01.get("status") != "completed_verified":
+        errors.append("OPS4-01 current system-upgrade work item must be completed_verified")
+    if ops4_01.get("implementation_authority") is not False:
+        errors.append("completed OPS4-01 must not retain implementation authority")
+
+    freeze = current.get("product_start_freeze", {})
+    if not isinstance(freeze, dict):
+        errors.append("product_start_freeze must be an object")
+        freeze = {}
+    if freeze.get("implementation_authority") is not False:
+        errors.append("product_start_freeze may preserve selection only; it cannot grant implementation authority")
+
+    persistent_for_freeze = ("gpr", "cwks", "mtlc")
+    if active_operations_id is not None:
+        if not isinstance(operations_lane, dict):
+            errors.append("CURRENT operations lane must be an object")
+        else:
+            if operations_lane.get("work_item_id") != active_operations_id:
+                errors.append("active operations id must match CURRENT operations lane")
+            if operations_lane.get("work_item_path") != active_operations_path:
+                errors.append("active operations path must match CURRENT operations lane")
+            if operations_lane.get("state") != "in_progress" or operations_lane.get("implementation_authority") is not True:
+                errors.append("active operations work requires in_progress state and implementation authority")
+        if operations_work_item.get("work_item_id") != active_operations_id or operations_work_item.get("status") != "in_progress":
+            errors.append("CURRENT-referenced active operations work item must exist and be in_progress")
+        if freeze.get("active") is not True:
+            errors.append("active operations repair requires product_start_freeze.active=true")
+        preserved_lanes = freeze.get("preserved_lane_selections", {})
+        if not isinstance(preserved_lanes, dict):
+            errors.append("operations freeze preserved_lane_selections must be an object")
+            preserved_lanes = {}
+        for lane_id in persistent_for_freeze:
+            lane_now = current_lanes.get(lane_id, {}) if isinstance(current_lanes, dict) else {}
+            preserved = preserved_lanes.get(lane_id, {}) if isinstance(preserved_lanes, dict) else {}
+            if not isinstance(lane_now, dict) or not isinstance(preserved, dict):
+                errors.append(f"operations freeze must preserve persistent lane {lane_id}")
+                continue
+            expected = {
+                "selected_work_item": lane_now.get("selected_work_item"),
+                "attempt_id": lane_now.get("attempt_id"),
+                "state": lane_now.get("state"),
+            }
+            for key, value in expected.items():
+                if preserved.get(key) != value:
+                    errors.append(
+                        f"operations freeze persistent lane drift for {lane_id}.{key}: "
+                        f"expected {value!r}, observed {preserved.get(key)!r}"
+                    )
+    else:
+        if current.get("active_operations_work_item_path") is not None:
+            errors.append("inactive operations must not retain active_operations_work_item_path")
+        if not isinstance(operations_lane, dict) or operations_lane.get("state") != "completed_verified" or operations_lane.get("implementation_authority") is not False:
+            errors.append("inactive operations lane must be completed_verified with no implementation authority")
+        if freeze.get("active") is not False:
+            errors.append("product_start_freeze must be cleared when no operations work is active")
+
+    if lanes.get("operating_contract") != CONTRACT.as_posix():
+        errors.append("all lanes must use the one canonical operating contract")
+    if lanes.get("selection_rule") != "User intent selects a lane; lane state never changes the global operating contract.":
+        errors.append("lane selection rule drift")
+    lane_rows = lanes.get("lanes")
+    if not isinstance(lane_rows, list):
+        errors.append("LANES lanes must be an array")
+        lane_rows = []
+    lane_ids = {row.get("id") for row in lane_rows if isinstance(row, dict)}
+    required_lanes = {"msas", "gpr", "mrcs", "cwks", "oarc", "casi", "fga", "mtlc", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}
+    if not required_lanes <= lane_ids:
+        errors.append(f"missing required lanes: {sorted(required_lanes - lane_ids)}")
+    if "mvps" in lane_ids:
+        errors.append("terminal MVPS must remain completed history and may not reappear as a live lane")
+    if lanes.get("persistent_implementation_lanes") != ["gpr", "cwks", "mtlc"]:
+        errors.append("persistent implementation slots must be exactly gpr, cwks and mtlc")
+    if isinstance(current.get("lanes"), dict) and "mvps" in current["lanes"]:
+        errors.append("CURRENT must not expose terminal MVPS as a live lane after OARC replacement")
+    msas_history = current.get("completed_programs", {}).get("MSAS", {})
+    if msas_history.get("state") != "completed_verified":
+        errors.append("MSAS terminal completion history must remain preserved after GPR slot replacement")
+    if current.get("lanes", {}).get("msas", {}).get("state") != "completed_verified":
+        errors.append("terminal MSAS compatibility lane must remain completed_verified")
+    if current.get("lanes", {}).get("msas", {}).get("implementation_authority") is not False:
+        errors.append("terminal MSAS compatibility lane must not regain implementation authority")
+    mrcs_history = current.get("completed_programs", {}).get("MRCS", {})
+    if mrcs_history.get("state") != "completed_verified":
+        errors.append("MRCS terminal completion history must remain preserved after CWKS slot replacement")
+    if current.get("lanes", {}).get("mrcs", {}).get("state") != "completed_verified":
+        errors.append("terminal MRCS compatibility lane must remain completed_verified")
+    if current.get("lanes", {}).get("mrcs", {}).get("implementation_authority") is not False:
+        errors.append("terminal MRCS compatibility lane must not regain implementation authority")
+    oarc_history = current.get("completed_programs", {}).get("OARC", {})
+    if oarc_history.get("state") != "completed_verified":
+        errors.append("OARC terminal completion history must remain preserved after CASI slot replacement")
+    if current.get("lanes", {}).get("oarc", {}).get("state") != "completed_verified":
+        errors.append("terminal OARC compatibility lane must remain completed_verified")
+    if current.get("lanes", {}).get("oarc", {}).get("implementation_authority") is not False:
+        errors.append("terminal OARC compatibility lane must not regain implementation authority")
+    casi_history = current.get("completed_programs", {}).get("CASI", {})
+    if casi_history.get("state") != "completed_verified":
+        errors.append("CASI terminal completion history must remain preserved after FGA slot replacement")
+    if current.get("lanes", {}).get("casi", {}).get("state") != "completed_verified":
+        errors.append("terminal CASI compatibility lane must remain completed_verified")
+    if current.get("lanes", {}).get("casi", {}).get("implementation_authority") is not False:
+        errors.append("terminal CASI compatibility lane must not regain implementation authority")
+    fga_history = current.get("completed_programs", {}).get("FGA", {})
+    if fga_history.get("state") != "completed_verified":
+        errors.append("FGA terminal completion history must remain preserved after MTLC slot replacement")
+    if current.get("lanes", {}).get("fga", {}).get("state") != "completed_verified":
+        errors.append("terminal FGA compatibility lane must remain completed_verified")
+    if current.get("lanes", {}).get("fga", {}).get("implementation_authority") is not False:
+        errors.append("terminal FGA compatibility lane must not regain implementation authority")
+
+    mvps_history = current.get("completed_programs", {}).get("MVPS_CORE26_PRODUCTION_CERTIFICATION", {})
+    if mvps_history.get("state") != "completed_verified":
+        errors.append("MVPS terminal completion history must remain preserved")
+
+    surfaces = registry.get("surfaces")
+    if not isinstance(surfaces, list):
+        errors.append("control surface registry must contain surfaces array")
+        surfaces = []
+    surface_keys = [(row.get("system"), row.get("path")) for row in surfaces if isinstance(row, dict)]
+    if len(surface_keys) != len(set(surface_keys)):
+        errors.append("control surface registry contains duplicate (system, path) identifiers")
+    canonical_selectors = [row for row in surfaces if isinstance(row, dict) and row.get("can_select_work") is True]
+    allowed_selector_pairs = {("AIOC", "operations/BOOTSTRAP.md"), ("AIOC", "operations/CURRENT.json")}
+    actual_selector_pairs = {(row.get("system"), row.get("path")) for row in canonical_selectors}
+    if actual_selector_pairs != allowed_selector_pairs:
+        errors.append(f"unexpected work-selecting surfaces: {sorted(actual_selector_pairs)}")
+
+    agents = _read_text(root, AIOC_AGENTS, errors)
+    if DOOR.as_posix() not in agents:
+        errors.append("AIOC AGENTS.md must redirect to operations/BOOTSTRAP.md")
+    agents_lower = agents.lower()
+    for marker in FORBIDDEN_ENTRYPOINT_MARKERS:
+        if marker.lower() in agents_lower:
+            errors.append(f"AIOC AGENTS.md regained independent operational marker: {marker}")
+
+    legacy_bootstrap = _read_text(root, LEGACY_BOOTSTRAP, errors)
+    if "HISTORICAL_INERT" not in legacy_bootstrap or DOOR.as_posix() not in legacy_bootstrap:
+        errors.append("legacy bootstrap must be an inert redirect to the OPS4 canonical door")
+    for marker in ("CURRENT_WORK_POINTER.json", "execution_termination_preflight.py"):
+        if marker in legacy_bootstrap:
+            errors.append(f"legacy bootstrap still contains executable legacy instruction: {marker}")
+
+    restart = _read_text(root, STATIC_RESTART, errors).strip()
+    expected_restart = "Open cybalicistjt-stack/multiversal-aioc/operations/BOOTSTRAP.md from current main and follow it. Use no other bootstrap or behavior source."
+    if restart != expected_restart:
+        errors.append("static restart prompt must be the exact OPS4 single-door prompt")
+
+    if project_memory.get("status") != "OPS3_BACKGROUND_ONLY":
+        errors.append("PROJECT_MEMORY.json must be background-only under OPS3")
+    if project_memory.get("operational_authority") is not False:
+        errors.append("PROJECT_MEMORY.json must explicitly deny operational authority")
+    if project_memory.get("canonical_door") != DOOR.as_posix():
+        errors.append("PROJECT_MEMORY.json must point only to the OPS4 canonical door")
+    if project_memory.get("canonical_current_state") != CURRENT.as_posix():
+        errors.append("PROJECT_MEMORY.json must point to operations/CURRENT.json for live state")
+    project_memory_text = json.dumps(project_memory, sort_keys=True)
+    for marker in PROJECT_MEMORY_FORBIDDEN:
+        if marker in project_memory_text:
+            errors.append(f"PROJECT_MEMORY.json still advertises retired live marker: {marker}")
+
+    if control_matrix.get("ops3_disposition") != "HISTORICAL_INERT":
+        errors.append("legacy control coverage matrix must be explicitly HISTORICAL_INERT")
+    if control_matrix.get("canonical_door") != DOOR.as_posix():
+        errors.append("legacy control coverage matrix must point to the OPS4 canonical door")
+    if control_matrix.get("can_select_work") is not False:
+        errors.append("legacy control coverage matrix must not select work")
+
+    for relative in LEGACY_EXECUTABLES:
+        text = _read_text(root, relative, errors)
+        if "Operations V2" not in text or "retired" not in text.lower():
+            errors.append(f"legacy executable is not explicitly retired: {relative.as_posix()}")
+        if DOOR.as_posix() not in text:
+            errors.append(f"legacy executable does not redirect to the OPS4 canonical door: {relative.as_posix()}")
+        if "SystemExit(2)" not in text:
+            errors.append(f"legacy executable does not fail closed: {relative.as_posix()}")
+
+    _deep_legacy_scan(root, errors)
+
+    if legacy_pointer.get("canonical_source") != CURRENT.as_posix() or legacy_pointer.get("projection_only") is not True:
+        errors.append("CURRENT_WORK_POINTER must be an explicit compatibility projection from operations/CURRENT.json")
+    maintenance = legacy_pointer.get("exclusive_control_plane_maintenance", {})
+    if maintenance.get("work_item_id") != operations_lane.get("work_item_id"):
+        errors.append("legacy pointer operations work-item drift")
+    if maintenance.get("status") != operations_lane.get("state"):
+        errors.append("legacy pointer operations status drift")
+    if maintenance.get("work_item_path") != operations_lane.get("work_item_path"):
+        errors.append("legacy pointer operations path drift")
+    if maintenance.get("feature_starts_blocked") is not bool(freeze.get("active")):
+        errors.append("legacy pointer freeze projection drift")
+
+    if legacy_authority.get("canonical_source") != CURRENT.as_posix() or legacy_authority.get("projection_only") is not True:
+        errors.append("ACTIVE_AUTHORITY_REGISTRY must be an explicit compatibility projection from operations/CURRENT.json")
+    if legacy_authority.get("canonical_door") != DOOR.as_posix():
+        errors.append("legacy authority projection must identify the OPS3 canonical door")
+    active_operations = legacy_authority.get("active_operations_work", {})
+    if active_operations.get("work_item") != operations_lane.get("work_item_id"):
+        errors.append("legacy authority operations work-item drift")
+    if active_operations.get("state") != operations_lane.get("state"):
+        errors.append("legacy authority operations state drift")
+    if active_operations.get("implementation_authority") is not operations_lane.get("implementation_authority"):
+        errors.append("legacy authority operations authority drift")
+    if active_operations.get("path") != operations_lane.get("work_item_path"):
+        errors.append("legacy authority operations path drift")
+
+    product_lanes = current.get("lanes", {})
+    product = product_lanes.get("msas", {}) if isinstance(product_lanes, dict) else {}
+    checkpoint_path_value = product.get("checkpoint_path") or product.get("legacy_checkpoint_path") if isinstance(product, dict) else None
+    if not isinstance(checkpoint_path_value, str) or not checkpoint_path_value:
+        errors.append("CURRENT msas checkpoint path is required")
+        checkpoint = {}
+    else:
+        checkpoint = _read_json(root, Path(checkpoint_path_value), errors)
+    _validate_product_lane_projection(current, legacy_pointer, legacy_authority, checkpoint, errors)
+
+    for lane_id in ("gpr", "cwks", "mtlc"):
+        lane = product_lanes.get(lane_id, {}) if isinstance(product_lanes, dict) else {}
+        if not isinstance(lane, dict):
+            errors.append(f"CURRENT {lane_id} lane must be an object")
+            continue
+        lane_state = lane.get("state")
+        if lane_state not in {"selected_not_started", "in_progress", "completed_verified"}:
+            errors.append(f"invalid {lane_id} state: {lane_state!r}")
+        checkpoint_value = lane.get("checkpoint_path") or lane.get("legacy_checkpoint_path")
+        if not isinstance(checkpoint_value, str) or not checkpoint_value:
+            errors.append(f"CURRENT {lane_id} checkpoint path is required")
+            continue
+        lane_checkpoint = _read_json(root, Path(checkpoint_value), errors)
+        expected_lane = {
+            "work_item_id": lane.get("selected_work_item"),
+            "attempt_id": lane.get("attempt_id"),
+            "status": lane_state,
+            "implementation_branch": lane.get("implementation_branch"),
+            "implementation_authority": lane.get("implementation_authority"),
+        }
+        for key, value in expected_lane.items():
+            if lane_checkpoint.get(key) != value:
+                errors.append(f"CURRENT/{lane_id} checkpoint drift for {key}: {value!r} != {lane_checkpoint.get(key)!r}")
+        if lane_state == "selected_not_started":
+            if lane.get("implementation_branch") is not None or lane.get("implementation_authority") is not False:
+                errors.append(f"selected_not_started {lane_id} lane must have no branch or implementation authority")
+        if lane_state == "in_progress":
+            if not lane.get("implementation_branch") or lane.get("implementation_authority") is not True:
+                errors.append(f"in_progress {lane_id} lane requires branch and implementation authority")
+        if lane_state == "completed_verified" and lane.get("implementation_authority") is not False:
+            errors.append(f"completed_verified {lane_id} work must retire implementation authority")
+
+    completed_programs = current.get("completed_programs", {})
+    uisr = completed_programs.get("UISR", {}) if isinstance(completed_programs, dict) else {}
+    if not isinstance(uisr, dict) or uisr.get("state") != "completed_verified" or uisr.get("implementation_authority") is not False:
+        errors.append("UISR must remain preserved as completed program history with no implementation authority")
+    else:
+        uisr_checkpoint_value = uisr.get("checkpoint_path")
+        if isinstance(uisr_checkpoint_value, str) and uisr_checkpoint_value:
+            uisr_checkpoint = _read_json(root, Path(uisr_checkpoint_value), errors)
+            if uisr_checkpoint.get("work_item_id") != uisr.get("selected_work_item") or uisr_checkpoint.get("status") != "completed_verified":
+                errors.append("UISR completed-program history drift")
+
+    observed_head = _git_head(root, errors) if expected_head else None
+    if expected_head and observed_head != expected_head:
+        errors.append(f"exact-head mismatch: expected {expected_head}, observed {observed_head}")
+
+    return {
+        "schema_version": "4.0.0",
+        "validator": "scripts/validate_operations_v4.py",
+        "status": "FAIL" if errors else "PASS",
+        "canonical_door": DOOR.as_posix(),
+        "canonical_current_state": CURRENT.as_posix(),
+        "active_operations_work_item": current.get("active_operations_work_item"),
+        "product_start_freeze": bool(freeze.get("active")) if isinstance(freeze, dict) else None,
+        "preserved_product_work_item": freeze.get("preserved_selected_work_item") if isinstance(freeze, dict) else None,
+        "deep_legacy_route_scan": True,
+        "observed_head": observed_head,
+        "errors": errors,
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--root", default=".")
+    parser.add_argument("--expected-head")
+    parser.add_argument("--output")
+    args = parser.parse_args()
+    result = validate(Path(args.root), args.expected_head)
+    payload = json.dumps(result, indent=2, sort_keys=True) + "\n"
+    if args.output:
+        Path(args.output).write_text(payload, encoding="utf-8")
+    print(payload, end="")
+    return 1 if result["errors"] else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
