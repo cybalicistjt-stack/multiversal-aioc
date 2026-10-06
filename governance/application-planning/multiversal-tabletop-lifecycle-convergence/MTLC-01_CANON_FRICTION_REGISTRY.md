@@ -2,7 +2,7 @@
 
 **Program:** MTLC — Multiversal Tabletop Lifecycle Convergence  
 **Work package:** MTLC-01  
-**Status:** IN_PROGRESS — CURRENT-selected MTLC-01  
+**Status:** COMPLETED_VERIFIED  
 **Started:** 2026-10-04  
 **Purpose:** Establish the authoritative delta between capabilities Multiversal already owns, older source-backed material that must be recovered, features that need convergence into a coherent tabletop lifecycle, genuine additions, and integrations that should remain outside the core client.
 
@@ -246,3 +246,15 @@ As of 2026-10-06, the terminal FGA/FDE persistent slot has been owner-approved f
 MTLC-01 authority is deliberately narrow: recover and trace existing canon/source material, resolve every one of the 70 lifecycle items to its actual Multiversal owner/source/status, identify duplicate-owner hazards and human administration cost, and partition the resulting delta into bounded successor tranches.
 
 This activation does **not** authorize MTLC-02+ product feature implementation. Group UI, recruitment/LFG, Lounge/chat, scheduling, public community, and other later lifecycle features remain governed by their future MTLC work items.
+
+## 12. Completion evidence
+
+MTLC-01 completed after the 70-item authority/source matrix passed exact-head Operations V3 validation and was published through PR #1860.
+
+- Exact validated head: `32986d5f0fc2a0949c2ae157ff8768726eaf12b6`
+- Validation run: `37486900789`
+- Published merge: `5d82590478f442cde74a7eaa1eafdfa56063c756`
+- Matrix rows: 70
+- Community friction coverage: FRIC-001 through FRIC-012
+- Consent/Veils: preserved as an explicit unresolved historical-source recovery gap; original wording was not reconstructed from memory.
+- Strict successor: MTLC-02 — Private Table Formation and Campaign Onboarding.
