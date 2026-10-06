@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 608,
+  "state_revision": 609,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -126,8 +126,18 @@
       "checkpoint_path": "operations/work-items/FDE-07.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "FDE-01 through FDE-07 are completed_verified. Terminal FDE-GOLDEN-1 was published after causal proof RED run 37464250986 and exact-head Linux/Windows/deterministic GREEN run 37464490384, with terminal validation-registry seal GREEN run 37465339872. FDE has no successor; reuse of the persistent fashion slot requires explicit later owner governance.",
+      "activation_rule": "FDE-01 through FDE-07 are completed_verified. Terminal FDE-GOLDEN-1 was published after causal proof RED run 37464250986 and exact-head Linux/Windows/deterministic GREEN run 37464490384, with terminal validation-registry seal GREEN run 37465339872. FDE has no successor; reuse of the persistent fashion slot requires explicit later owner governance. On 2026-10-06 the owner explicitly confirmed the FGA/FDE lane is free and directed MTLC to continue; FGA/FDE remain terminal completed history and their former persistent slot is replaced by MTLC.",
       "execution_state_ref": "ops3-lane-state/fga"
+    },
+    "mtlc": {
+      "state": "in_progress",
+      "selected_work_item": "MTLC-01",
+      "attempt_id": "MTLC-01-attempt-001",
+      "checkpoint_path": "operations/work-items/MTLC-01.json",
+      "implementation_branch": "work/mtlc-01-canon-friction-registry",
+      "implementation_authority": true,
+      "activation_rule": "Owner approved the MTLC tabletop-lifecycle program, Group/human-continuity architecture, community-friction overlays and accession/group-maintenance direction, then on 2026-10-06 explicitly confirmed the terminal FGA/FDE persistent slot is free and directed MTLC to continue. MTLC-01 authority is bounded to canon/source recovery, the 70-item friction/feature authority matrix, Consent/Veils provenance recovery, duplicate-owner elimination, human-administration-cost identification, and bounded successor tranche partitioning. MTLC-02+ product feature implementation is not authorized by this activation.",
+      "execution_state_ref": "ops3-lane-state/mtlc"
     }
   },
   "truth_rules": {
@@ -136,12 +146,12 @@
     "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
     "cross_program_successor_rule": "Before successor selection, consult governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json. Individual program strict_successor or backlog fields cannot skip an eligible interstitial program or override cross-program gates.",
     "executor_independence": "Executor availability never grants or revokes project authority.",
-    "parallel_lane_rule": "GPR, CWKS and the persistent fashion lane (`fga`, currently FDE) remain independent persistent lanes. Terminal FGA/CASI/MRCS/OARC remain completed history. FIFO READY publication coordination exists while two or more persistent lanes are nonterminal.",
+    "parallel_lane_rule": "GPR, CWKS and MTLC remain independent persistent lanes. Terminal FGA/FDE/CASI/MRCS/OARC remain completed history. FIFO READY publication coordination exists while two or more persistent lanes are nonterminal.",
     "protected_main_interlock": "Protected main remains PR-only and exact-head. Single-active-lane mode uses one fresh-main drift-sensitive integration receipt with expected-head merge protection and no READY queue. Multi-lane mode uses FIFO READY coordination. Direct main writes remain prohibited.",
-    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: gpr, cwks and fga. The fga lane now hosts owner-approved FDE productization over terminal completed FGA authority. Terminal MSAS, MRCS, OARC, CASI, MVPS, UISR and FGA remain completed program history.",
+    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: gpr, cwks and mtlc. FGA-06, FDE-07, CASI-08, MSAS-21, MRCS-21, OARC-07, MVPS-23 and UISR-11 are completed program history and do not occupy persistent implementation slots.",
     "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS3.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
     "generated_main_writers": "CI/bots/generated-content jobs may not push directly to protected main; generated outputs must be present on the queue-bound candidate branch or validation fails closed.",
-    "lane_state_isolation": "Live execution progress for persistent lanes is recorded on ops3-lane-state/gpr, ops3-lane-state/cwks and ops3-lane-state/fga. Terminal MSAS, MRCS, OARC and CASI lane states are historical only. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
+    "lane_state_isolation": "Live execution progress for persistent lanes is recorded on ops3-lane-state/gpr, ops3-lane-state/cwks and ops3-lane-state/mtlc. Terminal FGA/FDE, CASI, MSAS, MRCS and OARC lane states are historical only. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
     "executor_interruption": "A chat/tool/session interruption is an executor incident, never a project lock. Resume from the last durable lane-state receipt and fresh repository/PR evidence; do not silently wait or replay completed phases.",
     "overinstrumentation_guard": "OPS3 uses milestone receipts, not activity receipts. Status reads, polling, per-platform CI results, artifact inspection, owner re-entry, sibling/lane scans, queue-empty checks, fresh-main observations, rebase checks, mergeability polling and merge mechanics are not material progress and must not create lane-state receipts.",
     "lane_state_milestones": "Ordinary persistent-lane execution state is selected_not_started -> in_progress -> prequeue_green -> published, followed by one deterministic successor reseed after canonical closeout. The generic lane activity-log API is prohibited.",
@@ -155,7 +165,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F and CWKS-10 are independently in_progress. CWKS-10 implements terminal collaborative editing scope only; FDE remains completed_verified. With two nonterminal persistent lanes, application publication uses FIFO READY coordination.",
+  "next_project_action": "GPR remains independently active on PCV-03F. CWKS remains independently active on CWKS-10 collaborative editing. MTLC-01 is independently in_progress on canon/source/friction reconciliation and may not implement MTLC-02+ product features or borrow GPR/CWKS scope.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
