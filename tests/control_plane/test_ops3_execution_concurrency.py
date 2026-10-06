@@ -57,7 +57,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
 
     def test_ready_queue_is_fifo_without_reserving_future_work(self) -> None:
         state=PUBLICATION.free_publication_queue("cybalicistjt-stack/Multiversal-app",generation=30)
-        for cid,lane in (("a","gpr"),("b","cwks"),("c","fga")):
+        for cid,lane in (("a","gpr"),("b","cwks"),("c","mtlc")):
             state=PUBLICATION.submit_ready_candidate(state,expected_generation=state["generation"],candidate=self.candidate(cid,lane))
         self.assertEqual([x["candidate_id"] for x in state["ready"]],["a","b","c"])
 
@@ -87,7 +87,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
 
     def test_durable_merge_consumes_candidate_without_release_or_recovery(self) -> None:
         state=PUBLICATION.free_publication_queue("cybalicistjt-stack/multiversal-aioc",generation=60)
-        state=PUBLICATION.submit_ready_candidate(state,expected_generation=60,candidate=self.candidate("a","fga"))
+        state=PUBLICATION.submit_ready_candidate(state,expected_generation=60,candidate=self.candidate("a","mtlc"))
         state=PUBLICATION.reconcile_durable_publication(state,expected_generation=61,candidate_id="a",observed_head_sha="head-a",merge_sha="merge-a")
         self.assertEqual(state["ready"],[])
         self.assertEqual(state["history"][-1]["status"],"published")
@@ -115,11 +115,11 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
             LANE_STATE.mark_prequeue_green(a2,expected_revision=2,lane="cwks",candidate_head="head-a",validation_run="run-a")
 
     def test_lane_can_start_without_mutating_global_selector(self) -> None:
-        state=LANE_STATE.initial_state("fga",revision=5,selected_work_item="FGA-01",attempt_id="FGA-01-attempt-001")
-        started=LANE_STATE.start_execution(state,expected_revision=5,lane="fga",implementation_branch="work/fga-01",evidence="owner Continue")
+        state=LANE_STATE.initial_state("mtlc",revision=5,selected_work_item="MTLC-01",attempt_id="MTLC-01-attempt-001")
+        started=LANE_STATE.start_execution(state,expected_revision=5,lane="mtlc",implementation_branch="work/mtlc-01",evidence="owner Continue")
         self.assertEqual(started["execution_status"],"in_progress")
-        self.assertEqual(started["implementation_branch"],"work/fga-01")
-        self.assertEqual(started["selected_work_item"],"FGA-01")
+        self.assertEqual(started["implementation_branch"],"work/mtlc-01")
+        self.assertEqual(started["selected_work_item"],"MTLC-01")
 
     def test_healthy_unchanged_workflow_observation_cannot_become_polling_loop(self) -> None:
         snapshot={"id":77,"head_sha":"head-a","status":"in_progress","conclusion":None}
@@ -190,22 +190,22 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertEqual(state["publication"]["merge_sha"],"merge-app")
 
     def test_successor_reseed_is_deterministic_and_resets_progress(self) -> None:
-        state=LANE_STATE.initial_state("fga",revision=20,selected_work_item="FGA-01",attempt_id="FGA-01-attempt-001")
+        state=LANE_STATE.initial_state("mtlc",revision=20,selected_work_item="MTLC-01",attempt_id="MTLC-01-attempt-001")
         state=LANE_STATE.start_execution(state,expected_revision=20,lane="fga",implementation_branch="work/fga-01",evidence="owner Continue")
-        state=LANE_STATE.mark_prequeue_green(state,expected_revision=21,lane="fga",candidate_head="h",validation_run="r")
-        state=LANE_STATE.mark_published(state,expected_revision=22,lane="fga",candidate_head="h",merge_sha="m",ready_candidate_id="FGA-01-app-001")
+        state=LANE_STATE.mark_prequeue_green(state,expected_revision=21,lane="mtlc",candidate_head="h",validation_run="r")
+        state=LANE_STATE.mark_published(state,expected_revision=22,lane="mtlc",candidate_head="h",merge_sha="m",ready_candidate_id="MTLC-01-app-001")
         next_state=LANE_STATE.reseed_successor(
             state,
             expected_revision=23,
-            lane="fga",
-            successor_work_item="FGA-02",
-            successor_attempt_id="FGA-02-attempt-001",
+            lane="mtlc",
+            successor_work_item="MTLC-02",
+            successor_attempt_id="MTLC-02-attempt-001",
             closeout_merge_sha="closeout",
             closeout_validation_run="closeout-run",
-            closeout_ready_candidate_id="FGA-01-closeout-001",
+            closeout_ready_candidate_id="MTLC-01-closeout-001",
         )
-        self.assertEqual(next_state["selected_work_item"],"FGA-02")
-        self.assertEqual(next_state["attempt_id"],"FGA-02-attempt-001")
+        self.assertEqual(next_state["selected_work_item"],"MTLC-02")
+        self.assertEqual(next_state["attempt_id"],"MTLC-02-attempt-001")
         self.assertEqual(next_state["execution_status"],"selected_not_started")
         self.assertEqual(next_state["implementation_branch"],None)
         self.assertEqual(next_state["progress_seq"],0)
