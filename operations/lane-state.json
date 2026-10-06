@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "fga",
-  "revision": 52,
+  "revision": 53,
   "selected_work_item": "FDE-07",
   "attempt_id": "FDE-07-attempt-001",
-  "execution_status": "prequeue_green",
+  "execution_status": "published",
   "implementation_branch": "work/fde-07-product-golden-proof",
-  "progress_seq": 2,
+  "progress_seq": 3,
   "last_progress": {
-    "kind": "prequeue_green",
-    "evidence": "FDE-07 causal proof RED run 37464250986; exact application head c9401a5636549e804bb50911d95b18d8be74ffca passed Linux, Windows and deterministic cross-platform validation run 37464490384."
+    "kind": "published",
+    "evidence": "FDE-07-app-pr-835 published exact head c9401a5636549e804bb50911d95b18d8be74ffca as baa742752f868e960035a4239619f9ab46e15a3c"
   },
   "terminal": false,
   "last_completed": {
@@ -25,5 +25,10 @@
   "prequeue_green": {
     "candidate_head": "c9401a5636549e804bb50911d95b18d8be74ffca",
     "validation_run": "37464490384"
+  },
+  "publication": {
+    "candidate_head": "c9401a5636549e804bb50911d95b18d8be74ffca",
+    "merge_sha": "baa742752f868e960035a4239619f9ab46e15a3c",
+    "ready_candidate_id": "FDE-07-app-pr-835"
   }
 }
