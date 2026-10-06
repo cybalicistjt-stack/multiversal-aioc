@@ -1,4 +1,4 @@
-name: Validate Operations V3
+name: Validate Operations V4
 
 on:
   pull_request:
@@ -52,12 +52,12 @@ permissions:
   contents: write
 
 concurrency:
-  group: operations-v3-${{ github.event.pull_request.number || github.ref }}
+  group: operations-v4-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
   single-door:
-    name: Operations V3 single-door authority audit
+    name: Operations V4 single-door authority audit
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
@@ -109,16 +109,16 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 scripts/validate_operations_v3.py \
+          python3 scripts/validate_operations_v4.py \
             --root . \
             --expected-head "$CANDIDATE_HEAD" \
-            --output "${RUNNER_TEMP}/operations-v3-audit.json"
+            --output "${RUNNER_TEMP}/operations-v4-audit.json"
 
       - name: Validate semantic retirement surfaces
         shell: bash
         run: |
           set -euo pipefail
-          python3 scripts/validate_ops3_semantic_surfaces.py
+          python3 scripts/validate_ops4_semantic_surfaces.py
 
       - name: Validate project canon archaeology register
         run: |
@@ -128,17 +128,23 @@ jobs:
         run: |
           python3 scripts/validate_project_integrity_map.py
 
-      - name: Run Operations V3 regressions
+      - name: Run Operations V4 regressions
         shell: bash
         run: |
           set -euo pipefail
-          python3 tests/control_plane/test_operations_v3_single_door.py
+          python3 tests/control_plane/test_operations_v4_single_door.py
 
-      - name: Run OPS3 execution/concurrency regressions
+      - name: Run inherited OPS3 execution/concurrency regressions
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_ops3_execution_concurrency.py
+
+      - name: Run OPS4 agent/CI feedback regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_ops4_ci_guard.py
 
       - name: Run MVPS-01 species aggregate contract regressions
         if: steps.scope.outputs.certified_content == 'true'
@@ -373,7 +379,7 @@ jobs:
             echo 'Generated canonical content DB and runtime evidence already match the validated candidate.'
             exit 0
           fi
-          echo 'Generated outputs differ from the candidate. OPS3 forbids CI/bot direct pushes to protected main.' >&2
+          echo 'Generated outputs differ from the candidate. OPS4 forbids CI/bot direct pushes to protected main.' >&2
           echo 'Materialize these generated outputs on the queue-bound publication branch, then revalidate.' >&2
           git diff --cached --stat >&2
           exit 1
@@ -392,11 +398,11 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
-      - name: Upload compact Operations V3 evidence
+      - name: Upload compact Operations V4 evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: operations-v3-${{ env.CANDIDATE_HEAD }}
-          path: ${{ runner.temp }}/operations-v3-audit.json
+          name: operations-v4-${{ env.CANDIDATE_HEAD }}
+          path: ${{ runner.temp }}/operations-v4-audit.json
           if-no-files-found: warn
           retention-days: 14

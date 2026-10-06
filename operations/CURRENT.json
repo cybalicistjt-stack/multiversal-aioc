@@ -1,45 +1,45 @@
 {
-  "schema_version": "3.0.0",
-  "system": "OPS3",
+  "schema_version": "4.0.0",
+  "system": "OPS4",
   "status": "completed_verified",
   "canonical_door": "operations/BOOTSTRAP.md",
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 610,
+  "state_revision": 611,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
   "product_start_freeze": {
     "active": false,
-    "reason": "OPS3-14 completed_verified after moving lightweight validation orchestration off scarce self-hosted runners, success-gating deterministic comparison, and defining isolated same-label runner pools as capacity-only infrastructure.",
-    "preserved_selected_work_item": "MERA-16",
-    "preserved_attempt_id": "MERA-16-attempt-001",
+    "reason": "OPS4-01 completed_verified: research-informed agent/CI feedback architecture now separates focused development proof from immutable remote acceptance, forbids CI-as-REPL behavior, budgets retries, and requires independent real-boundary acceptance evidence.",
+    "preserved_selected_work_item": null,
+    "preserved_attempt_id": null,
     "implementation_authority": false,
-    "cleared_by": "OPS3-14 completed_verified",
+    "cleared_by": "OPS4-01 completed_verified",
     "preserved_lane_selections": {
       "gpr": {
-        "selected_work_item": "MERA-16",
-        "attempt_id": "MERA-16-attempt-001",
+        "selected_work_item": "PCV-03F",
+        "attempt_id": "PCV-03F-attempt-001",
+        "state": "in_progress"
+      },
+      "cwks": {
+        "selected_work_item": "CWKS-10",
+        "attempt_id": "CWKS-10-attempt-001",
+        "state": "in_progress"
+      },
+      "mtlc": {
+        "selected_work_item": "MTLC-02",
+        "attempt_id": "MTLC-02-attempt-001",
         "state": "selected_not_started"
-      },
-      "mrcs": {
-        "selected_work_item": "MRCS-21",
-        "attempt_id": "MRCS-21-attempt-001",
-        "state": "completed_verified"
-      },
-      "oarc": {
-        "selected_work_item": "OARC-07",
-        "attempt_id": "OARC-07-attempt-001",
-        "state": "completed_verified"
       }
     }
   },
   "lanes": {
     "operations": {
       "state": "completed_verified",
-      "work_item_id": "OPS3-14",
-      "work_item_path": "operations/work-items/OPS3-14.json",
+      "work_item_id": "OPS4-01",
+      "work_item_path": "operations/work-items/OPS4-01.json",
       "implementation_authority": false
     },
     "msas": {
@@ -148,10 +148,10 @@
     "executor_independence": "Executor availability never grants or revokes project authority.",
     "parallel_lane_rule": "GPR, CWKS and MTLC remain independent persistent lanes. Terminal FGA/FDE/CASI/MRCS/OARC remain completed history. FIFO READY publication coordination exists while two or more persistent lanes are nonterminal.",
     "protected_main_interlock": "Protected main remains PR-only and exact-head. Single-active-lane mode uses one fresh-main drift-sensitive integration receipt with expected-head merge protection and no READY queue. Multi-lane mode uses FIFO READY coordination. Direct main writes remain prohibited.",
-    "persistent_execution_lanes": "OPS3 preserves exactly three independent persistent implementation lanes: gpr, cwks and mtlc. FGA-06, FDE-07, CASI-08, MSAS-21, MRCS-21, OARC-07, MVPS-23 and UISR-11 are completed program history and do not occupy persistent implementation slots.",
-    "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS3.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
+    "persistent_execution_lanes": "OPS4 preserves exactly three independent persistent implementation lanes: gpr, cwks and mtlc. FGA-06, FDE-07, CASI-08, MSAS-21, MRCS-21, OARC-07, MVPS-23 and UISR-11 are completed program history and do not occupy persistent implementation slots.",
+    "no_progress_loop": "Repeated owner execution commands with unchanged material_progress_seq are OPS4.NO_MATERIAL_PROGRESS and require stall diagnosis/recovery before another ordinary execution cycle.",
     "generated_main_writers": "CI/bots/generated-content jobs may not push directly to protected main; generated outputs must be present on the queue-bound candidate branch or validation fails closed.",
-    "lane_state_isolation": "Live execution progress for persistent lanes is recorded on ops3-lane-state/gpr, ops3-lane-state/cwks and ops3-lane-state/mtlc. Terminal FGA/FDE, CASI, MSAS, MRCS and OARC lane states are historical only. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
+    "lane_state_isolation": "Live execution progress for persistent lanes remains on migration-stable ops3-lane-state/gpr, ops3-lane-state/cwks and ops3-lane-state/mtlc refs. Those lowercase names are durable compatibility identifiers under OPS4, not OPS3 authority. CURRENT selects work globally; lane-state refs cannot select successors or mutate another lane.",
     "executor_interruption": "A chat/tool/session interruption is an executor incident, never a project lock. Resume from the last durable lane-state receipt and fresh repository/PR evidence; do not silently wait or replay completed phases.",
     "overinstrumentation_guard": "OPS3 uses milestone receipts, not activity receipts. Status reads, polling, per-platform CI results, artifact inspection, owner re-entry, sibling/lane scans, queue-empty checks, fresh-main observations, rebase checks, mergeability polling and merge mechanics are not material progress and must not create lane-state receipts.",
     "lane_state_milestones": "Ordinary persistent-lane execution state is selected_not_started -> in_progress -> prequeue_green -> published, followed by one deterministic successor reseed after canonical closeout. The generic lane activity-log API is prohibited.",
@@ -160,10 +160,19 @@
     "single_active_lane_mode": "When exactly one persistent implementation lane is nonterminal, derive that mode once and execute only that lane plus concrete dependencies. Do not rescan terminal siblings, check concurrent writers, consult an empty READY queue, or perform routine rebase/update-branch work.",
     "publication_mode_rule": "Derive publication mode once from fresh CURRENT: zero nonterminal lanes means no publication, one means single_lane_direct, two or more means ready_queue. Do not keep rescanning unless a concrete invalidating event occurs.",
     "owner_reentry_diagnostic": "Repeated owner execution commands remain diagnostic input for stall detection but must not create a lane-state write solely to count the interaction. Aggregate interaction-quality evidence only into an already-required terminal/closeout record.",
-    "no_routine_rebase": "OPS3 never requires routine rebasing. In single-active-lane mode base drift reruns only the narrow fresh-base integration gate; a candidate-head change occurs only for a real conflict or repair and then receives exact-head revalidation.",
+    "no_routine_rebase": "OPS4 never requires routine rebasing. In single-active-lane mode base drift reruns only the narrow fresh-base integration gate; a candidate-head change occurs only for a real conflict or repair and then receives exact-head revalidation.",
     "runner_pool_capacity": "Platform validation labels describe pools, not named machines. Multiple isolated self-hosted runner services may share the same required labels. Lightweight selector/health and deterministic comparison should avoid the scarce validation pool when workstation-local capabilities are unnecessary.",
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
-    "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
+    "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts.",
+    "ci_feedback_architecture": "CI is an acceptance system, not a remote REPL. Use the smallest executable focused validation first when available; if unavailable, record concrete capability evidence and allow one bounded remote preflight.",
+    "remote_candidate_immutability": "A deliberate remote validation run is bound to one immutable candidate head. Product/configuration failure kills that candidate for acceptance; rerun requires a changed head plus causal repair evidence.",
+    "remote_retry_budget": "Same-head product/configuration retries are forbidden. A demonstrably transient infrastructure failure gets at most one same-head retry; recurring infrastructure failure requires a changed executor/runner/configuration path. Suspected flake may receive one bounded classification rerun but cannot certify success while unresolved.",
+    "first_failure_discipline": "On terminal remote failure, diagnose the first material failure before expanding log/artifact inspection. Batch causally related repairs before another expensive gate.",
+    "independent_acceptance_evidence": "Same-agent tests are development evidence. Real network/storage/process/auth/persistence/installed/cross-platform requirements cannot be certified solely by mocks or same-agent unit tests; at least one independent or real-boundary proof is required.",
+    "preflight_unavailable_not_skipped": "Focused validation may be marked unavailable only with concrete executor-capability evidence. Unavailable permits one bounded remote preflight; skipped does not.",
+    "ci_observation_budget": "A healthy in-progress remote run may be observed once. Unchanged polling is prohibited; do independent authorized work or treat the run as an executor boundary.",
+    "small_batch_agent_harness": "Agent execution should remain depth-first and small-batch: resolve one causal seam, validate the smallest surface, then form an immutable acceptance candidate instead of accumulating broad speculative changes.",
+    "transport_namespace_compatibility": "ops3-lane-state/*, ops3-publication-queue/*, and scripts/ops3_merge_lease.py are migration-stable transport identifiers inherited by OPS4 until a separately validated migration can rename them without invalidating live or historical receipts."
   },
   "next_project_action": "GPR remains independently active on PCV-03F. CWKS remains independently active on CWKS-10 collaborative editing. MTLC-01 is completed_verified; MTLC-02 Private Table Formation and Campaign Onboarding is selected_not_started with no implementation authority until a future owner execution command.",
   "completed_programs": {

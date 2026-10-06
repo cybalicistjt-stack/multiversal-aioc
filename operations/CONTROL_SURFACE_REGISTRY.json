@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.2.0",
+  "schema_version": "4.0.0",
   "canonical_door": "operations/BOOTSTRAP.md",
   "canonical_contract": "operations/OPERATING_CONTRACT.md",
   "canonical_current_state": "operations/CURRENT.json",
@@ -235,15 +235,15 @@
     {
       "system": "AIOC",
       "path": "scripts/validate_operations_v3.py",
-      "category": "canonical_ops_validator",
-      "disposition": "VALIDATION_ONLY",
+      "category": "historical_ops3_validator",
+      "disposition": "HISTORICAL_INERT",
       "can_select_work": false
     },
     {
       "system": "AIOC",
       "path": "scripts/validate_ops3_semantic_surfaces.py",
-      "category": "semantic_ops_validator",
-      "disposition": "VALIDATION_ONLY",
+      "category": "historical_ops3_validator",
+      "disposition": "HISTORICAL_INERT",
       "can_select_work": false
     },
     {
@@ -763,6 +763,41 @@
       "path": "external records",
       "category": "external_records",
       "disposition": "EXTERNAL_NONAUTHORITY",
+      "can_select_work": false
+    },
+    {
+      "system": "AIOC",
+      "path": "operations/work-items/OPS4-01.json",
+      "category": "completed_work_item",
+      "disposition": "BACKGROUND_ONLY",
+      "can_select_work": false
+    },
+    {
+      "system": "AIOC",
+      "path": "scripts/validate_operations_v4.py",
+      "category": "canonical_ops_validator",
+      "disposition": "VALIDATION_ONLY",
+      "can_select_work": false
+    },
+    {
+      "system": "AIOC",
+      "path": "scripts/validate_ops4_semantic_surfaces.py",
+      "category": "semantic_ops_validator",
+      "disposition": "VALIDATION_ONLY",
+      "can_select_work": false
+    },
+    {
+      "system": "AIOC",
+      "path": "scripts/ops4_execution_guard.py",
+      "category": "execution_response_guard",
+      "disposition": "VALIDATION_ONLY",
+      "can_select_work": false
+    },
+    {
+      "system": "AIOC",
+      "path": "scripts/ops4_ci_guard.py",
+      "category": "agent_ci_feedback_guard",
+      "disposition": "VALIDATION_ONLY",
       "can_select_work": false
     }
   ]

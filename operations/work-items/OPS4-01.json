@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS4-01",
+  "title": "Agent Feedback Architecture and CI Discipline",
+  "status": "completed_verified",
+  "owner_directive": "Upgrade OPS3 to OPS4 using the verified CI/AI-agent research and the reproduced Multiversal failure mode: stop CI overhandling, over-polling, browser-stalling remote-REPL behavior while preserving exact-head acceptance, multi-lane safety and truthful evidence.",
+  "completed": true,
+  "implementation_authority": false,
+  "reproduced_failure": [
+    "During CWKS-10, the executor repeatedly expanded workflow/job/log inspection and used remote CI to discover development failures that should have been resolved in a smaller feedback loop.",
+    "Repeated status observation and per-platform handling increased tool volume and contributed to browser/session freezes without proportional material progress.",
+    "OPS3 already prohibited polling and overinstrumentation, but it did not make the pre-CI development/acceptance boundary and retry budget executable enough to prevent the behavior."
+  ],
+  "research_basis": [
+    "DORA continuous-integration and small-batch guidance: fast feedback, small changes, and separation of quick validation from longer comprehensive gates.",
+    "OpenAI harness-engineering experience: agent productivity depends on strong local/worktree feedback loops, standard development tools, enforceable invariants and short-lived/small work units rather than ever-growing instruction manuals.",
+    "GitHub coding-agent guidance: agents should build/test/validate inside their development environment before producing mergeable candidates; concurrency controls should prevent stale validation work from wasting capacity.",
+    "Google large-scale testing research: pre-submit fast validation and prioritized testing reduce latency; exhaustive long feedback loops create developer friction.",
+    "Recent agent-testing research: agent-written tests can overuse mocks or optimize to visible tests, so real-boundary acceptance should include independent or cross-boundary evidence."
+  ],
+  "decisions": [
+    "Preserve OPS3 authority, lane isolation, milestone receipts, exact-head publication, no-polling, failure-first diagnosis and small-context principles as OPS4 foundations.",
+    "Separate Tier-1 focused executable feedback from Tier-2 immutable remote candidate acceptance and Tier-3 terminal/comprehensive acceptance.",
+    "Focused validation is required when capable; if unavailable, the executor records concrete capability evidence and gets one bounded remote preflight rather than pretending the check was skipped or green.",
+    "Product/configuration failure kills that candidate head for acceptance. Another remote run requires a changed head and causal repair evidence.",
+    "Transient infrastructure failure receives at most one same-head retry with concrete infrastructure evidence. Repeated infrastructure failure requires a changed executor/runner/configuration path.",
+    "A suspected flaky test receives at most one classification rerun and cannot certify success while unresolved.",
+    "Real network/storage/process/auth/persistence/filesystem/installed/cross-platform requirements cannot be certified solely by same-agent mocks/unit tests.",
+    "Existing ops3-lane-state/* and ops3-publication-queue/* durable names remain compatibility identifiers during OPS4; renaming them is explicitly out of scope."
+  ],
+  "executable_regressions": [
+    "scripts/ops4_ci_guard.py",
+    "scripts/ops4_execution_guard.py",
+    "tests/control_plane/test_ops4_ci_guard.py",
+    "tests/control_plane/test_operations_v4_single_door.py",
+    "scripts/validate_operations_v4.py",
+    "scripts/validate_ops4_semantic_surfaces.py"
+  ],
+  "completion_rule": "OPS4 is complete when the canonical door/contract/CURRENT/LANES/registry and validation workflow identify OPS4, the agent/CI feedback guard rejects skipped preflight, same-head product retries, duplicate active runs, exhausted infrastructure retries and mock-only real-boundary proof, inherited OPS3 safety regressions remain green, and no persistent product-lane selection is reset or silently changed.",
+  "next_action": "Resume the already-authorized product lanes under OPS4. CWKS-10 remains in progress; GPR PCV-03F remains independently in progress; MTLC-02 remains selected_not_started until a future owner execution command."
+}
