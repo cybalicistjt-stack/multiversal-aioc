@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "fga",
-  "revision": 47,
+  "revision": 48,
   "selected_work_item": "FDE-06",
   "attempt_id": "FDE-06-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/fde-06-primitive-asset-realization",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "kind": "started",
-    "evidence": "Owner Continue on 2026-10-06; FDE-06 activation merged as 89384ca53f6034b87110de80c4c7af35a5c6218c after Operations V3 run 37454696060."
+    "kind": "prequeue_green",
+    "evidence": "FDE-06 causal behavioral RED run 37455141643; exact application head 50deffd0d9e219aabb6c57f51f3fa76707c31426 passed Linux, Windows and deterministic cross-platform validation run 37455905777."
   },
   "terminal": false,
   "last_completed": {
@@ -21,5 +21,9 @@
     "closeout_merge_sha": "accc56a6597841cafeab71e07b7ad106fc10e140",
     "closeout_validation_run": "37451675954",
     "closeout_ready_candidate": "FDE-05-closeout-pr-1853"
+  },
+  "prequeue_green": {
+    "candidate_head": "50deffd0d9e219aabb6c57f51f3fa76707c31426",
+    "validation_run": "37455905777"
   }
 }
