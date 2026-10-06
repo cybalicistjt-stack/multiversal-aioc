@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "cwks",
-  "revision": 39,
+  "revision": 40,
   "selected_work_item": "CWKS-09",
   "attempt_id": "CWKS-09-attempt-001",
-  "execution_status": "in_progress",
+  "execution_status": "prequeue_green",
   "implementation_branch": "work/cwks-09-review-history",
   "progress_seq": 2,
   "last_progress": {
-    "kind": "candidate_invalidated",
-    "evidence": "FDE-02 published to Multiversal-app main as 95608f1a555cbca0738c6b3d20c8a149352d5fb9 after CWKS-09 prequeue GREEN, changing the shared ACTIVE_FAMILY_CONTRACT.json surface; CWKS-09 requires a fresh-main repair and exact-head revalidation."
+    "kind": "prequeue_green",
+    "evidence": "CWKS-09 repaired immutable application head b5ea4bbd71c4721d9c87ff78cfcdb28bd9f101ad passed exact-head Linux, Windows, and deterministic cross-platform Validation Core run 37438844605 after reconciling published FDE-02 main."
   },
   "terminal": false,
   "last_completed": {
@@ -25,5 +25,9 @@
     "task6_green_run": "37291927698",
     "validation_retirement_merge_sha": "72607e5d362f82a4624defa2e42d925c4e3e4c7b",
     "validation_retirement_run": "37293724297"
+  },
+  "prequeue_green": {
+    "candidate_head": "b5ea4bbd71c4721d9c87ff78cfcdb28bd9f101ad",
+    "validation_run": "37438844605"
   }
 }
