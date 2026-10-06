@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.8",
+  "schema_version": "1.0.9",
   "status": "CURRENT_PLANNING_AUTHORITY",
   "graph_id": "MV-ROADMAP-DAG-001",
   "authority_rule": "This graph owns cross-program activation/dependency semantics. Historical roadmap amendments and legacy activation_after/successor fields remain provenance/compatibility projections and cannot override this graph.",
@@ -120,6 +120,9 @@
       "implementation_authority": false
     },
     "FDE": {
+      "implementation_authority": false
+    },
+    "MTLC": {
       "implementation_authority": false
     }
   },
@@ -635,6 +638,22 @@
       ],
       "golden_proof_requires": [
         "FDE-07"
+      ]
+    },
+    "MTLC": {
+      "hard_requires": [],
+      "start_requires": [
+        "owner-approved MTLC program",
+        "MTLC-01 canon/friction registry",
+        "MTLC Group lifecycle specification"
+      ],
+      "late_bind_requires": [
+        "GPR Campaign/Session contracts",
+        "CWKS document/knowledge contracts",
+        "moderation/privacy/public-community gates for MTLC-12"
+      ],
+      "golden_proof_requires": [
+        "MTLC-14"
       ]
     }
   },
