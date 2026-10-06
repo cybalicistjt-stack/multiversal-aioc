@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2.0",
   "lane": "cwks",
-  "revision": 40,
+  "revision": 41,
   "selected_work_item": "CWKS-09",
   "attempt_id": "CWKS-09-attempt-001",
-  "execution_status": "prequeue_green",
+  "execution_status": "published",
   "implementation_branch": "work/cwks-09-review-history",
-  "progress_seq": 2,
+  "progress_seq": 3,
   "last_progress": {
-    "kind": "prequeue_green",
-    "evidence": "CWKS-09 repaired immutable application head b5ea4bbd71c4721d9c87ff78cfcdb28bd9f101ad passed exact-head Linux, Windows, and deterministic cross-platform Validation Core run 37438844605 after reconciling published FDE-02 main."
+    "kind": "published",
+    "evidence": "CWKS-09 application candidate b5ea4bbd71c4721d9c87ff78cfcdb28bd9f101ad published through Multiversal-app PR #826 as d0514d033c9c900aa23f0ec37aed8293e5c22459 after exact-head Linux/Windows/deterministic run 37438844605; durable application READY queue history records CWKS-09-app-pr-826 and reconciliation generation 118."
   },
   "terminal": false,
   "last_completed": {
@@ -29,5 +29,10 @@
   "prequeue_green": {
     "candidate_head": "b5ea4bbd71c4721d9c87ff78cfcdb28bd9f101ad",
     "validation_run": "37438844605"
+  },
+  "publication": {
+    "candidate_head": "b5ea4bbd71c4721d9c87ff78cfcdb28bd9f101ad",
+    "merge_sha": "d0514d033c9c900aa23f0ec37aed8293e5c22459",
+    "ready_candidate_id": "CWKS-09-app-pr-826"
   }
 }
