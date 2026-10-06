@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 606,
+  "state_revision": 607,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -120,13 +120,13 @@
       "execution_state_ref": "ops3-lane-state/casi"
     },
     "fga": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "selected_work_item": "FDE-07",
       "attempt_id": "FDE-07-attempt-001",
       "checkpoint_path": "operations/work-items/FDE-07.json",
-      "implementation_branch": "work/fde-07-product-golden-proof",
-      "implementation_authority": true,
-      "activation_rule": "Owner directed Continue on 2026-10-06 after FDE-06 completed_verified. FDE-07 is authorized only to produce the terminal deterministic Fashion Design Engine product golden proof over sealed FGA and FDE-01..06 behavior: live Studio controls, visible preview, persistent designs, clothing-reference review and approved primitive realization across ordinary/difficult CAS-GOLDEN-1 topology profiles. No new garment semantics, fit rules, production authority, renderer authority, hidden-detail completion, provider execution, Oaran style authority, commerce/public sharing/monetization, equipment truth, anatomy or mechanics are authorized.",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "FDE-01 through FDE-07 are completed_verified. Terminal FDE-GOLDEN-1 was published after causal proof RED run 37464250986 and exact-head Linux/Windows/deterministic GREEN run 37464490384, with terminal validation-registry seal GREEN run 37465339872. FDE has no successor; reuse of the persistent fashion slot requires explicit later owner governance.",
       "execution_state_ref": "ops3-lane-state/fga"
     }
   },
@@ -155,7 +155,7 @@
     "stale_validation_containment": "Validation concurrency is scoped to the immutable candidate head. Duplicate runs of the same head cancel, but an obsolete head cannot block a newer head from entering validation. Exact-head evidence prevents stale results from being consumed; cross-platform comparison starts only after every required platform validation succeeds.",
     "runner_observation_not_progress": "Runner queue state, cancellation, process lifetime and capacity observations are infrastructure evidence only and cannot create lane-state progress receipts."
   },
-  "next_project_action": "GPR PCV-03F and CWKS-09 remain independently in_progress. FDE-07 terminal Product Golden Proof is in_progress and may close the FDE program only after exact-head Linux, Windows and deterministic-comparison GREEN.",
+  "next_project_action": "GPR PCV-03F remains independently in_progress. CWKS and FDE are completed_verified. No Fashion Design Engine successor is selected; persistent fashion-slot reuse requires explicit later owner governance.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -346,6 +346,16 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "completion_rule": "CWKS-01 through CWKS-09 are completed_verified. CWKS-09 adds local-first comments/review, immutable native version history, deterministic comparison, non-destructive recovery, Story/Wiki/Creator Suite Review & History integration, and read-only D29 legacy-history recovery boundaries over CreatorDocumentV1. CWKS-10 collaboration/presence/cursors and AI writing/review/generation remain unselected."
+    },
+    "FDE": {
+      "program_id": "FDE",
+      "state": "completed_verified",
+      "selected_work_item": "FDE-07",
+      "attempt_id": "FDE-07-attempt-001",
+      "checkpoint_path": "operations/work-items/FDE-07.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "completion_rule": "FDE-01 through FDE-07 completed_verified. Terminal FDE-GOLDEN-1 certifies the live Fashion Design Engine over sealed FGA authority: authorized Studio entry, provider-off controls/catalog, visible full-body/portrait/token preview, durable My Designs/versions/collections/import-export, review-gated clothing-photo proposals, approved FGA-03 demand realization through PCA/PAPT with ARI registration, and all ten CAS-GOLDEN-1/FGA-06 ordinary/difficult topology profiles. No humanoid fallback, hidden-detail invention, unapproved provider execution, new garment/fit/renderer/production authority, Mall/commerce/public sharing, equipment truth, anatomy mutation or mechanics mutation is required or authorized. FDE has no successor."
     }
   },
   "domain_authorities": {
