@@ -2,7 +2,7 @@
 
 **Program:** MTLC — Multiversal Tabletop Lifecycle Convergence  
 **Work package:** MTLC-01  
-**Status:** IN_PROGRESS_PLANNING / NO IMPLEMENTATION AUTHORITY  
+**Status:** IN_PROGRESS — CURRENT-selected MTLC-01  
 **Started:** 2026-10-04  
 **Purpose:** Establish the authoritative delta between capabilities Multiversal already owns, older source-backed material that must be recovered, features that need convergence into a coherent tabletop lifecycle, genuine additions, and integrations that should remain outside the core client.
 
@@ -210,6 +210,8 @@ MTLC-01 is complete only when:
 
 ## 11. Current execution note
 
-As of 2026-10-04, OPS3 persistent implementation slots are occupied by active GPR, CWKS and CASI work. MTLC-01 is therefore proceeding as bounded planning/source-convergence work without taking implementation authority or displacing an active lane.
+As of 2026-10-06, the terminal FGA/FDE persistent slot has been owner-approved for reuse by MTLC. MTLC-01 is CURRENT-selected and in progress alongside independent GPR and CWKS work.
 
-Persistent MTLC implementation activation is a later governance action after a slot becomes available or the owner explicitly reprioritizes a live slot.
+MTLC-01 authority is deliberately narrow: recover and trace existing canon/source material, resolve every one of the 70 lifecycle items to its actual Multiversal owner/source/status, identify duplicate-owner hazards and human administration cost, and partition the resulting delta into bounded successor tranches.
+
+This activation does **not** authorize MTLC-02+ product feature implementation. Group UI, recruitment/LFG, Lounge/chat, scheduling, public community, and other later lifecycle features remain governed by their future MTLC work items.
