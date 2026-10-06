@@ -210,7 +210,7 @@ class Ops3ExecutionConcurrencyTests(unittest.TestCase):
         self.assertEqual(next_state["implementation_branch"],None)
         self.assertEqual(next_state["progress_seq"],0)
         self.assertEqual(next_state["last_progress"],None)
-        self.assertEqual(next_state["last_completed"]["work_item_id"],"FGA-01")
+        self.assertEqual(next_state["last_completed"]["work_item_id"],"MTLC-01")
         self.assertEqual(next_state["last_completed"]["application_merge_sha"],"m")
         self.assertEqual(next_state["last_completed"]["closeout_merge_sha"],"closeout")
 
