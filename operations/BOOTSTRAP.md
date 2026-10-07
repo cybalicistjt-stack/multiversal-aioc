@@ -105,6 +105,25 @@ Use `scripts/ops4_ci_guard.py` or exact-equivalent logic before deliberate remot
 If a tool call returns no usable result, a session aborts, or execution resumes after an interruption, fresh-read the lane milestone plus the repository/PR/CI/queue evidence needed to determine what happened since that milestone; never replay completed work merely because it was not mirrored into lane state. An executor interruption is an executor/tooling incident, not permission to restart the tranche, reserve `main`, or block another lane.
 
 
+### Foreground execution circuit breaker
+
+A browser conversation is a **supervisor and bounded execution quantum**, not a durable long-running worker. A single foreground quantum may use at most **6 tool batches** and **18 remote operations**. Independent reads should be batched. Deliberate sleeps, timed waits, and status-poll loops are forbidden.
+
+A foreground quantum may observe a CI/workflow candidate **once**. If that observation is terminal failure, inspect at most one failed job and one first-material-failure log slice. If it is healthy/in-progress, do read-only analysis or isolated work elsewhere; do not mutate the same implementation branch for the next task while that candidate owns acceptance.
+
+At any external wait boundary, browser interruption, tool/session abort, or budget boundary:
+
+1. release any foreground execution lease;
+2. write or verify a durable **resume capsule** containing work item, branch, exact head, phase, last material progress, next action, and any external run identifier;
+3. stop the foreground quantum cleanly instead of extending it with more polling or archaeology.
+
+Recovery after interruption may read at most four surfaces by default: `CURRENT.json`, the selected work record/lane milestone, the resume capsule/progress artifact, and the exact branch/PR/CI transition evidence. Expand beyond that only after a concrete contradiction is found.
+
+**Two foreground interruptions on the same attempt open the circuit breaker.** Once open, foreground product implementation is prohibited until the work is moved to a durable/background executor or an owner-approved harness repair resets the circuit. The foreground chat may only recover state, preserve the resume capsule, report the blocker, or perform the harness repair.
+
+Use `scripts/ops4_foreground_guard.py` or exact-equivalent logic. The guard is executor coordination only; it does not select work or grant authority.
+
+
 ### Single-active-lane mode and quiet execution
 
 When exactly one persistent implementation lane is nonterminal, OPS4 enters **single-active-lane mode**. Derive that fact once from the fresh `CURRENT.json` read used for lane selection. Until an invalidating event occurs, do **not** rescan sibling lane refs, check for concurrent writers, read an empty publication queue, or perform a routine update/rebase of the implementation branch. Terminal sibling lanes remain history unless a concrete dependency or an observed fresh-`main` change requires them.

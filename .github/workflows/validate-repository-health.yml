@@ -146,6 +146,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_ops4_ci_guard.py
 
+      - name: Run OPS4 foreground durability regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_ops4_foreground_guard.py
+
       - name: Run MVPS-01 species aggregate contract regressions
         if: steps.scope.outputs.certified_content == 'true'
         shell: bash

@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 611,
+  "state_revision": 612,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -172,7 +172,16 @@
     "preflight_unavailable_not_skipped": "Focused validation may be marked unavailable only with concrete executor-capability evidence. Unavailable permits one bounded remote preflight; skipped does not.",
     "ci_observation_budget": "A healthy in-progress remote run may be observed once. Unchanged polling is prohibited; do independent authorized work or treat the run as an executor boundary.",
     "small_batch_agent_harness": "Agent execution should remain depth-first and small-batch: resolve one causal seam, validate the smallest surface, then form an immutable acceptance candidate instead of accumulating broad speculative changes.",
-    "transport_namespace_compatibility": "ops3-lane-state/*, ops3-publication-queue/*, and scripts/ops3_merge_lease.py are migration-stable transport identifiers inherited by OPS4 until a separately validated migration can rename them without invalidating live or historical receipts."
+    "transport_namespace_compatibility": "ops3-lane-state/*, ops3-publication-queue/*, and scripts/ops3_merge_lease.py are migration-stable transport identifiers inherited by OPS4 until a separately validated migration can rename them without invalidating live or historical receipts.",
+    "foreground_execution_quantum": "Foreground browser/chat execution is bounded to 6 tool batches and 18 remote operations. It is a supervisor/short worker, not the durable persistence layer for multi-hour implementation.",
+    "foreground_ci_observation_budget": "One workflow-level observation per candidate per foreground quantum. Terminal failure permits one failed-job inspection and one first-material-failure log fetch; healthy in-progress status forbids same-run polling.",
+    "foreground_no_sleep_poll": "Foreground execution may not sleep, wait, or poll on elapsed time. External waits release the foreground lease and end the quantum with a durable resume capsule.",
+    "foreground_recovery_budget": "After interruption, default recovery is limited to CURRENT, selected work/lane milestone, resume capsule/progress artifact, and exact branch/PR/CI transition evidence. Broader archaeology requires a concrete contradiction.",
+    "foreground_same_branch_freeze": "While an immutable candidate is under CI acceptance, foreground independent work may be read-only or isolated elsewhere; do not create descendant next-task mutations on the same implementation branch.",
+    "foreground_resume_capsule": "Every wait, interruption, tool/session abort, or execution-budget boundary requires a durable resume capsule with work item, branch, exact head, phase, last material progress, next action, and external run id when applicable.",
+    "foreground_circuit_breaker": "Two foreground interruptions on the same attempt open the circuit. Foreground product implementation then stops until durable/background execution is used or an owner-approved harness repair resets the circuit.",
+    "foreground_lease_release": "No foreground execution lease may survive an external wait or response boundary. Lane authorization remains durable, but a chat session cannot monopolize execution while idle.",
+    "durable_executor_preference": "Work expected to span connectivity loss, context turnover, external waits, multiple acceptance gates, or the foreground budget should run in a durable/background executor with an isolated checkout/worktree and local executable feedback loop."
   },
   "next_project_action": "GPR remains independently active on PCV-03F. CWKS remains independently active on CWKS-10 collaborative editing. MTLC-01 is completed_verified; MTLC-02 Private Table Formation and Campaign Onboarding is selected_not_started with no implementation authority until a future owner execution command.",
   "completed_programs": {
