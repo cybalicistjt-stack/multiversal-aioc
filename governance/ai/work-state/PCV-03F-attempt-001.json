@@ -8,13 +8,13 @@
   "parent_tranche": "PCV-03",
   "work_item_id": "PCV-03F",
   "attempt_id": "PCV-03F-attempt-001",
-  "title": "Exact-Head Installed Windows/Android Certification",
+  "title": "Relay-Capable Exact-Head Windows/Android Certification",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "status": "in_progress",
   "owner_selected": true,
   "selected_by_owner": "Strict successor after owner-approved PCV-03 decomposition and PCV-03E completed_verified closeout; ROADMAP_DEPENDENCY_GRAPH supplies no interstitial override.",
   "implementation_authority": true,
-  "implementation_branch": "work/pcv-03f-installed-certification",
+  "implementation_branch": "work/pcv-03f-relay-installed-certification",
   "completed": false,
   "predecessor": {
     "work_item": "PCV-03E",
@@ -28,7 +28,7 @@
     "readiness_contract": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json"
   },
   "preimplementation_contract": "governance/application-planning/product-convergence/PCV-I05_PRODUCT_CONTEXT_DOWNSTREAM_MOBILE_PACKAGING_EVIDENCE_CONTRACT_v1.0.0.json",
-  "objective": "An exact-head Windows host and Android player run the canonical A5 Session launch and PCV-03B/C/D Session authority path through ordinary Sessions, pass predecessor regressions and package identity checks, and produce signed causal physical-device evidence for join, command idempotency, ordered delivery, hidden projection and resume.",
+  "objective": "One exact-head Windows host and Android player certify the canonical PCV-03A..03E Session path in normal automatic-connect mode and authenticated forced-TURN mode, preserving Session authority, command idempotency, ordered/gap-safe delivery, hidden projection filtering and reconnect/catch-up while producing signed installed-device/path evidence sufficient for PCV-03F PASS and the NSER-03 primary PASS_BOUNDED gate.",
   "acceptance": [
     "Run focused A3/A5/P9/SMB/VTI predecessor regressions plus PCV-03 negative/security/recovery tests and exact-head build/native checks.",
     "Regenerate Windows and Android packages only from the repaired exact candidate head and bind the manifest to exact artifact hashes.",
@@ -87,25 +87,22 @@
       "generic gameplay command escape hatch"
     ]
   },
-  "active_substep": "canonical_service_persistence_proof_pending_hosted_execution",
+  "active_substep": "combined_relay_candidate_validation_in_progress",
   "strict_successor": "PCV-04",
-  "next_action": "Obtain owner approval for GitHub browser fallback to dispatch the exact-head Session Service Restart Proof on app head bd326b66f444fa3610760ab42508d348934539fc. Diagnose that hosted proof, then implement authenticated durable inbox and PCV-03D command/projection integration before any native package.",
+  "next_action": "Validate and repair PR #839 exact-head candidate work/pcv-03f-relay-installed-certification. After deterministic Linux/Windows gates pass, regenerate exact-head Windows x64 NSIS and Android ARM64 packages, run fresh installed normal-path plus authenticated forced-relay Windows↔Android evidence, verify PCV-03F PASS and NSER-03 PASS_BOUNDED from the same evidence bundle, then close PCV-03F/PCV-03 only. Do not start PCV-04 in this conversation; return the empirical result to NSER.",
   "execution_guard": {
     "continue_turns": 9,
     "stall_nudges": 4,
-    "material_progress_seq": 7,
+    "material_progress_seq": 8,
     "progress_at_last_owner_command": 6,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": {
-      "kind": "external_blocker",
-      "evidence": "The installed GitHub connector provides workflow read/rerun tools but no workflow dispatch. Pushes to candidate heads 84e44cc7, fa54b6f9 and bd326b66 started the normal PR validation but no dedicated Session Service Restart Proof. Browser fallback requires explicit user approval under the browser tool policy. Exact-head hosted proof cannot be claimed or advanced without dispatch."
-    },
+    "terminal_response_allowed": false,
+    "stop_reason": null,
     "last_material_progress": {
-      "seq": 7,
-      "kind": "canonical_authority_postgresql_adapter_implemented",
-      "evidence": "Application head bd326b66f444fa3610760ab42508d348934539fc adds real A3 and PCV-03B/A5 classes on a PostgreSQL PersistencePort with two-process and database restart proof, wrong-recipient/reuse denial and Session replay/CAS checks. Prior app head fa54b6f987b93e578ee363ffe5faf12398c8c7a1 passed OPS3 app health and Linux profile. Dedicated service workflow has not launched at the new head; not certified."
+      "seq": 8,
+      "kind": "owner_approved_relay_capable_pcv03f_candidate_under_validation",
+      "evidence": "Owner approved the combined PCV-03F/NSER target. Application PR #839 is mergeable after integration with current main; exact-head candidate validation is active. The obsolete hosted-workflow-dispatch blocker no longer applies."
     }
   },
   "audit_required_at_closeout": "PCV-03F must prove exact installed Windows/Android package identity with distinct device credentials and causal join/idempotency/disconnect-resume/ordered-gap-safe/hidden-projection receipts, while preserving PCV-03A..03E authority, excluding secrets/private evidence, and activating neither public release/updater nor PCV-04 gameplay before certification closes.",
@@ -148,5 +145,19 @@
       "real_peer_transport": true,
       "physical_signed_causal_proof": true
     }
+  },
+  "objective_revision": {
+    "approved_by_owner": true,
+    "approved_at": "2026-10-07",
+    "reason": "Owner rejected continued certification of the prior connection form after repeated failure and approved redesigning PCV-03F so the intended relay-capable architecture and NSER empirical gate are proven together.",
+    "preserves": [
+      "PCV-03A",
+      "PCV-03B",
+      "PCV-03C semantics",
+      "PCV-03D semantics",
+      "PCV-03E"
+    ],
+    "supersedes_target": "STUN-only installed certification as the PCV-03F closeout target",
+    "combined_gate": true
   }
 }
