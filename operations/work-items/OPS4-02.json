@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS4-02",
+  "title": "Foreground Execution Durability and Interruption Circuit Breaker",
+  "status": "completed_verified",
+  "implementation_authority": false,
+  "owner_directive": "Wire the repeated browser-freeze, overhandling, polling, stale-recovery, and lane-monopolization failure pattern into OPS4 so future agents fail safe instead of repeating it.",
+  "reproduced_failure": [
+    "Across multiple Multiversal conversations, long synchronous browser turns accumulated dozens of repository/CI/tool actions and repeatedly ended in browser freeze, connection interruption, or stopped thinking before a clean response.",
+    "After interruption, recovery often expanded into broad repository archaeology and repeated CI inspection, creating more tool traffic and another interruption.",
+    "Foreground sessions sometimes held execution context across external waits, polled workflows, or prepared later same-branch tasks while an earlier immutable candidate was still under acceptance.",
+    "Durable repository state frequently advanced beyond the visible conversation, forcing the owner to repeatedly ask where execution got to and creating stale-checkpoint or under-reporting incidents."
+  ],
+  "research_basis": [
+    "Anthropic, Effective harnesses for long-running agents (2025): long-running agents lose session context, need incremental progress, git/progress artifacts, and clean handoffs.",
+    "OpenAI, Harness engineering: leveraging Codex in an agent-first world (2026): reliable coding agents use isolated worktrees, local tools, executable feedback loops, repository-local plans, and enforceable invariants.",
+    "OpenAI API Background mode: long-running tasks should run asynchronously so connectivity/timeouts do not own execution lifetime.",
+    "Temporal + OpenAI Agents SDK durable execution: long-running agent work should resume after crashes/network loss rather than restart.",
+    "LangGraph durable execution/interrupt: persist graph state at every step so interrupted work resumes from checkpoints.",
+    "Microsoft Circuit Breaker pattern and AWS retry guidance: repeated calls to failing/slow dependencies should be bounded; stop retry storms and fail safe."
+  ],
+  "decisions": [
+    "Foreground chat is a bounded supervisor/worker quantum, not the persistence layer for multi-hour implementation.",
+    "A foreground quantum is capped at 6 tool batches and 18 remote operations.",
+    "One CI observation per candidate per foreground quantum; terminal failure permits one failed-job and one first-failure log inspection.",
+    "Sleep/wait/poll loops are forbidden in foreground execution.",
+    "Interruption recovery defaults to four durable surfaces and requires a resume capsule at every wait/interruption/budget boundary.",
+    "Same-branch next-task mutations are forbidden while the current immutable candidate is under CI; independent work must be read-only or isolated elsewhere.",
+    "Foreground execution leases release at waits and response boundaries.",
+    "Two foreground interruptions on one attempt open a circuit breaker; product implementation cannot continue in browser foreground until moved to durable/background execution or an owner-approved harness repair resets the circuit."
+  ],
+  "executable_regressions": [
+    "scripts/ops4_foreground_guard.py",
+    "tests/control_plane/test_ops4_foreground_guard.py"
+  ],
+  "completed": true
+}

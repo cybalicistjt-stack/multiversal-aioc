@@ -1,7 +1,7 @@
 # Multiversal Operations V4 Operating Contract
 
 **Document ID:** MV-OPS4-CONTRACT-001  
-**Version:** 4.0.0  
+**Version:** 4.1.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -133,6 +133,31 @@ Remote-validation rules:
 **Independent acceptance evidence.** Tests authored as part of the same repair are useful development evidence, but a requirement that crosses a real boundary—network transport, persistence, process boundary, authentication/admission, filesystem, installed application, or cross-platform behavior—must not be certified solely by mocks or same-agent unit tests. Acceptance must include at least one independent or cross-boundary proof appropriate to the requirement, such as an existing regression, real integration test, deterministic system receipt, separate evaluator, installed/runtime proof, or required cross-platform gate.
 
 The executable policy is `scripts/ops4_ci_guard.py`. It is a validator, not an authority source and not a lane journal.
+
+
+### Foreground/durable execution topology
+
+OPS4 distinguishes **foreground supervision** from **durable execution**.
+
+A foreground browser/chat session is allowed to perform one small causal execution quantum, but it must not be treated as the persistence layer for a multi-hour implementation. Long-running work that must survive connectivity loss, browser reloads, context-window turnover, external waits, or multiple acceptance gates should run in a durable/background executor with an isolated checkout/worktree and executable local feedback loop.
+
+Foreground limits are mechanical, not aspirational:
+
+- maximum 6 tool batches and 18 remote operations per quantum;
+- maximum one workflow-level observation per candidate per quantum;
+- after terminal failure, maximum one failed-job inspection and one first-material-failure log fetch;
+- zero deliberate sleep/wait calls and zero unchanged polling;
+- maximum four default recovery reads after an interruption;
+- zero same-branch next-task mutations while the current candidate is in CI;
+- zero foreground execution leases held across an external wait or response boundary.
+
+At every wait/interruption/budget boundary, a durable resume capsule is mandatory. It contains at least `work_item_id`, `branch`, `head`, `phase`, `last_material_progress`, `next_action`, and the relevant external run identifier when one exists. The capsule is recovery evidence, not authority and not an activity journal.
+
+Two foreground interruptions in one attempt open a **circuit breaker**. While open, the browser conversation must not continue product implementation. It may recover the smallest durable state, preserve the capsule, repair the harness, or hand the work to a durable/background executor. Owner frustration or a repeated `Continue` does not reset the circuit automatically.
+
+If a durable executor is unavailable, the safe fallback is repeated small foreground quanta separated by durable checkpoints—not one ever-growing synchronous turn.
+
+The executable policy is `scripts/ops4_foreground_guard.py`.
 
 ### Single-active-lane mode and quiet execution
 
