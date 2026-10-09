@@ -1,6 +1,6 @@
 {
   "schema_version": "0.2.0",
-  "control_plane": "OPS3",
+  "control_plane": "OPS4",
   "family": "PCV",
   "lane": "gpr",
   "track": "product-convergence-real-app-validation",
@@ -8,13 +8,13 @@
   "parent_tranche": "PCV-03",
   "work_item_id": "PCV-03F",
   "attempt_id": "PCV-03F-attempt-001",
-  "title": "Relay-Capable Exact-Head Windows/Android Certification",
+  "title": "Service-First Exact-Head Windows/Android Certification",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "status": "in_progress",
   "owner_selected": true,
   "selected_by_owner": "Strict successor after owner-approved PCV-03 decomposition and PCV-03E completed_verified closeout; ROADMAP_DEPENDENCY_GRAPH supplies no interstitial override.",
   "implementation_authority": true,
-  "implementation_branch": "work/pcv-03f-relay-installed-certification",
+  "implementation_branch": "work/pcv-03f-service-first-certification",
   "completed": false,
   "predecessor": {
     "work_item": "PCV-03E",
@@ -28,16 +28,20 @@
     "readiness_contract": "governance/application-planning/product-convergence/PCV-I06_FINAL_READINESS_CERTIFICATION_v1.0.0.json"
   },
   "preimplementation_contract": "governance/application-planning/product-convergence/PCV-I05_PRODUCT_CONTEXT_DOWNSTREAM_MOBILE_PACKAGING_EVIDENCE_CONTRACT_v1.0.0.json",
-  "objective": "One exact-head Windows host and Android player certify the canonical PCV-03A..03E Session path in normal automatic-connect mode and authenticated forced-TURN mode, preserving Session authority, command idempotency, ordered/gap-safe delivery, hidden projection filtering and reconnect/catch-up while producing signed installed-device/path evidence sufficient for PCV-03F PASS and the NSER-03 primary PASS_BOUNDED gate.",
+  "objective": "Certify the canonical PCV-03A..03E Session path on installed Windows and Android through a PostgreSQL-backed authoritative service: HTTPS bootstrap/commands, advisory WSS delivery, durable sequence/checkpoint reconnect and authenticated polling fallback. Bind service deployment, exact-head package hashes, distinct signed device identities and causal restart/idempotency/security evidence. Service/hosted tests alone never certify installed completion.",
   "acceptance": [
-    "Run focused A3/A5/P9/SMB/VTI predecessor regressions plus PCV-03 negative/security/recovery tests and exact-head build/native checks.",
+    "Run focused predecessor and PCV-03 negative/security/recovery regressions, full hosted Linux/Windows development gates, real PostgreSQL HTTP/WS and persistence restart proof, and exact-head native builds.",
     "Regenerate Windows and Android packages only from the repaired exact candidate head and bind the manifest to exact artifact hashes.",
     "Installed evidence records causal receipts for distinct subject/device join, authoritative command, duplicate retry, disconnect, resume, ordered/gap-safe player delivery and hidden-before-publication filtering.",
     "A second ordinary join cannot satisfy reconnect evidence and a single command cannot satisfy duplicate-idempotency evidence.",
     "Device-side evidence binds installed Windows/Android runtime/package identity to the exact package artifact rather than relying only on self-reported wire metadata.",
     "The physical Windows↔Android proof passes the strengthened verifier; only then may PCV-03 parent be considered completed_verified and PCV-04 become eligible.",
     "Normal Campaign/Session connectivity exposes Create Campaign, a short human-friendly campaign locator/search flow, invite/connect by user id and one-click Connect; ordinary users never copy/paste raw bearer, SDP, ICE or giant signaling tokens.",
-    "Automatic rendezvous/signaling remains a replaceable non-authoritative adapter; manual signaling is retained only as hidden advanced recovery and does not appear in the ordinary Sessions journey."
+    "Automatic rendezvous/signaling remains a replaceable non-authoritative adapter; manual signaling is retained only as hidden advanced recovery and does not appear in the ordinary Sessions journey.",
+    "The actual isolated HTTPS service is healthy against PostgreSQL at the certification source head; secrets stay in provider configuration. Device builds consume that verified service target.",
+    "Client projections persist contiguously before ACK; lost ACK and HTTP response recovery renew authentication and reconcile signed command status without an uncontrolled second effect.",
+    "Native application-run identity proves that reconnect evidence follows an actual application restart on the same installed device, with fresh signed challenges inside their capture window.",
+    "Exact-head phase aggregation requires hosted Linux, hosted Windows and the existing signer/installed-device phase; partial development green is never whole certification."
   ],
   "boundaries": [
     "Certify the repaired exact PCV-03 candidate through the canonical A5 launch validation and PCV-03B/C/D Session authorities. Owner explicitly authorized this PCV-03F scope expansion on 2026-09-30. Do not add gameplay, presence authority, parallel Campaign/Session truth or a parallel recovery ledger.",
@@ -54,10 +58,13 @@
     "Owner-directed UX repair is authorized before certification because the prior candidate exposed unacceptable manual signaling. It may change Campaign/Session product presentation and signaling adapters but may not change canonical Campaign, membership, Session, Event or gameplay authority.",
     "Owner-directed 2026-10-02 foundation pivot authorizes an isolated Nakama/PostgreSQL proof and a provider adapter under the existing A5/PCV-03 canonical contracts. Before any production cutover, define migration, account binding, retention/pagination, server authorization, rollback, and no parallel ledger. Do not represent spike green as installed-device certification.",
     "Campaign codes are locators, not secrets or authority. User ids are connection targets, not authentication proof. A3/A5 authorization and recipient-bound invitations still gate access underneath one-click UX.",
-    "Implement the missing production A5 launch validator and Session binding through the existing A5 and PCV-03B/C/D contracts. The physical proof must come from actual installed peer events, not generated or self-reported pass flags."
+    "Implement the missing production A5 launch validator and Session binding through the existing A5 and PCV-03B/C/D contracts. The physical proof must come from actual installed Windows/Android service-connected events, not generated or self-reported pass flags.",
+    "PostgreSQL remains canonical durable truth. HTTPS is the command/bootstrap authority boundary; WSS is advisory delivery and authenticated polling is a recovery fallback. Direct WebRTC/TURN is excluded from the ordinary certification critical path.",
+    "Use the original existing Android beta signing identity; missing signer/toolchain is a concrete external boundary and does not authorize a replacement signer.",
+    "The NCG/OPS5 candidate may inform decisions as advisory research. Current live authority remains OPS4; adoption requires its separately defined acceptance and protected publication."
   ],
   "validation_profile": {
-    "title": "Exact-Head Installed Windows/Android Certification",
+    "title": "Service-First Exact-Head Windows/Android Certification",
     "materialize_in_application_as": "governance/application-planning/validation-core/profiles/PCV-03F.json",
     "required_gates": [
       "workspace/typecheck and exact-head native build checks",
@@ -75,7 +82,13 @@
       "duplicate-idempotency and conflicting-reuse zero-second-effect verification",
       "disconnect/resume ordered/gap-safe player-delivery and ACK-before-batch recovery verification",
       "stale authorization, invitation reuse, actor spoof and hidden-before-publication negative verification",
-      "strengthened PCV-03.INSTALLED-EVIDENCE.2 verifier"
+      "strengthened PCV-03.INSTALLED-EVIDENCE.2 verifier",
+      "real PostgreSQL service HTTP/WS acceptance and canonical restart proof",
+      "exact deployed HTTPS service and same-head package service target",
+      "persist-before-ACK and duplicate persisted-batch recovery",
+      "signed server challenge anti-replay, durable public-key binding and actor-scoped command status",
+      "different native application-run identities across causal ordinary join and reconnect",
+      "complete same-head Linux development, Windows development and Windows installed phase receipts"
     ],
     "forbidden_scope": [
       "self-reported package identity as certification",
@@ -84,28 +97,34 @@
       "single command satisfying duplicate-idempotency evidence",
       "public/store release",
       "updater activation",
-      "generic gameplay command escape hatch"
+      "generic gameplay command escape hatch",
+      "development-only receipts satisfying installed certification",
+      "replacing the existing Android beta signer",
+      "self-reported healthy service head without deployment/source binding"
     ]
   },
-  "active_substep": "combined_relay_candidate_validation_in_progress",
+  "active_substep": "service_first_repairs_published_hosted_acceptance_and_provider_connection_pending",
   "strict_successor": "PCV-04",
-  "next_action": "Validate and repair PR #839 exact-head candidate work/pcv-03f-relay-installed-certification. After deterministic Linux/Windows gates pass, regenerate exact-head Windows x64 NSIS and Android ARM64 packages, run fresh installed normal-path plus authenticated forced-relay Windows↔Android evidence, verify PCV-03F PASS and NSER-03 PASS_BOUNDED from the same evidence bundle, then close PCV-03F/PCV-03 only. Do not start PCV-04 in this conversation; return the empirical result to NSER.",
+  "next_action": "Resume application PR #840 at 865f447b24eb5b7efd4e9a93f5331e6bf4f8bd88 and run 37928903164. Diagnose any first terminal failure before a changed repaired head. Complete secure Render PostgreSQL connection using provider settings, deploy that exact head and prove actual HTTPS/WSS/polling/restart boundaries. Then restore the original Windows beta signer/native runner, regenerate same-head NSIS/APK packages, collect genuine installed Windows/Android causal evidence and enforce complete phase aggregation. Preserve in_progress until physical acceptance, protected application publication and atomic closeout; do not start PCV-04.",
   "execution_guard": {
-    "continue_turns": 9,
+    "continue_turns": 10,
     "stall_nudges": 4,
-    "material_progress_seq": 8,
-    "progress_at_last_owner_command": 6,
+    "material_progress_seq": 9,
+    "progress_at_last_owner_command": 8,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "owner_only",
+      "evidence": "The actual Render connector has create/get/list/query metadata operations but no database connection-settings operation. Free database dpg-db4dbknlot8c738kn0k0-a is available and isolated service srv-db4dhb7lot8c738l8e10 is configured; secure DATABASE_URL wiring cannot be completed with available connector capabilities. Browser fallback requires owner approval under the browser tool instructions. Keep completing all independent hosted/repair/publication work; this stop permits the one approval request, not a completed_verified claim."
+    },
     "last_material_progress": {
-      "seq": 8,
-      "kind": "owner_approved_relay_capable_pcv03f_candidate_under_validation",
-      "evidence": "Owner approved the combined PCV-03F/NSER target. Application PR #839 is mergeable after integration with current main; exact-head candidate validation is active. The obsolete hosted-workflow-dispatch blocker no longer applies."
+      "seq": 9,
+      "kind": "service_first_boundary_and_installed_evidence_repair",
+      "evidence": "Application PR #840 contains repaired HTTPS bootstrap routing (existing HTTP scenario was RED 404 before repair), signed single-use registration challenges, durable credentials, scoped command status, contiguous persisted-before-ACK projections, real native-run restart identity and exact-head capability aggregation. 41 focused checks passed. Head 5ac1e9 failed run 37927806464 on missing workflow allow-list registration; causal repair d253ea463e07d8303336602d5e03d34c51f33d4c passes focused repository health and starts immutable run 37928498023. Free isolated Render service/database created; connection settings unavailable through connector. Run 37928498023 passed repository health/semantic/profile selection and then exposed a host-port collision between the two isolated test databases. Repair 865f447b24eb5b7efd4e9a93f5331e6bf4f8bd88 gives the actual-service test database host port 5433; YAML verifies disjoint ports and matching connection URL. Its immutable acceptance run is 37928903164. Control-plane focused execution/concurrency and CI-feedback regressions: 37 PASS."
     }
   },
-  "audit_required_at_closeout": "PCV-03F must prove exact installed Windows/Android package identity with distinct device credentials and causal join/idempotency/disconnect-resume/ordered-gap-safe/hidden-projection receipts, while preserving PCV-03A..03E authority, excluding secrets/private evidence, and activating neither public release/updater nor PCV-04 gameplay before certification closes.",
+  "audit_required_at_closeout": "Prove the deployed PostgreSQL-backed HTTPS/WSS/polling service and same-head installed Windows/Android package identity, distinct device credentials and causal native-restart/idempotency/disconnect-resume/ordered-gap-safe/hidden-projection receipts. Preserve PCV-03A..03E authority; exclude secrets/private evidence; publish no public release/updater or PCV-04 before certification closes.",
   "selection_basis": {
     "kind": "strict_successor_after_pcv03e_completed_verified_no_roadmap_override",
     "predecessor_validation_run": 36177826378,
@@ -122,7 +141,7 @@
     "execution_quality_note": "PCV-03F automated work reached the physical-device evidence boundary, but the executor repeatedly polled a long-running Windows job and required repeated owner nudges instead of diagnosing/reporting the actual phase boundary promptly."
   },
   "interaction_quality": {
-    "owner_execution_commands": 5,
+    "owner_execution_commands": 6,
     "additional_continue_commands": 4,
     "product_work_invalidated": false,
     "classification": "automated certification reached a genuine external physical-device blocker; executor polling behavior caused avoidable repeated owner intervention"
@@ -140,16 +159,17 @@
       "failure_rule": "Any normal flow that requires copying/pasting bearer, SDP, ICE or giant signaling tokens fails acceptance."
     },
     "session_runtime": {
-      "owner_approval": "2026-09-30: Yes to expanding PCV-03F for canonical A5 launch and B/C/D Sessions wiring",
+      "owner_approval": "2026-10-08 service-first direction in CURRENT revision 612; 2026-10-09 owner re-authorized bounded repair and execution.",
       "canonical_authority_only": true,
-      "real_peer_transport": true,
-      "physical_signed_causal_proof": true
+      "real_peer_transport": false,
+      "physical_signed_causal_proof": true,
+      "service_first_transport": true
     }
   },
   "objective_revision": {
     "approved_by_owner": true,
-    "approved_at": "2026-10-07",
-    "reason": "Owner rejected continued certification of the prior connection form after repeated failure and approved redesigning PCV-03F so the intended relay-capable architecture and NSER empirical gate are proven together.",
+    "approved_at": "2026-10-08",
+    "reason": "PCV-03F remains in_progress with implementation authority. Owner explicitly rejected the peer/WebRTC-first certification path after repeated installed reconnect failure and on 2026-10-08 directed PCV-03F to implement the NSER-selected service-first architecture: server-authoritative Session commands, PostgreSQL canonical durable truth, HTTPS command/bootstrap, advisory WSS Event delivery, durable sequence/checkpoint reconnect and authenticated polling fallback. Sealed PCV-03A..03E domain semantics remain authoritative; direct WebRTC/TURN is removed from the ordinary PCV-03F critical path and may only return later as an optional measured optimization under separate authority. PCV-04, public/store release and unrelated PCV successor work remain unauthorized in this conversation.",
     "preserves": [
       "PCV-03A",
       "PCV-03B",
@@ -157,7 +177,52 @@
       "PCV-03D semantics",
       "PCV-03E"
     ],
-    "supersedes_target": "STUN-only installed certification as the PCV-03F closeout target",
-    "combined_gate": true
+    "supersedes_target": "peer/WebRTC-first and authenticated forced-TURN as the ordinary PCV-03F critical path",
+    "combined_gate": false,
+    "authority_source": "operations/CURRENT.json state_revision 612",
+    "nser_disposition": "Do not infer an independent NSER PASS_BOUNDED from service tests; only an authorized independent acceptance can close that gate."
+  },
+  "objective_revision_history": [
+    {
+      "approved_by_owner": true,
+      "approved_at": "2026-10-07",
+      "reason": "Owner rejected continued certification of the prior connection form after repeated failure and approved redesigning PCV-03F so the intended relay-capable architecture and NSER empirical gate are proven together.",
+      "preserves": [
+        "PCV-03A",
+        "PCV-03B",
+        "PCV-03C semantics",
+        "PCV-03D semantics",
+        "PCV-03E"
+      ],
+      "supersedes_target": "STUN-only installed certification as the PCV-03F closeout target",
+      "combined_gate": true,
+      "objective": "One exact-head Windows host and Android player certify the canonical PCV-03A..03E Session path in normal automatic-connect mode and authenticated forced-TURN mode, preserving Session authority, command idempotency, ordered/gap-safe delivery, hidden projection filtering and reconnect/catch-up while producing signed installed-device/path evidence sufficient for PCV-03F PASS and the NSER-03 primary PASS_BOUNDED gate.",
+      "implementation_branch": "work/pcv-03f-relay-installed-certification",
+      "acceptance_target": "Historical relay/NSER combined target; superseded by owner service-first direction projected in CURRENT revision 612."
+    }
+  ],
+  "recovery_receipt": {
+    "date": "2026-10-09",
+    "application_pr": 840,
+    "application_head": "865f447b24eb5b7efd4e9a93f5331e6bf4f8bd88",
+    "validation_run": 37928903164,
+    "focused_tests_passed": 41,
+    "full_certification": false,
+    "render_service_id": "srv-db4dhb7lot8c738l8e10",
+    "render_database_id": "dpg-db4dbknlot8c738kn0k0-a",
+    "service_url": "https://multiversal-pcv03f-session.onrender.com",
+    "database_connection_configured": false,
+    "original_self_hosted_capacity_failure": {
+      "run": 37752829418,
+      "unassigned_jobs_cancelled_after_hours": 24
+    },
+    "outstanding_boundaries": [
+      "Actual hosted full regression results",
+      "Render database connection settings: connector exposes no connection-info operation; approved browser fallback is required",
+      "Original Windows beta signer/native toolchain and physical installed Windows/Android events"
+    ],
+    "lane_state_disposition": "Historical started milestone remains unchanged. No status/owner-reentry journal write or artificial reseed.",
+    "control_plane_focused_regressions_passed": 37,
+    "blocker_resolution": "Ask only for permission to use the existing Render browser session to connect the isolated database; do not ask the owner to locate/copy credentials or follow vague instructions."
   }
 }

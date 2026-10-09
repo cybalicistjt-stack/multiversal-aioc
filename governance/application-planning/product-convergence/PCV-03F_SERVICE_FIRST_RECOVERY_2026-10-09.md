@@ -1,0 +1,11 @@
+# PCV-03F service-first checkpoint reconciliation — 2026-10-09
+
+This is a bounded checkpoint repair, not product closeout or OPS5 adoption. CURRENT revision 612 already selects the service-first implementation. The checkpoint still selected historical relay PR 839, so it is corrected to active application PR 840. The historical objective revision and process nonconformance remain recorded.
+
+Application candidate: `865f447b24eb5b7efd4e9a93f5331e6bf4f8bd88`, immutable acceptance run 37928903164. Repairs restore authenticated bootstrap, signed fresh registration challenges and durable device-key binding, actor-scoped status, persistent contiguous client projections before ACK, safe authentication renewal, causal native-process restart identity and complete capability-phase aggregation. 41 focused product checks passed; 37 focused execution/concurrency and CI-feedback regressions passed. Full hosted, PostgreSQL, native and physical gates remain required.
+
+Failure causality is preserved: run 37752829418 had unassigned self-hosted jobs cancelled after 24 hours; run 37927806464 rejected the unregistered reusable workflow; run 37928498023 passed health but found a database host-port collision. Each configuration cause was repaired on a changed head. No failed-head acceptance rerun or partial-green certification claim is used.
+
+Free isolated Render resources exist: service `srv-db4dhb7lot8c738l8e10`, database `dpg-db4dbknlot8c738kn0k0-a`, HTTPS target `https://multiversal-pcv03f-session.onrender.com`. The connector does not expose database connection settings. The single current owner action is approval for browser fallback so the executor can wire the database directly; credentials must stay in provider configuration. Original Windows signer/toolchain and genuinely installed Windows/Android events remain later acceptance boundaries.
+
+The lane's historical started milestone is not rewritten as a status journal. Application certification remains in_progress. Protected application publication and atomic product closeout wait for complete exact-head physical acceptance. Live authority remains OPS4; the NCG/OPS5 candidate is advisory until its own acceptance and publication.
