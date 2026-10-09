@@ -105,7 +105,7 @@
   },
   "active_substep": "research_repairs_verified_hosted_and_postgresql_secure_provider_and_native_owner_boundary",
   "strict_successor": "PCV-04",
-  "next_action": "Resume application PR #840 immutable source 0dac5c60f42e1985b20cb9f8c62c98bba73bb9e2 and run 37933711013. Exact-head hosted Linux/Windows and PostgreSQL service/process/race gates have passed. Native job 113831527429 is queued; do not poll unchanged capacity. Approved cloud browser fallback failed with owner-reported connection refused. Invitation key and MULTIVERSAL_SOURCE_HEAD are configured through Render connector. Owner must set DATABASE_URL directly in the working dashboard from isolated database Internal Database URL; executor then deploys this exact source, verify provider deployment commit plus actual HTTPS/WSS/polling/restart boundaries. Once the original Windows signer/native runner is available, produce same-head NSIS/APK packages once. Keep their successful package_run_id and actual hashes. Collect genuine signed installed Windows/Android causal evidence; persist the secret-filtered bundle at evidence/pcv03f/installed-evidence.json on an evidence-only branch without changing the certification source. Dispatch Validate Current Family on the original source branch with profile_id=PCV-03F, package_run_id and immutable evidence_ref; it reuses the actual packages and verifies all four phases. Only complete exact-head installed acceptance permits protected application publication and atomic closeout. Do not start PCV-04.",
+  "next_action": "Resolve current provider database connection timeout by verifying full isolated database Internal Database URL in owner dashboard, then verify repaired exact deployment 0dac5c60f42e1985b20cb9f8c62c98bba73bb9e2 HTTPS/WSS/polling and provider restart using synthetic probe. Preserve immutable same-head packages and genuine signed installed Windows/Android evidence requirements. Native existing-signer job remains queued; do not poll unchanged capacity. Do not close PCV-03F or start PCV-04.",
   "execution_guard": {
     "continue_turns": 10,
     "stall_nudges": 4,
@@ -116,7 +116,7 @@
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "owner_only",
-      "evidence": "Owner approved Render browser fallback. Secure browser authentication could not complete; owner then reported cloud-browser manual handoff connection refused. Available shared tab still showed Render login, and the owner’s separately authenticated tab was not exposed to this session. Stop retrying the cloud login. Render connector successfully configured MULTIVERSAL_INVITATION_KEY and exact MULTIVERSAL_SOURCE_HEAD without secret disclosure. It cannot read database connection settings. Single immediate owner action: in their working Render dashboard, copy this isolated database’s Internal Database URL directly into DATABASE_URL on multiversal-pcv03f-session Environment; no secret in chat/source. Executor resumes provider/source/HTTPS/WSS/poll/restart verification after save. Native existing-signer capacity and real installed evidence remain independent requirements."
+      "evidence": "Manual deploy dep-db4hm668o7is73ep9om0 at repaired exact source started 16:52:36Z after older missing-DATABASE_URL deployment timed out. DATABASE_URL is now nonempty, but current startup logs 16:53:14Z and 16:53:29Z report Connection terminated due to connection timeout. Database is available; service and database are both Ohio/same workspace. External database access is intentionally blocked by empty IP allowlist. Most likely URL/network path mismatch remains unconfirmed; verify Internal Database URL, not external or onrender HTTPS service URL. Approved browser fallback remains inaccessible, connector cannot retrieve environment values or connection settings; owner must verify database URL in working dashboard. No installed/whole certification is asserted."
     },
     "last_material_progress": {
       "seq": 12,
@@ -211,7 +211,7 @@
     "render_service_id": "srv-db4dhb7lot8c738l8e10",
     "render_database_id": "dpg-db4dbknlot8c738kn0k0-a",
     "service_url": "https://multiversal-pcv03f-session.onrender.com",
-    "database_connection_configured": false,
+    "database_connection_configured": true,
     "original_self_hosted_capacity_failure": {
       "run": 37752829418,
       "unassigned_jobs_cancelled_after_hours": 24
@@ -223,7 +223,7 @@
     ],
     "lane_state_disposition": "Historical started milestone remains unchanged. No status/owner-reentry journal write or artificial reseed.",
     "control_plane_focused_regressions_passed": 37,
-    "blocker_resolution": "Owner copies isolated multiversal-pcv03f-certification Internal Database URL directly into DATABASE_URL on multiversal-pcv03f-session Environment and saves; executor performs deployment and proof afterward. Never send the value in chat.",
+    "blocker_resolution": "Owner verifies DATABASE_URL is the complete Internal Database URL copied from isolated multiversal-pcv03f-certification database, beginning postgresql://, and saves/redeploys. Keep secret inside Render. Executor has prepared a bounded synthetic live HTTPS/WSS/retry/poll/provider-restart probe; it did not pass because service cannot start. Do not weaken external database access or claim deployed acceptance.",
     "previous_application_head": "9e38ec41795c65c655f7811c6726b4f9acb4e546",
     "postgresql_http_restart_acceptance": {
       "head": "0dac5c60f42e1985b20cb9f8c62c98bba73bb9e2",
@@ -233,7 +233,7 @@
       "job": 113830536039
     },
     "hosted_development_status": "PASS at exact head 0dac5c60f42e1985b20cb9f8c62c98bba73bb9e2 in run 37933711013: full hosted Linux/Windows development/typecheck/preflight; PostgreSQL service/process/race suite PASS",
-    "render_startup_failure": "Render build succeeded; startup rejected missing DATABASE_URL. Connection settings remain unavailable through the connector.",
+    "render_startup_failure": "Manual deploy dep-db4hm668o7is73ep9om0 at repaired exact source started 16:52:36Z after older missing-DATABASE_URL deployment timed out. DATABASE_URL is now nonempty, but current startup logs 16:53:14Z and 16:53:29Z report Connection terminated due to connection timeout. Database is available; service and database are both Ohio/same workspace. External database access is intentionally blocked by empty IP allowlist. Most likely URL/network path mismatch remains unconfirmed; verify Internal Database URL, not external or onrender HTTPS service URL.",
     "native_capacity_boundary": {
       "run": 37933711013,
       "job": 113831527429,
@@ -266,6 +266,14 @@
       "owner_approved": true,
       "result": "blocked",
       "evidence": "owner-reported manual handoff connection refused; separate authenticated owner tab unavailable to shared browser"
+    },
+    "database_connection_verified": false,
+    "current_provider_deploy": {
+      "id": "dep-db4hm668o7is73ep9om0",
+      "source_head": "0dac5c60f42e1985b20cb9f8c62c98bba73bb9e2",
+      "status": "update_in_progress",
+      "startup_connection": "timeout",
+      "https_health": "not_verified"
     }
   }
 }
