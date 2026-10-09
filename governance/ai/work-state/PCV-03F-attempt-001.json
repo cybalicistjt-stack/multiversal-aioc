@@ -103,22 +103,25 @@
       "self-reported healthy service head without deployment/source binding"
     ]
   },
-  "active_substep": "installed_failure_repaired_pending_exact_head_hosted_native_and_physical_acceptance",
+  "active_substep": "repaired_exact_head_hosted_and_live_acceptance_passed_external_native_packages_running",
   "strict_successor": "PCV-04",
-  "next_action": "Complete acceptance run 37979630726 and same-head live PostgreSQL provider-restart proof for repair 2477af1c24d09d8cd6c3ab4bbef45ae1e357c013. Produce fresh Windows/Android packages with the original beta signer; old artifact 11634845789 failed installed startup/invitation acceptance and cannot certify the repaired head. After successful immutable package production, install the new packages preserving identities/data, generate fresh signed challenges only when both native apps are ready, collect genuine causal device evidence and resume physical verification using the new successful package_run_id plus evidence-only immutable evidence_ref.",
+  "next_action": "Observe terminal/new-artifact transition of native producer job 113987694961 in run 37979630726; diagnose a concrete failure or deliver the successful new immutable original-signer Windows/Android packages. Old artifact 11634845789 cannot certify repaired source 2477af1c24d09d8cd6c3ab4bbef45ae1e357c013. After both installed apps are ready, generate fresh signed challenges, collect real causal device evidence and resume physical verification with the new successful package_run_id and immutable evidence_ref without rebuilding.",
   "execution_guard": {
     "continue_turns": 11,
     "stall_nudges": 4,
-    "material_progress_seq": 15,
+    "material_progress_seq": 16,
     "progress_at_last_owner_command": 13,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "external_blocker",
+      "evidence": "Exact repaired-head native producer job 113987694961 is in_progress at Produce the exact packages once in run 37979630726. Health, canonical PostgreSQL restart/service, and complete hosted Linux/Windows development jobs have succeeded. No repaired installer/APK artifact is available yet. Local causal repair, regression verification, provider replacement proof and durable checkpoint reconciliation are complete; remaining package execution belongs to the existing external native runner. Observe a terminal/new-artifact transition, do not repeat unchanged healthy polls or rebuild. Then deliver new immutable packages and collect real signed installed Windows/Android evidence."
+    },
     "last_material_progress": {
-      "seq": 15,
-      "kind": "installed_startup_failure_causally_repaired_with_packaging_and_ui_regressions",
-      "evidence": "Owner installed source 0dac5c60f42e1985b20cb9f8c62c98bba73bb9e2 and observed immediate startup connection failure and unresponsive Invite player. Published Tauri CSP permits obsolete signaling host but blocks actual Session HTTPS/WSS origins. Changed repair 2477af1c24d09d8cd6c3ab4bbef45ae1e357c013 permits exact service origins, adds prebuild CSP guard, immediate invitation pending/error/duplicate-click feedback and bounded typed transport errors. 38 focused local tests and packaging static verification PASS. Validation run 37979630726 is executing; new source is Render LIVE and synthetic probe passed 31 before provider restart. Installed repair acceptance remains unproved."
+      "seq": 16,
+      "kind": "exact_repaired_source_live_restart_idempotency_verified",
+      "evidence": "47 actual live HTTPS/WSS/PostgreSQL assertions PASS, exit 0, on source 2477af1c24d09d8cd6c3ab4bbef45ae1e357c013 across provider process replacement dep-db4jt7qd7p4c73blkfrg / ld4n8 to dep-db4jupjncjis73fqml20 / hh6b4. Synthetic run 0226d235-b96e-40fe-8671-3827493757b2 retained revision 2, single matching Event and identical duplicate command receipt with no second effect, renewed authentication and durable ACK/empty polling catch-up. This proves repaired service runtime, not installed client use."
     }
   },
   "audit_required_at_closeout": "Prove the deployed PostgreSQL-backed HTTPS/WSS/polling service and same-head installed Windows/Android package identity, distinct device credentials and causal native-restart/idempotency/disconnect-resume/ordered-gap-safe/hidden-projection receipts. Preserve PCV-03A..03E authority; exclude secrets/private evidence; publish no public release/updater or PCV-04 before certification closes.",
@@ -214,8 +217,8 @@
       "unassigned_jobs_cancelled_after_hours": 24
     },
     "outstanding_boundaries": [
-      "Exact repaired-head hosted and native acceptance is executing; old packages cannot certify repaired source",
-      "Genuine signed distinct installed Windows/Android retest and causal device evidence remain required"
+      "Exact repaired-head native producer job 113987694961 is in_progress at Produce the exact packages once in run 37979630726. Health, canonical PostgreSQL restart/service, and complete hosted Linux/Windows development jobs have succeeded. No repaired installer/APK artifact is available yet. Local causal repair, regression verification, provider replacement proof and durable checkpoint reconciliation are complete; remaining package execution belongs to the existing external native runner. Observe a terminal/new-artifact transition, do not repeat unchanged healthy polls or rebuild. Then deliver new immutable packages and collect real signed installed Windows/Android evidence.",
+      "Actual signed distinct installed Windows/Android retest remains required after fresh immutable package production"
     ],
     "lane_state_disposition": "Historical started milestone remains unchanged. No status/owner-reentry journal write or artificial reseed.",
     "control_plane_focused_regressions_passed": 37,
@@ -224,9 +227,10 @@
     "postgresql_http_restart_acceptance": {
       "head": "2477af1c24d09d8cd6c3ab4bbef45ae1e357c013",
       "run": 37979630726,
-      "status": "pending"
+      "job": 113986651969,
+      "status": "PASS"
     },
-    "hosted_development_status": "Pending exact repaired-head acceptance in run 37979630726",
+    "hosted_development_status": "PASS at repaired exact head in run 37979630726: repository health job 113986544083; full hosted Linux job 113987094044 and Windows job 113987094109 development/typecheck/preflight; canonical PostgreSQL restart/service job 113986651969",
     "native_capacity_boundary": {
       "run": 37933711013,
       "job": 113831527429,
@@ -273,10 +277,11 @@
     },
     "database_connection_verified": true,
     "current_provider_deploy": {
-      "id": "dep-db4jt7qd7p4c73blkfrg",
+      "id": "dep-db4jupjncjis73fqml20",
       "source_head": "2477af1c24d09d8cd6c3ab4bbef45ae1e357c013",
       "status": "live",
-      "live_at": "2026-10-09T19:22:13.370334Z",
+      "ready_at": "2026-10-09T19:24:58.066827214Z",
+      "live_at": "2026-10-09T19:25:02.42005Z",
       "https_health": "PASS",
       "database_canonical": true
     },
@@ -293,15 +298,31 @@
         "instance": "srv-db4dhb7lot8c738l8e10-ld4n8",
         "live_at": "2026-10-09T19:22:13.370334Z"
       },
-      "status": "31 assertions PASS; provider replacement pending",
-      "installed_proof": false
+      "assertions_passed": 47,
+      "status": "PASS",
+      "probe_exit_code": 0,
+      "installed_proof": false,
+      "canonical_revision": 2,
+      "after": {
+        "deploy": "dep-db4jupjncjis73fqml20",
+        "instance": "srv-db4dhb7lot8c738l8e10-hh6b4",
+        "ready_at": "2026-10-09T19:24:58.066827214Z",
+        "live_at": "2026-10-09T19:25:02.42005Z"
+      },
+      "limitations": [
+        "Synthetic service identities; actual installed Windows/Android use remains pending",
+        "WSS exercised before provider replacement; causal installed transport rebind remains required"
+      ]
     },
     "native_package_production": {
       "head": "2477af1c24d09d8cd6c3ab4bbef45ae1e357c013",
       "run": 37979630726,
-      "status": "pending",
+      "status": "in_progress",
       "original_android_beta_signer": "required; no replacement authorized",
-      "superseded_artifact": 11634845789
+      "superseded_artifact": 11634845789,
+      "job": 113987694961,
+      "active_step": "Produce the exact packages once",
+      "package_artifact": "not yet produced"
     },
     "physical_boundary": {
       "status": "pending repaired packages and real installed retest",
