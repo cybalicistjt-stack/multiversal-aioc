@@ -62,7 +62,7 @@
     "checkpoint_max_age_ms": 300000
   },
   "active_substep": "Task 10 \u2014 implementation and focused proof complete; exact-head acceptance pending",
-  "next_action": "Resume immutable candidate 5f3de383029744ba06f27dbf0b299acbfc0939de / run 38542336200 from durable CI evidence. Diagnose a terminal failure causally; after full Linux/Windows/product-output GREEN, continue through READY publication, fresh-base integration, terminal program closeout and validation retirement. Do not restart Tasks 5-9.",
+  "next_action": "Resume the latest immutable exact head on Multiversal-app PR #838 (currently 2e270d2809ebf9051ce604e544d8d9811d661448) from durable CI evidence. The Windows outage-bound case now has a causal per-test 20-second budget repair after all assertions completed in 6077 ms against the prior default 5000 ms. After full Linux/Windows/product-output GREEN, continue through READY publication, fresh-base integration, terminal program closeout and validation retirement. Do not restart Tasks 5-9.",
   "execution_guard": {
     "continue_turns": 9,
     "stall_nudges": 3,
@@ -100,6 +100,12 @@
       "authority": "operations/CURRENT.json#/lanes/gpr/implementation_branch",
       "reason": "Pre-existing canonical validator failure. Correct the checkpoint projection to CURRENT without changing GPR selection, scope, authority or lane ref."
     },
-    "execution_observation_incident": "A second unchanged workflow-level queued observation occurred while the run actually had active platform validation. It was used to diagnose the scheduling/status mismatch, not certified as clean quiet-execution conformance."
+    "execution_observation_incident": "A second unchanged workflow-level queued observation occurred while the run actually had active platform validation. It was used to diagnose the scheduling/status mismatch, not certified as clean quiet-execution conformance.",
+    "current_candidate_head": "2e270d2809ebf9051ce604e544d8d9811d661448",
+    "prior_candidate_disposition": {
+      "head": "5f3de383029744ba06f27dbf0b299acbfc0939de",
+      "run_id": "38542336200",
+      "first_material_failure": "Windows test configuration: intentional 8 MiB outage test completed all assertions but took 6077 ms against default 5000 ms; only this test now receives 20000 ms."
+    }
   }
 }
