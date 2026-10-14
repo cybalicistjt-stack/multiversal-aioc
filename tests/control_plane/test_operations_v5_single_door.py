@@ -13,7 +13,7 @@ class Ops5ActivationTests(unittest.TestCase):
     def test_exact_current_version_and_single_selector(self):
         self.assertEqual(self.state["system"],"OPS5")
         self.assertEqual(self.state["schema_version"],"5.0.0")
-        self.assertEqual(self.state["state_revision"],613)
+        self.assertEqual(self.state["state_revision"],614)
         self.assertEqual(self.state["canonical_door"],"operations/BOOTSTRAP.md")
         self.assertEqual(self.state["operating_contract"],"operations/OPERATING_CONTRACT.md")
         self.assertEqual(self.state["lane_registry"],"operations/LANES.json")
@@ -42,7 +42,7 @@ class Ops5ActivationTests(unittest.TestCase):
         current=self.state["lanes"]
         expected={"gpr":("PCV-03F","in_progress","PCV-03F-attempt-001"),
                   "cwks":("CWKS-10","in_progress","CWKS-10-attempt-001"),
-                  "mtlc":("MTLC-02","selected_not_started","MTLC-02-attempt-001")}
+                  "mtlc":("MTLC-02","in_progress","MTLC-02-attempt-001")}
         self.assertEqual(self.lanes["persistent_implementation_lanes"],list(expected))
         for k,(item,status,attempt) in expected.items():
             with self.subTest(lane=k):
@@ -54,7 +54,8 @@ class Ops5ActivationTests(unittest.TestCase):
                 self.assertEqual(checkpoint["attempt_id"],attempt)
         self.assertTrue(current["gpr"]["implementation_authority"])
         self.assertTrue(current["cwks"]["implementation_authority"])
-        self.assertFalse(current["mtlc"]["implementation_authority"])
+        self.assertTrue(current["mtlc"]["implementation_authority"])
+        self.assertEqual(current["mtlc"]["implementation_branch"],"work/mtlc-02-private-table-onboarding")
     def test_current_source_is_not_empirical_certification(self):
         resource=self.state["research_resource"]
         self.assertEqual(resource["empirical_research_proofs"],"CASE_SPECIFIC_ONLY")

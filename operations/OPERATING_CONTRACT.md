@@ -104,6 +104,14 @@ Once lane, work item, repository, branch, and acceptance gate are known:
 Research is progress only when it resolves a concrete unknown needed for the result.
 
 
+### Executable admission after OPS5-02 two-cycle failure
+
+MTLC-02 exposed two missing operational checks: a stale selected-work projection after lane start, and repeated remote CI cancellation while draft code was changing. Starting a persistent work item must reconcile CURRENT, selected checkpoint and lane-state to the same attempt, status and implementation branch. The inherited execution guard's optional CURRENT/lane inputs validate that agreement and reject projection drift.
+
+A draft MTLC candidate cannot be admitted to full remote acceptance. Resolve source errors and run the smallest capable focused checks before promoting a coherent draft for exact-head validation. A queued/running different head prohibits further remote admission until the prior gate is terminal or safely cancelled and diagnosed. This requirement is machine-checked in the inherited CI guard and enforced by the MTLC draft-aware validation workflow. Real-device/shared-state acceptance is still mandatory when the work crosses that boundary.
+
+Neither an open PR nor a healthy queue permits a `completed_verified` claim, a reset of the work item, or treating the next owner Continue as the ordinary scheduler. The correction adds no second selector and no automatic merger.
+
 ### Agent/CI feedback architecture
 
 OPS4 separates the **development feedback loop** from **remote acceptance**.
