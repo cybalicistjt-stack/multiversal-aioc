@@ -2,9 +2,9 @@
   "lane": "cwks",
   "work_item_id": "CWKS-10",
   "attempt_id": "CWKS-10-attempt-001",
-  "status": "in_progress",
-  "implementation_branch": "work/cwks-10-collaborative-editing",
-  "implementation_authority": true,
+  "status": "completed_verified",
+  "implementation_branch": null,
+  "implementation_authority": false,
   "selected_by_owner": "2026-10-06 owner approved the CWKS-10 written design and implementation plan, later confirmed the approval was lost in a browser freeze, and directed implementation to continue.",
   "dependencies": {
     "specification": "cybalicistjt-stack/Multiversal-app@2e96fa8a480086c83f71cb20ddf83b87fef6fe70:docs/superpowers/specs/2026-10-06-cwks-10-collaborative-editing-design.md",
@@ -61,25 +61,28 @@
     "checkpoint_update_count": 256,
     "checkpoint_max_age_ms": 300000
   },
-  "active_substep": "Task 10 \u2014 implementation and focused proof complete; exact-head acceptance pending",
-  "next_action": "Resume the latest immutable exact head on Multiversal-app PR #838 (currently 2e270d2809ebf9051ce604e544d8d9811d661448) from durable CI evidence. The Windows outage-bound case now has a causal per-test 20-second budget repair after all assertions completed in 6077 ms against the prior default 5000 ms. After full Linux/Windows/product-output GREEN, continue through READY publication, fresh-base integration, terminal program closeout and validation retirement. Do not restart Tasks 5-9.",
+  "active_substep": "Task 10 complete — terminal CWKS program acceptance, publication and closeout",
+  "next_action": "CWKS-01 through CWKS-10 are terminal completed_verified. No successor is selected. A new CWKS work item or slot replacement requires explicit owner governance; GPR and MTLC retain independent state.",
   "execution_guard": {
-    "continue_turns": 9,
+    "continue_turns": 10,
     "stall_nudges": 3,
-    "material_progress_seq": 6,
-    "progress_at_last_owner_command": 5,
+    "material_progress_seq": 7,
+    "progress_at_last_owner_command": 7,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "CWKS-01 through CWKS-10 completed_verified. CWKS-10 exact head 0fab70ac87106e9e62410674fc0a0e6ee50cb81f passed Linux/Windows full regressions, complete typechecks and normalized actual convergence comparison in run38544999618; READY PR838 publication is durable as db600c4c14e43594d7e0359be1c462ed96f6512a. Terminal validation retirement PR842 passed run38545789673 and was durably published as 810463858c0821ba5672154ccfb10fb278e37878. The CWKS program has no strict successor and roadmap DAG schema1.0.9 supplies no CWKS interstitial. No CWKS-11 is selected; other lanes retain independent state."
+    },
     "last_material_progress": {
-      "seq": 6,
-      "kind": "tasks6_through9_and_real_boundary_acceptance_implemented",
-      "evidence": "Multiversal-app PR #838 exact candidate 5f3de383029744ba06f27dbf0b299acbfc0939de completes shared writing-host integration, remote carets/selections, actual CWKS-05/CWKS-09 epoch replacement, checkpoint/revoked-work recovery and bounded real transport. Fresh focused evidence: 47 suites / 408 client tests, 5 signaling tests, 4 receipt-contract tests and focused client/signaling TypeScript PASS. Product-output receipt d887a83d8dcf21052bf3a49b2bbd8eee75409eb3340b5b38505af8b5d9fec18b includes six actual outcome groups. Exact-head cross-platform run 38542336200 remains pending; no prequeue GREEN or publication is claimed."
+      "seq": 7,
+      "kind": "terminal_cwks_product_delivery",
+      "evidence": "CWKS-01 through CWKS-10 completed_verified. CWKS-10 exact head 0fab70ac87106e9e62410674fc0a0e6ee50cb81f passed Linux/Windows full regressions, complete typechecks and normalized actual convergence comparison in run38544999618; READY PR838 publication is durable as db600c4c14e43594d7e0359be1c462ed96f6512a. Terminal validation retirement PR842 passed run38545789673 and was durably published as 810463858c0821ba5672154ccfb10fb278e37878. The CWKS program has no strict successor and roadmap DAG schema1.0.9 supplies no CWKS interstitial. No CWKS-11 is selected; other lanes retain independent state."
     }
   },
   "execution_conformance": {
-    "status": "in_progress",
+    "status": "completed_with_recorded_policy_violations",
     "policy_violations": [
       "OPS3.MULTI_CONTINUE_UNRECORDED",
       "OPS3.STALL_NUDGE_UNRECORDED",
@@ -87,7 +90,8 @@
       "OPS4.STALL_NUDGE_UNRECORDED",
       "OPS4.UNCHANGED_WORKFLOW_OBSERVATION"
     ],
-    "product_completion_valid": false
+    "product_completion_valid": true,
+    "process_conformance_claim": "Historical interaction/stall and unchanged workflow-observation violations remain recorded. Product acceptance is independently certified by real-network and cross-platform gates; no clean-process claim is made."
   },
   "reconciliation_notes": {
     "selected_lane": "cwks",
@@ -100,12 +104,41 @@
       "authority": "operations/CURRENT.json#/lanes/gpr/implementation_branch",
       "reason": "Pre-existing canonical validator failure. Correct the checkpoint projection to CURRENT without changing GPR selection, scope, authority or lane ref."
     },
-    "execution_observation_incident": "A second unchanged workflow-level queued observation occurred while the run actually had active platform validation. It was used to diagnose the scheduling/status mismatch, not certified as clean quiet-execution conformance.",
-    "current_candidate_head": "2e270d2809ebf9051ce604e544d8d9811d661448",
+    "execution_observation_incident": "Repeated workflow observations during the executor-capacity repair are retained as OPS4.UNCHANGED_WORKFLOW_OBSERVATION; process conformance is not certified clean.",
+    "current_candidate_head": "0fab70ac87106e9e62410674fc0a0e6ee50cb81f",
     "prior_candidate_disposition": {
-      "head": "5f3de383029744ba06f27dbf0b299acbfc0939de",
-      "run_id": "38542336200",
-      "first_material_failure": "Windows test configuration: intentional 8 MiB outage test completed all assertions but took 6077 ms against default 5000 ms; only this test now receives 20000 ms."
+      "head": "7824b79b8fad7a136908b606642418ab5d45a8b6",
+      "run_id": "38544185636",
+      "windows": "success",
+      "linux": "self-hosted pool never started; superseded by scoped hosted-Linux executor repair"
     }
+  },
+  "completed": true,
+  "strict_successor": null,
+  "completion_evidence": {
+    "validated_head": "0fab70ac87106e9e62410674fc0a0e6ee50cb81f",
+    "terminal_validation_run": "38544999618",
+    "application_pr": 838,
+    "application_merge_sha": "db600c4c14e43594d7e0359be1c462ed96f6512a",
+    "application_ready_candidate": "CWKS-10-app-pr-838",
+    "application_publication_queue_generation": 134,
+    "terminal_registry_pr": 842,
+    "terminal_registry_validated_head": "e63a00921fa57130d5458a31ab682709e544797c",
+    "terminal_registry_validation_run": "38545789673",
+    "terminal_registry_merge_sha": "810463858c0821ba5672154ccfb10fb278e37878",
+    "client_suites": 47,
+    "client_tests": 409,
+    "signaling_tests": 5,
+    "receipt_executor_contract_tests": 8,
+    "real_boundary_proof": [
+      "two independently mounted React editors over real Hocuspocus WebSockets",
+      "CWKS-05 storage and CWKS-09 restore/accepted-review epoch replacement",
+      "old-epoch rejection and explicit revoked/checkpoint recovery",
+      "1 MiB update and 8 MiB unsent-queue recovery"
+    ],
+    "normalized_product_output_comparison": "success in exact-head cross-platform comparison job115789805111",
+    "successor": null,
+    "roadmap_dependency_graph_schema": "1.0.9",
+    "terminal_registry_publication_queue_generation": 136
   }
 }

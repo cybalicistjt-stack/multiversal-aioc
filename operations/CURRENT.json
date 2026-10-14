@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 614,
+  "state_revision": 615,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -63,13 +63,13 @@
       "execution_state_ref": "ops3-lane-state/mrcs"
     },
     "cwks": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "selected_work_item": "CWKS-10",
       "attempt_id": "CWKS-10-attempt-001",
       "checkpoint_path": "operations/work-items/CWKS-10.json",
-      "implementation_branch": "work/cwks-10-collaborative-editing",
-      "implementation_authority": true,
-      "activation_rule": "Owner approved the CWKS-10 written design and implementation plan and confirmed after a browser freeze that implementation had been approved to begin. CWKS-10 is authorized only for true simultaneous auto-converging CreatorDocumentV1 collaborative editing, ephemeral presence/cursors, reconnect/checkpoint continuity, collaboration-aware persistence/history/review coordination, a bounded provider-neutral Hocuspocus signaling transport, and document-body integration across generic editor, Story Project, Wiki, and migrated/native Creator Suite writing. CreatorDocumentV1/CWKS-05/CWKS-09 remain authoritative at their existing boundaries. Public sharing/invitations/ACL authority, chat/voice/video, AI writing/review, Story/Wiki structural collaboration, D29 current-body revival, GPR implementation, and fashion implementation remain unauthorized.",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "activation_rule": "CWKS-01 through CWKS-10 completed_verified. CWKS-10 exact head 0fab70ac87106e9e62410674fc0a0e6ee50cb81f passed Linux/Windows full regressions, complete typechecks and normalized actual convergence comparison in run38544999618; READY PR838 publication is durable as db600c4c14e43594d7e0359be1c462ed96f6512a. Terminal validation retirement PR842 passed run38545789673 and was durably published as 810463858c0821ba5672154ccfb10fb278e37878. The CWKS program has no strict successor and roadmap DAG schema1.0.9 supplies no CWKS interstitial. No CWKS-11 is selected; other lanes retain independent state.",
       "execution_state_ref": "ops3-lane-state/cwks"
     },
     "dwc-speech": {
@@ -177,7 +177,7 @@
     "ops5_agent_completion": "Worker started, input accepted, artifact produced, focused check, real-boundary validation, owner acceptance and publication are distinct; follow current operations guards and real-source proof; do not add per-status journal receipts.",
     "ops5_bridge_fallback": "Missing local index or unverified host skill never blocks authorized work. Read relevant current source directly with GitHub tools; avoid compulsory research on trivial tasks."
   },
-  "next_project_action": "Continue independent GPR PCV-03F and CWKS-10 on their own lanes. MTLC-02 is in progress on work/mtlc-02-private-table-onboarding with draft app PR #843. The first completed Windows test exposed an escaped TypeScript newline and deterministic roster-order mismatch, repaired in application commit 11ad0407a97b3ece526f8bb7bdbafc6b09619992. Admit the coherent MTLC candidate only after focused validation, then require exact-head cross-platform and real-device boundary evidence before READY/publication and closeout.",
+  "next_project_action": "Continue independent GPR PCV-03F on its own lane. CWKS-01 through CWKS-10 are terminal completed_verified with no successor. MTLC-02 is in progress on work/mtlc-02-private-table-onboarding with draft app PR #843. The first completed Windows test exposed an escaped TypeScript newline and deterministic roster-order mismatch, repaired in application commit 11ad0407a97b3ece526f8bb7bdbafc6b09619992. Admit the coherent MTLC candidate only after focused validation, then require exact-head cross-platform and real-device boundary evidence before READY/publication and closeout.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
@@ -368,6 +368,29 @@
       "implementation_branch": null,
       "implementation_authority": false,
       "completion_rule": "FDE-01 through FDE-07 completed_verified. Terminal FDE-GOLDEN-1 certifies the live Fashion Design Engine over sealed FGA authority: authorized Studio entry, provider-off controls/catalog, visible full-body/portrait/token preview, durable My Designs/versions/collections/import-export, review-gated clothing-photo proposals, approved FGA-03 demand realization through PCA/PAPT with ARI registration, and all ten CAS-GOLDEN-1/FGA-06 ordinary/difficult topology profiles. No humanoid fallback, hidden-detail invention, unapproved provider execution, new garment/fit/renderer/production authority, Mall/commerce/public sharing, equipment truth, anatomy mutation or mechanics mutation is required or authorized. FDE has no successor."
+    },
+    "CWKS": {
+      "program_id": "CWKS",
+      "state": "completed_verified",
+      "selected_work_item": "CWKS-10",
+      "attempt_id": "CWKS-10-attempt-001",
+      "checkpoint_path": "operations/work-items/CWKS-10.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "completed_work_items": [
+        "CWKS-01",
+        "CWKS-02",
+        "CWKS-03",
+        "CWKS-04",
+        "CWKS-05",
+        "CWKS-06",
+        "CWKS-07",
+        "CWKS-08",
+        "CWKS-09",
+        "CWKS-10"
+      ],
+      "strict_successor": null,
+      "completion_rule": "CWKS-01 through CWKS-10 completed_verified. CWKS-10 exact head 0fab70ac87106e9e62410674fc0a0e6ee50cb81f passed Linux/Windows full regressions, complete typechecks and normalized actual convergence comparison in run38544999618; READY PR838 publication is durable as db600c4c14e43594d7e0359be1c462ed96f6512a. Terminal validation retirement PR842 passed run38545789673 and was durably published as 810463858c0821ba5672154ccfb10fb278e37878. The CWKS program has no strict successor and roadmap DAG schema1.0.9 supplies no CWKS interstitial. No CWKS-11 is selected; other lanes retain independent state."
     }
   },
   "domain_authorities": {
