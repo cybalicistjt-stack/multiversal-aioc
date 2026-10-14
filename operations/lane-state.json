@@ -1,19 +1,22 @@
 {
   "schema_version": "1.2.0",
   "lane": "mtlc",
-  "revision": 7,
+  "revision": 8,
   "selected_work_item": "MTLC-02",
   "attempt_id": "MTLC-02-attempt-001",
   "execution_status": "in_progress",
   "implementation_branch": "work/mtlc-02-private-table-onboarding",
-  "progress_seq": 1,
+  "progress_seq": 2,
   "last_progress": {
-    "milestone": "start_execution",
+    "milestone": "focused_a3_binding_and_shared_store_preflight_candidate",
     "work_item_id": "MTLC-02",
     "attempt_id": "MTLC-02-attempt-001",
     "implementation_branch": "work/mtlc-02-private-table-onboarding",
+    "application_candidate_pr": 843,
+    "application_candidate_head": "77fb208dc1ea3ec177d1d8f6acb09bc4f5d19678",
     "at": "2026-10-14",
-    "note": "Owner instructed MTLC implementation continuation under OPS5; MTLC-02A starts on distinct application branch."
+    "status": "candidate_ci_pending_not_accepted",
+    "note": "Bound A3 getSession response sessionId to requested session ID, replaced permissive golden Group policy stub with actual Group policy, added independent-client in-process shared/isolated-store preflight. Not remote cross-device acceptance. GPR PCV-03F service-first PR840 remains independent; next: inspect exact-head CI once, repair causal failure, then shared authenticated Group service and installed Windows/Android proof before publication."
   },
   "terminal": false,
   "last_completed": {
