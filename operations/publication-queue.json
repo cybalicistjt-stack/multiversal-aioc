@@ -1,30 +1,8 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 251,
-  "ready": [
-    {
-      "candidate_id": "CWKS-10-reconcile-pr-1869",
-      "lane": "cwks",
-      "work_item_id": "CWKS-10",
-      "pr_number": 1869,
-      "head_sha": "ee1e685c5d9432521d0d6be9ce051c5b2ed980bd",
-      "prequeue_validation": {
-        "status": "green",
-        "head_sha": "ee1e685c5d9432521d0d6be9ce051c5b2ed980bd",
-        "run_id": "38543115351"
-      },
-      "write_set": [
-        "operations/work-items/CWKS-10.json",
-        "governance/ai/work-state/PCV-03F-attempt-001.json"
-      ],
-      "dependency_fingerprint": {
-        "validated_base_sha": "87f3d0179b403901128df7ad04b24ac5b7eb78e8",
-        "current_revision": 612,
-        "scope": "Recovery checkpoint plus deterministic CURRENT-to-checkpoint branch projection repair; no selection, scope or implementation authority changed."
-      }
-    }
-  ],
+  "generation": 252,
+  "ready": [],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
@@ -4777,7 +4755,39 @@
         "merge_method": "squash",
         "drift_note": "fresh main advanced only operations/work-items/CWKS-10.json; no overlap with MTLC closeout write set"
       }
+    },
+    {
+      "candidate_id": "CWKS-10-reconcile-pr-1869",
+      "lane": "cwks",
+      "work_item_id": "CWKS-10",
+      "pr_number": 1869,
+      "head_sha": "ee1e685c5d9432521d0d6be9ce051c5b2ed980bd",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "ee1e685c5d9432521d0d6be9ce051c5b2ed980bd",
+        "run_id": "38543115351"
+      },
+      "write_set": [
+        "operations/work-items/CWKS-10.json",
+        "governance/ai/work-state/PCV-03F-attempt-001.json"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "87f3d0179b403901128df7ad04b24ac5b7eb78e8",
+        "current_revision": 612,
+        "scope": "Recovery checkpoint plus deterministic CURRENT-to-checkpoint branch projection repair; no selection, scope or implementation authority changed."
+      },
+      "status": "published",
+      "merge_sha": "30ef67edb9da054307822a666f7418bc8c2da960",
+      "integration_receipt": {
+        "candidate_id": "CWKS-10-reconcile-pr-1869",
+        "candidate_head": "ee1e685c5d9432521d0d6be9ce051c5b2ed980bd",
+        "base_sha": "87f3d0179b403901128df7ad04b24ac5b7eb78e8",
+        "status": "green",
+        "run_id": "38543115351",
+        "proof": "Exact candidate accepted on the same immutable main base; no base drift",
+        "mergeable": true
+      }
     }
   ],
-  "last_merge_sha": "946d0543bb159746ce91c366e0c184b26044ad53"
+  "last_merge_sha": "30ef67edb9da054307822a666f7418bc8c2da960"
 }
