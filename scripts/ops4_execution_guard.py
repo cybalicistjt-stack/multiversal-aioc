@@ -103,17 +103,43 @@ def validate_execution_conformance(checkpoint):
     if not isinstance(sn,int) or sn<0: errors.append(STALL_NUDGE)
     elif sn>0 and STALL_NUDGE not in violations and cs in {"completed_verified","conforming"}: errors.append(STALL_NUDGE)
     errors.extend(validate_progress_receipt(checkpoint)); return sorted(set(errors))
-def validate_checkpoint(checkpoint,*,terminal_response=False,lane_state=None):
+def validate_lane_projection(current: dict[str,Any], checkpoint: dict[str,Any], lane_state: dict[str,Any], lane_id: str)->list[str]:
+    """Reject mismatched CURRENT / selected checkpoint / durable lane milestone."""
+    selected=current.get("lanes",{}).get(lane_id,{})
+    if not isinstance(selected,dict) or not isinstance(lane_state,dict) or not isinstance(checkpoint,dict):
+        return ["OPS4.LANE_PROJECTION_DRIFT"]
+    errors=[]
+    for key,work_key in (("selected_work_item","work_item_id"),("attempt_id","attempt_id")):
+        if selected.get(key)!=checkpoint.get(work_key) or selected.get(key)!=lane_state.get(key):
+            errors.append("OPS4.LANE_PROJECTION_DRIFT")
+    lane_status=lane_state.get("execution_status")
+    expected="in_progress" if lane_status in {"in_progress","prequeue_green","published"} else lane_status
+    if selected.get("state")!=expected or checkpoint.get("status")!=expected:
+        errors.append("OPS4.LANE_PROJECTION_DRIFT")
+    if expected=="in_progress":
+        branch=lane_state.get("implementation_branch")
+        if not branch or selected.get("implementation_branch")!=branch or checkpoint.get("implementation_branch")!=branch:
+            errors.append("OPS4.LANE_PROJECTION_DRIFT")
+        if selected.get("implementation_authority") is not True or checkpoint.get("implementation_authority") is not True:
+            errors.append("OPS4.LANE_PROJECTION_DRIFT")
+    if expected=="selected_not_started" and (selected.get("implementation_authority") is not False or checkpoint.get("implementation_authority") is not False):
+        errors.append("OPS4.LANE_PROJECTION_DRIFT")
+    return sorted(set(errors))
+
+def validate_checkpoint(checkpoint,*,terminal_response=False,lane_state=None,current=None,lane_id=None):
     errors=validate_execution_conformance(checkpoint)
+    if current is not None and lane_state is not None and lane_id is not None:
+        errors.extend(validate_lane_projection(current,checkpoint,lane_state,lane_id))
     if terminal_response:
         errors.extend(validate_terminal_response(checkpoint))
         if lane_state is not None:
             errors.extend(validate_lane_terminal_response(lane_state))
     return sorted(set(errors))
 def main():
-    p=argparse.ArgumentParser(); p.add_argument("checkpoint"); p.add_argument("--terminal-response",action="store_true"); p.add_argument("--lane-state"); a=p.parse_args()
+    p=argparse.ArgumentParser(); p.add_argument("checkpoint"); p.add_argument("--terminal-response",action="store_true"); p.add_argument("--lane-state"); p.add_argument("--current"); p.add_argument("--lane-id"); a=p.parse_args()
     c=json.loads(Path(a.checkpoint).read_text(encoding="utf-8"))
     lane_state=json.loads(Path(a.lane_state).read_text(encoding="utf-8")) if a.lane_state else None
-    errors=validate_checkpoint(c,terminal_response=a.terminal_response,lane_state=lane_state)
+    current=json.loads(Path(a.current).read_text(encoding="utf-8")) if a.current else None
+    errors=validate_checkpoint(c,terminal_response=a.terminal_response,lane_state=lane_state,current=current,lane_id=a.lane_id)
     print(json.dumps({"status":"FAIL" if errors else "PASS","errors":errors},sort_keys=True)); return 1 if errors else 0
 if __name__=="__main__": raise SystemExit(main())
