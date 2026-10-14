@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS5-01",
+  "title": "OPS5 current research advisory activation",
+  "status": "completed_verified",
+  "completed": true,
+  "implementation_authority": false,
+  "owner_directive": "Activate OPS5 as a reduced, source-backed research-advisory operations version",
+  "prior_system": "OPS4",
+  "new_system": "OPS5",
+  "resource_repo": "cybalicistjt-stack/NCG",
+  "resource_commit": "8f5baac1b5e7d273b23fde52c7122c9138b2b15d",
+  "preserve_lanes": [
+    "gpr",
+    "cwks",
+    "mtlc"
+  ],
+  "scope": "Read-only research assistance. Canonical operations selector stays in AIOC. No automatic product work, installed-host proof, or empirical validation claim.",
+  "completion_rule": "All coordinated versioned controls and exact-head operations CI are green and published. Rollback via governed PR.",
+  "rollback": "Revert the operations version and metadata without resetting product lanes."
+}
