@@ -20,10 +20,14 @@ if "Operations V5" not in door or "Operations V5" not in contract:
     errors.append("canonical door/contract version mismatch")
 if "CI is an **acceptance system, not a remote REPL**" not in door+contract:
     errors.append("inherited CI feedback boundary lost")
-for path in ("scripts/validate_operations_v5.py","scripts/validate_ops5_semantic_surfaces.py",
-             "scripts/ops4_execution_guard.py","scripts/ops4_ci_guard.py"):
+for path in ("scripts/validate_operations_v5.py","scripts/validate_ops5_semantic_surfaces.py"):
     if path not in workflow:
         errors.append("missing workflow validation: "+path)
+for path in ("scripts/ops4_execution_guard.py","scripts/ops4_ci_guard.py"):
+    if not (root/path).is_file():
+        errors.append("missing inherited guard: "+path)
+if "tests/control_plane/test_ops4_ci_guard.py" not in workflow:
+    errors.append("workflow omits inherited OPS4 CI/response guard regression")
 registered={x.get("path"):x for x in registry.get("surfaces",[]) if isinstance(x,dict)}
 for path in ("scripts/validate_operations_v5.py","scripts/validate_ops5_semantic_surfaces.py",
              "scripts/ops4_execution_guard.py","scripts/ops4_ci_guard.py"):
