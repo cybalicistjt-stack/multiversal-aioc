@@ -107,7 +107,7 @@ def render_authority(current: dict[str, Any], product: dict[str, Any], operation
         "canonical_door": current["canonical_door"],
         "canonical_contract": current["operating_contract"],
         "canonical_lane_registry": current["lane_registry"],
-        "rule": "Compatibility projection only. Operational authority is defined exclusively by Operations V4.",
+        "rule": "Compatibility projection only. Operational authority is defined exclusively by the current AIOC Operations contract.",
         "current": [
             {"kind": "canonical_door", "lifecycle": "CURRENT", "path": current["canonical_door"]},
             {"kind": "operating_contract", "lifecycle": "CURRENT", "path": current["operating_contract"]},
