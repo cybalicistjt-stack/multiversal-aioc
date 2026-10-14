@@ -2,9 +2,9 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-02",
   "attempt_id": "MTLC-02-attempt-001",
-  "status": "selected_not_started",
-  "implementation_branch": null,
-  "implementation_authority": false,
+  "status": "in_progress",
+  "implementation_branch": "work/mtlc-02-private-table-onboarding",
+  "implementation_authority": true,
   "selected_by_owner": "Strict successor of completed_verified MTLC-01. Selection does not grant implementation authority.",
   "dependencies": {
     "predecessor": "MTLC-01 completed_verified",
@@ -60,8 +60,8 @@
     "MTLC-02D Campaign/Game Event attachment and onboarding continuity",
     "MTLC-02E private-table golden proof"
   ],
-  "active_substep": "selected_not_started",
-  "next_action": "On a future owner execution command, fresh-read OPS3 and start MTLC-02A on a distinct implementation branch. Do not begin public LFG, Lounge/chat, scheduling or Session Zero work.",
+  "active_substep": "MTLC-02A–02E candidate in progress; runtime/cross-device proof pending",
+  "next_action": "Repair the first material failure; use the smallest focused executable feedback. Once the candidate is coherent, permit one immutable exact-head MTLC-02 acceptance, complete real A3/A5 shared-state and cross-device proof, then governed publication/closeout. Do not treat an open PR or queued CI as completion.",
   "mtlc01_handoff": {
     "authority_matrix_rows": [
       "01 Find a Game (public portion deferred to MTLC-12)",
@@ -77,5 +77,29 @@
       "FRIC-012 Capability Without Operational Complexity"
     ],
     "reuse_rule": "Reuse F003 identity/workspace, F005 Campaign/Scene/Session, F020 permission/hidden-information and current GPR invitation/membership contracts. MTLC-02 owns only the Group/private-onboarding connective layer."
+  },
+  "execution_guard": {
+    "continue_turns": 2,
+    "stall_nudges": 1,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 2,
+      "kind": "implementation_candidate",
+      "evidence": "PR #843 contains Group authority, private invitations, waitlists, onboarding UI and deterministic tests, but no verified acceptance or merge."
+    },
+    "active_stall": true,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "stalled_recovery_required",
+    "policy_violations": [
+      "OPS4.MULTI_CONTINUE_UNRECORDED",
+      "OPS4.STALL_NUDGE_UNRECORDED",
+      "OPS4.NONTERMINAL_RESPONSE"
+    ],
+    "evidence": "Two owner execution cycles ended while the durable MTLC lane was in_progress; the canonical selector and checkpoint were not reconciled and draft PR pushes cancelled preceding checks."
   }
 }
