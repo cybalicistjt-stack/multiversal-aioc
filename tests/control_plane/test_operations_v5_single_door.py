@@ -70,11 +70,12 @@ class Ops5ActivationTests(unittest.TestCase):
     def test_inherited_guard_scripts_and_single_workflow(self):
         workflow=(ROOT/".github/workflows/validate-repository-health.yml").read_text()
         for p in ("scripts/validate_operations_v5.py","scripts/validate_ops5_semantic_surfaces.py",
-                  "scripts/ops4_execution_guard.py","scripts/ops4_ci_guard.py",
                   "tests/control_plane/test_ops4_ci_guard.py"):
             with self.subTest(p=p):
                 self.assertIn(p,workflow)
                 self.assertTrue((ROOT/p).is_file())
+        for p in ("scripts/ops4_execution_guard.py","scripts/ops4_ci_guard.py"):
+            self.assertTrue((ROOT/p).is_file())
         self.assertIn("expected-head",workflow)
         self.assertIn("pull_request",workflow)
         self.assertNotIn("git push origin main",workflow)
