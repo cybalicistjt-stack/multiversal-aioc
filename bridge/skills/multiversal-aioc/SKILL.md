@@ -94,3 +94,12 @@ If the bridge is unavailable:
 - Record the intended operation in the conversation.
 - Use repository access only when explicitly authorized and when the same governance boundary can be preserved.
 - For deployment questions, state that live verification could not be completed rather than inferring success from source code or CI alone.
+
+
+## OPS5 current-source NCG research (optional)
+
+The canonical AIOC `operations/CURRENT.json` identifies OPS5 and pins the current NCG research source commit. When a substantive task needs contrary evidence or knowledge from another discipline, read the matching study's `CURRENT.json`, original source, and open evidence debt in `cybalicistjt-stack/NCG`. If a clean authorized NCG checkout exists, use `python3 -m ncg_brain.current_corpus --root . build` and a scoped `query`; otherwise read current exact sources with the available GitHub connector. The previous frozen 33-family index is historical. Do not assume a host skill has been installed or that its local CLI ran.
+
+Treat completed documentary research, blocked external tests, and case-specific independent reproduction distinctly. Restrict advice to relevant sources with a small falsifiable check. NCG cannot select AIOC work, grant content rights, accept GM/player permissions, modify app state, certify a product, or displace CURRENT or its domain authorities. Failure or absence of the research index falls back to canonical source reading. Research is not mandatory for trivial or already-proved changes.
+
+When evaluating important agent work, distinguish agent spawned, instructions delivered, artifact committed, tests executed, real-boundary result, owner acceptance, and exact-head publication. Never infer the latter from a ready indicator or agent narration. OPS5 inherits the existing OPS4 CI and execution guards and migration-stable transport identifiers. No new status-polling loop or extra lane-state journal is authorized.
