@@ -1,33 +1,8 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/Multiversal-app",
-  "generation": 139,
-  "ready": [
-    {
-      "candidate_id": "OPS5-SOSX24-SHADOW-API-REPAIR-app-pr-845",
-      "lane": "operations",
-      "work_item_id": "OPS5 bounded SOSX shadow live-boundary repair",
-      "pr_number": 845,
-      "head_sha": "07f654c79e8143410c4b47d213846323757b519b",
-      "prequeue_validation": {
-        "status": "green",
-        "head_sha": "07f654c79e8143410c4b47d213846323757b519b",
-        "run_id": "38586554284",
-        "shadow_run_id": "38586554127"
-      },
-      "write_set": [
-        "tests/ops5_shadow/test_observer.py",
-        "tools/ops5_shadow/observer.py",
-        "tools/ops5_shadow/restore.py"
-      ],
-      "dependency_fingerprint": {
-        "validated_base_sha": "b5e8ea1402996b5e1b46fd950b4d25b575230c8f",
-        "live_first_run_failure": "38586082706",
-        "cause_class": "evidence_boundary_unavailable_before_first_artifact",
-        "retry_semantics": "no prior successfully durable state; no silent reset after success"
-      }
-    }
-  ],
+  "generation": 140,
+  "ready": [],
   "history": [
     {
       "status": "history_compacted",
@@ -1385,7 +1360,43 @@
         "merge_method": "squash",
         "proof_scope": "pilot code and tests only; actual hosted shadow continuity pending"
       }
+    },
+    {
+      "candidate_id": "OPS5-SOSX24-SHADOW-API-REPAIR-app-pr-845",
+      "lane": "operations",
+      "work_item_id": "OPS5 bounded SOSX shadow live-boundary repair",
+      "pr_number": 845,
+      "head_sha": "07f654c79e8143410c4b47d213846323757b519b",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "07f654c79e8143410c4b47d213846323757b519b",
+        "run_id": "38586554284",
+        "shadow_run_id": "38586554127"
+      },
+      "write_set": [
+        "tests/ops5_shadow/test_observer.py",
+        "tools/ops5_shadow/observer.py",
+        "tools/ops5_shadow/restore.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "b5e8ea1402996b5e1b46fd950b4d25b575230c8f",
+        "live_first_run_failure": "38586082706",
+        "cause_class": "evidence_boundary_unavailable_before_first_artifact",
+        "retry_semantics": "no prior successfully durable state; no silent reset after success"
+      },
+      "status": "published",
+      "merge_sha": "5aa3ea84f5995f5f687a922058cc5c44096a023b",
+      "integration_receipt": {
+        "status": "green",
+        "candidate_head": "07f654c79e8143410c4b47d213846323757b519b",
+        "base_sha": "b5e8ea1402996b5e1b46fd950b4d25b575230c8f",
+        "run_id": "38586554284",
+        "shadow_run_id": "38586554127",
+        "mergeable": true,
+        "merge_method": "squash",
+        "runtime_acceptance": "still_pending"
+      }
     }
   ],
-  "last_merge_sha": "b5e8ea1402996b5e1b46fd950b4d25b575230c8f"
+  "last_merge_sha": "5aa3ea84f5995f5f687a922058cc5c44096a023b"
 }
