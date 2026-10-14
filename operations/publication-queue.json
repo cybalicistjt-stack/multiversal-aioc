@@ -1,33 +1,8 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/Multiversal-app",
-  "generation": 141,
-  "ready": [
-    {
-      "candidate_id": "OPS5-SOSX24-SHADOW-PRIVATE-PR-READ-app-pr-846",
-      "lane": "operations",
-      "work_item_id": "OPS5 SOSX-24 bounded shadow pilot read permission",
-      "pr_number": 846,
-      "head_sha": "257da3bcf4827e04db1f55ad11a9604d90482114",
-      "prequeue_validation": {
-        "status": "green",
-        "head_sha": "257da3bcf4827e04db1f55ad11a9604d90482114",
-        "run_id": "38587094661",
-        "shadow_run_id": "38587094236"
-      },
-      "write_set": [
-        ".github/workflows/ops5-sosx-shadow.yml",
-        "tests/ops5_shadow/test_workflow_safety.py",
-        "docs/ops5/SOSX24_SHADOW_MTLS02_PILOT.md"
-      ],
-      "dependency_fingerprint": {
-        "validated_base_sha": "5aa3ea84f5995f5f687a922058cc5c44096a023b",
-        "first_live_pr_denial": "38586802723",
-        "scope": "read-only GH private PR metadata access; no write",
-        "expected_next": "actual main worker receipt"
-      }
-    }
-  ],
+  "generation": 142,
+  "ready": [],
   "history": [
     {
       "status": "history_compacted",
@@ -1421,7 +1396,43 @@
         "merge_method": "squash",
         "runtime_acceptance": "still_pending"
       }
+    },
+    {
+      "candidate_id": "OPS5-SOSX24-SHADOW-PRIVATE-PR-READ-app-pr-846",
+      "lane": "operations",
+      "work_item_id": "OPS5 SOSX-24 bounded shadow pilot read permission",
+      "pr_number": 846,
+      "head_sha": "257da3bcf4827e04db1f55ad11a9604d90482114",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "257da3bcf4827e04db1f55ad11a9604d90482114",
+        "run_id": "38587094661",
+        "shadow_run_id": "38587094236"
+      },
+      "write_set": [
+        ".github/workflows/ops5-sosx-shadow.yml",
+        "tests/ops5_shadow/test_workflow_safety.py",
+        "docs/ops5/SOSX24_SHADOW_MTLS02_PILOT.md"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "5aa3ea84f5995f5f687a922058cc5c44096a023b",
+        "first_live_pr_denial": "38586802723",
+        "scope": "read-only GH private PR metadata access; no write",
+        "expected_next": "actual main worker receipt"
+      },
+      "status": "published",
+      "merge_sha": "0118379ef32699fef01d0d4440886d68e32d7a1b",
+      "integration_receipt": {
+        "status": "green",
+        "candidate_head": "257da3bcf4827e04db1f55ad11a9604d90482114",
+        "base_sha": "5aa3ea84f5995f5f687a922058cc5c44096a023b",
+        "validation_run": "38587094661",
+        "shadow_contract_run": "38587094236",
+        "mergeable": true,
+        "merge_method": "squash",
+        "runtime_acceptance": "pending"
+      }
     }
   ],
-  "last_merge_sha": "5aa3ea84f5995f5f687a922058cc5c44096a023b"
+  "last_merge_sha": "0118379ef32699fef01d0d4440886d68e32d7a1b"
 }
