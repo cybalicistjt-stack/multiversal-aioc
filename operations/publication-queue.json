@@ -1,41 +1,8 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/Multiversal-app",
-  "generation": 137,
-  "ready": [
-    {
-      "candidate_id": "OPS5-SOSX24-SHADOW-app-pr-844",
-      "lane": "operations",
-      "work_item_id": "OPS5 bounded SOSX-24 shadow adoption",
-      "pr_number": 844,
-      "head_sha": "3d7fb099dd240930b77cc360bce1c5abb587b013",
-      "prequeue_validation": {
-        "status": "green",
-        "head_sha": "3d7fb099dd240930b77cc360bce1c5abb587b013",
-        "run_id": "38585671604",
-        "shadow_run_id": "38585671546"
-      },
-      "write_set": [
-        ".github/workflows/ops5-sosx-shadow.yml",
-        ".github/workflows/validate-current-family.yml",
-        "docs/ops5/SOSX24_SHADOW_MTLS02_PILOT.md",
-        "tests/ops5_shadow/test_observer.py",
-        "tests/ops5_shadow/test_workflow_safety.py",
-        "tools/ops5_shadow/observer.py",
-        "tools/ops5_shadow/restore.py",
-        "tools/validation_core/validate_repository_health_app.py"
-      ],
-      "dependency_fingerprint": {
-        "validated_base_sha": "810463858c0821ba5672154ccfb10fb278e37878",
-        "sosx_source_sha": "8f5baac1b5e7d273b23fde52c7122c9138b2b15d",
-        "experiment": "shadow_readonly",
-        "product_lane_state_unchanged": true,
-        "direct_pr_writes": false,
-        "shadow_experiment_window": "2026-10-14..2026-10-21",
-        "required_real_proof": "at least one main push and a separate later successful state restore"
-      }
-    }
-  ],
+  "generation": 138,
+  "ready": [],
   "history": [
     {
       "status": "history_compacted",
@@ -1348,7 +1315,52 @@
         "mergeable": true,
         "merge_method": "squash"
       }
+    },
+    {
+      "candidate_id": "OPS5-SOSX24-SHADOW-app-pr-844",
+      "lane": "operations",
+      "work_item_id": "OPS5 bounded SOSX-24 shadow adoption",
+      "pr_number": 844,
+      "head_sha": "3d7fb099dd240930b77cc360bce1c5abb587b013",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "3d7fb099dd240930b77cc360bce1c5abb587b013",
+        "run_id": "38585671604",
+        "shadow_run_id": "38585671546"
+      },
+      "write_set": [
+        ".github/workflows/ops5-sosx-shadow.yml",
+        ".github/workflows/validate-current-family.yml",
+        "docs/ops5/SOSX24_SHADOW_MTLS02_PILOT.md",
+        "tests/ops5_shadow/test_observer.py",
+        "tests/ops5_shadow/test_workflow_safety.py",
+        "tools/ops5_shadow/observer.py",
+        "tools/ops5_shadow/restore.py",
+        "tools/validation_core/validate_repository_health_app.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "810463858c0821ba5672154ccfb10fb278e37878",
+        "sosx_source_sha": "8f5baac1b5e7d273b23fde52c7122c9138b2b15d",
+        "experiment": "shadow_readonly",
+        "product_lane_state_unchanged": true,
+        "direct_pr_writes": false,
+        "shadow_experiment_window": "2026-10-14..2026-10-21",
+        "required_real_proof": "at least one main push and a separate later successful state restore"
+      },
+      "status": "published",
+      "merge_sha": "b5e8ea1402996b5e1b46fd950b4d25b575230c8f",
+      "integration_receipt": {
+        "status": "green",
+        "candidate_id": "OPS5-SOSX24-SHADOW-app-pr-844",
+        "candidate_head": "3d7fb099dd240930b77cc360bce1c5abb587b013",
+        "base_sha": "810463858c0821ba5672154ccfb10fb278e37878",
+        "validation_run": "38585671604",
+        "shadow_contract_run": "38585671546",
+        "mergeable": true,
+        "merge_method": "squash",
+        "proof_scope": "pilot code and tests only; actual hosted shadow continuity pending"
+      }
     }
   ],
-  "last_merge_sha": "810463858c0821ba5672154ccfb10fb278e37878"
+  "last_merge_sha": "b5e8ea1402996b5e1b46fd950b4d25b575230c8f"
 }
