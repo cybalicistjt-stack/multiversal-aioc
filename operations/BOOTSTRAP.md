@@ -92,6 +92,16 @@ Treat a workflow run as one validation gate. While it is healthy/in-progress, in
 **Transition-driven observation is mandatory.** After one healthy workflow-level observation, do not re-read the same unchanged run merely because time passed. If independent authorized work remains, do that work. If no independent work remains, an unchanged healthy run is an executor wait boundary, not permission for a polling loop; resume from durable CI evidence on the next execution opportunity. A terminal failure immediately enters causal diagnosis; a terminal success immediately advances to the next governed phase.
 
 
+### OPS5 execution-cycle recovery: candidate admission and projection proof
+
+The October 14 MTLC-02 failure is reproducible: the saved lane was `in_progress` while CURRENT and its selected work record were `selected_not_started`; successive commits on a draft PR cancelled preceding CI runs; and two execution-command responses stopped while work remained nonterminal.
+
+**Mandatory start/return gate:** reconcile CURRENT + selected checkpoint + the durable lane-state ref before implementation or an execution-command final response. The inherited `scripts/ops4_execution_guard.py` now accepts `--current`, `--lane-id` and `--lane-state`; `OPS4.LANE_PROJECTION_DRIFT` blocks continuation until canonical state is repaired. For a terminal-response decision, add `--terminal-response`; an `in_progress` lane remains nonterminal.
+
+**Mandatory candidate discipline:** accumulate MTLC changes on a draft PR without triggering full remote acceptance, run focused feedback when capable, and document genuine local unavailability when not. Mark ready only after one coherent candidate is prepared. The MTLC application workflow runs hosted focused TypeScript/tests before cross-platform runners; other lanes retain their existing workflow. Do not synchronize a new head while a prior remote head is queued/in progress. A failed product head requires a causal repair and a different head; never retry blindly.
+
+A healthy CI queue is an external executor wait boundary, not verified product progress or an automatic reason to ask the owner for another Continue. No unattended scheduler or publication authority is added.
+
 ### Inherited OPS4 agent/CI feedback gate under OPS5
 
 CI is an **acceptance system, not a remote REPL**. Automatic CI may still run on commits, but an executor must not use remote CI as the ordinary way to discover basic compile, type, lint, package-test, or deterministic unit-test failures when a smaller executable surface is available.
