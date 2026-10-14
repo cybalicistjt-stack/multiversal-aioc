@@ -1,8 +1,33 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/Multiversal-app",
-  "generation": 138,
-  "ready": [],
+  "generation": 139,
+  "ready": [
+    {
+      "candidate_id": "OPS5-SOSX24-SHADOW-API-REPAIR-app-pr-845",
+      "lane": "operations",
+      "work_item_id": "OPS5 bounded SOSX shadow live-boundary repair",
+      "pr_number": 845,
+      "head_sha": "07f654c79e8143410c4b47d213846323757b519b",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "07f654c79e8143410c4b47d213846323757b519b",
+        "run_id": "38586554284",
+        "shadow_run_id": "38586554127"
+      },
+      "write_set": [
+        "tests/ops5_shadow/test_observer.py",
+        "tools/ops5_shadow/observer.py",
+        "tools/ops5_shadow/restore.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "b5e8ea1402996b5e1b46fd950b4d25b575230c8f",
+        "live_first_run_failure": "38586082706",
+        "cause_class": "evidence_boundary_unavailable_before_first_artifact",
+        "retry_semantics": "no prior successfully durable state; no silent reset after success"
+      }
+    }
+  ],
   "history": [
     {
       "status": "history_compacted",
