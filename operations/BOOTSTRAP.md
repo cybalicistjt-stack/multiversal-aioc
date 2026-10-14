@@ -1,6 +1,6 @@
 # Multiversal Operations Bootstrap
 
-**System:** Operations V4 (OPS4)  
+**System:** Operations V5 (OPS5)  
 **Status:** CANONICAL SINGLE DOOR  
 **Owner and final authority:** John Brandon Turner
 
@@ -19,6 +19,13 @@ Read `operations/CURRENT.json`.
 `CURRENT.json` is the only mutable selector of live operational state. It identifies freezes, the active operations work item, and each lane's current state. If another source disagrees with it, `CURRENT.json` wins unless John explicitly changes the direction in the current conversation.
 
 If `CURRENT.json` names a domain authority relevant to the requested scope, load that **CURRENT-referenced domain authority** before historical domain records, generated catalogs, or sealed completion evidence. It controls current canon for that domain only; it cannot select work, grant implementation authority, or expand the lane's scope.
+
+
+### OPS5 optional NCG research resource
+
+The canonical `operations/CURRENT.json` contains `research_resource`, which pins the current NCG Brain source revision and describes its **read-only advisory** scope. For a consequential, unfamiliar or cross-domain task, inspect the relevant current `cybalicistjt-stack/NCG` study's `CURRENT.json` status and exact source passages; include unfinished/blocked research only as evidence or hypotheses. The current NCG source is served through an authorized Git checkout or GitHub connector. A missing index, unavailable host skill or stale source must **fall back to direct canonical reading**, not block authorized work, change a lane, or invent field validation. Avoid NCG queries for trivial tasks or when approved acceptance sources already answer the question.
+
+Do not conflate agent process readiness, prompt acceptance, code generation, test execution, real-boundary proof, owner acceptance or publication. Continue using the inherited OPS4 CI/response/publication guards and exact-head contract; **there is no second selector or research-based permission**. The NCG current index and optional risk overlay are evidence tools only. AIOC canonical work/authority and domain source priority remain unchanged.
 
 ## 3. Select the lane from user intent
 
@@ -67,7 +74,7 @@ A repeated owner execution command on the same in-progress attempt is not a fres
 
 A chat/session/tool runtime is never a project dependency. Do not silently wait, sleep, or run open-ended polling loops for CI, tools, another lane, or a publication position.
 
-OPS4 uses **milestone receipts, not activity receipts**. Repository/PR/CI/publication-queue evidence is already durable truth and must not be copied into the lane journal after every observation.
+OPS5 inherits **milestone receipts, not activity receipts**. Repository/PR/CI/publication-queue evidence is already durable truth and must not be copied into the lane journal after every observation.
 
 For an ordinary persistent-lane attempt, the lane-state ref has only these execution milestones before successor reseed:
 
@@ -85,7 +92,7 @@ Treat a workflow run as one validation gate. While it is healthy/in-progress, in
 **Transition-driven observation is mandatory.** After one healthy workflow-level observation, do not re-read the same unchanged run merely because time passed. If independent authorized work remains, do that work. If no independent work remains, an unchanged healthy run is an executor wait boundary, not permission for a polling loop; resume from durable CI evidence on the next execution opportunity. A terminal failure immediately enters causal diagnosis; a terminal success immediately advances to the next governed phase.
 
 
-### OPS4 agent/CI feedback gate
+### Inherited OPS4 agent/CI feedback gate under OPS5
 
 CI is an **acceptance system, not a remote REPL**. Automatic CI may still run on commits, but an executor must not use remote CI as the ordinary way to discover basic compile, type, lint, package-test, or deterministic unit-test failures when a smaller executable surface is available.
 
@@ -107,7 +114,7 @@ If a tool call returns no usable result, a session aborts, or execution resumes 
 
 ### Single-active-lane mode and quiet execution
 
-When exactly one persistent implementation lane is nonterminal, OPS4 enters **single-active-lane mode**. Derive that fact once from the fresh `CURRENT.json` read used for lane selection. Until an invalidating event occurs, do **not** rescan sibling lane refs, check for concurrent writers, read an empty publication queue, or perform a routine update/rebase of the implementation branch. Terminal sibling lanes remain history unless a concrete dependency or an observed fresh-`main` change requires them.
+When exactly one persistent implementation lane is nonterminal, OPS5 enters **single-active-lane mode**. Derive that fact once from the fresh `CURRENT.json` read used for lane selection. Until an invalidating event occurs, do **not** rescan sibling lane refs, check for concurrent writers, read an empty publication queue, or perform a routine update/rebase of the implementation branch. Terminal sibling lanes remain history unless a concrete dependency or an observed fresh-`main` change requires them.
 
 The durable lane ref remains the **lane-state terminal gate**. For the selected lane, `in_progress`, `prequeue_green`, or `published` forbids a normal terminal response to an owner execution command. A repeated owner execution command may trigger checkpoint-local stall diagnosis, but it must **not** create a lane-state write merely to count the interaction. If interaction-quality telemetry is useful, aggregate it into an already-required terminal/closeout record rather than creating an activity receipt.
 

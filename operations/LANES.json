@@ -1,5 +1,5 @@
 {
-  "schema_version": "4.0.0",
+  "schema_version": "5.0.0",
   "canonical_door": "operations/BOOTSTRAP.md",
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "selection_rule": "User intent selects a lane; lane state never changes the global operating contract.",
@@ -276,5 +276,8 @@
   "single_active_lane_rule": "Derive single-active-lane mode once from the fresh CURRENT read. Ordinary execution reads and mutates only that lane plus concrete dependencies/conflicts; it does not rescan terminal siblings, check concurrent writers, read an empty READY queue, or perform routine rebase/update-branch work. Protected-main publication is PR-only, exact-head and fresh-base, with a narrow integration rerun only if main actually drifts.",
   "quiet_execution_rule": "Healthy CI is observed at workflow level only at sparse transition-driven points. Job/step/log inspection is failure-driven. Lane scans, queue-empty checks, rebase checks, mergeability polling and owner re-entry are not material progress and must not create lane-state receipts. Browser/session interruption resumes from durable lane state and repository evidence rather than requiring another owner Continue. OPS4 additionally forbids using remote CI as an interactive compile/test REPL when a smaller executable surface is available.",
   "ops4_ci_feedback_rule": "Before deliberate remote acceptance, use the smallest capable focused check or record concrete focused-check unavailability. Bind one run to one immutable head; diagnose the first terminal failure; product/config failure requires a changed repaired head; transient infrastructure gets at most one same-head retry; real boundaries require independent/cross-boundary acceptance evidence.",
-  "ops4_transport_compatibility": "Existing ops3-lane-state/* and ops3-publication-queue/* names remain migration-stable durable identifiers under OPS4 while active/historical receipts reference them. Their names do not restore OPS3 authority."
+  "ops4_transport_compatibility": "Existing ops3-lane-state/* and ops3-publication-queue/* names remain migration-stable durable identifiers under OPS4 while active/historical receipts reference them. Their names do not restore OPS3 authority.",
+  "ops5_research_rule": "Current NCG research is optional, source-pinned, read-only, provenance-aware, and never selects a lane, grants product authority or turns incomplete research into empirical acceptance. Use direct GitHub source fallback if host skill or index is unavailable.",
+  "ops5_ci_feedback_rule": "Before deliberate remote acceptance, use the smallest capable focused check or record concrete focused-check unavailability. Bind one run to one immutable head; diagnose the first terminal failure; product/config failure requires a changed repaired head; transient infrastructure gets at most one same-head retry; real boundaries require independent/cross-boundary acceptance evidence.",
+  "ops5_transport_compatibility": "Existing ops3-lane-state/* and ops3-publication-queue/* names remain migration-stable durable identifiers under OPS5 while active/historical receipts reference them. Their names do not restore OPS3 authority."
 }

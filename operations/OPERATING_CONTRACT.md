@@ -1,7 +1,7 @@
-# Multiversal Operations V4 Operating Contract
+# Multiversal Operations V5 Operating Contract
 
-**Document ID:** MV-OPS4-CONTRACT-001  
-**Version:** 4.0.0  
+**Document ID:** MV-OPS5-CONTRACT-001  
+**Version:** 5.0.0  
 **Status:** CANONICAL  
 **Owner and final authority:** John Brandon Turner
 
@@ -314,3 +314,15 @@ A compatibility surface must state its disposition and may not invent current wo
 Changes to this contract, the canonical door, current-state schema, lane semantics, response guard, or ready-candidate publication or lane-state protocol are operations-lane work. Product lanes stay preserved while a stop-the-line operations freeze is active.
 
 The operations system should become simpler over time. A new control file is justified only when it owns data that cannot live clearly in the existing contract, current state, lane registry, work item, evidence, or adapter. New execution controls require a reproduced failure plus an executable regression before they enter the critical path.
+
+## OPS5: Source-backed research assistance without additional authority
+
+OPS5 retains the single canonical door, `operations/CURRENT.json` selector, domain/owner authority, three independent persistent implementation lanes, all OPS4 CI/response protections and migration-stable READY/lane-state transports. **Operations V5 is not a new scheduler or blanket revalidation obligation**. Version metadata and the NCG resource reference live in canonical CURRENT, not in a second selector.
+
+When an authorized task genuinely benefits from external research or contrary historical experience, use `CURRENT.research_resource` to locate the **current Git-committed NCG Brain**. For repository access, use `ncg_brain.current_corpus` for explicit-scoped status-aware retrieval when a clean checkout is available; otherwise read the current NCG family `CURRENT.json`, source and evidence debt with authorized GitHub connector calls. The old 33-family frozen index and old OPS5 adoption patch are historical, not current sources. An uninstalled optional host skill is **not** silently called installed, and its absence is not a new product blocker.
+
+Research retrieval must preserve the actual source commit and family/substudy status, including blocked, partial, `NOT_RUN`, and competing evidence. If a source changed, refuse stale source pins and read the latest authoritative source rather than silently repinning. Read-only historical analogies, scores, reports or generated interpretations cannot grant implementation rights, make game canon, change GM/Player permissions, execute application code, approve deployment, complete an active lane, or certify an app. A real runtime assertion requires the owning source/CI/device/DB and independently observed proof. The source-owner boundaries apply to incomplete research as fully as completed research.
+
+For important work, distinguish a process starting, agent receiving input, source artifacts being written, focused checks passing, independent real-boundary evidence, explicit acceptance and exact-head publication. An AI self-report, green UI badge, commit count, compiled artifact claim or merge alone does not prove a full feature. Reproduce the first real failure and a competing cause before serial speculative fixes; preserve actual counterevidence and trace the smallest next test. Reuse existing execution and acceptance guards; don't duplicate them in a separate evidence queue. Track real owner review/rework/support load only when it can inform a decision. **Do not impose research ceremony on trivial or already-proved changes.**
+
+The reduced OPS5 adoption is explicitly owner-directed and source/connector backed. Human timed utility, installed independent host skill, real Android/Windows app proof and historical economic claims are *not* inferred from version activation. Optional future deployments or automatic research changes require distinct authorization. Roll back the optional research metadata through governed exact-head PR if it impedes operations; preserve source and all product selections.

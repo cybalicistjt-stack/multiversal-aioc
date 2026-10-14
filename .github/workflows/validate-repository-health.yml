@@ -1,4 +1,4 @@
-name: Validate Operations V4
+name: Validate Operations V5
 
 on:
   pull_request:
@@ -52,12 +52,12 @@ permissions:
   contents: write
 
 concurrency:
-  group: operations-v4-${{ github.event.pull_request.number || github.ref }}
+  group: operations-v5-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
   single-door:
-    name: Operations V4 single-door authority audit
+    name: Operations V5 single-door authority audit
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
@@ -109,16 +109,16 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 scripts/validate_operations_v4.py \
+          python3 scripts/validate_operations_v5.py \
             --root . \
             --expected-head "$CANDIDATE_HEAD" \
-            --output "${RUNNER_TEMP}/operations-v4-audit.json"
+            --output "${RUNNER_TEMP}/operations-v5-audit.json"
 
       - name: Validate semantic retirement surfaces
         shell: bash
         run: |
           set -euo pipefail
-          python3 scripts/validate_ops4_semantic_surfaces.py
+          python3 scripts/validate_ops5_semantic_surfaces.py
 
       - name: Validate project canon archaeology register
         run: |
@@ -128,11 +128,11 @@ jobs:
         run: |
           python3 scripts/validate_project_integrity_map.py
 
-      - name: Run Operations V4 regressions
+      - name: Run Operations V5 regressions
         shell: bash
         run: |
           set -euo pipefail
-          python3 tests/control_plane/test_operations_v4_single_door.py
+          python3 tests/control_plane/test_operations_v5_single_door.py
 
       - name: Run inherited OPS3 execution/concurrency regressions
         shell: bash
@@ -398,11 +398,11 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
-      - name: Upload compact Operations V4 evidence
+      - name: Upload compact Operations V5 evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: operations-v4-${{ env.CANDIDATE_HEAD }}
-          path: ${{ runner.temp }}/operations-v4-audit.json
+          name: operations-v5-${{ env.CANDIDATE_HEAD }}
+          path: ${{ runner.temp }}/operations-v5-audit.json
           if-no-files-found: warn
           retention-days: 14
