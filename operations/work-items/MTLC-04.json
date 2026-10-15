@@ -2,10 +2,10 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-04",
   "attempt_id": "MTLC-04-attempt-001",
-  "status": "selected_not_started",
-  "implementation_branch": null,
-  "implementation_authority": false,
-  "selected_by_owner": "Strict successor of completed MTLC-03; selection grants no implementation authority.",
+  "status": "in_progress",
+  "implementation_branch": "work/mtlc-04-scheduling",
+  "implementation_authority": true,
+  "selected_by_owner": "Owner: Bootstrap from ops4 and continue mtlc, 2026-10-15.",
   "dependencies": {
     "predecessor": "MTLC-03 completed_verified",
     "program": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_MULTIVERSAL_TABLETOP_LIFECYCLE_CONVERGENCE_PROGRAM.md",
@@ -23,21 +23,25 @@
       "Calendar handoff/export and real-world logistics do not require duplicate manual entry."
     ]
   },
-  "active_substep": "not_started",
-  "next_action": "Await the owner's MTLC-04 execution instruction before implementation.",
+  "active_substep": "implementation",
+  "next_action": "Implement and validate bounded scheduling, attendance, recurrence, run policy, reminders, calendar and logistics through current owners.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner authorized MTLC-04; coherent scoped scheduling candidate is being prepared."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
+    "terminal_response_allowed": false,
     "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
