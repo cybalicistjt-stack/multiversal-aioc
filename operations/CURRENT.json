@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 618,
+  "state_revision": 619,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -130,13 +130,13 @@
       "execution_state_ref": "ops3-lane-state/fga"
     },
     "mtlc": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "MTLC-04",
       "attempt_id": "MTLC-04-attempt-001",
       "checkpoint_path": "operations/work-items/MTLC-04.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
-      "activation_rule": "MTLC-03 completed_verified through PR849, required run38710607798 and durable application publication. MTLC-04 is the strict successor; roadmap DAG1.0.9 supplies no MTLC interstitial override. Selection grants no implementation authority; await owner instruction.",
+      "implementation_branch": "work/mtlc-04-scheduling",
+      "implementation_authority": true,
+      "activation_rule": "Owner explicitly instructed bootstrap and continue MTLC on 2026-10-15; MTLC-04 is authorized through its bounded approved exit criteria.",
       "execution_state_ref": "ops3-lane-state/mtlc"
     }
   },
@@ -177,7 +177,7 @@
     "ops5_agent_completion": "Worker started, input accepted, artifact produced, focused check, real-boundary validation, owner acceptance and publication are distinct; follow current operations guards and real-source proof; do not add per-status journal receipts.",
     "ops5_bridge_fallback": "Missing local index or unverified host skill never blocks authorized work. Read relevant current source directly with GitHub tools; avoid compulsory research on trivial tasks."
   },
-  "next_project_action": "Continue independent GPR PCV-03F on its lane. CWKS remains terminal completed_verified. MTLC-03 completed_verified; MTLC-04 is selected_not_started and awaits an owner execution instruction.",
+  "next_project_action": "Continue independent GPR PCV-03F and MTLC-04 scheduling on separate lane branches. CWKS remains terminal completed_verified.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
