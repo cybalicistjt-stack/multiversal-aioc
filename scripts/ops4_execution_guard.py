@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Operations V4 execution response, progress and conformance guard."""
 from __future__ import annotations
-import argparse, json
+import argparse, json, re
 from copy import deepcopy
 from pathlib import Path
 from typing import Any
@@ -16,10 +16,13 @@ _INSTRUMENTATION_ONLY_KINDS={
     "rebase_check","mergeability_poll",
 }
 UNCHANGED_WORKFLOW_OBSERVATION="OPS4.UNCHANGED_WORKFLOW_OBSERVATION"
+INVALID_WAIT_HANDOFF="OPS4.INVALID_WAIT_HANDOFF"
 def classify_workflow_observation(previous: dict[str,Any]|None,current: dict[str,Any],*,independent_work_remaining: bool)->str:
     """Transition-driven workflow observation. Never turn one healthy external run into a chat polling loop."""
     status=str(current.get("status","")); conclusion=current.get("conclusion"); run_id=current.get("id"); head=current.get("head_sha") or current.get("head")
     if status=="completed":
+        if conclusion in {"cancelled", "skipped"}:
+            return "inspect_terminal_outcome"
         return "advance" if conclusion=="success" else "diagnose_failure"
     if previous is None:
         return "continue_independent_work" if independent_work_remaining else "observe_once_then_yield"
@@ -48,11 +51,12 @@ def _violations(c):
     return normalized
 def _valid_stop_reason(v):
     return isinstance(v,dict) and v.get("kind") in _ALLOWED_TERMINAL_REASONS and isinstance(v.get("evidence"),str) and bool(v["evidence"].strip())
-def observe_owner_execution_command(checkpoint: dict[str,Any])->dict[str,Any]:
+def observe_owner_execution_command(checkpoint: dict[str,Any],*,prior_wait_handoff=None)->dict[str,Any]:
     r=deepcopy(checkpoint); g=r.setdefault("execution_guard",{}); c=r.setdefault("execution_conformance",{"status":"in_progress","policy_violations":[]}); violations=c.setdefault("policy_violations",[])
     seq=g.get("material_progress_seq",0); turns=g.get("continue_turns",0); prior=g.get("progress_at_last_owner_command")
     if not isinstance(seq,int) or seq<0 or not isinstance(turns,int) or turns<0: raise ValueError(INVALID_PROGRESS_RECEIPT)
-    if turns>0 and prior==seq:
+    resuming_wait=prior_wait_handoff is not None and not validate_wait_handoff(checkpoint,prior_wait_handoff)
+    if turns>0 and prior==seq and not resuming_wait:
         g["no_progress_cycles"]=int(g.get("no_progress_cycles",0))+1; g["active_stall"]=True
         if NO_MATERIAL_PROGRESS not in violations: violations.append(NO_MATERIAL_PROGRESS)
         c["status"]="stalled_recovery_required"
@@ -98,11 +102,42 @@ def validate_terminal_response(checkpoint):
     return errors
 def validate_execution_conformance(checkpoint):
     errors=[]; g=_guard(checkpoint); violations=_violations(checkpoint); cs=_conformance(checkpoint).get("status"); ct=g.get("continue_turns",0); sn=g.get("stall_nudges",0)
+    assessment=_conformance(checkpoint).get("reentry_assessment")
+    # Counts establish re-entry, not its cause. A conformance claim needs a
+    # confirmed explanation bound to these exact counts; old violations remain.
+    explained=(
+        isinstance(assessment,dict) and
+        assessment.get("continue_turns")==ct and assessment.get("stall_nudges")==sn and
+        assessment.get("classification") in {"legitimate_wait","executor_interruption","user_misunderstanding"} and
+        assessment.get("confidence")=="confirmed" and
+        isinstance(assessment.get("evidence"),str) and bool(assessment["evidence"].strip())
+    )
     if not isinstance(ct,int) or ct<0: errors.append(MULTI_CONTINUE)
-    elif ct>1 and MULTI_CONTINUE not in violations and cs in {"completed_verified","conforming"}: errors.append(MULTI_CONTINUE)
+    elif ct>1 and not explained and MULTI_CONTINUE not in violations and cs in {"completed_verified","conforming"}: errors.append(MULTI_CONTINUE)
     if not isinstance(sn,int) or sn<0: errors.append(STALL_NUDGE)
-    elif sn>0 and STALL_NUDGE not in violations and cs in {"completed_verified","conforming"}: errors.append(STALL_NUDGE)
+    elif sn>0 and not explained and STALL_NUDGE not in violations and cs in {"completed_verified","conforming"}: errors.append(STALL_NUDGE)
     errors.extend(validate_progress_receipt(checkpoint)); return sorted(set(errors))
+
+def validate_wait_handoff(checkpoint, handoff, *, lane_state=None):
+    """Validate a response that yields execution, without completing the work."""
+    if not isinstance(handoff,dict):
+        return [INVALID_WAIT_HANDOFF]
+    workflow=handoff.get("workflow")
+    if not isinstance(workflow,dict):
+        return [INVALID_WAIT_HANDOFF]
+    head=handoff.get("candidate_head")
+    valid=(
+        checkpoint.get("status")=="in_progress" and checkpoint.get("implementation_authority") is True and
+        _guard(checkpoint).get("terminal_response_allowed") is False and _guard(checkpoint).get("stop_reason") is None and
+        handoff.get("independent_work_remaining") is False and
+        isinstance(handoff.get("resume_action"),str) and bool(handoff["resume_action"].strip()) and
+        isinstance(head,str) and re.fullmatch(r"[0-9a-f]{40}",head) is not None and
+        workflow.get("head_sha")==head and type(workflow.get("id")) is int and workflow["id"]>0 and
+        workflow.get("status") in {"queued","in_progress"} and workflow.get("conclusion") is None
+    )
+    if lane_state is not None:
+        valid=valid and lane_state.get("terminal") is not True and lane_state.get("execution_status") in {"in_progress","prequeue_green","published"}
+    return [] if valid else [INVALID_WAIT_HANDOFF]
 def validate_lane_projection(current: dict[str,Any], checkpoint: dict[str,Any], lane_state: dict[str,Any], lane_id: str)->list[str]:
     """Reject mismatched CURRENT / selected checkpoint / durable lane milestone."""
     selected=current.get("lanes",{}).get(lane_id,{})
@@ -126,7 +161,7 @@ def validate_lane_projection(current: dict[str,Any], checkpoint: dict[str,Any], 
         errors.append("OPS4.LANE_PROJECTION_DRIFT")
     return sorted(set(errors))
 
-def validate_checkpoint(checkpoint,*,terminal_response=False,lane_state=None,current=None,lane_id=None):
+def validate_checkpoint(checkpoint,*,terminal_response=False,lane_state=None,current=None,lane_id=None,wait_handoff=None):
     errors=validate_execution_conformance(checkpoint)
     if current is not None and lane_state is not None and lane_id is not None:
         errors.extend(validate_lane_projection(current,checkpoint,lane_state,lane_id))
@@ -134,12 +169,26 @@ def validate_checkpoint(checkpoint,*,terminal_response=False,lane_state=None,cur
         errors.extend(validate_terminal_response(checkpoint))
         if lane_state is not None:
             errors.extend(validate_lane_terminal_response(lane_state))
+    if wait_handoff is not None:
+        errors.extend(validate_wait_handoff(checkpoint,wait_handoff,lane_state=lane_state))
+        if terminal_response:
+            errors.append(INVALID_WAIT_HANDOFF)
     return sorted(set(errors))
 def main():
-    p=argparse.ArgumentParser(); p.add_argument("checkpoint"); p.add_argument("--terminal-response",action="store_true"); p.add_argument("--lane-state"); p.add_argument("--current"); p.add_argument("--lane-id"); a=p.parse_args()
+    p=argparse.ArgumentParser(); p.add_argument("checkpoint")
+    response=p.add_mutually_exclusive_group()
+    response.add_argument("--terminal-response",action="store_true")
+    response.add_argument("--wait-handoff",metavar="JSON",help="Validate a temporary exact-run wait handoff, not completion.")
+    p.add_argument("--lane-state"); p.add_argument("--current"); p.add_argument("--lane-id"); a=p.parse_args()
     c=json.loads(Path(a.checkpoint).read_text(encoding="utf-8"))
     lane_state=json.loads(Path(a.lane_state).read_text(encoding="utf-8")) if a.lane_state else None
     current=json.loads(Path(a.current).read_text(encoding="utf-8")) if a.current else None
-    errors=validate_checkpoint(c,terminal_response=a.terminal_response,lane_state=lane_state,current=current,lane_id=a.lane_id)
-    print(json.dumps({"status":"FAIL" if errors else "PASS","errors":errors},sort_keys=True)); return 1 if errors else 0
+    handoff=json.loads(Path(a.wait_handoff).read_text(encoding="utf-8")) if a.wait_handoff else None
+    if a.wait_handoff and handoff is None:
+        p.error("--wait-handoff requires a JSON object, not null")
+    errors=validate_checkpoint(c,terminal_response=a.terminal_response,lane_state=lane_state,current=current,lane_id=a.lane_id,wait_handoff=handoff)
+    result={"status":"FAIL" if errors else "PASS","errors":errors}
+    if handoff is not None:
+        result["response_kind"]="wait_handoff"
+    print(json.dumps(result,sort_keys=True)); return 1 if errors else 0
 if __name__=="__main__": raise SystemExit(main())

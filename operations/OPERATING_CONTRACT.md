@@ -74,15 +74,23 @@ For a governed bounded execution, the active checkpoint carries `execution_guard
 - the bounded result is fully completed and reconciled; or
 - a genuine owner-only or external blocker is recorded with concrete evidence.
 
-Before a normal terminal response, the executor must fresh-read `operations/CURRENT.json` plus the active checkpoint and apply `scripts/ops3_execution_guard.py` or its exact equivalent. A response that would hand control back while authorized work or closeout remains is nonterminal and must not be emitted as the result of the Continue.
+Before a completion/blocker response, the executor must fresh-read `operations/CURRENT.json` plus the active checkpoint and apply `scripts/ops4_execution_guard.py` or its exact equivalent. Authorized work and closeout remain nonterminal. A checked wait handoff, defined below, may yield the conversation while preserving that unfinished state.
 
 A status request without execution wording is read-only. `get ready` means reconcile enough current state that the next `Continue` can execute without repeating broad discovery.
+
+### Wait handoff
+
+When a required workflow for the exact candidate is queued or running and no independent authorized work remains, hand back the wait concisely: identify the run, state that completion remains pending, and explain the next resume action. Preserve work status, authority, branch and lane milestone; do not mark completion, invent a blocker, request renewed authorization, or poll the unchanged run.
+
+Validate this response with `scripts/ops4_execution_guard.py CHECKPOINT --wait-handoff JSON` or equivalent logic. The temporary input contains `candidate_head`, the observed `workflow` (`id`, `head_sha`, `status`, `conclusion`), `independent_work_remaining: false`, and `resume_action`. Supply the existing CURRENT/lane projection inputs when applicable. A completed run requires advancement or diagnosis instead. This input reuses owning-system evidence; it is not a new persistent control file or lane receipt.
+
+On re-entry, inspect the exact run and current candidate once, then advance, diagnose, or hand back a continuing wait. Pass a valid prior handoff to `observe_owner_execution_command(..., prior_wait_handoff=...)` when using the helper, so an explained wait creates neither a stall finding nor fictional material progress. Authorization persists; the handoff promises no unattended scheduler.
 
 ### Material-progress anti-loop
 
 Every newly governed or repaired in-progress attempt must carry a machine-readable material-progress receipt in `execution_guard`: `material_progress_seq`, `progress_at_last_owner_command`, `no_progress_cycles`, `last_material_progress`, and `active_stall`.
 
-On every additional owner execution command for an already in-progress attempt, compare `material_progress_seq` with `progress_at_last_owner_command` before beginning another ordinary cycle. If they are equal, record `OPS4.NO_MATERIAL_PROGRESS`, set `active_stall=true`, and enter diagnosis/recovery immediately. Do not begin another broad discovery, polling, validation, or retry cycle until changed evidence clears the stall. Repeated polling, re-reading unchanged sources, re-emitting status, waiting on the same deterministic failure, or recreating the same candidate is not material progress.
+On every additional owner execution command for an already in-progress attempt, compare `material_progress_seq` with `progress_at_last_owner_command` before beginning another ordinary cycle. A valid prior wait handoff explains an unchanged sequence and resumes at its pending action. Otherwise, if they are equal, record `OPS4.NO_MATERIAL_PROGRESS`, set `active_stall=true`, and enter diagnosis/recovery immediately. This diagnostic signal does not establish fault. Do not begin another broad discovery, polling, validation, or retry cycle until changed evidence clears the stall. Repeated polling, re-reading unchanged sources, re-emitting status, waiting on the same deterministic failure, or recreating the same candidate is not material progress.
 
 A status request is read-only and must expose enough current evidence to make a stall visible: work item, active substep, material-progress sequence and last evidence, protected-main holder/phase/liveness when applicable, and the first unresolved blocker/failure. Status reporting never resets a stall or counts as progress.
 
@@ -108,7 +116,7 @@ Research is progress only when it resolves a concrete unknown needed for the res
 
 MTLC-02 exposed two missing operational checks: a stale selected-work projection after lane start, and repeated remote CI cancellation while draft code was changing. Starting a persistent work item must reconcile CURRENT, selected checkpoint and lane-state to the same attempt, status and implementation branch. The inherited execution guard's optional CURRENT/lane inputs validate that agreement and reject projection drift.
 
-A draft MTLC candidate cannot be admitted to full remote acceptance. Resolve source errors and run the smallest capable focused checks before promoting a coherent draft for exact-head validation. A queued/running different head prohibits further remote admission until the prior gate is terminal or safely cancelled and diagnosed. This requirement is machine-checked in the inherited CI guard and enforced by the MTLC draft-aware validation workflow. Real-device/shared-state acceptance is still mandatory when the work crosses that boundary.
+A draft MTLC candidate cannot be admitted to full remote acceptance. Resolve source errors and run the smallest capable focused checks before promoting a coherent draft for exact-head validation. A queued/running different head prohibits further remote admission until the prior gate is terminal or safely cancelled and diagnosed. This requirement is machine-checked in the inherited CI guard and enforced by the MTLC draft-aware validation workflow. Prove each required real boundary at the level established by approved acceptance criteria; do not silently expand source acceptance into installed-device or production certification.
 
 Neither an open PR nor a healthy queue permits a `completed_verified` claim, a reset of the work item, or treating the next owner Continue as the ordinary scheduler. The correction adds no second selector and no automatic merger.
 
@@ -146,7 +154,7 @@ The executable policy is `scripts/ops4_ci_guard.py`. It is a validator, not an a
 
 When exactly one persistent implementation lane is nonterminal, OPS4 enters **single-active-lane mode**. Derive this mode once from the fresh `CURRENT.json` used to select the lane. Until an invalidating event occurs, ordinary execution must not rescan terminal sibling lane refs, enumerate "concurrent writers," read an empty publication queue, or perform routine branch update/rebase work. Terminal siblings are history; read them only for a concrete dependency or after an observed repository change proves they are relevant.
 
-The durable lane ref is the **lane-state terminal gate**. `in_progress`, `prequeue_green`, or `published` forbids a normal terminal response to an owner execution command. Repeated owner execution commands remain useful diagnostic input for detecting stalls, but counting the interaction is not a lane milestone. Do not create a lane-state write solely for owner re-entry, stall nudges, status checks, queue checks, rebase checks, or mergeability polls. Aggregate any interaction-quality telemetry into an already-required terminal/closeout record.
+The durable lane ref is the **lane-state terminal gate**. `in_progress`, `prequeue_green`, or `published` forbids a completion response to an owner execution command; a validated wait handoff preserves that nonterminal state. Repeated owner execution commands remain useful diagnostic input for detecting stalls, but counting the interaction is not a lane milestone. Do not create a lane-state write solely for owner re-entry, stall nudges, status checks, queue checks, rebase checks, or mergeability polls. Aggregate any interaction-quality telemetry into an already-required terminal/closeout record.
 
 Use **quiet execution** for governed tranches. While CI is healthy, inspect workflow-level status only at sparse, transition-driven points. Do not narrate or persist per-job progress, lane scans, queue emptiness, fresh-main observations, rebase checks, or mergeability polling as work. Job/step/log detail is failure-driven. Browser/session interruption resumes from durable lane state plus the smallest repository/PR/CI evidence needed.
 
@@ -268,6 +276,12 @@ Keep execution credentials separate from publication credentials when the execut
 
 Classify failures before repair. Useful classes include product defect, validation defect, repository state, executor/tooling, source availability, external service, publication lease conflict, stale-main validation, and owner-only decision.
 
+Separate the observed symptom from proposed causes. Consider assistant execution, owner assumptions/shared understanding, browser/session transport, tools/runner infrastructure, product/validation, coordination/state, and misleading measurement. A failure may have separate triggers, persistence causes and recovery costs. Neither agreement with the owner nor reflexive self-blame is a diagnosis.
+
+Use the smallest discriminating check and report causes as **confirmed**, **probable**, or **unresolved**. Evidence missing at one layer does not exonerate it or establish fault elsewhere. For recurring/costly failures, reconstruct the relevant timeline and competing explanations; routine errors need only a proportionate check. Resolve conflicts between the selected work record and approved exit criteria through the authority chain before declaring a blocker or adding acceptance gates.
+
+Workflow summaries are symptoms: distinguish skipped events, superseded cancellations, unassigned jobs, running processes and actual test failures. Inspect terminal job/log evidence when needed to resolve that ambiguity; cancellation alone proves neither a product defect nor runner failure. The MTLC-02 review demonstrated unassigned Linux capacity followed by a separate hosted-preflight mismatch, and an obsolete run cancelled after all listed jobs succeeded. Browser and owner-error attribution remained unresolved in that sample.
+
 A deterministic failure is not retried unchanged. Record the exact failure signature or evidence, form a falsifiable cause, apply the smallest causal repair, and rerun the smallest proof first.
 
 A lost publication-queue CAS is not a product failure. Re-read the READY queue and retry the coordination update from the observed generation. Never force the coordination ref or skip a READY candidate. There is no active holder to recover or wait for.
@@ -289,7 +303,7 @@ A bounded work item may be called `completed_verified` only when:
 
 An open PR, queued/running check, patch, local success, model exit code, product merge without control-plane closeout, or conversational assertion is nonterminal unless the work item explicitly defines it as the requested endpoint.
 
-Product completion and execution-process conformance are separate. If `continue_turns > 1`, the checkpoint may still preserve valid completed product work, but execution conformance must record `OPS4.MULTI_CONTINUE_UNRECORDED` (or an equivalent explicit multi-Continue violation) rather than falsely reporting a clean one-Continue execution. Any owner stall nudge must likewise be recorded as a process violation. `scripts/ops3_execution_guard.py` enforces these evidence rules.
+Product completion and execution-process conformance are separate. Preserve actual `continue_turns` and `stall_nudges`; they establish re-entry, not its cause. A multi-turn attempt cannot claim single-Continue execution. Before claiming conformance, assess those observations in the existing `execution_conformance.reentry_assessment`: bind the exact counts, state `classification`, `confidence` and concrete `evidence`. Confirmed `legitimate_wait`, `executor_interruption`, or `user_misunderstanding` may explain re-entry without assigning assistant fault. A probable or `unresolved` cause keeps conformance unresolved; confirmed `premature_stop` or `mixed` execution failures retain their violations. Missing or stale explanations cannot certify conformance. Historical incident records remain intact. `scripts/ops4_execution_guard.py` enforces the count-bound conformance claim without creating another activity journal.
 
 ## 10. Owner-only boundaries
 
