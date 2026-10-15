@@ -2,16 +2,16 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-03",
   "attempt_id": "MTLC-03-attempt-001",
-  "status": "in_progress",
+  "status": "completed_verified",
   "implementation_branch": "work/mtlc-03-campaign-lounge",
-  "implementation_authority": true,
+  "implementation_authority": false,
   "selected_by_owner": "Strict successor of completed MTLC-02; selection grants no implementation authority.",
   "dependencies": {
     "predecessor": "MTLC-02 completed_verified",
     "program": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_MULTIVERSAL_TABLETOP_LIFECYCLE_CONVERGENCE_PROGRAM.md",
     "backlog": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_PROGRAM_BACKLOG.json",
     "group_spec": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_GROUP_LIFECYCLE_SPEC.md",
-    "parallel_lane_rule": "GPR and CWKS remain independent. MTLC-02 may consume their published/current contracts only as explicit dependencies and may not mutate their lane scope."
+    "parallel_lane_rule": "GPR and CWKS remain independent. MTLC consumes their current contracts as explicit dependencies without mutating their lane scope."
   },
   "scope": {
     "name": "Campaign Lounge and Group Communication",
@@ -23,25 +23,65 @@
       "Communication history participates in governed offline/reconnect, backup, export, privacy, and provider-exit behavior."
     ]
   },
-  "active_substep": "Campaign/Group communication authority, mounted workspace and portable-history proof",
-  "next_action": "Implement the approved MTLC-03 communication scope over existing A3/A5/Group/persistence owners; run focused and required source/platform acceptance, publish and close out.",
+  "active_substep": "completed",
+  "next_action": "MTLC-04 selected_not_started; await an owner execution instruction.",
   "execution_guard": {
-    "continue_turns": 1,
-    "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "continue_turns": 2,
+    "stall_nudges": 1,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner authorized MTLC-03; isolated application branch work/mtlc-03-campaign-lounge starts at faf700753117b9d876e1517cca62f774e312070f"
+      "seq": 3,
+      "kind": "published",
+      "evidence": "PR849 exact head 63731399018429d48498706006d5a2adf09b9eba passed Linux/Windows and deterministic comparison in run38710607798 and was published as c9e2d9353d8e53726c537b52c2a0a2c042591558. Signed current-owner HTTP/SQLite integration proof passed membership isolation, private-room permissions, handout recovery and idempotent retry."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "PR849 exact head 63731399018429d48498706006d5a2adf09b9eba passed Linux/Windows and deterministic comparison in run38710607798 and was published as c9e2d9353d8e53726c537b52c2a0a2c042591558. Signed current-owner HTTP/SQLite integration proof passed membership isolation, private-room permissions, handout recovery and idempotent retry."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "unresolved",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "reentry_assessment": {
+      "continue_turns": 2,
+      "stall_nudges": 1,
+      "classification": "unresolved",
+      "confidence": "unresolved",
+      "evidence": "First execution ended with a guard-validated exact-run wait handoff while run38710607798 was in_progress and no independent work remained. GitHub records the run09:07:22Z–09:11:12Z, success. Owner subsequently reported a two-hour hang and requested rebootstrap. Runner stall is disproved for this run; browser/session display and delivery timing are unavailable. Recovery resumed publication without repeating implementation."
+    }
+  },
+  "completed": true,
+  "completion_evidence": {
+    "application_pr": 849,
+    "validated_head": "63731399018429d48498706006d5a2adf09b9eba",
+    "validation_run": 38710607798,
+    "application_merge_sha": "c9e2d9353d8e53726c537b52c2a0a2c042591558",
+    "application_ready_candidate": "MTLC-03-app-pr-849",
+    "current_host_dependency_head": "ba1e8f7591ec3986056f717beccb6ba9529b7a18",
+    "current_host_integration_branch": "work/mtlc-03-service-integration",
+    "current_host_integration_head": "486aa9ea41c5af3af80909fef0c908b34c62e7dd",
+    "current_host_proof": "Signed current-owner host proof passed accepted membership vs pending invitation isolation, private-room roles, handout delivery, service restart and idempotent retry over HTTP/SQLite.",
+    "focused_checks": {
+      "domain_tests": 38,
+      "ui_tests": 12,
+      "strict_scoped_typecheck": "PASS",
+      "hosted_admission_tests": 7
+    },
+    "acceptance_scope": "MTLC-03 approved exit criteria and Linux/Windows source acceptance; installed-device and production deployment certification are not claimed.",
+    "successor": "MTLC-04",
+    "roadmap_dependency_graph_schema": "1.0.9",
+    "fresh_base_integration": {
+      "candidate_id": "MTLC-03-app-pr-849",
+      "candidate_head": "63731399018429d48498706006d5a2adf09b9eba",
+      "base_sha": "faf700753117b9d876e1517cca62f774e312070f",
+      "status": "green",
+      "run_id": "38710607798",
+      "scope": "Fresh main equals tested PR base; exact-head complete required acceptance remains applicable."
+    }
   }
 }
