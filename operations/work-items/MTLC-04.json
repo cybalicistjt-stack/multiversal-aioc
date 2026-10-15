@@ -2,9 +2,9 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-04",
   "attempt_id": "MTLC-04-attempt-001",
-  "status": "in_progress",
+  "status": "completed_verified",
   "implementation_branch": "work/mtlc-04-scheduling",
-  "implementation_authority": true,
+  "implementation_authority": false,
   "selected_by_owner": "Owner: Bootstrap from ops4 and continue mtlc, 2026-10-15.",
   "dependencies": {
     "predecessor": "MTLC-03 completed_verified",
@@ -23,25 +23,62 @@
       "Calendar handoff/export and real-world logistics do not require duplicate manual entry."
     ]
   },
-  "active_substep": "implementation",
-  "next_action": "Implement and validate bounded scheduling, attendance, recurrence, run policy, reminders, calendar and logistics through current owners.",
+  "active_substep": "completed",
+  "next_action": "MTLC-05 selected_not_started; await owner execution instruction.",
   "execution_guard": {
-    "continue_turns": 1,
-    "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "continue_turns": 4,
+    "stall_nudges": 1,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 2,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner authorized MTLC-04; coherent scoped scheduling candidate is being prepared."
+      "seq": 3,
+      "kind": "published",
+      "evidence": "MTLC-04 PR850 exact head 722c866c690c5017c97cf4b2610a16442917792c passed focused/Linux/Windows and deterministic comparison run 38741062707; validated against unchanged app main c9e2d9353d8e53726c537b52c2a0a2c042591558 and published as 48cbbad76e97abf1451b3498c9a30c4b3c6cd7c7. READY queue generation152 reconciled."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MTLC-04 PR850 exact head 722c866c690c5017c97cf4b2610a16442917792c passed focused/Linux/Windows and deterministic comparison run 38741062707; validated against unchanged app main c9e2d9353d8e53726c537b52c2a0a2c042591558 and published as 48cbbad76e97abf1451b3498c9a30c4b3c6cd7c7. READY queue generation152 reconciled."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "unresolved",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "reentry_assessment": {
+      "continue_turns": 4,
+      "stall_nudges": 1,
+      "classification": "unresolved",
+      "confidence": "unresolved",
+      "evidence": "Four MTLC-04 owner execution commands including initial start and three Continue resumptions, and one browser-freeze status request. Prior exact-head CI wait handoffs and Windows Lounge stress-test timeout were observed. Browser/UI delivery continuity and process compliance cannot be confirmed; product result is separately verified."
+    }
+  },
+  "completed": true,
+  "completion_evidence": {
+    "application_pr": 850,
+    "validated_head": "722c866c690c5017c97cf4b2610a16442917792c",
+    "validation_run": 38741062707,
+    "application_merge_sha": "48cbbad76e97abf1451b3498c9a30c4b3c6cd7c7",
+    "application_ready_candidate": "MTLC-04-app-pr-850",
+    "publication_queue_generation": 152,
+    "focused_typecheck": "PASS",
+    "linux_shared_validation": "PASS",
+    "windows_shared_validation": "PASS",
+    "cross_platform_comparison": "PASS",
+    "acceptance_scope": "Authenticated HTTP and SQLite restart fixture plus Linux/Windows exact-head source/transport acceptance. Installed-device and production-notification certification are not claimed.",
+    "reminder_limit": "ICS alarm depends on the user's calendar; Group Lounge reminders require organizer posting and honor notification preferences. No guaranteed server-side push delivery provider.",
+    "proxy_limit": "Run policy does not grant actual character delegation; enforce at A5/Session owner.",
+    "successor": "MTLC-05",
+    "roadmap_dependency_graph_schema": "1.0.9",
+    "fresh_base_integration": {
+      "candidate_id": "MTLC-04-app-pr-850",
+      "candidate_head": "722c866c690c5017c97cf4b2610a16442917792c",
+      "base_sha": "c9e2d9353d8e53726c537b52c2a0a2c042591558",
+      "status": "green",
+      "run_id": "38741062707",
+      "scope": "Fresh main matched tested PR base and mergeable exact-head required acceptance remained applicable."
+    }
   }
 }
