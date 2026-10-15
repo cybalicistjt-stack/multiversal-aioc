@@ -2,10 +2,10 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-05",
   "attempt_id": "MTLC-05-attempt-001",
-  "status": "selected_not_started",
-  "implementation_branch": null,
-  "implementation_authority": false,
-  "selected_by_owner": "Strict successor of completed MTLC-04; selection grants no implementation authority.",
+  "status": "in_progress",
+  "implementation_branch": "work/mtlc-05-session-zero",
+  "implementation_authority": true,
+  "selected_by_owner": "Owner: Continue on MTLC lane after completed MTLC-04, 2026-10-15.",
   "dependencies": {
     "predecessors": [
       "MTLC-01 completed_verified",
@@ -26,21 +26,25 @@
       "Table-fit/expectation data cannot silently become an opaque user desirability or reputation score."
     ]
   },
-  "active_substep": "not_started",
-  "next_action": "Await owner instruction before Session Zero, Consent and Table Agreements implementation.",
+  "active_substep": "source_recovery_and_implementation",
+  "next_action": "Recover or explicitly preserve original Consent/Veils wording provenance gap, implement governed private Session Zero agreements, validate and publish through protected PRs.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner-authorized MTLC-05 start from MTLC-04 terminal; independent branch work/mtlc-05-session-zero and evidence-based source recovery."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
+    "terminal_response_allowed": false,
     "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
