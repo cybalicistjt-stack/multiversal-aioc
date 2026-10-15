@@ -2,9 +2,9 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-03",
   "attempt_id": "MTLC-03-attempt-001",
-  "status": "selected_not_started",
-  "implementation_branch": null,
-  "implementation_authority": false,
+  "status": "in_progress",
+  "implementation_branch": "work/mtlc-03-campaign-lounge",
+  "implementation_authority": true,
   "selected_by_owner": "Strict successor of completed MTLC-02; selection grants no implementation authority.",
   "dependencies": {
     "predecessor": "MTLC-02 completed_verified",
@@ -23,21 +23,25 @@
       "Communication history participates in governed offline/reconnect, backup, export, privacy, and provider-exit behavior."
     ]
   },
-  "active_substep": "not_started",
-  "next_action": "Await the owner's MTLC-03 execution instruction before implementation.",
+  "active_substep": "Campaign/Group communication authority, mounted workspace and portable-history proof",
+  "next_action": "Implement the approved MTLC-03 communication scope over existing A3/A5/Group/persistence owners; run focused and required source/platform acceptance, publish and close out.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner authorized MTLC-03; isolated application branch work/mtlc-03-campaign-lounge starts at faf700753117b9d876e1517cca62f774e312070f"
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
+    "terminal_response_allowed": false,
     "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
