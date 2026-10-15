@@ -1,11 +1,11 @@
 {
   "schema_version": "1.2.0",
   "lane": "gpr",
-  "revision": 472,
+  "revision": 473,
   "selected_work_item": "PCV-03F",
   "attempt_id": "PCV-03F-attempt-001",
   "execution_status": "in_progress",
-  "implementation_branch": "work/pcv-03f-installed-certification",
+  "implementation_branch": "work/pcv-03f-service-first-certification",
   "progress_seq": 1,
   "last_progress": {
     "kind": "started",
@@ -21,5 +21,10 @@
     "closeout_merge_sha": "bad0eba332f66448a7ef10df9a3b2e09fd9d2b5b",
     "closeout_validation_run": "36178574892",
     "closeout_ready_candidate": "PCV-03E-closeout-direct-001"
+  },
+  "projection_repair": {
+    "reason": "OPS4.LANE_PROJECTION_DRIFT: CURRENT and checkpoint select the owner-approved service-first branch; durable lane retained the superseded installed-certification branch. Repair branch projection only, preserving attempt, in-progress milestone and historical start evidence.",
+    "application_pr": 840,
+    "observed_head": "ba1e8f7591ec3986056f717beccb6ba9529b7a18"
   }
 }
