@@ -1,0 +1,43 @@
+{
+  "lane": "mtlc",
+  "work_item_id": "MTLC-04",
+  "attempt_id": "MTLC-04-attempt-001",
+  "status": "selected_not_started",
+  "implementation_branch": null,
+  "implementation_authority": false,
+  "selected_by_owner": "Strict successor of completed MTLC-03; selection grants no implementation authority.",
+  "dependencies": {
+    "predecessor": "MTLC-03 completed_verified",
+    "program": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_MULTIVERSAL_TABLETOP_LIFECYCLE_CONVERGENCE_PROGRAM.md",
+    "backlog": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_PROGRAM_BACKLOG.json",
+    "group_spec": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_GROUP_LIFECYCLE_SPEC.md",
+    "parallel_lane_rule": "GPR and CWKS remain independent. MTLC may consume their current contracts as explicit dependencies without mutating their lane scope."
+  },
+  "scope": {
+    "name": "Scheduling, Attendance, and Real-World Logistics",
+    "responsibility": "Remove the administrative work of finding a date, confirming attendance, handling timezones and recurring sessions, rescheduling, reminding players, coordinating bounded venue/session logistics, and deciding how a campaign proceeds when attendance is incomplete.",
+    "exit_criteria": [
+      "Groups can poll availability and maintain recurring schedules.",
+      "RSVP, late, absent, cancellation, reschedule, reminder, and timezone flows are complete.",
+      "Campaigns can define bounded run-anyway policies such as minimum quorum, approved absent-character proxy behavior, or alternate async/one-shot fallback.",
+      "Calendar handoff/export and real-world logistics do not require duplicate manual entry."
+    ]
+  },
+  "active_substep": "not_started",
+  "next_action": "Await the owner's MTLC-04 execution instruction before implementation.",
+  "execution_guard": {
+    "continue_turns": 0,
+    "stall_nudges": 0,
+    "material_progress_seq": 0,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": null,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": null
+  },
+  "execution_conformance": {
+    "status": "not_started",
+    "policy_violations": []
+  }
+}
