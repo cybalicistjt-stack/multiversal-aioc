@@ -2,9 +2,9 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-05",
   "attempt_id": "MTLC-05-attempt-001",
-  "status": "in_progress",
+  "status": "completed_verified",
   "implementation_branch": "work/mtlc-05-session-zero",
-  "implementation_authority": true,
+  "implementation_authority": false,
   "selected_by_owner": "Owner: Continue on MTLC lane after completed MTLC-04, 2026-10-15.",
   "dependencies": {
     "predecessors": [
@@ -26,53 +26,86 @@
       "Table-fit/expectation data cannot silently become an opaque user desirability or reputation score."
     ]
   },
-  "active_substep": "owner_authorized_replacement_research",
-  "next_action": "Build out the source-attributed original Table Accord replacement from MTLC-05_TABLE_ACCORD_RESEARCH_AND_REPLACEMENT_PROPOSAL_v0.1.md on existing Multiversal-app PR851, preserve privacy and Campaign/A5 authorization, validate the updated exact head, publish only with full accepted evidence. Original archival Consent/Veils passage remains absent but is no longer an owner-only blocker to a new design.",
+  "active_substep": "completed",
+  "next_action": "MTLC-06 selected_not_started. Await distinct owner execution command; do not start implementation under MTLC-05 authority.",
   "execution_guard": {
-    "continue_turns": 3,
+    "continue_turns": 6,
     "stall_nudges": 0,
     "material_progress_seq": 3,
-    "progress_at_last_owner_command": 2,
+    "progress_at_last_owner_command": 3,
     "no_progress_cycles": 0,
     "last_material_progress": {
       "seq": 3,
-      "kind": "owner_replacement_research_completed",
-      "evidence": "On 2026-10-15 owner explicitly authorized designing a replacement for unrecovered Multiversal Consent/Veils rules and requested online study. Reviewed original authors of Lines/Veils, Consent in Gaming, X-Card, Script Change, CATS, safety toolkit, 2024-25 peer-reviewed TTRPG consent papers, Reddit accounts, and privacy/rights. Original Table Accord proposal documented with 21 reference links; replacement is NEW content, not recovered canon."
+      "kind": "published",
+      "evidence": "MTLC-05 original owner-authorized Table Accord replacement published: app PR851 exact head bfc299b8905e9cef5a708db6195f76df27ea6ffa passed required focused/Linux/Windows/deterministic validation run 38771516533 and merged into main 1df192887f0b680c5ebe599433094c896c49bccb; application READY queue reconciled generation154. Original historic Consent/Veils text remains unrecovered; this is a separately owner-approved new design, not recovered canon."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MTLC-05 original owner-authorized Table Accord replacement published: app PR851 exact head bfc299b8905e9cef5a708db6195f76df27ea6ffa passed required focused/Linux/Windows/deterministic validation run 38771516533 and merged into main 1df192887f0b680c5ebe599433094c896c49bccb; application READY queue reconciled generation154. Original historic Consent/Veils text remains unrecovered; this is a separately owner-approved new design, not recovered canon."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
+    "status": "unresolved",
     "policy_violations": [],
+    "product_completion_valid": true,
     "reentry_assessment": {
-      "continue_turns": 3,
-      "stall_nudges": 0,
+      "continue_turns": 6,
+      "stall_nudges": 1,
       "classification": "unresolved",
       "confidence": "unresolved",
-      "evidence": "Two previous Continue commands and current owner-authorized replacement instruction; distinct browser interruption reported previously without proved root cause. Earlier owner source blocker is now superseded by explicit replacement direction."
+      "evidence": "Owner issued multiple MTLC-05 continuations including terminal 'finish' and 'get that done'; browser/session freeze reported in earlier MTLC conversation. The executor prematurely stopped after two safety-blocked lane-state writes despite green CI; on owner reentry the documented update_file path succeeded and publication completed. Underlying platform safety-block cause remains unresolved; actual implementation and publication are independently verified."
     }
   },
   "original_canon_dependency": {
-    "kind": "historical_source_unrecovered_owner_authorized_replacement",
+    "kind": "historical_source_unrecovered_replaced_by_owner_authorized_original",
     "source": "original Multiversal tabletop Consent and Veils PDF/source",
     "recovery_receipt": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC-05_SOURCE_RECOVERY_RECEIPT.md",
     "owner_only_action": "Owner explicitly authorized a researched original substitute on 2026-10-15; historical original remains unrecovered and cannot be represented as restored canon.",
     "product_candidate": {
       "repository": "cybalicistjt-stack/Multiversal-app",
       "pull_request": 851,
-      "head": "ff7f45c998f1a34a53a7704caab7269fb7cbab8d",
-      "validation_run": 38749897894,
+      "head": "bfc299b8905e9cef5a708db6195f76df27ea6ffa",
+      "validation_run": 38771516533,
       "validation": "green",
-      "publication": "draft_unmerged"
+      "publication": "merged",
+      "merge_sha": "1df192887f0b680c5ebe599433094c896c49bccb"
     },
     "prohibitions": [
-      "Do not misattribute a replacement as recovered original Multiversal text.",
-      "Do not mark MTLC-05 completed_verified until original replacement is source-traceable, product-visible, durable and published.",
-      "Do not select or activate MTLC-06 before MTLC-05 verified completion."
+      "Do not misattribute Table Accord replacement as recovered original Multiversal Consent/Veils.",
+      "Do not treat source-level CI as installed-device or guaranteed media provider certification.",
+      "Do not grant MTLC-06 implementation authority absent new owner instruction."
     ],
     "replacement_research": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC-05_TABLE_ACCORD_RESEARCH_AND_REPLACEMENT_PROPOSAL_v0.1.md",
-    "replacement_status": "proposed_researched_not_yet_product_visible_or_completed"
+    "replacement_status": "implemented_published_source_traceable",
+    "historical_source_status": "unrecovered_not_claimed_as_canon"
+  },
+  "completed": true,
+  "completion_evidence": {
+    "application_pr": 851,
+    "validated_head": "bfc299b8905e9cef5a708db6195f76df27ea6ffa",
+    "validation_run": 38771516533,
+    "application_merge_sha": "1df192887f0b680c5ebe599433094c896c49bccb",
+    "application_ready_candidate": "MTLC-05-app-pr-851",
+    "publication_queue_generation": 154,
+    "focused_typecheck": "PASS",
+    "linux_shared_validation": "PASS",
+    "windows_shared_validation": "PASS",
+    "cross_platform_comparison": "PASS",
+    "owner_replacement_authorization": "2026-10-15 explicitly authorized researched replacement for unrecovered original Consent/Veils",
+    "source_research": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC-05_TABLE_ACCORD_RESEARCH_AND_REPLACEMENT_PROPOSAL_v0.1.md",
+    "privacy_scope": "Private per-participant choices and conservative effective table restrictions; bounded A5 Campaign roster, private GM opt-in disclosure; A5 session-attendee-required media readiness; no desirability/reputation metric.",
+    "session_control_limit": "Pause/Skip/Revise interface available only when real A5 Session holder bridge injected; default host deliberately lacks a live control. Verbal fallback documented.",
+    "platform_scope": "Focused, Linux, Windows, authenticated HTTP/SQLite restart and deterministic comparison; installed-device and external capture-provider acceptance not implied.",
+    "successor": "MTLC-06",
+    "fresh_base_integration": {
+      "candidate_id": "MTLC-05-app-pr-851",
+      "candidate_head": "bfc299b8905e9cef5a708db6195f76df27ea6ffa",
+      "base_sha": "48cbbad76e97abf1451b3498c9a30c4b3c6cd7c7",
+      "status": "green",
+      "run_id": "38771516533",
+      "scope": "Exact validated candidate matched fresh unchanged main, PR mergeability true, queue FIFO head, protected expected-head squash merge."
+    }
   }
 }

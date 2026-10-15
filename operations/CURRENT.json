@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 621,
+  "state_revision": 622,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -130,14 +130,14 @@
       "execution_state_ref": "ops3-lane-state/fga"
     },
     "mtlc": {
-      "state": "in_progress",
-      "selected_work_item": "MTLC-05",
-      "attempt_id": "MTLC-05-attempt-001",
-      "checkpoint_path": "operations/work-items/MTLC-05.json",
-      "implementation_branch": "work/mtlc-05-session-zero",
-      "implementation_authority": true,
-      "activation_rule": "Owner expressly instructed Continue immediately after verified MTLC-04 closeout, 2026-10-15. MTLC-05 Session Zero, Consent and Table Agreements is authorized within approved scope; original Consent/Veils canon remains an unresolved source-recovery dependency.",
-      "execution_state_ref": "ops3-lane-state/mtlc"
+      "state": "selected_not_started",
+      "selected_work_item": "MTLC-06",
+      "attempt_id": "MTLC-06-attempt-001",
+      "checkpoint_path": "operations/work-items/MTLC-06.json",
+      "implementation_branch": null,
+      "implementation_authority": false,
+      "execution_state_ref": "ops3-lane-state/mtlc",
+      "activation_rule": "MTLC-05 completed_verified and published after owner-authorized Table Accord replacement. MTLC-06 requires fresh explicit owner execution instruction; no automatic implementation authority."
     }
   },
   "truth_rules": {
@@ -177,7 +177,7 @@
     "ops5_agent_completion": "Worker started, input accepted, artifact produced, focused check, real-boundary validation, owner acceptance and publication are distinct; follow current operations guards and real-source proof; do not add per-status journal receipts.",
     "ops5_bridge_fallback": "Missing local index or unverified host skill never blocks authorized work. Read relevant current source directly with GitHub tools; avoid compulsory research on trivial tasks."
   },
-  "next_project_action": "Continue MTLC-05 source-audited Session Zero workflow on its independent implementation branch; GPR PCV-03F remains independently active. Do not invent original Consent/Veils wording.",
+  "next_project_action": "MTLC-05 published and closed as completed_verified; MTLC-06 Readiness, Homework, and Prep Cockpits selected_not_started pending owner instruction. GPR PCV-03F continues independently. Do not infer deployed Session pause/media capture from MTLC-05 source acceptance.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
