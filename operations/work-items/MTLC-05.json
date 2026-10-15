@@ -26,25 +26,54 @@
       "Table-fit/expectation data cannot silently become an opaque user desirability or reputation score."
     ]
   },
-  "active_substep": "source_recovery_and_implementation",
-  "next_action": "Recover or explicitly preserve original Consent/Veils wording provenance gap, implement governed private Session Zero agreements, validate and publish through protected PRs.",
+  "active_substep": "owner_source_required",
+  "next_action": "Owner to provide the original Multiversal tabletop Consent/Veils PDF/source (file and page/section) or explicitly authorize a substitute; then integrate original source, validate and publish the existing draft PR851.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner-authorized MTLC-05 start from MTLC-04 terminal; independent branch work/mtlc-05-session-zero and evidence-based source recovery."
+      "seq": 2,
+      "kind": "source_recovery_exhausted",
+      "evidence": "MTLC-05 implementation candidate ff7f45c998f1a34a53a7704caab7269fb7cbab8d passed exact-head Linux/Windows cross-platform run 38749897894, but original tabletop Consent/Veils text cannot be located in supplied Project sources, Library, AIOC current Bible, or 98 curated Drive archives (six conversation ZIPs and preserved governed-source package). No replacement canon is approved."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "owner_only",
+      "evidence": "MTLC-05 implementation candidate ff7f45c998f1a34a53a7704caab7269fb7cbab8d passed exact-head Linux/Windows cross-platform run 38749897894, but original tabletop Consent/Veils text cannot be located in supplied Project sources, Library, AIOC current Bible, or 98 curated Drive archives (six conversation ZIPs and preserved governed-source package). No replacement canon is approved."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "unresolved",
+    "policy_violations": [],
+    "reentry_assessment": {
+      "continue_turns": 2,
+      "stall_nudges": 0,
+      "classification": "unresolved",
+      "confidence": "unresolved",
+      "evidence": "Initial owner Continue began MTLC-05; the second Continue followed a separate read-only browser-freeze status. Source recovery was pursued in new archives and produced bounded negative evidence; browser UI fault cannot be independently classified."
+    }
+  },
+  "original_canon_dependency": {
+    "kind": "unresolved_source_recovery",
+    "source": "original Multiversal tabletop Consent and Veils PDF/source",
+    "recovery_receipt": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC-05_SOURCE_RECOVERY_RECEIPT.md",
+    "owner_only_action": "Provide/identify original file and exact passage or explicitly approve a replacement design.",
+    "product_candidate": {
+      "repository": "cybalicistjt-stack/Multiversal-app",
+      "pull_request": 851,
+      "head": "ff7f45c998f1a34a53a7704caab7269fb7cbab8d",
+      "validation_run": 38749897894,
+      "validation": "green",
+      "publication": "draft_unmerged"
+    },
+    "prohibitions": [
+      "Do not invent original Consent/Veils wording.",
+      "Do not close MTLC-05 as completed_verified.",
+      "Do not select/activate MTLC-06."
+    ]
   }
 }
