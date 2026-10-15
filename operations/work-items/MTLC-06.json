@@ -2,10 +2,10 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-06",
   "attempt_id": "MTLC-06-attempt-001",
-  "status": "selected_not_started",
-  "implementation_branch": null,
-  "implementation_authority": false,
-  "selected_by_owner": null,
+  "status": "in_progress",
+  "implementation_branch": "work/mtlc-06-readiness",
+  "implementation_authority": true,
+  "selected_by_owner": "Owner: Good job! Let's continue, 2026-10-15, immediately following MTLC-05 closeout.",
   "dependencies": {
     "predecessor": "MTLC-05 completed_verified",
     "program": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_MULTIVERSAL_TABLETOP_LIFECYCLE_CONVERGENCE_PROGRAM.md",
@@ -23,24 +23,25 @@
       "The workflow does not impose more mandatory clerical prep than it removes."
     ]
   },
-  "active_substep": "not_started",
-  "next_action": "Await a new owner execution instruction to begin MTLC-06 Readiness, Homework, and Prep Cockpits. Do not grant branch or implementation authority merely from selection.",
+  "active_substep": "authority_and_baseline",
+  "next_action": "Develop minimal prep/readiness workflow, integrate A5 owner-provided signals, validate and publish.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner-authorized MTLC-06 after verified MTLC-05 closeout; branch work/mtlc-06-readiness."
+    },
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": {
-      "kind": "awaiting_owner_execution_authorization",
-      "evidence": "MTLC-05 completion selects strict successor MTLC-06 but does not start it."
-    }
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
