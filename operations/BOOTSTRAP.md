@@ -63,11 +63,13 @@ Before returning a normal terminal response for an execution command:
 1. fresh-read `operations/CURRENT.json` and the active checkpoint;
 2. apply `scripts/ops4_execution_guard.py` or the exact equivalent logic;
 3. continue working if the result is nonterminal;
-4. stop only on verified completion or a recorded owner-only/external blocker.
+4. return a completion/blocker response only on verified completion or a recorded owner-only/external blocker.
 
-Multiple owner Continues or owner stall nudges are execution-quality incidents and must be recorded truthfully; they may not be certified as clean single-Continue execution.
+A legitimate wait may be handed back when an exact-candidate workflow is queued/running and no independent authorized work remains. Use the contract's **Wait handoff** rule and `scripts/ops4_execution_guard.py --wait-handoff JSON` (with the checkpoint and applicable projection inputs). Preserve in-progress state and authority; identify the run and resume action. This is neither completion nor a request for renewed authorization, and needs no lane-state write.
 
-A repeated owner execution command on the same in-progress attempt is not a fresh cycle by default. Compare the checkpoint's material-progress sequence with the sequence observed at the prior execution command. If nothing material changed, record `OPS4.NO_MATERIAL_PROGRESS` and enter stall diagnosis/recovery before doing more ordinary work. Polling, unchanged reads, or restating status do not count as progress. Status requests must report the current coarse milestone, any READY publication candidate, and the first unresolved blocker so the owner can distinguish active work from a stall.
+Multiple owner Continues or stall nudges are observations requiring diagnosis, not automatic blame. Preserve the counts and historical violations. A conformance claim needs a confirmed, count-bound re-entry assessment; uncertain causes remain unresolved. Never certify multi-turn work as single-Continue execution.
+
+A repeated owner execution command on the same in-progress attempt is not a fresh cycle by default. Compare the checkpoint's material-progress sequence with the sequence observed at the prior execution command. A valid prior wait handoff resumes at its pending action without inventing a stall or progress. Otherwise, if nothing material changed, record `OPS4.NO_MATERIAL_PROGRESS` and enter diagnosis/recovery before doing more ordinary work. Polling, unchanged reads, or restating status do not count as progress. Status requests must report the current coarse milestone, any READY publication candidate, and the first unresolved blocker so the owner can distinguish active work from a stall.
 
 
 ### Executor/session interruption rule + anti-overinstrumentation guard
@@ -96,7 +98,7 @@ Treat a workflow run as one validation gate. While it is healthy/in-progress, in
 
 The October 14 MTLC-02 failure is reproducible: the saved lane was `in_progress` while CURRENT and its selected work record were `selected_not_started`; successive commits on a draft PR cancelled preceding CI runs; and two execution-command responses stopped while work remained nonterminal.
 
-**Mandatory start/return gate:** reconcile CURRENT + selected checkpoint + the durable lane-state ref before implementation or an execution-command final response. The inherited `scripts/ops4_execution_guard.py` now accepts `--current`, `--lane-id` and `--lane-state`; `OPS4.LANE_PROJECTION_DRIFT` blocks continuation until canonical state is repaired. For a terminal-response decision, add `--terminal-response`; an `in_progress` lane remains nonterminal.
+**Mandatory start/return gate:** reconcile CURRENT + selected checkpoint + the durable lane-state ref before implementation or an execution-command final response. The inherited `scripts/ops4_execution_guard.py` accepts `--current`, `--lane-id` and `--lane-state`; `OPS4.LANE_PROJECTION_DRIFT` blocks continuation until canonical state is repaired. For a completion/blocker response, add `--terminal-response`; an `in_progress` lane remains nonterminal. Use the separate `--wait-handoff` check for a legitimate wait.
 
 **Mandatory candidate discipline:** accumulate MTLC changes on a draft PR without triggering full remote acceptance, run focused feedback when capable, and document genuine local unavailability when not. Mark ready only after one coherent candidate is prepared. The MTLC application workflow runs hosted focused TypeScript/tests before cross-platform runners; other lanes retain their existing workflow. Do not synchronize a new head while a prior remote head is queued/in progress. A failed product head requires a causal repair and a different head; never retry blindly.
 
@@ -126,7 +128,7 @@ If a tool call returns no usable result, a session aborts, or execution resumes 
 
 When exactly one persistent implementation lane is nonterminal, OPS5 enters **single-active-lane mode**. Derive that fact once from the fresh `CURRENT.json` read used for lane selection. Until an invalidating event occurs, do **not** rescan sibling lane refs, check for concurrent writers, read an empty publication queue, or perform a routine update/rebase of the implementation branch. Terminal sibling lanes remain history unless a concrete dependency or an observed fresh-`main` change requires them.
 
-The durable lane ref remains the **lane-state terminal gate**. For the selected lane, `in_progress`, `prequeue_green`, or `published` forbids a normal terminal response to an owner execution command. A repeated owner execution command may trigger checkpoint-local stall diagnosis, but it must **not** create a lane-state write merely to count the interaction. If interaction-quality telemetry is useful, aggregate it into an already-required terminal/closeout record rather than creating an activity receipt.
+The durable lane ref remains the **lane-state terminal gate**. For the selected lane, `in_progress`, `prequeue_green`, or `published` forbids a completion response to an owner execution command; a checked wait handoff leaves that state unfinished. A repeated owner execution command may trigger checkpoint-local stall diagnosis, but it must **not** create a lane-state write merely to count the interaction. If interaction-quality telemetry is useful, aggregate it into an already-required terminal/closeout record rather than creating an activity receipt.
 
 Use **quiet execution** for governed tranches. While CI is healthy, inspect only workflow-level status at sparse, transition-driven points and do not narrate queued/running jobs, individual platform progress, queue mechanics, merge mechanics, lane scans, rebase checks, or mergeability polling. Inspect job/step/log detail only after terminal failure or a concrete unresolved failure signature. Browser/session continuity is never required: after interruption, resume from the durable lane milestone and the smallest repository evidence needed.
 
