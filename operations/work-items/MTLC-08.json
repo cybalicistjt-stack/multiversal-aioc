@@ -2,9 +2,9 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-08",
   "attempt_id": "MTLC-08-attempt-001",
-  "status": "in_progress",
+  "status": "completed_verified",
   "implementation_branch": "work/mtlc-08-live-utilities",
-  "implementation_authority": true,
+  "implementation_authority": false,
   "selected_by_owner": "Owner: Continue, 2026-10-16 after MTLC-07 closeout.",
   "dependencies": {
     "predecessor": "MTLC-07 completed_verified",
@@ -23,25 +23,64 @@
       "Heavy rendering/media libraries are not bundled into the mandatory client."
     ]
   },
-  "active_substep": "authority_and_baseline",
-  "next_action": "Implement MTLC-08 using existing dice, rules, handout, media and Session authorities; validate and publish.",
+  "active_substep": "completed",
+  "next_action": "MTLC-09 selected_not_started pending distinct owner execution command; GPR PCV-03F remains independent.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner authorized MTLC-08 on dedicated app branch; OPS5 revision 627."
+      "seq": 3,
+      "kind": "published",
+      "evidence": "MTLC-08 app PR #854 head 1ecb677d3e3aad6d8dba420c80c04d4a954c78e8 passed focused, Linux, Windows and deterministic cross-platform acceptance run 38886858606; merged application main 30a5712c83fb1d60c8c93bffb09e5a792c7d2c2b; READY reconciled generation 160. Local helpers remain advisory; current live OwnerPort and A5 Session provider are required for shared authoritative actions. No installed device or production media certification."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MTLC-08 app PR #854 head 1ecb677d3e3aad6d8dba420c80c04d4a954c78e8 passed focused, Linux, Windows and deterministic cross-platform acceptance run 38886858606; merged application main 30a5712c83fb1d60c8c93bffb09e5a792c7d2c2b; READY reconciled generation 160. Local helpers remain advisory; current live OwnerPort and A5 Session provider are required for shared authoritative actions. No installed device or production media certification."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "unresolved",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "reentry_assessment": {
+      "continue_turns": 2,
+      "stall_nudges": 0,
+      "classification": "valid_prior_wait_handoff",
+      "confidence": "confirmed",
+      "evidence": "The initial Continue handed back immutable running validation run 38886858606. Re-entry inspected that run once, then published after terminal GREEN. Validation of product work is independent from execution-quality classification."
+    }
+  },
+  "completed": true,
+  "completion_evidence": {
+    "application_pr": 854,
+    "validated_head": "1ecb677d3e3aad6d8dba420c80c04d4a954c78e8",
+    "validation_run": 38886858606,
+    "application_merge_sha": "30a5712c83fb1d60c8c93bffb09e5a792c7d2c2b",
+    "application_ready_candidate": "MTLC-08-app-pr-854",
+    "publication_queue_generation": 160,
+    "focused_fast_feedback": "PASS",
+    "linux_shared_validation": "PASS",
+    "windows_shared_validation": "PASS",
+    "cross_platform_comparison": "PASS",
+    "current_a5_requirement": "A5SessionPresencePort required to verify live Session before shared utility use.",
+    "live_owner_requirement": "LiveOwnerPort required for canonical dice, rules, handout, map and media commands; missing owner explicitly unavailable.",
+    "ruling_ledger": "GM-only visibility redaction, versioned attributed append, SQLite real HTTP restart fixture green.",
+    "local_utilities": "timer, bounded local dice, cryptographic random choice and grid counter are advisory not canonical gameplay events",
+    "platform_scope": "Source-level hosted Linux/Windows and HTTP/SQLite fixtures; no production audio/installed-device certification",
+    "successor": "MTLC-09",
+    "fresh_base_integration": {
+      "candidate_id": "MTLC-08-app-pr-854",
+      "candidate_head": "1ecb677d3e3aad6d8dba420c80c04d4a954c78e8",
+      "base_sha": "70be17028a0518ae56c65d4a52ccff98fa1be5b1",
+      "status": "green",
+      "run_id": "38886858606",
+      "mergeable": true,
+      "base_unchanged": true
+    }
   }
 }
