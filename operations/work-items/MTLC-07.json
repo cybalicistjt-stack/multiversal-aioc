@@ -2,9 +2,9 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-07",
   "attempt_id": "MTLC-07-attempt-001",
-  "status": "in_progress",
+  "status": "completed_verified",
   "implementation_branch": "work/mtlc-07-session-presence",
-  "implementation_authority": true,
+  "implementation_authority": false,
   "selected_by_owner": "Owner: Continue after MTLC-06 completed_verified, 2026-10-16.",
   "dependencies": {
     "predecessor": "MTLC-06 completed_verified",
@@ -23,25 +23,64 @@
       "Communication/media transport choices remain provider-neutral and bounded."
     ]
   },
-  "active_substep": "authority_and_baseline",
-  "next_action": "Build governed session launch/presence/table-mode integration without duplicating PCV or A5 authority; validate and publish.",
+  "active_substep": "completed",
+  "next_action": "MTLC-08 selected_not_started pending distinct owner instruction. PCV-03F GPR independent.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner explicitly directed MTLC-07; selected application branch work/mtlc-07-session-presence; OPS5 state revision 625."
+      "seq": 3,
+      "kind": "published",
+      "evidence": "MTLC-07 application PR #853 exact head facbbe79cca78ed8bb04ee3cd4e1f36c1c8ed549 passed hosted focused, Linux, Windows, deterministic comparison run 38875810115; merged 70be17028a0518ae56c65d4a52ccff98fa1be5b1; READY reconciled generation 158. A5 Session provider remains externally required; no installed-device or production media certification."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MTLC-07 application PR #853 exact head facbbe79cca78ed8bb04ee3cd4e1f36c1c8ed549 passed hosted focused, Linux, Windows, deterministic comparison run 38875810115; merged 70be17028a0518ae56c65d4a52ccff98fa1be5b1; READY reconciled generation 158. A5 Session provider remains externally required; no installed-device or production media certification."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "unresolved",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "reentry_assessment": {
+      "continue_turns": 2,
+      "stall_nudges": 0,
+      "classification": "valid_prior_wait_handoff",
+      "confidence": "confirmed",
+      "evidence": "First owner Continue handed back the exact healthy running validation run 38875810115 without claiming completion. Second Continue resumed only that workflow, now terminal GREEN, with no blind retry or polling loop. Product/ops publication separately verified."
+    }
+  },
+  "completed": true,
+  "completion_evidence": {
+    "application_pr": 853,
+    "validated_head": "facbbe79cca78ed8bb04ee3cd4e1f36c1c8ed549",
+    "validation_run": 38875810115,
+    "application_merge_sha": "70be17028a0518ae56c65d4a52ccff98fa1be5b1",
+    "application_ready_candidate": "MTLC-07-app-pr-853",
+    "publication_queue_generation": 158,
+    "hosted_fast_feedback": "PASS",
+    "linux_shared_validation": "PASS",
+    "windows_shared_validation": "PASS",
+    "cross_platform_comparison": "PASS",
+    "real_http_sqlite_restart_and_session_privacy": "source_level_fixture_tests_green",
+    "a5_provider_requirement": "Host must inject actual A5SessionPresencePort for authoritative live Session; no provider yields explicit unavailable projection and no fake-connected state.",
+    "host_scope": "MTLC uses A3/F020 Group and A5 Campaign gates; A5 owns atomic Session admission, idempotent launch/presence/rejoin, delegation and per-viewer projection.",
+    "transport_scope": "PCV-03F live transport belongs to GPR and is unchanged. Media/caption handoffs are optional verified HTTPS URLs, not working providers supplied by MTLC.",
+    "platform_scope": "Source-level cross-platform validation and HTTP/SQLite fixture only; does not certify installed-device, deployed Session, real media, table-display runtime or production reconnect.",
+    "successor": "MTLC-08",
+    "fresh_base_integration": {
+      "candidate_id": "MTLC-07-app-pr-853",
+      "candidate_head": "facbbe79cca78ed8bb04ee3cd4e1f36c1c8ed549",
+      "base_sha": "368f9b742b1fa117c37678babbd2038a9a931f1f",
+      "status": "green",
+      "run_id": "38875810115",
+      "mergeable": true,
+      "base_unchanged": true
+    }
   }
 }
