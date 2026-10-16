@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 626,
+  "state_revision": 627,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -130,14 +130,14 @@
       "execution_state_ref": "ops3-lane-state/fga"
     },
     "mtlc": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "MTLC-08",
       "attempt_id": "MTLC-08-attempt-001",
       "checkpoint_path": "operations/work-items/MTLC-08.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
+      "implementation_branch": "work/mtlc-08-live-utilities",
+      "implementation_authority": true,
       "execution_state_ref": "ops3-lane-state/mtlc",
-      "activation_rule": "MTLC-07 completed_verified and published as app main 70be17028a0518ae56c65d4a52ccff98fa1be5b1. MTLC-08 is the strict selected successor, not authorized to implement until distinct owner execution command. PCV-03F GPR remains independent."
+      "activation_rule": "Owner explicitly continued MTLC-08 on 2026-10-16 following verified MTLC-07; MTLC-09 remains unapproved and GPR independent."
     }
   },
   "truth_rules": {
@@ -177,7 +177,7 @@
     "ops5_agent_completion": "Worker started, input accepted, artifact produced, focused check, real-boundary validation, owner acceptance and publication are distinct; follow current operations guards and real-source proof; do not add per-status journal receipts.",
     "ops5_bridge_fallback": "Missing local index or unverified host skill never blocks authorized work. Read relevant current source directly with GitHub tools; avoid compulsory research on trivial tasks."
   },
-  "next_project_action": "MTLC-08 selected_not_started pending owner authorization; preserve GPR PCV-03F in_progress.",
+  "next_project_action": "Execute MTLC-08 live-play utilities on dedicated application branch; preserve GPR PCV-03F.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

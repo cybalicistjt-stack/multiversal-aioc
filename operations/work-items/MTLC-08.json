@@ -2,10 +2,10 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-08",
   "attempt_id": "MTLC-08-attempt-001",
-  "status": "selected_not_started",
-  "implementation_branch": null,
-  "implementation_authority": false,
-  "selected_by_owner": "Automatic strict successor selection after completed MTLC-07; no MTLC-08 implementation authorization.",
+  "status": "in_progress",
+  "implementation_branch": "work/mtlc-08-live-utilities",
+  "implementation_authority": true,
+  "selected_by_owner": "Owner: Continue, 2026-10-16 after MTLC-07 closeout.",
   "dependencies": {
     "predecessor": "MTLC-07 completed_verified",
     "program": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_MULTIVERSAL_TABLETOP_LIFECYCLE_CONVERGENCE_PROGRAM.md",
@@ -23,21 +23,25 @@
       "Heavy rendering/media libraries are not bundled into the mandatory client."
     ]
   },
-  "active_substep": "not_started",
-  "next_action": "Await owner execution command for MTLC-08 Live Play Utilities, Rules, Handouts, and Media Control. Do not start automatically.",
+  "active_substep": "authority_and_baseline",
+  "next_action": "Implement MTLC-08 using existing dice, rules, handout, media and Session authorities; validate and publish.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner authorized MTLC-08 on dedicated app branch; OPS5 revision 627."
+    },
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
