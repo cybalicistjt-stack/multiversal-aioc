@@ -2,9 +2,9 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-09",
   "attempt_id": "MTLC-09-attempt-001",
-  "status": "in_progress",
+  "status": "completed_verified",
   "implementation_branch": "work/mtlc-09-session-closeout",
-  "implementation_authority": true,
+  "implementation_authority": false,
   "selected_by_owner": "Owner: Continue after MTLC-08 completed_verified, 2026-10-16.",
   "dependencies": {
     "predecessor": "MTLC-08 completed_verified",
@@ -23,25 +23,52 @@
       "The next session begins from reconciled continuity rather than human memory or a manually maintained second database."
     ]
   },
-  "active_substep": "authority_and_baseline",
-  "next_action": "Implement Session closeout and campaign continuity backed by existing A5 Session and gameplay owner facts; validate and publish.",
+  "active_substep": "completed",
+  "next_action": "MTLC-10 selected_not_started; owner Continue required. Preserve GPR PCV-03F.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 3,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner activated MTLC-09; dedicated application branch work/mtlc-09-session-closeout; OPS5 revision 629."
+      "seq": 3,
+      "kind": "published",
+      "evidence": "MTLC-09 app PR #855 exact head 76cefe08075be32a9cd0979cfabd7cea8eaad18b passed focused TypeScript/tests, Linux, Windows and deterministic comparison on Actions 38957924935; merged app main ed99bb9429fa88ccc8a4a7d7de107f4eff076cf6; application READY generation 162 empty. A5 and gameplay owner ports require actual host provision; tests are source-level and fixture-backed, not deployed production/device certification."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MTLC-09 app PR #855 exact head 76cefe08075be32a9cd0979cfabd7cea8eaad18b passed focused TypeScript/tests, Linux, Windows and deterministic comparison on Actions 38957924935; merged app main ed99bb9429fa88ccc8a4a7d7de107f4eff076cf6; application READY generation 162 empty. A5 and gameplay owner ports require actual host provision; tests are source-level and fixture-backed, not deployed production/device certification."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "unresolved",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "reentry_assessment": {
+      "continue_turns": 3,
+      "classification": "legitimate_wait_handoff_then_CI_failure_repaired_and_revalidated",
+      "evidence": "First validation head failed TS2339 due to view.ledger; revised head 76cefe0 revalidated and published. Last reentry waited on same healthy run. No installed-device claim."
+    }
+  },
+  "completed": true,
+  "completion_evidence": {
+    "application_pr": 855,
+    "validated_head": "76cefe08075be32a9cd0979cfabd7cea8eaad18b",
+    "validation_run": "38957924935",
+    "application_merge_sha": "ed99bb9429fa88ccc8a4a7d7de107f4eff076cf6",
+    "application_ready_candidate": "MTLC-09-app-pr-855",
+    "publication_queue_generation": 162,
+    "focused_fast_feedback": "PASS",
+    "linux_shared_validation": "PASS",
+    "windows_shared_validation": "PASS",
+    "cross_platform_comparison": "PASS",
+    "authority": "SessionContinuityOwnerPort and A5SessionPresencePort required for authorized finalization; MTLC is projection/advisory notes only",
+    "privacy": "Privacy-filtered Previously On and subject/GM note access, pending owner facts excluded",
+    "persistence": "HTTP/SQLite fixture restart evidence; not installed device proof",
+    "boundary": "Production A5/gameplay integrations and generated AI recaps not certified",
+    "successor": "MTLC-10"
   }
 }
