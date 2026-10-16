@@ -2,9 +2,9 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-06",
   "attempt_id": "MTLC-06-attempt-001",
-  "status": "in_progress",
+  "status": "completed_verified",
   "implementation_branch": "work/mtlc-06-readiness",
-  "implementation_authority": true,
+  "implementation_authority": false,
   "selected_by_owner": "Owner: Good job! Let's continue, 2026-10-15, immediately following MTLC-05 closeout.",
   "dependencies": {
     "predecessor": "MTLC-05 completed_verified",
@@ -23,25 +23,62 @@
       "The workflow does not impose more mandatory clerical prep than it removes."
     ]
   },
-  "active_substep": "authority_and_baseline",
-  "next_action": "Develop minimal prep/readiness workflow, integrate A5 owner-provided signals, validate and publish.",
+  "active_substep": "completed",
+  "next_action": "MTLC-07 selected_not_started pending distinct owner execution authorization. GPR PCV-03F remains independent.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner-authorized MTLC-06 after verified MTLC-05 closeout; branch work/mtlc-06-readiness."
+      "seq": 3,
+      "kind": "published",
+      "evidence": "MTLC-06 application PR #852 head 4dfcfbd20b8898efe871f5b3f56da2086f0dffab passed exact-head Linux/Windows/deterministic acceptance run 38844319082, was squash-merged as 368f9b742b1fa117c37678babbd2038a9a931f1f, and its READY candidate was reconciled at publication generation 156. Source-level readiness remains UNVERIFIED without A5-owned preflight evidence; this is not installed-device certification."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MTLC-06 application PR #852 head 4dfcfbd20b8898efe871f5b3f56da2086f0dffab passed exact-head Linux/Windows/deterministic acceptance run 38844319082, was squash-merged as 368f9b742b1fa117c37678babbd2038a9a931f1f, and its READY candidate was reconciled at publication generation 156. Source-level readiness remains UNVERIFIED without A5-owned preflight evidence; this is not installed-device certification."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "unresolved",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "reentry_assessment": {
+      "continue_turns": 2,
+      "stall_nudges": 0,
+      "classification": "unresolved",
+      "confidence": "unresolved",
+      "evidence": "MTLC-06 was resumed by an owner execution command with an active pre-existing implementation and source CI; multiple owner commands are observed, but the prior interruption/continuation cause is not independently proven. Product publication is confirmed separately."
+    }
+  },
+  "completed": true,
+  "completion_evidence": {
+    "application_pr": 852,
+    "validated_head": "4dfcfbd20b8898efe871f5b3f56da2086f0dffab",
+    "validation_run": 38844319082,
+    "application_merge_sha": "368f9b742b1fa117c37678babbd2038a9a931f1f",
+    "application_ready_candidate": "MTLC-06-app-pr-852",
+    "publication_queue_generation": 156,
+    "linux_shared_validation": "PASS",
+    "windows_shared_validation": "PASS",
+    "cross_platform_comparison": "PASS",
+    "real_http_sqlite_restart_and_privacy": "source_level_tests_green",
+    "a5_provider_requirement": "real A5 ReadinessEvidencePort required; otherwise session remains unverified",
+    "minimum_viable_prep": "sparse records supported; GM prep acknowledgment is target-specific",
+    "platform_scope": "source-level cross-platform validation; no installed-device or production service certification",
+    "successor": "MTLC-07",
+    "fresh_base_integration": {
+      "candidate_id": "MTLC-06-app-pr-852",
+      "candidate_head": "4dfcfbd20b8898efe871f5b3f56da2086f0dffab",
+      "base_sha": "1df192887f0b680c5ebe599433094c896c49bccb",
+      "status": "green",
+      "run_id": "38844319082",
+      "mergeable": true,
+      "base_unchanged": true
+    }
   }
 }
