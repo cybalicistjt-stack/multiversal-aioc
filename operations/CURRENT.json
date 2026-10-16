@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 628,
+  "state_revision": 629,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -130,14 +130,14 @@
       "execution_state_ref": "ops3-lane-state/fga"
     },
     "mtlc": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "MTLC-09",
       "attempt_id": "MTLC-09-attempt-001",
       "checkpoint_path": "operations/work-items/MTLC-09.json",
-      "implementation_branch": null,
-      "implementation_authority": false,
+      "implementation_branch": "work/mtlc-09-session-closeout",
+      "implementation_authority": true,
       "execution_state_ref": "ops3-lane-state/mtlc",
-      "activation_rule": "MTLC-08 completed_verified and published in application main 30a5712c83fb1d60c8c93bffb09e5a792c7d2c2b. MTLC-09 selected but requires separate owner Continue. GPR PCV-03F unchanged."
+      "activation_rule": "Owner explicitly said Continue on 2026-10-16 following verified MTLC-08. MTLC-09 active; MTLC-10 not authorized. GPR PCV-03F independent."
     }
   },
   "truth_rules": {
@@ -177,7 +177,7 @@
     "ops5_agent_completion": "Worker started, input accepted, artifact produced, focused check, real-boundary validation, owner acceptance and publication are distinct; follow current operations guards and real-source proof; do not add per-status journal receipts.",
     "ops5_bridge_fallback": "Missing local index or unverified host skill never blocks authorized work. Read relevant current source directly with GitHub tools; avoid compulsory research on trivial tasks."
   },
-  "next_project_action": "MTLC-09 selected_not_started pending owner authorization; preserve GPR PCV-03F in_progress.",
+  "next_project_action": "Execute MTLC-09 Session Closeout and Campaign Continuity on isolated application branch; preserve independent GPR PCV-03F.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

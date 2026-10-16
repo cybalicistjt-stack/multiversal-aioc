@@ -2,10 +2,10 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-09",
   "attempt_id": "MTLC-09-attempt-001",
-  "status": "selected_not_started",
-  "implementation_branch": null,
-  "implementation_authority": false,
-  "selected_by_owner": "Strict successor selection following verified MTLC-08, not owner execution authorization.",
+  "status": "in_progress",
+  "implementation_branch": "work/mtlc-09-session-closeout",
+  "implementation_authority": true,
+  "selected_by_owner": "Owner: Continue after MTLC-08 completed_verified, 2026-10-16.",
   "dependencies": {
     "predecessor": "MTLC-08 completed_verified",
     "program": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_MULTIVERSAL_TABLETOP_LIFECYCLE_CONVERGENCE_PROGRAM.md",
@@ -23,21 +23,25 @@
       "The next session begins from reconciled continuity rather than human memory or a manually maintained second database."
     ]
   },
-  "active_substep": "not_started",
-  "next_action": "Await owner execution authorization for MTLC-09 Session Closeout and Campaign Continuity.",
+  "active_substep": "authority_and_baseline",
+  "next_action": "Implement Session closeout and campaign continuity backed by existing A5 Session and gameplay owner facts; validate and publish.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner activated MTLC-09; dedicated application branch work/mtlc-09-session-closeout; OPS5 revision 629."
+    },
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
