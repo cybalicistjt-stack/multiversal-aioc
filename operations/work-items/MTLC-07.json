@@ -2,10 +2,10 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-07",
   "attempt_id": "MTLC-07-attempt-001",
-  "status": "selected_not_started",
-  "implementation_branch": null,
-  "implementation_authority": false,
-  "selected_by_owner": "Automatic successor selection after verified MTLC-06; no MTLC-07 implementation approval.",
+  "status": "in_progress",
+  "implementation_branch": "work/mtlc-07-session-presence",
+  "implementation_authority": true,
+  "selected_by_owner": "Owner: Continue after MTLC-06 completed_verified, 2026-10-16.",
   "dependencies": {
     "predecessor": "MTLC-06 completed_verified",
     "program": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_MULTIVERSAL_TABLETOP_LIFECYCLE_CONVERGENCE_PROGRAM.md",
@@ -23,21 +23,25 @@
       "Communication/media transport choices remain provider-neutral and bounded."
     ]
   },
-  "active_substep": "not_started",
-  "next_action": "Await distinct owner execution instruction; preserve PCV-03F authority independently.",
+  "active_substep": "authority_and_baseline",
+  "next_action": "Build governed session launch/presence/table-mode integration without duplicating PCV or A5 authority; validate and publish.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner explicitly directed MTLC-07; selected application branch work/mtlc-07-session-presence; OPS5 state revision 625."
+    },
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
