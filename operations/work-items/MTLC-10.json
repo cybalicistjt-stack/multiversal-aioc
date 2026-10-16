@@ -2,9 +2,9 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-10",
   "attempt_id": "MTLC-10-attempt-001",
-  "status": "in_progress",
+  "status": "completed_verified",
   "implementation_branch": "work/mtlc-10-between-session",
-  "implementation_authority": true,
+  "implementation_authority": false,
   "selected_by_owner": "Owner: Continue, 2026-10-16 after MTLC-09 closeout.",
   "dependencies": {
     "predecessor": "MTLC-09 completed_verified",
@@ -22,25 +22,51 @@
       "Group chat is no longer the campaign's unofficial task/loot/downtime database."
     ]
   },
-  "active_substep": "authority_and_baseline",
-  "next_action": "Implement authoritative between-Session scenes, GM resolutions and party administration; validate and publish.",
+  "active_substep": "completed",
+  "next_action": "MTLC-11 selected_not_started; separate owner Continue needed to activate. GPR PCV-03F independent.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 3,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner continued MTLC-10 after verified predecessor; dedicated application branch work/mtlc-10-between-session; OPS5 rev 631."
+      "seq": 3,
+      "kind": "published",
+      "evidence": "MTLC-10 app PR #856 exact head 5f052eac580b15e576a850d9e65d1f249abc0353 passed repository selector/health, focused MTLC TypeScript and tests, Linux and Windows validation and deterministic cross-platform comparison on run 38969262706; merged protected application main 4c7da8b5b92cac20fe5ff0b6c6e24f491a2630f6; READY application queue generation 164 reconciled. Source-level fixture evidence does not certify deployed gameplay-owner adapters, installed devices, push notifications or production economy/character mutation."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MTLC-10 app PR #856 exact head 5f052eac580b15e576a850d9e65d1f249abc0353 passed repository selector/health, focused MTLC TypeScript and tests, Linux and Windows validation and deterministic cross-platform comparison on run 38969262706; merged protected application main 4c7da8b5b92cac20fe5ff0b6c6e24f491a2630f6; READY application queue generation 164 reconciled. Source-level fixture evidence does not certify deployed gameplay-owner adapters, installed devices, push notifications or production economy/character mutation."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "unresolved",
+    "policy_violations": [],
+    "product_completion_valid": true,
+    "reentry_assessment": {
+      "continue_turns": 2,
+      "classification": "valid_exact_head_external_wait_handoff",
+      "evidence": "First owner Continue implemented candidate and handed off on healthy in-progress run 38969262706; second owner Continue resumed same run, published and closed."
+    }
+  },
+  "completed": true,
+  "completion_evidence": {
+    "application_pr": 856,
+    "validated_head": "5f052eac580b15e576a850d9e65d1f249abc0353",
+    "validation_run": "38969262706",
+    "application_merge_sha": "4c7da8b5b92cac20fe5ff0b6c6e24f491a2630f6",
+    "application_ready_candidate": "MTLC-10-app-pr-856",
+    "publication_queue_generation": 164,
+    "selector_and_repo_health": "PASS",
+    "focused_fast_feedback": "PASS",
+    "linux_shared_validation": "PASS",
+    "windows_shared_validation": "PASS",
+    "cross_platform_comparison": "PASS",
+    "scope": "Authenticated A3/Group/Campaign between-session coordination with private asynchronous scenes, voting, GM decisions, owner-gated consequential outcomes and HTTP/SQLite fixture restart",
+    "limitations": "Gameplay owner adapter is a required injected seam; production inventory, funds, character state and deployed device notification behavior are not certified.",
+    "successor": "MTLC-11"
   }
 }
