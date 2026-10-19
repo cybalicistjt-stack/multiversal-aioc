@@ -2,10 +2,10 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-13",
   "attempt_id": "MTLC-13-attempt-001",
-  "status": "selected_not_started",
-  "implementation_branch": null,
-  "implementation_authority": false,
-  "selected_by_owner": "Strict successor selection after MTLC-12 completed_verified; later owner execution required.",
+  "status": "in_progress",
+  "implementation_branch": "work/mtlc-13-accessible-lifecycle",
+  "implementation_authority": true,
+  "selected_by_owner": "Owner Continue 2026-10-19.",
   "dependencies": {
     "predecessor": "MTLC-12 completed_verified",
     "program": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_MULTIVERSAL_TABLETOP_LIFECYCLE_CONVERGENCE_PROGRAM.md",
@@ -22,21 +22,25 @@
       "Event/temporary play can convert cleanly into persistent campaigns when desired."
     ]
   },
-  "active_substep": "selected_not_started",
-  "next_action": "Await later owner execution for MTLC-13; GPR PCV-03F remains independent.",
+  "active_substep": "implement_accessible_lifecycle",
+  "next_action": "Converge accessible onboarding, role-appropriate mobile/physical/event/spectator workflows and governed handoff through existing owners; validate and close MTLC-13.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner Continue activated MTLC-13 on work/mtlc-13-accessible-lifecycle from app 4879ddefe7664f60dc8489fc45f23c37391c3328"
+    },
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   },
   "strict_successor": "MTLC-14"
