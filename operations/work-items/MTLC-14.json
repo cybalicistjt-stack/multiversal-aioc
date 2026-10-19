@@ -23,25 +23,22 @@
       "The certified product demonstrates capability without transferring hidden maintenance work back to players or GMs."
     ]
   },
-  "active_substep": "await_owner_budget_review_and_installed_lifecycle_evidence",
-  "next_action": "Owner approve or amend the exact proposed limits in app fixtures/mtlc14/lifecycle-budgets.json. Then record approval, validate the final exact head, generate matching internal Windows/Android packages using the existing signing owner, collect actual native/human complete-loop evidence and run the blocking certification evaluator. Publish/close MTLC-14 only after every required gate passes. No successor is selected.",
+  "active_substep": "approved_budget_candidate_and_internal_package_preparation",
+  "next_action": "Bind the approved limits to this durable approval record, validate the coherent exact application candidate, prepare matching internal Windows/Android packages using the existing persistent signing owner, then obtain actual installed-platform and representative human-session evidence. Run the blocking certification evaluator; publish/close MTLC-14 only if all required gates pass.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 2,
+    "material_progress_seq": 3,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 2,
-      "kind": "source_precertification_validated",
-      "evidence": "MTLC-14 source pre-certification PR860 exact head 308b18f02763b53a19b6d29c1c3d273fb6acfb3e passed Linux/Windows source validation, complete client TypeScript, the existing A2 11,881-record performance/privacy regression and actual source-output comparison in run39262079708. The implemented release evaluator still requires owner-approved limits, actual installed Windows x64/Android ARM64 complete-loop proof and representative human observations. No installed/native or human certification is claimed and the application candidate is not published as completed MTLC-14."
+      "seq": 3,
+      "kind": "owner_budget_approved",
+      "evidence": "Owner explicitly answered Approve on 2026-10-19 to the exact presented limits. Receipt operations/evidence/MTLC-14-owner-budget-approval-2026-10-19.json; limits digest 91bcd79c02c2854742435795e8b5a7b15bc96955e29faa9e2afad969d210bd4f."
     },
     "active_stall": false,
-    "terminal_response_allowed": true,
-    "stop_reason": {
-      "kind": "owner_only",
-      "evidence": "The selected MTLC-14 acceptance explicitly requires owner-approved friction limits and actual supported-platform/human evidence. Exact proposed limits digest 91bcd79c02c2854742435795e8b5a7b15bc96955e29faa9e2afad969d210bd4f remains unapproved; source fixture success cannot substitute. Owner budget decision and installed-device/human observations are required before certification can proceed."
-    }
+    "terminal_response_allowed": false,
+    "stop_reason": null
   },
   "execution_conformance": {
     "status": "in_progress",
@@ -80,7 +77,7 @@
       "linux": 18.86449700000003,
       "windows": 45.42209999999977
     },
-    "candidate_state": "draft_pending_owner_budget_and_native_human_evidence"
+    "candidate_state": "draft_budget_approved_pending_candidate_update_and_native_human_evidence"
   },
   "blocking_requirements": [
     {
@@ -89,7 +86,12 @@
       "authority": "Selected MTLC-14 exit criterion: measured mandatory prep/administration and manual campaign-memory cost within owner-approved friction budgets.",
       "policy_path": "fixtures/mtlc14/lifecycle-budgets.json",
       "limits_sha256": "91bcd79c02c2854742435795e8b5a7b15bc96955e29faa9e2afad969d210bd4f",
-      "owner_approval": null,
+      "owner_approval": {
+        "approved_by": "John Brandon Turner",
+        "source_path": "operations/evidence/MTLC-14-owner-budget-approval-2026-10-19.json",
+        "limits_sha256": "91bcd79c02c2854742435795e8b5a7b15bc96955e29faa9e2afad969d210bd4f",
+        "owner_statement": "Approve"
+      },
       "proposal": {
         "administration_minutes_per_person_session": 5,
         "mandatory_duplicate_memory_minutes": 0,
@@ -99,7 +101,8 @@
         "native_peak_rss_mib": 512,
         "package_mib_each": 200,
         "optional_heavy_media_in_core_bytes": 0
-      }
+      },
+      "status": "resolved"
     },
     {
       "id": "actual-installed-supported-platform-proof",
@@ -125,12 +128,5 @@
     "validation_steps_executed": false,
     "cause_evidence": "A delayed draft-open workflow snapshot cancelled the ready event under the same-head concurrency key. Both were terminal without validation steps. One isolated ready_for_review event after both terminal admitted unchanged head; no product/config retry or head supersession."
   },
-  "response_class": "required_owner_input_request_not_completion",
-  "response_gate_evidence": {
-    "owner_only_checkpoint_guard": "PASS",
-    "current_checkpoint_lane_projection": "PASS",
-    "persistent_lane_completion_guard": "NONTERMINAL as required; lane is in_progress and no completion is claimed",
-    "source_candidate_complete": false,
-    "owner_input_required": true
-  }
+  "response_class": "execution_in_progress"
 }

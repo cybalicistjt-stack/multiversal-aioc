@@ -1,0 +1,84 @@
+{
+  "schema": "MTLC-14.1",
+  "work_item": "MTLC-14",
+  "approved_by": "John Brandon Turner",
+  "approved_on": "2026-10-19",
+  "owner_statement": "Approve",
+  "decision": "approved",
+  "limits_sha256": "91bcd79c02c2854742435795e8b5a7b15bc96955e29faa9e2afad969d210bd4f",
+  "policy_repository": "cybalicistjt-stack/Multiversal-app",
+  "policy_path": "fixtures/mtlc14/lifecycle-budgets.json",
+  "reviewed_candidate": "308b18f02763b53a19b6d29c1c3d273fb6acfb3e",
+  "approved_limits": {
+    "initial_usable_ms": {
+      "max": 2000,
+      "unit": "ms",
+      "basis": "Existing A12 initial usable render target; measure supported native hardware.",
+      "exclusive": true
+    },
+    "screen_feedback_ms": {
+      "max": 200,
+      "unit": "ms",
+      "basis": "Existing A12 ordinary screen feedback target.",
+      "exclusive": true
+    },
+    "local_feedback_ms": {
+      "max": 100,
+      "unit": "ms",
+      "basis": "Existing A12 local feedback target.",
+      "exclusive": true
+    },
+    "live_feedback_ms": {
+      "max": 50,
+      "unit": "ms",
+      "basis": "Existing A12 local live-control target; excludes authoritative round trip.",
+      "exclusive": true
+    },
+    "search_p95_ms": {
+      "max": 250,
+      "unit": "ms",
+      "basis": "Existing A2 11,881-record search/privacy regression."
+    },
+    "peak_rss_bytes": {
+      "max": 536870912,
+      "unit": "bytes",
+      "basis": "Proposed 512 MiB native process ceiling; requires actual workload/hardware evidence."
+    },
+    "package_bytes": {
+      "max": 209715200,
+      "unit": "bytes",
+      "basis": "Proposed 200 MiB package ceiling excluding separately downloaded optional media; measure actual Windows installer and Android APK."
+    },
+    "optional_media_in_core_bytes": {
+      "max": 0,
+      "unit": "bytes",
+      "basis": "Optional heavy media must remain separate from mandatory core."
+    },
+    "configuration_steps": {
+      "max": 5,
+      "unit": "steps",
+      "basis": "Proposed mandatory per-session setup ceiling after one-time account/Campaign setup."
+    },
+    "lifecycle_interactions": {
+      "max": 60,
+      "unit": "interactions",
+      "basis": "Proposed per-person recurring lifecycle ceiling; count actual UI interactions, not HTTP calls."
+    },
+    "administration_minutes": {
+      "max": 5,
+      "unit": "minutes",
+      "basis": "Proposed mandatory clerical work per person/session; exclude voluntary creative prep and play, include duplicate bookkeeping."
+    },
+    "manual_memory_minutes": {
+      "max": 0,
+      "unit": "minutes",
+      "basis": "Proposed mandatory duplicate campaign-memory/journal maintenance; ordinary adjudication and optional personal notes excluded."
+    },
+    "unintegrated_external_tools": {
+      "max": 0,
+      "unit": "tools",
+      "basis": "Every required external dependency must have an integrated, bounded Multiversal workflow."
+    }
+  },
+  "scope": "Approves exact reviewed budget limits. Actual installed-device and representative human observations remain required. No lifecycle certification, public release or commerce authorization is inferred."
+}
