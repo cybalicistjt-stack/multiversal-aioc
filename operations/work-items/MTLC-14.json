@@ -23,26 +23,114 @@
       "The certified product demonstrates capability without transferring hidden maintenance work back to players or GMs."
     ]
   },
-  "active_substep": "implement_lifecycle_certification",
-  "next_action": "Implement complete-loop golden fixtures, measured technical/friction receipts and fail-closed release gate. Consume current installed/runtime evidence where valid and prepare concrete owner friction-budget review before any owner-only handoff.",
+  "active_substep": "await_owner_budget_review_and_installed_lifecycle_evidence",
+  "next_action": "Owner approve or amend the exact proposed limits in app fixtures/mtlc14/lifecycle-budgets.json. Then record approval, validate the final exact head, generate matching internal Windows/Android packages using the existing signing owner, collect actual native/human complete-loop evidence and run the blocking certification evaluator. Publish/close MTLC-14 only after every required gate passes. No successor is selected.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue activated terminal MTLC-14 from app bd0cbd8cb05798a80e3bc009ab30602e38953021"
+      "seq": 2,
+      "kind": "source_precertification_validated",
+      "evidence": "MTLC-14 source pre-certification PR860 exact head 308b18f02763b53a19b6d29c1c3d273fb6acfb3e passed Linux/Windows source validation, complete client TypeScript, the existing A2 11,881-record performance/privacy regression and actual source-output comparison in run39262079708. The implemented release evaluator still requires owner-approved limits, actual installed Windows x64/Android ARM64 complete-loop proof and representative human observations. No installed/native or human certification is claimed and the application candidate is not published as completed MTLC-14."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "owner_only",
+      "evidence": "The selected MTLC-14 acceptance explicitly requires owner-approved friction limits and actual supported-platform/human evidence. Exact proposed limits digest 91bcd79c02c2854742435795e8b5a7b15bc96955e29faa9e2afad969d210bd4f remains unapproved; source fixture success cannot substitute. Owner budget decision and installed-device/human observations are required before certification can proceed."
+    }
   },
   "execution_conformance": {
     "status": "in_progress",
-    "policy_violations": []
+    "policy_violations": [],
+    "product_completion_valid": false
   },
-  "strict_successor": null
+  "strict_successor": null,
+  "completed": false,
+  "source_pre_certification": {
+    "application_pr": 860,
+    "candidate_head": "308b18f02763b53a19b6d29c1c3d273fb6acfb3e",
+    "validation_run": "39262079708",
+    "scope": "source_pre_certification_only",
+    "status": "passed",
+    "published": false,
+    "local_mtlc_tests": 136,
+    "local_mtlc_suites": 35,
+    "certification_source_comparison_tests": 28,
+    "hosted_admission_tests": 18,
+    "local_typecheck": "strict affected MTLC PASS; remote complete client PASS",
+    "local_a2_capability": "UNAVAILABLE: partial checkout contains neither apps/client-ui/src/a2 nor its 11,881-record corpus; canonical unchanged full-checkout regression required and passed remotely.",
+    "source_loop": "Same Campaign across all 13 ordered stages over actual HTTP/SQLite, current permissions, durable service/store restart, private recap and owner-verified async progression; identities/gameplay owners explicitly fixtures.",
+    "workload": {
+      "campaign_preparation_boards": 200,
+      "preparation_tasks": 10000,
+      "between_session_items": 200,
+      "scripted_lifecycle_http_commands": 31
+    },
+    "artifacts": "validation-core-MTLC-14-linux, validation-core-MTLC-14-windows and validation-core-MTLC-14-comparison in the exact run; preserve source receipts and blocked certification status.",
+    "review_document": "docs/mtlc/MTLC-14_CERTIFICATION_AND_BUDGET_REVIEW.md",
+    "release_certified": false,
+    "native_certification": false,
+    "human_labor_measured": false,
+    "durable_evidence": "operations/evidence/MTLC-14-source-precertification-2026-10-19.json",
+    "actual_source_search_p95_ms": {
+      "linux": 18.86449700000003,
+      "windows": 45.42209999999977
+    },
+    "candidate_state": "draft_pending_owner_budget_and_native_human_evidence"
+  },
+  "blocking_requirements": [
+    {
+      "id": "owner-friction-budget-approval",
+      "kind": "owner_only",
+      "authority": "Selected MTLC-14 exit criterion: measured mandatory prep/administration and manual campaign-memory cost within owner-approved friction budgets.",
+      "policy_path": "fixtures/mtlc14/lifecycle-budgets.json",
+      "limits_sha256": "91bcd79c02c2854742435795e8b5a7b15bc96955e29faa9e2afad969d210bd4f",
+      "owner_approval": null,
+      "proposal": {
+        "administration_minutes_per_person_session": 5,
+        "mandatory_duplicate_memory_minutes": 0,
+        "recurring_configuration_steps": 5,
+        "recurring_lifecycle_interactions": 60,
+        "unintegrated_external_tools": 0,
+        "native_peak_rss_mib": 512,
+        "package_mib_each": 200,
+        "optional_heavy_media_in_core_bytes": 0
+      }
+    },
+    {
+      "id": "actual-installed-supported-platform-proof",
+      "kind": "external_blocker",
+      "platforms": [
+        "windows-x64",
+        "android-arm64"
+      ],
+      "required": "Exact approved candidate packages, current real identities, complete ordered lifecycle, pause/resume/offline/reconnect/restart, mobile/hybrid/async/extension/large-campaign proof, native timing/memory/package/media measurements and provenance.",
+      "observed_dependency": "PCV-03F remains in progress; checkpoint references closed-unmerged superseded PR839, live service-first lane points to open PR840. Neither supplies completed MTLC-14 installed lifecycle proof.",
+      "executor_capability": "No native Windows runtime, adb, Cargo or Chromium in this executor. Real HTTP/SQLite on Linux is source evidence only."
+    },
+    {
+      "id": "representative-human-labor-observation",
+      "kind": "owner_only",
+      "required": "Actual non-synthetic observation for at least three representative sessions on each supported configuration; count mandatory configuration/UI interactions, clerical minutes, duplicate maintenance and actual external tool use. Exclude voluntary creative work and actual play; include hidden bookkeeping."
+    }
+  ],
+  "ci_admission_recovery": {
+    "classification": "infrastructure_event_order",
+    "cancelled_run": "39261829359",
+    "skipped_run": "39261829938",
+    "validation_steps_executed": false,
+    "cause_evidence": "A delayed draft-open workflow snapshot cancelled the ready event under the same-head concurrency key. Both were terminal without validation steps. One isolated ready_for_review event after both terminal admitted unchanged head; no product/config retry or head supersession."
+  },
+  "response_class": "required_owner_input_request_not_completion",
+  "response_gate_evidence": {
+    "owner_only_checkpoint_guard": "PASS",
+    "current_checkpoint_lane_projection": "PASS",
+    "persistent_lane_completion_guard": "NONTERMINAL as required; lane is in_progress and no completion is claimed",
+    "source_candidate_complete": false,
+    "owner_input_required": true
+  }
 }

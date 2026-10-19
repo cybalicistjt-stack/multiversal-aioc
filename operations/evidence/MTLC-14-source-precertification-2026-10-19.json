@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0.0",
+  "work_item": "MTLC-14",
+  "scope": "SOURCE_PRE_CERTIFICATION_ONLY",
+  "candidate_head": "308b18f02763b53a19b6d29c1c3d273fb6acfb3e",
+  "application_pr": 860,
+  "validation_run": 39262079708,
+  "artifact_ids": {
+    "windows": 12190973005,
+    "linux": 12190958147,
+    "comparison": 12191612985
+  },
+  "archive_digests_match_github": true,
+  "artifacts": {
+    "windows": {
+      "schema": "MTLC-14.1",
+      "candidate_head": "308b18f02763b53a19b6d29c1c3d273fb6acfb3e",
+      "kind": "source-fixture",
+      "platform": "windows-x64",
+      "fixture_identity": true,
+      "installed": false,
+      "journey": [
+        "decide",
+        "group",
+        "agreement",
+        "schedule",
+        "prepare",
+        "communicate",
+        "launch",
+        "play",
+        "recover",
+        "close",
+        "recap",
+        "between",
+        "next-session"
+      ],
+      "checks": {
+        "real-http": true,
+        "real-sqlite": true,
+        "durable-restart": true,
+        "offline-denial": true,
+        "current-context": true,
+        "async-without-host": true,
+        "extension-upgrade-rollback": true,
+        "bounded-source-workload": true
+      },
+      "metrics": {
+        "scripted_http_commands": 31,
+        "total_source_http_commands": 38,
+        "source_search_p95_ms": 45.42209999999977,
+        "source_workload_campaigns": 200,
+        "source_workload_tasks": 10000,
+        "source_workload_between_items": 200,
+        "source_roundtrip_p95_ms": 48.90979999999945,
+        "source_elapsed_ms": 11421.6292,
+        "node_process_observed_rss_bytes": 99479552
+      },
+      "unmeasured": [
+        "installed-Windows-lifecycle",
+        "installed-Android-lifecycle",
+        "UI-click-count",
+        "native-startup-memory-package",
+        "human-administration-minutes",
+        "manual-memory-maintenance-minutes"
+      ],
+      "certifies_installed_play": false,
+      "downloaded_archive_sha256": "41f48fc9bc72fffdac359c94d5e648d7a690fca5407e26ad36a92e632b15d99a"
+    },
+    "linux": {
+      "schema": "MTLC-14.1",
+      "candidate_head": "308b18f02763b53a19b6d29c1c3d273fb6acfb3e",
+      "kind": "source-fixture",
+      "platform": "linux",
+      "fixture_identity": true,
+      "installed": false,
+      "journey": [
+        "decide",
+        "group",
+        "agreement",
+        "schedule",
+        "prepare",
+        "communicate",
+        "launch",
+        "play",
+        "recover",
+        "close",
+        "recap",
+        "between",
+        "next-session"
+      ],
+      "checks": {
+        "real-http": true,
+        "real-sqlite": true,
+        "durable-restart": true,
+        "offline-denial": true,
+        "current-context": true,
+        "async-without-host": true,
+        "extension-upgrade-rollback": true,
+        "bounded-source-workload": true
+      },
+      "metrics": {
+        "scripted_http_commands": 31,
+        "total_source_http_commands": 38,
+        "source_search_p95_ms": 18.86449700000003,
+        "source_workload_campaigns": 200,
+        "source_workload_tasks": 10000,
+        "source_workload_between_items": 200,
+        "source_roundtrip_p95_ms": 13.082156999999825,
+        "source_elapsed_ms": 972.2738789999999,
+        "node_process_observed_rss_bytes": 168116224
+      },
+      "unmeasured": [
+        "installed-Windows-lifecycle",
+        "installed-Android-lifecycle",
+        "UI-click-count",
+        "native-startup-memory-package",
+        "human-administration-minutes",
+        "manual-memory-maintenance-minutes"
+      ],
+      "certifies_installed_play": false,
+      "downloaded_archive_sha256": "303fafc1af6c2306bb8d738555a6a6512fde79621f81d39ae90a31f9537e008e"
+    },
+    "comparison": {
+      "schema": "MTLC-14.1",
+      "candidate_head": "308b18f02763b53a19b6d29c1c3d273fb6acfb3e",
+      "source_comparison_passed": true,
+      "errors": [],
+      "certifies_installed_play": false,
+      "downloaded_archive_sha256": "4f2c8b8708f3a2fffa0c25883b73583df7ccecf66725af69fd1a41288245772b"
+    }
+  },
+  "release_certified": false,
+  "owner_budget_approval": null
+}
