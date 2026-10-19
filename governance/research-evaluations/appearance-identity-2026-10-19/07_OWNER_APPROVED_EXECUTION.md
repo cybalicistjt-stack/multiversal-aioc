@@ -10,7 +10,7 @@
 
 | Tranche | Product slice | Owner sources | Blocking focused evidence | Independent acceptance evidence |
 |---|---|---|---|---|
-| BP-01 | Open morphology grammar and example registry | MVPS-03 structural contract, MCCS-03, CAPP-03, FGA-02 | 66 noncanonical topologies validated; anti-humanoid/unknown count/anchor/cycle negatives | Actual MVPS-03 query wiring, 25 species + 8 radical fixtures, real CAPP/FGA rendering/fit |
+| BP-01 | Open morphology grammar and example registry | MVPS-03 structural contract, MCCS-03, CAPP-03, FGA-02 | 66 noncanonical topologies validated; anti-humanoid/unknown count/anchor/cycle negatives | Actual MVPS-03 query wiring, all current **26** Core Species (CORE26-CURRENT-01) + 8 radical fixtures; preserve historical 25-profile CAS/FGA proof separately, real CAPP/FGA rendering/fit |
 | UX-01 | Scene-*inspired*, locally illustrative preview-context selector | FDE-03, CASI, ISE-06 projection-only contract | Semantic garment/view invariant, disabled effects and reduced-motion/text equivalence | Browser renderer visual differences, keyboard/screen reader, devices only if claimed |
 | COMP-01 | Portable presentation-only composition recipe and import review | FDE-04, CAS-WARD-001, CAPP-07, PPIA-06 and permissions | Round-trip, schema/integrity/owner-version, visibility-first, asset rights and missing assets | Local store persistence and real UI import/export, Character source-owner hookup before application |
 | FORM-01 | Read-only body-plan choices and routed functional augmentation proposals | MVPS, MCCS, DPL-13 and MSWI-07 | Missing compatibility/owner input fail closed; no installation/anatomy/abilities | Genuine owner compatibility port and GM/owner approval when implementation is allowed |
@@ -41,3 +41,7 @@ App exact head `f181215f457988e5bed7d5d652c1877ab2f6143a` workflow run 393027719
 - [Human-readable roadmap](05_ACCEPTANCE_ROADMAP.md)
 - [Existing-system owner mapping](06_EXACT_OWNER_INTEGRATION.md)
 - [App implementation PR #861](https://github.com/cybalicistjt-stack/Multiversal-app/pull/861)
+
+## Current player-species authority reconciliation
+
+OPS5 CURRENT domain authority `governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json` is `CORE26-CURRENT-01`, not the sealed 25-species historical visual index. The current 26 include Akwi. Morganthyr is the current canonical name; Nekron/Nekrons are historical aliases only. `CORE_26_PRODUCTION_BASELINE_v0.7.0.json` records terminal MVPS-23 game-ready proof across all 26. Future structural template work must not downgrade this baseline or claim 25 current species; 66 noncanon templates must not be promoted to roster members.

@@ -19,7 +19,7 @@ Evaluate three external approaches and convert verified mechanics into Multivers
 ## Existing Multiversal authority must remain intact
 - FGA-PARAM-1 (15 garment parameters); FGA-02 fit; FGA-03 primitive demand; FGA-05 clothing-reference review.
 - FDE-01..07 and FDE-GOLDEN-1: **completed_verified**. No replacement fashion editor.
-- CAS/CASI/CAPP/PPIA/MCCS: Species/Form and appearance ownership, nonhumanoid topology, skin/face/profile/preset, equipment projection, three presentation profiles.
+- Current Species authority: CORE26-CURRENT-01 names 26 Core Species (including Akwi and Morganthyr; Nekron remains a historical alias). The 25-profile PPIA/FGA proof is historical visual evidence only. CAS/CASI/CAPP/PPIA/MCCS retain nonhumanoid topology, skin/face/profile/preset and equipment projection responsibilities.
 - CAS-WARD-001: presentation wardrobe only. FGA must not mutate anatomy, equipment truth, inventory or mechanics.
 - CAPP-07 / PPIA-06 already propose profile and import/export controls. This study does **not** rediscover those features as missing.
 - GPR/PCV-03F and MTLC-14 remain independently active; their selectors and state are untouched.
