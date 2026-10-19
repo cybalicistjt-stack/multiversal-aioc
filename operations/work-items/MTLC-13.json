@@ -2,9 +2,9 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-13",
   "attempt_id": "MTLC-13-attempt-001",
-  "status": "in_progress",
+  "status": "completed_verified",
   "implementation_branch": "work/mtlc-13-accessible-lifecycle",
-  "implementation_authority": true,
+  "implementation_authority": false,
   "selected_by_owner": "Owner Continue 2026-10-19.",
   "dependencies": {
     "predecessor": "MTLC-12 completed_verified",
@@ -22,26 +22,66 @@
       "Event/temporary play can convert cleanly into persistent campaigns when desired."
     ]
   },
-  "active_substep": "implement_accessible_lifecycle",
-  "next_action": "Converge accessible onboarding, role-appropriate mobile/physical/event/spectator workflows and governed handoff through existing owners; validate and close MTLC-13.",
+  "active_substep": "completed",
+  "next_action": "MTLC-14 selected_not_started; later owner execution required. GPR PCV-03F remains independent.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 3,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue activated MTLC-13 on work/mtlc-13-accessible-lifecycle from app 4879ddefe7664f60dc8489fc45f23c37391c3328"
+      "seq": 3,
+      "kind": "published",
+      "evidence": "MTLC-13 PR859 exact head 6c40ca350ca5f8d65e8db3757c0a6f4492f78f76 passed full Linux/Windows MTLC regressions, client TypeScript and normalized comparison in run39248609376; READY publication is durable as application main bd0cbd8cb05798a80e3bc009ab30602e38953021, queue generation170. Local proof: 135 tests/35 MTLC suites, 22 final HTTP/SQLite tests after narrowing event metadata, strict affected TypeScript and 17 hosted-runner admission tests."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MTLC-13 PR859 exact head 6c40ca350ca5f8d65e8db3757c0a6f4492f78f76 passed full Linux/Windows MTLC regressions, client TypeScript and normalized comparison in run39248609376; READY publication is durable as application main bd0cbd8cb05798a80e3bc009ab30602e38953021, queue generation170. Local proof: 135 tests/35 MTLC suites, 22 final HTTP/SQLite tests after narrowing event metadata, strict affected TypeScript and 17 hosted-runner admission tests."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "completed_verified",
+    "policy_violations": [],
+    "product_completion_valid": true
   },
-  "strict_successor": "MTLC-14"
+  "strict_successor": "MTLC-14",
+  "completed": true,
+  "completion_evidence": {
+    "application_pr": 859,
+    "validated_head": "6c40ca350ca5f8d65e8db3757c0a6f4492f78f76",
+    "validation_run": "39248609376",
+    "application_merge_sha": "bd0cbd8cb05798a80e3bc009ab30602e38953021",
+    "application_ready_candidate": "MTLC-13-app-pr-859",
+    "publication_queue_generation": 170,
+    "selector_and_repo_health": "PASS",
+    "linux_shared_validation": "PASS",
+    "windows_shared_validation": "PASS",
+    "cross_platform_comparison": "PASS",
+    "local_mtlc_tests": 135,
+    "local_mtlc_suites": 35,
+    "scope": "Current-subject accessible display preferences, player/GM quickstarts and contextual help, task-focused/mobile navigation, role-filtered dated physical packs, explicitly published safe spectator cards, bounded convention/one-shot/pickup planning, current-participant consent graduation and acknowledged handoff to existing Campaign GMs.",
+    "limitations": "Source/runtime and cross-platform proof does not certify installed Windows/Android golden lifecycle, human assistive-technology usability or owner-approved measured friction budgets; those remain MTLC-14. Spectator access requires authenticated current Campaign participation. Dated print/text copies cannot retract later revocations. Handoff notes do not transfer ownership or grant roles/delegation. Public launch and commerce remain separately gated.",
+    "successor": "MTLC-14"
+  },
+  "acceptance_evidence": [
+    {
+      "criterion": "New players and GMs can enter without expert knowledge of Multiversal.",
+      "evidence": "Player and GM quickstarts work before Group selection, explain each step in plain language, search/restore/dismiss help and open the actual people/Campaign/safety/preparation/play/continuity workspaces. Guide selection never grants authority or claims readiness."
+    },
+    {
+      "criterion": "Physical, mobile, convention, spectator, and accessibility-dependent use are first-class workflows.",
+      "evidence": "Responsive one-column task navigation, native labeled keyboard/screen-reader controls, visible focus/skip links, 44px mobile controls, contrast/motion/text preferences, role-filtered print/text packs, explicit spectator cards, convention/one-shot/pickup planning and consented current-role GM handoff are implemented in the real shared service and PCV composition."
+    },
+    {
+      "criterion": "Information density can be reduced for accessibility/mobile/actionability without changing canonical meaning.",
+      "evidence": "Personal Essential/Standard/Full presentation and 100/150/200 percent text preferences persist per current A3 subject. Task projection changes presentation only; current A5/Group owners still enforce access, actions, characters and canonical gameplay. Safe display/print replaces the private subtree and serializes explicit fields only."
+    },
+    {
+      "criterion": "Event/temporary play can convert cleanly into persistent campaigns when desired.",
+      "evidence": "One-shot graduation requires all current participating A5 players/GM consent bound to the unchanged event plan and roster/permission fingerprint, rechecks organizer/Campaign authority and updates only the same existing Group-Campaign relationship. Withdrawal and plan/roster changes invalidate consent; idempotent retry creates no seat or second history. Trial links retain MTLC-12 mutual-trial decisions."
+    }
+  ]
 }
