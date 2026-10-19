@@ -55,7 +55,7 @@ One context-preview selector on existing FDE, one portable presentation-only app
 ## Risks/decisions
 - Is **environmental contextual preview** merely an illustrative compositor or actual target-renderer parity? Must label truthfully.
 - Does a universal appearance recipe add any value beyond existing CAPP/FDE preset contracts? Implement only the missing orchestration seam.
-- Which owner governs functional prosthetics/cybernetics? Do not invent.
+- Functional prosthetic owners are mapped by DPL-13 and MSWI-07 to Character-Actors, D17-Asset, DPL-05, Condition, Progression-Abilities, MIB-12, MIB-13 and APW-D26 (CCP where applicable); the missing proof is real end-to-end authorized orchestration. See 06.
 - Which exact social mechanic may be modified by wardrobe? No default automatic modifiers.
 - Do we have user-approved sharing/public collection/licensing/monetization policy? Not yet established by this study.
 - Platform limitations, performance, and user benefits remain *untested*; external sources are inspiration, not acceptance evidence.

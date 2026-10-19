@@ -17,7 +17,7 @@ Dance of Theseus turns interchangeable body parts and material/color combos into
 
 **Species constraints:** Vespin 4 arms/wings, Moravi four legs, ManyToms composite occupancy, Mythragara derived hybrid forms, Arborae seasons and Suula persistent changes must obey existing CAPP/CASI source profiles. CAPP-07 and PPIA-06 already encode special-case policies; they are dependencies, not features to replicate. No new canon or statistics proposed in this study.
 
-**Counterexample:** a decorative jet-wing cape uses presentation anchors and may pass FGA fit; it cannot unlock flight. A real mechanical wing request routes to actual augmentation/equipment and ability rules. If there is no defined owner for functional augmentation, leave unresolved and request definition; do not assume generic cybernetics system.
+**Counterexample:** a decorative jet-wing cape uses presentation anchors and may pass FGA fit; it cannot unlock flight. A real mechanical wing request routes to actual augmentation/equipment and ability rules. Functional augmentation already has a governed owner-map through DPL-13 and a bounded interoperability surface through MSWI-07. These contracts do not install augmentations automatically; see 06.
 
 **Proof requirements:** canonical topology signature remains unchanged after visual edits; rejected anchor has visible reason; unknown nonhumanoid never coerced to human; saved import lacks functional side effects; no hidden-form leakage; reduced-motion accessible nonvisual description.
 
