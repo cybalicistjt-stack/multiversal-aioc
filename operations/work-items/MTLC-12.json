@@ -2,9 +2,9 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-12",
   "attempt_id": "MTLC-12-attempt-001",
-  "status": "in_progress",
+  "status": "completed_verified",
   "implementation_branch": "work/mtlc-12-community-discovery",
-  "implementation_authority": true,
+  "implementation_authority": false,
   "selected_by_owner": "Owner Continue 2026-10-19.",
   "dependencies": {
     "predecessor": "MTLC-11 completed_verified",
@@ -23,26 +23,70 @@
       "Commerce remains separately gated unless owner, legal, billing, support, and dispute requirements are approved."
     ]
   },
-  "active_substep": "implement_community_discovery",
-  "next_action": "Implement approved public discovery and creator network through current identity, family, rights and scoped moderation boundaries; validate and close MTLC-12.",
+  "active_substep": "completed",
+  "next_action": "MTLC-13 selected_not_started; later owner execution required. GPR PCV-03F remains independent.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
+    "material_progress_seq": 3,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "started",
-      "evidence": "Owner Continue activated MTLC-12 on work/mtlc-12-community-discovery from app 197bc0d2023ba722a46974a1d672aa543ff0f65c"
+      "seq": 3,
+      "kind": "published",
+      "evidence": "MTLC-12 PR858 exact head 64f9fcbec117653451308a61c1a9ffae2589630f passed run39234714211 (Linux, Windows, full client typecheck and normalized comparison), then published as application main 4879ddefe7664f60dc8489fc45f23c37391c3328. READY application queue generation168 reconciled. Local proof: 124 tests across 34 MTLC suites, final 16 HTTP/SQLite focused tests, strict affected TypeScript and 16 hosted-runner admission tests."
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MTLC-12 PR858 exact head 64f9fcbec117653451308a61c1a9ffae2589630f passed run39234714211 (Linux, Windows, full client typecheck and normalized comparison), then published as application main 4879ddefe7664f60dc8489fc45f23c37391c3328. READY application queue generation168 reconciled. Local proof: 124 tests across 34 MTLC suites, final 16 HTTP/SQLite focused tests, strict affected TypeScript and 16 hosted-runner admission tests."
+    }
   },
   "execution_conformance": {
-    "status": "in_progress",
-    "policy_violations": []
+    "status": "completed_verified",
+    "policy_violations": [],
+    "product_completion_valid": true
   },
-  "strict_successor": "MTLC-13"
+  "strict_successor": "MTLC-13",
+  "completed": true,
+  "completion_evidence": {
+    "application_pr": 858,
+    "validated_head": "64f9fcbec117653451308a61c1a9ffae2589630f",
+    "validation_run": "39234714211",
+    "application_merge_sha": "4879ddefe7664f60dc8489fc45f23c37391c3328",
+    "application_ready_candidate": "MTLC-12-app-pr-858",
+    "publication_queue_generation": 168,
+    "selector_and_repo_health": "PASS",
+    "linux_shared_validation": "PASS",
+    "windows_shared_validation": "PASS",
+    "cross_platform_comparison": "PASS",
+    "local_mtlc_tests": 124,
+    "local_mtlc_suites": 34,
+    "scope": "Opt-in moderated profiles/LFG/pickup and creator-pack metadata, explicit table-fit filters, private follows/collections, blocks/reports/appeals/takedowns, bounded admission and canonical trial graduation.",
+    "limitations": "Source/runtime acceptance with fixture identities is not installed certification or public launch. Public discovery defaults closed until current approved family-policy and operational moderation owners are supplied; pack discovery requires current ARI/SMB rights and compatibility owner evidence. Ratings/reviews are unapproved and commerce remains separately gated.",
+    "successor": "MTLC-13"
+  },
+  "acceptance_evidence": [
+    {
+      "criterion": "Public discovery has enforceable moderation and privacy boundaries.",
+      "evidence": "Authenticated shared service resolves current actor-bound family policy and scoped moderators; explicit field consent, pending review, private identifiers/projections, bilateral blocks, private reports, reasoned takedowns/appeals, durable mutation/admission budgets and withdrawal after policy denial are exercised over HTTP/SQLite and restart."
+    },
+    {
+      "criterion": "Game discovery supports user-controlled table-fit dimensions without opaque desirability scoring.",
+      "evidence": "Public directory applies user-chosen system, tone, experience, commitment, weekday, style, accessibility and timezone dimensions; no desirability score. Private follows and named collections respect blocks and current visibility."
+    },
+    {
+      "criterion": "Trial one-shots/temporary tables can graduate cleanly into persistent campaigns.",
+      "evidence": "Existing trial owner graduates a mutually suitable trial/one-shot by changing its existing GroupCampaignLink to campaign after current organizer, member and Campaign-management checks. Idempotent retries preserve the same Group, Campaign, history and seat ownership."
+    },
+    {
+      "criterion": "Community pack discovery exposes compatibility, provenance, dependencies, and updates.",
+      "evidence": "Creator-pack discovery rechecks current owner, rights receipt, license/provenance, exact version/current update, dependencies, compatibility, migration and rollback metadata; revoked rights remove public visibility. No pack execution or installation is granted."
+    },
+    {
+      "criterion": "Commerce remains separately gated unless owner, legal, billing, support, and dispute requirements are approved.",
+      "evidence": "Commerce remains false; public launch and paid Exchange behavior require separately approved owner/legal/billing/support/dispute authority. Unapproved ratings and reviews are omitted."
+    }
+  ]
 }
