@@ -2,10 +2,10 @@
   "lane": "mtlc",
   "work_item_id": "MTLC-14",
   "attempt_id": "MTLC-14-attempt-001",
-  "status": "selected_not_started",
-  "implementation_branch": null,
-  "implementation_authority": false,
-  "selected_by_owner": "Strict successor selection after MTLC-13 completed_verified; later owner execution required.",
+  "status": "in_progress",
+  "implementation_branch": "work/mtlc-14-lifecycle-certification",
+  "implementation_authority": true,
+  "selected_by_owner": "Owner Continue 2026-10-19.",
   "dependencies": {
     "predecessor": "MTLC-13 completed_verified",
     "program": "governance/application-planning/multiversal-tabletop-lifecycle-convergence/MTLC_MULTIVERSAL_TABLETOP_LIFECYCLE_CONVERGENCE_PROGRAM.md",
@@ -23,21 +23,25 @@
       "The certified product demonstrates capability without transferring hidden maintenance work back to players or GMs."
     ]
   },
-  "active_substep": "selected_not_started",
-  "next_action": "Await later owner execution for MTLC-14. Resolve existing supported-platform runtime evidence and owner-approved friction budgets before claiming golden lifecycle certification. GPR PCV-03F remains independent.",
+  "active_substep": "implement_lifecycle_certification",
+  "next_action": "Implement complete-loop golden fixtures, measured technical/friction receipts and fail-closed release gate. Consume current installed/runtime evidence where valid and prepare concrete owner friction-budget review before any owner-only handoff.",
   "execution_guard": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 0,
+    "material_progress_seq": 1,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
-    "last_material_progress": null,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "started",
+      "evidence": "Owner Continue activated terminal MTLC-14 from app bd0cbd8cb05798a80e3bc009ab30602e38953021"
+    },
     "active_stall": false,
     "terminal_response_allowed": false,
     "stop_reason": null
   },
   "execution_conformance": {
-    "status": "not_started",
+    "status": "in_progress",
     "policy_violations": []
   },
   "strict_successor": null
