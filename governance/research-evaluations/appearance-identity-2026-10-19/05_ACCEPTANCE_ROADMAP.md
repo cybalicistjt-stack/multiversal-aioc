@@ -1,9 +1,9 @@
 # 05 — Research-to-Implementation Roadmap and Acceptance Matrix
 
 ## Scope and status
-Owner approved the **research/design directions** on 2026-10-19. This is a scoped recommendation, **not** a CURRENT-selected implementation item. Start development only after a follow-on OPS5 selector/work item explicitly grants an implementation lane, branch and acceptance profile. No current GPR/MTLC state is changed.
+Owner explicitly approved the research-to-implementation tranches **and future body-plan foundation** on 2026-10-19 and directed execution. Application candidate [PR #861](https://github.com/cybalicistjt-stack/Multiversal-app/pull/861) contains isolated source work. Approval of scope is distinct from an OPS5 CURRENT-selected implementation item and production publication. The parallel GPR/MTLC selectors remain unchanged. See [07](07_OWNER_APPROVED_EXECUTION.md).
 
-## Five proposed tranches (not selected work items)
+## Five owner-approved directions (not yet certified product tranches)
 | ID | Research outcome | Minimal adoption path | Exit proof |
 |---|---|---|---|
 | UX-01 | FDE scene/context preview UX and gap closure | extend existing FDE projection/UI only | deterministic invariance, real renderer preview if claimed, accessibility and cross-platform evidence |

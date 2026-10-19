@@ -13,7 +13,8 @@ Evaluate three external approaches and convert verified mechanics into Multivers
 5. [05 — Executable-style acceptance roadmap](05_ACCEPTANCE_ROADMAP.md)
 6. [Resolved source-owner integration map and exploratory probe](06_EXACT_OWNER_INTEGRATION.md)
 7. [Standalone executable study probe](prototype_probe.js) — 23 development checks, not production acceptance.
-8. [Draft example recipe](appearance-recipe.example.json) — demonstration data, NOT production schema or imported game object.
+8. [Owner-approved AXI-01 execution/acceptance handoff](07_OWNER_APPROVED_EXECUTION.md) — implementation candidate, not certified.
+9. [Draft example recipe](appearance-recipe.example.json) — demonstration data, NOT production schema or imported game object.
 
 ## Existing Multiversal authority must remain intact
 - FGA-PARAM-1 (15 garment parameters); FGA-02 fit; FGA-03 primitive demand; FGA-05 clothing-reference review.
