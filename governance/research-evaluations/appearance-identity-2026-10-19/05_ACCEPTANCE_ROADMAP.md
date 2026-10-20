@@ -62,3 +62,11 @@ One context-preview selector on existing FDE, one portable presentation-only app
 
 ## Prototype/checking evidence in this research package
 Static source comparison and structured example authored. No application change, automated test run, live UI review, playtest, or CI required/claimed. Review/merge of research docs must still obey protected-main policy; research PR can remain draft.
+
+## Owner-approved implementation continuation — 2026-10-19
+
+The owner explicitly directed continuation of the **entire** Appearance/Identity and future Species/body-plan line. The first implementation candidate is [Multiversal-app PR #861](https://github.com/cybalicistjt-stack/Multiversal-app/pull/861). Its OPS5 [AXI selector #1904](https://github.com/cybalicistjt-stack/multiversal-aioc/pull/1904) was merged to AIOC main as `a5c129c4402e4d69d365845ece4f49c196ae6778`; GPR and MTLC selections remain independent.
+
+The app candidate now combines: 66 synthetic general body-plan templates; owner-created novel structural regions and parent relationships; editable open-ended cardinality; per-region skin materials/textures/patterns/palettes/markings; provider-off/nonhumanoid structural preview; local and portable Species designs; authenticated subject-bound Creator-to-Character reuse; explicit A10 draft/A4 design/CASI surface/FGA garment proposal seams; and MSWI-07/A9 bounded proposals. Creator remains the body-plan source; Fashion consumes it without a Human fallback. No Species/Form canon or gameplay permissions are inferred.
+
+**Acceptance is layered:** a green Node/Vitest/TypeScript Linux+Windows and deterministic receipt validates only source/runtime tests in that bounded fixture environment. Separate owner and real-boundary proof remains required for registered/playable user Species, A10 publication, actual A2 picker entitlement, production CAPP rigs and FGA-02 fit for novel shapes, real CASI Character appearance commits, GM-committed A9 interactions and installed/native-device parity. Preserve **CORE26-CURRENT-01** as current canon; the 66 examples are noncanonical. The current app candidate and CI result are maintained on PR #861, not copied as a second status authority here.
