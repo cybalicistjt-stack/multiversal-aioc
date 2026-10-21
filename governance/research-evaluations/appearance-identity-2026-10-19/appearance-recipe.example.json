@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "MV-APPEARANCE-RECIPE-PROPOSAL-0.1",
+  "status": "noncanonical-proposal",
+  "recipeId": "example:vespin:reception",
+  "authorRef": "creator:example",
+  "ownerEntity": {
+    "domain": "Character",
+    "ref": "character:example:vespin",
+    "version": "example-version"
+  },
+  "speciesForm": {
+    "owner": "Species/Form",
+    "ref": "species:vespin:example",
+    "version": "example-version",
+    "topologyTemplateRef": "topology:example:vespin-four-arm-winged"
+  },
+  "appearanceProfile": {
+    "owner": "CAPP/PPIA",
+    "ref": "appearance-profile:example",
+    "version": "example-version"
+  },
+  "wardrobe": {
+    "owner": "FDE-04",
+    "designRef": "fde-design:example:reception",
+    "designVersion": 1,
+    "garmentChecksum": "example-placeholder-not-a-real-checksum",
+    "compositionAuthority": "CAS-WARD-001"
+  },
+  "equipmentVisualRefs": [],
+  "abilityAppearanceRefs": [],
+  "presentation": {
+    "viewProfileId": "cas_sd_full_body",
+    "contextPreview": "neutral",
+    "cosmeticEffectsVisible": true,
+    "notes": "Display intent only; no mechanics or anatomy mutation"
+  },
+  "capabilitiesRequired": [
+    "four-arm-anchors",
+    "wing-clearance",
+    "owner-resolved-assets"
+  ],
+  "provenance": {
+    "source": "user-authored-example",
+    "reviewed": false,
+    "assetReferencesOnly": true
+  },
+  "expectedResolution": "unresolved-until-real-owner-refs-and-FGA-fit",
+  "forbiddenImplications": [
+    "grants-flight",
+    "changes-anatomy",
+    "equips-item",
+    "changes-stats",
+    "mutates-ability"
+  ]
+}
