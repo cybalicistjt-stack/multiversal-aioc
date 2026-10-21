@@ -205,17 +205,29 @@
       "linux_windows_source_proofs_passed": true,
       "live_a3_revoke_fence_proven": false,
       "real_installed_device_proven": false
+    },
+    "axi18_native_session_fence_published": {
+      "status": "source_published_shared_sqlite_only",
+      "app_pr": 875,
+      "app_merge": "5ade1429e7b581f9fc48912579018e0bc43337a5",
+      "validated_head": "f63c6d18ebe02ed9e9dde53e21afb6640430d228",
+      "validation_run_id": "39603238244",
+      "app_queue_generation_reconciled": 200,
+      "shared_sqlite_a3_a4_version_assertions": true,
+      "rust_linux_windows_source_proofs_passed": true,
+      "remote_a3_provider_revocation_fenced": false,
+      "independent_windows_android_installed_test_proven": false
     }
   },
-  "active_substep": "axi-a3-cross-authority-revocation-and-real-owner-host-acceptance",
-  "next_action": "AXI-17 native A4 grant version fence source-published; next prove or implement cross-authority A3 session revocation fencing, true owner-issued permission snapshot and native deployed adapters, A4 history provisioning, A6 GM and MSWI event authority, Windows/Android installed tests and independent 204 production visual proof cells. Keep AXI in_progress; no GPR/MTLC mutation.",
+  "active_substep": "axi-external-owner-binding-history-provisioning-and-native-acceptance",
+  "next_action": "AXI-18 shared SQLite A3 session/A4 grant revocation fences are validated and source-published. Next require genuine deployed A3 owner/source, owner-issued permission snapshot and external A3 revocation propagation or remote atomic fencing; A4 history provenance/migration, live A6 GM/MSWI authority connections, independent Windows/Android installed tests, and 204 visual rig/rights/view acceptance remain unproven. Keep AXI in_progress, do not alter GPR/MTLC.",
   "completed": false,
   "strict_successor": null,
   "implementation_evidence": {
     "application_pr": "https://github.com/cybalicistjt-stack/Multiversal-app/pull/861",
-    "latest_candidate_head": "dcdd1c048d0e6a52be3c124777be9971bf380c69",
-    "latest_candidate_run": "https://github.com/cybalicistjt-stack/Multiversal-app/actions/runs/39491092328",
-    "latest_candidate_validation_state": "completed_success_exact_head_AXI_17",
+    "latest_candidate_head": "f63c6d18ebe02ed9e9dde53e21afb6640430d228",
+    "latest_candidate_run": "https://github.com/cybalicistjt-stack/Multiversal-app/actions/runs/39603238244",
+    "latest_candidate_validation_state": "completed_success_exact_head_AXI_18",
     "earlier_confirmed_linux_windows_green": "https://github.com/cybalicistjt-stack/Multiversal-app/actions/runs/39312189641",
     "earlier_confirmed_scope": "AXI-02 storage key repair; does not cover later Creator refactor and portability",
     "existing_governance_validation": "https://github.com/cybalicistjt-stack/multiversal-aioc/actions/runs/39309040164",
@@ -235,17 +247,18 @@
       "AXI-09 A9 sample labels truthful local proposal previews and AXI-07-style exact pending A6 delivery receipt separately; ambiguous outcome locks duplicate submissions, no false GM persistence claim",
       "AXI-10–12 validated and source-published real PersistencePort.transaction owner modules + native host composition factory. Services require injected actual current A3/A4/A6/GM/MSWI/Species owner adapters; fixture tests do not prove deployed authorization or installed device acceptance.",
       "AXI-13 A4 Character event/operation journal source integration validated Linux/Windows and published; owner-preprovisioned event-stream cursor required, never synthesized from legacy history.",
-      "AXI-17 native SQLite assert-version grant CAS fence, rollback tests and A3/A4 Character appearance source transaction integration; external A3 session and live remote authority revocation unproven."
+      "AXI-17 native SQLite assert-version grant CAS fence, rollback tests and A3/A4 Character appearance source transaction integration; external A3 session and live remote authority revocation unproven.",
+      "AXI-18 canonical PCV-03A A3 session version asserts paired with AXI-17 A4 grant fence in native Character commit; Linux/Windows Rust revoke/sign-out rollback verified."
     ],
     "acceptance_gaps": [
       "204 current Core26/radical production per-view asset/rig/rights/output review receipts remain unproven",
-      "Production A3/A4 native Character-control grant version fencing now source-published via AXI-17; A3 session revocation outside SQLite, actual provider installation, owner-issued snapshot resolution, A4 history provisioning, independent device proof still not established.",
+      "A3 verified-session and A4 control-grant shared native SQLite revocation fences source-published; externally hosted A3 revocation without native version transition, genuine installed snapshot owner, A4 history provisioning and real-device behavior remain unproven.",
       "Production A6/GM authoritative event transaction and distributed A6↔A9 status reconciliation not evidenced",
       "Production MSWI source event and GM authority adapter and owner event integration not evidenced",
       "Installed native Windows/Android host, real scene lighting and playable Species release proofs separate"
     ],
     "application_source_pr": 861,
-    "application_published_main_sha": "9e240c8044cc03baf1fd185c031483ac449a514e",
+    "application_published_main_sha": "5ade1429e7b581f9fc48912579018e0bc43337a5",
     "a_ioc_selector_published_main_sha": "a5c129c4402e4d69d365845ece4f49c196ae6778",
     "publication_queue_reconciled": true,
     "source_publication_receipt": {
@@ -392,6 +405,14 @@
         "validated_head": "dcdd1c048d0e6a52be3c124777be9971bf380c69",
         "run_id": "39491092328",
         "scope": "A4 Character grant version asserted read-only in native SQLite transaction alongside Character/CASI, A4 journal and audit writes; Rust rollback and TS native-race proof validated Linux+Windows. Does not fence separate A3 service revocation, remote owner or installed device."
+      },
+      {
+        "id": "AXI-18",
+        "pr": 875,
+        "merge_sha": "5ade1429e7b581f9fc48912579018e0bc43337a5",
+        "validated_head": "f63c6d18ebe02ed9e9dde53e21afb6640430d228",
+        "run_id": "39603238244",
+        "scope": "A3 canonical stable_subject_sessions revision and A4 Character-control grant version both asserted read-only within native SQLite Character/CASI journal/audit transaction. Rust A3 sign-out + A4 revoke rollback and Linux/Windows AXI profile passed; remote/out-of-db provider revocation and installed-device proof unverified."
       }
     ]
   }
