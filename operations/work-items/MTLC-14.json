@@ -23,8 +23,8 @@
       "The certified product demonstrates capability without transferring hidden maintenance work back to players or GMs."
     ]
   },
-  "active_substep": "await_owner_budget_review_and_installed_lifecycle_evidence",
-  "next_action": "Owner approve or amend the exact proposed limits in app fixtures/mtlc14/lifecycle-budgets.json. Then record approval, validate the final exact head, generate matching internal Windows/Android packages using the existing signing owner, collect actual native/human complete-loop evidence and run the blocking certification evaluator. Publish/close MTLC-14 only after every required gate passes. No successor is selected.",
+  "active_substep": "approved_budget_pending_installed_lifecycle_and_human_evidence",
+  "next_action": "Owner-approved MTLC-14 friction budgets already exist at multiversal-aioc commit c3869630e92d3ad7ccb8d6794f9546cafeee9c65 (exact digest 91bcd79c02c2854742435795e8b5a7b15bc96955e29faa9e2afad969d210bd4f) and on the application policy; do NOT request approval again. Reconcile latest MTLC-14 PR #860 head and integrate only after governed validation. Once the PCV-03F actual A3/A5/session implementation and exact-head supported installers are available, record actual complete-loop Windows x64 and Android ARM64 device proofs, native performance/package/rights/recovery checks and at least three representative non-synthetic human sessions per supported configuration. Run the blocking MTLC-14 certification evaluator and normal exact-head publication/closeout only after all requirements pass. Keep MTLC-14 in_progress; no public release or automatic successor.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
@@ -40,7 +40,7 @@
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "owner_only",
-      "evidence": "The selected MTLC-14 acceptance explicitly requires owner-approved friction limits and actual supported-platform/human evidence. Exact proposed limits digest 91bcd79c02c2854742435795e8b5a7b15bc96955e29faa9e2afad969d210bd4f remains unapproved; source fixture success cannot substitute. Owner budget decision and installed-device/human observations are required before certification can proceed."
+      "evidence": "The exact MTLC-14 friction limits were already approved on 2026-10-19 at AIOC commit c3869630e92d3ad7ccb8d6794f9546cafeee9c65 and matching branch policy. Remaining owner/external evidence is actual installed Windows/Android Session/lifecycle proof after PCV-03F integration and representative human observations; neither is supplied by source fixtures or this control-plane repair. Existing in_progress status and terminal-response gate are retained."
     }
   },
   "execution_conformance": {
@@ -84,24 +84,6 @@
   },
   "blocking_requirements": [
     {
-      "id": "owner-friction-budget-approval",
-      "kind": "owner_only",
-      "authority": "Selected MTLC-14 exit criterion: measured mandatory prep/administration and manual campaign-memory cost within owner-approved friction budgets.",
-      "policy_path": "fixtures/mtlc14/lifecycle-budgets.json",
-      "limits_sha256": "91bcd79c02c2854742435795e8b5a7b15bc96955e29faa9e2afad969d210bd4f",
-      "owner_approval": null,
-      "proposal": {
-        "administration_minutes_per_person_session": 5,
-        "mandatory_duplicate_memory_minutes": 0,
-        "recurring_configuration_steps": 5,
-        "recurring_lifecycle_interactions": 60,
-        "unintegrated_external_tools": 0,
-        "native_peak_rss_mib": 512,
-        "package_mib_each": 200,
-        "optional_heavy_media_in_core_bytes": 0
-      }
-    },
-    {
       "id": "actual-installed-supported-platform-proof",
       "kind": "external_blocker",
       "platforms": [
@@ -109,7 +91,7 @@
         "android-arm64"
       ],
       "required": "Exact approved candidate packages, current real identities, complete ordered lifecycle, pause/resume/offline/reconnect/restart, mobile/hybrid/async/extension/large-campaign proof, native timing/memory/package/media measurements and provenance.",
-      "observed_dependency": "PCV-03F remains in progress; checkpoint references closed-unmerged superseded PR839, live service-first lane points to open PR840. Neither supplies completed MTLC-14 installed lifecycle proof.",
+      "observed_dependency": "The owner-selected GPR PCV-03F service-first application PR #840 remains open/draft and does not yet supply required installed A3/A5 authenticated Session proof. Historical closed-unmerged PR #839 is superseded and not a completion gate. MTLC-14 PR #860 remains unmerged; independent native Windows/Android golden-lifecycle evidence is still missing.",
       "executor_capability": "No native Windows runtime, adb, Cargo or Chromium in this executor. Real HTTP/SQLite on Linux is source evidence only."
     },
     {
@@ -131,6 +113,51 @@
     "current_checkpoint_lane_projection": "PASS",
     "persistent_lane_completion_guard": "NONTERMINAL as required; lane is in_progress and no completion is claimed",
     "source_candidate_complete": false,
-    "owner_input_required": true
+    "owner_input_required": true,
+    "owner_budget_approval": "VERIFIED_EXISTING_OWNER_DECISION_PINNED_BY_EXACT_DIGEST",
+    "owner_input_scope": "representative physical/human observations, not reapproval of budgets"
+  },
+  "resolved_requirements": [
+    {
+      "id": "owner-friction-budget-approval",
+      "kind": "owner_only",
+      "authority": "Selected MTLC-14 exit criterion: measured mandatory prep/administration and manual campaign-memory cost within owner-approved friction budgets.",
+      "policy_path": "fixtures/mtlc14/lifecycle-budgets.json",
+      "limits_sha256": "91bcd79c02c2854742435795e8b5a7b15bc96955e29faa9e2afad969d210bd4f",
+      "owner_approval": {
+        "decision": "approved",
+        "approved_by": "John Brandon Turner",
+        "approved_on": "2026-10-19",
+        "source_repository": "cybalicistjt-stack/multiversal-aioc",
+        "source_commit": "c3869630e92d3ad7ccb8d6794f9546cafeee9c65",
+        "source_path": "operations/evidence/MTLC-14-owner-budget-approval-2026-10-19.json",
+        "limits_sha256": "91bcd79c02c2854742435795e8b5a7b15bc96955e29faa9e2afad969d210bd4f",
+        "application_policy_path": "fixtures/mtlc14/lifecycle-budgets.json",
+        "application_policy_branch": "work/mtlc-14-lifecycle-certification"
+      },
+      "proposal": {
+        "administration_minutes_per_person_session": 5,
+        "mandatory_duplicate_memory_minutes": 0,
+        "recurring_configuration_steps": 5,
+        "recurring_lifecycle_interactions": 60,
+        "unintegrated_external_tools": 0,
+        "native_peak_rss_mib": 512,
+        "package_mib_each": 200,
+        "optional_heavy_media_in_core_bytes": 0
+      },
+      "state": "resolved_verified",
+      "evidence_note": "Immutable source approval and matching application policy verified. This historical requirement must not remain an open owner decision; it supplies no native/human acceptance evidence."
+    }
+  ],
+  "owner_budget_approval_evidence": {
+    "decision": "approved",
+    "approved_on": "2026-10-19",
+    "source_repository": "cybalicistjt-stack/multiversal-aioc",
+    "source_commit": "c3869630e92d3ad7ccb8d6794f9546cafeee9c65",
+    "source_path": "operations/evidence/MTLC-14-owner-budget-approval-2026-10-19.json",
+    "limits_sha256": "91bcd79c02c2854742435795e8b5a7b15bc96955e29faa9e2afad969d210bd4f",
+    "app_policy": "fixtures/mtlc14/lifecycle-budgets.json",
+    "app_pr": 860,
+    "release_certified": false
   }
 }
