@@ -4,8 +4,8 @@
   "program_id": "XTRA",
   "work_item_id": "XTRA-01",
   "attempt_id": "XTRA-01-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "scope": "Read-only/live-repository audit, program and operational registry proposal, evidence matrix, dependency and blocker classification; no product implementation or provider mutation.",
   "selected_by_owner": "2026-11-02 explicit XTRA family + continue",
@@ -19,16 +19,21 @@
     "Keep PCV-03F and MTLC-14 intact and prohibit automatic downstream activation",
     "Verify XTRA manifests, owner scope and PR publication evidence"
   ],
-  "active_substep": "create_source_bound_registry_baseline_and_pr",
-  "next_action": "Finish exact-head audit/control-plane validation and protected-main publication of XTRA registration and XTRA-01 baseline. Only then select next eligible XTRA tranche through OPS5; XTRA-02 has a time-sensitive Render database expiry but must not fabricate restore proof.",
+  "active_substep": "completed_verified",
+  "next_action": "XTRA-02 successor selected by OPS5 CURRENT. No XTRA-01 work remains.",
   "execution_guard": {
-    "material_progress_seq": 1,
+    "continue_turns": 2,
+    "stall_nudges": 0,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "owner_selected_tranche_family_prepared",
-      "evidence": "User request 2026-11-02 plus live AIOC/app/PR/Render evidence."
-    },
-    "terminal_response_allowed": false
+      "seq": 2,
+      "kind": "exact_head_published",
+      "evidence": "XTRA-01 PR1928 exact validated, durable merge ef22a0420b7a31c07a4280189c23cfaefbba7c60, READY generation362."
+    }
   },
   "constraints": {
     "no_fourth_persistent_slot": true,
@@ -40,5 +45,13 @@
     "no_automatic_pcv_04_to_10": true,
     "no_paid_provider_spend": true,
     "no_public_release": true
+  },
+  "completion_evidence": {
+    "pr": 1928,
+    "candidate_head": "253e03b17e96aa86f80b436cf2bab7f5588e7d80",
+    "validation_run": 41450960691,
+    "merge_sha": "ef22a0420b7a31c07a4280189c23cfaefbba7c60",
+    "queue_generation": 362,
+    "evidence_grade": "published_source_registration_only"
   }
 }
