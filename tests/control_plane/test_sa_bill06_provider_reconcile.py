@@ -139,6 +139,7 @@ class ProviderLedgerAdversarial(unittest.TestCase):
         self.assertEqual(self.current()["state"],"revoked_refunded")
         self.assertEqual(self.current()["source_epoch"],2)
         self.assertEqual(len(self.rows("notification_receipt")),1)
+        self.assertEqual([r["revision"] for r in self.rows("source_revision_audit")],[1,2])
 
     def test_07_same_event_id_different_signed_payload_is_rejected(self):
         self.assertEqual(self.deliver(),"APPLIED")
@@ -221,6 +222,7 @@ class ProviderLedgerAdversarial(unittest.TestCase):
         self.assertEqual(self.rows("purchase_binding"),[])
         self.assertEqual(self.rows("billing_current"),[])
         self.assertEqual(self.rows("notification_receipt"),[])
+        self.assertEqual(self.rows("source_revision_audit"),[])
 
     def test_16_concurrent_distinct_events_same_latest_source_one_revision(self):
         def deliver_num(i):
