@@ -182,6 +182,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_xtra09_operator_readiness.py
 
+      - name: Verify XTRA-10 market, persona and claims evidence gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_xtra10_market_brand_evidence.py
+
       - name: Run inherited OPS3 execution/concurrency regressions
         shell: bash
         run: |
