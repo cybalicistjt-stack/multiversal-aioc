@@ -2,7 +2,7 @@
 
 **Program:** XTRA  
 **Authority:** owner-directed 2026-11-02, recorded through OPS5 CURRENT/LANES after protected-main approval  
-**Status:** XTRA-01/03/04/05/06 completed_verified; XTRA-02 blocked_external; XTRA-07 selected pending publication.
+**Status:** XTRA-01/03/04/05/06/07 completed_verified; XTRA-02 blocked_external; XTRA-08 selected pending publication.
 **Purpose:** finish independent, useful pre-PCV-03F work and prepare downstream acceptance without bypassing PCV/MTLC/AXI/MCB authorities.
 
 ## Invariants
@@ -85,7 +85,7 @@
 
 **Acceptance.** Scripts and documentation are reviewed against currently available functionality; signed-in cross-device and independent human usability remain clearly unverified.
 
-**Dependency.** XTRA-01. **Current state:** in_progress (selector publication pending). Documentation/tester preparation only.
+**Dependency.** XTRA-01. **Current state:** completed_verified. PR1939 role-specific support/tester guide with source-aligned F025 proof merged exact-head. (selector publication pending). Documentation/tester preparation only.
 
 ### XTRA-08 — Subscription, allowance, security and rights threat preflight
 
@@ -93,7 +93,7 @@
 
 **Acceptance.** Policy and runnable synthetic/reference tests have sourced expected outcomes; no live payment, fake security certification or PCV-03F owner mutation.
 
-**Dependency.** XTRA-01. **Current state:** planned. No automatic authority from this roadmap.
+**Dependency.** XTRA-01. **Current state:** in_progress (selector pending protected-main publication). Source-only SA-BILL threat preflight.
 
 ### XTRA-09 — Hosting, backup, privacy, monitoring and incident readiness
 
