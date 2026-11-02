@@ -48,4 +48,15 @@ CREATE TABLE IF NOT EXISTS sa_bill06_fixture.notification_receipt (
   FOREIGN KEY (provider,origin_id)
     REFERENCES sa_bill06_fixture.purchase_binding(provider,origin_id)
 );
+CREATE TABLE IF NOT EXISTS sa_bill06_fixture.source_revision_audit (
+  provider TEXT NOT NULL,
+  origin_id TEXT NOT NULL,
+  revision BIGINT NOT NULL CHECK(revision>=1),
+  trigger_notification_id TEXT NOT NULL,
+  state TEXT NOT NULL,
+  changed_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  PRIMARY KEY(provider,origin_id,revision),
+  FOREIGN KEY(provider,origin_id)
+    REFERENCES sa_bill06_fixture.purchase_binding(provider,origin_id)
+);
 COMMIT;
