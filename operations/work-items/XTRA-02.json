@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "xtra",
+  "program_id": "XTRA",
+  "work_item_id": "XTRA-02",
+  "attempt_id": "XTRA-02-attempt-001",
+  "status": "in_progress",
+  "completed": false,
+  "implementation_authority": false,
+  "selected_by_owner": "Owner authorized XTRA sequence on 2026-11-02 and continued execution after verified XTRA-01 publication.",
+  "scope": "Certification hosting continuity; read-only Render/Supabase availability, time-sensitive PostgreSQL backup/restore feasibility, privacy-safe export/restore runbook, actual backup and isolated restore only if tools and permissions permit; classify external blockers without fabricating proof.",
+  "out_of_scope": [
+    "Paid plan purchases/credits/production spend",
+    "Network allowlist or credential changes without explicit approval",
+    "Secrets, tokens or any database rows in GitHub",
+    "Production or public release",
+    "PCV-03F, MTLC-14 and AXI implementation mutation"
+  ],
+  "implementation_branch": "program/xtra02-certification-db-continuity-20261102",
+  "backlog": "governance/application-planning/xtra-pre-pcv-readiness/XTRA_PROGRAM_BACKLOG.json",
+  "acceptance": [
+    "Confirm currently available certification Postgres instance and exact expiry",
+    "Produce privacy-preserving executable export/restore procedure with appropriate destination/restrictions",
+    "Validate actual isolated restore if authorized access exists, otherwise produce evidenced blocked result and owner-safe next actions",
+    "Preserve owner boundaries and no false backup/security claims"
+  ],
+  "active_substep": "provider_inventory_and_export_route_assessment",
+  "next_action": "Continue read-only capability check. Render certification PG17 dpg-db4dbknlot8c738kn0k0-a expires 2026-11-08T11:53:54Z; hosted query blocked by empty external IP allowlist. No backup has been verified.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "successor_selected_and_provider_access_assessed",
+      "evidence": "XTRA01 publication plus Render list confirmed db status/expiry and SQL access denial."
+    }
+  }
+}

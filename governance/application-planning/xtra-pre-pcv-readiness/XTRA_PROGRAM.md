@@ -2,7 +2,7 @@
 
 **Program:** XTRA  
 **Authority:** owner-directed 2026-11-02, recorded through OPS5 CURRENT/LANES after protected-main approval  
-**Status:** XTRA-01 selected; control-plane PR pending publication  
+**Status:** XTRA-01 completed_verified; XTRA-02 selected (pending OPS5 successor publication)  
 **Purpose:** finish independent, useful pre-PCV-03F work and prepare downstream acceptance without bypassing PCV/MTLC/AXI/MCB authorities.
 
 ## Invariants
@@ -37,7 +37,7 @@
 
 **Acceptance.** The canonical source/PR matrix includes PCV-03F, MTLC-14, AXI, MCB, 25-feature ledger and all blocked PCV-04..10; evidence is pinned and no ineligible tranche is activated.
 
-**Dependency.** OPS5 owner selection only. **Current state:** in_progress. Bounded documentation/evidence work authorized by current owner request.
+**Dependency.** OPS5 owner selection only. **Current state:** completed_verified. Verified OPS5 run 41450960691, merged PR #1928 at ef22a0420b7a31c07a4280189c23cfaefbba7c60.
 
 ### XTRA-02 — Certification host continuity and recoverability
 
@@ -45,7 +45,7 @@
 
 **Acceptance.** Verified restore receipt or a fail-closed externally blocked disposition shows RPO/RTO, encryption, scope and absence of secret content; do not claim a backup on config alone.
 
-**Dependency.** XTRA-01. **Current state:** planned. No automatic authority from this roadmap.
+**Dependency.** XTRA-01. **Current state:** in_progress (successor selection pending publication). Authorized provider assessment only.
 
 ### XTRA-03 — Source and feature discrepancy closeout
 
