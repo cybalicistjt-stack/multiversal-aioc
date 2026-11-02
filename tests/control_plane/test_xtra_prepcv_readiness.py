@@ -52,7 +52,7 @@ class XtraRegistrationTests(unittest.TestCase):
         self.assertIn("owner_approval_required", gates["commercial"])
         self.assertIn("verified_real_restore", gates["backup"])
         self.assertFalse(self.current["product_start_freeze"]["active"])
-        self.assertIn("acceptance", self.current["lanes"]["xtra"]["execution_authority"])
+        self.assertIn("onboarding", self.current["lanes"]["xtra"]["execution_authority"])
 
 if __name__ == "__main__":
     unittest.main()
