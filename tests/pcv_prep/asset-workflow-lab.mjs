@@ -2,7 +2,7 @@
 const copy=x=>JSON.parse(JSON.stringify(x));
 const validQty=n=>Number.isSafeInteger(n)&&n>0;
 export class AssetLab {
- constructor(){this.assets=new Map();this.orders=new Map();this.vehicles=new Map();this.bases=new Map();this.commands=new Map();}
+ constructor(){this.assets=new Map();this.orders=new Map();this.orderFingerprints=new Map();this.vehicles=new Map();this.bases=new Map();this.commands=new Map();}
  addAsset({id,owner,campaign,quantity,weight=1,restricted=false,originKnown=true}){
   if(!id||!owner||!campaign||!validQty(quantity)||!validQty(weight)||this.assets.has(id))throw Error("BAD_ASSET");
   this.assets.set(id,{id,owner,campaign,quantity,weight,restricted,originKnown,version:1});
@@ -16,7 +16,11 @@ export class AssetLab {
   this.bases.set(id,{id,owner,campaign,slots,assigned:[]});
  }
  transfer({commandId,assetId,actor,to,campaign,qty,expectedVersion,fixtureOwnerProof=false,explicitGmTransfer=false}){
-  if(this.commands.has(commandId))return copy(this.commands.get(commandId));
+  const fingerprint=JSON.stringify({assetId,actor,to,campaign,qty,expectedVersion,fixtureOwnerProof,explicitGmTransfer});
+  if(this.commands.has(commandId)){
+   const seen=this.commands.get(commandId);if(seen.fingerprint!==fingerprint)throw Error("TRANSFER_ID_CONFLICT");
+   return copy(seen.receipt);
+  }
   const a=this.assets.get(assetId);
   if(!a||a.owner!==actor||!fixtureOwnerProof||a.campaign!==campaign||!validQty(qty)||qty>a.quantity||a.version!==expectedVersion)throw Error("TRANSFER_NOT_AUTHORIZED");
   if(a.restricted===true||a.originKnown!==true){
@@ -28,10 +32,14 @@ export class AssetLab {
    if(qty!==a.quantity)throw Error("SPLIT_REQUIRES_OWNER_DOMAIN");
    a.owner=to;
   }
-  a.version++;this.commands.set(commandId,receipt);return copy(receipt);
+  a.version++;this.commands.set(commandId,{fingerprint,receipt});return copy(receipt);
  }
  craft({orderId,actor,campaign,materials,outputId,outputQty,fixtureOwnerProof=false}){
-  if(this.orders.has(orderId))return copy(this.orders.get(orderId));
+  const fingerprint=JSON.stringify({actor,campaign,materials,outputId,outputQty,fixtureOwnerProof});
+  if(this.orders.has(orderId)){
+   if(this.orderFingerprints.get(orderId)!==fingerprint)throw Error("CRAFT_ID_CONFLICT");
+   return copy(this.orders.get(orderId));
+  }
   if(!fixtureOwnerProof||!Array.isArray(materials)||!materials.length||!validQty(outputQty)||!outputId||this.assets.has(outputId))throw Error("CRAFT_NOT_AUTHORIZED");
   const required=new Map();
   for(const m of materials){if(!validQty(m.qty))throw Error("INVALID_MATERIAL");required.set(m.id,(required.get(m.id)||0)+m.qty);}
@@ -42,7 +50,7 @@ export class AssetLab {
   const produced={id:outputId,owner:actor,campaign,quantity:outputQty,weight:1,restricted:inheritsRestricted,originKnown:true,version:1};
   this.assets.set(outputId,produced);
   const receipt={orderId,actor,campaign,outputId,restricted:inheritsRestricted,inputs:materials,fixtureOnly:true};
-  this.orders.set(orderId,receipt);return copy(receipt);
+  this.orders.set(orderId,receipt);this.orderFingerprints.set(orderId,fingerprint);return copy(receipt);
  }
  loadCargo({vehicleId,assetId,actor,qty,campaign,fixtureOwnerProof=false}){
   const v=this.vehicles.get(vehicleId),a=this.assets.get(assetId);

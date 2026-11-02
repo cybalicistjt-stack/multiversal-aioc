@@ -10,8 +10,10 @@ test("PREP04 real-model owner checks, source version and one-time transfer",()=>
  const x=create();
  assert.throws(()=>x.transfer({commandId:"t1",assetId:"wood",actor:"Raven2",to:"Raven1",campaign:"C",qty:10,expectedVersion:1}),/AUTHORIZED/);
  assert.throws(()=>x.transfer({commandId:"t1",assetId:"ore",actor:"Raven2",to:"Raven1",campaign:"C",qty:4,expectedVersion:1,fixtureOwnerProof:true}),/RESTRICTED/);
- const t=x.transfer({commandId:"t1",assetId:"wood",actor:"Raven2",to:"Raven1",campaign:"C",qty:10,expectedVersion:1,fixtureOwnerProof:true});
- assert.equal(t.to,"Raven1");assert.equal(x.transfer({commandId:"t1",assetId:"wood"}).to,"Raven1");
+ const original={commandId:"t1",assetId:"wood",actor:"Raven2",to:"Raven1",campaign:"C",qty:10,expectedVersion:1,fixtureOwnerProof:true};
+ const t=x.transfer(original);
+ assert.equal(t.to,"Raven1");assert.equal(x.transfer(original).to,"Raven1");
+ assert.throws(()=>x.transfer({...original,to:"Raven2"}),/TRANSFER_ID_CONFLICT/);
  assert.equal(x.assets.get("wood").version,2);
 });
 test("PREP04 crafting is atomic on invalid ingredients and inherits restricted lineage",()=>{
@@ -20,7 +22,9 @@ test("PREP04 crafting is atomic on invalid ingredients and inherits restricted l
  assert.equal(x.assets.get("wood").quantity,10);assert.equal(x.assets.has("failed"),false);
  const receipt=x.craft({orderId:"c1",actor:"Raven2",campaign:"C",materials:[{id:"wood",qty:2},{id:"ore",qty:1}],outputId:"tool",outputQty:1,fixtureOwnerProof:true});
  assert.equal(receipt.restricted,true);assert.equal(x.assets.get("tool").restricted,true);
- assert.equal(x.craft({orderId:"c1"}).outputId,"tool");assert.equal(x.assets.get("ore").quantity,3);
+ assert.equal(x.craft({orderId:"c1",actor:"Raven2",campaign:"C",materials:[{id:"wood",qty:2},{id:"ore",qty:1}],outputId:"tool",outputQty:1,fixtureOwnerProof:true}).outputId,"tool");
+ assert.throws(()=>x.craft({orderId:"c1",actor:"Raven2",campaign:"C",materials:[{id:"ore",qty:2}],outputId:"tool",outputQty:1,fixtureOwnerProof:true}),/CRAFT_ID_CONFLICT/);
+ assert.equal(x.assets.get("ore").quantity,3);
 });
 test("PREP04 vehicle cargo capacity and campaign ownership fail closed",()=>{
  const x=create();x.addVehicle({id:"wagon",owner:"Raven2",campaign:"C",capacity:5});

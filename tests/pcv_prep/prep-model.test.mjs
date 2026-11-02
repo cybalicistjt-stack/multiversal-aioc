@@ -58,6 +58,7 @@ test("PREP04 Free Play resets in isolated wallet, not campaign assets",()=>{
  l.place({id:"w2",actor:"Raven2",mode:"free",stake:{kind:"fictional-credits",amount:20},market:"table-1"});
  assert.equal(l.balance("free","Raven2"),80);l.resetFree("Raven2");
  assert.equal(l.balance("free","Raven2"),100);assert.equal(l.balance("campaign","Raven2"),100);
+ assert.throws(()=>l.settle({id:"w2",result:"win",ownerReceipt:{id:"stale",verifiedFixture:true,market:"table-1"}}),/FREE_WALLET_RESET/);
 });
 test("PREP04 real-money, purchased/convertible stakes and forged event receipts denied",()=>{
  const l=new FictionalEconomyLab();

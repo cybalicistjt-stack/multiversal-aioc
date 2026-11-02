@@ -78,7 +78,11 @@ export class FictionalEconomyLab {
   this.wagers=new Map();this.receipts=new Map();this.house=0;
  }
  balance(mode,actor){if(!["campaign","free"].includes(mode))throw Error("BAD_MODE");return this.wallet[mode][actor];}
- resetFree(actor){if(!Object.hasOwn(this.wallet.free,actor))throw Error("UNKNOWN_ACTOR");this.wallet.free[actor]=100;return this.balance("free",actor);}
+ resetFree(actor){
+  if(!Object.hasOwn(this.wallet.free,actor))throw Error("UNKNOWN_ACTOR");
+  for(const wager of this.wagers.values())if(wager.input.mode==="free"&&wager.input.actor===actor&&wager.status==="reserved")wager.status="void-on-reset";
+  this.wallet.free[actor]=100;return this.balance("free",actor);
+ }
  place({id,actor,mode,stake,market}){
   if(this.wagers.has(id)){
    const prior=this.wagers.get(id);
@@ -100,6 +104,7 @@ export class FictionalEconomyLab {
    return clone(p);
   }
   const wager=this.wagers.get(id);if(!wager)throw Error("UNKNOWN_WAGER");
+  if(wager.status==="void-on-reset")throw Error("FREE_WALLET_RESET");
   if(!ownerReceipt||ownerReceipt.verifiedFixture!==true||!ownerReceipt.id||ownerReceipt.market!==wager.input.market)throw Error("NO_OWNER_RESULT_RECEIPT");
   if(!["win","lose","void"].includes(result)||!["off","light","custom","full"].includes(regulator))throw Error("BAD_OUTCOME");
   const {actor,mode,stake}=wager.input;
