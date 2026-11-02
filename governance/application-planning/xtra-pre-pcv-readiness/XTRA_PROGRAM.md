@@ -2,7 +2,7 @@
 
 **Program:** XTRA  
 **Authority:** owner-directed 2026-11-02, recorded through OPS5 CURRENT/LANES after protected-main approval  
-**Status:** XTRA-01/03/04/05/06/07/08/09/10 completed_verified; XTRA-02 blocked_external; XTRA-11 selected pending publication.
+**Status:** XTRA-01/03/04/05/06/07/08/09/10/11 completed_verified; XTRA-02 blocked_external; XTRA-12 selected pending publication.
 **Purpose:** finish independent, useful pre-PCV-03F work and prepare downstream acceptance without bypassing PCV/MTLC/AXI/MCB authorities.
 
 ## Invariants
@@ -117,7 +117,7 @@
 
 **Acceptance.** No live subscription, paid acquisition, public discovery, misleading demo or publishable commercial claims; final price and launch remain owner-gated.
 
-**Dependency.** XTRA-01. **Current state:** in_progress pending OPS5 selector publication; templates/fixtures and simulated checks only, no live customer funnel, payment, signup, website launch or MCB activation.
+**Dependency.** XTRA-01. **Current state:** completed_verified. PR1947 exact-head green run41477790201 merged 41331260: 17 MCB source templates, 59 synthetic negative checks; no real public site, customers, marketing, merchant or MCB activation.
 
 ### XTRA-12 — Pre-PCV-03F handoff and independent terminal readiness review
 
@@ -125,7 +125,7 @@
 
 **Acceptance.** Completed independent outputs have live source/PR/test evidence; external/PCV-gated tasks remain blocked, not auto-completed; no XTRA record certifies PCV completion or public readiness.
 
-**Dependency.** XTRA-01, XTRA-02, XTRA-03, XTRA-04, XTRA-05, XTRA-06, XTRA-07, XTRA-08, XTRA-09, XTRA-10, XTRA-11. **Current state:** planned. No automatic authority from this roadmap.
+**Dependency.** XTRA-01, XTRA-02, XTRA-03, XTRA-04, XTRA-05, XTRA-06, XTRA-07, XTRA-08, XTRA-09, XTRA-10, XTRA-11. **Current state:** in_progress pending selector publication; XTRA02 blocked_external retained, this tranche may publish evidence/handoff but never certify actual backup or live product readiness.
 
 ## Handoff/compatibility
 
