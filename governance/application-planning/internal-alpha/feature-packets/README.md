@@ -6,6 +6,8 @@
 
 Implementation-ready and in-progress feature design packets, companion matrices, review receipts, and integration records are stored in this directory.
 
+> **Current source/PR evidence is separate from packet design status.** The `Implementation status` column below is a historical design-handoff snapshot, not the live application implementation ledger. For the 2026-11-02 25-feature reconciliation against application `main`, merged/open PRs, and unresolved installed/release gates, see [Internal Alpha Feature Source/PR Reconciliation](../INTERNAL_ALPHA_FEATURE_SOURCE_PR_RECONCILIATION_2026-11-02.md). Do not treat `implementation-ready` as implemented, or `not started` below as proof that Stage A source was never merged.
+
 ## Feature packet index
 
 | Feature ID | Feature | Classification | Packet status | Implementation status | Packet | Companion artifacts |
