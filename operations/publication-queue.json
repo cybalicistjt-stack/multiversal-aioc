@@ -1,8 +1,39 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 354,
-  "ready": [],
+  "generation": 355,
+  "ready": [
+    {
+      "candidate_id": "SA-BILL-08-pinned-app-surface-leakage-pr-1924",
+      "lane": "operations",
+      "work_item_id": "SA-BILL-08-ADVISORY-RESEARCH",
+      "pr_number": 1924,
+      "head_sha": "e7af4e0bc3fe80c2ce66caac79eeca3236481da5",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "e7af4e0bc3fe80c2ce66caac79eeca3236481da5",
+        "run_id": "41391327835",
+        "test_count": 21,
+        "seeded_adversarial_variations": 700,
+        "negative_control_run_id": "41391107630",
+        "known_source_risks": 3
+      },
+      "write_set": [
+        ".github/workflows/validate-repository-health.yml",
+        "governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_08_PINNED_APP_BOUNDARY_LEAKAGE.md",
+        "tests/control_plane/sa_bill08_boundary_gateway.mjs",
+        "tests/control_plane/test_sa_bill08_app_boundary.mjs",
+        "tests/fixtures/sa-bill08/app-src/authorization/campaign-authorization-policy.ts",
+        "tests/fixtures/sa-bill08/app-src/session/authoritative-session-command-handler.ts",
+        "tests/fixtures/sa-bill08/app-src/session/hidden-information-response-filter.ts"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "ad98c8dcbfa7e84efd88332b5453510980cabdc1",
+        "current_ops_revision": 641,
+        "study_scope": "source_pinned_characterization_plus_synthetic_surface_tests_only"
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
