@@ -1,0 +1,604 @@
+{
+  "schema_version": "1.0.0",
+  "id": "XTRA06-PCV-ACCEPTANCE-PREFLIGHT",
+  "status": "DOCUMENTATION_ONLY_NOT_RUN",
+  "authority": "XTRA-06 cannot start or certify PCV implementation",
+  "source_pins": [
+    {
+      "path": "governance/application-planning/product-convergence/PCV_PRODUCT_CONVERGENCE_REAL_APP_VALIDATION_PROGRAM.md",
+      "blob_sha": "d55c7fd2bb947772d8ff123f689fe72b84e261e2"
+    },
+    {
+      "path": "governance/application-planning/product-convergence/PCV_PROGRAM_BACKLOG.json",
+      "blob_sha": "440d30cb4f8dd4f00af4d665688d934c4105e619"
+    },
+    {
+      "path": "governance/application-planning/xtra-pre-pcv-readiness/XTRA-05_BEACON_ASSET_RIGHTS_COVERAGE_v1.0.0.json",
+      "blob_sha": "4604da9f4af387f1f6a2050b1eb3ae016a7ee156"
+    },
+    {
+      "path": "governance/application-planning/xtra-pre-pcv-readiness/XTRA-04_BEACON_DEBT_GOLDEN_CAMPAIGN_FIXTURE_v1.0.0.json",
+      "blob_sha": "590451dd211280c969a46094369063c1c340fd7b"
+    }
+  ],
+  "source_campaign": {
+    "id": "campaign:beacon-debt-golden-01",
+    "scene_count": 5,
+    "real_combat": false,
+    "real_player": false
+  },
+  "asset_needs": [
+    "PCV10-A01",
+    "PCV10-A02",
+    "PCV10-A03",
+    "PCV10-A04",
+    "PCV10-A05",
+    "PCV10-A06",
+    "PCV10-A07",
+    "PCV10-A08",
+    "PCV10-A09"
+  ],
+  "cases": [
+    {
+      "id": "PCV-04",
+      "status": "blocked_by_predecessor",
+      "name": "Live Session, Rules, Actions & Combat Play Loop",
+      "outcome": "Two people can actually play a core Multiversal encounter together from scene entry through action choice, GM adjudication, rules/dice resolution, combat, result/log, save, disconnect/reconnect and continuation.",
+      "criteria": [
+        {
+          "test_id": "PCV-04-AC01",
+          "source_requirement": "Live Scene, available actions, costs/requirements, proposal/approval/modify/reject, rule/calculation inspection and receipts operate over real shared session state.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-04-AC02",
+          "source_requirement": "Combat timing, targeting, reactions, hazards, conditions/resources and encounter conclusion operate cross-device without page-context loss.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-04-AC03",
+          "source_requirement": "GM/player secrecy and authority are proven on separate installed clients.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-04-AC04",
+          "source_requirement": "A completed encounter remains correct after restart/reconnect.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        }
+      ],
+      "negative_preflights": [
+        {
+          "id": "PCV-04-N01",
+          "category": "wrong-role",
+          "scenario": "Player attempts GM-only adjudication",
+          "expected": "role denial and no hidden-state leakage",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-04-N02",
+          "category": "replay",
+          "scenario": "Same action receipt resubmitted after reconnect",
+          "expected": "single committed effect, no duplicate event",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-04-N03",
+          "category": "combat-state",
+          "scenario": "Interrupt encounter during resource/Condition transition",
+          "expected": "authoritative result survives restart",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        }
+      ],
+      "implementation_authorized": false,
+      "real_device_verified": false
+    },
+    {
+      "id": "PCV-05",
+      "status": "blocked_by_predecessor",
+      "name": "First-Party Adventure & Noncombat Play Convergence",
+      "outcome": "The first-party campaign can be played beyond combat through exploration/travel/survival, investigation, social/relationships/reputation, downtime/cozy activity and ordinary scene transitions.",
+      "criteria": [
+        {
+          "test_id": "PCV-05-AC01",
+          "source_requirement": "SMB-09 first-party campaign content is reachable through real campaign/session UI.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-05-AC02",
+          "source_requirement": "Investigation, social and exploration runtimes consume shared session/state authority and persist outcomes.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-05-AC03",
+          "source_requirement": "Travel/survival, factions/organizations/settlements and relevant knowledge/reputation systems are integrated where current implementation supports them.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-05-AC04",
+          "source_requirement": "A cross-device session can move between noncombat and combat activities without losing authoritative context.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        }
+      ],
+      "negative_preflights": [
+        {
+          "id": "PCV-05-N01",
+          "category": "secret",
+          "scenario": "Player inspects unearned clue",
+          "expected": "no disclosure before authorized reveal",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-05-N02",
+          "category": "transition",
+          "scenario": "Switch from exploration to combat after restart",
+          "expected": "shared context and history remain correct",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-05-N03",
+          "category": "social",
+          "scenario": "Retry reputation or relationship event",
+          "expected": "one durable change",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        }
+      ],
+      "implementation_authorized": false,
+      "real_device_verified": false
+    },
+    {
+      "id": "PCV-06",
+      "status": "blocked_by_predecessor",
+      "name": "Inventory, Economy, Crafting, Games & Wagering, Vehicles, Mounts, Bases & Logistics",
+      "outcome": "Long-lived shared assets and operational systems are usable in the real campaign: equipment, containers/transfers, economy/trade, crafting, reusable games/wagering activities, vehicles/living mounts, bases/facilities and logistics persist and synchronize between users.",
+      "criteria": [
+        {
+          "test_id": "PCV-06-AC01",
+          "source_requirement": "Real inventory/equipment/container ownership and transfers are persistent and permission-safe.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-06-AC02",
+          "source_requirement": "Economy/trade/contracts/services and crafting/work queues commit through governed events and survive reconnect.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-06-AC03",
+          "source_requirement": "Implement `PCV_GAMES_WAGERING_INTEGRATION_v1.2.0.md` as a reusable Games & Wagering runtime over current GPR loop-mini/pattern execution plus canonical owner-domain settlement; do not build a Black Vegas-only parallel engine.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-06-AC04",
+          "source_requirement": "Support Campaign Play using actual validated in-world character/campaign wealth, assets or other fictional stakes with persistent consequences, and Free Play using an isolated arbitrary resettable wallet that never mutates campaign state.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-06-AC05",
+          "source_requirement": "Ship a substantial Earth casino-game starter pack plus a Black Vegas/Multiversal starter pack, including external-event wager markets (especially races), MRC sanction/jurisdiction behavior where applicable, and culturally/economically distinct wagering such as subsistence-credit games, black-market egg/hatch pools and title-stake racing. Authoritative randomness/hidden information/external outcomes are recorded for replay/audit, and house/bookmaker/NPC/two-human participants use the current authority/continuity model.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-06-AC06",
+          "source_requirement": "MRC/regulator behavior is GM-selectable as off, light, custom-module or full. Turning it off removes taxes/licensing/sponsorship/enforcement/integrity overlays without removing the underlying games, races, betting markets, ownership settlement or replay/multiplayer behavior.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-06-AC07",
+          "source_requirement": "Reject real-world-value stake sources and payouts: real money, paid entitlement/premium currency, cash-redeemable value, or anything convertible to those. Ordinary in-world currencies, items, favors and other owner-domain stakes remain allowed when their owning domain validates them.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-06-AC08",
+          "source_requirement": "Vehicle/mount/cargo/crew and base/facility/logistics views use current capability-driven models rather than hard-coded fantasy/space assumptions.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-06-AC09",
+          "source_requirement": "Cross-device contention/conflict behavior is explicit and recoverable.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        }
+      ],
+      "negative_preflights": [
+        {
+          "id": "PCV-06-N01",
+          "category": "transfer",
+          "scenario": "Competing users transfer the same asset",
+          "expected": "no duplicate ownership",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-06-N02",
+          "category": "wallet",
+          "scenario": "Campaign and Free Play balances are mixed",
+          "expected": "strict isolation and reset safety",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-06-N03",
+          "category": "stake",
+          "scenario": "Prohibited real-value stake attempted",
+          "expected": "reject; do not create settlement",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-06-N04",
+          "category": "reconnect",
+          "scenario": "Authoritative game operation replays",
+          "expected": "one recorded outcome",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        }
+      ],
+      "implementation_authorized": false,
+      "real_device_verified": false
+    },
+    {
+      "id": "PCV-07",
+      "status": "blocked_by_predecessor",
+      "name": "GM/Creator Authoring, Library, Rules & Content Sharing",
+      "outcome": "A GM/creator can build and maintain actual campaign/world/adventure/content material inside the same product used for play, then share/publish it through existing governed boundaries.",
+      "criteria": [
+        {
+          "test_id": "PCV-07-AC01",
+          "source_requirement": "World/adventure/scene/content authoring, reusable Library, rules/search, dependencies, provenance/history and validation are integrated into the production shell.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-07-AC02",
+          "source_requirement": "MRCS and other current rules/content-authoring implementations are surfaced where they are user-facing rather than left as isolated workbenches.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-07-AC03",
+          "source_requirement": "Campaign-local creation remains distinct from reusable/canonical publishing authority.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-07-AC04",
+          "source_requirement": "Content can be transferred/shared between the two tester identities without bypassing rights/provenance controls.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-07-AC05",
+          "source_requirement": "Games & Wagering definitions are authorable as governed reusable content: game rules, table/venue configuration, legal fictional stake classes, house rules, dealer/NPC profiles and setting/alien game packs bind through MRCS/Content Forge boundaries without duplicating runtime or owner-domain authority.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        }
+      ],
+      "negative_preflights": [
+        {
+          "id": "PCV-07-N01",
+          "category": "canon",
+          "scenario": "Campaign-local creator requests canonical promotion",
+          "expected": "deny without owner authority",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-07-N02",
+          "category": "rights",
+          "scenario": "Restricted derivative is shared externally",
+          "expected": "deny export and preserve provenance",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-07-N03",
+          "category": "authoring",
+          "scenario": "Invalid user-authored rule enters live Session",
+          "expected": "validation refusal, preserve working content",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        }
+      ],
+      "implementation_authorized": false,
+      "real_device_verified": false
+    },
+    {
+      "id": "PCV-08",
+      "status": "blocked_by_predecessor",
+      "name": "Post-Bible Feature Convergence & Stranded-System Elimination",
+      "outcome": "All later user-facing work added after the original Bibles is either integrated into coherent product navigation/workflows or explicitly classified as internal/deferred; no substantial implemented feature remains stranded behind a test/workbench.",
+      "criteria": [
+        {
+          "test_id": "PCV-08-AC01",
+          "source_requirement": "Converge applicable later families such as APM/async-cozy-AutoGM, APW hybrid activity, CSW creator tools, CEL, KFR, ISE, MAL, ODL, SCL, SSA, WCI, ECI and other live-source families discovered by the PCV ledger.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-08-AC02",
+          "source_requirement": "Preserve newer capabilities that supersede or extend older Bible assumptions.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-08-AC03",
+          "source_requirement": "Every production-like client surface has a product route/context or an explicit non-product classification with rationale.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-08-AC04",
+          "source_requirement": "No completion by deleting or hiding later features merely to match older documentation.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        }
+      ],
+      "negative_preflights": [
+        {
+          "id": "PCV-08-N01",
+          "category": "stranded",
+          "scenario": "User-facing implementation only accessible in internal workbench",
+          "expected": "flag for product integration or deliberate deferral",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-08-N02",
+          "category": "regression",
+          "scenario": "Older Bible used to hide newer feature",
+          "expected": "reject deletion as convergence proof",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        }
+      ],
+      "implementation_authorized": false,
+      "real_device_verified": false
+    },
+    {
+      "id": "PCV-09",
+      "status": "blocked_by_predecessor",
+      "name": "Full Product UX, Skin, Accessibility, Search, AI & Operations Convergence",
+      "outcome": "The entire integrated product uses the current Multiversal interaction/visual system on phone and desktop, with coherent themes/skins, settings, search/command, notifications, AI proposal surfaces, diagnostics and accessibility instead of generic alpha panels.",
+      "criteria": [
+        {
+          "test_id": "PCV-09-AC01",
+          "source_requirement": "Consume the September UI Implementation Convergence Handoff and later UISK runtime/amendments as current presentation inputs; old Bibles remain floor/traceability only.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-09-AC02",
+          "source_requirement": "Global shell, Home, context navigation, inspectors, action docks, mobile transformations and current skin system are applied across real screens.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-09-AC03",
+          "source_requirement": "Implement explicit display-mode control on phone: **Phone View** uses responsive mobile-native screens and **Desktop View** renders the full desktop workspace in an in-app zoomable/pannable viewport. Both modes operate on the same product state, permissions and actions; Desktop View is not a separate product and Phone View must not remove capabilities.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-09-AC04",
+          "source_requirement": "GM and creator workflows receive the same mobile capability parity as player workflows. Desktop may expose more simultaneous panes because of screen area, but no GM/creator action is classified desktop-only.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-09-AC05",
+          "source_requirement": "Search/command, notifications/approvals, settings/accessibility, diagnostics/recovery and optional AI proposal flows are reachable and permission-safe.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-09-AC06",
+          "source_requirement": "No ordinary-user surface exposes synthetic fixture labels, raw internal IDs or diagnostic-first copy unless explicitly in diagnostics.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-09-AC07",
+          "source_requirement": "Representative Android and Windows rendered evidence covers major play/authoring/utility surfaces and accessibility states.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-09-AC08",
+          "source_requirement": "Asset presentation is converged with the current skin/UI system: primary/generated pixel content, maps/tokens, item imagery, effects and approved fallbacks compose coherently with skins rather than reverting to generic empty cards.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-09-AC09",
+          "source_requirement": "Remaining asset-demand entries are either satisfied or explicitly non-golden-path deferred; no substantial product surface silently ships as an accidental blank.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-09-AC10",
+          "source_requirement": "Games & Wagering has coherent responsive phone/desktop product surfaces: a generic games browser/table flow plus venue-aware presentation such as Black Vegas, accessible hidden-information handling, clear Campaign vs Free Play context, and no real-money purchase/cash-out affordance.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        }
+      ],
+      "negative_preflights": [
+        {
+          "id": "PCV-09-N01",
+          "category": "mode",
+          "scenario": "GM phone switches between Phone and Desktop View",
+          "expected": "same actions, permissions and focus",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-09-N02",
+          "category": "media",
+          "scenario": "Unlicensed visual selection or export attempted",
+          "expected": "ARI rights gate blocks use",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-09-N03",
+          "category": "search",
+          "scenario": "Search or AI surfaces hidden GM-only data",
+          "expected": "deny hidden projection",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-09-N04",
+          "category": "placeholder",
+          "scenario": "Required golden visual has accidental blank",
+          "expected": "block readiness until cleared",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        }
+      ],
+      "implementation_authorized": false,
+      "real_device_verified": false
+    },
+    {
+      "id": "PCV-10",
+      "status": "blocked_by_predecessor",
+      "name": "Two-Human Golden Campaign, Recovery & Real Beta Installer",
+      "outcome": "Fresh-installed Android and Windows builds support a real two-human Multiversal campaign between owner and second tester, with persistent cross-device play, recovery, meaningful feature breadth and regenerated beta installers from the exact validated head.",
+      "criteria": [
+        {
+          "test_id": "PCV-10-AC01",
+          "source_requirement": "Fresh install on Windows + Android; create/sign into distinct local tester identities; create or open campaign; invite/join; choose/create characters; enter session.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-10-AC02",
+          "source_requirement": "Play a representative first-party sequence containing noncombat interaction, inventory/resource use and a combat encounter, with GM/player role separation.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-10-AC03",
+          "source_requirement": "Disconnect/reconnect, app restart, save/load, update-compatible install and recovery preserve campaign/session history with no duplicate actions.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-10-AC04",
+          "source_requirement": "Exercise representative later/post-Bible systems appropriate to the campaign rather than proving only the old core.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-10-AC05",
+          "source_requirement": "Human-visible UI matches current convergence/skin direction on both devices and contains no alpha fixture shell.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-10-AC06",
+          "source_requirement": "Installed Android proof exercises representative player and GM/creator capabilities in Phone View and also proves the optional Desktop View can zoom/pan through the wide workspace without losing actions, context, focus, permissions or authoritative state.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-10-AC07",
+          "source_requirement": "Generate final Windows installer + Android APK with checksum/version manifest only after this installed two-human proof passes.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-10-AC08",
+          "source_requirement": "The representative first-party golden play path contains no unresolved required visual/audio assets; every asset need is fulfilled by shipped primary/generated content, a deliberate procedural presentation, a permitted imported asset, or an explicitly approved intentional fallback.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        },
+        {
+          "test_id": "PCV-10-AC09",
+          "source_requirement": "Installed proof exercises Games & Wagering on Windows and Android: at least one Earth game and one Black Vegas/alien game, a persistent campaign-funded wager, an isolated Free Play wallet reset, and a two-human or host-authoritative table/reconnect path, with zero real-world-value wagering.",
+          "result": "NOT_RUN",
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+        }
+      ],
+      "negative_preflights": [
+        {
+          "id": "PCV-10-N01",
+          "category": "identity",
+          "scenario": "Synthetic local actors used as substitutes for two humans",
+          "expected": "do not certify installed proof",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-10-N02",
+          "category": "recovery",
+          "scenario": "Repeated action following reinstall",
+          "expected": "same authoritative history without duplication",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-10-N03",
+          "category": "combat",
+          "scenario": "Noncombat-only fixture submitted as full proof",
+          "expected": "reject until real encounter and inventory path",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-10-N04",
+          "category": "rights",
+          "scenario": "Unresolved required media appears in golden path",
+          "expected": "do not claim beta-ready",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-10-N05",
+          "category": "package",
+          "scenario": "Installers issued before real human validation",
+          "expected": "block release gate",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        }
+      ],
+      "implementation_authorized": false,
+      "real_device_verified": false
+    }
+  ],
+  "receipt_fields": [
+    "pcv_item",
+    "case_id",
+    "candidate_sha",
+    "role",
+    "platform",
+    "device_id",
+    "actual_result",
+    "independent_evidence",
+    "artifact_digest",
+    "authoritative_source_owner"
+  ],
+  "global_result": "NOT_RUN",
+  "negative_preflight_total": 24,
+  "acceptance_case_total": 45
+}
