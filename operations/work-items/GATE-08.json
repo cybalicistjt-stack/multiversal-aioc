@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "gate",
+  "program_id": "GATE",
+  "work_item_id": "GATE-08",
+  "attempt_id": "GATE-08-attempt-001",
+  "status": "in_progress",
+  "completed": false,
+  "implementation_authority": false,
+  "selected_by_owner": "Owner Continue after GATE-07 publication permits last bounded source-only GATE-08 planning; GATE-09 product implementation requires separate approval.",
+  "implementation_branch": "program/gate08-storefront-disclosure-economics-20261102",
+  "scope": "Research/storefront/merchant and fee policy planning for direct Windows/Web, US Google Play and future regional Apple routes; 50 rail and 14 illustrative cost cases; no product, payment, pricing or merchant activation.",
+  "backlog": "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM_BACKLOG.json",
+  "acceptance": [
+    "Source-verified dated storefront rules by territory and installation channel",
+    "Consumer recurring billing disclosures, FTC status and tax/merchant responsibility with legal review debt",
+    "Integer-minor-unit illustrative gross-to-net fee/tax model without committed price",
+    "64 source-only reference cases; exact-head OPS5, protected merge and queue evidence"
+  ],
+  "active_substep": "storefront_source_candidate",
+  "next_action": "Validate and publish GATE-08, close source phase; GATE-09 separately authorized with PCV-03F prerequisites.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "source_candidate_committed",
+      "evidence": "GATE08 50 rail and 14 sample cost cases + tax contribution correction; no production/store work"
+    }
+  },
+  "constraints": {
+    "no_product_implementation": true,
+    "no_paid_provider_enrollment": true,
+    "no_credentials_or_charges": true,
+    "no_price_or_sku_publication": true,
+    "no_legal_certification": true,
+    "no_other_lane_changes": true,
+    "no_auto_gate09": true
+  }
+}

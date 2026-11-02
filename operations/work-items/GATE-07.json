@@ -4,8 +4,8 @@
   "program_id": "GATE",
   "work_item_id": "GATE-07",
   "attempt_id": "GATE-07-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "Owner Continue through GATE source-design program; GATE-06 exact-head source publication and queue reconciliation verified; GATE-07 design only.",
   "implementation_branch": "program/gate07-offline-license-device-security-20261102",
@@ -17,19 +17,23 @@
     "Known-denial and account switch lock persist; transient outage does not erase valid scoped lease; local clock rollback and replay documented",
     "At least 60 reference decision cases+10 time cases, explicit Windows/Android acceptance plan and security residual risks, exact-head OPS5 protected source publication"
   ],
-  "active_substep": "offline_device_security_candidate",
-  "next_action": "Run immutable CI and source-only fixtures, publish and reconcile GATE-07 prior to GATE-08 source/storefront selection; real installed proof deferred to GATE-11/12.",
+  "active_substep": "published_source_and_reconciled",
+  "next_action": "GATE-07 source-only offline design published; select GATE-08 for final source-only storefront design.",
   "execution_guard": {
     "continue_turns": 1,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "gate07_device_security_design",
-      "evidence": "68 policy cases, 12 temporal cases; Windows DPAPI, Android Keystore, WebCrypto/MASVS evidence; source design only"
+      "seq": 2,
+      "kind": "published_source",
+      "evidence": "PR1958 head fe94ad97e077633cc232537d8d6686a62ee779e2 run41512190864 green, merge b6f866551efff130092ca5125680658bf0028584, publication queue422"
+    },
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "PR1958 merged, reconciled generation422, 80 synthetic cases; source only"
     }
   },
   "constraints": {
@@ -39,5 +43,13 @@
     "no_price_or_spend": true,
     "no_other_lane_authority_mutation": true,
     "no_automatic_successor": true
+  },
+  "completion_evidence": {
+    "pr": 1958,
+    "run": 41512190864,
+    "candidate_head": "fe94ad97e077633cc232537d8d6686a62ee779e2",
+    "merge_sha": "b6f866551efff130092ca5125680658bf0028584",
+    "queue_generation": 422,
+    "grade": "PUBLISHED_SOURCE_ONLY"
   }
 }
