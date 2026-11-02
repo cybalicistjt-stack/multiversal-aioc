@@ -5,6 +5,8 @@ on:
     paths:
       - 'tests/control_plane/test_sa_bill05_postgres.py'
       - 'tests/control_plane/test_sa_bill06_provider_reconcile.py'
+      - 'tests/control_plane/test_sa_bill07_revocation_provenance.py'
+      - 'governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_07_DISPOSABLE_SCOPE_SCHEMA.sql'
       - 'tests/control_plane/sa_bill06_provider_reconcile.py'
       - 'governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_06_DISPOSABLE_PROVIDER_SCHEMA.sql'
       - 'governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_03_POSTGRESQL_REFERENCE.sql'
@@ -65,6 +67,12 @@ jobs:
         run: |
           set -euo pipefail
           python tests/control_plane/test_sa_bill06_provider_reconcile.py
+
+      - name: Verify synthetic A3/GM revocation and content dependency lineage in PostgreSQL
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/control_plane/test_sa_bill07_revocation_provenance.py
 
       - name: Document test boundary
         if: always()
