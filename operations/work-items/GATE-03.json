@@ -4,8 +4,8 @@
   "program_id": "GATE",
   "work_item_id": "GATE-03",
   "attempt_id": "GATE-03-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "Owner approved GATE 14-tranche program and on 2026-11-02 requested continuation; GATE-02 source-only evidence merged and reconciled, permitting next bounded GATE-03 contracts proposal.",
   "implementation_branch": "program/gate03-provider-neutral-billing-contracts-20261102",
@@ -17,19 +17,23 @@
     "Wrong-account, provider environment, product mapping, invalid signature, retry, stale/replay and Play/storefront mismatches covered by synthetic negative fixtures",
     "42 design-only focused tests and exact-head OPS5 validation + publication evidence; no live provider/merchant claims"
   ],
-  "active_substep": "provider_contract_and_reference_test_candidate",
-  "next_action": "Validate/publish bounded GATE03 source contract; preserve live provider GATE10 and product GATE09 dependency gates.",
+  "active_substep": "source_contract_published_and_reconciled",
+  "next_action": "GATE-03 provider-neutral source design published. GATE-04 selected as next scoped design.",
   "execution_guard": {
     "continue_turns": 1,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "provider_contract_candidate",
-      "evidence": "42 source-only provider/customer/checkout tests and typed interface proposal; no production adapter"
+      "seq": 2,
+      "kind": "gate03_source_published",
+      "evidence": "PR1954 exact head 3385969f53defab5cdbe57cfcdc4b03b978fc59c OPS5 run41506401120 green merged 1c64ca63d89e76d632a4e7772ee76fdbb1a0ac03 queue generation414"
+    },
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Published GATE-03 source design, 42 synthetic reference cases, PR1954 and publication queue 414"
     }
   },
   "constraints": {
@@ -39,5 +43,13 @@
     "no_provider_secrets": true,
     "no_spending": true,
     "no_other_lane_selector_mutation": true
+  },
+  "completion_evidence": {
+    "pr": 1954,
+    "candidate_head": "3385969f53defab5cdbe57cfcdc4b03b978fc59c",
+    "validation_run": 41506401120,
+    "merge_sha": "1c64ca63d89e76d632a4e7772ee76fdbb1a0ac03",
+    "queue_generation": 414,
+    "grade": "PUBLISHED_SOURCE_ONLY"
   }
 }

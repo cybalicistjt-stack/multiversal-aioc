@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "gate",
+  "program_id": "GATE",
+  "work_item_id": "GATE-04",
+  "attempt_id": "GATE-04-attempt-001",
+  "status": "in_progress",
+  "completed": false,
+  "implementation_authority": false,
+  "selected_by_owner": "GATE owner directive to continue approved 14-tranche source planning; GATE-03 merged and reconciled. GATE-04 is source-only.",
+  "implementation_branch": "program/gate04-billing-lifecycle-reconciliation-20261102",
+  "scope": "Normalize verified provider billing lifecycle and paid-through authorization ceiling; cancellation/renew, failed payment, refund/dispute, duplicate/out-of-order events, ledger reconciliation, independent ownership and policy holds; source-only 70 temporal/ingress synthetic cases.",
+  "backlog": "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM_BACKLOG.json",
+  "acceptance": [
+    "Source-backed temporal distinction among renewal intent, billing status, paid-through, money movement, account entitlement and owned data",
+    "Deterministic reference cases for active/canceled/past_due/expired/failed/trial/disputed/refunded/bad proof plus dedupe/old event/outage",
+    "Design transactional inbox/ledger/outbox and reconcile/backfill contracts with no reliance on event delivery order",
+    "Document pending grace, refunds and trial owner policies; no actual provider or app implementation; exact-head OPS5 publication required"
+  ],
+  "active_substep": "temporal_policy_and_event_ingress_candidate",
+  "next_action": "Validate source fixture suite and immutable OPS5 candidate, then publish GATE-04 and reconcile completion before GATE-05 selection.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "temporal_source_candidate_prepared",
+      "evidence": "GATE-04 70 synthetic temporal/event fixtures, source lifecycle and typed reconciliation contract; no installed/provider proof"
+    }
+  },
+  "constraints": {
+    "no_product_implementation": true,
+    "no_money_provider_spend": true,
+    "no_test_or_live_api_activation": true,
+    "no_price_or_commercial_policy_approval": true,
+    "no_other_lane_selector_mutation": true,
+    "no_automatic_successor": true
+  }
+}
