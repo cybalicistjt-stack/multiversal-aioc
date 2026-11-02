@@ -4,8 +4,8 @@
   "program_id": "GATE",
   "work_item_id": "GATE-04",
   "attempt_id": "GATE-04-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "GATE owner directive to continue approved 14-tranche source planning; GATE-03 merged and reconciled. GATE-04 is source-only.",
   "implementation_branch": "program/gate04-billing-lifecycle-reconciliation-20261102",
@@ -17,19 +17,23 @@
     "Design transactional inbox/ledger/outbox and reconcile/backfill contracts with no reliance on event delivery order",
     "Document pending grace, refunds and trial owner policies; no actual provider or app implementation; exact-head OPS5 publication required"
   ],
-  "active_substep": "temporal_policy_and_event_ingress_candidate",
-  "next_action": "Validate source fixture suite and immutable OPS5 candidate, then publish GATE-04 and reconcile completion before GATE-05 selection.",
+  "active_substep": "published_reconciled",
+  "next_action": "GATE-04 published source-only lifecycle and 70 synthetic cases; selected GATE-05 for source-ledger design.",
   "execution_guard": {
     "continue_turns": 1,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "temporal_source_candidate_prepared",
-      "evidence": "GATE-04 70 synthetic temporal/event fixtures, source lifecycle and typed reconciliation contract; no installed/provider proof"
+      "seq": 2,
+      "kind": "source_lifecycle_published",
+      "evidence": "GATE-04 PR1955 exact head a4ee647248f9bb6707800825d0dddf94847ab524 run41508576577 green, merged 963fe6a4330ed18237721eafcbd0b127f170da71; publication queue generation416"
+    },
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Source-only billing lifecycle and 70 deterministic synthetic cases merged PR1955; queue generation416"
     }
   },
   "constraints": {
@@ -39,5 +43,13 @@
     "no_price_or_commercial_policy_approval": true,
     "no_other_lane_selector_mutation": true,
     "no_automatic_successor": true
+  },
+  "completion_evidence": {
+    "pr": 1955,
+    "validation_run": 41508576577,
+    "candidate_head": "a4ee647248f9bb6707800825d0dddf94847ab524",
+    "merge_sha": "963fe6a4330ed18237721eafcbd0b127f170da71",
+    "queue_generation": 416,
+    "grade": "PUBLISHED_SOURCE_ONLY"
   }
 }
