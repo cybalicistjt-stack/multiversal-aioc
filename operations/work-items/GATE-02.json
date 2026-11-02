@@ -4,8 +4,8 @@
   "program_id": "GATE",
   "work_item_id": "GATE-02",
   "attempt_id": "GATE-02-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "2026-11-02 GATE owner approval and 'Merged, continue' after PR1952; select next bounded GATE-02 design after verified GATE-01 source publication.",
   "implementation_branch": "program/gate02-membership-capability-policy-20261102",
@@ -17,19 +17,23 @@
     "Build and run 40+ deterministic synthetic positive/negative source-policy cases incl account isolation, restricted transfer, GM eligibility and lapse",
     "Mark unresolved sponsor/GM-lapse/pricing/AI/provider cases explicitly pending and publish exact-head PR evidence; no real service/security proof"
   ],
-  "active_substep": "policy_reference_fixture_candidate_prepared",
-  "next_action": "Run exact-head OPS5 validation and documented GATE-02 synthetic oracle, publish protected PR, then reconcile GATE-02 completion before next selected tranche.",
+  "active_substep": "policy_reference_source_published",
+  "next_action": "GATE-02 source design completed and published; successor GATE-03 selected by CURRENT separately.",
   "execution_guard": {
     "continue_turns": 1,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "gate02_source_policy_candidate",
-      "evidence": "GATE-02 source policy matrix, source ledger and 50 design-only fixture assertions assembled, publication pending"
+      "seq": 2,
+      "kind": "published_policy_source",
+      "evidence": "GATE-02 content published in PR1953 exact-head 989ae02e5383b22efaa1a528a5c83e8a08ad1c19 run41505626093 green merged 51e8c5243c7706c5c53b8858f7a28e6dea2230f3, queue generation412."
+    },
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "PR1953 merged and queued publication reconciled; 50 synthetic policy fixture source-only acceptance"
     }
   },
   "constraints": {
@@ -39,5 +43,14 @@
     "no_privacy_claim_without_proof": true,
     "no_other_lane_mutation": true,
     "no_automatic_successor": true
+  },
+  "completion_evidence": {
+    "pr": 1953,
+    "candidate_head": "989ae02e5383b22efaa1a528a5c83e8a08ad1c19",
+    "validation_run": 41505626093,
+    "merge_sha": "51e8c5243c7706c5c53b8858f7a28e6dea2230f3",
+    "queue_generation": 412,
+    "fixture_cases": 50,
+    "grade": "PUBLISHED_SOURCE_AND_SYNTHETIC_ONLY"
   }
 }

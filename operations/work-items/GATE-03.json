@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "gate",
+  "program_id": "GATE",
+  "work_item_id": "GATE-03",
+  "attempt_id": "GATE-03-attempt-001",
+  "status": "in_progress",
+  "completed": false,
+  "implementation_authority": false,
+  "selected_by_owner": "Owner approved GATE 14-tranche program and on 2026-11-02 requested continuation; GATE-02 source-only evidence merged and reconciled, permitting next bounded GATE-03 contracts proposal.",
+  "implementation_branch": "program/gate03-provider-neutral-billing-contracts-20261102",
+  "scope": "Define provider-neutral checkout intent, Stripe-first conditional adapter, permanent account/provider binding, verified provider evidence, idempotency, payment-to-entitlement separation; prepare 42 synthetic source contract cases and dated Stripe official-doc references, without live billing or product code.",
+  "backlog": "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM_BACKLOG.json",
+  "acceptance": [
+    "Provider-neutral typed interfaces separate subject, intent, provider customer, billing verified evidence and resource capability",
+    "Checkout never uses client price/subject or a success redirect to mint membership",
+    "Wrong-account, provider environment, product mapping, invalid signature, retry, stale/replay and Play/storefront mismatches covered by synthetic negative fixtures",
+    "42 design-only focused tests and exact-head OPS5 validation + publication evidence; no live provider/merchant claims"
+  ],
+  "active_substep": "provider_contract_and_reference_test_candidate",
+  "next_action": "Validate/publish bounded GATE03 source contract; preserve live provider GATE10 and product GATE09 dependency gates.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "provider_contract_candidate",
+      "evidence": "42 source-only provider/customer/checkout tests and typed interface proposal; no production adapter"
+    }
+  },
+  "constraints": {
+    "no_billing_provider_activation": true,
+    "no_price_publication": true,
+    "no_product_implementation": true,
+    "no_provider_secrets": true,
+    "no_spending": true,
+    "no_other_lane_selector_mutation": true
+  }
+}
