@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 664,
+  "state_revision": 665,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -165,17 +165,17 @@
       "source_backlog": "governance/application-planning/xtra-pre-pcv-readiness/XTRA_PROGRAM_BACKLOG.json"
     },
     "gate": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "program_id": "GATE-PREP",
-      "selected_work_item": "GATE-PREP-01",
-      "attempt_id": "GATE-PREP-01-attempt-001",
-      "checkpoint_path": "operations/work-items/GATE-PREP-01.json",
-      "implementation_branch": "program/gate-prep-isolated-engineering-01-04-20261102",
-      "implementation_authority": true,
-      "execution_authority": "isolated_nonproduction_testbed_only",
+      "selected_work_item": "GATE-PREP-04",
+      "attempt_id": "GATE-PREP-04-attempt-001",
+      "checkpoint_path": "operations/work-items/GATE-PREP-04.json",
+      "implementation_branch": "program/gate-prep-01-04-tested-closeout-20261102",
+      "implementation_authority": false,
+      "execution_authority": "none_after_isolated_preintegration_completion",
       "source_program": "governance/application-planning/gate-preintegration/GATE_PREP_PROGRAM.md",
       "source_backlog": "governance/application-planning/gate-preintegration/GATE_PREP_BACKLOG.json",
-      "activation_rule": "Explicit owner approval of GATE-PREP01..04 isolated nonproduction engineering; no GATE09 selection, app, provider, price, PCV or other lane authority. GATE01..08 remain completed in own backlog."
+      "activation_rule": "GATE-PREP01..04 nonproduction isolated testbed completed; GATE Stage A design remains completed. GATE09 product requires separately explicit owner implementation authorization and PCV03F verified prerequisites; no automatic successor."
     }
   },
   "truth_rules": {
@@ -215,7 +215,7 @@
     "ops5_agent_completion": "Worker started, input accepted, artifact produced, focused check, real-boundary validation, owner acceptance and publication are distinct; follow current operations guards and real-source proof; do not add per-status journal receipts.",
     "ops5_bridge_fallback": "Missing local index or unverified host skill never blocks authorized work. Read relevant current source directly with GitHub tools; avoid compulsory research on trivial tasks."
   },
-  "next_project_action": "GATE-PREP isolated 01–04 exact-head Node and disposable PostgreSQL tests; publish under OPS5. Product GATE09 independently owner-gated and PCV03F service proof pending.",
+  "next_project_action": "GATE-PREP01..04 isolated testbed verified and terminal. GATE09 backend/PCV service and GATE10 provider remain owner-gated. PCV03F in progress; preserve PCV/GPR, MTLC, AXI, CWKS lanes.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

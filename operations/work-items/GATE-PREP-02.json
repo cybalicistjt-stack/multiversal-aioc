@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "gate",
+  "program_id": "GATE-PREP",
+  "implementation_authority": false,
+  "implementation_branch": "program/gate-prep-isolated-engineering-01-04-20261102",
+  "backlog": "governance/application-planning/gate-preintegration/GATE_PREP_BACKLOG.json",
+  "completed": true,
+  "status": "completed_verified",
+  "selected_by_owner": "2026-11-02 explicit approval of all GATE-PREP-01 through 04 independent testbed work. No GATE09.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Exact-head isolated source tests in PR1961, OPS5 green, published queue428"
+    }
+  },
+  "work_item_id": "GATE-PREP-02",
+  "attempt_id": "GATE-PREP-02-attempt-001",
+  "scope": "Fake in-memory provider reconciliation only; no authentic Stripe signature/checkout",
+  "acceptance": [
+    "Fake signed-verification assumption only; bound customer, dedupe, outage retried, paid-through, refund hold tests"
+  ],
+  "active_substep": "isolated_node_verified",
+  "next_action": "Real provider test-mode signature and lookup only under GATE10 after separate owner authorization",
+  "completion_evidence": {
+    "pr": 1961,
+    "branch_head": "9701f8aa3ffd5ce7fad0d3c71ebbda379eb7e26f",
+    "ops5_run": 41521141144,
+    "isolation_run": 41521141211,
+    "merge_sha": "0e534b0a773a6036eca97871b0623e6adb0ca099",
+    "queue_generation": 428,
+    "not_product_proof": true,
+    "grade": "EXECUTED_NODE_FAKE_PROVIDER_4_CASES"
+  }
+}
