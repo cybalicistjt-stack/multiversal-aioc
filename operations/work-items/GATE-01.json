@@ -4,8 +4,8 @@
   "program_id": "GATE",
   "work_item_id": "GATE-01",
   "attempt_id": "GATE-01-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "2026-11-02 owner directive to name GATE, register under OPS5, structure tranches, and continue planning.",
   "implementation_branch": "program/gate01-subscription-architecture-20261102",
@@ -17,19 +17,23 @@
     "Source-ranked architecture and policy decisions distinguish owner-approved from pending",
     "Protected-main exact-head validation, fresh-main integration and merge before completed_verified"
   ],
-  "active_substep": "source_architecture_candidate_prep",
-  "next_action": "Validate immutable GATE-01 candidate then protected-main publication; reconcile exact published evidence; only then consider GATE-02 selection.",
+  "active_substep": "registration_published_and_reconciled",
+  "next_action": "GATE-01 completed source/design registration only; GATE-02 is separately selected for policy architecture.",
   "execution_guard": {
     "continue_turns": 1,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "source_candidate_prepared",
-      "evidence": "Atomic OPS5/GATE-01 planning candidate, CI/publication pending"
+      "seq": 2,
+      "kind": "published_source_registration",
+      "evidence": "PR1952 exact-head 350cb374e9d2848e9bb3f864e4b80d32bce95669 OPS5 run41501440843 GREEN; merged e51e653c68ef2e49751d2c8f62d43260108e7730; queue generation410"
+    },
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Verified PR #1952 merge, OPS5 exact-head green validation, reconciled publication queue generation 410; registration source-only"
     }
   },
   "constraints": {
@@ -40,5 +44,13 @@
     "no_public_price": true,
     "no_lane_authority_mutation": true,
     "no_production_security_certification": true
+  },
+  "completion_evidence": {
+    "pr": 1952,
+    "prequeue_run": 41501440843,
+    "candidate_head": "350cb374e9d2848e9bb3f864e4b80d32bce95669",
+    "merge_sha": "e51e653c68ef2e49751d2c8f62d43260108e7730",
+    "queue_generation": 410,
+    "proof_grade": "PUBLISHED_SOURCE_DESIGN_ONLY"
   }
 }

@@ -4,9 +4,9 @@
   "program_name": "Governed Access, Transactions & Entitlements",
   "owner": "John Brandon Turner",
   "created": "2026-11-02",
-  "status": "GATE-01_in_progress_source_only",
-  "selected_work_item": "GATE-01",
-  "selected_attempt": "GATE-01-attempt-001",
+  "status": "GATE-02_in_progress_source_only",
+  "selected_work_item": "GATE-02",
+  "selected_attempt": "GATE-02-attempt-001",
   "authority_boundary": "On-demand program, not fourth persistent implementation slot; GATE-01 source/design only. Future GATE-09..13 product/provider implementations require separately CURRENT-selected scope and real dependencies; GATE-14 final owner-only gate.",
   "publication_rule": "PR-only protected main, immutable exact head, required validations and fresh-base integration; no automatic successor.",
   "tranches": [
@@ -15,19 +15,26 @@
       "name": "OPS5 scope, evidence audit & architecture",
       "priority": "P0",
       "kind": "source_only",
-      "status": "in_progress",
+      "status": "completed_verified",
       "depends_on": [],
       "external_dependencies": [],
       "scope": "Source-ranked OPS5/SBEC/BESF/UADS/SA-BILL/SCEV/XTRA analysis, provider-neutral architecture, program registry, decision register, acceptance map.",
       "acceptance": "All 14 tranches coherent, current source and status pinned, persistent lanes untouched; GATE-01 source-design candidate passes OPS5 PR gate.",
-      "code_implementation_authorized": false
+      "code_implementation_authorized": false,
+      "completion_evidence": {
+        "pr": 1952,
+        "run": 41501440843,
+        "merge_sha": "e51e653c68ef2e49751d2c8f62d43260108e7730",
+        "queue_generation": 410,
+        "grade": "SOURCE_ONLY"
+      }
     },
     {
       "id": "GATE-02",
       "name": "Membership, capability and ownership policies",
       "priority": "P0",
       "kind": "source_only",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "GATE-01"
       ],
