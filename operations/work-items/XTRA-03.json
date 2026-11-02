@@ -4,8 +4,8 @@
   "program_id": "XTRA",
   "work_item_id": "XTRA-03",
   "attempt_id": "XTRA-03-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "Owner XTRA family/Continue; XTRA-01 completed; XTRA-02 external-only blocked but not a dependency of XTRA-03.",
   "scope": "Reconcile the full 25-feature internal-alpha evidence ledger at AIOC draft PR1927 against current application source, live PR and associated OPS5/PCV source authority; resolve document inaccuracies and preserve real feature implementation gaps. No blocked product implementation.",
@@ -17,20 +17,36 @@
     "Preserve unresolved F012, F017, F024 or other gaps unless real current source proves them closed",
     "Source-only reconciliation passes exact-head OPS5 gates and protected-main publication as allowed"
   ],
-  "active_substep": "inspect_existing_feature_ledger_pr1927",
-  "next_action": "Review source-draft PR1927 against current AIOC and app heads; fix only evidenced inaccuracies, certify matrix completeness and publish via governed PR process; no PCV/MTLC/AXI work mutation.",
+  "active_substep": "completed_verified",
+  "next_action": "Resume XTRA-04 through OPS5 once successor selector is published.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "selected_after_xtra02_external_blocker",
-      "evidence": "XTRA02 Render no-backup external blocker recorded; XTRA03 depends only on completed XTRA01."
+      "seq": 2,
+      "kind": "source_feature_crosswalk_exact_head_published",
+      "evidence": "PR1927 run41457825700 GREEN, merge da998b6913c1e4a7aeefebc9c54e9c4072f20832, READY queue gen368."
     }
+  },
+  "completion_evidence": {
+    "pr": 1927,
+    "head": "5a0ab976b3d1dbaf28ab8b091016ed36e6c50d4a",
+    "validation_run": 41457825700,
+    "merge_sha": "da998b6913c1e4a7aeefebc9c54e9c4072f20832",
+    "publication_queue_generation": 368,
+    "source_paths_checked": 23,
+    "feature_ids": 25,
+    "unique_pr_statuses_rechecked": 29,
+    "unresolved_feature_scope": [
+      "MV-IA-F012",
+      "MV-IA-F017",
+      "MV-IA-F024"
+    ],
+    "proof_limit": "Source-and-PR snapshot only; no installed device or release certification"
   }
 }
