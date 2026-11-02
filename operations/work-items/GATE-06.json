@@ -4,8 +4,8 @@
   "program_id": "GATE",
   "work_item_id": "GATE-06",
   "attempt_id": "GATE-06-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "Owner Continue after verified GATE-05 source publication; bounded owner-approved one-slot allowance/Sponsored Month design only.",
   "implementation_branch": "program/gate06-campaign-allowance-sponsored-access-20261102",
@@ -17,19 +17,23 @@
     "Preserve restricted lineage across copy/sync/export/search/AI and continued character view; unresolved ongoing GM eligibility marked pending",
     "Deterministic synthetic tests: 78 access decisions and 12 dependency closure cases, plus OPS5 exact-head source publication; no real service or security proof"
   ],
-  "active_substep": "allowance_policy_candidate",
-  "next_action": "Exact-head validate and publish the GATE-06 source-only policy and synthetic oracle, then reconcile publication before successor selection.",
+  "active_substep": "source_policy_published",
+  "next_action": "GATE-06 source policy and 90 synthetic cases published; GATE-07 bounded offline design selected.",
   "execution_guard": {
     "continue_turns": 1,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "policy_source_candidate",
-      "evidence": "Owner UADS allowance/sponsor design, 78 synthetic decisions, 12 closure graph cases; no real DB/service security tests"
+      "seq": 2,
+      "kind": "published_allowance_source",
+      "evidence": "PR1957 exact head 9560ea9100ec19691aceec7b5bfb25def9b57296 run41511172775 green merge 86995fc643f566017f162abee75aaa525092e83f queue generation420"
+    },
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Source-only GATE-06 published PR1957; 78 policy cases +12 dependency graph, queue generation420"
     }
   },
   "constraints": {
@@ -40,5 +44,13 @@
     "no_new_owner_consumer_policy": true,
     "no_production_crypto_claim": true,
     "no_automatic_successor": true
+  },
+  "completion_evidence": {
+    "pr": 1957,
+    "validation_run": 41511172775,
+    "candidate_head": "9560ea9100ec19691aceec7b5bfb25def9b57296",
+    "merge_sha": "86995fc643f566017f162abee75aaa525092e83f",
+    "queue_generation": 420,
+    "grade": "PUBLISHED_SOURCE_AND_SYNTHETIC_90_CASES"
   }
 }

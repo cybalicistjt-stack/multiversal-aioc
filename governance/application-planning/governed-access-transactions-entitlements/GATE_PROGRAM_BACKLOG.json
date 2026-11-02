@@ -4,9 +4,9 @@
   "program_name": "Governed Access, Transactions & Entitlements",
   "owner": "John Brandon Turner",
   "created": "2026-11-02",
-  "status": "GATE-06_in_progress_source_only",
-  "selected_work_item": "GATE-06",
-  "selected_attempt": "GATE-06-attempt-001",
+  "status": "GATE-07_in_progress_source_only",
+  "selected_work_item": "GATE-07",
+  "selected_attempt": "GATE-07-attempt-001",
   "authority_boundary": "On-demand program, not fourth persistent implementation slot; GATE-01 source/design only. Future GATE-09..13 product/provider implementations require separately CURRENT-selected scope and real dependencies; GATE-14 final owner-only gate.",
   "publication_rule": "PR-only protected main, immutable exact head, required validations and fresh-base integration; no automatic successor.",
   "tranches": [
@@ -120,7 +120,7 @@
       "name": "Campaign allowances and sponsored access",
       "priority": "P0",
       "kind": "source_only",
-      "status": "in_progress",
+      "status": "completed_verified",
       "depends_on": [
         "GATE-02",
         "GATE-05"
@@ -128,14 +128,21 @@
       "external_dependencies": [],
       "scope": "One slot per Campaign+Player; subscribed GM eligible issuance; one content root+verified dependencies; campaign-only use, preserved restricted characters.",
       "acceptance": "Deny laundering/copy/export/search/AI and cross-Campaign transfer; retain independent rights; differentiate Sponsored Month from Campaign Allowance.",
-      "code_implementation_authorized": false
+      "code_implementation_authorized": false,
+      "completion_evidence": {
+        "pr": 1957,
+        "run": 41511172775,
+        "merge_sha": "86995fc643f566017f162abee75aaa525092e83f",
+        "queue_generation": 420,
+        "grade": "SOURCE_AND_SYNTHETIC_ONLY"
+      }
     },
     {
       "id": "GATE-07",
       "name": "Offline license/device security design",
       "priority": "P1",
       "kind": "source_only",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "GATE-05",
         "GATE-06"

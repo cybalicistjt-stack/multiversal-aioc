@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "gate",
+  "program_id": "GATE",
+  "work_item_id": "GATE-07",
+  "attempt_id": "GATE-07-attempt-001",
+  "status": "in_progress",
+  "completed": false,
+  "implementation_authority": false,
+  "selected_by_owner": "Owner Continue through GATE source-design program; GATE-06 exact-head source publication and queue reconciliation verified; GATE-07 design only.",
+  "implementation_branch": "program/gate07-offline-license-device-security-20261102",
+  "scope": "Source-only finite signed offline entitlement envelope, account+device key hierarchy, Windows DPAPI/Android Keystore trade-offs, trusted time, account switch lock, known revocation, native/sync acceptance, offline leak threat analysis, 68 model decisions+12 time boundary cases. No cryptographic or app implementation.",
+  "backlog": "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM_BACKLOG.json",
+  "acceptance": [
+    "Approved unchanged-account/device offline continuity within trusted finite verified paid-through; access-token rotation alone does not invalidate lease",
+    "Separate subscriber, Sponsored Month, exact Campaign Allowance and retained-character keys with account/device/session/manifest/policy version binding; no global key",
+    "Known-denial and account switch lock persist; transient outage does not erase valid scoped lease; local clock rollback and replay documented",
+    "At least 60 reference decision cases+10 time cases, explicit Windows/Android acceptance plan and security residual risks, exact-head OPS5 protected source publication"
+  ],
+  "active_substep": "offline_device_security_candidate",
+  "next_action": "Run immutable CI and source-only fixtures, publish and reconcile GATE-07 prior to GATE-08 source/storefront selection; real installed proof deferred to GATE-11/12.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "gate07_device_security_design",
+      "evidence": "68 policy cases, 12 temporal cases; Windows DPAPI, Android Keystore, WebCrypto/MASVS evidence; source design only"
+    }
+  },
+  "constraints": {
+    "no_product_or_database_implementation": true,
+    "no_real_signing_or_device_attestation": true,
+    "no_credential_or_provider_activation": true,
+    "no_price_or_spend": true,
+    "no_other_lane_authority_mutation": true,
+    "no_automatic_successor": true
+  }
+}
