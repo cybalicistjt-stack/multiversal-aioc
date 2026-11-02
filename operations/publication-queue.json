@@ -1,27 +1,8 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 405,
-  "ready": [
-    {
-      "candidate_id": "XTRA12-terminal-source-evidence-PR1950",
-      "lane": "xtra",
-      "work_item_id": "XTRA-12",
-      "pr_number": 1950,
-      "head_sha": "9024cecf776445d475cb6d2849fee00fadbf9795",
-      "prequeue_validation": {
-        "status": "green",
-        "head_sha": "9024cecf776445d475cb6d2849fee00fadbf9795",
-        "run_id": "41479904340"
-      },
-      "write_set": [
-        ".github/workflows/validate-repository-health.yml",
-        "governance/application-planning/xtra-pre-pcv-readiness/XTRA-12_TERMINAL_EVIDENCE_REGISTRY_v1.0.0.json",
-        "governance/application-planning/xtra-pre-pcv-readiness/XTRA-12_TERMINAL_READINESS_AND_OWNER_HANDOFF.md",
-        "tests/control_plane/test_xtra12_terminal_audit.py"
-      ]
-    }
-  ],
+  "generation": 406,
+  "ready": [],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
@@ -6750,7 +6731,35 @@
         "run_id": "41478393214",
         "mergeable": true
       }
+    },
+    {
+      "candidate_id": "XTRA12-terminal-source-evidence-PR1950",
+      "lane": "xtra",
+      "work_item_id": "XTRA-12",
+      "pr_number": 1950,
+      "head_sha": "9024cecf776445d475cb6d2849fee00fadbf9795",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "9024cecf776445d475cb6d2849fee00fadbf9795",
+        "run_id": "41479904340"
+      },
+      "write_set": [
+        ".github/workflows/validate-repository-health.yml",
+        "governance/application-planning/xtra-pre-pcv-readiness/XTRA-12_TERMINAL_EVIDENCE_REGISTRY_v1.0.0.json",
+        "governance/application-planning/xtra-pre-pcv-readiness/XTRA-12_TERMINAL_READINESS_AND_OWNER_HANDOFF.md",
+        "tests/control_plane/test_xtra12_terminal_audit.py"
+      ],
+      "status": "published",
+      "merge_sha": "a7255b78f4dd734c7acb3bf6f54bce8441de06f4",
+      "integration_receipt": {
+        "status": "green",
+        "base_sha": "1cdcacd292801df6a5b9b0afcc71fd61c5c6359a",
+        "candidate_head": "9024cecf776445d475cb6d2849fee00fadbf9795",
+        "run_id": "41479904340",
+        "mergeable": true,
+        "drift_review": "Concurrent 1cdcacd provider-continuity source snapshot only; no altered pinned XTRA01..11 artifacts, no verified real backup"
+      }
     }
   ],
-  "last_merge_sha": "3abb686415cc75f6602da560b0629398281708c3"
+  "last_merge_sha": "a7255b78f4dd734c7acb3bf6f54bce8441de06f4"
 }
