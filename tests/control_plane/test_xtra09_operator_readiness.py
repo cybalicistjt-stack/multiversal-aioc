@@ -69,7 +69,7 @@ class Xtra09OperationalPreflight(unittest.TestCase):
         self.assertIsNone(m["targets"]["retention_days"]["value"])
         current = json.loads((ROOT / "operations/CURRENT.json").read_text(encoding="utf-8"))
         selected = current["lanes"]["xtra"]["selected_work_item"]
-        self.assertIn(selected, ("XTRA-09", "XTRA-10", "XTRA-11"))
+        self.assertIn(selected, ("XTRA-09", "XTRA-10", "XTRA-11", "XTRA-12"))
         xtra09 = json.loads((ROOT / "operations/work-items/XTRA-09.json").read_text(encoding="utf-8"))
         if selected == "XTRA-09":
             self.assertEqual(xtra09["status"], "in_progress")
