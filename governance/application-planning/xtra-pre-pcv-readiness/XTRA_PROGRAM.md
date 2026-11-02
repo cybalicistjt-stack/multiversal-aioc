@@ -2,7 +2,7 @@
 
 **Program:** XTRA  
 **Authority:** owner-directed 2026-11-02, recorded through OPS5 CURRENT/LANES after protected-main approval  
-**Status:** XTRA-01 completed_verified; XTRA-02 selected (pending OPS5 successor publication)  
+**Status:** XTRA-01 completed_verified; XTRA-02 blocked_external; XTRA-03 selected pending publication  
 **Purpose:** finish independent, useful pre-PCV-03F work and prepare downstream acceptance without bypassing PCV/MTLC/AXI/MCB authorities.
 
 ## Invariants
@@ -45,7 +45,7 @@
 
 **Acceptance.** Verified restore receipt or a fail-closed externally blocked disposition shows RPO/RTO, encryption, scope and absence of secret content; do not claim a backup on config alone.
 
-**Dependency.** XTRA-01. **Current state:** in_progress (successor selection pending publication). Authorized provider assessment only.
+**Dependency.** XTRA-01. **Current state:** blocked_external. Render database remains available but no verified export/restore exists; preserve owner action before 2026-11-08; do not treat this as recovered.
 
 ### XTRA-03 — Source and feature discrepancy closeout
 
@@ -53,7 +53,7 @@
 
 **Acceptance.** All 25 feature IDs appear once, fresh source/PR evidence links agree, unresolved F012/F017/F024 and other gaps remain visible; publication only after required exact-head gates.
 
-**Dependency.** XTRA-01. **Current state:** planned. No automatic authority from this roadmap.
+**Dependency.** XTRA-01. **Current state:** in_progress (successor selection pending publication). Source reconciliation only.
 
 ### XTRA-04 — Golden Campaign and source/content fixture package
 
