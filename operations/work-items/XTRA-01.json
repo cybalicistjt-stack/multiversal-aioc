@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "xtra",
+  "program_id": "XTRA",
+  "work_item_id": "XTRA-01",
+  "attempt_id": "XTRA-01-attempt-001",
+  "status": "in_progress",
+  "completed": false,
+  "implementation_authority": false,
+  "scope": "Read-only/live-repository audit, program and operational registry proposal, evidence matrix, dependency and blocker classification; no product implementation or provider mutation.",
+  "selected_by_owner": "2026-11-02 explicit XTRA family + continue",
+  "source_program": "governance/application-planning/xtra-pre-pcv-readiness/XTRA_PROGRAM.md",
+  "backlog": "governance/application-planning/xtra-pre-pcv-readiness/XTRA_PROGRAM_BACKLOG.json",
+  "checkpoint": "governance/application-planning/xtra-pre-pcv-readiness/XTRA-01_BASELINE_EVIDENCE_2026-11-02.md",
+  "implementation_branch": "program/xtra-pre-pcv03f-readiness-20261102",
+  "acceptance": [
+    "Pin OPS5/app main and active PR heads from live GitHub",
+    "Classify the full XTRA-01..12 readiness and evidence gaps",
+    "Keep PCV-03F and MTLC-14 intact and prohibit automatic downstream activation",
+    "Verify XTRA manifests, owner scope and PR publication evidence"
+  ],
+  "active_substep": "create_source_bound_registry_baseline_and_pr",
+  "next_action": "Finish exact-head audit/control-plane validation and protected-main publication of XTRA registration and XTRA-01 baseline. Only then select next eligible XTRA tranche through OPS5; XTRA-02 has a time-sensitive Render database expiry but must not fabricate restore proof.",
+  "execution_guard": {
+    "material_progress_seq": 1,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "owner_selected_tranche_family_prepared",
+      "evidence": "User request 2026-11-02 plus live AIOC/app/PR/Render evidence."
+    },
+    "terminal_response_allowed": false
+  },
+  "constraints": {
+    "no_fourth_persistent_slot": true,
+    "preserve": [
+      "PCV-03F",
+      "MTLC-14",
+      "AXI-01"
+    ],
+    "no_automatic_pcv_04_to_10": true,
+    "no_paid_provider_spend": true,
+    "no_public_release": true
+  }
+}

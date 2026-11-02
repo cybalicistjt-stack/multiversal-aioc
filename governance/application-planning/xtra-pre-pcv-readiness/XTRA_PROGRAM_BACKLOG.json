@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "XTRA",
+  "program_name": "Cross-Tranche Readiness Acceleration",
+  "owner": "John Brandon Turner",
+  "status": "in_progress_owner_selected_xtra01_pending_publication",
+  "selected_work_item": "XTRA-01",
+  "selected_attempt": "XTRA-01-attempt-001",
+  "activation": "Owner directive 2026-11-02: turn entire pre-PCV-03F independent-work sequence into XTRA, record via OPS5, then continue.",
+  "authority_boundary": "On-demand nonpersistent OPS5 lane. XTRA-01 authorizes audit/evidence/docs and reversible governance preparation only. Later XTRA items require CURRENT-backed selection (or owner-directed scoped execution) and independent approvals. PCV-04..10 implementation and MCB tranche completion are not automatically authorized.",
+  "critical_path_parent": "PCV-03F stays in_progress in gpr; MTLC-14 independent; AXI remains separately owner-selected.",
+  "tranches": [
+    {
+      "id": "XTRA-01",
+      "name": "Authority, baseline and independence classification",
+      "priority": "P0",
+      "classification": "independent",
+      "scope": "Pin OPS5/app sources and PRs; enumerate prerequisites and evidence gaps; classify each follow-on as independent, preparatory or blocked; publish no duplicate implementation owner.",
+      "acceptance": "The canonical source/PR matrix includes PCV-03F, MTLC-14, AXI, MCB, 25-feature ledger and all blocked PCV-04..10; evidence is pinned and no ineligible tranche is activated.",
+      "depends_on": [],
+      "status": "in_progress",
+      "execution_authority": "owner_scope_baseline_only",
+      "code_implementation_allowed": false
+    },
+    {
+      "id": "XTRA-02",
+      "name": "Certification host continuity and recoverability",
+      "priority": "P0",
+      "classification": "conditional_external",
+      "scope": "Inventory Render/Supabase/Railway without dependency on Railway; address November 8 free Render PostgreSQL expiry via authorized verified export/backup, restore drill, retention and safe secrets procedures; avoid paid changes without approval.",
+      "acceptance": "Verified restore receipt or a fail-closed externally blocked disposition shows RPO/RTO, encryption, scope and absence of secret content; do not claim a backup on config alone.",
+      "depends_on": [
+        "XTRA-01"
+      ],
+      "status": "planned",
+      "execution_authority": "requires_current_selection_or_explicit_follow_on",
+      "code_implementation_allowed": false
+    },
+    {
+      "id": "XTRA-03",
+      "name": "Source and feature discrepancy closeout",
+      "priority": "P0",
+      "classification": "independent",
+      "scope": "Review AIOC draft PR1927 25-feature source/PR ledger, reconcile current head and resolve design-vs-implementation/status discrepancies via normal document gates.",
+      "acceptance": "All 25 feature IDs appear once, fresh source/PR evidence links agree, unresolved F012/F017/F024 and other gaps remain visible; publication only after required exact-head gates.",
+      "depends_on": [
+        "XTRA-01"
+      ],
+      "status": "planned",
+      "execution_authority": "requires_current_selection_or_explicit_follow_on",
+      "code_implementation_allowed": false
+    },
+    {
+      "id": "XTRA-04",
+      "name": "Golden Campaign and source/content fixture package",
+      "priority": "P1",
+      "classification": "independent_content_preparation",
+      "scope": "Define one complete first-party Campaign/encounter/noncombat progression, characters, rules, scenes, inventories, expected ownership and versioned fixture manifest without live multiplayer execution.",
+      "acceptance": "Each chosen golden-path operation has deterministic setup data, expected result, permission context, source/rights reference and assigned PCV acceptance owner.",
+      "depends_on": [
+        "XTRA-01"
+      ],
+      "status": "planned",
+      "execution_authority": "requires_current_selection_or_explicit_follow_on",
+      "code_implementation_allowed": false
+    },
+    {
+      "id": "XTRA-05",
+      "name": "Golden-path asset and commercial-rights clearance",
+      "priority": "P1",
+      "classification": "independent_content_preparation",
+      "scope": "Map PCV asset demand through ARI/OARC and rights/provenance; prepare original or rights-cleared assets with source digest, license, permitted use, attribution and fallbacks; record AXI visual dependencies without claiming full coverage.",
+      "acceptance": "No golden-path asset is silently unclassified; missing rights/rig/reviewer evidence remains blocked and commercial redistribution is denied until cleared.",
+      "depends_on": [
+        "XTRA-01"
+      ],
+      "status": "planned",
+      "execution_authority": "requires_current_selection_or_explicit_follow_on",
+      "code_implementation_allowed": false
+    },
+    {
+      "id": "XTRA-06",
+      "name": "Downstream PCV-04..10 acceptance and diagnostic prework",
+      "priority": "P1",
+      "classification": "preparation_only",
+      "scope": "Define executable test cases, fixtures, adverse cases, platform matrix, evidence receipt schemas, action/reconnect/hidden-information invariants and support/incident diagnostics for PCV-04..10.",
+      "acceptance": "Every downstream tranche has a bounded preflight with explicitly named real runtime dependency; no PCV-04..10 implementation or fabricated passes.",
+      "depends_on": [
+        "XTRA-01"
+      ],
+      "status": "planned",
+      "execution_authority": "requires_current_selection_or_explicit_follow_on",
+      "code_implementation_allowed": false
+    },
+    {
+      "id": "XTRA-07",
+      "name": "Role-based onboarding, help and tester operations",
+      "priority": "P1",
+      "classification": "preparation_only",
+      "scope": "Compose Player/GM/Creator first-game flows from BRP-02/03, MTLC-13 and F025; supply copy, permissions/limits, return/recovery context, accessible tester instructions and feedback/diagnostic templates.",
+      "acceptance": "Scripts and documentation are reviewed against currently available functionality; signed-in cross-device and independent human usability remain clearly unverified.",
+      "depends_on": [
+        "XTRA-01"
+      ],
+      "status": "planned",
+      "execution_authority": "requires_current_selection_or_explicit_follow_on",
+      "code_implementation_allowed": false
+    },
+    {
+      "id": "XTRA-08",
+      "name": "Subscription, allowance, security and rights threat preflight",
+      "priority": "P1",
+      "classification": "independent_research_and_synthetic",
+      "scope": "Reuse 2026-11-01 SA-BILL reference research; specify receipt authenticity, Campaign one-slot atomicity, dependency taint, export/cache denial, cancellations, offline leases and negative-case fixtures.",
+      "acceptance": "Policy and runnable synthetic/reference tests have sourced expected outcomes; no live payment, fake security certification or PCV-03F owner mutation.",
+      "depends_on": [
+        "XTRA-01"
+      ],
+      "status": "planned",
+      "execution_authority": "requires_current_selection_or_explicit_follow_on",
+      "code_implementation_allowed": false
+    },
+    {
+      "id": "XTRA-09",
+      "name": "Hosting, backup, privacy, monitoring and incident readiness",
+      "priority": "P2",
+      "classification": "independent_specification",
+      "scope": "Compile provider-neutral operating runbooks, health checks, alert matrix, retention, recovery objectives, data rights/support plans and rollback drills; coordinate with XTRA-02 incident risk.",
+      "acceptance": "Operator runbooks cover scope/auth/rollback/privacy, identify provider account/service gaps and independent recovery evidence before live data trust.",
+      "depends_on": [
+        "XTRA-01"
+      ],
+      "status": "planned",
+      "execution_authority": "requires_current_selection_or_explicit_follow_on",
+      "code_implementation_allowed": false
+    },
+    {
+      "id": "XTRA-10",
+      "name": "MCB market/customer/brand groundwork",
+      "priority": "P2",
+      "classification": "conditional_mcb_activation",
+      "scope": "Build reusable source-evidenced research, competitive comparison, target-user/persona hypotheses, brand voice and messaging/claim matrices corresponding to MCB-01..08 without silently marking MCB tranches done.",
+      "acceptance": "Evidence and hypothetical claims are separated; customer observations are labeled as collected vs pending; MCB authority must be separately selected for its own tranche closeouts.",
+      "depends_on": [
+        "XTRA-01"
+      ],
+      "status": "planned",
+      "execution_authority": "requires_current_selection_or_explicit_follow_on",
+      "code_implementation_allowed": false
+    },
+    {
+      "id": "XTRA-11",
+      "name": "MCB commercial, website, pricing and recruitment preparation",
+      "priority": "P2",
+      "classification": "conditional_mcb_activation",
+      "scope": "Prepare demos, site/SEO/content templates, consented recruitment plan, pricing and GM-to-player allowance models, lifecycle/analytics plan, launch/support FAQ corresponding to MCB-09..25.",
+      "acceptance": "No live subscription, paid acquisition, public discovery, misleading demo or publishable commercial claims; final price and launch remain owner-gated.",
+      "depends_on": [
+        "XTRA-01"
+      ],
+      "status": "planned",
+      "execution_authority": "requires_current_selection_or_explicit_follow_on",
+      "code_implementation_allowed": false
+    },
+    {
+      "id": "XTRA-12",
+      "name": "Pre-PCV-03F handoff and independent terminal readiness review",
+      "priority": "P2",
+      "classification": "independent_audit_with_external_gates",
+      "scope": "Consolidate all XTRA evidence, owner decisions, retained blockers, artifact hashes and successor handoffs; provide exact pending steps for PCV-03F completion and MTLC-14/PCV-04..10 after their own gates.",
+      "acceptance": "Completed independent outputs have live source/PR/test evidence; external/PCV-gated tasks remain blocked, not auto-completed; no XTRA record certifies PCV completion or public readiness.",
+      "depends_on": [
+        "XTRA-01",
+        "XTRA-02",
+        "XTRA-03",
+        "XTRA-04",
+        "XTRA-05",
+        "XTRA-06",
+        "XTRA-07",
+        "XTRA-08",
+        "XTRA-09",
+        "XTRA-10",
+        "XTRA-11"
+      ],
+      "status": "planned",
+      "execution_authority": "requires_current_selection_or_explicit_follow_on",
+      "code_implementation_allowed": false
+    }
+  ],
+  "release_gates": {
+    "pcv04_to_10": "blocked_by_pcv03f_and_sequential_predecessors",
+    "mtlc14": "installed_human_measurement_after_pcv03f",
+    "commercial": "owner_approval_required_for_price_store_billing_paid_services_public_launch",
+    "backup": "requires_verified_real_restore_not_config_only"
+  },
+  "parallel_implementation_slots": [
+    "gpr",
+    "cwks",
+    "mtlc"
+  ]
+}

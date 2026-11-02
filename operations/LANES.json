@@ -280,6 +280,25 @@
       ],
       "cross_lane_reads": "Keep GPR PCV-03F and MTLC-14 implementation branches, selectors, checkpoints and work intact. AXI may read explicit integration owner contracts but not mutate those lanes or reopen terminal program authority. AXI no automatic publication; exact-head validation and protected-main coordination still apply.",
       "implementation_policy": "on-demand; explicitly selected by owner in CURRENT, bounded to AXI-01; not included in persistent_implementation_lanes or lane-state ref system"
+    },
+    {
+      "id": "xtra",
+      "purpose": "Owner-selected XTRA Cross-Tranche Readiness Acceleration: finish independent pre-PCV-03F source/evidence/content/operations/commercial-preparation work without taking another PCV/MTLC/AXI/MCB implementation or release authority. Not a fourth persistent lane.",
+      "intent_examples": [
+        "continue XTRA",
+        "start XTRA",
+        "pre-PCV-03F readiness work",
+        "XTRA-01 baseline"
+      ],
+      "current_state_source": "operations/CURRENT.json#/lanes/xtra",
+      "source_bundle": [
+        "CURRENT-selected XTRA work item and bounded scope",
+        "governance/application-planning/xtra-pre-pcv-readiness/XTRA_PROGRAM.md",
+        "governance/application-planning/xtra-pre-pcv-readiness/XTRA_PROGRAM_BACKLOG.json",
+        "only necessary live app/AIOC source, PR, provider and MCB/PCV/ARI evidence named by selected item"
+      ],
+      "cross_lane_reads": "Read PCV-03F, MTLC-14, AXI, MCB, source provenance and existing owners only to establish dependencies/evidence. Never mutate their selectors or implement successor PCV-04..10 or MCB commercial work from XTRA alone.",
+      "implementation_policy": "owner-scoped on-demand; XTRA-01 authorizes documentation/evidence baseline, not product code. Subsequent tranches require CURRENT-backed selection; do not use xtra as a parallel persistent lane."
     }
   ],
   "persistent_implementation_lanes": [
