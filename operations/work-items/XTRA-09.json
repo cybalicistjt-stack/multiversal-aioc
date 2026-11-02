@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "xtra",
+  "program_id": "XTRA",
+  "work_item_id": "XTRA-09",
+  "attempt_id": "XTRA-09-attempt-001",
+  "status": "in_progress",
+  "completed": false,
+  "implementation_authority": false,
+  "selected_by_owner": "Owner-authorized XTRA independent sequence; XTRA-08 published reference-only and OPS5 XTRA-09 selected through protected-main closeout.",
+  "scope": "Provider-neutral hosting, verified-backup/restore preflight, monitoring, privacy, incident escalation, retention, rollback and disaster recovery operator guidance; reference/synthetic tests only, XTRA-02 external Render export/restore remains pending.",
+  "implementation_branch": "program/xtra09-ops-privacy-incident-readiness-20261102",
+  "backlog": "governance/application-planning/xtra-pre-pcv-readiness/XTRA_PROGRAM_BACKLOG.json",
+  "acceptance": [
+    "Publish actionable provider-neutral runbooks with role permissions, health probes, alert thresholds, rollback and backup/restore evidence fields",
+    "Create runnable synthetic/tabletop incident scenarios and fail-closed decision tests covering auth, credentials, PII, backup expiration, provider outage and incident escalation",
+    "Explicitly record RPO/RTO targets as proposed until approved and distinguish live deployment from fixture proof",
+    "Maintain XTRA-02 Render expiry/restore as blocked external; no billed, credential-bearing or live restore actions"
+  ],
+  "active_substep": "read_current_provider_configuration_and_xtra02_evidence",
+  "next_action": "Author XTRA09 source-pinned operator runbooks, privacy/retention/incident matrix and deterministic synthetic drills, with actual provider boundary unverified.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "xtra08_published_xtra09_selected",
+      "evidence": "PR1941 source-only 39 synthetic case GREEN at exact head and merged; README/runbook research authorized; XTRA02 actual restore blocked."
+    }
+  },
+  "constraints": {
+    "no_provider_mutations": true,
+    "no_paid_services": true,
+    "no_live_data_backup_or_restore": true,
+    "no_product_mutations": true,
+    "no_public_security_certification": true
+  }
+}

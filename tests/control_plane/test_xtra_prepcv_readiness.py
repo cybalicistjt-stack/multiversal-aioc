@@ -40,8 +40,9 @@ class XtraRegistrationTests(unittest.TestCase):
         self.assertEqual(entries[4]["status"], "completed_verified")
         self.assertEqual(entries[5]["status"], "completed_verified")
         self.assertEqual(entries[6]["status"], "completed_verified")
-        self.assertEqual(entries[7]["status"], "in_progress")
-        self.assertTrue(all(row["status"] == "planned" for row in entries[8:]))
+        self.assertEqual(entries[7]["status"], "completed_verified")
+        self.assertEqual(entries[8]["status"], "in_progress")
+        self.assertTrue(all(row["status"] == "planned" for row in entries[9:]))
         self.assertTrue(all(row["code_implementation_allowed"] is False for row in entries))
         self.assertTrue(all(row["scope"] and row["acceptance"] and row["classification"] for row in entries))
         self.assertTrue(all(row["id"] not in row["depends_on"] for row in entries))
@@ -53,7 +54,7 @@ class XtraRegistrationTests(unittest.TestCase):
         self.assertIn("owner_approval_required", gates["commercial"])
         self.assertIn("verified_real_restore", gates["backup"])
         self.assertFalse(self.current["product_start_freeze"]["active"])
-        self.assertIn("threat/allowance", self.current["lanes"]["xtra"]["execution_authority"])
+        self.assertIn("hosting/backup/privacy", self.current["lanes"]["xtra"]["execution_authority"])
 
 if __name__ == "__main__":
     unittest.main()
