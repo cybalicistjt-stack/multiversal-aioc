@@ -1,0 +1,678 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "XTRA07-ROLE-TESTER-ONBOARDING-v1",
+  "status": "DOCUMENTATION_ONLY_PREPARED_NOT_HUMAN_TESTED",
+  "authority": "XTRA-07 source-based guide and tester contract; BRP, F025, MTLC and PCV authorities unchanged",
+  "source_pins": [
+    {
+      "path": "governance/application-planning/beta-readiness-product-operations/BRP-02_COMPLETION_REPORT.md",
+      "blob_sha": "9f25735c72ca8412175378f416d041eb05419d2f"
+    },
+    {
+      "path": "governance/ai/work-state/BRP-03-attempt-001.json",
+      "blob_sha": "7dac44e8f9df4ea3e381b55fe1418432bc907e3f"
+    },
+    {
+      "path": "operations/work-items/MTLC-13.json",
+      "blob_sha": "ef67c427116d60aea2d3e89337524071dbfc9f2d"
+    },
+    {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F025_ONBOARDING_SUPPORT_MATRIX.json",
+      "blob_sha": "4220c651ce740820c8227aa32db490313e4cae6b"
+    },
+    {
+      "path": "governance/application-planning/xtra-pre-pcv-readiness/XTRA-06_PCV_ACCEPTANCE_PREFLIGHT_v1.0.0.json",
+      "blob_sha": "d44e8ed15f2ac0547df2f3455b5c3c68aae45806"
+    },
+    {
+      "path": "governance/application-planning/xtra-pre-pcv-readiness/XTRA-04_BEACON_DEBT_GOLDEN_CAMPAIGN_FIXTURE_v1.0.0.json",
+      "blob_sha": "590451dd211280c969a46094369063c1c340fd7b"
+    }
+  ],
+  "role_guides": [
+    {
+      "id": "PLAYER",
+      "role": "player",
+      "goal": "Join only the Campaign to which the verified Player was invited, bind an authorized Character, participate and resume safely.",
+      "steps": [
+        {
+          "sequence": 1,
+          "step_id": "identify-release",
+          "instructions": "Confirm build, environment and support-policy identity shown on the product; if hidden, collect version safely in report rather than asserting a valid build.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 2,
+          "step_id": "verify-account",
+          "instructions": "Follow verified email/account and device linking when the actual PCV-03F service supports it; distinguish offline cached authority from new sign-in.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 3,
+          "step_id": "accept-invite",
+          "instructions": "Inspect inviter, Campaign, proposed Player membership and permissions; accept once; reject stale/wrong-Campaign/replayed invitation.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 4,
+          "step_id": "open-library",
+          "instructions": "Find the approved first-party object and Character without exposing source-only or restricted content; verify permission gate.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 5,
+          "step_id": "join-scene",
+          "instructions": "Open Beacon Debt Gate Pressure as Player; expect only visible facts and no GM-only CF-01..CF-06 until governed reveal.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 6,
+          "step_id": "propose-action",
+          "instructions": "Submit source-owned Player action; observe pending/approval/denial and eventual authoritative event without locally fabricating result.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 7,
+          "step_id": "resume-safely",
+          "instructions": "Disconnect, restart, reconnect and confirm Campaign context and event sequence; report a loss/mismatch, not 'reset account'.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        }
+      ]
+    },
+    {
+      "id": "GM",
+      "role": "game-master",
+      "goal": "Create and manage only authorized Campaign and Session, invite verified Player, run governed action decisions without leaking GM truth.",
+      "steps": [
+        {
+          "sequence": 1,
+          "step_id": "identify-and-consent",
+          "instructions": "Confirm current build, GM account/device authority and tester consent before any diagnostics.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 2,
+          "step_id": "create-campaign",
+          "instructions": "Create/open Campaign only on real supported production surface; bind permitted setting, packs and ownership.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 3,
+          "step_id": "invite-player",
+          "instructions": "Invite a distinct verified Player; check one Campaign allowance per Player under verified subscribing GM if product actually supports it, never assume entitlement from mock UI.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 4,
+          "step_id": "prepare-scene",
+          "instructions": "Select Beacon Debt five-scene sequence; inspect hidden clue and roles while verifying Player-safe projection.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 5,
+          "step_id": "adjudicate",
+          "instructions": "Approve/modify/deny proposed Action once; inspect current rules and event receipt, including denial and idempotency.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 6,
+          "step_id": "handoff-and-recover",
+          "instructions": "Exercise current-party handoff/print/spectator only within permissions; no owner transfer or magical revocation of exported pages.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 7,
+          "step_id": "session-closure",
+          "instructions": "Save/rest/reload and compare durable event history; note installed two-human/cross-device proof separately from source demo.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        }
+      ]
+    },
+    {
+      "id": "CREATOR",
+      "role": "content-creator",
+      "goal": "Use authorized creator workspace and reusable definitions without silently publishing canon or transferring restricted derivatives.",
+      "steps": [
+        {
+          "sequence": 1,
+          "step_id": "identify-role",
+          "instructions": "Confirm verified Creator role/account, current release, allowed workspace and independent Campaign grants.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 2,
+          "step_id": "search-and-select",
+          "instructions": "Find a permitted governed Definition, inspect source/version/rights and identify which assets are not commercial/export-cleared.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 3,
+          "step_id": "create-local",
+          "instructions": "Create Campaign-local or owned content under current scope; never infer canonical-owner rights from edit access.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 4,
+          "step_id": "validate-dependencies",
+          "instructions": "Check species/item/tree/setting dependencies, exact pack versions and Campaign-tainted derivative boundaries.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 5,
+          "step_id": "preview-and-share",
+          "instructions": "Preview permitted content and any intended share target; deny attempts to export restricted or Campaign-licensed derivative content.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 6,
+          "step_id": "return-to-workspace",
+          "instructions": "Resume draft state after navigation/restart where implemented; log missing persistence without inventing a real success.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        },
+        {
+          "sequence": 7,
+          "step_id": "issue-or-feedback",
+          "instructions": "Create permission-safe proposal/report; inspect data and attachments and confirm before submission/export.",
+          "verified_in_installed_product": false,
+          "unavailable_instruction": "Record unavailable/blocked state and source-safe diagnostic rather than inventing working UI controls."
+        }
+      ]
+    }
+  ],
+  "release_identity_required": [
+    "releaseId",
+    "applicationVersion",
+    "buildId",
+    "commitId",
+    "environmentClass",
+    "schemaVersion",
+    "migrationVersion",
+    "packSetDigest",
+    "releasedAt",
+    "supportPolicyId"
+  ],
+  "support_categories": [
+    "access-or-invitation",
+    "permission-or-hidden-information",
+    "entitlement",
+    "content-or-pack",
+    "save-or-persistence",
+    "realtime-or-reconnect",
+    "recovery-or-restore",
+    "ui-or-responsive",
+    "accessibility",
+    "performance",
+    "rules-or-resolution",
+    "data-or-migration",
+    "diagnostics-or-reporting",
+    "documentation-or-help",
+    "security-or-privacy",
+    "other"
+  ],
+  "support_severity_levels": [
+    "informational",
+    "minor",
+    "major",
+    "blocking",
+    "security-privacy"
+  ],
+  "onboarding_stages": [
+    "release-identification",
+    "invitation-and-role-confirmation",
+    "alpha-boundary-acknowledgement",
+    "workspace-entry",
+    "supported-journey-introduction",
+    "first-success-task",
+    "help-discovery",
+    "known-limitations-review",
+    "issue-report-introduction",
+    "completion-and-resume"
+  ],
+  "issue_report_required": [
+    "issueReportId",
+    "reporterSubjectId",
+    "releaseId",
+    "roleContext",
+    "selectedContextType",
+    "categoryId",
+    "severityId",
+    "reproducibility",
+    "blocksApprovedJourney",
+    "title",
+    "expectedResult",
+    "actualResult",
+    "reproductionSteps",
+    "submissionOperationId",
+    "createdAt"
+  ],
+  "diagnostic_manifest_required": [
+    "diagnosticBundleId",
+    "issueDraftId",
+    "releaseId",
+    "generatedAt",
+    "generatorVersion",
+    "fieldDefinitions",
+    "includedFields",
+    "excludedFieldCountByClass",
+    "redactionCountByClass",
+    "attachmentIds",
+    "consentId",
+    "manifestSha256"
+  ],
+  "issue_receipt_required": [
+    "issueReceiptId",
+    "issueReportId",
+    "submissionOperationId",
+    "releaseId",
+    "submittedAt",
+    "safeSummary",
+    "status",
+    "statusVersion",
+    "receiptSha256"
+  ],
+  "help_contexts": [
+    "global-shell",
+    "identity-entry",
+    "dashboard",
+    "workspace-selection",
+    "universal-object",
+    "character",
+    "campaign-builder",
+    "scene-builder",
+    "live-session",
+    "combat",
+    "inventory",
+    "social",
+    "investigation",
+    "world-builder",
+    "offline",
+    "stale",
+    "conflict",
+    "forbidden",
+    "entitlement-restricted",
+    "recovery"
+  ],
+  "protected_diagnostics": [
+    {
+      "surface": "identity-session",
+      "default": "exclude raw provider values and tokens"
+    },
+    {
+      "surface": "selected-context",
+      "default": "include safe IDs only after authorization"
+    },
+    {
+      "surface": "campaign",
+      "default": "exclude unrelated Campaigns"
+    },
+    {
+      "surface": "character",
+      "default": "exclude uncontrolled and hidden Characters"
+    },
+    {
+      "surface": "scene",
+      "default": "exclude GM truth from Player reports"
+    },
+    {
+      "surface": "session",
+      "default": "include safe sequence and state only"
+    },
+    {
+      "surface": "operations",
+      "default": "include stable IDs and safe result codes"
+    },
+    {
+      "surface": "commands",
+      "default": "include ID and status, not unauthorized payload"
+    },
+    {
+      "surface": "events",
+      "default": "include sequence and safe type, not hidden payload"
+    },
+    {
+      "surface": "checkpoints",
+      "default": "include ID and verification status"
+    },
+    {
+      "surface": "logs",
+      "default": "allowlisted excerpts after redaction and preview"
+    },
+    {
+      "surface": "screenshots",
+      "default": "explicit user selection only"
+    },
+    {
+      "surface": "attachments",
+      "default": "quarantine until validated and report-bound"
+    },
+    {
+      "surface": "network",
+      "default": "exclude headers, cookies, tokens, and full bodies"
+    },
+    {
+      "surface": "storage",
+      "default": "exclude raw database and filesystem dumps"
+    },
+    {
+      "surface": "permissions",
+      "default": "include user-safe reason codes, not policy internals"
+    },
+    {
+      "surface": "entitlements",
+      "default": "include safe decision reason, not protected catalog"
+    },
+    {
+      "surface": "performance",
+      "default": "include bounded timings and sizes"
+    },
+    {
+      "surface": "accessibility",
+      "default": "include user-selected preferences without sensitive health inference"
+    },
+    {
+      "surface": "device",
+      "default": "include coarse platform and version only"
+    },
+    {
+      "surface": "location",
+      "default": "exclude unless separately approved"
+    },
+    {
+      "surface": "ai",
+      "default": "exclude prompts and retrieved hidden content"
+    },
+    {
+      "surface": "support-access",
+      "default": "include request and approval IDs, not content"
+    },
+    {
+      "surface": "issue-index",
+      "default": "no protected counts or duplicate enumeration"
+    }
+  ],
+  "privacy_and_consent": {
+    "default_diagnostics": "EXCLUDED",
+    "default_help": "DENY_IF_NOT_PUBLIC_OR_CONTEXT_AUTHORIZED",
+    "default_issue": "DENIED_UNLESS_AUTHORIZED",
+    "consent_before_diagnostics": true,
+    "redaction_preview_before_attachment": true,
+    "client_redaction_plus_server_revalidation": true,
+    "secrets_excluded": [
+      "provider tokens",
+      "cookies",
+      "auth headers",
+      "raw database or filesystem dumps",
+      "GM-hidden clues",
+      "other Campaign data",
+      "private creator manuscripts"
+    ],
+    "reporting_modes": [
+      "permission-safe issue draft",
+      "idempotent submit with stable receipt when service configured",
+      "portable export when no intake service; redact first"
+    ],
+    "out_of_scope": [
+      "silent upload",
+      "remote screen control",
+      "automated canonical content promotion",
+      "public tester distribution",
+      "support access across Campaigns",
+      "paid crash analytics"
+    ]
+  },
+  "recovery_cards": [
+    {
+      "id": "RECONNECT",
+      "trigger": "connection closed/stale session",
+      "player_copy": "Reconnect to the authorized Campaign and compare the last saved event. If the state differs, report what the app shows without retrying a paid or destructive action.",
+      "safe_action": "reopen existing session using current valid authority; no new identity or duplicate event; if service unavailable stop",
+      "status": "SCRIPT_ONLY_NOT_TESTED"
+    },
+    {
+      "id": "PERMISSION",
+      "trigger": "forbidden GM/Player content",
+      "player_copy": "This content is not available for your current role or Campaign. Ask your GM about permitted access; do not share credentials or hidden notes.",
+      "safe_action": "deny and keep private data hidden; report a safe reason code only",
+      "status": "SCRIPT_ONLY_NOT_TESTED"
+    },
+    {
+      "id": "ALLOWANCE",
+      "trigger": "Campaign allowance missing, revoked or expired",
+      "player_copy": "This Campaign content is not currently unlocked for this account. The GM can check Campaign permissions; access cannot be copied to another Campaign.",
+      "safe_action": "verify real GM subscription and one-slot Campaign grant on backend; fail closed",
+      "status": "SCRIPT_ONLY_NOT_TESTED"
+    },
+    {
+      "id": "RECOVERY",
+      "trigger": "lost device/account or subject mismatch",
+      "player_copy": "Use the account recovery path. Your Campaign ownership must remain attached to the verified account; changing local device identity alone does not restore it.",
+      "safe_action": "subject-preserving recovery only; if identity or ownership cannot be verified stop",
+      "status": "SCRIPT_ONLY_NOT_TESTED"
+    },
+    {
+      "id": "DIAGNOSTICS",
+      "trigger": "problem report or export",
+      "player_copy": "Review the issue details and every attachment before sharing. Remove private campaign content or secrets. Nothing is sent until you confirm.",
+      "safe_action": "preview redacted diagnostic manifest, ask explicit consent and preserve stable receipt",
+      "status": "SCRIPT_ONLY_NOT_TESTED"
+    },
+    {
+      "id": "OFFLINE",
+      "trigger": "no network connection",
+      "player_copy": "Some saved information may be available offline if your authorization is still valid. Changes that require the server may remain unavailable until reconnection.",
+      "safe_action": "no entitlement bypass, no fake server-sync success",
+      "status": "SCRIPT_ONLY_NOT_TESTED"
+    }
+  ],
+  "negative_cases": [
+    {
+      "id": "XTRA07-P01",
+      "role": "PLAYER",
+      "scenario": "correct invite vs wrong Campaign",
+      "expected": "authorized membership only; no implicit role change",
+      "execution_status": "NOT_RUN",
+      "owner": "PCV-03F/PCV-09/PCV-10 or F025 owner as appropriate",
+      "evidence_required": "record build SHA, permitted role, actual result and sanitized human/device observations; source tests never count as installed proof"
+    },
+    {
+      "id": "XTRA07-P02",
+      "role": "PLAYER",
+      "scenario": "GM-only clues before discovery",
+      "expected": "CF-01..CF-06 remain hidden by server before governed reveal",
+      "execution_status": "NOT_RUN",
+      "owner": "PCV-03F/PCV-09/PCV-10 or F025 owner as appropriate",
+      "evidence_required": "record build SHA, permitted role, actual result and sanitized human/device observations; source tests never count as installed proof"
+    },
+    {
+      "id": "XTRA07-P03",
+      "role": "PLAYER",
+      "scenario": "reconnect with stale action receipt",
+      "expected": "same accepted event, no duplicate resource delta",
+      "execution_status": "NOT_RUN",
+      "owner": "PCV-03F/PCV-09/PCV-10 or F025 owner as appropriate",
+      "evidence_required": "record build SHA, permitted role, actual result and sanitized human/device observations; source tests never count as installed proof"
+    },
+    {
+      "id": "XTRA07-G01",
+      "role": "GM",
+      "scenario": "repeat invitation and same-Campaign Player allowance",
+      "expected": "one slot only when subscription authority is actually verified; no duplicate grant",
+      "execution_status": "NOT_RUN",
+      "owner": "PCV-03F/PCV-09/PCV-10 or F025 owner as appropriate",
+      "evidence_required": "record build SHA, permitted role, actual result and sanitized human/device observations; source tests never count as installed proof"
+    },
+    {
+      "id": "XTRA07-G02",
+      "role": "GM",
+      "scenario": "approve/modify/deny while Player watches",
+      "expected": "single server decision and role-safe view, no direct local truth mutation",
+      "execution_status": "NOT_RUN",
+      "owner": "PCV-03F/PCV-09/PCV-10 or F025 owner as appropriate",
+      "evidence_required": "record build SHA, permitted role, actual result and sanitized human/device observations; source tests never count as installed proof"
+    },
+    {
+      "id": "XTRA07-G03",
+      "role": "GM",
+      "scenario": "handoff and private spectator copy",
+      "expected": "current participant consent/role controls; no broad ownership escalation",
+      "execution_status": "NOT_RUN",
+      "owner": "PCV-03F/PCV-09/PCV-10 or F025 owner as appropriate",
+      "evidence_required": "record build SHA, permitted role, actual result and sanitized human/device observations; source tests never count as installed proof"
+    },
+    {
+      "id": "XTRA07-C01",
+      "role": "CREATOR",
+      "scenario": "imported third-party asset with unknown license",
+      "expected": "deny redistribution/commercial selection without ARI rights evidence",
+      "execution_status": "NOT_RUN",
+      "owner": "PCV-03F/PCV-09/PCV-10 or F025 owner as appropriate",
+      "evidence_required": "record build SHA, permitted role, actual result and sanitized human/device observations; source tests never count as installed proof"
+    },
+    {
+      "id": "XTRA07-C02",
+      "role": "CREATOR",
+      "scenario": "Campaign-tainted object shared outside Campaign",
+      "expected": "deny transfer and export of restricted dependencies",
+      "execution_status": "NOT_RUN",
+      "owner": "PCV-03F/PCV-09/PCV-10 or F025 owner as appropriate",
+      "evidence_required": "record build SHA, permitted role, actual result and sanitized human/device observations; source tests never count as installed proof"
+    },
+    {
+      "id": "XTRA07-C03",
+      "role": "CREATOR",
+      "scenario": "attempt canonical promotion from local edit",
+      "expected": "reject without owning-domain authorization",
+      "execution_status": "NOT_RUN",
+      "owner": "PCV-03F/PCV-09/PCV-10 or F025 owner as appropriate",
+      "evidence_required": "record build SHA, permitted role, actual result and sanitized human/device observations; source tests never count as installed proof"
+    },
+    {
+      "id": "XTRA07-R01",
+      "role": "PLAYER",
+      "scenario": "offline or expired account lease",
+      "expected": "use only valid cached authority; restricted-content denial if expired/revoked",
+      "execution_status": "NOT_RUN",
+      "owner": "PCV-03F/PCV-09/PCV-10 or F025 owner as appropriate",
+      "evidence_required": "record build SHA, permitted role, actual result and sanitized human/device observations; source tests never count as installed proof"
+    },
+    {
+      "id": "XTRA07-R02",
+      "role": "GM",
+      "scenario": "app restarts before checkpoint",
+      "expected": "restore authoritative state or explicit recovery failure, no synthetic success",
+      "execution_status": "NOT_RUN",
+      "owner": "PCV-03F/PCV-09/PCV-10 or F025 owner as appropriate",
+      "evidence_required": "record build SHA, permitted role, actual result and sanitized human/device observations; source tests never count as installed proof"
+    },
+    {
+      "id": "XTRA07-R03",
+      "role": "CREATOR",
+      "scenario": "issue export with unauthorized screenshot",
+      "expected": "preview, redact/remove, require consent before including attachments",
+      "execution_status": "NOT_RUN",
+      "owner": "PCV-03F/PCV-09/PCV-10 or F025 owner as appropriate",
+      "evidence_required": "record build SHA, permitted role, actual result and sanitized human/device observations; source tests never count as installed proof"
+    }
+  ],
+  "tester_session_template": {
+    "session_id": "TO_BE_ASSIGNED_WITHOUT_PERSONAL_SECRETS",
+    "tester_role": "one_of_PLAYER_GM_CREATOR",
+    "human_and_device_evidence": "REQUIRED_LATER",
+    "release_identity_fields": [
+      "releaseId",
+      "applicationVersion",
+      "buildId",
+      "commitId",
+      "environmentClass",
+      "schemaVersion",
+      "migrationVersion",
+      "packSetDigest",
+      "releasedAt",
+      "supportPolicyId"
+    ],
+    "first_success": "NOT_OBSERVED",
+    "tasks": "XTRA07 task IDs",
+    "issue_fields": [
+      "issueReportId",
+      "reporterSubjectId",
+      "releaseId",
+      "roleContext",
+      "selectedContextType",
+      "categoryId",
+      "severityId",
+      "reproducibility",
+      "blocksApprovedJourney",
+      "title",
+      "expectedResult",
+      "actualResult",
+      "reproductionSteps",
+      "submissionOperationId",
+      "createdAt"
+    ],
+    "minimum_behavior": "record action, expected outcome, actual outcome, role, device, source-owner response, screenshot after redaction, privacy consent, restart/recovery behavior",
+    "negative_case_result": "NOT_RUN",
+    "reporter_consent": "NOT_GRANTED_BY_THIS_TEMPLATE"
+  },
+  "accessibility_preparation": {
+    "test_keyboard_navigation": true,
+    "focus_and_skip_links": true,
+    "screen_reader_labels": true,
+    "responsive_single_column": true,
+    "mobile_touch_target_min_px": 44,
+    "text_size_and_density_controls": true,
+    "reduced_motion_and_contrast": true,
+    "nonvisual_maps": [
+      {
+        "scene_id": "scene:beacon-debt:gate-pressure",
+        "description": "East Gate Interchange queue and access-control area"
+      },
+      {
+        "scene_id": "scene:beacon-debt:damaged-crossing",
+        "description": "Eastern Bridge crossing on the East Transit Spine"
+      },
+      {
+        "scene_id": "scene:beacon-debt:beacon-restoration",
+        "description": "East Route Beacon service area"
+      },
+      {
+        "scene_id": "scene:beacon-debt:listening-market-investigation",
+        "description": "The Listening Market"
+      },
+      {
+        "scene_id": "scene:beacon-debt:consequence-return",
+        "description": "East-route consequence and return context"
+      }
+    ],
+    "real_assistive_technology_human_proof": "NOT_RUN",
+    "source": "MTLC-13 bounded source and F025 matrix, not an installed accessibility certification"
+  },
+  "limits": {
+    "account_signin_device_linking": "PCV-03F OPEN AND NOT INSTALLED CERTIFIED",
+    "allowance_backend": "REQUIRES_ACTUAL_SUBSCRIBING_GM_AND_CAMPAIGN_SCOPE; NO MOCK GRANT",
+    "cross_device_two_human": "NOT_RUN",
+    "installed_window_android": "NOT_RUN",
+    "public_release": false,
+    "paid_service_activation": false,
+    "first_party_golden_path": "Beacon Debt source-only noncombat; requires actual Character and combat integration under PCV"
+  }
+}
