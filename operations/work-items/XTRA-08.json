@@ -4,8 +4,8 @@
   "program_id": "XTRA",
   "work_item_id": "XTRA-08",
   "attempt_id": "XTRA-08-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "Owner XTRA Continue and XTRA-07 source-only closeout; XTRA-08 selected independent threat-preflight research.",
   "scope": "Reuse live 2026-11-01 SA-BILL security/payment/permission research and XTRA04-07 to produce concrete pre-PCV-03F subscription entitlement, one-Campaign-one-Player allowance, source dependency-taint, denied export/search/AI/offline, revocation/replay/cancel and signed-receipt negative/preflight matrices. Synthetic/reference tests only; no billing, app implementation, provider secrets or actual security certification.",
@@ -17,20 +17,20 @@
     "Publish machine-readable policy and runnable synthetic/reference tests; distinguish unsupported runtime from proven protections",
     "Fail-closed status and versioned handoff to actual PCV owner, while preserving XTRA02 external hosting blocker and no paid/live billing"
   ],
-  "active_substep": "inspect_sa_bill_01_10_current_threat_and_pcv_security_sources",
-  "next_action": "Read SA-BILL-05/08/09/10 source and PCV-03F available contracts; author bounded reference-only threat matrix, denials and deterministic tests; do not mutate authentic service/billing.",
+  "active_substep": "published_synthetic_security_preflight_verified",
+  "next_action": "XTRA-09 selected in OPS5 closeout; no XTRA-08 work remains.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "xtra07_source_published_xtra08_selected",
-      "evidence": "PR1939 verified human-support guide 3 roles/21 tasks, 12 negative, 6 recovery; no installed proof."
+      "seq": 2,
+      "kind": "xtra08_synthetic_threat_preflight_exact_head_published",
+      "evidence": "AIOC PR1941 head 6798ebb643a8d3b6d843811d3906bd33c5372d6e run41468846013 GREEN merged 6841f911ffcd1c4f1a083d75b10527a2747e3443 READY reconciled generation390; 39 reference-only cases."
     }
   },
   "constraints": {
@@ -38,5 +38,14 @@
     "no_provider_secrets": true,
     "no_product_mutations": true,
     "no_fabricated_security_proof": true
+  },
+  "completion_evidence": {
+    "pr": 1941,
+    "candidate_head": "6798ebb643a8d3b6d843811d3906bd33c5372d6e",
+    "validation_run": 41468846013,
+    "merge_sha": "6841f911ffcd1c4f1a083d75b10527a2747e3443",
+    "queue_generation": 390,
+    "reference_cases": 39,
+    "proof_grade": "source-linked executable synthetic oracle only; no real billing, authentication, PostgreSQL, protected service, device, installed or security certification"
   }
 }
