@@ -1,0 +1,249 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "GATE",
+  "program_name": "Governed Access, Transactions & Entitlements",
+  "owner": "John Brandon Turner",
+  "created": "2026-11-02",
+  "status": "GATE-01_in_progress_source_only",
+  "selected_work_item": "GATE-01",
+  "selected_attempt": "GATE-01-attempt-001",
+  "authority_boundary": "On-demand program, not fourth persistent implementation slot; GATE-01 source/design only. Future GATE-09..13 product/provider implementations require separately CURRENT-selected scope and real dependencies; GATE-14 final owner-only gate.",
+  "publication_rule": "PR-only protected main, immutable exact head, required validations and fresh-base integration; no automatic successor.",
+  "tranches": [
+    {
+      "id": "GATE-01",
+      "name": "OPS5 scope, evidence audit & architecture",
+      "priority": "P0",
+      "kind": "source_only",
+      "status": "in_progress",
+      "depends_on": [],
+      "external_dependencies": [],
+      "scope": "Source-ranked OPS5/SBEC/BESF/UADS/SA-BILL/SCEV/XTRA analysis, provider-neutral architecture, program registry, decision register, acceptance map.",
+      "acceptance": "All 14 tranches coherent, current source and status pinned, persistent lanes untouched; GATE-01 source-design candidate passes OPS5 PR gate.",
+      "code_implementation_authorized": false
+    },
+    {
+      "id": "GATE-02",
+      "name": "Membership, capability and ownership policies",
+      "priority": "P0",
+      "kind": "source_only",
+      "status": "planned",
+      "depends_on": [
+        "GATE-01"
+      ],
+      "external_dependencies": [],
+      "scope": "Free, Subscriber, Sponsored Month and single Campaign Allowance distinguish resource permission, account role and ownership; price remains parameter.",
+      "acceptance": "Per-action capability and content/resource matrix, read/export/lapse behavior, one subscription for GM and Player roles, no inferred unlimited AI.",
+      "code_implementation_authorized": false
+    },
+    {
+      "id": "GATE-03",
+      "name": "Provider-neutral account/checkout interfaces",
+      "priority": "P0",
+      "kind": "source_only",
+      "status": "planned",
+      "depends_on": [
+        "GATE-01",
+        "GATE-02"
+      ],
+      "external_dependencies": [],
+      "scope": "Contract canonical subject-to-provider customer linking, checkout intents, receipt ownership, provider-specific adapters and cancellations.",
+      "acceptance": "Contract models reject wrong product, wrong owner, copied proof, redirect spoof and source-agnostic access.",
+      "code_implementation_authorized": false
+    },
+    {
+      "id": "GATE-04",
+      "name": "Billing lifecycle and event reconciliation",
+      "priority": "P0",
+      "kind": "source_only",
+      "status": "planned",
+      "depends_on": [
+        "GATE-03"
+      ],
+      "external_dependencies": [],
+      "scope": "Normalize verified subscriptions, paid-through, renew intent, failure/grace/hold, refunds, event replay, out-of-order delivery and provider-state refresh.",
+      "acceptance": "State-transition and deterministic temporal/adversarial matrices with explicit pending policy and no premature cancellation revocation.",
+      "code_implementation_authorized": false
+    },
+    {
+      "id": "GATE-05",
+      "name": "PostgreSQL ledger, invariants and atomicity",
+      "priority": "P0",
+      "kind": "source_only",
+      "status": "planned",
+      "depends_on": [
+        "GATE-03",
+        "GATE-04"
+      ],
+      "external_dependencies": [],
+      "scope": "Propose DDL, unique purchase ownership, idempotent event log, serializable allowance grant slots, source revision and monotonic revocation.",
+      "acceptance": "Executable isolated DB tests can prove 100 concurrent attempts yield one grant; research fixtures are not production proof.",
+      "code_implementation_authorized": false
+    },
+    {
+      "id": "GATE-06",
+      "name": "Campaign allowances and sponsored access",
+      "priority": "P0",
+      "kind": "source_only",
+      "status": "planned",
+      "depends_on": [
+        "GATE-02",
+        "GATE-05"
+      ],
+      "external_dependencies": [],
+      "scope": "One slot per Campaign+Player; subscribed GM eligible issuance; one content root+verified dependencies; campaign-only use, preserved restricted characters.",
+      "acceptance": "Deny laundering/copy/export/search/AI and cross-Campaign transfer; retain independent rights; differentiate Sponsored Month from Campaign Allowance.",
+      "code_implementation_authorized": false
+    },
+    {
+      "id": "GATE-07",
+      "name": "Offline license/device security design",
+      "priority": "P1",
+      "kind": "source_only",
+      "status": "planned",
+      "depends_on": [
+        "GATE-05",
+        "GATE-06"
+      ],
+      "external_dependencies": [],
+      "scope": "Account+device-bound signed finite leases; encrypted content; known revocation, account switching, replay, trusted time and offline sync reconciliation.",
+      "acceptance": "Continuity on unchanged signed-in device while offline under verified paid-through; fail closed on wrong device/rollback; no guaranteed early remote revocation.",
+      "code_implementation_authorized": false
+    },
+    {
+      "id": "GATE-08",
+      "name": "Storefront, taxes, consumer disclosure and economics",
+      "priority": "P1",
+      "kind": "source_only",
+      "status": "planned",
+      "depends_on": [
+        "GATE-02",
+        "GATE-04"
+      ],
+      "external_dependencies": [],
+      "scope": "Conditional Stripe-direct Windows, Google Play Android and future iOS adapter; current region-sensitive compliance, tax/consumer rights and fee-cost model.",
+      "acceptance": "No global payment-rate assertion or publication; all merchant/jurisdiction, MCB price claims and legal matters pending decision.",
+      "code_implementation_authorized": false
+    },
+    {
+      "id": "GATE-09",
+      "name": "Authoritative backend and database staging",
+      "priority": "P1",
+      "kind": "future_product",
+      "status": "planned",
+      "depends_on": [
+        "GATE-05",
+        "GATE-06",
+        "GATE-07"
+      ],
+      "external_dependencies": [
+        "PCV-03F verified auth/service boundary",
+        "separate owner implementation authorization"
+      ],
+      "scope": "Implement verified server ledger and resource-scoped authorization with atomic migrations only under separately authorized product lane and verified PCV-03F identity/service.",
+      "acceptance": "Real isolated PostgreSQL/API and authentication boundary tests, safe migration/rollback and no production payment.",
+      "code_implementation_authorized": false
+    },
+    {
+      "id": "GATE-10",
+      "name": "Stripe signed test-mode integration",
+      "priority": "P1",
+      "kind": "future_provider",
+      "status": "planned",
+      "depends_on": [
+        "GATE-03",
+        "GATE-04",
+        "GATE-09"
+      ],
+      "external_dependencies": [
+        "PCV-03F verified auth/service boundary",
+        "separate owner implementation authorization",
+        "provider sandbox credential approval"
+      ],
+      "scope": "Actual test-mode Checkout, webhook verification, current-provider lookup, customer portal and billing/refund failure recovery after owner-provided test credentials.",
+      "acceptance": "Signed test events and reconciliation prove real integration; no live charges or credentials in source.",
+      "code_implementation_authorized": false
+    },
+    {
+      "id": "GATE-11",
+      "name": "Installed Windows/Android subscription journeys",
+      "priority": "P1",
+      "kind": "future_product",
+      "status": "planned",
+      "depends_on": [
+        "GATE-07",
+        "GATE-09",
+        "GATE-10"
+      ],
+      "external_dependencies": [
+        "PCV-03F verified auth/service boundary",
+        "separate owner implementation authorization",
+        "provider sandbox credential approval"
+      ],
+      "scope": "Same account on two devices, three independent accounts Raven1/Raven2/Zak1, subscription lapses, restore/reinstall/offline, correct Android storefront flow.",
+      "acceptance": "Installed-device and real service test receipts; no mock-only equivalence; wrong-account protected content denied.",
+      "code_implementation_authorized": false
+    },
+    {
+      "id": "GATE-12",
+      "name": "Independent adversarial security acceptance",
+      "priority": "P1",
+      "kind": "future_product",
+      "status": "planned",
+      "depends_on": [
+        "GATE-09",
+        "GATE-10",
+        "GATE-11"
+      ],
+      "external_dependencies": [
+        "PCV-03F verified auth/service boundary",
+        "separate owner implementation authorization",
+        "provider sandbox credential approval"
+      ],
+      "scope": "Cross-account/copy, webhook replay, idempotency, GM slot racing, dependency provenance, export/search/AI leakage, tampered offline cache.",
+      "acceptance": "Independent authentic service/native boundary review and negative cases pass with residual risks recorded.",
+      "code_implementation_authorized": false
+    },
+    {
+      "id": "GATE-13",
+      "name": "Support, reconciliation and incident operations",
+      "priority": "P2",
+      "kind": "future_provider",
+      "status": "planned",
+      "depends_on": [
+        "GATE-04",
+        "GATE-08",
+        "GATE-10"
+      ],
+      "external_dependencies": [
+        "PCV-03F verified auth/service boundary",
+        "separate owner implementation authorization",
+        "provider sandbox credential approval"
+      ],
+      "scope": "Operator ledger reconciliation, refunds, privacy requests, key rotation, provider outage, backup/restore and real unit economics.",
+      "acceptance": "Actual controlled restore/reconciliation evidence, operational runbook and no hypothetical invoice presented as revenue.",
+      "code_implementation_authorized": false
+    },
+    {
+      "id": "GATE-14",
+      "name": "Commercial release decision and owner approval",
+      "priority": "P2",
+      "kind": "owner_only",
+      "status": "planned",
+      "depends_on": [
+        "GATE-08",
+        "GATE-11",
+        "GATE-12",
+        "GATE-13"
+      ],
+      "external_dependencies": [
+        "PCV-03F verified auth/service boundary",
+        "separate owner implementation authorization",
+        "provider sandbox credential approval"
+      ],
+      "scope": "Final signed owner decision on pricing/store/merchant, terms and taxes, user consent, security, operations and release.",
+      "acceptance": "No production/live checkout, public SKU or paid activation absent all current legal, provider, product and owner gates.",
+      "code_implementation_authorized": false
+    }
+  ]
+}

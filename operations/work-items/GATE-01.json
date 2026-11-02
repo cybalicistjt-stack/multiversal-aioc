@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "gate",
+  "program_id": "GATE",
+  "work_item_id": "GATE-01",
+  "attempt_id": "GATE-01-attempt-001",
+  "status": "in_progress",
+  "completed": false,
+  "implementation_authority": false,
+  "selected_by_owner": "2026-11-02 owner directive to name GATE, register under OPS5, structure tranches, and continue planning.",
+  "implementation_branch": "program/gate01-subscription-architecture-20261102",
+  "scope": "OPS5 on-demand registration, existing subscription/account/security research reconciliation, baseline provider-neutral architecture, 14-tranche DAG, decisions and evidence matrix. Docs/source-only; no app implementation, credentials, provider accounts, charges, price publication or release.",
+  "backlog": "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM_BACKLOG.json",
+  "acceptance": [
+    "OPS5 CURRENT/LANES/work item match and GPR PCV-03F, MTLC-14, AXI unchanged",
+    "14 unique acyclic tranches with explicit GATE-09..14 dependencies/authority gates",
+    "Source-ranked architecture and policy decisions distinguish owner-approved from pending",
+    "Protected-main exact-head validation, fresh-main integration and merge before completed_verified"
+  ],
+  "active_substep": "source_architecture_candidate_prep",
+  "next_action": "Validate immutable GATE-01 candidate then protected-main publication; reconcile exact published evidence; only then consider GATE-02 selection.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "source_candidate_prepared",
+      "evidence": "Atomic OPS5/GATE-01 planning candidate, CI/publication pending"
+    }
+  },
+  "constraints": {
+    "no_product_implementation": true,
+    "no_billing_activation": true,
+    "no_provider_credentials": true,
+    "no_spending": true,
+    "no_public_price": true,
+    "no_lane_authority_mutation": true,
+    "no_production_security_certification": true
+  }
+}
