@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 643,
+  "state_revision": 644,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -154,13 +154,13 @@
     "xtra": {
       "state": "in_progress",
       "program_id": "XTRA",
-      "selected_work_item": "XTRA-02",
-      "attempt_id": "XTRA-02-attempt-001",
-      "checkpoint_path": "operations/work-items/XTRA-02.json",
-      "implementation_branch": "program/xtra02-certification-db-continuity-20261102",
+      "selected_work_item": "XTRA-03",
+      "attempt_id": "XTRA-03-attempt-001",
+      "checkpoint_path": "operations/work-items/XTRA-03.json",
+      "implementation_branch": "program/xtra03-feature-ledger-review-20261102",
       "implementation_authority": false,
-      "execution_authority": "Read-only hosting/backup diagnostics and privacy-safe runbooks; no paid/provider network mutations or claims of restored DB without evidence",
-      "activation_rule": "Owner XTRA sequence and second Continue; XTRA-01 completed_verified by exact-head publication. XTRA-02 is authorized solely for certification continuity, subject to external owner gates.",
+      "execution_authority": "Source and feature PR evidence reconciliation, documentation and review only; no PCV implementation or rights/commercial authorization",
+      "activation_rule": "XTRA-02 is externally blocked (free Render PostgreSQL expiry, no accessible backup/restore); owner XTRA Continue resumes independent XTRA-03, dependent only on completed XTRA-01. XTRA-02 blocker remains open and visible.",
       "source_program": "governance/application-planning/xtra-pre-pcv-readiness/XTRA_PROGRAM.md",
       "source_backlog": "governance/application-planning/xtra-pre-pcv-readiness/XTRA_PROGRAM_BACKLOG.json"
     }
@@ -202,7 +202,7 @@
     "ops5_agent_completion": "Worker started, input accepted, artifact produced, focused check, real-boundary validation, owner acceptance and publication are distinct; follow current operations guards and real-source proof; do not add per-status journal receipts.",
     "ops5_bridge_fallback": "Missing local index or unverified host skill never blocks authorized work. Read relevant current source directly with GitHub tools; avoid compulsory research on trivial tasks."
   },
-  "next_project_action": "XTRA-02: Render certification PostgreSQL free instance expires 2026-11-08; determine authorized export/restore route, keep IP/credentials and funds unchanged; GPR PCV-03F and MTLC-14 remain independent.",
+  "next_project_action": "XTRA-03 feature/source reconciliation PR1927. XTRA-02 retained external owner blocker: Render free PG17 expiry 2026-11-08 and zero verified backups; do not wait on provider for independent XTRA work.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

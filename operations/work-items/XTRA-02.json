@@ -4,7 +4,7 @@
   "program_id": "XTRA",
   "work_item_id": "XTRA-02",
   "attempt_id": "XTRA-02-attempt-001",
-  "status": "in_progress",
+  "status": "blocked_external",
   "completed": false,
   "implementation_authority": false,
   "selected_by_owner": "Owner authorized XTRA sequence on 2026-11-02 and continued execution after verified XTRA-01 publication.",
@@ -24,20 +24,33 @@
     "Validate actual isolated restore if authorized access exists, otherwise produce evidenced blocked result and owner-safe next actions",
     "Preserve owner boundaries and no false backup/security claims"
   ],
-  "active_substep": "provider_inventory_and_export_route_assessment",
-  "next_action": "Continue read-only capability check. Render certification PG17 dpg-db4dbknlot8c738kn0k0-a expires 2026-11-08T11:53:54Z; hosted query blocked by empty external IP allowlist. No backup has been verified.",
+  "active_substep": "blocked_on_authorized_external_export_and_restore",
+  "next_action": "Owner/external: before 2026-11-08 expiry, arrange an authorized data-preserving pg_dump and isolated restore on a trusted host, or explicitly accept disposable fixture-only data with source-of-truth evidence; no network or paid changes were performed.",
   "execution_guard": {
     "continue_turns": 1,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "successor_selected_and_provider_access_assessed",
-      "evidence": "XTRA01 publication plus Render list confirmed db status/expiry and SQL access denial."
+      "seq": 2,
+      "kind": "source_verified_external_restore_blocker",
+      "evidence": "Render list/get + direct SQL refusal; official Render Free/backup docs; scoped executable operator runbook."
+    },
+    "stop_reason": {
+      "kind": "external",
+      "evidence": "No backup/export/restore capability or public route in currently connected Render tools; empty external IP allowlist blocks query and free plan lacks managed backup."
     }
+  },
+  "external_blocker": {
+    "kind": "owner_or_external_access",
+    "observed": "Render free PG17 available through metadata but free plan lacks backups and hosted query rejected empty IP allowlist; no remotely invocable dump/restore action.",
+    "deadline_utc": "2026-11-08T11:53:54.383435Z",
+    "runbook": "governance/application-planning/xtra-pre-pcv-readiness/XTRA-02_RENDER_CERTIFICATION_RECOVERY_2026-11-02.md",
+    "backup_verified": false,
+    "restore_verified": false,
+    "owner_decision_required": "authorize narrow trusted-host export/access, explicitly approve payment upgrade, or confirm dataset expendable after comparing provenance and fixture regeneration"
   }
 }
