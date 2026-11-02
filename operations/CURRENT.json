@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 653,
+  "state_revision": 654,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -152,15 +152,15 @@
       "source_authority": "CORE26-CURRENT-01"
     },
     "xtra": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "program_id": "XTRA",
       "selected_work_item": "XTRA-12",
       "attempt_id": "XTRA-12-attempt-001",
       "checkpoint_path": "operations/work-items/XTRA-12.json",
       "implementation_branch": "program/xtra12-terminal-prepcv-evidence-audit-20261102",
       "implementation_authority": false,
-      "execution_authority": "Independent read-only XTRA-01..11 evidence reconciliation, exact PR/test receipts, retained XTRA-02 external backup blocker, product/security/rights/MCB gates and PCV-03F/MTLC14 handoff report; no product code, real provider recovery, launch or commercial authority.",
-      "activation_rule": "XTRA11 nonpublic commercial/site/consent/pricing source-only preflight published exact-head via PR1947; owner XTRA Continue selects terminal independent XTRA12 audit with blocked_external XTRA02 retained, no false terminal green. MCB and downstream PCV gates unchanged.",
+      "execution_authority": "Terminal evidence audit completed_verified as SOURCE ONLY; no further independent XTRA selected. XTRA-02 recovery remains blocked_external and product/rights/PCV/MTLC/AXI/MCB/commerce/launch are NOT certified or authorized.",
+      "activation_rule": "Source-only XTRA-12 terminal audit published PR1950 and formal protected-main closeout; retained XTRA02 blocked_external recovery and other independent product/commercial gates. No automatic successor, spending, app mutation, MCB/PCV activation or live release.",
       "source_program": "governance/application-planning/xtra-pre-pcv-readiness/XTRA_PROGRAM.md",
       "source_backlog": "governance/application-planning/xtra-pre-pcv-readiness/XTRA_PROGRAM_BACKLOG.json"
     }
@@ -202,7 +202,7 @@
     "ops5_agent_completion": "Worker started, input accepted, artifact produced, focused check, real-boundary validation, owner acceptance and publication are distinct; follow current operations guards and real-source proof; do not add per-status journal receipts.",
     "ops5_bridge_fallback": "Missing local index or unverified host skill never blocks authorized work. Read relevant current source directly with GitHub tools; avoid compulsory research on trivial tasks."
   },
-  "next_project_action": "XTRA-12: independently reconcile all XTRA publication receipts and actual source/PR proof, preserve external Render expiry/restore blocker and PCV03F/MTLC14/AXI/MCB separate gates, publish terminal evidence/handoff with explicit retained risks and no false release certification.",
+  "next_project_action": "XTRA: no independent source preparation selected. Owner/external P0 before 2026-11-08: decide Render PG17 certification dataset disposition and authorize trusted-host export + isolated restore or explicitly accept verified disposable-data loss. PCV03F/MTLC14/AXI continue only under their separate authorities; PCV04..10 and MCB remain gated.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

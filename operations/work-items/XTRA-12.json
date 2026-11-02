@@ -4,8 +4,8 @@
   "program_id": "XTRA",
   "work_item_id": "XTRA-12",
   "attempt_id": "XTRA-12-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "XTRA on-demand evidence-readiness program and owner Continue after published XTRA11 source-only artifacts; XTRA02 remains externally blocked.",
   "scope": "Independently reconcile exact published XTRA01/03..11 artifact/evidence/PR/CI receipts, source and authority statuses, known XTRA02 real Render DB backup/restore and expiry blocker, pending PCV03F/MTLC14 installed/human proof, rights/privacy/MCB gates and successor handoff; no live provider change, product or commercial authority.",
@@ -17,20 +17,20 @@
     "Provide actionable PCV-03F, MTLC-14/AXI, future PCV04..10 and MCB owner-gated handoff with no unapproved activation",
     "Publish runnable deterministic source integrity/audit tests and terminal disposition distinguishing XTRA independent preparation completed from actual program product/host/commercial readiness"
   ],
-  "active_substep": "reconcile_live_sources_and_receipts_then_publish_evidence_only_terminal_handoff",
-  "next_action": "Source-ground exact PR/test and AIOC/app boundary audit, classify external/current blocked proof and generate terminal handoff with deterministic checks; do not close XTRA02.",
+  "active_substep": "terminal_source_evidence_audit_published_and_owner_handoff",
+  "next_action": "XTRA12 audit source complete. Preserve XTRA02 as blocked_external and request only appropriate owner/external provider actions; no automatic XTRA successor.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "xtra11_source_published_xtra12_selected",
-      "evidence": "PR1947 run41477790201 GREEN merged 413312601f2a4b662638a5b28597eb6c12cc0402 READY generation402; independent source preparation only."
+      "seq": 2,
+      "kind": "xtra12_evidence_audit_published",
+      "evidence": "PR1950 exact head 9024cecf776445d475cb6d2849fee00fadbf9795 run41479904340 GREEN merged a7255b78f4dd734c7acb3bf6f54bce8441de06f4 READY gen406; 11 prior PR/run published source receipts and 9 unresolved gates."
     }
   },
   "constraints": {
@@ -43,5 +43,20 @@
     "no_real_backup_claim": true,
     "no_installed_native_success_claim": true,
     "no_rights_clearance_claim": true
+  },
+  "completion_evidence": {
+    "pr": 1950,
+    "candidate_head": "9024cecf776445d475cb6d2849fee00fadbf9795",
+    "validation_run": 41479904340,
+    "merge_sha": "a7255b78f4dd734c7acb3bf6f54bce8441de06f4",
+    "queue_generation": 406,
+    "prior_source_prs_confirmed": 11,
+    "prior_source_ci_green": 11,
+    "source_only_completed_tranches": 10,
+    "external_blocked_tranches": 1,
+    "unresolved_real_world_gates": 9,
+    "terminal_report": "governance/application-planning/xtra-pre-pcv-readiness/XTRA-12_TERMINAL_READINESS_AND_OWNER_HANDOFF.md",
+    "proof_grade": "TERMINAL_SOURCE_EVIDENCE_AUDIT_ONLY_NOT_PRODUCT_HOST_SECURITY_RIGHTS_COMMERCIAL_OR_LAUNCH_CERTIFICATION",
+    "xtra02_still_blocked": true
   }
 }
