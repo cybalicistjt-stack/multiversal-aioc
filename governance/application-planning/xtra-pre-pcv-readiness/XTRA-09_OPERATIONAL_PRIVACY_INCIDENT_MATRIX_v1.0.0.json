@@ -1,0 +1,933 @@
+{
+  "schema_version": "1.0.0",
+  "matrix_id": "XTRA09-OPERATIONS-PRIVACY-INCIDENT-REFERENCE-001",
+  "scope": "XTRA-09 independent operator specifications and synthetic-only tests",
+  "proof_grade": "REFERENCE_ONLY_NO_REAL_HOST_BACKUP_SECURITY_OR_PRIVACY_CERTIFICATION",
+  "source_pins": [
+    "governance/application-planning/xtra-pre-pcv-readiness/XTRA-02_RENDER_CERTIFICATION_RECOVERY_2026-11-02.md",
+    "governance/phase9/P9-04_POSTGRES_CENTERED_ARCHITECTURE_CONTRACT.md",
+    "governance/application-planning/internal-alpha/owner-decision/IA_D09_CANDIDATE_DATA_PRIVACY_BOUNDARY.md",
+    "governance/application-planning/product-convergence/PCV-I01C_LOCAL_HOST_PRODUCTION_SERVICE_AUTHORITY_ENTITLEMENT_CONTRACT_v1.0.0.json",
+    "governance/application-planning/xtra-pre-pcv-readiness/XTRA-06_PCV_ACCEPTANCE_HANDOFF.md",
+    "governance/application-planning/xtra-pre-pcv-readiness/XTRA-08_THREAT_PREFLIGHT_AND_OWNER_HANDOFF.md"
+  ],
+  "external_blockers": [
+    {
+      "id": "XTRA-02",
+      "severity": "P0",
+      "verified_backup": false,
+      "verified_restore": false,
+      "source": "XTRA-02 Render 2026-11-02 inventory",
+      "expires_at_utc": "2026-11-08T11:53:54.383435Z",
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "id": "PCV-03F",
+      "status": "REAL_SERVICE_AND_DEVICE_ACCEPTANCE_PENDING"
+    },
+    {
+      "id": "REAL_USER_DATA",
+      "status": "OWNER_APPROVAL_AND_PRIVACY_BOUNDARY_NOT_GRANTED"
+    }
+  ],
+  "targets": {
+    "rpo_minutes": {
+      "value": null,
+      "status": "OWNER_APPROVAL_REQUIRED"
+    },
+    "rto_minutes": {
+      "value": null,
+      "status": "OWNER_APPROVAL_REQUIRED"
+    },
+    "retention_days": {
+      "value": null,
+      "status": "OWNER_APPROVAL_REQUIRED"
+    },
+    "alert_thresholds": {
+      "status": "PROPOSED_NOT_MEASURED",
+      "example_warning": "No authoritative probe/receipt in the last configured interval",
+      "example_critical": "Authentication/Session commands fail or privileged/hidden data leakage suspected"
+    }
+  },
+  "gate_profiles": {
+    "backup_restore": {
+      "purpose": "Declare a specific source snapshot recoverable",
+      "requirements": [
+        "source_access_authorized",
+        "artifact_integrity_verified",
+        "isolated_restore_succeeded",
+        "schema_and_nonsecret_counts_checked",
+        "smoke_test_succeeded",
+        "sanitized_receipt_recorded"
+      ],
+      "owner": "XTRA-02 external operator + PCV source owner",
+      "hard_boundary": "actual source dump and independent isolated target"
+    },
+    "live_data_admission": {
+      "purpose": "Admit actual human or protected session data to the selected service",
+      "requirements": [
+        "owner_live_data_approval",
+        "purpose_and_minimization_recorded",
+        "privacy_notice_and_retention_approved",
+        "identity_and_tenant_isolation_tested",
+        "real_restore_accepted",
+        "security_boundary_verified"
+      ],
+      "owner": "Owner + PCV security/identity owner",
+      "hard_boundary": "real A3/A5, PostgreSQL and protected service"
+    },
+    "authority_failover": {
+      "purpose": "Switch local/managed authoritative Campaign/Session executor",
+      "requirements": [
+        "owner_handoff_authorized",
+        "old_mutator_fenced",
+        "same_canonical_history_verified",
+        "checkpoint_digest_matches",
+        "strictly_newer_authority_epoch",
+        "new_executor_reauthorized"
+      ],
+      "owner": "PCV profile/Session owner",
+      "hard_boundary": "cross-process durable authority epoch and service rollback"
+    },
+    "alert_resolution": {
+      "purpose": "Close operational availability/security incident",
+      "requirements": [
+        "incident_scope_recorded",
+        "affected_users_and_hidden_data_assessed",
+        "first_failure_and_competing_causes_recorded",
+        "mitigation_and_recovery_checked",
+        "owner_closeout_approved"
+      ],
+      "owner": "Authorized incident commander",
+      "hard_boundary": "actual logs, user-impact and recovery verification"
+    },
+    "privacy_export": {
+      "purpose": "Release individually scoped account/campaign data to a requester",
+      "requirements": [
+        "requester_identity_verified",
+        "specific_scope_authorized",
+        "campaign_hidden_data_excluded",
+        "data_and_rights_lineage_checked",
+        "privacy_approval_recorded",
+        "export_redaction_verified"
+      ],
+      "owner": "Data/privacy owner + Campaign rights authority",
+      "hard_boundary": "live read/export authorization, subject/campaign isolation"
+    },
+    "monitoring_receipt": {
+      "purpose": "Assert real operational health from telemetry",
+      "requirements": [
+        "real_current_probe_observed",
+        "probe_targets_authoritative_executor",
+        "tenant_sensitive_fields_redacted",
+        "clock_and_source_version_recorded",
+        "warning_and_missing_data_reported"
+      ],
+      "owner": "Site/operator monitoring owner",
+      "hard_boundary": "reachable service + real observability"
+    },
+    "synthetic_tabletop": {
+      "purpose": "Run a bounded fictional operator exercise",
+      "requirements": [
+        "fixtures_synthetic_only",
+        "no_live_endpoint_contact",
+        "no_credentials_or_private_payloads",
+        "not_reported_as_real_proof"
+      ],
+      "owner": "XTRA-09 reference-test author",
+      "hard_boundary": "local test harness only"
+    }
+  },
+  "scenarios": [
+    {
+      "id": "XTRA09-BACKUP_RESTORE-PASS",
+      "gate": "backup_restore",
+      "threat": "Fully asserted synthetic model assumptions; NOT real source evidence",
+      "signals": {
+        "source_access_authorized": true,
+        "artifact_integrity_verified": true,
+        "isolated_restore_succeeded": true,
+        "schema_and_nonsecret_counts_checked": true,
+        "smoke_test_succeeded": true,
+        "sanitized_receipt_recorded": true
+      },
+      "expected_reference_decision": "SYNTHETIC_REFERENCE_ONLY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-BACKUP_RESTORE-DENY-SOURCE_ACCESS_AUTHORIZED",
+      "gate": "backup_restore",
+      "threat": "Reject absent/unproven source_access_authorized",
+      "signals": {
+        "source_access_authorized": false,
+        "artifact_integrity_verified": true,
+        "isolated_restore_succeeded": true,
+        "schema_and_nonsecret_counts_checked": true,
+        "smoke_test_succeeded": true,
+        "sanitized_receipt_recorded": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-BACKUP_RESTORE-DENY-ARTIFACT_INTEGRITY_VERIFIED",
+      "gate": "backup_restore",
+      "threat": "Reject absent/unproven artifact_integrity_verified",
+      "signals": {
+        "source_access_authorized": true,
+        "artifact_integrity_verified": false,
+        "isolated_restore_succeeded": true,
+        "schema_and_nonsecret_counts_checked": true,
+        "smoke_test_succeeded": true,
+        "sanitized_receipt_recorded": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-BACKUP_RESTORE-DENY-ISOLATED_RESTORE_SUCCEEDED",
+      "gate": "backup_restore",
+      "threat": "Reject absent/unproven isolated_restore_succeeded",
+      "signals": {
+        "source_access_authorized": true,
+        "artifact_integrity_verified": true,
+        "isolated_restore_succeeded": false,
+        "schema_and_nonsecret_counts_checked": true,
+        "smoke_test_succeeded": true,
+        "sanitized_receipt_recorded": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-BACKUP_RESTORE-DENY-SCHEMA_AND_NONSECRET_COUNTS_CHECKED",
+      "gate": "backup_restore",
+      "threat": "Reject absent/unproven schema_and_nonsecret_counts_checked",
+      "signals": {
+        "source_access_authorized": true,
+        "artifact_integrity_verified": true,
+        "isolated_restore_succeeded": true,
+        "schema_and_nonsecret_counts_checked": false,
+        "smoke_test_succeeded": true,
+        "sanitized_receipt_recorded": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-BACKUP_RESTORE-DENY-SMOKE_TEST_SUCCEEDED",
+      "gate": "backup_restore",
+      "threat": "Reject absent/unproven smoke_test_succeeded",
+      "signals": {
+        "source_access_authorized": true,
+        "artifact_integrity_verified": true,
+        "isolated_restore_succeeded": true,
+        "schema_and_nonsecret_counts_checked": true,
+        "smoke_test_succeeded": false,
+        "sanitized_receipt_recorded": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-BACKUP_RESTORE-DENY-SANITIZED_RECEIPT_RECORDED",
+      "gate": "backup_restore",
+      "threat": "Reject absent/unproven sanitized_receipt_recorded",
+      "signals": {
+        "source_access_authorized": true,
+        "artifact_integrity_verified": true,
+        "isolated_restore_succeeded": true,
+        "schema_and_nonsecret_counts_checked": true,
+        "smoke_test_succeeded": true,
+        "sanitized_receipt_recorded": false
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-LIVE_DATA_ADMISSION-PASS",
+      "gate": "live_data_admission",
+      "threat": "Fully asserted synthetic model assumptions; NOT real source evidence",
+      "signals": {
+        "owner_live_data_approval": true,
+        "purpose_and_minimization_recorded": true,
+        "privacy_notice_and_retention_approved": true,
+        "identity_and_tenant_isolation_tested": true,
+        "real_restore_accepted": true,
+        "security_boundary_verified": true
+      },
+      "expected_reference_decision": "SYNTHETIC_REFERENCE_ONLY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-LIVE_DATA_ADMISSION-DENY-OWNER_LIVE_DATA_APPROVAL",
+      "gate": "live_data_admission",
+      "threat": "Reject absent/unproven owner_live_data_approval",
+      "signals": {
+        "owner_live_data_approval": false,
+        "purpose_and_minimization_recorded": true,
+        "privacy_notice_and_retention_approved": true,
+        "identity_and_tenant_isolation_tested": true,
+        "real_restore_accepted": true,
+        "security_boundary_verified": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-LIVE_DATA_ADMISSION-DENY-PURPOSE_AND_MINIMIZATION_RECORDED",
+      "gate": "live_data_admission",
+      "threat": "Reject absent/unproven purpose_and_minimization_recorded",
+      "signals": {
+        "owner_live_data_approval": true,
+        "purpose_and_minimization_recorded": false,
+        "privacy_notice_and_retention_approved": true,
+        "identity_and_tenant_isolation_tested": true,
+        "real_restore_accepted": true,
+        "security_boundary_verified": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-LIVE_DATA_ADMISSION-DENY-PRIVACY_NOTICE_AND_RETENTION_APPROVED",
+      "gate": "live_data_admission",
+      "threat": "Reject absent/unproven privacy_notice_and_retention_approved",
+      "signals": {
+        "owner_live_data_approval": true,
+        "purpose_and_minimization_recorded": true,
+        "privacy_notice_and_retention_approved": false,
+        "identity_and_tenant_isolation_tested": true,
+        "real_restore_accepted": true,
+        "security_boundary_verified": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-LIVE_DATA_ADMISSION-DENY-IDENTITY_AND_TENANT_ISOLATION_TESTED",
+      "gate": "live_data_admission",
+      "threat": "Reject absent/unproven identity_and_tenant_isolation_tested",
+      "signals": {
+        "owner_live_data_approval": true,
+        "purpose_and_minimization_recorded": true,
+        "privacy_notice_and_retention_approved": true,
+        "identity_and_tenant_isolation_tested": false,
+        "real_restore_accepted": true,
+        "security_boundary_verified": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-LIVE_DATA_ADMISSION-DENY-REAL_RESTORE_ACCEPTED",
+      "gate": "live_data_admission",
+      "threat": "Reject absent/unproven real_restore_accepted",
+      "signals": {
+        "owner_live_data_approval": true,
+        "purpose_and_minimization_recorded": true,
+        "privacy_notice_and_retention_approved": true,
+        "identity_and_tenant_isolation_tested": true,
+        "real_restore_accepted": false,
+        "security_boundary_verified": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-LIVE_DATA_ADMISSION-DENY-SECURITY_BOUNDARY_VERIFIED",
+      "gate": "live_data_admission",
+      "threat": "Reject absent/unproven security_boundary_verified",
+      "signals": {
+        "owner_live_data_approval": true,
+        "purpose_and_minimization_recorded": true,
+        "privacy_notice_and_retention_approved": true,
+        "identity_and_tenant_isolation_tested": true,
+        "real_restore_accepted": true,
+        "security_boundary_verified": false
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-AUTHORITY_FAILOVER-PASS",
+      "gate": "authority_failover",
+      "threat": "Fully asserted synthetic model assumptions; NOT real source evidence",
+      "signals": {
+        "owner_handoff_authorized": true,
+        "old_mutator_fenced": true,
+        "same_canonical_history_verified": true,
+        "checkpoint_digest_matches": true,
+        "strictly_newer_authority_epoch": true,
+        "new_executor_reauthorized": true
+      },
+      "expected_reference_decision": "SYNTHETIC_REFERENCE_ONLY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-AUTHORITY_FAILOVER-DENY-OWNER_HANDOFF_AUTHORIZED",
+      "gate": "authority_failover",
+      "threat": "Reject absent/unproven owner_handoff_authorized",
+      "signals": {
+        "owner_handoff_authorized": false,
+        "old_mutator_fenced": true,
+        "same_canonical_history_verified": true,
+        "checkpoint_digest_matches": true,
+        "strictly_newer_authority_epoch": true,
+        "new_executor_reauthorized": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-AUTHORITY_FAILOVER-DENY-OLD_MUTATOR_FENCED",
+      "gate": "authority_failover",
+      "threat": "Reject absent/unproven old_mutator_fenced",
+      "signals": {
+        "owner_handoff_authorized": true,
+        "old_mutator_fenced": false,
+        "same_canonical_history_verified": true,
+        "checkpoint_digest_matches": true,
+        "strictly_newer_authority_epoch": true,
+        "new_executor_reauthorized": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-AUTHORITY_FAILOVER-DENY-SAME_CANONICAL_HISTORY_VERIFIED",
+      "gate": "authority_failover",
+      "threat": "Reject absent/unproven same_canonical_history_verified",
+      "signals": {
+        "owner_handoff_authorized": true,
+        "old_mutator_fenced": true,
+        "same_canonical_history_verified": false,
+        "checkpoint_digest_matches": true,
+        "strictly_newer_authority_epoch": true,
+        "new_executor_reauthorized": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-AUTHORITY_FAILOVER-DENY-CHECKPOINT_DIGEST_MATCHES",
+      "gate": "authority_failover",
+      "threat": "Reject absent/unproven checkpoint_digest_matches",
+      "signals": {
+        "owner_handoff_authorized": true,
+        "old_mutator_fenced": true,
+        "same_canonical_history_verified": true,
+        "checkpoint_digest_matches": false,
+        "strictly_newer_authority_epoch": true,
+        "new_executor_reauthorized": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-AUTHORITY_FAILOVER-DENY-STRICTLY_NEWER_AUTHORITY_EPOCH",
+      "gate": "authority_failover",
+      "threat": "Reject absent/unproven strictly_newer_authority_epoch",
+      "signals": {
+        "owner_handoff_authorized": true,
+        "old_mutator_fenced": true,
+        "same_canonical_history_verified": true,
+        "checkpoint_digest_matches": true,
+        "strictly_newer_authority_epoch": false,
+        "new_executor_reauthorized": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-AUTHORITY_FAILOVER-DENY-NEW_EXECUTOR_REAUTHORIZED",
+      "gate": "authority_failover",
+      "threat": "Reject absent/unproven new_executor_reauthorized",
+      "signals": {
+        "owner_handoff_authorized": true,
+        "old_mutator_fenced": true,
+        "same_canonical_history_verified": true,
+        "checkpoint_digest_matches": true,
+        "strictly_newer_authority_epoch": true,
+        "new_executor_reauthorized": false
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-ALERT_RESOLUTION-PASS",
+      "gate": "alert_resolution",
+      "threat": "Fully asserted synthetic model assumptions; NOT real source evidence",
+      "signals": {
+        "incident_scope_recorded": true,
+        "affected_users_and_hidden_data_assessed": true,
+        "first_failure_and_competing_causes_recorded": true,
+        "mitigation_and_recovery_checked": true,
+        "owner_closeout_approved": true
+      },
+      "expected_reference_decision": "SYNTHETIC_REFERENCE_ONLY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-ALERT_RESOLUTION-DENY-INCIDENT_SCOPE_RECORDED",
+      "gate": "alert_resolution",
+      "threat": "Reject absent/unproven incident_scope_recorded",
+      "signals": {
+        "incident_scope_recorded": false,
+        "affected_users_and_hidden_data_assessed": true,
+        "first_failure_and_competing_causes_recorded": true,
+        "mitigation_and_recovery_checked": true,
+        "owner_closeout_approved": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-ALERT_RESOLUTION-DENY-AFFECTED_USERS_AND_HIDDEN_DATA_ASSESSED",
+      "gate": "alert_resolution",
+      "threat": "Reject absent/unproven affected_users_and_hidden_data_assessed",
+      "signals": {
+        "incident_scope_recorded": true,
+        "affected_users_and_hidden_data_assessed": false,
+        "first_failure_and_competing_causes_recorded": true,
+        "mitigation_and_recovery_checked": true,
+        "owner_closeout_approved": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-ALERT_RESOLUTION-DENY-FIRST_FAILURE_AND_COMPETING_CAUSES_RECORDED",
+      "gate": "alert_resolution",
+      "threat": "Reject absent/unproven first_failure_and_competing_causes_recorded",
+      "signals": {
+        "incident_scope_recorded": true,
+        "affected_users_and_hidden_data_assessed": true,
+        "first_failure_and_competing_causes_recorded": false,
+        "mitigation_and_recovery_checked": true,
+        "owner_closeout_approved": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-ALERT_RESOLUTION-DENY-MITIGATION_AND_RECOVERY_CHECKED",
+      "gate": "alert_resolution",
+      "threat": "Reject absent/unproven mitigation_and_recovery_checked",
+      "signals": {
+        "incident_scope_recorded": true,
+        "affected_users_and_hidden_data_assessed": true,
+        "first_failure_and_competing_causes_recorded": true,
+        "mitigation_and_recovery_checked": false,
+        "owner_closeout_approved": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-ALERT_RESOLUTION-DENY-OWNER_CLOSEOUT_APPROVED",
+      "gate": "alert_resolution",
+      "threat": "Reject absent/unproven owner_closeout_approved",
+      "signals": {
+        "incident_scope_recorded": true,
+        "affected_users_and_hidden_data_assessed": true,
+        "first_failure_and_competing_causes_recorded": true,
+        "mitigation_and_recovery_checked": true,
+        "owner_closeout_approved": false
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-PRIVACY_EXPORT-PASS",
+      "gate": "privacy_export",
+      "threat": "Fully asserted synthetic model assumptions; NOT real source evidence",
+      "signals": {
+        "requester_identity_verified": true,
+        "specific_scope_authorized": true,
+        "campaign_hidden_data_excluded": true,
+        "data_and_rights_lineage_checked": true,
+        "privacy_approval_recorded": true,
+        "export_redaction_verified": true
+      },
+      "expected_reference_decision": "SYNTHETIC_REFERENCE_ONLY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-PRIVACY_EXPORT-DENY-REQUESTER_IDENTITY_VERIFIED",
+      "gate": "privacy_export",
+      "threat": "Reject absent/unproven requester_identity_verified",
+      "signals": {
+        "requester_identity_verified": false,
+        "specific_scope_authorized": true,
+        "campaign_hidden_data_excluded": true,
+        "data_and_rights_lineage_checked": true,
+        "privacy_approval_recorded": true,
+        "export_redaction_verified": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-PRIVACY_EXPORT-DENY-SPECIFIC_SCOPE_AUTHORIZED",
+      "gate": "privacy_export",
+      "threat": "Reject absent/unproven specific_scope_authorized",
+      "signals": {
+        "requester_identity_verified": true,
+        "specific_scope_authorized": false,
+        "campaign_hidden_data_excluded": true,
+        "data_and_rights_lineage_checked": true,
+        "privacy_approval_recorded": true,
+        "export_redaction_verified": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-PRIVACY_EXPORT-DENY-CAMPAIGN_HIDDEN_DATA_EXCLUDED",
+      "gate": "privacy_export",
+      "threat": "Reject absent/unproven campaign_hidden_data_excluded",
+      "signals": {
+        "requester_identity_verified": true,
+        "specific_scope_authorized": true,
+        "campaign_hidden_data_excluded": false,
+        "data_and_rights_lineage_checked": true,
+        "privacy_approval_recorded": true,
+        "export_redaction_verified": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-PRIVACY_EXPORT-DENY-DATA_AND_RIGHTS_LINEAGE_CHECKED",
+      "gate": "privacy_export",
+      "threat": "Reject absent/unproven data_and_rights_lineage_checked",
+      "signals": {
+        "requester_identity_verified": true,
+        "specific_scope_authorized": true,
+        "campaign_hidden_data_excluded": true,
+        "data_and_rights_lineage_checked": false,
+        "privacy_approval_recorded": true,
+        "export_redaction_verified": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-PRIVACY_EXPORT-DENY-PRIVACY_APPROVAL_RECORDED",
+      "gate": "privacy_export",
+      "threat": "Reject absent/unproven privacy_approval_recorded",
+      "signals": {
+        "requester_identity_verified": true,
+        "specific_scope_authorized": true,
+        "campaign_hidden_data_excluded": true,
+        "data_and_rights_lineage_checked": true,
+        "privacy_approval_recorded": false,
+        "export_redaction_verified": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-PRIVACY_EXPORT-DENY-EXPORT_REDACTION_VERIFIED",
+      "gate": "privacy_export",
+      "threat": "Reject absent/unproven export_redaction_verified",
+      "signals": {
+        "requester_identity_verified": true,
+        "specific_scope_authorized": true,
+        "campaign_hidden_data_excluded": true,
+        "data_and_rights_lineage_checked": true,
+        "privacy_approval_recorded": true,
+        "export_redaction_verified": false
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-MONITORING_RECEIPT-PASS",
+      "gate": "monitoring_receipt",
+      "threat": "Fully asserted synthetic model assumptions; NOT real source evidence",
+      "signals": {
+        "real_current_probe_observed": true,
+        "probe_targets_authoritative_executor": true,
+        "tenant_sensitive_fields_redacted": true,
+        "clock_and_source_version_recorded": true,
+        "warning_and_missing_data_reported": true
+      },
+      "expected_reference_decision": "SYNTHETIC_REFERENCE_ONLY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-MONITORING_RECEIPT-DENY-REAL_CURRENT_PROBE_OBSERVED",
+      "gate": "monitoring_receipt",
+      "threat": "Reject absent/unproven real_current_probe_observed",
+      "signals": {
+        "real_current_probe_observed": false,
+        "probe_targets_authoritative_executor": true,
+        "tenant_sensitive_fields_redacted": true,
+        "clock_and_source_version_recorded": true,
+        "warning_and_missing_data_reported": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-MONITORING_RECEIPT-DENY-PROBE_TARGETS_AUTHORITATIVE_EXECUTOR",
+      "gate": "monitoring_receipt",
+      "threat": "Reject absent/unproven probe_targets_authoritative_executor",
+      "signals": {
+        "real_current_probe_observed": true,
+        "probe_targets_authoritative_executor": false,
+        "tenant_sensitive_fields_redacted": true,
+        "clock_and_source_version_recorded": true,
+        "warning_and_missing_data_reported": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-MONITORING_RECEIPT-DENY-TENANT_SENSITIVE_FIELDS_REDACTED",
+      "gate": "monitoring_receipt",
+      "threat": "Reject absent/unproven tenant_sensitive_fields_redacted",
+      "signals": {
+        "real_current_probe_observed": true,
+        "probe_targets_authoritative_executor": true,
+        "tenant_sensitive_fields_redacted": false,
+        "clock_and_source_version_recorded": true,
+        "warning_and_missing_data_reported": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-MONITORING_RECEIPT-DENY-CLOCK_AND_SOURCE_VERSION_RECORDED",
+      "gate": "monitoring_receipt",
+      "threat": "Reject absent/unproven clock_and_source_version_recorded",
+      "signals": {
+        "real_current_probe_observed": true,
+        "probe_targets_authoritative_executor": true,
+        "tenant_sensitive_fields_redacted": true,
+        "clock_and_source_version_recorded": false,
+        "warning_and_missing_data_reported": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-MONITORING_RECEIPT-DENY-WARNING_AND_MISSING_DATA_REPORTED",
+      "gate": "monitoring_receipt",
+      "threat": "Reject absent/unproven warning_and_missing_data_reported",
+      "signals": {
+        "real_current_probe_observed": true,
+        "probe_targets_authoritative_executor": true,
+        "tenant_sensitive_fields_redacted": true,
+        "clock_and_source_version_recorded": true,
+        "warning_and_missing_data_reported": false
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-SYNTHETIC_TABLETOP-PASS",
+      "gate": "synthetic_tabletop",
+      "threat": "Fully asserted synthetic model assumptions; NOT real source evidence",
+      "signals": {
+        "fixtures_synthetic_only": true,
+        "no_live_endpoint_contact": true,
+        "no_credentials_or_private_payloads": true,
+        "not_reported_as_real_proof": true
+      },
+      "expected_reference_decision": "SYNTHETIC_REFERENCE_ONLY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-SYNTHETIC_TABLETOP-DENY-FIXTURES_SYNTHETIC_ONLY",
+      "gate": "synthetic_tabletop",
+      "threat": "Reject absent/unproven fixtures_synthetic_only",
+      "signals": {
+        "fixtures_synthetic_only": false,
+        "no_live_endpoint_contact": true,
+        "no_credentials_or_private_payloads": true,
+        "not_reported_as_real_proof": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-SYNTHETIC_TABLETOP-DENY-NO_LIVE_ENDPOINT_CONTACT",
+      "gate": "synthetic_tabletop",
+      "threat": "Reject absent/unproven no_live_endpoint_contact",
+      "signals": {
+        "fixtures_synthetic_only": true,
+        "no_live_endpoint_contact": false,
+        "no_credentials_or_private_payloads": true,
+        "not_reported_as_real_proof": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-SYNTHETIC_TABLETOP-DENY-NO_CREDENTIALS_OR_PRIVATE_PAYLOADS",
+      "gate": "synthetic_tabletop",
+      "threat": "Reject absent/unproven no_credentials_or_private_payloads",
+      "signals": {
+        "fixtures_synthetic_only": true,
+        "no_live_endpoint_contact": true,
+        "no_credentials_or_private_payloads": false,
+        "not_reported_as_real_proof": true
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-SYNTHETIC_TABLETOP-DENY-NOT_REPORTED_AS_REAL_PROOF",
+      "gate": "synthetic_tabletop",
+      "threat": "Reject absent/unproven not_reported_as_real_proof",
+      "signals": {
+        "fixtures_synthetic_only": true,
+        "no_live_endpoint_contact": true,
+        "no_credentials_or_private_payloads": true,
+        "not_reported_as_real_proof": false
+      },
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-ADV-UNKNOWN-OPERATION",
+      "gate": "unknown_operator",
+      "signals": {},
+      "threat": "An unknown handler cannot claim permission",
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-ADV-MISSING-EVIDENCE",
+      "gate": "backup_restore",
+      "signals": {},
+      "threat": "No provider data and no receipt cannot pass recovery",
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-ADV-STALE-OWNER-APPROVAL",
+      "gate": "live_data_admission",
+      "signals": {
+        "owner_live_data_approval": "stale",
+        "purpose_and_minimization_recorded": true,
+        "privacy_notice_and_retention_approved": true,
+        "identity_and_tenant_isolation_tested": true,
+        "real_restore_accepted": true,
+        "security_boundary_verified": true
+      },
+      "threat": "String/stale approval token is not verified boolean",
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-ADV-WRONG-SOURCE-EPOCH",
+      "gate": "authority_failover",
+      "signals": {
+        "owner_handoff_authorized": true,
+        "old_mutator_fenced": true,
+        "same_canonical_history_verified": true,
+        "checkpoint_digest_matches": true,
+        "strictly_newer_authority_epoch": 0,
+        "new_executor_reauthorized": true
+      },
+      "threat": "Stale epoch cannot be accepted",
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-ADV-PRIVATE-CONTENTS-IN-TELEMETRY",
+      "gate": "monitoring_receipt",
+      "signals": {
+        "real_current_probe_observed": true,
+        "probe_targets_authoritative_executor": true,
+        "tenant_sensitive_fields_redacted": false,
+        "clock_and_source_version_recorded": true,
+        "warning_and_missing_data_reported": true
+      },
+      "threat": "Raw hidden payload cannot become operational evidence",
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    },
+    {
+      "id": "XTRA09-ADV-PROVIDER-SECRET-IN-FIXTURE",
+      "gate": "synthetic_tabletop",
+      "signals": {
+        "fixtures_synthetic_only": true,
+        "no_live_endpoint_contact": true,
+        "no_credentials_or_private_payloads": false,
+        "not_reported_as_real_proof": true
+      },
+      "threat": "Secrets disqualify synthetic fixture",
+      "expected_reference_decision": "DENY",
+      "reference_execution": "NOT_RUN",
+      "actual_runtime_evidence": "NOT_TESTED"
+    }
+  ],
+  "owner_decisions": [
+    "Authorize trusted host and least-privilege export+isolated restore or explicitly accept fixture data loss",
+    "Approve objectives for restoration point and restoration time after measuring real drill",
+    "Approve actual retention schedule, purpose inventory, legal privacy review before real user data collection",
+    "Authorize any paid hosting, credential rotation, allowlist adjustment, production service change or public communications",
+    "Approve PCV service/identity/rights boundary testing and incident commander delegation"
+  ],
+  "runtime_result": "NOT_RUN",
+  "reference_result": "NOT_RUN",
+  "no_real_backups": true,
+  "no_live_provider_changes": true,
+  "no_real_user_data": true,
+  "no_public_claims": true
+}
