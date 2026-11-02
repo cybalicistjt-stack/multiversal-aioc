@@ -2,7 +2,7 @@
 
 **Program:** XTRA  
 **Authority:** owner-directed 2026-11-02, recorded through OPS5 CURRENT/LANES after protected-main approval  
-**Status:** XTRA-01 completed_verified; XTRA-02 blocked_external; XTRA-03 completed_verified; XTRA-04 selected pending publication  
+**Status:** XTRA-01 completed_verified; XTRA-02 blocked_external; XTRA-03 and XTRA-04 completed_verified; XTRA-05 selected pending publication  
 **Purpose:** finish independent, useful pre-PCV-03F work and prepare downstream acceptance without bypassing PCV/MTLC/AXI/MCB authorities.
 
 ## Invariants
@@ -61,7 +61,7 @@
 
 **Acceptance.** Each chosen golden-path operation has deterministic setup data, expected result, permission context, source/rights reference and assigned PCV acceptance owner.
 
-**Dependency.** XTRA-01. **Current state:** in_progress (successor selection pending publication). Independent first-party fixture preparation only.
+**Dependency.** XTRA-01. **Current state:** completed_verified. PR1932 Golden Campaign source-fixture exact-head green and published, without live multiplayer or combat proof.
 
 ### XTRA-05 — Golden-path asset and commercial-rights clearance
 
@@ -69,7 +69,7 @@
 
 **Acceptance.** No golden-path asset is silently unclassified; missing rights/rig/reviewer evidence remains blocked and commercial redistribution is denied until cleared.
 
-**Dependency.** XTRA-01. **Current state:** planned. No automatic authority from this roadmap.
+**Dependency.** XTRA-01. **Current state:** in_progress (XTRA-05 selector candidate pending publication). Asset and rights/source-evidence review only.
 
 ### XTRA-06 — Downstream PCV-04..10 acceptance and diagnostic prework
 
