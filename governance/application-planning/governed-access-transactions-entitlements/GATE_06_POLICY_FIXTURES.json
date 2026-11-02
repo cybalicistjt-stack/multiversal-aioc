@@ -1,0 +1,1699 @@
+{
+  "schema_version": "1.0.0",
+  "tranche": "GATE-06",
+  "grade": "SYNTHETIC_SOURCE_ONLY",
+  "decisions": [
+    {
+      "id": "I01",
+      "kind": "issue",
+      "input": {
+        "kind": "issue",
+        "verified": true,
+        "suspended": false,
+        "gm": true,
+        "gmSubscriber": true,
+        "member": true,
+        "sharingRights": true,
+        "validClosure": true,
+        "slotOccupied": false,
+        "idemOtherSubject": false
+      },
+      "expected": "ISSUE_SINGLE_SLOT",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "I02",
+      "kind": "issue",
+      "input": {
+        "kind": "issue",
+        "verified": true,
+        "suspended": false,
+        "gm": false,
+        "gmSubscriber": true,
+        "member": true,
+        "sharingRights": true,
+        "validClosure": true,
+        "slotOccupied": false,
+        "idemOtherSubject": false
+      },
+      "expected": "DENY_NOT_GM",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "I03",
+      "kind": "issue",
+      "input": {
+        "kind": "issue",
+        "verified": true,
+        "suspended": false,
+        "gm": true,
+        "gmSubscriber": false,
+        "member": true,
+        "sharingRights": true,
+        "validClosure": true,
+        "slotOccupied": false,
+        "idemOtherSubject": false
+      },
+      "expected": "DENY_GM_SUBSCRIPTION",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "I04",
+      "kind": "issue",
+      "input": {
+        "kind": "issue",
+        "verified": true,
+        "suspended": false,
+        "gm": true,
+        "gmSubscriber": true,
+        "member": false,
+        "sharingRights": true,
+        "validClosure": true,
+        "slotOccupied": false,
+        "idemOtherSubject": false
+      },
+      "expected": "DENY_MEMBER",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "I05",
+      "kind": "issue",
+      "input": {
+        "kind": "issue",
+        "verified": true,
+        "suspended": false,
+        "gm": true,
+        "gmSubscriber": true,
+        "member": true,
+        "sharingRights": false,
+        "validClosure": true,
+        "slotOccupied": false,
+        "idemOtherSubject": false
+      },
+      "expected": "DENY_SHARING",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "I06",
+      "kind": "issue",
+      "input": {
+        "kind": "issue",
+        "verified": true,
+        "suspended": false,
+        "gm": true,
+        "gmSubscriber": true,
+        "member": true,
+        "sharingRights": true,
+        "validClosure": false,
+        "slotOccupied": false,
+        "idemOtherSubject": false
+      },
+      "expected": "DENY_CLOSURE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "I07",
+      "kind": "issue",
+      "input": {
+        "kind": "issue",
+        "verified": true,
+        "suspended": false,
+        "gm": true,
+        "gmSubscriber": true,
+        "member": true,
+        "sharingRights": true,
+        "validClosure": true,
+        "slotOccupied": true,
+        "idemOtherSubject": false
+      },
+      "expected": "OCCUPIED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "I08",
+      "kind": "issue",
+      "input": {
+        "kind": "issue",
+        "verified": true,
+        "suspended": false,
+        "gm": true,
+        "gmSubscriber": true,
+        "member": true,
+        "sharingRights": true,
+        "validClosure": true,
+        "slotOccupied": false,
+        "idemOtherSubject": true
+      },
+      "expected": "DENY_IDEMPOTENCY",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "I09",
+      "kind": "issue",
+      "input": {
+        "kind": "issue",
+        "verified": false,
+        "suspended": false,
+        "gm": true,
+        "gmSubscriber": true,
+        "member": true,
+        "sharingRights": true,
+        "validClosure": true,
+        "slotOccupied": false,
+        "idemOtherSubject": false
+      },
+      "expected": "DENY_ACCOUNT",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "I10",
+      "kind": "issue",
+      "input": {
+        "kind": "issue",
+        "verified": true,
+        "suspended": true,
+        "gm": true,
+        "gmSubscriber": true,
+        "member": true,
+        "sharingRights": true,
+        "validClosure": true,
+        "slotOccupied": false,
+        "idemOtherSubject": false
+      },
+      "expected": "DENY_SUSPENDED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "I11",
+      "kind": "issue",
+      "input": {
+        "kind": "issue",
+        "verified": true,
+        "suspended": false,
+        "gm": true,
+        "gmSubscriber": false,
+        "member": true,
+        "sharingRights": true,
+        "validClosure": true,
+        "slotOccupied": true,
+        "idemOtherSubject": false
+      },
+      "expected": "DENY_GM_SUBSCRIPTION",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "I12",
+      "kind": "issue",
+      "input": {
+        "kind": "issue",
+        "verified": true,
+        "suspended": false,
+        "gm": true,
+        "gmSubscriber": true,
+        "member": true,
+        "sharingRights": true,
+        "validClosure": false,
+        "slotOccupied": false,
+        "idemOtherSubject": true
+      },
+      "expected": "DENY_CLOSURE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "I13",
+      "kind": "issue",
+      "input": {
+        "kind": "issue",
+        "verified": true,
+        "suspended": false,
+        "gm": true,
+        "gmSubscriber": true,
+        "member": true,
+        "sharingRights": true,
+        "validClosure": true,
+        "slotOccupied": true,
+        "idemOtherSubject": false
+      },
+      "expected": "OCCUPIED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U01",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": true,
+        "subscriber": false,
+        "sponsored": false,
+        "grantActive": true,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "ALLOW_CAMPAIGN_CLOSURE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U02",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": false,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": true,
+        "subscriber": false,
+        "sponsored": false,
+        "grantActive": true,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "DENY_MEMBER",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U03",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": false,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": true,
+        "subscriber": false,
+        "sponsored": false,
+        "grantActive": true,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "DENY_CAMPAIGN",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U04",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": false,
+        "visible": true,
+        "licensed": true,
+        "subscriber": false,
+        "sponsored": false,
+        "grantActive": true,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "DENY_ROLE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U05",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": false,
+        "licensed": true,
+        "subscriber": false,
+        "sponsored": false,
+        "grantActive": true,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "DENY_VISIBILITY",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U06",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": false,
+        "subscriber": false,
+        "sponsored": false,
+        "grantActive": true,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "DENY_LICENSE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U07",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": true,
+        "subscriber": false,
+        "sponsored": false,
+        "grantActive": false,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "DENY_GRANT",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U08",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": true,
+        "subscriber": false,
+        "sponsored": false,
+        "grantActive": true,
+        "rootIncluded": false,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "DENY_UNRELATED_ROOT",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U09",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": true,
+        "subscriber": false,
+        "sponsored": false,
+        "grantActive": true,
+        "rootIncluded": true,
+        "grantRevoked": true,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "DENY_REVOKED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U10",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": true,
+        "subscriber": false,
+        "sponsored": false,
+        "grantActive": true,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": false,
+        "actionPermitted": true
+      },
+      "expected": "DENY_BENEFICIARY",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U11",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": true,
+        "subscriber": false,
+        "sponsored": false,
+        "grantActive": true,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": false
+      },
+      "expected": "DENY_ACTION",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U12",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": true,
+        "subscriber": true,
+        "sponsored": false,
+        "grantActive": false,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "ALLOW_PERSONAL",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U13",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": true,
+        "subscriber": false,
+        "sponsored": true,
+        "grantActive": false,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "ALLOW_SPONSORED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U14",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": false,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": true,
+        "subscriber": true,
+        "sponsored": false,
+        "grantActive": true,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "DENY_CAMPAIGN",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U15",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": false,
+        "licensed": true,
+        "subscriber": false,
+        "sponsored": true,
+        "grantActive": true,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "DENY_VISIBILITY",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U16",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": true,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": true,
+        "subscriber": true,
+        "sponsored": false,
+        "grantActive": true,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "DENY_SUSPENDED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "U17",
+      "kind": "use",
+      "input": {
+        "kind": "use",
+        "verified": true,
+        "suspended": false,
+        "member": true,
+        "campaignMatch": true,
+        "rolePermits": true,
+        "visible": true,
+        "licensed": true,
+        "subscriber": false,
+        "sponsored": false,
+        "grantActive": false,
+        "rootIncluded": true,
+        "grantRevoked": false,
+        "beneficiaryMatches": true,
+        "actionPermitted": true
+      },
+      "expected": "DENY_GRANT",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "V01",
+      "kind": "view",
+      "input": {
+        "kind": "view",
+        "verified": true,
+        "suspended": false,
+        "owner": true,
+        "hidden": false,
+        "retainedProjection": true,
+        "purpose": "read"
+      },
+      "expected": "ALLOW_RETAINED_CHARACTER_VIEW",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "V02",
+      "kind": "view",
+      "input": {
+        "kind": "view",
+        "verified": true,
+        "suspended": false,
+        "owner": false,
+        "hidden": false,
+        "retainedProjection": true,
+        "purpose": "read"
+      },
+      "expected": "DENY_OWNER",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "V03",
+      "kind": "view",
+      "input": {
+        "kind": "view",
+        "verified": true,
+        "suspended": false,
+        "owner": true,
+        "hidden": true,
+        "retainedProjection": true,
+        "purpose": "read"
+      },
+      "expected": "DENY_PRIVATE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "V04",
+      "kind": "view",
+      "input": {
+        "kind": "view",
+        "verified": true,
+        "suspended": false,
+        "owner": true,
+        "hidden": false,
+        "retainedProjection": false,
+        "purpose": "read"
+      },
+      "expected": "DENY_PROJECTION",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "V05",
+      "kind": "view",
+      "input": {
+        "kind": "view",
+        "verified": true,
+        "suspended": false,
+        "owner": true,
+        "hidden": false,
+        "retainedProjection": true,
+        "purpose": "execute"
+      },
+      "expected": "DENY_PROJECTION_RUNTIME",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "V06",
+      "kind": "view",
+      "input": {
+        "kind": "view",
+        "verified": true,
+        "suspended": false,
+        "owner": true,
+        "hidden": false,
+        "retainedProjection": true,
+        "purpose": "catalog"
+      },
+      "expected": "DENY_PROJECTION_RUNTIME",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "V07",
+      "kind": "view",
+      "input": {
+        "kind": "view",
+        "verified": true,
+        "suspended": true,
+        "owner": true,
+        "hidden": false,
+        "retainedProjection": true,
+        "purpose": "read"
+      },
+      "expected": "DENY_SUSPENDED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "V08",
+      "kind": "view",
+      "input": {
+        "kind": "view",
+        "verified": false,
+        "suspended": false,
+        "owner": true,
+        "hidden": false,
+        "retainedProjection": true,
+        "purpose": "read"
+      },
+      "expected": "DENY_ACCOUNT",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "V09",
+      "kind": "view",
+      "input": {
+        "kind": "view",
+        "verified": true,
+        "suspended": false,
+        "owner": true,
+        "hidden": false,
+        "retainedProjection": true,
+        "purpose": "read"
+      },
+      "expected": "ALLOW_RETAINED_CHARACTER_VIEW",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "V10",
+      "kind": "view",
+      "input": {
+        "kind": "view",
+        "verified": true,
+        "suspended": false,
+        "owner": true,
+        "hidden": true,
+        "retainedProjection": true,
+        "purpose": "read"
+      },
+      "expected": "DENY_PRIVATE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T01",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": true,
+        "suspended": false,
+        "provenanceKnown": true,
+        "restricted": false,
+        "restrictedNested": false,
+        "owner": true,
+        "destinationLicensed": true,
+        "destinationRole": true
+      },
+      "expected": "ALLOW_INDEPENDENT_TRANSFER",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T02",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": true,
+        "suspended": false,
+        "provenanceKnown": false,
+        "restricted": false,
+        "restrictedNested": false,
+        "owner": true,
+        "destinationLicensed": true,
+        "destinationRole": true
+      },
+      "expected": "DENY_UNKNOWN_ORIGIN",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T03",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": true,
+        "suspended": false,
+        "provenanceKnown": true,
+        "restricted": true,
+        "restrictedNested": false,
+        "owner": true,
+        "destinationLicensed": true,
+        "destinationRole": true
+      },
+      "expected": "DENY_RESTRICTED_TRANSFER",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T04",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": true,
+        "suspended": false,
+        "provenanceKnown": true,
+        "restricted": false,
+        "restrictedNested": true,
+        "owner": true,
+        "destinationLicensed": true,
+        "destinationRole": true
+      },
+      "expected": "DENY_RESTRICTED_TRANSFER",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T05",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": true,
+        "suspended": false,
+        "provenanceKnown": true,
+        "restricted": false,
+        "restrictedNested": false,
+        "owner": false,
+        "destinationLicensed": true,
+        "destinationRole": true
+      },
+      "expected": "DENY_OWNER",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T06",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": true,
+        "suspended": false,
+        "provenanceKnown": true,
+        "restricted": false,
+        "restrictedNested": false,
+        "owner": true,
+        "destinationLicensed": false,
+        "destinationRole": true
+      },
+      "expected": "DENY_DESTINATION_LICENSE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T07",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": true,
+        "suspended": false,
+        "provenanceKnown": true,
+        "restricted": false,
+        "restrictedNested": false,
+        "owner": true,
+        "destinationLicensed": true,
+        "destinationRole": false
+      },
+      "expected": "DENY_DESTINATION_ROLE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T08",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": true,
+        "suspended": false,
+        "provenanceKnown": true,
+        "restricted": true,
+        "restrictedNested": false,
+        "owner": true,
+        "destinationLicensed": true,
+        "destinationRole": true
+      },
+      "expected": "DENY_RESTRICTED_TRANSFER",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T09",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": true,
+        "suspended": false,
+        "provenanceKnown": true,
+        "restricted": false,
+        "restrictedNested": true,
+        "owner": true,
+        "destinationLicensed": true,
+        "destinationRole": true
+      },
+      "expected": "DENY_RESTRICTED_TRANSFER",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T10",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": true,
+        "suspended": false,
+        "provenanceKnown": false,
+        "restricted": false,
+        "restrictedNested": true,
+        "owner": true,
+        "destinationLicensed": true,
+        "destinationRole": true
+      },
+      "expected": "DENY_UNKNOWN_ORIGIN",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T11",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": false,
+        "suspended": false,
+        "provenanceKnown": true,
+        "restricted": false,
+        "restrictedNested": false,
+        "owner": true,
+        "destinationLicensed": true,
+        "destinationRole": true
+      },
+      "expected": "DENY_ACCOUNT",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T12",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": true,
+        "suspended": true,
+        "provenanceKnown": true,
+        "restricted": false,
+        "restrictedNested": false,
+        "owner": true,
+        "destinationLicensed": true,
+        "destinationRole": true
+      },
+      "expected": "DENY_SUSPENDED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T13",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": true,
+        "suspended": false,
+        "provenanceKnown": true,
+        "restricted": true,
+        "restrictedNested": false,
+        "owner": true,
+        "destinationLicensed": true,
+        "destinationRole": false
+      },
+      "expected": "DENY_RESTRICTED_TRANSFER",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "T14",
+      "kind": "transfer",
+      "input": {
+        "kind": "transfer",
+        "verified": true,
+        "suspended": false,
+        "provenanceKnown": true,
+        "restricted": false,
+        "restrictedNested": false,
+        "owner": true,
+        "destinationLicensed": true,
+        "destinationRole": true
+      },
+      "expected": "ALLOW_INDEPENDENT_TRANSFER",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "S01",
+      "kind": "sponsor",
+      "input": {
+        "kind": "sponsor",
+        "verified": true,
+        "suspended": false,
+        "subjectMatches": true,
+        "sourceVerified": true,
+        "finitePeriod": true,
+        "inPeriod": true,
+        "scopeMatches": true
+      },
+      "expected": "ALLOW_ACCOUNT_SPONSORSHIP",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "S02",
+      "kind": "sponsor",
+      "input": {
+        "kind": "sponsor",
+        "verified": true,
+        "suspended": false,
+        "subjectMatches": false,
+        "sourceVerified": true,
+        "finitePeriod": true,
+        "inPeriod": true,
+        "scopeMatches": true
+      },
+      "expected": "DENY_SPONSORED_SUBJECT",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "S03",
+      "kind": "sponsor",
+      "input": {
+        "kind": "sponsor",
+        "verified": true,
+        "suspended": false,
+        "subjectMatches": true,
+        "sourceVerified": false,
+        "finitePeriod": true,
+        "inPeriod": true,
+        "scopeMatches": true
+      },
+      "expected": "DENY_SPONSOR_SOURCE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "S04",
+      "kind": "sponsor",
+      "input": {
+        "kind": "sponsor",
+        "verified": true,
+        "suspended": false,
+        "subjectMatches": true,
+        "sourceVerified": true,
+        "finitePeriod": false,
+        "inPeriod": true,
+        "scopeMatches": true
+      },
+      "expected": "DENY_SPONSOR_FINITE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "S05",
+      "kind": "sponsor",
+      "input": {
+        "kind": "sponsor",
+        "verified": true,
+        "suspended": false,
+        "subjectMatches": true,
+        "sourceVerified": true,
+        "finitePeriod": true,
+        "inPeriod": false,
+        "scopeMatches": true
+      },
+      "expected": "DENY_SPONSOR_EXPIRED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "S06",
+      "kind": "sponsor",
+      "input": {
+        "kind": "sponsor",
+        "verified": true,
+        "suspended": false,
+        "subjectMatches": true,
+        "sourceVerified": true,
+        "finitePeriod": true,
+        "inPeriod": true,
+        "scopeMatches": false
+      },
+      "expected": "DENY_SPONSOR_SCOPE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "S07",
+      "kind": "sponsor",
+      "input": {
+        "kind": "sponsor",
+        "verified": false,
+        "suspended": false,
+        "subjectMatches": true,
+        "sourceVerified": true,
+        "finitePeriod": true,
+        "inPeriod": true,
+        "scopeMatches": true
+      },
+      "expected": "DENY_ACCOUNT",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "S08",
+      "kind": "sponsor",
+      "input": {
+        "kind": "sponsor",
+        "verified": true,
+        "suspended": true,
+        "subjectMatches": true,
+        "sourceVerified": true,
+        "finitePeriod": true,
+        "inPeriod": true,
+        "scopeMatches": true
+      },
+      "expected": "DENY_SUSPENDED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "S09",
+      "kind": "sponsor",
+      "input": {
+        "kind": "sponsor",
+        "verified": true,
+        "suspended": false,
+        "subjectMatches": true,
+        "sourceVerified": false,
+        "finitePeriod": true,
+        "inPeriod": true,
+        "scopeMatches": true
+      },
+      "expected": "DENY_SPONSOR_SOURCE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "S10",
+      "kind": "sponsor",
+      "input": {
+        "kind": "sponsor",
+        "verified": true,
+        "suspended": false,
+        "subjectMatches": false,
+        "sourceVerified": true,
+        "finitePeriod": true,
+        "inPeriod": true,
+        "scopeMatches": true
+      },
+      "expected": "DENY_SPONSORED_SUBJECT",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "S11",
+      "kind": "sponsor",
+      "input": {
+        "kind": "sponsor",
+        "verified": true,
+        "suspended": false,
+        "subjectMatches": true,
+        "sourceVerified": true,
+        "finitePeriod": true,
+        "inPeriod": false,
+        "scopeMatches": true
+      },
+      "expected": "DENY_SPONSOR_EXPIRED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "O01",
+      "kind": "offline",
+      "input": {
+        "kind": "offline",
+        "verified": true,
+        "suspended": false,
+        "signedLease": true,
+        "deviceMatches": true,
+        "unchangedAccount": true,
+        "campaignMatches": true,
+        "digestMatches": true,
+        "finiteExpiry": true,
+        "unexpired": true,
+        "knownDenial": false
+      },
+      "expected": "ALLOW_PREVERIFIED_OFFLINE_SCOPE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "O02",
+      "kind": "offline",
+      "input": {
+        "kind": "offline",
+        "verified": true,
+        "suspended": false,
+        "signedLease": false,
+        "deviceMatches": true,
+        "unchangedAccount": true,
+        "campaignMatches": true,
+        "digestMatches": true,
+        "finiteExpiry": true,
+        "unexpired": true,
+        "knownDenial": false
+      },
+      "expected": "DENY_UNSIGNED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "O03",
+      "kind": "offline",
+      "input": {
+        "kind": "offline",
+        "verified": true,
+        "suspended": false,
+        "signedLease": true,
+        "deviceMatches": false,
+        "unchangedAccount": true,
+        "campaignMatches": true,
+        "digestMatches": true,
+        "finiteExpiry": true,
+        "unexpired": true,
+        "knownDenial": false
+      },
+      "expected": "DENY_DEVICE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "O04",
+      "kind": "offline",
+      "input": {
+        "kind": "offline",
+        "verified": true,
+        "suspended": false,
+        "signedLease": true,
+        "deviceMatches": true,
+        "unchangedAccount": false,
+        "campaignMatches": true,
+        "digestMatches": true,
+        "finiteExpiry": true,
+        "unexpired": true,
+        "knownDenial": false
+      },
+      "expected": "DENY_SWITCH",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "O05",
+      "kind": "offline",
+      "input": {
+        "kind": "offline",
+        "verified": true,
+        "suspended": false,
+        "signedLease": true,
+        "deviceMatches": true,
+        "unchangedAccount": true,
+        "campaignMatches": false,
+        "digestMatches": true,
+        "finiteExpiry": true,
+        "unexpired": true,
+        "knownDenial": false
+      },
+      "expected": "DENY_CAMPAIGN",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "O06",
+      "kind": "offline",
+      "input": {
+        "kind": "offline",
+        "verified": true,
+        "suspended": false,
+        "signedLease": true,
+        "deviceMatches": true,
+        "unchangedAccount": true,
+        "campaignMatches": true,
+        "digestMatches": false,
+        "finiteExpiry": true,
+        "unexpired": true,
+        "knownDenial": false
+      },
+      "expected": "DENY_MANIFEST",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "O07",
+      "kind": "offline",
+      "input": {
+        "kind": "offline",
+        "verified": true,
+        "suspended": false,
+        "signedLease": true,
+        "deviceMatches": true,
+        "unchangedAccount": true,
+        "campaignMatches": true,
+        "digestMatches": true,
+        "finiteExpiry": false,
+        "unexpired": true,
+        "knownDenial": false
+      },
+      "expected": "DENY_FINITE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "O08",
+      "kind": "offline",
+      "input": {
+        "kind": "offline",
+        "verified": true,
+        "suspended": false,
+        "signedLease": true,
+        "deviceMatches": true,
+        "unchangedAccount": true,
+        "campaignMatches": true,
+        "digestMatches": true,
+        "finiteExpiry": true,
+        "unexpired": false,
+        "knownDenial": false
+      },
+      "expected": "DENY_EXPIRED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "O09",
+      "kind": "offline",
+      "input": {
+        "kind": "offline",
+        "verified": true,
+        "suspended": false,
+        "signedLease": true,
+        "deviceMatches": true,
+        "unchangedAccount": true,
+        "campaignMatches": true,
+        "digestMatches": true,
+        "finiteExpiry": true,
+        "unexpired": true,
+        "knownDenial": true
+      },
+      "expected": "DENY_KNOWN",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "O10",
+      "kind": "offline",
+      "input": {
+        "kind": "offline",
+        "verified": false,
+        "suspended": false,
+        "signedLease": true,
+        "deviceMatches": true,
+        "unchangedAccount": true,
+        "campaignMatches": true,
+        "digestMatches": true,
+        "finiteExpiry": true,
+        "unexpired": true,
+        "knownDenial": false
+      },
+      "expected": "DENY_ACCOUNT",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "O11",
+      "kind": "offline",
+      "input": {
+        "kind": "offline",
+        "verified": true,
+        "suspended": true,
+        "signedLease": true,
+        "deviceMatches": true,
+        "unchangedAccount": true,
+        "campaignMatches": true,
+        "digestMatches": true,
+        "finiteExpiry": true,
+        "unexpired": true,
+        "knownDenial": false
+      },
+      "expected": "DENY_SUSPENDED",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "O12",
+      "kind": "offline",
+      "input": {
+        "kind": "offline",
+        "verified": true,
+        "suspended": false,
+        "signedLease": true,
+        "deviceMatches": false,
+        "unchangedAccount": true,
+        "campaignMatches": true,
+        "digestMatches": true,
+        "finiteExpiry": true,
+        "unexpired": true,
+        "knownDenial": true
+      },
+      "expected": "DENY_DEVICE",
+      "grade": "DESIGN_ONLY"
+    },
+    {
+      "id": "O13",
+      "kind": "offline",
+      "input": {
+        "kind": "offline",
+        "verified": true,
+        "suspended": false,
+        "signedLease": true,
+        "deviceMatches": true,
+        "unchangedAccount": true,
+        "campaignMatches": true,
+        "digestMatches": true,
+        "finiteExpiry": true,
+        "unexpired": true,
+        "knownDenial": false
+      },
+      "expected": "ALLOW_PREVERIFIED_OFFLINE_SCOPE",
+      "grade": "DESIGN_ONLY"
+    }
+  ],
+  "graphs": [
+    {
+      "id": "G01",
+      "graph": {
+        "A": {
+          "trusted": true,
+          "licensed": true,
+          "required": []
+        }
+      },
+      "root": "A",
+      "expectedStatus": "OK",
+      "expectedResources": [
+        "A"
+      ]
+    },
+    {
+      "id": "G02",
+      "graph": {
+        "A": {
+          "trusted": true,
+          "licensed": true,
+          "required": [
+            "B"
+          ]
+        },
+        "B": {
+          "trusted": true,
+          "licensed": true,
+          "required": [
+            "C"
+          ]
+        },
+        "C": {
+          "trusted": true,
+          "licensed": true,
+          "required": []
+        }
+      },
+      "root": "A",
+      "expectedStatus": "OK",
+      "expectedResources": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "G03",
+      "graph": {
+        "A": {
+          "trusted": true,
+          "licensed": true,
+          "required": [
+            "B"
+          ]
+        },
+        "B": {
+          "trusted": true,
+          "licensed": true,
+          "required": [
+            "A"
+          ]
+        }
+      },
+      "root": "A",
+      "expectedStatus": "CYCLE",
+      "expectedResources": []
+    },
+    {
+      "id": "G04",
+      "graph": {
+        "A": {
+          "trusted": true,
+          "licensed": true,
+          "required": [
+            "absent"
+          ]
+        }
+      },
+      "root": "A",
+      "expectedStatus": "MISSING",
+      "expectedResources": []
+    },
+    {
+      "id": "G05",
+      "graph": {
+        "A": {
+          "trusted": false,
+          "licensed": true,
+          "required": []
+        }
+      },
+      "root": "A",
+      "expectedStatus": "UNTRUSTED",
+      "expectedResources": []
+    },
+    {
+      "id": "G06",
+      "graph": {
+        "A": {
+          "trusted": true,
+          "licensed": true,
+          "required": [
+            "B"
+          ]
+        },
+        "B": {
+          "trusted": true,
+          "licensed": false,
+          "required": []
+        }
+      },
+      "root": "A",
+      "expectedStatus": "UNLICENSED",
+      "expectedResources": []
+    },
+    {
+      "id": "G07",
+      "graph": {
+        "A": {
+          "trusted": true,
+          "licensed": true,
+          "required": [],
+          "optional": [
+            "B"
+          ]
+        },
+        "B": {
+          "trusted": true,
+          "licensed": true,
+          "required": []
+        }
+      },
+      "root": "A",
+      "expectedStatus": "OK",
+      "expectedResources": [
+        "A"
+      ]
+    },
+    {
+      "id": "G08",
+      "graph": {
+        "A": {
+          "trusted": true,
+          "licensed": true,
+          "required": [
+            "B",
+            "C"
+          ]
+        },
+        "B": {
+          "trusted": true,
+          "licensed": true,
+          "required": [
+            "D"
+          ]
+        },
+        "C": {
+          "trusted": true,
+          "licensed": true,
+          "required": [
+            "D"
+          ]
+        },
+        "D": {
+          "trusted": true,
+          "licensed": true,
+          "required": []
+        }
+      },
+      "root": "A",
+      "expectedStatus": "OK",
+      "expectedResources": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "G09",
+      "graph": {
+        "A": {
+          "trusted": true,
+          "licensed": true,
+          "required": []
+        }
+      },
+      "root": "absent",
+      "expectedStatus": "MISSING",
+      "expectedResources": []
+    },
+    {
+      "id": "G10",
+      "graph": {
+        "A": {
+          "trusted": true,
+          "licensed": true,
+          "required": [
+            "A"
+          ]
+        }
+      },
+      "root": "A",
+      "expectedStatus": "CYCLE",
+      "expectedResources": []
+    },
+    {
+      "id": "G11",
+      "graph": {
+        "A": {
+          "trusted": true,
+          "licensed": true,
+          "required": [
+            "B"
+          ]
+        },
+        "B": {
+          "trusted": false,
+          "licensed": true,
+          "required": []
+        }
+      },
+      "root": "A",
+      "expectedStatus": "UNTRUSTED",
+      "expectedResources": []
+    },
+    {
+      "id": "G12",
+      "graph": {
+        "A": {
+          "trusted": true,
+          "licensed": true,
+          "required": [
+            "B"
+          ]
+        },
+        "B": {
+          "trusted": true,
+          "licensed": true,
+          "required": [
+            "C"
+          ]
+        },
+        "C": {
+          "trusted": true,
+          "licensed": false,
+          "required": []
+        }
+      },
+      "root": "A",
+      "expectedStatus": "UNLICENSED",
+      "expectedResources": []
+    }
+  ]
+}

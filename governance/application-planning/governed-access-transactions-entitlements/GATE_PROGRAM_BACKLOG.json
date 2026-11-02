@@ -4,9 +4,9 @@
   "program_name": "Governed Access, Transactions & Entitlements",
   "owner": "John Brandon Turner",
   "created": "2026-11-02",
-  "status": "GATE-05_in_progress_source_only",
-  "selected_work_item": "GATE-05",
-  "selected_attempt": "GATE-05-attempt-001",
+  "status": "GATE-06_in_progress_source_only",
+  "selected_work_item": "GATE-06",
+  "selected_attempt": "GATE-06-attempt-001",
   "authority_boundary": "On-demand program, not fourth persistent implementation slot; GATE-01 source/design only. Future GATE-09..13 product/provider implementations require separately CURRENT-selected scope and real dependencies; GATE-14 final owner-only gate.",
   "publication_rule": "PR-only protected main, immutable exact head, required validations and fresh-base integration; no automatic successor.",
   "tranches": [
@@ -98,7 +98,7 @@
       "name": "PostgreSQL ledger, invariants and atomicity",
       "priority": "P0",
       "kind": "source_only",
-      "status": "in_progress",
+      "status": "completed_verified",
       "depends_on": [
         "GATE-03",
         "GATE-04"
@@ -106,14 +106,21 @@
       "external_dependencies": [],
       "scope": "Propose DDL, unique purchase ownership, idempotent event log, serializable allowance grant slots, source revision and monotonic revocation.",
       "acceptance": "Executable isolated DB tests can prove 100 concurrent attempts yield one grant; research fixtures are not production proof.",
-      "code_implementation_authorized": false
+      "code_implementation_authorized": false,
+      "completion_evidence": {
+        "pr": 1956,
+        "run": 41509649181,
+        "merge_sha": "5ac60e158a2ce2736c331dc0dc4002d958181583",
+        "queue_generation": 418,
+        "grade": "SOURCE_AND_SYNTHETIC_ONLY"
+      }
     },
     {
       "id": "GATE-06",
       "name": "Campaign allowances and sponsored access",
       "priority": "P0",
       "kind": "source_only",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "GATE-02",
         "GATE-05"

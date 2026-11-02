@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "gate",
+  "program_id": "GATE",
+  "work_item_id": "GATE-06",
+  "attempt_id": "GATE-06-attempt-001",
+  "status": "in_progress",
+  "completed": false,
+  "implementation_authority": false,
+  "selected_by_owner": "Owner Continue after verified GATE-05 source publication; bounded owner-approved one-slot allowance/Sponsored Month design only.",
+  "implementation_branch": "program/gate06-campaign-allowance-sponsored-access-20261102",
+  "scope": "Source-only Campaign allowance + Sponsored Month contract: one slot per campaign/player subject, subscribed GM issuance, root+dependency closure, retained character view, immutable restricted provenance and anti-laundering/offline seams with 90 synthetic cases; no app/DB/provider work.",
+  "backlog": "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM_BACKLOG.json",
+  "acceptance": [
+    "Explicitly distinguish subscriber, account Sponsored Month, Campaign Allowance and retained character read projection",
+    "One owner-approved Campaign/player allowance slot and one selected root closure issued by subscribed authorized GM, source/target constraints and no cross-account/Campaign promotion",
+    "Preserve restricted lineage across copy/sync/export/search/AI and continued character view; unresolved ongoing GM eligibility marked pending",
+    "Deterministic synthetic tests: 78 access decisions and 12 dependency closure cases, plus OPS5 exact-head source publication; no real service or security proof"
+  ],
+  "active_substep": "allowance_policy_candidate",
+  "next_action": "Exact-head validate and publish the GATE-06 source-only policy and synthetic oracle, then reconcile publication before successor selection.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "policy_source_candidate",
+      "evidence": "Owner UADS allowance/sponsor design, 78 synthetic decisions, 12 closure graph cases; no real DB/service security tests"
+    }
+  },
+  "constraints": {
+    "no_product_or_database_implementation": true,
+    "no_payment_or_provider_activation": true,
+    "no_price_or_spend": true,
+    "no_other_lane_mutation": true,
+    "no_new_owner_consumer_policy": true,
+    "no_production_crypto_claim": true,
+    "no_automatic_successor": true
+  }
+}
