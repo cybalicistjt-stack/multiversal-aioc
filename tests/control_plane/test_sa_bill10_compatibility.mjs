@@ -143,7 +143,7 @@ test("SA10-10 replay payload actor receipt or owner mismatch denies before handl
  for(const variant of [
    {command:command({payload:{die:6}})},
    {command:command({actorId:"p2"})},
-   {command:command({commandId:"other"})},
+   {command:command({type:"other-type"})},
    {owner:{...base.owner,persistedReceipt:{...receipt(),commandId:"other"}}},
    {owner:{...base.owner,persistedCommand:undefined}},
    {owner:{...base.owner,roleEpochCurrent:false}},
