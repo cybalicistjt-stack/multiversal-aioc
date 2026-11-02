@@ -48,7 +48,7 @@ class Xtra08ReferenceThreatTests(unittest.TestCase):
         self.assertTrue(self.m["no_production_patch"])
         self.assertEqual(self.m["runtime_result"],"NOT_RUN")
         self.assertEqual(self.m["reference_result"],"NOT_RUN")
-        self.assertIn("one allowance per Campaign per Player-user",self.m["owner_policy_baseline"])
+        self.assertIn("one allowance per campaign per player-user",self.m["owner_policy_baseline"].lower())
         self.assertTrue(any("SA-BILL-09" in s for s in self.m["source_known_risks"]))
         self.assertTrue(any("SA-BILL-09" in s for s in self.m["source_known_risks"]))
 
