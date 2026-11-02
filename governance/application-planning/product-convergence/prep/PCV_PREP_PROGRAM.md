@@ -30,3 +30,7 @@
 After PCV-03F reaches `completed_verified`, the actual PCV-04 owner must fetch app HEAD afresh and wire canonical A5 session, A6 actions, A7 combat and GPR encounter outputs through existing source owners. PCV-05 takes A9/adventure flows; PCV-06 MIB13 and GPR games; PCV-07 MRCS; PCV-08 full source census; PCV-09 actual UI; PCV-10 installed proof. Each retains its explicit predecessor gate.
 
 **Evidence rule:** No self-reported screenshot, synthetic event log, mocked provider/account, game fixture or source-only test can prove installed Windows/Android two-human behavior.
+
+## Isolated preparation publication status
+
+PR1963 exact HEAD `5ac25d245847d85cc7723fe1ebaa02e00639f473` validated OPS5 run 41528487308 and Node test run 41528487335 (23/23), merged `03edef371050c9c1c1fa99f899f1286230850a92`, queue generation432. The [evidence closeout](PCV_PREP_EVIDENCE_CLOSEOUT.md) makes the unclassified path audit and real integration gates explicit. **This does not complete PCV04–10.**
