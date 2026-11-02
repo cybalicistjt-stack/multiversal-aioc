@@ -1,0 +1,64 @@
+name: SA-BILL-05 Disposable PostgreSQL Adversarial Research
+
+on:
+  pull_request:
+    paths:
+      - 'tests/control_plane/test_sa_bill05_postgres.py'
+      - 'governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_03_POSTGRESQL_REFERENCE.sql'
+      - '.github/workflows/validate-sa-bill05-postgres.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sa-bill05-postgres-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  isolated-postgres:
+    name: PostgreSQL 16 transactional allowance study (synthetic data only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
+          POSTGRES_PASSWORD: sa-bill05-temporary-fixture
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d postgres"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 15
+    env:
+      SA_BILL05_TEST_DATABASE_URL: postgresql://postgres:sa-bill05-temporary-fixture@localhost:5432/postgres
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Provision Python test-only PostgreSQL client
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pinned test driver (no production dependencies)
+        run: python -m pip install --disable-pip-version-check 'psycopg[binary]==3.2.4'
+
+      - name: Verify real PostgreSQL uniqueness, concurrency, audit rollback and source revocation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/control_plane/test_sa_bill05_postgres.py
+
+      - name: Document test boundary
+        if: always()
+        run: |
+          echo 'SA-BILL-05: ephemeral provider-agnostic PostgreSQL fixture only.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'NOT a deployed A3 owner, production billing, payment provider, Windows/Android test, or permission to activate commerce.' >> "$GITHUB_STEP_SUMMARY"
