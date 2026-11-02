@@ -1,0 +1,751 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "XTRA10-MARKET-VOICE-CLAIMS-REFERENCE-001",
+  "retrieved_at": "2026-11-02",
+  "work_item": "XTRA-10",
+  "evidence_grade": "SOURCE_AND_VENDOR_CLAIMS_PLUS_EXPLICIT_HYPOTHESES_ONLY",
+  "source_authority": "operations/CURRENT.json",
+  "no_live_customer_interviews": true,
+  "no_user_cohort_metrics": true,
+  "no_validated_market_size": true,
+  "no_mcb_implementation": true,
+  "no_spend_or_recruitment": true,
+  "no_public_release": true,
+  "mcb_alignment": [
+    "MCB-01",
+    "MCB-02",
+    "MCB-03",
+    "MCB-04",
+    "MCB-05",
+    "MCB-06",
+    "MCB-07",
+    "MCB-08"
+  ],
+  "sources": [
+    {
+      "id": "V-ROLL20",
+      "kind": "vendor_primary",
+      "url": "https://roll20.net/",
+      "topic": "Maps, campaign organization, sheets, dice and free account entry",
+      "retrieved": "2026-11-02",
+      "scope": "vendor-described features; no hands-on audit"
+    },
+    {
+      "id": "V-FOUNDRY",
+      "kind": "vendor_primary",
+      "url": "https://foundryvtt.com/",
+      "topic": "Self-hosted system-agnostic VTT with modules and one-time license",
+      "retrieved": "2026-11-02",
+      "scope": "vendor description; no install or performance comparison"
+    },
+    {
+      "id": "V-QUEST",
+      "kind": "vendor_primary",
+      "url": "https://www.questportal.com/features",
+      "topic": "Web/mobile campaign, sheet, GM assistant, notes, game-system choices",
+      "retrieved": "2026-11-02",
+      "scope": "vendor description; no full entitlement or security audit"
+    },
+    {
+      "id": "V-ALCHEMY",
+      "kind": "vendor_primary",
+      "url": "https://alchemyrpg.com/",
+      "topic": "Cinematic, scene-first VTT, free features and homebrew",
+      "retrieved": "2026-11-02",
+      "scope": "vendor description; availability/pricing subject to recheck"
+    },
+    {
+      "id": "V-WORLDANVIL",
+      "kind": "vendor_primary",
+      "url": "https://www.worldanvil.com/",
+      "topic": "Linked worldbuilding wiki, interactive maps, campaign tools, private lore",
+      "retrieved": "2026-11-02",
+      "scope": "vendor-described capabilities; not hands-on tested"
+    },
+    {
+      "id": "V-DNDBEYOND",
+      "kind": "vendor_primary",
+      "url": "https://www.dndbeyond.com/en/players",
+      "topic": "D&D-specific mobile/browser synced character, dice and sourcebooks",
+      "retrieved": "2026-11-02",
+      "scope": "publisher-controlled ecosystem; no cross-system equivalence"
+    },
+    {
+      "id": "V-DEMIPLANE",
+      "kind": "vendor_primary",
+      "url": "https://www.demiplane.com/blog/campaigns-have-arrived",
+      "topic": "Nexus campaigns and content-source permissions across supported RPGs",
+      "retrieved": "2026-11-02",
+      "scope": "published 2026; current system coverage must be checked"
+    },
+    {
+      "id": "I-ICV2",
+      "kind": "industry_editorial",
+      "url": "https://icv2.com/articles/markets/view/62035/",
+      "topic": "2025 US hobby-games 2025 estimate; broad category only",
+      "retrieved": "2026-11-02",
+      "scope": "Not digital RPG software, not Multiversal TAM, no adoption or willingness-to-pay inference"
+    },
+    {
+      "id": "I-ICV2-ANNUAL",
+      "kind": "industry_editorial",
+      "url": "https://icv2.com/articles/news/view/62704/",
+      "topic": "2026 release containing RPG category reports; detailed figures may be restricted",
+      "retrieved": "2026-11-02",
+      "scope": "news of report, not full data; no invented figures"
+    },
+    {
+      "id": "Q-FOUNDRY",
+      "kind": "community_qualitative_nonrepresentative",
+      "url": "https://www.reddit.com/r/rpg/comments/1q39et9/what_is_the_learning_curve_of_foundry_vtt/",
+      "topic": "January 2026 self-selected users discuss setup/hosting learning curve",
+      "retrieved": "2026-11-02",
+      "scope": "Anecdotes only; no prevalence or buyer share"
+    },
+    {
+      "id": "Q-OFFLINE",
+      "kind": "community_qualitative_nonrepresentative",
+      "url": "https://www.reddit.com/r/rpg/comments/1wgty0t/is_foundry_really_the_best_we_got_for_vtt/",
+      "topic": "September 2026 self-selected user concerns about module compatibility",
+      "retrieved": "2026-11-02",
+      "scope": "Anecdotal complaint, not independent defect audit"
+    },
+    {
+      "id": "A-OPS5",
+      "kind": "internal_source",
+      "path": "operations/CURRENT.json",
+      "topic": "XTRA10 prep-only selector; no product implementation/MCB authority",
+      "scope": "source authority and status, not customer evidence"
+    },
+    {
+      "id": "A-MCB",
+      "kind": "internal_source",
+      "path": "governance/application-planning/market-capture-brand-backbone/MCB_MARKET_CAPTURE_AND_BRAND_BACKBONE_PROGRAM.md",
+      "topic": "MCB01..08 evidence-governed market/brand/claims principles",
+      "scope": "roadmap not active tranche"
+    },
+    {
+      "id": "A-MCB-BACKLOG",
+      "kind": "internal_source",
+      "path": "governance/application-planning/market-capture-brand-backbone/MCB_PROGRAM_BACKLOG.json",
+      "topic": "MCB01..25 remain planned",
+      "scope": "no automatic commercial authority"
+    },
+    {
+      "id": "A-LEDGER",
+      "kind": "internal_source",
+      "path": "governance/application-planning/internal-alpha/INTERNAL_ALPHA_FEATURE_SOURCE_PR_RECONCILIATION_2026-11-02.md",
+      "topic": "25 design/source/PR evidence and unresolved cross-device feature acceptance",
+      "scope": "source snapshot not live installed certificate"
+    },
+    {
+      "id": "A-XTRA07",
+      "kind": "internal_source",
+      "path": "governance/application-planning/xtra-pre-pcv-readiness/XTRA-07_ONBOARDING_SUPPORT_HUMAN_TESTER_PLAYBOOK.md",
+      "topic": "Player/GM/Creator role and permission-sensitive onboarding",
+      "scope": "source scripts, not human-verified UI"
+    }
+  ],
+  "competitors": [
+    {
+      "id": "CMP-ROLL20",
+      "name": "Roll20",
+      "model": "browser-first virtual tabletop and character sheets",
+      "primary": "V-ROLL20",
+      "documented_strengths": [
+        "Map/fog campaign play",
+        "integrated digital dice and character sheets",
+        "free entry"
+      ],
+      "relative_multiversal": "Direct substitute for online VTT sessions, adjacent to companion GM/Player workflows",
+      "unknowns": [
+        "2026 player satisfaction",
+        "all pricing entitlements",
+        "actual performance"
+      ]
+    },
+    {
+      "id": "CMP-FOUNDRY",
+      "name": "Foundry VTT",
+      "model": "self-hosted extensible virtual tabletop",
+      "primary": "V-FOUNDRY",
+      "documented_strengths": [
+        "self-hosted licensed VTT",
+        "many supported systems",
+        "modules and source-owner data control"
+      ],
+      "relative_multiversal": "Relevant to offline/local authority expectations, but map-centric VTT not the same launch product",
+      "unknowns": [
+        "installed usability vs Multiversal",
+        "specific feature compatibility per system",
+        "true total host cost"
+      ]
+    },
+    {
+      "id": "CMP-QUEST",
+      "name": "Quest Portal",
+      "model": "web/mobile RPG campaign and VTT with AI prep",
+      "primary": "V-QUEST",
+      "documented_strengths": [
+        "mobile and web character/campaign tools",
+        "no-code sheets",
+        "AI GM assistance and collaborative notes"
+      ],
+      "relative_multiversal": "Direct overlap with planned GM screen, rules/lore and character workflows; differentiation must be tested",
+      "unknowns": [
+        "user retention or conversion",
+        "AI output accuracy",
+        "direct workflow comparison"
+      ]
+    },
+    {
+      "id": "CMP-ALCHEMY",
+      "name": "Alchemy RPG",
+      "model": "cinematic scene-first VTT",
+      "primary": "V-ALCHEMY",
+      "documented_strengths": [
+        "scene-based storytelling presentation",
+        "homebrew systems and game management",
+        "free feature tier"
+      ],
+      "relative_multiversal": "Competes on immersive narrative and cross-genre appeal; no claim Multiversal is unique",
+      "unknowns": [
+        "current system depth",
+        "observed session ease",
+        "all creator entitlement details"
+      ]
+    },
+    {
+      "id": "CMP-WORLDANVIL",
+      "name": "World Anvil",
+      "model": "worldbuilding and campaign management",
+      "primary": "V-WORLDANVIL",
+      "documented_strengths": [
+        "linked lore/world wiki",
+        "interactive maps and campaign manager",
+        "privacy/share options"
+      ],
+      "relative_multiversal": "Competes with creator/worldbuilding content workflows; not a pure VTT",
+      "unknowns": [
+        "creator switching costs",
+        "export/licensing details",
+        "measured onboarding"
+      ]
+    },
+    {
+      "id": "CMP-DNDBEYOND",
+      "name": "D&D Beyond",
+      "model": "publisher-specific D&D character/sourcebook ecosystem",
+      "primary": "V-DNDBEYOND",
+      "documented_strengths": [
+        "guided D&D character builder",
+        "browser/mobile sync",
+        "integrated rules/content and dice"
+      ],
+      "relative_multiversal": "Relevant character/ease-of-use benchmark, but single game system rather than multi-genre Multiversal rules",
+      "unknowns": [
+        "cross-platform rights in direct use",
+        "retention",
+        "non-D&D willingness to switch"
+      ]
+    },
+    {
+      "id": "CMP-DEMIPLANE",
+      "name": "Demiplane",
+      "model": "Nexus character/source and GM campaign tools for supported RPGs",
+      "primary": "V-DEMIPLANE",
+      "documented_strengths": [
+        "digital character tools for supported systems",
+        "campaign permission/content availability",
+        "publisher-linked materials"
+      ],
+      "relative_multiversal": "Overlaps permissioned campaign content and guided character creation; actual campaign-grant product parity untested",
+      "unknowns": [
+        "cross-game permissions",
+        "current feature breadth",
+        "value vs homebrew"
+      ]
+    }
+  ],
+  "personas": [
+    {
+      "id": "P-GM",
+      "role": "GM",
+      "evidence_grade": "HYPOTHESIS_ONLY_NO_INTERVIEWS",
+      "job": "Prepare encounters and rule references, manage invited players and adjudicate a first session with minimal switching",
+      "alternatives": [
+        "Roll20",
+        "Foundry VTT",
+        "Quest Portal",
+        "World Anvil"
+      ],
+      "suspected_friction": [
+        "too many disconnected tools",
+        "role/secret handling",
+        "preparation overhead"
+      ],
+      "supporting_qualitative_sources": [
+        "Q-FOUNDRY"
+      ],
+      "validation": [
+        "Observe five independent GMs complete a first scenario",
+        "Record time-to-first-authoritative-scene and failed permissions",
+        "Ask whether no-launch-VTT tradeoff is acceptable"
+      ]
+    },
+    {
+      "id": "P-PLAYER",
+      "role": "Player",
+      "evidence_grade": "HYPOTHESIS_ONLY_NO_INTERVIEWS",
+      "job": "Create a Character, join a Campaign, check rules and maintain continuity on personal devices",
+      "alternatives": [
+        "D&D Beyond",
+        "Roll20 Characters",
+        "Quest Portal"
+      ],
+      "suspected_friction": [
+        "account/invite friction",
+        "character-rule bookkeeping",
+        "device continuity"
+      ],
+      "supporting_qualitative_sources": [],
+      "validation": [
+        "Observe five independent players join using real supported authenticated builds",
+        "Record misjoins, time-to-first-action and account recovery",
+        "Ask if a companion without map VTT solves a distinct need"
+      ]
+    },
+    {
+      "id": "P-CREATOR",
+      "role": "Creator",
+      "evidence_grade": "HYPOTHESIS_ONLY_NO_INTERVIEWS",
+      "job": "Organize and permission custom species, items, trees and settings with clear ownership and dependencies",
+      "alternatives": [
+        "World Anvil",
+        "Foundry modules",
+        "Quest Portal no-code"
+      ],
+      "suspected_friction": [
+        "rights and dependency complexity",
+        "privacy on shared work",
+        "duplicated authoring"
+      ],
+      "supporting_qualitative_sources": [],
+      "validation": [
+        "Observe five creators classify raw vs derived rights",
+        "Measure permission-conflict/taint errors on synthetic content",
+        "Interview about preferred export and ownership outcomes"
+      ]
+    },
+    {
+      "id": "P-HYBRID",
+      "role": "In-person/remote hybrid organizer",
+      "evidence_grade": "HYPOTHESIS_ONLY_NO_INTERVIEWS",
+      "job": "Keep play focused across phone/computer and intermittent connectivity without forcing a dedicated map table",
+      "alternatives": [
+        "Foundry local host",
+        "Roll20",
+        "paper sheets",
+        "Quest Portal"
+      ],
+      "suspected_friction": [
+        "connectivity and battery",
+        "mixed in-person/remote attendance",
+        "screen distraction"
+      ],
+      "supporting_qualitative_sources": [
+        "Q-FOUNDRY",
+        "Q-OFFLINE"
+      ],
+      "validation": [
+        "Observe hybrid group consented tests (future PCV authority only)",
+        "Record offline allowed vs blocked actions",
+        "Ask whether local authority outweighs hosting complexity"
+      ]
+    }
+  ],
+  "customer_research_proposals": [
+    {
+      "id": "R1",
+      "prompt": "Describe your last session setup and tools without offering a product pitch",
+      "role": "GM",
+      "response_count": 0
+    },
+    {
+      "id": "R2",
+      "prompt": "Walk through the first invitation and character creation in your existing workflow",
+      "role": "Player",
+      "response_count": 0
+    },
+    {
+      "id": "R3",
+      "prompt": "Explain a permission or ownership decision for a setting or custom species",
+      "role": "Creator",
+      "response_count": 0
+    },
+    {
+      "id": "R4",
+      "prompt": "Discuss what interruptions occur when an in-person group uses digital aids",
+      "role": "Hybrid",
+      "response_count": 0
+    },
+    {
+      "id": "R5",
+      "prompt": "Which companion tasks have you stopped doing because setup takes longer than the task?",
+      "role": "GM",
+      "response_count": 0
+    },
+    {
+      "id": "R6",
+      "prompt": "Show a recent unfamiliar-rules lookup and explain the source you trusted",
+      "role": "Player",
+      "response_count": 0
+    },
+    {
+      "id": "R7",
+      "prompt": "What must be exportable versus locked to a Campaign and why?",
+      "role": "Creator",
+      "response_count": 0
+    },
+    {
+      "id": "R8",
+      "prompt": "How do you recover session state after the host/device is unavailable?",
+      "role": "Hybrid",
+      "response_count": 0
+    }
+  ],
+  "brand": {
+    "intent": "CREATIVE_KNOWLEDGEABLE_WARM_CLEAR_NOT_SYCOPHANTIC",
+    "approved_visual_identity": false,
+    "owner_selection_required": true,
+    "voice_rules": [
+      "Explain precisely what is ready and what is planned",
+      "Lead with the player or GM task, not technology buzzwords",
+      "Show boundaries: Campaign ownership, hidden information and evidence grade",
+      "Avoid technical or genre superiority claims, false scarcity and forced subscription benefits",
+      "Use inclusive, accessible role terminology",
+      "Never imply World Anvil, Quest Portal or other competitors lack existing capabilities"
+    ],
+    "avoid_words": [
+      "only",
+      "guaranteed secure",
+      "flawless sync",
+      "works with all games",
+      "fully certified",
+      "zero setup",
+      "all rights included"
+    ]
+  },
+  "claims": [
+    {
+      "id": "CL-001",
+      "statement": "Multiversal is a multi-genre d20 roleplaying system",
+      "status": "INTERNAL_DESIGN_ONLY",
+      "source_ids": [
+        "A-MCB",
+        "A-LEDGER"
+      ],
+      "guardrail": "May be described as a game design; do not claim every genre engine certified.",
+      "approved_public": false,
+      "proof_grade": "DESIGN_OR_REPO_SOURCE_ONLY",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-002",
+      "statement": "A complete synced Windows and Android experience is available",
+      "status": "HOLD_RUNTIME_UNVERIFIED",
+      "source_ids": [
+        "A-LEDGER"
+      ],
+      "guardrail": "PCV-03F installed device/account parity incomplete.",
+      "approved_public": false,
+      "proof_grade": "INSUFFICIENT_FOR_PUBLIC_CLAIM",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-003",
+      "statement": "The launch product includes a full virtual tabletop",
+      "status": "REJECT_CONTRADICTS_SCOPE",
+      "source_ids": [
+        "A-MCB",
+        "A-LEDGER"
+      ],
+      "guardrail": "Initial Multiversal app is a companion, not a launch VTT.",
+      "approved_public": false,
+      "proof_grade": "INSUFFICIENT_FOR_PUBLIC_CLAIM",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-004",
+      "statement": "The GM may grant one Campaign allowance per Player when eligible",
+      "status": "HOLD_NOT_LIVE_VERIFIED",
+      "source_ids": [
+        "A-XTRA07"
+      ],
+      "guardrail": "Proposed subscription/rights semantics are not a proven real billing/entitlement flow.",
+      "approved_public": false,
+      "proof_grade": "INSUFFICIENT_FOR_PUBLIC_CLAIM",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-005",
+      "statement": "All original and third-party media can be redistributed",
+      "status": "REJECT_RIGHTS_NOT_CLEARED",
+      "source_ids": [
+        "A-LEDGER"
+      ],
+      "guardrail": "XTRA-05 rights classification is not blanket clearance.",
+      "approved_public": false,
+      "proof_grade": "INSUFFICIENT_FOR_PUBLIC_CLAIM",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-006",
+      "statement": "The app offers protected private GM notes to invited Players only when authorized",
+      "status": "HOLD_SECURITY_UNVERIFIED",
+      "source_ids": [
+        "A-XTRA07",
+        "A-LEDGER"
+      ],
+      "guardrail": "Design and preflight do not prove deployed role isolation.",
+      "approved_public": false,
+      "proof_grade": "INSUFFICIENT_FOR_PUBLIC_CLAIM",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-007",
+      "statement": "Multiversal will save GM setup time versus existing products",
+      "status": "HYPOTHESIS_TEST_REQUIRED",
+      "source_ids": [
+        "V-ROLL20",
+        "V-QUEST"
+      ],
+      "guardrail": "Needs independent observed task-time and comparison.",
+      "approved_public": false,
+      "proof_grade": "INSUFFICIENT_FOR_PUBLIC_CLAIM",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-008",
+      "statement": "Multiversal is the only multi-genre GM companion",
+      "status": "REJECT_UNSUPPORTED_EXCLUSIVITY",
+      "source_ids": [
+        "V-QUEST",
+        "V-WORLDANVIL"
+      ],
+      "guardrail": "Current competitors have overlapping systems/companion capabilities.",
+      "approved_public": false,
+      "proof_grade": "INSUFFICIENT_FOR_PUBLIC_CLAIM",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-009",
+      "statement": "The game is available for a final binding $4.99/mo subscription",
+      "status": "HOLD_COMMERCIAL_APPROVAL",
+      "source_ids": [
+        "A-MCB"
+      ],
+      "guardrail": "Historical target is not launched or binding price; validate owner decision and billing.",
+      "approved_public": false,
+      "proof_grade": "INSUFFICIENT_FOR_PUBLIC_CLAIM",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-010",
+      "statement": "Our AI features are reliable, safe, accurate and ready",
+      "status": "REJECT_UNVERIFIED_AI",
+      "source_ids": [
+        "A-LEDGER"
+      ],
+      "guardrail": "Feature existence, model outputs, rights and safety need independent proof.",
+      "approved_public": false,
+      "proof_grade": "INSUFFICIENT_FOR_PUBLIC_CLAIM",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-011",
+      "statement": "The character/scene source groundwork exists",
+      "status": "SOURCE_ONLY_INTERNAL_SAFE",
+      "source_ids": [
+        "A-LEDGER"
+      ],
+      "guardrail": "Internal source evidence only; do not present as installed acceptance.",
+      "approved_public": false,
+      "proof_grade": "DESIGN_OR_REPO_SOURCE_ONLY",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-012",
+      "statement": "Players can play without internet using verified entitlements",
+      "status": "HOLD_NATIVE_PROOF",
+      "source_ids": [
+        "A-XTRA07"
+      ],
+      "guardrail": "Offline authority/lease and installed support incomplete.",
+      "approved_public": false,
+      "proof_grade": "INSUFFICIENT_FOR_PUBLIC_CLAIM",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-013",
+      "statement": "Multiversal provides a universal free platform for every RPG",
+      "status": "REJECT_MISLEADING",
+      "source_ids": [
+        "A-MCB",
+        "A-LEDGER"
+      ],
+      "guardrail": "Multiversal is one native rules game; avoid conflating with universal VTT system coverage.",
+      "approved_public": false,
+      "proof_grade": "INSUFFICIENT_FOR_PUBLIC_CLAIM",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-014",
+      "statement": "The TTRPG digital tools market is a $3.66bn opportunity",
+      "status": "REJECT_BAD_MARKET_DENOMINATOR",
+      "source_ids": [
+        "I-ICV2"
+      ],
+      "guardrail": "ICv2 2025 estimate covers broad hobby games, not RPG software TAM.",
+      "approved_public": false,
+      "proof_grade": "INSUFFICIENT_FOR_PUBLIC_CLAIM",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-015",
+      "statement": "Early-stage creator/GM/Player workflows are designed with roles in mind",
+      "status": "INTERNAL_DESIGN_ONLY",
+      "source_ids": [
+        "A-XTRA07"
+      ],
+      "guardrail": "Role scripts are source-only; real accessibility and usability remain unobserved.",
+      "approved_public": false,
+      "proof_grade": "DESIGN_OR_REPO_SOURCE_ONLY",
+      "last_reviewed": "2026-11-02"
+    },
+    {
+      "id": "CL-016",
+      "statement": "Multiversal privacy and recovery are independently certified",
+      "status": "REJECT_LIVE_PROOF_MISSING",
+      "source_ids": [
+        "A-OPS5"
+      ],
+      "guardrail": "XTRA-09 synthetic tests cannot prove actual security or real backup.",
+      "approved_public": false,
+      "proof_grade": "INSUFFICIENT_FOR_PUBLIC_CLAIM",
+      "last_reviewed": "2026-11-02"
+    }
+  ],
+  "audience_message_drafts": [
+    {
+      "id": "M-GM-1",
+      "persona": "P-GM",
+      "copy": "Plan the Campaign and prepare a session around the rules and stories you actually use.",
+      "basis": "DESIGN_INTENT_ONLY",
+      "public_ready": false,
+      "proof_claims": [
+        "CL-001",
+        "CL-015"
+      ]
+    },
+    {
+      "id": "M-GM-2",
+      "persona": "P-GM",
+      "copy": "A GM companion built around governed decisions, not a replacement for your favorite virtual tabletop.",
+      "basis": "POSITIONING_HYPOTHESIS",
+      "public_ready": false,
+      "proof_claims": [
+        "CL-003",
+        "CL-015"
+      ]
+    },
+    {
+      "id": "M-PLAYER-1",
+      "persona": "P-PLAYER",
+      "copy": "Create a Character, follow your Campaign, and keep rules at hand.",
+      "basis": "DESIGN_INTENT_ONLY",
+      "public_ready": false,
+      "proof_claims": [
+        "CL-011",
+        "CL-015"
+      ]
+    },
+    {
+      "id": "M-PLAYER-2",
+      "persona": "P-PLAYER",
+      "copy": "Know what belongs to your Character and what is shared only in the Campaign.",
+      "basis": "DESIGN_INTENT_ONLY",
+      "public_ready": false,
+      "proof_claims": [
+        "CL-004",
+        "CL-006"
+      ]
+    },
+    {
+      "id": "M-CREATOR-1",
+      "persona": "P-CREATOR",
+      "copy": "Build settings, species and items while keeping their relationships understandable.",
+      "basis": "DESIGN_INTENT_ONLY",
+      "public_ready": false,
+      "proof_claims": [
+        "CL-001",
+        "CL-015"
+      ]
+    },
+    {
+      "id": "M-CREATOR-2",
+      "persona": "P-CREATOR",
+      "copy": "Share only what the current Campaign permissions and content rights allow.",
+      "basis": "SPECIFICATION_NOT_LIVE",
+      "public_ready": false,
+      "proof_claims": [
+        "CL-005",
+        "CL-006"
+      ]
+    },
+    {
+      "id": "M-HYBRID-1",
+      "persona": "P-HYBRID",
+      "copy": "Keep the table focused on the story, with a companion for the characters and decisions.",
+      "basis": "POSITIONING_HYPOTHESIS",
+      "public_ready": false,
+      "proof_claims": [
+        "CL-003",
+        "CL-015"
+      ]
+    },
+    {
+      "id": "M-HYBRID-2",
+      "persona": "P-HYBRID",
+      "copy": "Design for a phone at the table and a computer at home; verify the actual experience before promising it.",
+      "basis": "ASPIRATIONAL",
+      "public_ready": false,
+      "proof_claims": [
+        "CL-002",
+        "CL-012"
+      ]
+    }
+  ],
+  "market_caution": {
+    "source": "I-ICV2",
+    "observation": "ICv2 reported 2025 hobby-games market estimate of $3.66bn, up roughly 40%",
+    "strict_boundary": "Hobby games includes categories beyond tabletop RPG and cannot be used as Multiversal SaaS total addressable market or paid-user projection."
+  },
+  "research_backlog": {
+    "priority_questions": [
+      "Which task cluster offers repeat utility without VTT?",
+      "Will GM subscriptions subsidizing one allowance per player-campaign solve adoption friction?",
+      "What is a tolerable account/device recovery path?",
+      "Is local/private versus managed model understandable?",
+      "What are absolute must-have accessible character and Session experiences?"
+    ],
+    "owner_only_next_steps": [
+      "Approve consent, scope and participants for future research",
+      "Authorize real UX field trials only after PCV installed proof",
+      "Select MCB tranches through OPS5 separately",
+      "Review final public claims/branding and commercial pricing"
+    ],
+    "collected_real_responses": 0,
+    "live_observation_performed": false
+  }
+}
