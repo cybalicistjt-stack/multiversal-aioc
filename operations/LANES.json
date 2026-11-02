@@ -299,6 +299,27 @@
       ],
       "cross_lane_reads": "Read PCV-03F, MTLC-14, AXI, MCB, source provenance and existing owners only to establish dependencies/evidence. Never mutate their selectors or implement successor PCV-04..10 or MCB commercial work from XTRA alone.",
       "implementation_policy": "owner-scoped on-demand; XTRA-01 authorizes documentation/evidence baseline, not product code. Subsequent tranches require CURRENT-backed selection; do not use xtra as a parallel persistent lane."
+    },
+    {
+      "id": "gate",
+      "purpose": "Owner-selected on-demand GATE — Governed Access, Transactions & Entitlements; subscription, provider-neutral billing, entitlement/allowance/offline security and future gated Stripe integration. Not a fourth persistent implementation lane.",
+      "intent_examples": [
+        "continue GATE",
+        "subscription system tranches",
+        "GATE-01",
+        "Stripe subscription architecture"
+      ],
+      "current_state_source": "operations/CURRENT.json#/lanes/gate",
+      "source_bundle": [
+        "CURRENT-selected GATE work record",
+        "operations/work-items/GATE-01.json or current successor",
+        "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM.md",
+        "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM_BACKLOG.json",
+        "UADS/SBEC/BESF/SA-BILL/SCEV and XTRA evidence as required",
+        "actual Multiversal-app identity/entitlement code only for scoped review"
+      ],
+      "cross_lane_reads": "Preserve PCV-03F/MTLC-14/AXI and MCB authority. GATE may read dependencies but not claim implementation or alter other selected work. MCB owns published price/claims.",
+      "implementation_policy": "Owner-selected on-demand; GATE-01..08 may be separately selected source/design tranches; product/provider GATE-09..13 need separately selected authority and verified PCV/provider prerequisites; GATE-14 owner-only commerce. No auto successor."
     }
   ],
   "persistent_implementation_lanes": [
