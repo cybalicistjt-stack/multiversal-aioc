@@ -4,9 +4,9 @@
   "program_name": "Governed Access, Transactions & Entitlements",
   "owner": "John Brandon Turner",
   "created": "2026-11-02",
-  "status": "GATE-07_in_progress_source_only",
-  "selected_work_item": "GATE-07",
-  "selected_attempt": "GATE-07-attempt-001",
+  "status": "GATE-08_in_progress_source_only",
+  "selected_work_item": "GATE-08",
+  "selected_attempt": "GATE-08-attempt-001",
   "authority_boundary": "On-demand program, not fourth persistent implementation slot; GATE-01 source/design only. Future GATE-09..13 product/provider implementations require separately CURRENT-selected scope and real dependencies; GATE-14 final owner-only gate.",
   "publication_rule": "PR-only protected main, immutable exact head, required validations and fresh-base integration; no automatic successor.",
   "tranches": [
@@ -142,7 +142,7 @@
       "name": "Offline license/device security design",
       "priority": "P1",
       "kind": "source_only",
-      "status": "in_progress",
+      "status": "completed_verified",
       "depends_on": [
         "GATE-05",
         "GATE-06"
@@ -150,14 +150,21 @@
       "external_dependencies": [],
       "scope": "Account+device-bound signed finite leases; encrypted content; known revocation, account switching, replay, trusted time and offline sync reconciliation.",
       "acceptance": "Continuity on unchanged signed-in device while offline under verified paid-through; fail closed on wrong device/rollback; no guaranteed early remote revocation.",
-      "code_implementation_authorized": false
+      "code_implementation_authorized": false,
+      "completion_evidence": {
+        "pr": 1958,
+        "run": 41512190864,
+        "merge_sha": "b6f866551efff130092ca5125680658bf0028584",
+        "queue_generation": 422,
+        "grade": "SOURCE_ONLY"
+      }
     },
     {
       "id": "GATE-08",
       "name": "Storefront, taxes, consumer disclosure and economics",
       "priority": "P1",
       "kind": "source_only",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "GATE-02",
         "GATE-04"
