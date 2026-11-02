@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 662,
+  "state_revision": 663,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -165,17 +165,17 @@
       "source_backlog": "governance/application-planning/xtra-pre-pcv-readiness/XTRA_PROGRAM_BACKLOG.json"
     },
     "gate": {
-      "state": "in_progress",
+      "state": "completed_verified",
       "program_id": "GATE",
       "selected_work_item": "GATE-08",
       "attempt_id": "GATE-08-attempt-001",
       "checkpoint_path": "operations/work-items/GATE-08.json",
-      "implementation_branch": "program/gate08-storefront-disclosure-economics-20261102",
+      "implementation_branch": "program/gate08-source-phase-closeout-20261102",
       "implementation_authority": false,
-      "execution_authority": "source_only_storefront_disclosure_economics",
+      "execution_authority": "none_after_stage_A_source_completion",
       "source_program": "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM.md",
       "source_backlog": "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM_BACKLOG.json",
-      "activation_rule": "Prior source GATE-07 published. GATE-08 source design selected; no billing, app, merchant, price approval or GATE-09 product authority."
+      "activation_rule": "Stage A GATE01..08 source-only completed. Owner must separately select and authorize GATE09 and verify PCV03F service/account prerequisites; no automatic payment, product migration, provider or commercialization."
     }
   },
   "truth_rules": {
@@ -215,7 +215,7 @@
     "ops5_agent_completion": "Worker started, input accepted, artifact produced, focused check, real-boundary validation, owner acceptance and publication are distinct; follow current operations guards and real-source proof; do not add per-status journal receipts.",
     "ops5_bridge_fallback": "Missing local index or unverified host skill never blocks authorized work. Read relevant current source directly with GitHub tools; avoid compulsory research on trivial tasks."
   },
-  "next_project_action": "GATE-08 final source-only channel/tax/disclosure/economics plan. GATE-09 future backend implementation needs separate owner authority and PCV-03F verified service identity prerequisites.",
+  "next_project_action": "GATE Stage A source-only GATE01–08 completed. GATE09 future backend explicitly owner-gated and awaiting verified PCV03F identity/service and PostgreSQL prerequisites; no provider/price implementation authority. GPR, MTLC and AXI untouched.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",

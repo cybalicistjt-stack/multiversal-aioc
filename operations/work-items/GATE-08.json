@@ -4,8 +4,8 @@
   "program_id": "GATE",
   "work_item_id": "GATE-08",
   "attempt_id": "GATE-08-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "Owner Continue after GATE-07 publication permits last bounded source-only GATE-08 planning; GATE-09 product implementation requires separate approval.",
   "implementation_branch": "program/gate08-storefront-disclosure-economics-20261102",
@@ -17,19 +17,23 @@
     "Integer-minor-unit illustrative gross-to-net fee/tax model without committed price",
     "64 source-only reference cases; exact-head OPS5, protected merge and queue evidence"
   ],
-  "active_substep": "storefront_source_candidate",
-  "next_action": "Validate and publish GATE-08, close source phase; GATE-09 separately authorized with PCV-03F prerequisites.",
+  "active_substep": "published_source_reconciled",
+  "next_action": "Source phase complete; GATE09 awaits separately explicit owner implementation selection and actual PCV03F prerequisite verification.",
   "execution_guard": {
     "continue_turns": 1,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "source_candidate_committed",
-      "evidence": "GATE08 50 rail and 14 sample cost cases + tax contribution correction; no production/store work"
+      "seq": 2,
+      "kind": "published_source",
+      "evidence": "GATE08 PR1959 exact head 6bb27d964b8d0aabb6b814e226ba60c7627bc95c, OPS5 run41515905349 SUCCESS, merge a6c1fce0ad8f1ca2f5a932869dbbb7fc3106448f, publication queue424"
+    },
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Published GATE08 source design and 64 synthetic cases; no merchant/price/deployed proof. Queue 424."
     }
   },
   "constraints": {
@@ -40,5 +44,13 @@
     "no_legal_certification": true,
     "no_other_lane_changes": true,
     "no_auto_gate09": true
+  },
+  "completion_evidence": {
+    "pr": 1959,
+    "run": 41515905349,
+    "candidate_head": "6bb27d964b8d0aabb6b814e226ba60c7627bc95c",
+    "merge_sha": "a6c1fce0ad8f1ca2f5a932869dbbb7fc3106448f",
+    "queue_generation": 424,
+    "grade": "PUBLISHED_SOURCE_AND_64_SYNTHETIC_CASES"
   }
 }
