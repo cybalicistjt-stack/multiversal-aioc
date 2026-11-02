@@ -4,8 +4,8 @@
   "program_id": "XTRA",
   "work_item_id": "XTRA-09",
   "attempt_id": "XTRA-09-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "Owner-authorized XTRA independent sequence; XTRA-08 published reference-only and OPS5 XTRA-09 selected through protected-main closeout.",
   "scope": "Provider-neutral hosting, verified-backup/restore preflight, monitoring, privacy, incident escalation, retention, rollback and disaster recovery operator guidance; reference/synthetic tests only, XTRA-02 external Render export/restore remains pending.",
@@ -17,20 +17,20 @@
     "Explicitly record RPO/RTO targets as proposed until approved and distinguish live deployment from fixture proof",
     "Maintain XTRA-02 Render expiry/restore as blocked external; no billed, credential-bearing or live restore actions"
   ],
-  "active_substep": "read_current_provider_configuration_and_xtra02_evidence",
-  "next_action": "Author XTRA09 source-pinned operator runbooks, privacy/retention/incident matrix and deterministic synthetic drills, with actual provider boundary unverified.",
+  "active_substep": "published_source_only_operational_readiness_and_synthetic_tests",
+  "next_action": "XTRA-09 closed on published evidence; XTRA-10 source-only research selection follows via protected-main closeout.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "xtra08_published_xtra09_selected",
-      "evidence": "PR1941 source-only 39 synthetic case GREEN at exact head and merged; README/runbook research authorized; XTRA02 actual restore blocked."
+      "seq": 2,
+      "kind": "xtra09_source_operator_preflight_published",
+      "evidence": "AIOC PR1943 head c4458c3ee84296006c07aa1095dd18532e94f7cb Operations V5 run41472471216 GREEN; merged 92ea5b7306329bf648abf1921158b734992eb87c; READY reconciled generation394, 51 synthetic tests only."
     }
   },
   "constraints": {
@@ -39,5 +39,17 @@
     "no_live_data_backup_or_restore": true,
     "no_product_mutations": true,
     "no_public_security_certification": true
+  },
+  "completion_evidence": {
+    "pr": 1943,
+    "candidate_head": "c4458c3ee84296006c07aa1095dd18532e94f7cb",
+    "validation_run": 41472471216,
+    "merge_sha": "92ea5b7306329bf648abf1921158b734992eb87c",
+    "queue_generation": 394,
+    "reference_cases": 51,
+    "negative_cases": 44,
+    "gate_families": 7,
+    "proof_grade": "SOURCE_GUIDE_AND_SYNTHETIC_GATE_CHECKS_ONLY_NOT_DEPLOYED_OR_RUNTIME_PROOF",
+    "external_recovery_blocker": "XTRA-02 blocked_external no verified backup or isolated restore"
   }
 }
