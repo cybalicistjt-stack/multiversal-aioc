@@ -4,7 +4,7 @@
   "program_name": "Governed Access, Transactions & Entitlements",
   "owner": "John Brandon Turner",
   "created": "2026-11-02",
-  "status": "GATE-08_in_progress_source_only",
+  "status": "stage_A_source_phase_completed_verified_gate09_owner_gated",
   "selected_work_item": "GATE-08",
   "selected_attempt": "GATE-08-attempt-001",
   "authority_boundary": "On-demand program, not fourth persistent implementation slot; GATE-01 source/design only. Future GATE-09..13 product/provider implementations require separately CURRENT-selected scope and real dependencies; GATE-14 final owner-only gate.",
@@ -164,7 +164,7 @@
       "name": "Storefront, taxes, consumer disclosure and economics",
       "priority": "P1",
       "kind": "source_only",
-      "status": "in_progress",
+      "status": "completed_verified",
       "depends_on": [
         "GATE-02",
         "GATE-04"
@@ -172,7 +172,14 @@
       "external_dependencies": [],
       "scope": "Conditional Stripe-direct Windows, Google Play Android and future iOS adapter; current region-sensitive compliance, tax/consumer rights and fee-cost model.",
       "acceptance": "No global payment-rate assertion or publication; all merchant/jurisdiction, MCB price claims and legal matters pending decision.",
-      "code_implementation_authorized": false
+      "code_implementation_authorized": false,
+      "completion_evidence": {
+        "pr": 1959,
+        "run": 41515905349,
+        "merge_sha": "a6c1fce0ad8f1ca2f5a932869dbbb7fc3106448f",
+        "queue_generation": 424,
+        "grade": "SOURCE_ONLY"
+      }
     },
     {
       "id": "GATE-09",
