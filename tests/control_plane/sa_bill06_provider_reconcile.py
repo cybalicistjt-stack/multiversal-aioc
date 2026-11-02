@@ -112,8 +112,10 @@ class Reconciler:
                         SELECT body_sha256 FROM sa_bill06_fixture.notification_receipt
                         WHERE provider=%s AND notification_id=%s
                     """,(self.provider,event["eventId"])).fetchone()
-                    if old:
-                        return "DUPLICATE" if old[0]==digest else "EVENT_ID_CONFLICT"
+                    if old and old[0]!=digest:
+                        return "EVENT_ID_CONFLICT"
+                    # Duplicate transport delivery does not imply provider
+                    # state is unchanged: still apply a newer verified revision.
                     conn.execute("""
                         INSERT INTO sa_bill06_fixture.purchase_binding
                         (provider,origin_id,subject_id,provider_account_ref)
@@ -152,14 +154,24 @@ class Reconciler:
                         outcome="APPLIED"
                     else:
                         outcome="STALE_SOURCE"
-                    conn.execute("""
-                        INSERT INTO sa_bill06_fixture.notification_receipt
-                        (provider,notification_id,origin_id,body_sha256,
-                         projection_revision,apply_result)
-                        VALUES (%s,%s,%s,%s,%s,%s)
-                    """,(self.provider,event["eventId"],normalized["origin"],digest,
-                         normalized["revision"],outcome))
-                    return outcome
+                    if outcome=="APPLIED":
+                        # An accepted new owner state must be audit-visible
+                        # even when its trigger was a DUPLICATE notification.
+                        conn.execute("""
+                            INSERT INTO sa_bill06_fixture.source_revision_audit
+                            (provider,origin_id,revision,trigger_notification_id,state)
+                            VALUES (%s,%s,%s,%s,%s)
+                        """,(self.provider,normalized["origin"],normalized["revision"],
+                             event["eventId"],normalized["state"]))
+                    if not old:
+                        conn.execute("""
+                            INSERT INTO sa_bill06_fixture.notification_receipt
+                            (provider,notification_id,origin_id,body_sha256,
+                             projection_revision,apply_result)
+                            VALUES (%s,%s,%s,%s,%s,%s)
+                        """,(self.provider,event["eventId"],normalized["origin"],digest,
+                             normalized["revision"],outcome))
+                    return ("SOURCE_REFRESHED" if outcome=="APPLIED" else "DUPLICATE") if old else outcome
             except (errors.SerializationFailure,errors.DeadlockDetected,errors.UniqueViolation):
                 if attempt==19:
                     raise
