@@ -72,16 +72,28 @@
       ],
       "negative_preflights": [
         {
-          "id": "PCV-04-N1",
-          "scenario": "Unauthorized role or stale state requests a protected operation",
-          "expected": "deny or preserve canonical state; do not leak private data",
-          "result": "NOT_RUN"
+          "id": "PCV-04-N01",
+          "category": "wrong-role",
+          "scenario": "Player attempts GM-only adjudication",
+          "expected": "role denial and no hidden-state leakage",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         },
         {
-          "id": "PCV-04-N2",
-          "scenario": "Reconnect or retry after an interrupted authoritative operation",
-          "expected": "preserve exactly-once outcome and recovery trace",
-          "result": "NOT_RUN"
+          "id": "PCV-04-N02",
+          "category": "replay",
+          "scenario": "Same action receipt resubmitted after reconnect",
+          "expected": "single committed effect, no duplicate event",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-04-N03",
+          "category": "combat-state",
+          "scenario": "Interrupt encounter during resource/Condition transition",
+          "expected": "authoritative result survives restart",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         }
       ],
       "implementation_authorized": false,
@@ -120,16 +132,28 @@
       ],
       "negative_preflights": [
         {
-          "id": "PCV-05-N1",
-          "scenario": "Unauthorized role or stale state requests a protected operation",
-          "expected": "deny or preserve canonical state; do not leak private data",
-          "result": "NOT_RUN"
+          "id": "PCV-05-N01",
+          "category": "secret",
+          "scenario": "Player inspects unearned clue",
+          "expected": "no disclosure before authorized reveal",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         },
         {
-          "id": "PCV-05-N2",
-          "scenario": "Reconnect or retry after an interrupted authoritative operation",
-          "expected": "preserve exactly-once outcome and recovery trace",
-          "result": "NOT_RUN"
+          "id": "PCV-05-N02",
+          "category": "transition",
+          "scenario": "Switch from exploration to combat after restart",
+          "expected": "shared context and history remain correct",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-05-N03",
+          "category": "social",
+          "scenario": "Retry reputation or relationship event",
+          "expected": "one durable change",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         }
       ],
       "implementation_authorized": false,
@@ -198,16 +222,36 @@
       ],
       "negative_preflights": [
         {
-          "id": "PCV-06-N1",
-          "scenario": "Unauthorized role or stale state requests a protected operation",
-          "expected": "deny or preserve canonical state; do not leak private data",
-          "result": "NOT_RUN"
+          "id": "PCV-06-N01",
+          "category": "transfer",
+          "scenario": "Competing users transfer the same asset",
+          "expected": "no duplicate ownership",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         },
         {
-          "id": "PCV-06-N2",
-          "scenario": "Reconnect or retry after an interrupted authoritative operation",
-          "expected": "preserve exactly-once outcome and recovery trace",
-          "result": "NOT_RUN"
+          "id": "PCV-06-N02",
+          "category": "wallet",
+          "scenario": "Campaign and Free Play balances are mixed",
+          "expected": "strict isolation and reset safety",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-06-N03",
+          "category": "stake",
+          "scenario": "Prohibited real-value stake attempted",
+          "expected": "reject; do not create settlement",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-06-N04",
+          "category": "reconnect",
+          "scenario": "Authoritative game operation replays",
+          "expected": "one recorded outcome",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         }
       ],
       "implementation_authorized": false,
@@ -252,16 +296,28 @@
       ],
       "negative_preflights": [
         {
-          "id": "PCV-07-N1",
-          "scenario": "Unauthorized role or stale state requests a protected operation",
-          "expected": "deny or preserve canonical state; do not leak private data",
-          "result": "NOT_RUN"
+          "id": "PCV-07-N01",
+          "category": "canon",
+          "scenario": "Campaign-local creator requests canonical promotion",
+          "expected": "deny without owner authority",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         },
         {
-          "id": "PCV-07-N2",
-          "scenario": "Reconnect or retry after an interrupted authoritative operation",
-          "expected": "preserve exactly-once outcome and recovery trace",
-          "result": "NOT_RUN"
+          "id": "PCV-07-N02",
+          "category": "rights",
+          "scenario": "Restricted derivative is shared externally",
+          "expected": "deny export and preserve provenance",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-07-N03",
+          "category": "authoring",
+          "scenario": "Invalid user-authored rule enters live Session",
+          "expected": "validation refusal, preserve working content",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         }
       ],
       "implementation_authorized": false,
@@ -300,16 +356,20 @@
       ],
       "negative_preflights": [
         {
-          "id": "PCV-08-N1",
-          "scenario": "Unauthorized role or stale state requests a protected operation",
-          "expected": "deny or preserve canonical state; do not leak private data",
-          "result": "NOT_RUN"
+          "id": "PCV-08-N01",
+          "category": "stranded",
+          "scenario": "User-facing implementation only accessible in internal workbench",
+          "expected": "flag for product integration or deliberate deferral",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         },
         {
-          "id": "PCV-08-N2",
-          "scenario": "Reconnect or retry after an interrupted authoritative operation",
-          "expected": "preserve exactly-once outcome and recovery trace",
-          "result": "NOT_RUN"
+          "id": "PCV-08-N02",
+          "category": "regression",
+          "scenario": "Older Bible used to hide newer feature",
+          "expected": "reject deletion as convergence proof",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         }
       ],
       "implementation_authorized": false,
@@ -384,16 +444,36 @@
       ],
       "negative_preflights": [
         {
-          "id": "PCV-09-N1",
-          "scenario": "Unauthorized role or stale state requests a protected operation",
-          "expected": "deny or preserve canonical state; do not leak private data",
-          "result": "NOT_RUN"
+          "id": "PCV-09-N01",
+          "category": "mode",
+          "scenario": "GM phone switches between Phone and Desktop View",
+          "expected": "same actions, permissions and focus",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         },
         {
-          "id": "PCV-09-N2",
-          "scenario": "Reconnect or retry after an interrupted authoritative operation",
-          "expected": "preserve exactly-once outcome and recovery trace",
-          "result": "NOT_RUN"
+          "id": "PCV-09-N02",
+          "category": "media",
+          "scenario": "Unlicensed visual selection or export attempted",
+          "expected": "ARI rights gate blocks use",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-09-N03",
+          "category": "search",
+          "scenario": "Search or AI surfaces hidden GM-only data",
+          "expected": "deny hidden projection",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-09-N04",
+          "category": "placeholder",
+          "scenario": "Required golden visual has accidental blank",
+          "expected": "block readiness until cleared",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         }
       ],
       "implementation_authorized": false,
@@ -462,16 +542,44 @@
       ],
       "negative_preflights": [
         {
-          "id": "PCV-10-N1",
-          "scenario": "Unauthorized role or stale state requests a protected operation",
-          "expected": "deny or preserve canonical state; do not leak private data",
-          "result": "NOT_RUN"
+          "id": "PCV-10-N01",
+          "category": "identity",
+          "scenario": "Synthetic local actors used as substitutes for two humans",
+          "expected": "do not certify installed proof",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         },
         {
-          "id": "PCV-10-N2",
-          "scenario": "Reconnect or retry after an interrupted authoritative operation",
-          "expected": "preserve exactly-once outcome and recovery trace",
-          "result": "NOT_RUN"
+          "id": "PCV-10-N02",
+          "category": "recovery",
+          "scenario": "Repeated action following reinstall",
+          "expected": "same authoritative history without duplication",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-10-N03",
+          "category": "combat",
+          "scenario": "Noncombat-only fixture submitted as full proof",
+          "expected": "reject until real encounter and inventory path",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-10-N04",
+          "category": "rights",
+          "scenario": "Unresolved required media appears in golden path",
+          "expected": "do not claim beta-ready",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
+        },
+        {
+          "id": "PCV-10-N05",
+          "category": "package",
+          "scenario": "Installers issued before real human validation",
+          "expected": "block release gate",
+          "result": "NOT_RUN",
+          "proof": "Real authorized source/service/device test required; this is a specification only"
         }
       ],
       "implementation_authorized": false,
@@ -490,5 +598,7 @@
     "artifact_digest",
     "authoritative_source_owner"
   ],
-  "global_result": "NOT_RUN"
+  "global_result": "NOT_RUN",
+  "negative_preflight_total": 24,
+  "acceptance_case_total": 45
 }
