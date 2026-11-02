@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "id": "XTRA06-PCV-ACCEPTANCE-PREFLIGHT",
-  "status": "DOCUMENTATION_ONLY_NOT_RUN",
+  "status": "SOURCE_LINKED_PREIMPLEMENTATION_TEST_PLAN_NOT_RUN",
   "authority": "XTRA-06 cannot start or certify PCV implementation",
   "source_pins": [
     {
@@ -49,25 +49,37 @@
           "test_id": "PCV-04-AC01",
           "source_requirement": "Live Scene, available actions, costs/requirements, proposal/approval/modify/reject, rule/calculation inspection and receipts operate over real shared session state.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Enter the same real Session as distinct GM/Player; submit an eligible Action, approve/modify/deny it, inspect cost and rule calculation, then inspect persisted receipt on both clients.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-04-AC02",
           "source_requirement": "Combat timing, targeting, reactions, hazards, conditions/resources and encounter conclusion operate cross-device without page-context loss.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Start a governed combat encounter; move/target/react, resolve hazard/Condition/resource and close encounter across two devices without losing selected context.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-04-AC03",
           "source_requirement": "GM/player secrecy and authority are proven on separate installed clients.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "With distinct installed Player and GM accounts, attempt a GM-only action and hidden-state retrieval; confirm server denial and correct split projections.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-04-AC04",
           "source_requirement": "A completed encounter remains correct after restart/reconnect.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Persist a finished encounter, restart both clients and reconnect; compare event order, rolls, state and log with the authoritative stored result.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         }
       ],
       "negative_preflights": [
@@ -109,25 +121,37 @@
           "test_id": "PCV-05-AC01",
           "source_requirement": "SMB-09 first-party campaign content is reachable through real campaign/session UI.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "From real Campaign UI select the first-party adventure and open source-pinned Beacon Debt Scenes without direct fixture inspection.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-05-AC02",
           "source_requirement": "Investigation, social and exploration runtimes consume shared session/state authority and persist outcomes.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Travel Gate Pressure → Damaged Crossing → Listening Market; resolve social and investigation actions, verify events and clue visibility across clients.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-05-AC03",
           "source_requirement": "Travel/survival, factions/organizations/settlements and relevant knowledge/reputation systems are integrated where current implementation supports them.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Exercise at least one current implemented travel/survival and faction/reputation scenario; record what is actually present versus explicitly deferred.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-05-AC04",
           "source_requirement": "A cross-device session can move between noncombat and combat activities without losing authoritative context.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Move a live two-device Session from noncombat to combat and back; compare authority epoch, resource/event history and selected Campaign/Scene.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         }
       ],
       "negative_preflights": [
@@ -169,55 +193,82 @@
           "test_id": "PCV-06-AC01",
           "source_requirement": "Real inventory/equipment/container ownership and transfers are persistent and permission-safe.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Acquire, equip, transfer, place in container, reload and contest ownership of a governed Asset; reject a duplicate transfer.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-06-AC02",
           "source_requirement": "Economy/trade/contracts/services and crafting/work queues commit through governed events and survive reconnect.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Commit fictional trade/service and crafting queue changes under owning events; restart and verify no duplicated balance or output.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-06-AC03",
           "source_requirement": "Implement `PCV_GAMES_WAGERING_INTEGRATION_v1.2.0.md` as a reusable Games & Wagering runtime over current GPR loop-mini/pattern execution plus canonical owner-domain settlement; do not build a Black Vegas-only parallel engine.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Load Earth and alien reusable game definitions via one shared games runtime and canonical owner-domain settlement; reject venue-specific parallel engines.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-06-AC04",
           "source_requirement": "Support Campaign Play using actual validated in-world character/campaign wealth, assets or other fictional stakes with persistent consequences, and Free Play using an isolated arbitrary resettable wallet that never mutates campaign state.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Fund a Campaign wager from validated fictional state, switch to Free Play, reset its wallet and verify Campaign balances are unchanged.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-06-AC05",
           "source_requirement": "Ship a substantial Earth casino-game starter pack plus a Black Vegas/Multiversal starter pack, including external-event wager markets (especially races), MRC sanction/jurisdiction behavior where applicable, and culturally/economically distinct wagering such as subsistence-credit games, black-market egg/hatch pools and title-stake racing. Authoritative randomness/hidden information/external outcomes are recorded for replay/audit, and house/bookmaker/NPC/two-human participants use the current authority/continuity model.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Play actual Earth and Black Vegas/alien starter games with external race outcomes, NPC/house and two-human table; compare authorized randomness and replay.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-06-AC06",
           "source_requirement": "MRC/regulator behavior is GM-selectable as off, light, custom-module or full. Turning it off removes taxes/licensing/sponsorship/enforcement/integrity overlays without removing the underlying games, races, betting markets, ownership settlement or replay/multiplayer behavior.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Toggle MRC regulation off/light/custom/full; confirm game execution continues while only jurisdictional overlays change.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-06-AC07",
           "source_requirement": "Reject real-world-value stake sources and payouts: real money, paid entitlement/premium currency, cash-redeemable value, or anything convertible to those. Ordinary in-world currencies, items, favors and other owner-domain stakes remain allowed when their owning domain validates them.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Try cash/paid entitlement/premium or redeemable stakes and payout; deny each, while allowing only approved in-world source-owned value.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-06-AC08",
           "source_requirement": "Vehicle/mount/cargo/crew and base/facility/logistics views use current capability-driven models rather than hard-coded fantasy/space assumptions.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Use a capability-driven mount, vehicle, cargo/crew and base/workspace workflow; verify game rules rather than genre assumptions govern behavior.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-06-AC09",
           "source_requirement": "Cross-device contention/conflict behavior is explicit and recoverable.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Create concurrent transfers/actions from two devices; verify winner, conflict, recovery and event replay without split ownership.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         }
       ],
       "negative_preflights": [
@@ -267,31 +318,46 @@
           "test_id": "PCV-07-AC01",
           "source_requirement": "World/adventure/scene/content authoring, reusable Library, rules/search, dependencies, provenance/history and validation are integrated into the production shell.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Create a governed World, Scene and dependency-linked Definition in the production shell; search and inspect rules, provenance and validation.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-07-AC02",
           "source_requirement": "MRCS and other current rules/content-authoring implementations are surfaced where they are user-facing rather than left as isolated workbenches.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Enter current MRCS/rules authoring workflows from ordinary GM/Creator navigation and return to the Campaign with current context preserved.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-07-AC03",
           "source_requirement": "Campaign-local creation remains distinct from reusable/canonical publishing authority.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Create Campaign-local material, attempt canonical publication without appropriate owner authority; verify no unauthorized promotion.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-07-AC04",
           "source_requirement": "Content can be transferred/shared between the two tester identities without bypassing rights/provenance controls.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Share a permitted Definition between two tester identities and try a denied/export-blocked Definition; verify distinct provenance/right decisions.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-07-AC05",
           "source_requirement": "Games & Wagering definitions are authorable as governed reusable content: game rules, table/venue configuration, legal fictional stake classes, house rules, dealer/NPC profiles and setting/alien game packs bind through MRCS/Content Forge boundaries without duplicating runtime or owner-domain authority.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Author Earth/alien game, table, dealer and legal fictional stake rules through MRCS/Content Forge; verify shared runtime consumption and owner validation.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         }
       ],
       "negative_preflights": [
@@ -333,25 +399,37 @@
           "test_id": "PCV-08-AC01",
           "source_requirement": "Converge applicable later families such as APM/async-cozy-AutoGM, APW hybrid activity, CSW creator tools, CEL, KFR, ISE, MAL, ODL, SCL, SSA, WCI, ECI and other live-source families discovered by the PCV ledger.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Inventory later families (APM/APW/CSW/CEL/KFR/ISE/MAL/ODL/SCL/SSA/WCI/ECI) against current app routes or documented non-product disposition.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-08-AC02",
           "source_requirement": "Preserve newer capabilities that supersede or extend older Bible assumptions.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Compare currently implemented post-Bible behavior against old Bible baselines; preserve accepted newer changes on the accessible shell.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-08-AC03",
           "source_requirement": "Every production-like client surface has a product route/context or an explicit non-product classification with rationale.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Traverse all production-like routes and contexts; record source path, runtime route or explicit internal-only/deferred class and its rationale.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-08-AC04",
           "source_requirement": "No completion by deleting or hiding later features merely to match older documentation.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Attempt removal/hiding of a live post-Bible capability to simplify convergence; require genuine replacement/equivalent proof rather than deletion.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         }
       ],
       "negative_preflights": [
@@ -385,61 +463,91 @@
           "test_id": "PCV-09-AC01",
           "source_requirement": "Consume the September UI Implementation Convergence Handoff and later UISK runtime/amendments as current presentation inputs; old Bibles remain floor/traceability only.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Compare rendered screens against September UI Convergence and current UISK runtime, using Bibles as traceability and not the latest design ceiling.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-09-AC02",
           "source_requirement": "Global shell, Home, context navigation, inspectors, action docks, mobile transformations and current skin system are applied across real screens.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Walk Home, session, inspectors, action dock, settings and saved context on Windows and Android using current skin and focus.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-09-AC03",
           "source_requirement": "Implement explicit display-mode control on phone: **Phone View** uses responsive mobile-native screens and **Desktop View** renders the full desktop workspace in an in-app zoomable/pannable viewport. Both modes operate on the same product state, permissions and actions; Desktop View is not a separate product and Phone View must not remove capabilities.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "On Android switch Phone View ↔ in-app Desktop View, zoom/pan while keeping one real Campaign and the same permissions and actions.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-09-AC04",
           "source_requirement": "GM and creator workflows receive the same mobile capability parity as player workflows. Desktop may expose more simultaneous panes because of screen area, but no GM/creator action is classified desktop-only.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "From Android Phone and Desktop View execute GM and creator actions possible on Windows, not just player entry.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-09-AC05",
           "source_requirement": "Search/command, notifications/approvals, settings/accessibility, diagnostics/recovery and optional AI proposal flows are reachable and permission-safe.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Use search, notifications, approvals, help, diagnostics, accessibility and optional proposal-only AI; attempt forbidden state search.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-09-AC06",
           "source_requirement": "No ordinary-user surface exposes synthetic fixture labels, raw internal IDs or diagnostic-first copy unless explicitly in diagnostics.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Sign in as ordinary Player and traverse primary UX; assert no raw internal IDs, diagnostic-first copy or synthetic Alpha surfaces appear.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-09-AC07",
           "source_requirement": "Representative Android and Windows rendered evidence covers major play/authoring/utility surfaces and accessibility states.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Capture actual Android and Windows views and accessibility states with app SHA, identity context and permission-safe evidence.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-09-AC08",
           "source_requirement": "Asset presentation is converged with the current skin/UI system: primary/generated pixel content, maps/tokens, item imagery, effects and approved fallbacks compose coherently with skins rather than reverting to generic empty cards.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Render primary/generated/imported content plus item/map/token effects within active skin; show authorized asset fallback with source rights.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-09-AC09",
           "source_requirement": "Remaining asset-demand entries are either satisfied or explicitly non-golden-path deferred; no substantial product surface silently ships as an accidental blank.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Walk representative Campaign path and inspect every required content/media surface; fail unintended blank/generic placeholders.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-09-AC10",
           "source_requirement": "Games & Wagering has coherent responsive phone/desktop product surfaces: a generic games browser/table flow plus venue-aware presentation such as Black Vegas, accessible hidden-information handling, clear Campaign vs Free Play context, and no real-money purchase/cash-out affordance.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Use Earth/Black Vegas games on phone and desktop with accessible hidden information and separate Campaign/Free Play, no real-value affordance.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         }
       ],
       "negative_preflights": [
@@ -489,55 +597,82 @@
           "test_id": "PCV-10-AC01",
           "source_requirement": "Fresh install on Windows + Android; create/sign into distinct local tester identities; create or open campaign; invite/join; choose/create characters; enter session.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Fresh install exact-head Windows and Android; use different humans/verified subjects, join same Campaign, bind Characters and launch shared Session.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-10-AC02",
           "source_requirement": "Play a representative first-party sequence containing noncombat interaction, inventory/resource use and a combat encounter, with GM/player role separation.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "With distinct GM and Player, complete first-party noncombat, a real inventory/resource change and actual combat; compare both event histories.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-10-AC03",
           "source_requirement": "Disconnect/reconnect, app restart, save/load, update-compatible install and recovery preserve campaign/session history with no duplicate actions.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Disconnect either client during Action; restart, reload and upgrade-compatible install; verify unique events, ordering and same saved Campaign state.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-10-AC04",
           "source_requirement": "Exercise representative later/post-Bible systems appropriate to the campaign rather than proving only the old core.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Use representative later-family user-facing capabilities from the actual golden Campaign, not just a legacy A2/A6 test shell.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-10-AC05",
           "source_requirement": "Human-visible UI matches current convergence/skin direction on both devices and contains no alpha fixture shell.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Record human-reviewed Windows and Android current UX/skin with no synthetic alpha or debug-first shell.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-10-AC06",
           "source_requirement": "Installed Android proof exercises representative player and GM/creator capabilities in Phone View and also proves the optional Desktop View can zoom/pan through the wide workspace without losing actions, context, focus, permissions or authoritative state.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "On Android execute Player and GM/Creator actions in Phone View and Desktop View; zoom/pan, change focus and verify permissions/context parity.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-10-AC07",
           "source_requirement": "Generate final Windows installer + Android APK with checksum/version manifest only after this installed two-human proof passes.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "After all other proof passes, build Windows installer and Android APK from exact accepted head; bind checksums, version manifest and test receipts.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-10-AC08",
           "source_requirement": "The representative first-party golden play path contains no unresolved required visual/audio assets; every asset need is fulfilled by shipped primary/generated content, a deliberate procedural presentation, a permitted imported asset, or an explicitly approved intentional fallback.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Inspect every required visual/audio asset along the actual played path; prove shipped primary/generated/permitted import or owner-approved intentional fallback with ARI rights.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         },
         {
           "test_id": "PCV-10-AC09",
           "source_requirement": "Installed proof exercises Games & Wagering on Windows and Android: at least one Earth game and one Black Vegas/alien game, a persistent campaign-funded wager, an isolated Free Play wallet reset, and a two-human or host-authoritative table/reconnect path, with zero real-world-value wagering.",
           "result": "NOT_RUN",
-          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient"
+          "evidence_required": "Real owner-bound source and independent runtime/client proof; synthetic references alone are insufficient",
+          "test_procedure": "Play one Earth and one Black Vegas game on both devices with fictional funded Campaign wager, isolated Free Play wallet reset and authoritative multiplayer/reconnect; deny real-world-value stakes.",
+          "required_observation": "Record actual user-visible state and matching authoritative owner event/deny/recovery evidence; empty, synthetic-only, or source-only receipt is not a pass.",
+          "evidence_grade_required": "LIVE_PRODUCT_PROOF_WHEN_OWNER_SELECTED"
         }
       ],
       "negative_preflights": [
@@ -600,5 +735,23 @@
   ],
   "global_result": "NOT_RUN",
   "negative_preflight_total": 24,
-  "acceptance_case_total": 45
+  "acceptance_case_total": 45,
+  "evidence_capture_instructions": {
+    "device_roles": "Windows GM and Android Player plus reverse-direction and Android GM/Creator whenever current source acceptance requires. Two distinct human testers/verified subjects, not two local mocks.",
+    "minimum_receipt": "Record immutable app head, artifact/platform version, human/role/device binding, time, Campaign and Session pseudonymous correlation, source-owner event IDs, actual vs expected, sanitized screenshot/recording, log digest and negative-case outcome.",
+    "privacy": "No secrets, payment tokens, protected clue text, owner-only content or raw personal data in GitHub test receipts. Hash/redact private tokens and segregate GM-only evidence.",
+    "failure_taxonomy": [
+      "authorization_and_entitlement",
+      "transport_and_reconnect",
+      "durable_event_and_idempotency",
+      "rules_and_combat",
+      "noncombat_and_content",
+      "asset_provenance_and_license",
+      "ui_and_accessibility",
+      "provider_and_runner",
+      "user_fixture_or_human_measurement"
+    ],
+    "assumption_prohibition": "Source PR/contract, synthetic fixtures, queued workflows, in-process mock actors, or archived screenshots alone are NOT installed two-human PCV acceptance.",
+    "sequential_owner_gate": "PCV-03F must close before PCV-04; PCV-04 through PCV-10 remain blocked_by_predecessor and must be selected by their own OPS5 GPR owner."
+  }
 }
