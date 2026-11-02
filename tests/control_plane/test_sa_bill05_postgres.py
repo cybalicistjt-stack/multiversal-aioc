@@ -125,6 +125,15 @@ def issue(*, campaign, player, command_id, payload="setting",
                     mapped.get(player) != ("player", True)):
                     return "DENIED_MEMBERSHIP"
 
+                # Command IDs are bound to a durable digest, before a caller
+                # can change the target to hide a replay attempt.
+                existing = cur.execute("""
+                    SELECT payload_sha256 FROM sa_bill03_reference.allowance_command_receipt
+                    WHERE command_id=%s
+                """, (command_id,)).fetchone()
+                if existing:
+                    return "IDEMPOTENT" if existing[0] == digest else "COMMAND_ID_CONFLICT"
+
                 root = cur.execute("""
                     SELECT root_kind,active,owner_authorized_as_grant_root,
                            dependency_closure_digest
@@ -133,13 +142,6 @@ def issue(*, campaign, player, command_id, payload="setting",
                 """, (payload,)).fetchone()
                 if root != ("custom-setting", True, True, "closure-v1"):
                     return "DENIED_REGISTERED_RIGHTS"
-
-                existing = cur.execute("""
-                    SELECT payload_sha256 FROM sa_bill03_reference.allowance_command_receipt
-                    WHERE command_id=%s
-                """, (command_id,)).fetchone()
-                if existing:
-                    return "IDEMPOTENT" if existing[0] == digest else "COMMAND_ID_CONFLICT"
 
                 row = cur.execute("""
                     INSERT INTO sa_bill03_reference.campaign_allowance_slot
@@ -228,7 +230,7 @@ class PostgresTransactionalProof(unittest.TestCase):
         self.assertEqual(count("campaign_allowance_slot",
                                "campaign_id='membership'"), 0)
 
-    def test_05_gm_entitlement_source_revocation_fences_issuance(self):
+    def test_11_gm_entitlement_source_revocation_fences_issuance(self):
         seed_campaign("gm-off", "p-gm")
         with connect() as conn:
             conn.execute("""UPDATE sa_bill03_reference.verified_subscription
@@ -237,12 +239,9 @@ class PostgresTransactionalProof(unittest.TestCase):
                             WHERE subscription_source_id='sub-gm'""")
         self.assertEqual(issue(campaign="gm-off",player="p-gm",
                                command_id="gm-expired"), "DENIED_BILLING")
-        with connect() as conn:
-            conn.execute("""UPDATE sa_bill03_reference.verified_subscription
-                            SET state='verified_active',source_epoch=source_epoch+1,
-                            provider_revision=4,provider_checked_at=now()
-                            WHERE subscription_source_id='sub-gm'""")
         self.assertEqual(count("campaign_allowance_slot","campaign_id='gm-off'"),0)
+        # Never rewind a provider revision: this test runs last and retains
+        # a monotonically incremented, expired synthetic source row.
 
     def test_06_same_player_two_campaigns_and_two_players_same_campaign(self):
         for campaign,player in (("A","p1"),("B","p1"),("A","p2")):
