@@ -1,8 +1,37 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 352,
-  "ready": [],
+  "generation": 353,
+  "ready": [
+    {
+      "candidate_id": "SA-BILL-07-gm-revocation-provenance-pr-1923",
+      "lane": "operations",
+      "work_item_id": "SA-BILL-07-ADVISORY-RESEARCH",
+      "pr_number": 1923,
+      "head_sha": "3192c892ee9490c266d20bf6989df82c6907ee0f",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "3192c892ee9490c266d20bf6989df82c6907ee0f",
+        "run_id": "41389722454",
+        "additional_required_run_id": "41389722416",
+        "additional_required_run_status": "success",
+        "postgres_scope_test_count": 24,
+        "postgres_reconciliation_test_count": 19,
+        "postgres_allowance_test_count": 10
+      },
+      "write_set": [
+        ".github/workflows/validate-sa-bill05-postgres.yml",
+        "governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_07_CROSS_AUTHORITY_REVOCATION_AND_LINEAGE.md",
+        "governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_07_DISPOSABLE_SCOPE_SCHEMA.sql",
+        "tests/control_plane/test_sa_bill07_revocation_provenance.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "3ea5b52d22f2474af1753f1a81c1449e37c666fa",
+        "current_ops_revision": 641,
+        "study_scope": "disposable_postgres_synthetic_A3_and_rights_only"
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
