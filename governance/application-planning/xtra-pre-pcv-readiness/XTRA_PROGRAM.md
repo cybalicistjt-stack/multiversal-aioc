@@ -2,7 +2,7 @@
 
 **Program:** XTRA  
 **Authority:** owner-directed 2026-11-02, recorded through OPS5 CURRENT/LANES after protected-main approval  
-**Status:** XTRA-01 completed_verified; XTRA-02 blocked_external; XTRA-03/04/05 completed_verified; XTRA-06 selected pending publication.  
+**Status:** XTRA-01/03/04/05/06 completed_verified; XTRA-02 blocked_external; XTRA-07 selected pending publication.
 **Purpose:** finish independent, useful pre-PCV-03F work and prepare downstream acceptance without bypassing PCV/MTLC/AXI/MCB authorities.
 
 ## Invariants
@@ -77,7 +77,7 @@
 
 **Acceptance.** Every downstream tranche has a bounded preflight with explicitly named real runtime dependency; no PCV-04..10 implementation or fabricated passes.
 
-**Dependency.** XTRA-01. **Current state:** in_progress (XTRA-06 selector candidate pending publication). Acceptance and diagnostic preparation only.
+**Dependency.** XTRA-01. **Current state:** completed_verified (source-only); published 45 acceptance cases and 24 negative preflights through PR1936/1937. (XTRA-06 selector candidate pending publication). Acceptance and diagnostic preparation only.
 
 ### XTRA-07 — Role-based onboarding, help and tester operations
 
@@ -85,7 +85,7 @@
 
 **Acceptance.** Scripts and documentation are reviewed against currently available functionality; signed-in cross-device and independent human usability remain clearly unverified.
 
-**Dependency.** XTRA-01. **Current state:** planned. No automatic authority from this roadmap.
+**Dependency.** XTRA-01. **Current state:** in_progress (selector publication pending). Documentation/tester preparation only.
 
 ### XTRA-08 — Subscription, allowance, security and rights threat preflight
 
