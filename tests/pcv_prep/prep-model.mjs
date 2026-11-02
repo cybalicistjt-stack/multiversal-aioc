@@ -157,7 +157,7 @@ export function validateInstallerPreflight(candidate){
 }
 export function syntheticGoldenRun(golden){
  if(golden.kind!=="SYNTHETIC_NONCANONICAL_ACCEPTANCE_FIXTURE")throw Error("CANONICALITY_NOT_PROVEN");
- const session=new SessionLab({campaign:golden.campaign,gm:golden.gm,player:golden.player,initialPhase:golden.steps[0]?.from??"start"});
+ const session=new SessionLab({campaign:golden.campaign,gm:golden.gm,player:golden.player,initialPhase:"start"});
  for(const step of golden.steps)session.transition(step);
  const before=session.checkpoint(),restored=SessionLab.restore(before);
  if(restored.s.sequence!==golden.steps.length||restored.s.phase!=="completed")throw Error("BROKEN_GOLDEN_REPLAY");
