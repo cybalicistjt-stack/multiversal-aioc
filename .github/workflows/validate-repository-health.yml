@@ -152,6 +152,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_ops4_ci_guard.py
 
+      - name: Validate SA-BILL-01 reference study scenarios (not live product security)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_sa_bill01_reference_model.py
+
       - name: Run MVPS-01 species aggregate contract regressions
         if: steps.scope.outputs.certified_content == 'true'
         shell: bash

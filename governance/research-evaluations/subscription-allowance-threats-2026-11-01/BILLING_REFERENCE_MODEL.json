@@ -1,0 +1,173 @@
+{
+  "schemaVersion": "SA-BILL-01.billing-allowance-reference.1",
+  "authority": "PROPOSED_NOT_OWNER_RATIFIED",
+  "date": "2026-11-01",
+  "purpose": "Machine-readable trial security policy to generate deterministic negative cases; no payment processing, no deployed entitlement service and no price selected.",
+  "billingProduct": {
+    "pricing": "NOT_SELECTED",
+    "currency": "NOT_SELECTED",
+    "planVersion": "NOT_SELECTED",
+    "storefrontRoutes": "PER_TERRITORY_COMPLIANCE_REQUIRED",
+    "giftsAndAddOns": "NOT_SELECTED",
+    "optionalAI": "separate opt-in hard budget; never implicit usage charge"
+  },
+  "identities": {
+    "payer": "canonical_a3_subject_id",
+    "gm": "canonical_a3_subject_id",
+    "player": "canonical_a3_subject_id",
+    "device": "distinct_per_installation",
+    "purchase": "provider_order_id_and_original_transaction_or_purchase_token",
+    "campaign": "canonical_a5_campaign_id"
+  },
+  "billingStates": [
+    {
+      "id": "pending_purchase",
+      "access": "deny",
+      "createAllowance": "deny",
+      "condition": "no provider-confirmed entitlement"
+    },
+    {
+      "id": "verified_active",
+      "access": "allow_with_rights_and_membership",
+      "createAllowance": "allow_with_current_gm_and_one_slot",
+      "condition": "verified provider entitlement, now within period"
+    },
+    {
+      "id": "cancel_scheduled",
+      "access": "allow_until_verified_entitled_until",
+      "createAllowance": "allow_until_verified_entitled_until",
+      "condition": "auto-renew off, paid term still valid; proposal"
+    },
+    {
+      "id": "trial_verified",
+      "access": "conditional_owner_policy",
+      "createAllowance": "owner_decision_default_deny",
+      "condition": "verified store trial status, consent and conversion terms"
+    },
+    {
+      "id": "grace_entitled",
+      "access": "allow_if_store_confirms_grace",
+      "createAllowance": "owner_decision_default_deny",
+      "condition": "current provider grace, no invented extension"
+    },
+    {
+      "id": "account_hold",
+      "access": "deny",
+      "createAllowance": "deny",
+      "condition": "provider says entitlement not active"
+    },
+    {
+      "id": "paused",
+      "access": "deny_unless_store_verified_entitlement",
+      "createAllowance": "deny",
+      "condition": "not simply a device toggle"
+    },
+    {
+      "id": "expired",
+      "access": "deny",
+      "createAllowance": "deny",
+      "condition": "end interval reached and no renewal"
+    },
+    {
+      "id": "revoked_refunded",
+      "access": "deny",
+      "createAllowance": "deny",
+      "condition": "verified effective revocation"
+    },
+    {
+      "id": "disputed",
+      "access": "reconcile_provider_truth",
+      "createAllowance": "deny_until_reconciled",
+      "condition": "dispute alone not a consumer charge authorization"
+    },
+    {
+      "id": "provider_unreachable",
+      "access": "only_valid_preissued_read_lease",
+      "createAllowance": "deny",
+      "condition": "no new premium entitlement from cache or UI"
+    }
+  ],
+  "allowanceRules": {
+    "uniqueIndex": [
+      "campaignId",
+      "playerSubjectId",
+      "slotKind"
+    ],
+    "slotKind": "gm-sponsored-premium",
+    "maxActiveGrantsPerSlot": 1,
+    "allowedRootTypes": [
+      "custom-setting",
+      "registered-species",
+      "registered-item-set",
+      "registered-ability-tree",
+      "future-allowlisted-owner-type"
+    ],
+    "issuerMustBe": [
+      "authenticated_a3_subject",
+      "current_campaign_gm",
+      "provider_verified_active_subscriber"
+    ],
+    "recipientMustBe": [
+      "canonical_a3_subject",
+      "current_player_member_of_campaign"
+    ],
+    "scope": [
+      "single_campaign",
+      "single_player_subject",
+      "single_owner_registered_root_plus_trusted_dependencies"
+    ],
+    "noImplicitRights": [
+      "source_ownership",
+      "character_transfer",
+      "outside_campaign_export",
+      "multiple_independent_roots",
+      "canonical_content_publication",
+      "AI_paid_spend"
+    ],
+    "identityEpochs": [
+      "issuer_subscription_revision",
+      "gm_role_revision",
+      "player_membership_revision",
+      "grant_version",
+      "content_release_version",
+      "rights_version",
+      "entitlement_ruleset_version"
+    ],
+    "transaction": "atomic slot uniqueness+version CAS+verified issuer/recipient+root/dependencies+immutable event; no read-check-write race",
+    "replacement": "owner_decision_requested; conservative atomic replace with history"
+  },
+  "caching": {
+    "offlineMutation": "never",
+    "offlineProtectedReads": "bounded_signed_lease_with_subject_campaign_device_resource_digest_and_epochs",
+    "remoteInstantRevocation": "impossible_while_fully_disconnected",
+    "allowPermanentOfflinePremium": "false",
+    "recoverOwnDrafts": "yes_when_rights_permit",
+    "contentEncryption": "device-bound keys and authorized content integrity"
+  },
+  "billingIngestion": {
+    "inputTrusted": "no",
+    "verify": "provider_signature_plus_authoritative_status_query_and_binding_to_canonical_payer",
+    "eventOrdering": "dedup + provider-current-source + ledger revision",
+    "planPricing": "provider product + territory + plan version, no client invoice",
+    "cancel": "renew-off separate from paid access expiry",
+    "refund": "verified provider effective revocation and refund ledger separate",
+    "storePaymentUI": "platform/region-specific policy and enrolled alternative routes only",
+    "AIProviderCosts": "separate opt-in/budget/confirmation"
+  },
+  "acceptance": {
+    "requires": [
+      "store_sandbox_provider_source_verification",
+      "atomic_db_race_proof",
+      "full_negative_API_export_search_AI_tests",
+      "installed_Windows_Android_offline_revocation_tests",
+      "independent_merchant_rules_review",
+      "owner_pricing_and_policy_approval"
+    ],
+    "cannotBeClaimedFromThisStudy": [
+      "billing_released",
+      "active_subscription_merchant",
+      "allowance_server_implemented",
+      "licensed_pack_protection_certified"
+    ]
+  }
+}
