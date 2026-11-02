@@ -132,6 +132,14 @@ class ProviderLedgerAdversarial(unittest.TestCase):
         self.assertEqual(len(self.rows("notification_receipt")),1)
         self.assertEqual(self.current()["source_epoch"],1)
 
+    def test_06b_duplicate_delivery_still_applies_fresher_provider_revocation(self):
+        self.assertEqual(self.deliver(event="same-hint"),"APPLIED")
+        self.provider.snapshots["orig-1"]=snap(revision=2,state="revoked_refunded")
+        self.assertEqual(self.deliver(event="same-hint"),"SOURCE_REFRESHED")
+        self.assertEqual(self.current()["state"],"revoked_refunded")
+        self.assertEqual(self.current()["source_epoch"],2)
+        self.assertEqual(len(self.rows("notification_receipt")),1)
+
     def test_07_same_event_id_different_signed_payload_is_rejected(self):
         self.assertEqual(self.deliver(),"APPLIED")
         self.assertEqual(self.deliver(hint="bogus"),"EVENT_ID_CONFLICT")
