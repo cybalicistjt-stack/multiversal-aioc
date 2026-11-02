@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "0.1.0",
+  "workItem": "P9-06-016",
+  "cases": [
+    {
+      "id": "owner-accepted",
+      "state": {"sessionId":"session-a","campaignId":"campaign-a","campaignOwnerSubjectId":"subject-owner","revision":3,"lastSequence":7,"processedCommandIds":[]},
+      "command": {"commandId":"cmd-1","sessionId":"session-a","actorId":"subject-owner","expectedRevision":3,"type":"move","payload":{"distance":4},"submittedAt":"2026-08-07T14:50:00Z"},
+      "membership": null,
+      "expected": {"accepted":true,"replayed":false,"resultingRevision":4,"sequence":8}
+    },
+    {
+      "id": "player-accepted",
+      "state": {"sessionId":"session-a","campaignId":"campaign-a","campaignOwnerSubjectId":"subject-owner","revision":4,"lastSequence":8,"processedCommandIds":[]},
+      "command": {"commandId":"cmd-2","sessionId":"session-a","actorId":"subject-player","expectedRevision":4,"type":"roll","payload":{"ability":"test"},"submittedAt":"2026-08-07T14:50:01Z"},
+      "membership": {"campaignId":"campaign-a","subjectId":"subject-player","role":"player"},
+      "expected": {"accepted":true,"replayed":false,"resultingRevision":5,"sequence":9}
+    },
+    {
+      "id": "observer-denied",
+      "state": {"sessionId":"session-a","campaignId":"campaign-a","campaignOwnerSubjectId":"subject-owner","revision":5,"lastSequence":9,"processedCommandIds":[]},
+      "command": {"commandId":"cmd-3","sessionId":"session-a","actorId":"subject-observer","expectedRevision":5,"type":"roll","payload":{},"submittedAt":"2026-08-07T14:50:02Z"},
+      "membership": {"campaignId":"campaign-a","subjectId":"subject-observer","role":"observer"},
+      "expected": {"accepted":false,"reason":"unauthorized","resultingRevision":5}
+    },
+    {
+      "id": "cross-campaign-denied",
+      "state": {"sessionId":"session-a","campaignId":"campaign-a","campaignOwnerSubjectId":"subject-owner","revision":5,"lastSequence":9,"processedCommandIds":[]},
+      "command": {"commandId":"cmd-4","sessionId":"session-a","actorId":"subject-player","expectedRevision":5,"type":"roll","payload":{},"submittedAt":"2026-08-07T14:50:03Z"},
+      "membership": {"campaignId":"campaign-b","subjectId":"subject-player","role":"player"},
+      "expected": {"accepted":false,"reason":"unauthorized","resultingRevision":5}
+    },
+    {
+      "id": "stale-revision-denied",
+      "state": {"sessionId":"session-a","campaignId":"campaign-a","campaignOwnerSubjectId":"subject-owner","revision":6,"lastSequence":10,"processedCommandIds":[]},
+      "command": {"commandId":"cmd-5","sessionId":"session-a","actorId":"subject-player","expectedRevision":5,"type":"roll","payload":{},"submittedAt":"2026-08-07T14:50:04Z"},
+      "membership": {"campaignId":"campaign-a","subjectId":"subject-player","role":"player"},
+      "expected": {"accepted":false,"reason":"stale-revision","resultingRevision":6}
+    },
+    {
+      "id": "duplicate-replayed",
+      "state": {"sessionId":"session-a","campaignId":"campaign-a","campaignOwnerSubjectId":"subject-owner","revision":6,"lastSequence":10,"processedCommandIds":["cmd-6"]},
+      "command": {"commandId":"cmd-6","sessionId":"session-a","actorId":"subject-player","expectedRevision":5,"type":"roll","payload":{},"submittedAt":"2026-08-07T14:50:05Z"},
+      "membership": {"campaignId":"campaign-a","subjectId":"subject-player","role":"player"},
+      "existingReceipt": {"commandId":"cmd-6","accepted":true,"resultingRevision":6,"emittedEventIds":["evt:session-a:10:cmd-6"]},
+      "expected": {"accepted":true,"replayed":true,"resultingRevision":6,"eventCount":0}
+    },
+    {
+      "id": "wrong-session-denied",
+      "state": {"sessionId":"session-a","campaignId":"campaign-a","campaignOwnerSubjectId":"subject-owner","revision":6,"lastSequence":10,"processedCommandIds":[]},
+      "command": {"commandId":"cmd-7","sessionId":"session-b","actorId":"subject-owner","expectedRevision":6,"type":"roll","payload":{},"submittedAt":"2026-08-07T14:50:06Z"},
+      "membership": null,
+      "expected": {"accepted":false,"reason":"wrong-session","resultingRevision":6}
+    }
+  ]
+}
