@@ -44,7 +44,7 @@ class XtraRegistrationTests(unittest.TestCase):
         self.assertEqual(entries[8]["status"], "completed_verified")
         self.assertEqual(entries[9]["status"], "completed_verified")
         self.assertEqual(entries[10]["status"], "completed_verified")
-        self.assertEqual(entries[11]["status"], "in_progress")
+        self.assertEqual(entries[11]["status"], "completed_verified")
         self.assertTrue(all(row["status"] == "planned" for row in entries[12:]))
         self.assertTrue(all(row["code_implementation_allowed"] is False for row in entries))
         self.assertTrue(all(row["scope"] and row["acceptance"] and row["classification"] for row in entries))
@@ -57,7 +57,8 @@ class XtraRegistrationTests(unittest.TestCase):
         self.assertIn("owner_approval_required", gates["commercial"])
         self.assertIn("verified_real_restore", gates["backup"])
         self.assertFalse(self.current["product_start_freeze"]["active"])
-        self.assertIn("evidence reconciliation", self.current["lanes"]["xtra"]["execution_authority"])
+        self.assertIn("Terminal evidence audit", self.current["lanes"]["xtra"]["execution_authority"])
+        self.assertEqual(self.backlog["status"], "blocked_external")
 
 if __name__ == "__main__":
     unittest.main()
