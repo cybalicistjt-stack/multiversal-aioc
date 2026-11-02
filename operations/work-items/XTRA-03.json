@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "xtra",
+  "program_id": "XTRA",
+  "work_item_id": "XTRA-03",
+  "attempt_id": "XTRA-03-attempt-001",
+  "status": "in_progress",
+  "completed": false,
+  "implementation_authority": false,
+  "selected_by_owner": "Owner XTRA family/Continue; XTRA-01 completed; XTRA-02 external-only blocked but not a dependency of XTRA-03.",
+  "scope": "Reconcile the full 25-feature internal-alpha evidence ledger at AIOC draft PR1927 against current application source, live PR and associated OPS5/PCV source authority; resolve document inaccuracies and preserve real feature implementation gaps. No blocked product implementation.",
+  "implementation_branch": "program/xtra03-feature-ledger-review-20261102",
+  "backlog": "governance/application-planning/xtra-pre-pcv-readiness/XTRA_PROGRAM_BACKLOG.json",
+  "acceptance": [
+    "All 25 feature IDs appear once with grounded design/implementation and PR status",
+    "Review AIOC PR1927 actual diff and stale source heads before publication",
+    "Preserve unresolved F012, F017, F024 or other gaps unless real current source proves them closed",
+    "Source-only reconciliation passes exact-head OPS5 gates and protected-main publication as allowed"
+  ],
+  "active_substep": "inspect_existing_feature_ledger_pr1927",
+  "next_action": "Review source-draft PR1927 against current AIOC and app heads; fix only evidenced inaccuracies, certify matrix completeness and publish via governed PR process; no PCV/MTLC/AXI work mutation.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "selected_after_xtra02_external_blocker",
+      "evidence": "XTRA02 Render no-backup external blocker recorded; XTRA03 depends only on completed XTRA01."
+    }
+  }
+}
