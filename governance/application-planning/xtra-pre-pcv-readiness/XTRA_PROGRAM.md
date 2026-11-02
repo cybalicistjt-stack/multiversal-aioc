@@ -2,7 +2,7 @@
 
 **Program:** XTRA  
 **Authority:** owner-directed 2026-11-02, recorded through OPS5 CURRENT/LANES after protected-main approval  
-**Status:** XTRA-01/03/04/05/06/07/08/09 completed_verified; XTRA-02 blocked_external; XTRA-10 selected pending publication.
+**Status:** XTRA-01/03/04/05/06/07/08/09/10 completed_verified; XTRA-02 blocked_external; XTRA-11 selected pending publication.
 **Purpose:** finish independent, useful pre-PCV-03F work and prepare downstream acceptance without bypassing PCV/MTLC/AXI/MCB authorities.
 
 ## Invariants
@@ -109,15 +109,15 @@
 
 **Acceptance.** Evidence and hypothetical claims are separated; customer observations are labeled as collected vs pending; MCB authority must be separately selected for its own tranche closeouts.
 
-**Dependency.** XTRA-01. **Current state:** in_progress pending OPS5 selector publication; evidence/hypotheses only, no MCB program activation, customer campaign or commercial claims.
+**Dependency.** XTRA-01. **Current state:** completed_verified. PR1945 exact-head green (run41474667597, merge f5f24450) published 7 competitor comparisons, 4 unvalidated personas, 16 unapproved claims and eight draft messages; no customer observations or MCB activation.
 
 ### XTRA-11 — MCB commercial, website, pricing and recruitment preparation
 
-**Scope.** Prepare demos, site/SEO/content templates, consented recruitment plan, pricing and GM-to-player allowance models, lifecycle/analytics plan, launch/support FAQ corresponding to MCB-09..25.
+**Scope. Prepare demos, site/SEO/content templates, consented recruitment plan, pricing and GM-to-player allowance models, lifecycle/analytics plan, launch/support FAQ corresponding to MCB-09..25.
 
 **Acceptance.** No live subscription, paid acquisition, public discovery, misleading demo or publishable commercial claims; final price and launch remain owner-gated.
 
-**Dependency.** XTRA-01. **Current state:** planned. No automatic authority from this roadmap.
+**Dependency.** XTRA-01. **Current state:** in_progress pending OPS5 selector publication; templates/fixtures and simulated checks only, no live customer funnel, payment, signup, website launch or MCB activation.
 
 ### XTRA-12 — Pre-PCV-03F handoff and independent terminal readiness review
 
