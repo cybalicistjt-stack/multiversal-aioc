@@ -5,7 +5,7 @@
 
 ## Contents and provenance
 
-- `render-inventory.redacted.json`: inventory for nine Render resources (3 web services, 4 static sites, 1 PostgreSQL database, 1 key-value service), including source branches, nonsecret build/start commands, service IDs, plans, location, expiry and provider URLs. Retrieved read-only from the connected Render team workspace **Raven's workspace** on 2026-11-02.
+- `render-inventory.redacted.json`: inventory for ten Render resources (4 web services, 4 static sites, 1 PostgreSQL database, 1 key-value service), including source branches, nonsecret build/start commands, service IDs, plans, location, expiry and provider URLs. Retrieved read-only from the connected Render team workspace **Raven's workspace** on 2026-11-02.
 - `railway-inventory.redacted.json`: two Railway projects, five service slots (including one staged-only create), source/deployment configuration, domains, shared/individual environment variable **names** (never values), and pending patch metadata. Retrieved read-only through connected Railway on 2026-11-02.
 - `pcv03f_render_backup.sh`: vetted *operator-only* logical PostgreSQL 17 export helper; it does not run on GitHub and contains no secrets.
 - `FREE_NO_TRIAL_INFRASTRUCTURE_OPTIONS_2026-11-02.md`: source-linked options and requirements fit for eventual provider migration.
