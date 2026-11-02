@@ -2,7 +2,7 @@
 
 **Program:** XTRA  
 **Authority:** owner-directed 2026-11-02, recorded through OPS5 CURRENT/LANES after protected-main approval  
-**Status:** XTRA-01/03/04/05/06/07/08 completed_verified; XTRA-02 blocked_external; XTRA-09 selected pending publication.
+**Status:** XTRA-01/03/04/05/06/07/08/09 completed_verified; XTRA-02 blocked_external; XTRA-10 selected pending publication.
 **Purpose:** finish independent, useful pre-PCV-03F work and prepare downstream acceptance without bypassing PCV/MTLC/AXI/MCB authorities.
 
 ## Invariants
@@ -101,7 +101,7 @@
 
 **Acceptance.** Operator runbooks cover scope/auth/rollback/privacy, identify provider account/service gaps and independent recovery evidence before live data trust.
 
-**Dependency.** XTRA-01. **Current state:** in_progress (OPS5 selector PR pending). Provider-neutral runbooks and synthetic evidence only; XTRA-02 remains blocked_external.
+**Dependency.** XTRA-01. **Current state:** completed_verified. PR1943 source-only operator runbook and 51 synthetic incident/privacy/restore cases published (run41472471216, merge 92ea5b73); no live monitoring, backup, privacy or recovery certification; XTRA-02 remains blocked_external.
 
 ### XTRA-10 — MCB market/customer/brand groundwork
 
@@ -109,7 +109,7 @@
 
 **Acceptance.** Evidence and hypothetical claims are separated; customer observations are labeled as collected vs pending; MCB authority must be separately selected for its own tranche closeouts.
 
-**Dependency.** XTRA-01. **Current state:** planned. No automatic authority from this roadmap.
+**Dependency.** XTRA-01. **Current state:** in_progress pending OPS5 selector publication; evidence/hypotheses only, no MCB program activation, customer campaign or commercial claims.
 
 ### XTRA-11 — MCB commercial, website, pricing and recruitment preparation
 
