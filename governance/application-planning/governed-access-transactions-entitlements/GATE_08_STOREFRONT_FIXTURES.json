@@ -1429,7 +1429,7 @@
       },
       "expected": {
         "status": "VALID_SCENARIO_ONLY",
-        "netMinor": 329
+        "netMinor": 294
       }
     },
     {
@@ -1450,6 +1450,47 @@
       },
       "expected": {
         "status": "INVALID_INPUT"
+      }
+    },
+    {
+      "id": "E13",
+      "input": {
+        "priceMinor": 499,
+        "taxCollectedMinor": 35,
+        "processorFeeMinor": 40,
+        "billingFeeMinor": 5,
+        "storeFeeMinor": 0,
+        "providerOtherFeeMinor": 0,
+        "serviceCostMinor": 90,
+        "supportCostMinor": 20,
+        "expectedRefundMinor": 5,
+        "riskReserveMinor": 10,
+        "merchantTaxRemits": false,
+        "platformTaxRemits": false
+      },
+      "expected": {
+        "status": "AMBIGUOUS_TAX_LIABILITY"
+      }
+    },
+    {
+      "id": "E14",
+      "input": {
+        "priceMinor": 499,
+        "taxCollectedMinor": 35,
+        "processorFeeMinor": 40,
+        "billingFeeMinor": 5,
+        "storeFeeMinor": 0,
+        "providerOtherFeeMinor": 0,
+        "serviceCostMinor": 90,
+        "supportCostMinor": 20,
+        "expectedRefundMinor": 5,
+        "riskReserveMinor": 10,
+        "merchantTaxRemits": true,
+        "platformTaxRemits": false
+      },
+      "expected": {
+        "status": "VALID_SCENARIO_ONLY",
+        "netMinor": 294
       }
     }
   ]

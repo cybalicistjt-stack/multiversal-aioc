@@ -45,10 +45,10 @@ Net contribution = gross_minor
   – processor_fee – subscription_billing_fee – store_or_alt_billing_fee
   – other_provider_fee – variable_service_cost – support_cost
   – expected_refund_loss – risk_reserve
-  – taxes_to_remit_by_actual_merchant
+  – sales_tax_collected_and_remitted_by_responsible_merchant_or_platform
 ```
 
-Use **per-channel and per-region contractual quotes**, not one global percentage, to populate the variables. The sample [fixtures](GATE_08_STOREFRONT_FIXTURES.json) use **499 minor units solely as historical-target arithmetic examples**, with fictional cost inputs for deterministic correctness. They are not proposals, forecasts or active prices. Avoid assuming vendor's domestic card headline rate is the all-in recurring bill: recurring Billing, store obligations, non-domestic payments, tax and support may change it.
+Use **per-channel and per-region contractual quotes**, not one global percentage, to populate the variables. When gross collection includes sales tax, subtract that tax **once** regardless of whether the merchant remits it or the platform withholds/remits it; a tax-positive sale with no identified remitter is an unresolved liability, not margin. The sample [fixtures](GATE_08_STOREFRONT_FIXTURES.json) use **499 minor units solely as historical-target arithmetic examples**, with fictional cost inputs for deterministic correctness. They are not proposals, forecasts or active prices. Avoid assuming vendor's domestic card headline rate is the all-in recurring bill: recurring Billing, store obligations, non-domestic payments, tax and support may change it.
 
 Reevaluate unit economics at various paying subscriber counts, transaction mix, refunds, free-user consumption, AI usage, support labor, monthly infrastructure bills, discounts/promotions, taxable jurisdictions and payout delays. A $4.99 target can result in much less than $4.99 of contribution, and gross recurring price is not margin.
 
@@ -59,7 +59,7 @@ Reevaluate unit economics at various paying subscriber counts, transaction mix, 
 - **Engineering:** real account verification, PCV-03F backend prerequisites, GATE-09/10 signed provider staging, GATE-11 real Windows/Android purchase/restore/cancel, GATE-12 security and GATE-13 operations/incident reconciliation.
 - **Store/provider:** actual contracts, fees, merchant accounts, Play enrollment/acknowledgment/reporting, Apple IAP or entitlements, published management routes and receipt verification. No auto-approval from documentary research.
 
-The [storefront reference fixtures](GATE_08_STOREFRONT_FIXTURES.json) and `scripts/gate08_reference_oracle.mjs` cover 50 assumed-channel/region policy gates and 12 fictional integer-minor-unit cost cases. **Neither validates legal applicability nor provider quote, real tax, installed app or merchant eligibility.**
+The [storefront reference fixtures](GATE_08_STOREFRONT_FIXTURES.json) and `scripts/gate08_reference_oracle.mjs` cover 50 assumed-channel/region policy gates and 14 fictional integer-minor-unit cost cases. **Neither validates legal applicability nor provider quote, real tax, installed app or merchant eligibility.**
 
 ## Dated primary sources (reviewed 2026-11-02)
 

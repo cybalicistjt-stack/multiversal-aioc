@@ -39,8 +39,9 @@ const economics=function economics(v){
  if(a.some(k=>!Number.isSafeInteger(v[k])||v[k]<0))return {status:"INVALID_INPUT"};
  if(v.taxCollectedMinor>v.priceMinor)return {status:"INVALID_TAX"};
  if(v.platformTaxRemits===true&&v.merchantTaxRemits===true)return {status:"AMBIGUOUS_TAX_LIABILITY"};
+ if(v.taxCollectedMinor>0&&v.platformTaxRemits!==true&&v.merchantTaxRemits!==true)return {status:"AMBIGUOUS_TAX_LIABILITY"};
  const subtotal=v.priceMinor-v.processorFeeMinor-v.billingFeeMinor-v.storeFeeMinor-v.providerOtherFeeMinor-v.serviceCostMinor-v.supportCostMinor-v.expectedRefundMinor-v.riskReserveMinor;
- const net=subtotal-(v.merchantTaxRemits===true?v.taxCollectedMinor:0);
+ const net=subtotal-v.taxCollectedMinor;
  return {status:"VALID_SCENARIO_ONLY",netMinor:net};
 };
 let fails=0;
