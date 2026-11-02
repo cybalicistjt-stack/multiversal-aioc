@@ -38,7 +38,7 @@ def reset():
               sa_bill07_fixture.membership,sa_bill07_fixture.issuer_entitlement CASCADE
         """)
     with conn() as db:
-        db.executemany("""
+        db.cursor().executemany("""
           INSERT INTO sa_bill07_fixture.membership
           (campaign_id,subject_id,role,active,revision) VALUES(%s,%s,%s,true,1)
         """,[
@@ -52,12 +52,12 @@ def reset():
           VALUES ('gm','verified_active',true,1,now(),now()-interval '1 day',
             now()+interval '1 day')
         """)
-        db.executemany("""
+        db.cursor().executemany("""
           INSERT INTO sa_bill07_fixture.registered_release
           (id,version,owner_revision,active,rights_valid,closure_digest)
           VALUES(%s,'v1',1,true,true,'digest-setting-v1')
         """,[("setting",),("relic",),("tree",),("foreign",)])
-        db.executemany("""
+        db.cursor().executemany("""
           INSERT INTO sa_bill07_fixture.registered_closure
           (root_release_id,permitted_release_id,owner_revision,closure_digest)
           VALUES ('setting',%s,1,'digest-setting-v1')
@@ -69,7 +69,7 @@ def reset():
            player_membership_revision,issuer_entitlement_revision,state)
           VALUES ('X','p1','gm','setting',1,'digest-setting-v1',4,1,1,1,'active')
         """)
-        db.executemany("""
+        db.cursor().executemany("""
           INSERT INTO sa_bill07_fixture.resource
           (id,campaign_id,owner_subject_id,source_release_id,
            safe_label,protected_payload,self_authored_raw_note)
@@ -82,7 +82,7 @@ def reset():
           ("y-item","Y","gm","relic","Y-only item","campaign Y secret",""),
           ("other-char","X","p2",None,"Other Player Hero","private PC notes","p2 own original text"),
         ])
-        db.executemany("""
+        db.cursor().executemany("""
           INSERT INTO sa_bill07_fixture.resource_dependency(parent_id,child_id)
           VALUES (%s,%s)
         """,[("char","sword"),("sword","tree-choice")])
