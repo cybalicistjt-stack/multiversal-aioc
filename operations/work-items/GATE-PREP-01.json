@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "gate",
+  "program_id": "GATE-PREP",
+  "work_item_id": "GATE-PREP-01",
+  "attempt_id": "GATE-PREP-01-attempt-001",
+  "status": "in_progress",
+  "completed": false,
+  "implementation_authority": true,
+  "selected_by_owner": "2026-11-02 owner explicit Approved. Continue. Authorization for GATE-PREP-01 through 04 as separate nonproduction test engineering, not GATE09.",
+  "implementation_branch": "program/gate-prep-isolated-engineering-01-04-20261102",
+  "scope": "Isolated disposable PostgreSQL race testing, fake-provider reconciliation, Node Ed25519/AES-GCM lab, subscription UX and operations dry runs. No app/Render/merchant data.",
+  "backlog": "governance/application-planning/gate-preintegration/GATE_PREP_BACKLOG.json",
+  "acceptance": [
+    "Real disposable PostgreSQL 16 verifies 100 competing attempts using 24 worker sessions; one durable allowance and audit",
+    "Node fake-provider suite covers event replay, cancellation paid-through and cross-subject failures",
+    "Node crypto lab covers real Ed25519/AES-GCM with wrong-device, revoked epoch and cache-binding negatives; never OS security proof",
+    "UI state and operator dry runs with explicit pending pricing/legal and policy decisions",
+    "Exact-head test and OPS5 green, protected publication and no GATE09 or PCV scope mutation"
+  ],
+  "active_substep": "isolated_testbed_candidate_under_validation",
+  "next_action": "Run exact-head Node/PG and OPS5 checks; repair candidate if needed; protected publish and reconcile. GATE09 remains planned and independently owner-gated.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "nonproduction_candidate_prepared",
+      "evidence": "Four bounded prep artifacts committed in branch; independent tests require CI verification"
+    }
+  },
+  "constraints": {
+    "nonproduction_only": true,
+    "no_prod_app_or_db_mutation": true,
+    "no_provider_credentials_or_charges": true,
+    "no_real_installed_device_certification": true,
+    "no_price_or_launch": true,
+    "no_other_lane_change": true,
+    "no_gate09_activation": true
+  }
+}
