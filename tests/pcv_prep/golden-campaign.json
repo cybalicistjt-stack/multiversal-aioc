@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "SYNTHETIC_NONCANONICAL_ACCEPTANCE_FIXTURE",
+  "campaign": "prep-river-archive",
+  "session": "prep-session",
+  "characters": [
+    "Raven1",
+    "Raven2"
+  ],
+  "gm": "Raven1",
+  "player": "Raven2",
+  "steps": [
+    {
+      "id": "explore",
+      "kind": "exploration",
+      "from": "start",
+      "to": "investigate",
+      "event": "enter-ruins"
+    },
+    {
+      "id": "clue",
+      "kind": "investigation",
+      "from": "investigate",
+      "to": "social",
+      "event": "read-damaged-marker"
+    },
+    {
+      "id": "parley",
+      "kind": "social",
+      "from": "social",
+      "to": "combat",
+      "event": "negotiate-with-guardian"
+    },
+    {
+      "id": "combat",
+      "kind": "combat",
+      "from": "combat",
+      "to": "downtime",
+      "event": "resolve-defender"
+    },
+    {
+      "id": "camp",
+      "kind": "downtime",
+      "from": "downtime",
+      "to": "completed",
+      "event": "repair-travel-kit"
+    }
+  ],
+  "required_evidence": [
+    "gm-and-player-private-projection",
+    "one authoritative event chronology",
+    "offline-disconnect-and-reconnect",
+    "one fictional-resource-transaction",
+    "save-and-reopen",
+    "phone-and-desktop-action-parity",
+    "two-games-one-fictional-stake",
+    "no-real-world-betting"
+  ],
+  "status": "scaffold_only_no_actual_SMB09_data"
+}

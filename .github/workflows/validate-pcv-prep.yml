@@ -1,0 +1,36 @@
+name: PCV-PREP isolated 01–07 acceptance
+
+on:
+  pull_request:
+    paths:
+      - 'tests/pcv_prep/**'
+      - 'governance/application-planning/product-convergence/prep/**'
+      - '.github/workflows/validate-pcv-prep.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcv-prep-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  isolated-source-fixtures:
+    name: PCV-PREP Node 22 deterministic source/testbed
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify all isolated PCV-PREP source census and gameplay labs
+        run: node --test tests/pcv_prep/*.test.mjs
+      - name: State nonproduction evidence boundary
+        run: |
+          echo 'All executions are synthetic models in AIOC, NOT Multiversal-app A3/A5/A6/A7/A9/MIB13 runtime.'
+          echo 'No installed Windows/Android, paid accounts, native UX, first-party content certification or gameplay multiplayer proof.'
