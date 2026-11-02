@@ -1,8 +1,33 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 348,
-  "ready": [],
+  "generation": 349,
+  "ready": [
+    {
+      "candidate_id": "SA-BILL-05-postgres-transaction-research-pr-1921",
+      "lane": "operations",
+      "work_item_id": "SA-BILL-05-ADVISORY-RESEARCH",
+      "pr_number": 1921,
+      "head_sha": "d14aa7040c926dbc2f6fcff34c4ee4690ed62695",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "d14aa7040c926dbc2f6fcff34c4ee4690ed62695",
+        "run_id": "41387179021",
+        "additional_required_run_id": "41387178963",
+        "additional_required_run_status": "success"
+      },
+      "write_set": [
+        ".github/workflows/validate-sa-bill05-postgres.yml",
+        "governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_05_POSTGRES_BOUNDARY.md",
+        "tests/control_plane/test_sa_bill05_postgres.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "44f352d0c6e1af51e52795c6171fc0ee061d0127",
+        "current_ops_revision": 641,
+        "study_scope": "synthetic_ephemeral_postgres_research_not_production"
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
