@@ -1,0 +1,74 @@
+name: GATE-PREP nonproduction engineering acceptance
+
+on:
+  pull_request:
+    paths:
+      - 'tests/gate_prep/**'
+      - 'governance/application-planning/gate-preintegration/**'
+      - '.github/workflows/validate-gate-prep.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gate-prep-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  node-contracts:
+    name: Node fake-provider, offline crypto and UX unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify Node module suite
+        run: node --test tests/gate_prep/*.test.mjs
+
+  real-disposable-postgres:
+    name: PostgreSQL 16 fixture - 100 competing allowance attempts
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
+          POSTGRES_PASSWORD: gate-prep-fixtures-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d postgres"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 15
+    env:
+      SA_BILL05_TEST_DATABASE_URL: postgresql://postgres:gate-prep-fixtures-only@localhost:5432/postgres
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned test-only client
+        run: python -m pip install --disable-pip-version-check 'psycopg[binary]==3.2.4'
+      - name: Real disposable PG conflict and audit proof
+        run: python tests/gate_prep/test_pg_allowance_race.py
+
+  safety-boundary:
+    name: State independent evidence limits
+    runs-on: ubuntu-latest
+    steps:
+      - name: Explicit scope
+        run: |
+          echo 'GATE-PREP tests use synthetic identities, receipts, seeded SQL facts, and ephemeral DB only.'
+          echo 'No PCV-03F server, native Windows/Android, hardware keys, external provider or live commerce is proven.'
