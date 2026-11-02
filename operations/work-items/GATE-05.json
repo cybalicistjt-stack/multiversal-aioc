@@ -4,8 +4,8 @@
   "program_id": "GATE",
   "work_item_id": "GATE-05",
   "attempt_id": "GATE-05-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "Owner approved GATE iterative 14-tranche design; bare Continue follows GATE-04 exact-head published and reconciled source evidence.",
   "implementation_branch": "program/gate05-postgresql-ledger-atomicity-20261102",
@@ -17,19 +17,23 @@
     "Cover 100 simultaneous allowance issuers as an independently specified real PostgreSQL acceptance test, do not misstate sequential toy as DB proof",
     "Provide 60+ synthetic scoped model tests and SQL design syntax for isolated future execution; exact-head OPS5 publication and queue reconciliation"
   ],
-  "active_substep": "schema_design_and_synthetic_negative_tests_candidate",
-  "next_action": "Run static/source checks and OPS5 exact-head candidate; publish and reconcile before selecting GATE-06. Real DB integration remains separately gated GATE-09.",
+  "active_substep": "source_published_and_reconciled",
+  "next_action": "GATE-05 ledger design published and reconciled, GATE-06 separately selected source-only",
   "execution_guard": {
     "continue_turns": 1,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "gate05_ledger_design_candidate",
-      "evidence": "Proposed PostgreSQL 17 DDL, transaction flow, 60 source-model cases, 100-attempt sequential toy and real 100-concurrent test plan; no DB claims"
+      "seq": 2,
+      "kind": "published_source_ledger",
+      "evidence": "PR1956 exact head e2988ddc4a73fccad24f32982d0eaffc72332a90 OPS5 run41509649181 SUCCESS; merge 5ac60e158a2ce2736c331dc0dc4002d958181583; queue generation418"
+    },
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Exact-head PR1956 merged with source-only 60 reference cases; queue 418"
     }
   },
   "constraints": {
@@ -39,5 +43,13 @@
     "no_money_or_price": true,
     "no_other_lane_selector_mutation": true,
     "no_synthetic_to_real_proof_upgrade": true
+  },
+  "completion_evidence": {
+    "pr": 1956,
+    "validation_run": 41509649181,
+    "candidate_head": "e2988ddc4a73fccad24f32982d0eaffc72332a90",
+    "merge_sha": "5ac60e158a2ce2736c331dc0dc4002d958181583",
+    "queue_generation": 418,
+    "grade": "PUBLISHED_SOURCE_ONLY"
   }
 }
