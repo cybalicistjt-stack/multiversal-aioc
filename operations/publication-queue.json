@@ -1,8 +1,41 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 358,
-  "ready": [],
+  "generation": 359,
+  "ready": [
+    {
+      "candidate_id": "SA-BILL-10-compatibility-safe-boundary-pr-1926",
+      "lane": "operations",
+      "work_item_id": "SA-BILL-10-ADVISORY-RESEARCH",
+      "pr_number": 1926,
+      "head_sha": "5e91db13754f789b0421b7cd780d89f1179f7843",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "5e91db13754f789b0421b7cd780d89f1179f7843",
+        "run_id": "41403341211",
+        "test_count": 13,
+        "proof_type": "pinned_actual_app_fixtures_and_external_adapter_simulation",
+        "known_compatibility_conflicts": 2,
+        "static_verifier_blind_spot": true
+      },
+      "write_set": [
+        ".github/workflows/validate-repository-health.yml",
+        "governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_10_COMPATIBILITY_AND_PRODUCT_RELEASE_GATE.md",
+        "tests/control_plane/sa_bill10_safe_boundary.mjs",
+        "tests/control_plane/test_sa_bill10_compatibility.mjs",
+        "tests/fixtures/sa-bill10/app-src/fixtures/session/p9-06-016-authoritative-command-handler.json",
+        "tests/fixtures/sa-bill10/app-src/fixtures/session/p9-06-018-hidden-information-response-filter.json",
+        "tests/fixtures/sa-bill10/app-src/tools/verify_p9_06_016.py",
+        "tests/fixtures/sa-bill10/app-src/tools/verify_p9_06_018.py"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "cb38c3321a4466cfb5c0778e396f018a8ea74b7d",
+        "current_ops_revision": 641,
+        "app_main_sha": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+        "study_scope": "advisory_compatibility_without_app_modification"
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
