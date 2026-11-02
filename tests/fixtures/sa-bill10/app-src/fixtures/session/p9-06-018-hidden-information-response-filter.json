@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "P9-06-018",
+  "session_id": "session-alpha",
+  "campaign": {"campaignId":"campaign-alpha","ownerSubjectId":"subject-owner"},
+  "events": [
+    {"eventId":"evt-1","sessionId":"session-alpha","sequence":1,"revision":1,"type":"public-state","payload":{"value":"public"},"visibility":{"kind":"public"},"occurredAt":"2026-08-07T15:00:00Z"},
+    {"eventId":"evt-2","sessionId":"session-alpha","sequence":2,"revision":2,"type":"gm-secret","payload":{"value":"secret"},"visibility":{"kind":"gm_only"},"occurredAt":"2026-08-07T15:00:01Z"},
+    {"eventId":"evt-3","sessionId":"session-alpha","sequence":3,"revision":3,"type":"player-private","payload":{"value":"p1-only"},"visibility":{"kind":"participants","participantIds":["subject-player-1"]},"occurredAt":"2026-08-07T15:00:02Z"},
+    {"eventId":"evt-4","sessionId":"session-alpha","sequence":4,"revision":4,"type":"shared-private","payload":{"value":"shared"},"visibility":{"kind":"participants","participantIds":["subject-player-1","subject-player-2"]},"occurredAt":"2026-08-07T15:00:03Z"}
+  ],
+  "cases": [
+    {"id":"owner-sees-public-and-gm-only","viewerSubjectId":"subject-owner","membership":null,"expectedVisibleEventIds":["evt-1","evt-2"],"expectedHiddenCount":2},
+    {"id":"gm-sees-public-and-gm-only","viewerSubjectId":"subject-gm","membership":{"campaignId":"campaign-alpha","subjectId":"subject-gm","role":"gm"},"expectedVisibleEventIds":["evt-1","evt-2"],"expectedHiddenCount":2},
+    {"id":"participant-sees-own-private-events","viewerSubjectId":"subject-player-1","membership":{"campaignId":"campaign-alpha","subjectId":"subject-player-1","role":"player"},"expectedVisibleEventIds":["evt-1","evt-3","evt-4"],"expectedHiddenCount":1},
+    {"id":"observer-sees-public-only","viewerSubjectId":"subject-observer","membership":{"campaignId":"campaign-alpha","subjectId":"subject-observer","role":"observer"},"expectedVisibleEventIds":["evt-1"],"expectedHiddenCount":3},
+    {"id":"unauthorized-nonmember","viewerSubjectId":"subject-outsider","membership":null,"expectedError":"unauthorized"},
+    {"id":"cross-campaign-membership-denied","viewerSubjectId":"subject-player-2","membership":{"campaignId":"campaign-other","subjectId":"subject-player-2","role":"player"},"expectedError":"unauthorized"}
+  ],
+  "cross_session_case": {
+    "viewerSubjectId":"subject-gm",
+    "membership":{"campaignId":"campaign-alpha","subjectId":"subject-gm","role":"gm"},
+    "event":{"eventId":"evt-x","sessionId":"session-other","sequence":1,"revision":1,"type":"foreign","payload":{},"visibility":{"kind":"public"},"occurredAt":"2026-08-07T15:00:04Z"},
+    "expectedError":"not_found"
+  }
+}
