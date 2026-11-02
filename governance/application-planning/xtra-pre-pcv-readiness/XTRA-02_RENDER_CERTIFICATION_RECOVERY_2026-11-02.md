@@ -28,6 +28,7 @@ Never paste credentials, connection URLs, `.pgpass`, database dumps or unredacte
 3. Run the following commands in an empty **private, encrypted local backup directory**, outside the repo:
 
 ```bash
+set -euo pipefail
 umask 077
 mkdir -p "$HOME/multiversal-private-backups"
 cd "$HOME/multiversal-private-backups"
@@ -43,15 +44,15 @@ sha256sum --check "$archive.sha256"
 
 ## Isolated restore proof (operator only)
 
-Use an empty local PostgreSQL 17 instance unrelated to the certification database. These commands assume local DB superuser access and a fresh unused name; reject an existing/nonempty target, and NEVER run `pg_restore` against the Render source or any production/important database.
+Use an empty local PostgreSQL 17 instance unrelated to the certification database. Clear remote `PGHOST`, `PGPORT`, `PGUSER`, `PGDATABASE` and `PGSSLMODE=require` from the shell first; local authentication and local connection policy apply independently. These commands assume local DB superuser access and a fresh unused name; reject an existing/nonempty target, and NEVER run `pg_restore` against the Render source or any production/important database.
 
 ```bash
 # Use a separately configured local PostgreSQL 17 connection; not the Render PGHOST.
 createdb --host=127.0.0.1 --username=postgres --template=template0 xtra02_restore_check
-pg_restore --host=127.0.0.1 --username=postgres \\
-  --dbname=xtra02_restore_check --exit-on-error --no-owner --no-acl \\
+pg_restore --host=127.0.0.1 --username=postgres \
+  --dbname=xtra02_restore_check --exit-on-error --no-owner --no-acl \
   --format=custom "$archive"
-psql --host=127.0.0.1 --username=postgres --dbname=xtra02_restore_check \\
+psql --host=127.0.0.1 --username=postgres --dbname=xtra02_restore_check \
   -X -v ON_ERROR_STOP=1 -c "SELECT COUNT(*) AS restored_public_tables FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE';"
 ```
 
