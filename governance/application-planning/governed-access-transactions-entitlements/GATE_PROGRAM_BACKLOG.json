@@ -4,9 +4,9 @@
   "program_name": "Governed Access, Transactions & Entitlements",
   "owner": "John Brandon Turner",
   "created": "2026-11-02",
-  "status": "GATE-03_in_progress_source_only",
-  "selected_work_item": "GATE-03",
-  "selected_attempt": "GATE-03-attempt-001",
+  "status": "GATE-04_in_progress_source_only",
+  "selected_work_item": "GATE-04",
+  "selected_attempt": "GATE-04-attempt-001",
   "authority_boundary": "On-demand program, not fourth persistent implementation slot; GATE-01 source/design only. Future GATE-09..13 product/provider implementations require separately CURRENT-selected scope and real dependencies; GATE-14 final owner-only gate.",
   "publication_rule": "PR-only protected main, immutable exact head, required validations and fresh-base integration; no automatic successor.",
   "tranches": [
@@ -55,7 +55,7 @@
       "name": "Provider-neutral account/checkout interfaces",
       "priority": "P0",
       "kind": "source_only",
-      "status": "in_progress",
+      "status": "completed_verified",
       "depends_on": [
         "GATE-01",
         "GATE-02"
@@ -63,14 +63,21 @@
       "external_dependencies": [],
       "scope": "Contract canonical subject-to-provider customer linking, checkout intents, receipt ownership, provider-specific adapters and cancellations.",
       "acceptance": "Contract models reject wrong product, wrong owner, copied proof, redirect spoof and source-agnostic access.",
-      "code_implementation_authorized": false
+      "code_implementation_authorized": false,
+      "completion_evidence": {
+        "pr": 1954,
+        "run": 41506401120,
+        "merge_sha": "1c64ca63d89e76d632a4e7772ee76fdbb1a0ac03",
+        "queue_generation": 414,
+        "grade": "SOURCE_AND_SYNTHETIC_ONLY"
+      }
     },
     {
       "id": "GATE-04",
       "name": "Billing lifecycle and event reconciliation",
       "priority": "P0",
       "kind": "source_only",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "GATE-03"
       ],

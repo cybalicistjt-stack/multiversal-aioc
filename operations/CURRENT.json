@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 657,
+  "state_revision": 658,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -167,15 +167,15 @@
     "gate": {
       "state": "in_progress",
       "program_id": "GATE",
-      "selected_work_item": "GATE-03",
-      "attempt_id": "GATE-03-attempt-001",
-      "checkpoint_path": "operations/work-items/GATE-03.json",
-      "implementation_branch": "program/gate03-provider-neutral-billing-contracts-20261102",
+      "selected_work_item": "GATE-04",
+      "attempt_id": "GATE-04-attempt-001",
+      "checkpoint_path": "operations/work-items/GATE-04.json",
+      "implementation_branch": "program/gate04-billing-lifecycle-reconciliation-20261102",
       "implementation_authority": false,
-      "execution_authority": "source_only_provider_neutral_interfaces_and_synthetic_cases",
+      "execution_authority": "source_temporal_policy_and_reference_only",
       "source_program": "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM.md",
       "source_backlog": "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM_BACKLOG.json",
-      "activation_rule": "GATE-02 source-only published; bounded GATE-03 design selected after owner Continue. No actual Stripe account/test mode, product code, merchant, Android alternate checkout, price, spend, launch or cross-lane authority."
+      "activation_rule": "GATE-03 source-only published; owner Continue selects GATE-04 bounded lifecycle policy design, without activating grace, provider, payment, price, product or additional lane."
     }
   },
   "truth_rules": {
@@ -215,7 +215,7 @@
     "ops5_agent_completion": "Worker started, input accepted, artifact produced, focused check, real-boundary validation, owner acceptance and publication are distinct; follow current operations guards and real-source proof; do not add per-status journal receipts.",
     "ops5_bridge_fallback": "Missing local index or unverified host skill never blocks authorized work. Read relevant current source directly with GitHub tools; avoid compulsory research on trivial tasks."
   },
-  "next_project_action": "GATE-03 on-demand source-only provider-neutral checkout/identity/event interface proposal and 42 synthetic cases; real Stripe integration GATE-10 and app GATE-09 separately gated. Independent XTRA02 Render database recovery remains P0 before 2026-11-08.",
+  "next_project_action": "GATE-04 selected: source-only billing lifecycle and reconciliation design with 70 synthetic cases. GATE05 DB ledger remains unselected, GATE09/10 actual payment/backend gated. Independent Render DB data backup/restore remains P0 before 2026-11-08.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
