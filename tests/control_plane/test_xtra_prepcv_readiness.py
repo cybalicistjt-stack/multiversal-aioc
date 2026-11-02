@@ -35,8 +35,9 @@ class XtraRegistrationTests(unittest.TestCase):
         self.assertEqual(self.backlog["selected_work_item"], self.work["work_item_id"])
         self.assertEqual(entries[0]["status"], "completed_verified")
         self.assertEqual(entries[1]["status"], "blocked_external")
-        self.assertEqual(entries[2]["status"], "in_progress")
-        self.assertTrue(all(row["status"] == "planned" for row in entries[3:]))
+        self.assertEqual(entries[2]["status"], "completed_verified")
+        self.assertEqual(entries[3]["status"], "in_progress")
+        self.assertTrue(all(row["status"] == "planned" for row in entries[4:]))
         self.assertTrue(all(row["code_implementation_allowed"] is False for row in entries))
         self.assertTrue(all(row["scope"] and row["acceptance"] and row["classification"] for row in entries))
         self.assertTrue(all(row["id"] not in row["depends_on"] for row in entries))
@@ -48,7 +49,7 @@ class XtraRegistrationTests(unittest.TestCase):
         self.assertIn("owner_approval_required", gates["commercial"])
         self.assertIn("verified_real_restore", gates["backup"])
         self.assertFalse(self.current["product_start_freeze"]["active"])
-        self.assertIn("feature", self.current["lanes"]["xtra"]["execution_authority"])
+        self.assertIn("Golden Campaign", self.current["lanes"]["xtra"]["execution_authority"])
 
 if __name__ == "__main__":
     unittest.main()
