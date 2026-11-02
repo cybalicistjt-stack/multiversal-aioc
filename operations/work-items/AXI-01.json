@@ -217,17 +217,38 @@
       "rust_linux_windows_source_proofs_passed": true,
       "remote_a3_provider_revocation_fenced": false,
       "independent_windows_android_installed_test_proven": false
+    },
+    "axi19_native_owner_and_visual_preflight_published": {
+      "status": "source_published_fail_closed_preflight_not_live_certified",
+      "application_pr": 876,
+      "validated_head": "a7570171834d7fdf7fbd27072b5fc20b690c9595",
+      "app_merge": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+      "validation_run_id": "41360591822",
+      "app_queue_generation_reconciled": 202,
+      "linux_windows_source_proofs_passed": true,
+      "deterministic_comparison_passed": true,
+      "native_factory_missing_owner_methods_rejected": true,
+      "actual_png_bytes_checked_in_test_fixtures": true,
+      "production_renderer_capture_performed": false,
+      "independently_verified_production_review_or_rights": false,
+      "production_visual_cells_certified": 0,
+      "required_production_visual_cells": 204,
+      "live_a3_remote_session_fencing_proven": false,
+      "actual_a6_gm_and_mswi_owner_providers_connected": false,
+      "installed_windows_android_device_parity_proven": false,
+      "proof_scope": "Node adversarial source tests and real-byte PNG parser preflight fixtures; external issuer-verified asset/rig rights, genuine reviewer observations, deployed authority and installed native captures remain separate.",
+      "notes": "AXI-19 factory refuses missing/incomplete A6/GM and MSWI callable interfaces. This does not establish that injected callbacks originate from deployed canonical owners. The PNG preflight requires actual bytes, hashes, size, content and metadata but never certifies a production visual cell."
     }
   },
-  "active_substep": "axi-external-owner-binding-history-provisioning-and-native-acceptance",
-  "next_action": "AXI-18 shared SQLite A3 session/A4 grant revocation fences are validated and source-published. Next require genuine deployed A3 owner/source, owner-issued permission snapshot and external A3 revocation propagation or remote atomic fencing; A4 history provenance/migration, live A6 GM/MSWI authority connections, independent Windows/Android installed tests, and 204 visual rig/rights/view acceptance remain unproven. Keep AXI in_progress, do not alter GPR/MTLC.",
+  "active_substep": "axi-live-owner-provisioning-and-independent-native-visual-certification",
+  "next_action": "AXI-19 source owner-adapter method guard and PNG-byte evidence preflight published as app PR #876 (Linux/Windows/compare run 41360591822, app merge db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f, READY queue app generation 202). Continue only under selected AXI-01 authority: require genuine deployed A3 owner sessions/remote revocation fence and owner-issued snapshots, A4 history owner initialization/migration, real A6 GM and MSWI authoritative adapters and distributed status reconciliation, installed Windows/Android proofs and genuine 204 per-view rig/rights/rendered-output/independent human review receipts. No source or mock test certifies deployed owners or production visuals. AXI remains in_progress; do not change GPR/MTLC, canon, or release.",
   "completed": false,
   "strict_successor": null,
   "implementation_evidence": {
     "application_pr": "https://github.com/cybalicistjt-stack/Multiversal-app/pull/861",
-    "latest_candidate_head": "f63c6d18ebe02ed9e9dde53e21afb6640430d228",
-    "latest_candidate_run": "https://github.com/cybalicistjt-stack/Multiversal-app/actions/runs/39603238244",
-    "latest_candidate_validation_state": "completed_success_exact_head_AXI_18",
+    "latest_candidate_head": "a7570171834d7fdf7fbd27072b5fc20b690c9595",
+    "latest_candidate_run": "https://github.com/cybalicistjt-stack/Multiversal-app/actions/runs/41360591822",
+    "latest_candidate_validation_state": "completed_success_exact_head_AXI_19",
     "earlier_confirmed_linux_windows_green": "https://github.com/cybalicistjt-stack/Multiversal-app/actions/runs/39312189641",
     "earlier_confirmed_scope": "AXI-02 storage key repair; does not cover later Creator refactor and portability",
     "existing_governance_validation": "https://github.com/cybalicistjt-stack/multiversal-aioc/actions/runs/39309040164",
@@ -248,7 +269,9 @@
       "AXI-10–12 validated and source-published real PersistencePort.transaction owner modules + native host composition factory. Services require injected actual current A3/A4/A6/GM/MSWI/Species owner adapters; fixture tests do not prove deployed authorization or installed device acceptance.",
       "AXI-13 A4 Character event/operation journal source integration validated Linux/Windows and published; owner-preprovisioned event-stream cursor required, never synthesized from legacy history.",
       "AXI-17 native SQLite assert-version grant CAS fence, rollback tests and A3/A4 Character appearance source transaction integration; external A3 session and live remote authority revocation unproven.",
-      "AXI-18 canonical PCV-03A A3 session version asserts paired with AXI-17 A4 grant fence in native Character commit; Linux/Windows Rust revoke/sign-out rollback verified."
+      "AXI-18 canonical PCV-03A A3 session version asserts paired with AXI-17 A4 grant fence in native Character commit; Linux/Windows Rust revoke/sign-out rollback verified.",
+      "AXI-19 native owner composition rejects absent/incomplete A6 GM and MSWI source-owner callable interfaces (no deployment proof).",
+      "AXI-19 Node-based visual preflight independently parses PNG fixture bytes, checks SHA-256/chunks/dimensions/blank/duplicate/path safety and receipt metadata; all 204 production rig/rights/view cells remain unverified and uncertified."
     ],
     "acceptance_gaps": [
       "204 current Core26/radical production per-view asset/rig/rights/output review receipts remain unproven",
@@ -258,7 +281,7 @@
       "Installed native Windows/Android host, real scene lighting and playable Species release proofs separate"
     ],
     "application_source_pr": 861,
-    "application_published_main_sha": "5ade1429e7b581f9fc48912579018e0bc43337a5",
+    "application_published_main_sha": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
     "a_ioc_selector_published_main_sha": "a5c129c4402e4d69d365845ece4f49c196ae6778",
     "publication_queue_reconciled": true,
     "source_publication_receipt": {
@@ -413,6 +436,14 @@
         "validated_head": "f63c6d18ebe02ed9e9dde53e21afb6640430d228",
         "run_id": "39603238244",
         "scope": "A3 canonical stable_subject_sessions revision and A4 Character-control grant version both asserted read-only within native SQLite Character/CASI journal/audit transaction. Rust A3 sign-out + A4 revoke rollback and Linux/Windows AXI profile passed; remote/out-of-db provider revocation and installed-device proof unverified."
+      },
+      {
+        "id": "AXI-19",
+        "pr": 876,
+        "merge_sha": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+        "validated_head": "a7570171834d7fdf7fbd27072b5fc20b690c9595",
+        "run_id": "41360591822",
+        "scope": "Reject missing A6/GM and MSWI authority methods at native owner factory; inspect actual PNG bytes, hash/dimensions/content, duplicates and supplied rights/reviewer references in independent Node test preflight; Linux+Windows+cross-platform green. This is source-only; 204 production visuals, live external owners and installed devices NOT certified."
       }
     ]
   }
