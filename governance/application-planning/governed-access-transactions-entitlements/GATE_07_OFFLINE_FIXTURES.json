@@ -1,0 +1,1460 @@
+{
+  "schema_version": "1.0.0",
+  "tranche": "GATE-07",
+  "evidence_grade": "SYNTHETIC_REFERENCE_ONLY",
+  "decision_cases": [
+    {
+      "id": "O01",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "ALLOW_CACHED_SCOPE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O02",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": false,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_ACCOUNT",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O03",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": true,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_LOCAL_LOCK",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O04",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": false,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_SWITCHED_SESSION",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O05",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": false,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_SIGNATURE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O06",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": false,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_ISSUER_AUDIENCE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O07",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": false,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_DEVICE_CREDENTIAL",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O08",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": false,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_SUBJECT",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O09",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": false,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_RESOURCE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O10",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": true,
+        "campaignMatches": false,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_CAMPAIGN",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O11",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": false,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_MANIFEST",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O12",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": true,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_KNOWN_REVOKED",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O13",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": false,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_TIME_UNCERTAIN",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O14",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": true,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_TIME_UNCERTAIN",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O15",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": false,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_NOT_FINITE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O16",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": false,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_NOT_FINITE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O17",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": false,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_EXPIRED",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O18",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": false,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_EXPIRED",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O19",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": false
+      },
+      "expected": "DENY_CACHE_KEY",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O20",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": true,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "ALLOW_CACHED_SCOPE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O21",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": false,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": true,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_KNOWN_REVOKED",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O22",
+      "kind": "offline_runtime",
+      "input": {
+        "kind": "offline_runtime",
+        "accountVerified": true,
+        "localLock": true,
+        "sessionContinuity": true,
+        "signatureValid": true,
+        "issuerAudienceValid": true,
+        "credentialMatches": true,
+        "subjectMatches": true,
+        "resourceAllowed": true,
+        "campaignRequired": false,
+        "campaignMatches": true,
+        "manifestMatches": true,
+        "securityEpochStale": false,
+        "trustedClock": true,
+        "clockRollback": false,
+        "knownFinitePaidThrough": true,
+        "leaseFinite": true,
+        "leaseUnexpired": true,
+        "paidThroughUnexpired": true,
+        "cacheEnvelopeScoped": true
+      },
+      "expected": "DENY_LOCAL_LOCK",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R01",
+      "kind": "retained_character",
+      "input": {
+        "kind": "retained_character",
+        "accountVerified": true,
+        "localLock": false,
+        "subjectOwnsCharacter": true,
+        "keyScope": "character-view",
+        "gmPrivate": false,
+        "viewOnly": true,
+        "sessionContinuity": true,
+        "leaseViewScopeValid": true
+      },
+      "expected": "ALLOW_RETAINED_PROJECTION",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R02",
+      "kind": "retained_character",
+      "input": {
+        "kind": "retained_character",
+        "accountVerified": false,
+        "localLock": false,
+        "subjectOwnsCharacter": true,
+        "keyScope": "character-view",
+        "gmPrivate": false,
+        "viewOnly": true,
+        "sessionContinuity": true,
+        "leaseViewScopeValid": true
+      },
+      "expected": "DENY_ACCOUNT",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R03",
+      "kind": "retained_character",
+      "input": {
+        "kind": "retained_character",
+        "accountVerified": true,
+        "localLock": true,
+        "subjectOwnsCharacter": true,
+        "keyScope": "character-view",
+        "gmPrivate": false,
+        "viewOnly": true,
+        "sessionContinuity": true,
+        "leaseViewScopeValid": true
+      },
+      "expected": "DENY_LOCAL_LOCK",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R04",
+      "kind": "retained_character",
+      "input": {
+        "kind": "retained_character",
+        "accountVerified": true,
+        "localLock": false,
+        "subjectOwnsCharacter": false,
+        "keyScope": "character-view",
+        "gmPrivate": false,
+        "viewOnly": true,
+        "sessionContinuity": true,
+        "leaseViewScopeValid": true
+      },
+      "expected": "DENY_NOT_OWNER",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R05",
+      "kind": "retained_character",
+      "input": {
+        "kind": "retained_character",
+        "accountVerified": true,
+        "localLock": false,
+        "subjectOwnsCharacter": true,
+        "keyScope": "runtime",
+        "gmPrivate": false,
+        "viewOnly": true,
+        "sessionContinuity": true,
+        "leaseViewScopeValid": true
+      },
+      "expected": "DENY_RUNTIME_FROM_VIEW",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R06",
+      "kind": "retained_character",
+      "input": {
+        "kind": "retained_character",
+        "accountVerified": true,
+        "localLock": false,
+        "subjectOwnsCharacter": true,
+        "keyScope": "catalog",
+        "gmPrivate": false,
+        "viewOnly": true,
+        "sessionContinuity": true,
+        "leaseViewScopeValid": true
+      },
+      "expected": "DENY_WRONG_VIEW_KEY",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R07",
+      "kind": "retained_character",
+      "input": {
+        "kind": "retained_character",
+        "accountVerified": true,
+        "localLock": false,
+        "subjectOwnsCharacter": true,
+        "keyScope": "character-view",
+        "gmPrivate": true,
+        "viewOnly": true,
+        "sessionContinuity": true,
+        "leaseViewScopeValid": true
+      },
+      "expected": "DENY_GM_PRIVATE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R08",
+      "kind": "retained_character",
+      "input": {
+        "kind": "retained_character",
+        "accountVerified": true,
+        "localLock": false,
+        "subjectOwnsCharacter": true,
+        "keyScope": "character-view",
+        "gmPrivate": false,
+        "viewOnly": false,
+        "sessionContinuity": true,
+        "leaseViewScopeValid": true
+      },
+      "expected": "DENY_EXTRA_ACTION",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R09",
+      "kind": "retained_character",
+      "input": {
+        "kind": "retained_character",
+        "accountVerified": true,
+        "localLock": false,
+        "subjectOwnsCharacter": true,
+        "keyScope": "character-view",
+        "gmPrivate": false,
+        "viewOnly": true,
+        "sessionContinuity": false,
+        "leaseViewScopeValid": true
+      },
+      "expected": "DENY_SWITCHED_SESSION",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R10",
+      "kind": "retained_character",
+      "input": {
+        "kind": "retained_character",
+        "accountVerified": true,
+        "localLock": false,
+        "subjectOwnsCharacter": true,
+        "keyScope": "character-view",
+        "gmPrivate": false,
+        "viewOnly": true,
+        "sessionContinuity": true,
+        "leaseViewScopeValid": false
+      },
+      "expected": "DENY_VIEW_SCOPE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R11",
+      "kind": "retained_character",
+      "input": {
+        "kind": "retained_character",
+        "accountVerified": true,
+        "localLock": false,
+        "subjectOwnsCharacter": true,
+        "keyScope": "character-view",
+        "gmPrivate": false,
+        "viewOnly": true,
+        "sessionContinuity": true,
+        "leaseViewScopeValid": true
+      },
+      "expected": "ALLOW_RETAINED_PROJECTION",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R12",
+      "kind": "retained_character",
+      "input": {
+        "kind": "retained_character",
+        "accountVerified": true,
+        "localLock": false,
+        "subjectOwnsCharacter": true,
+        "keyScope": "character-view",
+        "gmPrivate": true,
+        "viewOnly": false,
+        "sessionContinuity": true,
+        "leaseViewScopeValid": true
+      },
+      "expected": "DENY_GM_PRIVATE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R01",
+      "kind": "reconnect",
+      "input": {
+        "kind": "reconnect",
+        "signedIn": true,
+        "sourceAcceptedByServer": true,
+        "currentRightsKnown": true,
+        "serverGrantCurrent": true,
+        "serverMembershipCurrent": true,
+        "sourceDestinationRights": true,
+        "idempotencyAlreadyAccepted": false
+      },
+      "expected": "ACCEPT_SERVER_VALIDATED_DRAFT",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R02",
+      "kind": "reconnect",
+      "input": {
+        "kind": "reconnect",
+        "signedIn": false,
+        "sourceAcceptedByServer": true,
+        "currentRightsKnown": true,
+        "serverGrantCurrent": true,
+        "serverMembershipCurrent": true,
+        "sourceDestinationRights": true,
+        "idempotencyAlreadyAccepted": false
+      },
+      "expected": "DENY_REAUTH",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R03",
+      "kind": "reconnect",
+      "input": {
+        "kind": "reconnect",
+        "signedIn": true,
+        "sourceAcceptedByServer": false,
+        "currentRightsKnown": true,
+        "serverGrantCurrent": true,
+        "serverMembershipCurrent": true,
+        "sourceDestinationRights": true,
+        "idempotencyAlreadyAccepted": false
+      },
+      "expected": "REJECT_SERVER_RESTRICTED",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R04",
+      "kind": "reconnect",
+      "input": {
+        "kind": "reconnect",
+        "signedIn": true,
+        "sourceAcceptedByServer": true,
+        "currentRightsKnown": false,
+        "serverGrantCurrent": true,
+        "serverMembershipCurrent": true,
+        "sourceDestinationRights": true,
+        "idempotencyAlreadyAccepted": false
+      },
+      "expected": "HOLD_FOR_REFRESH",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R05",
+      "kind": "reconnect",
+      "input": {
+        "kind": "reconnect",
+        "signedIn": true,
+        "sourceAcceptedByServer": true,
+        "currentRightsKnown": true,
+        "serverGrantCurrent": false,
+        "serverMembershipCurrent": true,
+        "sourceDestinationRights": true,
+        "idempotencyAlreadyAccepted": false
+      },
+      "expected": "REJECT_STALE_GRANT",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R06",
+      "kind": "reconnect",
+      "input": {
+        "kind": "reconnect",
+        "signedIn": true,
+        "sourceAcceptedByServer": true,
+        "currentRightsKnown": true,
+        "serverGrantCurrent": true,
+        "serverMembershipCurrent": false,
+        "sourceDestinationRights": true,
+        "idempotencyAlreadyAccepted": false
+      },
+      "expected": "REJECT_MEMBERSHIP",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R07",
+      "kind": "reconnect",
+      "input": {
+        "kind": "reconnect",
+        "signedIn": true,
+        "sourceAcceptedByServer": true,
+        "currentRightsKnown": true,
+        "serverGrantCurrent": true,
+        "serverMembershipCurrent": true,
+        "sourceDestinationRights": false,
+        "idempotencyAlreadyAccepted": false
+      },
+      "expected": "REJECT_TRANSFER",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R08",
+      "kind": "reconnect",
+      "input": {
+        "kind": "reconnect",
+        "signedIn": true,
+        "sourceAcceptedByServer": true,
+        "currentRightsKnown": true,
+        "serverGrantCurrent": true,
+        "serverMembershipCurrent": true,
+        "sourceDestinationRights": true,
+        "idempotencyAlreadyAccepted": true
+      },
+      "expected": "RECONCILE_EXISTING_ACK",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R09",
+      "kind": "reconnect",
+      "input": {
+        "kind": "reconnect",
+        "signedIn": true,
+        "sourceAcceptedByServer": true,
+        "currentRightsKnown": true,
+        "serverGrantCurrent": false,
+        "serverMembershipCurrent": true,
+        "sourceDestinationRights": true,
+        "idempotencyAlreadyAccepted": true
+      },
+      "expected": "REJECT_STALE_GRANT",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R10",
+      "kind": "reconnect",
+      "input": {
+        "kind": "reconnect",
+        "signedIn": true,
+        "sourceAcceptedByServer": false,
+        "currentRightsKnown": true,
+        "serverGrantCurrent": true,
+        "serverMembershipCurrent": true,
+        "sourceDestinationRights": true,
+        "idempotencyAlreadyAccepted": false
+      },
+      "expected": "REJECT_SERVER_RESTRICTED",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R11",
+      "kind": "reconnect",
+      "input": {
+        "kind": "reconnect",
+        "signedIn": true,
+        "sourceAcceptedByServer": true,
+        "currentRightsKnown": false,
+        "serverGrantCurrent": true,
+        "serverMembershipCurrent": true,
+        "sourceDestinationRights": true,
+        "idempotencyAlreadyAccepted": false
+      },
+      "expected": "HOLD_FOR_REFRESH",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "R12",
+      "kind": "reconnect",
+      "input": {
+        "kind": "reconnect",
+        "signedIn": true,
+        "sourceAcceptedByServer": true,
+        "currentRightsKnown": true,
+        "serverGrantCurrent": true,
+        "serverMembershipCurrent": true,
+        "sourceDestinationRights": true,
+        "idempotencyAlreadyAccepted": false
+      },
+      "expected": "ACCEPT_SERVER_VALIDATED_DRAFT",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O01",
+      "kind": "outage",
+      "input": {
+        "kind": "outage",
+        "localLock": false,
+        "knownDenial": false,
+        "leaseScopeValid": true,
+        "leaseFiniteUnexpired": true,
+        "transportTimeout": false
+      },
+      "expected": "NEEDS_CURRENT_SERVER_CHECK",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O02",
+      "kind": "outage",
+      "input": {
+        "kind": "outage",
+        "localLock": true,
+        "knownDenial": false,
+        "leaseScopeValid": true,
+        "leaseFiniteUnexpired": true,
+        "transportTimeout": false
+      },
+      "expected": "DENY_LOCAL_LOCK",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O03",
+      "kind": "outage",
+      "input": {
+        "kind": "outage",
+        "localLock": false,
+        "knownDenial": true,
+        "leaseScopeValid": true,
+        "leaseFiniteUnexpired": true,
+        "transportTimeout": false
+      },
+      "expected": "DENY_KNOWN",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O04",
+      "kind": "outage",
+      "input": {
+        "kind": "outage",
+        "localLock": false,
+        "knownDenial": false,
+        "leaseScopeValid": false,
+        "leaseFiniteUnexpired": true,
+        "transportTimeout": false
+      },
+      "expected": "DENY_SCOPE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O05",
+      "kind": "outage",
+      "input": {
+        "kind": "outage",
+        "localLock": false,
+        "knownDenial": false,
+        "leaseScopeValid": true,
+        "leaseFiniteUnexpired": false,
+        "transportTimeout": false
+      },
+      "expected": "DENY_EXPIRED",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O06",
+      "kind": "outage",
+      "input": {
+        "kind": "outage",
+        "localLock": false,
+        "knownDenial": false,
+        "leaseScopeValid": true,
+        "leaseFiniteUnexpired": true,
+        "transportTimeout": true
+      },
+      "expected": "KEEP_PREVIOUS_VERIFIED_SCOPE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O07",
+      "kind": "outage",
+      "input": {
+        "kind": "outage",
+        "localLock": false,
+        "knownDenial": true,
+        "leaseScopeValid": true,
+        "leaseFiniteUnexpired": true,
+        "transportTimeout": true
+      },
+      "expected": "DENY_KNOWN",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O08",
+      "kind": "outage",
+      "input": {
+        "kind": "outage",
+        "localLock": false,
+        "knownDenial": false,
+        "leaseScopeValid": true,
+        "leaseFiniteUnexpired": false,
+        "transportTimeout": true
+      },
+      "expected": "DENY_EXPIRED",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O09",
+      "kind": "outage",
+      "input": {
+        "kind": "outage",
+        "localLock": false,
+        "knownDenial": false,
+        "leaseScopeValid": false,
+        "leaseFiniteUnexpired": true,
+        "transportTimeout": true
+      },
+      "expected": "DENY_SCOPE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O10",
+      "kind": "outage",
+      "input": {
+        "kind": "outage",
+        "localLock": true,
+        "knownDenial": false,
+        "leaseScopeValid": true,
+        "leaseFiniteUnexpired": true,
+        "transportTimeout": true
+      },
+      "expected": "DENY_LOCAL_LOCK",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "O11",
+      "kind": "outage",
+      "input": {
+        "kind": "outage",
+        "localLock": false,
+        "knownDenial": false,
+        "leaseScopeValid": true,
+        "leaseFiniteUnexpired": true,
+        "transportTimeout": true
+      },
+      "expected": "KEEP_PREVIOUS_VERIFIED_SCOPE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "D01",
+      "kind": "delivery",
+      "input": {
+        "kind": "delivery",
+        "subjectAuthenticated": true,
+        "serverEntitlementVerified": true,
+        "resourceRights": true,
+        "publicInstallerSecret": false,
+        "accountDeviceEnvelope": true,
+        "clientSuppliedSignature": false
+      },
+      "expected": "ISSUE_SCOPED_KEY_WRAP",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "D02",
+      "kind": "delivery",
+      "input": {
+        "kind": "delivery",
+        "subjectAuthenticated": false,
+        "serverEntitlementVerified": true,
+        "resourceRights": true,
+        "publicInstallerSecret": false,
+        "accountDeviceEnvelope": true,
+        "clientSuppliedSignature": false
+      },
+      "expected": "DENY_AUTH",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "D03",
+      "kind": "delivery",
+      "input": {
+        "kind": "delivery",
+        "subjectAuthenticated": true,
+        "serverEntitlementVerified": false,
+        "resourceRights": true,
+        "publicInstallerSecret": false,
+        "accountDeviceEnvelope": true,
+        "clientSuppliedSignature": false
+      },
+      "expected": "DENY_ENTITLEMENT",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "D04",
+      "kind": "delivery",
+      "input": {
+        "kind": "delivery",
+        "subjectAuthenticated": true,
+        "serverEntitlementVerified": true,
+        "resourceRights": false,
+        "publicInstallerSecret": false,
+        "accountDeviceEnvelope": true,
+        "clientSuppliedSignature": false
+      },
+      "expected": "DENY_RIGHTS",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "D05",
+      "kind": "delivery",
+      "input": {
+        "kind": "delivery",
+        "subjectAuthenticated": true,
+        "serverEntitlementVerified": true,
+        "resourceRights": true,
+        "publicInstallerSecret": true,
+        "accountDeviceEnvelope": true,
+        "clientSuppliedSignature": false
+      },
+      "expected": "DENY_PUBLIC_SECRET",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "D06",
+      "kind": "delivery",
+      "input": {
+        "kind": "delivery",
+        "subjectAuthenticated": true,
+        "serverEntitlementVerified": true,
+        "resourceRights": true,
+        "publicInstallerSecret": false,
+        "accountDeviceEnvelope": false,
+        "clientSuppliedSignature": false
+      },
+      "expected": "DENY_ENVELOPE",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "D07",
+      "kind": "delivery",
+      "input": {
+        "kind": "delivery",
+        "subjectAuthenticated": true,
+        "serverEntitlementVerified": true,
+        "resourceRights": true,
+        "publicInstallerSecret": false,
+        "accountDeviceEnvelope": true,
+        "clientSuppliedSignature": true
+      },
+      "expected": "DENY_CLIENT_MINT",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "D08",
+      "kind": "delivery",
+      "input": {
+        "kind": "delivery",
+        "subjectAuthenticated": true,
+        "serverEntitlementVerified": false,
+        "resourceRights": true,
+        "publicInstallerSecret": false,
+        "accountDeviceEnvelope": true,
+        "clientSuppliedSignature": false
+      },
+      "expected": "DENY_ENTITLEMENT",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "D09",
+      "kind": "delivery",
+      "input": {
+        "kind": "delivery",
+        "subjectAuthenticated": false,
+        "serverEntitlementVerified": true,
+        "resourceRights": true,
+        "publicInstallerSecret": false,
+        "accountDeviceEnvelope": true,
+        "clientSuppliedSignature": false
+      },
+      "expected": "DENY_AUTH",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "D10",
+      "kind": "delivery",
+      "input": {
+        "kind": "delivery",
+        "subjectAuthenticated": true,
+        "serverEntitlementVerified": true,
+        "resourceRights": true,
+        "publicInstallerSecret": false,
+        "accountDeviceEnvelope": true,
+        "clientSuppliedSignature": true
+      },
+      "expected": "DENY_CLIENT_MINT",
+      "grade": "SOURCE_ONLY"
+    },
+    {
+      "id": "D11",
+      "kind": "delivery",
+      "input": {
+        "kind": "delivery",
+        "subjectAuthenticated": true,
+        "serverEntitlementVerified": true,
+        "resourceRights": true,
+        "publicInstallerSecret": false,
+        "accountDeviceEnvelope": false,
+        "clientSuppliedSignature": false
+      },
+      "expected": "DENY_ENVELOPE",
+      "grade": "SOURCE_ONLY"
+    }
+  ],
+  "time_cases": [
+    {
+      "id": "T01",
+      "input": {
+        "now": 1500,
+        "issued": 1000,
+        "leaseEnd": 2000,
+        "paidEnd": 3000
+      },
+      "expected": "ALLOW_WINDOW"
+    },
+    {
+      "id": "T02",
+      "input": {
+        "now": 2000,
+        "issued": 1000,
+        "leaseEnd": 2000,
+        "paidEnd": 3000
+      },
+      "expected": "EXPIRED"
+    },
+    {
+      "id": "T03",
+      "input": {
+        "now": 999,
+        "issued": 1000,
+        "leaseEnd": 2000,
+        "paidEnd": 3000
+      },
+      "expected": "PREISSUE"
+    },
+    {
+      "id": "T04",
+      "input": {
+        "now": 1000,
+        "issued": 1000,
+        "leaseEnd": 2000,
+        "paidEnd": 3000
+      },
+      "expected": "ALLOW_WINDOW"
+    },
+    {
+      "id": "T05",
+      "input": {
+        "now": 2999,
+        "issued": 1000,
+        "leaseEnd": 3000,
+        "paidEnd": 3000
+      },
+      "expected": "ALLOW_WINDOW"
+    },
+    {
+      "id": "T06",
+      "input": {
+        "now": 3000,
+        "issued": 1000,
+        "leaseEnd": 3000,
+        "paidEnd": 3000
+      },
+      "expected": "EXPIRED"
+    },
+    {
+      "id": "T07",
+      "input": {
+        "now": 1500,
+        "issued": 1000,
+        "leaseEnd": 4000,
+        "paidEnd": 3000
+      },
+      "expected": "INVALID_LEASE_WINDOW"
+    },
+    {
+      "id": "T08",
+      "input": {
+        "now": 1500,
+        "issued": 1000,
+        "leaseEnd": 1000,
+        "paidEnd": 3000
+      },
+      "expected": "INVALID_LEASE_WINDOW"
+    },
+    {
+      "id": "T09",
+      "input": {
+        "now": 1500,
+        "issued": 1000,
+        "leaseEnd": null,
+        "paidEnd": 3000
+      },
+      "expected": "INVALID_TIME"
+    },
+    {
+      "id": "T10",
+      "input": {
+        "now": "1500",
+        "issued": 1000,
+        "leaseEnd": 2000,
+        "paidEnd": 3000
+      },
+      "expected": "INVALID_TIME"
+    },
+    {
+      "id": "T11",
+      "input": {
+        "now": 1500,
+        "issued": 1000,
+        "leaseEnd": 2000,
+        "paidEnd": null
+      },
+      "expected": "INVALID_TIME"
+    },
+    {
+      "id": "T12",
+      "input": {
+        "now": 1999,
+        "issued": 1000,
+        "leaseEnd": 2000,
+        "paidEnd": 2000
+      },
+      "expected": "ALLOW_WINDOW"
+    }
+  ]
+}
