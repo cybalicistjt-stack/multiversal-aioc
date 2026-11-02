@@ -2,52 +2,93 @@
   "schema_version": "1.0.0",
   "program_id": "GATE-PREP",
   "owner_approval": "2026-11-02 explicit Approved. Continue.",
-  "status": "candidate_prepared_validation_pending",
-  "selected_work_item": "GATE-PREP-01",
-  "selected_attempt": "GATE-PREP-01-attempt-001",
+  "status": "isolated_PREP01_04_completed_verified",
+  "selected_work_item": "GATE-PREP-04",
+  "selected_attempt": "GATE-PREP-04-attempt-001",
   "source_stage_A": "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM_BACKLOG.json",
   "boundary": "Nonproduction isolated testbed only, no PCV ownership or GATE09 production rights",
   "packages": [
     {
       "id": "GATE-PREP-01",
       "name": "PostgreSQL allowance ledger acceptance",
-      "status": "in_progress",
+      "status": "completed_verified",
       "artifacts": [
         "tests/gate_prep/test_pg_allowance_race.py"
       ],
-      "proof": "100 competing attempts, 24 workers; real PG CI pending; inherits SA-BILL05 fixture"
+      "proof": "100 competing attempts, 24 workers; real PG CI pending; inherits SA-BILL05 fixture",
+      "completion_evidence": {
+        "pr": 1961,
+        "branch_head": "9701f8aa3ffd5ce7fad0d3c71ebbda379eb7e26f",
+        "ops5_run": 41521141144,
+        "isolation_run": 41521141211,
+        "merge_sha": "0e534b0a773a6036eca97871b0623e6adb0ca099",
+        "queue_generation": 428,
+        "not_product_proof": true,
+        "grade": "ISOLATED_REAL_POSTGRESQL_100_COMPETING_24_WORKERS"
+      }
     },
     {
       "id": "GATE-PREP-02",
       "name": "Fake provider and subscription period engine",
-      "status": "candidate_prepared",
+      "status": "completed_verified",
       "artifacts": [
         "tests/gate_prep/fake-billing-ledger.mjs",
         "tests/gate_prep/fake-billing-ledger.test.mjs"
       ],
-      "proof": "Node tests pending"
+      "proof": "Node tests pending",
+      "completion_evidence": {
+        "pr": 1961,
+        "branch_head": "9701f8aa3ffd5ce7fad0d3c71ebbda379eb7e26f",
+        "ops5_run": 41521141144,
+        "isolation_run": 41521141211,
+        "merge_sha": "0e534b0a773a6036eca97871b0623e6adb0ca099",
+        "queue_generation": 428,
+        "not_product_proof": true,
+        "grade": "EXECUTED_NODE_FAKE_PROVIDER_4_CASES"
+      }
     },
     {
       "id": "GATE-PREP-03",
       "name": "Offline crypto and provenance lab",
-      "status": "candidate_prepared",
+      "status": "completed_verified",
       "artifacts": [
         "tests/gate_prep/offline-crypto-lab.mjs",
         "tests/gate_prep/offline-crypto-lab.test.mjs"
       ],
-      "proof": "Node crypto test pending; not native"
+      "proof": "Node crypto test pending; not native",
+      "completion_evidence": {
+        "pr": 1961,
+        "branch_head": "9701f8aa3ffd5ce7fad0d3c71ebbda379eb7e26f",
+        "ops5_run": 41521141144,
+        "isolation_run": 41521141211,
+        "merge_sha": "0e534b0a773a6036eca97871b0623e6adb0ca099",
+        "queue_generation": 428,
+        "not_product_proof": true,
+        "grade": "EXECUTED_NODE_CRYPTO_LAB_3_CASES"
+      }
     },
     {
       "id": "GATE-PREP-04",
       "name": "Subscription UX and operator readiness",
-      "status": "candidate_prepared",
+      "status": "completed_verified",
       "artifacts": [
         "tests/gate_prep/subscription-ui-model.mjs",
         "tests/gate_prep/subscription-ui-model.test.mjs",
         "governance/application-planning/gate-preintegration/PREP04_UX_AND_OPERATIONS.md"
       ],
-      "proof": "Node UI tests and operational source review pending"
+      "proof": "Node UI tests and operational source review pending",
+      "completion_evidence": {
+        "pr": 1961,
+        "branch_head": "9701f8aa3ffd5ce7fad0d3c71ebbda379eb7e26f",
+        "ops5_run": 41521141144,
+        "isolation_run": 41521141211,
+        "merge_sha": "0e534b0a773a6036eca97871b0623e6adb0ca099",
+        "queue_generation": 428,
+        "not_product_proof": true,
+        "grade": "EXECUTED_NODE_UX_4_CASES_PLUS_SOURCE_RUNBOOK"
+      }
     }
   ],
-  "future_owner_gate": "GATE-09 through 14 remain planned; PCV-03F service boundary still unverified"
+  "future_owner_gate": "GATE-09 through 14 remain planned; PCV-03F service boundary still unverified",
+  "terminal_notes": "All four bounded prep tests passed on exact HEAD PR1961; PG16 100 competing requests with 24 max workers; 11 Node tests. Not PCV or GATE09."
 }

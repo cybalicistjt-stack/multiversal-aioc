@@ -4,9 +4,9 @@
   "program_id": "GATE-PREP",
   "work_item_id": "GATE-PREP-01",
   "attempt_id": "GATE-PREP-01-attempt-001",
-  "status": "in_progress",
-  "completed": false,
-  "implementation_authority": true,
+  "status": "completed_verified",
+  "completed": true,
+  "implementation_authority": false,
   "selected_by_owner": "2026-11-02 owner explicit Approved. Continue. Authorization for GATE-PREP-01 through 04 as separate nonproduction test engineering, not GATE09.",
   "implementation_branch": "program/gate-prep-isolated-engineering-01-04-20261102",
   "scope": "Isolated disposable PostgreSQL race testing, fake-provider reconciliation, Node Ed25519/AES-GCM lab, subscription UX and operations dry runs. No app/Render/merchant data.",
@@ -18,19 +18,23 @@
     "UI state and operator dry runs with explicit pending pricing/legal and policy decisions",
     "Exact-head test and OPS5 green, protected publication and no GATE09 or PCV scope mutation"
   ],
-  "active_substep": "isolated_testbed_candidate_under_validation",
-  "next_action": "Run exact-head Node/PG and OPS5 checks; repair candidate if needed; protected publish and reconcile. GATE09 remains planned and independently owner-gated.",
+  "active_substep": "nonproduction_pg_acceptance_completed",
+  "next_action": "Real disposable PG16 100 competing grant attempts with 24 max workers passed; future 100 fully simultaneous clients and real PCV A3/service are still outstanding. GATE09 separately owner gated.",
   "execution_guard": {
     "continue_turns": 1,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "nonproduction_candidate_prepared",
-      "evidence": "Four bounded prep artifacts committed in branch; independent tests require CI verification"
+      "seq": 2,
+      "kind": "isolated_postgres_verified",
+      "evidence": "PR1961 and run41521141211 PG16.15 actual 100-competing test 1 winner, 99 conflicts, exactly one receipt and event; OPS5 run41521141144 success and queue428"
+    },
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Isolated disposable PG16 fixture passed (not PCV/prod), PR1961 published queue428"
     }
   },
   "constraints": {
@@ -41,5 +45,15 @@
     "no_price_or_launch": true,
     "no_other_lane_change": true,
     "no_gate09_activation": true
+  },
+  "completion_evidence": {
+    "pr": 1961,
+    "branch_head": "9701f8aa3ffd5ce7fad0d3c71ebbda379eb7e26f",
+    "ops5_run": 41521141144,
+    "isolation_run": 41521141211,
+    "merge_sha": "0e534b0a773a6036eca97871b0623e6adb0ca099",
+    "queue_generation": 428,
+    "not_product_proof": true,
+    "grade": "ISOLATED_REAL_POSTGRESQL_100_COMPETING_24_WORKERS"
   }
 }
