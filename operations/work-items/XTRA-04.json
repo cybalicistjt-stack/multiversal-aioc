@@ -4,8 +4,8 @@
   "program_id": "XTRA",
   "work_item_id": "XTRA-04",
   "attempt_id": "XTRA-04-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "Owner XTRA Continue after XTRA-03 evidence PR1927 completed and published; XTRA-04 has no dependency on externally blocked XTRA-02.",
   "scope": "Prepare one versioned first-party Golden Campaign and noncombat/encounter content fixture package grounded in existing approved Multiversal source/canon, with role/permission/lineage/expected outcomes and source-owner acceptance hooks; NO app product implementation, live Campaign creation or fabricated installed proof.",
@@ -17,20 +17,28 @@
     "Every selected dependency has source provenance, rights state and explicit blocked downstream PCV owner/gate",
     "Validate fixture schema/graph/golden sequence deterministically; publish through exact-head OPS5 PR with no PCV-04..10 implementation"
   ],
-  "active_substep": "inspect_current_first_party_play_fixture_and_scope",
-  "next_action": "Read source-authoritative existing game Campaign/Beacon Debt fixture and PCV-10 golden requirements; build source-grounded XTRA-04 manifest/test scripts and handoff to PCV without running blocked gameplay code.",
+  "active_substep": "published_source_fixture_verified",
+  "next_action": "XTRA-05 selected in OPS5 after publication of successor control-plane PR.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "selected_after_xtra03_completion",
-      "evidence": "XTRA03 PR1927 published exact head; 25 feature IDs and 23 source paths with 29 PR statuses rechecked."
+      "seq": 2,
+      "kind": "exact_head_published",
+      "evidence": "XTRA04 PR1932 run41459224844 GREEN, merged 5508dc3f9dca8c8bcb6f4c63906349e3f9fcef11, READY gen372"
     }
+  },
+  "completion_evidence": {
+    "pr": 1932,
+    "candidate_head": "d35fcd7e8ede9bec5eca2c1bd565416a87c925ac",
+    "validation_run": 41459224844,
+    "merge_sha": "5508dc3f9dca8c8bcb6f4c63906349e3f9fcef11",
+    "queue_generation": 372,
+    "proof_grade": "published source-only deterministic five-stage fixture, not actual multiplayer or combat"
   }
 }
