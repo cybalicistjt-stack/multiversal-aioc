@@ -146,6 +146,12 @@ jobs:
           set -euo pipefail
           python3 tests/control_plane/test_xtra04_beacon_debt_golden_fixture.py
 
+      - name: Verify XTRA-05 golden asset source and rights evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_xtra05_golden_asset_rights.py
+
       - name: Run inherited OPS3 execution/concurrency regressions
         shell: bash
         run: |
