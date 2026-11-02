@@ -1,8 +1,35 @@
 {
   "schema_version": "3.0.0",
   "target_repo": "cybalicistjt-stack/multiversal-aioc",
-  "generation": 356,
-  "ready": [],
+  "generation": 357,
+  "ready": [
+    {
+      "candidate_id": "SA-BILL-09-pinned-source-repair-handoff-pr-1925",
+      "lane": "operations",
+      "work_item_id": "SA-BILL-09-ADVISORY-RESEARCH",
+      "pr_number": 1925,
+      "head_sha": "ef90e7e13aaf1b602929921ddb95ec0f324b94dd",
+      "prequeue_validation": {
+        "status": "green",
+        "head_sha": "ef90e7e13aaf1b602929921ddb95ec0f324b94dd",
+        "run_id": "41393344750",
+        "test_count": 15,
+        "baseline_red_run_id": "41393073601",
+        "baseline_expected_failures": 7
+      },
+      "write_set": [
+        ".github/workflows/validate-repository-health.yml",
+        "governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_09_SOURCE_REPAIR_REPLAY_AND_PROJECTION.md",
+        "tests/control_plane/sa_bill09_source_patch.mjs",
+        "tests/control_plane/test_sa_bill09_source_repair.mjs"
+      ],
+      "dependency_fingerprint": {
+        "validated_base_sha": "a335e5da9319c341a313315b2ec66cb37f582e2d",
+        "current_ops_revision": 641,
+        "study_scope": "source_repair_on_temporary_pinned_app_copies_only"
+      }
+    }
+  ],
   "history": [
     {
       "candidate_id": "OPS3-10-closeout-001",
