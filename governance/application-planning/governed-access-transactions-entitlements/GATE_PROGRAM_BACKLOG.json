@@ -4,9 +4,9 @@
   "program_name": "Governed Access, Transactions & Entitlements",
   "owner": "John Brandon Turner",
   "created": "2026-11-02",
-  "status": "GATE-02_in_progress_source_only",
-  "selected_work_item": "GATE-02",
-  "selected_attempt": "GATE-02-attempt-001",
+  "status": "GATE-03_in_progress_source_only",
+  "selected_work_item": "GATE-03",
+  "selected_attempt": "GATE-03-attempt-001",
   "authority_boundary": "On-demand program, not fourth persistent implementation slot; GATE-01 source/design only. Future GATE-09..13 product/provider implementations require separately CURRENT-selected scope and real dependencies; GATE-14 final owner-only gate.",
   "publication_rule": "PR-only protected main, immutable exact head, required validations and fresh-base integration; no automatic successor.",
   "tranches": [
@@ -34,21 +34,28 @@
       "name": "Membership, capability and ownership policies",
       "priority": "P0",
       "kind": "source_only",
-      "status": "in_progress",
+      "status": "completed_verified",
       "depends_on": [
         "GATE-01"
       ],
       "external_dependencies": [],
       "scope": "Free, Subscriber, Sponsored Month and single Campaign Allowance distinguish resource permission, account role and ownership; price remains parameter.",
       "acceptance": "Per-action capability and content/resource matrix, read/export/lapse behavior, one subscription for GM and Player roles, no inferred unlimited AI.",
-      "code_implementation_authorized": false
+      "code_implementation_authorized": false,
+      "completion_evidence": {
+        "pr": 1953,
+        "run": 41505626093,
+        "merge_sha": "51e8c5243c7706c5c53b8858f7a28e6dea2230f3",
+        "queue_generation": 412,
+        "proof": "SOURCE_AND_SYNTHETIC_ONLY"
+      }
     },
     {
       "id": "GATE-03",
       "name": "Provider-neutral account/checkout interfaces",
       "priority": "P0",
       "kind": "source_only",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "GATE-01",
         "GATE-02"

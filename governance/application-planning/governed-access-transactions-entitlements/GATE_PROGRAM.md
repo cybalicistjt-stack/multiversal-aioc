@@ -1,6 +1,6 @@
 # GATE — Governed Access, Transactions & Entitlements
 
-**Owner approval:** 2026-11-02 · **OPS5 on-demand program** · **Current:** GATE-02 source-policy work in progress; GATE-01 registered and source-verified merged PR #1952.
+**Owner approval:** 2026-11-02 · **OPS5 on-demand program** · **Current:** GATE-03 provider-neutral contracts work in progress; GATE-01 registered PR1952 and GATE-02 source-policy published PR1953.
 
 GATE builds Multiversal's provider-independent subscription, billing, entitlement and campaign-grant architecture. **Stripe is the working payment-adapter assumption, not a selected/activated provider.** Payments, access rights, account identity, Campaign authority, content provenance and durable authored ownership remain independent.
 
@@ -63,4 +63,4 @@ GATE builds Multiversal's provider-independent subscription, billing, entitlemen
 
 Related: [backlog](GATE_PROGRAM_BACKLOG.json), [GATE-01 baseline](GATE_01_BASELINE_AND_ARCHITECTURE.md), [decision register](GATE_DECISION_REGISTER.json), [acceptance cases](GATE_ACCEPTANCE_MATRIX.md), [selected work record](../../../operations/work-items/GATE-01.json).
 
-**Source acceptance:** GATE-01 source-only registration merged PR #1952 (exact-head run 41501440843, merge e51e653c, publication queue generation 410). GATE-02 is the CURRENT-selected source-policy tranche; its [capability/ownership matrix](GATE_02_MEMBERSHIP_CAPABILITY_POLICY.md), [50-case fixtures](GATE_02_POLICY_FIXTURES.json) and [source ledger](GATE_02_SOURCE_LEDGER.json) are proposals pending separate source-publication evidence. No later tranche is automatically selected.
+**Source acceptance:** GATE-01 PR1952 (run41501440843, merge e51e653c, queue410); GATE-02 PR1953 (run41505626093, merge 51e8c524, queue412, 50 design-only cases). GATE-03 is CURRENT-selected source-only, with [provider-neutral contracts](GATE_03_PROVIDER_CONTRACTS.md) and [42 test fixtures](GATE_03_PROVIDER_CONTRACT_FIXTURES.json) pending separate publication. No later tranche auto-selected.
