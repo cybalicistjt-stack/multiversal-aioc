@@ -4,8 +4,8 @@
   "program_id": "XTRA",
   "work_item_id": "XTRA-07",
   "attempt_id": "XTRA-07-attempt-001",
-  "status": "in_progress",
-  "completed": false,
+  "status": "completed_verified",
+  "completed": true,
   "implementation_authority": false,
   "selected_by_owner": "Owner XTRA continue after XTRA06 source-only acceptance package verified; XTRA07 depends on XTRA01, not externally blocked XTRA02.",
   "scope": "Prepare current-source-compatible Player/GM/Creator onboarding, first-game/tester tasks, troubleshooting, recovery/diagnostic/privacy and accessibility guidance, including permission-safe copy, using existing BRP/MTLC/IA F025 sources and XTRA04/05/06 preparation. This is documentation/script and evidence preflight only, not installed usability proof.",
@@ -17,25 +17,37 @@
     "Reference live source requirements and XTRA06 acceptance and Beacon Debt Golden Campaign rather than invent functional completion",
     "Validate deterministic document completeness/source linkages and publish exact-head OPS5 review; no real-device usability claims"
   ],
-  "active_substep": "load_current_role_onboarding_recovery_and_tester_document_sources",
-  "next_action": "Read BRP-02/03, MTLC-13, F025 and current account/permission UX; author source-derived role-specific onboarding and tester runbooks; keep account and installed-device claims unverified.",
+  "active_substep": "published_role_tester_guides_verified",
+  "next_action": "XTRA08 to be selected in OPS5 successor PR; no XTRA07 work remains.",
   "execution_guard": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0,
-    "material_progress_seq": 1,
-    "progress_at_last_owner_command": 0,
+    "material_progress_seq": 2,
+    "progress_at_last_owner_command": 1,
     "no_progress_cycles": 0,
     "active_stall": false,
-    "terminal_response_allowed": false,
+    "terminal_response_allowed": true,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "xtra06_complete_and_xtra07_selected",
-      "evidence": "XTRA06 PR1936 and PR1937 published source/acceptance matrix; XTRA02 remains external blocker."
+      "seq": 2,
+      "kind": "xtra07_source_guides_exact_head_published",
+      "evidence": "AIOC PR1939 run41467003847 GREEN, merged a81e2384964c1a6f8556904e69578891b6606fa0 and READY gen386."
     }
   },
   "constraints": {
     "no_app_feature_implementation": true,
     "no_paid_or_public_release": true,
     "no_mock_human_success": true
+  },
+  "completion_evidence": {
+    "pr": 1939,
+    "candidate_head": "a7bcb42046c39b2a9855e59df8cf21a589b983e9",
+    "validation_run": 41467003847,
+    "merge_sha": "a81e2384964c1a6f8556904e69578891b6606fa0",
+    "queue_generation": 386,
+    "role_guides": 3,
+    "source_grounded_steps": 21,
+    "negative_cases": 12,
+    "recovery_cards": 6,
+    "proof_grade": "source-based documentation and consent-safe tester plan, NOT actual human/installed usability"
   }
 }
