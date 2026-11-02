@@ -108,7 +108,14 @@ class Xtra10MarketSourceTests(unittest.TestCase):
         self.assertEqual(len(mcb["tranches"]), 25)
         self.assertTrue(all(x["status"] == "planned" for x in mcb["tranches"]))
         current = load(ROOT / "operations/CURRENT.json")
-        self.assertEqual(current["lanes"]["xtra"]["selected_work_item"], "XTRA-10")
+        selected = current["lanes"]["xtra"]["selected_work_item"]
+        self.assertIn(selected, ("XTRA-10", "XTRA-11"))
+        xtra10 = load(ROOT / "operations/work-items/XTRA-10.json")
+        if selected == "XTRA-10":
+            self.assertEqual(xtra10["status"], "in_progress")
+        else:
+            self.assertEqual(xtra10["status"], "completed_verified")
+            self.assertTrue(xtra10["completed"])
         self.assertFalse(current["lanes"]["xtra"]["implementation_authority"])
         previous = load(ROOT / "operations/work-items/XTRA-09.json")
         self.assertEqual(previous["status"], "completed_verified")
