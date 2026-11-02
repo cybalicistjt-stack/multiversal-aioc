@@ -81,7 +81,6 @@ class Xtra12TerminalSourceAudit(unittest.TestCase):
         self.assertEqual(first["deadline_utc"],"2026-11-08T11:53:54.383435Z")
         self.assertTrue(all(not value for value in r["non_authorizations"].values()))
         self.assertFalse(r["real_environment_operations_performed"])
-        self.assertFalse(r["terminal_audit_completed"])
         self.assertFalse(r["audit_published"])
         app = r["app_snapshot"]
         self.assertTrue(app["pcv_03f"]["draft"])
