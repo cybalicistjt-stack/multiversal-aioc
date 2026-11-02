@@ -51,6 +51,10 @@ export class SyntheticOwnerService {
       return {allowed:false,reason:"HIDDEN_OR_FORBIDDEN"};
     if(campaignId!==resource.campaignId || identity.campaignId!==campaignId)
       return {allowed:false,reason:"HIDDEN_OR_FORBIDDEN"};
+    // Independent Player-authored objects do not become shared just because
+    // their Campaign has a separate GM-sponsored entitlement.
+    if(resource.ownerSubjectId!==identity.subjectId && resource.sourceReleaseId===null)
+      return {allowed:false,reason:"HIDDEN_OR_FORBIDDEN"};
     if(!PROTECTED_READS.has(action) || UNSAFE_ACTIONS.has(action))
       return {allowed:false,reason:"HIDDEN_OR_FORBIDDEN"};
     if(epoch!==this.ownerState.slot.grantEpoch)
@@ -96,10 +100,11 @@ export class SyntheticEndpointSurface {
     return {count:this.search(req).results.length};
   }
   aiRetrieve(req){
-    const found=Object.values(this.owner.resources)
-      .filter(r=>this._permitted(req,"ai.retrieve",r))
-      .map(r=>({citation:r.id,text:r.protectedPayload}));
-    return {context:found}; // no protected source before authorization
+    // An AI context request must authorize the explicitly requested root and
+    // all of its dependencies, not broaden retrieval to unrelated objects.
+    const r=this.owner.resources[req.resourceId];
+    if(!r||!this._permitted(req,"ai.retrieve",r))return {context:[]};
+    return {context:[{citation:r.id,text:r.protectedPayload}]};
   }
   wssPoll(req){
     const result=this.owner.resources[req.resourceId];
