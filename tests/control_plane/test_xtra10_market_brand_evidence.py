@@ -109,7 +109,7 @@ class Xtra10MarketSourceTests(unittest.TestCase):
         self.assertTrue(all(x["status"] == "planned" for x in mcb["tranches"]))
         current = load(ROOT / "operations/CURRENT.json")
         selected = current["lanes"]["xtra"]["selected_work_item"]
-        self.assertIn(selected, ("XTRA-10", "XTRA-11"))
+        self.assertIn(selected, ("XTRA-10", "XTRA-11", "XTRA-12"))
         xtra10 = load(ROOT / "operations/work-items/XTRA-10.json")
         if selected == "XTRA-10":
             self.assertEqual(xtra10["status"], "in_progress")
