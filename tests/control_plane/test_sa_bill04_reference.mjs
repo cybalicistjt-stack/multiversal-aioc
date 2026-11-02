@@ -55,7 +55,7 @@ test('SA04-10 revocation, epoch, ruleset and issuer subscription changes deny us
  for(const status of ['expired','revoked_refunded','account_hold']){const f=fixture();f.owner.verifiedGmSubscription.status=status;assert.equal(decideAllowanceUse(f).allowed,false)}
 });
 test('SA04-11 prohibited export, transfer, publication, source copy and offline use',()=>{
- for(const action of ['export-outside-campaign','transfer-restricted-character','copy-source','publish','entitlement.issue','use-in-other-campaign'])assert.equal(use({request:{action}}).allowed,false,action);
+ for(const action of ['export-outside-campaign','transfer-restricted-character','copy-source','publish','entitlement.issue','use-in-other-campaign'])assert.deepEqual(use({request:{action}}),{allowed:false,reason:'PROHIBITED_TRANSFER'},action);
  assert.equal(use({request:{offline:true}}).allowed,false);
 });
 test('SA04-12 eligibility is NOT issuance; only owner DB transaction may reserve slot',()=>{
