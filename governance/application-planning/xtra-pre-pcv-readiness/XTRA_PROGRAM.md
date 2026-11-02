@@ -2,7 +2,7 @@
 
 **Program:** XTRA  
 **Authority:** owner-directed 2026-11-02, recorded through OPS5 CURRENT/LANES after protected-main approval  
-**Status:** XTRA-01 completed_verified; XTRA-02 blocked_external; XTRA-03 and XTRA-04 completed_verified; XTRA-05 selected pending publication  
+**Status:** XTRA-01 completed_verified; XTRA-02 blocked_external; XTRA-03/04/05 completed_verified; XTRA-06 selected pending publication.  
 **Purpose:** finish independent, useful pre-PCV-03F work and prepare downstream acceptance without bypassing PCV/MTLC/AXI/MCB authorities.
 
 ## Invariants
@@ -69,7 +69,7 @@
 
 **Acceptance.** No golden-path asset is silently unclassified; missing rights/rig/reviewer evidence remains blocked and commercial redistribution is denied until cleared.
 
-**Dependency.** XTRA-01. **Current state:** in_progress (XTRA-05 selector candidate pending publication). Asset and rights/source-evidence review only.
+**Dependency.** XTRA-01. **Current state:** completed_verified. PR1934 source-only rights/asset audit published, with all unverified media rights remaining explicitly unresolved.
 
 ### XTRA-06 — Downstream PCV-04..10 acceptance and diagnostic prework
 
@@ -77,7 +77,7 @@
 
 **Acceptance.** Every downstream tranche has a bounded preflight with explicitly named real runtime dependency; no PCV-04..10 implementation or fabricated passes.
 
-**Dependency.** XTRA-01. **Current state:** planned. No automatic authority from this roadmap.
+**Dependency.** XTRA-01. **Current state:** in_progress (XTRA-06 selector candidate pending publication). Acceptance and diagnostic preparation only.
 
 ### XTRA-07 — Role-based onboarding, help and tester operations
 
