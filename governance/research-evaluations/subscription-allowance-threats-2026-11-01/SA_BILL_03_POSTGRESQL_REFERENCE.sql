@@ -100,6 +100,19 @@ CREATE TABLE IF NOT EXISTS sa_bill03_reference.allowance_immutable_event (
   event_at timestamptz NOT NULL
 );
 
+-- One provider purchase identity belongs to ONE canonical payer subject.
+-- The event table below cannot silently "rebind" a token via a later event.
+-- Account recovery/transfers require a separately authorized, audited process.
+-- This is not an actual provider ownership verification service.
+CREATE TABLE IF NOT EXISTS sa_bill03_reference.purchase_subject_binding (
+  provider text NOT NULL,
+  purchase_origin_id text NOT NULL,
+  canonical_payer_subject_id text NOT NULL,
+  bound_at timestamptz NOT NULL,
+  PRIMARY KEY (provider, purchase_origin_id),
+  UNIQUE (provider, purchase_origin_id, canonical_payer_subject_id)
+);
+
 -- Checkout tokens/order provenance MUST NOT be issued by a client-side
 -- EntitlementEvaluationInput. This is not an actual payment verifier.
 CREATE TABLE IF NOT EXISTS sa_bill03_reference.billing_event_dedupe (
@@ -110,12 +123,15 @@ CREATE TABLE IF NOT EXISTS sa_bill03_reference.billing_event_dedupe (
   raw_event_sha256 text NOT NULL,
   source_revision bigint NOT NULL,
   first_observed_at timestamptz NOT NULL,
-  PRIMARY KEY (provider, provider_event_id)
+  PRIMARY KEY (provider, provider_event_id),
+  FOREIGN KEY (provider, purchase_origin_id, canonical_payer_subject_id)
+    REFERENCES sa_bill03_reference.purchase_subject_binding
+    (provider, purchase_origin_id, canonical_payer_subject_id)
 );
 
-CREATE UNIQUE INDEX IF NOT EXISTS sa_bill03_unique_purchase_origin
-  ON sa_bill03_reference.billing_event_dedupe
-  (provider, purchase_origin_id, provider_event_id);
+-- A UNIQUE(provider,purchase_origin_id,provider_event_id) on the event table
+-- would NOT prevent cross-account reuse: different event IDs bypass it.
+-- The purchase_subject_binding PRIMARY KEY is the actual cross-account fence.
 
 COMMIT;
 
