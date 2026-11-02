@@ -1,6 +1,6 @@
 # GATE — Governed Access, Transactions & Entitlements
 
-**Owner approval:** 2026-11-02 · **OPS5 on-demand program** · **Current:** GATE-06 Campaign Allowance and Sponsored Month policy source design in progress; GATE-01..05 artifacts published PR1952..1956.
+**Owner approval:** 2026-11-02 · **OPS5 on-demand program** · **Current:** GATE-07 offline licensing/device security source design in progress; GATE-01..06 source artifacts published PR1952..1957.
 
 GATE builds Multiversal's provider-independent subscription, billing, entitlement and campaign-grant architecture. **Stripe is the working payment-adapter assumption, not a selected/activated provider.** Payments, access rights, account identity, Campaign authority, content provenance and durable authored ownership remain independent.
 
@@ -63,4 +63,4 @@ GATE builds Multiversal's provider-independent subscription, billing, entitlemen
 
 Related: [backlog](GATE_PROGRAM_BACKLOG.json), [GATE-01 baseline](GATE_01_BASELINE_AND_ARCHITECTURE.md), [decision register](GATE_DECISION_REGISTER.json), [acceptance cases](GATE_ACCEPTANCE_MATRIX.md), [selected work record](../../../operations/work-items/GATE-01.json).
 
-**Source acceptance:** GATE-01 PR1952 (run41501440843, queue410); GATE-02 PR1953 (run41505626093, queue412, 50 synthetic cases); GATE-03 PR1954 (run41506401120, merge 1c64ca63, queue414, 42 synthetic cases). GATE-04 source contract published PR1955 (OPS5 41508576577, merge 963fe6a4, queue416; 70 synthetic cases). GATE-05 source-only PostgreSQL ledger published PR1956 (OPS5 run41509649181, merge 5ac60e15, queue418; 60 synthetic cases). **GATE-06 is CURRENT-selected**, with [Campaign Allowance/Sponsored Month design](GATE_06_ALLOWANCES_SPONSORSHIP.md) and [90 design-only fixtures](GATE_06_POLICY_FIXTURES.json) pending protected publication. No automatic product authority or live provider activation.
+**Source acceptance:** GATE-01 PR1952 (run41501440843, queue410); GATE-02 PR1953 (run41505626093, queue412, 50 synthetic cases); GATE-03 PR1954 (run41506401120, merge 1c64ca63, queue414, 42 synthetic cases). GATE-04 source contract published PR1955 (OPS5 41508576577, merge 963fe6a4, queue416; 70 synthetic cases). GATE-05 source-only PostgreSQL ledger published PR1956 (OPS5 run41509649181, merge 5ac60e15, queue418; 60 synthetic cases). GATE-06 allowance/sponsorship policy published PR1957 (OPS5 run41511172775, merge 86995fc6, queue420, 90 synthetic cases). **GATE-07 is CURRENT-selected** with [offline lease/key threat design](GATE_07_OFFLINE_DEVICE_SECURITY.md) and [80 synthetic cases](GATE_07_OFFLINE_FIXTURES.json) pending protected publication. No automatic product authority or live provider activation.
