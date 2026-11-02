@@ -1,67 +1,158 @@
 {
   "schema_version": "1.0.0",
   "program": "PCV-PREP",
-  "status": "candidate_not_yet_validated",
+  "status": "isolated_prep_phase_published_verified_open_integration_debt",
   "owner_approval": "2026-11-02 user Approved. Continue, bounded PCV-PREP01..07 only",
   "implementation_authority": "nonproduction_isolated_only",
   "source_snapshot": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
-  "selected": "PCV-PREP-01",
+  "selected": "PCV-PREP-07",
   "modules": [
     {
       "id": "PCV-PREP-01",
       "tranche": "PCV-04..10",
       "name": "Source/ownership crosswalk",
-      "status": "candidate",
+      "status": "isolated_testbed_verified_with_integration_debt",
       "artifact": "SOURCE_CROSSWALK.json",
-      "limits": "selected source paths, not exhaustive census"
+      "limits": "selected source paths, not exhaustive census",
+      "completion_evidence": {
+        "pr": 1963,
+        "head": "5ac25d245847d85cc7723fe1ebaa02e00639f473",
+        "ops5_run": 41528487308,
+        "node_run": 41528487335,
+        "number_of_test_cases": 23,
+        "passing_cases": 23,
+        "failing_cases": 0,
+        "merge_sha": "03edef371050c9c1c1fa99f899f1286230850a92",
+        "queue_generation": 432,
+        "grade": "SCOPED_GIT_TREE_PATH_CENSUS_AND_MANIFEST_3_NODE_CHECKS",
+        "open_debt": "Source enumeration complete for two directories only; still 1,289 heuristically unassigned files and no full repo route audit"
+      }
     },
     {
       "id": "PCV-PREP-02",
       "tranche": "PCV-04",
       "name": "Action adjudication/combat mock-session lab",
-      "status": "candidate",
+      "status": "isolated_testbed_verified_with_integration_debt",
       "artifact": "tests/pcv_prep/prep-model.mjs",
-      "limits": "independent model, not real A6/A7 or PCV session"
+      "limits": "independent model, not real A6/A7 or PCV session",
+      "completion_evidence": {
+        "pr": 1963,
+        "head": "5ac25d245847d85cc7723fe1ebaa02e00639f473",
+        "ops5_run": 41528487308,
+        "node_run": 41528487335,
+        "number_of_test_cases": 23,
+        "passing_cases": 23,
+        "failing_cases": 0,
+        "merge_sha": "03edef371050c9c1c1fa99f899f1286230850a92",
+        "queue_generation": 432,
+        "grade": "SYNTHETIC_GM_ADJUDICATION_EVENT_PROJECTION_4_NODE_CHECKS",
+        "open_debt": "No A6/A7 running source imported; canonical PCV A5/Session not exercised"
+      }
     },
     {
       "id": "PCV-PREP-03",
       "tranche": "PCV-05,10",
       "name": "Golden adventure continuity fixture",
-      "status": "candidate",
+      "status": "isolated_testbed_verified_with_integration_debt",
       "artifact": "tests/pcv_prep/golden-campaign.json",
-      "limits": "synthetic representative content, not verified SMB09 first-party package"
+      "limits": "synthetic representative content, not verified SMB09 first-party package",
+      "completion_evidence": {
+        "pr": 1963,
+        "head": "5ac25d245847d85cc7723fe1ebaa02e00639f473",
+        "ops5_run": 41528487308,
+        "node_run": 41528487335,
+        "number_of_test_cases": 23,
+        "passing_cases": 23,
+        "failing_cases": 0,
+        "merge_sha": "03edef371050c9c1c1fa99f899f1286230850a92",
+        "queue_generation": 432,
+        "grade": "SYNTHETIC_GOLDEN_SCENE_TRANSITIONS_1_NODE_CHECK",
+        "open_debt": "Not actual first-party SMB-09 campaign content"
+      }
     },
     {
       "id": "PCV-PREP-04",
       "tranche": "PCV-06",
       "name": "Fictional asset/economy/game settlement model",
-      "status": "candidate",
+      "status": "isolated_testbed_verified_with_integration_debt",
       "artifact": "tests/pcv_prep/prep-model.mjs",
-      "limits": "synthetic accounting, no MIB13 owner-domain execution"
+      "limits": "synthetic accounting, no MIB13 owner-domain execution",
+      "completion_evidence": {
+        "pr": 1963,
+        "head": "5ac25d245847d85cc7723fe1ebaa02e00639f473",
+        "ops5_run": 41528487308,
+        "node_run": 41528487335,
+        "number_of_test_cases": 23,
+        "passing_cases": 23,
+        "failing_cases": 0,
+        "merge_sha": "03edef371050c9c1c1fa99f899f1286230850a92",
+        "queue_generation": 432,
+        "grade": "FICTIONAL_WAGER_ASSET_CRAFTING_VEHICLE_BASE_8_NODE_CHECKS",
+        "open_debt": "No real MIB13 owner-domain transactions, vehicles, bases or persistent gameplay"
+      }
     },
     {
       "id": "PCV-PREP-05",
       "tranche": "PCV-07,08",
       "name": "Authoring dependency/provenance and stranded census",
-      "status": "candidate",
+      "status": "isolated_testbed_verified_with_integration_debt",
       "artifact": "SOURCE_CROSSWALK.json",
-      "limits": "not full repo census nor actual cross-account publication"
+      "limits": "not full repo census nor actual cross-account publication",
+      "completion_evidence": {
+        "pr": 1963,
+        "head": "5ac25d245847d85cc7723fe1ebaa02e00639f473",
+        "ops5_run": 41528487308,
+        "node_run": 41528487335,
+        "number_of_test_cases": 23,
+        "passing_cases": 23,
+        "failing_cases": 0,
+        "merge_sha": "03edef371050c9c1c1fa99f899f1286230850a92",
+        "queue_generation": 432,
+        "grade": "SYNTHETIC_DEPENDENCY_PROVENANCE_AND_SOURCE_CLASSIFICATION_3_NODE_CHECKS",
+        "open_debt": "No actual cross-account published creator artifact"
+      }
     },
     {
       "id": "PCV-PREP-06",
       "tranche": "PCV-09",
       "name": "Phone/Desktop capability and accessibility data contract",
-      "status": "candidate",
+      "status": "isolated_testbed_verified_with_integration_debt",
       "artifact": "tests/pcv_prep/prep-model.mjs",
-      "limits": "no rendered/native accessibility proof"
+      "limits": "no rendered/native accessibility proof",
+      "completion_evidence": {
+        "pr": 1963,
+        "head": "5ac25d245847d85cc7723fe1ebaa02e00639f473",
+        "ops5_run": 41528487308,
+        "node_run": 41528487335,
+        "number_of_test_cases": 23,
+        "passing_cases": 23,
+        "failing_cases": 0,
+        "merge_sha": "03edef371050c9c1c1fa99f899f1286230850a92",
+        "queue_generation": 432,
+        "grade": "MODEL_PARITY_A11Y_NEGATIVE_CHECK_1_NODE_CHECK",
+        "open_debt": "No rendered phone/desktop UI, screen reader device or zoom/pan proof"
+      }
     },
     {
       "id": "PCV-PREP-07",
       "tranche": "PCV-10",
       "name": "Golden dry-run, replay and installer receipt preflight",
-      "status": "candidate",
+      "status": "isolated_testbed_verified_with_integration_debt",
       "artifact": "tests/pcv_prep/prep-model.mjs",
-      "limits": "simulated test receipt not installed binaries"
+      "limits": "simulated test receipt not installed binaries",
+      "completion_evidence": {
+        "pr": 1963,
+        "head": "5ac25d245847d85cc7723fe1ebaa02e00639f473",
+        "ops5_run": 41528487308,
+        "node_run": 41528487335,
+        "number_of_test_cases": 23,
+        "passing_cases": 23,
+        "failing_cases": 0,
+        "merge_sha": "03edef371050c9c1c1fa99f899f1286230850a92",
+        "queue_generation": 432,
+        "grade": "SYNTHETIC_TWO_PERSON_RECOVERY_AND_INSTALL_PREFLIGHT_3_NODE_CHECKS",
+        "open_debt": "No network transport, installed Android/Windows or human beta"
+      }
     }
   ],
   "strict_boundaries": [
@@ -71,5 +162,26 @@
     "Existing PCV_GAMES_WAGERING_INTEGRATION_v1.2.0.md retains owner authority",
     "No fixture may masquerade as installed native, real server, real creator publishing or actual first-party canon"
   ],
-  "owner_profile": "Cross-platform mobile parity applies to player, GM and creator; in-app Desktop View zoom/pan is PCV09."
+  "owner_profile": "Cross-platform mobile parity applies to player, GM and creator; in-app Desktop View zoom/pan is PCV09.",
+  "publication_evidence": {
+    "pr": 1963,
+    "head": "5ac25d245847d85cc7723fe1ebaa02e00639f473",
+    "ops5_run": 41528487308,
+    "node_run": 41528487335,
+    "number_of_test_cases": 23,
+    "passing_cases": 23,
+    "failing_cases": 0,
+    "merge_sha": "03edef371050c9c1c1fa99f899f1286230850a92",
+    "queue_generation": 432,
+    "grade": "ISOLATED_NONPRODUCTION_TESTBED_ONLY"
+  },
+  "open_findings": {
+    "heuristic_unassigned_source_files": 1289,
+    "source_family_count": 153,
+    "full_repo_inventory": "NOT_RUN",
+    "real_app_integration": "NOT_RUN",
+    "installed_cross_device": "NOT_RUN",
+    "human_validation": "NOT_RUN"
+  },
+  "next_action": "At PCV-03F actual closure, refresh source census from new app HEAD and route prepped adapters into PCV04 strict successor; complete sequential PCV05..10 with installed tests. No early selection."
 }

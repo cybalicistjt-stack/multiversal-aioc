@@ -26,6 +26,16 @@ test("PREP01 selected citations are in census and any pinned blob matches",()=>{
 test("PREP01 raw path evidence is never mislabelled integrated",()=>{
  assert.ok(census.records.every(x=>!Object.hasOwn(x,"status")&&!Object.hasOwn(x,"integrated")));
  assert.ok(prep.modules.length===7);
- assert.ok(prep.modules.every(x=>x.status==="candidate"));
+ const lifecycle=new Set(["candidate","isolated_testbed_verified_with_integration_debt"]);
+ assert.ok(prep.modules.every(x=>lifecycle.has(x.status)));
+ for(const module of prep.modules){
+  if(module.status==="isolated_testbed_verified_with_integration_debt"){
+   assert.ok(typeof module.completion_evidence?.grade==="string"&&module.completion_evidence.grade.length>5);
+   assert.ok(typeof module.completion_evidence.open_debt==="string"&&module.completion_evidence.open_debt.length>10);
+   assert.equal(module.completion_evidence.pr,1963);
+   assert.equal(module.completion_evidence.failing_cases,0);
+  }
+ }
+ assert.ok(prep.modules.every(x=>x.status!=="completed_verified"&&x.status!=="integrated_product"));
  assert.ok(prep.strict_boundaries.some(x=>x.includes("PCV04")));
 });
