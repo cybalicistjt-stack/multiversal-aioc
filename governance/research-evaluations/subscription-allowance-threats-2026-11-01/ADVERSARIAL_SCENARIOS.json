@@ -1,0 +1,1160 @@
+{
+  "schemaVersion": "SA-BILL-01.adversarial-scenarios.1",
+  "date": "2026-11-01",
+  "status": "proposed_test_obligations_not_executed",
+  "owner_authorization": "Study/audit only; does not enable commerce or replace current selectors",
+  "model": "Subscription source truth plus campaign-specific one-slot provenance and trust-boundary negative cases",
+  "scenarioCount": 60,
+  "interpretation": {
+    "DENY": "No grant, protected action, leak, new charge, or equivalent privilege",
+    "ALLOW": "Permitted only when all other current permission/rights checks pass",
+    "SUSPEND": "Freeze premium use without deleting source or historical record",
+    "RESTRICT": "Only bounded preissued offline read possible; no mutation/instant erase guarantee",
+    "RETAIN": "Preserve permitted authored raw data while quarantining protected dependencies",
+    "RECONCILE": "Query authoritative provider/event before taking a financial or privileged action",
+    "IDEMPOTENT": "Repeated event yields one durable effect",
+    "NO_BILL": "No unconfirmed provider execution or billing"
+  },
+  "scenarios": [
+    {
+      "id": "SA-T001",
+      "domain": "billing",
+      "priority": "critical",
+      "title": "Unverified client screenshot claims paid subscription",
+      "given": "Purchase receipt never verified at payment-provider authority",
+      "when": "Client posts active=true with receipt image",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No premium grant, no charge; audit forged claim",
+      "evidenceRequired": "provider-source verification",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T002",
+      "domain": "billing",
+      "priority": "critical",
+      "title": "Replay same verified checkout twice",
+      "given": "One provider transaction already bound to subject A",
+      "when": "Webhook resent with identical purchase ID",
+      "expectedDecision": "IDEMPOTENT",
+      "expectedEffect": "One ledger receipt, one entitlement, no duplicate invoice",
+      "evidenceRequired": "unique provider transaction + ledger",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T003",
+      "domain": "billing",
+      "priority": "critical",
+      "title": "Reassign purchase token across accounts",
+      "given": "Purchase token bound to subject A",
+      "when": "Subject B attaches same Play token",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No subscription for B; contested linkage logged",
+      "evidenceRequired": "canonical A3 purchase owner",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T004",
+      "domain": "billing",
+      "priority": "high",
+      "title": "Out-of-order refund then renewal",
+      "given": "Provider confirms newer revoked state",
+      "when": "Older renewal webhook arrives late",
+      "expectedDecision": "RECONCILE",
+      "expectedEffect": "Current provider truth wins; no stale resurrection",
+      "evidenceRequired": "provider GET + revision",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T005",
+      "domain": "billing",
+      "priority": "high",
+      "title": "Cancellation before paid-term expiry",
+      "given": "Verified paid through end T, auto-renew switched off",
+      "when": "Cancel event delivered at time less than T",
+      "expectedDecision": "ALLOW",
+      "expectedEffect": "Premium until T, no future renewal charge",
+      "evidenceRequired": "provider term + owner grace decision",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T006",
+      "domain": "billing",
+      "priority": "high",
+      "title": "Cancellation after paid-term expiry",
+      "given": "Paid end T in past; no valid next period",
+      "when": "Stale device tries to use subscription",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Premium unavailable, safe authored drafts retained",
+      "evidenceRequired": "authoritative clock",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T007",
+      "domain": "billing",
+      "priority": "high",
+      "title": "Payment retry/grace at provider",
+      "given": "Provider verifies still entitled in grace",
+      "when": "User opens premium content",
+      "expectedDecision": "ALLOW",
+      "expectedEffect": "Respect verified grace; mark billing issue; no duplicate payment",
+      "evidenceRequired": "verified provider grace",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "proposed_policy_needs_owner_confirmation"
+    },
+    {
+      "id": "SA-T008",
+      "domain": "billing",
+      "priority": "high",
+      "title": "Payment account hold",
+      "given": "Provider confirms account hold without entitlement",
+      "when": "User issues new premium allowance",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No new grants; retain allowance record without current premium use",
+      "evidenceRequired": "provider hold",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "proposed_policy_needs_owner_confirmation"
+    },
+    {
+      "id": "SA-T009",
+      "domain": "billing",
+      "priority": "high",
+      "title": "Refund revokes active term",
+      "given": "Verified refund/revocation already effective",
+      "when": "Old entitlement decision used on another device",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Epoch invalidated; no protected mutation",
+      "evidenceRequired": "provider revocation + epoch",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T010",
+      "domain": "billing",
+      "priority": "high",
+      "title": "Upgrade linked purchase token",
+      "given": "New Play token linked to old active token",
+      "when": "Both tokens sent as renewed",
+      "expectedDecision": "IDEMPOTENT",
+      "expectedEffect": "Only current product tier, one binding, no double subscription count",
+      "evidenceRequired": "purchase token lineage",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T011",
+      "domain": "billing",
+      "priority": "high",
+      "title": "Pending payment never completes",
+      "given": "Purchase in pending/unacknowledged state",
+      "when": "Client tries premium now",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No premium until provider confirms payable entitlement",
+      "evidenceRequired": "purchase lifecycle",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T012",
+      "domain": "billing",
+      "priority": "high",
+      "title": "Repeated cancellation call",
+      "given": "Already cancel-scheduled",
+      "when": "User retries cancellation",
+      "expectedDecision": "IDEMPOTENT",
+      "expectedEffect": "One cancellation state; no extra charge or forced retention dialog",
+      "evidenceRequired": "subscription cancellation",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T013",
+      "domain": "billing",
+      "priority": "high",
+      "title": "Signed webhook tampered",
+      "given": "Signature invalid / wrong app or product",
+      "when": "Attacker posts active state",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Reject before ledger write",
+      "evidenceRequired": "signed provider envelope",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T014",
+      "domain": "billing",
+      "priority": "high",
+      "title": "Unknown plan-price manipulation",
+      "given": "Client sends discounted minor-units value",
+      "when": "Server receives checkout request",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Only server-approved SKU/territory price; no client invoice authority",
+      "evidenceRequired": "price catalog",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T015",
+      "domain": "billing",
+      "priority": "medium",
+      "title": "Storefront redirect not enrolled",
+      "given": "Play-distributed app lacks approved alternative program",
+      "when": "Checkout button directs to non-enrolled web provider",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Hide forbidden route; disclose authorized store checkout",
+      "evidenceRequired": "storefront policy",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T016",
+      "domain": "billing",
+      "priority": "medium",
+      "title": "Hidden recurring plan consent",
+      "given": "No explicit renewal terms presented",
+      "when": "Checkout form attempts charge",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No charge; require informed assent and cancellation path",
+      "evidenceRequired": "consent and terms audit",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T017",
+      "domain": "billing",
+      "priority": "medium",
+      "title": "Provider unavailable during verification",
+      "given": "Billing API down; no fresh purchase status",
+      "when": "New user asks for premium",
+      "expectedDecision": "RECONCILE",
+      "expectedEffect": "No newly minted grant; retry current provider read later",
+      "evidenceRequired": "provider availability",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T018",
+      "domain": "billing",
+      "priority": "medium",
+      "title": "Grace status has unknown length",
+      "given": "Provider grace period not safely proven",
+      "when": "Local flag says pay grace until next year",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No indefinite invented grace; preserve last bounded verified scope",
+      "evidenceRequired": "bounded grace",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T019",
+      "domain": "billing",
+      "priority": "high",
+      "title": "Two-device same canonical subscriber",
+      "given": "One verified subject signed in on phone + Windows",
+      "when": "Both access own subscription",
+      "expectedDecision": "ALLOW",
+      "expectedEffect": "Same subject benefits; no second purchase or slot minted",
+      "evidenceRequired": "A3 subject identity",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T020",
+      "domain": "billing",
+      "priority": "medium",
+      "title": "AI cost charged by surprise",
+      "given": "Subscription active, optional AI confirmation absent",
+      "when": "Provider call would incur spend",
+      "expectedDecision": "NO_BILL",
+      "expectedEffect": "Do not dispatch paid AI; manual fallback",
+      "evidenceRequired": "AI budget port",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T021",
+      "domain": "allowance",
+      "priority": "critical",
+      "title": "Two concurrent one-slot claims",
+      "given": "No slot yet for Campaign C, Player P",
+      "when": "GM issues Species and Setting simultaneously",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Only one atomic winner; second conflicts; one slot total",
+      "evidenceRequired": "unique tuple + CAS",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T022",
+      "domain": "allowance",
+      "priority": "critical",
+      "title": "Player fabricates GM allowance",
+      "given": "Player role only",
+      "when": "Direct grant POST with arbitrary GM subject ID",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No grant; actor auth not client claim",
+      "evidenceRequired": "GM role/source",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T023",
+      "domain": "allowance",
+      "priority": "critical",
+      "title": "Unsubscribed GM issues allowance",
+      "given": "GM role current but paid entitlement expired",
+      "when": "GM requests new grant",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No issuer authority; preserve existing campaign work",
+      "evidenceRequired": "GM subscription",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T024",
+      "domain": "allowance",
+      "priority": "critical",
+      "title": "Cross-campaign grant replay",
+      "given": "Allowance for P in C1",
+      "when": "P requests same Species in C2",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No C2 access, export or copied Character",
+      "evidenceRequired": "campaign scope",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T025",
+      "domain": "allowance",
+      "priority": "critical",
+      "title": "Cross-player grant replay",
+      "given": "Allowance issued to P1",
+      "when": "P2 obtains grant ID and requests assets",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No P2 entitlement",
+      "evidenceRequired": "subject scope",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T026",
+      "domain": "allowance",
+      "priority": "critical",
+      "title": "Setting dependency smuggling",
+      "given": "One Setting root granted with closure checksum",
+      "when": "Player adds unrelated premium Species as dependency",
+      "expectedDecision": "DENY",
+      "expectedEffect": "New child absent trusted closure cannot be used",
+      "evidenceRequired": "trusted dependency closure",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T027",
+      "domain": "allowance",
+      "priority": "critical",
+      "title": "Recursive restricted dependency export",
+      "given": "Setting references species -> item -> tree",
+      "when": "Export intermediate item with stripped root reference",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Taint propagates and export is denied",
+      "evidenceRequired": "provenance closure",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T028",
+      "domain": "allowance",
+      "priority": "high",
+      "title": "Grant issuer removed as GM",
+      "given": "Issuer loses current Campaign GM membership",
+      "when": "Player tries to use previously granted pack",
+      "expectedDecision": "SUSPEND",
+      "expectedEffect": "No protected use until reauthorized issuer/alternate policy",
+      "evidenceRequired": "current role and epoch",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "proposed_policy_needs_owner_confirmation"
+    },
+    {
+      "id": "SA-T029",
+      "domain": "allowance",
+      "priority": "high",
+      "title": "GM subscription stops at paid term",
+      "given": "Issuer provider-entitled_until now past",
+      "when": "Player reloads grant cached while offline",
+      "expectedDecision": "SUSPEND",
+      "expectedEffect": "No new online privileged use; preserve slot and Character data",
+      "evidenceRequired": "issuer effective subscription",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "proposed_policy_needs_owner_confirmation"
+    },
+    {
+      "id": "SA-T030",
+      "domain": "allowance",
+      "priority": "high",
+      "title": "Player removed from Campaign",
+      "given": "GM allowance still active ledger-wise",
+      "when": "Removed Player accesses private objects",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Membership veto including search, websocket, downloads",
+      "evidenceRequired": "current membership",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T031",
+      "domain": "allowance",
+      "priority": "high",
+      "title": "Target source release revoked",
+      "given": "Registered Species release owner revokes content",
+      "when": "Grant references old release",
+      "expectedDecision": "SUSPEND",
+      "expectedEffect": "No future protected use or transfer; preserve provenance",
+      "evidenceRequired": "source lifecycle",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T032",
+      "domain": "allowance",
+      "priority": "high",
+      "title": "Target switched without epoch rotation",
+      "given": "GM retargets Setting -> item set",
+      "when": "Old cached Setting capability used",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Old grant epoch invalid and no additional live slot",
+      "evidenceRequired": "versioned allowance",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T033",
+      "domain": "allowance",
+      "priority": "high",
+      "title": "Same idempotency key repeated",
+      "given": "GM retry after network ambiguity",
+      "when": "Same grant command sent twice",
+      "expectedDecision": "IDEMPOTENT",
+      "expectedEffect": "Exactly one allowance event and slot",
+      "evidenceRequired": "idempotency status lookup",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T034",
+      "domain": "allowance",
+      "priority": "high",
+      "title": "Different grant IDs same slot",
+      "given": "One allowance already active",
+      "when": "GM attempts second different grant ID",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Conflict unless owner-authorized replacement transaction",
+      "evidenceRequired": "unique slot",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T035",
+      "domain": "allowance",
+      "priority": "high",
+      "title": "Multiple players distinct slots",
+      "given": "GM subscribed, P1 and P2 are distinct Campaign members",
+      "when": "GM grants one allowed root to each",
+      "expectedDecision": "ALLOW",
+      "expectedEffect": "One each; no accidental total-Campaign one-slot cap",
+      "evidenceRequired": "compound unique index",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T036",
+      "domain": "allowance",
+      "priority": "high",
+      "title": "Same Player distinct Campaigns",
+      "given": "P active in C1 and C2, GMs eligible",
+      "when": "One allowance per Campaign granted",
+      "expectedDecision": "ALLOW",
+      "expectedEffect": "Two independent scoped grants, no cross-use",
+      "evidenceRequired": "campaign-subject composite",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T037",
+      "domain": "allowance",
+      "priority": "high",
+      "title": "GM grants non-allowlisted content",
+      "given": "Target is unregistered or arbitrary script executable",
+      "when": "GM requests allowance",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Only registered approved root classes",
+      "evidenceRequired": "registered target allowlist",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T038",
+      "domain": "allowance",
+      "priority": "high",
+      "title": "GM grants circular setting dependencies",
+      "given": "Trusted dependency graph contains cycle",
+      "when": "Close and install Setting roots",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No unbounded traversal; explicit incompatible closure report",
+      "evidenceRequired": "graph cycle bounds",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T039",
+      "domain": "allowance",
+      "priority": "high",
+      "title": "Subscribed player tries to launder GM-dependent item",
+      "given": "Player also pays own subscription",
+      "when": "Copies GM Campaign item to personal library",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Personal subscription does not confer source/transfer rights",
+      "evidenceRequired": "source provenance",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T040",
+      "domain": "allowance",
+      "priority": "medium",
+      "title": "Character retained after entitlement lapse",
+      "given": "P no longer authorized premium pack",
+      "when": "P opens character recovery metadata",
+      "expectedDecision": "RETAIN",
+      "expectedEffect": "Recoverable raw own data, restricted source references quarantined",
+      "evidenceRequired": "authored-data ownership",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "proposed_policy_needs_owner_confirmation"
+    },
+    {
+      "id": "SA-T041",
+      "domain": "allowance",
+      "priority": "medium",
+      "title": "GM retires Campaign",
+      "given": "Allowance issued previously",
+      "when": "Campaign archived or deleted",
+      "expectedDecision": "SUSPEND",
+      "expectedEffect": "Access depends on lifecycle; retain required audit/backup policy",
+      "evidenceRequired": "campaign lifecycle",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T042",
+      "domain": "allowance",
+      "priority": "medium",
+      "title": "Player attempts Character move",
+      "given": "Character carries sponsored ability tree",
+      "when": "Transfer Character to another Campaign",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Block restricted Character transfer, not just item API",
+      "evidenceRequired": "character provenance",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T043",
+      "domain": "allowance",
+      "priority": "medium",
+      "title": "Receipt claims grant after recipient leaves",
+      "given": "Player was former member",
+      "when": "Old actor credential uses valid grant receipt",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Fresh membership required, not historical receipt only",
+      "evidenceRequired": "fresh A3 campaign binding",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T044",
+      "domain": "allowance",
+      "priority": "medium",
+      "title": "Bundled multiple unrelated roots",
+      "given": "GM uses custom Setting and unrelated item set as package",
+      "when": "One allowance issue request",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Only verified dependency closure of one root",
+      "evidenceRequired": "allowance unit semantics",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T045",
+      "domain": "offline",
+      "priority": "critical",
+      "title": "Copy encrypted offline blob to new phone",
+      "given": "Protected cache bound to original device and subject",
+      "when": "Install backup imported on unrelated device",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No key migration or decrypted pack from copied files",
+      "evidenceRequired": "hardware-bound key",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T046",
+      "domain": "offline",
+      "priority": "critical",
+      "title": "Rollback phone clock",
+      "given": "Lease expires in server time",
+      "when": "User sets local clock backwards",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Do not extend protected authority via device time",
+      "evidenceRequired": "trusted elapsed time",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T047",
+      "domain": "offline",
+      "priority": "high",
+      "title": "Remote revoke while phone disconnected",
+      "given": "Phone still holds unexpired signed read lease",
+      "when": "GM revokes allowance on service",
+      "expectedDecision": "RESTRICT",
+      "expectedEffect": "No claim of instant remote erase; new online actions denied, offline read exposure bounded by lease",
+      "evidenceRequired": "offline impossibility and TTL",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "proposed_policy_needs_owner_confirmation"
+    },
+    {
+      "id": "SA-T048",
+      "domain": "offline",
+      "priority": "high",
+      "title": "Offline attempts permanent premium grant",
+      "given": "Valid old cached read projection",
+      "when": "Client attempts grant/renew/transfer while offline",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Offline cache never mints authoritative grant or checkout",
+      "evidenceRequired": "no offline entitlement mutation",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T049",
+      "domain": "offline",
+      "priority": "high",
+      "title": "Reconnect stale entitlement epoch",
+      "given": "Cached lease epoch E, server E+1",
+      "when": "Device reconnects and sends protected action",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Revalidate version, invalidate stale projection/keys",
+      "evidenceRequired": "versioned invalidation",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T050",
+      "domain": "offline",
+      "priority": "high",
+      "title": "Offline cached private GM fields leak via search index",
+      "given": "Player loses permission to hidden source",
+      "when": "Search from stale local index",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Permission-safe partition purge of index/counts/AI context",
+      "evidenceRequired": "cache indexing",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T051",
+      "domain": "offline",
+      "priority": "medium",
+      "title": "Partial download of protected pack",
+      "given": "Device has incomplete encrypted range",
+      "when": "App retries extraction without authority",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No pack assembled or decrypted until valid entitlement and integrity",
+      "evidenceRequired": "encrypted asset integrity",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T052",
+      "domain": "offline",
+      "priority": "medium",
+      "title": "Same subject multiple installations",
+      "given": "Two separate devices with verified access",
+      "when": "User opens subscribed content on both online",
+      "expectedDecision": "ALLOW",
+      "expectedEffect": "Per-account paid access per product policy; device identity remains separate",
+      "evidenceRequired": "A3 session/device binding",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T053",
+      "domain": "privacy",
+      "priority": "critical",
+      "title": "Insecure direct asset URL",
+      "given": "Object storage handle copied from C1",
+      "when": "Different Campaign user GETs signed asset",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Short scoped authorization/signature on storage access",
+      "evidenceRequired": "object-store isolation",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T054",
+      "domain": "privacy",
+      "priority": "critical",
+      "title": "Unknown ID search leaks restricted content",
+      "given": "P has no grant for target",
+      "when": "Autocomplete/count query searches private species",
+      "expectedDecision": "DENY",
+      "expectedEffect": "No names/counts/facets or embeddings leaked",
+      "evidenceRequired": "query authorization",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T055",
+      "domain": "privacy",
+      "priority": "high",
+      "title": "Websocket event delivered after revoke",
+      "given": "Entitlement epoch changed during live connection",
+      "when": "Old event subscription receives hidden pack metadata",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Subscription and every event authorization rechecked",
+      "evidenceRequired": "realtime filtering",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T056",
+      "domain": "privacy",
+      "priority": "high",
+      "title": "User-facing export omits taint",
+      "given": "GM only pack copied into character PDF",
+      "when": "Player downloads printable character sheet",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Redact restricted bits; safe allowed fields exported only",
+      "evidenceRequired": "export projection",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T057",
+      "domain": "privacy",
+      "priority": "high",
+      "title": "Optional AI prompt exfiltrates grant-dependent objects",
+      "given": "Model context includes raw protected Campaign data",
+      "when": "Unentitled user asks summary of private pack",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Scope/redact before retrieval and provider request",
+      "evidenceRequired": "AI redaction",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T058",
+      "domain": "privacy",
+      "priority": "medium",
+      "title": "Diagnostics archive leaks rights and receipt secrets",
+      "given": "User exports debug log",
+      "when": "Log contains purchase token or decrypted pack",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Redacted metadata-only diagnostic",
+      "evidenceRequired": "diagnostic redaction",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T059",
+      "domain": "privacy",
+      "priority": "high",
+      "title": "Stale imported save grants ability",
+      "given": "Player imports a file claiming old premium ability",
+      "when": "App restores without current owner grant",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Import is data proposal, not entitlement or mechanics",
+      "evidenceRequired": "import validation",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    },
+    {
+      "id": "SA-T060",
+      "domain": "privacy",
+      "priority": "high",
+      "title": "Content permission change but cached count remains",
+      "given": "A9 grant revoked",
+      "when": "Badge still shows number of hidden entities",
+      "expectedDecision": "DENY",
+      "expectedEffect": "Invalidate count, graph topology and notification metadata",
+      "evidenceRequired": "visibility epoch",
+      "verificationStatus": "not_executed",
+      "executionLevels": [
+        "reference-model",
+        "source-owner-transaction",
+        "hostile-api-integration",
+        "installed-native-as-applicable"
+      ],
+      "ruleStatus": "contract_or_proposed_security_invariant"
+    }
+  ]
+}
