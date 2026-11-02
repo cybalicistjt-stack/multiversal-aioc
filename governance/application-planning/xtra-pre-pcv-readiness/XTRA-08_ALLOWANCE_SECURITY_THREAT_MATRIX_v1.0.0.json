@@ -1,0 +1,782 @@
+{
+  "schema_version": "1.0.0",
+  "id": "XTRA08-SA-BILL-PROTECTED-CAMPAIGN-REFERENCE-v1",
+  "status": "REFERENCE_ONLY_NOT_DEPLOYED_NOT_BILLED",
+  "authority": "Owner XTRA-08 research only; no original provider or A3/A5 service mutation",
+  "source_pins": [
+    "governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_05_POSTGRES_BOUNDARY.md",
+    "governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_08_PINNED_APP_BOUNDARY_LEAKAGE.md",
+    "governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_09_SOURCE_REPAIR_REPLAY_AND_PROJECTION.md",
+    "governance/research-evaluations/subscription-allowance-threats-2026-11-01/SA_BILL_10_COMPATIBILITY_AND_PRODUCT_RELEASE_GATE.md",
+    "governance/research-evaluations/subscription-allowance-threats-2026-11-01/THREAT_MODEL_AND_BILLING_RULES.md"
+  ],
+  "owner_policy_baseline": "One allowance per Campaign per Player-user granted by verified subscribing GM for one eligible Setting/dependency set, Species, item set, Ability tree or other approved root; Campaign-only access; no transfer/export of dependent protected Characters or objects.",
+  "reference_engine": "tests/control_plane/xtra08_reference_oracle.py (temporary synthetic truth values only, NOT application implementation)",
+  "scenarios": [
+    {
+      "id": "XTRA08-I01",
+      "domain": "issuance",
+      "threat": "One valid GM-approved grant",
+      "input": {
+        "verified_subject": true,
+        "gm_role": true,
+        "player_member": true,
+        "gm_subscription_active": true,
+        "current_revision": true,
+        "provider_signed": true,
+        "rights_current": true,
+        "allowed_root": true,
+        "slot_open": true
+      },
+      "expected_reference_decision": "ALLOW_SYNTHETIC_ONLY",
+      "evidence_source": "SA-BILL-05",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-I02",
+      "domain": "issuance",
+      "threat": "GM no longer active",
+      "input": {
+        "verified_subject": true,
+        "gm_role": false,
+        "player_member": true,
+        "gm_subscription_active": true,
+        "current_revision": true,
+        "provider_signed": true,
+        "rights_current": true,
+        "allowed_root": true,
+        "slot_open": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-05",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-I03",
+      "domain": "issuance",
+      "threat": "GM subscription expired",
+      "input": {
+        "verified_subject": true,
+        "gm_role": true,
+        "player_member": true,
+        "gm_subscription_active": false,
+        "current_revision": true,
+        "provider_signed": true,
+        "rights_current": true,
+        "allowed_root": true,
+        "slot_open": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-05",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-I04",
+      "domain": "issuance",
+      "threat": "Player removed from Campaign",
+      "input": {
+        "verified_subject": true,
+        "gm_role": true,
+        "player_member": false,
+        "gm_subscription_active": true,
+        "current_revision": true,
+        "provider_signed": true,
+        "rights_current": true,
+        "allowed_root": true,
+        "slot_open": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-05",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-I05",
+      "domain": "issuance",
+      "threat": "Client spoofed subscription truth",
+      "input": {
+        "verified_subject": true,
+        "gm_role": true,
+        "player_member": true,
+        "gm_subscription_active": true,
+        "current_revision": true,
+        "provider_signed": false,
+        "rights_current": true,
+        "allowed_root": true,
+        "slot_open": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-08",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-I06",
+      "domain": "issuance",
+      "threat": "Concurrent duplicate Campaign-Player slot",
+      "input": {
+        "verified_subject": true,
+        "gm_role": true,
+        "player_member": true,
+        "gm_subscription_active": true,
+        "current_revision": true,
+        "provider_signed": true,
+        "rights_current": true,
+        "allowed_root": true,
+        "slot_open": false
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-05",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-I07",
+      "domain": "issuance",
+      "threat": "Current trusted owner revision missing",
+      "input": {
+        "verified_subject": true,
+        "gm_role": true,
+        "player_member": true,
+        "gm_subscription_active": true,
+        "current_revision": false,
+        "provider_signed": true,
+        "rights_current": true,
+        "allowed_root": true,
+        "slot_open": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-05",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-I08",
+      "domain": "issuance",
+      "threat": "Unauthorized root class or incomplete rights",
+      "input": {
+        "verified_subject": true,
+        "gm_role": true,
+        "player_member": true,
+        "gm_subscription_active": true,
+        "current_revision": true,
+        "provider_signed": true,
+        "rights_current": true,
+        "allowed_root": false,
+        "slot_open": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-05",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-I09",
+      "domain": "issuance",
+      "threat": "Unknown registered content-rights revision",
+      "input": {
+        "verified_subject": true,
+        "gm_role": true,
+        "player_member": true,
+        "gm_subscription_active": true,
+        "current_revision": true,
+        "provider_signed": true,
+        "rights_current": false,
+        "allowed_root": true,
+        "slot_open": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-05",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-I10",
+      "domain": "issuance",
+      "threat": "Unverified actor subject",
+      "input": {
+        "verified_subject": false,
+        "gm_role": true,
+        "player_member": true,
+        "gm_subscription_active": true,
+        "current_revision": true,
+        "provider_signed": true,
+        "rights_current": true,
+        "allowed_root": true,
+        "slot_open": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "THREAT_MODEL_AND_BILLING_RULES",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-U01",
+      "domain": "use",
+      "threat": "Authorized current Campaign read",
+      "input": {
+        "member": true,
+        "same_campaign": true,
+        "grant_current": true,
+        "rights_current": true,
+        "dependency_valid": true,
+        "operation": "campaign-read",
+        "scope": "campaign",
+        "is_protected": true
+      },
+      "expected_reference_decision": "ALLOW_SYNTHETIC_ONLY",
+      "evidence_source": "SA-BILL-08",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-U02",
+      "domain": "use",
+      "threat": "Cross-Campaign protected object",
+      "input": {
+        "member": true,
+        "same_campaign": false,
+        "grant_current": true,
+        "rights_current": true,
+        "dependency_valid": true,
+        "operation": "campaign-read",
+        "scope": "campaign",
+        "is_protected": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-08",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-U03",
+      "domain": "use",
+      "threat": "Transfer protected Character outside Campaign",
+      "input": {
+        "member": true,
+        "same_campaign": true,
+        "grant_current": true,
+        "rights_current": true,
+        "dependency_valid": true,
+        "operation": "transfer-out",
+        "scope": "campaign",
+        "is_protected": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "THREAT_MODEL_AND_BILLING_RULES",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-U04",
+      "domain": "use",
+      "threat": "Export sponsored Species/item/tree",
+      "input": {
+        "member": true,
+        "same_campaign": true,
+        "grant_current": true,
+        "rights_current": true,
+        "dependency_valid": true,
+        "operation": "export",
+        "scope": "campaign",
+        "is_protected": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-08",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-U05",
+      "domain": "use",
+      "threat": "Search/count metadata after GM role revoked",
+      "input": {
+        "member": true,
+        "same_campaign": true,
+        "grant_current": false,
+        "rights_current": true,
+        "dependency_valid": true,
+        "operation": "search",
+        "scope": "campaign",
+        "is_protected": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-08",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-U06",
+      "domain": "use",
+      "threat": "AI prompt/retrieval of denied dependency",
+      "input": {
+        "member": true,
+        "same_campaign": true,
+        "grant_current": true,
+        "rights_current": true,
+        "dependency_valid": false,
+        "operation": "ai-context",
+        "scope": "campaign",
+        "is_protected": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-08",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-U07",
+      "domain": "use",
+      "threat": "WSS after Player membership removed",
+      "input": {
+        "member": false,
+        "same_campaign": true,
+        "grant_current": true,
+        "rights_current": true,
+        "dependency_valid": true,
+        "operation": "websocket",
+        "scope": "campaign",
+        "is_protected": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-08",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-U08",
+      "domain": "use",
+      "threat": "CDN/download with stale rights",
+      "input": {
+        "member": true,
+        "same_campaign": true,
+        "grant_current": true,
+        "rights_current": false,
+        "dependency_valid": true,
+        "operation": "download",
+        "scope": "campaign",
+        "is_protected": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-08",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-U09",
+      "domain": "use",
+      "threat": "Import restricted derivative to another Campaign",
+      "input": {
+        "member": true,
+        "same_campaign": true,
+        "grant_current": true,
+        "rights_current": true,
+        "dependency_valid": true,
+        "operation": "import-other-campaign",
+        "scope": "campaign",
+        "is_protected": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-08",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-U10",
+      "domain": "use",
+      "threat": "Campaign protected cache after revocation",
+      "input": {
+        "member": true,
+        "same_campaign": true,
+        "grant_current": false,
+        "rights_current": true,
+        "dependency_valid": true,
+        "operation": "cache",
+        "scope": "campaign",
+        "is_protected": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-08",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-U11",
+      "domain": "use",
+      "threat": "Nested dependency/version mismatch",
+      "input": {
+        "member": true,
+        "same_campaign": true,
+        "grant_current": true,
+        "rights_current": true,
+        "dependency_valid": false,
+        "operation": "campaign-read",
+        "scope": "campaign",
+        "is_protected": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-08",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-U12",
+      "domain": "use",
+      "threat": "Public sharing despite separate personal paid subscription",
+      "input": {
+        "member": true,
+        "same_campaign": true,
+        "grant_current": true,
+        "rights_current": true,
+        "dependency_valid": true,
+        "operation": "public-share",
+        "scope": "campaign",
+        "is_protected": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "THREAT_MODEL_AND_BILLING_RULES",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-R01",
+      "domain": "replay",
+      "threat": "Trusted same-actor bound replay through safe projection",
+      "input": {
+        "current_membership": true,
+        "actor_match": true,
+        "command_match": true,
+        "receipt_from_store": true,
+        "safe_external_projection": true
+      },
+      "expected_reference_decision": "ALLOW_SYNTHETIC_ONLY",
+      "evidence_source": "SA-BILL-10",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-R02",
+      "domain": "replay",
+      "threat": "Revoked membership before replay",
+      "input": {
+        "current_membership": false,
+        "actor_match": true,
+        "command_match": true,
+        "receipt_from_store": true,
+        "safe_external_projection": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-08",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-R03",
+      "domain": "replay",
+      "threat": "Substituted actor claims prior receipt",
+      "input": {
+        "current_membership": true,
+        "actor_match": false,
+        "command_match": true,
+        "receipt_from_store": true,
+        "safe_external_projection": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-09",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-R04",
+      "domain": "replay",
+      "threat": "Changed command payload with same command ID",
+      "input": {
+        "current_membership": true,
+        "actor_match": true,
+        "command_match": false,
+        "receipt_from_store": true,
+        "safe_external_projection": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-09",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-R05",
+      "domain": "replay",
+      "threat": "Client fabricated cached receipt",
+      "input": {
+        "current_membership": true,
+        "actor_match": true,
+        "command_match": true,
+        "receipt_from_store": false,
+        "safe_external_projection": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-09",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-R06",
+      "domain": "replay",
+      "threat": "Unsafe generic public payload/count projection",
+      "input": {
+        "current_membership": true,
+        "actor_match": true,
+        "command_match": true,
+        "receipt_from_store": true,
+        "safe_external_projection": false
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "SA-BILL-10",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-O01",
+      "domain": "offline",
+      "threat": "Signed bounded read-only lease",
+      "input": {
+        "valid_signature": true,
+        "device_match": true,
+        "not_expired": true,
+        "epoch_current": true,
+        "encrypted_vault": true,
+        "read_only": true
+      },
+      "expected_reference_decision": "ALLOW_SYNTHETIC_ONLY",
+      "evidence_source": "THREAT_MODEL_AND_BILLING_RULES",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-O02",
+      "domain": "offline",
+      "threat": "Forged lease signature",
+      "input": {
+        "valid_signature": false,
+        "device_match": true,
+        "not_expired": true,
+        "epoch_current": true,
+        "encrypted_vault": true,
+        "read_only": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "THREAT_MODEL_AND_BILLING_RULES",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-O03",
+      "domain": "offline",
+      "threat": "License copied to another installation",
+      "input": {
+        "valid_signature": true,
+        "device_match": false,
+        "not_expired": true,
+        "epoch_current": true,
+        "encrypted_vault": true,
+        "read_only": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "THREAT_MODEL_AND_BILLING_RULES",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-O04",
+      "domain": "offline",
+      "threat": "Lease expired or clock manipulation detected",
+      "input": {
+        "valid_signature": true,
+        "device_match": true,
+        "not_expired": false,
+        "epoch_current": true,
+        "encrypted_vault": true,
+        "read_only": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "THREAT_MODEL_AND_BILLING_RULES",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-O05",
+      "domain": "offline",
+      "threat": "Epoch stale after revocation",
+      "input": {
+        "valid_signature": true,
+        "device_match": true,
+        "not_expired": true,
+        "epoch_current": false,
+        "encrypted_vault": true,
+        "read_only": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "THREAT_MODEL_AND_BILLING_RULES",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-O06",
+      "domain": "offline",
+      "threat": "Unencrypted private protected vault",
+      "input": {
+        "valid_signature": true,
+        "device_match": true,
+        "not_expired": true,
+        "epoch_current": true,
+        "encrypted_vault": false,
+        "read_only": true
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "THREAT_MODEL_AND_BILLING_RULES",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-O07",
+      "domain": "offline",
+      "threat": "Protected offline allowance mutation",
+      "input": {
+        "valid_signature": true,
+        "device_match": true,
+        "not_expired": true,
+        "epoch_current": true,
+        "encrypted_vault": true,
+        "read_only": false
+      },
+      "expected_reference_decision": "DENY",
+      "evidence_source": "THREAT_MODEL_AND_BILLING_RULES",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-P01",
+      "domain": "policy",
+      "threat": "Unapproved grace/trial grant policy",
+      "input": {
+        "policy_approved": false
+      },
+      "expected_reference_decision": "OWNER_DECISION_REQUIRED",
+      "evidence_source": "SA-BILL-05",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-P02",
+      "domain": "policy",
+      "threat": "Unapproved GM succession/retarget after allowance use",
+      "input": {
+        "policy_approved": false
+      },
+      "expected_reference_decision": "OWNER_DECISION_REQUIRED",
+      "evidence_source": "THREAT_MODEL_AND_BILLING_RULES",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-P03",
+      "domain": "policy",
+      "threat": "Final price/SKU/merchant/store selection not approved",
+      "input": {
+        "policy_approved": false
+      },
+      "expected_reference_decision": "OWNER_DECISION_REQUIRED",
+      "evidence_source": "THREAT_MODEL_AND_BILLING_RULES",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    },
+    {
+      "id": "XTRA08-P04",
+      "domain": "policy",
+      "threat": "Unapproved offline lease duration or automatic billing",
+      "input": {
+        "policy_approved": false
+      },
+      "expected_reference_decision": "OWNER_DECISION_REQUIRED",
+      "evidence_source": "THREAT_MODEL_AND_BILLING_RULES",
+      "execution": "REFERENCE_PENDING",
+      "real_product_status": "NOT_TESTED",
+      "boundary": "Policy/reference-only; requires current true A3/A5, provider, PostgreSQL, endpoint and device integration."
+    }
+  ],
+  "source_known_risks": [
+    "Generic hiddenEventCount metadata may leak if published to unentitled viewers; A9-safe wrapper removes it.",
+    "Generic public command Event may include raw payload; A9-safe accepted command projection removes it.",
+    "Processed-command receipt can replay before fresh authorization in lower-level source; external owner must reauthorize and trust only persisted original binding.",
+    "SA-BILL-09 direct generic patch conflicts with existing P9-06 fixture contracts; preserve internal compatibility and use verified safe outer boundary while migrating owner paths."
+  ],
+  "independent_controls": [
+    "PostgreSQL SERIALIZABLE and unique (Campaign,Player,slotKind) row/command receipt are research fixtures; real service atomicity/role provenance still unproved.",
+    "One source purchase binds to one canonical payer and one receipt event must be idempotently consumed.",
+    "Action-specific protected read/search/count/AI/WSS/CDN/export/backup/diagnostic projections must reauthorize current owner state and redact all bytes/metadata.",
+    "Retain independent user-authored raw notes when protected projections lapse, subject to ownership; do not erase raw author work as an access-control shortcut.",
+    "Signed device-bound offline read leases and encryption need actual installed Android/Windows tamper tests, not mock booleans."
+  ],
+  "production_blockers": [
+    "Current canonical A3 identity, GM/Player membership and revision",
+    "signed purchase/provider receipts",
+    "real PostgreSQL service and RLS",
+    "full registered root dependency graph",
+    "transactional issuer",
+    "actual endpoint middleware",
+    "real native secure vault",
+    "verified owner policy for trial, succession and offline lease."
+  ],
+  "runtime_result": "NOT_RUN",
+  "reference_result": "NOT_RUN",
+  "no_real_payment": true,
+  "no_production_patch": true,
+  "allowed_owner_activity": "AIOC synthetic matrix/reference oracle only",
+  "owner_decisions_unapproved": [
+    "grace/trial allowance issuance",
+    "GM succession and grant retargeting",
+    "refund/chargeback effective revoke rules",
+    "offline lease duration and token/key management",
+    "final SKU/price, store/merchant implementation"
+  ]
+}
