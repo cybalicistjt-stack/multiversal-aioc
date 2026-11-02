@@ -6,8 +6,8 @@ const clone=x=>JSON.parse(JSON.stringify(x));
 const positive=n=>Number.isSafeInteger(n)&&n>0;
 
 export class SessionLab {
- constructor({campaign="prep-river-archive",gm="Raven1",player="Raven2"}={}) {
-  this.s={campaign,gm,player,revision:0,sequence:0,phase:"exploration",members:{[gm]:"gm",[player]:"player"},
+ constructor({campaign="prep-river-archive",gm="Raven1",player="Raven2",initialPhase="exploration"}={}) {
+  this.s={campaign,gm,player,revision:0,sequence:0,phase:initialPhase,members:{[gm]:"gm",[player]:"player"},
     hp:{[gm]:12,[player]:9,"guardian":8},stamina:{[gm]:4,[player]:4},
     pending:{},decisions:{},events:[],commandFingerprints:{}};
  }
@@ -157,7 +157,7 @@ export function validateInstallerPreflight(candidate){
 }
 export function syntheticGoldenRun(golden){
  if(golden.kind!=="SYNTHETIC_NONCANONICAL_ACCEPTANCE_FIXTURE")throw Error("CANONICALITY_NOT_PROVEN");
- const session=new SessionLab({campaign:golden.campaign,gm:golden.gm,player:golden.player});
+ const session=new SessionLab({campaign:golden.campaign,gm:golden.gm,player:golden.player,initialPhase:golden.steps[0]?.from??"start"});
  for(const step of golden.steps)session.transition(step);
  const before=session.checkpoint(),restored=SessionLab.restore(before);
  if(restored.s.sequence!==golden.steps.length||restored.s.phase!=="completed")throw Error("BROKEN_GOLDEN_REPLAY");
