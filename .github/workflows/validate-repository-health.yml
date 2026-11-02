@@ -170,6 +170,12 @@ jobs:
           set -euo pipefail
           node --test tests/control_plane/test_sa_bill04_reference.mjs
 
+      - name: SA-BILL-08 pinned application source and synthetic endpoint leakage regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --experimental-strip-types --test tests/control_plane/test_sa_bill08_app_boundary.mjs
+
       - name: Run MVPS-01 species aggregate contract regressions
         if: steps.scope.outputs.certified_content == 'true'
         shell: bash
