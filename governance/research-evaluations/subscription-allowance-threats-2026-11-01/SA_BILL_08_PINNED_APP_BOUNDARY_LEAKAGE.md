@@ -37,6 +37,14 @@ These are **not actual deployed REST handlers, search indexes, WSS, AI retrieval
 - Replay is denied by the synthetic outer gateway **before** calling the vulnerable source-level idempotency branch when current Campaign permission is missing.
 - The generic app event projection's hidden count and generic accepted session command's public payload are characterized, alongside the A9-safe wrappers.
 
+## Observed RED scenario, remedy and evidence limitation
+
+The initial candidate head `a6bbe91f16508d52c5ec8ec05e53ff1e3ff996a6` triggered Operations V5 run `41391107630`. Its pinned application-source characterizations and 16/21 tests passed; **five tests failed** on the **new synthetic surface adapter**. The decisive failures included `SA08-09` exposing `other` Player's `Another Hero` through search, and `SA08-10` exposing `OTHER PLAYER SECRET` through the synthetic AI retrieval context. Other tests detected follow-on revocation and root-scope defects. This is a demonstrated **research adapter leak** and its detection, **not** a demonstrated Multiversal application leak.
+
+The patch applies two minimal authorization fixes in `sa_bill08_boundary_gateway.mjs`: deny unrelated user-owned resource records that lack a registered grant source, and restrict AI context retrieval to the explicitly requested root after validating its entire dependency graph. The same 21 tests were retained; no expectations were deleted merely to force a green result. A new exact-head workflow must pass before a green claim or protected publication.
+
+**Independent remaining concern:** the pinned application's generic handler and generic hidden-event filter have the lower-level characteristics documented above, but SA-BILL-08 does **not patch the live Multiversal-app repository**. Product owner authorization and deployed endpoint tests remain necessary.
+
 ## Known proof gaps / mandatory future gates
 
 - **Live A3 and A5:** actual authenticated service-owner subject, Campaign membership and role revision, trusted bound receipts, session-store replay, protected content rights, grants and revocation events.
