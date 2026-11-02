@@ -176,6 +176,12 @@ jobs:
           set -euo pipefail
           node --experimental-strip-types --test tests/control_plane/test_sa_bill08_app_boundary.mjs
 
+      - name: SA-BILL-09 test-first source semantics (RED baseline until hardened)
+        shell: bash
+        run: |
+          set -euo pipefail
+          SA_BILL09_MODE=baseline node --experimental-strip-types --test tests/control_plane/test_sa_bill09_source_repair.mjs
+
       - name: Run MVPS-01 species aggregate contract regressions
         if: steps.scope.outputs.certified_content == 'true'
         shell: bash
