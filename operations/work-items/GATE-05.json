@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "gate",
+  "program_id": "GATE",
+  "work_item_id": "GATE-05",
+  "attempt_id": "GATE-05-attempt-001",
+  "status": "in_progress",
+  "completed": false,
+  "implementation_authority": false,
+  "selected_by_owner": "Owner approved GATE iterative 14-tranche design; bare Continue follows GATE-04 exact-head published and reconciled source evidence.",
+  "implementation_branch": "program/gate05-postgresql-ledger-atomicity-20261102",
+  "scope": "Source-only PostgreSQL 17 schema proposal, unique provider/customer/checkout/allowance records, transactional inbox/journal/outbox, monotonic security/entitlement versioning, serializability and crash/replay acceptance plans. No actual database migration, provider, payment or product implementation.",
+  "backlog": "governance/application-planning/governed-access-transactions-entitlements/GATE_PROGRAM_BACKLOG.json",
+  "acceptance": [
+    "Propose normalized provider-bound billing, journal, entitlement and allowance slot DDL without changing PCV canonical account database",
+    "Document transaction isolation, uniqueness, idempotency, outbox, retries and roll-forward crash recovery",
+    "Cover 100 simultaneous allowance issuers as an independently specified real PostgreSQL acceptance test, do not misstate sequential toy as DB proof",
+    "Provide 60+ synthetic scoped model tests and SQL design syntax for isolated future execution; exact-head OPS5 publication and queue reconciliation"
+  ],
+  "active_substep": "schema_design_and_synthetic_negative_tests_candidate",
+  "next_action": "Run static/source checks and OPS5 exact-head candidate; publish and reconcile before selecting GATE-06. Real DB integration remains separately gated GATE-09.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 1,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "gate05_ledger_design_candidate",
+      "evidence": "Proposed PostgreSQL 17 DDL, transaction flow, 60 source-model cases, 100-attempt sequential toy and real 100-concurrent test plan; no DB claims"
+    }
+  },
+  "constraints": {
+    "no_product_implementation": true,
+    "no_host_or_database_mutation": true,
+    "no_real_payment_or_provider": true,
+    "no_money_or_price": true,
+    "no_other_lane_selector_mutation": true,
+    "no_synthetic_to_real_proof_upgrade": true
+  }
+}

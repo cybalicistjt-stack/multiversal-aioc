@@ -1,6 +1,6 @@
 # GATE — Governed Access, Transactions & Entitlements
 
-**Owner approval:** 2026-11-02 · **OPS5 on-demand program** · **Current:** GATE-04 temporal lifecycle design in progress; GATE-01..03 source-only artifacts published PR1952..1954.
+**Owner approval:** 2026-11-02 · **OPS5 on-demand program** · **Current:** GATE-05 PostgreSQL ledger/atomicity source design in progress; GATE-01..04 source-only artifacts published PR1952..1955.
 
 GATE builds Multiversal's provider-independent subscription, billing, entitlement and campaign-grant architecture. **Stripe is the working payment-adapter assumption, not a selected/activated provider.** Payments, access rights, account identity, Campaign authority, content provenance and durable authored ownership remain independent.
 
@@ -63,4 +63,4 @@ GATE builds Multiversal's provider-independent subscription, billing, entitlemen
 
 Related: [backlog](GATE_PROGRAM_BACKLOG.json), [GATE-01 baseline](GATE_01_BASELINE_AND_ARCHITECTURE.md), [decision register](GATE_DECISION_REGISTER.json), [acceptance cases](GATE_ACCEPTANCE_MATRIX.md), [selected work record](../../../operations/work-items/GATE-01.json).
 
-**Source acceptance:** GATE-01 PR1952 (run41501440843, queue410); GATE-02 PR1953 (run41505626093, queue412, 50 synthetic cases); GATE-03 PR1954 (run41506401120, merge 1c64ca63, queue414, 42 synthetic cases). **GATE-04 is CURRENT-selected** with [temporal lifecycle/reconciliation contract](GATE_04_BILLING_LIFECYCLE.md) and [70-case fixtures](GATE_04_TEMPORAL_FIXTURES.json) pending protected publication. No automatic product authority or live provider activation.
+**Source acceptance:** GATE-01 PR1952 (run41501440843, queue410); GATE-02 PR1953 (run41505626093, queue412, 50 synthetic cases); GATE-03 PR1954 (run41506401120, merge 1c64ca63, queue414, 42 synthetic cases). GATE-04 source contract published PR1955 (OPS5 41508576577, merge 963fe6a4, queue416; 70 synthetic cases). **GATE-05 is CURRENT-selected**, with [SQL ledger schema proposal](GATE_05_POSTGRES_SCHEMA_PROPOSAL.sql), [design/atomicity matrix](GATE_05_LEDGER_ATOMICITY.md), and [60 model fixtures](GATE_05_LEDGER_FIXTURES.json) pending protected publication. No automatic product authority or live provider activation.

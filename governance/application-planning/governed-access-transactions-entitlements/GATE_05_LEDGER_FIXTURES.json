@@ -1,0 +1,863 @@
+{
+  "schema_version": "1.0.0",
+  "tranche": "GATE-05",
+  "grade": "SYNTHETIC_SOURCE_ONLY",
+  "cases": [
+    {
+      "id": "E01",
+      "kind": "event",
+      "input": {
+        "type": "event",
+        "authenticated": true,
+        "environmentValid": true,
+        "sameEventKey": false,
+        "customerBound": true,
+        "revisionNewer": true,
+        "currentProviderVerified": true
+      },
+      "expected": "ACCEPT_VERIFIED_FACT_ONCE",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "E02",
+      "kind": "event",
+      "input": {
+        "type": "event",
+        "authenticated": false,
+        "environmentValid": true,
+        "sameEventKey": false,
+        "customerBound": true,
+        "revisionNewer": true,
+        "currentProviderVerified": true
+      },
+      "expected": "REJECT_EVENT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "E03",
+      "kind": "event",
+      "input": {
+        "type": "event",
+        "authenticated": true,
+        "environmentValid": false,
+        "sameEventKey": false,
+        "customerBound": true,
+        "revisionNewer": true,
+        "currentProviderVerified": true
+      },
+      "expected": "REJECT_ENV",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "E04",
+      "kind": "event",
+      "input": {
+        "type": "event",
+        "authenticated": true,
+        "environmentValid": true,
+        "sameEventKey": true,
+        "customerBound": true,
+        "revisionNewer": true,
+        "currentProviderVerified": true
+      },
+      "expected": "ACK_DUPLICATE",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "E05",
+      "kind": "event",
+      "input": {
+        "type": "event",
+        "authenticated": true,
+        "environmentValid": true,
+        "sameEventKey": false,
+        "customerBound": false,
+        "revisionNewer": true,
+        "currentProviderVerified": true
+      },
+      "expected": "QUARANTINE_CUSTOMER",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "E06",
+      "kind": "event",
+      "input": {
+        "type": "event",
+        "authenticated": true,
+        "environmentValid": true,
+        "sameEventKey": false,
+        "customerBound": true,
+        "revisionNewer": false,
+        "currentProviderVerified": true
+      },
+      "expected": "PRESERVE_PROJECTION_REFRESH",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "E07",
+      "kind": "event",
+      "input": {
+        "type": "event",
+        "authenticated": true,
+        "environmentValid": true,
+        "sameEventKey": false,
+        "customerBound": true,
+        "revisionNewer": true,
+        "currentProviderVerified": false
+      },
+      "expected": "RETRY_LOOKUP_NO_GRANT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "E08",
+      "kind": "event",
+      "input": {
+        "type": "event",
+        "authenticated": true,
+        "environmentValid": true,
+        "sameEventKey": true,
+        "customerBound": true,
+        "revisionNewer": true,
+        "currentProviderVerified": false
+      },
+      "expected": "ACK_DUPLICATE",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "E09",
+      "kind": "event",
+      "input": {
+        "type": "event",
+        "authenticated": true,
+        "environmentValid": true,
+        "sameEventKey": false,
+        "customerBound": false,
+        "revisionNewer": true,
+        "currentProviderVerified": true
+      },
+      "expected": "QUARANTINE_CUSTOMER",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "E10",
+      "kind": "event",
+      "input": {
+        "type": "event",
+        "authenticated": false,
+        "environmentValid": true,
+        "sameEventKey": true,
+        "customerBound": true,
+        "revisionNewer": true,
+        "currentProviderVerified": true
+      },
+      "expected": "REJECT_EVENT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "B01",
+      "kind": "claim",
+      "input": {
+        "type": "claim",
+        "subjectVerified": true,
+        "providerBound": true,
+        "offerAllowed": true,
+        "idempotencyReplayOtherSubject": false,
+        "subscriptionClaimAlreadyBound": false
+      },
+      "expected": "CREATE_UNIQUE_BINDING",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "B02",
+      "kind": "claim",
+      "input": {
+        "type": "claim",
+        "subjectVerified": false,
+        "providerBound": true,
+        "offerAllowed": true,
+        "idempotencyReplayOtherSubject": false,
+        "subscriptionClaimAlreadyBound": false
+      },
+      "expected": "DENY_IDENTITY",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "B03",
+      "kind": "claim",
+      "input": {
+        "type": "claim",
+        "subjectVerified": true,
+        "providerBound": false,
+        "offerAllowed": true,
+        "idempotencyReplayOtherSubject": false,
+        "subscriptionClaimAlreadyBound": false
+      },
+      "expected": "DENY_PROVIDER_OWNER",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "B04",
+      "kind": "claim",
+      "input": {
+        "type": "claim",
+        "subjectVerified": true,
+        "providerBound": true,
+        "offerAllowed": false,
+        "idempotencyReplayOtherSubject": false,
+        "subscriptionClaimAlreadyBound": false
+      },
+      "expected": "HOLD_OFFER",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "B05",
+      "kind": "claim",
+      "input": {
+        "type": "claim",
+        "subjectVerified": true,
+        "providerBound": true,
+        "offerAllowed": true,
+        "idempotencyReplayOtherSubject": true,
+        "subscriptionClaimAlreadyBound": false
+      },
+      "expected": "DENY_REPLAY_OTHER_SUBJECT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "B06",
+      "kind": "claim",
+      "input": {
+        "type": "claim",
+        "subjectVerified": true,
+        "providerBound": true,
+        "offerAllowed": true,
+        "idempotencyReplayOtherSubject": false,
+        "subscriptionClaimAlreadyBound": true
+      },
+      "expected": "RETURN_EXISTING_BINDING",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "B07",
+      "kind": "claim",
+      "input": {
+        "type": "claim",
+        "subjectVerified": true,
+        "providerBound": true,
+        "offerAllowed": true,
+        "idempotencyReplayOtherSubject": true,
+        "subscriptionClaimAlreadyBound": true
+      },
+      "expected": "DENY_REPLAY_OTHER_SUBJECT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "B08",
+      "kind": "claim",
+      "input": {
+        "type": "claim",
+        "subjectVerified": true,
+        "providerBound": false,
+        "offerAllowed": true,
+        "idempotencyReplayOtherSubject": false,
+        "subscriptionClaimAlreadyBound": false
+      },
+      "expected": "DENY_PROVIDER_OWNER",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "B09",
+      "kind": "claim",
+      "input": {
+        "type": "claim",
+        "subjectVerified": false,
+        "providerBound": false,
+        "offerAllowed": true,
+        "idempotencyReplayOtherSubject": false,
+        "subscriptionClaimAlreadyBound": false
+      },
+      "expected": "DENY_IDENTITY",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "B10",
+      "kind": "claim",
+      "input": {
+        "type": "claim",
+        "subjectVerified": true,
+        "providerBound": true,
+        "offerAllowed": false,
+        "idempotencyReplayOtherSubject": false,
+        "subscriptionClaimAlreadyBound": true
+      },
+      "expected": "HOLD_OFFER",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "A01",
+      "kind": "allowance",
+      "input": {
+        "type": "allowance",
+        "actorGm": true,
+        "gmVerifiedSubscriber": true,
+        "beneficiaryMember": true,
+        "rootClosureValidated": true,
+        "slotExists": false
+      },
+      "expected": "ISSUE_ONE_SLOT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "A02",
+      "kind": "allowance",
+      "input": {
+        "type": "allowance",
+        "actorGm": false,
+        "gmVerifiedSubscriber": true,
+        "beneficiaryMember": true,
+        "rootClosureValidated": true,
+        "slotExists": false
+      },
+      "expected": "DENY_NOT_GM",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "A03",
+      "kind": "allowance",
+      "input": {
+        "type": "allowance",
+        "actorGm": true,
+        "gmVerifiedSubscriber": false,
+        "beneficiaryMember": true,
+        "rootClosureValidated": true,
+        "slotExists": false
+      },
+      "expected": "DENY_GM_NOT_SUBSCRIBED",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "A04",
+      "kind": "allowance",
+      "input": {
+        "type": "allowance",
+        "actorGm": true,
+        "gmVerifiedSubscriber": true,
+        "beneficiaryMember": false,
+        "rootClosureValidated": true,
+        "slotExists": false
+      },
+      "expected": "DENY_NOT_CAMPAIGN_MEMBER",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "A05",
+      "kind": "allowance",
+      "input": {
+        "type": "allowance",
+        "actorGm": true,
+        "gmVerifiedSubscriber": true,
+        "beneficiaryMember": true,
+        "rootClosureValidated": false,
+        "slotExists": false
+      },
+      "expected": "DENY_INVALID_CLOSURE",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "A06",
+      "kind": "allowance",
+      "input": {
+        "type": "allowance",
+        "actorGm": true,
+        "gmVerifiedSubscriber": true,
+        "beneficiaryMember": true,
+        "rootClosureValidated": true,
+        "slotExists": true
+      },
+      "expected": "RETURN_OCCUPIED_SLOT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "A07",
+      "kind": "allowance",
+      "input": {
+        "type": "allowance",
+        "actorGm": true,
+        "gmVerifiedSubscriber": false,
+        "beneficiaryMember": true,
+        "rootClosureValidated": true,
+        "slotExists": true
+      },
+      "expected": "DENY_GM_NOT_SUBSCRIBED",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "A08",
+      "kind": "allowance",
+      "input": {
+        "type": "allowance",
+        "actorGm": true,
+        "gmVerifiedSubscriber": true,
+        "beneficiaryMember": true,
+        "rootClosureValidated": false,
+        "slotExists": true
+      },
+      "expected": "DENY_INVALID_CLOSURE",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "A09",
+      "kind": "allowance",
+      "input": {
+        "type": "allowance",
+        "actorGm": false,
+        "gmVerifiedSubscriber": true,
+        "beneficiaryMember": true,
+        "rootClosureValidated": true,
+        "slotExists": false
+      },
+      "expected": "DENY_NOT_GM",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "A10",
+      "kind": "allowance",
+      "input": {
+        "type": "allowance",
+        "actorGm": true,
+        "gmVerifiedSubscriber": true,
+        "beneficiaryMember": false,
+        "rootClosureValidated": true,
+        "slotExists": true
+      },
+      "expected": "DENY_NOT_CAMPAIGN_MEMBER",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "G01",
+      "kind": "grant",
+      "input": {
+        "type": "grant",
+        "accountSuspended": false,
+        "revocationEpochStale": false,
+        "hasFinitePaidThrough": true,
+        "revoked": false,
+        "subjectMatches": true,
+        "campaignScopeValid": true,
+        "sourceProofValid": true
+      },
+      "expected": "DERIVE_SCOPED_GRANT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "G02",
+      "kind": "grant",
+      "input": {
+        "type": "grant",
+        "accountSuspended": true,
+        "revocationEpochStale": false,
+        "hasFinitePaidThrough": true,
+        "revoked": false,
+        "subjectMatches": true,
+        "campaignScopeValid": true,
+        "sourceProofValid": true
+      },
+      "expected": "DENY_KNOWN_SUSPENSION",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "G03",
+      "kind": "grant",
+      "input": {
+        "type": "grant",
+        "accountSuspended": false,
+        "revocationEpochStale": true,
+        "hasFinitePaidThrough": true,
+        "revoked": false,
+        "subjectMatches": true,
+        "campaignScopeValid": true,
+        "sourceProofValid": true
+      },
+      "expected": "DENY_STALE_GRANT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "G04",
+      "kind": "grant",
+      "input": {
+        "type": "grant",
+        "accountSuspended": false,
+        "revocationEpochStale": false,
+        "hasFinitePaidThrough": false,
+        "revoked": false,
+        "subjectMatches": true,
+        "campaignScopeValid": true,
+        "sourceProofValid": true
+      },
+      "expected": "DENY_NO_FINITE_PERIOD",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "G05",
+      "kind": "grant",
+      "input": {
+        "type": "grant",
+        "accountSuspended": false,
+        "revocationEpochStale": false,
+        "hasFinitePaidThrough": true,
+        "revoked": true,
+        "subjectMatches": true,
+        "campaignScopeValid": true,
+        "sourceProofValid": true
+      },
+      "expected": "DENY_REVOKED",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "G06",
+      "kind": "grant",
+      "input": {
+        "type": "grant",
+        "accountSuspended": false,
+        "revocationEpochStale": false,
+        "hasFinitePaidThrough": true,
+        "revoked": false,
+        "subjectMatches": false,
+        "campaignScopeValid": true,
+        "sourceProofValid": true
+      },
+      "expected": "DENY_CROSS_SUBJECT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "G07",
+      "kind": "grant",
+      "input": {
+        "type": "grant",
+        "accountSuspended": false,
+        "revocationEpochStale": false,
+        "hasFinitePaidThrough": true,
+        "revoked": false,
+        "subjectMatches": true,
+        "campaignScopeValid": false,
+        "sourceProofValid": true
+      },
+      "expected": "DENY_CAMPAIGN",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "G08",
+      "kind": "grant",
+      "input": {
+        "type": "grant",
+        "accountSuspended": false,
+        "revocationEpochStale": false,
+        "hasFinitePaidThrough": true,
+        "revoked": false,
+        "subjectMatches": true,
+        "campaignScopeValid": true,
+        "sourceProofValid": false
+      },
+      "expected": "DENY_SOURCE",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "G09",
+      "kind": "grant",
+      "input": {
+        "type": "grant",
+        "accountSuspended": false,
+        "revocationEpochStale": false,
+        "hasFinitePaidThrough": true,
+        "revoked": true,
+        "subjectMatches": true,
+        "campaignScopeValid": true,
+        "sourceProofValid": true
+      },
+      "expected": "DENY_REVOKED",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "G10",
+      "kind": "grant",
+      "input": {
+        "type": "grant",
+        "accountSuspended": false,
+        "revocationEpochStale": true,
+        "hasFinitePaidThrough": true,
+        "revoked": false,
+        "subjectMatches": true,
+        "campaignScopeValid": true,
+        "sourceProofValid": true
+      },
+      "expected": "DENY_STALE_GRANT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "M01",
+      "kind": "money",
+      "input": {
+        "type": "money",
+        "verifiedProviderFact": true,
+        "currencyValid": true,
+        "duplicateExternalLine": false,
+        "positiveMinorAmount": true,
+        "correspondingLiability": true
+      },
+      "expected": "POST_BALANCED_FACT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "M02",
+      "kind": "money",
+      "input": {
+        "type": "money",
+        "verifiedProviderFact": false,
+        "currencyValid": true,
+        "duplicateExternalLine": false,
+        "positiveMinorAmount": true,
+        "correspondingLiability": true
+      },
+      "expected": "HOLD_UNVERIFIED_MONEY",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "M03",
+      "kind": "money",
+      "input": {
+        "type": "money",
+        "verifiedProviderFact": true,
+        "currencyValid": false,
+        "duplicateExternalLine": false,
+        "positiveMinorAmount": true,
+        "correspondingLiability": true
+      },
+      "expected": "HOLD_CURRENCY",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "M04",
+      "kind": "money",
+      "input": {
+        "type": "money",
+        "verifiedProviderFact": true,
+        "currencyValid": true,
+        "duplicateExternalLine": true,
+        "positiveMinorAmount": true,
+        "correspondingLiability": true
+      },
+      "expected": "ACK_ALREADY_POSTED",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "M05",
+      "kind": "money",
+      "input": {
+        "type": "money",
+        "verifiedProviderFact": true,
+        "currencyValid": true,
+        "duplicateExternalLine": false,
+        "positiveMinorAmount": false,
+        "correspondingLiability": true
+      },
+      "expected": "REJECT_AMOUNT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "M06",
+      "kind": "money",
+      "input": {
+        "type": "money",
+        "verifiedProviderFact": true,
+        "currencyValid": true,
+        "duplicateExternalLine": false,
+        "positiveMinorAmount": true,
+        "correspondingLiability": false
+      },
+      "expected": "REJECT_UNBALANCED",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "M07",
+      "kind": "money",
+      "input": {
+        "type": "money",
+        "verifiedProviderFact": true,
+        "currencyValid": true,
+        "duplicateExternalLine": true,
+        "positiveMinorAmount": true,
+        "correspondingLiability": false
+      },
+      "expected": "ACK_ALREADY_POSTED",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "M08",
+      "kind": "money",
+      "input": {
+        "type": "money",
+        "verifiedProviderFact": false,
+        "currencyValid": true,
+        "duplicateExternalLine": true,
+        "positiveMinorAmount": true,
+        "correspondingLiability": true
+      },
+      "expected": "HOLD_UNVERIFIED_MONEY",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "M09",
+      "kind": "money",
+      "input": {
+        "type": "money",
+        "verifiedProviderFact": true,
+        "currencyValid": false,
+        "duplicateExternalLine": false,
+        "positiveMinorAmount": false,
+        "correspondingLiability": true
+      },
+      "expected": "HOLD_CURRENCY",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "M10",
+      "kind": "money",
+      "input": {
+        "type": "money",
+        "verifiedProviderFact": true,
+        "currencyValid": true,
+        "duplicateExternalLine": false,
+        "positiveMinorAmount": false,
+        "correspondingLiability": true
+      },
+      "expected": "REJECT_AMOUNT",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "O01",
+      "kind": "outbox",
+      "input": {
+        "type": "outbox",
+        "transactionCommitted": true,
+        "publishedOnce": false,
+        "consumerIdempotent": true
+      },
+      "expected": "PUBLISH_OUTBOX_MESSAGE",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "O02",
+      "kind": "outbox",
+      "input": {
+        "type": "outbox",
+        "transactionCommitted": false,
+        "publishedOnce": false,
+        "consumerIdempotent": true
+      },
+      "expected": "NO_OUTBOX_VISIBLE",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "O03",
+      "kind": "outbox",
+      "input": {
+        "type": "outbox",
+        "transactionCommitted": true,
+        "publishedOnce": true,
+        "consumerIdempotent": true
+      },
+      "expected": "ACK_DELIVERY",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "O04",
+      "kind": "outbox",
+      "input": {
+        "type": "outbox",
+        "transactionCommitted": true,
+        "publishedOnce": false,
+        "consumerIdempotent": false
+      },
+      "expected": "RETRY_SAME_EVENT_ID",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "O05",
+      "kind": "outbox",
+      "input": {
+        "type": "outbox",
+        "transactionCommitted": false,
+        "publishedOnce": true,
+        "consumerIdempotent": true
+      },
+      "expected": "NO_OUTBOX_VISIBLE",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "O06",
+      "kind": "outbox",
+      "input": {
+        "type": "outbox",
+        "transactionCommitted": true,
+        "publishedOnce": true,
+        "consumerIdempotent": false
+      },
+      "expected": "ACK_DELIVERY",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "O07",
+      "kind": "outbox",
+      "input": {
+        "type": "outbox",
+        "transactionCommitted": false,
+        "publishedOnce": false,
+        "consumerIdempotent": false
+      },
+      "expected": "NO_OUTBOX_VISIBLE",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "O08",
+      "kind": "outbox",
+      "input": {
+        "type": "outbox",
+        "transactionCommitted": true,
+        "publishedOnce": false,
+        "consumerIdempotent": true
+      },
+      "expected": "PUBLISH_OUTBOX_MESSAGE",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "O09",
+      "kind": "outbox",
+      "input": {
+        "type": "outbox",
+        "transactionCommitted": true,
+        "publishedOnce": true,
+        "consumerIdempotent": true
+      },
+      "expected": "ACK_DELIVERY",
+      "evidence_grade": "REFERENCE_ONLY"
+    },
+    {
+      "id": "O10",
+      "kind": "outbox",
+      "input": {
+        "type": "outbox",
+        "transactionCommitted": false,
+        "publishedOnce": false,
+        "consumerIdempotent": true
+      },
+      "expected": "NO_OUTBOX_VISIBLE",
+      "evidence_grade": "REFERENCE_ONLY"
+    }
+  ],
+  "concurrency_toy": {
+    "sequential_attempts": 100,
+    "unique_slot_count": 1,
+    "ignored_conflicts": 99,
+    "real_postgresql_concurrency": "NOT_RUN"
+  }
+}
