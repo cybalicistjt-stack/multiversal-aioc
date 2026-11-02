@@ -7,7 +7,7 @@ export function issueLabLease(privateKey,claims) {
     !Number.isSafeInteger(claims.issuedAt)||!Number.isSafeInteger(claims.expiresAt)||
     !Number.isSafeInteger(claims.paidThrough)||claims.expiresAt<=claims.issuedAt||
     claims.expiresAt>claims.paidThrough)throw Error("INVALID_FINITE_LEASE");
- const payload=encode({issuer:"multiversal-lab",audience:"offline-content-lab",...claims});
+ const payload=encode({...claims,issuer:"multiversal-lab",audience:"offline-content-lab"});
  return {payload,signature:sign(null,Buffer.from(payload),privateKey).toString("base64url")};
 }
 export function verifyLabLease(publicKey,envelope,request){

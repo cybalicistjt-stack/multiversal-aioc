@@ -34,7 +34,8 @@ test("lookup outage never grants rights; refund/dispute is held until owner poli
  const l=new FakeBillingLedger();l.bind({provider:"fake",environment:"sandbox",customer:"cust-A",subject:"Raven1"});
  assert.equal(l.ingest(evt(),()=>{throw Error("offline")}).kind,"RETRY_LOOKUP");
  assert.equal(l.projections.size,0);
- assert.equal(l.ingest(evt("later"),()=>paid()).kind,"APPLIED_CURRENT");
+ assert.equal(l.ingest(evt(),()=>paid()).kind,"APPLIED_CURRENT");
+ assert.equal(l.ingest(evt(),()=>paid()).kind,"ACK_DUPLICATE");
  const q=l.ingest(evt("refund"),()=>paid(2,{refundOrDispute:true}));
  assert.equal(q.projection.refundPolicyPending,true);
  assert.equal(l.evaluate({provider:"fake",environment:"sandbox",customer:"cust-A",subject:"Raven1",now:1500}),false);

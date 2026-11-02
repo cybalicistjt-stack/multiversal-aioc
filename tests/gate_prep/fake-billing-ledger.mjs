@@ -4,6 +4,7 @@ export class FakeBillingLedger {
   constructor() {
     this.customerBindings = new Map();
     this.inbox = new Map();
+    this.appliedEvents = new Set();
     this.projections = new Map();
     this.outbox = [];
     this.quarantine = [];
@@ -23,7 +24,8 @@ export class FakeBillingLedger {
     const seen=this.inbox.get(eventKey);
     if (seen !== undefined) {
       if (seen !== digest) {this.quarantine.push({eventKey,reason:"CONFLICTING_DUPLICATE"});return {kind:"QUARANTINE_CONFLICT"};}
-      return {kind:"ACK_DUPLICATE"};
+      if (this.appliedEvents.has(eventKey)) return {kind:"ACK_DUPLICATE"};
+      // Persisted inbox but provider lookup previously failed: retry safely.
     }
     const owner=this.customerBindings.get(JSON.stringify([event.provider,event.environment,event.customer]));
     if (!owner) return {kind:"QUARANTINE_UNKNOWN_CUSTOMER"};
@@ -35,7 +37,7 @@ export class FakeBillingLedger {
         snapshot.revision<1) {this.quarantine.push({eventKey,reason:"BAD_CURRENT_SNAPSHOT"});return {kind:"QUARANTINE_SNAPSHOT"};}
     const pkey=JSON.stringify([event.provider,event.environment,event.customer]);
     const prev=this.projections.get(pkey);
-    if(prev && snapshot.revision<=prev.revision) return {kind:"STALE_CURRENT_SNAPSHOT"};
+    if(prev && snapshot.revision<=prev.revision) {this.appliedEvents.add(eventKey);return {kind:"STALE_CURRENT_SNAPSHOT"};}
     const paidPeriod= snapshot.invoicePaid===true && typeof snapshot.invoiceId==="string" &&
        Number.isSafeInteger(snapshot.paidThrough) && snapshot.paidThrough>0;
     const paidThrough=paidPeriod ? Math.max(prev?.paidThrough??0,snapshot.paidThrough) : (prev?.paidThrough??0);
@@ -44,6 +46,7 @@ export class FakeBillingLedger {
        securityHold:snapshot.securityHold===true,
        refundPolicyPending:snapshot.refundOrDispute===true};
     this.projections.set(pkey,projection);
+    this.appliedEvents.add(eventKey);
     this.outbox.push({eventId:"fake-billing:"+pkey+":"+projection.revision, subject:owner, revision:projection.revision});
     return {kind:"APPLIED_CURRENT",projection};
   }
