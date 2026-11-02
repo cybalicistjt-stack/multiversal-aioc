@@ -2,7 +2,7 @@
 
 **Program:** XTRA  
 **Authority:** owner-directed 2026-11-02, recorded through OPS5 CURRENT/LANES after protected-main approval  
-**Status:** XTRA-01/03/04/05/06/07 completed_verified; XTRA-02 blocked_external; XTRA-08 selected pending publication.
+**Status:** XTRA-01/03/04/05/06/07/08 completed_verified; XTRA-02 blocked_external; XTRA-09 selected pending publication.
 **Purpose:** finish independent, useful pre-PCV-03F work and prepare downstream acceptance without bypassing PCV/MTLC/AXI/MCB authorities.
 
 ## Invariants
@@ -93,7 +93,7 @@
 
 **Acceptance.** Policy and runnable synthetic/reference tests have sourced expected outcomes; no live payment, fake security certification or PCV-03F owner mutation.
 
-**Dependency.** XTRA-01. **Current state:** in_progress (selector pending protected-main publication). Source-only SA-BILL threat preflight.
+**Dependency.** XTRA-01. **Current state:** completed_verified. PR1941 published 39 source-linked synthetic security/rights cases and reference oracle (run 41468846013, merge 6841f911); no real product/security proof.
 
 ### XTRA-09 — Hosting, backup, privacy, monitoring and incident readiness
 
@@ -101,7 +101,7 @@
 
 **Acceptance.** Operator runbooks cover scope/auth/rollback/privacy, identify provider account/service gaps and independent recovery evidence before live data trust.
 
-**Dependency.** XTRA-01. **Current state:** planned. No automatic authority from this roadmap.
+**Dependency.** XTRA-01. **Current state:** in_progress (OPS5 selector PR pending). Provider-neutral runbooks and synthetic evidence only; XTRA-02 remains blocked_external.
 
 ### XTRA-10 — MCB market/customer/brand groundwork
 
