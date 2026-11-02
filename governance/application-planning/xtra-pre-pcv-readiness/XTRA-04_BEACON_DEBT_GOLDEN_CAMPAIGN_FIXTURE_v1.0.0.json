@@ -1,0 +1,339 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "XTRA-04-BEACON-DEBT-PREPCV-FIXTURE-001",
+  "status": "SOURCE_GROUNDED_ACCEPTANCE_SPEC_ONLY",
+  "scope": "Pre-PCV-03F first-party golden Campaign fixtures, noncombat/social encounter and transitions; not a second game or Session implementation.",
+  "source_pin": {
+    "aioc_main_sha": "39115ff207c18c1000593f560ca1a4920909b9d0",
+    "application_main_sha": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+    "sources": [
+      {
+        "path": "evidence/content-pipeline/beacon-debt-runtime-instantiated.json",
+        "blob_sha": "8c0493e272c65469003aef374d19144618f525c0",
+        "source_artifact": "BEACON_DEBT_GOLDEN_RUNTIME_INSTANTIATED"
+      },
+      {
+        "path": "evidence/content-pipeline/beacon-debt-runtime-fixture-candidate.json",
+        "blob_sha": "4649ab4c5b395cb88e5a83c07e20ae206232552a",
+        "source_artifact": "BEACON_DEBT_GOLDEN_RUNTIME_FIXTURE_CANDIDATE"
+      },
+      {
+        "path": "content-source/beacon-debt-golden-test-mechanics-v1.0.0.json",
+        "blob_sha": "398c7cbebf3469b195dac40471e8a776a630598e",
+        "source_artifact": "mv.content.beacon-debt.golden-test-mechanics-v1"
+      }
+    ]
+  },
+  "campaign": {
+    "id": "campaign:beacon-debt-golden-01",
+    "title": "Beacon Debt — Deterministic Golden Test",
+    "owner_subject_fixture": "subject:beacon-debt-golden-gm",
+    "adventure_ref": "mv.adventure.beacon-debt.module@1.0.2",
+    "world_ref": "world:havalaea@1.0.0",
+    "setting_ref": "setting:vertigon@1.0.0",
+    "rules_profile": "mv.adventure.beacon-debt.rules.golden-test-core@1.0.0",
+    "pack_lock_digest": "sha256:2b0c3c099e9a334d819bf6307c54554dc8d4cf0ffc72a2eac4f16ec11fd1d7d9",
+    "fixture_session_ref": "session:beacon-debt-golden-01",
+    "fixture_snapshot_ref": "snapshot:beacon-debt-golden-01",
+    "fixture_membership": [
+      {
+        "role": "gm",
+        "subject_id": "subject:beacon-debt-golden-gm"
+      }
+    ],
+    "real_player_membership": "NOT_PRESENT; must come from A3/PCV-03F",
+    "character_bindings_present": 0,
+    "fixture_launch_snapshot_created": true,
+    "real_persistence_executed": false,
+    "live_actions_executed": false
+  },
+  "initial_state": {
+    "stateClass": "synthetic-pre-runtime-fixture-only",
+    "resourceValues": {
+      "mv.adventure.beacon-debt.resource.route-deterioration@1.0.0": 1,
+      "mv.adventure.beacon-debt.resource.refugee-arrival-pressure@1.0.0": 1
+    },
+    "bridgeState": "already-damaged-synthetic-fixture",
+    "routeState": "reduced-passage",
+    "beaconState": "degraded-function",
+    "priorRealSessionOrEventImplied": false,
+    "durableEventsCreated": false
+  },
+  "hidden_information": {
+    "gm_only_until_solved": true,
+    "clue_default": "hidden-until-governed-discovery-or-reveal",
+    "hidden_clue_ids": [
+      "CF-01",
+      "CF-02",
+      "CF-03",
+      "CF-04",
+      "CF-05",
+      "CF-06"
+    ],
+    "initial_player_facts": [
+      "The East route has reduced passage.",
+      "Displaced travelers are arriving and access pressure is rising.",
+      "The Eastern Bridge is already damaged as a synthetic starting condition.",
+      "The East Route Beacon is not functioning normally.",
+      "The Listening Market is a plausible place to investigate route-map purchasing."
+    ],
+    "initial_player_knowledge_created": false
+  },
+  "scenes": [
+    {
+      "step": 1,
+      "scene_id": "scene:beacon-debt:gate-pressure",
+      "scene_type": "social",
+      "source_title": "Gate Pressure",
+      "map_binding": {
+        "gridless": true,
+        "semantic_alternative": "East Gate Interchange queue and access-control area"
+      },
+      "next": [
+        "scene:beacon-debt:damaged-crossing"
+      ],
+      "acceptance_class": "social_encounter_noncombat",
+      "owner": "A5 Scene and A6 action / GM governance; downstream PCV-04 or PCV-05 activation needed for actual shared execution",
+      "actual_executed": false
+    },
+    {
+      "step": 2,
+      "scene_id": "scene:beacon-debt:damaged-crossing",
+      "scene_type": "exploration",
+      "source_title": "Damaged Crossing",
+      "map_binding": {
+        "gridless": true,
+        "semantic_alternative": "Eastern Bridge crossing on the East Transit Spine"
+      },
+      "next": [
+        "scene:beacon-debt:beacon-restoration"
+      ],
+      "acceptance_class": "exploration_transition",
+      "owner": "A5 Scene and A6 action / GM governance; downstream PCV-04 or PCV-05 activation needed for actual shared execution",
+      "actual_executed": false
+    },
+    {
+      "step": 3,
+      "scene_id": "scene:beacon-debt:beacon-restoration",
+      "scene_type": "technical",
+      "source_title": "Beacon Restoration",
+      "map_binding": {
+        "gridless": true,
+        "semantic_alternative": "East Route Beacon service area"
+      },
+      "next": [
+        "scene:beacon-debt:listening-market-investigation"
+      ],
+      "acceptance_class": "technical_resolution",
+      "owner": "A5 Scene and A6 action / GM governance; downstream PCV-04 or PCV-05 activation needed for actual shared execution",
+      "actual_executed": false
+    },
+    {
+      "step": 4,
+      "scene_id": "scene:beacon-debt:listening-market-investigation",
+      "scene_type": "investigation",
+      "source_title": "Listening Market Investigation",
+      "map_binding": {
+        "gridless": true,
+        "semantic_alternative": "The Listening Market"
+      },
+      "next": [
+        "scene:beacon-debt:consequence-return"
+      ],
+      "acceptance_class": "investigation_hidden_clues",
+      "owner": "A5 Scene and A6 action / GM governance; downstream PCV-04 or PCV-05 activation needed for actual shared execution",
+      "actual_executed": false
+    },
+    {
+      "step": 5,
+      "scene_id": "scene:beacon-debt:consequence-return",
+      "scene_type": "consequence",
+      "source_title": "Consequence / Return",
+      "map_binding": {
+        "gridless": true,
+        "semantic_alternative": "East-route consequence and return context"
+      },
+      "next": [],
+      "acceptance_class": "consequence_and_continuity",
+      "owner": "A5 Scene and A6 action / GM governance; downstream PCV-04 or PCV-05 activation needed for actual shared execution",
+      "actual_executed": false
+    }
+  ],
+  "actions": [
+    {
+      "case_id": "XTRA04-A1",
+      "action_ref": "mv.adventure.beacon-debt.action.navigate-crossflow@1.0.0",
+      "target": 12,
+      "fixture_input_total": 12,
+      "predicted_outcome": "success",
+      "success_effect_refs": [],
+      "failure_effect_refs": [
+        "mv.adventure.beacon-debt.effect.route-pressure-advance@1.0.0"
+      ],
+      "source_of_target": "owner-approved packet-local golden mechanics, not universal DC",
+      "player_input_source": "deterministic harness proposal only; no real character stats",
+      "gameplay_execution_status": "NOT_RUN",
+      "governing_action_owner": "MRCS/D28/PPIA and A6 action handler; no direct XTRA mutation"
+    },
+    {
+      "case_id": "XTRA04-A2",
+      "action_ref": "mv.adventure.beacon-debt.action.restore-route-beacon@1.0.0",
+      "target": 15,
+      "fixture_input_total": 15,
+      "predicted_outcome": "success",
+      "success_effect_refs": [
+        "mv.adventure.beacon-debt.effect.route-beacon-restored@1.0.0"
+      ],
+      "failure_effect_refs": [
+        "mv.adventure.beacon-debt.effect.route-pressure-advance@1.0.0"
+      ],
+      "source_of_target": "owner-approved packet-local golden mechanics, not universal DC",
+      "player_input_source": "deterministic harness proposal only; no real character stats",
+      "gameplay_execution_status": "NOT_RUN",
+      "governing_action_owner": "MRCS/D28/PPIA and A6 action handler; no direct XTRA mutation"
+    },
+    {
+      "case_id": "XTRA04-A3",
+      "action_ref": "mv.adventure.beacon-debt.action.request-priority-exception@1.0.0",
+      "target": 15,
+      "fixture_input_total": 15,
+      "predicted_outcome": "success",
+      "success_effect_refs": [
+        "mv.adventure.beacon-debt.effect.priority-exception-granted@1.0.0",
+        "mv.adventure.beacon-debt.effect.refugee-pressure-advance@1.0.0"
+      ],
+      "failure_effect_refs": [],
+      "source_of_target": "owner-approved packet-local golden mechanics, not universal DC",
+      "player_input_source": "deterministic harness proposal only; no real character stats",
+      "gameplay_execution_status": "NOT_RUN",
+      "governing_action_owner": "MRCS/D28/PPIA and A6 action handler; no direct XTRA mutation"
+    }
+  ],
+  "effect_registry": [
+    {
+      "ref": "mv.adventure.beacon-debt.effect.route-pressure-advance@1.0.0",
+      "kind": "resource-delta",
+      "resource_ref": "mv.adventure.beacon-debt.resource.route-deterioration@1.0.0",
+      "delta": 1,
+      "event_draft_type": null,
+      "observed_result": false
+    },
+    {
+      "ref": "mv.adventure.beacon-debt.effect.refugee-pressure-advance@1.0.0",
+      "kind": "resource-delta",
+      "resource_ref": "mv.adventure.beacon-debt.resource.refugee-arrival-pressure@1.0.0",
+      "delta": 1,
+      "event_draft_type": null,
+      "observed_result": false
+    },
+    {
+      "ref": "mv.adventure.beacon-debt.effect.route-beacon-restored@1.0.0",
+      "kind": "event-draft",
+      "resource_ref": null,
+      "delta": null,
+      "event_draft_type": "RouteBeaconFunctionRestored",
+      "observed_result": false
+    },
+    {
+      "ref": "mv.adventure.beacon-debt.effect.priority-exception-granted@1.0.0",
+      "kind": "event-draft",
+      "resource_ref": null,
+      "delta": null,
+      "event_draft_type": "AccessGranted",
+      "observed_result": false
+    }
+  ],
+  "negative_cases": [
+    {
+      "id": "XTRA04-N01",
+      "input": "unauthorized Player requests GM-only CF-01..CF-06 before governed reveal",
+      "expected": "default deny; no private truth in projection/export/search/reconnect",
+      "gate": "A3/A5/A6 and PCV-03F real permission boundary",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "XTRA04-N02",
+      "input": "duplicate accepted action and stale event checkpoint retry",
+      "expected": "single authoritative effect, deterministic catch-up, no duplicate resource delta",
+      "gate": "PCV-03F authoritative Session",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "XTRA04-N03",
+      "input": "missing/stale pack dependency or mismatched snapshot digest",
+      "expected": "block launch or mutation; preserve existing Campaign",
+      "gate": "A2/A5 owner and PCV-03F",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "XTRA04-N04",
+      "input": "attempt to substitute synthetic GM subject for verified distinct human Player",
+      "expected": "deny role/membership assertion without A3 binding",
+      "gate": "PCV-03F installed device proof",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "XTRA04-N05",
+      "input": "no image/media at required semantic map stage",
+      "expected": "gridless semantic-location alternative remains usable; no invented map asset",
+      "gate": "PCV-09 accessibility/asset",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "XTRA04-N06",
+      "input": "attempt to treat candidate action totals as universal DCs or damage/conditions",
+      "expected": "reject cross-profile leakage; first golden mechanics remain noncombat",
+      "gate": "MRCS/D28 rules authority and PCV-04",
+      "status": "NOT_RUN"
+    }
+  ],
+  "future_pcv_integration": [
+    {
+      "id": "PCV-03F",
+      "requirement": "distinct verified identities, permission-bound Campaign membership, server authority/reconnect",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "PCV-04",
+      "requirement": "actual combat encounter, GM adjudication, action/conditions/rules two-human runtime; NOT supplied by Beacon Debt first golden",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "PCV-05",
+      "requirement": "run Beacon Debt noncombat route with event history, discoveries and persistence across two humans",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "PCV-06",
+      "requirement": "real inventory and campaign assets plus representative Earth and alien gaming/wagering coverage; no real-value stakes",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "PCV-09",
+      "requirement": "phone/desktop connected navigation and visual/accessible presentation, no unresolved required art",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "PCV-10",
+      "requirement": "installed two-human noncombat, inventory/resource and combat path, reconnect/recovery plus native packages",
+      "status": "BLOCKED"
+    }
+  ],
+  "rights": {
+    "content_canon_authority": "owner-approved canonical incorporation per source; not a general public/commercial redistribution certificate",
+    "commercial_clearance": "UNVERIFIED_REQUIRES_XTRA05",
+    "nonvisual_fallback": "gridless semantic map described by fixture; no map media generated",
+    "asset_catalog_clearance": "PENDING_XTRA05"
+  },
+  "proof_limits": {
+    "source_definitions_present": true,
+    "deterministic_a5_fixture_present": true,
+    "source_validation_receipt_present": true,
+    "physical_installed_play": false,
+    "actual_two_human_play": false,
+    "actual_combat": false,
+    "creator_content_export": false,
+    "public_release": false
+  },
+  "hand_off_owner": "PCV/MTLC source owners; this manifest cannot mutate live Campaign/Scene/Session."
+}
