@@ -2,7 +2,7 @@
 
 **Program:** XTRA  
 **Authority:** owner-directed 2026-11-02, recorded through OPS5 CURRENT/LANES after protected-main approval  
-**Status:** XTRA-01 completed_verified; XTRA-02 blocked_external; XTRA-03 selected pending publication  
+**Status:** XTRA-01 completed_verified; XTRA-02 blocked_external; XTRA-03 completed_verified; XTRA-04 selected pending publication  
 **Purpose:** finish independent, useful pre-PCV-03F work and prepare downstream acceptance without bypassing PCV/MTLC/AXI/MCB authorities.
 
 ## Invariants
@@ -53,7 +53,7 @@
 
 **Acceptance.** All 25 feature IDs appear once, fresh source/PR evidence links agree, unresolved F012/F017/F024 and other gaps remain visible; publication only after required exact-head gates.
 
-**Dependency.** XTRA-01. **Current state:** in_progress (successor selection pending publication). Source reconciliation only.
+**Dependency.** XTRA-01. **Current state:** completed_verified. PR1927 exact-head source-ledger reconciliation merged at da998b6913c1e4a7aeefebc9c54e9c4072f20832.
 
 ### XTRA-04 — Golden Campaign and source/content fixture package
 
@@ -61,7 +61,7 @@
 
 **Acceptance.** Each chosen golden-path operation has deterministic setup data, expected result, permission context, source/rights reference and assigned PCV acceptance owner.
 
-**Dependency.** XTRA-01. **Current state:** planned. No automatic authority from this roadmap.
+**Dependency.** XTRA-01. **Current state:** in_progress (successor selection pending publication). Independent first-party fixture preparation only.
 
 ### XTRA-05 — Golden-path asset and commercial-rights clearance
 
