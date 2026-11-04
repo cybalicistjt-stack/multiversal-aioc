@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "pxr",
+  "program_id": "PXR",
+  "work_item_id": "PXR-01",
+  "attempt_id": "PXR-01-attempt-001",
+  "status": "in_progress",
+  "completed": false,
+  "implementation_authority": true,
+  "selected_by_owner": "2026-11-03 request for a bounded procedural pixel renderer tranche family plus explicit 2026-11-04 Continue execution direction.",
+  "implementation_branch": "work/pxr01-procedural-quality-gate",
+  "authority_type": "on_demand_independent_renderer_slice",
+  "scope": "Implement and test a real pixel-level procedural drawing engine from current topology/appearance parameters, with Human, four-arm/wing/stinger Vespin and a creator-defined novel nonhumanoid body plan. Evaluate native 128x160, 256x320, 384x480; produce distinct real pixel output under anatomy/material/proportion/pose edits, a real interactive browser probe, visual screenshot comparison against owner reference; no synthetic source-only completion.",
+  "dependencies": {
+    "canonical_species_authority": "governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json",
+    "program": "governance/application-planning/procedural-pixel-renderer/PXR_PROGRAM.md",
+    "backlog": "governance/application-planning/procedural-pixel-renderer/PXR_PROGRAM_BACKLOG.json",
+    "current_product_competitors": [
+      "gpr:PCV-03F",
+      "mtlc:MTLC-14",
+      "axi:AXI-01"
+    ],
+    "pcv03f_required_for_isolated_renderer": false
+  },
+  "acceptance": {
+    "visual_review": "Owner review of real runtime pixel output against attached Vespin target, not assistant self-scoring",
+    "runtime": "Actual repeatable renderer code in Multiversal-app with browser proof; no static illustration swaps",
+    "novelty": "One creator-authored nonhuman topology not hardcoded by species name",
+    "parameters": "Minimum four meaningful independently checked appearance/anatomy mutations per exemplar",
+    "profiles": "Native logical size candidates 128x160, 256x320, 384x480; distinct high-detail native pixels, no 24x32 nearest-neighbor passed as quality",
+    "negative_tests": "Unknown shapes/rig rights and invalid anatomy fail explicitly; no hidden humanoid fallback",
+    "replay": "Exact seed/source fingerprint, deterministic pixel digest and output bytes",
+    "gate": "PXR-02 through PXR-05 blocked until PXR-01 actual owner-visible quality reaches target"
+  },
+  "active_substep": "source_and_real_renderer_vertical_slice",
+  "next_action": "Complete actual generative per-pixel raster and interactive browser exemplar, capture real rendered pixels and independently inspect quality; keep PXR01 in_progress until owner visual acceptance.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "owner_scope_and_work_selection",
+      "evidence": "2026-11-04 user Continue explicitly selects PXR-01 working family; new OPS5 work record and PR1965 governance candidate"
+    },
+    "stop_reason": null
+  },
+  "constraints": {
+    "other_lanes_unchanged": true,
+    "no_public_release": true,
+    "no_paid_provider": true,
+    "no_mock_visual_acceptance": true,
+    "no_rewrite_canon": true,
+    "no_humanoid_fallback": true,
+    "no_product_credits": true
+  },
+  "strict_successor": "No automatic PXR-02. Owner visual approval of actual PXR-01 output required."
+}
