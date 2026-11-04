@@ -7,6 +7,16 @@
 **Tranches:** FIVE, PXR-01 through PXR-05. No automatic PXR-06, no one-tranche-per-species, and no rebranding partial source work as a completed stage.
 **Main goal:** One genuinely parameter-driven, pixel-level character appearance generator, high visual quality and equal coverage for all current Core 26, with open-ended user-created Species using the very same engine.
 
+## Owner art-direction correction — binding for PXR-01 (2026-11-04)
+
+The owner explicitly rejected the previously tested glossy/3D-like, volumetric primitive and low-detail thick-outline cartoon appearance. **The now-authorized visual direction is high-detail, finely painted 2D character illustration with modular separately illustrated anatomical pieces.** The initial full-body *art source* review target is **2048 × 2560 truly authored pixels**, not a 24×32/128×160/384×480 output scaled up to a larger empty canvas. High-resolution source artwork must retain materially fine detail at 100% zoom. Heavy black silhouettes, toon outlines, generic 2.5D surface shading, reconstructed whole-limb chunks presented as rig-ready and coarse nearest-neighbor enlargement are rejected.
+
+This section **supersedes the obsolete volume-generated pixel-construction baseline, source dimension comparisons and material/lighting synthesizer as the PXR-01 art-generation path** elsewhere in this historical program. Smaller CASI full-body, portrait, token and retrobit sizes remain *separate requested delivery profiles or derivatives*, never evidence that the HD master is artistically detailed. The five outcome-based tranches remain intact; no 26-species expansion until owner review of a real high-resolution detailed neutral character and actual source-layer anatomy.
+
+The working implementation in Multiversal-app draft PR #879 is a native-source-painted transparent PNG compositor with per-layer original RGBA SHA-256, parent/pivot poses and fail-closed source provenance. It is still **only a compositor, not the promised finished appearance generator**: 54 independently illustrated neutral Vespin parts, concealed joint surfaces, high-detail appearance variants and their final art rights are missing. No green technical check, generated mood board, schema, mock Vespin or compilation may be recorded as artwork acceptance. Source-art assembly must be parameter-driven: recoloring/mask/marking/pose, swapping independently authored anatomical parts, and cross-species novel topology without a canned whole-character swap. Native 2048×2560 illustrated art, visual review and creator variability must all be proven.
+
+**UI review constraint:** user can inspect source pixels on a phone via a fit-to-screen view or pan/zoom 100% and 200%, without interpreting a low-resolution screenshot as original master detail. Keep owner-approved detailed style reference as the target and explicitly reject later flatter/thicker-outlined boards.
+
 ## 1. Reconciled starting truth
 
 The authoritative OPS5 entrypoint is operations/BOOTSTRAP.md and CURRENT.json. Current Core-26 identity comes from governance/application-planning/species-reconciliation/CORE_26_SPECIES_AUTHORITY_v1.0.0.json, not the older immutable 25-species PPIA evidence. The separate CORE_26_GAME_READY_STANDARD_v1.0.0.json requires equal standards, including morphology, presentation and cross-system reuse.
