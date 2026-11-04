@@ -1,6 +1,6 @@
 # PXR — Procedural Pixel Rendering Recovery
 
-**Status:** PROPOSED, owner-directed family design only; NOT a complete generator, active work selector, or production certification.
+**Status:** PXR-01 OWNER-SELECTED, IN PROGRESS in the proposed OPS5 CURRENT.json projection; PXR-02..05 blocked, no visual-quality acceptance or production certification. Canonical activation requires protected-main publication of PR #1965.
 **Date:** 2026-11-03
 **Owner:** John Brandon Turner
 **Proposed family:** PXR (Procedural Pixel Renderer)
@@ -123,7 +123,7 @@ Risk priority:
 
 ## 8. Governance and authorization
 
-This file and PXR_PROGRAM_BACKLOG.json constitute the proposed tranche family. Creating them does not amend CURRENT.json, add a fourth persistent lane, activate another product work item, grant paid-provider usage, or auto-run a successor. The owner has requested the family; product execution is to be selected through OPS5 while retaining independent GPR PCV-03F, MTLC-14 and AXI branches and their current work.
+This file and PXR_PROGRAM_BACKLOG.json define the bounded five-tranche family, but are not work selectors. Owner Continuation on 2026-11-04 selected PXR-01 as an **on-demand, nonpersistent** implementation lane in the CURRENT.json projection of AIOC PR #1965, with the companion experimental application draft PR #879. This selection becomes canonical only when PR #1965 is durably published under OPS5. The source/CI renderer has not met the visual quality gate, and PXR-02..05 remain blocked. This registration does not grant new spending, public release, a fourth persistent slot, or automatic successor execution. GPR PCV-03F, MTLC-14 and AXI are unaffected.
 
 Do not mark a tranche completed_verified merely because this program is written or because a PR passes source validation. PXR-01 may complete only with **executed interactive art output and owner-visible reference comparison**. Later tranches inherit that quality gate; every unknown remains explicit.
 
