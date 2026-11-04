@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 665,
+  "state_revision": 666,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -176,6 +176,18 @@
       "source_program": "governance/application-planning/gate-preintegration/GATE_PREP_PROGRAM.md",
       "source_backlog": "governance/application-planning/gate-preintegration/GATE_PREP_BACKLOG.json",
       "activation_rule": "GATE-PREP01..04 nonproduction isolated testbed completed; GATE Stage A design remains completed. GATE09 product requires separately explicit owner implementation authorization and PCV03F verified prerequisites; no automatic successor."
+    },
+    "pxr": {
+      "state": "in_progress",
+      "program_id": "PXR",
+      "selected_work_item": "PXR-01",
+      "attempt_id": "PXR-01-attempt-001",
+      "checkpoint_path": "operations/work-items/PXR-01.json",
+      "implementation_branch": "work/pxr01-procedural-quality-gate",
+      "implementation_authority": true,
+      "activation_rule": "Owner 2026-11-03 mandated pixel-level procedural generator recovery for all Core26 and open creator Species; explicit 2026-11-04 Continue selects PXR-01 actual renderer slice as on-demand nonpersistent lane. This does not add persistent slot or mutate GPR PCV-03F, MTLC-14 or AXI. No auto successor or fake visual completion.",
+      "source_authority": "CORE26-CURRENT-01",
+      "validation_profile_id": "PXR-01"
     }
   },
   "truth_rules": {
@@ -215,7 +227,7 @@
     "ops5_agent_completion": "Worker started, input accepted, artifact produced, focused check, real-boundary validation, owner acceptance and publication are distinct; follow current operations guards and real-source proof; do not add per-status journal receipts.",
     "ops5_bridge_fallback": "Missing local index or unverified host skill never blocks authorized work. Read relevant current source directly with GitHub tools; avoid compulsory research on trivial tasks."
   },
-  "next_project_action": "GATE-PREP01..04 isolated testbed verified and terminal. GATE09 backend/PCV service and GATE10 provider remain owner-gated. PCV03F in progress; preserve PCV/GPR, MTLC, AXI, CWKS lanes.",
+  "next_project_action": "PXR-01 owner-selected on-demand quality-first procedural pixel-renderer slice is in_progress independently of PCV-03F, MTLC-14 and AXI. PXR-01 must deliver real interactive source-generated high-detail pixel variation across Human, canonical Vespin and a user-defined novel shape, with owner visual review; PXR-02 blocked pending proof. Other active lanes continue unchanged.",
   "completed_programs": {
     "UISR": {
       "program_id": "UISR",
