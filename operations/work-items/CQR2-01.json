@@ -105,7 +105,20 @@
       "Advancing shared owner verdicts or claiming commercial readiness from unit tests/fixtures/source presence",
       "Merging review PR into product main; disturbing protected OPS5 persistent GPR/CWKS/MTLC lanes",
       "AI/canon, source rights, public release, subscription charges, user data or finance provider changes"
-    ]
+    ],
+    "v2_owner_approval": "2026-11-05: owner explicitly approves exhaustive CQR coverage correction across all three review tracks, including all 5213 paths, 2647 code, 2760 quality checks and behavior-level audit, without product changes",
+    "v2_parent_program": "docs/commercial-quality-review/CQR_V2_PROGRAM_PLAN.md",
+    "v2_parent_all_path_assignments": "docs/commercial-quality-review/CQR_V2_ALL_PATH_ASSIGNMENTS.json",
+    "v2_path_ledger": "docs/commercial-quality-review/tracks/cqr2/FILE_OBLIGATIONS_V2.json",
+    "v2_behavior_discovery": "docs/commercial-quality-review/tracks/cqr2/SYSTEM_BEHAVIOR_DISCOVERY_V2.json",
+    "v2_dimension_obligations": "docs/commercial-quality-review/tracks/cqr2/DIMENSION_OBLIGATIONS_V2.json",
+    "v2_work_path": "docs/commercial-quality-review/tracks/cqr2/WORK_PATH_V2.md",
+    "v2_execution_batches": "docs/commercial-quality-review/tracks/cqr2/EXECUTION_BATCHES_V2.json",
+    "v2_routed_frozen_paths": 1770,
+    "v2_routed_code_files": 1321,
+    "v2_quality_dimensions": 920,
+    "v2_bounded_batches": 18,
+    "v2_replaces_original_92_owner_split": false
   },
   "acceptance": [
     "All 92 assigned system IDs appear exactly once in frozen CQR split manifest and own worklist",
@@ -113,10 +126,13 @@
     "Every completed assessment is source/evidence-pinned; S0/S1/S2/S3/S4 not conflated; unavailable installed proof remains open",
     "Related PR/showcase cases are linked and examined; cross-track changes never made in-place",
     "Track status/review output is committed on own branch, independently verifiable, and draft PR remains open until final CQR reconciliation",
-    "OPS5 CURRENT/LANES, owner work item, three branches/draft PRs and split manifest agree, without changing persistent lane selection"
+    "OPS5 CURRENT/LANES, owner work item, three branches/draft PRs and split manifest agree, without changing persistent lane selection",
+    "V2 completeness: inspect/triage every exact source path in the lane ledger, including noncode/source-canon obligations, and enumerate each real behavior, negative case, consumer, and source-less requirement; do not confuse mapped files with inspected behavior.",
+    "V2 evidence: preserve all 920 ten-dimension obligations, original showcase/PR/finding cases, source-exact inputs and S2, genuine customer-mounted S3, and explicit bounded owner S4; all 92 units remain open until proven.",
+    "V2 staged schedule: every assigned file appears exactly once in EXECUTION_BATCHES_V2.json with a bounded number of paths; continue through batches without idle runner polling or tiny handoffs; cross-track provenance and current-head deltas are independently reconciled."
   ],
-  "active_substep": "ready_for_independent_owner_continue",
-  "next_action": "Bootstrap OPS5, select cqr2, read exactly this work item and docs/commercial-quality-review/tracks/cqr2/WORKLIST.json, then perform all possible read-only review on the 92 exclusive units and commit receipts only inside own track.",
+  "active_substep": "CQR_V2_FILE_AND_BEHAVIOR_REVIEW_BATCHES_READY_NOT_ACCEPTED",
+  "next_action": "Bootstrap OPS5 and select cqr2. Read CQR_V2_PROGRAM_PLAN.md and docs/commercial-quality-review/tracks/cqr2/WORK_PATH_V2.md, then docs/commercial-quality-review/tracks/cqr2/EXECUTION_BATCHES_V2.json; begin CQR2-V2-001, directly inspect every exact-file SHA/role, enumerate all behaviors and consumers, run valid S2/S3 tests where available, record remaining blockers without owner verdict, and continue through all 18 bounded review batches. No product code changes, releases, merges, or implicit completion.",
   "constraints": {
     "review_only": true,
     "product_code_changes_forbidden": true,
