@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 665,
+  "state_revision": 666,
   "default_lane": "gpr",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -176,6 +176,48 @@
       "source_program": "governance/application-planning/gate-preintegration/GATE_PREP_PROGRAM.md",
       "source_backlog": "governance/application-planning/gate-preintegration/GATE_PREP_BACKLOG.json",
       "activation_rule": "GATE-PREP01..04 nonproduction isolated testbed completed; GATE Stage A design remains completed. GATE09 product requires separately explicit owner implementation authorization and PCV03F verified prerequisites; no automatic successor."
+    },
+    "cqr1": {
+      "state": "selected_not_started",
+      "program_id": "CQR",
+      "selected_work_item": "CQR1-01",
+      "attempt_id": "CQR1-01-attempt-001",
+      "checkpoint_path": "operations/work-items/CQR1-01.json",
+      "review_branch": "review/cqr1-visual-creator-ux-20261105",
+      "application_draft_pr": 881,
+      "implementation_authority": false,
+      "execution_authority": "owner-selected, read-only commercial quality assessment only",
+      "source_manifest": "docs/commercial-quality-review/TRACK_SPLIT_V1.json",
+      "review_worklist": "docs/commercial-quality-review/tracks/cqr1/WORKLIST.json",
+      "activation_rule": "Exactly one CQR assessment lane selected per conversation; 92 exclusive source review units; write only the track-local app repo review prefix. No owner verdict inferred, no product implementation, no app main publication, no controls over GPR/CWKS/MTLC, no root CQR register edits; final consolidation requires all three completed and explicit owner review."
+    },
+    "cqr2": {
+      "state": "selected_not_started",
+      "program_id": "CQR",
+      "selected_work_item": "CQR2-01",
+      "attempt_id": "CQR2-01-attempt-001",
+      "checkpoint_path": "operations/work-items/CQR2-01.json",
+      "review_branch": "review/cqr2-gameplay-worlds-20261105",
+      "application_draft_pr": 882,
+      "implementation_authority": false,
+      "execution_authority": "owner-selected, read-only commercial quality assessment only",
+      "source_manifest": "docs/commercial-quality-review/TRACK_SPLIT_V1.json",
+      "review_worklist": "docs/commercial-quality-review/tracks/cqr2/WORKLIST.json",
+      "activation_rule": "Exactly one CQR assessment lane selected per conversation; 92 exclusive source review units; write only the track-local app repo review prefix. No owner verdict inferred, no product implementation, no app main publication, no controls over GPR/CWKS/MTLC, no root CQR register edits; final consolidation requires all three completed and explicit owner review."
+    },
+    "cqr3": {
+      "state": "selected_not_started",
+      "program_id": "CQR",
+      "selected_work_item": "CQR3-01",
+      "attempt_id": "CQR3-01-attempt-001",
+      "checkpoint_path": "operations/work-items/CQR3-01.json",
+      "review_branch": "review/cqr3-platform-lifecycle-20261105",
+      "application_draft_pr": 883,
+      "implementation_authority": false,
+      "execution_authority": "owner-selected, read-only commercial quality assessment only",
+      "source_manifest": "docs/commercial-quality-review/TRACK_SPLIT_V1.json",
+      "review_worklist": "docs/commercial-quality-review/tracks/cqr3/WORKLIST.json",
+      "activation_rule": "Exactly one CQR assessment lane selected per conversation; 92 exclusive source review units; write only the track-local app repo review prefix. No owner verdict inferred, no product implementation, no app main publication, no controls over GPR/CWKS/MTLC, no root CQR register edits; final consolidation requires all three completed and explicit owner review."
     }
   },
   "truth_rules": {
