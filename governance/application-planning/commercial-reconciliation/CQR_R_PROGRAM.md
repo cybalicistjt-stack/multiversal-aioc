@@ -71,7 +71,7 @@ V6 is **lineage and proposed dependency mapping**, NOT complete semantic owner/c
 
 ## V7 — enumerated dependency closure and exact customer source cases (2026-11-06)
 
-Application draft PR #884 exact planning head `845812336fa582a69fd93d4317203dc9221c213d` preserves the V6 layer and adds:
+Application draft PR #884 exact planning head `e647e158b2696e1e053e4af7db9ee1e684dd084a` preserves the V6 layer and adds:
 
 1. `docs/commercial-quality-review/rehabilitation/DEPENDENCY_RECONCILIATION_V7.md` as the readable end-to-end proposed dependency report;
 2. `docs/commercial-quality-review/rehabilitation/GROUP_REVIEW_DEPENDENCY_CLOSURE_V7.json` for the transitive 44-group preliminary review DAG across **91 historical family, 14 overlay, 22 goal, 64 client and 96 contracts module** source records;
@@ -83,4 +83,10 @@ Application draft PR #884 exact planning head `845812336fa582a69fd93d4317203dc92
 
 **This evidence is not CQR-R03/R05/R09 completion**: group count still unsettled, source-only review group dependencies are not authenticated write-owners or runtime calls, and full transitive program execution/real acceptance remains open. Keep CQR-R01..R12 `PLANNED_NOT_EXECUTED` until their per-stage gates and owner decisions genuinely pass. No new OPS5 main registration, product implementation, billing or public release authority is granted by this source draft.
 
-**V7 28-program correction:** `docs/commercial-quality-review/rehabilitation/PROGRAM_28_SOURCE_STATUS_CROSSCHECK_V7.json` on App draft head `845812336fa582a69fd93d4317203dc9221c213d` read one exact historical source for **all 28** no-machine-backlog directories (17 prior ranked + 11 later fallback), and correctly gives OPS5 `CORE26-CURRENT-01` v1.0.0 precedence over the historical species v0.1.0. This is discovery/status provenance, not actual source semantic owner or app S3/S4. The V7 static/negative check receipt now records **19/19** checks passing.
+**V7 28-program correction:** `docs/commercial-quality-review/rehabilitation/PROGRAM_28_SOURCE_STATUS_CROSSCHECK_V7.json` on App draft head `e647e158b2696e1e053e4af7db9ee1e684dd084a` read one exact historical source for **all 28** no-machine-backlog directories (17 prior ranked + 11 later fallback), and correctly gives OPS5 `CORE26-CURRENT-01` v1.0.0 precedence over the historical species v0.1.0. This is discovery/status provenance, not actual source semantic owner or app S3/S4. The V7 static/negative check receipt now records **19/19** checks passing.
+
+## V8 — actual source-anchored owner/API/consumer crosswalk (2026-11-06)
+
+App draft PR #884 exact head `e647e158b2696e1e053e4af7db9ee1e684dd084a` adds `docs/commercial-quality-review/rehabilitation/DEPENDENCY_RECONCILIATION_V8.md`, `OWNER_API_CONSUMER_TRACE_V8.json` (23 source-confirmed relationships/41 anchors from frozen App main), and `CANDIDATE_PCV03F_SERVICE_CONSUMER_V8.json` (22 source-confirmed relationships/42 anchors from unmerged GPR PCV-03F candidate `70b3028ee52c1860b6411f83c93da28b3c0063be`). This corrects a main-only reading: the PCV-03F **candidate** already has an installed Account and Session controller path, conditional OIDC/verified-account backend, PostgreSQL service implementation and allowance/offline/rights source. Source existence is not an installed S3 or owner S4 pass; no code or selected GPR/MTLC/AXI/GATE implementation authority was mutated.
+
+`PCV03F_CANDIDATE_TEST_SOURCE_CENSUS_V8.json` inventories eight candidate test sources with 111 named source test callsites, **none run by this CQR source study**. `CRITICAL_G0_BOUNDARY_CHARTERS_V8.json` defines nine scoped positive/negative/recovery customer acceptance requirements, and `DEPENDENCY_VALIDATION_V8.json` records **20/20 source-only checks**. This is R03/R09 **evidence progress** but NOT R03, R07, R08 or R09 completion; causal dedup, all current semantic write owners, S3 execution, explicit owner S4, full-group DAG/resource signoff and OPS5 protected-main publication are still open. No product fixes, bills or release authority.
