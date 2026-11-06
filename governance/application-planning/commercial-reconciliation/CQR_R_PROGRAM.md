@@ -56,7 +56,7 @@ The 12 reconciliation stages are unchanged and remain planning-only; the overall
 
 ## V6 source-only dependency closure — 2026-11-06
 
-The owner requested dependency mapping for **everything**, not only the CQR-R stage DAG. Multiversal-app draft PR #884 current source planning head `1d562d755c3b2cfd6f880484b045194ae5fa9b33` now includes:
+The owner requested dependency mapping for **everything**, not only the CQR-R stage DAG. Multiversal-app draft PR #884 current source planning head `0d5061098fc2bbfb6c1fb3d3390baaf66eb2a0df` now includes:
 
 - `docs/commercial-quality-review/rehabilitation/DEPENDENCY_RECONCILIATION_V6.md` — readable six-type dependency/ownership/acceptance protocol and all **44 previous provisional** group dependencies plus proposed cross-system prerequisite edges;
 - `docs/commercial-quality-review/rehabilitation/DEPENDENCY_ATLAS_V6.json` — **91** historical families, **14** new owner-scope overlays, **22** owner directives, **64** client source modules, **96** contract modules, **44** provisional rehabilitation groups, **12** stages;
@@ -65,4 +65,6 @@ The owner requested dependency mapping for **everything**, not only the CQR-R st
 
 V6 is **lineage and proposed dependency mapping**, NOT complete semantic owner/consumer verification, real app runtime S3, exact owner S4 or stage R09 completion. The prior 44-group count remains provisional: RBCE creator, Retrobit skin, MAL games and PCV Games & Wagering must have independently reviewed boundaries. Preserve the 28 AIOC directories without machine-status evidence, 17 unmatched client aliases, 60 unmatched contracts aliases and all missing real usage/permissions checks. The prior CQR stages remain `PLANNED_NOT_EXECUTED`; no product authority, protected main merge, monetary vendor action, new release approval or CQR review termination follows from these new artifacts.
 
-**V6 static verification:** `docs/commercial-quality-review/rehabilitation/DEPENDENCY_VALIDATION_V6.json` on exact draft application head `1d562d755c3b2cfd6f880484b045194ae5fa9b33` records **17/17 source-structure and negative DAG checks passing** (including combined group graph, 12-stage graph, all 1,858 named records, and path parity). This does not exercise app code, Windows/Android devices, real app S3 or owner S4.
+**V6 static verification:** `docs/commercial-quality-review/rehabilitation/DEPENDENCY_VALIDATION_V6.json` on exact draft application head `0d5061098fc2bbfb6c1fb3d3390baaf66eb2a0df` records **17/17 source-structure and negative DAG checks passing** (including combined group graph, 12-stage graph, all 1,858 named records, and path parity). This does not exercise app code, Windows/Android devices, real app S3 or owner S4.
+
+**V6 alternative program sources:** app draft `docs/commercial-quality-review/rehabilitation/PROGRAM_28_ALTERNATE_SOURCE_INDEX_V6.json` inventories the 28 AIOC program directories absent from the V5 convention-based status scan; 17 priority documents were actually read and 11 have no high-priority alternate by naming rule. These are pinned source candidates, not interpreted current-status truth, real runtime or owner acceptance.
