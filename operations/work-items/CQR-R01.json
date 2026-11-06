@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "lane": "cqr-reconcile",
+  "program_id": "CQR-R",
+  "work_item_id": "CQR-R01",
+  "attempt_id": "CQR-R01-attempt-001",
+  "status": "selected_not_started",
+  "completed": false,
+  "implementation_authority": false,
+  "selected_by_owner": "2026-11-06 owner supplied all three CQR review ZIP exports and explicitly directed planning the entire reconciliation family and recording it into OPS5.",
+  "implementation_branch": null,
+  "program_planning_branch": "ops/cqr-reconcile-family-20261106",
+  "app_planning_pr": 884,
+  "app_planning_head": "c71d68cdd40e5e2d161ea358586e4ba6726fccc9",
+  "scope": {
+    "title": "CQR-R01 intake, package verification and complete cross-review reconciliation program registration",
+    "source_reviews": [
+      881,
+      882,
+      883
+    ],
+    "review_coordinator": 880,
+    "source_baseline": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+    "root_records": 58,
+    "local_records": {
+      "cqr1": 46,
+      "cqr2": 27,
+      "cqr3": 19
+    },
+    "total_source_records": 150,
+    "unique_defects": "UNRESOLVED_PENDING_CQR_R05",
+    "systems": 276,
+    "quality_dimensions": 2760,
+    "source_files": 5213,
+    "code_files": 2647,
+    "showcases": 60,
+    "real_S3_completed": 0,
+    "historical_owner_rejections": 3,
+    "program_stages": 12,
+    "rehabilitation_envelopes": 16
+  },
+  "backlog": "governance/application-planning/commercial-reconciliation/CQR_R_PROGRAM_BACKLOG.json",
+  "source_plan": "docs/commercial-quality-review/rehabilitation/RECONCILIATION_FAMILY.json",
+  "acceptance": [
+    "Three uploaded ZIP SHA256 digests and internal manifests checked; all 4 DOCX and 54 PNG sources classified; no false S3 claims.",
+    "12 unique CQR-R01..R12 stages in acyclic dependency graph with testable acceptance, negative cases and explicit S0–S4 gates.",
+    "Exactly 150 source records present and assigned in RHB intake, no claim all unique; original owner art decisions immutable.",
+    "Preserve 60 exact showcase obligations with 0 current S3 proof; real screenshots required for owner assessment.",
+    "Only on-demand reconciliation lane is added to proposed OPS5 CURRENT/LANES; persistent selections and active GATE/AXI/GPR/etc unchanged.",
+    "OPS5 exact-head candidate, validation and owner/protected publication must precede any claim that this registration is live on main."
+  ],
+  "active_substep": "PROGRAM_DESIGN_AND_DRAFT_OPS5_REGISTRATION_PENDING_PUBLICATION",
+  "next_action": "When the stacked OPS5 registration is published, select cqr-reconcile from explicit user intent, execute CQR-R01 source intake receipt, then progress through CQR-R12 per program DAG; no product code changes. Each source head drift requires recheck. If owner evidence is unavailable, preserve blocker and continue independent analysis.",
+  "constraints": {
+    "no_product_fixes": true,
+    "no_ops5_persistent_selector_change": true,
+    "no_spending": true,
+    "no_billing": true,
+    "no_live_data": true,
+    "do_not_edit_sibling_cqr_branches": true,
+    "owner_s4_only": true,
+    "real_s3_required": true,
+    "review_remains_open_until_owner_settles_rehab": true,
+    "registration_draft_not_published": true
+  }
+}

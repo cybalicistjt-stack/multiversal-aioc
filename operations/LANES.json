@@ -386,6 +386,29 @@
       ],
       "cross_lane_reads": "Cross-track references are read-only; exclusive unit ownership from TRACK_SPLIT_V1.json. Never edit sibling track files, root global CQR register or implement product fixes. Preserve GPR/MTLC/CWKS/AXI/GATE and OPS5 authority.",
       "implementation_policy": "Owner-scoped on-demand source/evidence/quality assessment ONLY; no product code, no release, no billing, no publication and no owner-quality acceptance without explicit owner decision. Draft PR 883 targets CQR coordination branch, not application main."
+    },
+    {
+      "id": "cqr-reconcile",
+      "purpose": "Owner-directed reconciliation of three independent commercial quality review tracks into one provenance-preserving issue corpus and implementation-ready rehabilitation family. On-demand assessment and planning only; not a persistent implementation slot.",
+      "intent_examples": [
+        "reconcile all three CQR reviews",
+        "continue CQR-R",
+        "plan the full CQR rehabilitation reconciliation",
+        "review CQR1 CQR2 CQR3 and register fixes",
+        "complete reconciliation before rehabilitation"
+      ],
+      "current_state_source": "operations/CURRENT.json#/lanes/cqr-reconcile",
+      "source_bundle": [
+        "operations/work-items/CQR-R01.json",
+        "governance/application-planning/commercial-reconciliation/CQR_R_PROGRAM_BACKLOG.json",
+        "governance/application-planning/commercial-reconciliation/CQR_R_PROGRAM.md",
+        "cybalicistjt-stack/Multiversal-app PR #884 docs/commercial-quality-review/rehabilitation/RECONCILIATION_FAMILY.json pinned at c71d68cdd40e5e2d161ea358586e4ba6726fccc9",
+        "Read-only current CQR1 #881 / CQR2 #882 / CQR3 #883 exact heads and baseline #880",
+        "Three user-provided ZIP review exports pinned by SHA256 in RECONCILIATION_UPLOAD_INTAKE.json",
+        "Current non-product source and OPS5 state for declared dependencies"
+      ],
+      "cross_lane_reads": "Read CQR1-3 worklists, registers and actual evidence without altering their branches. Preserve GPR PCV03F, CWKS, MTLC, AXI and GATE selectors. RHB implementation is separate and requires explicit future selection.",
+      "implementation_policy": "Read-only source and evidence reconciliation, owner S3 output review preparation and implementation-task planning only. No product fixes, subscription activation or charges, media fabrication, review PR merge, implicit S4 owner judgment or rehabilitation start."
     }
   ],
   "persistent_implementation_lanes": [

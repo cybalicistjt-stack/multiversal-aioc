@@ -1,0 +1,333 @@
+{
+  "schema": "OPS5.CQR.RECONCILIATION_BACKLOG.1",
+  "program_id": "CQR-R",
+  "date": "2026-11-06",
+  "state": "PLANNED_NOT_EXECUTED",
+  "selected_first": "CQR-R01",
+  "authority": "OPS5 on-demand planning, not rehabilitation implementation",
+  "source_repository": "cybalicistjt-stack/Multiversal-app",
+  "source_head": "c71d68cdd40e5e2d161ea358586e4ba6726fccc9",
+  "source_path": "docs/commercial-quality-review/rehabilitation/RECONCILIATION_FAMILY.json",
+  "review_prs": [
+    881,
+    882,
+    883
+  ],
+  "coordinator_pr": 880,
+  "rehabilitation_draft_pr": 884,
+  "source_baseline": {
+    "source_sha": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+    "systems": 276,
+    "code_files": 2647,
+    "tracked_files": 5213,
+    "quality_dimensions": 2760,
+    "showcase_count": 60,
+    "source_records": 150,
+    "unique_defects": "NOT_YET_DEDUPLICATED",
+    "root_entries": 58,
+    "cqr1_entries": 46,
+    "cqr2_entries": 27,
+    "cqr3_entries": 19,
+    "owner_rejected_visuals": 3,
+    "real_S3_verified": 0
+  },
+  "stages": [
+    {
+      "id": "CQR-R01",
+      "sequence": 1,
+      "title": "Archive and validate three owner packages",
+      "depends_on": [],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "uploaded CQR ZIP packages"
+      ],
+      "deliverable": "Archive hashes and contents manifest; confirm 4 DOCX and 54 PNG; all drawings labeled non-S3",
+      "acceptance": [
+        "Archive hashes and contents manifest; confirm 4 DOCX and 54 PNG; all drawings labeled non-S3",
+        "Every claim has a source HEAD or attached-package SHA and explicit S0/S1/S2/S3/S4 grade",
+        "One relevant negative case has an observed rejection or is recorded as a live external blocker"
+      ],
+      "negative_case": "Corrupt ZIP, wrong internal digest, missing manifest",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R02",
+      "sequence": 2,
+      "title": "Pin source, PR and candidate versions",
+      "depends_on": [
+        "CQR-R01"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "App frozen baseline and current PR881/882/883 snapshots; all changed heads and old exports recorded",
+      "acceptance": [
+        "App frozen baseline and current PR881/882/883 snapshots; all changed heads and old exports recorded",
+        "Every claim has a source HEAD or attached-package SHA and explicit S0/S1/S2/S3/S4 grade",
+        "One relevant negative case has an observed rejection or is recorded as a live external blocker"
+      ],
+      "negative_case": "Moving head, stale export or unmerged candidate mislabeled shipped",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R03",
+      "sequence": 3,
+      "title": "Complete all-file, system, behavior and showcase coverage",
+      "depends_on": [
+        "CQR-R02"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "276 unique systems (92 per track), 5,213 source paths/2,647 code, 2,760 dimensions and 60 showcases reconciled with open holes logged",
+      "acceptance": [
+        "276 unique systems (92 per track), 5,213 source paths/2,647 code, 2,760 dimensions and 60 showcases reconciled with open holes logged",
+        "Every claim has a source HEAD or attached-package SHA and explicit S0/S1/S2/S3/S4 grade",
+        "One relevant negative case has an observed rejection or is recorded as a live external blocker"
+      ],
+      "negative_case": "Unassigned path, duplicate system, unreviewed behavior or synthetic S3",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R04",
+      "sequence": 4,
+      "title": "Normalize historic and local findings",
+      "depends_on": [
+        "CQR-R01",
+        "CQR-R02"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "All 58 root plus 46+27+19 track entries retained with exact original IDs, severity, witnesses, limitations and 3 binding owner art rejections",
+      "acceptance": [
+        "All 58 root plus 46+27+19 track entries retained with exact original IDs, severity, witnesses, limitations and 3 binding owner art rejections",
+        "Every claim has a source HEAD or attached-package SHA and explicit S0/S1/S2/S3/S4 grade",
+        "One relevant negative case has an observed rejection or is recorded as a live external blocker"
+      ],
+      "negative_case": "Lost ID, inflated exploit claim, owner decision overwritten",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R05",
+      "sequence": 5,
+      "title": "Adjudicate duplicate causes and cross-consumer links",
+      "depends_on": [
+        "CQR-R03",
+        "CQR-R04"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Every record tagged SAME_CAUSE/RELATED_DISTINCT/SHARED_CONTRACT/INDEPENDENT/UNRESOLVED, backed by exact source and test comparison",
+      "acceptance": [
+        "Every record tagged SAME_CAUSE/RELATED_DISTINCT/SHARED_CONTRACT/INDEPENDENT/UNRESOLVED, backed by exact source and test comparison",
+        "Every claim has a source HEAD or attached-package SHA and explicit S0/S1/S2/S3/S4 grade",
+        "One relevant negative case has an observed rejection or is recorded as a live external blocker"
+      ],
+      "negative_case": "String-match-only dedupe, changed candidate or dropped negative test",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R06",
+      "sequence": 6,
+      "title": "Rank risk and version-scoped user impact",
+      "depends_on": [
+        "CQR-R04",
+        "CQR-R05"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Privacy, data loss, gameplay canon, visual, UX, accessibility, availability and installed/synthetic certainty separately ranked",
+      "acceptance": [
+        "Privacy, data loss, gameplay canon, visual, UX, accessibility, availability and installed/synthetic certainty separately ranked",
+        "Every claim has a source HEAD or attached-package SHA and explicit S0/S1/S2/S3/S4 grade",
+        "One relevant negative case has an observed rejection or is recorded as a live external blocker"
+      ],
+      "negative_case": "Source-only condition described as real breach, art rejection marked accepted",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R07",
+      "sequence": 7,
+      "title": "Capture genuine S3 app outputs or document blocked features",
+      "depends_on": [
+        "CQR-R02",
+        "CQR-R03"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "For each of 60 showcases: real unchanged executable PNG/export, SHA, OS/device/role, before/after/reload/negative, or explicit blocked-feature owner decision request",
+      "acceptance": [
+        "For each of 60 showcases: real unchanged executable PNG/export, SHA, OS/device/role, before/after/reload/negative, or explicit blocked-feature owner decision request",
+        "Every claim has a source HEAD or attached-package SHA and explicit S0/S1/S2/S3/S4 grade",
+        "One relevant negative case has an observed rejection or is recorded as a live external blocker"
+      ],
+      "negative_case": "AI picture, infographic or storyboard credited as app screenshot",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R08",
+      "sequence": 8,
+      "title": "Record owner S4 judgments on exact shown candidates",
+      "depends_on": [
+        "CQR-R06",
+        "CQR-R07"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Explicit owner verdict for viewed exact build; unviewed or unavailable stays open unless owner knowingly dispositions as rehabilitation work; historic rejections preserved",
+      "acceptance": [
+        "Explicit owner verdict for viewed exact build; unviewed or unavailable stays open unless owner knowingly dispositions as rehabilitation work; historic rejections preserved",
+        "Every claim has a source HEAD or attached-package SHA and explicit S0/S1/S2/S3/S4 grade",
+        "One relevant negative case has an observed rejection or is recorded as a live external blocker"
+      ],
+      "negative_case": "No owner response, changed asset/build, missing S3 treated as pass",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R09",
+      "sequence": 9,
+      "title": "Map root causes, domain authority and RHB dependency DAG",
+      "depends_on": [
+        "CQR-R05",
+        "CQR-R06"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "One proposed corrective owner per cause, affected consumers, GATE/PCV03F/MTLC/A4/A6/A7 boundaries, acyclic 16 RHB envelopes",
+      "acceptance": [
+        "One proposed corrective owner per cause, affected consumers, GATE/PCV03F/MTLC/A4/A6/A7 boundaries, acyclic 16 RHB envelopes",
+        "Every claim has a source HEAD or attached-package SHA and explicit S0/S1/S2/S3/S4 grade",
+        "One relevant negative case has an observed rejection or is recorded as a live external blocker"
+      ],
+      "negative_case": "Two writers for same durable state, circular dependency, unauthorized provider change",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R10",
+      "sequence": 10,
+      "title": "Decompose RHB into testable corrective child tranches",
+      "depends_on": [
+        "CQR-R08",
+        "CQR-R09"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Every canonical corrective issue assigned once, each child has source boundary, positive/negative/fault tests, native rollback and actual owner-facing S3/S4",
+      "acceptance": [
+        "Every canonical corrective issue assigned once, each child has source boundary, positive/negative/fault tests, native rollback and actual owner-facing S3/S4",
+        "Every claim has a source HEAD or attached-package SHA and explicit S0/S1/S2/S3/S4 grade",
+        "One relevant negative case has an observed rejection or is recorded as a live external blocker"
+      ],
+      "negative_case": "Unassigned problem, untestable task, missing migration or visual proof",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R11",
+      "sequence": 11,
+      "title": "Set execution waves, resources and governance guards",
+      "depends_on": [
+        "CQR-R09",
+        "CQR-R10"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Wave sequence, staffing/tools, native runners, accounts, licensed media, budgets/approval seams, publication gates explicit; no monetary spend inferred",
+      "acceptance": [
+        "Wave sequence, staffing/tools, native runners, accounts, licensed media, budgets/approval seams, publication gates explicit; no monetary spend inferred",
+        "Every claim has a source HEAD or attached-package SHA and explicit S0/S1/S2/S3/S4 grade",
+        "One relevant negative case has an observed rejection or is recorded as a live external blocker"
+      ],
+      "negative_case": "Unavailable device assumed, provider selected without approval, unsafe concurrent branches",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R12",
+      "sequence": 12,
+      "title": "Final three-review closure and OPS5 start handoff",
+      "depends_on": [
+        "CQR-R03",
+        "CQR-R04",
+        "CQR-R05",
+        "CQR-R06",
+        "CQR-R07",
+        "CQR-R08",
+        "CQR-R09",
+        "CQR-R10",
+        "CQR-R11"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "All issues logged/reconciled; 60 S3 actual or explicitly owner-dispositioned unavailable; RHB children and DAG owner-settled; fresh OPS5 approval selects first implementation tranche",
+      "acceptance": [
+        "All issues logged/reconciled; 60 S3 actual or explicitly owner-dispositioned unavailable; RHB children and DAG owner-settled; fresh OPS5 approval selects first implementation tranche",
+        "Every claim has a source HEAD or attached-package SHA and explicit S0/S1/S2/S3/S4 grade",
+        "One relevant negative case has an observed rejection or is recorded as a live external blocker"
+      ],
+      "negative_case": "Review still open, owner verdict missing, unapproved budget or branch drift",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    }
+  ],
+  "review_termination_gate": "Only owner-confirmed complete three-track issue intake, all 60 actual S3 or owner-approved known-missing exceptions, distinct root causes assigned to implementation-ready RHB child work, then owner go/no-go and a fresh OPS5 selector publication.",
+  "execution_policy": {
+    "each_tranche_is_evidence_review": true,
+    "active_work_source": "CURRENT.json only",
+    "cross_review_read_only": true,
+    "owner_verdict_must_be_explicit": true,
+    "implementation_changes_forbidden": true,
+    "upgrade_to_rehab_requires_new_ops5_selected_work_item": true
+  }
+}
