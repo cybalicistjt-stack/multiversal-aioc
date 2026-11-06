@@ -71,7 +71,7 @@ V6 is **lineage and proposed dependency mapping**, NOT complete semantic owner/c
 
 ## V7 — enumerated dependency closure and exact customer source cases (2026-11-06)
 
-Application draft PR #884 exact planning head `3f47412da9a803eebe8a280cedc66a703925a6cc` preserves the V6 layer and adds:
+Application draft PR #884 exact planning head `845812336fa582a69fd93d4317203dc9221c213d` preserves the V6 layer and adds:
 
 1. `docs/commercial-quality-review/rehabilitation/DEPENDENCY_RECONCILIATION_V7.md` as the readable end-to-end proposed dependency report;
 2. `docs/commercial-quality-review/rehabilitation/GROUP_REVIEW_DEPENDENCY_CLOSURE_V7.json` for the transitive 44-group preliminary review DAG across **91 historical family, 14 overlay, 22 goal, 64 client and 96 contracts module** source records;
@@ -79,6 +79,8 @@ Application draft PR #884 exact planning head `3f47412da9a803eebe8a280cedc66a703
 4. `docs/commercial-quality-review/rehabilitation/SOURCE_SUPPORT_ROLE_TRIAGE_V7.json` explaining the **2,056** non-code-kind path/no-unit records and **917** overlap with the prior 918 unresolved feature classifications;
 5. `docs/commercial-quality-review/rehabilitation/NORMAL_PRODUCT_ROUTE_CASES_V7.json` for **11 exact S1 ordinary product entry/route issues**; not 11 proven defects or executed tests;
 6. `docs/commercial-quality-review/rehabilitation/INDEPENDENT_ENGINE_GROUP_CANDIDATES_V7.json`: owner-source-backed *proposed* F44 RBCE game creation and F45 universal intrinsic games & fictional wagering distinct from F28 skin, F29 MAL and F31 discovery;
-7. `docs/commercial-quality-review/rehabilitation/DEPENDENCY_VALIDATION_V7.json` (18/18 source-structure and cycle/orphan negative checks; zero real product S3 or S4).
+7. `docs/commercial-quality-review/rehabilitation/DEPENDENCY_VALIDATION_V7.json` (19/19 source-structure and cycle/orphan negative checks; zero real product S3 or S4).
 
 **This evidence is not CQR-R03/R05/R09 completion**: group count still unsettled, source-only review group dependencies are not authenticated write-owners or runtime calls, and full transitive program execution/real acceptance remains open. Keep CQR-R01..R12 `PLANNED_NOT_EXECUTED` until their per-stage gates and owner decisions genuinely pass. No new OPS5 main registration, product implementation, billing or public release authority is granted by this source draft.
+
+**V7 28-program correction:** `docs/commercial-quality-review/rehabilitation/PROGRAM_28_SOURCE_STATUS_CROSSCHECK_V7.json` on App draft head `845812336fa582a69fd93d4317203dc9221c213d` read one exact historical source for **all 28** no-machine-backlog directories (17 prior ranked + 11 later fallback), and correctly gives OPS5 `CORE26-CURRENT-01` v1.0.0 precedence over the historical species v0.1.0. This is discovery/status provenance, not actual source semantic owner or app S3/S4. The V7 static/negative check receipt now records **19/19** checks passing.
