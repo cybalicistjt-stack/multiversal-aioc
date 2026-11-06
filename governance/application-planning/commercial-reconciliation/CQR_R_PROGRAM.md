@@ -53,3 +53,14 @@ Exact normal client build is `index.html -> main.tsx -> App.tsx`; the GM/UISR ev
 The 12 reconciliation stages are unchanged and remain planning-only; the overall 91+ current-family scope and rehabilitation group count remain open until every user-facing feature is appraised, not merely directory-routed.
 
 **V5 additional routing (2026-11-06):** all 17 current client modules and 60 contracts modules that were unmatched by archival exact program folders now have provisional explicit aliases/owner-group proposals in the app PR #884 current head `60ac1dea0513ab3b2d60b1d33706618f9722e7f7`. A2–A12 have retained historical Stage-A ancestry while newer owner source semantics still require verification. No module was deemed live-ready or authoritative merely from its alias. The source status counts and 12 planning stages remain unchanged.
+
+## V6 source-only dependency closure — 2026-11-06
+
+The owner requested dependency mapping for **everything**, not only the CQR-R stage DAG. Multiversal-app draft PR #884 current source planning head `b8f70380f6eaf6ec9108a2962b60eb67770d9313` now includes:
+
+- `docs/commercial-quality-review/rehabilitation/DEPENDENCY_RECONCILIATION_V6.md` — readable six-type dependency/ownership/acceptance protocol and all **44 previous provisional** group dependencies plus proposed cross-system prerequisite edges;
+- `docs/commercial-quality-review/rehabilitation/DEPENDENCY_ATLAS_V6.json` — **91** historical families, **14** new owner-scope overlays, **22** owner directives, **64** client source modules, **96** contract modules, **44** provisional rehabilitation groups, **12** stages;
+- `docs/commercial-quality-review/rehabilitation/DEPENDENCY_HISTORICAL_1858_V6.json` — **1,858** individually tracked historical requirement origins and candidate family ownership;
+- `docs/commercial-quality-review/rehabilitation/DEPENDENCY_SOURCE_5213_V6.json` — **276** original review units and **5,213** path routes with inherited group prerequisites, including **918** unresolved file-feature classifications and **2,056** source files without an exact review-unit ID.
+
+V6 is **lineage and proposed dependency mapping**, NOT complete semantic owner/consumer verification, real app runtime S3, exact owner S4 or stage R09 completion. The prior 44-group count remains provisional: RBCE creator, Retrobit skin, MAL games and PCV Games & Wagering must have independently reviewed boundaries. Preserve the 28 AIOC directories without machine-status evidence, 17 unmatched client aliases, 60 unmatched contracts aliases and all missing real usage/permissions checks. The prior CQR stages remain `PLANNED_NOT_EXECUTED`; no product authority, protected main merge, monetary vendor action, new release approval or CQR review termination follows from these new artifacts.
