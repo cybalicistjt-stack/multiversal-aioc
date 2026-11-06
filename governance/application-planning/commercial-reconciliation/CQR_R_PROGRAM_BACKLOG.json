@@ -6,7 +6,7 @@
   "selected_first": "CQR-R01",
   "authority": "OPS5 on-demand planning, not rehabilitation implementation",
   "source_repository": "cybalicistjt-stack/Multiversal-app",
-  "source_head": "6015633e7092b4bfbb5e8570a31e922cb2aac247",
+  "source_head": "f2b71253ee6990283f9b881605f9664d3919845f",
   "source_path": "docs/commercial-quality-review/rehabilitation/RECONCILIATION_FAMILY.json",
   "review_prs": [
     881,
@@ -659,5 +659,37 @@
       "R09"
     ],
     "status": "PLANNING_ONLY_NO_NEW_IMPLEMENTATION_AUTHORITY"
+  },
+  "current_function_execution_world_v15": {
+    "as_of": "2026-11-06",
+    "app_pr": 884,
+    "app_source_head": "f2b71253ee6990283f9b881605f9664d3919845f",
+    "artifacts": [
+      "probes/v15_world_boundary_regression.mjs",
+      "WORLD_BOUNDARY_EXECUTION_RESULT_V15.json",
+      "WORLD_BOUNDARY_EXECUTION_V15.md"
+    ],
+    "pinned_main": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+    "actual_executed_isolated_function_cases": 14,
+    "policy_assertions_satisfied": 10,
+    "policy_assertions_failed": 4,
+    "failures": [
+      "V15-WP05",
+      "V15-CW03",
+      "V15-CW04",
+      "V15-CW05"
+    ],
+    "baseline_exit": 0,
+    "regression_exit": 1,
+    "source_tamper_negative_exit": 1,
+    "script_blob_sha": "b07fc2c43bd8fd46aed8e374d27fd973339a7b2d",
+    "evidence_grade": "ISOLATED_FUNCTION_EXECUTION_NO_LIVE_CALLER",
+    "actual_product_S2": 0,
+    "installed_S3": 0,
+    "owner_S4": 0,
+    "R05_causal_closure": false,
+    "R06_impact_judgment": false,
+    "R09_full_handoff": false,
+    "next_gate": "Reachability and upstream World grant/overlay owner validation, authenticated persistence, actual UI/native denial/recovery; no current product execution authority."
   }
 }
