@@ -1,0 +1,1102 @@
+{
+  "schema": "OPS5.CQR.RECONCILIATION_BACKLOG.1",
+  "program_id": "CQR-R",
+  "date": "2026-11-06",
+  "state": "PLANNED_NOT_EXECUTED",
+  "selected_first": "CQR-R01",
+  "authority": "OPS5 on-demand planning, not rehabilitation implementation",
+  "source_repository": "cybalicistjt-stack/Multiversal-app",
+  "source_head": "df14c7d76d9228a5f02bda7b6994db6a469d1109",
+  "source_path": "docs/commercial-quality-review/rehabilitation/RECONCILIATION_FAMILY.json",
+  "review_prs": [
+    881,
+    882,
+    883
+  ],
+  "coordinator_pr": 880,
+  "rehabilitation_draft_pr": 884,
+  "source_baseline": {
+    "source_sha": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+    "systems": 276,
+    "code_files": 2647,
+    "tracked_files": 5213,
+    "quality_dimensions": 2760,
+    "showcase_count": 60,
+    "source_records": 150,
+    "unique_defects": "NOT_YET_DEDUPLICATED",
+    "root_entries": 58,
+    "cqr1_entries": 46,
+    "cqr2_entries": 27,
+    "cqr3_entries": 19,
+    "owner_rejected_visuals": 3,
+    "real_S3_verified": 0
+  },
+  "stages": [
+    {
+      "id": "CQR-R01",
+      "sequence": 1,
+      "title": "Archive and validate three owner packages",
+      "depends_on": [],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "uploaded CQR ZIP packages"
+      ],
+      "deliverable": "Archive hashes and contents manifest; confirm 4 DOCX and 54 PNG; all drawings labeled non-S3",
+      "acceptance": [
+        "Archive hashes and contents manifest; confirm 4 DOCX and 54 PNG; all drawings labeled non-S3",
+        "Every claim has a source HEAD or attached-package SHA and explicit S0/S1/S2/S3/S4 grade",
+        "One relevant negative case has an observed rejection or is recorded as a live external blocker"
+      ],
+      "negative_case": "Corrupt ZIP, wrong internal digest, missing manifest",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R02",
+      "sequence": 2,
+      "title": "Pin source, PR and candidate versions",
+      "depends_on": [
+        "CQR-R01"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Update exact main and unmerged candidate proof for latest selected domain owners; first-level mount and program status are only source witnesses.",
+      "acceptance": [
+        "Update exact main and unmerged candidate proof for latest selected domain owners; first-level mount and program status are only source witnesses.",
+        "Source and program statuses are only S1, not real device runtime S3 or explicit owner S4.",
+        "Preserve per-owner evidence, negative case, rights and supersession status; no artificial closure."
+      ],
+      "negative_case": "Moving head, stale export or unmerged candidate mislabeled shipped",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R03",
+      "sequence": 3,
+      "title": "Complete all-file, system, behavior and showcase coverage",
+      "depends_on": [
+        "CQR-R02"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Individually map 91 historic families, all 64 current client source modules and 96 contract modules, resolving 17 unmatched client aliases and 60 unmatched contract aliases, then trace transitive ordinary-product and internal-alpha mounts; genuine runtime and behavior proof remain required.",
+      "acceptance": [
+        "Individually map 91 historic families, all 64 current client source modules and 96 contract modules, resolving 17 unmatched client aliases and 60 unmatched contract aliases, then trace transitive ordinary-product and internal-alpha mounts; genuine runtime and behavior proof remain required.",
+        "Source and program statuses are only S1, not real device runtime S3 or explicit owner S4.",
+        "Preserve per-owner evidence, negative case, rights and supersession status; no artificial closure."
+      ],
+      "negative_case": "Unassigned path, duplicate system, unreviewed behavior or synthetic S3",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R04",
+      "sequence": 4,
+      "title": "Normalize historic and local findings",
+      "depends_on": [
+        "CQR-R01",
+        "CQR-R02"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Appraise 63 exact program source status files plus the other 28 current AIOC directory sources; reconcile the 1,858 historical named contracts and remaining 4,856 evidence rows against latest owner directives and current source/semantic owners, without promoting old completed_verified to shipped.",
+      "acceptance": [
+        "Appraise 63 exact program source status files plus the other 28 current AIOC directory sources; reconcile the 1,858 historical named contracts and remaining 4,856 evidence rows against latest owner directives and current source/semantic owners, without promoting old completed_verified to shipped.",
+        "Source and program statuses are only S1, not real device runtime S3 or explicit owner S4.",
+        "Preserve per-owner evidence, negative case, rights and supersession status; no artificial closure."
+      ],
+      "negative_case": "Lost ID, inflated exploit claim, owner decision overwritten",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R05",
+      "sequence": 5,
+      "title": "Adjudicate duplicate causes and cross-consumer links",
+      "depends_on": [
+        "CQR-R03",
+        "CQR-R04"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Reconcile 150 prior CQR source observations plus new discovered issues; distinguish duplicate cause, distinct consumer, new absent functionality, superseded feature and unresolved source conflicts.",
+      "acceptance": [
+        "Reconcile 150 prior CQR source observations plus new discovered issues; distinguish duplicate cause, distinct consumer, new absent functionality, superseded feature and unresolved source conflicts.",
+        "Preserve latest owner/OPS5/exact source truth separately from archived Bible statuses.",
+        "Do not promote source tests/report graphics to S3 or infer S4 commercial owner acceptance."
+      ],
+      "negative_case": "String-match-only dedupe, changed candidate or dropped negative test",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R06",
+      "sequence": 6,
+      "title": "Rank risk and version-scoped user impact",
+      "depends_on": [
+        "CQR-R04",
+        "CQR-R05"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Rank actual owner-valued full suite behavior, rights, security, quality, real launcher/phone/Desktop View, source-version impact and $9.99-vs-GATE commercial conflict without inventing a formal price signoff.",
+      "acceptance": [
+        "Rank actual owner-valued full suite behavior, rights, security, quality, real launcher/phone/Desktop View, source-version impact and $9.99-vs-GATE commercial conflict without inventing a formal price signoff.",
+        "Preserve latest owner/OPS5/exact source truth separately from archived Bible statuses.",
+        "Do not promote source tests/report graphics to S3 or infer S4 commercial owner acceptance."
+      ],
+      "negative_case": "Source-only condition described as real breach, art rejection marked accepted",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R07",
+      "sequence": 7,
+      "title": "Capture genuine S3 app outputs or document blocked features",
+      "depends_on": [
+        "CQR-R02",
+        "CQR-R03"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Provide real independently executable app outputs for every required capability, distinguishing production App from internal-alpha GM/UISR evidence entries; missing World creation, MNCS live creature instances, RBCE Arcade creator, Sports and Games&Wagering runtime generate open proof cases.",
+      "acceptance": [
+        "Provide real independently executable app outputs for every required capability, distinguishing production App from internal-alpha GM/UISR evidence entries; missing World creation, MNCS live creature instances, RBCE Arcade creator, Sports and Games&Wagering runtime generate open proof cases.",
+        "Source and program statuses are only S1, not real device runtime S3 or explicit owner S4.",
+        "Preserve per-owner evidence, negative case, rights and supersession status; no artificial closure."
+      ],
+      "negative_case": "AI picture, infographic or storyboard credited as app screenshot",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R08",
+      "sequence": 8,
+      "title": "Record owner S4 judgments on exact shown candidates",
+      "depends_on": [
+        "CQR-R06",
+        "CQR-R07"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Collect explicit owner judgments on exact current native and independently running tester output; hold S4 OPEN for designs/unimplemented engines, retain prior three visual rejections.",
+      "acceptance": [
+        "Collect explicit owner judgments on exact current native and independently running tester output; hold S4 OPEN for designs/unimplemented engines, retain prior three visual rejections.",
+        "Preserve latest owner/OPS5/exact source truth separately from archived Bible statuses.",
+        "Do not promote source tests/report graphics to S3 or infer S4 commercial owner acceptance."
+      ],
+      "negative_case": "No owner response, changed asset/build, missing S3 treated as pass",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R09",
+      "sequence": 9,
+      "title": "Map root causes, domain authority and RHB dependency DAG",
+      "depends_on": [
+        "CQR-R05",
+        "CQR-R06"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Define the final modern independent rehabilitative feature DAG from 91 historical family appraisals, 1,858 granular contracts, all newer approved scopes and current source owners. 44 proposed buckets are NOT enough by default.",
+      "acceptance": [
+        "Define the final modern independent rehabilitative feature DAG from 91 historical family appraisals, 1,858 granular contracts, all newer approved scopes and current source owners. 44 proposed buckets are NOT enough by default.",
+        "Preserve latest owner/OPS5/exact source truth separately from archived Bible statuses.",
+        "Do not promote source tests/report graphics to S3 or infer S4 commercial owner acceptance."
+      ],
+      "negative_case": "Two writers for same durable state, circular dependency, unauthorized provider change",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R10",
+      "sequence": 10,
+      "title": "Decompose RHB into testable corrective child tranches",
+      "depends_on": [
+        "CQR-R08",
+        "CQR-R09"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Design bounded repair → independent executable tester + native renderer → owner accept/reject/refine → full mobile/desktop product integration → current-head owner-certification loops for every non-deferred feature.",
+      "acceptance": [
+        "Design bounded repair → independent executable tester + native renderer → owner accept/reject/refine → full mobile/desktop product integration → current-head owner-certification loops for every non-deferred feature.",
+        "Preserve latest owner/OPS5/exact source truth separately from archived Bible statuses.",
+        "Do not promote source tests/report graphics to S3 or infer S4 commercial owner acceptance."
+      ],
+      "negative_case": "Unassigned problem, untestable task, missing migration or visual proof",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R11",
+      "sequence": 11,
+      "title": "Set execution waves, resources and governance guards",
+      "depends_on": [
+        "CQR-R09",
+        "CQR-R10"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Plan UI/test-host and native high-resolution visual proof first, stable API/source ownership for parallel engine groups and explicit hardware/provider/rightful-art budgets with no automatic authority.",
+      "acceptance": [
+        "Plan UI/test-host and native high-resolution visual proof first, stable API/source ownership for parallel engine groups and explicit hardware/provider/rightful-art budgets with no automatic authority.",
+        "Preserve latest owner/OPS5/exact source truth separately from archived Bible statuses.",
+        "Do not promote source tests/report graphics to S3 or infer S4 commercial owner acceptance."
+      ],
+      "negative_case": "Unavailable device assumed, provider selected without approval, unsafe concurrent branches",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    },
+    {
+      "id": "CQR-R12",
+      "sequence": 12,
+      "title": "Final three-review closure and OPS5 start handoff",
+      "depends_on": [
+        "CQR-R03",
+        "CQR-R04",
+        "CQR-R05",
+        "CQR-R06",
+        "CQR-R07",
+        "CQR-R08",
+        "CQR-R09",
+        "CQR-R10",
+        "CQR-R11"
+      ],
+      "status": "PLANNED_NOT_EXECUTED",
+      "inputs": [
+        "previous gate evidence",
+        "current source and PR heads",
+        "CQR frozen source/track manifests"
+      ],
+      "deliverable": "Reconcile complete current owner vision, each of 91+ current families and all 1,858 named contracts plus other historical evidence, log all three-review issues, resolve all required real-output/blocked obligations, settle actual independent rehab family, then seek separate owner/OPS5 authorization to start.",
+      "acceptance": [
+        "Reconcile complete current owner vision, each of 91+ current families and all 1,858 named contracts plus other historical evidence, log all three-review issues, resolve all required real-output/blocked obligations, settle actual independent rehab family, then seek separate owner/OPS5 authorization to start.",
+        "Preserve latest owner/OPS5/exact source truth separately from archived Bible statuses.",
+        "Do not promote source tests/report graphics to S3 or infer S4 commercial owner acceptance."
+      ],
+      "negative_case": "Review still open, owner verdict missing, unapproved budget or branch drift",
+      "authority": "READ_ONLY_REVIEW_AND_PLANNING",
+      "owner_verdict": "NOT_REVIEWED"
+    }
+  ],
+  "review_termination_gate": "Only owner-confirmed complete three-track issue intake, all 60 actual S3 or owner-approved known-missing exceptions, distinct root causes assigned to implementation-ready RHB child work, then owner go/no-go and a fresh OPS5 selector publication.",
+  "execution_policy": {
+    "each_tranche_is_evidence_review": true,
+    "active_work_source": "CURRENT.json only",
+    "cross_review_read_only": true,
+    "owner_verdict_must_be_explicit": true,
+    "implementation_changes_forbidden": true,
+    "upgrade_to_rehab_requires_new_ops5_selected_work_item": true
+  },
+  "expanded_feature_coverage": {
+    "path": "docs/commercial-quality-review/rehabilitation/CAPABILITY_COVERAGE_V3.json",
+    "app_planning_head": "667801c456b749b1a365011f5460c6acedb8a530",
+    "feature_groups": 44,
+    "original_showcases": 60,
+    "new_supplemental_showcases": 16,
+    "total_appraisal_obligations": 76,
+    "original_system_units": 276,
+    "source_paths": 5213,
+    "code_paths": 2647,
+    "unclassified_paths_open": 918,
+    "original_records": 150,
+    "status": "ROUTED_NOT_BEHAVIOR_COMPLETE",
+    "unknown_gambling_implementation": "SOURCE_DISCOVERY_OPEN"
+  },
+  "modern_family_scope_v4": {
+    "app_planning_commit": "31689f9b4f8bc35b7b068d789514d62029977428",
+    "family_queue": "docs/commercial-quality-review/rehabilitation/FAMILY_91_FRESH_EVIDENCE_QUEUE_V4.json",
+    "named_contract_archive": "docs/commercial-quality-review/rehabilitation/CAPABILITY_REQUIREMENTS_1858_ARCHIVE_V4.json",
+    "family_appraisal_charters": "docs/commercial-quality-review/rehabilitation/FAMILY_91_INDEPENDENT_APPRAISAL_CHARTERS_V4.json",
+    "newer_goal_ledger": "docs/commercial-quality-review/rehabilitation/OWNER_GOALS_SUPERSESSION_V4.json",
+    "modern_overlay": "docs/commercial-quality-review/rehabilitation/MODERN_CAPABILITY_DELTA_V4.json",
+    "owner_source_precedence": "docs/commercial-quality-review/rehabilitation/OWNER_GOAL_FIRST_SOURCE_SUPERSESSION_V4.md",
+    "historic_family_rows": 91,
+    "extracted_named_requirement_rows": 1858,
+    "historic_manifest_total_evidence_rows": 4856,
+    "modern_overlays": 14,
+    "owner_goal_decisions": 22,
+    "previous_44_groups": "PROVISIONAL_BUCKETS_ONLY",
+    "final_rehab_group_count": "NOT_FINAL",
+    "canon_app_S3": "NOT_COMPLETE",
+    "newly_recovered_games_wagering": "PCV-GW-01 v1.2.0 owner-approved, runtime not certified",
+    "retrobit_separate_engine": "RBCE-01..07 design only; not UISK arcade skin",
+    "commercial_source_conflict": "owner $9.99 Full Suite direction vs formal GATE price unadopted; no charge",
+    "family_review_termination": "all 91 + modern additions, all 1858 named requirements plus historic UI/screen evidence, all new issues, real S3 or explicit blockers, settled independent repair DAG"
+  },
+  "current_source_appraisal_v5": {
+    "app_commit": "60ac1dea0513ab3b2d60b1d33706618f9722e7f7",
+    "family_source_evidence": "docs/commercial-quality-review/rehabilitation/FAMILY_91_CURRENT_SOURCE_EVIDENCE_V5.json",
+    "program_backlogs": "docs/commercial-quality-review/rehabilitation/AIOC_PROGRAM_BACKLOG_STATUS_V5.json",
+    "vertical_witnesses": "docs/commercial-quality-review/rehabilitation/CURRENT_SOURCE_VERTICAL_CASES_V5.json",
+    "source_analysis": "docs/commercial-quality-review/rehabilitation/CURRENT_SOURCE_INTEGRATION_APPRAISAL_V5.md",
+    "machine_program_file_count": 63,
+    "program_directories": 91,
+    "historic_families": 91,
+    "current_client_modules": 64,
+    "current_contract_modules": 96,
+    "unmatched_client_aliases": 17,
+    "unmatched_contract_aliases": 60,
+    "source_test_executed": false,
+    "customer_S3_executed": false,
+    "owner_S4_pass": false,
+    "modern_client_module_lineage": "docs/commercial-quality-review/rehabilitation/MODERN_CLIENT_MODULE_LINEAGE_V5.json",
+    "modern_contract_module_lineage": "docs/commercial-quality-review/rehabilitation/MODERN_CONTRACT_SOURCE_ROUTE_V5.json",
+    "module_aliases_provisionally_routed": 77,
+    "authoritative_write_owner_confirmed": 0
+  },
+  "current_dependency_atlas_v6": {
+    "status": "SOURCE_ONLY_PROVISIONAL_NEEDS_SEMANTIC_OWNER_AND_CONSUMER_CHECK",
+    "app_planning_head": "4251216ffc30e9bde8064c446656f60139ad0b31",
+    "architecture": "docs/commercial-quality-review/rehabilitation/DEPENDENCY_RECONCILIATION_V6.md",
+    "cross_layer_index": "docs/commercial-quality-review/rehabilitation/DEPENDENCY_ATLAS_V6.json",
+    "historical_requirement_index": "docs/commercial-quality-review/rehabilitation/DEPENDENCY_HISTORICAL_1858_V6.json",
+    "review_unit_and_source_path_routes": "docs/commercial-quality-review/rehabilitation/DEPENDENCY_SOURCE_5213_V6.json",
+    "reconciliation_stages": 12,
+    "previous_provisional_groups": 44,
+    "historical_families": 91,
+    "modern_overlays": 14,
+    "owner_goals": 22,
+    "client_modules": 64,
+    "contract_modules": 96,
+    "named_archive_requirements": 1858,
+    "review_units": 276,
+    "source_paths": 5213,
+    "unclassified_file_features": 918,
+    "no_exact_review_unit_id_paths": 2056,
+    "real_S3_verified": 0,
+    "owner_S4": "NOT_REVIEWED",
+    "r09_completed": false,
+    "final_group_count": "UNSETTLED_BEYOND_PREVIOUS_44_IF_REQUIRED",
+    "no_implementation_authority": true,
+    "static_validation": {
+      "path": "docs/commercial-quality-review/rehabilitation/DEPENDENCY_VALIDATION_V6.json",
+      "checks": 17,
+      "passed": 17,
+      "failed": 0,
+      "scope": "STRUCTURAL_ONLY"
+    },
+    "alternate_program_sources": {
+      "path": "docs/commercial-quality-review/rehabilitation/PROGRAM_28_ALTERNATE_SOURCE_INDEX_V6.json",
+      "missing_machine_named": 28,
+      "top_sources_read": 17,
+      "no_top_filename_candidates": 11,
+      "semantic_status": "OPEN"
+    }
+  },
+  "current_dependency_atlas_v7": {
+    "app_planning_head": "4251216ffc30e9bde8064c446656f60139ad0b31",
+    "summary": "docs/commercial-quality-review/rehabilitation/DEPENDENCY_RECONCILIATION_V7.md",
+    "group_closure": "docs/commercial-quality-review/rehabilitation/GROUP_REVIEW_DEPENDENCY_CLOSURE_V7.json",
+    "enumerated_scope_closure": "docs/commercial-quality-review/rehabilitation/ENUMERATED_SOURCE_DEPENDENCY_CLOSURE_V7.json",
+    "source_support_triage": "docs/commercial-quality-review/rehabilitation/SOURCE_SUPPORT_ROLE_TRIAGE_V7.json",
+    "exact_customer_source_cases": "docs/commercial-quality-review/rehabilitation/NORMAL_PRODUCT_ROUTE_CASES_V7.json",
+    "proposed_independent_engines": "docs/commercial-quality-review/rehabilitation/INDEPENDENT_ENGINE_GROUP_CANDIDATES_V7.json",
+    "static_validation_receipt": "docs/commercial-quality-review/rehabilitation/DEPENDENCY_VALIDATION_V7.json",
+    "validation": {
+      "source_only_checks": "19/19",
+      "executed_product_S3": 0,
+      "owner_S4": "NOT_REVIEWED"
+    },
+    "enumerated_scope": {
+      "historical_families": 91,
+      "owner_goals": 22,
+      "modern_overlays": 14,
+      "client_modules": 64,
+      "contract_modules": 96,
+      "historical_contracts": 1858,
+      "system_review_units": 276,
+      "source_paths": 5213,
+      "original_findings": 150,
+      "original_showcases": 60,
+      "proposed_additional_showcases": 16,
+      "prior_group_count": 44,
+      "candidate_extra_groups": [
+        "RHB-F44",
+        "RHB-F45"
+      ],
+      "final_group_count": "OPEN"
+    },
+    "no_implementation_authority": true,
+    "stage_execution_not_started": true,
+    "program_28_status_crosscheck": {
+      "path": "docs/commercial-quality-review/rehabilitation/PROGRAM_28_SOURCE_STATUS_CROSSCHECK_V7.json",
+      "docs_read": "28/28",
+      "prior_ranked": 17,
+      "fallback_added": 11,
+      "current_semantic_program_status": "NOT_VERIFIED",
+      "authoritative_species": "CORE26-CURRENT-01/v1.0.0"
+    }
+  },
+  "current_semantic_owner_consumer_v8": {
+    "status": "SOURCE_CONFIRMED_CROSS_BRANCH__NOT_RUNTIME_CERTIFIED",
+    "app_planning_head": "4251216ffc30e9bde8064c446656f60139ad0b31",
+    "main_source_sha": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+    "pcv03f_candidate_branch": "work/pcv-03f-service-first-certification",
+    "pcv03f_candidate_sha": "70b3028ee52c1860b6411f83c93da28b3c0063be",
+    "report": "docs/commercial-quality-review/rehabilitation/DEPENDENCY_RECONCILIATION_V8.md",
+    "main_calls": "docs/commercial-quality-review/rehabilitation/OWNER_API_CONSUMER_TRACE_V8.json",
+    "candidate_calls": "docs/commercial-quality-review/rehabilitation/CANDIDATE_PCV03F_SERVICE_CONSUMER_V8.json",
+    "candidate_test_census": "docs/commercial-quality-review/rehabilitation/PCV03F_CANDIDATE_TEST_SOURCE_CENSUS_V8.json",
+    "g0_charters": "docs/commercial-quality-review/rehabilitation/CRITICAL_G0_BOUNDARY_CHARTERS_V8.json",
+    "structural_validation": "docs/commercial-quality-review/rehabilitation/DEPENDENCY_VALIDATION_V8.json",
+    "observations": {
+      "main_confirmed_edges": 23,
+      "candidate_confirmed_edges": 22,
+      "exact_anchors": 83,
+      "candidate_named_case_source_mentions": 111,
+      "critical_charters": 9,
+      "structural_checks": "20/20",
+      "executed_test_count": 0,
+      "actual_S3": 0,
+      "owner_S4": 0,
+      "source_branch_divergence_preserved": true,
+      "real_product_certification": "OPEN"
+    },
+    "no_product_implementation_authority": true,
+    "stage_status_unchanged": "PLANNED_NOT_EXECUTED"
+  },
+  "current_cross_domain_owner_v9": {
+    "status": "FULL_GROUP_SOURCE_EVIDENCE_GRADES_NOT_RUNTIME_CERTIFIED",
+    "app_planning_head": "4251216ffc30e9bde8064c446656f60139ad0b31",
+    "summary": {
+      "provisional_groups": 44,
+      "sampled_exact_source_groups": 40,
+      "planning_only_groups": 2,
+      "governance_or_owner_gates": 2,
+      "source_informed_owner_handoff_chains": 18,
+      "static_checks": "35/35",
+      "actual_S3": 0,
+      "owner_S4": 0
+    },
+    "report": "docs/commercial-quality-review/rehabilitation/DEPENDENCY_RECONCILIATION_V9.md",
+    "full_group_coverage": "docs/commercial-quality-review/rehabilitation/GROUP_OWNER_EVIDENCE_COVERAGE_V9.json",
+    "chains": "docs/commercial-quality-review/rehabilitation/CROSS_DOMAIN_OWNER_HANDOFF_CHAINS_V9.json",
+    "ops_branch_authority": "docs/commercial-quality-review/rehabilitation/OPS5_BRANCH_AUTHORITY_SNAPSHOT_V9.json",
+    "validation": "docs/commercial-quality-review/rehabilitation/DEPENDENCY_VALIDATION_V9.json",
+    "CQR_R09_status": "PLANNED_NOT_EXECUTED",
+    "no_product_implementation_authority": true
+  },
+  "current_findings_causal_risk_v10": {
+    "status": "R05_R06_SOURCE_RESEARCH_ONLY_NOT_OWNER_ADJUDICATED",
+    "app_planning_head": "4251216ffc30e9bde8064c446656f60139ad0b31",
+    "summary": {
+      "original_source_finding_records": 150,
+      "proposed_overlap_clusters": 15,
+      "linked_findings": 46,
+      "unclustered_findings": 104,
+      "confirmed_duplicate_root_causes": 0,
+      "source_witnesses_reverified": 20,
+      "initial_risk_test_journeys": 12,
+      "findings_in_initial_queue": 49,
+      "source_findings_unranked_not_deprioritized": 101,
+      "static_checks": "30/30",
+      "actual_S3": 0,
+      "owner_S4": 0
+    },
+    "report": "docs/commercial-quality-review/rehabilitation/FINDING_CAUSAL_RECONCILIATION_V10.md",
+    "all_finding_triage": "docs/commercial-quality-review/rehabilitation/FINDING_CAUSAL_DIFFERENTIAL_V10.json",
+    "risk_first_queue": "docs/commercial-quality-review/rehabilitation/RISK_FIRST_BOUNDARY_TEST_QUEUE_V10.json",
+    "validation": "docs/commercial-quality-review/rehabilitation/FINDING_VALIDATION_V10.json",
+    "CQR_R05_status": "PLANNED_NOT_EXECUTED",
+    "CQR_R06_status": "PLANNED_NOT_EXECUTED",
+    "CQR_R09_status": "PLANNED_NOT_EXECUTED",
+    "no_product_implementation_authority": true
+  },
+  "current_findings_dependency_v11": {
+    "as_of": "2026-11-06",
+    "app_pr": 884,
+    "app_source_head": "c6147b0765338040dc0449f32ecbc714b99b58d1",
+    "source_grade": "S1_ONLY_NOT_RUNTIME",
+    "artifacts": [
+      "FINDING_REVIEW_ROUTE_V11.json",
+      "DEPENDENCY_HANDOFF_PROOF_GATES_V11.json",
+      "DEPENDENCY_TRIAGE_RECONCILIATION_V11.md",
+      "DEPENDENCY_VALIDATION_V11.json"
+    ],
+    "original_findings_preserved": 150,
+    "existing_risk_first_charter_findings": 49,
+    "additional_review_routed_not_severity_ranked": 101,
+    "proposed_owner_runtime_handoffs": 18,
+    "source_checks_passed": 24,
+    "confirmed_duplicate_root_causes": 0,
+    "executed_S2": 0,
+    "actual_S3": 0,
+    "new_owner_S4": 0,
+    "cqr_r05": "OPEN",
+    "cqr_r06": "OPEN",
+    "cqr_r09": "OPEN",
+    "authority": "READ_ONLY_PROVISIONAL_RECONCILIATION_NO_PRODUCT_WORK"
+  },
+  "current_dependency_source_boundary_v12": {
+    "as_of": "2026-11-06",
+    "app_pr": 884,
+    "app_source_head": "f89cef036827c1cee415260ca9099cdbbfc7cfe3",
+    "source_grade": "S1_ONLY",
+    "artifacts": [
+      "CRITICAL_BOUNDARY_SOURCE_DIFFERENTIAL_V12.json",
+      "HANDOFF_SOURCE_ADMISSION_MATRIX_V12.json",
+      "DEPENDENCY_SOURCE_DIFFERENTIAL_V12.md",
+      "DEPENDENCY_VALIDATION_V12.json"
+    ],
+    "targeted_cases": 10,
+    "source_files": 14,
+    "verified_anchors": 27,
+    "structural_tests_passed": 21,
+    "source_traced_handoffs": 6,
+    "inherited_untraced_v12_handoffs": 12,
+    "S2": 0,
+    "S3": 0,
+    "owner_S4": 0,
+    "confirmed_deployed_exploits": 0,
+    "confirmed_causal_duplicate_fixes": 0,
+    "cqr_r05": "OPEN",
+    "cqr_r06": "OPEN",
+    "cqr_r09": "OPEN",
+    "implementation_authority": "NONE_FROM_THIS_SOURCE_REVIEW"
+  },
+  "current_all_handoffs_source_review_v13": {
+    "as_of": "2026-11-06",
+    "app_pr": 884,
+    "app_source_head": "a5e03a130d88ddb14dde783a1702dbab1879ce44",
+    "artifacts": [
+      "REMAINING_DEPENDENCY_SOURCE_BOUNDARIES_V13.json",
+      "ALL_HANDOFFS_SOURCE_ADMISSION_V13.json",
+      "DEPENDENCY_HANDOFF_SOURCE_REVIEW_V13.md",
+      "DEPENDENCY_VALIDATION_V13.json"
+    ],
+    "newly_source_targeted_handoffs": 12,
+    "already_source_targeted_v12": 6,
+    "total_source_targeted_handoffs": 18,
+    "source_line_witnesses": 45,
+    "distinct_main_source_files": 27,
+    "structural_checks_passed": 26,
+    "independently_runtime_proven_handoffs": 0,
+    "real_S2": 0,
+    "installed_or_external_S3": 0,
+    "owner_S4": 0,
+    "R05": "OPEN",
+    "R06": "OPEN",
+    "R09": "OPEN",
+    "additional_owner_groups": [
+      "RHB-F44_PROPOSED_NOT_APPROVED",
+      "RHB-F45_PROPOSED_NOT_APPROVED"
+    ],
+    "execution_authority": "SOURCE_REVIEW_ONLY_NO_PRODUCT_TRANCHE_COMPLETION"
+  },
+  "current_causal_discrimination_handoff_v14": {
+    "as_of": "2026-11-06",
+    "app_pr": 884,
+    "app_source_head": "6015633e7092b4bfbb5e8570a31e922cb2aac247",
+    "artifacts": [
+      "CAUSAL_DIFFERENTIAL_DISCRIMINATORS_V14.json",
+      "FULL_FINDING_REPRODUCTION_LEDGER_V14.json",
+      "HANDOFF_RUNTIME_PROOF_PACKETS_V14.json",
+      "DEPENDENCY_VALIDATION_V14.json",
+      "CAUSAL_AND_HANDOFF_EXECUTION_PLAN_V14.md"
+    ],
+    "preserved_findings": 150,
+    "provisional_overlap_clusters": 15,
+    "linked_findings": 46,
+    "standalone_findings": 104,
+    "candidate_root_cause_duplicates_confirmed": 0,
+    "actual_owner_causal_adjudications": 0,
+    "risk_first_findings": 49,
+    "unranked_not_low_priority": 101,
+    "source_reviewed_handoffs": 18,
+    "runtime_authenticated_handoffs": 0,
+    "structural_tests_passed": 31,
+    "actual_S2": 0,
+    "real_S3": 0,
+    "owner_S4": 0,
+    "open_reconciliation": [
+      "R05",
+      "R06",
+      "R07",
+      "R08",
+      "R09"
+    ],
+    "status": "PLANNING_ONLY_NO_NEW_IMPLEMENTATION_AUTHORITY"
+  },
+  "current_function_execution_world_v15": {
+    "as_of": "2026-11-06",
+    "app_pr": 884,
+    "app_source_head": "f2b71253ee6990283f9b881605f9664d3919845f",
+    "artifacts": [
+      "probes/v15_world_boundary_regression.mjs",
+      "WORLD_BOUNDARY_EXECUTION_RESULT_V15.json",
+      "WORLD_BOUNDARY_EXECUTION_V15.md"
+    ],
+    "pinned_main": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+    "actual_executed_isolated_function_cases": 14,
+    "policy_assertions_satisfied": 10,
+    "policy_assertions_failed": 4,
+    "failures": [
+      "V15-WP05",
+      "V15-CW03",
+      "V15-CW04",
+      "V15-CW05"
+    ],
+    "baseline_exit": 0,
+    "regression_exit": 1,
+    "source_tamper_negative_exit": 1,
+    "script_blob_sha": "b07fc2c43bd8fd46aed8e374d27fd973339a7b2d",
+    "evidence_grade": "ISOLATED_FUNCTION_EXECUTION_NO_LIVE_CALLER",
+    "actual_product_S2": 0,
+    "installed_S3": 0,
+    "owner_S4": 0,
+    "R05_causal_closure": false,
+    "R06_impact_judgment": false,
+    "R09_full_handoff": false,
+    "next_gate": "Reachability and upstream World grant/overlay owner validation, authenticated persistence, actual UI/native denial/recovery; no current product execution authority."
+  },
+  "current_reachability_role_boundary_v16": {
+    "as_of": "2026-11-06",
+    "app_pr": 884,
+    "app_source_head": "ed142b0a2a79a2d5cbe7cb7b8854b056a584c1bb",
+    "artifacts": [
+      "DEFAULT_WORLD_CALLER_REACHABILITY_V16.json",
+      "CAMPAIGN_POLICY_EXECUTION_V16.json",
+      "DEPENDENCY_VALIDATION_V16.json",
+      "WORLD_CALLER_AND_GM_VISIBILITY_V16.md",
+      "probes/v16_campaign_policy_probe.mjs"
+    ],
+    "pinned_main": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+    "pinned_unmerged_gpr_candidate": "70b3028ee52c1860b6411f83c93da28b3c0063be",
+    "static_wiring_checks": 16,
+    "static_wiring_checks_passed": 16,
+    "source_files_pinned": 11,
+    "exact_isolated_policy_cases_executed": 16,
+    "passed": 16,
+    "failed": 0,
+    "source_integrity_negative_exit_code": 1,
+    "exact_executed_script_blob_sha": "de61cc8c38f164b5744c54de292553ad341317a9",
+    "v15_helper_reachability": "NOT_LOCATED_IN_INSPECTED_DEFAULT_ROUTE_OR_INDEX__NOT_PROOF_OF_COMPLETE_ABSENCE",
+    "gm_guidance_source_sink": "NORMAL_CAMPAIGNS_UI_DISPLAYS_SELECTED_SCENE_GM_GUIDANCE_WITH_NO_LOCAL_ROLE_CHECK__ACTUAL_ACCESS_UNPROVEN",
+    "original_finding_crosswalk": [
+      "CQR-0026",
+      "CQR2-F0004",
+      "CQR2-F0005",
+      "CQR-0008",
+      "CQR1-F0030"
+    ],
+    "original_risk_charters": [
+      "V10-Q07",
+      "V10-Q01"
+    ],
+    "original_candidate_overlap_clusters": [
+      "RHB-X015",
+      "RHB-X006"
+    ],
+    "actual_product_S2": 0,
+    "installed_native_S3": 0,
+    "owner_S4": 0,
+    "R05_done": false,
+    "R06_done": false,
+    "R09_done": false,
+    "next_gate": "Exact authenticated origin->storage->normal viewer actor role check, current owner grant and hidden payload denial/recovery on real customer apps; no implementation authorization."
+  },
+  "current_candidate_account_isolation_v17": {
+    "as_of": "2026-11-06",
+    "app_pr": 884,
+    "app_source_head": "88717e014dfbba99304c07655ef2f5f13be3e906",
+    "evidence": [
+      "ACCOUNT_SCOPE_SYNTHETIC_EXECUTION_V17.json",
+      "NATIVE_ACCOUNT_GM_PLAYER_TRACE_V17.json",
+      "AUTHENTICATED_GM_PLAYER_PROOF_CHARTERS_V17.json",
+      "DEPENDENCY_VALIDATION_V17.json",
+      "ACCOUNT_SCOPE_AND_GM_PLAYER_V17.md"
+    ],
+    "candidate_head": "70b3028ee52c1860b6411f83c93da28b3c0063be",
+    "isolated_synthetic_cases": 19,
+    "observed_expected": 19,
+    "normal_control_cases": 18,
+    "mock_backend_limit_cases": 1,
+    "original_local_runner_sha": "6bde65cc9c502148fcc695b6aa6329c63c8c034e",
+    "runner_location": "conversation-attached-not-github",
+    "source_files": 11,
+    "source_checks_passed": 20,
+    "read_only_native_mutex_and_generation_trace": true,
+    "native_rust_tests_executed": 0,
+    "authenticated_customer_GM_player_executed": 0,
+    "installed_native_S3": 0,
+    "owner_S4": 0,
+    "source_risk_open": [
+      "UNGUARDED_LOCAL_GM_GUIDANCE_PRESENTATION_REQUIRES_REAL_PLAYER_ACCESS_PROOF",
+      "SAME_OWNER_SCENE_CAMPAIGN_MISMATCH_REQUIRES_NEGATIVE_AND_RECOVERY_TEST"
+    ],
+    "R05_complete": false,
+    "R06_complete": false,
+    "R09_complete": false,
+    "authority": "SYNTHETIC_JS_SOURCE_AND_NATIVE_RUST_REVIEW_ONLY_NOT_PRODUCT_EXECUTION"
+  },
+  "current_executed_scene_ownership_v18": {
+    "as_of": "2026-11-06",
+    "app_pr": 884,
+    "app_source_head": "ac7c13f7bd4af5abe28ca085d6fcdfdf2fa13021",
+    "artifacts": [
+      "probes/v18_scene_campaign_regression.mjs",
+      "SCENE_CAMPAIGN_OWNERSHIP_EXECUTION_V18.json",
+      "SCENE_CAMPAIGN_CAUSAL_REMEDIATION_V18.json",
+      "DEPENDENCY_VALIDATION_V18.json",
+      "SCENE_CAMPAIGN_REPRODUCTION_V18.md"
+    ],
+    "source_heads": {
+      "main": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+      "pcv03f": "70b3028ee52c1860b6411f83c93da28b3c0063be"
+    },
+    "actual_executed_source_function_cases": 22,
+    "controls_passed": 10,
+    "desired_policy_invariants_failed": 12,
+    "source_defect": "two Campaigns reusing Stage 2 Scene by global stageId lookup; cross-Campaign selectedScene accepts stale foreign ID",
+    "causal_hypotheses": [
+      "V18-ROOT-A",
+      "V18-ROOT-B"
+    ],
+    "source_grade": "EXACT_SOURCE_LOGIC_WITH_INJECTED_SYNTHETIC_STORE_NOT_PRODUCT_BUILD",
+    "runner_committed_blob": "0f42ac77c4cb098147d6054ede206161fec6b610",
+    "original_150_findings_preserved": true,
+    "actual_authenticated_S2": 0,
+    "actual_native_S3": 0,
+    "owner_S4": 0,
+    "R05_adjudicated": false,
+    "R06_impact_measured": false,
+    "R09_executed": false,
+    "implementation_changed": false
+  },
+  "current_three_guard_scene_matrix_v19": {
+    "as_of": "2026-11-06",
+    "app_pr": 884,
+    "app_source_head": "7e288a1e8e319f8f8088f1779f27226298a39973",
+    "artifacts": [
+      "probes/v19_scene_repair_matrix.mjs",
+      "SCENE_REPAIR_MATRIX_EXECUTION_V19.json",
+      "SCENE_REPAIR_CAUSAL_PROPOSAL_V19.md",
+      "DEPENDENCY_VALIDATION_V19.json"
+    ],
+    "pinned_heads": {
+      "main": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+      "pcv03f": "70b3028ee52c1860b6411f83c93da28b3c0063be"
+    },
+    "executed_source_function_assertions": 150,
+    "positive_controls_passed": 50,
+    "expected_red_partial_green_profiles_met": 10,
+    "per_head_policy_passed": {
+      "original": 2,
+      "allocator_only": 7,
+      "renderer_only": 4,
+      "allocator_and_renderer": 9,
+      "three_guard_proposal": 10
+    },
+    "third_guard_required": "P10 FOREIGN_ACTIVE_SCENE_MUST_BE_REJECTED_BEFORE_DERIVING_STAGE",
+    "runnable_source_blob": "7af6bbbfd874dce547c84fb4a7d8eebb0afe04db",
+    "grade": "EXECUTED_PINNED_SOURCE_FUNCTION_IN_MEMORY_PATCHES_NOT_PRODUCT",
+    "product_patch_applied": false,
+    "compiled_product_test": false,
+    "native_test": false,
+    "real_authenticated_S2": 0,
+    "native_S3": 0,
+    "owner_S4": 0,
+    "R05_complete": false,
+    "R06_complete": false,
+    "R09_complete": false,
+    "next_gate": "Authorize product implementation separately; test correct real persistent atomicity and two Campaign React/GM-player/native proof; no CQR authority in CURRENT."
+  },
+  "current_browser_store_fault_reproduction_v20": {
+    "as_of": "2026-11-07",
+    "app_pr": 884,
+    "app_source_head": "540975568cdcb8ec0b12bde9238a8b4eef8d8f3b",
+    "source_revision": "70b3028ee52c1860b6411f83c93da28b3c0063be",
+    "artifacts": [
+      "probes/v20_scene_persistence_faults.mjs",
+      "probes/fixtures/pcv02_source_excerpts_v20.ts",
+      "PERSISTENCE_FAULT_EXECUTION_V20.json",
+      "PERSISTENCE_REPAIR_ACCEPTANCE_GATES_V20.json",
+      "DEPENDENCY_VALIDATION_V20.json",
+      "PERSISTENCE_FAULT_AND_REPLAY_V20.md"
+    ],
+    "probe_executed_git_blob": "95c6d054c48eb10cf2d171704374a5f3e9fd25fb",
+    "fixture_blob": "5f0e44204ae603be6a73ce5b86393c272eee4e51",
+    "localStore_source_blob": "1615629c977817341b683256a0fca92874d0449b",
+    "assertions_executed": 19,
+    "assertions_met": 19,
+    "call_level_failure_scenarios": 6,
+    "controlled_concurrency_scenarios": 1,
+    "findings": [
+      "STRANDED_UNINDEXED_SCENE_AFTER_PARTIAL_WRITE",
+      "AMBIGUOUS_CAMPAIGN_COMMIT_RETRY_DOUBLE_ADVANCES",
+      "BROWSER_DEV_CONCURRENT_INDEX_LOST_UPDATE"
+    ],
+    "native_per_document_Sqlite_transaction_source_only": true,
+    "executed_native_Sqlite_tests": 0,
+    "authenticated_product_S2": 0,
+    "installed_native_S3": 0,
+    "owner_S4": 0,
+    "original_finding_verdicts_kept": true,
+    "product_patch_applied": false,
+    "R05_complete": false,
+    "R06_complete": false,
+    "R09_complete": false,
+    "next_gate": "Authorize future implementation separately: idempotent Scene stage operation, atomic or journaled multi-document update, concurrency/recovery tests with real native platform and owner proof."
+  },
+  "current_sqlite_engine_transaction_v21": {
+    "as_of": "2026-11-07",
+    "app_pr": 884,
+    "app_source_head": "235c780e6527fd500922c1f8e1eb10d392fb7083",
+    "artifacts": [
+      "probes/v21_sqlite_source_contract_smoke.py",
+      "SQLITE_TRANSACTION_COMPARATIVE_EXECUTION_V21.json",
+      "NATIVE_SCENE_ADVANCE_ACCEPTANCE_V21.json",
+      "DEPENDENCY_VALIDATION_V21.json",
+      "SQLITE_TRANSACTION_AND_IDEMPOTENCY_V21.md"
+    ],
+    "pinned_candidate": "70b3028ee52c1860b6411f83c93da28b3c0063be",
+    "native_rust_source_blob": "5609d7bc7f50179d2b4d27dd8b0845a780727904",
+    "actual_engine": "Python 3.13.5 SQLite 3.46.1 local temporary WAL",
+    "full_local_runner_sha": "bcfb57a6ceaffa87e831c17be83100d9c444cccc",
+    "full_runner_location": "conversation container only, not GitHub",
+    "expanded_assertions_executed": 28,
+    "expanded_passed": 28,
+    "repeated_identical_result": 28,
+    "smoke_runner_committed_blob": "79449272e5a21a25f3ef8e86e1e3bcda40fcc118",
+    "smoke_assertions_executed": 11,
+    "smoke_passed": 11,
+    "per_document_revision_CAS_verified": true,
+    "six_multirow_partial_faults_run": 6,
+    "wal_snapshot_conflict_verified": true,
+    "proposed_atomic_poc_success": true,
+    "proposed_atomic_poc_in_product": false,
+    "native_rust_compiled": false,
+    "installed_Windows_Android_S3": 0,
+    "authenticated_product_S2": 0,
+    "owner_S4": 0,
+    "original_finding_verdicts_preserved": true,
+    "implementation_patch_applied": false,
+    "R05_complete": false,
+    "R06_complete": false,
+    "R09_complete": false,
+    "next_gate": "Owner-approve a product work item before implementing/compiling a transactional native Scene advance command; prove account encryption, request idempotency, referential integrity, native device fault injection and end-to-end owner proof."
+  },
+  "current_authority_native_reuse_boundary_v22": {
+    "as_of": "2026-11-07",
+    "app_pr": 884,
+    "app_source_head": "e0b225cc4fa2e5bc47db49f978522170349acd22",
+    "candidate": "70b3028ee52c1860b6411f83c93da28b3c0063be",
+    "artifacts": [
+      "probes/v22_authority_table_smoke.py",
+      "AUTHORITY_REUSE_EXECUTION_V22.json",
+      "AUTHORITY_REUSE_ARCHITECTURE_V22.json",
+      "DEPENDENCY_VALIDATION_V22.json",
+      "AUTHORITY_REUSE_BOUNDARY_V22.md"
+    ],
+    "full_sqlite_runner_git_blob": "7b1db17c8416e807abe4a5815fd93b5bf626a6d3",
+    "full_sqlite_runner_location": "conversation_attachment_only",
+    "full_assertions_executed": 26,
+    "full_passed": 26,
+    "repeated_identical": true,
+    "committed_smoke_git_blob": "46fa3a61af086a4b69eebe03b7ae656d7333e292",
+    "smoke_executed": 15,
+    "smoke_passed": 15,
+    "smoke_repeated_identical": true,
+    "source_root_cause": "authority_records and local_documents are separate; native account_authority_apply can only transact authority_records, PCV02 uses local_documents",
+    "direct_reuse_solves_existing_atomicity": false,
+    "viable_A": "full encrypted migration of all PCV02 readers/writers to authority_records",
+    "viable_B": "new narrow native transaction against existing local_documents plus durable receipt",
+    "insufficient_C": "authority receipt alone while old local_document writes remain separate",
+    "preferred_review_direction": "B, conditional on owner review; NO authority to implement",
+    "rust_compiled": false,
+    "native_Tauri_called": false,
+    "installed_S3": 0,
+    "actual_authenticated_S2": 0,
+    "owner_S4": 0,
+    "implementation_modified": false,
+    "R05_complete": false,
+    "R06_complete": false,
+    "R09_complete": false,
+    "original_findings_preserved": true
+  },
+  "current_owner_sealed_scene_design_v23": {
+    "as_of": "2026-11-07",
+    "app_pr": 884,
+    "app_source_head": "e14b5a7052b3840f835e7ffb8ec3279a237a9f4f",
+    "artifacts": [
+      "probes/v23_sealed_scene_smoke.py",
+      "OWNER_SEALED_SQLITE_EXECUTION_V23.json",
+      "NATIVE_ENCRYPTED_SCENE_TRANSACTION_V23.json",
+      "DEPENDENCY_VALIDATION_V23.json",
+      "OWNER_SEALED_SCENE_DESIGN_V23.md"
+    ],
+    "pinned_candidate": "70b3028ee52c1860b6411f83c93da28b3c0063be",
+    "sealed_native_source_blob": "35cf8d76561e9a12c7ec6f3a90eaaed75ed9f21c",
+    "state_owner_source_blob": "3ee1a0c4292a9410100b502c52323c785711851a",
+    "local_db_source_blob": "5609d7bc7f50179d2b4d27dd8b0845a780727904",
+    "full_model_local_runner_git_blob": "2b69a3fff0cc9e7355d5483a1c98f477a1f532b6",
+    "full_model_runner_location": "conversation_local_not_Github",
+    "full_model_assertions": 38,
+    "full_model_passed": 38,
+    "full_model_three_identical_repeats": true,
+    "committed_smoke_git_blob": "8927c43238d026f66eea22406b60f5c61a11fb48",
+    "smoke_cases": 18,
+    "smoke_passed": 18,
+    "smoke_three_identical_repeats": true,
+    "crypto_scope": "INDEPENDENT_AESGCM_STANDIN_NOT_NATIVEPLATFORM_CIPHER_PARITY",
+    "sqlite_real": true,
+    "owner_lock_standin": true,
+    "source_derived_document_purpose": [
+      "account-document-v1",
+      "deviceId",
+      "accountSubjectId",
+      "scopedNamespace",
+      "documentKey"
+    ],
+    "proposed_narrow_owner_command": "account_scene_advance",
+    "proposed_command_authorized": false,
+    "compiled_rust_executed": false,
+    "real_platform_crypto_executed": false,
+    "product_authenticated_S2": 0,
+    "installed_native_S3": 0,
+    "owner_S4": 0,
+    "R05_complete": false,
+    "R06_complete": false,
+    "R09_complete": false,
+    "original_findings_preserved": true,
+    "implementation_modified": false,
+    "next_gate": "Explicit owner approval for product work item, then actual native account owner encrypted multirow transaction Rust build, role/authorization checks, crash/race two-device S3 and independent S4 acceptance."
+  },
+  "current_foundation_recovery_visibility_v24": {
+    "as_of": "2026-11-07",
+    "app_pr": 884,
+    "app_source_head": "d561c39b40a863e02bae2ec6175b7f9b25c45caa",
+    "source_head": "70b3028ee52c1860b6411f83c93da28b3c0063be",
+    "evidence": [
+      "probes/v24_foundation_integrity_smoke.mjs",
+      "probes/fixtures/pcv02_load_subset_v24.ts",
+      "FOUNDATION_INDEX_INTEGRITY_EXECUTION_V24.json",
+      "FOUNDATION_RECOVERY_ACCEPTANCE_V24.json",
+      "DEPENDENCY_VALIDATION_V24.json",
+      "FOUNDATION_INTEGRITY_AND_RECOVERY_V24.md"
+    ],
+    "exact_browser_store_git_blob": "1615629c977817341b683256a0fca92874d0449b",
+    "full_source_read_function_git_blob": "5385593de24a0884c38ae4ecfb930858187b371b",
+    "exact_function_fixture_git_blob": "c0b294c0fd550fc784d17e99215d35c9c10accdd",
+    "full_runner_local_git_blob": "afb31a13dc9b07e5629f0b8dea006ddd623b4e81",
+    "full_runner_not_committed": true,
+    "full_executed_assertions": 27,
+    "full_passed": 27,
+    "repeated_result_byte_identical": true,
+    "committed_smoke_git_blob": "b7cd5c18b63ae01705c871e2df1e479eead63a4c",
+    "smoke_executed": 11,
+    "smoke_passed": 11,
+    "findings": [
+      "UNINDEXED_REAL_STORE_SCENE_HIDDEN_FROM_NORMAL_FOUNDATION",
+      "INDEX_CAN_REFERENCE_MISSING_ROW_SILENTLY_DROPPED",
+      "CURRENT_STORE_HAS_NO_DOCUMENT_INVENTORY_FOR_UNKNOWN_ORPHANS",
+      "KNOWN_KEY_NONDESTRUCTIVE_RECOVERY_POSSIBLE",
+      "FOREIGN_CAMPAIGN_SCENE_UI_SELECTED_WITHOUT_OWNER_CHECK"
+    ],
+    "proposed_recovery_gates": 8,
+    "privileged_inventory_implemented": false,
+    "actual_browser_development_store_executed": true,
+    "real_Rust_or_AccountOwner": false,
+    "authenticated_product_S2": 0,
+    "installed_native_S3": 0,
+    "owner_S4": 0,
+    "R05_complete": false,
+    "R06_complete": false,
+    "R09_complete": false,
+    "original_findings_preserved": true,
+    "product_code_changed": false,
+    "next_gate": "Integrate owner-only bounded safe physical inventory and repair into eventual authorized typed native atomic Scene advance implementation, prove encrypted account isolation, role-denial, legacy orphan recovery and device restart under owner S4."
+  },
+  "current_recovery_decision_v25": {
+    "as_of": "2026-11-07",
+    "app_pr": 884,
+    "app_source_head": "df14c7d76d9228a5f02bda7b6994db6a469d1109",
+    "artifacts": [
+      "probes/v25_recovery_decision_smoke.py",
+      "RECOVERY_DECISION_EXECUTION_V25.json",
+      "RECOVERY_DECISION_ACCEPTANCE_V25.json",
+      "DEPENDENCY_VALIDATION_V25.json",
+      "RECOVERY_DECISION_V25.md"
+    ],
+    "source_head": "70b3028ee52c1860b6411f83c93da28b3c0063be",
+    "local_db_source_blob": "5609d7bc7f50179d2b4d27dd8b0845a780727904",
+    "full_source_schema_sqlite_runner_blob": "cc6fbf1de0d6b943053db62e67ab6f8192564194",
+    "full_runner_conversation_local": true,
+    "full_sqlite_model_tests": 42,
+    "full_passed": 42,
+    "full_repeat_identical": true,
+    "committed_smoke_git_blob": "b4de40da8f4ad82a6692ab5bc975f120939516b1",
+    "portable_tests": 24,
+    "portable_passed": 24,
+    "portable_repeat_identical": true,
+    "synthetic_initial": {
+      "parseable_orphans": 5,
+      "tentatively_reindexable": 1,
+      "quarantined_orphans": 4,
+      "malformed_rows": 1,
+      "foreign_campaign_active": 1,
+      "missing_indexed": 1,
+      "duplicate_index": 1
+    },
+    "explicit_consent_modelled": true,
+    "atomic_reindex_receipt_modelled": true,
+    "stale_refusal_modelled": true,
+    "actual_platform_encryption_test": false,
+    "grade": "PYTHON_REAL_SQLITE_SOURCE_SCHEMA_SYNTHETIC_PLAINTEXT_AND_PROPOSED_DECISION_POLICY_NOT_NATIVE",
+    "implementation_authorized": false,
+    "product_implementation_modified": false,
+    "native_rust_tested": false,
+    "product_S2": 0,
+    "native_S3": 0,
+    "owner_S4": 0,
+    "CQR_R05_owner_adjudicated": false,
+    "CQR_R06_measured": false,
+    "CQR_R09_live_handoff": false,
+    "original_150_verdicts_preserved": true,
+    "all_12_CQR_stages": "PLANNED_NOT_EXECUTED",
+    "next_gate": "Real owner-locked encrypted native inventory and restricted recovery integration only after authorized product work item; compiled Rust, GM/player role-negative and Windows/Android tests plus independent owner S4."
+  }
+}
