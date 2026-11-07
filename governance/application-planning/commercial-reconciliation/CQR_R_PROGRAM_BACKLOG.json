@@ -6,7 +6,7 @@
   "selected_first": "CQR-R01",
   "authority": "OPS5 on-demand planning, not rehabilitation implementation",
   "source_repository": "cybalicistjt-stack/Multiversal-app",
-  "source_head": "540975568cdcb8ec0b12bde9238a8b4eef8d8f3b",
+  "source_head": "235c780e6527fd500922c1f8e1eb10d392fb7083",
   "source_path": "docs/commercial-quality-review/rehabilitation/RECONCILIATION_FAMILY.json",
   "review_prs": [
     881,
@@ -880,5 +880,43 @@
     "R06_complete": false,
     "R09_complete": false,
     "next_gate": "Authorize future implementation separately: idempotent Scene stage operation, atomic or journaled multi-document update, concurrency/recovery tests with real native platform and owner proof."
+  },
+  "current_sqlite_engine_transaction_v21": {
+    "as_of": "2026-11-07",
+    "app_pr": 884,
+    "app_source_head": "235c780e6527fd500922c1f8e1eb10d392fb7083",
+    "artifacts": [
+      "probes/v21_sqlite_source_contract_smoke.py",
+      "SQLITE_TRANSACTION_COMPARATIVE_EXECUTION_V21.json",
+      "NATIVE_SCENE_ADVANCE_ACCEPTANCE_V21.json",
+      "DEPENDENCY_VALIDATION_V21.json",
+      "SQLITE_TRANSACTION_AND_IDEMPOTENCY_V21.md"
+    ],
+    "pinned_candidate": "70b3028ee52c1860b6411f83c93da28b3c0063be",
+    "native_rust_source_blob": "5609d7bc7f50179d2b4d27dd8b0845a780727904",
+    "actual_engine": "Python 3.13.5 SQLite 3.46.1 local temporary WAL",
+    "full_local_runner_sha": "bcfb57a6ceaffa87e831c17be83100d9c444cccc",
+    "full_runner_location": "conversation container only, not GitHub",
+    "expanded_assertions_executed": 28,
+    "expanded_passed": 28,
+    "repeated_identical_result": 28,
+    "smoke_runner_committed_blob": "79449272e5a21a25f3ef8e86e1e3bcda40fcc118",
+    "smoke_assertions_executed": 11,
+    "smoke_passed": 11,
+    "per_document_revision_CAS_verified": true,
+    "six_multirow_partial_faults_run": 6,
+    "wal_snapshot_conflict_verified": true,
+    "proposed_atomic_poc_success": true,
+    "proposed_atomic_poc_in_product": false,
+    "native_rust_compiled": false,
+    "installed_Windows_Android_S3": 0,
+    "authenticated_product_S2": 0,
+    "owner_S4": 0,
+    "original_finding_verdicts_preserved": true,
+    "implementation_patch_applied": false,
+    "R05_complete": false,
+    "R06_complete": false,
+    "R09_complete": false,
+    "next_gate": "Owner-approve a product work item before implementing/compiling a transactional native Scene advance command; prove account encryption, request idempotency, referential integrity, native device fault injection and end-to-end owner proof."
   }
 }
