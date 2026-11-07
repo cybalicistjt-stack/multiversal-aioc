@@ -6,7 +6,7 @@
   "selected_first": "CQR-R01",
   "authority": "OPS5 on-demand planning, not rehabilitation implementation",
   "source_repository": "cybalicistjt-stack/Multiversal-app",
-  "source_head": "ac7c13f7bd4af5abe28ca085d6fcdfdf2fa13021",
+  "source_head": "7e288a1e8e319f8f8088f1779f27226298a39973",
   "source_path": "docs/commercial-quality-review/rehabilitation/RECONCILIATION_FAMILY.json",
   "review_prs": [
     881,
@@ -805,5 +805,43 @@
     "R06_impact_measured": false,
     "R09_executed": false,
     "implementation_changed": false
+  },
+  "current_three_guard_scene_matrix_v19": {
+    "as_of": "2026-11-06",
+    "app_pr": 884,
+    "app_source_head": "7e288a1e8e319f8f8088f1779f27226298a39973",
+    "artifacts": [
+      "probes/v19_scene_repair_matrix.mjs",
+      "SCENE_REPAIR_MATRIX_EXECUTION_V19.json",
+      "SCENE_REPAIR_CAUSAL_PROPOSAL_V19.md",
+      "DEPENDENCY_VALIDATION_V19.json"
+    ],
+    "pinned_heads": {
+      "main": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+      "pcv03f": "70b3028ee52c1860b6411f83c93da28b3c0063be"
+    },
+    "executed_source_function_assertions": 150,
+    "positive_controls_passed": 50,
+    "expected_red_partial_green_profiles_met": 10,
+    "per_head_policy_passed": {
+      "original": 2,
+      "allocator_only": 7,
+      "renderer_only": 4,
+      "allocator_and_renderer": 9,
+      "three_guard_proposal": 10
+    },
+    "third_guard_required": "P10 FOREIGN_ACTIVE_SCENE_MUST_BE_REJECTED_BEFORE_DERIVING_STAGE",
+    "runnable_source_blob": "7af6bbbfd874dce547c84fb4a7d8eebb0afe04db",
+    "grade": "EXECUTED_PINNED_SOURCE_FUNCTION_IN_MEMORY_PATCHES_NOT_PRODUCT",
+    "product_patch_applied": false,
+    "compiled_product_test": false,
+    "native_test": false,
+    "real_authenticated_S2": 0,
+    "native_S3": 0,
+    "owner_S4": 0,
+    "R05_complete": false,
+    "R06_complete": false,
+    "R09_complete": false,
+    "next_gate": "Authorize product implementation separately; test correct real persistent atomicity and two Campaign React/GM-player/native proof; no CQR authority in CURRENT."
   }
 }
