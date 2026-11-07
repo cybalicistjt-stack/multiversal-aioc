@@ -6,7 +6,7 @@
   "selected_first": "CQR-R01",
   "authority": "OPS5 on-demand planning, not rehabilitation implementation",
   "source_repository": "cybalicistjt-stack/Multiversal-app",
-  "source_head": "7e288a1e8e319f8f8088f1779f27226298a39973",
+  "source_head": "540975568cdcb8ec0b12bde9238a8b4eef8d8f3b",
   "source_path": "docs/commercial-quality-review/rehabilitation/RECONCILIATION_FAMILY.json",
   "review_prs": [
     881,
@@ -843,5 +843,42 @@
     "R06_complete": false,
     "R09_complete": false,
     "next_gate": "Authorize product implementation separately; test correct real persistent atomicity and two Campaign React/GM-player/native proof; no CQR authority in CURRENT."
+  },
+  "current_browser_store_fault_reproduction_v20": {
+    "as_of": "2026-11-07",
+    "app_pr": 884,
+    "app_source_head": "540975568cdcb8ec0b12bde9238a8b4eef8d8f3b",
+    "source_revision": "70b3028ee52c1860b6411f83c93da28b3c0063be",
+    "artifacts": [
+      "probes/v20_scene_persistence_faults.mjs",
+      "probes/fixtures/pcv02_source_excerpts_v20.ts",
+      "PERSISTENCE_FAULT_EXECUTION_V20.json",
+      "PERSISTENCE_REPAIR_ACCEPTANCE_GATES_V20.json",
+      "DEPENDENCY_VALIDATION_V20.json",
+      "PERSISTENCE_FAULT_AND_REPLAY_V20.md"
+    ],
+    "probe_executed_git_blob": "95c6d054c48eb10cf2d171704374a5f3e9fd25fb",
+    "fixture_blob": "5f0e44204ae603be6a73ce5b86393c272eee4e51",
+    "localStore_source_blob": "1615629c977817341b683256a0fca92874d0449b",
+    "assertions_executed": 19,
+    "assertions_met": 19,
+    "call_level_failure_scenarios": 6,
+    "controlled_concurrency_scenarios": 1,
+    "findings": [
+      "STRANDED_UNINDEXED_SCENE_AFTER_PARTIAL_WRITE",
+      "AMBIGUOUS_CAMPAIGN_COMMIT_RETRY_DOUBLE_ADVANCES",
+      "BROWSER_DEV_CONCURRENT_INDEX_LOST_UPDATE"
+    ],
+    "native_per_document_Sqlite_transaction_source_only": true,
+    "executed_native_Sqlite_tests": 0,
+    "authenticated_product_S2": 0,
+    "installed_native_S3": 0,
+    "owner_S4": 0,
+    "original_finding_verdicts_kept": true,
+    "product_patch_applied": false,
+    "R05_complete": false,
+    "R06_complete": false,
+    "R09_complete": false,
+    "next_gate": "Authorize future implementation separately: idempotent Scene stage operation, atomic or journaled multi-document update, concurrency/recovery tests with real native platform and owner proof."
   }
 }
