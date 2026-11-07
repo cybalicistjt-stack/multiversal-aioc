@@ -6,7 +6,7 @@
   "selected_first": "CQR-R01",
   "authority": "OPS5 on-demand planning, not rehabilitation implementation",
   "source_repository": "cybalicistjt-stack/Multiversal-app",
-  "source_head": "88717e014dfbba99304c07655ef2f5f13be3e906",
+  "source_head": "ac7c13f7bd4af5abe28ca085d6fcdfdf2fa13021",
   "source_path": "docs/commercial-quality-review/rehabilitation/RECONCILIATION_FAMILY.json",
   "review_prs": [
     881,
@@ -771,5 +771,39 @@
     "R06_complete": false,
     "R09_complete": false,
     "authority": "SYNTHETIC_JS_SOURCE_AND_NATIVE_RUST_REVIEW_ONLY_NOT_PRODUCT_EXECUTION"
+  },
+  "current_executed_scene_ownership_v18": {
+    "as_of": "2026-11-06",
+    "app_pr": 884,
+    "app_source_head": "ac7c13f7bd4af5abe28ca085d6fcdfdf2fa13021",
+    "artifacts": [
+      "probes/v18_scene_campaign_regression.mjs",
+      "SCENE_CAMPAIGN_OWNERSHIP_EXECUTION_V18.json",
+      "SCENE_CAMPAIGN_CAUSAL_REMEDIATION_V18.json",
+      "DEPENDENCY_VALIDATION_V18.json",
+      "SCENE_CAMPAIGN_REPRODUCTION_V18.md"
+    ],
+    "source_heads": {
+      "main": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+      "pcv03f": "70b3028ee52c1860b6411f83c93da28b3c0063be"
+    },
+    "actual_executed_source_function_cases": 22,
+    "controls_passed": 10,
+    "desired_policy_invariants_failed": 12,
+    "source_defect": "two Campaigns reusing Stage 2 Scene by global stageId lookup; cross-Campaign selectedScene accepts stale foreign ID",
+    "causal_hypotheses": [
+      "V18-ROOT-A",
+      "V18-ROOT-B"
+    ],
+    "source_grade": "EXACT_SOURCE_LOGIC_WITH_INJECTED_SYNTHETIC_STORE_NOT_PRODUCT_BUILD",
+    "runner_committed_blob": "0f42ac77c4cb098147d6054ede206161fec6b610",
+    "original_150_findings_preserved": true,
+    "actual_authenticated_S2": 0,
+    "actual_native_S3": 0,
+    "owner_S4": 0,
+    "R05_adjudicated": false,
+    "R06_impact_measured": false,
+    "R09_executed": false,
+    "implementation_changed": false
   }
 }
