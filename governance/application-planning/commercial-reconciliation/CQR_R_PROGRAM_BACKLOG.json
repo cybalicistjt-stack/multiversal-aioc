@@ -6,7 +6,7 @@
   "selected_first": "CQR-R01",
   "authority": "OPS5 on-demand planning, not rehabilitation implementation",
   "source_repository": "cybalicistjt-stack/Multiversal-app",
-  "source_head": "235c780e6527fd500922c1f8e1eb10d392fb7083",
+  "source_head": "e0b225cc4fa2e5bc47db49f978522170349acd22",
   "source_path": "docs/commercial-quality-review/rehabilitation/RECONCILIATION_FAMILY.json",
   "review_prs": [
     881,
@@ -918,5 +918,43 @@
     "R06_complete": false,
     "R09_complete": false,
     "next_gate": "Owner-approve a product work item before implementing/compiling a transactional native Scene advance command; prove account encryption, request idempotency, referential integrity, native device fault injection and end-to-end owner proof."
+  },
+  "current_authority_native_reuse_boundary_v22": {
+    "as_of": "2026-11-07",
+    "app_pr": 884,
+    "app_source_head": "e0b225cc4fa2e5bc47db49f978522170349acd22",
+    "candidate": "70b3028ee52c1860b6411f83c93da28b3c0063be",
+    "artifacts": [
+      "probes/v22_authority_table_smoke.py",
+      "AUTHORITY_REUSE_EXECUTION_V22.json",
+      "AUTHORITY_REUSE_ARCHITECTURE_V22.json",
+      "DEPENDENCY_VALIDATION_V22.json",
+      "AUTHORITY_REUSE_BOUNDARY_V22.md"
+    ],
+    "full_sqlite_runner_git_blob": "7b1db17c8416e807abe4a5815fd93b5bf626a6d3",
+    "full_sqlite_runner_location": "conversation_attachment_only",
+    "full_assertions_executed": 26,
+    "full_passed": 26,
+    "repeated_identical": true,
+    "committed_smoke_git_blob": "46fa3a61af086a4b69eebe03b7ae656d7333e292",
+    "smoke_executed": 15,
+    "smoke_passed": 15,
+    "smoke_repeated_identical": true,
+    "source_root_cause": "authority_records and local_documents are separate; native account_authority_apply can only transact authority_records, PCV02 uses local_documents",
+    "direct_reuse_solves_existing_atomicity": false,
+    "viable_A": "full encrypted migration of all PCV02 readers/writers to authority_records",
+    "viable_B": "new narrow native transaction against existing local_documents plus durable receipt",
+    "insufficient_C": "authority receipt alone while old local_document writes remain separate",
+    "preferred_review_direction": "B, conditional on owner review; NO authority to implement",
+    "rust_compiled": false,
+    "native_Tauri_called": false,
+    "installed_S3": 0,
+    "actual_authenticated_S2": 0,
+    "owner_S4": 0,
+    "implementation_modified": false,
+    "R05_complete": false,
+    "R06_complete": false,
+    "R09_complete": false,
+    "original_findings_preserved": true
   }
 }
