@@ -11,6 +11,14 @@ Build a complete evening of play in small steps. Start with a GM who can create 
 - **Character-builder precedent.** Reuse its source-linked inventory, named steps, repeatable playtest and defect log. This tracker distinguishes existing source evidence from the actual playtest result. The player handoff begins with an explicitly finished or submitted character and uses the governed character record through play. It keeps drafts recoverable, species choices explicit, gear and operational assets in credits, and skill ranks separate from weapon, armor, vehicle and technology proficiency.
 - **Scope.** This is a proposed delivery order, with no product tranche selected by this document. Minimum prep for a live scene belongs beside PCV-04. Full GM and creator authoring belongs in PCV-07. MTLC remains the owner of group coordination and continuity. Confirm strict PCV predecessor and operational selection in OPS5 before each implementation tranche. The existing Multiversal product model uses Theater of the Mind and bounded zones. Full VTT work is outside this plan.
 
+## Downloadable GM playtest cycles
+
+The owner directed the GM playtest to ship as one downloadable, self-contained HTML file per cycle, with owner feedback guiding the next increment. Each cycle should end with a runnable file, the flows it covers, the proof boundary and the next feedback target. A local cycle can progress while the installed product walkthrough remains open.
+
+| Cycle | Focus | Result | Owner feedback target |
+| --- | --- | --- | --- |
+| 01 | Campaign setup, invitation, membership and character handoff | [Multiversal_GM_Playtest_Cycle_01.html](https://chatgpt.com/library?file_id=libfile_d44f51e46d348191867e83a9563c49e5&account_id=personal) · Focused event and render logic checks passed | Try create or sample → GM invite → Player preview accepts → submit a character JSON → GM returns or approves. Use Feedback to send changes for the next cycle. |
+
 ## Build order
 
 All implementation playtests start at **Not run**. GM-00 has source and isolated character-playtest logic evidence. The normal-app walkthrough is pending an executable target. OPS5 selects work through CURRENT and the [GM-00 work record](../../../operations/work-items/GM-00.json).
