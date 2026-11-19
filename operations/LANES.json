@@ -320,6 +320,25 @@
       ],
       "cross_lane_reads": "Preserve PCV-03F/MTLC-14/AXI and MCB authority. GATE may read dependencies but not claim implementation or alter other selected work. MCB owns published price/claims.",
       "implementation_policy": "Owner-selected on-demand; GATE-01..08 may be separately selected source/design tranches; product/provider GATE-09..13 need separately selected authority and verified PCV/provider prerequisites; GATE-14 owner-only commerce. No auto successor."
+    },
+    {
+      "id": "gm-workspace",
+      "purpose": "Owner-selected on-demand GM workspace build planning, coverage and user-journey verification.",
+      "intent_examples": [
+        "continue GM workspace",
+        "GM build and playtest tracker",
+        "continue GM-00",
+        "baseline the GM side"
+      ],
+      "current_state_source": "operations/CURRENT.json#/lanes/gm-workspace",
+      "source_bundle": [
+        "operations/work-items/GM-00.json",
+        "governance/application-planning/gm-workspace/GM_BUILD_AND_PLAYTEST_TRACKER.md",
+        "Reviewed Multiversal-app route sources and existing PCV/MTLC checkpoints for explicit dependencies",
+        "Character-builder playtest evidence for the player-to-campaign handoff"
+      ],
+      "cross_lane_reads": "Use GPR/PCV, MTLC and domain records for explicit dependencies. Their selected work and authority stay governed by their own records.",
+      "implementation_policy": "Owner-authorized on-demand audit and planning; ordinary app implementation follows the existing product lanes and PCV order."
     }
   ],
   "persistent_implementation_lanes": [
