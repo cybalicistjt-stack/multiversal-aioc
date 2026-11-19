@@ -231,29 +231,44 @@
         "Standalone regressions for Cycles 01 through 05"
       ],
       "validation": "Standalone HTML scene and workflow harness exercised checkpoint export/restore, pause recovery, invalid input, closeout idempotence, per-recipient awards, recap redaction, draft reuse and readiness. Rendered browser and installed product remain unverified."
+    },
+    "standalone_cycle_07": {
+      "status": "delivered_for_owner_playtest",
+      "filename": "Multiversal_GM_Playtest_Cycle_07.html",
+      "sha256": "708148f89c894c825407e20c85bfd96e6fea784782680f69abefcb4a0493c7c7",
+      "artifact": "https://chatgpt.com/library?file_id=libfile_6af306e356288191978841cf699fa00c&account_id=personal",
+      "completed": "2026-11-19",
+      "covered": [
+        "Party and character inventory, loot grants, loan and storage returns, equip and consume",
+        "Party and character credit ledgers, transfers, curated shop stock, purchase approval and stale-term validation",
+        "Workshop recipes and materials, reserved fees, completion, cancellation and refunds",
+        "Facility-linked storage and jobs, GM-resolved fictional contest stakes, reload and checkpoint recovery",
+        "Standalone regressions for Cycles 01 through 06"
+      ],
+      "validation": "Standalone HTML workflow harness passed full and split inventory movement, scoped custody, funding, once-only purchase, stale prices, crafting completion and material/credit refunds, contest settlement, and checkpoint restore. Rendered browser and installed product remain unverified."
     }
   },
-  "active_substep": "cycle_06_delivered_owner_playtest",
+  "active_substep": "cycle_07_delivered_owner_playtest",
   "first_unresolved_blocker": "No runnable approved GM/player product target for the audited heads was available in this environment. The product is private, no local app checkout or scoped installer was available here, the repository lists no releases, and the shared installed boundary is still pending PCV-03F certification. The standalone playtest is available as a file, but this executor's Chromium exits at Unix socket initialization (Operation not permitted); its local JavaScript boundary was exercised in Node.",
-  "next_action": "Review Cycle 06 checkpoint, closeout and next-session continuity. Apply owner feedback first, or continue the standalone sequence to GM-07 shared assets and economy. The normal-app walkthrough remains a separate recorded boundary.",
+  "next_action": "Review Cycle 07 inventory, credits, trade and work queue. Apply owner feedback first, or continue the standalone sequence to GM-08 vehicle, ship and mecha builder. The normal-app walkthrough remains a separate recorded boundary.",
   "planned_successor": "GM-01",
   "successor_rule": "Current GM-00 evidence does not select GM-01 or authorize product changes.",
   "execution_guard": {
-    "continue_turns": 7,
+    "continue_turns": 8,
     "stall_nudges": 0,
-    "material_progress_seq": 7,
-    "progress_at_last_owner_command": 6,
+    "material_progress_seq": 8,
+    "progress_at_last_owner_command": 7,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 7,
+      "seq": 8,
       "kind": "standalone_playtest_delivered",
-      "evidence": "Cycle 06 standalone HTML, exact file hash and focused continuity validation are recorded in evidence.standalone_cycle_06."
+      "evidence": "Cycle 07 standalone HTML, exact file hash and focused asset/economy validation are recorded in evidence.standalone_cycle_07."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "owner_only",
-      "evidence": "Cycle 06 is ready for the requested owner playtest and direction before the next downloadable increment."
+      "evidence": "Cycle 07 is ready for the requested owner playtest and direction before the next downloadable increment."
     }
   },
   "owner_cycle_direction": "The owner directed the GM playtest to ship as one downloadable, self-contained HTML file per cycle, with owner feedback guiding the next increment."
