@@ -19,6 +19,7 @@ The owner directed the GM playtest to ship as one downloadable, self-contained H
 | --- | --- | --- | --- |
 | 01 | Campaign setup, invitation, membership and character handoff | [Multiversal_GM_Playtest_Cycle_01.html](https://chatgpt.com/library?file_id=libfile_d44f51e46d348191867e83a9563c49e5&account_id=personal) · Focused event and render logic checks passed | Try create or sample → GM invite → Player preview accepts → submit a character JSON → GM returns or approves. Use Feedback to send changes for the next cycle. |
 | 02 | Session planner, scene prep and local launch | [Multiversal_GM_Playtest_Cycle_02.html](https://chatgpt.com/library?file_id=libfile_9a72d09975748191b24e036505365c1b&account_id=personal) · Focused render and workflow checks passed | Try editing and reordering the sample run sheet, preview the opening scene, start the session, then view and advance the live scene. |
+| 03 | Live GM screen, player actions and rulings | [Multiversal_GM_Playtest_Cycle_03.html](https://chatgpt.com/library?file_id=libfile_4a8be2e0fea48191bc59426be2daa23d&account_id=personal) · Focused workflow checks passed | Open the live sample. Request a roll, answer in Player preview, and modify or return it. Check the original dice and the ruling on both sides. |
 
 ## Build order
 
