@@ -261,29 +261,49 @@
         "Standalone regressions for Cycles 01 through 07"
       ],
       "validation": "The standalone HTML workflow harness passed land vehicle, mecha and spacecraft purchases, slot and complexity failures, unchanged XP, one-time credit charge and refund, cargo, crew, sale, custom chassis and checkpoint restore. Rendered browser and installed product remain unverified."
+    },
+    "standalone_cycle_09": {
+      "status": "delivered_for_owner_playtest",
+      "filename": "Multiversal_GM_Playtest_Cycle_09.html",
+      "sha256": "2975c884a5fb76ff42c8aa51f06e7f98b8c674e8af8f209878abeaa9ef9207ff",
+      "artifact": "https://chatgpt.com/library?file_id=libfile_f1849254e0f881919f0e2f52c4bf5f4b&account_id=personal",
+      "completed": "2026-11-19",
+      "character_builder_source": {
+        "filename": "Multiversal_Character_Builder_Playtest (16).html",
+        "sha256": "190d6b6f0ac6baf9eca7ef6909dfb86b9028edb761ced0c0d8360d5ae4d8761a",
+        "validated_transport_records": 5257
+      },
+      "covered": [
+        "Boarding from player preview, station authority, exclusive boarding, and GM control handoff",
+        "Movement, engine actions, maneuvers, defense checks, and fitted systems, with weapon roll and damage receipts for GM review",
+        "High-speed fuel, energy points, discharge, power, cooldowns, shield recovery, and GM-managed heat",
+        "Hull and component damage, GM-only hazard notes, repairs, system toggles, and saved crew and cargo",
+        "Vehicle to Combat to Free/Downtime with combat round refresh, portable checkpoints, and Cycles 01–08 regression coverage"
+      ],
+      "validation": "The standalone workflow harness passed four classes of state checks: stale and unauthorized command rejection, interrupted and successful handoff, car fuel and mecha EP/cooldown and ship power/shield tracking, and crew/cargo/operational checkpoint restore. Transport fields matched the owner-supplied character playtest for all embedded records. Rendered browser layout and installed two-device play remain unverified."
     }
   },
-  "active_substep": "cycle_08_delivered_owner_playtest",
+  "active_substep": "cycle_09_delivered_owner_playtest",
   "first_unresolved_blocker": "No runnable approved GM/player product target for the audited heads was available in this environment. The product is private, no local app checkout or scoped installer was available here, the repository lists no releases, and the shared installed boundary is still pending PCV-03F certification. The standalone playtest is available as a file, but this executor's Chromium exits at Unix socket initialization (Operation not permitted); its local JavaScript boundary was exercised in Node.",
-  "next_action": "Review the Cycle 08 hangar and apply owner feedback. Continue to GM-09 live vehicle controls for boarding, station actions, movement, resource use, damage and handoff.",
+  "next_action": "Review Cycle 09 vehicle controls and apply owner feedback. Continue the standalone sequence to GM-10 campaign-local prep tools.",
   "planned_successor": "GM-01",
   "successor_rule": "Current GM-00 evidence does not select GM-01 or authorize product changes.",
   "execution_guard": {
-    "continue_turns": 9,
+    "continue_turns": 10,
     "stall_nudges": 0,
-    "material_progress_seq": 9,
-    "progress_at_last_owner_command": 8,
+    "material_progress_seq": 10,
+    "progress_at_last_owner_command": 9,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 9,
+      "seq": 10,
       "kind": "standalone_playtest_delivered",
-      "evidence": "Cycle 08 standalone HTML, exact file hash and focused hangar validation are recorded in evidence.standalone_cycle_08."
+      "evidence": "Cycle 09 standalone HTML, exact artifact hash, character creator provenance and focused vehicle validation are recorded in evidence.standalone_cycle_09."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "owner_only",
-      "evidence": "Cycle 08 is ready for the requested owner playtest and direction before the next downloadable increment."
+      "evidence": "Cycle 09 is ready for the requested owner playtest and direction before the next downloadable increment."
     }
   },
   "owner_cycle_direction": "The owner directed the GM playtest to ship as one downloadable, self-contained HTML file per cycle, with owner feedback guiding the next increment."
