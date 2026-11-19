@@ -187,29 +187,44 @@
         "Regressions for Cycles 01 and 02"
       ],
       "validation": "Focused self-contained HTML checks exercised the actual event and render functions with a browser adapter. Includes stale scene and duplicate submission checks, private-request revisions, observer visibility, and history after reload. Rendered and installed application were not tested."
+    },
+    "standalone_cycle_04": {
+      "status": "delivered_for_owner_playtest",
+      "filename": "Multiversal_GM_Playtest_Cycle_04.html",
+      "sha256": "61463777bd7674d66fded6da9e69b3b4f510d46e45522aed8ea9185f3e076b0b",
+      "artifact": "https://chatgpt.com/library?file_id=libfile_ccd7bf5e2da48191b49da6d934a467fe&account_id=personal",
+      "completed": "2026-11-19",
+      "covered": [
+        "Reusable encounter plans, teams, approved characters, zones, objectives, hazards and reinforcements",
+        "Live initiative, player targeting and reactions, NPC actions and GM effects",
+        "Explicit approved damage, healing and conditions with original ruling receipts",
+        "Hidden participants, deployment and reveal, local reload and encounter closure",
+        "Standalone regressions for Cycles 01 through 03"
+      ],
+      "validation": "The standalone HTML event/render harness passed builder, initiative, player and NPC outcomes, cross-turn stale effect rejection, duplicate effect prevention, hidden participants, reload and closure. Rendered browser and installed product not tested."
     }
   },
-  "active_substep": "cycle_03_delivered_owner_playtest",
+  "active_substep": "cycle_04_delivered_owner_playtest",
   "first_unresolved_blocker": "No runnable approved GM/player product target for the audited heads was available in this environment. The product is private, no local app checkout or scoped installer was available here, the repository lists no releases, and the shared installed boundary is still pending PCV-03F certification. The standalone playtest is available as a file, but this executor's Chromium exits at Unix socket initialization (Operation not permitted); its local JavaScript boundary was exercised in Node.",
-  "next_action": "Review Cycle 03 live rolls, targeted requests and rulings. Apply owner feedback first, or continue the standalone sequence to GM-04 encounters and turn flow. The normal-app walkthrough remains a separate recorded boundary.",
+  "next_action": "Review Cycle 04 encounter builder and combat flow. Apply owner feedback first, or continue the standalone sequence to GM-05 noncombat scene and outcome controls. The normal-app walkthrough remains a separate recorded boundary.",
   "planned_successor": "GM-01",
   "successor_rule": "Current GM-00 evidence does not select GM-01 or authorize product changes.",
   "execution_guard": {
-    "continue_turns": 4,
+    "continue_turns": 5,
     "stall_nudges": 0,
-    "material_progress_seq": 4,
-    "progress_at_last_owner_command": 3,
+    "material_progress_seq": 5,
+    "progress_at_last_owner_command": 4,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 4,
+      "seq": 5,
       "kind": "standalone_playtest_delivered",
-      "evidence": "Cycle 03 standalone HTML, exact file hash and focused live ruling validation are recorded in evidence.standalone_cycle_03."
+      "evidence": "Cycle 04 standalone HTML, exact file hash and focused combat validation are recorded in evidence.standalone_cycle_04."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "owner_only",
-      "evidence": "Cycle 03 is ready for the requested owner playtest and direction before the next downloadable increment."
+      "evidence": "Cycle 04 is ready for the requested owner playtest and direction before the next downloadable increment."
     }
   },
   "owner_cycle_direction": "The owner directed the GM playtest to ship as one downloadable, self-contained HTML file per cycle, with owner feedback guiding the next increment."
