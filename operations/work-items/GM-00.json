@@ -358,29 +358,61 @@
       "mtlc_14": "installed_evidence_pending",
       "real_device_result": "not_run",
       "owner_review": "pending"
+    },
+    "standalone_cycle_14": {
+      "status": "delivered_for_owner_playtest",
+      "filename": "Multiversal_GM_Playtest_Cycle_14.html",
+      "sha256": "175241f4724dbff77de6a5cc3076d92e58efe7288cc0a3ff53bca59b99846640",
+      "artifact": "https://chatgpt.com/library?file_id=libfile_e4f949e158f88191a35f31c642fc7874&account_id=personal",
+      "completed": "2026-11-19",
+      "source_basis": [
+        "UI Design Bible Part 4 GM & Creator Authoring Tools and Screen Design Bible SD-1001 through SD-1007",
+        "ENV-03 and ENV-05–13 authored presets, terrain archetypes and overlays",
+        "MultiversalCreaturesStats.csv, hash-checked CEW-01 retained PDFs, indexed creature definitions and expanded hazards and traps catalog"
+      ],
+      "catalog": {
+        "world_locations": 7,
+        "environment_presets": 79,
+        "terrain_archetypes": 19,
+        "environment_overlays": 47,
+        "hazards_and_traps": 1889,
+        "creature_records": 1427,
+        "roster_csv": 499,
+        "recovered_statblocks": 853,
+        "conversion_templates": 48,
+        "governed_creature_definitions": 27
+      },
+      "covered": [
+        "Campaign overview, world hierarchy and environment selectors with explanatory text",
+        "Searchable source asset list and inspector, page controls above and below results",
+        "Creature placement as separate encounter instances by count, team, wave, zone and visibility",
+        "Editable labeled inference for missing starting HP and Defense, same-name source references and inferred environmental or hazard suggestions",
+        "Context inheritance and snapshotting, GM-only trap and creature detail and source provenance"
+      ],
+      "validation": "All Cycles 01–14 workflow harness checks passed, including context inheritance through a live encounter, source and inferred stats, separate instances, hazard visibility and offline artifact validation. Headless Chromium could not start in this executor, so visual browser layout is unverified. PDF-derived rows are separate editable playtest references."
     }
   },
-  "active_substep": "cycle_13_rehearsal_delivered_installed_certification_blocked",
+  "active_substep": "cycle_14_project_asset_authoring_delivered",
   "first_unresolved_blocker": "The exact approved Windows x64 and Android ARM64 pair for a fresh two-human campaign is unavailable from the inspected evidence. PCV-03F draft PR #840 has source/native pass at 70b3028ee52c1860b6411f83c93da28b3c0063be, run 41906240364 lists zero available artifacts, and PCV-10 remains blocked by predecessor. MTLC-14 applicable installed lifecycle evidence is pending.",
-  "next_action": "Resume GM-13 when a scoped exact-head Windows x64 installer and Android ARM64 APK with manifest verification and applicable PCV-10 and MTLC-14 prerequisites are available. Run the fresh installed campaign with two people, capture and independently review the role-safe evidence, and close certification only after the installed boundary passes.",
+  "next_action": "Review Cycle 14 project-backed campaign, world, scene and encounter authoring. Use owner feedback to guide the next playtest. Resume GM-13 installed proof when its recorded dependencies and exact device pair are available.",
   "planned_successor": "GM-01",
   "successor_rule": "Current GM-00 evidence does not select GM-01 or authorize product changes.",
   "execution_guard": {
-    "continue_turns": 14,
+    "continue_turns": 15,
     "stall_nudges": 0,
-    "material_progress_seq": 14,
-    "progress_at_last_owner_command": 13,
+    "material_progress_seq": 15,
+    "progress_at_last_owner_command": 14,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 14,
+      "seq": 15,
       "kind": "standalone_playtest_delivered",
-      "evidence": "Cycle 13 standalone rehearsal, evidence worksheet and exact artifact hash are recorded. The first installed blocker is bound to current PCV-03F artifact evidence and PCV-10 status."
+      "evidence": "Cycle 14 artifact, exact digest, catalog coverage and workflow validation are recorded."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
-      "kind": "external_blocker",
-      "evidence": "No downloadable exact approved Windows and Android installer pair for the physical GM-13 run was available in the inspected draft validation run or app releases. The installed device handoff requires distinct real operators and current applicable product prerequisites."
+      "kind": "owner_only",
+      "evidence": "Cycle 14 is ready for owner playtest and feedback. The installed GM-13 blocker remains independently recorded."
     }
   },
   "owner_cycle_direction": "The owner directed the GM playtest to ship as one downloadable, self-contained HTML file per cycle, with owner feedback guiding the next increment."
