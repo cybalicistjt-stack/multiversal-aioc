@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-12",
+  "attempt_id": "MMHT-12-attempt-001",
+  "title": "Storage, Processing & Route Maps",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner continued the approved 15-cycle MMHT map tester program following MMHT-11.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Author measured storage, stockpiles, warehouses, processing footprints, loading bays, distribution depots and transfer stations with stable map feature IDs and optional facility/profile references.",
+      "Join existing farm, mine and workshop anchors to logistics places using explicit directed material and access routes. Author route waypoints, width/height clearance, multi-level hoist connections and hidden branches.",
+      "Provide distinct editable Brinegate, Lantern Post and Reedbank Farm examples. Download full draft and GM/player-filtered map references, including unresolved endpoint diagnostics for deleted features."
+    ],
+    "boundaries": [
+      "Cartography only: no material production, extraction, processing recipes, throughput, inventory movement, capacity scheduling, transactions or resource simulation.",
+      "Graph tracing and clearance checks compare authored spatial data only; live movement/authorization rules remain with owner domains.",
+      "Standalone HTML and browser file round-trip do not establish physical Android acceptance or installed-app integration."
+    ]
+  },
+  "evidence": {
+    "filename": "Multiversal_MMHT_12_Storage_Processing_Routes.html",
+    "artifact": "https://chatgpt.com/library?file_id=libfile_174d4fb994788191b336bfe2d04bc101&account_id=personal",
+    "sha256": "c0fef281fec93b5e7d2eb8157ce0228e523169cb04db77ee412a1f10d208924e",
+    "sample_artifacts": {
+      "html": "https://chatgpt.com/library?file_id=libfile_174d4fb994788191b336bfe2d04bc101&account_id=personal",
+      "brine": {
+        "draft": "https://chatgpt.com/library?file_id=libfile_ed333b02abb48191add829f8123084d6&account_id=personal",
+        "gm": "https://chatgpt.com/library?file_id=libfile_da9b57cdc2d08191879cf9c270a3aeb5&account_id=personal",
+        "player": "https://chatgpt.com/library?file_id=libfile_37911d8ee1608191b825847c1f62e042&account_id=personal"
+      },
+      "lantern": {
+        "draft": "https://chatgpt.com/library?file_id=libfile_721cf66fbea88191a1722f8f7edcb082&account_id=personal",
+        "gm": "https://chatgpt.com/library?file_id=libfile_be8af6bb85488191ac4ffd75d280d769&account_id=personal",
+        "player": "https://chatgpt.com/library?file_id=libfile_24632d30e97081919946f2fcc586408d&account_id=personal"
+      },
+      "reedbank": {
+        "draft": "https://chatgpt.com/library?file_id=libfile_7cbe51b0d2d08191ac242eaa423f9531&account_id=personal",
+        "gm": "https://chatgpt.com/library?file_id=libfile_92051d41bf1881918efd03c16439ad7d&account_id=personal",
+        "player": "https://chatgpt.com/library?file_id=libfile_d4a4baf5155c81918b2ec50c6a554db9&account_id=personal"
+      }
+    },
+    "validation": "Chromium Playwright loaded standalone HTML via set_content (direct file:// navigation restricted in harness); three samples passed documentError, no page errors. Brinegate: 11 GM / 10 player logistics nodes and 10 GM / 9 player routes. Player export omitted restricted assay annex, gas pocket and concealed vein IDs, geometry, notes and dependent links. Working-face to freight dock uses six explicitly directed links; reverse trace disconnected. Requesting 6 x 7 ft clearance flags narrower conveyor, not a transport simulation. UI saved source-version/clearance metadata while preserving facility ID; created and deleted a route; adopted an existing mine feature without changing its mine identity; drew a four-corner rectangle with mouse; exported actual browser draft and reimported an earlier state as distinct mapped document. Separate roundtrip regression edited revision B then imported saved revision A and recovered label; deleted route endpoint produced explicit unresolved-link diagnostics and filtered player links. All three clean samples exported full editable drafts and player/GM JSON. UI player export matched safe calculated projection and older map tools remained accessible. Browser local autosave unavailable on about:blank; independent file export/import was tested. No physical device, cross-client live integration or owner acceptance.",
+    "sample_counts": {
+      "brinegate": {
+        "gm_features": 11,
+        "player_features": 10,
+        "gm_routes": 10,
+        "player_routes": 9
+      },
+      "lantern": {
+        "gm_features": 9,
+        "player_features": 8,
+        "gm_routes": 7,
+        "player_routes": 6
+      },
+      "reedbank": {
+        "gm_features": 5,
+        "player_features": 5,
+        "gm_routes": 4,
+        "player_routes": 4
+      }
+    },
+    "design_sources": [
+      "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+      "Multiversal-app/governance/application-planning/deep-professions-life-simulation/DPL-06_MINING_PROSPECTING_QUARRYING_DRILLING_RESOURCE_EXTRACTION.md",
+      "Multiversal-app/governance/application-planning/semantic-spatial-authoring/SSA-03_CAVES_IRREGULAR_GEOMETRY_NON_EUCLIDEAN_TOPOLOGY.md",
+      "User-supplied Multiversal Map Maker handoff for Downtime and world systems"
+    ]
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Owner reviews Brinegate, Lantern Post and Reedbank logistics maps. Start MMHT-13 Habitat & Land-Use Change Maps on next owner direction.",
+  "planned_successor": "MMHT-13",
+  "successor_rule": "Requires owner direction to start the next standalone HTML review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-12 HTML and 3 clean editable map samples with browser roundtrip, role-filtering and route trace evidence."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Editable storage/processing areas, directional route authoring, role-filtered exports and browser file roundtrip validated."
+    }
+  }
+}
