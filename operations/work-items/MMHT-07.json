@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-07",
+  "attempt_id": "MMHT-07-attempt-001",
+  "title": "Habitat & Wildlife Maps",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner directed the next standalone MMHT cycle.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Draw, redraw and label flora zones, habitat areas, sanctuaries, seasonal migration corridors, wildlife observations and encounter anchors.",
+      "Link mapped features to stable creature identities from the CEW-01 ledger or an explicit external reference ID.",
+      "Preserve season filters, geometry, corridor widths, and player/GM map reference permissions."
+    ],
+    "boundaries": [
+      "Owner-approved map authoring only. Ship and vehicle operations, base construction, farming, extraction, ecology simulation and other gameplay engines retain their owner-domain scope. Map features may store typed references for later integration.",
+      "Standalone artifact confirmation is separate from installed product integration and owner playtest feedback."
+    ]
+  },
+  "evidence": {
+    "filename": "Multiversal_MMHT_07_Habitat_Wildlife.html",
+    "artifact": "https://chatgpt.com/library?file_id=libfile_80fcba23b0c881918e6558982f4ce518&account_id=personal",
+    "sha256": "dc04c01c3681bf75481a3c6742e9a11c3983900413e0866bde972bb888d7ff6a",
+    "approved_plan": "https://chatgpt.com/library?file_id=libfile_a976a33aebf08191a4e3bcca6d4d1ae1&account_id=personal",
+    "downtime_handoff": "https://chatgpt.com/library?file_id=libfile_a2458043636c81919b113c40a0c4788a&account_id=personal",
+    "design_sources": [
+      {
+        "url": "https://github.com/cybalicistjt-stack/multiversal-aioc/blob/a90b6e7bad31e6ea4d6c300b2cf240faeae81caa/governance/application-planning/creature-ecology-wildlife/CEW-01_IDENTITY_LEDGER_v1.0.0.json",
+        "blob_sha": "d6267b7994cb25153637a44fae02a88f664dc60b"
+      },
+      {
+        "url": "https://github.com/cybalicistjt-stack/multiversal-aioc/blob/a90b6e7bad31e6ea4d6c300b2cf240faeae81caa/governance/application-planning/creature-ecology-wildlife/CEW-04_HABITAT_ENVIRONMENT_CROSSWALK_CONTRACT.md",
+        "blob_sha": "71ac6c7725e566d50247cec944b748cbb6f11085"
+      },
+      {
+        "url": "https://github.com/cybalicistjt-stack/multiversal-aioc/blob/a90b6e7bad31e6ea4d6c300b2cf240faeae81caa/governance/application-planning/creature-ecology-wildlife/CEW-16_GM_DISCOVERY_INTEGRATION_CONTRACT.md",
+        "blob_sha": "0da12618f01e1766d54b6f79732b85865f62173d"
+      }
+    ],
+    "validation": "Executed the packaged HTML with JSDOM and native Canvas. Verified season switching and restored viewport, authoring and redraw of a width-bearing migration path with a CEW identity, undo/redo, restricted observation IDs and notes omitted from player references, authored level-specific encounter marker, and prior workspace compatibility. Strict TypeScript retains the existing MCS-03 operationId narrowing error.",
+    "example": "Havalaea Canopy & Basin Survey includes a spring canopy passage, autumn basin passage, flora zone, seasonal reed pools, sanctuary and mapped encounter/observation markers. Scenario routes are editable examples.",
+    "boundaries": "Authored habitat geography and identity references only. CEW/ENV and campaign authorities retain suitability, distribution, frequency and encounter behavior. Physical Android testing remains pending."
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Review the seasonal map and role-filtered exports in the standalone HTML. Use feedback for Farm & Forage Maps when MMHT-08 is selected.",
+  "planned_successor": "MMHT-08",
+  "successor_rule": "Requires owner direction to start the next standalone review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-07 offline HTML, artifact checksum, and executed habitat, seasonal, and role filtering checks."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Habitat and migration authoring, seasonal selection and role-filtered handoffs were saved and passed standalone verification."
+    }
+  }
+}
