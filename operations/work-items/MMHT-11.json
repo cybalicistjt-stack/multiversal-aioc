@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-11",
+  "attempt_id": "MMHT-11-attempt-001",
+  "title": "Mine & Deposit Maps",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner continued the approved 15-cycle MMHT standalone map authoring program after MMHT-10.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Draw irregular, depth-bound resource deposit polygons, mine working faces, hazard extents, shafts, supports, surveys, ventilation, drainage, access drifts and haul routes; inspect named elevations and measured footprints.",
+      "Store optional DPL-06 source-site and density reference vocabulary, world owner refs, and GM survey notes as nonauthoritative map metadata. Attach mine roles to existing features while keeping their stable IDs.",
+      "Distinguish authored infrastructure links, direction, traversability and broken endpoints; preserve GM-only deposits in full drafts and omit all hidden geometry, labels and dependent links in player exports.",
+      "Provide standalone editable Brinegate mine and Lantern Post reference-copy examples, export and import, and access to earlier map editor tools."
+    ],
+    "boundaries": [
+      "Map authoring only. Prospecting/extraction rolls, output/yields/depletion, labor, time, inventory, geology simulation, mining operation and hazard effects remain with DPL-06 and existing gameplay/World/Asset owner domains.",
+      "Standalone HTML testing is distinct from installed application integration, physical device testing and owner playtest acceptance."
+    ]
+  },
+  "evidence": {
+    "filename": "Multiversal_MMHT_11_Mine_Deposit_Maps.html",
+    "artifact": "https://chatgpt.com/library?file_id=libfile_659ce4b47cbc8191a557dbdccbe5bad2&account_id=personal",
+    "sha256": "286c26d0264311c9a646594a9d8587e523a4c73c7fd02b6410adf9462f5ab1c3",
+    "samples": {
+      "brinegate": {
+        "editable": "https://chatgpt.com/library?file_id=libfile_85ea291abc488191a1f971bb386a9ccd&account_id=personal",
+        "gm": "https://chatgpt.com/library?file_id=libfile_b6b6841f08c08191aa3b90f0dc097b98&account_id=personal",
+        "player": "https://chatgpt.com/library?file_id=libfile_886e508c6fd081918148850ed8faa679&account_id=personal"
+      },
+      "lantern": {
+        "editable": "https://chatgpt.com/library?file_id=libfile_b0ce97c68d188191ba2494fecf73ca47&account_id=personal",
+        "gm": "https://chatgpt.com/library?file_id=libfile_5446af1daa748191a050634ffa395da4&account_id=personal",
+        "player": "https://chatgpt.com/library?file_id=libfile_8551dcbba46c8191aa501b6d684df70c&account_id=personal"
+      }
+    },
+    "validation": "Standalone HTML executed with Chromium Playwright and native Canvas. Both mine examples passed documentError and MMHT-10 cave examples remained valid. Brinegate 19 GM / 17 player mine features (concealed deposit and gas hazard omitted entirely from player JSON and route links), 13 GM / 11 player authored mine links; deposit depth -24 m and authored density profile survived reference projection. Tested access/haul route reachability, one-way shaft, ventilation/drainage not traversable, GM-only hazard polygon drawing, metadata edits and stable owner refs, deleted endpoint diagnostics, full draft export/import with new geometry and owner reference intact, Lantern Post copied original stable feature IDs and retained concealed vein, browser error count zero. Direct about:blank storage unavailable, so the explicit file round trip was verified; installed app and Android untested.",
+    "design_sources": [
+      "https://github.com/cybalicistjt-stack/Multiversal-app/blob/main/governance/application-planning/deep-professions-life-simulation/DPL-06_MINING_PROSPECTING_QUARRYING_DRILLING_RESOURCE_EXTRACTION.md",
+      "https://github.com/cybalicistjt-stack/Multiversal-app/blob/main/governance/application-planning/semantic-spatial-authoring/SSA-03_CAVES_IRREGULAR_GEOMETRY_NON_EUCLIDEAN_TOPOLOGY.md"
+    ]
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Owner reviews Brinegate and Lantern Post mining geometry and filtered references; MMHT-12 Storage, Processing & Route Maps is planned.",
+  "planned_successor": "MMHT-12",
+  "successor_rule": "Requires owner direction to start the next standalone HTML review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-11 standalone HTML, two editable sample drafts and separate GM/player reference exports with passing browser tests."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Mine map authoring, depth-bound deposits, explicit links, privacy filtering and editable export/reimport verified."
+    }
+  }
+}
