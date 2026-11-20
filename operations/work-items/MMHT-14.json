@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-14",
+  "attempt_id": "MMHT-14-attempt-001",
+  "title": "Non-Euclidean Map Authoring",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner issued Continue in the established MMHT Map Maker conversation after completion of Cycle 13, directing the planned Cycle 14 on 2026-11-20.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Add typed semantic-space roles and portal anchors to existing geometry without changing stable map feature IDs; allow pointer or keyboard-coordinate anchor creation.",
+      "Author explicit connections, cross-level and cross-map non-Euclidean links, structural containment/nesting/stacking, direction, arrival rotation/reflection, source metadata and visibility.",
+      "Preview confirmed directional graph reachability without deriving topological truth from Euclidean geometry and without executing traversal or reality changes.",
+      "Deliver distinct Carnival, Brinegate and Lantern Post editable samples, self-contained HTML, role-filtered GM/player map references, diagnostics and browser file round-trip evidence, preserving prior map cycles."
+    ],
+    "boundaries": [
+      "Authoring and map projection only. Transition/Portal/Reality, movement/navigation and permission owners retain gameplay and validation authority; route previews do not authorize travel.",
+      "Non-Euclidean diagram display frames do not define physical scale. Containment, nesting and stacking never become traversable edges by implication.",
+      "No installed Unity or physical Android/Windows, online synchronization, live provider boundary, AI/canonical publishing or owner review acceptance is certified."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_MMHT_14_Non_Euclidean_Map_Authoring.html",
+    "html_sha256": "4a5a8a32398a076508e8a2068c5431131e643ae52bc95669b2f6b2702214952d",
+    "html_library_file_id": "libfile_2bb8e64fe3b08191bde1823506e283b5",
+    "package_filename": "Multiversal_MMHT_Cycle14.zip",
+    "package_sha256": "4929552d16992461a0f5ad52ef9d8896c4696b5d15285a157208904cf9ee4621",
+    "package_library_file_id": "libfile_381a05a3ac948191bc884d4b29d98922",
+    "package_library_path": "/Multiversal/Map Maker/Multiversal_MMHT_Cycle14.zip",
+    "handoff_library_file_id": "libfile_2a363ec8fff88191a194641bba6f0229",
+    "sample_artifacts": "Cycle14 ZIP contains three editable drafts and three GM/player map reference pairs plus README, test report, handoff, screenshot, index and SHA256 manifest.",
+    "sample_counts": {
+      "carnival": {
+        "gm_nodes": 5,
+        "player_nodes": 4,
+        "gm_links_including_incoming": 6,
+        "player_links": 5
+      },
+      "brinegate": {
+        "gm_nodes": 5,
+        "player_nodes": 4,
+        "gm_links": 4,
+        "player_links": 3
+      },
+      "lantern_post": {
+        "gm_nodes": 4,
+        "player_nodes": 3,
+        "gm_links": 4,
+        "player_links": 3
+      }
+    },
+    "validation": "Embedded JavaScript syntax passed Node --check. Chromium Playwright set_content loaded standalone HTML; all three examples passed documentError and non-Euclidean diagnostics, with no page errors. Player projections suppressed GM-only endpoint IDs/geometry/notes/links. Directional trace tests proved one-way folded passages, non-navigable nesting and Lantern-to-Carnival cross-map linkage without reverse connectivity. UI link edit/create/delete and existing-geometry role adopt/remove passed. Browser UI exported editable and player JSON; reimport of a diverged same-ID draft produced a distinct map with correctly remapped internal link endpoints. Broken targets persisted in GM diagnostics and disappeared from player link export. Pointer and keyboard-coordinate anchor creation passed. Previously delivered three Cycle12 logistics and three Cycle13 habitat-land-use examples were accessible. The editor remained horizontally usable at 390px. No installed-app or physical-device proof.",
+    "source_references": [
+      "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+      "Multiversal-app/governance/application-planning/semantic-spatial-authoring/SSA-03_CAVES_IRREGULAR_GEOMETRY_NON_EUCLIDEAN_TOPOLOGY.md",
+      "Cycle12.zip, Cycle13 standalone artifacts as delivered in conversation",
+      "Project/Feature/UI/Screen reference Bibles (enduring design, not operations authority)"
+    ]
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Owner reviews Cycle14 standalone non-Euclidean editor and sample exports; begin MMHT-15 Advanced Spatial Geometry & Round-Trip only upon further owner direction.",
+  "planned_successor": "MMHT-15",
+  "successor_rule": "Requires owner direction to start the next standalone HTML review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-14 standalone HTML, three editable maps, role-filtered references, topological route preview regression, browser import/export and responsive Chromium tests."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded standalone MMHT-14 browser artifact delivered, exported and validated. Gameplay systems and installed-client acceptance remain outside scope."
+    }
+  }
+}
