@@ -89,3 +89,11 @@ MMHT-08 adds the Lantern Post Farm & Forage Survey and Aster Glasshouse. Draw an
 The sample player reference file was imported into Downtime Cycle 07. The 750 sq ft wheat plot, the deep gallery forage pocket and water access are available as mapped locations. Optional growing-medium and ICF-13 resource references remain in the Map Maker handoff. [Download the Lantern Post player references](https://chatgpt.com/library?file_id=libfile_a15d856d33e08191922a05396f99da91&account_id=personal).
 
 Cycle progress is tracked in operations/work-items/MMHT-08.json. MMHT-09 remains the planned successor.
+
+## Animal & aquatic facility maps
+
+MMHT-09 adds editable Reedwater Hatchery & Apiary and Lantern Post animal facilities. Draw and measure pastures, pens, aquaculture tanks, hives and special enclosures, then place entrances and care points and link water, feed and access. [Download the MMHT-09 HTML](https://chatgpt.com/library?file_id=libfile_f505f473bca481918dcf25ece173ee94&account_id=personal).
+
+[Reedwater editable sample](https://chatgpt.com/library?file_id=libfile_44c696f93d048191862bfb59a08daa20&account_id=personal), [player references](https://chatgpt.com/library?file_id=libfile_b3b8438be554819196952fccb12e4990&account_id=personal), and [GM references](https://chatgpt.com/library?file_id=libfile_56e36248f2b88191b791ea5dac04cfb9&account_id=personal) were exported and validated. The GM-only special enclosure is omitted from player references. ICF-13 remains the authority for husbandry eligibility and production; map examples do not compute population, care or yields.
+
+Cycle progress is tracked in operations/work-items/MMHT-09.json. MMHT-10 is the planned successor.
