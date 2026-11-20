@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-03",
+  "attempt_id": "MMHT-03-attempt-001",
+  "title": "Base Layouts & Blueprints",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner directed the next standalone MMHT cycle.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Draw and edit site, parcel, structure, planned expansion and functional room footprints",
+      "Save immutable room blueprint revisions and stamp a chosen revision across map scales, retaining attached openings and finishes",
+      "Preserve revision-qualified facility map references and role-filtered exports, using an editable fixed-to-mobile example"
+    ],
+    "boundaries": [
+      "Owner-approved map authoring only. Ship and vehicle operations, base construction, farming, extraction, ecology simulation and other gameplay engines retain their owner-domain scope. Map features may store typed references for later integration.",
+      "Standalone artifact confirmation is separate from installed product integration and owner playtest feedback."
+    ]
+  },
+  "evidence": {
+    "filename": "Multiversal_MMHT_03_Base_Layouts.html",
+    "artifact": "https://chatgpt.com/library?file_id=libfile_ee67967ffec88191bc9cabb965446af9&account_id=personal",
+    "sha256": "359bc9a4cc4d5abcb9f660f3f0cb62edfa4581291f8eccf6c99ec6495a57b31c",
+    "approved_plan": "https://chatgpt.com/library?file_id=libfile_a976a33aebf08191a4e3bcca6d4d1ae1&account_id=personal",
+    "downtime_handoff": "https://chatgpt.com/library?file_id=libfile_a2458043636c81919b113c40a0c4788a&account_id=personal",
+    "design_sources": [
+      {
+        "url": "https://github.com/cybalicistjt-stack/Multiversal-app/blob/main/governance/application-planning/multiversal-built-environment-settlement/MBES-01_SITE_PROJECT_AUTHORITY_CONSTRUCTION_CORE.md",
+        "blob_sha": "235ba7b1eec867e5a618cd874beff79659cc03a2"
+      },
+      {
+        "url": "https://github.com/cybalicistjt-stack/Multiversal-app/blob/main/governance/application-planning/multiversal-built-environment-settlement/MBES-05_FUNCTIONAL_SPACES_FURNISHING_BLUEPRINTS.md",
+        "blob_sha": "f4735c26cfdde981e1fdd201cad732a4c4a4edfd"
+      },
+      {
+        "url": "https://github.com/cybalicistjt-stack/Multiversal-app/blob/main/governance/application-planning/multiversal-built-environment-settlement/MBES-24_GOLDEN_CROSS_SCALE_PROOF_MSLR_HANDOFF.md",
+        "blob_sha": "eee1ef7533ca2702e62bfcd385c732a770d159e4"
+      }
+    ],
+    "validation": "Focused workflows were exercised against the generated HTML in JSDOM with native Canvas: two-corner parcel and workshop drawing, measured resize, facility reference persistence, versioned room capture, rotated cross-scale stamp with remapped openings, player/GM projections, reopen, and prior workspace compatibility. A strict TypeScript check still reports the inherited MCS-03 operationId narrowing error.",
+    "example": "Workshop Outpost and Field Work Platform are editable and linked. A 30 × 25 ft workshop retains the same size across map scales. The example keeps a pinned Joinery module v1 instance alongside the later v2 library entry.",
+    "boundaries": "Represents authored map layouts and optional owner references. Construction, property rights, staffing, utilities in service, and other gameplay state remain in their owner systems. Physical Android field testing remains pending."
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Review base footprints and blueprint placement in the HTML. Use feedback for Base Infrastructure Maps when MMHT-04 is selected.",
+  "planned_successor": "MMHT-04",
+  "successor_rule": "Requires owner direction to start the next standalone review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-03 offline HTML, artifact checksum and executed base authoring checks."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Map-side base layout and blueprint workflows were saved and passed focused verification in the offline HTML."
+    }
+  }
+}
