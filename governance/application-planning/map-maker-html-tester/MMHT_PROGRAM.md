@@ -73,3 +73,11 @@ MMHT-06 adds watershed, farm and underground shelter surveys. Draw drainage, irr
 Extents may use existing map geometry or their own outline. Conditions independently activate authored extents. Role-filtered map references preserve geometry and catalog links. Crossings describe map geometry only. World, environment, and gameplay systems retain authority over outcomes.
 
 Cycle progress is tracked in operations/work-items/MMHT-06.json. MMHT-07 remains the planned successor.
+
+## Habitat and wildlife maps
+
+MMHT-07 adds the Havalaea Canopy & Basin survey. Author flora zones, habitats and sanctuaries, draw seasonal corridors with width, and place observation or encounter markers. Use the season selector to compare spring and autumn routes. [Download the MMHT-07 HTML](https://chatgpt.com/library?file_id=libfile_80fcba23b0c881918e6558982f4ce518&account_id=personal).
+
+Creature references reuse the governed CEW-01 Identity Ledger and accept explicit external IDs. Role-filtered map references omit restricted observations and their geometry and notes. Sample map annotations are editable scenario authoring. The CEW/ENV and campaign owners retain authority over actual habitat fit, distribution, frequency and encounters.
+
+Cycle progress is tracked in operations/work-items/MMHT-07.json. MMHT-08 remains the planned successor.
