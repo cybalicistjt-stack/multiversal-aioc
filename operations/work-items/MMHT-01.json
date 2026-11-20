@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-01",
+  "attempt_id": "MMHT-01-attempt-001",
+  "title": "Deck Builder",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner approved the 15 map-authoring HTML cycles, corrected the program ID to MMHT and directed the first cycle.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Standalone editing and measurement of vehicle and ship deck map geometry",
+      "Editable ship and rover samples, stable feature IDs, optional portable references, undo and reopen",
+      "Map export and preservation of older tester workspaces"
+    ],
+    "boundaries": [
+      "Owner-approved map authoring only. Ship and vehicle operations, base construction, farming, extraction, ecology simulation and other gameplay engines retain their owner-domain scope. Map features may store typed references for later integration.",
+      "Standalone artifact confirmation is separate from installed product integration and owner playtest feedback."
+    ]
+  },
+  "evidence": {
+    "filename": "Multiversal_MMHT_01_Deck_Builder.html",
+    "artifact": "https://chatgpt.com/library?file_id=libfile_c64974e305948191a3ce0656f2ac2819&account_id=personal",
+    "sha256": "bc279ce1aefb32b59cbe31c93bc9646aa4b8427e9c8b89030ccfc175e9b4efab",
+    "approved_plan": "https://chatgpt.com/library?file_id=libfile_a976a33aebf08191a4e3bcca6d4d1ae1&account_id=personal",
+    "validation": "Focused execution of the actual generated tester bundle using JSDOM and native Canvas. Ship and rover samples loaded. Hull resizing, undo/redo, level switching, manual compartment and shaft drawing, overlap accounting, areas in ft² and m², feature references, save/reopen, PNG, and 12N compatibility passed.",
+    "example": "A 20 × 15 ft compartment is 300 ft² drawn and 275 ft² usable with a 5 × 5 ft shaft.",
+    "boundaries": "Offline test harness only. Installed product sessions and real-device testing remain unverified."
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Owner review of Deck Builder. Use feedback for MMHT-02 once selected.",
+  "planned_successor": "MMHT-02",
+  "successor_rule": "Requires owner direction to start the next standalone review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-01 artifact, checksum and executed focused checks."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "The standalone Deck Builder HTML was saved and passed the focused workflow checks for MMHT-01."
+    }
+  }
+}
