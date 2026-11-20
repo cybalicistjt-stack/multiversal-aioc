@@ -41,3 +41,11 @@ MMHT-02 provides editable Meridian Station, Kestrel courier and Wren shuttle pla
 Carry stable IDs, pinned revisions, thin map references, explicit link purposes and filtered player projections into the relevant base, environmental, farming, cave, mining, logistics and spatial cycles. The Map Maker supplies geometry and map references, while each gameplay tester owns its activity state and resolution. Use explicit file handoffs while testers run independently.
 
 Cycle progress is tracked in operations/work-items/MMHT-02.json. MMHT-03 remains the planned successor.
+
+## Base layouts and blueprints
+
+MMHT-03 adds editable Workshop Outpost and Field Work Platform maps with separately identifiable sites, parcels, structures and rooms. Draw or resize footprints, save and stamp specific room blueprint versions, and retain optional owner facility references. [Download the MMHT-03 HTML](https://chatgpt.com/library?file_id=libfile_ee67967ffec88191bc9cabb965446af9&account_id=personal).
+
+Blueprint stamps are map instances with their own feature IDs. They retain the chosen source version and authored dimensions when placed at a different map scale. The room scope includes the floor outline, finishes and attached doors or windows. Facility references are assigned independently to each room. Use full draft exports for editing and audience-filtered reference JSON for independent consumers.
+
+Cycle progress is tracked in operations/work-items/MMHT-03.json. MMHT-04 remains the planned successor.
