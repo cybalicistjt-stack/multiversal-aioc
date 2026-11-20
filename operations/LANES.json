@@ -339,6 +339,24 @@
       ],
       "cross_lane_reads": "Use GPR/PCV, MTLC and domain records for explicit dependencies. Their selected work and authority stay governed by their own records.",
       "implementation_policy": "Owner-authorized on-demand audit and planning; ordinary app implementation follows the existing product lanes and PCV order."
+    },
+    {
+      "id": "mmht",
+      "purpose": "Owner-directed Map Maker HTML Tester (MMHT) authoring and review cycles.",
+      "intent_examples": [
+        "continue MMHT",
+        "Map Maker HTML Tester",
+        "Deck Builder",
+        "MMHT map authoring"
+      ],
+      "current_state_source": "operations/CURRENT.json#/lanes/mmht",
+      "source_bundle": [
+        "CURRENT-selected MMHT work record",
+        "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+        "Approved map-side scope and standalone HTML evidence"
+      ],
+      "cross_lane_reads": "Read existing spatial and gameplay owner contracts only for applicable map features and interface evidence.",
+      "implementation_policy": "Owner-selected on demand. Scope is standalone map tester artifacts. Existing application and installed playtest lanes retain their authority."
     }
   ],
   "persistent_implementation_lanes": [
