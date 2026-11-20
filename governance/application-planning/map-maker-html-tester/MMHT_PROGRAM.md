@@ -49,3 +49,11 @@ MMHT-03 adds editable Workshop Outpost and Field Work Platform maps with separat
 Blueprint stamps are map instances with their own feature IDs. They retain the chosen source version and authored dimensions when placed at a different map scale. The room scope includes the floor outline, finishes and attached doors or windows. Facility references are assigned independently to each room. Use full draft exports for editing and audience-filtered reference JSON for independent consumers.
 
 Cycle progress is tracked in operations/work-items/MMHT-03.json. MMHT-04 remains the planned successor.
+
+## Base infrastructure maps
+
+MMHT-04 adds the editable Workshop Outpost Utility Plan. Route power, water, ventilation, access and communications between explicit map features. Switch the display between individual services and preview the sample Generator feeder outage. [Download the MMHT-04 HTML](https://chatgpt.com/library?file_id=libfile_44966f8fa900819182540bf51eb3c48c&account_id=personal).
+
+Triggers for map traces are typed source designations, directed links and the closed route IDs in authored scenarios. Room edits move attached route endpoints. Player references filter GM-only scenarios and routes whose endpoints are unavailable. Operational utility state and engineering calculations remain in the owning systems.
+
+Cycle progress is tracked in operations/work-items/MMHT-04.json. MMHT-05 remains the planned successor.

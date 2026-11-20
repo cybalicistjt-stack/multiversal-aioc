@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-04",
+  "attempt_id": "MMHT-04-attempt-001",
+  "title": "Base Infrastructure Maps",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner directed the next standalone MMHT cycle.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Draw, reroute, measure and trace power, water, ventilation, access and communications lines between explicit same-level map features",
+      "Save named outage scenarios and preview reachability from mapped sources",
+      "Retain source and endpoint IDs, reference-safe route geometry and player/GM scenario visibility"
+    ],
+    "boundaries": [
+      "Owner-approved map authoring only. Ship and vehicle operations, base construction, farming, extraction, ecology simulation and other gameplay engines retain their owner-domain scope. Map features may store typed references for later integration.",
+      "Standalone artifact confirmation is separate from installed product integration and owner playtest feedback."
+    ]
+  },
+  "evidence": {
+    "filename": "Multiversal_MMHT_04_Base_Infrastructure.html",
+    "artifact": "https://chatgpt.com/library?file_id=libfile_44966f8fa900819182540bf51eb3c48c&account_id=personal",
+    "sha256": "d9a86f8bb14846391b493b5a9baa9cfc62f093404331fb5b48715a24eb9a9e05",
+    "approved_plan": "https://chatgpt.com/library?file_id=libfile_a976a33aebf08191a4e3bcca6d4d1ae1&account_id=personal",
+    "downtime_handoff": "https://chatgpt.com/library?file_id=libfile_a2458043636c81919b113c40a0c4788a&account_id=personal",
+    "design_sources": [
+      {
+        "url": "https://github.com/cybalicistjt-stack/Multiversal-app/blob/main/governance/application-planning/multiversal-built-environment-settlement/MBES-08_FACILITY_NETWORKS_AUTOMATION_LOGISTICS.md",
+        "blob_sha": "c8d71c8abfed42f72c101869325bd4119f8932d7"
+      }
+    ],
+    "validation": "Executed mapper workflows in JSDOM with native Canvas: authoring, rerouting with the same ID, undo/redo, endpoint tracking when a room moves, independent service traces, feeder outage and alternate service visibility, source toggling, GM scenario and endpoint filtering, and save/reopen with prior workspaces. The strict TypeScript check retains the pre-existing MCS-03 operationId narrowing error.",
+    "example": "Workshop Outpost Utility Plan starts with ten editable routes. The Generator feeder outage closes that segment, and the repair bay keeps its mapped water route.",
+    "boundaries": "Utility lines and outage scenarios represent map geometry and reachability from authored sources. Operational utility state, flow budgets and engineering authority are supplied by their owner systems. Physical Android testing remains pending."
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Review the utility plan and feeder outage in the offline HTML. Use feedback for Environment Zones & Overlays when MMHT-05 is selected.",
+  "planned_successor": "MMHT-05",
+  "successor_rule": "Requires owner direction to start the next standalone review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-04 offline HTML, artifact checksum, and executed route authoring and outage checks."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Map-side utility authoring, route traces and outage scenarios were saved and passed focused standalone verification."
+    }
+  }
+}
