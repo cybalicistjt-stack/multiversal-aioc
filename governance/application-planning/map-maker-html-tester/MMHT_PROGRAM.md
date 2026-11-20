@@ -97,3 +97,11 @@ MMHT-09 adds editable Reedwater Hatchery & Apiary and Lantern Post animal facili
 [Reedwater editable sample](https://chatgpt.com/library?file_id=libfile_44c696f93d048191862bfb59a08daa20&account_id=personal), [player references](https://chatgpt.com/library?file_id=libfile_b3b8438be554819196952fccb12e4990&account_id=personal), and [GM references](https://chatgpt.com/library?file_id=libfile_56e36248f2b88191b791ea5dac04cfb9&account_id=personal) were exported and validated. The GM-only special enclosure is omitted from player references. ICF-13 remains the authority for husbandry eligibility and production; map examples do not compute population, care or yields.
 
 Cycle progress is tracked in operations/work-items/MMHT-09.json. MMHT-10 is the planned successor.
+
+## Caves, sections and links
+
+MMHT-10 adds editable Brinegate Split Caverns and Western Cut maps. It distinguishes floor geometry and cross-map visual overlap from explicit, directional topology. Author cave chambers, passages, tunnels, shafts, ladder anchors, and existing-feature roles; inspect elevation bands, crossings and reachable paths. [Download the MMHT-10 HTML](https://chatgpt.com/library?file_id=libfile_decc4d5e4a08819185566ddca052331b&account_id=personal).
+
+The self-contained tester includes a one-way upper-to-middle hoist, a two-way ladder to the deep vault, a cross-map exit and two intersecting gallery lines without a link. GM-only passages remain absent from filtered player references. Save/reopen and import of the editable sample passed in Chromium; physical Android and installed-app tests remain pending. [Editable Brinegate draft](https://chatgpt.com/library?file_id=libfile_30e7f18c90fc81918ad151559f78ce1b&account_id=personal); [player references](https://chatgpt.com/library?file_id=libfile_dbf3569587008191ae2ca4de3d9b1b4b&account_id=personal); [GM references](https://chatgpt.com/library?file_id=libfile_59a1ff23ff7c81919eb8f50662b3f662&account_id=personal). The owner domains retain movement, mining, ecology and gameplay authority.
+
+Cycle progress is tracked in operations/work-items/MMHT-10.json. MMHT-11 is the planned successor.
