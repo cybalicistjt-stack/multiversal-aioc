@@ -65,3 +65,11 @@ MMHT-05 adds editable Harrowfen, Brinegate and Meridian surveys. Bind an environ
 Reuse 76 governed ENV presets plus the map maker’s five existing local and adventure entries. Include all 47 overlays from ENV-11, ENV-12 and ENV-13 with source links. Diagnostics flag source exclusions within a zone. Map references preserve authored scopes and player/GM visibility. ENV remains the owner of resolved conditions and gameplay effects.
 
 Cycle progress is tracked in operations/work-items/MMHT-05.json. MMHT-06 remains the planned successor.
+
+## Water, weather and hazard layers
+
+MMHT-06 adds watershed, farm and underground shelter surveys. Draw drainage, irrigation and travel routes and authored flood, weather or hazard extents. Independently toggle High water and Heavy rain, then inspect numbered route segments and highlighted coverage. [Download the MMHT-06 HTML](https://chatgpt.com/library?file_id=libfile_0897865c126081918c97130319e42b90&account_id=personal).
+
+Extents may use existing map geometry or their own outline. Conditions independently activate authored extents. Role-filtered map references preserve geometry and catalog links. Crossings describe map geometry only. World, environment, and gameplay systems retain authority over outcomes.
+
+Cycle progress is tracked in operations/work-items/MMHT-06.json. MMHT-07 remains the planned successor.
