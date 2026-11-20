@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-02",
+  "attempt_id": "MMHT-02-attempt-001",
+  "title": "Ship Layouts & Docking Connections",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner directed the next MMHT cycle and supplied the Map Maker Downtime handoff.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Standalone authoring of deck and station anchor markers and explicit docking or access links",
+      "Berth clearance check against current authored deck hull bounds, and unresolved endpoint diagnostics",
+      "Lantern Post map-side roles and revision-qualified, audience-filtered location references"
+    ],
+    "boundaries": [
+      "Owner-approved map authoring only. Ship and vehicle operations, base construction, farming, extraction, ecology simulation and other gameplay engines retain their owner-domain scope. Map features may store typed references for later integration.",
+      "Standalone artifact confirmation is separate from installed product integration and owner playtest feedback."
+    ]
+  },
+  "evidence": {
+    "filename": "Multiversal_MMHT_02_Ship_Layouts.html",
+    "artifact": "https://chatgpt.com/library?file_id=libfile_e2497f209c548191a6041006d9af6e21&account_id=personal",
+    "sha256": "762e3aa13e0fcee1f61822169ed10d195bdf7312811936f8dbe363a28e6ca0c8",
+    "approved_plan": "https://chatgpt.com/library?file_id=libfile_a976a33aebf08191a4e3bcca6d4d1ae1&account_id=personal",
+    "downtime_handoff": "https://chatgpt.com/library?file_id=libfile_a2458043636c81919b113c40a0c4788a&account_id=personal",
+    "lantern_original_draft": "https://chatgpt.com/library?file_id=libfile_0d1a9b0f367481918fe6dbc4595aaff0&account_id=personal",
+    "lantern_original_sha256": "892c78d16f5959303d510bb594f83213dbcc149d9de5560a660079c464b5445b",
+    "lantern_player_reference": "https://chatgpt.com/library?file_id=libfile_70de82c19b548191a853cb245ea5432d&account_id=personal",
+    "lantern_player_reference_sha256": "d55d1153bf4fbcca170e485948c2ba346cce7e48fb2dfd4ad375fc4a73503018",
+    "validation": "Generated HTML executed in JSDOM with native Canvas. Verified linked decks in both directions, berth fit and overflow, crew and mount placement, saved one-way GM connection, persistence, a missing destination at phone viewport size, Lantern Post revision and stable feature IDs, non-traversable ventilation, and filtered player references. Deck Builder and 12N workspace regression passed. Strict TypeScript reported the pre-existing MCS-03 operationId narrowing error only.",
+    "example": "Meridian Station Berth A → Kestrel → Wren, with Lantern Post revision 2 as the separate shared downtime location.",
+    "boundaries": "Standalone offline map authoring. Review evidence comes from a browser harness. Physical mobile-device behavior and a receiving Downtime tester are pending."
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Review docking and Lantern Post in the HTML. Use feedback for Base Layouts & Blueprints when MMHT-03 is selected.",
+  "planned_successor": "MMHT-03",
+  "successor_rule": "Requires owner direction to start the next standalone review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-02 HTML and Lantern Post player reference, checksums, and executed map workflow checks."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "The standalone MMHT-02 HTML and Lantern Post projection were saved and verified with the focused tester checks."
+    }
+  }
+}

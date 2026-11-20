@@ -31,3 +31,13 @@ Approved scope and per-cycle acceptance: [Map Expansion Review](https://chatgpt.
 MMHT-01 provides the editable Kestrel courier decks and Utility Rover. [Download the first HTML](https://chatgpt.com/library?file_id=libfile_c64974e305948191a3ce0656f2ac2819&account_id=personal).
 
 Cycle progress is tracked in operations/work-items/MMHT-01.json. Further cycle selection follows explicit owner direction.
+
+## Ship layouts and downtime handoff
+
+MMHT-02 provides editable Meridian Station, Kestrel courier and Wren shuttle plans. Author crew stations, equipment mounts, ramps, ports and berths. Pair endpoints and inspect authored hull clearance, direction, visibility and unresolved endpoints. [Download the MMHT-02 HTML](https://chatgpt.com/library?file_id=libfile_e2497f209c548191a6041006d9af6e21&account_id=personal).
+
+[The Downtime handoff](https://chatgpt.com/library?file_id=libfile_a2458043636c81919b113c40a0c4788a&account_id=personal) supplies Lantern Post as the shared map reference case. Revision 2 preserves its map, floor and feature IDs, adds typed roles, and distinguishes hoist and ladder access from infrastructure such as ventilation and irrigation. [Lantern Post revision 2 player references](https://chatgpt.com/library?file_id=libfile_70de82c19b548191a853cb245ea5432d&account_id=personal).
+
+Carry stable IDs, pinned revisions, thin map references, explicit link purposes and filtered player projections into the relevant base, environmental, farming, cave, mining, logistics and spatial cycles. The Map Maker supplies geometry and map references, while each gameplay tester owns its activity state and resolution. Use explicit file handoffs while testers run independently.
+
+Cycle progress is tracked in operations/work-items/MMHT-02.json. MMHT-03 remains the planned successor.
