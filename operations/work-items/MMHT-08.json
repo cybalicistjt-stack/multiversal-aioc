@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-08",
+  "attempt_id": "MMHT-08-attempt-001",
+  "title": "Farm & Forage Maps",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner directed the next standalone MMHT cycle.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Draw and measure fields, orchards, hydroponic beds, arcane terrariums and gathering areas. Link to existing footprints or place water markers. Snap local drawing to five-foot squares.",
+      "Attach optional ICF-13 crop or forage-zone references, growing medium, and same-floor water, irrigation and storage references.",
+      "Verify role-filtered references and import the Lantern Post survey into the owner's attached Downtime Cycle 07."
+    ],
+    "boundaries": [
+      "Owner-approved map authoring only. Ship and vehicle operations, base construction, farming, extraction, ecology simulation and other gameplay engines retain their owner-domain scope. Map features may store typed references for later integration.",
+      "Standalone artifact confirmation is separate from installed product integration and owner playtest feedback."
+    ]
+  },
+  "evidence": {
+    "filename": "Multiversal_MMHT_08_Farm_Forage.html",
+    "artifact": "https://chatgpt.com/library?file_id=libfile_cd733c5fb4488191af8add13a6d94fb1&account_id=personal",
+    "sha256": "234f57c29dc43b99504dbbc8f18c66a81bd852daa02f227018685b5c2a420f43",
+    "approved_plan": "https://chatgpt.com/library?file_id=libfile_a976a33aebf08191a4e3bcca6d4d1ae1&account_id=personal",
+    "downtime_handoff": "https://chatgpt.com/library?file_id=libfile_a2458043636c81919b113c40a0c4788a&account_id=personal",
+    "tested_downtime_tester": "https://chatgpt.com/library?file_id=libfile_4228ce2be8c08191bf5fd85acada50e0&account_id=personal",
+    "sample_player_references": {
+      "artifact": "https://chatgpt.com/library?file_id=libfile_a15d856d33e08191922a05396f99da91&account_id=personal",
+      "sha256": "6d7c93a2e3a5887c09fb193b445c44e2496ef1d76ea49f2f1274dcc4cf4e6f91"
+    },
+    "design_sources": [
+      {
+        "url": "https://github.com/cybalicistjt-stack/multiversal-aioc/blob/7089af1ed5231ad4a869c2100b703c056904c088/governance/application-planning/ingredient-cultivation-foodcraft/ICF-13_PRODUCTION_RULES.json",
+        "blob_sha": "4798e25102e51caddeab156f775c556bdfb14c9c"
+      },
+      {
+        "url": "https://github.com/cybalicistjt-stack/multiversal-aioc/blob/7089af1ed5231ad4a869c2100b703c056904c088/governance/application-planning/ingredient-cultivation-foodcraft/ICF-13_AGRICULTURE_FORAGING_HUSBANDRY_PRODUCTION_INTEGRATION.md",
+        "blob_sha": "06cbd76cce43cf6eda386747963a2c9f423f68de"
+      }
+    ],
+    "validation": "Executed the packaged HTML with JSDOM and native Canvas. Verified farm selection and authoring, measured area with five-foot snapping, boundary redraw, undo and redo, a linked water marker, reopened crop and storage references, GM filtering and prior workspace compatibility. Imported the actual player JSON using the attached Downtime Cycle 07 file picker and checked the 750 sq ft plot, cave forage feature, non-traversable water link, follow-up location choice and rest binding. Strict TypeScript reports the existing MCS-03 operationId diagnostic.",
+    "example": "Lantern Post Farm & Forage Survey shows a 750 sq ft wheat plot with cistern, irrigation and storage, a distinct cave forage pocket, and the prior route features. Aster Glasshouse has editable hydroponic beds and an Etherleaf terrarium.",
+    "boundaries": "Downtime Cycle 07 consumes public locations, geometry, area and local links. Optional crop, forage-zone and growing-medium fields are preserved in Map Maker exports. The tester does not implement production gameplay. Physical Android testing remains pending."
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Review the Lantern Post survey and Aster Glasshouse. Continue to Animal & Aquatic Facility Maps when MMHT-09 is selected.",
+  "planned_successor": "MMHT-09",
+  "successor_rule": "Requires owner direction to start the next standalone review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-08 offline HTML and Lantern Post player references, checksums, edit and reopen tests, and executed import into attached Downtime Cycle 07."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Plot authoring, area measurement, persisted links and crop references, filter behavior, and Downtime location import passed."
+    }
+  }
+}

@@ -81,3 +81,11 @@ MMHT-07 adds the Havalaea Canopy & Basin survey. Author flora zones, habitats an
 Creature references reuse the governed CEW-01 Identity Ledger and accept explicit external IDs. Role-filtered map references omit restricted observations and their geometry and notes. Sample map annotations are editable scenario authoring. The CEW/ENV and campaign owners retain authority over actual habitat fit, distribution, frequency and encounters.
 
 Cycle progress is tracked in operations/work-items/MMHT-07.json. MMHT-08 remains the planned successor.
+
+## Farm and forage maps
+
+MMHT-08 adds the Lantern Post Farm & Forage Survey and Aster Glasshouse. Draw and measure fields, orchards, hydroponic beds, arcane terrariums and gathering areas. Reuse map footprints or draw new boundaries and mark links to water, irrigation and storage. [Download the MMHT-08 HTML](https://chatgpt.com/library?file_id=libfile_cd733c5fb4488191af8add13a6d94fb1&account_id=personal).
+
+The sample player reference file was imported into Downtime Cycle 07. The 750 sq ft wheat plot, the deep gallery forage pocket and water access are available as mapped locations. Optional growing-medium and ICF-13 resource references remain in the Map Maker handoff. [Download the Lantern Post player references](https://chatgpt.com/library?file_id=libfile_a15d856d33e08191922a05396f99da91&account_id=personal).
+
+Cycle progress is tracked in operations/work-items/MMHT-08.json. MMHT-09 remains the planned successor.
