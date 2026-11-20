@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-10",
+  "attempt_id": "MMHT-10-attempt-001",
+  "title": "Caves, Sections & Links",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner continued the approved MMHT fifteen-cycle map program.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Edit three stacked cave floors with irregular chambers, linear passages, shaft and ladder anchors, named stable feature IDs and authored elevation levels.",
+      "Inspect a vertical section, create and follow explicit directional same-map and cross-map links, and distinguish visual crossings from topology.",
+      "Attach a topology role to an existing cave feature without reassigning its feature ID; export full GM draft and filtered player references."
+    ],
+    "boundaries": [
+      "Standalone map-only authoring. No mining yield, travel authorization, ecological simulation, creature production, installed product integration or permission grant.",
+      "Earlier MMHT-01 through MMHT-09 tools remain available. Physical Android acceptance is still pending."
+    ]
+  },
+  "evidence": {
+    "filename": "Multiversal_MMHT_10_Caves_Sections_Links.html",
+    "artifact": "https://chatgpt.com/library?file_id=libfile_decc4d5e4a08819185566ddca052331b&account_id=personal",
+    "sha256": "40ee2ff9a0cec5576743eb36721faa2b8f2ff53aa57baf83efe585e314986a23",
+    "editable_sample": {
+      "artifact": "https://chatgpt.com/library?file_id=libfile_30e7f18c90fc81918ad151559f78ce1b&account_id=personal",
+      "sha256": "1a2aef1f68d649b60b2a1aca0359e39e31e411c8e3623b2ddc60cb2e79f9aa65"
+    },
+    "player_references": {
+      "artifact": "https://chatgpt.com/library?file_id=libfile_dbf3569587008191ae2ca4de3d9b1b4b&account_id=personal",
+      "sha256": "f57516c2c66825038728081566823fd9ff0d626ca2104262691f7e5e6b8b967d"
+    },
+    "gm_references": "https://chatgpt.com/library?file_id=libfile_59a1ff23ff7c81919eb8f50662b3f662&account_id=personal",
+    "cross_map_player_references": "https://chatgpt.com/library?file_id=libfile_6c03b9084dd08191b2831101c302e511&account_id=personal",
+    "validation": "Executed packaged HTML in Chromium via Playwright set_content (direct file/http navigation restricted by harness). Both editable examples passed native documentError validation. Verified hoist forward path and reverse rejection, nonconnected crossing, three-elevation section, GM-only feature filtering (12 GM vs 10 player nodes), editor drawing a new shaft on canvas, renaming and owner reference persistence, GM visibility changes, cross-map navigation, editable draft browser export and reimport (12 feature rows, 8 connections), and no page errors. Browser storage unavailable under about:blank; file round-trip used. Physical device and installed-application integration untested.",
+    "source_authority": [
+      "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+      "Multiversal-app/governance/application-planning/semantic-spatial-authoring/SSA-03_CAVES_IRREGULAR_GEOMETRY_NON_EUCLIDEAN_TOPOLOGY.md",
+      "Multiversal-app/governance/application-planning/multiversal-cartography-studio/MCS-18_SEMANTIC_BINDING_WORLD_SYNC_DISCOVERY.md"
+    ]
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Owner reviews MMHT-10 cave samples; continue to MMHT-11 Mine & Deposit Maps on direction.",
+  "planned_successor": "MMHT-11",
+  "successor_rule": "Requires owner direction to start the next standalone review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-10 HTML, editable Brinegate sample, role-filtered references, browser edit and round-trip checks."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Editable cave topology, section view, explicit route semantics, hidden-content filtering, and standalone file round-trip validated."
+    }
+  }
+}
