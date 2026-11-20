@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-09",
+  "attempt_id": "MMHT-09-attempt-001",
+  "title": "Animal & Aquatic Facility Maps",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner directed Continue from completed MMHT-08 to the approved standalone MMHT-09 successor.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Author and inspect pastures, pens, aquaculture tanks, hives and specialized enclosures with polygon geometry and measured area.",
+      "Mark entrances, care points, water and feed access; link same-floor map features to optional husbandry-eligible creature or habitat profiles.",
+      "Preserve map and feature identities, original farm datasets, player/GM role-filtered exports, edit/history and draft round-trip."
+    ],
+    "boundaries": [
+      "Standalone map authoring and reference export only; animal populations, production quantities, welfare, feed economics, harvest, task schedules, simulation and live ownership belong to ICF-13, CEW and owning gameplay domains.",
+      "No claim of installed application integration, physical Android testing, hosted multiplayer, full real-browser persistent storage, species eligibility certification, or owner playtest acceptance."
+    ]
+  },
+  "evidence": {
+    "filename": "Multiversal_MMHT_09_Animal_Aquatic.html",
+    "artifact": "https://chatgpt.com/library?file_id=libfile_f505f473bca481918dcf25ece173ee94&account_id=personal",
+    "sha256": "e96d3745d66a446b1e35009969ccf6179fa6346fdecd7fa0a0424d5b22b19384",
+    "editable_sample": {
+      "artifact": "https://chatgpt.com/library?file_id=libfile_44c696f93d048191862bfb59a08daa20&account_id=personal",
+      "sha256": "834e08c7b95035a30cde4dd3ec472751dc5d116e3d88eeddcbe16955bf725d0a"
+    },
+    "sample_player_references": {
+      "artifact": "https://chatgpt.com/library?file_id=libfile_b3b8438be554819196952fccb12e4990&account_id=personal",
+      "sha256": "01e7e3d2866da5a6fcff3a2baa569518d83dc3f4701d302b7d4aeee05024ed74"
+    },
+    "sample_gm_references": {
+      "artifact": "https://chatgpt.com/library?file_id=libfile_56e36248f2b88191b791ea5dac04cfb9&account_id=personal",
+      "sha256": "24446d7230336b4d8644df62626f2329a5da46e134d8557076f8f7c651fc391c"
+    },
+    "approved_plan": "https://chatgpt.com/library?file_id=libfile_a976a33aebf08191a4e3bcca6d4d1ae1&account_id=personal",
+    "design_sources": [
+      "governance/application-planning/ingredient-cultivation-foodcraft/ICF-13_AGRICULTURE_FORAGING_HUSBANDRY_PRODUCTION_INTEGRATION.md",
+      "governance/application-planning/ingredient-cultivation-foodcraft/ICF-13_PRODUCTION_RULES.json"
+    ],
+    "validation": "Standalone bundled JavaScript parsed with Node 22 and ran in Chromium headless. Tested direct drawn polygon with measured 375 sq ft and undo/redo; editing existing tank habitat profile; water, feed, entrance and care links; player export containing three visible facilities with no GM-only identity or link; GM export containing four facilities; export and reimport of editable draft into independent browser page with edit preserved. Existing farm samples remain embedded. Headless browser had no localStorage origin, so in-browser autosave was not certified.",
+    "example": "Reedwater Hatchery features two aquaculture tanks, hive, GM-only specialized enclosure, mapped supply valve, feed store, access gate and care workbench. Lantern Post contains an editable pasture, animal pen, gate and care station, preserving prior farm source features.",
+    "boundaries": "Sample profiles are explicitly test annotations, not certified creature stocking, yields, husbandry eligibility or ICF-13 gameplay. Physical Android testing and owner acceptance remain pending."
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Review Reedwater Hatchery and Lantern Post animal facilities, then select MMHT-10 Caves, Sections & Links on owner direction.",
+  "planned_successor": "MMHT-10",
+  "successor_rule": "Requires owner direction to start the next standalone review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-09 offline tester and editable sample, generated GM/player map references, executed drawing/undo/redo/edit/export/reimport tests."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "MMHT-09 standalone authoring and round-trip acceptance passed; no installed app certification is claimed."
+    }
+  }
+}
