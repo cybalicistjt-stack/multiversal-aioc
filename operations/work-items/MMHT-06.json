@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-06",
+  "attempt_id": "MMHT-06-attempt-001",
+  "title": "Water, Weather & Hazard Layers",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner directed the next standalone MMHT cycle.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Draw and edit drainage, irrigation, travel routes and flood, weather, or hazard extents. Reuse existing mapped geometry where appropriate.",
+      "Author independent named conditions and compare active extents against route segments.",
+      "Preserve stable IDs, outline geometry, saved preview state, and player/GM filtered map handoffs."
+    ],
+    "boundaries": [
+      "Owner-approved map authoring only. Ship and vehicle operations, base construction, farming, extraction, ecology simulation and other gameplay engines retain their owner-domain scope. Map features may store typed references for later integration.",
+      "Standalone artifact confirmation is separate from installed product integration and owner playtest feedback."
+    ]
+  },
+  "evidence": {
+    "filename": "Multiversal_MMHT_06_Water_Weather_Hazards.html",
+    "artifact": "https://chatgpt.com/library?file_id=libfile_0897865c126081918c97130319e42b90&account_id=personal",
+    "sha256": "eb089e91ce2b66efae354487946c60d13015c8b8fd0a74d90517ff04b0a7c2a7",
+    "approved_plan": "https://chatgpt.com/library?file_id=libfile_a976a33aebf08191a4e3bcca6d4d1ae1&account_id=personal",
+    "downtime_handoff": "https://chatgpt.com/library?file_id=libfile_a2458043636c81919b113c40a0c4788a&account_id=personal",
+    "design_sources": [
+      {
+        "url": "https://github.com/cybalicistjt-stack/multiversal-aioc/blob/00fd1c086fcd2b2d6bc9d0217d10d192be4ab1b0/governance/application-planning/environment-preset-overlay/ENV-11_WEATHER_CLIMATE_DISASTER_OVERLAY_LIBRARY_v1.0.0.json",
+        "blob_sha": "7d47c5cc9dcfd8b78b6a2ab67be3947facd36b3e"
+      },
+      {
+        "url": "https://github.com/cybalicistjt-stack/Multiversal-app/blob/main/governance/application-planning/multiversal-built-environment-settlement/MBES-12_TERRAIN_HYDROLOGY_LAND_TRANSFORMATION.md",
+        "blob_sha": "a18b2950b57e8224d5e20f9fd6600547be8e3883"
+      }
+    ],
+    "validation": "Executed the final HTML through JSDOM with native Canvas. Verified both independent condition toggles and changed segment reports, drainage and irrigation drawing, flood edits and undo, saved preview and layers, sample maps, player/GM projection and prior workspace loading. Focused geometry tests passed disjoint, inside, tangent, boundary-aligned, concave and repeated-point cases. Strict TypeScript retains the existing MCS-03 operationId narrowing error.",
+    "example": "Harrowfen shows independent High water and Heavy rain coverage along a linked ridge trail. Reedbank demonstrates field irrigation and drainage. Brinegate demonstrates localized overflow and rain-triggered entry seepage.",
+    "boundaries": "Crossing reports describe 2D map geometry in the current level. Conditions are authored preview toggles. ENV, World and gameplay owners retain hydrology, weather and adjudication authority. Physical Android testing remains pending."
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Review the three maps and crossing inspector in the standalone HTML. Use feedback for Habitat & Wildlife Maps when MMHT-07 is selected.",
+  "planned_successor": "MMHT-07",
+  "successor_rule": "Requires owner direction to start the next standalone review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-06 offline HTML, artifact checksum and executed water, condition, and crossing checks."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Water route authoring, condition extents and crossing previews were saved and passed focused standalone verification."
+    }
+  }
+}
