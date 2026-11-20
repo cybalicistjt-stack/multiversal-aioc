@@ -57,3 +57,11 @@ MMHT-04 adds the editable Workshop Outpost Utility Plan. Route power, water, ven
 Triggers for map traces are typed source designations, directed links and the closed route IDs in authored scenarios. Room edits move attached route endpoints. Player references filter GM-only scenarios and routes whose endpoints are unavailable. Operational utility state and engineering calculations remain in the owning systems.
 
 Cycle progress is tracked in operations/work-items/MMHT-04.json. MMHT-05 remains the planned successor.
+
+## Environment zones and overlays
+
+MMHT-05 adds editable Harrowfen, Brinegate and Meridian surveys. Bind an environment preset and local overlays to a drawn outline, an existing map feature, a level or the whole map. Display zones and overlays independently. [Download the MMHT-05 HTML](https://chatgpt.com/library?file_id=libfile_28eedbcbca94819188482ba68c894076&account_id=personal).
+
+Reuse 76 governed ENV presets plus the map maker’s five existing local and adventure entries. Include all 47 overlays from ENV-11, ENV-12 and ENV-13 with source links. Diagnostics flag source exclusions within a zone. Map references preserve authored scopes and player/GM visibility. ENV remains the owner of resolved conditions and gameplay effects.
+
+Cycle progress is tracked in operations/work-items/MMHT-05.json. MMHT-06 remains the planned successor.

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-05",
+  "attempt_id": "MMHT-05-attempt-001",
+  "title": "Environment Zones & Overlays",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner directed the next standalone MMHT cycle.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Draw and redraw independent environment polygons or attach a zone to existing map geometry, a level or the whole map",
+      "Assign catalog-backed presets and explicit overlays, show labels, independently toggle layers and flag source-defined conflicts within one zone",
+      "Preserve stable zone IDs, saved scope, overlay references and GM/player-filtered handoff data"
+    ],
+    "boundaries": [
+      "Owner-approved map authoring only. Ship and vehicle operations, base construction, farming, extraction, ecology simulation and other gameplay engines retain their owner-domain scope. Map features may store typed references for later integration.",
+      "Standalone artifact confirmation is separate from installed product integration and owner playtest feedback."
+    ]
+  },
+  "evidence": {
+    "filename": "Multiversal_MMHT_05_Environment_Zones.html",
+    "artifact": "https://chatgpt.com/library?file_id=libfile_28eedbcbca94819188482ba68c894076&account_id=personal",
+    "sha256": "d5556be20c27e957f738ac1fbcbd1b04acb2d775ece990b97e7f760c3e4714f0",
+    "approved_plan": "https://chatgpt.com/library?file_id=libfile_a976a33aebf08191a4e3bcca6d4d1ae1&account_id=personal",
+    "downtime_handoff": "https://chatgpt.com/library?file_id=libfile_a2458043636c81919b113c40a0c4788a&account_id=personal",
+    "design_sources": [
+      {
+        "url": "https://github.com/cybalicistjt-stack/multiversal-aioc/blob/main/governance/application-planning/environment-preset-overlay/ENV-01_ENVIRONMENT_MODEL_COMPOSITION_CONTRACT_v1.0.0.md",
+        "blob_sha": "5258943cecd6d1c857dc2e5dc9329dd5b49730a6"
+      },
+      {
+        "url": "https://github.com/cybalicistjt-stack/multiversal-aioc/blob/3dfcc6d327ac6ca58b6e8b0468a36396a32297eb/governance/application-planning/environment-preset-overlay/ENV-11_WEATHER_CLIMATE_DISASTER_OVERLAY_LIBRARY_v1.0.0.json",
+        "blob_sha": "7d47c5cc9dcfd8b78b6a2ab67be3947facd36b3e"
+      },
+      {
+        "url": "https://github.com/cybalicistjt-stack/multiversal-aioc/blob/3dfcc6d327ac6ca58b6e8b0468a36396a32297eb/governance/application-planning/environment-preset-overlay/ENV-12_PLANETARY_PHYSICAL_OVERLAY_LIBRARY_v1.0.0.json",
+        "blob_sha": "60f7b709584bed68cfac7a2019db32f4cdb6275a"
+      },
+      {
+        "url": "https://github.com/cybalicistjt-stack/multiversal-aioc/blob/3dfcc6d327ac6ca58b6e8b0468a36396a32297eb/governance/application-planning/environment-preset-overlay/ENV-13_SUPERNATURAL_MULTIVERSAL_OVERLAY_LIBRARY_v1.0.0.json",
+        "blob_sha": "d32958255d4f19aa0633fea9976b09f619139ee0"
+      }
+    ],
+    "validation": "Executed the generated HTML in JSDOM with native Canvas. Verified 81 preset/reference choices and 47 overlays, draw and redraw with stable IDs, undo/redo, map picking, saved layer visibility and scope, GM-only export filtering, same-zone conflict messages, and retained utility and interior map references. The strict TypeScript check reports the existing MCS-03 operationId narrowing error.",
+    "example": "Harrowfen Reach shows drawn marsh and fog zones over illustrated terrain. Brinegate demonstrates a level-wide cave preset and a low-oxygen cistern pocket. Meridian shows a whole-map station baseline, a transfer lock and a localized vacuum overlay.",
+    "boundaries": "Authored map references and display precedence. ENV retains composition and runtime mechanics authority. Physical Android testing remains pending."
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Review the environment survey examples and zone editing in the HTML. Use feedback for Water, Weather & Hazard Layers when MMHT-06 is selected.",
+  "planned_successor": "MMHT-06",
+  "successor_rule": "Requires owner direction to start the next standalone review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-05 offline HTML, artifact checksum and executed environment workflow checks."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Environment scope, overlay authoring and filtered map exports were saved and passed focused standalone verification."
+    }
+  }
+}
