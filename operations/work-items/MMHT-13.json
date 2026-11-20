@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-13",
+  "attempt_id": "MMHT-13-attempt-001",
+  "title": "Habitat & Land-Use Change Maps",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner requested continuing the Map Maker project, attached the MMHT-12 package, and explicitly required bootstrap from OPS5 on 2026-11-20.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Author stable parcel geometry and attach optional land-use roles to existing polygon features without replacing their map or feature IDs.",
+      "Maintain explicit ordered historical, observed, proposed and custom phases, each with independently editable land cover, habitat, condition, visibility, source version and owner reference.",
+      "Compare authored before/after phase snapshots and measured parcel footprints without inferring missing states; export separate GM/player map references and complete editable drafts.",
+      "Carry Brinegate, Lantern Post and Reedbank editable samples forward from the MMHT-12 browser tester while retaining earlier cycle tools."
+    ],
+    "boundaries": [
+      "Map-only authoring. No ecosystem simulation, wildlife progression, agriculture yield, forestry growth, mining rehabilitation, construction, economic transactions, ownership changes or authoritative time advancement.",
+      "Area metrics total authored parcel footprints, not polygon-union area or authoritative environmental analytics.",
+      "Standalone Chromium browser proof is not installed Unity, real-device, Android, multiplayer, engine integration or owner review acceptance."
+    ]
+  },
+  "evidence": {
+    "package_filename": "Multiversal_MMHT_Cycle13.zip",
+    "package_library_file_id": "libfile_fd041ecfe0d08191b660c17a31596e04",
+    "package_library_path": "/Multiversal/Map Maker/Multiversal_MMHT_Cycle13.zip",
+    "package_sha256": "a2507fd410903a6249d3eb7fa760d7d547ac96710e51e5797a83e0b384f4c3fb",
+    "html_filename": "Multiversal_MMHT_13_Habitat_Land_Use_Change_Maps.html",
+    "html_library_file_id": "libfile_af8dca0563288191af580ce63018d06d",
+    "html_sha256": "3e237916b8dc20d5a70bb9b60ba4dc5ec9ed1296b93a0549a54bb4d0de468912",
+    "sample_artifacts": "Three editable drafts and separate GM/player map-reference JSON per sample are packaged under Cycle13/ within the uploaded ZIP.",
+    "sample_counts": {
+      "reedbank": {
+        "gm_areas": 3,
+        "player_areas": 2,
+        "gm_states": 8,
+        "player_states": 6,
+        "adjacent_changes": 5
+      },
+      "lantern_post": {
+        "gm_areas": 3,
+        "player_areas": 2,
+        "gm_states": 8,
+        "player_states": 6,
+        "adjacent_changes": 3
+      },
+      "brinegate": {
+        "gm_areas": 2,
+        "player_areas": 2,
+        "gm_states": 6,
+        "player_states": 6,
+        "adjacent_changes": 4
+      }
+    },
+    "validation": "Chromium Playwright (set_content; file:// navigation blocked by harness) loaded the self-contained HTML with no JavaScript page errors. Each clean map passed documentError and orphan/duplicate state diagnostics. Player map-reference projections omitted all GM-only area/state IDs. Saved a proposed state without altering historical/current records, added/edited a later phase and saved its custom state, downloaded/parsed a player export, and retained MMHT12 examples. Exported a full editable draft via the UI; after modifying the live map, imported the prior file via the existing draft-file input and verified separate-copy restoration of original parcel label and phase states. Compact 390px layout rendered the editor without dialog horizontal overflow. No physical device, installed Unity, online or owner review acceptance.",
+    "design_sources": [
+      "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+      "Cycle12.zip attached by owner",
+      "PROJECT_BIBLE_OPS3_REFERENCE.md (enduring product reference)",
+      "FEATURE_BIBLE.md and UI/Screen Design Bibles (enduring product references)"
+    ]
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Owner reviews the three standalone habitat/land-use example maps. Begin MMHT-14 Non-Euclidean Map Authoring only on further owner direction.",
+  "planned_successor": "MMHT-14",
+  "successor_rule": "Requires owner direction to start the next standalone HTML review cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-13 self-contained HTML, three editable samples, role-filtered exports, round-trip and responsive Chromium validation."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded standalone Cycle 13 HTML tester delivered, sample data validated, exported and reimported; gameplay engines not implemented."
+    }
+  }
+}
