@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-UX-04",
+  "attempt_id": "MMHT-UX-04-attempt-001",
+  "title": "Illustrated map exemplars across all 66 curated map types",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner reviewed the entire MMHT-UX-03 66-map catalog and explicitly said its maps were too simplistic and wanted each to look good (2026-11-21). This is a bounded standalone HTML cartography visual-quality review.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Preserve the existing UX-03 Home, grouped 22-choice map catalog, 66 editable example types and cumulative MMHT-01..15 authoring workbenches while improving cartographic texture, hierarchy, geometry accenting, locality-specific scenic details and categorical differentiation.",
+      "Provide each example an additive editable `draft.showcase` sidecar holding style palette, ground material, decorative labels and movable/hideable authored scenic groups; draw the illustration within the original map canvas under and over the native feature layers without replacing or mutating map IDs/functional structures.",
+      "Use visually distinct terrain, architecture, technical fittings, rocks/minerals, crops/irrigation, animal/aquatic facilities, map annotations, survey marks, fortifications, ruins and portal props according to each map type and sample; dark-stone rendering for two sparse cave examples.",
+      "Deliver 66 individual full native JSON drafts, 66 actual browser-rendered WebP previews, 22×3 contact sheet, six-type high-resolution showcase, source modules, user guide, map type index and repeatable browser-test evidence.",
+      "Confirm authored scenic detail survives native versioned mutation and draft export/reimport as a separate copy; independently toggle ground/scene/labels and allow hiding/moving scenic groups while leaving gameplay geometry intact."
+    ],
+    "boundaries": [
+      "Illustration symbols, sidecars and labels are not canonical geography/world lore, movement connections, land rights, mining deposits, farming yields, environmental hazards, combat effects or owner permissions.",
+      "Maps are source-derived illustrative templates from previous MMHT examples, not sixty-six separately commissioned illustrations. Several share a base region or floor design. Browser validation does not prove professional artistic acceptance.",
+      "No Unity installation, multiplayer play, production authorization, physical Android content:// handling, imported asset pipeline or separate editor integration certified.",
+      "Existing native map visual layer appearance is unchanged for documents without `draft.showcase`; no destructive clearing of personal maps or engine schema replacements."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_MMHT_Illustrated_66_Maps_UX_04.html",
+    "html_sha256": "db830719508947b1d3f7859f62c8981757c325c0a4c0006d060b51f88253de4c",
+    "html_library_file_id": "libfile_f8a63de729988191ac568d95be57e961",
+    "package_filename": "Multiversal_MMHT_Illustrated_66_Maps_UX_04.zip",
+    "package_sha256": "6dd20a2d8d1279a37634bfb26982d2061f7a0428e0f4189d506c96fa7e3b9170",
+    "package_library_file_id": "libfile_afcaa50aa6a08191b93439e856af013e",
+    "package_library_path": "/Multiversal/Map Maker/Multiversal_MMHT_Illustrated_66_Maps_UX_04.zip",
+    "user_guide_library_file_id": "libfile_6bf532df35b88191a4534afc9d5c8c9b",
+    "type_index_library_file_id": "libfile_f0dd22dd1b04819197275154fa9afcd5",
+    "counts": {
+      "map_types": 22,
+      "maps": 66,
+      "portable_editable_json": 66,
+      "rendered_webp": 66,
+      "author_editable_scenic_groups": 2120,
+      "zip_files": 149
+    },
+    "validation": "Node --check accepted custom showcase JavaScript and full assembled HTML script. Chromium Playwright loaded self-contained file via set_content, opened every one of 66 curated templates in the native editor, verified native documentError null, demonstrated 2120 editable decorative groups, captured actual canvas previews of all 66 without browser script errors and verified full local sample list. Focused UI regression opened four distinct map types, mutated illustration through MMHT14 native versioned draft commit, exported via existing HTML Export draft control and imported via original file picker as separate editable copy with exact restored scenic data. Independently disabled/re-enabled scenic objects and verified stored toggle, opened illustration dialog, tested 1280px desktop and 390px mobile layout without horizontal page overflow. Package ZIP integrity and file-count checks passed; all JSON drafts and images exist, and SHA256SUMS covers 148 files. This is controlled browser evidence, not physical Android/Unity nor owner aesthetic acceptance.",
+    "source_references": [
+      "Owner's 2026-11-21 visual-quality feedback on UX-03 examples",
+      "Prior UX-03 66 example native source docs and actual captured previews",
+      "Multiversal-app governance UI/Screen Design Bible and UISK-11 Rainbow in the Dark (visual shell only)",
+      "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md"
+    ]
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Owner examines the illustrated samples in actual Android Chrome and assesses visual quality. Any additional art refinement, professional asset sourcing, 2D/2.5D production renderer or Unity integration requires separate owner direction.",
+  "planned_successor": null,
+  "successor_rule": "UX-04 is an owner-directed standalone HTML visual remediation, not an automatic 16th content or release cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_html_visual_review_delivered",
+      "evidence": "66 illustrated native editable maps, 66 WebP map captures, 2120 versioned scenic groups, browser import/export and toggling regression, offline 149-file ZIP."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Owner-directed standalone visual illustration pass created, packaged, checked and uploaded. Owner aesthetic acceptance and physical-device/installed-app proof remain external."
+    }
+  }
+}
