@@ -40,7 +40,7 @@ Attached cross-testers remain independent. Their contribution is versioned data/
 
 ## Cycle 16 delivery evidence (2026-11-21)
 
-- File: `Multiversal_GM_Playtest_Cycle_16.html`; full standalone artifact supplied as a downloadable ChatGPT conversation attachment; 15,042,107 bytes; SHA-256 `0b2406f17a271b5303ea7a4c7d94703a69a8f4d584c52d2eb3be573e99274305` (verify attached final bytes before using).
+- File: `Multiversal_GM_Playtest_Cycle_16.html`; full standalone artifact supplied as a downloadable ChatGPT conversation attachment; 15,042,107 bytes; SHA-256 `680f426cb9a7293cbd1d6eea59939b7c1131ed88463e2e03d7524764e07f4bbd`.
 - New GM-only Combat Director navigation, independent from the Live GM scene shell; focused encounter summary, selected combatant inspector, source/approved-character details, initiative filtering, zone board, action queue, history and quick controls.
 - The original encounter runtime and 01–15 preparation/continuity/economy/hangar/creator functions remain in the same HTML. Added source snapshot trace on encounter launch. Added pending-action guard on turn advance; action approval stays in the cockpit. Source-backed combat effects are **not** falsely claimed complete in Cycle 16.
 - Chromium rendered through `page.set_content` because file and localhost navigation were blocked by the runner. Desktop flow and 390px mobile layout (no horizontal overflow) passed. In-browser player attack → pending GM decision → blocked next turn → approval → successful advance, plus status edit and return to GM routes passed. Node syntax check passed. Persistent origin storage, independent-account sharing, two-device play and installed application remain unverified.
