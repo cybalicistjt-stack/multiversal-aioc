@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-15",
+  "attempt_id": "MMHT-15-attempt-001",
+  "title": "Advanced Spatial Geometry & Round-Trip",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner issued Continue after MMHT-14 in the established Map Maker HTML Tester conversation, authorizing the approved final MMHT-15 review cycle.",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Author exact polygon-with-holes and cubic-Bezier sidecar geometry with stable IDs, independent affine transforms, map-unit measurements and visibility controls, while retaining prior map feature and spatial link data.",
+      "Provide validation of malformed rings, hole crossing/overlap, curve segment continuity, transform bounds, related feature IDs and map levels; preserve undo and source revision identity.",
+      "Provide complete editable map exports, filtered GM/player map references, geometry exchange with preview/explicit apply and integrity diagnostic, and local planar GeoJSON-style output with exact authoring extensions.",
+      "Deliver four editable sample maps, twenty browser-exported JSON records, independent cross-system handoff and round-trip browser tests; finish 15-cycle prototype review program without combining independent gameplay engines."
+    ],
+    "boundaries": [
+      "Standalone HTML map authoring and reference exports only; no topological movement/portal execution, resource production, ecological simulation, terrain physics, ownership or other gameplay outcome.",
+      "Affine measurements are in map units and polygon hole area is an arithmetic planar calculation, not shape union, GIS georeferencing or engine collision certification.",
+      "FNV-1a is a non-cryptographic corruption diagnostic, not authentication; browser player export is not production authorization.",
+      "Chromium Playwright set_content and file input/download tests do not prove direct file:// navigation (blocked by harness administrator), physical Android/Windows, installed Unity, online sync or owner acceptance."
+    ]
+  },
+  "evidence": {
+    "package_filename": "Multiversal_MMHT_Cycle15.zip",
+    "package_sha256": "883e9e2e558abe973248dc677ff4b610a7d0bd86b3ae96b5f112d6817693060d",
+    "package_library_file_id": "libfile_a9f1d860accc8191b984f40e2c173166",
+    "package_library_path": "/Multiversal/Map Maker/Multiversal_MMHT_Cycle15.zip",
+    "html_filename": "Multiversal_MMHT_15_Advanced_Spatial_Geometry_Round_Trip.html",
+    "html_sha256": "3270430addfa7e2f3b55b86370365245421015906e9ba46ceffdfbc61f0e2d58",
+    "html_library_file_id": "libfile_341b7ed60bdc8191a911a66f1aba346e",
+    "handoff_filename": "MMHT-15_INTEGRATION_HANDOFF.md",
+    "handoff_library_file_id": "libfile_7bc05ea6f2dc8191a338e85debe6709f",
+    "sample_count": 4,
+    "sample_export_count": 20,
+    "sample_artifacts": "Cycle15 ZIP includes standalone HTML, four full editable drafts and GM/player/geometry-exchange/GeoJSON companion files for each sample, README, handoff, screenshot previews, sample index, SHA256SUMS and executed tests.",
+    "sample_counts": {
+      "carnival": {
+        "mode": "interior",
+        "gm_shapes": 3,
+        "player_shapes": 2
+      },
+      "brinegate": {
+        "mode": "interior",
+        "gm_shapes": 2,
+        "player_shapes": 1
+      },
+      "reedbank": {
+        "mode": "interior",
+        "gm_shapes": 2,
+        "player_shapes": 2
+      },
+      "regional_lab": {
+        "mode": "regional",
+        "gm_shapes": 2,
+        "player_shapes": 2
+      }
+    },
+    "validation": "Node --check accepted embedded JavaScript. Chromium Playwright set_content loaded all four examples with documentError null and no page errors. UI affine rotation/reflection scaled measured net polygon area by correct determinant while leaving prior map features and nonEuclideanLinks unchanged. Rejected self-crossing rings and holes outside exterior without mutation. Saved coordinate validation and exact cubic-Bezier controls. Exported a geometry exchange in browser, changed a shape, inspected saved import without mutation, explicitly applied and recovered exact shape array. Rejected modified fingerprint and foreign map ID. GeoJSON extension carried exact canonical authoring shape data. GM-only shape IDs/geometry/notes absent from player map projections. Full native draft exports and file-input reimport recovered advanced geometry as separate copy for regional and Carnival documents, including Carnival topology endpoint map-ID remapping. Four clean samples exported 20 actual browser JSON files; exporter isolated Chrome automatic multi-download quota using separate contexts. Mobile 390px dialog fit without horizontal overflow. Direct file:// navigation blocked by ERR_BLOCKED_BY_ADMINISTRATOR in harness; no installed Unity, real Android/Windows or owner acceptance.",
+    "sources": [
+      "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+      "Multiversal-app/governance/application-planning/semantic-spatial-authoring/SSA-03_CAVES_IRREGULAR_GEOMETRY_NON_EUCLIDEAN_TOPOLOGY.md",
+      "Owner-delivered MMHT-12 and verified MMHT-13/14 artifacts",
+      "Enduring Project/Feature/UI/Screen Bibles (design reference only)"
+    ]
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Owner reviews the complete 15-cycle standalone Map Maker HTML suite and determines any subsequent consolidation or successor work through a new owner-directed scope. No automatic MMHT-16 is selected.",
+  "planned_successor": null,
+  "successor_rule": "MMHT-15 concludes the approved program sequence; new work requires owner direction and governed scope.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_playtest_delivered",
+      "evidence": "MMHT-15 standalone HTML, four editable samples, twenty browser exports, geometry exchange/GeoJSON, filtering and native round-trip tests."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded MMHT-15 standalone HTML and review package produced and browser-validated; no application integration or physical-device certification."
+    }
+  }
+}
