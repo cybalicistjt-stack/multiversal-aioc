@@ -32,6 +32,11 @@ The owner directed the GM playtest to ship as one downloadable, self-contained H
 | 13 | Full local campaign rehearsal and installed evidence worksheet | [Multiversal_GM_Playtest_Cycle_13.html](https://chatgpt.com/library?file_id=libfile_5f4d449ff98081919d169d36ec612da1&account_id=personal) · Focused workflow checks passed | Run The Last Relay locally from invitation to the next session. Record exact installed targets and role-safe findings in the separate worksheet when the device pair is available. |
 | 14 | Project-backed GM design and asset integration | [Multiversal_GM_Playtest_Cycle_14.html](https://chatgpt.com/library?file_id=libfile_e4f949e158f88191a35f31c642fc7874&account_id=personal) · Focused workflow checks passed | Create a campaign from an authored place and environment, inherit terrain into a scene, link a trap, and add sourced or inferred-stat creatures to a live encounter. |
 | 15 | Creature dossier and guided GM authoring | [Multiversal_GM_Playtest_Cycle_15.html](https://chatgpt.com/library?file_id=libfile_20786921ddf081918fbe09786bb6c3ef&account_id=personal) · Offline workflow checks passed | Filter a creature by subtype and fractional CR. Inspect the source fields, place the creature in a map-backed encounter, and review the remaining project gaps under Design alignment. |
+| 16 | Combat Cockpit and source alignment | `Multiversal_GM_Playtest_Cycle_16.html` · SHA-256 `0b2406f17a271b5303ea7a4c7d94703a69a8f4d584c52d2eb3be573e99274305` · attached in owner's ChatGPT conversation; Chromium rendered and focused workflow checks passed | Open Combat Director → Open combat sample → Start encounter. Inspect a combatant and its source, filter teams, submit a player attack, verify the pending-action turn guard, approve and advance. |
+
+## Owner-approved Combat Director expansion · 2026-11-21
+
+The owner approved [GM-COMBAT-16-27](GM_COMBAT_DIRECTOR_CYCLES_16_TO_27.md) for the independent GM HTML playtest. It defines twelve reviewable cycles (16–27), with compatibility to the current Character Builder, MMHT Map Maker and Downtime testers. This does **not** authorize installed application implementation or replace PCV predecessors. Cycle 16 is a Combat Cockpit UX/source-alignment increment; mechanics and participant lifecycle continue in subsequent cycles.
 
 ## Build order
 

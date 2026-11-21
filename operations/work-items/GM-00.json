@@ -423,30 +423,65 @@
         "In-app design alignment review with source links and design gaps"
       ],
       "validation": "Cumulative offline workflow checks and new Cycle 15 assertions passed. The runner could not launch Chromium for visual verification. Installed-client proof remains independently pending."
+    },
+    "standalone_cycle_16": {
+      "status": "delivered_for_owner_playtest",
+      "filename": "Multiversal_GM_Playtest_Cycle_16.html",
+      "sha256": "0b2406f17a271b5303ea7a4c7d94703a69a8f4d584c52d2eb3be573e99274305",
+      "file_size_bytes": 15042107,
+      "completed": "2026-11-21",
+      "source_basis": [
+        "GM-COMBAT-16-27 owner approval",
+        "MV-IA-F006/F007/F012/F013",
+        "UI and Screen Design Bibles",
+        "Current GM Cycle 15 plus attached Character Builder (17), MMHT-66 and Downtime 07"
+      ],
+      "covered": [
+        "GM-only Combat Director cockpit with initiative/side filter/search and selected actor inspector",
+        "Review pending combat decisions in-place, guard turn advance until decisions return",
+        "Source-linked creature and approved-character detail, GM-only inspector and launch plan source trace",
+        "Zone-only battlefield board, map reference, objective, hazard and role-marked history",
+        "Saved Cycle 15 session and other GM screens stay in existing standalone HTML"
+      ],
+      "validation": "Chromium rendered via page.set_content at desktop and 390px mobile without page errors or horizontal overflow; real user-action attack → pending ruling → blocked next turn → approval → next turn and status editor passed. Node script syntax check passed. Browser origin/localStorage and installed/two-device play are unverified.",
+      "proof_boundary": "offline standalone HTML; not product implementation or installed certification"
     }
   },
-  "active_substep": "cycle_15_gm_design_rework_delivered",
+  "active_substep": "cycle_16_combat_cockpit_delivered",
   "first_unresolved_blocker": "The exact approved Windows x64 and Android ARM64 pair for a fresh two-human campaign is unavailable from the inspected evidence. PCV-03F draft PR #840 has source/native pass at 70b3028ee52c1860b6411f83c93da28b3c0063be, run 41906240364 lists zero available artifacts, and PCV-10 remains blocked by predecessor. MTLC-14 applicable installed lifecycle evidence is pending.",
-  "next_action": "Playtest the creature roster, dossier and guided authoring. Review Design alignment and prioritize the next playtest from owner feedback. Resume installed GM-13 proof when its recorded prerequisites are available.",
+  "next_action": "Owner playtests Combat Director Cycle 16. Next approved GM HTML development step is Cycle 17 distinct participant resources and lifecycle, preserving standalone cross-testers and earlier GM cycles. Installed GM-13 remains dependency blocked.",
   "planned_successor": "GM-01",
   "successor_rule": "Current GM-00 evidence does not select GM-01 or authorize product changes.",
   "execution_guard": {
-    "continue_turns": 16,
+    "continue_turns": 17,
     "stall_nudges": 0,
-    "material_progress_seq": 16,
-    "progress_at_last_owner_command": 15,
+    "material_progress_seq": 17,
+    "progress_at_last_owner_command": 16,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 16,
+      "seq": 17,
       "kind": "standalone_playtest_delivered",
-      "evidence": "Cycle 15 artifact, exact digest, project design review and functional checks are recorded."
+      "evidence": "Approved GM-COMBAT-16-27, produced verified Cycle 16 HTML and focused Chromium/action-loop tests."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "owner_only",
-      "evidence": "Cycle 15 is ready for owner playtest and feedback. The installed GM-13 blocker remains independently recorded."
+      "evidence": "Cycle 16 is delivered for owner review. Installed GM-13 remains blocked; implementation authority unchanged."
     }
   },
-  "owner_cycle_direction": "The owner directed the GM playtest to ship as one downloadable, self-contained HTML file per cycle, with owner feedback guiding the next increment."
+  "owner_cycle_direction": "The owner approved GM-COMBAT-16-27 on 2026-11-21, with immediate Cycle 16 delivery as another complete standalone GM HTML tester; one file per cycle and no coupling of independent other testers.",
+  "owner_combat_plan": {
+    "plan_id": "GM-COMBAT-16-27",
+    "approved_on": "2026-11-21",
+    "status": "approved_for_standalone_gm_playtest",
+    "path": "governance/application-planning/gm-workspace/GM_COMBAT_DIRECTOR_CYCLES_16_TO_27.md",
+    "source_audit_sha256": "a345c451a42d798bec31156a386efd9b6a7d48d1383348f8c7be46108ad05ae5",
+    "cycle_range": [
+      16,
+      27
+    ],
+    "other_testers_independent": true,
+    "product_implementation_authority": false
+  }
 }
