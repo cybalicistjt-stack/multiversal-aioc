@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "mmht",
+  "program_id": "MMHT",
+  "work_item_id": "MMHT-UX-02",
+  "attempt_id": "MMHT-UX-02-attempt-001",
+  "title": "Home-first startup and setting/location organized map library",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner reviewed MMHT-UX-01 on Android and directed a central startup screen every launch, easier map opening, exclusion of poorly rendered earlier demonstrations from everyday browsing, and grouping by setting, location/collection and map type; owner explicitly said Continue (2026-11-20).",
+  "authority_type": "owner_scoped_standalone_map_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/map-maker-html-tester/MMHT_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Launch the cumulative standalone tester to an explicit fixed Home screen, even with a previously active saved map, without rewriting or clearing saved workspace state.",
+      "Replace everyday flat example-heavy map opening with a searchable organization hierarchy: setting → collection/location → filtered maps; per-map type tags, recency sorting, favorites and limited paginated results.",
+      "Create settings; assign existing or new maps to settings/locations; provide explicit My maps, four current sample copies, and separate older/legacy and manually archived map views. No destructive cleanup.",
+      "Preserve underlying legacy editor and all existing Cycle01–15 tools and schemas; reroute the old Open maps header action to the organized library; import original editable JSON drafts and allow example copies.",
+      "Repair native saved-workspace restoration when pre-initialization calls to advanced spatial validators caused otherwise valid saved documents to be rejected; guard only those checks using their existing READY flags.",
+      "Deliver a completely self-contained browser HTML file, documented source, user guide, four current editable sample drafts, desktop/mobile screenshots, checksums and browser tests."
+    ],
+    "boundaries": [
+      "Organization index is a localStorage sidecar; setting/collection changes do not mutate map geometry, IDs, gameplay links or map draft schema.",
+      "Older examples are hidden from the default library, not deleted or automatically certified as broken; archive and recovery remain available.",
+      "Library organization backup contains categorization metadata only, not full map documents. Full editable drafts require their own exports. Across different Android content:// origins/files, saved-device data may not be shared.",
+      "Chromium set_content with controlled localStorage across fresh browser pages is not a physical Android content:// acceptance test, actual cross-file migration, production entitlements or installed Unity integration."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_MMHT_Home_Organized_Library_UX_02.html",
+    "html_sha256": "914dcbb093a80ea7950adb141b870c65aefcf9640b512fef0dd27cd6fa5889a9",
+    "html_library_file_id": "libfile_e850c6f165e88191be4e30a1b5ac7446",
+    "package_filename": "Multiversal_MMHT_Home_Organized_Library_UX_02.zip",
+    "package_sha256": "15fe3d40c76d7da2ff8970635db819388465a5a3814fe78cdb2934a1c0190969",
+    "package_library_file_id": "libfile_60ca369c92d88191814cdca66ae0694d",
+    "package_library_path": "/Multiversal/Map Maker/Multiversal_MMHT_Home_Organized_Library_UX_02.zip",
+    "manual_filename": "MMHT-UX-02_USER_GUIDE.md",
+    "manual_library_file_id": "libfile_40fa2f0ec6208191970b2354b8a76784",
+    "archive_files": 20,
+    "curated_sample_drafts": 4,
+    "validation": "Node --check accepted the combined native/editor/studio/library JavaScript. Chromium Playwright set_content: 1280x900 desktop and 390x844 mobile-like viewports had zero pageerrors and no horizontal overflow. Explicit Home start, user-created map under Havalaea/Western Canopy, rediscovery by setting and text search, favorite, Home after saved-workspace reload, native-header Open maps rerouting, current/legacy separation, editable example duplication, non-destructive archive/restore, true Cycle15 regional draft import with identical bundled-source personal-copy behavior, and downloaded JSON organization metadata backup passed. A native reload regression was reproduced (15 map documents rejected early with generic error); guarding MMHT14 and MMHT15 validators by READY flags preserved 46-document saved-workspace reload. Browser network/file navigation blocked by harness, so synthetic localStorage persisted between fresh Playwright pages via a controlled polyfill; physical Android device and actual content:// storage behavior remain unverified.",
+    "source_references": [
+      "Owner Android Chrome screenshots of MMHT-11 and MMHT-15 and follow-up user report of confusing library/startup",
+      "Previous MMHT-UX-01 cumulative standalone HTML, original MMHT-15 code",
+      "governance/application-planning/ui-skin-system/UISK_11_RAINBOW_IN_THE_DARK_SKIN_PACK_v1.0.0.md (UI design reference)",
+      "MMHT_PROGRAM.md (on-demand lane scope)"
+    ]
+  },
+  "active_substep": "offline_html_delivered",
+  "next_action": "Owner reviews the new Home and grouped My Maps interface in actual Android Chrome using a previously saved workspace, and checks content:// storage scope. Any further UX remediation or app integration requires separate owner direction.",
+  "planned_successor": null,
+  "successor_rule": "UX-02 is owner-directed remediation after the final MMHT-15 content cycle; do not auto-create a new content cycle.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_html_remediation_delivered",
+      "evidence": "Self-contained UX-02 HTML, grouped library, central startup, 4 curated sample drafts, 20-file ZIP and regression tests including restored local workspace."
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded owner-directed browser-only UX-02 workbench delivered and tested. Physical Android content:// and installed app remain external acceptance."
+    }
+  }
+}
