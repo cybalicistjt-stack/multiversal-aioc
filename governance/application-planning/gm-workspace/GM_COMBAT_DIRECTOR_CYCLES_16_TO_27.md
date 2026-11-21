@@ -46,6 +46,16 @@ Attached cross-testers remain independent. Their contribution is versioned data/
 - Chromium rendered through `page.set_content` because file and localhost navigation were blocked by the runner. Desktop flow and 390px mobile layout (no horizontal overflow) passed. In-browser player attack → pending GM decision → blocked next turn → approval → successful advance, plus status edit and return to GM routes passed. Node syntax check passed. Persistent origin storage, independent-account sharing, two-device play and installed application remain unverified.
 - **Next:** owner evaluates Cycle 16. Advance to Cycle 17 resources/participant lifecycle through another standalone HTML cycle, preserving all previous workflows. Installed GM-13 remains blocked by predecessor evidence.
 
+## Cycle 17 delivery evidence (2026-11-21)
+
+- Full standalone file: `Multiversal_GM_Playtest_Cycle_17.html`, 15,063,769 bytes, SHA-256 `aa6f8098c73745bc7cbf74205e2610807e153ff43577f6a4abc90a812d547957`; downloadable from the owner conversation, not an installed product package.
+- Reuses the complete Cycle 16 GM tester and all prior modules; preserves unchanged embedded Character, Transport and GM project catalog JSON checksums.
+- Adds live-instance HP/maximum HP and Defense edits, distinguishable encounter-only lifecycle states, custom GM-entered resource pools, per-combatant private notes and a bounded audit trail. Source HP/Defense and origins remain separate from live instance values. Unlisted mana/stamina are not invented.
+- Adds textual status facets and explicit labeled rainbow-accented vitals and resource cards (ruby HP, cyan Defense, gold initiative, magenta lifecycle and conditions, violet mana, emerald stamina) following Rainbow in the Dark; color is supplementary to labels, borders and position.
+- Chromium desktop and 390px phone views rendered with no page exceptions or horizontal overflow. Positive interaction tests covered pool add/edit, HP 0 then explicit Dying status, private note role filtering, isolation from a second combatant, lifecycle filtering. Negative checks covered over-max resource rejection, reason-required Defense overrides and lifecycle decision confirmation. Two cloned `roster-67` creatures retained independent HP/lifecycle and survived JSON serialization/parse. Node syntax check passed. Catalog embedded JSON remained byte-identical to Cycle 16.
+- Browser `file://` navigation was blocked by the executor; Chromium `set_content` could not verify same-origin localStorage reload. The HTML is browser-openable, but this evidence establishes only in-memory test and JSON serialization, **not actual browser reload persistence, installed two-device or server-authoritative play**.
+- Next approved GM HTML phase: **Cycle 18**, order/turn economy, rule profile timing, hold/delay and action windows. Keep independent Character, MMHT and Downtime testers intact.
+
 ## Authority
 
 Selected lane `gm-workspace`, work `GM-00`, is read-only product baseline and **standalone HTML planning/playtest** under current OPS5. Do not start PCV-04 implementation, change CURRENT/lane selection, certify real-device transport, or mutate the other independent testers based on this approval.
