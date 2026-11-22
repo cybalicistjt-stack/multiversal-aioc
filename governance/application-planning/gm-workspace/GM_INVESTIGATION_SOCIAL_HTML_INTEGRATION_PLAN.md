@@ -124,3 +124,16 @@
 - **Unverified:** actual browser-origin/file:// persistence (test used storage shim), real installed D24/A6/D05 rights and Event authority, two-device Windows/Android, native screen reader and independent Map Maker/Downtime importer. Local Player preview cannot enforce server-side security.
 - **Next planned:** IS-06 / Cycle 33 — player/GM Hypothesis and Question records, typed semantic links, graph/list parity, permission-before-topology and nonvisual navigation.
 
+
+## IS-06 / Cycle 33 status — 2026-11-22
+
+**Delivered for owner playtest**, not installed-app or canonical D24 implementation.
+
+- Artifact: `Multiversal_GM_Playtest_Cycle_33.html` (15,547,348 bytes), SHA-256 `8cf4c16fd5898dad623c8093f9c0c735ca8f5e5914af914f0b2c1f44dfb01155`.
+- New **Connected Clue Board** in GM Prepare and linked from Investigation & Social. A case placement can show existing Cycle31 Campaign Clue IDs, Cycle32 Claim/Observation IDs, and IS-06 player/GM-created Hypothesis and Question records. Explicit semantic links use exactly the 15 D24 predicates from current `connection-port.ts` with directional endpoints, rationales, version, actor operation ID, and GM/party/individual preview audience.
+- Player UI can author a private hypothesis or question when a case is already available to them; a deliberate Player Share button makes it visible to the party. The GM graph/inspector/private archive exclude other people's unshared private theories, per F011. All hypotheses carry `objectiveTruth:false`; this cycle cannot issue a canonical GM Conclusion.
+- Authorization-first Player projection: only already disclosed Cycle31 clue and Cycle32 testimony snapshots plus own or intentionally shared theories; hidden endpoints and their counts/topology do not appear even if an edge is marked party-visible. Semantic diagram/list/outline share identities and typed links; diagram geometry never owns meaning.
+- Reject unsupported predicate, invalid/cross-case endpoint, duplicate typed link, conflicting operation ID, stale expected revision, unauthorized actor, historical/paused case mutation. Retired links and archived items remain historical.
+- **Verification:** source 12 prior HTML script blocks preserved byte-for-byte, 5 source JSON blocks parse, Node 8/8 JS syntax. Chromium focused 55/55 PASS, including inherited Cycle27 Regression Lab 27/27, GM form submission and actual Player Share click; desktop 1440, tablet 768 and mobile 390 zero page errors and no document overflow.
+- **Unverified:** native `file://` persistence/reload (tests use page.set_content and localStorage shim), server D24/A6/D05 authorization, installed Windows/Android two-device, independent Map Maker/Downtime import and native assistive-technology testing.
+- **Next planned IS-07 / Cycle34:** case timelines and alibis, contradiction review and false leads with source provenance. Contradiction never automatically decides which statement is true.
