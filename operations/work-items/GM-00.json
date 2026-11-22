@@ -816,6 +816,36 @@
       "report_filename": "Multiversal_GM_IS04_Cycle31_Automated_Report.json",
       "notes_filename": "Multiversal_GM_IS04_Cycle31_Verification_Notes.md",
       "next": "IS-05 / Cycle32 Observation, Claim and Witness testimony; source reliability vs witness belief vs objective truth separation"
+    },
+    "standalone_cycle_32": {
+      "status": "delivered_for_owner_playtest",
+      "filename": "Multiversal_GM_Playtest_Cycle_32.html",
+      "sha256": "32bc3f32247662411c6085a4904b7176fde62f6b12f70cbf014c4b7327f37edd",
+      "file_size_bytes": 15512338,
+      "completed": "2026-11-22",
+      "source_basis": [
+        "GM-IS 16-step integration plan IS-05",
+        "MV-IA-F011 Investigation/Clue Board, D24 Observation and Claim separation",
+        "PPIA-09 Investigation and Mystery Authoring Experience; no universal truth/confidence metric",
+        "Multiversal-app A9 observation-claim-port.ts and evidence-reference-port.ts",
+        "Existing Cycle29 Case Library, Cycle30 Mystery Dossier, Cycle31 Clue & Evidence Workshop"
+      ],
+      "covered": [
+        "Prepare-level GM-only Witnesses & Testimony route linked to existing Investigation case placements; references, not new canonical NPC source records",
+        "Source-bound witness profiles with stable identity, aliases, provenance and private context; active duplicate detection and historical archive",
+        "D24-shaped Observation (observer/perceived text/source) and Claim (speaker/text/belief/reliability/truth reference) records with separate authenticity and explicit unverified source link",
+        "Optional same-case Campaign Clue cross-reference that does not discover or mutate the clue",
+        "Separate GM-private wording and local Player-safe wording, explicit active-case party or one-player publish, frozen disclosed snapshots and explicit revoke/archive",
+        "D05-shaped local Player projection filtering GM-only details, observers/revoked audiences, paused placements and other campaigns; preview is not real server access control",
+        "Stable operation ID/idempotency and conflicting reuse rejection, optimistic expected revision, source and identity validation, bounded local audit receipts and GM-only JSON export",
+        "Prior source and regression code preserved as standalone HTML, no D24 authoritative mutation or objective fact inference"
+      ],
+      "verification": "Node --check 7/7 executable scripts; all five embedded JSON sources parse; prior 11 HTML script blocks byte-identical to Cycle31; Playwright Chromium 45/45 focused checks PASS including inherited Cycle27 27/27; separate browser form-based witness/create Claim/share party UI interaction PASS; no console page exceptions or horizontal overflow at 1440x900, 768x1024, 390x844.",
+      "limits": "Testing uses page.set_content() and controlled localStorage shim, not genuine native file:// reload. Manual evidence/NPC/source IDs are unverified. Single-file Player preview is not a production privacy boundary. No installed Windows/Android, shared multiplayer/session authority, D24/A6 server mutation, D05 authorization, independent Map Maker/Downtime imports or assistive-technology certification.",
+      "proof_boundary": "Synthetic standalone GM Investigation playtest only; product implementation/owner authority unchanged.",
+      "report_filename": "Multiversal_GM_IS05_Cycle32_Automated_Report.json",
+      "notes_filename": "Multiversal_GM_IS05_Cycle32_Verification_Notes.md",
+      "next": "IS-06 / Cycle 33 — semantic clue graph, 15 typed connections, player hypotheses and questions, graph/list parity"
     }
   },
   "active_substep": "cycle_24_vehicle_mecha_starship_combat_delivered",
@@ -824,21 +854,21 @@
   "planned_successor": "GM-01",
   "successor_rule": "Current GM-00 evidence does not select GM-01 or authorize product changes.",
   "execution_guard": {
-    "continue_turns": 29,
+    "continue_turns": 30,
     "stall_nudges": 0,
-    "material_progress_seq": 29,
-    "progress_at_last_owner_command": 28,
+    "material_progress_seq": 30,
+    "progress_at_last_owner_command": 29,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 29,
-      "kind": "gm_is04_standalone_playtest_delivered",
-      "evidence": "Cycle31 exact SHA-256 317acef25…; original 10 source blocks preserved; six JS syntax checks, 45/45 focused/browser and inherited 27/27 Cycle27 regression; owner-review HTML and notes."
+      "seq": 30,
+      "kind": "gm_is05_standalone_playtest_delivered",
+      "evidence": "Cycle32 exact SHA-256 and source byte preservation, 7/7 Node, 45/45 Chromium including prior 27/27 GM Regression Lab, form-based UI flow and role-safe filtering."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "owner_only",
-      "evidence": "IS-04 Cycle31 complete to standalone owner review; next IS-05 is a future bounded HTML increment. Real file-origin persistence and installed product authority not verified."
+      "evidence": "IS-05 Cycle32 standalone owner-review deliverable finished. IS-06 is next planned standalone playtest cycle; native origin persistence, installed authority and real server privacy remain unverified."
     }
   },
   "owner_cycle_direction": "Owner continued GM-COMBAT-16-27 to Cycle 24. The standalone GM HTML must retain the dark rainbow layout, floating Turn Order with Next Turn, project fleet/crew/source authority, and independent companion testers. No PCV product implementation authority.",
@@ -862,17 +892,17 @@
     "scope": "Investigations, social play, GM screen integration planning and consecutive standalone HTML playtest cycles; no app product code or installed certification",
     "plan_ref": "governance/application-planning/gm-workspace/GM_INVESTIGATION_SOCIAL_HTML_INTEGRATION_PLAN.md",
     "series_cycles": "28–43",
-    "selected_step": "IS-04",
+    "selected_step": "IS-05",
     "selected_step_status": "delivered_for_owner_playtest",
-    "remaining_steps": "IS-05–IS-16 planned as future standalone HTML cycles, product implementation not authorized",
+    "remaining_steps": "IS-06–IS-16 are planned future standalone HTML playtest increments; product code implementation remains separately selected",
     "stage": {
-      "id": "IS-04",
-      "cycle": 31,
-      "title": "Reusable clue definitions, Campaign Clue instances, source-owned evidence references and controlled local discovery rehearsal",
-      "result": "Owner-playtest standalone HTML; 45/45 focused/checkpoint browser tests and inherited Cycle27 Regression Lab 27/27 PASS. Real file-origin persistence and installed product unverified.",
-      "sha256": "317acef25a66de89b8a633aab77791f169d4302d3cba7a02d325e6c6eb59c56f",
-      "artifact": "Multiversal_GM_Playtest_Cycle_31.html"
+      "id": "IS-05",
+      "cycle": 32,
+      "title": "Witnesses, observations, source-attributed claims, reliability and authenticity",
+      "result": "Standalone HTML synthetic GM workshop; 45/45 focused checks incl. prior Cycle27 27/27; DOM form smoke pass; 1440/768/390 clean. Native file persistence and installed/network authority not verified.",
+      "sha256": "32bc3f32247662411c6085a4904b7176fde62f6b12f70cbf014c4b7327f37edd",
+      "artifact": "Multiversal_GM_Playtest_Cycle_32.html"
     },
-    "next_owner_review": "Create clue definition without campaign; link to an active case placement, attach an evidence source reference, reveal privately to an active Player, compare second Player view, test revoke and pinned revision refresh; next IS-05 testimony."
+    "next_owner_review": "Use a prepared case placement; create an external witness/source reference, add one Claim and one Observation, compare speaker belief vs reliability vs authenticity vs truth, explicitly share a safe account to one Player or party, then revoke. IS-06 graph/hypotheses planned."
   }
 }
