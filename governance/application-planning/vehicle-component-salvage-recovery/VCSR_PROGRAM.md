@@ -83,3 +83,13 @@ Cycle 01 is a **demonstration contract simulator** with an illustrative cargo lo
 - DB-004 reference: item/vehicle/mecha/ship, crafting/economy, exploration/environment, downtime/project game-framework chapters.
 - Attached baseline testers: GM Cycle 33, Character Builder v19, MMHT Illustrated 66 Maps UX 04, Downtime Cycle 07.
 - Explicitly not superseding OPS5 CURRENT-selected work in GPR, MTLC, AXI, GM Workspace, MMHT or other lanes.
+
+## Cycle 02 — Asset catalog, containers, lots and authored drops
+
+**Artifact:** `artifacts/Multiversal_VCSR_Cycle_02.html` (complete, cumulative standalone HTML). SHA-256 `fde1ed6427e368f38a81ff55eab8084cf5fecc203c2bde1d02dc3bc64ff16add`.
+
+Cycle 02 adds 14 searchable item/component definitions with descriptions, source status, explicit definition-versus-physical-instance separation, five storage surfaces (including a GM-only workshop and a pouch attached to its anchor item), fractional-stack splitting, reservation/release, item transfer/take/leave/return, explicitly compatible lot merging and authored one-use drop opportunities with mandatory rule/evidence/quantity/provenance. Existing VCSR-01 workbench flows, partial salvage and role-filtered handoffs remain available. Imports accept VCSR-01 checkpoints as upgradeable demonstration fixtures; exports use VCSR-02 checkpoint/handoff schemas.
+
+**Validation:** 8/8 original VCSR-01 embedded checks + 12/12 new cycle invariants in isolated browser fixtures at Chromium desktop 1280×850 and mobile-width 390×844, zero page errors or horizontal overflow. Browser exercised search, split, item transfer, authored drop proposal/approval, GM checkpoint download/reopen parity, player-safe site/storage/catalog filtering and redacted handoff. The actual D17/MIB-03/LSS-04 TypeScript engine and native Android/Unity remain **unconnected and unverified**, as intended for this standalone cycle. Capacity is an explicitly illustrative count of stack slots; pricing, equipment bonuses, vehicle compatibility and generated random drops are deliberately absent.
+
+**Ops5 publication boundary:** This cycle is staged on a separate branch/PR *stacked on* VCSR-01 registration PR #2019. Neither operation becomes canonical on protected `main` until the required publication validation and merge occur. VCSR-03 remains the planned next user-directed HTML cycle; there is no automatic successor or change to GPR/CWKS/MTLC/MMHT/GM/Character/Downtime implementation work.

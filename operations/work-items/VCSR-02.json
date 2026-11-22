@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "vcsr",
+  "program_id": "VCSR",
+  "work_item_id": "VCSR-02",
+  "attempt_id": "VCSR-02-attempt-001",
+  "title": "Standalone HTML Cycle 02 — Catalog, Storage, Lots & Authored Loot",
+  "status": "in_progress",
+  "owner_selected": true,
+  "selected_by_owner": "2026-11-22 Continue in VCSR HTML tester conversation",
+  "authority_type": "owner_scoped_standalone_html_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/vehicle-component-salvage-recovery/VCSR_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Carry forward complete VCSR-01 tester and extend with searchable full-description definitions, source provenance and definition/instance distinction.",
+      "Add 5 local physical storage projections and nestable pouch anchor; test reservations, splits, source-to-destination transfers, return/leave and explicit compatible lot merging.",
+      "Introduce one-use authored drop profile requiring stable rule/evidence/quantity plus explicit unresolved block; use existing GM approval queue.",
+      "Provide v1→v2 checkpoint import compatibility, portable GM checkpoint, filtered player handoff, stand-alone navigation and in-browser tests."
+    ],
+    "boundaries": [
+      "No new canonical inventory; D17+LSS-04 own actual acquisition and mutation, MIB-03 owns durable receipts.",
+      "No universal loot table, drop rarity conversion, stack yield, weight/capacity, price or item effects; local stack-slot counts are test fixtures.",
+      "No external service, real GM permission check, installed Android/Unity runtime, LAN sync, other tester mutation or protected main publication in this artifact."
+    ]
+  },
+  "evidence": {
+    "artifact": "governance/application-planning/vehicle-component-salvage-recovery/artifacts/Multiversal_VCSR_Cycle_02.html",
+    "sha256": "fde1ed6427e368f38a81ff55eab8084cf5fecc203c2bde1d02dc3bc64ff16add",
+    "bytes": 109141,
+    "embedded_tests": {
+      "previous": 8,
+      "previous_pass": 8,
+      "new": 12,
+      "new_pass": 12
+    },
+    "browser": {
+      "engine": "Chromium headless",
+      "loadMethod": "Playwright set_content with complete HTML; local HTTP navigation was blocked by browser sandbox",
+      "viewports": [
+        "1280x850",
+        "390x844"
+      ],
+      "pageErrors": 0,
+      "horizontalOverflow": false,
+      "manualActions": [
+        "catalog search",
+        "split stack",
+        "transfer existing asset",
+        "propose and approve authored drop",
+        "actual checkpoint file download/reimport",
+        "player GM-only site/container/catalog visibility filtering",
+        "visibility-safe handoff export"
+      ]
+    },
+    "source_refs": [
+      "AIOC LSS-01 and LSS-04 existing-asset and authored-drop contracts",
+      "LSS-05/06/10 authored opportunity and salvage boundaries",
+      "D17/MIB-03/MIB-12/MIB-14 owners",
+      "VCSR-01 delivered HTML",
+      "User-provided GM33/Character19/MMHT/Downtime07 HTML"
+    ]
+  },
+  "active_substep": "html_validated_pending_stack_publication",
+  "next_action": "Complete protected-main validation/publication of VCSR-01 PR #2019, then re-target/publish VCSR-02 stacked PR after exact-head validation; retain HTML delivery regardless. A later owner Continue may request VCSR-03 standalone scavenge cycle.",
+  "planned_successor": "VCSR-03",
+  "successor_rule": "Owner-directed separate HTML cycle; no automatic implementation start, no update of parallel lanes.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "stall_nudges": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "html_artifact_validated",
+      "evidence": "Chromium desktop/mobile local browser, 20/20 embedded invariant checks, actual JSON reopen and hidden-info filter, SHA256 fde1ed6427e368f38a81ff55eab8084cf5fecc203c2bde1d02dc3bc64ff16add"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
