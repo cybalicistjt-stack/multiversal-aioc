@@ -82,3 +82,16 @@
 - Verification: new focused Chromium checks 31/31 PASS (1440/768/390), inherited Cycle 27 regression lab 27/27 PASS, source script/JSON byte preservation and Node syntax PASS. Original Harrowfen case and IS-02 library unchanged during retained suite.
 - Browser policy blocks navigation to localhost; controlled storage shim used, so genuine file-origin/localStorage reload remains **not verified**. Installed Windows/Android, independent D24/A6 server operations and external map/downtime interfaces also not verified.
 - **Next planned IS-03 / Cycle 30:** GM mystery dossier, source-grounded core question/event, surface/hidden/revealed layers and role-safe differentiated handout. Unknown canon stays unknown.
+
+## IS-03 / Cycle 30 status — 2026-11-22
+
+**Delivered for owner playtest**, not installed-app or canonical D24 implementation.
+
+- Standalone artifact: `Multiversal_GM_Playtest_Cycle_30.html`, SHA-256 `94ed24ad925b8c961b783368252a31e7a0e1f7395d269e562cf6b4521a76ae97`; 15,436,616 bytes.
+- Adds GM-only mystery dossier with empty/unestablished facts (core event, responsible party, motive, twist, solution, setting, provenance) and explicit pinned case-definition version. Prepared lead cards have Surface / Hidden / Reveal candidate layers, separate private and public descriptions, manual source references, revisions and retirement history.
+- Dedicated public copy and opted-in Surface leads can be snapshotted for a selected active campaign placement and party or specific active Player. GM-only/private and reveal-candidate details never enter the projected handout; publication does not record a canonical discovery, clue sharing, outcome or conclusion. Local Player preview is only a demonstration, not a server-side permission barrier.
+- Guards cover stale edits, idempotent operation receipts, source revision drift, placement state, individual/party audience selection, observer/revoked/invited access, campaign mismatch and explicit local revocation. Source edits and later GM notes do not silently modify already published local snapshots.
+- Verification: all five executable JS script bodies pass Node syntax; five embedded JSON and four prior executable JS script bodies byte-identical to Cycle29. Chromium 41/41 focused checks PASS at desktop 1440, tablet 768 and phone 390; zero page JS errors/horizontal overflow. Inherited Cycle27 Regression Lab 27/27 PASS.
+- Native browser-origin persistence and installed/shared D24/A6/D05 remote authority remain **not verified**. In-memory controlled localStorage shim only. Independent screen-reader, cross-device, Map Maker/Downtime import not tested.
+- **Next planned IS-04 / Cycle31:** Clue Definitions and Campaign Clue/evidence records, distinct prepared vs discovered vs revealed state, strict provenance and audience boundaries.
+
