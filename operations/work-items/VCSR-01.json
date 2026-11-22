@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "vcsr",
+  "program_id": "VCSR",
+  "work_item_id": "VCSR-01",
+  "attempt_id": "VCSR-01-attempt-001",
+  "title": "Standalone Vehicle, Component, Salvage & Recovery HTML tester — Cycle 01",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "2026-11-22 request to bootstrap OPS5, audit corpus, register cycles and begin step 1.",
+  "authority_type": "owner_scoped_standalone_html_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/vehicle-component-salvage-recovery/VCSR_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Stand-alone playable HTML Cycle 01 with distinct loot, scavenge and salvage flows and local fixture state.",
+      "Source-informed partial salvage and authored Blackglass opportunity; unknown mecha/ship recovery blocked.",
+      "GM approval, operation IDs, deduplication, source-version gates, inventories, source leftovers, receipts, checkpoint export/import and scoped handoff.",
+      "18-cycle executable standalone roadmap with independent MMHT/GM/Character/Downtime interfaces."
+    ],
+    "boundaries": [
+      "Existing completed LSS-01..10 governs rules; D17/MIB-03/MIB-12/MIB-14 and other owners retain authority.",
+      "Demo receipt records are not durable D17 commits, GM permission toggle is not authentication, no real sync, price, combat, crafting, map geometry or mining engine.",
+      "No new application branch, installed playtest lane, production integration, live source-canon mutation or hidden inference."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_VCSR_Cycle_01.html",
+    "html_sha256": "0e2f3d436bca731777ee8d5d158c9632807e759babacfce7f05e9fb79b3f05c3",
+    "repository_artifact_path": "governance/application-planning/vehicle-component-salvage-recovery/artifacts/Multiversal_VCSR_Cycle_01.html",
+    "validation": "Chromium 1280x850 and 390x850, 8/8 built-in isolation tests, no JS page errors or horizontal overflow, interactive loot/scavenge/rover/mecha/player filter flow, JSON checkpoint/download/reopen. Real owner-domain acceptance not claimed.",
+    "source_links": [
+      "LSS-01_SOURCE_SYSTEM_CROSSWALK_AND_AUTHORITY_MAP.md",
+      "LSS-05_LIVE_SCAVENGE_OPPORTUNITY_ENGINE_INVENTORY.md",
+      "LSS-06_LIVE_SALVAGE_EXTRACTION_ENGINE_INVENTORY.md",
+      "LSS-10_LIVE_CONTENT_SEARCH_WORKBENCH_GOLDEN_INVENTORY.md",
+      "Project/Feature/UI/Screen bibles",
+      "GM33, Character19, MMHT UX04 and Downtime07 supplied HTML"
+    ]
+  },
+  "active_substep": "offline_html_ready_for_owner_review",
+  "next_action": "Owner can review Cycle 01 and use Continue for VCSR-02 catalog, existing stock, containers, quantity/stack/ownership and authored loot flows.",
+  "planned_successor": "VCSR-02",
+  "successor_rule": "Requires separate owner continuation; each cycle yields one complete cumulative self-contained HTML, with no changes to adjacent tester engines.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_html_artifact_delivered",
+      "evidence": "Chromium browser local smoke and 8/8 built-in invariant tests; HTML SHA-256 0e2f3d436bca731777ee8d5d158c9632807e759babacfce7f05e9fb79b3f05c3"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded standalone HTML Cycle 01 and roadmap authored/validated; owner approval and live integration future."
+    }
+  }
+}

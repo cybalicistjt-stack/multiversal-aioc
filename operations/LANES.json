@@ -357,6 +357,25 @@
       ],
       "cross_lane_reads": "Read existing spatial and gameplay owner contracts only for applicable map features and interface evidence.",
       "implementation_policy": "Owner-selected on demand. Scope is standalone map tester artifacts. Existing application and installed playtest lanes retain their authority."
+    },
+    {
+      "id": "vcsr",
+      "purpose": "Owner-directed Vehicle, Component, Salvage & Recovery HTML Tester (VCSR), integrating the existing LSS-01..10 and MIB-14 contracts in a standalone progressive browser test surface.",
+      "intent_examples": [
+        "continue VCSR",
+        "vehicle component salvage tester",
+        "loot salvage scavenge HTML tester",
+        "continue the vehicle Mecha ship tester"
+      ],
+      "current_state_source": "operations/CURRENT.json#/lanes/vcsr",
+      "source_bundle": [
+        "CURRENT-selected VCSR work record",
+        "governance/application-planning/vehicle-component-salvage-recovery/VCSR_PROGRAM.md",
+        "existing completed LSS-01..10, D17, MIB-03, MIB-12, MIB-13, MIB-14 and cross-system source interfaces",
+        "owner-provided current GM/Character/MMHT/Downtime standalone HTML evidence"
+      ],
+      "cross_lane_reads": "Read other tester/owner contracts for typed references only; no mutation of independent GM, Character, MMHT, Downtime or persistent implementation lane state.",
+      "implementation_policy": "Owner-selected on demand. One complete cumulative offline HTML deliverable per cycle. No app implementation authority, no new canonical gameplay engine, no automatic successor; OPS5 and other live lanes retained."
     }
   ],
   "persistent_implementation_lanes": [
