@@ -109,3 +109,18 @@
 - **Verification:** Node --check 6/6 executable blocks; five embedded JSON blocks valid; all 10 prior script blocks byte-identical. Chromium Playwright 45/45 checks passed including the original Cycle27 27/27 regression suite; 1440/768/390 px render clean with zero errors/overflow. The original Regression Lab's temporary campaign replacement revealed a missing-reference crash, repaired by fail-closed historical projection then rerun green.
 - **Not verified:** native file:// storage reload, installed dual-device D24/A6/D05 authority, independent imports, offline/reconnect and screen-reader behavior. Tests use page.set_content() and a controlled localStorage shim.
 - **Next:** IS-05 / Cycle32 — observation, claim and witness testimony with witness belief, evidence origin, source reliability and authenticity kept distinct from objective truth.
+
+## IS-05 / Cycle 32 status — 2026-11-22
+
+**Delivered for owner playtest**, not installed-app or authoritative D24 implementation.
+
+- Artifact: `Multiversal_GM_Playtest_Cycle_32.html`, SHA-256 `32bc3f32247662411c6085a4904b7176fde62f6b12f70cbf014c4b7327f37edd`, 15,512,338 bytes.
+- GM **Witnesses & Testimony** workshop under Prepare and linked from Investigation & Social and Clue & Evidence. Records are bound to a case placement by reference; no new NPC/Character identity, canonical Observation/Claim store, or case truth store.
+- Witness profiles include explicit NPC/source ID, source version and provenance, safe display alias, GM-private context, stable local revision, duplicate and archive controls.
+- **Observation** holds observer subject, perceived wording, source ref and reliability. **Claim** references an active witness, original assertion, speaker belief, source reliability, separate authenticity indicator and truth reference. They cannot be reclassified into each other or promoted into objective fact. Only supported A9 truth-reference states (unknown or externally-referenced without verification) are modeled.
+- Optional link to an existing same-case Campaign Clue leaves its ownership, discovery and reveal unchanged. An existing external truth reference remains unverified in this HTML.
+- Local GM release chooses active Player or party and requires deliberately authored public wording and rationale. Player projection uses only frozen safe fields, excludes private notes, evidence IDs, source reliability/authenticity and hidden counts. Paused case, observer, revoked participant and cross-campaign filtering fail closed. Explicit revocation preserves historical receipts.
+- **Verification:** all 7 executable JS scripts Node-parse; 5 embedded JSON parse; original 11 scripts byte-identical to Cycle31. Chromium 45/45 focused checks PASS, including inherited Cycle27 Regression Lab 27/27; separate real-form DOM interaction creates a witness, records Claim and shares to party. 1440/768/390 viewport no JS exceptions/overflow.
+- **Unverified:** actual browser-origin/file:// persistence (test used storage shim), real installed D24/A6/D05 rights and Event authority, two-device Windows/Android, native screen reader and independent Map Maker/Downtime importer. Local Player preview cannot enforce server-side security.
+- **Next planned:** IS-06 / Cycle 33 — player/GM Hypothesis and Question records, typed semantic links, graph/list parity, permission-before-topology and nonvisual navigation.
+
