@@ -95,3 +95,17 @@
 - Native browser-origin persistence and installed/shared D24/A6/D05 remote authority remain **not verified**. In-memory controlled localStorage shim only. Independent screen-reader, cross-device, Map Maker/Downtime import not tested.
 - **Next planned IS-04 / Cycle31:** Clue Definitions and Campaign Clue/evidence records, distinct prepared vs discovered vs revealed state, strict provenance and audience boundaries.
 
+
+## IS-04 / Cycle 31 status — 2026-11-22
+
+**Delivered for owner playtest**, no installed-app or authoritative D24 implementation.
+
+- Artifact: `Multiversal_GM_Playtest_Cycle_31.html`, 15,475,619 bytes, SHA-256 `317acef25a66de89b8a633aab77791f169d4302d3cba7a02d325e6c6eb59c56f`.
+- New GM **Clue & Evidence Workshop** under Prepare. Reusable source-referenced Clue Definitions independent of any campaign. Explicit Campaign Clue instances bound to existing IS-02 case placements, with stable identity, pinned source revision and duplicate guards.
+- Manual Evidence References store source owning domain, object ID, source version, role and private provenance note, never copy ownership or assert truth/authenticity.
+- Standalone local GM-controlled lifecycle: registered-hidden, discoverable, discovered-private, discovered-shared, withheld, revoked, superseded, archived. Private/party simulation requires an active case placement, current pinned source, active Player or party audience, player-safe authored text, and explicit method. No D24 Event is emitted.
+- Player preview is derived from authorized local instances and immutable disclosure snapshots, not from a complete GM record. Archived/withheld/revoked clues and evidence notes/hidden counts are absent from Player projection. This is not real server-side access control.
+- Optimistic expected-revision and stable operation ID/collision controls, explicit refresh, evidence link retirement history, safe fallback for temporary unavailable campaign fixtures and GM-only JSON archive.
+- **Verification:** Node --check 6/6 executable blocks; five embedded JSON blocks valid; all 10 prior script blocks byte-identical. Chromium Playwright 45/45 checks passed including the original Cycle27 27/27 regression suite; 1440/768/390 px render clean with zero errors/overflow. The original Regression Lab's temporary campaign replacement revealed a missing-reference crash, repaired by fail-closed historical projection then rerun green.
+- **Not verified:** native file:// storage reload, installed dual-device D24/A6/D05 authority, independent imports, offline/reconnect and screen-reader behavior. Tests use page.set_content() and a controlled localStorage shim.
+- **Next:** IS-05 / Cycle32 — observation, claim and witness testimony with witness belief, evidence origin, source reliability and authenticity kept distinct from objective truth.
