@@ -727,6 +727,35 @@
       "regression_limit": "Full 27-check Cycle27 regression run timed out and is NOT claimed passed this cycle. Installed two-device, external integrations, real file-origin storage and screen-reader checks NOT_RUN.",
       "proof_boundary": "Owner-playtest-ready standalone HTML only; not app or canonical D24/D25 implementation.",
       "next": "IS-02 / Cycle 29 reusable case library, case definition vs placed campaign instance, lifecycle and source references after owner review"
+    },
+    "standalone_cycle_29": {
+      "status": "delivered_for_owner_playtest",
+      "filename": "Multiversal_GM_Playtest_Cycle_29.html",
+      "sha256": "70b94dc386b3f4531415804bb918c8afde33a816071c8c882135c4404dbfe32a",
+      "file_size_bytes": 15398348,
+      "completed": "2026-11-22",
+      "source_basis": [
+        "GM-IS 16-step plan IS-02",
+        "F011 Investigation/Clue Board core Investigation and lifecycle owner boundaries",
+        "PPIA-09 source/design model for case authoring and provenance",
+        "D24/D05/A6/A5 separation and MAS-06 prepared vs live distinction",
+        "Cycle 28 standalone source and existing Harrowfen sample"
+      ],
+      "covered": [
+        "Prepare-level campaign-independent reusable case definitions with local draft/ready/archive state, stable ID and revision",
+        "Explicit campaign placements reference definitions and pin source revision without copying or discovering their content",
+        "Original campaign scenes/world records optional linked reference; manual NPC/source IDs remain unverified",
+        "Local placement draft/active/paused/resolved/archived lifecycle distinct from authoring and canonical D24 runtime",
+        "Expected-revision gate, stable operation-id replay protection, duplicate-placement denial, source-drift warning and explicit version refresh",
+        "GM-only private library JSON export; Player preview cannot access new library or export",
+        "Independent local test storage namespace preserves original campaign and story records; source scripts preserved"
+      ],
+      "verification": "All four executable JS blocks pass Node --check; exact byte preservation of five source JSON scripts plus three original executable JS scripts. Focused Chromium 31/31 pass across 1440/768/390; retained Cycle27 suite 27/27 pass and does not mutate IS-02 library. No uncaught browser errors or horizontal overflow; original Harrowfen 2 clue sample unchanged; private export verified.",
+      "limits": "Chromium navigation to localhost blocked by policy; controlled storage shim tested recovery code but NOT real localStorage reload. No installed two-device, server D24 state, native A6, independent Map Maker/Downtime importer or screen-reader certification.",
+      "proof_boundary": "Standalone synthetic HTML/GM authoring rehearsal only, not implementation of persistent canonical D24 Investigation or installed app. Campaign placement 'active' is local simulation only and does not mutate discovered clues.",
+      "report_filename": "Multiversal_GM_IS02_Cycle29_Automated_Report.json",
+      "notes_filename": "Multiversal_GM_IS02_Cycle29_Verification_Notes.md",
+      "next": "IS-03 / Cycle 30 GM mystery dossier with surface/hidden/revealed layers, source-bound solution and differentiated GM/Player projections"
     }
   },
   "active_substep": "cycle_24_vehicle_mecha_starship_combat_delivered",
@@ -735,21 +764,21 @@
   "planned_successor": "GM-01",
   "successor_rule": "Current GM-00 evidence does not select GM-01 or authorize product changes.",
   "execution_guard": {
-    "continue_turns": 26,
+    "continue_turns": 27,
     "stall_nudges": 0,
-    "material_progress_seq": 26,
-    "progress_at_last_owner_command": 25,
+    "material_progress_seq": 27,
+    "progress_at_last_owner_command": 26,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 26,
-      "kind": "gm_is01_playtest_source_review_delivered",
-      "evidence": "Cycle28 source-to-screen plan, byte-preserved prior scripts and 5 datasets, Chromium desktop/tablet/mobile and role-safe sample, linked standalone artifact SHA-256"
+      "seq": 27,
+      "kind": "gm_is02_standalone_playtest_delivered",
+      "evidence": "Exact SHA256 Cycle29; Node syntax, source byte preservation, 31/31 focused Chromium and 27/27 inherited standalone regression; owner review copies"
     },
     "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "owner_only",
-      "evidence": "GM-IS01 standalone tester completed to owner-review boundary; later IS-02 cycle and any installed product work require further owner-directed scope or appropriate selected product lane."
+      "evidence": "IS-02 Cycle29 standalone GM case library delivered for owner review. IS-03 next planned, not installed app. Real file-origin persistence and independent product acceptance remain unverified."
     }
   },
   "owner_cycle_direction": "Owner continued GM-COMBAT-16-27 to Cycle 24. The standalone GM HTML must retain the dark rainbow layout, floating Turn Order with Next Turn, project fleet/crew/source authority, and independent companion testers. No PCV product implementation authority.",
@@ -773,17 +802,17 @@
     "scope": "Investigations, social play, GM screen integration planning and consecutive standalone HTML playtest cycles; no app product code or installed certification",
     "plan_ref": "governance/application-planning/gm-workspace/GM_INVESTIGATION_SOCIAL_HTML_INTEGRATION_PLAN.md",
     "series_cycles": "28–43",
-    "selected_step": "IS-01",
+    "selected_step": "IS-02",
     "selected_step_status": "delivered_for_owner_playtest",
-    "remaining_steps": "IS-02–IS-16 planned, not selected product implementation",
+    "remaining_steps": "IS-03–IS-16 planned as later standalone cycles; no application authority",
     "stage": {
-      "id": "IS-01",
-      "cycle": 28,
-      "title": "Source coverage, GM Investigation/Social Director and workflow launcher",
-      "result": "verified standalone synthetic HTML; owner review pending",
-      "sha256": "b524d1c1a6cc0fb08da95b1eaedda70d087ab1e3d37a7cc9ccd86718ceee71c2",
-      "artifact": "Multiversal_GM_Playtest_Cycle_28.html"
+      "id": "IS-02",
+      "cycle": 29,
+      "title": "Campaign-independent Investigation Case Library and linked campaign placements",
+      "result": "standalone owner-review HTML; focused 31/31 and inherited 27/27 Chromium checks passed; native persistence and installed network remain unverified",
+      "sha256": "70b94dc386b3f4531415804bb918c8afde33a816071c8c882135c4404dbfe32a",
+      "artifact": "Multiversal_GM_Playtest_Cycle_29.html"
     },
-    "next_owner_review": "Exercise source coverage search, campaign-free entry, original sample and Player preview; annotate missing functionality before IS-02"
+    "next_owner_review": "Open Case Library without campaign; create draft, mark ready, attach Harrowfen, pin/refresh source version, transition placement, compare Player preview and actual browser reload. Next planned IS-03 mystery dossier."
   }
 }

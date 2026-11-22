@@ -71,3 +71,14 @@
 - ChatGPT Project: UI Design Bible and Screen Design Bible V05 (Investigation), V06 (Social), V11 (Authoring).
 
 **Current selected on-demand work remains `GM-00`. This plan does not change `operations/CURRENT.json`, select product implementation or override persistent lanes.**
+
+## IS-02 / Cycle 29 status — 2026-11-22
+
+**Delivered for owner playtest**, not installed-app or canonical D24 implementation.
+
+- Standalone artifact: `Multiversal_GM_Playtest_Cycle_29.html`, SHA-256 `70b94dc386b3f4531415804bb918c8afde33a816071c8c882135c4404dbfe32a`; 15,398,348 bytes.
+- Adds a campaign-independent GM Case Library under Prepare, search/sort/status filters, local authored definitions with stable IDs, revisions and draft/ready/archive state. Campaign placements link by definition ID and pin a source revision, optionally reference real local world/scene records and manual unverified NPC IDs, and have separate draft/active/paused/resolved/archive local states.
+- Expected-version checks, stable operation ID idempotency, duplicate-placement prevention, explicit revision refresh, local audit receipts, optional synthetic fixture and GM-only private JSON backup. No clue discovery, evidence source ownership transfer, reveal, GM conclusion or canonical action is created.
+- Verification: new focused Chromium checks 31/31 PASS (1440/768/390), inherited Cycle 27 regression lab 27/27 PASS, source script/JSON byte preservation and Node syntax PASS. Original Harrowfen case and IS-02 library unchanged during retained suite.
+- Browser policy blocks navigation to localhost; controlled storage shim used, so genuine file-origin/localStorage reload remains **not verified**. Installed Windows/Android, independent D24/A6 server operations and external map/downtime interfaces also not verified.
+- **Next planned IS-03 / Cycle 30:** GM mystery dossier, source-grounded core question/event, surface/hidden/revealed layers and role-safe differentiated handout. Unknown canon stays unknown.
