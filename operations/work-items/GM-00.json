@@ -786,6 +786,36 @@
       "notes_filename": "Multiversal_GM_IS03_Cycle30_Verification_Notes.md",
       "proof_boundary": "Synthetic standalone GM authoring and player-preview demonstration only; no D24 authoritative state, Action approval or production privacy enforcement.",
       "next": "IS-04 / Cycle31 Clue Definitions, Campaign Clues, evidence reference registry, prepared/live discovery differentiation and selective D24 reveal rehearsal"
+    },
+    "standalone_cycle_31": {
+      "status": "delivered_for_owner_playtest",
+      "filename": "Multiversal_GM_Playtest_Cycle_31.html",
+      "sha256": "317acef25a66de89b8a633aab77791f169d4302d3cba7a02d325e6c6eb59c56f",
+      "file_size_bytes": 15475619,
+      "completed": "2026-11-22",
+      "source_basis": [
+        "GM-IS plan IS-04 Cycle31",
+        "MV-IA-F011 Investigation/Clue Board D24 core record/lifecycle/visibility",
+        "PPIA-09 Investigation and Mystery Authoring Experience",
+        "IS-02 case library and IS-03 GM Mystery Dossier standalone preserved source",
+        "A5 campaign, D05 projection, A6 Action, A8 evidence owner, MAS-06 preparation boundaries"
+      ],
+      "covered": [
+        "Campaign-independent reusable Clue Definitions with stable IDs, revision, source/provenance references, separate GM-private and player-safe text",
+        "Campaign Clues explicitly instantiated by existing case placement and source revision pin; duplicates rejected and no automatic discovery",
+        "Source-owned Evidence reference links preserve owner domain, source ID and version; no ownership transfer or truth assertion",
+        "Local clue lifecycle: registered-hidden, discoverable, privately/party discovered, withheld, revoked, superseded and archived",
+        "GM only command/JSON export; explicit audience/method for simulated discovery; Player projection hides unrevealed counts, GM context and evidence metadata",
+        "Source revision drift blocks new reveal; Player disclosure text is snapshotted to prevent later source edits from silently rewriting known information",
+        "Stable operation IDs and expected revisions with replay/collision guards, bounded audit receipts, missing-campaign fail-closed history projection",
+        "Existing Cycle27 Regression Lab unaffected and all original source scripts byte-identical"
+      ],
+      "validation": "Node --check 6/6 executable script blocks PASS and 5/5 embedded JSON source blocks parse. All 10 original script blocks byte-identical to Cycle30. Playwright Chromium 45/45 focused/checkpoint checks PASS, including isolated Cycle27 Regression Lab 27/27, on responsive 1440/768/390 widths. Zero uncaught page errors/document horizontal overflow. Original test's missing-campaign projection guard repaired and rerun green.",
+      "limits": "Chromium page.set_content with localStorage shim only; real browser file-origin persistence not verified. Single-file Player preview does not provide server-enforced D05 authorization. No authoritative D24/A6 remote operation, external Map Maker/Downtime importer, installed two-device Windows/Android or real assistive-technology evaluation.",
+      "proof_boundary": "Standalone synthetic GM authoring and local discovery rehearsal. No production D24 clue discovery/reveal or cross-domain effect is committed.",
+      "report_filename": "Multiversal_GM_IS04_Cycle31_Automated_Report.json",
+      "notes_filename": "Multiversal_GM_IS04_Cycle31_Verification_Notes.md",
+      "next": "IS-05 / Cycle32 Observation, Claim and Witness testimony; source reliability vs witness belief vs objective truth separation"
     }
   },
   "active_substep": "cycle_24_vehicle_mecha_starship_combat_delivered",
@@ -794,21 +824,21 @@
   "planned_successor": "GM-01",
   "successor_rule": "Current GM-00 evidence does not select GM-01 or authorize product changes.",
   "execution_guard": {
-    "continue_turns": 28,
+    "continue_turns": 29,
     "stall_nudges": 0,
-    "material_progress_seq": 28,
-    "progress_at_last_owner_command": 27,
+    "material_progress_seq": 29,
+    "progress_at_last_owner_command": 28,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 28,
-      "kind": "gm_is03_standalone_playtest_delivered",
-      "evidence": "Cycle30 exact SHA-256; 41/41 focused Chromium, inherited 27/27 regression, original source scripts byte preserved; owner-review HTML and notes"
+      "seq": 29,
+      "kind": "gm_is04_standalone_playtest_delivered",
+      "evidence": "Cycle31 exact SHA-256 317acef25…; original 10 source blocks preserved; six JS syntax checks, 45/45 focused/browser and inherited 27/27 Cycle27 regression; owner-review HTML and notes."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "owner_only",
-      "evidence": "IS-03 standalone owner-review milestone delivered; IS-04 next planned separate increment. Actual browser origin reload and installed shared session/privacy are not verified."
+      "evidence": "IS-04 Cycle31 complete to standalone owner review; next IS-05 is a future bounded HTML increment. Real file-origin persistence and installed product authority not verified."
     }
   },
   "owner_cycle_direction": "Owner continued GM-COMBAT-16-27 to Cycle 24. The standalone GM HTML must retain the dark rainbow layout, floating Turn Order with Next Turn, project fleet/crew/source authority, and independent companion testers. No PCV product implementation authority.",
@@ -832,17 +862,17 @@
     "scope": "Investigations, social play, GM screen integration planning and consecutive standalone HTML playtest cycles; no app product code or installed certification",
     "plan_ref": "governance/application-planning/gm-workspace/GM_INVESTIGATION_SOCIAL_HTML_INTEGRATION_PLAN.md",
     "series_cycles": "28–43",
-    "selected_step": "IS-03",
+    "selected_step": "IS-04",
     "selected_step_status": "delivered_for_owner_playtest",
-    "remaining_steps": "IS-04–IS-16 planned as later standalone HTML cycles; product implementation requires its own selected authority",
+    "remaining_steps": "IS-05–IS-16 planned as future standalone HTML cycles, product implementation not authorized",
     "stage": {
-      "id": "IS-03",
-      "cycle": 30,
-      "title": "GM Mystery Dossier, layered leads, safe local Player briefings",
-      "result": "Owner-playtest standalone HTML with 41/41 new focused checks and 27/27 inherited Cycle27 suite; real persistence and installed product unverified",
-      "sha256": "94ed24ad925b8c961b783368252a31e7a0e1f7395d269e562cf6b4521a76ae97",
-      "artifact": "Multiversal_GM_Playtest_Cycle_30.html"
+      "id": "IS-04",
+      "cycle": 31,
+      "title": "Reusable clue definitions, Campaign Clue instances, source-owned evidence references and controlled local discovery rehearsal",
+      "result": "Owner-playtest standalone HTML; 45/45 focused/checkpoint browser tests and inherited Cycle27 Regression Lab 27/27 PASS. Real file-origin persistence and installed product unverified.",
+      "sha256": "317acef25a66de89b8a633aab77791f169d4302d3cba7a02d325e6c6eb59c56f",
+      "artifact": "Multiversal_GM_Playtest_Cycle_31.html"
     },
-    "next_owner_review": "Create a reusable case and empty dossier; author GM truth, Hidden/Reveal-candidate/Surface leads, write independent player-safe summary; activate campaign placement, publish to one player and party, confirm Player preview/revocation. IS-04 next."
+    "next_owner_review": "Create clue definition without campaign; link to an active case placement, attach an evidence source reference, reveal privately to an active Player, compare second Player view, test revoke and pinned revision refresh; next IS-05 testimony."
   }
 }
