@@ -138,6 +138,8 @@ Use **Not run → In progress → Pass / Needs fix / Blocked** for each check or
 | 2026-11-19 | Installed shared-session dependency | Blocked | OPS5 · PCV-03F in progress | The current selected baseline has pending installed certification. | Track PCV-03F and use its accepted build when available for shared boundary checks. |
 | 2026-11-19 | GM Cycle 15 design alignment and authoring | Pass | Standalone workflow · file SHA-256 592a6335b5f1… | Verified compound creature filters, source data projection, typed world drafts, map-backed encounter, persistence, and GM-only visibility. Browser visual verification was unavailable. | [Cycle 15](https://chatgpt.com/library?file_id=libfile_20786921ddf081918fbe09786bb6c3ef&account_id=personal) · Owner playtest pending. |
 
+| 2026-11-22 | GM Cycle 25 combat logistics and aftermath | Pass | Standalone source/Chromium · SHA-256 1b0e2a0a099f… | Source-owned ammunition and consumable spending; separate recovery, one-time submitted reward receipts, and explicit Downtime handoff; session-close recovery and player filtering tested. | Owner playtest pending; installed two-device, file-origin persistence and independent Downtime import unverified. |
+
 For a defect, record the check ID, steps and selected role, expected and actual result, build, reproducibility, evidence and retest result. Use the ordinary product route in the steps. For a tranche, note which checks passed, remaining defects and the next checkpoint. Keep owner acceptance and OPS5 publication records as separate evidence.
 
 ### GM-00 baseline findings
