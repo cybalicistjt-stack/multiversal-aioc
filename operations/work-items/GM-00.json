@@ -568,8 +568,8 @@
     "standalone_cycle_22": {
       "status": "delivered_for_owner_playtest",
       "filename": "Multiversal_GM_Playtest_Cycle_22.html",
-      "sha256": "d56387c0421500437a17e73d85ef47981aaaad832fec7eccbe60d53fc8877deb",
-      "file_size_bytes": 15216754,
+      "sha256": "842c37f434ee8b0b83affd168314a5e034e1ba3c9baa1bdb0bcdf0bbd5a13ab8",
+      "file_size_bytes": 15217155,
       "completed": "2026-11-22",
       "source_basis": [
         "GM-COMBAT-16-27 owner-approved standalone Cycle 22",
@@ -584,9 +584,10 @@
         "Manual movement count with turn/pending guards, route receipts, stale/unlinked/unmapped refusal and no source mutation",
         "Player-safe projection and downloaded spatial JSON free from concealed deposit and GM-only overrides/history",
         "GM terrain/cover/elevation annotations as advisory only, no automatic range/LOS/hazard rules",
-        "Full previous GM HTML work and floating Next Turn preserved, mobile/desktop layout without overflow"
+        "Full previous GM HTML work and floating Next Turn preserved, mobile/desktop layout without overflow",
+        "Role-safe legacy combatant list redacts GM-only mapped locations even for visible characters."
       ],
-      "validation": "Node --check; headless Chromium real UI import original MMHT GM/player JSON, hoist movement, source delta -6 m, role filtered export, mismatch/stale/duplicate/unlinked/allowance negatives, GM edge/cover annotation, JSON round-trip, independent combatant/source data, detach zone restoration. Desktop and 390px mobile no page errors or horizontal overflow; three existing catalogs byte-identical to Cycle 21. Browser origin persistence unverified.",
+      "validation": "Node --check; headless Chromium real UI import original MMHT GM/player JSON, hoist movement, source delta -6 m, role filtered export, mismatch/stale/duplicate/unlinked/allowance negatives, GM edge/cover annotation, JSON round-trip, independent combatant/source data, detach zone restoration. Desktop and 390px mobile no page errors or horizontal overflow; three existing catalogs byte-identical to Cycle 21. Browser origin persistence unverified. Final-artifact Chromium regression: a visible actor placed on the MMHT concealed deposit remains redacted from legacy player combatant list and entire player screen; original encounter zone restored after detach.",
       "proof_boundary": "Local offline HTML with copied, source-pinned MMHT map refs and GM-manual spatial adjudications; not installed, synchronized or server-authoritative."
     }
   },
@@ -604,7 +605,7 @@
     "last_material_progress": {
       "seq": 23,
       "kind": "standalone_playtest_delivered",
-      "evidence": "Cycle 22 full standalone HTML checksum; original MMHT-66 export pair and Chromium map/movement, redaction, invalid-path/duplicate, responsive/serialization tests."
+      "evidence": "Cycle 22 full standalone HTML checksum; original MMHT-66 export pair and Chromium map/movement, redaction, invalid-path/duplicate, responsive/serialization tests. Final cross-view hidden-anchor redaction and artifact hash verified."
     },
     "active_stall": false,
     "terminal_response_allowed": true,
