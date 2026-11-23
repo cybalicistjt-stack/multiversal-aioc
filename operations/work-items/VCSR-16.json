@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "vcsr",
+  "program_id": "VCSR",
+  "work_item_id": "VCSR-16",
+  "attempt_id": "VCSR-16-attempt-001",
+  "title": "Cumulative offline Cycle16 — GM/Character loot/inventory/equipment/hangar and Party custody requests",
+  "status": "in_progress",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue in same VCSR tester conversation, 2026-11-23",
+  "authority_type": "owner_scoped_standalone_html_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/vehicle-component-salvage-recovery/VCSR_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Preserve full stand-alone VCSR01–15, preowned physical sources, vehicle, mecha, ship, MMHT reference and APW Project handoff.",
+      "Add responsive role-separated Character/GM request inbox, source inventory, Party custody, equipment/loadout action intents and Hangar controls.",
+      "Player local requests and GM local approval/rejection with operation idempotency and source version checks; claimed external results stay unverified, never acquired.",
+      "LSS-04/D17 exact source/owner/quantity/permission guards, A4 Character equip/use boundary, A8/MIB14 station/boarding/crew/configuration boundary, MIB12 repair reference.",
+      "Pre-filter GM-private Actors, Asset sources, platforms, notes and operation receipts from Player counts/exports and preserve VCSR14/15 handoffs.",
+      "Full schema16 offline JSON and earlier checkpoint upgrades, embedded 41 cases and real Chromium GM/Player browser flows."
+    ],
+    "boundaries": [
+      "No real Character, GM, D17, MIB-03, LSS-04, MIB-14, Action or Unity mutation, authentication, receipt verification or loot acquisition.",
+      "No new physical inventory owner, shadow Character ledger, automatic equipment slot inference, lore loot table, claims, payments or source asset creation.",
+      "No real campaign, scene, cross-tester integration, LAN, installed Android or production environment.",
+      "No parent PR or protected main merge, no other lane selector changes."
+    ]
+  },
+  "evidence": {
+    "artifact": "governance/application-planning/vehicle-component-salvage-recovery/artifacts/Multiversal_VCSR_Cycle_16.html",
+    "artifact_git_blob": "5fdcb310f813d0a1d2f089a4839ce9b9ce5225b4",
+    "new_embedded_tests": 41,
+    "earlier_suites": "Cycle01–15 invoked, previous Cycle15 39/39 exact-file Chromium receipt",
+    "run_status": "pending_real_desktop_mobile_Chromium",
+    "browser_script": "governance/application-planning/vehicle-component-salvage-recovery/VCSR-16_BROWSER_CHECK.cjs",
+    "workflow": ".github/workflows/validate-vcsr16-browser.yml",
+    "controlling_sources": [
+      "DevelopmentBible items-vehicles-mecha-and-starships",
+      "LSS04 source-authorized existing Asset transfer",
+      "MIB14 platform base inventory",
+      "UI convergence UI07/UI08"
+    ]
+  },
+  "active_substep": "source_html_candidate_pending_browser",
+  "next_action": "Run actual exact-file Chromium 41-case source/privacy suite, real Player/GM controls, Player handoff and GM checkpoint/reimport. If green, record receipt and keep draft stacked behind #2044 without main merge.",
+  "planned_successor": "VCSR-17 economy/legal/scenario next after explicit Continue",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "stall_nudges": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "vcsr16_staged_html_candidate",
+      "evidence": "Complete additive Cycle16 full HTML Git blob 5fdcb31…; 41 cases and owned inventory/Character/hangar source intents"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}

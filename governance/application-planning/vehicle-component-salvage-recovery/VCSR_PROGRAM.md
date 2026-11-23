@@ -469,3 +469,31 @@ No actual `CampaignActivityCreateInput` can be dispatched without real campaign/
 Initial branch contains a complete candidate with **39 new embedded test cases**, plus a dedicated Chromium desktop/mobile CI script exercising full cumulative UI, project state changes, Player filtering and actual JSON checkpoint download and fresh import. Acceptance is **pending live CI** until checked; do not assert all checks green from source generation. VCSR15 is a **stacked draft** behind VCSR14 #2042, not merged to protected main; all other OPS5 lanes remain unchanged. No automatic VCSR16 implementation without another owner Continue.
 
 **VCSR-15 browser result, 2026-11-23:** [Source-bound acceptance receipt](VCSR-15_BROWSER_TEST_RECEIPT.md) reports full 1,074,484-byte HTML SHA-256 `f16def5b5b18f20b831c25913e0162e2c8e475843fc85e905cb206fedd9e0b72`, exact content Git blob `0028995f9e9f043259272782a05e94acaeb4b170`, 14 combined inline scripts compilable, new Cycle15 39/39 at 1280×850 and 390×844, actual GM project state transitions, external campaign-time/result references, Player JSON privacy download (128,058 bytes), GM checkpoint (253,828 bytes) and fresh-browser import, zero JS page errors/overflow. Earlier Cycles01–14 suites were invoked but not re-counted into a new aggregate. Draft PR #2044 remains stacked, no live D26, D17, MMHT, ICF, DPL, ENV, Unity or Android proof.
+
+## Cycle 16 — GM/Character inventory, encounter-loot, Party custody and vehicle hangar owner-bound bridge
+
+**Owner direction:** Owner's subsequent `Continue` in the independent VCSR conversation, 2026-11-23. A new cumulative offline HTML `artifacts/Multiversal_VCSR_Cycle_16.html` preserves complete Cycles01–15, including typed MMHT spatial links and APW/D26 Project-boundary handoffs.
+
+### Governing application sources directly inspected
+
+- `DevelopmentBible/02-game-framework/items-vehicles-mecha-and-starships.md`: personal equipment and operational assets share source ownership while **ownership, custody, station assignment and permission to operate remain separate**; no nested Asset duplicates or invented compatibility.
+- `governance/application-planning/loot-scavenge-salvage/LSS-04_LIVE_LOOT_ACQUISITION_TRANSFER_INVENTORY.md` and `packages/contracts/src/loot-scavenge-salvage/loot-acquisition-transfer.ts`: visibility-prefiltered authorized loot source, exact existing Asset, owner, version, positive quantity and idempotency; no acquisition before **matching actual D17 owner receipt**; explicit authored drop rules only, not inferred rewards.
+- `governance/application-planning/multiversal-implementation-backbone/MIB-14_LIVE_VEHICLE_PLATFORM_BASE_INVENTORY.md`: vehicle/mecha/ship configuration, crew stations and cargo over existing A8/D17, Character identity external, MIB-14 plans and D17 commits; workshop/repair require MIB12/APW.
+- `governance/application-planning/ui-convergence/UI05_UI11_CONVERGENCE_v0.1.0.md` UI-07, UI-08: shared Item Inspector, inventory/equipment action affordances, hangar roster, Party storage, crew and source provenance; Player and GM interaction contrast and responsive views.
+- Prior VCSR08–15 physical source/vehicle/mecha/ship projections are reused, not cloned into new physical inventories.
+
+### Scope and new offline interactions
+
+- A responsive **GM/Character Bridge** with **Proposal Inbox**, **Inventory & Equipment**, **Vehicle/Mecha/Ship Hangar**, **Party Custody & Permissions**, and source-bound help.
+- Existing physical sample locker/cargo Assets are source-pinned; illustrative party Actors and five pre-existing platform instances appear by exact IDs, version, owner/custodian and controlled audience. No new physical Asset is minted or credited to a Character.
+- Player submits **local proposals** for existing loot transfer, inventory custody, equip, unequip, use; separately board, exit, operate, assign pilot/crew, repair and configure for a pre-owned vehicle/mecha/ship. These are distinct request kinds, never executed on the live domain.
+- GM may **approve for owner request**, reject with source reference, and record a **claimed unverified external response**. No fake D17 completion: approved and externally noted requests never say acquired/equipped/boarded/completed; local operation IDs, expected versions and exact actor/recipient, slot/station/evidence are required.
+- Player-filtered exports omit private GM source, Actor, platform and request cardinality, review and owner references, and GM operation receipts **before counts**; retain earlier spatial and Project bridges rather than dropping them as schema increases.
+- Fully cumulative schema16 GM checkpoint with schema1–15 backward upgrade. No campaign, scene, account, network or project connection is mandatory to explore this independent tester; real execution would require real authenticated actor/permissions and owner receipts.
+
+### Exclusions and acceptance
+
+- No Character/A4 live inventory/equipment, XP gear purchase, item use or action resolution; no D17 ownership or quantity transfer, true LSS-04 authoritative acquisition, live A8/MIB14 hangar/crew/mount state, MIB12 repair, economy, campaign, scene, actual drops, world hazards, session GM, or integration of other standalone HTML testers.
+- All illustrative GM references, actor permissions, existing party cache story labels, and unverified owner-response strings remain **local fixtures**, not source authority. No hidden GM cardinality in public JSON. No real D17 receipt checksum can be proven via offline text entry.
+- Browser verification plan: 41 new embedded identity/visibility/owner/idempotency/source-mutation invariants, Chromium desktop 1280×850 and mobile 390×844, actual Player source/roster and proposal, GM approval/claimed result, Player download, GM checkpoint/fresh import, all earlier tab navigation, 15 inline scripts syntax and cumulative earlier suites.
+- Initial branch candidate is unverified until actual exact-content CI runs. VCSR-16 is stacked behind VCSR-15 draft #2044; protected `main` and all other OPS5 lanes remain unchanged. Planned successor VCSR-17 economy/legality/scenario loop requires another explicit owner `Continue`.
