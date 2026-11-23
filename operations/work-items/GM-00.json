@@ -1183,6 +1183,28 @@
       "notes_filename": "Multiversal_GM_IS16_Cycle43_Verification_Notes.md",
       "handoff_filename": "Multiversal_GM_IS16_Cycle43_Integration_Acceptance_Handoff.md",
       "next": "No automatic IS-17. Owner review and separately OPS5-authorized product integration, authenticated source adapters, independent MMHT/APW import acceptance, native accessibility and Windows/Android two-device certification remain outstanding."
+    },
+    "standalone_vtt_grid_step_01": {
+      "status": "delivered_for_owner_playtest",
+      "date": "2026-11-23",
+      "filename": "Multiversal_GM_Map_Maker_VTT_Grid_Step01.html",
+      "file_size_bytes": 23682643,
+      "sha256": "4cfbe30082e85b6a9583ac7589d2bd2f00917c29a2e62bd3dcaf7f1ca9271a5d",
+      "scope": [
+        "Calibrated native Map Maker 5-ft grid overlay and labels on real tactical/interior/urban source; regional/rotated/hex rejected",
+        "Stable map+level+grid+row+column IDs independent of revision",
+        "Click/Shift multi-selection, coordinate and keyboard selection",
+        "Selected cells transferred from embedded Map Maker to GM, nonduplicating existing Scene context and source-owning geometry",
+        "GM-private locally stored Scene square anchors and explicit nonauthoritative JSON backup; current GM Scene screen lists anchored cells",
+        "Preserves old GM Cycle43 and Map Maker UX04 tools and 66 examples; read-only native viewport hook only"
+      ],
+      "verification": "26/26 new focused Chromium, 37/37 inherited GM+Map Maker (GM27 27/27 nested), 33/33 static/source/Node checks PASS. All 23 original GM JS/JSON blocks and previous GM↔Map Maker integration script byte-identical. One native Map Maker script minimally instrumented; prior Map Maker program behavior retained. Actual tactical map Ruined Keep grid D3 screenshot captured. Chromium desktop/768/390 zero page errors/overflow.",
+      "notes_filename": "Multiversal_GM_VTT_Grid_Step01_Verification_Notes.md",
+      "report_filename": "Multiversal_GM_VTT_Grid_Step01_Automated_Report.json",
+      "plan_filename": "Multiversal_GM_VTT_5ft_Grid_12_Stage_Program.md",
+      "preview_filename": "Multiversal_5ft_Grid_Ruined_Keep_Preview.png",
+      "limitations": "No actual domain write, loot, trap, hazard, NPC encounter, event, trigger, token, visibility, movement or multiplayer. Browser test uses set_content + controlled localStorage; no native file-origin/two-device or server D05 authority. Owner playtest delivery does not certify installed product.",
+      "next": "VTTG-02 — typed content authoring on square IDs and Scene source refs"
     }
   },
   "active_substep": "cycle_24_vehicle_mecha_starship_combat_delivered",
@@ -1191,21 +1213,21 @@
   "planned_successor": "GM-01",
   "successor_rule": "Current GM-00 evidence does not select GM-01 or authorize product changes.",
   "execution_guard": {
-    "continue_turns": 41,
+    "continue_turns": 42,
     "stall_nudges": 0,
-    "material_progress_seq": 41,
-    "progress_at_last_owner_command": 40,
+    "material_progress_seq": 42,
+    "progress_at_last_owner_command": 41,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 41,
-      "kind": "gm_is16_final_standalone_playtest_delivered_for_owner_review",
-      "evidence": "Cycle43 verified exact 15,988,857 byte SHA, 22 inherited scripts unchanged, Node 18/18, 139 new +60 inherited IS14+101 inherited IS15+56 route+26 accessibility = 382/382 overlapping assertions, owner HTML/notes/test report/import acceptance handoff"
+      "seq": 42,
+      "kind": "gm_vttg01_calibrated_grid_and_scene_square_anchor_prototype",
+      "evidence": "Owner-directed 12-stage program and VTTG-01 integrated HTML 23,682,643 bytes SHA4cfbe300…; focused 26/26 inherited 37/37 static 33/33, actual Ruined Keep grid D3 preview"
     },
     "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "owner_only",
-      "evidence": "IS-16 final approved standalone GM-IS HTML cycle delivered for owner review; no automatic successor. Installed product, actual owner-system import, D05 server filtering, file-origin persistence and physical two-device acceptance remain unverified."
+      "evidence": "First bounded owner-scoped standalone VTT grid prototype delivered and 12-stage plan logged; future VTTG-02 and any installed product work require separate owner-directed execution and selected authority. File-origin, real D05/A6/A7 and physical two-device are not verified."
     }
   },
   "owner_cycle_direction": "Owner continued GM-COMBAT-16-27 to Cycle 24. The standalone GM HTML must retain the dark rainbow layout, floating Turn Order with Next Turn, project fleet/crew/source authority, and independent companion testers. No PCV product implementation authority.",
@@ -1241,5 +1263,104 @@
       "sha256": "bc003d8eca1ada7c4edcdfbb103f70716f23000ec0e6cda6212c06fd61f0bfe7"
     },
     "next_owner_review": "Open Prepare → Content Sources & Quality Gate; search embedded catalog and pin exact owner ref, upload a Cycle42 GM-private Map Maker/Downtime reference packet to quarantine, explicitly review as unverified local pointers, export a GM-private manifest, publish a separately authored safe note to one Player, verify other player/observer/foreign-Campaign denials and revocation, export Player-safe JSON, run Cycle43 local acceptance and original GM27 lab. Approve or request source-owner corrections; no automatic IS-17 or product certification."
+  },
+  "gm_vtt_grid_html_program": {
+    "id": "GM-VTTG",
+    "title": "GM + Map Maker five-foot square placement and virtual tabletop — 12 staged prototype/acceptance cycles",
+    "owner_direction": "2026-11-23: every calibrated 5-ft square needs a durable ID; GM Map Maker and Scene Builder select square(s) and attach items, loot, traps, hazards, NPC/creatures, encounters, events and triggers; expand to full VTT; preserve nonoverlapping GM and MMHT functionality",
+    "authority": "owner_scoped_read_only_product_baseline_and_standalone_html_prototype",
+    "implementation_authority": false,
+    "canonical_plan": "governance/application-planning/gm-workspace/GM_VTT_5FT_GRID_AND_VIRTUAL_TABLETOP_PROGRAM.md",
+    "source_baseline": "Multiversal_GM_Integrated_Map_Maker_v1.html (GM Cycle43 and MMHT UX-04, 22 map types, 66 samples)",
+    "selected_step": "VTTG-01",
+    "selected_step_status": "delivered_for_owner_playtest",
+    "stage_count": 12,
+    "steps": [
+      {
+        "id": "VTTG-01",
+        "ordinal": 1,
+        "title": "Five-foot grid, stable cell identity, selection and Scene source anchors",
+        "status": "delivered_for_owner_playtest"
+      },
+      {
+        "id": "VTTG-02",
+        "ordinal": 2,
+        "title": "Items, loot, traps, hazards, creature/NPC/encounter and trigger placements",
+        "status": "planned_bounded_successor"
+      },
+      {
+        "id": "VTTG-03",
+        "ordinal": 3,
+        "title": "Scene Builder placement inspector, authoring, versioned snapshots and safe import",
+        "status": "planned_bounded_successor"
+      },
+      {
+        "id": "VTTG-04",
+        "ordinal": 4,
+        "title": "Controllable tokens, actor size/footprint, facing, elevation, ownership",
+        "status": "planned_bounded_successor"
+      },
+      {
+        "id": "VTTG-05",
+        "ordinal": 5,
+        "title": "Rulers, paths, movement, terrain, collision, doors, GM approval",
+        "status": "planned_bounded_successor"
+      },
+      {
+        "id": "VTTG-06",
+        "ordinal": 6,
+        "title": "Vision, lighting, walls and per-Player fog of war",
+        "status": "planned_bounded_successor"
+      },
+      {
+        "id": "VTTG-07",
+        "ordinal": 7,
+        "title": "Live A7 Combat, A6 Actions/conditions/reactions and encounter linkage",
+        "status": "planned_bounded_successor"
+      },
+      {
+        "id": "VTTG-08",
+        "ordinal": 8,
+        "title": "Declarative interactive triggers, event orchestration, source approvals",
+        "status": "planned_bounded_successor"
+      },
+      {
+        "id": "VTTG-09",
+        "ordinal": 9,
+        "title": "Loot, equipment, containers, interactables and A8 custody transfers",
+        "status": "planned_bounded_successor"
+      },
+      {
+        "id": "VTTG-10",
+        "ordinal": 10,
+        "title": "Floor/deck/ship/mecha/vehicle/portal and cross-map tabletop transitions",
+        "status": "planned_bounded_successor"
+      },
+      {
+        "id": "VTTG-11",
+        "ordinal": 11,
+        "title": "Shared multiplayer Player VTT, chat/handouts/dice, D05 control and recovery",
+        "status": "planned_bounded_successor"
+      },
+      {
+        "id": "VTTG-12",
+        "ordinal": 12,
+        "title": "Import/export, accessibility, mobile, performance, security and installed two-device acceptance",
+        "status": "planned_bounded_successor"
+      }
+    ],
+    "stage": {
+      "id": "VTTG-01",
+      "result": "Completed local standalone 5-ft grid and GM Scene anchor proof. No item/NPC/trap/trigger assignment or multiplayer VTT yet.",
+      "artifact": "Multiversal_GM_Map_Maker_VTT_Grid_Step01.html",
+      "sha256": "4cfbe30082e85b6a9583ac7589d2bd2f00917c29a2e62bd3dcaf7f1ca9271a5d",
+      "bytes": 23682643,
+      "focused": "26/26",
+      "inherited": "37/37",
+      "static": "33/33"
+    },
+    "next_owner_review": "Open GM view → Map Maker, choose 'The Ruined Keep' tactical map, Show 5-ft grid + Select squares + Square labels; choose C2 and D3, bind map to a current Scene, choose Linked Scene context then Pin selected squares. Reopen Scene & Handoff Desk and use existing map navigation. Verify no duplicate geometry, map/Scene or gameplay Event. Review step 02 typed placement scope.",
+    "next": "VTTG-02: authored typed square placements and source metadata; still no actual Player VTT or gameplay mutation",
+    "limits": "Native file-origin reload/localStorage not certified; Chromium set_content + storage shim. Single HTML holds GM private data and is not server D05 authorization. No authentic A5/A6/A7/Condition/Inventory/F012 domain Events, installed multiplayer, VTT token movement/LOS or Map Maker cross-runtime import acceptance. Do not replace MMHT completed lane or change GPR/CWKS/MTLC current selectors."
   }
 }
