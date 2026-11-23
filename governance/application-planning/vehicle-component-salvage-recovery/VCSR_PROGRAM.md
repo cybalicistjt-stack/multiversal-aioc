@@ -118,3 +118,29 @@ LSS-05 `scavenge-opportunity-engine.ts` owns the *orchestration reference contra
 **Proof boundary:** This validates only standalone HTML behavior and demo contract conservation, not real D17 durability, LSS-05/MIB-03 runtime parity, World location access, live GM authorization, Android/Unity networking or integration with the other independently running testers.
 
 **OPS5 status:** Staged via a separate stacked draft PR from VCSR-02 PR #2021 (which itself depends on VCSR-01 PR #2019). Publication on protected `main` is still pending prescribed CI/merge/reconciliation. The HTML file is available for owner review now; VCSR-04 is the next owner-directed planned test cycle.
+
+## Cycle 04 — Recoverable component and subassembly graphs, partial extraction
+
+**Cumulative standalone file:** `artifacts/Multiversal_VCSR_Cycle_04.html`.  
+**Final local SHA-256:** `265a94aea33c0d265098337b9badf97d9bebe3163cd27d0139d472ee519efdd9`  
+**Final local size:** 248,222 UTF-8 bytes. The file is self-contained; prior Cycle 01, 02 and 03 files are not external runtime dependencies.
+
+### Scope and authority
+
+This tranche follows the live Multiversal-app LSS-02 recoverable-object grammar and `LSS-02_ASSEMBLY_LINEAGE_DEPLETION_REFERENCE_ADDENDUM.md`, including source-definition references; D17-shaped physical source identity/version; zero/one/many authored recoverable slots; condition/criticality/recoverability distinctions; explicit parent→child evidence; authored quantities; source remnant behavior and provenance. The LSS-06 extraction inventory and engine govern inspection, partial selection, requirement/condition gates, preservation of unselected slots, total teardown rule gating, and atomic source/output D17 owner-intent semantics. **This HTML simulates local approvals; it does not emit a real durable D17 receipt or execute MIB-03 reservation.**
+
+The assembly page provides seven role-filtered starter objects: the exact governed synthetic LSS-02 zero-slot collapsed masonry, one-slot storm lantern, two-slot utility rover (fixed one auxiliary power module; unresolved sensor-mast quantity), and four explicitly illustrative workshop device, field weapon, nested comms, and GM-only ship profiles. The governed LSS-02 rover has its **own distinct physical demo source instance**, separate from Cycle 01's illustrative utility-rover slots, preventing cross-profile duplicate grants. All display names, tool bonuses, durability and material values outside source are explicitly illustrative or unresolved.
+
+A standalone GM authoring desk supports custom profile creation, parent-child slots with explicit edge evidence, recoverability, criticality, detachment mode, requirement references, known output-definition selection, positive authored fixed quantity or unresolved output, and remnant modes. It supports updating **local illustrative** profiles; immutable governed starter fixtures are not silently overwritten. Profile-version changes invalidate pending operations.
+
+A selected parent slot cannot implicitly destroy/detach child slots. Independent leaf removal preserves the parent; an explicitly authored intact-subtree detachment carries nested children without separately outputting them; selecting both parent and its carried child fails. All unselected nodes stay present. Fully selecting recoverable slots in **partial** mode does not destroy the source; total teardown also requires an explicit exact source rule and removal-compatible authored remnant behavior. Not-recoverable slots and unresolved quantities fail closed. The local D17-shaped inventory records distinct output identity, source slot, lineage and owner/custody reference; duplicate operation ID replay does not duplicate output; stale physical-source or authored-profile versions reject atomically.
+
+Cycle 04 checkpoint format imports Cycle 01–03 and reopens Cycle 04 with source graphs and receipts preserved. GM-only source topology, output cardinality and receipt data are filtered before player source search and handoff; no hidden-source count is returned. The owner-provided GM, Character, MMHT and Downtime HTML testers remain independent and unmodified. Runtime vehicle/mecha/ship builders are later VCSR cycles, not implied complete by assembly authoring.
+
+### Evidence and bounded limitations
+
+- **Chromium Playwright, full actual offline HTML via `page.set_content`** at 1280×850 and 390×844: **8/8 Cycle 01 + 12/12 Cycle 02 + 18/18 Cycle 03 + 26/26 new Cycle 04 = 64/64 green**, no reported JavaScript errors or horizontal document overflow.
+- Manual UI verified lantern slot inspect → propose → local GM approve → physically distinct inventory output with lineage; actual checkpoint JSON download and re-import preserving committed source and receipt; player-only list excludes GM-only ship; player JSON handoff excludes hidden source ID/topology; existing Cycle 01 loot flow retains functionality; Cycle 02 inventory movement and Cycle 03 authored scavenge commit still function on `schemaVersion:4`; custom GM authoring form retains entered source facts when adding slots and publishes an eight-assembly workspace.
+- **Not proven:** live D17 atomic mutation, MIB-03 reservation/resulting owner version/replay status query, real Character/GM auth, true MIB-14 compatibility, browser sandbox local HTTP serving, Unity/Android/two-device LAN, physical hardware, material yields, condition damage, resource costs or downstream map/downtime integration. Those are future governed scope.
+
+**OPS5:** VCSR-04 is staged as a fourth draft PR **stacked on VCSR-03 #2022**, itself following #2021 and #2019. This is an on-demand standalone tester chain; there is **no protected-main publication** until the required exact-head review, merges and canonical `operations/CURRENT.json` reconciliation. The next owner-directed planned cycle is VCSR-05 (operation ID, reservation, receipt, idempotency and lost-response recovery).
