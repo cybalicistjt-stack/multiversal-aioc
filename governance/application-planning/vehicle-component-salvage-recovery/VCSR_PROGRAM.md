@@ -186,3 +186,42 @@ Chromium Playwright `set_content` of the **entire actual file**, desktop 1280×8
 **Sources:** Multiversal-app `LSS-03_LIVE_CONDITION_QUALITY_RARITY_GRAMMAR_INVENTORY.md`, `condition-quality-rarity-grammar.ts`, `lss-03-starter-library.ts`, LSS-06 extraction inventory; D17/MIB-03 owner contracts; VCSR Program and previous tester artifacts.
 
 **OPS5:** VCSR-06 is a draft PR stacked behind #2026 → #2024 → #2022 → #2021 → #2019. Protected-main publication and canonical CURRENT reconciliation remain pending; all other lane state is preserved. Next owner-directed cycle: **VCSR-07 reusable component families** across weapon, armor, EVA, technology, magic, machinery, traps, constructs and bases with explicit unknowns.
+
+## Cycle 07 — Cross-domain component families and exact decomposition registrations
+
+**Cumulative standalone HTML:** `artifacts/Multiversal_VCSR_Cycle_07.html`. **SHA-256:** `d7aa25abd80fb35fb293d9b12a992371b464a57a1a2b583a253187f4e975d10d`; **430,534 UTF-8 bytes**; exact Git blob `7f1ee8f0fba775d9b2bb8332de9f21e1741bbbdf`.
+
+### Source-governed LSS-07 coverage
+
+The library is based on the *actual* Multiversal-app `LSS-07_LIVE_COMPONENT_FAMILY_LIBRARY_INVENTORY.md`, `component-family-library.ts`, and `lss-07-starter-library.ts`. Eight governing taxonomy families are included: Explorer-class mecha, authored traps/hazards, carrier-class spacecraft, vehicles, computers/electronics, bases/facilities, weapons, and magitech devices. Four specific reference profiles use stable exact source and provenance binding:
+
+| Registered source | Authored recoverable names | Status |
+|---|---|---|
+| Mecha MCH-0031 **Primax RX-07 Hollowstep** | Cloaking Shroud, Adaptive Limbs, No-Flash Drive Core | 3 names, quantity **unknown** |
+| Mecha MCH-0032 **Falconex Skyray Veil Dancer** | Solar camo weave, Wind-Mapping AI core, Glider wing assemblies | 3 different names in the **same Explorer family**, quantity **unknown** |
+| HTR-0079 **Frost Wire** | Trigger, housing, payload, focus, sensors, wiring, mechanisms, reusable materials | 8 authored categories; quantity **unknown**, hazard resolution external |
+| Spacecraft SCF-0027 **Orrukhal Bastion-Class Carrier** | **Zero** authorized salvage slots | `Installed_Modules` is configuration, not salvage-output evidence |
+
+Three source-hash anchors are retained in source references (Mecha `60ff6a73…`, Hazards/Traps `39185483…`, Spacecraft `00ce4a9d…`). All unprovided output quantities remain explicitly unresolved. The category/family labels never synthesize anatomy, yield, compatibility or physical Assets.
+
+### New interactive surfaces
+
+A new **Component Families** screen supports name, alias, tag, domain and exact source-reference search; classification cards and exact registered-profile cards have distinct presentations and detail inspectors. User-visible family and registration counts are computed only **after** visibility filtering. Inspectors show source evidence, provenance, registered slots, output definition references, quantity status, category, exact compatibility authority and identity. A registration reference may be exported as JSON without performing an extraction.
+
+To prepare later cross-system work, six additional category families (armor, EVA/environmental suits, machinery, constructs, tools and other authored devices) are marked **VCSR-07 illustrative classification only**, with zero decomposition profiles and no automatic outputs. The terms are cross-domain coverage scaffolding, not claimed as canonical governed LSS-07 starter categories.
+
+GM-only local authoring can add a classified family with required evidence, tags, aliases and audience; then explicitly register an **already authored VCSR-04 assembly** by its exact physical definition and source evidence. Linking a graph preserves its authored slot quantities, including unresolved ones; it neither creates an Asset nor silently mutates that assembly or any D17 state. Duplicate registration, nonexistent family, private-to-player escalation, source evidence drift and edits to canonical source-backed fixture profiles fail closed. Player role previews and JSON handoffs redact GM-private classifications, linked assembly topology and hidden source IDs.
+
+Cycle 07 adds `schemaVersion:7` checkpoint and filtered JSON family/profile references while retaining Cycle01–06 state, import compatibility, scavenge, inventory, assemblies, condition and operation safety. No link into GM, Character, Map Maker, Downtime, Unity or production D17/MIB-03 systems has been activated.
+
+### Verification
+
+**Chromium/Playwright full actual offline HTML** at 1280×850 and 390×844: **169/169** embedded regression checks—Cycles 01–06 `8 + 12 + 18 + 26 + 30 + 36 = 130`, plus **39/39** new Cycle-07 checks. No JavaScript page errors or horizontal document overflow at either viewport. The first new-layer run found four regressions (older storage/scavenge checkpoint dispatch and source-fixture mutation guard); these were repaired before the final complete run.
+
+Manual two-browser walkthrough: exact Hollowstep alias search; carrier profile shows zero authorized slots; GM creates a private classification, links existing two-slot relay comms graph, and downloads a real JSON checkpoint. In Player preview neither private family nor registration appears, and the actual downloaded role-filtered handoff excludes their IDs and hidden ship. A fresh mobile-width browser imports the downloaded GM file and retains **15** families and **5** exact registrations. Original source-governed 8/4 starter fixtures remain intact. Source-backed and illustrative records are clearly differentiated.
+
+**Authority boundaries:** LSS-07 owns classification/registration references only. LSS-02 owns authored decomposition shapes; LSS-06 orchestrates salvage; D17 owns physical assets/condition/history; MIB-14 compatibility; MIB-12 repair/reassembly; ICF-07 biological harvest; MIB-13 economy. No universal loot, rarity/yield, source condition, install rule, extraction success or source durability is inferred.
+
+**OPS5:** VCSR-07 is staged as an additional **draft stacked PR** based on VCSR-06 #2028 (preceded by #2026, #2024, #2022, #2021 and #2019). Protected-main publication still requires the governed exact-head PR chain and canonical selector reconciliation. No other OPS5 lane is changed.
+
+**Next owner-directed cycle:** VCSR-08, ground / water / air vehicle builder (chassis, mounts, components, authored capacity/movement and asset identity).
