@@ -353,3 +353,44 @@ A dedicated **System Runtime** browser workspace provides five expressly *VCSR-1
 **OPS5 publication:** VCSR-11 is another **draft stacked PR** on VCSR-10 #2035, following VCSR-09 #2034 → #2031 → #2029 → #2028 → #2026 → #2024 → #2022 → #2021 → #2019. Protected main still selects older on-demand state until prerequisite exact-head publication/reconciliation; other persistent lane selections untouched.
 
 **Next owner-directed cycle:** **VCSR-12 — Repair, refit, upgrade, cannibalization, substitution, reassembly and donor-part intake**, with MIB-12 and LSS-08 authority boundaries, exact source/target IDs, input/output conservation and explicit failures.
+
+## Cycle 12 — Source-exact repair, refit, cannibalization, substitution and reassembly
+
+**Self-contained cumulative offline HTML:** `artifacts/Multiversal_VCSR_Cycle_12.html`, **900,006 UTF-8 bytes**, SHA-256 `fb216f7afb85714e28cf96ed6a96944ab9cda9c403897f718871e506aff1877d`, verified exact Git blob `e183ee46220f87a2e3ddbb9eedbcda3a151751cf`. Includes all working VCSR-01..11 HTML screens and schemaVersion1–11 checkpoint import migration, with the new **Repair / Refit** page and schemaVersion12 portable checkpoint. No other tester is linked or modified.
+
+### Governing sources inspected directly
+
+Multiversal-app main `governance/application-planning/loot-scavenge-salvage/LSS-08_LIVE_REPAIR_REASSEMBLY_INVENTORY.md`, `packages/contracts/src/loot-scavenge-salvage/repair-reassembly-engine.ts`, `lss-08-starter-library.ts`, `governance/application-planning/multiversal-implementation-backbone/MIB-12_LIVE_CRAFTING_ENGINE_INVENTORY.md`, and MERA-07 repair/maintenance source. MIB-12 owns transformation *rules*, MIB-14 owns exact compatibility evidence, D17 owns physical identity/quantity/condition/lineage and **atomic** owner mutation, MIB-03 owns stable operation identity/status-first retry and version binding, APW-03 owns long-running Project time, and MIB-13 owns prices/settlement. The HTML creates **local mock D17 receipts**, not a second authoritative ledger.
+
+The original source-backed LSS-08 **synthetic starter** rows, including exact definition names/versions/conditions/units, are included as immutable demonstration fixtures; they are **not** published game-world item statistics or proof that an actual D17 service was called.
+
+| Exact LSS-08 rule | Physical source / explicit result |
+|---|---|
+| `lss08-rule:rover-sensor-replacement` | damaged `asset:rover:repair-target` v7 and owned serviceable `asset:sensor-mast:donor` v3, one module; exact accepted MIB-14 rover/sensor evaluation, target serviceable through `mib12:condition-rule:rover-sensor-repaired` |
+| `lss08-rule:rover-survey-sensor-substitution` | alternative serviceable survey-sensor donor v4; *both* exact substitution rule and exact donor/target MIB-14 compatibility evidence mandatory |
+| `lss08-rule:lantern-brass-cannibalization` | damaged lantern bracket v5; `asset:brass-scrap:lot` v8 with **3 pieces**, consumes exactly **1**, leaves **2** in the same original physical Asset, repairs lantern only under explicit condition rule |
+| `lss08-rule:damaged-field-coil-reassembly` | two damaged physical fragments A v2/B v6; exact conditioned-combination rule required, atomic result one `assembly:field-coil-rebuilt` with explicit output quantity/unit/condition and stable new lineage |
+| `lss08-rule:field-repair-bench-refurbish` | weathered Field Repair Bench v9 becomes `condition:serviceable`, **not automatically pristine**, preserving prior history |
+
+The LSS-08 `asset:rover:repair-target` has a **typed reference** to VCSR-08's `demo:vehicle:rover-01`, explicitly **not the same physical D17 Asset**. The repair screen does not modify the independent prior vehicle inventory when this source-backed fixture repairs. No already installed parts or source salvage names can be minted from a display label. GM may author **local illustrative** donor references and refit/upgrade rules only with explicit MIB-12-shaped source, condition, quantity/unit and acquisition evidence; generic GM substitution is deliberately blocked until an exact approved MIB-14 donor/target compatibility registration and substitution authority exist. Conditioned reassembly also demands the separate combination reference.
+
+### Active operations and fail-closed behavior
+
+- Rule browser / target & owned-donor selection, exact D17-shaped stable Asset IDs, provenance and per-Asset history.
+- Read-only `plan` checks source condition/definition/tag/quantity/unit, explicit condition & compatibility, exact physical selection and per-Asset expected versions. Source rule content is fingerprint-pinned; a same-version rule mutation invalidates the pending plan.
+- `reserve` returns **mock owner-provided nonsequential** post-reservation versions; no output or donor consumption yet. Lost reservation response enters uncertainty, requires owner-status query, and cannot immediately commit. Cancel/release uses exact owner-returned versions, preserving donor quantities.
+- An accepted `commit` atomically records target condition change, exact donor consumption, preserved remainder, output/lineage and a single D17-shaped mock receipt **only after source-version checks**. Failure and stale or incompatible evidence cause no partial donor consumption. A lost-commit-response is recovered by owner-status query and receipt replay without duplicate output.
+- Source-backed starter rules are immutable. Same-idempotency-key different payload rejected; active donor source locks prevent parallel double allocation. Player view is read-only and filtered before sources, plans, receipts, counts and downloaded integration handoff.
+- No XP, credits, market values, inferred recipe time, universal repair ladder, magically pristine condition, implicit salvage drop, actual world or Character effect, or live workshop automation.
+
+### Verified local acceptance evidence
+
+Actual complete HTML loaded with Chromium/Playwright `page.set_content` at **1280×850 desktop and 390×844 mobile widths**, zero JS page errors and no horizontal document overflow: **528/528 embedded checks** (prior VCSR01–11 **455/455** plus VCSR12 **73/73**). JavaScript syntax passed Node check. A preliminary new-layer 66/69 failure isolated stale test object references after intentional atomic clone/commit plus one older Cycle11 handoff adapter; fixed and rerun full green. Four additional targeted tests pinned rule fingerprint and blocked unapproved custom substitution and conditioned assembly.
+
+**Manual real-button browser path:** GM planned a Rover sensor repair, lost the reservation reply, queried owner, lost the atomic commit reply, queried and replayed receipt; exact physical donor quantity reached zero and target became serviceable, no duplicate owner event. Ran authored lantern-brass cannibalization (three→**two** original pieces) and damaged-coil reassembly (exact **one** new output). Authored a distinct GM refit rule through its on-screen form. Downloaded a real **225,389-byte GM JSON checkpoint** (`schemaVersion:12`, three committed jobs, six local owner receipts), then opened it in a completely fresh **390px browser**, retaining the same physical IDs, reassembly output, brass quantity two, and authored rule. Downloaded Player JSON handoff, confirmed GM-private donor/rule absent, and reopened **Vehicle, Mecha, Ship and System Runtime** pages from the imported file without errors.
+
+**Authority exclusions:** This is not a live D17 or MIB-03 receipt, actual MIB-12 transformation, authoritative MIB-14 compat query, real inventory/crafting/market settlement, Unity/Android install, LAN proof, or integration of GM, Character, Downtime or MMHT tester. Only locally labeled synthetic fixtures and browser checkpoint save files are changed.
+
+**OPS5 staging:** VCSR-12 is a **new stacked draft PR** based on VCSR-11 #2037 and all preceding VCSR drafts; protected main is not merged and cannot claim a canonical VCSR selector until governed exact-head publication/reconciliation. Other persistent lanes unchanged.
+
+**Next owner-directed cycle:** **VCSR-13 — Storage, cargo handling, workshops, base facilities, crew assignments and hangar service**, with explicit physical owner identities, source-evidenced capacities and permissions, and independent map/scene references only.
