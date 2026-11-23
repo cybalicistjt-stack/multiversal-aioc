@@ -6,7 +6,7 @@
 **Selected session lane:** OPS5 `content-design` (owner-directed on-demand design plus standalone HTML playtest artifacts)  
 **Canonical operational selector:** `operations/CURRENT.json` on current `main`  
 **Application-implementation authorization:** **none**. Do not start PCV-06, mutate app runtime, or modify GPR/MTLC/PCV implementation branches under this program.  
-**Status:** Steps 1–3 locally implemented as standalone Cycles 17–19; user direct-file/browser acceptance remains pending. Subsequent stages proposed, not accepted complete.
+**Status:** Steps 1–4 locally implemented as standalone Cycles 17–20; user direct-file/browser acceptance remains pending. Subsequent stages proposed, not accepted complete.
 
 ## 1. Rebootstrap and source-precedence findings
 
@@ -98,3 +98,14 @@ This file is a **planning/standalone-test artifact**, not a request to change th
 - Cycle 17 booking link proof: wrong/unapproved or pre-start Free Play booking rejected; exact source `EARTH-01` works after GM approval and start, then a source-revision change is treated as stale. No conversion of synthetic result to GM or Economy truth.
 - Not certified: user-side direct `file://`/local-storage acceptance, cryptographic or multiplayer fairness, payout/odds calibration, complete alternate casino side-wager variants, campaign in-world stakes, paid provider, actual currency/deposit/cash-out, real-installed Windows/Android, Level5B sports validation or production deployment.
 - Next default: DTGW-20 Earth starter pack B, with game-specific source/provenance and separately scoped rule variants. Keep owner-domain separation, no real-world value and no automatic PCV-06 activation.
+
+## 8. Cycle 20 concrete source and local verification record (2026-11-23)
+
+- Artifact: `Multiversal_Downtime_Playtest_Cycle_20.html`, standalone offline user-review HTML. SHA-256 `acd2bed50d62a8a2089e37118561a560f3ca671a8301601bf56ef30718f20960` (3,976,406 bytes). Not a PCV-06 start, app runtime change, canonical game-rules promotion, wagering service, or installed proof.
+- Implemented **nine separately scoped non-stake playable practice variants** across the eight remaining Earth starter catalog categories: two poker formats (five-card draw and check-only Hold'em), Jacks-or-Better video poker, synthetic symbol slots, spot Keno, Sic Bo, Pai Gow poker with source-labeled synthetic house setter, Three Card Poker, and Casino War. Existing Cycle19 four reference profiles and Cycles01–18 systems remain untouched.
+- External rule references are per-profile: PokerStars/Pagat draw and Hold'em, Wizard of Odds Video Poker, Spot Keno, Sic Bo, Pai Gow Poker, Three Card Poker, and Casino War. The three-reel slot strips, draw-poker house discard policy and Pai Gow house setter are **synthetic fixtures**, not casino-authoritative rules. Full poker betting, payouts, wallet, chips, RTP, settlement and all real-world value paths remain absent.
+- Executed Chromium UI checks: completed a round of all nine new games; checked replay and tamper rejection; player seed/action/hidden-house filtering including unshown folded hands; 390px document width fit. Executed **eight repeated rounds per game** (72 total) with legal state completion and deterministic replay.
+- Rule edge proof: five-card/three-card poker ranks including wheels, Joker straight-flush/five-aces; 216 Sic Bo outcomes yielded 105 Small / 105 Big / 6 triples; Casino War tie seeded at 19, both concede and War paths; invalid Keno, Sic Bo, held-card, Pai Gow and out-of-turn actions rejected.
+- Compatibility proof: a **genuine populated Cycle19 checkpoint authored in the original Cycle19 HTML** imports into Cycle20 with its full previous Blackjack action replay. Same embedded 133 game/sports entries, 1,427 creature records and Lantern sample bytes. New Cycle20 state and separate browser storage key; source-specific linked Free Play booking fails before GM approval/start and detects stale revision.
+- Ownership/safety boundaries: seeded PRNG and local receipts are test-only, not cryptographic, server-authoritative fairness or authenticated multiplayer; no campaign, Character, Item, owner Economy, Creature or Sports mutation. Full GM HTML/save are not private player deliverables. Direct `file://` and installed-device acceptance await owner review. No universal casino variant/canonical rule proof is claimed.
+- Next default: **DTGW-21** playable *original Multiversal/Black Vegas* concept demos with explicit prototype/source distinction and internal logic; concept names are not assumed to carry complete canon mechanics. Do not implement independent-event wager settlement or MRC-dependent core game restrictions early.
