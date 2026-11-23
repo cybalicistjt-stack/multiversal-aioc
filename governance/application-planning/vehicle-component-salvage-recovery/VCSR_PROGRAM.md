@@ -257,3 +257,37 @@ Two additional **explicitly illustrative** chassis `fixture:chassis:marsh-skiff`
 **OPS5:** This is a separate draft stacked PR based on VCSR-07 #2029, following #2028, #2026, #2024, #2022, #2021 and #2019. Protected `main` remains unchanged until exact-head CI/merge and selector reconciliation. No other persistent lane was rewritten.
 
 **Next owner-directed cycle:** VCSR-09 — Mecha builder (frames, limb/subsystem mounts, pilot link, localized damage, energy/heat references and controlled module installation).
+
+## Cycle 09 — Mecha Frame Builder, Physical Modules, Pilot & Occupants, Localized Conditions
+
+**Cumulative single-file offline HTML:** `artifacts/Multiversal_VCSR_Cycle_09.html`; **SHA-256** `1dd7ea67ef2e4e4333cb311e35a966677a07b78e3d001576a2d5877b09c698bc`; **632,296 UTF-8 bytes**; exact Git blob `4bf539503f6bfb39b5f25122c339c1b638fafa2a`. It includes Cycles 01–08 in full, without fetching or modifying other independent testers.
+
+### Governing sources directly reviewed
+
+- Multiversal-app `packages/contracts/src/vehicle-platform-base/mib-i14-starter-library.ts`, especially `MIB14_HOLLOWSTEP` and `MIB14_AUXILIARY_POWER`;
+- `governance/application-planning/multiversal-engineering-refit-assembly/MERA-13_VEHICLE_MECHA_STARSHIP_ENGINEERING_ADAPTERS.md`, and `mera-13-vehicle-mecha-starship-engineering-adapters.ts`;
+- `governance/application-planning/operational-asset-readiness-closure/OARC-04_SPECIALIZATION_PROFILE_MANIFEST_v1.0.0.json` for sourced/unresolved EP, heat and engineering topology semantics;
+- LSS-07 Hollowstep salvage library already validated in Cycle07; MIB-14 vehicle owner and source-specific configuration engine reviewed for Cycle08.
+
+MIB-14's **owner-backed Hollowstep operational definition** is exactly `mecha:mch-0031-hollowstep`, 5 configuration slots, 250 cargo-mass capacity, 1 pilot / 1 crew maximum, power capacity 60 configuration units, `interface:neural` tag and movement refs `movement:ground-walker:40ft`, `movement:air:20ft`, `movement:water:20ft`, `movement:jump-burst:20ft`. Source material supplies neither a universal EP pool nor a heat value; those remain **unknown** for this fixture. The source-defined power capacity is **never** mapped to EP or heat. MIB-14's reusable auxiliary-power unit is kept exactly one slot, 30 installed mass, power draw 0, config power delta +8, with `mecha` an explicitly allowed kind. Installed modules must also pass exact local mount allow-lists and MIB-14 kind/class/tag, power and slot checks.
+
+The LSS-07 salvage names `Cloaking Shroud`, `Adaptive Limbs`, `No-Flash Drive Core` are **only decomposition-profile names with unresolved quantities**, not an installed component catalog or automatic salvage output. The Hollowstep's six display areas and five mount positions are explicitly **illustrative VCSR-09 presentation mappings**, not a claim of governed anatomy. A second Bastion Strider and GM-private frame are also clearly labelled synthetic fixtures; the Strider's example `12/30 EP` and `3/8 fixture heat` are *authored demo owner snapshots*, not universal values.
+
+### Executable local lab
+
+A new **Mecha Builder** sidebar page separates:
+- immutable mecha frame definitions vs individual D17-shaped owned physical mecha Asset IDs, owner/custodian/location/version;
+- localized areas and explicit frame mounts vs existing separately owned physical module identities (mount, unmount, reinstall with same Asset ID);
+- authored crew-station assignment, Character qualification/pilot link vs independently evidenced onboard occupants;
+- cargo Asset IDs and quantity×mass references vs passengers, pilots, and installed modules;
+- configuration power budget vs EP energy and heat projections; unknown numbers cannot masquerade as known;
+- recorded per-area condition snapshot refs vs unprovided hit-point subtraction, dismemberment, repair, or game effects;
+- owner-confirmed ejection event references vs actual actor relocation (only reference stored), and authored mode/transform state references vs automatic shape changes, speed or fuel calculations.
+
+Every GM operation runs only against the tester's local mock-owner projection, with stable operation IDs, expected instance version, idempotent replay, duplicate-payload rejection, local rollback for invalid compatibility/over-capacity, evidence refs and nonauthoritative receipts. A conditional actor cannot automatically board or eject from the mecha; external Character/Action/World evidence is required. GM can author a locally evidenced new mecha frame, add an area/mount to an *unbound* custom frame, create a new owned demo Asset referencing an existing frame, and register an already-owned demo component with acquisition proof. Source-backed immutable frames/modules cannot be edited, and no physical item/vehicle/credits/XP is generated from a name, list, or chassis selection.
+
+**Proof:** Full Chromium/Playwright actual offline document via `page.set_content`, desktop 1280×850 and mobile 390×844: **312/312** passing checks. Prior 229 tests (8+12+18+26+30+36+39+60), plus **83/83 Cycle09**. Zero page JavaScript errors and no horizontal overflow. Local UI walkthrough: mounted and unmounted same Hollowstep auxiliary power Asset; Strider heat 4/8 external snapshot, left-arm condition, separately boarded actor, ejection reference with **no occupant relocation**, cargo `asset:owner:toolkit` with 14 mass×2, owner-confirmed `mode:secured`; authored a custom frame and second area/mount and GM-hidden owned Moonwalker; saved real 146,552-byte Cycle09 GM checkpoint with four frames, four mecha and eleven local receipts, imported into a fresh 390px browser preserving all edits, and reopened the preexisting vehicle builder. Downloaded player handoff contained exactly two visible mecha and excluded hidden frame IDs, private mecha, private module identity and GM location.
+
+**Non-authority:** No live D17 identity, reservation, condition ledger or durable receipt; no real MIB-14/MERA/PPIA-04/F014 transaction, player authentication, Character permission or ejection movement, World geometry, Action effects, combat, actual resource consumption, repair, Unity/Android/LAN devices or cross-tester synchronization. All demo source references are labelled; no product implementation authority is granted.
+
+**OPS5:** VCSR-09 is stacked as a new **draft PR** based on VCSR-08 #2031 (after #2029, #2028, #2026, #2024, #2022, #2021, #2019). No protected-main publication until predecessor exact-head review/merge and selector reconciliation. All other OPS5 lane selection remains unchanged. Next owner-directed standalone cycle: **VCSR-10 Ship / Starship Builder**, including hull, power, crew stations, nav/comms, environment/life support, cargo/hangar and dimensional travel *reference-only* controls.
