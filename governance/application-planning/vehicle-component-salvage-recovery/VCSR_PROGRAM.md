@@ -441,3 +441,29 @@ Manual **actual HTML button interactions**: selected existing Rover Cargo Rack, 
 **Next:** carry out actual Chromium desktop/mobile test run on the full saved HTML, exercise GM pointer authoring, player-filtered export, checkpoint download/reopen and inherited Cycles01–13; then reconcile draft review/publication without modifying other lanes. Any later VCSR-15 needs separate owner direction.
 
 **Cycle 14 browser verification (2026-11-23):** Source artifact blob `1fb4fa29149e36e3f7969e9bd61e0448e44ba8bf` passed [exact-content Chromium acceptance](https://github.com/cybalicistjt-stack/multiversal-aioc/actions/runs/45125906142): 13 inline scripts compile individually and combined; 21/21 Cycle14 embedded checks at 1280×850 and 390×844; inherited Cycles01–13 suites invoked; GM binding, Player private filtering, ~241KB JSON checkpoint and fresh reimport, zero page errors and zero overflow at both viewports. The prior VCSR13 606/606 baseline was not separately recounted at Cycle14. OPS5 repo-health validation also passed. Draft review still stacked on #2041 and predecessors; no protected-main publication, MMHT export validation, actual device or Unity test.
+
+## Cycle 15 — APW/D26 long salvage/service Projects and natural-resource owner handoffs
+
+**Owner direction:** continuation of the approved sequential VCSR program, 2026-11-23. The cumulative standalone offline HTML `artifacts/Multiversal_VCSR_Cycle_15.html` preserves Cycles01–14 and adds the Cycle15 **Long Projects & Ecology** workbench without tying the tester to any real campaign/scene, or modifying separate GM, Character, MMHT or Downtime HTML testers.
+
+### Source-backed controlling contracts
+
+- Multiversal-app `DevelopmentBible/02-game-framework/downtime-and-projects.md`: long-running Projects have owners, tasks, time, requirements, inputs, locations/facilities, progress records, pauses/participant changes/abandonment/completion and visibility; a committed actor/facility/unique Asset cannot be double-booked without an authored concurrency rule.
+- `packages/contracts/src/downtime-projects/campaign-activity-port.ts` (APW-I04 / D26): time profiles `untimed`, `abstract-blocks`, `campaign-calendar`, `task-duration`; active/paused/awaiting owner/recovery statuses; owner-backed campaign-time and owning-domain evidence; stable operation IDs/version gates.
+- `governance/application-planning/loot-scavenge-salvage/LSS-09_LIVE_ECONOMY_PROJECTS_HAZARDS_COZY_INVENTORY.md` and `economy-projects-cozy-integration.ts`: long-running salvage/refurbishment may escalate to APW/D26 but LSS may not advance campaign time, complete Project, grant inventory, or synthesize price/owner results.
+- LSS-01 authority map: ICF-07 biological harvesting, ICF for flora/foraging, DPL geological extraction, and ENV/World/GM environment/hazard resolution each retain existing owner authority. DPL-06 explicitly refuses universal yield, depletion, automatic rolls and World/Asset mutation.
+- Existing VCSR14 owner-bound typed MMHT map and feature pointer refs are consumed, not edited. VCSR13 source physical/station identities and VCSR12 repair source Asset IDs remain unchanged.
+
+### Independent playable candidate
+
+- Three expressly local proposal fixtures: source-pinned Rover sensor long repair, Blackglass salvage, and GM-only unknown-ship work. Projects are locally `proposed → approved → active → paused/resumed → awaiting-owner-result → owner-evidence-recorded → closed-local`, with explicit cancellation. **Closed-local** is never APW Project completion or a physical repair/salvage result.
+- Manual campaign-time owner references are necessary before requesting external results; no wall-clock timer, percentage/elapsed time computation, time acceleration, invented duration or live campaign join exists. GM evidence is locally authored **not authenticated**.
+- Active local proposals reserve their unique source, actor and workshop reference (conservative overlap conflict); old source versions and missing MIB14 workstation capability block. Version/idempotency protects local state and eliminates duplicate local receipts; no source owner ledger is mutated.
+- Typed nonexecuting external requests for ICF-07 biological harvest, ICF flora, DPL-06 mining, and ENV/World/GM environment. These are independent source pointers to existing VCSR14 map features, not LSS salvage or new resource outputs.
+- Source-filtered Player view and handoff remove GM-only project, source, result grants, receipts, map refs and boundary requests before counts; GM checkpoint preserves all previous cycles and imports schemas 1–14.
+
+### Explicit limits and readiness
+
+No actual `CampaignActivityCreateInput` can be dispatched without real campaign/actor authorization, approved profile and time evidence. The local phases do **not** implement APW-I04's canonical state machine, timed scheduler, remote project status, D17/MIB-03 receipt, MIB12 repair, LSS salvage results, ICF biological yield, DPL ore, farm production, environmental effects, currency, loot claims or real object writes.
+
+Initial branch contains a complete candidate with **39 new embedded test cases**, plus a dedicated Chromium desktop/mobile CI script exercising full cumulative UI, project state changes, Player filtering and actual JSON checkpoint download and fresh import. Acceptance is **pending live CI** until checked; do not assert all checks green from source generation. VCSR15 is a **stacked draft** behind VCSR14 #2042, not merged to protected main; all other OPS5 lanes remain unchanged. No automatic VCSR16 implementation without another owner Continue.
