@@ -31,10 +31,10 @@
   },
   "evidence": {
     "artifact": "governance/application-planning/vehicle-component-salvage-recovery/artifacts/Multiversal_VCSR_Cycle_16.html",
-    "artifact_git_blob": "5fdcb310f813d0a1d2f089a4839ce9b9ce5225b4",
+    "artifact_git_blob": "f74085b77f0cab622f37f49ddefb1b007642ca9d",
     "new_embedded_tests": 41,
     "earlier_suites": "Cycle01–15 invoked, previous Cycle15 39/39 exact-file Chromium receipt",
-    "run_status": "pending_real_desktop_mobile_Chromium",
+    "run_status": "chromium_browser_verified_exact_file",
     "browser_script": "governance/application-planning/vehicle-component-salvage-recovery/VCSR-16_BROWSER_CHECK.cjs",
     "workflow": ".github/workflows/validate-vcsr16-browser.yml",
     "controlling_sources": [
@@ -42,24 +42,69 @@
       "LSS04 source-authorized existing Asset transfer",
       "MIB14 platform base inventory",
       "UI convergence UI07/UI08"
-    ]
+    ],
+    "sha256": "773ad307ba9c5beef041c345001d33fe433be1b17d440623cfb777e306dd511a",
+    "bytes": 1127073,
+    "receipt": "governance/application-planning/vehicle-component-salvage-recovery/VCSR-16_BROWSER_TEST_RECEIPT.md",
+    "browser": {
+      "engine": "Playwright Chromium on Ubuntu 24.04 GitHub Actions",
+      "exact_html_head": "dbd627669834cef7d9bc7a4eced50584bd2059fc",
+      "green_run_ids": [
+        45145385607,
+        45145385849
+      ],
+      "inline_scripts_compiled": 15,
+      "combined_scope_compiled": true,
+      "viewports": [
+        "1280x850",
+        "390x844"
+      ],
+      "new_cases": {
+        "passed": 41,
+        "total": 41
+      },
+      "inherited": "Cycle01–15 suites invoked, not recounted",
+      "player_physical_sources_visible": 3,
+      "player_platforms_visible": 4,
+      "player_proposals": [
+        "Asset/Party transfer",
+        "board preowned vehicle"
+      ],
+      "gm_approval": true,
+      "owner_response_status": "owner-reference-unverified",
+      "owner_result_checked": false,
+      "player_handoff_bytes_desktop": 140093,
+      "player_handoff_bytes_mobile": 140091,
+      "gm_checkpoint_bytes_desktop": 257556,
+      "gm_checkpoint_bytes_mobile": 257554,
+      "previous_spatial_project_bridges_retained": true,
+      "fresh_import": true,
+      "page_errors": 0,
+      "horizontal_overflow": 0,
+      "actual_source_mutations": 0,
+      "limits": [
+        "No real D17/Character/A8 actions or receipts",
+        "No real GM accounts, campaign, Unity device or LAN",
+        "No release/published PR"
+      ]
+    }
   },
-  "active_substep": "source_html_candidate_pending_browser",
-  "next_action": "Run actual exact-file Chromium 41-case source/privacy suite, real Player/GM controls, Player handoff and GM checkpoint/reimport. If green, record receipt and keep draft stacked behind #2044 without main merge.",
+  "active_substep": "browser_verified_pending_governed_stacked_predecessor_publication",
+  "next_action": "Review/publish predecessor VCSR drafts including #2044 under OPS5 exact-head controls, then review VCSR16 draft #2045; no main merge, cross-tester live connection or physical gameplay write. A new owner Continue may begin bounded VCSR-17.",
   "planned_successor": "VCSR-17 economy/legal/scenario next after explicit Continue",
   "execution_guard": {
     "continue_turns": 1,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "stall_nudges": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "vcsr16_staged_html_candidate",
-      "evidence": "Complete additive Cycle16 full HTML Git blob 5fdcb31…; 41 cases and owned inventory/Character/hangar source intents"
+      "seq": 2,
+      "kind": "vcsr16_exact_file_browser_verified",
+      "evidence": "15 global inline scripts, 41/41 new cases at both Chromium viewports, Player and GM real clicks, JSON handoff and clean reopen; exact SHA256 773ad307ba9c5beef041c345001d33fe433be1b17d440623cfb777e306dd511a, run #45145385607"
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": "GOVERNED_STACKED_PREDECESSOR_PUBLICATION_PENDING"
   }
 }
