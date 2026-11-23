@@ -35,7 +35,7 @@
     "artifact_git_blob": "0028995f9e9f043259272782a05e94acaeb4b170",
     "new_embedded_tests": 39,
     "prior_cycle14_browser": "21/21 and invoked earlier suites on exact cumulative artifact",
-    "run_status": "pending_actual_desktop_mobile_Chromium",
+    "run_status": "browser_verified_exact_cumulative_html",
     "browser_script": "governance/application-planning/vehicle-component-salvage-recovery/VCSR-15_BROWSER_CHECK.cjs",
     "workflow": ".github/workflows/validate-vcsr15-browser.yml",
     "source_authorities": [
@@ -44,24 +44,77 @@
       "LSS-09 projects/owners integration",
       "DPL-06 mining read-only reference layer",
       "LSS-01 ICF-07/ICF/DPL/ENV domain boundary crosswalk"
-    ]
+    ],
+    "sha256": "f16def5b5b18f20b831c25913e0162e2c8e475843fc85e905cb206fedd9e0b72",
+    "bytes": 1074484,
+    "browser": {
+      "engine": "Chromium Playwright headless, Ubuntu 24.04 GitHub Actions",
+      "inline_scripts_compiled": 14,
+      "shared_scope_syntax": true,
+      "viewports": [
+        "1280x850",
+        "390x844"
+      ],
+      "new_cycle15_cases": {
+        "passed": 39,
+        "total": 39
+      },
+      "inherited": "Cycle01–14 regression suites invoked by cumulative tester; no separately re-counted aggregate",
+      "gm_manual_flow": [
+        "approve",
+        "start",
+        "pause",
+        "resume",
+        "record owner time evidence",
+        "request result",
+        "record external MIB-12-shaped result",
+        "close local"
+      ],
+      "downloaded_player_handoff_bytes": 128058,
+      "downloaded_gm_checkpoint_bytes": 253828,
+      "private_player_refs_excluded": [
+        "GM private unknown ship project",
+        "private mineral/biological requests",
+        "local GM operation receipts"
+      ],
+      "fresh_import_verified": true,
+      "prior_views": [
+        "vehicles",
+        "mecha",
+        "ships",
+        "runtime",
+        "repairs",
+        "logistics",
+        "spatial",
+        "projects"
+      ],
+      "page_errors": 0,
+      "horizontal_overflow_pixels": 0,
+      "green_runs": [
+        45127753397,
+        45127758975,
+        45127759005
+      ],
+      "tested_head_sha": "2d152f5a386c5400d9026af9ed5ec8182e9d7bb8"
+    },
+    "receipt": "governance/application-planning/vehicle-component-salvage-recovery/VCSR-15_BROWSER_TEST_RECEIPT.md"
   },
-  "active_substep": "candidate_source_staged_pending_exact_head_browser_acceptance",
-  "next_action": "Run full cumulative Chromium with 39 new embedded cases and inherited Cycles01–14 plus GM actions, Player privacy, GM checkpoint/reopen at 1280/390; then update exact-head receipt. Preserve stacked draft PR publication ordering.",
+  "active_substep": "browser_verified_pending_stacked_predecessor_publication_and_owner_review",
+  "next_action": "Review exact-head VCSR15 draft #2044 after predecessor #2042 and earlier VCSR draft chain are reconciled/published under OPS5. No protected-main merge or real APW/D17/MMHT integration through this work item. New Continue authorizes VCSR-16.",
   "planned_successor": "VCSR-16 GM/Character bridge requires another explicit Continue",
   "execution_guard": {
     "continue_turns": 1,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "stall_nudges": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "vcsr15_complete_html_candidate",
-      "evidence": "Additive standalone Cycle15 source with 39 embedded tests and typed APW/ICF/DPL/ENV non-executing adapters; Git blob 0028995f9e9f043259272782a05e94acaeb4b170"
+      "seq": 2,
+      "kind": "vcsr15_browser_exact_artifact_proof",
+      "evidence": "Complete HTML 1,074,484 bytes SHA256 f16def5b5...dd9e0b72, 39/39 desktop/mobile plus GM/Player downloads and fresh import, head 2d152f5, run 45127753397"
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": "GOVERNED_STACKED_PREDECESSOR_PUBLICATION_PENDING"
   }
 }
