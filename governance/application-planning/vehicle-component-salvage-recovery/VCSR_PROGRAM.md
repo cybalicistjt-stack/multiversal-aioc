@@ -144,3 +144,27 @@ Cycle 04 checkpoint format imports Cycle 01–03 and reopens Cycle 04 with sourc
 - **Not proven:** live D17 atomic mutation, MIB-03 reservation/resulting owner version/replay status query, real Character/GM auth, true MIB-14 compatibility, browser sandbox local HTTP serving, Unity/Android/two-device LAN, physical hardware, material yields, condition damage, resource costs or downstream map/downtime integration. Those are future governed scope.
 
 **OPS5:** VCSR-04 is staged as a fourth draft PR **stacked on VCSR-03 #2022**, itself following #2021 and #2019. This is an on-demand standalone tester chain; there is **no protected-main publication** until the required exact-head review, merges and canonical `operations/CURRENT.json` reconciliation. The next owner-directed planned cycle is VCSR-05 (operation ID, reservation, receipt, idempotency and lost-response recovery).
+
+## Cycle 05 — Stable operations, source reservations, atomic commits and status-first recovery
+
+**Complete cumulative standalone artifact:** `artifacts/Multiversal_VCSR_Cycle_05.html`.  
+**Local SHA-256:** `9b5536dd78b7861b4ba9e5d6b612a72ec8b1b1cbd82013f54a1896369b9acb69`; **308,334 UTF-8 bytes**.
+
+### Functional extent
+
+Cycle 05 retains every independent Cycle 01–04 browser workflow and adds a dedicated **Operation Safety** lab. It models immutable operation IDs, idempotency/correlation keys, a local noncryptographic fingerprint, versioned source/profile inspection, one active reservation per physical source, and a D17-shaped owner receipt with returned **nonsequential** owner versions. GM-visible actions independently dispatch the reservation and atomic extraction commit, with selectable **normal reply**, **owner executed but response lost**, or **request never delivered** cases.
+
+- **Planning** is read-only and writes no physical inventory. Identical operation ID + identical immutable payload replays the plan; the same ID with different destinations/output data is rejected.
+- **Reservation** requires exact inspected source and profile version and a locally role-gated GM action. Its demo receipt supplies `resultingVersion`, rather than assuming old version +1. Competing reservations and legacy extraction attempts on that source are blocked while it is held.
+- **Atomic extraction** consumes the checked *post-reservation* owner version and uses the prior LSS-02/06 local assembly extraction pathway to produce one source-slot transition plus authored physical outputs. The demo mock owner reports a second nonsequential commit version and durable result/evidence reference.
+- **Lost response** produces an ambiguous stage: commit/retry/cancel cannot continue until the operator queries the mock-owner status. A present matching receipt is replayed without a second output. Known no-result permits a retry **using the identical immutable intent**.
+- **Cancellation** before reservation has no owner mutation; cancellation of a confirmed reservation emits an explicit release receipt with a returned version, without producing loot. Synthetic competing owner-version changes fail closed. Receipt tampering, duplicate receipt identities, unknown yield, missing tool references and stale authored profiles are regression-checked.
+- **Persistence and sharing**: full GM checkpoint reopens Cycle 01–05 state including ambiguous steps, mock reservation/commit/release receipts, physical outputs and untouched slots. A player handoff first filters GM-only assembly and operation references/receipt counts. Existing other testers remain independent; no file is imported automatically into GM, Character, MMHT, Downtime or Unity.
+
+### Governing contract and evidence
+
+Implementation is a **local contract illustration**, not a new canonical engine: `packages/contracts/src/runtime/deterministic-runtime-primitives.ts` (MIB-03 stable operation, version gate and safe-retry decision) and `packages/contracts/src/loot-scavenge-salvage/salvage-extraction-engine.ts` (LSS-06 exact post-reservation version, atomic source/output commit and durable receipt confirmation) control future adapters. D17 retains canonical Asset mutations and identity. The HTML cannot claim real D17 owner receipts, authentic cryptographic evidence, production idempotency guarantees or network-backed status lookups. The demo FNV-32 fingerprint/checksum is an instructional integrity signal, **not** security-grade signing. No real expenditure, equipment compatibility, campaign clock or hazard action is resolved.
+
+**Browser validation:** Chromium Playwright on the full offline file via `set_content`, 1280×850 and 390×844: **8/8 Cycle 01 + 12/12 Cycle 02 + 18/18 Cycle 03 + 26/26 Cycle 04 + 30/30 Cycle 05 = 94/94**. Zero JavaScript page errors and no horizontal document overflow at these viewports. Manual browser walkthrough: plan lamp lens → mock-owner reservation with lost response → owner status query → atomic commit with lost response → owner status query → replay without duplication, followed by actual GM checkpoint download and fresh-page import, role-filtered player handoff and legacy Cycle 01 loot operation.
+
+**Publication status:** This is a separate OPS5 stacked draft PR following VCSR-04 #2024 → VCSR-03 #2022 → VCSR-02 #2021 → VCSR-01 #2019. `main` is not modified, and prior drafts must be published/reconciled under exact-head guards before advancing the stack. Next owner-directed standalone artifact is **VCSR-06** (condition, durability, quality/rarity provenance and only source-authored damaged/failed extraction outcomes).
