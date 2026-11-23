@@ -1,0 +1,59 @@
+'use strict';
+const fs=require('node:fs');
+const vm=require('node:vm');
+const assert=require('node:assert/strict');
+const {chromium}=require('playwright');
+const path=require('node:path');
+const htmlFile=path.join(__dirname,'artifacts','Multiversal_VCSR_Cycle_14.html');
+const html=fs.readFileSync(htmlFile,'utf8');
+assert(html.startsWith('<!doctype html>'),'A complete standalone document is required');
+assert(html.includes('VCSR-14'),'Cycle14 code missing');
+const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(m=>m[1]);
+assert(scripts.length>=13,'Prior 13 cycles or Cycle14 script missing');
+for(let i=0;i<scripts.length;i++)new vm.Script(scripts[i],{filename:'vcsr14-inline-'+i+'.js'});
+console.log('Embedded JavaScript syntax:',scripts.length,'complete inline scripts');
+(async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+ for(const vp of [{width:1280,height:850},{width:390,height:844}]){
+  const page=await browser.newPage({viewport:vp,acceptDownloads:true});
+  const errors=[];page.on('pageerror',e=>errors.push(String(e)));
+  await page.setContent(html,{waitUntil:'load',timeout:120000});
+  assert.equal(await page.evaluate(()=>state.schemaVersion),14,'Cumulative v14 not initialized');
+  assert.equal(await page.evaluate(()=>v14Validate(state)),true,'Cumulative source validation failed');
+  await page.locator('[data-view="spatial"]').click();
+  await page.locator('#v14Tests').click();
+  const report=await page.locator('#v14TestResults').innerText();
+  assert.match(report,/Cycle 14 21\/21 checks passed/,'Cycle14 browser fixture suite failed');
+  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+  assert(overflow<=1,'Horizontal document overflow: '+overflow);
+  const before=await page.evaluate(()=>state.v14.links.length);
+  await page.locator('#v14Link').click();
+  const after=await page.evaluate(()=>state.v14.links.length);
+  assert.equal(after,before+1,'GM link button did not add one pointer');
+  const custody=await page.evaluate(()=>state.v13.assetProjections.map(a=>a.id).join('|'));
+  assert(custody.includes('demo:owned:rover-rack'),'Original preowned stock lost');
+  await page.locator('#role').selectOption('player');
+  const filtered=await page.evaluate(()=>handoff());
+  assert(!filtered.spatialBridge.maps.some(m=>m.mapId==='MMHT:gm-private'),'Private map leaked');
+  assert(!filtered.spatialBridge.links.some(l=>l.subjectId==='space:gm:sealed-store'),'Private source leaked');
+  await page.locator('#role').selectOption('gm');
+  const dl=page.waitForEvent('download');
+  await page.locator('#v14Checkpoint').click();
+  const file=await dl;
+  const bytes=fs.readFileSync(await file.path());
+  const saved=JSON.parse(bytes.toString('utf8'));
+  assert.equal(saved.schemaVersion,14,'Exported full checkpoint is not v14');
+  assert.equal(saved.v14.links.length,after,'Source links lost in real JSON download');
+  await page.setInputFiles('#fileInput',{name:'VCSR14-Checkpoint.json',mimeType:'application/json',buffer:bytes});
+  await page.locator('#applyImport').click();
+  assert.equal(await page.evaluate(()=>state.v14.links.length),after,'Real file upload lost typed links');
+  assert.equal(await page.evaluate(()=>v14Validate(state)),true,'Reopened checkpoint failed validation');
+  assert.deepEqual(errors,[],'Uncaught page JS errors');
+  const overflow2=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+  assert(overflow2<=1,'Post-import horizontal overflow');
+  console.log(JSON.stringify({viewport:vp,embeddedCycle14:'21/21',inheritedSuites:'invoked by Run checks',gmLink:true,privateFiltered:true,downloadBytes:bytes.length,importVerified:true,pageErrors:errors.length,overflow:overflow2}));
+  await page.close();
+ }
+ }finally{await browser.close();}
+})().catch(err=>{console.error(err.stack||err);process.exitCode=1;});

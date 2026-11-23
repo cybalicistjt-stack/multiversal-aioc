@@ -1,0 +1,26 @@
+name: VCSR-14 Standalone Browser Acceptance
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/vehicle-component-salvage-recovery/artifacts/Multiversal_VCSR_Cycle_14.html'
+      - 'governance/application-planning/vehicle-component-salvage-recovery/VCSR-14_BROWSER_CHECK.cjs'
+      - '.github/workflows/validate-vcsr14-browser.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  acceptance:
+    name: Offline Chromium UI, privacy and roundtrip
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install focused browser dependency
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Validate full offline HTML on desktop and mobile
+        run: node governance/application-planning/vehicle-component-salvage-recovery/VCSR-14_BROWSER_CHECK.cjs
