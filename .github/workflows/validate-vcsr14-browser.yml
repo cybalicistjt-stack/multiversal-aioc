@@ -1,5 +1,12 @@
 name: VCSR-14 Standalone Browser Acceptance
 on:
+  push:
+    branches:
+      - ops5/vcsr-cycle14-20261123
+    paths:
+      - 'governance/application-planning/vehicle-component-salvage-recovery/artifacts/Multiversal_VCSR_Cycle_14.html'
+      - 'governance/application-planning/vehicle-component-salvage-recovery/VCSR-14_BROWSER_CHECK.cjs'
+      - '.github/workflows/validate-vcsr14-browser.yml'
   pull_request:
     paths:
       - 'governance/application-planning/vehicle-component-salvage-recovery/artifacts/Multiversal_VCSR_Cycle_14.html'
