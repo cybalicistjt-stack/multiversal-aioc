@@ -93,3 +93,28 @@ Cycle 02 adds 14 searchable item/component definitions with descriptions, source
 **Validation:** 8/8 original VCSR-01 embedded checks + 12/12 new cycle invariants in isolated browser fixtures at Chromium desktop 1280×850 and mobile-width 390×844, zero page errors or horizontal overflow. Browser exercised search, split, item transfer, authored drop proposal/approval, GM checkpoint download/reopen parity, player-safe site/storage/catalog filtering and redacted handoff. The actual D17/MIB-03/LSS-04 TypeScript engine and native Android/Unity remain **unconnected and unverified**, as intended for this standalone cycle. Capacity is an explicitly illustrative count of stack slots; pricing, equipment bonuses, vehicle compatibility and generated random drops are deliberately absent.
 
 **Ops5 publication boundary:** This cycle is staged on a separate branch/PR *stacked on* VCSR-01 registration PR #2019. Neither operation becomes canonical on protected `main` until the required publication validation and merge occur. VCSR-03 remains the planned next user-directed HTML cycle; there is no automatic successor or change to GPR/CWKS/MTLC/MMHT/GM/Character/Downtime implementation work.
+
+## Cycle 03 — Scavenge zones, authored search, finite depletion and discovery
+
+**Cumulative standalone artifact:** `artifacts/Multiversal_VCSR_Cycle_03.html`  
+**SHA-256:** `21008e8a3f0e5a1f1bf3d9a3822335fff2967b222f5fed800b1a28c6741cfd37`  
+**Local file size:** 171,066 bytes
+
+### Authored source alignment
+
+LSS-05 `scavenge-opportunity-engine.ts` owns the *orchestration reference contract* over stable `MIB-11/D18` World locations, separate `LSS-05-OPPORTUNITY` version/depletion state, `D17` output intents, `MIB-03` operation/receipt semantics, and external Character/Profession and Hazard/Action/GM requirements. The tester retains separate scavenge, loot, authored drop, and salvage paths. Its local state is **not** a live LSS-05 owner or D17 mutation.
+
+- Governed Blackglass starter profile `scavenge-opportunity:blackglass-wreck-yard` includes exactly its authored permit, salvage pry kit, industrial scavenging capability, unstable wreckage hazard, known clustered concentration, `outcome:wreck-yard:surface-brass` and 2-piece `material:lighthouse-brass-scrap` output. The new Scavenge Zones screen and the original Workbench Blackglass case **share one depletion source**, preventing double collection across the two UI paths.
+- Source-backed `scavenge-opportunity:remote-derelict` has a known World location but unknown concentration and **no authored outcome**; the UI and operation planner must not invent an item or roll.
+- Starter `scavenge-opportunity:herb-patch-handoff` and `scavenge-opportunity:ore-vein-handoff` refuse LSS asset mutation and route to ICF/ICF-07 and DPL respectively.
+- Explicitly **illustrative** relay outpost and GM-only storage fixtures exercise authored finite use counts, tool/permission evidence, required hazard referral, redacted results and local checkpoint roundtrip. User-authored single-output opportunity creation/editing is supported. Governed source fixtures are read-only; no user edit reinterprets them as published source canon.
+- Search text/tags/World reference queries, result counts, selection, disclosure, receipts and player handoffs are visibility-prefiltered. Player previews never receive the GM-only fixture or its outcome cardinality.
+- Search times, permits, skills, capability values, discovery, environment/hazards and GM decisions remain owner references and human stops: the HTML does not roll a D20, assign skill/DC/damage, select random drops, infer yields/concentration, advance a campaign clock, mine ore or harvest living plants.
+
+### Local acceptance receipt
+
+**Chromium / Playwright**: 8/8 Cycle-01 checks, 12/12 Cycle-02 checks, and 18/18 new Cycle-03 checks = **38/38**, at both 1280×850 desktop and 390×844 mobile width, without JavaScript page errors or horizontal overflow. Manual browser walkthrough: relay search with explicit tool/access and external hazard referral → GM review → 2 local commits → finite depletion and disabled further proposal; unknown concentration/outcome block; author new opportunity; player-hidden GM cache/catalog exclusion; filtered JSON handoff; actual GM JSON checkpoint download and file reopen with 2 committed receipts and 7 profiles.
+
+**Proof boundary:** This validates only standalone HTML behavior and demo contract conservation, not real D17 durability, LSS-05/MIB-03 runtime parity, World location access, live GM authorization, Android/Unity networking or integration with the other independently running testers.
+
+**OPS5 status:** Staged via a separate stacked draft PR from VCSR-02 PR #2021 (which itself depends on VCSR-01 PR #2019). Publication on protected `main` is still pending prescribed CI/merge/reconciliation. The HTML file is available for owner review now; VCSR-04 is the next owner-directed planned test cycle.
