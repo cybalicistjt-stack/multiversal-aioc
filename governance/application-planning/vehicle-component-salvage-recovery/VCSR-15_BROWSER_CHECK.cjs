@@ -1,7 +1,11 @@
 'use strict';
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
 const {chromium}=require('playwright');
-const html=fs.readFileSync(path.join(__dirname,'artifacts','Multiversal_VCSR_Cycle_15.html'),'utf8');
+const htmlPath=path.join(__dirname,'artifacts','Multiversal_VCSR_Cycle_15.html');
+const htmlBytes=fs.readFileSync(htmlPath);
+const html=htmlBytes.toString('utf8');
+const digest=require('node:crypto').createHash('sha256').update(htmlBytes).digest('hex');
+console.log('VCSR15 exact HTML SHA256:',digest,'bytes:',htmlBytes.length);
 assert(html.startsWith('<!doctype html>'),'Cumulative offline document must be complete');
 const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(m=>m[1]);
 assert(scripts.length>=14,'Earlier 13 scripts plus Cycle15 must be retained');
@@ -55,6 +59,13 @@ console.log('Cumulative inline scripts compiled:',scripts.length,'individually a
   assert(!handoff.projectsBridge.externalOwnerRequests.some(p=>p.id==='v15:fixture:biological'),'Private biological reference leaked');
   assert.equal(handoff.projectsBridge.localReceipts.length,0,'Private local operation receipts leaked');
   assert(handoff.projectsBridge.projects.every(p=>!p.authoritative&&!('gmApprovalRef'in p)||p.gmApprovalRef===undefined),'Private approval reference exposed');
+  const playerDownload=page.waitForEvent('download');
+  await page.locator('#v15Download').click();
+  const playerFile=await playerDownload,playerBytes=fs.readFileSync(await playerFile.path());
+  const playerDoc=JSON.parse(playerBytes.toString('utf8'));
+  assert(!playerDoc.projectsBridge.projects.some(p=>p.id==='v15:fixture:gm-hidden'),'Private project leaked in real downloaded handoff');
+  assert(!playerDoc.projectsBridge.externalOwnerRequests.some(p=>p.id==='v15:fixture:mineral'),'Private mineral request leaked in downloaded JSON');
+  assert.equal(playerDoc.projectsBridge.localReceipts.length,0,'Private receipts appeared in downloaded Player JSON');
   await page.locator('#role').selectOption('gm');
   const dl=page.waitForEvent('download');
   await page.locator('#v15Checkpoint').click();
@@ -76,7 +87,7 @@ console.log('Cumulative inline scripts compiled:',scripts.length,'individually a
   }
   assert.deepEqual(errors,[],'Uncaught JS exceptions in active session');
   assert.deepEqual(freshErrors,[],'Uncaught JS exceptions after fresh import');
-  console.log(JSON.stringify({viewport,cycle15:'39/39',regressions:'Cycle01-14 suites invoked',manualActions:['approve','start','pause','resume','time-owner-evidence','request-result','record-owner','close'],playerFiltering:true,checkpointBytes:buf.length,freshImport:true,olderViews:selectors,pageErrors:0,horizontalOverflow:0}));
+  console.log(JSON.stringify({viewport,cycle15:'39/39',regressions:'Cycle01-14 suites invoked',manualActions:['approve','start','pause','resume','time-owner-evidence','request-result','record-owner','close'],playerFiltering:true,playerHandoffBytes:playerBytes.length,htmlSha256:digest,checkpointBytes:buf.length,freshImport:true,olderViews:selectors,pageErrors:0,horizontalOverflow:0}));
   await context.close();
  }
  }finally{await browser.close();}
