@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "vcsr",
+  "program_id": "VCSR",
+  "work_item_id": "VCSR-04",
+  "attempt_id": "VCSR-04-attempt-001",
+  "title": "Standalone HTML Cycle 04 — Recoverable Assemblies, Partial Extraction & Teardown",
+  "status": "in_progress",
+  "owner_selected": true,
+  "selected_by_owner": "2026-11-22 Continue in established VCSR standalone HTML cycle series",
+  "authority_type": "owner_scoped_standalone_html_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/vehicle-component-salvage-recovery/VCSR_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Preserve cumulative standalone VCSR-01..03 HTML and versioned JSON checkpoint/handoff behavior.",
+      "Implement evidence-backed zero/one/many recoverable assembly graphs, parent-child edges, critical/recoverability status, precise physical source/version and source remnant states.",
+      "Provide role-filtered assembly search and source/slot authoring, local operation proposal, externally governed requirement references, GM approval and atomic-like local output/source mutation rehearsal.",
+      "Prove preserved unselected slots, intact subtree carry without double output, total teardown only under explicit remnant/rule, stale owner/profile versions, idempotent retry and player-safe export.",
+      "Retest older loot, inventory transfers, scavenge commits, browser JSON reimport and desktop/mobile UI."
+    ],
+    "boundaries": [
+      "No live D17 or MIB-03 owner reservation/commit/receipt; statuses and outputs are local demonstrative projections.",
+      "No universal anatomy or quantity, no automatic material yields, damaged/failure results, vehicle installation/compatibility, repairs/economy, GM authentication, map topology or campaign clock.",
+      "Do not join or overwrite independently developed GM, Character, Map Maker or Downtime tester files or rewrite GPR/CWKS/MTLC lane state."
+    ]
+  },
+  "evidence": {
+    "artifact": "governance/application-planning/vehicle-component-salvage-recovery/artifacts/Multiversal_VCSR_Cycle_04.html",
+    "sha256": "265a94aea33c0d265098337b9badf97d9bebe3163cd27d0139d472ee519efdd9",
+    "bytes": 248222,
+    "embedded_tests": {
+      "cycle01": [
+        8,
+        8
+      ],
+      "cycle02": [
+        12,
+        12
+      ],
+      "cycle03": [
+        18,
+        18
+      ],
+      "cycle04": [
+        26,
+        26
+      ],
+      "total": 64,
+      "passed": 64
+    },
+    "browser": {
+      "engine": "Chromium headless + Playwright set_content",
+      "viewports": [
+        "1280x850",
+        "390x844"
+      ],
+      "pageErrors": 0,
+      "horizontalOverflow": false,
+      "manualProof": [
+        "lantern proposal and GM approval; D17-shaped item lineage",
+        "actual checkpoint file downloaded/reimported",
+        "GM-only source and topology hidden from player handoff",
+        "prior Cycle01 loot, Cycle02 inventory and Cycle03 scavenge operations still executable on Cycle04 model",
+        "author new profile with retained form data and explicit slot quantity"
+      ]
+    },
+    "source_refs": [
+      "LSS-02 inventory/assembly lineage addendum, live recoverable-object-schema.ts and starter library",
+      "LSS-06 inventory and extraction engine",
+      "D17 asset source, MIB-03 stable owner receipts, MIB-12 repair, MIB-14 compatibility",
+      "VCSR-01/02/03 independently running HTML and OPS5 stacked draft record"
+    ]
+  },
+  "active_substep": "html_validated_pending_exact_head_stacked_pr_publication",
+  "next_action": "Complete protected-main publication of prerequisite VCSR-01 #2019, then VCSR-02 #2021, VCSR-03 #2022, and VCSR-04 new stacked PR after exact-head OPS5 review/rebase/reconciliation; preserve delivered HTML regardless. Next owner Continue requests VCSR-05 standalone cycle.",
+  "planned_successor": "VCSR-05",
+  "successor_rule": "Explicit owner Continue for next complete HTML file; no automatic production integration or edits to other lanes.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "stall_nudges": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "cumulative_standalone_html_validated",
+      "evidence": "Chromium 1280x850 / 390x844 64/64 browser invariants, GM extraction and checkpoint reimport, schema4 prior-cycle runtime compatibility, player filtered handoff, SHA256 265a94aea33c0d265098337b9badf97d9bebe3163cd27d0139d472ee519efdd9"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
