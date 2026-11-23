@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "vcsr",
+  "program_id": "VCSR",
+  "work_item_id": "VCSR-06",
+  "attempt_id": "VCSR-06-attempt-001",
+  "title": "Standalone HTML Cycle 06 — Source Condition, Independent Facets and Authored Recovery Outcomes",
+  "status": "in_progress",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue in established VCSR standalone cycle, 2026-11-22",
+  "authority_type": "owner_scoped_standalone_html_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/vehicle-component-salvage-recovery/VCSR_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Preserve independent cumulative VCSR-01..05 HTML and previous checkpoint formats.",
+      "Render LSS-03 independent quality, grade, rarity and exact MIB-14 compatibility alongside D17 condition/history and explicitly proven durability projections.",
+      "Demonstrate local owner rule authoring and extracted/damaged-extracted/failed-no-output, with exact authored rule, evidence and source effect.",
+      "Reuse MIB-03/D17-shaped reservation, source-version, atomic result and replay protection without actual owner commands.",
+      "Test 130 built-in checks, desktop/mobile, GM checkpoint download/import, player filtered handoff and prior-cycle regression."
+    ],
+    "boundaries": [
+      "LSS-03 grammar is reference only; no inference of condition, durability, quality, grade, rarity, price, find rate or compatibility.",
+      "Source-backed LSS-03 records are governed synthetic test fixtures; authored damaged/failed recovery rules are explicitly local VCSR-06 demonstration only.",
+      "No live D17 condition/owner ledger or real MIB-03 receipts, platform app, multi-device sync, GM authentication or edits to other HTML testers."
+    ]
+  },
+  "evidence": {
+    "artifact": "governance/application-planning/vehicle-component-salvage-recovery/artifacts/Multiversal_VCSR_Cycle_06.html",
+    "sha256": "646c1d0899c5f597a9e8aff601906e66e378304506716d556d79876519364d97",
+    "bytes": 376219,
+    "git_blob": "86ab9091967661674fbf31f8e41d17b215e020a3",
+    "embedded_tests": {
+      "cycle01": [
+        8,
+        8
+      ],
+      "cycle02": [
+        12,
+        12
+      ],
+      "cycle03": [
+        18,
+        18
+      ],
+      "cycle04": [
+        26,
+        26
+      ],
+      "cycle05": [
+        30,
+        30
+      ],
+      "cycle06": [
+        36,
+        36
+      ],
+      "total": 130,
+      "passed": 130
+    },
+    "browser": {
+      "engine": "Chromium headless/Playwright set_content complete offline HTML",
+      "viewports": [
+        "1280x850",
+        "390x844"
+      ],
+      "pageErrors": 0,
+      "horizontalOverflow": false,
+      "manualActions": [
+        "Plan clean/damaged/failed rule and source-bound version",
+        "Lost reserve response→owner status→lost atomic commit response→owner status→receipt replay with one damaged physical output",
+        "Actual checkpoint JSON download and fresh-page import preserving v6 snapshots, owner receipts and job state",
+        "Second optic recovery post-reimport",
+        "Player handoff JSON excludes GM-only facet/source/condition; GM dispatch unavailable",
+        "Cycle01 loot and older 02/03 operation regression checks"
+      ]
+    },
+    "source_refs": [
+      "Multiversal-app LSS-03 inventory, grammar TS and governed synthetic starter",
+      "Multiversal-app LSS-06 extraction inventory",
+      "D17 condition/history, MIB-03 stable identity, MIB-12 repair, MIB-13 value, MIB-14 compatibility",
+      "AIOC OPS5 bootstrap and cumulative VCSR Program"
+    ]
+  },
+  "active_substep": "html_validated_pending_exact_head_stacked_pr_publication",
+  "next_action": "Resolve and publish prerequisite draft PR chain #2019,#2021,#2022,#2024,#2026 under OPS5 exact-head policy, then publish staged VCSR-06 and reconcile main CURRENT. Next owner Continue starts VCSR-07.",
+  "planned_successor": "VCSR-07",
+  "successor_rule": "New owner Continue requests next complete standalone HTML; no automatic other tester integration.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "stall_nudges": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "offline_browser_verified",
+      "evidence": "130/130 Chromium full-file checks on desktop/mobile; GM damaged recovery/lost response/query/replay; downloaded JSON checkpoint reopened; sha256 646c1d0899c5f597a9e8aff601906e66e378304506716d556d79876519364d97"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
