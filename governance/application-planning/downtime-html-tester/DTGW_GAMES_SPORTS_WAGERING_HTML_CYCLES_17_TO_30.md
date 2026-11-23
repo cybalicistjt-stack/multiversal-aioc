@@ -6,7 +6,7 @@
 **Selected session lane:** OPS5 `content-design` (owner-directed on-demand design plus standalone HTML playtest artifacts)  
 **Canonical operational selector:** `operations/CURRENT.json` on current `main`  
 **Application-implementation authorization:** **none**. Do not start PCV-06, mutate app runtime, or modify GPR/MTLC/PCV implementation branches under this program.  
-**Status:** Steps 1–2 locally implemented as standalone Cycles 17–18; user direct-file/browser acceptance remains pending. Subsequent stages proposed, not accepted complete.
+**Status:** Steps 1–3 locally implemented as standalone Cycles 17–19; user direct-file/browser acceptance remains pending. Subsequent stages proposed, not accepted complete.
 
 ## 1. Rebootstrap and source-precedence findings
 
@@ -79,6 +79,7 @@ This plan is deliberately a source-backed, **non-authoritative** OPS5 worklog an
 
 This file is a **planning/standalone-test artifact**, not a request to change the persistent `CURRENT.json` selector. Current PCV-06 delivery authority and the existing GPR/MTLC/AXI/GM/MMHT lanes are unchanged. An OPS5 branch/PR containing this plan is *proposed source registration* until protected-main review and merge. In-session source-derived plan content must not be described as current canon or a completed product tranche simply because a draft PR exists.
 
+
 ## 6. Cycle 18 concrete source and local verification record (2026-11-23)
 
 - Artifact: `Multiversal_Downtime_Playtest_Cycle_18.html` (standalone user-delivered HTML, SHA-256 `bc11356a14518e538723bfe6aab65b79f39364f279a0e3b16898e744661cee61`). Not an app release and not an authorized PCV-06 runtime.
@@ -87,3 +88,13 @@ This file is a **planning/standalone-test artifact**, not a request to change th
 - Browser proof: Chromium content-loading completed fixture games, replay equality, changed-receipt rejection, illegal action rejection, hidden-card filtering, save/reopen and 390px no-overflow layout (0 page errors). A genuine populated Cycle17 checkpoint migrated, and unapproved/pre-start links plus stale references were rejected. Direct `file://` is blocked by browser administrator, so user-side opening is still pending.
 - Limits: synthetic fixture rules are **not** canonical casino or Black Vegas rules. Replay digests and local house policy are not cryptographic, authenticated multiplayer or wager settlement. No Level5B sport certification, PCV-06 startup, production deployment or owner acceptance is claimed.
 - Next: DTGW-19 Earth pack A requires game-specific source-backed Blackjack/Roulette/Baccarat/Craps rules and separate legality, house, RNG, hand visibility and repeated-round validation. Do not universalize historical gaming PDFs or infer payout models.
+
+## 7. Cycle 19 concrete source and local verification record (2026-11-23)
+
+- Standalone artifact: `Multiversal_Downtime_Playtest_Cycle_19.html` · SHA-256 `b2a92f314b2186c4e02ae2b67a4bd5c242298fb2d9ba093a735a3f644b15d5bc` (3,925,688 bytes). No app release, no activation of PCV-06, no canonical game, character, economy, sport or campaign mutation.
+- Implemented four *separate, explicit reference variants*: six-deck S17 Blackjack with split/double, American 0/00 Roulette straight/outside predictions, 8-deck Punto Banco Baccarat and its full third-card chart, and two-die Craps pass/don't-pass come-out and point resolution. Each has multiple rounds, legal action validation, GM/player views, no-stake outcome counters, deterministic receipts and player-scoped review exports. Unsupported commercial table rules are explicitly excluded rather than guessed.
+- Current external rules references: Blackjack Wizard of Odds basics; American Roulette standard wheel rule sheet; William Hill Punto Banco third-card guide; MGM Gamesense Craps guide. Retained PCV-GW-01 remains a product scope/owner-boundary requirement, not a claim that these reference rules are Multiversal canon.
+- Browser proof: Chromium exercised actual UI for all four tables, repeated eight rounds each, tested 160 Baccarat banker draw conditions, blackjack natural and initial split, Roulette `0` and outside-pocket exclusions, Craps don't-pass 12 push, illegal choices and variant rejection, replays and changed-receipt save failure; 0 JavaScript page errors, 390px screen no horizontal overflow. Full original Cycle 18 HTML created a populated checkpoint which imported into Cycle 19 with original `games18` session intact. 133 game/sports references, 1,427 creature refs and Lantern sample JSON are byte-for-byte preserved.
+- Cycle 17 booking link proof: wrong/unapproved or pre-start Free Play booking rejected; exact source `EARTH-01` works after GM approval and start, then a source-revision change is treated as stale. No conversion of synthetic result to GM or Economy truth.
+- Not certified: user-side direct `file://`/local-storage acceptance, cryptographic or multiplayer fairness, payout/odds calibration, complete alternate casino side-wager variants, campaign in-world stakes, paid provider, actual currency/deposit/cash-out, real-installed Windows/Android, Level5B sports validation or production deployment.
+- Next default: DTGW-20 Earth starter pack B, with game-specific source/provenance and separately scoped rule variants. Keep owner-domain separation, no real-world value and no automatic PCV-06 activation.
