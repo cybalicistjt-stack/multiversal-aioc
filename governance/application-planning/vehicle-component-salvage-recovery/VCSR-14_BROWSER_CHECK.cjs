@@ -25,6 +25,7 @@ console.log('Embedded JavaScript syntax:',scripts.length,'complete inline script
   await page.locator('[data-view="spatial"]').click();
   await page.locator('#v14Tests').click();
   const report=await page.locator('#v14TestResults').innerText();
+  console.log('VCSR14 embedded test detail:',JSON.stringify(report.slice(0,5000)));
   assert.match(report,/Cycle 14 21\/21 checks passed/,'Cycle14 browser fixture suite failed');
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
   assert(overflow<=1,'Horizontal document overflow: '+overflow);
