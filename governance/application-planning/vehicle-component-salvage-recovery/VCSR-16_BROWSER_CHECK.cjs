@@ -63,7 +63,7 @@ console.log('Cycle16 exact HTML SHA256:',sha256,'bytes:',htmlBytes.length,'inlin
   assert(playerHandoff.characterGmBridge.proposals.every(p=>!('gmDecisionRef' in p)&&!('ownerRequestRef' in p)),'GM authorization or owner refs in Player export');
   assert.equal(playerHandoff.characterGmBridge.hiddenCardinalityExposed,false);
   await page.locator('#role').selectOption('gm');
-  const latest=await page.evaluate(()=>state.v16.requests.find(z=>z.id===proposed.id));
+  const latest=await page.evaluate(id=>state.v16.requests.find(z=>z.id===id),proposed.id);
   assert.equal(latest.status,'proposed');
   await page.locator('[data-v16-id="'+proposed.id+'"]').click();
   await page.locator('#v16OpId').fill('v16:browser:gm-approved:transfer');
