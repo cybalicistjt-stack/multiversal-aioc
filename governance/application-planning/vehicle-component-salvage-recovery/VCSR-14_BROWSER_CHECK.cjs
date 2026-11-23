@@ -19,7 +19,7 @@ console.log('Embedded JavaScript syntax:',scripts.length,'complete inline script
   const page=await browser.newPage({viewport:vp,acceptDownloads:true});
   const errors=[];page.on('pageerror',e=>errors.push(String(e)));
   await page.setContent(html,{waitUntil:'load',timeout:120000});
-  assert.equal(await page.evaluate(()=>state.schemaVersion),14,'Cumulative v14 not initialized');
+  assert.equal(await page.evaluate(()=>state.schemaVersion),14,'Cumulative v14 not initialized. Browser page errors: '+JSON.stringify(errors));
   assert.equal(await page.evaluate(()=>v14Validate(state)),true,'Cumulative source validation failed');
   await page.locator('[data-view="spatial"]').click();
   await page.locator('#v14Tests').click();
