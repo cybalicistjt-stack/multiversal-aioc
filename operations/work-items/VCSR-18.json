@@ -35,28 +35,72 @@
     "artifact_git_blob": "c32b636191621dae3a8651a380007138f9094f0c",
     "new_embedded_checks": 49,
     "expected_inline_scripts": 17,
-    "run_status": "pending_exact_head_Chomium_proof",
+    "run_status": "chromium_exact_file_browser_verified",
     "browser_script": "governance/application-planning/vehicle-component-salvage-recovery/VCSR-18_BROWSER_CHECK.cjs",
     "workflow": ".github/workflows/validate-vcsr18-browser.yml",
     "source_crosswalk": "governance/application-planning/vehicle-component-salvage-recovery/VCSR-18_SOURCE_TO_GOLDEN_PROOF_CROSSWALK.md",
-    "earlier_cycle17_browser": "46/46 tests desktop/mobile; source HTML full"
+    "earlier_cycle17_browser": "46/46 tests desktop/mobile; source HTML full",
+    "bytes": 1243609,
+    "sha256": "95131b01171987ff6f0037a95e8bffdf56e06a91903c52218c22569bd1fd9b90",
+    "receipt": "governance/application-planning/vehicle-component-salvage-recovery/VCSR-18_BROWSER_TEST_RECEIPT.md",
+    "browser": {
+      "runner": "Chromium Playwright on GitHub Actions Ubuntu 24.04",
+      "tested_content_commit": "b9e7c689a3289e18e1a611908bd7a68a469a3462",
+      "successful_runs": [
+        45154053232,
+        45154053356
+      ],
+      "inline_scripts": 17,
+      "combined_scope_syntax": true,
+      "desktop_viewport": "1280x850",
+      "mobile_viewport": "390x844",
+      "new_cases": {
+        "passed": 49,
+        "total": 49
+      },
+      "prior_suites": "Cycles01–17 invoked, not independently recounted",
+      "actual_fixture_outcomes": {
+        "blackglass_local_steps": 8,
+        "rover_local_steps": 8,
+        "gm_unknown_ship_local_steps": 3,
+        "ship_stripping_blocked": true
+      },
+      "keyboard_enter": true,
+      "focus_visible": true,
+      "min_local_control_target_px": 44,
+      "player_handoff_bytes_desktop": 142432,
+      "player_handoff_bytes_mobile": 142431,
+      "gm_checkpoint_bytes_desktop": 293509,
+      "gm_checkpoint_bytes_mobile": 293496,
+      "actual_fresh_browser_import": true,
+      "previous_views_navigated": 11,
+      "earlier_bridge_families_preserved": 4,
+      "uncaught_page_errors": 0,
+      "horizontal_overflow_px": 0,
+      "actual_source_owner_mutations": 0,
+      "limits": [
+        "No full WCAG or assistive-technology certification",
+        "No real D17, MIB12, MIB14 or Character gameplay effect, owner receipt verification or device sync",
+        "No live Unity, Android, LAN, server or payment proof"
+      ]
+    }
   },
-  "active_substep": "source_cumulative_html_candidate_pending_browser",
-  "next_action": "Execute exact complete Cycle18 HTML Playwright browser source/a11y/privacy/recovery proof at two viewports, fix issues and document exact-head proof; stage draft PR behind VCSR17 #2046.",
+  "active_substep": "browser_verified_pending_stacked_predecessor_publication_and_owner_review",
+  "next_action": "Owner review of VCSR18 and source gaps with governed predecessor VCSR draft stack (#2046 and earlier) before any protected-main publication. No automatic VCSR19 or live GM/Character/MMHT/Downtime integration.",
   "planned_successor": "Owner review/publish and gap disposition of VCSR01–18; NO automatic VCSR-19 without explicit authorization",
   "execution_guard": {
     "continue_turns": 1,
-    "material_progress_seq": 1,
+    "material_progress_seq": 2,
     "progress_at_last_owner_command": 0,
     "no_progress_cycles": 0,
     "stall_nudges": 0,
     "last_material_progress": {
-      "seq": 1,
-      "kind": "cumulative_cycle18_source_candidate",
-      "evidence": "VCSR18 complete additive HTML git blob c32b6361, 49 new source conformance checks and 3 independent proof fixtures"
+      "seq": 2,
+      "kind": "vcsr18_exact_file_chromium_golden_verified",
+      "evidence": "17 inline scripts, 49/49 new tests 1280×850+390×844, Blackglass 8/8, Rover 8/8, GM ship blocked 3/8, player-safe handoff/GM fresh import, keyboard/focus/44px, zero JS or source-owner writes, SHA-256 95131b01171987ff6f0037a95e8bffdf56e06a91903c52218c22569bd1fd9b90, run #45154053232"
     },
     "active_stall": false,
-    "terminal_response_allowed": false,
-    "stop_reason": null
+    "terminal_response_allowed": true,
+    "stop_reason": "GOVERNED_STACKED_PREDECESSOR_PUBLICATION_PENDING"
   }
 }

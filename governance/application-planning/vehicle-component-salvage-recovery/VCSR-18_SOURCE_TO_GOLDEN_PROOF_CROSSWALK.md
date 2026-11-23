@@ -30,3 +30,7 @@
 - Pass/blocked/current stages include text, not color alone. 8 source-to-owner crosswalk rows per journey; native keyboard controls, no drag-only dependency.
 - Only GM may author local proof evidence. Player only sees authorized case labels/coarse progress, with GM-only ship and stage evidence/operation receipts removed before counts/export. Prior VCSR14 spatial, VCSR15 Project, VCSR16 Character and VCSR17 economy handoffs preserved.
 - **No claim of full WCAG compliance, screen-reader testing, keyboard-only full-app testing, physical device or live app integration.** Exact-file CI must verify test truth before any green status.
+
+## Executed acceptance, 2026-11-23
+
+[Exact-file run #45154053232](https://github.com/cybalicistjt-stack/multiversal-aioc/actions/runs/45154053232) passed all **49/49** new embedded Cycle18 checks in Chromium desktop and mobile with full Blackglass+Rover local reference routes and the correctly blocked private ship. Actual Player-safe handoff and GM full checkpoint were downloaded as JSON and fresh-browser reimport verified; responsive new controls, keyboard Enter and visible focus passed automated local checks. No actual source owner mutation, no JavaScript errors or horizontal overflow. This remains a limited browser demonstration, not complete WCAG compliance or live gameplay. See [VCSR-18_BROWSER_TEST_RECEIPT.md](VCSR-18_BROWSER_TEST_RECEIPT.md).
