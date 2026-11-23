@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "vcsr",
+  "program_id": "VCSR",
+  "work_item_id": "VCSR-08",
+  "attempt_id": "VCSR-08-attempt-001",
+  "title": "Standalone HTML Cycle 08 — Ground, Water and Air Vehicle Builder with Owned Components",
+  "status": "in_progress",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue, established standalone VCSR sequence, 2026-11-22",
+  "authority_type": "owner_scoped_standalone_html_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/vehicle-component-salvage-recovery/VCSR_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Preserve all cumulative VCSR-01..07 standalone HTML workflows, local source/mutation receipts, versioned import and exports.",
+      "Source exact governed MIB-14 rover and four modules; add clearly illustrative water and air chassis with author-defined mounts, capacity and movement references.",
+      "Model stable owned vehicle and distinct owned module instances; install, inspect, uninstall with exact mount allow-list, kind/class/tag, slot/cargo/power validation, owner and expected-version guards.",
+      "Offer GM-authored vehicle/chassis/mount/source evidence, explicit crew/qualified-station and D17-shaped cargo reference projections; refuse to infer speed, fuel rates, economy or hardware behavior.",
+      "Test 229 browser invariants, actual interactive install/removal, real JSON export/import, player privacy filters and old Cycle01/02/03/05/06 operations."
+    ],
+    "boundaries": [
+      "All owner-mutating operations are local demo simulations; no D17/GM auth, actual network owner receipt or live MIB-14 service.",
+      "Chassis mounts and water/air vehicle figures are expressly illustrative; source-backed MIB-14 rover/module figures are immutable.",
+      "No automatic acquisition of physical components, XP item purchases, vehicle travel/rates, fuel consumption, ship/mecha/real-time controllers, repair or external HTML integration.",
+      "No modification of GPR/CWKS/MTLC/MMHT implementation lane selections or protected main."
+    ]
+  },
+  "evidence": {
+    "artifact": "governance/application-planning/vehicle-component-salvage-recovery/artifacts/Multiversal_VCSR_Cycle_08.html",
+    "sha256": "e8ed3ecf7dd6498ef92318714ae216315dc77e5510e991434ff9b315f71265f6",
+    "bytes": 524232,
+    "git_blob": "9608a17e0d0d189e3d37a42770161d82dd41fa76",
+    "embedded_tests": {
+      "cycle01": 8,
+      "cycle02": 12,
+      "cycle03": 18,
+      "cycle04": 26,
+      "cycle05": 30,
+      "cycle06": 36,
+      "cycle07": 39,
+      "cycle08": 60,
+      "total": 229,
+      "passed": 229
+    },
+    "browser": {
+      "engine": "Chromium headless Playwright set_content complete HTML",
+      "viewports": [
+        "1280x850",
+        "390x844"
+      ],
+      "pageErrors": 0,
+      "horizontalOverflow": false,
+      "manualActions": [
+        "Owned rover cargo rack and sensor installed; rack removed retaining instance ID",
+        "Water sounder/skiff, air stabilizer/surveyor installed",
+        "External D17-shaped cargo mass evidence used, not actual inventory moved",
+        "Custom Crosswind air chassis and second explicit mount authored; private physical vehicle created and pilot assigned",
+        "Real JSON checkpoint downloaded (4 chassis, 5 vehicles, 10 simulated receipts), reopened in fresh mobile-width browser preserving modules and crew",
+        "Player view filters two GM-only airframes and private component without leaking counts; player handoff downloaded",
+        "Legacy Cycle05 mock D17 operation and Cycle06 recovery outcomes succeed with schemaVersion8"
+      ]
+    },
+    "source_refs": [
+      "Multiversal-app MIB-14 live vehicle/platform/base inventory and vehicle-platform-base-engine.ts",
+      "Multiversal-app mib-i14-starter-library.ts and smb-06-full-vehicle-system.ts",
+      "Project FEATURE_BIBLE Volume 6 Vehicles; PROJECT_BIBLE reference §24.9-24.10",
+      "VCSR-01..07 independent source-testing artifacts, D17/MIB-03/MIB-14/Character/Downtime owner seams"
+    ]
+  },
+  "active_substep": "html_validated_pending_exact_head_stacked_pr_publication",
+  "next_action": "Respect protected-main OPS5 guarded exact-head publication of predecessor VCSR drafts #2019→#2021→#2022→#2024→#2026→#2028→#2029, then publish VCSR-08 after source-branch retarget/validation and reconcile canonical main CURRENT. New owner Continue advances standalone VCSR-09 mecha builder.",
+  "planned_successor": "VCSR-09",
+  "successor_rule": "Owner Continue explicitly requests new cumulative standalone HTML; no automatic production integration or parallel lane mutation.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "stall_nudges": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "cumulative_standalone_html_browser_and_checkpoint_verified",
+      "evidence": "229/229 tests Chromium 1280x850 and 390x844; actual create/install/remove/crew/cargo and checkpoint import; exact SHA256 e8ed3ecf7dd6498ef92318714ae216315dc77e5510e991434ff9b315f71265f6"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
