@@ -1119,6 +1119,37 @@
       "report_filename": "Multiversal_GM_IS14_Cycle41_Automated_Report.json",
       "notes_filename": "Multiversal_GM_IS14_Cycle41_Verification_Notes.md",
       "next": "IS-15 / Cycle42 — integrated live social and investigation GM workspace with Scene/Player/Combat/Maps/Downtime reference-only handoffs, without coupling standalone testers or granting installed authority"
+    },
+    "standalone_cycle_42": {
+      "status": "delivered_for_owner_playtest",
+      "filename": "Multiversal_GM_Playtest_Cycle_42.html",
+      "sha256": "d878cd38dc7fd6c8314e84bf95fe7d618128dec57b435e62633057ea5d57893b",
+      "file_size_bytes": 15941542,
+      "completed": "2026-11-22",
+      "source_basis": [
+        "OPS5 canonical GM-00 and approved GM-IS IS-15 / Cycle42 line; no installed product authority",
+        "MV-IA-F005 Campaign Scene and Session Builder exact Scene/Session source distinction and permission",
+        "MMHT_PROGRAM.md stable map/floor/feature identity, revision, geometry/visibility ownership and external tester handoff",
+        "APW-03 Between-Session Campaign Activity and Bounded Downtime: orchestration over source owners, no gameplay progress mutation",
+        "Prior Cycle41 integrated standalone GM source and A5 Session/Live GM/Combat/Investigation/Social source functions preserved"
+      ],
+      "covered": [
+        "Prepare Scene & Handoff Desk six-stage workflow with existing Campaign and source Scene/Session binding, links to Session planner, Live GM, Combat, Social Director and Case Library; no Scene/live launch cloning",
+        "Optional exact current active Campaign Player and existing same-Campaign Investigation/Social placements plus manual Map Maker document ID/revision/feature and independent Downtime activity ID/revision, GM-private provenance/notes",
+        "Seven typed source receiving domains A5 Scene/Session, D05 Player, A7 Combat, MMHT Map Maker, APW Downtime, D24 Investigation and D25 Social with inspect/prepare/request-handoff/follow-up intent. Combat target requires actually active encounter in exact scene; no generated encounter ID",
+        "Read-only owner readiness, revocation/source revision comparison, all handoffs draft/review-ready/retired; operation fingerprint/idempotent replay/collision guard, expected-revision and wrong Campaign/role/source denial, archives revoke local safe snapshots and retire handoffs",
+        "GM-private exported JSON envelope for all reviewed handoffs or separate Map Maker/Downtime reference packets; submitted/accepted/executed/sourceIdsVerified/playerAccessVerified/domainMutation are all false. External testers not coupled and neither geometry nor gameplay progress copied. Map packet omits unrelated activity source; Downtime packet may carry map/feature location references",
+        "Review-ready handoffs invalidated for export when local Scene context revision/target source differs; never silently export stale packets",
+        "Separately GM-authored Player-safe title/text, scoped individual/party release, frozen snapshot, explicit revocation; Player projection omits GM notes/source identities/source Scene label/linked Map/Downtime/Case/Social data; a local HTML preview is not D05 security",
+        "Existing Campaign, Combat, Map, Fleet, Noncombat and all IS02–IS14 social/investigation screens retained; all 21 prior Cycle41 HTML script contents byte-for-byte preserved"
+      ],
+      "verification": "Exact final 15,941,542 bytes and SHA-256 d878cd38dc7fd6c8314e84bf95fe7d618128dec57b435e62633057ea5d57893b. All 21 old script blocks byte-identical; 5 source JSON parse; 17/17 executable JS scripts Node --check. Chromium 100/100 new focused checks PASS including actual Map Maker and Downtime JSON download/parse, real binding and handoff form, Player-safe publish/revoke and source leak negative, original GM27 Regression Lab 27/27, responsive 1440/768/390 zero JS errors/overflow. Inherited complete Cycle41 60/60 PASS against Cycle42. Supplemental 55/55 source/syntax and 15-route GM Investigation/Social sweeps with and without Campaign PASS. 215 overlapping suite checks; full separate Cycle33–40 suites not rerun.",
+      "limitations": "Browser automation uses page.set_content plus controlled localStorage shim: genuine file:// reload persistence not certified. GM private data embedded in standalone file and Player preview is not server-enforced D05 visibility. Independent Map Maker and Downtime testers were not called, synchronized or shown to accept the suggested JSON handoff schema; all manual source IDs remain unverified. No installed Windows+Android two-device session, A5 Scene launch, D24 discovery, D25/A6 social action, A7 combat transition, MMHT geometry or APW downtime effect, domain Event, independent import protocol, or native screen reader acceptance.",
+      "proof_boundary": "Synthetic standalone GM source link / handoff preparation only; JSON is a nonauthoritative review packet, not a completed import, accepted operation or product integration.",
+      "notes_filename": "Multiversal_GM_IS15_Cycle42_Verification_Notes.md",
+      "report_filename": "Multiversal_GM_IS15_Cycle42_Automated_Report.json",
+      "handoff_filename": "Multiversal_GM_IS15_Cycle42_Map_Downtime_Handoff.md",
+      "next": "IS-16 / Cycle43 — content source lookup, controlled import/export, accessible and role-safe projection, comprehensive GM regression and integration acceptance in standalone HTML only"
     }
   },
   "active_substep": "cycle_24_vehicle_mecha_starship_combat_delivered",
@@ -1127,21 +1158,21 @@
   "planned_successor": "GM-01",
   "successor_rule": "Current GM-00 evidence does not select GM-01 or authorize product changes.",
   "execution_guard": {
-    "continue_turns": 39,
+    "continue_turns": 40,
     "stall_nudges": 0,
-    "material_progress_seq": 39,
-    "progress_at_last_owner_command": 38,
+    "material_progress_seq": 40,
+    "progress_at_last_owner_command": 39,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 39,
-      "kind": "gm_is14_standalone_playtest_delivered",
-      "evidence": "Cycle41 artifact exact SHA-256, preserved prior 20 scripts and five JSON blobs, 16/16 Node, focused Chromium 60/60 incl. GM27 27/27; supplemental navigation/source smoke 52/52, attached HTML and owner notes."
+      "seq": 40,
+      "kind": "gm_is15_standalone_playtest_delivered",
+      "evidence": "Cycle42 15,941,542 byte standalone HTML exact SHA, 21 earlier scripts unchanged, Node 17/17, focused 100/100, inherited Cycle41 60/60, 55/55 source/route smoke incl original GM27 27/27; owner file, private map/downtime handoff spec and verification notes"
     },
     "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "owner_only",
-      "evidence": "IS-14 Cycle41 synthetic owner-review standalone HTML delivered. IS-15 next planned source-only integration handoff. No real file-origin persistence, server privacy, installed two-device or domain Event certified."
+      "evidence": "IS-15 Cycle42 owner standalone HTML, notes and source-ref handoff delivered. IS-16 is next planned bounded final GM-IS cycle; installed Scene/Combat/Map/Downtime/D05 authority and file-origin persistence unverified."
     }
   },
   "owner_cycle_direction": "Owner continued GM-COMBAT-16-27 to Cycle 24. The standalone GM HTML must retain the dark rainbow layout, floating Turn Order with Next Turn, project fleet/crew/source authority, and independent companion testers. No PCV product implementation authority.",
@@ -1165,17 +1196,17 @@
     "scope": "Investigations, social play, GM screen integration planning and consecutive standalone HTML playtest cycles; no app product code or installed certification",
     "plan_ref": "governance/application-planning/gm-workspace/GM_INVESTIGATION_SOCIAL_HTML_INTEGRATION_PLAN.md",
     "series_cycles": "28–43",
-    "selected_step": "IS-14",
+    "selected_step": "IS-15",
     "selected_step_status": "delivered_for_owner_playtest",
-    "remaining_steps": "IS-15–IS-16 planned bounded standalone owner-directed GM HTML playtest only; installed product implementation remains independently selected",
+    "remaining_steps": "IS-16 / Cycle43 remains the final planned bounded standalone HTML source lookup, safe import/export and comprehensive GM regression cycle; installed app product implementation is separately governed",
     "stage": {
-      "id": "IS-14",
-      "cycle": 41,
-      "title": "Interpersonal/community social status, negotiation terms, attributable rumor paths and uncommitted cross-domain Event groups",
-      "result": "Standalone HTML owner-playtest verification: 60/60 focused, 52/52 source/route smoke; original GM27 27/27 nested, previous 20 scripts byte-identical, 16/16 Node executable checks, 5 source JSON parse. Browser-native persistence and installed source authority unverified.",
-      "sha256": "8bb4dc6e63a7d01eaae3051b4b4d4544675da2c08c080a53b9be76a0210f2047",
-      "artifact": "Multiversal_GM_Playtest_Cycle_41.html"
+      "id": "IS-15",
+      "cycle": 42,
+      "title": "Integrated GM Scene / Social / Investigation source context with typed Combat, Player, Map Maker and Downtime handoff export",
+      "result": "Synthetic standalone GM HTML. Final file 15,941,542 bytes, SHA-256 d878cd38dc7fd6c8314e84bf95fe7d618128dec57b435e62633057ea5d57893b, 100/100 new focused Chromium, full prior IS-14 Cycle41 60/60, source/syntax/15-route smoke 55/55 all passed; 21 prior script blocks byte-identical. No installed implementation or external import.",
+      "artifact": "Multiversal_GM_Playtest_Cycle_42.html",
+      "sha256": "d878cd38dc7fd6c8314e84bf95fe7d618128dec57b435e62633057ea5d57893b"
     },
-    "next_owner_review": "Prepare → Social Status & Rumors. Add interpersonal status (counterpart) and community status (area) as separate owner pointers; draft an agreement with explicit parties/terms; record a rumor hop and a linked next hop with information path and independently typed belief/authenticity; create Condition and faction effect drafts under one local bundleRef, review without committing; separately publish a safe report to an active Player, edit source and verify frozen disclosure, then revoke. IS-15 follows."
+    "next_owner_review": "Open Prepare → Scene & Handoff Desk; select Campaign and an existing Session Scene, optionally link an active Player, D24 placed case, D25 social placement, pinned Map Maker map/revision/feature and Downtime activity/revision. Create Map Maker and Downtime typed handoffs, review, download separate GM-private reference packets, then revise binding and check old handoffs are blocked from export. Publish separate safe Player briefing and revoke. The other HTML testers remain independent. IS-16 is next."
   }
 }
