@@ -6,7 +6,7 @@
 **Selected session lane:** OPS5 `content-design` (owner-directed on-demand design plus standalone HTML playtest artifacts)  
 **Canonical operational selector:** `operations/CURRENT.json` on current `main`  
 **Application-implementation authorization:** **none**. Do not start PCV-06, mutate app runtime, or modify GPR/MTLC/PCV implementation branches under this program.  
-**Status:** Step 1 locally implemented as standalone Cycle 17; user browser acceptance pending. Subsequent steps proposed, not accepted complete.
+**Status:** Steps 1–2 locally implemented as standalone Cycles 17–18; user direct-file/browser acceptance remains pending. Subsequent stages proposed, not accepted complete.
 
 ## 1. Rebootstrap and source-precedence findings
 
@@ -78,3 +78,12 @@ This plan is deliberately a source-backed, **non-authoritative** OPS5 worklog an
 ## 5. OPS5 registration boundary
 
 This file is a **planning/standalone-test artifact**, not a request to change the persistent `CURRENT.json` selector. Current PCV-06 delivery authority and the existing GPR/MTLC/AXI/GM/MMHT lanes are unchanged. An OPS5 branch/PR containing this plan is *proposed source registration* until protected-main review and merge. In-session source-derived plan content must not be described as current canon or a completed product tranche simply because a draft PR exists.
+
+## 6. Cycle 18 concrete source and local verification record (2026-11-23)
+
+- Artifact: `Multiversal_Downtime_Playtest_Cycle_18.html` (standalone user-delivered HTML, SHA-256 `bc11356a14518e538723bfe6aab65b79f39364f279a0e3b16898e744661cee61`). Not an app release and not an authorized PCV-06 runtime.
+- Implemented: non-stake synthetic three-round Gatehouse Dice player-versus-house fixture; seeded deck shuffle, concealed house card, player hand, wheel, board movement; two role-labeled participants, turn/round legality, immutable-ordered action receipts, deterministic replay and checksum validation; optional link to GM-approved-and-started Cycle17 Free Play game requests.
+- Preserved: 133 exact games/sports source-index references; 1,427 exact creature-index rows; separate local storage version 18, Cycle 01–17 checkpoint import, private GM/player projection boundaries, no automatic campaign owner mutation, no real-world value, no fake wallet or winnings.
+- Browser proof: Chromium content-loading completed fixture games, replay equality, changed-receipt rejection, illegal action rejection, hidden-card filtering, save/reopen and 390px no-overflow layout (0 page errors). A genuine populated Cycle17 checkpoint migrated, and unapproved/pre-start links plus stale references were rejected. Direct `file://` is blocked by browser administrator, so user-side opening is still pending.
+- Limits: synthetic fixture rules are **not** canonical casino or Black Vegas rules. Replay digests and local house policy are not cryptographic, authenticated multiplayer or wager settlement. No Level5B sport certification, PCV-06 startup, production deployment or owner acceptance is claimed.
+- Next: DTGW-19 Earth pack A requires game-specific source-backed Blackjack/Roulette/Baccarat/Craps rules and separate legality, house, RNG, hand visibility and repeated-round validation. Do not universalize historical gaming PDFs or infer payout models.
