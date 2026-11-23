@@ -935,6 +935,37 @@
       "report_filename": "Multiversal_GM_IS08_Cycle35_Automated_Report.json",
       "notes_filename": "Multiversal_GM_IS08_Cycle35_Verification_Notes.md",
       "next": "IS-09 / Cycle36 — GM case conclusion, approved outcome projection, safe player dossier, history/continuity and recovery without overwriting Player theories"
+    },
+    "standalone_cycle_36": {
+      "status": "delivered_for_owner_playtest",
+      "filename": "Multiversal_GM_Playtest_Cycle_36.html",
+      "sha256": "a0db226f9344dab72561d5e5acd94b4ebe7843581f1c12ed0e3fb018226de3a8",
+      "file_size_bytes": 15665200,
+      "completed": "2026-11-22",
+      "source_basis": [
+        "GM-IS approved 16-step plan IS-09 / Cycle36",
+        "MV-IA-F011 D24 ConclusionRecord and Investigation lifecycle/GM authorization requirements",
+        "PPIA-09 Investigation/Mystery Authoring Experience: truth-hypothesis-conclusion/history and permission-before-derivatives",
+        "Current Multiversal-app A9 hypothesis-conclusion-port.ts authoritative promotion separation",
+        "Cycles29–35 standalone source preserved exactly"
+      ],
+      "covered": [
+        "GM-only Prepare → Conclusions & Case History plus permanent Investigation & Social Director launcher; requires an existing campaign-specific case placement, not a live Scene",
+        "Local GM conclusion draft, explicitly attributed Clue/Testimony/Timeline/Prepared Revelation same-case source references, expected-revision and operation-ID replay/collision guards",
+        "Explicit recorded-local milestone requires Ready source-pinned case, rationale and references; immutable source label/version snapshots; DOES NOT emit canonical D24 ConclusionRecorded Event, change case lifecycle or promote Player hypothesis to truth",
+        "Recorded conclusion immutable; explicit supersession preserves history and automatically revokes its still-published local safe handouts",
+        "Separate player-safe title/summary/outcome written by GM, locally published to active party or individual active Player as a frozen snapshot with rationale, revocable/re-publishable, observer/revoked/cross-campaign/paused-case filtering",
+        "Private player hypotheses and original Clue/Testimony/Timeline state remain untouched and never copied into GM export or Player handout",
+        "Linear case continuity/history with draft prior-revision snapshots, record/supersession receipts and revoked disclosure history",
+        "GM-only JSON checkpoint download and actual file-picker import preview; bounded merge-only recovery restores missing conclusions as GM-only drafts needing explicit review, NEVER restarts previously published/revoked handouts",
+        "Original 15 HTML source/script bodies byte-for-byte preserved, no installed product code mutation"
+      ],
+      "verification": "Exact 15,665,200 byte HTML SHA256 a0db226f...; Node --check 11/11 executable JS PASS, 5/5 original JSON parse, all 15 prior embedded script bodies byte-identical. Playwright Chromium focused Cycle36 58/58 PASS; full inherited Cycle35 58/58, Cycle34 58/58 and Cycle33 55/55 PASS (including retained Cycle27 GM Regression Lab 27/27); additional actual browser checkpoint download/import/preview/private recovery 5/5 PASS. 1440x900, 768x1024, 390x844 zero page errors and no document overflow.",
+      "limitations": "Playwright uses page.set_content() with controlled in-memory localStorage shim, not actual file:// persistence reload. Single-file Player preview not real D05 server-side authorization. No installed Windows/Android two-device multiplayer, canonical D24/A6 Event or Decision, independent Map Maker/Downtime import or screen-reader verification.",
+      "proof_boundary": "Synthetic standalone local GM authoring/recovery playtest. No canonical ConclusionRecorded Event, Player hypothesis promotion, Campaign resolution authority or installed-app certification.",
+      "report_filename": "Multiversal_GM_IS09_Cycle36_Automated_Report.json",
+      "notes_filename": "Multiversal_GM_IS09_Cycle36_Verification_Notes.md",
+      "next": "IS-10 / Cycle37 — Social Director: freeform, assisted, structured social challenges, NPC context, audience/participants, noncombat source handoffs"
     }
   },
   "active_substep": "cycle_24_vehicle_mecha_starship_combat_delivered",
@@ -943,21 +974,21 @@
   "planned_successor": "GM-01",
   "successor_rule": "Current GM-00 evidence does not select GM-01 or authorize product changes.",
   "execution_guard": {
-    "continue_turns": 33,
+    "continue_turns": 34,
     "stall_nudges": 0,
-    "material_progress_seq": 33,
-    "progress_at_last_owner_command": 32,
+    "material_progress_seq": 34,
+    "progress_at_last_owner_command": 33,
     "no_progress_cycles": 0,
     "last_material_progress": {
-      "seq": 33,
-      "kind": "gm_is08_standalone_playtest_delivered",
-      "evidence": "Cycle35 artifact exact SHA256; preserved original 14 source scripts and 5 JSON data, Node 10/10, new Chrome 58/58 and inherited Cycle34 58/58, Cycle33 55/55 with GM27 27/27, mobile empty-case/export smoke, verification notes"
+      "seq": 34,
+      "kind": "gm_is09_standalone_playtest_delivered",
+      "evidence": "Cycle36 exact SHA256, previous 15 source scripts byte-identical, Node 11/11, 58 new focused + 171 retained tests, 5 direct checkpoint UI controls, owner-review HTML and notes"
     },
     "active_stall": false,
     "terminal_response_allowed": true,
     "stop_reason": {
       "kind": "owner_only",
-      "evidence": "IS-08 Cycle35 standalone synthetic GM owner-review milestone delivered; IS-09 is next planned bounded HTML cycle. File-origin persistence and installed D24/D05/A6 authoritative play remain unverified."
+      "evidence": "IS-09 Cycle36 synthetic standalone owner-review HTML delivered. IS-10 social authoring is next planned bounded standalone step, not installed product. File-origin storage, server privacy and two-device certification remain unverified."
     }
   },
   "owner_cycle_direction": "Owner continued GM-COMBAT-16-27 to Cycle 24. The standalone GM HTML must retain the dark rainbow layout, floating Turn Order with Next Turn, project fleet/crew/source authority, and independent companion testers. No PCV product implementation authority.",
@@ -981,17 +1012,17 @@
     "scope": "Investigations, social play, GM screen integration planning and consecutive standalone HTML playtest cycles; no app product code or installed certification",
     "plan_ref": "governance/application-planning/gm-workspace/GM_INVESTIGATION_SOCIAL_HTML_INTEGRATION_PLAN.md",
     "series_cycles": "28–43",
-    "selected_step": "IS-08",
+    "selected_step": "IS-09",
     "selected_step_status": "delivered_for_owner_playtest",
-    "remaining_steps": "IS-09–IS-16 planned as future bounded standalone HTML increments; installed product implementation remains separately governed",
+    "remaining_steps": "IS-10–IS-16 planned future standalone HTML cycles; no product implementation authority",
     "stage": {
-      "id": "IS-08",
-      "cycle": 35,
-      "title": "Prepared revelations, dependency routes, redundancy, stall-recovery and read-only solvability review",
-      "result": "Standalone GM owner-playtest HTML, 58/58 focused Chromium, 58/58 prior Cycle34 and 55/55 prior Cycle33 checks PASS. Original 14 script blocks preserved, Node 10/10. Real browser-origin persistence and server authority unverified.",
-      "sha256": "2b5c3e8a7260882cf629a480cd782e21d714db3145be37d97a7dfb93ea1c51b8",
-      "artifact": "Multiversal_GM_Playtest_Cycle_35.html"
+      "id": "IS-09",
+      "cycle": 36,
+      "title": "GM case conclusion, safe player resolution dossier, immutable history and guarded recovery",
+      "result": "Standalone owner-playtest HTML with 58/58 focused checks, inherited 58/58 Cycle35 + 58/58 Cycle34 + 55/55 Cycle33, 5 actual checkpoint controls, Node 11/11, prior 15 HTML scripts unchanged; native persistence and installed server authorization unverified",
+      "sha256": "a0db226f9344dab72561d5e5acd94b4ebe7843581f1c12ed0e3fb018226de3a8",
+      "artifact": "Multiversal_GM_Playtest_Cycle_36.html"
     },
-    "next_owner_review": "Open Prepare → Revelation Routes without campaign, choose/create reusable case. Add required/important and optional/bonus revelations. Link 1 then 2 independent sources; mark primary, alternate, and stall-recovery routes, try cyclic prerequisites, duplicate source, manual unverified, source revision change; examine warning-only audit and no Player information leakage. Next IS-09."
+    "next_owner_review": "Create a Ready case and active placement with clues, testimony or timeline sources. Draft a GM-only sourced conclusion, separately author public resolution, explicitly record locally, publish to an active Player/party, verify Player/observer filtering, revoke and supersede. Export private checkpoint and verify imported records are private review-required drafts. IS-10 Social Director next."
   }
 }
