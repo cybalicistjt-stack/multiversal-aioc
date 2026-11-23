@@ -11,6 +11,7 @@ assert(html.includes('VCSR-14'),'Cycle14 code missing');
 const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(m=>m[1]);
 assert(scripts.length>=13,'Prior 13 cycles or Cycle14 script missing');
 for(let i=0;i<scripts.length;i++)new vm.Script(scripts[i],{filename:'vcsr14-inline-'+i+'.js'});
+new vm.Script(scripts.join('\n'),{filename:'vcsr14-all-inline-global-bindings.js'});
 console.log('Embedded JavaScript syntax:',scripts.length,'complete inline scripts');
 (async()=>{
  const browser=await chromium.launch({headless:true});

@@ -2765,7 +2765,7 @@ function v14Checks(){const c=[],test=(name,fn)=>{try{fn();c.push({name,ok:true})
 runChecks=function(){V14_PRE.runChecks();const r=v14Checks();emit('Cycle14 '+r.passed+'/'+r.total+' reference checks; earlier suites invoked.',r.passed!==r.total);};
 const v14Nav=document.querySelector('.nav');if(v14Nav){const b=document.createElement('button');b.dataset.view='spatial';b.textContent='Map & Spatial Links · 14';b.onclick=()=>go('spatial');v14Nav.appendChild(b);}
 for(const id of ['saveTop','testsTop']){const o=document.getElementById(id),n=o.cloneNode(true);o.replaceWith(n);n.onclick=id==='saveTop'?checkpoint:()=>{go('spatial');runChecks();};}
-const oldImport=document.getElementById('applyImport'),newImport=oldImport.cloneNode(true);oldImport.replaceWith(newImport);newImport.textContent='Open Cycle 01–14 checkpoint';newImport.onclick=doImport;
+const v14ImportOld=document.getElementById('applyImport'),v14ImportNew=v14ImportOld.cloneNode(true);v14ImportOld.replaceWith(v14ImportNew);v14ImportNew.textContent='Open Cycle 01–14 checkpoint';v14ImportNew.onclick=doImport;
 try{const raw=localStorage.getItem('mv-vcsr-cycle14')||localStorage.getItem('mv-vcsr-cycle13');if(raw){const saved=JSON.parse(raw);validateImport(saved);state=v14Upgrade(saved);}else state=v14Upgrade(state);}catch(e){state=v14Upgrade(state);}
 v14Validate(state);persist();render();document.title='Multiversal · Components & Recovery · Cycle 14';document.querySelector('.mast .brand .muted').textContent='VCSR · Cycle 14 · MMHT spatial references · offline';
 </script>
