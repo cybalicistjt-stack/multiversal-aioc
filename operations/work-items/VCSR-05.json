@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "vcsr",
+  "program_id": "VCSR",
+  "work_item_id": "VCSR-05",
+  "attempt_id": "VCSR-05-attempt-001",
+  "title": "Standalone HTML Cycle 05 — Operation Identity, Reservation, Atomic Commit and Recovery",
+  "status": "in_progress",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue in established VCSR standalone HTML cycle series, 2026-11-22",
+  "authority_type": "owner_scoped_standalone_html_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/vehicle-component-salvage-recovery/VCSR_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Preserve all cumulative VCSR-01..04 HTML workflows and portable checkpoint upgrade.",
+      "Stable operation ID/idempotency/correlation and immutable source/profile/selection payload fingerprint; exact source-version and GM-only owner dispatch rehearsal.",
+      "Separate reserve, atomic source/output commit, explicit release and owner-result receipt with returned post-reservation owner version.",
+      "Simulate sent/received, response lost, request not delivered, status-first retry, duplicate replay, stale owner profile/source, storage/slot conservation.",
+      "Download/open Cycle01..05 checkpoints and filtered player integration reference handoffs; run entire five-cycle browser test suite."
+    ],
+    "boundaries": [
+      "Demonstration mock D17/MIB-03 status and receipts only, no live owner API, durability, cryptographic authentication or production concurrency.",
+      "No asset-derived probability, inferred damaged-output rule, global rarity/quality conversion, repair, MIB-14 compatibility or economic XP spend.",
+      "Do not connect/modify other independent GM, Character, Map Maker or Downtime testers; no persistent GPR/CWKS/MTLC lane authority mutation."
+    ]
+  },
+  "evidence": {
+    "artifact": "governance/application-planning/vehicle-component-salvage-recovery/artifacts/Multiversal_VCSR_Cycle_05.html",
+    "sha256": "9b5536dd78b7861b4ba9e5d6b612a72ec8b1b1cbd82013f54a1896369b9acb69",
+    "bytes": 308334,
+    "embedded_tests": {
+      "cycle01": [
+        8,
+        8
+      ],
+      "cycle02": [
+        12,
+        12
+      ],
+      "cycle03": [
+        18,
+        18
+      ],
+      "cycle04": [
+        26,
+        26
+      ],
+      "cycle05": [
+        30,
+        30
+      ],
+      "total": 94,
+      "passed": 94
+    },
+    "browser": {
+      "engine": "Chromium headless/Playwright set_content full HTML",
+      "viewports": [
+        "1280x850",
+        "390x844"
+      ],
+      "pageErrors": 0,
+      "horizontalOverflow": false,
+      "manualActions": [
+        "Plan→lost reservation response→query→lost atomic commit response→query→replay without duplicate physical item",
+        "download Cycle05 GM checkpoint and import into fresh page preserving two mock owner receipts and source version",
+        "player handoff export excludes GM-hidden ship and mock owner details",
+        "original Cycle01 loot operation on reopened version5 checkpoint",
+        "legacy inventory and scavenging views accessible"
+      ]
+    },
+    "source_refs": [
+      "AIOC OPS5 bootstrap/operating contract on main and VCSR staged Program",
+      "Multiversal-app LSS-06 source inventory and salvage-extraction-engine.ts",
+      "Multiversal-app MIB-03 deterministic-runtime-primitives.ts",
+      "D17 Asset owner, LSS-02 recoverable graph and MIB-14 compatibility owner"
+    ]
+  },
+  "active_substep": "html_validated_pending_exact_head_stacked_pr_publication",
+  "next_action": "Complete guarded publication of prior stacked PRs 2019 → 2021 → 2022 → 2024, then publish VCSR-05 after exact-head audit/rebase and main CURRENT reconciliation. Later owner Continue starts standalone VCSR-06.",
+  "planned_successor": "VCSR-06",
+  "successor_rule": "Only next owner Continue requests next complete offline HTML; no automatic production integration.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "stall_nudges": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_cycle05_browser_verified",
+      "evidence": "94/94 embedded checks Chromium two widths, manual lost-response reservation/atomic commit/status replay, actual checkpoint download/import, filtered player handoff, SHA256 9b5536dd78b7861b4ba9e5d6b612a72ec8b1b1cbd82013f54a1896369b9acb69"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
