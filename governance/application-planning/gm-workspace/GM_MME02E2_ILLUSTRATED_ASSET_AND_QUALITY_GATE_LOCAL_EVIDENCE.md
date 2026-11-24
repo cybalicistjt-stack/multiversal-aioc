@@ -8,7 +8,7 @@
 
 - Owner source baseline: `Multiversal_Consolidated_Playtest_UHT10_MME02E1.html` · SHA-256 `a7bdda6b421e6d1b3a0d931b2a14d8f271b1fdbf02de9945b2966c909324e728`.
 - Full cumulative standalone review: `Multiversal_Consolidated_Playtest_UHT11_MME02E2.html` · **44,913,873 bytes** · SHA-256 **`2425d7e1ceb1395506dcb5359911aad412585b9f26471793bc56b8ab6850de6d`**.
-- Nested GM: `Multiversal_GM_MME02E2_Illustrated_Assets.html` · 28,421,428 bytes (verify separately against package manifest); Map Maker: `Multiversal_MME02E2_Native_Map_Maker.html` ≈9.3MB.
+- Nested GM: `Multiversal_GM_MME02E2_Illustrated_Assets.html` · **28,421,416 bytes** · SHA-256 `7b6c7caae268a41759c184785897bfb2587a92cf18db65fdf6664ec71ef25256`; Map Maker: `Multiversal_MME02E2_Native_Map_Maker.html` · **9,299,459 bytes** · SHA-256 `ff49015b54f79797236729371f7acf3646d8217ae58da5fe98589f07c55971f6`.
 - Review ZIP `Multiversal_MME_02E2_Illustrated_Objects_Review_Package.zip` · **63,129,383 bytes** · SHA-256 `fddf22a6292a14bba488b008e2caf04a0876521b8b6863baead5abe9cad70903`; **45 entries**; CRC, individual SHA-256, exact tested UHT member all verified.
 - Original Map Maker source recovered **byte-exactly** after reversing one paint hook and removing two appended style/script tags. Unrelated Character, Downtime, Recovery, corpus payloads in UHT are unchanged. No product code or large ZIP committed to AIOC branch.
 
