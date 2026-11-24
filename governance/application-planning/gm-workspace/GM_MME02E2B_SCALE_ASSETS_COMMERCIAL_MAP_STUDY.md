@@ -7,7 +7,7 @@
 ## Exact standalone increment
 
 - **UHT-12:** `Multiversal_Consolidated_Playtest_UHT12_MME02E2B.html`, **48,435,110 bytes**, SHA-256 **`6b14733a8d9c64538ec5cb0a91b00d867b86cdddb1354845da098a88b12dc954`**. Repacked actual owner-provided UHT-11 source SHA-256 `2425d7e1ceb1395506dcb5359911aad412585b9f26471793bc56b8ab6850de6d`.
-- **Full review ZIP:** `Multiversal_MME_02E2B_Asset_And_Map_Reference_Review_Package.zip`, **70,743,252 bytes**, SHA-256 **`74953c4d140f493d58305b0f704f32b45cfc5cb00d5cbe9face82675a5feb3c8`**; **74 entries**, verified ZIP CRC, exact UHT-12 member and SHA-256 manifest. These binary artifacts are delivered in owner ChatGPT conversation, **not committed into AIOC**.
+- **Full review ZIP:** `Multiversal_MME_02E2B_Asset_And_Map_Reference_Review_Package.zip`, **70,743,723 bytes**, SHA-256 **`6d3c324c0e71aae2806f4c4a01dd5c0121ca59a95faec6597d2dd22119cf393b`**; **74 entries**, verified ZIP CRC, exact UHT-12 member and SHA-256 manifest. These binary artifacts are delivered in owner ChatGPT conversation, **not committed into AIOC**.
 - In exact-source audit, reversing only E2 art style/script modifications reproduces the original UHT-11 embedded native Map Maker byte-for-byte. Other UHT Character, Downtime, Recovery and corpus compressed sources are byte-identical.
 
 ## Working editor changes
