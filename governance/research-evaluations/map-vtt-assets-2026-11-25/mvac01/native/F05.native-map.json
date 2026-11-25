@@ -1,0 +1,1166 @@
+{
+  "format": "multiversal-cartography-tester-v2",
+  "sourceCommit": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+  "document": {
+    "id": "mapdoc:tester:mmht:brinegate-split-caverns",
+    "mode": "interior",
+    "title": "Brinegate · Split Caverns",
+    "origin": "reference",
+    "sourceRef": "mapdoc:old-vault@14",
+    "revision": 1,
+    "createdAt": "2026-11-21T01:53:16.203Z",
+    "modifiedAt": "2026-11-21T01:53:16.203Z",
+    "draft": {
+      "workspaceRef": "mcs:offline-tester",
+      "documentRef": "mapdoc:tester:mmht:brinegate-split-caverns",
+      "authoringSessionRef": "mapdoc:tester:mmht:brinegate-split-caverns:draft",
+      "requestedMode": "author-interior",
+      "layers": [
+        {
+          "layerId": "layer:structure",
+          "gmOnly": false
+        },
+        {
+          "layerId": "layer:objects",
+          "gmOnly": false
+        },
+        {
+          "layerId": "layer:gm",
+          "gmOnly": true
+        }
+      ],
+      "levels": [
+        {
+          "levelId": "level:0",
+          "name": "Clifftop entrance",
+          "elevationMeters": 0,
+          "ordinal": 0
+        },
+        {
+          "levelId": "level:-1",
+          "name": "Broken gallery",
+          "elevationMeters": -9,
+          "ordinal": -1
+        },
+        {
+          "levelId": "level:-2",
+          "name": "Deep lightless vault",
+          "elevationMeters": -21,
+          "ordinal": -2
+        }
+      ],
+      "templates": [
+        {
+          "templateId": "template:stone-room",
+          "name": "Stone Room",
+          "featureKind": "room",
+          "tokenRefs": [
+            "token:stone",
+            "token:interior"
+          ]
+        },
+        {
+          "templateId": "template:crate",
+          "name": "Crate",
+          "featureKind": "object-placement",
+          "tokenRefs": [
+            "token:wood"
+          ]
+        }
+      ],
+      "traces": [],
+      "features": [
+        {
+          "featureId": "brinegate:clifftop-chamber",
+          "kind": "cave",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 3,
+                "y": 4
+              },
+              {
+                "x": 8,
+                "y": 2.5
+              },
+              {
+                "x": 13,
+                "y": 4
+              },
+              {
+                "x": 15,
+                "y": 7
+              },
+              {
+                "x": 11,
+                "y": 10
+              },
+              {
+                "x": 5,
+                "y": 9
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Clifftop Chamber",
+          "mapAnchor": {
+            "type": "access"
+          },
+          "caveTopology": {
+            "role": "entrance",
+            "notes": ""
+          }
+        },
+        {
+          "featureId": "brinegate:upper-hoist",
+          "kind": "opening",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 12,
+                "y": 7
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Upper Hoist",
+          "mapAnchor": {
+            "type": "hoist"
+          },
+          "caveTopology": {
+            "role": "shaft",
+            "notes": ""
+          }
+        },
+        {
+          "featureId": "brinegate:west-exit",
+          "kind": "opening",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 5,
+                "y": 6
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "West Exit",
+          "mapAnchor": {
+            "type": "hoist"
+          },
+          "caveTopology": {
+            "role": "entrance",
+            "notes": ""
+          }
+        },
+        {
+          "featureId": "brinegate:broken-gallery",
+          "kind": "cave",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 4,
+                "y": 4
+              },
+              {
+                "x": 11,
+                "y": 3
+              },
+              {
+                "x": 16,
+                "y": 5
+              },
+              {
+                "x": 17,
+                "y": 10
+              },
+              {
+                "x": 11,
+                "y": 13
+              },
+              {
+                "x": 6,
+                "y": 11
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Broken Gallery",
+          "mapAnchor": {
+            "type": "access"
+          },
+          "caveTopology": {
+            "role": "chamber",
+            "notes": ""
+          }
+        },
+        {
+          "featureId": "brinegate:mid-hoist",
+          "kind": "opening",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 12,
+                "y": 7
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Mid Hoist",
+          "mapAnchor": {
+            "type": "hoist"
+          },
+          "caveTopology": {
+            "role": "shaft",
+            "notes": ""
+          }
+        },
+        {
+          "featureId": "brinegate:down-ladder",
+          "kind": "ladder",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 11,
+                "y": 17
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Down Ladder",
+          "mapAnchor": {
+            "type": "ladder"
+          },
+          "caveTopology": {
+            "role": "anchor",
+            "notes": ""
+          }
+        },
+        {
+          "featureId": "brinegate:amber-run",
+          "kind": "passage",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 3,
+                "y": 14
+              },
+              {
+                "x": 27,
+                "y": 14
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Amber Run",
+          "mapAnchor": {
+            "type": "access"
+          },
+          "caveTopology": {
+            "role": "passage",
+            "notes": ""
+          }
+        },
+        {
+          "featureId": "brinegate:hidden-overpass",
+          "kind": "tunnel",
+          "levelId": "level:-1",
+          "layerId": "layer:gm",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 18,
+                "y": 5
+              },
+              {
+                "x": 18,
+                "y": 20
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Hidden Overpass",
+          "mapAnchor": {
+            "type": "access"
+          },
+          "caveTopology": {
+            "role": "tunnel",
+            "notes": "Crosses Amber Run in drawing only; rock separates their elevations within this floor."
+          }
+        },
+        {
+          "featureId": "brinegate:deep-landing",
+          "kind": "ladder",
+          "levelId": "level:-2",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 11,
+                "y": 17
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Deep Landing",
+          "mapAnchor": {
+            "type": "ladder"
+          },
+          "caveTopology": {
+            "role": "anchor",
+            "notes": ""
+          }
+        },
+        {
+          "featureId": "brinegate:deep-vault",
+          "kind": "cave",
+          "levelId": "level:-2",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 6,
+                "y": 7
+              },
+              {
+                "x": 13,
+                "y": 6
+              },
+              {
+                "x": 19,
+                "y": 9
+              },
+              {
+                "x": 21,
+                "y": 16
+              },
+              {
+                "x": 16,
+                "y": 19
+              },
+              {
+                "x": 7,
+                "y": 17
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Deep Vault",
+          "mapAnchor": {
+            "type": "access"
+          },
+          "caveTopology": {
+            "role": "chamber",
+            "notes": ""
+          }
+        },
+        {
+          "featureId": "brinegate:vault-approach",
+          "kind": "tunnel",
+          "levelId": "level:-2",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 11,
+                "y": 17
+              },
+              {
+                "x": 16,
+                "y": 14
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Vault Approach",
+          "mapAnchor": {
+            "type": "access"
+          },
+          "caveTopology": {
+            "role": "passage",
+            "notes": ""
+          }
+        },
+        {
+          "featureId": "brinegate:sealed-pocket",
+          "kind": "cave",
+          "levelId": "level:-2",
+          "layerId": "layer:gm",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 23,
+                "y": 4
+              },
+              {
+                "x": 28,
+                "y": 4
+              },
+              {
+                "x": 30,
+                "y": 7
+              },
+              {
+                "x": 27,
+                "y": 10
+              },
+              {
+                "x": 23,
+                "y": 9
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Sealed Pocket",
+          "mapAnchor": {
+            "type": "access"
+          },
+          "caveTopology": {
+            "role": "chamber",
+            "notes": "Unrevealed side cave"
+          }
+        }
+      ],
+      "views": [
+        {
+          "viewId": "view:plan",
+          "kind": "plan",
+          "levelIds": [
+            "level:0",
+            "level:-1",
+            "level:-2"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:isometric",
+          "kind": "isometric",
+          "levelIds": [
+            "level:0",
+            "level:-1",
+            "level:-2"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:staggered",
+          "kind": "staggered",
+          "levelIds": [
+            "level:0",
+            "level:-1",
+            "level:-2"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:section",
+          "kind": "section",
+          "levelIds": [
+            "level:0",
+            "level:-1",
+            "level:-2"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:cutaway",
+          "kind": "cutaway",
+          "levelIds": [
+            "level:0",
+            "level:-1",
+            "level:-2"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:deck",
+          "kind": "deck-plan",
+          "levelIds": [
+            "level:0",
+            "level:-1",
+            "level:-2"
+          ],
+          "elevationScale": 1
+        }
+      ],
+      "interiorFeetPerUnit": 10,
+      "dungeonStyle": "battle",
+      "mapConnections": [
+        {
+          "id": "cave-link:ledge-access",
+          "label": "Entrance to upper hoist",
+          "purpose": "access",
+          "direction": "both",
+          "visibility": "player",
+          "from": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:0",
+            "featureId": "brinegate:clifftop-chamber"
+          },
+          "to": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:0",
+            "featureId": "brinegate:upper-hoist"
+          }
+        },
+        {
+          "id": "cave-link:oneway-hoist",
+          "label": "One-way descent · upper to gallery",
+          "purpose": "hoist",
+          "direction": "forward",
+          "visibility": "player",
+          "from": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:0",
+            "featureId": "brinegate:upper-hoist"
+          },
+          "to": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:-1",
+            "featureId": "brinegate:mid-hoist"
+          }
+        },
+        {
+          "id": "cave-link:gallery-ladder",
+          "label": "Gallery access to ladder",
+          "purpose": "access",
+          "direction": "both",
+          "visibility": "player",
+          "from": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:-1",
+            "featureId": "brinegate:mid-hoist"
+          },
+          "to": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:-1",
+            "featureId": "brinegate:down-ladder"
+          }
+        },
+        {
+          "id": "cave-link:deep-ladder",
+          "label": "Gallery ladder to deep landing",
+          "purpose": "ladder",
+          "direction": "both",
+          "visibility": "player",
+          "from": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:-1",
+            "featureId": "brinegate:down-ladder"
+          },
+          "to": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:-2",
+            "featureId": "brinegate:deep-landing"
+          }
+        },
+        {
+          "id": "cave-link:vault-approach",
+          "label": "Landing to vault approach",
+          "purpose": "access",
+          "direction": "both",
+          "visibility": "player",
+          "from": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:-2",
+            "featureId": "brinegate:deep-landing"
+          },
+          "to": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:-2",
+            "featureId": "brinegate:vault-approach"
+          }
+        },
+        {
+          "id": "cave-link:vault-arrival",
+          "label": "Approach to deep vault",
+          "purpose": "access",
+          "direction": "both",
+          "visibility": "player",
+          "from": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:-2",
+            "featureId": "brinegate:vault-approach"
+          },
+          "to": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:-2",
+            "featureId": "brinegate:deep-vault"
+          }
+        },
+        {
+          "id": "cave-link:west-exit",
+          "label": "Exit to Western Cut",
+          "purpose": "access",
+          "direction": "both",
+          "visibility": "player",
+          "from": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:0",
+            "featureId": "brinegate:west-exit"
+          },
+          "to": {
+            "mapId": "mapdoc:tester:mmht:brinegate-western-cut",
+            "levelId": "level:0",
+            "featureId": "west-cut:trail-mouth"
+          }
+        },
+        {
+          "id": "cave-link:entry-west-exit",
+          "label": "Clifftop to western exit",
+          "purpose": "access",
+          "direction": "both",
+          "visibility": "player",
+          "from": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:0",
+            "featureId": "brinegate:clifftop-chamber"
+          },
+          "to": {
+            "mapId": "mapdoc:tester:mmht:brinegate-split-caverns",
+            "levelId": "level:0",
+            "featureId": "brinegate:west-exit"
+          }
+        }
+      ],
+      "showcase": {
+        "schema": 1,
+        "id": "catalog03:cave-map:1",
+        "style": "cavern-basalt",
+        "palette": {
+          "accent": "#76b0b2",
+          "secondary": "#e2a559",
+          "ink": "#383f44",
+          "deep": "#292e32"
+        },
+        "version": 1,
+        "visible": true,
+        "layers": {
+          "detail": true,
+          "labels": true,
+          "ground": true
+        },
+        "title": "Brinegate",
+        "variant": 1,
+        "seed": 983453728,
+        "frame": {
+          "width": 32,
+          "height": 22
+        },
+        "elements": [
+          {
+            "id": "cave-map:1:1",
+            "kind": "strata",
+            "x": 13.223,
+            "y": 15.658,
+            "size": 2.304,
+            "count": 4,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.83,
+            "seed": 90702,
+            "rotation": -29.5
+          },
+          {
+            "id": "cave-map:1:2",
+            "kind": "torch",
+            "x": 4.08,
+            "y": 4.107,
+            "size": 0.972,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.81,
+            "seed": 56161,
+            "rotation": -7.2
+          },
+          {
+            "id": "cave-map:1:3",
+            "kind": "bridge",
+            "x": 13.291,
+            "y": 7.292,
+            "size": 1.144,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.79,
+            "seed": 3198,
+            "rotation": 16.3
+          },
+          {
+            "id": "cave-map:1:4",
+            "kind": "bridge",
+            "x": 18.88,
+            "y": 5.28,
+            "size": 1.015,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.92,
+            "seed": 15383,
+            "rotation": -8.2
+          },
+          {
+            "id": "cave-map:1:5",
+            "kind": "torch",
+            "x": 14.961,
+            "y": 8.411,
+            "size": 1.352,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.96,
+            "seed": 70804,
+            "rotation": -9.2
+          },
+          {
+            "id": "cave-map:1:6",
+            "kind": "strata",
+            "x": 8.342,
+            "y": 9.803,
+            "size": 2.186,
+            "count": 3,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.92,
+            "seed": 85733,
+            "rotation": -9
+          },
+          {
+            "id": "cave-map:1:7",
+            "kind": "strata",
+            "x": 9.722,
+            "y": 7.683,
+            "size": 2.111,
+            "count": 5,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.91,
+            "seed": 15734,
+            "rotation": -31.4
+          },
+          {
+            "id": "cave-map:1:8",
+            "kind": "rubble",
+            "x": 11.692,
+            "y": 7.405,
+            "size": 1.23,
+            "count": 3,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.9,
+            "seed": 29209,
+            "rotation": 12.2
+          },
+          {
+            "id": "cave-map:1:9",
+            "kind": "strata",
+            "x": 4.961,
+            "y": 6.601,
+            "size": 2.359,
+            "count": 4,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.87,
+            "seed": 97431,
+            "rotation": 6.6
+          },
+          {
+            "id": "cave-map:1:10",
+            "kind": "crystal",
+            "x": 5.618,
+            "y": 7.397,
+            "size": 1.304,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.86,
+            "seed": 62995,
+            "rotation": -12.9
+          },
+          {
+            "id": "cave-map:1:11",
+            "kind": "rubble",
+            "x": 13.537,
+            "y": 6.224,
+            "size": 1.256,
+            "count": 6,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.79,
+            "seed": 80459,
+            "rotation": -22.4
+          },
+          {
+            "id": "cave-map:1:12",
+            "kind": "water",
+            "x": 7.622,
+            "y": 6.549,
+            "size": 0.711,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.79,
+            "seed": 43895,
+            "rotation": 16.9
+          },
+          {
+            "id": "cave-map:1:13",
+            "kind": "bridge",
+            "x": 14.72,
+            "y": 5.28,
+            "size": 1.529,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.97,
+            "seed": 67376,
+            "rotation": -11
+          },
+          {
+            "id": "cave-map:1:14",
+            "kind": "rock",
+            "x": 16.578,
+            "y": 8.848,
+            "size": 0.639,
+            "count": 5,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.93,
+            "seed": 29807,
+            "rotation": 3.1
+          },
+          {
+            "id": "cave-map:1:15",
+            "kind": "strata",
+            "x": 13.253,
+            "y": 6.457,
+            "size": 1.5,
+            "count": 3,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.96,
+            "seed": 65583,
+            "rotation": 14.7
+          },
+          {
+            "id": "cave-map:1:16",
+            "kind": "strata",
+            "x": 4.865,
+            "y": 7.003,
+            "size": 1.808,
+            "count": 4,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.92,
+            "seed": 42795,
+            "rotation": -8.8
+          },
+          {
+            "id": "cave-map:1:17",
+            "kind": "torch",
+            "x": 10.902,
+            "y": 6.16,
+            "size": 1.584,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.78,
+            "seed": 14383,
+            "rotation": 9.6
+          },
+          {
+            "id": "cave-map:1:18",
+            "kind": "rock",
+            "x": 11.473,
+            "y": 7.032,
+            "size": 0.646,
+            "count": 7,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.84,
+            "seed": 72655,
+            "rotation": -25.7
+          },
+          {
+            "id": "cave-map:1:19",
+            "kind": "strata",
+            "x": 9.125,
+            "y": 10.034,
+            "size": 1.501,
+            "count": 8,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.83,
+            "seed": 5723,
+            "rotation": -23
+          },
+          {
+            "id": "cave-map:1:20",
+            "kind": "rock",
+            "x": 8.56,
+            "y": 8.656,
+            "size": 0.855,
+            "count": 5,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.94,
+            "seed": 78699,
+            "rotation": 11.5
+          },
+          {
+            "id": "cave-map:1:21",
+            "kind": "strata",
+            "x": 10.588,
+            "y": 10.126,
+            "size": 1.39,
+            "count": 7,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.8,
+            "seed": 34544,
+            "rotation": -14.3
+          },
+          {
+            "id": "cave-map:1:22",
+            "kind": "bridge",
+            "x": 10.56,
+            "y": 5.28,
+            "size": 2.367,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.89,
+            "seed": 53890,
+            "rotation": -22.7
+          },
+          {
+            "id": "cave-map:1:23",
+            "kind": "torch",
+            "x": 9.092,
+            "y": 8.188,
+            "size": 0.659,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.94,
+            "seed": 5684,
+            "rotation": -30.7
+          },
+          {
+            "id": "cave-map:1:24",
+            "kind": "water",
+            "x": 9.561,
+            "y": 10.202,
+            "size": 1.546,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.91,
+            "seed": 68189,
+            "rotation": -1.6
+          },
+          {
+            "id": "cave-map:1:25",
+            "kind": "bridge",
+            "x": 23.04,
+            "y": 5.28,
+            "size": 1.268,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.88,
+            "seed": 30874,
+            "rotation": 11.2
+          },
+          {
+            "id": "cave-map:1:26",
+            "kind": "torch",
+            "x": 10.833,
+            "y": 9.256,
+            "size": 1.063,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.97,
+            "seed": 35649,
+            "rotation": 16.4
+          },
+          {
+            "id": "cave-map:1:27",
+            "kind": "crystal",
+            "x": 11.313,
+            "y": 10.021,
+            "size": 0.983,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.81,
+            "seed": 24665,
+            "rotation": -29
+          },
+          {
+            "id": "cave-map:1:28",
+            "kind": "bridge",
+            "x": 14.72,
+            "y": 5.28,
+            "size": 1.504,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.96,
+            "seed": 61798,
+            "rotation": -8.1
+          },
+          {
+            "id": "cave-map:1:29",
+            "kind": "torch",
+            "x": 14.097,
+            "y": 8.713,
+            "size": 1.327,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.94,
+            "seed": 92516,
+            "rotation": -10.5
+          },
+          {
+            "id": "cave-map:1:30",
+            "kind": "torch",
+            "x": 16.107,
+            "y": 8.826,
+            "size": 1.304,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.82,
+            "seed": 77969,
+            "rotation": -12.8
+          },
+          {
+            "id": "cave-map:1:31",
+            "kind": "water",
+            "x": 8.255,
+            "y": 6.599,
+            "size": 1.514,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.93,
+            "seed": 5387,
+            "rotation": -16.5
+          },
+          {
+            "id": "cave-map:1:32",
+            "kind": "rock",
+            "x": 9.514,
+            "y": 8.729,
+            "size": 0.897,
+            "count": 4,
+            "layer": "detail",
+            "level": "level:-1",
+            "alpha": 0.8,
+            "seed": 9527,
+            "rotation": -26.1
+          },
+          {
+            "id": "cave-map:1:33",
+            "kind": "label",
+            "x": 5.44,
+            "y": 4.18,
+            "size": 1.059,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:-1",
+            "alpha": 0.88,
+            "text": "UPPER CAVERN"
+          },
+          {
+            "id": "cave-map:1:34",
+            "kind": "label",
+            "x": 23.04,
+            "y": 7.7,
+            "size": 1.059,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:-1",
+            "alpha": 0.88,
+            "text": "RIFT CHAMBER"
+          },
+          {
+            "id": "cave-map:1:35",
+            "kind": "label",
+            "x": 24.96,
+            "y": 17.16,
+            "size": 1.059,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:-1",
+            "alpha": 0.88,
+            "text": "LOWER DRIFT"
+          }
+        ]
+      }
+    },
+    "viewport": {
+      "zoom": 1,
+      "panX": 0,
+      "panY": 0,
+      "level": "level:-1",
+      "fog": false,
+      "hiddenLayers": [],
+      "interiorGrid": true
+    }
+  }
+}

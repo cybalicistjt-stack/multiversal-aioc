@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "research-evaluation",
+  "work_item_id": "MVAC-01",
+  "record_date": "2026-11-25",
+  "status": "completed_verified",
+  "completion_scope": "Fixture/planning package only; not product feature, browser, device, live session or installer acceptance.",
+  "owner_authority": "Owner Continue on the logged MVAC-01 standalone fixture/planning recommendation; existing on-demand research-evaluation scope. No product implementation selected.",
+  "canonical_selector": "operations/CURRENT.json",
+  "selector_changed": false,
+  "product_changed": false,
+  "implementation_complete": false,
+  "artifacts": [
+    {
+      "filename": "Multiversal_MVAC01_Fixture_Baseline_Review.html",
+      "bytes": 14720590,
+      "sha256": "f3ba6215b473840334a7533235a0bec1f9620d7950907b4aa215b6c294d8716d",
+      "library_file_id": "libfile_ea5cc5eb59288191a0222fa8c250d0fc",
+      "url": "https://chatgpt.com/library?file_id=libfile_ea5cc5eb59288191a0222fa8c250d0fc&account_id=personal"
+    },
+    {
+      "filename": "Multiversal_MVAC01_Fixtures_and_Evidence.zip",
+      "bytes": 11529353,
+      "sha256": "d3f19bd66a659f2afb75dc5d9cd53b240a3d2bfe629b91e0f1a0013374618893",
+      "library_file_id": "libfile_ef61bdd35f38819186f69502ad8eb732",
+      "url": "https://chatgpt.com/library?file_id=libfile_ef61bdd35f38819186f69502ad8eb732&account_id=personal"
+    },
+    {
+      "filename": "Multiversal_MVAC01_Fixture_Baseline.md",
+      "bytes": 6411,
+      "sha256": "dd0f1a017687cbb352bf57201c9ee55776722c976e6f024d307a41aca2f41282",
+      "library_file_id": "libfile_b8b483d949348191ae4fbe3e31f24dd5",
+      "url": "https://chatgpt.com/library?file_id=libfile_b8b483d949348191ae4fbe3e31f24dd5&account_id=personal"
+    },
+    {
+      "filename": "Multiversal_MVAC01_Acceptance_Matrix.csv",
+      "bytes": 10287,
+      "sha256": "070ccc67d681002e1a8e884e45d06dd0fd30bc84a9247f99266885f7e95ba39c",
+      "library_file_id": "libfile_01bba29afef48191a40e1514650ceb53",
+      "url": "https://chatgpt.com/library?file_id=libfile_01bba29afef48191a40e1514650ceb53&account_id=personal"
+    }
+  ],
+  "verification": {
+    "date": "2026-11-25",
+    "nativeComponentChecks": 102,
+    "nativeComponentPassed": true,
+    "fixtureIntegrityChecks": 142,
+    "fixtureIntegrityPassed": true,
+    "fixtures": 7,
+    "levels": 14,
+    "renders": 36,
+    "staticProjectionSnapshots": 28,
+    "acceptanceTasks": 40,
+    "deviceRows": 5,
+    "fullWorkflowAcceptance": "NOT_RUN",
+    "productChanged": false,
+    "baseline": {
+      "filename": "Multiversal_Consolidated_Playtest_UHT28_MME06_UVTT_Optional_Assets.html",
+      "bytes": 58687922,
+      "sha256": "ab66ac31aeacec06b3a78db9e4689532774c0a7d21b6ecd957f1367ce43eb9d2",
+      "catalogScriptSHA256": "a0c21ccbe4c8d23abf304b8ed1ee27b4f60f523f288ebf86fcaa8d2258ee5f1e"
+    },
+    "knownIncident": {
+      "class": "validation harness defect",
+      "firstAttempt": "repeat-artwork mistakenly called static export rather than artwork renderer; differing pixel hashes",
+      "causalRepair": "repeat-artwork routed to same native.render path",
+      "changedBuilderRerun": "102 focused checks passed; same-environment repeated artwork pixel hash matched"
+    },
+    "scope": "Fixture/planning acceptance only. No browser, authenticated transport, installed app, target-device, pack-resolver or creator acceptance."
+  },
+  "review_checks": {
+    "checks": 8,
+    "status": "passed",
+    "scope": "Actual review JavaScript against controlled minimal DOM; no browser visual/usability acceptance"
+  },
+  "source_manifest": "governance/research-evaluations/map-vtt-assets-2026-11-25/mvac01/MANIFEST.json",
+  "full_acceptance_tasks": "40 NOT_RUN; fixture mapping/expected oracles only",
+  "next_recommendation": "MVAC-02",
+  "owner_continue_messages_this_attempt": 2,
+  "reentry_note": "Second Continue followed a supplied execution environment starting/ready transition. Existing fixture/artifact work was retained; no single-Continue conformance claim.",
+  "publication_note": "This candidate logs the bounded result. Exact-head merge and queue evidence belong to GitHub and the publication coordination ref."
+}

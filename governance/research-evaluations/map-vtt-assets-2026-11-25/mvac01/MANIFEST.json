@@ -1,0 +1,1711 @@
+{
+  "format": "multiversal:mvac01-fixture-baseline:v1",
+  "date": "2026-11-25",
+  "status": "bounded_fixture_freeze_passed",
+  "baseline": {
+    "filename": "Multiversal_Consolidated_Playtest_UHT28_MME06_UVTT_Optional_Assets.html",
+    "bytes": 58687922,
+    "sha256": "ab66ac31aeacec06b3a78db9e4689532774c0a7d21b6ecd957f1367ce43eb9d2",
+    "catalogScriptSHA256": "a0c21ccbe4c8d23abf304b8ed1ee27b4f60f523f288ebf86fcaa8d2258ee5f1e"
+  },
+  "environment": {
+    "node": "v24.22.3",
+    "platform": "linux",
+    "arch": "x64",
+    "renderer": "@napi-rs/canvas 0.1.100",
+    "modules": [
+      "ART04",
+      "gm-mme02a-render",
+      "gm-mme02b-render",
+      "gm-mme02c-render",
+      "gm-mme02d1-art",
+      "gm-mme02d2-art",
+      "gm-mme02e0a-field",
+      "gm-mme02e0b-region",
+      "gm-mme02e1-material-atlas",
+      "mme02e2-illustrated-artwork",
+      "mme02e3-structural-remaster",
+      "mme02e3c-district-remasters",
+      "mme02e3n-core",
+      "mme02e3x-symbols",
+      "mme02e3n-ui",
+      "mme02e4-core",
+      "mme02e4-render",
+      "mme02e4-ui",
+      "mme02f-core",
+      "mme02f-render",
+      "mme02f-ui",
+      "mme02g-core",
+      "mme02g-render",
+      "mme02g-ui",
+      "mme02h-core",
+      "mme02h-ui",
+      "mme06-perf25-core",
+      "mme06-perf25-ui"
+    ],
+    "harnessSHA256": "a4600e4489e1c4fc057724bd7597654268111d69aa5137419d8f4c78332bb091",
+    "coreSHA256": "6485bc983a4a8817ed2c23412d840bb68bf1597fe31686f4e776c3e5ecee8f93",
+    "mapSHA256": "22face1c71f5badbef73c5f25f19346085b1617e3b111ef800a3cc7544f763a1"
+  },
+  "fixtures": [
+    {
+      "fixtureId": "F01",
+      "purpose": "Regional geography",
+      "type": "regional",
+      "index": 1,
+      "catalogId": "catalog03:regional:1",
+      "catalogSource": "showcase04:catalog03:regional:1",
+      "nativeId": "mapdoc:tester:atlas-stormfold",
+      "revision": 1,
+      "title": "Stormfold Frontier",
+      "mode": "regional",
+      "levels": [
+        "level:0"
+      ],
+      "featureCount": 25,
+      "secrets": [],
+      "nativeFile": {
+        "path": "native/F01.native-map.json",
+        "bytes": 59102,
+        "sha256": "cd865349f951162ffa87174ee9231e2a4b269d9337ea7027c029b81ca11ddba3"
+      },
+      "baselineLevel": "level:0",
+      "notes": ""
+    },
+    {
+      "fixtureId": "F02",
+      "purpose": "Settlement / districts",
+      "type": "urban",
+      "index": 1,
+      "catalogId": "catalog03:urban:1",
+      "catalogSource": "showcase04:catalog03:urban:1",
+      "nativeId": "mapdoc:tester:atlas-harbor",
+      "revision": 1,
+      "title": "Harbor City",
+      "mode": "urban",
+      "levels": [
+        "level:0"
+      ],
+      "featureCount": 59,
+      "secrets": [],
+      "nativeFile": {
+        "path": "native/F02.native-map.json",
+        "bytes": 73685,
+        "sha256": "ecc9b7a2b0dedfedaa9886a00f915d0e6a63459d45b5c4feb369deee3d85d31e"
+      },
+      "baselineLevel": "level:0",
+      "notes": ""
+    },
+    {
+      "fixtureId": "F03",
+      "purpose": "Multi-floor architecture",
+      "type": "interior",
+      "index": 1,
+      "catalogId": "catalog03:interior:1",
+      "catalogSource": "showcase04:catalog03:interior:1",
+      "nativeId": "mapdoc:tester:tidewatch-archive",
+      "revision": 1,
+      "title": "Tidewatch Archive",
+      "mode": "interior",
+      "levels": [
+        "level:-1",
+        "level:0",
+        "level:1"
+      ],
+      "featureCount": 117,
+      "secrets": [
+        {
+          "id": "tidewatch:secret-route",
+          "label": "Concealed maintenance passage",
+          "level": "level:-1",
+          "kind": "tunnel"
+        },
+        {
+          "id": "tidewatch:secret-door",
+          "label": "Concealed door",
+          "level": "level:-1",
+          "kind": "door"
+        }
+      ],
+      "nativeFile": {
+        "path": "native/F03.native-map.json",
+        "bytes": 111159,
+        "sha256": "1fcf016425ed483780eb1fada4297b04a4c59abeeba056957b53d20f12a776fe"
+      },
+      "baselineLevel": "level:0",
+      "notes": ""
+    },
+    {
+      "fixtureId": "F04",
+      "purpose": "Tactical encounter",
+      "type": "tactical",
+      "index": 1,
+      "catalogId": "catalog03:tactical:1",
+      "catalogSource": "showcase04:catalog03:tactical:1",
+      "nativeId": "mapdoc:tester:atlas-keep",
+      "revision": 1,
+      "title": "The Ruined Keep",
+      "mode": "tactical",
+      "levels": [
+        "level:0"
+      ],
+      "featureCount": 0,
+      "secrets": [],
+      "nativeFile": {
+        "path": "native/F04.native-map.json",
+        "bytes": 21316,
+        "sha256": "1510ef7f377315d9bbd3dee8cddcc74839fa48e1a936d8ba0824cdb4eebac104"
+      },
+      "baselineLevel": "level:0",
+      "notes": ""
+    },
+    {
+      "fixtureId": "F05",
+      "purpose": "Cave / tunnel",
+      "type": "cave-map",
+      "index": 1,
+      "catalogId": "catalog03:cave-map:1",
+      "catalogSource": "showcase04:catalog03:cave-map:1",
+      "nativeId": "mapdoc:tester:mmht:brinegate-split-caverns",
+      "revision": 1,
+      "title": "Brinegate · Split Caverns",
+      "mode": "interior",
+      "levels": [
+        "level:0",
+        "level:-1",
+        "level:-2"
+      ],
+      "featureCount": 12,
+      "secrets": [
+        {
+          "id": "brinegate:hidden-overpass",
+          "label": "Hidden Overpass",
+          "level": "level:-1",
+          "kind": "tunnel"
+        },
+        {
+          "id": "brinegate:sealed-pocket",
+          "label": "Sealed Pocket",
+          "level": "level:-2",
+          "kind": "cave"
+        }
+      ],
+      "nativeFile": {
+        "path": "native/F05.native-map.json",
+        "bytes": 30294,
+        "sha256": "e0c36575057e6d926063213eef17982dd92789a924622f17cde24e5fe85d85f1"
+      },
+      "baselineLevel": "level:-1",
+      "notes": ""
+    },
+    {
+      "fixtureId": "F06",
+      "purpose": "Ship / docking decks",
+      "type": "deck-ship",
+      "index": 2,
+      "catalogId": "catalog03:deck-ship:2",
+      "catalogSource": "showcase04:catalog03:deck-ship:2",
+      "nativeId": "mapdoc:tester:mmht:kestrel-docking",
+      "revision": 1,
+      "title": "Kestrel · Courier docking layout",
+      "mode": "interior",
+      "levels": [
+        "level:0",
+        "level:1"
+      ],
+      "featureCount": 19,
+      "secrets": [],
+      "nativeFile": {
+        "path": "native/F06.native-map.json",
+        "bytes": 27975,
+        "sha256": "511b69d894efebc18cde62e2c1175d77a6c38d72919544d139820cabb4d9db96"
+      },
+      "baselineLevel": "level:0",
+      "notes": "Both deck source records retained. Native artwork is not a complete Deck Builder overlay screenshot."
+    },
+    {
+      "fixtureId": "F07",
+      "purpose": "Non-Euclidean topology",
+      "type": "topology-map",
+      "index": 1,
+      "catalogId": "catalog03:topology-map:1",
+      "catalogSource": "showcase04:catalog03:topology-map:1",
+      "nativeId": "mapdoc:tester:mmht:carnival-impossible-arcade",
+      "revision": 1,
+      "title": "Carnival · Impossible Arcade (illustrative topology)",
+      "mode": "interior",
+      "levels": [
+        "level:0",
+        "level:-1",
+        "level:1"
+      ],
+      "featureCount": 5,
+      "secrets": [
+        {
+          "id": "ne14:carnival:secret",
+          "label": "Concealed Threshold",
+          "level": "level:0",
+          "kind": "object-placement"
+        }
+      ],
+      "nativeFile": {
+        "path": "native/F07.native-map.json",
+        "bytes": 29519,
+        "sha256": "217faa6ddec03401401045f97dcbb82e8b939f25b345a6453104a46a5243d7c8"
+      },
+      "baselineLevel": "level:0",
+      "notes": "Topology source retained. Artwork snapshots do not prove portal reachability or impossible-space gameplay."
+    }
+  ],
+  "renderSettings": {
+    "width": 800,
+    "height": 520,
+    "dpr": 1,
+    "zooms": [
+      0.5,
+      1,
+      2,
+      4
+    ],
+    "grid": "off",
+    "fog": "off",
+    "rolePolicy": "Artwork GM benchmark plus per-floor static export projections; unreviewed player dressing excluded",
+    "renderDuration": "One draw observation per row; preload excluded; not a browser/device/p95 benchmark"
+  },
+  "renders": [
+    {
+      "fixture": "F01",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 0.5,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F01-artwork-gm-level_0-z0.5.png",
+      "pngBytes": 130917,
+      "pngSHA256": "4609e85bd6918f6b27723b5d5f49361367e17ae0771f082d90af7562ca70cdf3",
+      "rgbaSHA256": "2ee2d000a7a01395b1c05a65d7926506f5509abcf771396cc74aa19c187531ca",
+      "drawDurationMs": 368.962,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F01",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F01-artwork-gm-level_0-z1.png",
+      "pngBytes": 419253,
+      "pngSHA256": "ab2c9e3e5136dc810052ff8ab65756308286ee050cb85898f6428cb81b28e82a",
+      "rgbaSHA256": "d4503c07d51ca2615e26278b5e0ff6fb213ee0e400eded470cb7ed992106d708",
+      "drawDurationMs": 640.923,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F01",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 2,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F01-artwork-gm-level_0-z2.png",
+      "pngBytes": 538502,
+      "pngSHA256": "9bd120d165800df1de72721923bb530c4726807cae525d17b3acf4e58a87b7d1",
+      "rgbaSHA256": "89b2631e7b715b0af983a6ca8347e8553cc3d0bafcb99232d8a890992e54ca57",
+      "drawDurationMs": 13.872,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F01",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 4,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F01-artwork-gm-level_0-z4.png",
+      "pngBytes": 349343,
+      "pngSHA256": "95bb8ba621994c299bba5c1f98ec138df61f79a463480c77e1f5669ccadbc10f",
+      "rgbaSHA256": "74f762510a9f5cbf58d1a5ccbee6082800ef7d47065ce2c65eb074019f24b666",
+      "drawDurationMs": 12.431,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F01",
+      "kind": "static-export",
+      "role": "player",
+      "level": "level:0",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F01-static-export-player-level_0-z1.png",
+      "pngBytes": 505053,
+      "pngSHA256": "b8e1a8532a07d8027ffb059a050fb082f2b72e4bb495e4a456fc5dacd8897223",
+      "rgbaSHA256": "4b07a2c0a3d8e075b9980a5733b74bcab26d442ec5b67303712ece5758c7bd21",
+      "drawDurationMs": 2.303,
+      "scope": "Local prepared static export; unreviewed dressing removed; no authenticated role session"
+    },
+    {
+      "fixture": "F02",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 0.5,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F02-artwork-gm-level_0-z0.5.png",
+      "pngBytes": 125837,
+      "pngSHA256": "dc0afcf05576c49b159b695300e2ba217ab8823fde1f1628fe6fb6c468139c6a",
+      "rgbaSHA256": "3b9564110b37cc5b7efbee15ca6bd60be68be09ab8fd90bfbf85f45b2281d752",
+      "drawDurationMs": 857.767,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F02",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F02-artwork-gm-level_0-z1.png",
+      "pngBytes": 369549,
+      "pngSHA256": "a1f8749b2e7b17435a34387189473bd1f13bf65c9504fea9d0600e0172715f3f",
+      "rgbaSHA256": "fe9c16e70d98af523c70b726f075df625f898c0d1df8f5626ef5d1af22d1474b",
+      "drawDurationMs": 356.396,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F02",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 2,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F02-artwork-gm-level_0-z2.png",
+      "pngBytes": 415129,
+      "pngSHA256": "2fa426b3e509606c3579a9e724607195ac969c687612004df520ef72a6c8365d",
+      "rgbaSHA256": "ade1aa60629af571a3aedd76f90df13f299febaf91b9878fb29ebfd8811d5b08",
+      "drawDurationMs": 67.035,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F02",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 4,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F02-artwork-gm-level_0-z4.png",
+      "pngBytes": 312420,
+      "pngSHA256": "11029bb7e9a7ce233b4d180c8f71ff2b92b9e59672129cb493f52c015e4c53a3",
+      "rgbaSHA256": "1dc1b871e0edd04e738990936b121cbf5f56961b86f55a336d9ccee4f1f0939d",
+      "drawDurationMs": 59.091,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F02",
+      "kind": "static-export",
+      "role": "player",
+      "level": "level:0",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F02-static-export-player-level_0-z1.png",
+      "pngBytes": 431476,
+      "pngSHA256": "cbba62a48d40a64991374c57a08dd54664b1c784e08cc867fe597a5af6f79797",
+      "rgbaSHA256": "2bff8f34030f420a9ccdce043cec43088b0eac18f344b99c61c345f575426078",
+      "drawDurationMs": 87.399,
+      "scope": "Local prepared static export; unreviewed dressing removed; no authenticated role session"
+    },
+    {
+      "fixture": "F03",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 0.5,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F03-artwork-gm-level_0-z0.5.png",
+      "pngBytes": 131894,
+      "pngSHA256": "5d73e7522d864585869aab2b707477bfef26922c91e0967fe0a9d83a907eaae3",
+      "rgbaSHA256": "7cca100610aaedbd89da6a555ad899b76be3c3cc416e3e4b014a9d5160188bb8",
+      "drawDurationMs": 308.379,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F03",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F03-artwork-gm-level_0-z1.png",
+      "pngBytes": 376016,
+      "pngSHA256": "61c45bfea1c915c55d7f9f90059f5fae93ad0ea93251c1db190e37a7cdd5c34a",
+      "rgbaSHA256": "83285aa2df33bb0d9a7cef891113903f4fd8a016dde16d966b298bba62d61e69",
+      "drawDurationMs": 32.1,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F03",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 2,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F03-artwork-gm-level_0-z2.png",
+      "pngBytes": 519800,
+      "pngSHA256": "5415c6dc0fb674f520bd27a231e494b511046c4d9bcf7ec3b29ddb2c857ce47a",
+      "rgbaSHA256": "15ea1bfe89290bf712904cc4978a2623ba96dc237e151678b86eff35a6ee8450",
+      "drawDurationMs": 27.01,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F03",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 4,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F03-artwork-gm-level_0-z4.png",
+      "pngBytes": 418897,
+      "pngSHA256": "d9a53b70f7febc0af1c5da667226ed629067cbb9fa98fb23780fbd396ddd7e68",
+      "rgbaSHA256": "e8edc61f933c1f2be1db0e700a0fa516b67718b4413ae8dc4ef2db02f7b16b29",
+      "drawDurationMs": 31.31,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F03",
+      "kind": "static-export",
+      "role": "player",
+      "level": "level:0",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F03-static-export-player-level_0-z1.png",
+      "pngBytes": 437551,
+      "pngSHA256": "80f6b2af823cb78c1ad1c898571a6557945cc9cf98e323edd031e79f226924cb",
+      "rgbaSHA256": "6d354389e1132f178cce7a641fd78d7f6cb09ac43c21bad466458a63517ba070",
+      "drawDurationMs": 24.639,
+      "scope": "Local prepared static export; unreviewed dressing removed; no authenticated role session"
+    },
+    {
+      "fixture": "F04",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 0.5,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F04-artwork-gm-level_0-z0.5.png",
+      "pngBytes": 111017,
+      "pngSHA256": "7d8601698507e56cec4dd020f6e0c47751869d12599413dfc1a76dc32fdfb83c",
+      "rgbaSHA256": "e766ec3b89d3de56c77ec683d5298965f551139a3bec7f9e5159a567eed94d49",
+      "drawDurationMs": 35.453,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F04",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F04-artwork-gm-level_0-z1.png",
+      "pngBytes": 263751,
+      "pngSHA256": "fc843bc7e61aa2fa4ead611ebbc373e3140f5a77bbbeedb7820406010051c59e",
+      "rgbaSHA256": "be9d38ca7b0614680cb6f3f565cd1a90dff3288b1e1115b2417aeb0db435aab7",
+      "drawDurationMs": 9.194,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F04",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 2,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F04-artwork-gm-level_0-z2.png",
+      "pngBytes": 233505,
+      "pngSHA256": "01b54a38bf7f83feea3bb484c8007b089cbe0b8f10af7d6f72f56b37be8f5c38",
+      "rgbaSHA256": "fd3d354d0765a9e09af3b4d397316afc8d8b5e94d44f17f1090fc29ad84d4781",
+      "drawDurationMs": 8.355,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F04",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 4,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F04-artwork-gm-level_0-z4.png",
+      "pngBytes": 153995,
+      "pngSHA256": "c3b4e4c0b33e0a1717c42bdfd710395efef0191c47c7652a56ff9c1af8442061",
+      "rgbaSHA256": "36c3edbe1ea5334eb9138c12ee282f42b25bc7884185d3ee83e70d1413a478a0",
+      "drawDurationMs": 8.371,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F04",
+      "kind": "static-export",
+      "role": "player",
+      "level": "level:0",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F04-static-export-player-level_0-z1.png",
+      "pngBytes": 271421,
+      "pngSHA256": "279e8ff81efb6c79de52c593fd594608f37b5e54b362a902fb9601e30559020b",
+      "rgbaSHA256": "c21800230728c853798ff5bc83068203919050b1b40220399df335140ab320c0",
+      "drawDurationMs": 4.716,
+      "scope": "Local prepared static export; unreviewed dressing removed; no authenticated role session"
+    },
+    {
+      "fixture": "F05",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:-1",
+      "zoom": 0.5,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F05-artwork-gm-level_-1-z0.5.png",
+      "pngBytes": 141542,
+      "pngSHA256": "966f4fbc0cd69a2606acd6983611c0dd47d3ff85c17bc50fcd01d5c2374d6da4",
+      "rgbaSHA256": "513c2ce6e4eb1873fe8089c683e0d398c9b5e2c0ec2a19e467f47cca49428ee9",
+      "drawDurationMs": 148.468,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F05",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:-1",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F05-artwork-gm-level_-1-z1.png",
+      "pngBytes": 402572,
+      "pngSHA256": "99943ffb2476a08640b00e5b43cdb099951713a828c66c5853042e0d7f30f923",
+      "rgbaSHA256": "ffefb0773017dc2177d40e04ef061cd633030c3c65a43753c1706c2760f188e8",
+      "drawDurationMs": 14.697,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F05",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:-1",
+      "zoom": 2,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F05-artwork-gm-level_-1-z2.png",
+      "pngBytes": 446408,
+      "pngSHA256": "3c39916c338b85f69051d140f9039621625f89532227008c99b723b5a7bb0b22",
+      "rgbaSHA256": "4ba1c553ca8ca81441d32c13a6a8806d0219652c53da6a6938af3e8b6806a36a",
+      "drawDurationMs": 17.201,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F05",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:-1",
+      "zoom": 4,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F05-artwork-gm-level_-1-z4.png",
+      "pngBytes": 284485,
+      "pngSHA256": "3288c9cda245bb36bc1d6147baeadc8be1e804951af4a512a37bddf7c58de68b",
+      "rgbaSHA256": "3f055af98cd8f57edc0c7f198619fc6112fe846730a85e6abf4663a87c181a14",
+      "drawDurationMs": 14.942,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F05",
+      "kind": "static-export",
+      "role": "player",
+      "level": "level:-1",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F05-static-export-player-level_-1-z1.png",
+      "pngBytes": 376416,
+      "pngSHA256": "adb968c98dcba0d25f66a6eeac216fc06dc22cbc64b54149086833455b565a36",
+      "rgbaSHA256": "11ee52f8bd78dd415de758e43b5273bde07c632c23a1e666186caed951d64245",
+      "drawDurationMs": 12.04,
+      "scope": "Local prepared static export; unreviewed dressing removed; no authenticated role session"
+    },
+    {
+      "fixture": "F06",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 0.5,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F06-artwork-gm-level_0-z0.5.png",
+      "pngBytes": 104702,
+      "pngSHA256": "23d44ac0706165e2f17e6a3aa1188473b015eaa47d72f56d45087c990fa95f48",
+      "rgbaSHA256": "9f05b955b86e17281279cc5b0ffcc351b9c7671ea785beb02818542d2eafa9f8",
+      "drawDurationMs": 98.284,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F06",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F06-artwork-gm-level_0-z1.png",
+      "pngBytes": 297084,
+      "pngSHA256": "3ec6fffca849a3abdb1060e6ce6550c78f154f1454c5f7e92eacf13ba1286c2f",
+      "rgbaSHA256": "6cf43d02a3621b3cfe6a55336a4f43090e99e88affe61c12261d12a80c7687a2",
+      "drawDurationMs": 35.177,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F06",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 2,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F06-artwork-gm-level_0-z2.png",
+      "pngBytes": 529214,
+      "pngSHA256": "2dbab6b675a7d3615885013188ebea94789814c41c371db4215b12639224882c",
+      "rgbaSHA256": "24866535cad694478b241ead0a7ea10a49ef47f0b349b02f3573cb944e0b8501",
+      "drawDurationMs": 48.556,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F06",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 4,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F06-artwork-gm-level_0-z4.png",
+      "pngBytes": 378692,
+      "pngSHA256": "a8a9a05a005abf2e69130bc2d6d73bd4ee9dfce5d591923cc1b461180132a81c",
+      "rgbaSHA256": "24ba99154a3ac2b4fc80df770e18ee355a5b4ee2c13f8cd2c08bd08bd8c731a8",
+      "drawDurationMs": 46.809,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F06",
+      "kind": "static-export",
+      "role": "player",
+      "level": "level:0",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F06-static-export-player-level_0-z1.png",
+      "pngBytes": 343105,
+      "pngSHA256": "944b9aa873b4336058b44356f27df56976087aa1a4cc86b8eba680beef0e94f6",
+      "rgbaSHA256": "7f312409ca9a3ca4178f12fe45b7d3dbc1cda83b9d04bec32668e7b676c6a5a9",
+      "drawDurationMs": 39.388,
+      "scope": "Local prepared static export; unreviewed dressing removed; no authenticated role session"
+    },
+    {
+      "fixture": "F07",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 0.5,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F07-artwork-gm-level_0-z0.5.png",
+      "pngBytes": 111391,
+      "pngSHA256": "739cc95253d1e152224870387a149000fede5b14c25149371ab4270486471ca4",
+      "rgbaSHA256": "290e1a5bff82a71b1b2545534f68c9cf1ad08eb6586205af2926447e8b82b5e3",
+      "drawDurationMs": 14.448,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F07",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F07-artwork-gm-level_0-z1.png",
+      "pngBytes": 293974,
+      "pngSHA256": "662282f87dc5141296ca1f1003d2d191e2b99af0c192148299bcdbf700045cce",
+      "rgbaSHA256": "5eaf062be6cd1a51ada7858e7a32a484a527903632ab426660df284479e321d2",
+      "drawDurationMs": 2.634,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F07",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 2,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F07-artwork-gm-level_0-z2.png",
+      "pngBytes": 309624,
+      "pngSHA256": "ea258d7f114b4c5f503b589983120e7603b7502781fe7b86be6035657b18fa80",
+      "rgbaSHA256": "77d68a0b45e2891fcc6f50a7e6461a02ff74c2eb84e95f5d8abf81fa134c14a1",
+      "drawDurationMs": 2.473,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F07",
+      "kind": "artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 4,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F07-artwork-gm-level_0-z4.png",
+      "pngBytes": 172753,
+      "pngSHA256": "91c388c1e1680864574a4ce7a2097952801b2bd60f79256f8de658ace7bf238c",
+      "rgbaSHA256": "59b6a7eed58846d8c7204feef8cf488dd4269e671158a62d3bdf311b7f45ccd9",
+      "drawDurationMs": 2.006,
+      "scope": "GM-private artwork benchmark; fog off, gameplay/specialty overlays omitted"
+    },
+    {
+      "fixture": "F07",
+      "kind": "static-export",
+      "role": "player",
+      "level": "level:0",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F07-static-export-player-level_0-z1.png",
+      "pngBytes": 187072,
+      "pngSHA256": "0c964d3289e35b0b0c7e5561e2cb99be18947ff4e3fadf4eaa85879d19e9696c",
+      "rgbaSHA256": "a0c5b05de1e44d2816d80c1375bcc934d845d0785464a748996161538480a455",
+      "drawDurationMs": 12.213,
+      "scope": "Local prepared static export; unreviewed dressing removed; no authenticated role session"
+    },
+    {
+      "fixture": "F01",
+      "kind": "repeat-artwork",
+      "role": "gm",
+      "level": "level:0",
+      "zoom": 1,
+      "width": 800,
+      "height": 520,
+      "path": "renders/F01-repeat-artwork-gm-level_0-z1.png",
+      "pngBytes": 419253,
+      "pngSHA256": "ab2c9e3e5136dc810052ff8ab65756308286ee050cb85898f6428cb81b28e82a",
+      "rgbaSHA256": "d4503c07d51ca2615e26278b5e0ff6fb213ee0e400eded470cb7ed992106d708",
+      "drawDurationMs": 6.038,
+      "scope": "Local prepared static export; unreviewed dressing removed; no authenticated role session"
+    }
+  ],
+  "roles": [
+    {
+      "fixture": "F01",
+      "level": "level:0",
+      "role": "gm",
+      "file": {
+        "path": "roles/F01-level_0-gm.projection.json",
+        "bytes": 57215,
+        "sha256": "459458892f9388a1b8d57d051277ae5751e68ab26daa02dc8371f277501fefb9"
+      },
+      "sourcePrivateFeatures": 0,
+      "projectedFeatures": 25,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F01",
+      "level": "level:0",
+      "role": "player",
+      "file": {
+        "path": "roles/F01-level_0-player.projection.json",
+        "bytes": 45464,
+        "sha256": "be79bb07a3424ff77579a6bd45db8f95bf53d62e6b8ce8ec2b2e844a58a8f64d"
+      },
+      "sourcePrivateFeatures": 0,
+      "projectedFeatures": 25,
+      "expectedPrivateDisclosure": false
+    },
+    {
+      "fixture": "F02",
+      "level": "level:0",
+      "role": "gm",
+      "file": {
+        "path": "roles/F02-level_0-gm.projection.json",
+        "bytes": 77274,
+        "sha256": "51baa274ea3bd8a9714dab862c0aa4238d1bfdc863595772c52660b291fb5365"
+      },
+      "sourcePrivateFeatures": 0,
+      "projectedFeatures": 59,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F02",
+      "level": "level:0",
+      "role": "player",
+      "file": {
+        "path": "roles/F02-level_0-player.projection.json",
+        "bytes": 64150,
+        "sha256": "43200a8c5cf16ebe1530f02f239a01aede6e6e9a9dd70b8378ecedcb55dc5d38"
+      },
+      "sourcePrivateFeatures": 0,
+      "projectedFeatures": 59,
+      "expectedPrivateDisclosure": false
+    },
+    {
+      "fixture": "F03",
+      "level": "level:-1",
+      "role": "gm",
+      "file": {
+        "path": "roles/F03-level_-1-gm.projection.json",
+        "bytes": 119585,
+        "sha256": "799f1683d1360051e669fc2e1d42ffc5b1cf583f55aa2f1dd6ddffddf8663e1f"
+      },
+      "sourcePrivateFeatures": 2,
+      "projectedFeatures": 117,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F03",
+      "level": "level:-1",
+      "role": "player",
+      "file": {
+        "path": "roles/F03-level_-1-player.projection.json",
+        "bytes": 37512,
+        "sha256": "7336bca6cdfc13f0a0937acce28767ba4c2959b7bbfdbd2103bc84e09a3fd626"
+      },
+      "sourcePrivateFeatures": 2,
+      "projectedFeatures": 50,
+      "expectedPrivateDisclosure": false
+    },
+    {
+      "fixture": "F03",
+      "level": "level:0",
+      "role": "gm",
+      "file": {
+        "path": "roles/F03-level_0-gm.projection.json",
+        "bytes": 119583,
+        "sha256": "a1ea2ce20afb312ea72304d47fc9019345a91ff40e4affda5530dc0ccd8d53da"
+      },
+      "sourcePrivateFeatures": 2,
+      "projectedFeatures": 117,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F03",
+      "level": "level:0",
+      "role": "player",
+      "file": {
+        "path": "roles/F03-level_0-player.projection.json",
+        "bytes": 37510,
+        "sha256": "87fc2126b0bd6734d072f9444584973c2dc0261de00e2bf020e39e0c50201c31"
+      },
+      "sourcePrivateFeatures": 2,
+      "projectedFeatures": 50,
+      "expectedPrivateDisclosure": false
+    },
+    {
+      "fixture": "F03",
+      "level": "level:1",
+      "role": "gm",
+      "file": {
+        "path": "roles/F03-level_1-gm.projection.json",
+        "bytes": 119583,
+        "sha256": "e991f605363e28436a88c8f4e2c0e73c415fd30be62ebfd25e871085cc5ae3b8"
+      },
+      "sourcePrivateFeatures": 2,
+      "projectedFeatures": 117,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F03",
+      "level": "level:1",
+      "role": "player",
+      "file": {
+        "path": "roles/F03-level_1-player.projection.json",
+        "bytes": 37510,
+        "sha256": "513087f72992d08a9b5905b6f4d0f2c5b956cfdac288ca53658b335ee5b95316"
+      },
+      "sourcePrivateFeatures": 2,
+      "projectedFeatures": 50,
+      "expectedPrivateDisclosure": false
+    },
+    {
+      "fixture": "F04",
+      "level": "level:0",
+      "role": "gm",
+      "file": {
+        "path": "roles/F04-level_0-gm.projection.json",
+        "bytes": 21766,
+        "sha256": "5edb7d28e93d38fcf4a451c5bfc10f228b11e242261a8b5b13487a0bedf1ed41"
+      },
+      "sourcePrivateFeatures": 0,
+      "projectedFeatures": 0,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F04",
+      "level": "level:0",
+      "role": "player",
+      "file": {
+        "path": "roles/F04-level_0-player.projection.json",
+        "bytes": 7819,
+        "sha256": "567a2a21919a3c2db5ca362c34f22c9282e431bc9932b98329b8398c5ab14835"
+      },
+      "sourcePrivateFeatures": 0,
+      "projectedFeatures": 0,
+      "expectedPrivateDisclosure": false
+    },
+    {
+      "fixture": "F05",
+      "level": "level:0",
+      "role": "gm",
+      "file": {
+        "path": "roles/F05-level_0-gm.projection.json",
+        "bytes": 32606,
+        "sha256": "88c820c09c2f8389e0537d09c8cf97db56dfe431c35a1d27ff771831960d6e42"
+      },
+      "sourcePrivateFeatures": 2,
+      "projectedFeatures": 12,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F05",
+      "level": "level:0",
+      "role": "player",
+      "file": {
+        "path": "roles/F05-level_0-player.projection.json",
+        "bytes": 7087,
+        "sha256": "4ad4523750367c63b4e4858f446faad57b631214c3dd6c1c751f57d88208830e"
+      },
+      "sourcePrivateFeatures": 2,
+      "projectedFeatures": 4,
+      "expectedPrivateDisclosure": false
+    },
+    {
+      "fixture": "F05",
+      "level": "level:-1",
+      "role": "gm",
+      "file": {
+        "path": "roles/F05-level_-1-gm.projection.json",
+        "bytes": 32608,
+        "sha256": "68286795580862557689ba6a4f7751d7544b984c92914c01270fd9f80021caaf"
+      },
+      "sourcePrivateFeatures": 2,
+      "projectedFeatures": 12,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F05",
+      "level": "level:-1",
+      "role": "player",
+      "file": {
+        "path": "roles/F05-level_-1-player.projection.json",
+        "bytes": 7089,
+        "sha256": "c4d9938eff57a58a7ae766ceb72a164cbba2bc4f13171f6e9e9c83989fa7a5fa"
+      },
+      "sourcePrivateFeatures": 2,
+      "projectedFeatures": 4,
+      "expectedPrivateDisclosure": false
+    },
+    {
+      "fixture": "F05",
+      "level": "level:-2",
+      "role": "gm",
+      "file": {
+        "path": "roles/F05-level_-2-gm.projection.json",
+        "bytes": 32608,
+        "sha256": "c9fc3e5d5ef1cdc0bd68c4661130140a42ed2512f2ea8c27b9ee1fdac00a8f12"
+      },
+      "sourcePrivateFeatures": 2,
+      "projectedFeatures": 12,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F05",
+      "level": "level:-2",
+      "role": "player",
+      "file": {
+        "path": "roles/F05-level_-2-player.projection.json",
+        "bytes": 7089,
+        "sha256": "0109e44c73b3f086225ec1753266c5047a0edc1c2f3dd6a3025bbec2e03cffa2"
+      },
+      "sourcePrivateFeatures": 2,
+      "projectedFeatures": 4,
+      "expectedPrivateDisclosure": false
+    },
+    {
+      "fixture": "F06",
+      "level": "level:0",
+      "role": "gm",
+      "file": {
+        "path": "roles/F06-level_0-gm.projection.json",
+        "bytes": 38989,
+        "sha256": "310c474db3e1994f73b90871ba6090641a1dc50dc31e71e493af533714917da1"
+      },
+      "sourcePrivateFeatures": 0,
+      "projectedFeatures": 19,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F06",
+      "level": "level:0",
+      "role": "player",
+      "file": {
+        "path": "roles/F06-level_0-player.projection.json",
+        "bytes": 13085,
+        "sha256": "610b46dfb7bbb299e986f77e9046a8b7394976eabf6824fecf0840880ce39b27"
+      },
+      "sourcePrivateFeatures": 0,
+      "projectedFeatures": 13,
+      "expectedPrivateDisclosure": false
+    },
+    {
+      "fixture": "F06",
+      "level": "level:1",
+      "role": "gm",
+      "file": {
+        "path": "roles/F06-level_1-gm.projection.json",
+        "bytes": 38989,
+        "sha256": "e5a5cc0be8213abe7127e9b60e3c515000b2cb0ba858cd730eb278555d5ac435"
+      },
+      "sourcePrivateFeatures": 0,
+      "projectedFeatures": 19,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F06",
+      "level": "level:1",
+      "role": "player",
+      "file": {
+        "path": "roles/F06-level_1-player.projection.json",
+        "bytes": 13085,
+        "sha256": "538c29b0709f4de7494a1f57e82f284c8cf486ce62e1f42a61653f5d7b38d2c5"
+      },
+      "sourcePrivateFeatures": 0,
+      "projectedFeatures": 13,
+      "expectedPrivateDisclosure": false
+    },
+    {
+      "fixture": "F07",
+      "level": "level:0",
+      "role": "gm",
+      "file": {
+        "path": "roles/F07-level_0-gm.projection.json",
+        "bytes": 29990,
+        "sha256": "8c45e05c6c5408dbd1fdbd9321e4659c242efe14fd7044e72106f06aa144fe71"
+      },
+      "sourcePrivateFeatures": 1,
+      "projectedFeatures": 5,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F07",
+      "level": "level:0",
+      "role": "player",
+      "file": {
+        "path": "roles/F07-level_0-player.projection.json",
+        "bytes": 6423,
+        "sha256": "44af0d9246a37e69d70d9b9812a90b7a8b6d6179174dada9f15ff7ff29d45a90"
+      },
+      "sourcePrivateFeatures": 1,
+      "projectedFeatures": 4,
+      "expectedPrivateDisclosure": false
+    },
+    {
+      "fixture": "F07",
+      "level": "level:-1",
+      "role": "gm",
+      "file": {
+        "path": "roles/F07-level_-1-gm.projection.json",
+        "bytes": 29992,
+        "sha256": "2b01f005914746a61b3f9399f9d5b9948e0c88fe190aaac6d4218e8091027eb8"
+      },
+      "sourcePrivateFeatures": 1,
+      "projectedFeatures": 5,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F07",
+      "level": "level:-1",
+      "role": "player",
+      "file": {
+        "path": "roles/F07-level_-1-player.projection.json",
+        "bytes": 6425,
+        "sha256": "9b088dbe49abff7d639be11a05d4aa2e0e656cbe510b2ff8e81746bbf47b5840"
+      },
+      "sourcePrivateFeatures": 1,
+      "projectedFeatures": 4,
+      "expectedPrivateDisclosure": false
+    },
+    {
+      "fixture": "F07",
+      "level": "level:1",
+      "role": "gm",
+      "file": {
+        "path": "roles/F07-level_1-gm.projection.json",
+        "bytes": 29990,
+        "sha256": "4606eccbc79afd750c558062263e7a6cd22b18b35ff0efe2394e765a6bc3249a"
+      },
+      "sourcePrivateFeatures": 1,
+      "projectedFeatures": 5,
+      "expectedPrivateDisclosure": "GM export may include visible GM content; inspect per-floor scope"
+    },
+    {
+      "fixture": "F07",
+      "level": "level:1",
+      "role": "player",
+      "file": {
+        "path": "roles/F07-level_1-player.projection.json",
+        "bytes": 6423,
+        "sha256": "745504a1a74c4b40f1ec963d0eb58320ee00f4b97bd7cd2dabcbfad42849e60a"
+      },
+      "sourcePrivateFeatures": 1,
+      "projectedFeatures": 4,
+      "expectedPrivateDisclosure": false
+    }
+  ],
+  "dependencies": {
+    "path": "cases/dependency-failures.json",
+    "bytes": 2652,
+    "sha256": "c38dc5ca8ee3cc590eb35278580a9e93679ffb7a2dd56fd86d4eb1fc97724b5b"
+  },
+  "checks": [
+    {
+      "name": "F01 native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F01 native save/load stable draft and identity",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F01 gm level:0 zoom 0.5 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F01 gm level:0 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F01 gm level:0 zoom 2 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F01 gm level:0 zoom 4 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F01 level:0 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F01 level:0 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F01 level:0 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F01 player level:0 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F01 whole freeze operation source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F02 native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F02 native save/load stable draft and identity",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F02 gm level:0 zoom 0.5 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F02 gm level:0 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F02 gm level:0 zoom 2 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F02 gm level:0 zoom 4 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F02 level:0 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F02 level:0 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F02 level:0 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F02 player level:0 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F02 whole freeze operation source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 native save/load stable draft and identity",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 gm level:0 zoom 0.5 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 gm level:0 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 gm level:0 zoom 2 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 gm level:0 zoom 4 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 level:-1 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 level:-1 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 level:-1 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 level:0 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 level:0 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 level:0 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 level:1 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 level:1 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 level:1 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 player level:0 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F03 whole freeze operation source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F04 native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F04 native save/load stable draft and identity",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F04 gm level:0 zoom 0.5 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F04 gm level:0 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F04 gm level:0 zoom 2 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F04 gm level:0 zoom 4 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F04 level:0 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F04 level:0 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F04 level:0 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F04 player level:0 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F04 whole freeze operation source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 native save/load stable draft and identity",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 gm level:-1 zoom 0.5 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 gm level:-1 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 gm level:-1 zoom 2 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 gm level:-1 zoom 4 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 level:0 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 level:0 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 level:0 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 level:-1 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 level:-1 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 level:-1 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 level:-2 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 level:-2 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 level:-2 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 player level:-1 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F05 whole freeze operation source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 native save/load stable draft and identity",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 gm level:0 zoom 0.5 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 gm level:0 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 gm level:0 zoom 2 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 gm level:0 zoom 4 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 level:0 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 level:0 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 level:0 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 level:1 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 level:1 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 level:1 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 player level:0 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F06 whole freeze operation source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 native save/load stable draft and identity",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 gm level:0 zoom 0.5 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 gm level:0 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 gm level:0 zoom 2 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 gm level:0 zoom 4 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 level:0 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 level:0 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 level:0 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 level:-1 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 level:-1 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 level:-1 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 level:1 gm projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 level:1 private feature IDs and labels absent",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 level:1 player projected native validator",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 player level:0 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F07 whole freeze operation source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "Same-floor canary kept for GM export",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "Same-floor canary absent from player export",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F01 gm level:0 zoom 1 source unchanged",
+      "status": "passed",
+      "boundary": "controlled native component"
+    },
+    {
+      "name": "F01 repeated same-environment render pixels identical",
+      "status": "passed",
+      "boundary": "controlled native component"
+    }
+  ],
+  "openAcceptance": [
+    "Real browser artwork-first workflow",
+    "Keyboard, pointer and inspector interactions",
+    "Authenticated GM and two player sessions",
+    "Network payload privacy, ownership and reconnect",
+    "Physical Windows/Android and owner MacBook Air performance",
+    "Installed optional packs, persistence, quota/eviction and recovery",
+    "Receiving-VTT import",
+    "Owner/creator visual acceptance"
+  ],
+  "userData": "All maps are existing illustrative tester samples; canary and failure cases are synthetic. Package contains GM test data and is not a player export."
+}

@@ -1,0 +1,1093 @@
+{
+  "format": "multiversal-cartography-tester-v2",
+  "sourceCommit": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+  "document": {
+    "id": "mapdoc:tester:mmht:carnival-impossible-arcade",
+    "mode": "interior",
+    "title": "Carnival · Impossible Arcade (illustrative topology)",
+    "origin": "reference",
+    "sourceRef": "mapdoc:old-vault@14",
+    "revision": 1,
+    "createdAt": "2026-11-21T01:53:16.304Z",
+    "modifiedAt": "2026-11-21T01:53:16.304Z",
+    "draft": {
+      "workspaceRef": "mcs:offline-tester",
+      "documentRef": "mapdoc:tester:mmht:carnival-impossible-arcade",
+      "authoringSessionRef": "mapdoc:tester:mmht:carnival-impossible-arcade:draft",
+      "requestedMode": "author-interior",
+      "layers": [
+        {
+          "layerId": "layer:structure",
+          "gmOnly": false
+        },
+        {
+          "layerId": "layer:objects",
+          "gmOnly": false
+        },
+        {
+          "layerId": "layer:gm",
+          "gmOnly": true
+        }
+      ],
+      "levels": [
+        {
+          "levelId": "level:0",
+          "name": "Ground",
+          "ordinal": 0,
+          "elevationMeters": 0
+        },
+        {
+          "levelId": "level:-1",
+          "name": "Lower Vault",
+          "ordinal": -1,
+          "elevationMeters": -4
+        },
+        {
+          "levelId": "level:1",
+          "name": "Upper Walk",
+          "ordinal": 1,
+          "elevationMeters": 4
+        }
+      ],
+      "templates": [
+        {
+          "templateId": "template:stone-room",
+          "name": "Stone Room",
+          "featureKind": "room",
+          "tokenRefs": [
+            "token:stone",
+            "token:interior"
+          ]
+        },
+        {
+          "templateId": "template:crate",
+          "name": "Crate",
+          "featureKind": "object-placement",
+          "tokenRefs": [
+            "token:wood"
+          ]
+        }
+      ],
+      "traces": [],
+      "features": [
+        {
+          "featureId": "ne14:carnival:entry",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 5,
+                "y": 5
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Gilded Entrance",
+          "nonEuclideanNode": {
+            "role": "portal-anchor",
+            "spatial": "ordinary",
+            "truth": "confirmed-authoring",
+            "ownerRef": "",
+            "notes": "Illustrative topology, not canon or an automatically traversable portal."
+          }
+        },
+        {
+          "featureId": "ne14:carnival:left",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 11,
+                "y": 9
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Left Passage · First Mirror",
+          "nonEuclideanNode": {
+            "role": "passage",
+            "spatial": "repeating",
+            "truth": "confirmed-authoring",
+            "ownerRef": "",
+            "notes": "Illustrative topology, not canon or an automatically traversable portal."
+          }
+        },
+        {
+          "featureId": "ne14:carnival:far",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 24,
+                "y": 9
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Arcade Far Door",
+          "nonEuclideanNode": {
+            "role": "portal-anchor",
+            "spatial": "folded",
+            "truth": "confirmed-authoring",
+            "ownerRef": "",
+            "notes": "Illustrative topology, not canon or an automatically traversable portal."
+          }
+        },
+        {
+          "featureId": "ne14:carnival:heart",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 17,
+                "y": 19
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Central Spiral Gallery",
+          "nonEuclideanNode": {
+            "role": "nested-space",
+            "spatial": "larger-inside",
+            "truth": "confirmed-authoring",
+            "ownerRef": "",
+            "notes": "Illustrative topology, not canon or an automatically traversable portal."
+          }
+        },
+        {
+          "featureId": "ne14:carnival:secret",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:gm",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 26,
+                "y": 19
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Concealed Threshold",
+          "nonEuclideanNode": {
+            "role": "portal-anchor",
+            "spatial": "discontinuous",
+            "truth": "confirmed-authoring",
+            "ownerRef": "",
+            "notes": "Illustrative topology, not canon or an automatically traversable portal."
+          }
+        }
+      ],
+      "views": [
+        {
+          "viewId": "view:plan",
+          "kind": "plan",
+          "levelIds": [
+            "level:0"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:isometric",
+          "kind": "isometric",
+          "levelIds": [
+            "level:0",
+            "level:1"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:staggered",
+          "kind": "staggered",
+          "levelIds": [
+            "level:-1",
+            "level:0",
+            "level:1"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:section",
+          "kind": "section",
+          "levelIds": [
+            "level:-1",
+            "level:0",
+            "level:1"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:cutaway",
+          "kind": "cutaway",
+          "levelIds": [
+            "level:0",
+            "level:1"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:deck",
+          "kind": "deck-plan",
+          "levelIds": [
+            "level:1"
+          ],
+          "elevationScale": 1
+        }
+      ],
+      "nonEuclideanFrame": {
+        "width": 32,
+        "height": 24
+      },
+      "nonEuclideanLinks": [
+        {
+          "id": "ne14:car:entry-left",
+          "label": "Entrance passage",
+          "from": {
+            "mapId": "mapdoc:tester:mmht:carnival-impossible-arcade",
+            "levelId": "level:0",
+            "featureId": "ne14:carnival:entry"
+          },
+          "to": {
+            "mapId": "mapdoc:tester:mmht:carnival-impossible-arcade",
+            "levelId": "level:0",
+            "featureId": "ne14:carnival:left"
+          },
+          "family": "connectivity",
+          "direction": "both",
+          "visibility": "player",
+          "truth": "confirmed-authoring",
+          "transform": {
+            "rotationDegrees": 0,
+            "reflection": "none"
+          },
+          "ownerRef": "",
+          "notes": "Two way connection, not inferred from the drawing.",
+          "ownerValidation": "unverified",
+          "schema": "mmht-topology-link-v1"
+        },
+        {
+          "id": "ne14:car:left-far",
+          "label": "First mirror folds into distant door",
+          "from": {
+            "mapId": "mapdoc:tester:mmht:carnival-impossible-arcade",
+            "levelId": "level:0",
+            "featureId": "ne14:carnival:left"
+          },
+          "to": {
+            "mapId": "mapdoc:tester:mmht:carnival-impossible-arcade",
+            "levelId": "level:0",
+            "featureId": "ne14:carnival:far"
+          },
+          "family": "non-euclidean-link",
+          "direction": "forward",
+          "visibility": "player",
+          "truth": "confirmed-authoring",
+          "transform": {
+            "rotationDegrees": 180,
+            "reflection": "horizontal"
+          },
+          "ownerRef": "",
+          "notes": "Direction of arrival reverses in this authored spatial description.",
+          "ownerValidation": "unverified",
+          "schema": "mmht-topology-link-v1"
+        },
+        {
+          "id": "ne14:car:far-entry",
+          "label": "Far door returns to entrance",
+          "from": {
+            "mapId": "mapdoc:tester:mmht:carnival-impossible-arcade",
+            "levelId": "level:0",
+            "featureId": "ne14:carnival:far"
+          },
+          "to": {
+            "mapId": "mapdoc:tester:mmht:carnival-impossible-arcade",
+            "levelId": "level:0",
+            "featureId": "ne14:carnival:entry"
+          },
+          "family": "non-euclidean-link",
+          "direction": "forward",
+          "visibility": "player",
+          "truth": "confirmed-authoring",
+          "transform": {
+            "rotationDegrees": 0,
+            "reflection": "none"
+          },
+          "ownerRef": "",
+          "notes": "A graph loop: no Euclidean separation is implied.",
+          "ownerValidation": "unverified",
+          "schema": "mmht-topology-link-v1"
+        },
+        {
+          "id": "ne14:car:heart-far",
+          "label": "Spiral nested in arcade",
+          "from": {
+            "mapId": "mapdoc:tester:mmht:carnival-impossible-arcade",
+            "levelId": "level:0",
+            "featureId": "ne14:carnival:heart"
+          },
+          "to": {
+            "mapId": "mapdoc:tester:mmht:carnival-impossible-arcade",
+            "levelId": "level:0",
+            "featureId": "ne14:carnival:far"
+          },
+          "family": "nesting",
+          "direction": "forward",
+          "visibility": "player",
+          "truth": "confirmed-authoring",
+          "transform": {
+            "rotationDegrees": 0,
+            "reflection": "none"
+          },
+          "ownerRef": "",
+          "notes": "A containment statement, not walkable connectivity.",
+          "ownerValidation": "unverified",
+          "schema": "mmht-topology-link-v1"
+        },
+        {
+          "id": "ne14:car:secret",
+          "label": "Concealed mirror passage",
+          "from": {
+            "mapId": "mapdoc:tester:mmht:carnival-impossible-arcade",
+            "levelId": "level:0",
+            "featureId": "ne14:carnival:far"
+          },
+          "to": {
+            "mapId": "mapdoc:tester:mmht:carnival-impossible-arcade",
+            "levelId": "level:0",
+            "featureId": "ne14:carnival:secret"
+          },
+          "family": "portal-link",
+          "direction": "forward",
+          "visibility": "gm",
+          "truth": "confirmed-authoring",
+          "transform": {
+            "rotationDegrees": 0,
+            "reflection": "none"
+          },
+          "ownerRef": "",
+          "notes": "GM-only edge and destination. Must not appear in player references.",
+          "ownerValidation": "unverified",
+          "schema": "mmht-topology-link-v1"
+        }
+      ],
+      "nonEuclideanSummary": "Illustrative sample: impossible loop + half-turn + mirror, nesting and GM secret. No reality movement rules.",
+      "advancedGeometries": [
+        {
+          "id": "g15:car:floor",
+          "label": "Arcade folded courtyard",
+          "kind": "polygon-rings",
+          "visibility": "player",
+          "levelId": "level:0",
+          "sourceFeatureId": "",
+          "sourceVersion": "",
+          "notes": "",
+          "geometry": {
+            "rings": [
+              [
+                {
+                  "x": 3,
+                  "y": 3
+                },
+                {
+                  "x": 26,
+                  "y": 3
+                },
+                {
+                  "x": 26,
+                  "y": 20
+                },
+                {
+                  "x": 3,
+                  "y": 20
+                }
+              ],
+              [
+                {
+                  "x": 10.36,
+                  "y": 8.1
+                },
+                {
+                  "x": 18.64,
+                  "y": 8.1
+                },
+                {
+                  "x": 18.64,
+                  "y": 14.899999999999999
+                },
+                {
+                  "x": 10.36,
+                  "y": 14.899999999999999
+                }
+              ]
+            ]
+          },
+          "transform": {
+            "x": 0,
+            "y": 0,
+            "rotationDegrees": 0,
+            "scaleX": 1,
+            "scaleY": 1
+          }
+        },
+        {
+          "id": "g15:car:curve",
+          "label": "Curved mirror promenade",
+          "kind": "bezier-path",
+          "visibility": "player",
+          "levelId": "level:0",
+          "sourceFeatureId": "",
+          "sourceVersion": "",
+          "notes": "",
+          "geometry": {
+            "segments": [
+              [
+                {
+                  "x": 4,
+                  "y": 6
+                },
+                {
+                  "x": 9.5,
+                  "y": 15
+                },
+                {
+                  "x": 20.5,
+                  "y": 2.85
+                },
+                {
+                  "x": 26,
+                  "y": 10.95
+                }
+              ]
+            ]
+          },
+          "transform": {
+            "x": 0,
+            "y": 0,
+            "rotationDegrees": 0,
+            "scaleX": 1,
+            "scaleY": 1
+          }
+        },
+        {
+          "id": "g15:car:secret",
+          "label": "GM concealed annex cutout",
+          "kind": "polygon-rings",
+          "visibility": "gm",
+          "levelId": "level:0",
+          "sourceFeatureId": "",
+          "sourceVersion": "",
+          "notes": "",
+          "geometry": {
+            "rings": [
+              [
+                {
+                  "x": 24,
+                  "y": 15
+                },
+                {
+                  "x": 30,
+                  "y": 15
+                },
+                {
+                  "x": 30,
+                  "y": 21
+                },
+                {
+                  "x": 24,
+                  "y": 21
+                }
+              ],
+              [
+                {
+                  "x": 25.92,
+                  "y": 16.8
+                },
+                {
+                  "x": 28.08,
+                  "y": 16.8
+                },
+                {
+                  "x": 28.08,
+                  "y": 19.2
+                },
+                {
+                  "x": 25.92,
+                  "y": 19.2
+                }
+              ]
+            ]
+          },
+          "transform": {
+            "x": 0,
+            "y": 0,
+            "rotationDegrees": 0,
+            "scaleX": 1,
+            "scaleY": 1
+          }
+        }
+      ],
+      "showcase": {
+        "schema": 1,
+        "id": "catalog03:topology-map:1",
+        "style": "impossible-space",
+        "palette": {
+          "accent": "#ad86de",
+          "secondary": "#69b4c9",
+          "ink": "#443c62",
+          "deep": "#302b49"
+        },
+        "version": 1,
+        "visible": true,
+        "layers": {
+          "detail": true,
+          "labels": true,
+          "ground": true
+        },
+        "title": "Carnival",
+        "variant": 1,
+        "seed": 647528712,
+        "frame": {
+          "width": 32,
+          "height": 24
+        },
+        "elements": [
+          {
+            "id": "topology-map:1:1",
+            "kind": "pillar",
+            "x": 15.877,
+            "y": 2.581,
+            "size": 0.698,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.9,
+            "seed": 46555,
+            "rotation": -28.8
+          },
+          {
+            "id": "topology-map:1:2",
+            "kind": "contour",
+            "x": 15.717,
+            "y": 6.437,
+            "size": 1.884,
+            "count": 8,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.84,
+            "seed": 68072,
+            "rotation": -3.8
+          },
+          {
+            "id": "topology-map:1:3",
+            "kind": "light",
+            "x": 26.072,
+            "y": 9.279,
+            "size": 0.901,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.87,
+            "seed": 95063,
+            "rotation": 14.2
+          },
+          {
+            "id": "topology-map:1:4",
+            "kind": "pillar",
+            "x": 16.876,
+            "y": 8.292,
+            "size": 1.084,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.89,
+            "seed": 86590,
+            "rotation": 5.6
+          },
+          {
+            "id": "topology-map:1:5",
+            "kind": "glyph",
+            "x": 25.179,
+            "y": 18.452,
+            "size": 1.504,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.89,
+            "seed": 54075,
+            "rotation": 5.5
+          },
+          {
+            "id": "topology-map:1:6",
+            "kind": "portal",
+            "x": 13.363,
+            "y": 16.498,
+            "size": 1.394,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.87,
+            "seed": 50200,
+            "rotation": 5.9
+          },
+          {
+            "id": "topology-map:1:7",
+            "kind": "pillar",
+            "x": 9.548,
+            "y": 19.358,
+            "size": 1.025,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.95,
+            "seed": 94404,
+            "rotation": -0.3
+          },
+          {
+            "id": "topology-map:1:8",
+            "kind": "pillar",
+            "x": 15.82,
+            "y": 6.476,
+            "size": 1.198,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.91,
+            "seed": 84779,
+            "rotation": -28.8
+          },
+          {
+            "id": "topology-map:1:9",
+            "kind": "contour",
+            "x": 29.038,
+            "y": 11.998,
+            "size": 1.929,
+            "count": 3,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.92,
+            "seed": 69659,
+            "rotation": 5
+          },
+          {
+            "id": "topology-map:1:10",
+            "kind": "light",
+            "x": 5.716,
+            "y": 17.333,
+            "size": 0.799,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.83,
+            "seed": 74932,
+            "rotation": 13.7
+          },
+          {
+            "id": "topology-map:1:11",
+            "kind": "arc",
+            "x": 16.064,
+            "y": 3.82,
+            "size": 2.503,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.92,
+            "seed": 35441,
+            "rotation": -4
+          },
+          {
+            "id": "topology-map:1:12",
+            "kind": "glyph",
+            "x": 11.121,
+            "y": 11.051,
+            "size": 0.955,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.85,
+            "seed": 65379,
+            "rotation": 6
+          },
+          {
+            "id": "topology-map:1:13",
+            "kind": "glyph",
+            "x": 3.46,
+            "y": 20.514,
+            "size": 1.605,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.97,
+            "seed": 6397,
+            "rotation": -10.9
+          },
+          {
+            "id": "topology-map:1:14",
+            "kind": "portal",
+            "x": 5.519,
+            "y": 16.251,
+            "size": 1.674,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.82,
+            "seed": 58051,
+            "rotation": -24.2
+          },
+          {
+            "id": "topology-map:1:15",
+            "kind": "crystal",
+            "x": 21.614,
+            "y": 7.93,
+            "size": 0.825,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.8,
+            "seed": 24784,
+            "rotation": -4.8
+          },
+          {
+            "id": "topology-map:1:16",
+            "kind": "contour",
+            "x": 3.288,
+            "y": 11.838,
+            "size": 2.214,
+            "count": 7,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.84,
+            "seed": 52613,
+            "rotation": -8.8
+          },
+          {
+            "id": "topology-map:1:17",
+            "kind": "crystal",
+            "x": 24.974,
+            "y": 7.383,
+            "size": 0.726,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.97,
+            "seed": 8738,
+            "rotation": 12.1
+          },
+          {
+            "id": "topology-map:1:18",
+            "kind": "glyph",
+            "x": 4.309,
+            "y": 18.053,
+            "size": 1.499,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.81,
+            "seed": 91182,
+            "rotation": 14.2
+          },
+          {
+            "id": "topology-map:1:19",
+            "kind": "pillar",
+            "x": 24.951,
+            "y": 4.7,
+            "size": 1.662,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.83,
+            "seed": 41053,
+            "rotation": -27.3
+          },
+          {
+            "id": "topology-map:1:20",
+            "kind": "portal",
+            "x": 21.678,
+            "y": 11.214,
+            "size": 1.407,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.88,
+            "seed": 18539,
+            "rotation": 7.4
+          },
+          {
+            "id": "topology-map:1:21",
+            "kind": "arc",
+            "x": 17.634,
+            "y": 5.199,
+            "size": 1.824,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.82,
+            "seed": 19801,
+            "rotation": -30.9
+          },
+          {
+            "id": "topology-map:1:22",
+            "kind": "glyph",
+            "x": 2.929,
+            "y": 20.199,
+            "size": 1.125,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.98,
+            "seed": 59613,
+            "rotation": -5
+          },
+          {
+            "id": "topology-map:1:23",
+            "kind": "crystal",
+            "x": 25.05,
+            "y": 8.681,
+            "size": 1.194,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.92,
+            "seed": 65590,
+            "rotation": 5.3
+          },
+          {
+            "id": "topology-map:1:24",
+            "kind": "pillar",
+            "x": 12.509,
+            "y": 3.485,
+            "size": 1.663,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.86,
+            "seed": 12101,
+            "rotation": 1.6
+          },
+          {
+            "id": "topology-map:1:25",
+            "kind": "pillar",
+            "x": 27.687,
+            "y": 20.968,
+            "size": 1.255,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.84,
+            "seed": 78048,
+            "rotation": 15.6
+          },
+          {
+            "id": "topology-map:1:26",
+            "kind": "light",
+            "x": 21.934,
+            "y": 10.408,
+            "size": 1.255,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.9,
+            "seed": 39362,
+            "rotation": -25.5
+          },
+          {
+            "id": "topology-map:1:27",
+            "kind": "pillar",
+            "x": 28.656,
+            "y": 19.922,
+            "size": 0.683,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.84,
+            "seed": 32768,
+            "rotation": 6.7
+          },
+          {
+            "id": "topology-map:1:28",
+            "kind": "light",
+            "x": 12.692,
+            "y": 19.006,
+            "size": 1.264,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.91,
+            "seed": 72653,
+            "rotation": 3.5
+          },
+          {
+            "id": "topology-map:1:29",
+            "kind": "contour",
+            "x": 3.894,
+            "y": 13.092,
+            "size": 1.886,
+            "count": 5,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.8,
+            "seed": 40926,
+            "rotation": -17.9
+          },
+          {
+            "id": "topology-map:1:30",
+            "kind": "pillar",
+            "x": 22.635,
+            "y": 6.051,
+            "size": 1.669,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.88,
+            "seed": 9156,
+            "rotation": -17.8
+          },
+          {
+            "id": "topology-map:1:31",
+            "kind": "contour",
+            "x": 17.524,
+            "y": 7.929,
+            "size": 1.962,
+            "count": 8,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.96,
+            "seed": 68801,
+            "rotation": 1.3
+          },
+          {
+            "id": "topology-map:1:32",
+            "kind": "glyph",
+            "x": 8.169,
+            "y": 15.289,
+            "size": 1.021,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.97,
+            "seed": 26345,
+            "rotation": -29.7
+          },
+          {
+            "id": "topology-map:1:33",
+            "kind": "contour",
+            "x": 12.725,
+            "y": 2.855,
+            "size": 2.151,
+            "count": 8,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.94,
+            "seed": 75914,
+            "rotation": 11.3
+          },
+          {
+            "id": "topology-map:1:34",
+            "kind": "glyph",
+            "x": 6.831,
+            "y": 5.382,
+            "size": 1.451,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.86,
+            "seed": 56170,
+            "rotation": 4.5
+          },
+          {
+            "id": "topology-map:1:35",
+            "kind": "pillar",
+            "x": 13.397,
+            "y": 8.75,
+            "size": 1.28,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.97,
+            "seed": 466,
+            "rotation": 9.6
+          },
+          {
+            "id": "topology-map:1:36",
+            "kind": "crystal",
+            "x": 13.719,
+            "y": 11.365,
+            "size": 1.63,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.96,
+            "seed": 6218,
+            "rotation": 3.5
+          },
+          {
+            "id": "topology-map:1:37",
+            "kind": "label",
+            "x": 5.44,
+            "y": 4.56,
+            "size": 1.156,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:0",
+            "alpha": 0.88,
+            "text": "ENTRY"
+          },
+          {
+            "id": "topology-map:1:38",
+            "kind": "label",
+            "x": 23.04,
+            "y": 8.4,
+            "size": 1.156,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:0",
+            "alpha": 0.88,
+            "text": "THE FOLD"
+          },
+          {
+            "id": "topology-map:1:39",
+            "kind": "label",
+            "x": 24.96,
+            "y": 18.72,
+            "size": 1.156,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:0",
+            "alpha": 0.88,
+            "text": "UNLINKED"
+          }
+        ]
+      }
+    },
+    "viewport": {
+      "zoom": 1,
+      "panX": 0,
+      "panY": 0,
+      "level": "level:0",
+      "fog": false,
+      "hiddenLayers": []
+    }
+  }
+}

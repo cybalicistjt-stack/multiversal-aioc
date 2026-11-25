@@ -1,0 +1,3794 @@
+{
+  "format": "multiversal-cartography-tester-v2",
+  "sourceCommit": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+  "document": {
+    "id": "mapdoc:tester:tidewatch-archive",
+    "mode": "interior",
+    "title": "Tidewatch Archive",
+    "origin": "reference",
+    "sourceRef": "mapdoc:old-vault@14",
+    "revision": 1,
+    "createdAt": "2026-11-21T01:53:16.139Z",
+    "modifiedAt": "2026-11-21T01:53:16.139Z",
+    "draft": {
+      "workspaceRef": "mcs:offline-tester",
+      "documentRef": "mapdoc:tester:tidewatch-archive",
+      "authoringSessionRef": "mapdoc:tester:tidewatch-archive:draft",
+      "requestedMode": "author-interior",
+      "layers": [
+        {
+          "layerId": "layer:structure",
+          "gmOnly": false
+        },
+        {
+          "layerId": "layer:fittings",
+          "gmOnly": false
+        },
+        {
+          "layerId": "layer:objects",
+          "gmOnly": false
+        },
+        {
+          "layerId": "layer:canopy",
+          "gmOnly": false
+        },
+        {
+          "layerId": "layer:gm",
+          "gmOnly": true
+        }
+      ],
+      "levels": [
+        {
+          "levelId": "level:-1",
+          "name": "Tidal undercroft",
+          "ordinal": -1,
+          "elevationMeters": -4.5
+        },
+        {
+          "levelId": "level:0",
+          "name": "Entry & reading rooms",
+          "ordinal": 0,
+          "elevationMeters": 0
+        },
+        {
+          "levelId": "level:1",
+          "name": "Gallery & lookout",
+          "ordinal": 1,
+          "elevationMeters": 4.2
+        }
+      ],
+      "templates": [
+        {
+          "templateId": "template:tidewatch-reading",
+          "name": "Timber reading room",
+          "featureKind": "room",
+          "tokenRefs": [
+            "token:wood",
+            "token:interior"
+          ]
+        },
+        {
+          "templateId": "template:tidewatch-storage",
+          "name": "Archive supplies",
+          "featureKind": "object-placement",
+          "tokenRefs": [
+            "token:storage",
+            "token:container"
+          ]
+        },
+        {
+          "templateId": "template:tidewatch-lookout",
+          "name": "Glazed lookout",
+          "featureKind": "room",
+          "tokenRefs": [
+            "token:glass",
+            "token:control"
+          ]
+        }
+      ],
+      "traces": [
+        {
+          "traceId": "trace:tidewatch-entry",
+          "kind": "blueprint",
+          "levelId": "level:0",
+          "sourceRef": "asset:tidewatch-entry-survey",
+          "opacity": 0.81,
+          "raster": {
+            "name": "Tidewatch entry survey",
+            "dataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtAAAAIcCAYAAADffZlTAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7OHOkAACAASURBVHic7d15nBV0vf/x9wCyyKIgiICgAi7I4oIsiiuKe2o3b3WrWze7bWbLLSvLFiu9ld3MummZZeVPW25ZmibuGy6IgggiCgIqiMimyK7A/P5AJybOKF8VD8M8n4+Hjwdz5pwzn8NhzuPF8TsfarbfZ1RtAACATdKs2gMAAEBjIqABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAItSm9QU9MsLVu33jzTAADA2+ilVatSW7uu6DbFAd2ydevsd/ixpTcDAIAtzkN33JDVK1cU3aY4oF/16Ng7s3rVyjd6cwAAqJqWrduk//DD3tBt33BAr161srjWAQCgsfNDhAAAUEBAAwBAAQENAAAFBDQAABQQ0AAAUEBAAwBAAQENAAAFBDQAABQQ0AAAUOAN/0uEAMA/HHHowfnCZz6Vp2fPSZs2bbJdh/aZOevJ9Om9W8aNn5B169Zlv0EDs662NuMfejgzZs7KqJGHZ5dePfPIo1Pz8ssvZ/vtt89z8+fnu/9zYdauXZtvfOWL2WdA/yxfsSJPPvV0WrVqlV136ZWFCxflkst+mzM+/p/ptlPXjH3gwTw0cVL+9Z0np2PH7XP3fWNzx5h787EPfzCdOm6fq6+7Plf84U9Jkp4798i53zg7p33y01m7du0mzf7d/7kwPbp3y+kf/UjWrVubbbbZJkuXLUvH7bbLmWd/M1/78hey78ABWbZ8ecaOezA//9Vvcs7ZX84+A/pn0eLFGXPv2Pz2yj9U/H37xlln5rn5C3LJZb+tu+yMj/9nhg0ZnNatWuWxadPTunXrtG/XLjfcfGuuvu76JEnz5s3zhc+cnu06dEhSkyRp165tzjv/h/nYaR963XmaNWuWg4cPyw47dMqUqY/lmbnP5ohDD06SPDhhYr7/o5/kXae8IyefcFxat2qVByY8lE4dO2Zg/73z9Ow5WbhoUdq1bZveu+2ae8aOyw8u/N+NHlvPnXvk9I+elq988ztJkkED+uff/vVfGryPcQ+Oz8knHp89+vbJ3/4+Or/49eVJknO/8dUMGtA/8557LuMenJBT3nFCg89Vq1atMrD/3lm6dGmenj0nHdq3T/MWLXLpry9Pr547510nnZguXTpn6uPTcvGll2XE8KE55qiRadWyZW654678YoPnoX+/vfLhD/xbVr/0cpo1q8mSF1/MunXrMn7Cw3nH8cekb5/eeezxabnm76Mz5t6xOeerX8p++wzKwoWLcte992XvvfZM/357ZdZTT+eFF5akS+dOWbhocb73wx/nc2d8IkMH75/Fzz+fO8fcm19f8bt85pMfyyEjDsyKFSvy8OQp6bPbrht8f6zJDp06pufOPXLRL36V4UMGZ/9998nSZcty6x135f+uujrfOOvM7N1vrzw9e07O+8EFeWbus2/Z9/c/a956pz7nlNygxTbbpNuufTPvySeyds3Lm20wAGhMBuzdL9tt1yGfOfOs7Ll7n7Rr1zaf+vyXs22bNum8ww459/wf5sBhQ/Pii0vzre+en8emTc+2bdpk0ID++cjpn83td92d++5/IKeeclL2GzQwd959T+68+96MGnl4ZsyclW9/7we55fY7M3PmkxkyeN/86vIr8/wLS3LIQcPz+/+7KrfccVeaNW+W/fcZlAt++rM8OvWxtGvXNosWP59LXwmxJPnwB96X/v32ypo1azJl6mObNPuEiQ/nh9/9dh6Y8FAuvOjnueX2O9Nnt10zaGD//OVv1+Wue+7LqJFHZOasJ/Ojn/4sSXLHmHvyjuOOycRJk+vF8YbatG6dj374g9mxc+f87fob6i4fN35C9h04MEly5le/kZtvuyMH7L9vDj9kRP589bVJkv8+52vZpsU2+dq3/zu33XlXVq1alWNHHZlxD07IVVdf+7rzTJw0OT137pFuO3XNp/7rS3lgwkPpumOX7LZLr3zzvO9n1erVmfrYtPTt0zsPjH8ol/zqN7n1jrvyvnefmj9f/bf87Je/zo233p42bdqkU8eOueueezd6fP/+3nfniZmz8uhjjydJnpu/4DXv4/Lf/zF33X1v3nHcMdlrj90z99l5eWr2nNx255gcOuKgfOPc72a77bZ7zefqnPO+n+OOOjJTH5+Wc8+/IDfccltOPeWk7Ll73/z0kl9m0pRHc8ShB2faEzPy9xtuyqRHHs3QwfvnT3+5Jn+++m/15v/iZz+VsQ+Oz08v+WVuveOuHHPUkWnTunV++dsrsnLVqowYPizfu+DHmTBxUt3v8YjhQ3PhxZfk1jvuysRJk3PK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je6ndl1trrludOY8MzcnHHt0vc/95Zpr06ply/zXpz+ZuQ380N91N9yU0TfdkueXLEm/PffIWV/4bL3PPz17TlauXJm5z857zd+Pt5KABoDNoOaVzRD1LqupSU1NTYPXad68eYbsv1/GP/Rw3buMNTU1dde78KKfp0f3btmlV8967+JNfWxaOu+wQ264+basXbs2T8yYmVatW9U7L/reU9+Zu++7P1/62jn50tfOyfk/+t+0atky7zn1na87++/+76q03GabnHrKP84G9++3Z7br0D7Lli/faM4N72fj34WkU8eO2bl793z+rK/VzfPw5CkZvN++FW87b/78rFy1KgcNH5Yvfu7TueqaazPnmWdyyokn1F2/Zcttsv++++T+B8Zv8jwbPhcbGjd+QgYN2DsPT36k4udramqybPny/O/PL82xo45Mhw7t633+xOOOyexn5la87evdxy69dq73l5ofX3xJnnzq6XTeYYfK91Ppz9kGlz351Oy0a9cuxxx1RM787Kf+6XqVb/+qnbt3y/ve/a66j1etXp0XXjn3/sCEh7Jq1aocfsiIus8PGbxfvds3a1bz6oNNkixYuDC79uqZ448+Ku/+l5OTV95pn/bEjAwdvH/+el398+Ibznb9TbfkutE35sTjjsnq1S/Vv94/fV+9HWzhAIC30OkfPS37DBiQDtt1SP+99srESZOzavXqnPnZM7Ln7n3Tvl279Oq5c3bs0iUjDz80nTpun/79+uXQEcNz8gnHZd78+Tnv/PVbCb725S9kt116Zfvtt8s+A/pn1Mgj8u5/OSU1zWryl2uuq/uaa9a8nF179cpf/rb+svbt26VN69a5/a71Rwg+ftqHcuQrX2vpsmV58unZ639ArWvX9Nl1l7Rs2SqTpzza4OwvvLAkM598MscfMyoHHzgsIw4clgH9+uWyy6/MkhdfzDe+8sXstkuvtG/fLt26ds2kR6bkW2eflZ17dE/79u2zQ8eOmThpcpKkR/duOfcbX03XHbtkl147556x43LMUSOz7z4D073bTjlg//0yfMjg9Ntrz7Tdtk369u6du+8bm9122SX77zMo02fMzIMTJmbc+Ak5aNjQHHXEYTn4wKE5/JCDc+Mtt2XaEzM2aZ59BvbP0AMGZ/vtOmTvvfbMQw+vf6xJMuvJp3PoiANz/o9+krVr17+jOrB/v3z29E9k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gMMOSctWrao6I2+c5xdozAQ0sMVasvj5TH3o4STJNv+x/idSXv149wH9U1NTU9X5eHM8v0Bj5V8iBACAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACjQotoDADRkt732zPs//ckkycstWyZJ3cddunXLrMcer+p8vDmeX6CxEtDAFmna5EeydMmSJMku3XfKgX16rL980sN5au68PPv07Dz79OwqT8kb5fkFGjMBDWyRpj70cKY+9HCSZN9B/fOhdx6fJHnonvsycdKUKk/Hm+X5BRozZ6ABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACrSo9gDV0LfPbklNTbXHADZR3967VnsE3iZen6Fx6dtnt2qPUBVNMqDP+ORp1R4BgAq8PgONgSMcAABQoEm+A/3Tn12WJ2Y+We0xgE3Ut/eu3plsIrw+Q+PSt89uOeMTH672GG+7JhnQT8yYlYmTplR7DGBT1dZWewLeJl6fgcbAEQ4AACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACjQotoDbE6dunRJ2/bt1v96p65ZsnJ13a97LluRJFm+dFkWL1hQ1TkBAGg8AJQVUgAAB6VJREFUtuqAPuS4ozNo+NC6jx98Zn6SZMQpJ2fEK5dNGjsu11x+ZZUmBACgsdmqAzpJJt//QK698g9Jkq9+8+tJkv/+1neSJCe+/z1VnQ0AgMZnqw/o2trarF2zpt5lr35cu642NTU1VZoMAIDGyA8RAgBAAQENAAAFBDQAABQQ0AAAUEBAAwBAAQENAAAFBDQAABQQ0AAAUEBAAwBAAQENAAAFBDQAABQQ0AAAUEBAAwBAAQENAAAFBDQAABQQ0AAAUKBFtQcAqOTAo0amd7+9kiTt2m2b8XOeS5IMO+G49D/ssCTJzKmP5b5bbqvqnLwxnl+gMRPQwBZpx+7d0q5D+0x/ZEqSpGf3HkmS6Y8+liTpO6B/duzeraoz8sZ5foHGTEADW6x5s+fktmuuS5IcP/KIJKn7uF2HDqmpqanqfLw5nl+gsXIGGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAo0KLaAwAAvN0GDBmcg48dtVm/xqLnFuRPv/jVZv0aVIeABgCanG3btk2bbdvm7htv2iz336tv33TeqetmuW+qT0ADAE3SiuXL88AdYzbb/QvorZcz0AAAUEBAAwBAAQENAAAFBDQAABQQ0AAAUMAWDgCgSerUpXM+/rWzNst9b9u2bVYsX75Z7pvqE9AAQJPz5PQncstfr9msX2PlshWb9f6pHgENADQ585+Zm/nPzK32GDRSzkADAEABAQ0AAAUc4QC2WDv13DkjTz4xSbKq2fq/77/68U69eua52XOqOh9vjucXaKy2+oCuqalJ8xb1H+arH9c0q0lqqzQY8Jrmz52bdtt1SLdePdO143YZ0mfnJMniBQPy3PNLsvzFFzN/rvOLjZXnF2jMtvqAHjhsSAYOG5KWzZulc9s2SZJzLvpRXlq7Lkkyaey46g4IVHTfLbfnvltuT5LsO6h/Tjp4aJLktquvzcRJU6o8HW+W5xdozLbqgB4z+saMv/veJEm/Pfrk7M+fniQ574KLM3XajCTJiqVLqzojAACNy1Yd0IsXLMziBQuTJJ3bbVt3+YK5z2bOzFlVnAwAgMbKFg4AACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKtKj2AABbkk5duuSQ446u9hhblDGjb8ziBQurPQbAFsM70AAbaNu+XQYNH5qamppqj1J1NTU1GTR8aLZt377aowBsUbwDDVDBtVf+IWvXrKn2GFXVvEWLDBw2pNpjAGxxmmRA9+2zW+LdJWg0+vbe9R+/3szfv526dt1s990YtWrePP326JPO7dtutq/xdj6/wFurb5/dqj1CVTTJgD7jk6dVewTgDdrc379LVq7Og8/Mz8fPOCOprd2sX2uLV1OTzm1b5+zPn/62fUmvz0Bj0GQCeuKkKbny6pvz/lNGVXsUoBHo3WfXTbgWAEly5dU3Z+LDj1R7jLdNkwnoJLn04p/lgXvGVHsMYAvWqWvXjDjlpHz5v850BrpFi3zrogtz3gUXZ8Gz86o9DrAFa0rxnKYW0GmCTzBQpmfv5RlR7SG2IKvXrs3UaTMyZ+asao8CsMVocgENsClOfP97UruuaZ+Brmnmh/kAKhHQABtYvnRZJo0dl7yyB7lJq00mjR2XFUuXVnsSgC2KgAbYwOIFC3LN5VdWewwAtmD+JUIAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAgIaAAAKCGgAACggoAEAoICABgCAAi3e6A1btm7z1k4CAABvkzfTsm84oPsPP+wNf1EAAGisarbfZ1Rt0Q1qmqVl69abbyIAAHibvLRqVWpr1xXdpvgd6NradVm9ckXpzQAAYKvghwgBAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACghoAAAoIKABAKCAgAYAgAICGgAACvx/djXf/iNukpoAAAAASUVORK5CYII=",
+            "width": 720,
+            "height": 540,
+            "checksum": "3238a9b0de840fc601872a97bf2350d9a2fb17f5178b1cb390c905e9403ca7eb",
+            "resourceId": "asset:tidewatch-entry-survey",
+            "rights": "permission_unverified",
+            "x": 0,
+            "y": 0,
+            "pixelSpan": 720,
+            "mapSpan": 12,
+            "opacity": 0.81
+          }
+        }
+      ],
+      "features": [
+        {
+          "featureId": "tidewatch:entry-slab",
+          "kind": "floor",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 1,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 8
+              },
+              {
+                "x": 1,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "stone"
+        },
+        {
+          "featureId": "tidewatch:entry-hall",
+          "kind": "room",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 5,
+                "y": 3.25
+              },
+              {
+                "x": 7,
+                "y": 3.25
+              },
+              {
+                "x": 7,
+                "y": 8
+              },
+              {
+                "x": 5,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Entry hall",
+          "materialId": "stone"
+        },
+        {
+          "featureId": "tidewatch:reading-room",
+          "kind": "room",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 1,
+                "y": 1
+              },
+              {
+                "x": 5,
+                "y": 1
+              },
+              {
+                "x": 5,
+                "y": 5
+              },
+              {
+                "x": 1,
+                "y": 5
+              }
+            ]
+          },
+          "templateId": "template:tidewatch-reading",
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Reading room",
+          "materialId": "timber"
+        },
+        {
+          "featureId": "tidewatch:records",
+          "kind": "room",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 1,
+                "y": 5
+              },
+              {
+                "x": 5,
+                "y": 5
+              },
+              {
+                "x": 5,
+                "y": 8
+              },
+              {
+                "x": 1,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Records office",
+          "materialId": "stone"
+        },
+        {
+          "featureId": "tidewatch:chart-room",
+          "kind": "room",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 7,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 5
+              },
+              {
+                "x": 7,
+                "y": 5
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Chart room",
+          "materialId": "marble"
+        },
+        {
+          "featureId": "tidewatch:winch-room",
+          "kind": "room",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 7,
+                "y": 5
+              },
+              {
+                "x": 11,
+                "y": 5
+              },
+              {
+                "x": 11,
+                "y": 8
+              },
+              {
+                "x": 7,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Winch room",
+          "materialId": "stone"
+        },
+        {
+          "featureId": "tidewatch:level:0-north-0",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1,
+                "y": 1
+              },
+              {
+                "x": 2.44,
+                "y": 1
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:0-north-window-0",
+          "kind": "window",
+          "levelId": "level:0",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 3,
+                "y": 1
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Reading room north window",
+          "materialId": "glass",
+          "surfaceAngle": 0,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:0-north-1",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 3.56,
+                "y": 1
+              },
+              {
+                "x": 8.44,
+                "y": 1
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:0-north-window-1",
+          "kind": "window",
+          "levelId": "level:0",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 9,
+                "y": 1
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Chart room north window",
+          "materialId": "glass",
+          "surfaceAngle": 0,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:0-north-end",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 9.56,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 1
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:0-west-0",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1,
+                "y": 1
+              },
+              {
+                "x": 1,
+                "y": 2.2399999999999998
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:0-west-window-0",
+          "kind": "window",
+          "levelId": "level:0",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 1,
+                "y": 2.8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Reading room west window",
+          "materialId": "glass",
+          "surfaceAngle": 90,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:0-west-1",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1,
+                "y": 3.36
+              },
+              {
+                "x": 1,
+                "y": 5.890000000000001
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:0-west-window-1",
+          "kind": "window",
+          "levelId": "level:0",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 1,
+                "y": 6.45
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Records office window",
+          "materialId": "glass",
+          "surfaceAngle": 90,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:0-west-end",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1,
+                "y": 7.01
+              },
+              {
+                "x": 1,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:0-east-0",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 11,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 2.29
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:0-east-window-0",
+          "kind": "window",
+          "levelId": "level:0",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 11,
+                "y": 2.85
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Chart room east window",
+          "materialId": "glass",
+          "surfaceAngle": 90,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:0-east-end",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 11,
+                "y": 3.41
+              },
+              {
+                "x": 11,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:0-south-0",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1,
+                "y": 8
+              },
+              {
+                "x": 5.4399999999999995,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:0-south-door-0",
+          "kind": "door",
+          "levelId": "level:0",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 6,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Archive entrance",
+          "materialId": "timber",
+          "surfaceAngle": 0,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:0-south-end",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 6.5600000000000005,
+                "y": 8
+              },
+              {
+                "x": 11,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:entry-west-partition-0",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 5,
+                "y": 1
+              },
+              {
+                "x": 5,
+                "y": 3.4450000000000003
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:entry-west-partition-door-0",
+          "kind": "door",
+          "levelId": "level:0",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 5,
+                "y": 3.83
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Reading room door",
+          "materialId": "timber",
+          "surfaceAngle": 270,
+          "surfaceWidth": 0.77
+        },
+        {
+          "featureId": "tidewatch:entry-west-partition-1",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 5,
+                "y": 4.215
+              },
+              {
+                "x": 5,
+                "y": 6.215
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:entry-west-partition-door-1",
+          "kind": "door",
+          "levelId": "level:0",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 5,
+                "y": 6.6
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Records office door",
+          "materialId": "timber",
+          "surfaceAngle": 270,
+          "surfaceWidth": 0.77
+        },
+        {
+          "featureId": "tidewatch:entry-west-partition-end",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 5,
+                "y": 6.984999999999999
+              },
+              {
+                "x": 5,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:entry-east-partition-0",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 7,
+                "y": 1
+              },
+              {
+                "x": 7,
+                "y": 3.4450000000000003
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:entry-east-partition-door-0",
+          "kind": "door",
+          "levelId": "level:0",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 7,
+                "y": 3.83
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Chart room door",
+          "materialId": "timber",
+          "surfaceAngle": 90,
+          "surfaceWidth": 0.77
+        },
+        {
+          "featureId": "tidewatch:entry-east-partition-1",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 7,
+                "y": 4.215
+              },
+              {
+                "x": 7,
+                "y": 6.215
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:entry-east-partition-door-1",
+          "kind": "door",
+          "levelId": "level:0",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 7,
+                "y": 6.6
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Winch room door",
+          "materialId": "timber",
+          "surfaceAngle": 90,
+          "surfaceWidth": 0.77
+        },
+        {
+          "featureId": "tidewatch:entry-east-partition-end",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 7,
+                "y": 6.984999999999999
+              },
+              {
+                "x": 7,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:entry-records-divider-end",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1,
+                "y": 5
+              },
+              {
+                "x": 5,
+                "y": 5
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:entry-winch-divider-end",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 7,
+                "y": 5
+              },
+              {
+                "x": 11,
+                "y": 5
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:entry-stair-divider-end",
+          "kind": "wall",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 6,
+                "y": 1
+              },
+              {
+                "x": 6,
+                "y": 3.25
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.13
+        },
+        {
+          "featureId": "tidewatch:reading-shelf-0",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 1.72,
+                "y": 1.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceProp": "shelf",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:reading-shelf-1",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 2.35,
+                "y": 1.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceProp": "shelf",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:reading-shelf-2",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 3,
+                "y": 1.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceProp": "shelf",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:reading-shelf-3",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 3.65,
+                "y": 1.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceProp": "shelf",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:reading-shelf-4",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 4.28,
+                "y": 1.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceProp": "shelf",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:reading-table-0",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 2.28,
+                "y": 3
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceProp": "table",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:reading-table-1",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 3.48,
+                "y": 3
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceProp": "table",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:records-shelf",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 2.18,
+                "y": 5.37
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceProp": "shelf",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:records-crate",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 1.52,
+                "y": 7.25
+              }
+            ]
+          },
+          "templateId": "template:tidewatch-storage",
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "steel",
+          "surfaceProp": "crate",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:chart-desk",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 8.28,
+                "y": 1.68
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceProp": "table",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:chart-table",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 9.05,
+                "y": 3.22
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceProp": "table",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:winch-crate",
+          "kind": "object-placement",
+          "levelId": "level:0",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 8.05,
+                "y": 7.47
+              }
+            ]
+          },
+          "templateId": "template:tidewatch-storage",
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "steel",
+          "surfaceProp": "crate",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:lower-stair-entry",
+          "kind": "stair",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 5.47,
+                "y": 3.11
+              },
+              {
+                "x": 5.47,
+                "y": 1.32
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [
+            "tidewatch:undercroft-stair"
+          ],
+          "mapLabel": "Stairs to tidal undercroft",
+          "materialId": "stone",
+          "surfaceWidth": 0.65
+        },
+        {
+          "featureId": "tidewatch:upper-stair-entry",
+          "kind": "stair",
+          "levelId": "level:0",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 6.53,
+                "y": 3.11
+              },
+              {
+                "x": 6.53,
+                "y": 1.32
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [
+            "tidewatch:gallery-stair"
+          ],
+          "mapLabel": "Stairs to gallery",
+          "materialId": "timber",
+          "surfaceWidth": 0.65
+        },
+        {
+          "featureId": "tidewatch:lift-entry",
+          "kind": "elevator",
+          "levelId": "level:0",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 9.82,
+                "y": 6.83
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [
+            "tidewatch:lift-gallery",
+            "tidewatch:lift-undercroft"
+          ],
+          "mapLabel": "Freight lift · entry",
+          "materialId": "steel",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:gallery-north",
+          "kind": "floor",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 1,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 3.6
+              },
+              {
+                "x": 1,
+                "y": 3.6
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "stone"
+        },
+        {
+          "featureId": "tidewatch:gallery-west",
+          "kind": "floor",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 1,
+                "y": 3.6
+              },
+              {
+                "x": 3.85,
+                "y": 3.6
+              },
+              {
+                "x": 3.85,
+                "y": 6
+              },
+              {
+                "x": 1,
+                "y": 6
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber"
+        },
+        {
+          "featureId": "tidewatch:gallery-east",
+          "kind": "floor",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 8.15,
+                "y": 3.6
+              },
+              {
+                "x": 11,
+                "y": 3.6
+              },
+              {
+                "x": 11,
+                "y": 6
+              },
+              {
+                "x": 8.15,
+                "y": 6
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber"
+        },
+        {
+          "featureId": "tidewatch:gallery-south",
+          "kind": "floor",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 1,
+                "y": 6
+              },
+              {
+                "x": 11,
+                "y": 6
+              },
+              {
+                "x": 11,
+                "y": 8
+              },
+              {
+                "x": 1,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "stone"
+        },
+        {
+          "featureId": "tidewatch:lookout",
+          "kind": "room",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 7.6,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 3.4
+              },
+              {
+                "x": 7.6,
+                "y": 3.4
+              }
+            ]
+          },
+          "templateId": "template:tidewatch-lookout",
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Lookout",
+          "materialId": "marble"
+        },
+        {
+          "featureId": "tidewatch:upper-reading",
+          "kind": "room",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 1,
+                "y": 1
+              },
+              {
+                "x": 4.25,
+                "y": 1
+              },
+              {
+                "x": 4.25,
+                "y": 3.4
+              },
+              {
+                "x": 1,
+                "y": 3.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Study",
+          "materialId": "timber"
+        },
+        {
+          "featureId": "tidewatch:level:1-north-0",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1,
+                "y": 1
+              },
+              {
+                "x": 2.09,
+                "y": 1
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:1-north-window-0",
+          "kind": "window",
+          "levelId": "level:1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 2.65,
+                "y": 1
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Study north window",
+          "materialId": "glass",
+          "surfaceAngle": 0,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:1-north-1",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 3.21,
+                "y": 1
+              },
+              {
+                "x": 8.84,
+                "y": 1
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:1-north-window-1",
+          "kind": "window",
+          "levelId": "level:1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 9.4,
+                "y": 1
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Lookout north window",
+          "materialId": "glass",
+          "surfaceAngle": 0,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:1-north-end",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 9.96,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 1
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:1-west-0",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1,
+                "y": 1
+              },
+              {
+                "x": 1,
+                "y": 1.62
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:1-west-window-0",
+          "kind": "window",
+          "levelId": "level:1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 1,
+                "y": 2.18
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Study west window",
+          "materialId": "glass",
+          "surfaceAngle": 90,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:1-west-1",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1,
+                "y": 2.74
+              },
+              {
+                "x": 1,
+                "y": 4.59
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:1-west-window-1",
+          "kind": "window",
+          "levelId": "level:1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 1,
+                "y": 5.15
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Gallery west window",
+          "materialId": "glass",
+          "surfaceAngle": 90,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:1-west-end",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1,
+                "y": 5.710000000000001
+              },
+              {
+                "x": 1,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:1-east-0",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 11,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 1.62
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:1-east-window-0",
+          "kind": "window",
+          "levelId": "level:1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 11,
+                "y": 2.18
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Lookout east window",
+          "materialId": "glass",
+          "surfaceAngle": 90,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:1-east-1",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 11,
+                "y": 2.74
+              },
+              {
+                "x": 11,
+                "y": 4.59
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:1-east-window-1",
+          "kind": "window",
+          "levelId": "level:1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 11,
+                "y": 5.15
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Gallery east window",
+          "materialId": "glass",
+          "surfaceAngle": 90,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:1-east-end",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 11,
+                "y": 5.710000000000001
+              },
+              {
+                "x": 11,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:1-south-0",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1,
+                "y": 8
+              },
+              {
+                "x": 2.64,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:1-south-window-0",
+          "kind": "window",
+          "levelId": "level:1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 3.2,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Gallery southwest window",
+          "materialId": "glass",
+          "surfaceAngle": 0,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:1-south-1",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 3.7600000000000002,
+                "y": 8
+              },
+              {
+                "x": 5.4399999999999995,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:level:1-south-window-1",
+          "kind": "window",
+          "levelId": "level:1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 6,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Gallery south window",
+          "materialId": "glass",
+          "surfaceAngle": 0,
+          "surfaceWidth": 1.12
+        },
+        {
+          "featureId": "tidewatch:level:1-south-end",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 6.5600000000000005,
+                "y": 8
+              },
+              {
+                "x": 11,
+                "y": 8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.25
+        },
+        {
+          "featureId": "tidewatch:study-divider-0",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1,
+                "y": 3.4
+              },
+              {
+                "x": 2.215,
+                "y": 3.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:study-divider-door-0",
+          "kind": "door",
+          "levelId": "level:1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 2.6,
+                "y": 3.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Study door",
+          "materialId": "timber",
+          "surfaceAngle": 180,
+          "surfaceWidth": 0.77
+        },
+        {
+          "featureId": "tidewatch:study-divider-end",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 2.9850000000000003,
+                "y": 3.4
+              },
+              {
+                "x": 4.25,
+                "y": 3.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:study-side-end",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 4.25,
+                "y": 1
+              },
+              {
+                "x": 4.25,
+                "y": 3.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:lookout-divider-0",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 7.6,
+                "y": 3.4
+              },
+              {
+                "x": 8.965,
+                "y": 3.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:lookout-divider-door-0",
+          "kind": "door",
+          "levelId": "level:1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 9.35,
+                "y": 3.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Lookout door",
+          "materialId": "timber",
+          "surfaceAngle": 180,
+          "surfaceWidth": 0.77
+        },
+        {
+          "featureId": "tidewatch:lookout-divider-end",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 9.735,
+                "y": 3.4
+              },
+              {
+                "x": 11,
+                "y": 3.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:lookout-side-end",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 7.6,
+                "y": 1
+              },
+              {
+                "x": 7.6,
+                "y": 3.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "brick",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:upper-catwalk",
+          "kind": "passage",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 2.9,
+                "y": 3.6
+              },
+              {
+                "x": 2.9,
+                "y": 6.64
+              },
+              {
+                "x": 9.07,
+                "y": 6.64
+              },
+              {
+                "x": 9.07,
+                "y": 3.6
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Gallery catwalk",
+          "materialId": "grating",
+          "surfaceWidth": 0.68
+        },
+        {
+          "featureId": "tidewatch:gallery-rail",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 3.85,
+                "y": 3.6
+              },
+              {
+                "x": 8.15,
+                "y": 3.6
+              },
+              {
+                "x": 8.15,
+                "y": 6
+              },
+              {
+                "x": 3.85,
+                "y": 6
+              },
+              {
+                "x": 3.85,
+                "y": 3.6
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceWidth": 0.085
+        },
+        {
+          "featureId": "tidewatch:gallery-stair-rail",
+          "kind": "wall",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 5.98,
+                "y": 1.12
+              },
+              {
+                "x": 5.98,
+                "y": 2.98
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceWidth": 0.085
+        },
+        {
+          "featureId": "tidewatch:lookout-table",
+          "kind": "object-placement",
+          "levelId": "level:1",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 9.76,
+                "y": 1.68
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceProp": "table",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:study-table",
+          "kind": "object-placement",
+          "levelId": "level:1",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 2.28,
+                "y": 2
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceProp": "table",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:gallery-stair",
+          "kind": "stair",
+          "levelId": "level:1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 6.53,
+                "y": 1.32
+              },
+              {
+                "x": 6.53,
+                "y": 3.11
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [
+            "tidewatch:upper-stair-entry"
+          ],
+          "mapLabel": "Stair to entry",
+          "materialId": "timber",
+          "surfaceWidth": 0.65
+        },
+        {
+          "featureId": "tidewatch:lift-gallery",
+          "kind": "elevator",
+          "levelId": "level:1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 9.82,
+                "y": 6.83
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [
+            "tidewatch:lift-entry",
+            "tidewatch:lift-undercroft"
+          ],
+          "mapLabel": "Freight lift · gallery",
+          "materialId": "steel",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:gallery-hatch",
+          "kind": "opening",
+          "levelId": "level:1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 10.25,
+                "y": 5.02
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [
+            "tidewatch:undercroft-hatch"
+          ],
+          "mapLabel": "Service hatch · gallery",
+          "materialId": "steel",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:gallery-ladder",
+          "kind": "ladder",
+          "levelId": "level:1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 10.25,
+                "y": 5.62
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [
+            "tidewatch:undercroft-ladder"
+          ],
+          "mapLabel": "Service ladder · gallery",
+          "materialId": "timber",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:lookout-canopy",
+          "kind": "roof",
+          "levelId": "level:1",
+          "layerId": "layer:canopy",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 7.58,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 1
+              },
+              {
+                "x": 11,
+                "y": 3.4
+              },
+              {
+                "x": 7.58,
+                "y": 3.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 2.6,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Lookout roof",
+          "materialId": "slate"
+        },
+        {
+          "featureId": "tidewatch:gallery-beam",
+          "kind": "overhead",
+          "levelId": "level:1",
+          "layerId": "layer:canopy",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 8.4,
+                "y": 7.4
+              },
+              {
+                "x": 10.7,
+                "y": 7.4
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 2.15,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Hoist beam",
+          "materialId": "steel",
+          "surfaceWidth": 0.12
+        },
+        {
+          "featureId": "tidewatch:undercroft-cave",
+          "kind": "cave",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 0.74,
+                "y": 4.45
+              },
+              {
+                "x": 0.87,
+                "y": 3.41
+              },
+              {
+                "x": 1.12,
+                "y": 2.64
+              },
+              {
+                "x": 1.86,
+                "y": 2.29
+              },
+              {
+                "x": 2.26,
+                "y": 1.78
+              },
+              {
+                "x": 3.18,
+                "y": 1.58
+              },
+              {
+                "x": 4.04,
+                "y": 1.73
+              },
+              {
+                "x": 4.94,
+                "y": 1.31
+              },
+              {
+                "x": 5.83,
+                "y": 1.25
+              },
+              {
+                "x": 6.63,
+                "y": 1.54
+              },
+              {
+                "x": 7.61,
+                "y": 1.55
+              },
+              {
+                "x": 8.24,
+                "y": 1.94
+              },
+              {
+                "x": 9.13,
+                "y": 2.28
+              },
+              {
+                "x": 10.12,
+                "y": 2.36
+              },
+              {
+                "x": 10.68,
+                "y": 3.14
+              },
+              {
+                "x": 10.85,
+                "y": 4.11
+              },
+              {
+                "x": 11.22,
+                "y": 4.83
+              },
+              {
+                "x": 11.14,
+                "y": 5.88
+              },
+              {
+                "x": 11.27,
+                "y": 6.7
+              },
+              {
+                "x": 10.93,
+                "y": 7.82
+              },
+              {
+                "x": 10.02,
+                "y": 8.04
+              },
+              {
+                "x": 9.11,
+                "y": 7.99
+              },
+              {
+                "x": 8.15,
+                "y": 8.27
+              },
+              {
+                "x": 7.49,
+                "y": 7.89
+              },
+              {
+                "x": 6.73,
+                "y": 8
+              },
+              {
+                "x": 5.98,
+                "y": 7.63
+              },
+              {
+                "x": 5.1,
+                "y": 7.64
+              },
+              {
+                "x": 4.34,
+                "y": 7.83
+              },
+              {
+                "x": 3.43,
+                "y": 7.7
+              },
+              {
+                "x": 2.71,
+                "y": 7.96
+              },
+              {
+                "x": 1.86,
+                "y": 7.45
+              },
+              {
+                "x": 1.2,
+                "y": 6.9
+              },
+              {
+                "x": 1.03,
+                "y": 6.03
+              },
+              {
+                "x": 0.79,
+                "y": 5.34
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "rock"
+        },
+        {
+          "featureId": "tidewatch:bedrock-rim",
+          "kind": "wall",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 0.74,
+                "y": 4.45
+              },
+              {
+                "x": 0.87,
+                "y": 3.41
+              },
+              {
+                "x": 1.12,
+                "y": 2.64
+              },
+              {
+                "x": 1.86,
+                "y": 2.29
+              },
+              {
+                "x": 2.26,
+                "y": 1.78
+              },
+              {
+                "x": 3.18,
+                "y": 1.58
+              },
+              {
+                "x": 4.04,
+                "y": 1.73
+              },
+              {
+                "x": 4.94,
+                "y": 1.31
+              },
+              {
+                "x": 5.83,
+                "y": 1.25
+              },
+              {
+                "x": 6.63,
+                "y": 1.54
+              },
+              {
+                "x": 7.61,
+                "y": 1.55
+              },
+              {
+                "x": 8.24,
+                "y": 1.94
+              },
+              {
+                "x": 9.13,
+                "y": 2.28
+              },
+              {
+                "x": 10.12,
+                "y": 2.36
+              },
+              {
+                "x": 10.68,
+                "y": 3.14
+              },
+              {
+                "x": 10.85,
+                "y": 4.11
+              },
+              {
+                "x": 11.22,
+                "y": 4.83
+              },
+              {
+                "x": 11.14,
+                "y": 5.88
+              },
+              {
+                "x": 11.27,
+                "y": 6.7
+              },
+              {
+                "x": 10.93,
+                "y": 7.82
+              },
+              {
+                "x": 10.02,
+                "y": 8.04
+              },
+              {
+                "x": 9.11,
+                "y": 7.99
+              },
+              {
+                "x": 8.15,
+                "y": 8.27
+              },
+              {
+                "x": 7.49,
+                "y": 7.89
+              },
+              {
+                "x": 6.73,
+                "y": 8
+              },
+              {
+                "x": 5.98,
+                "y": 7.63
+              },
+              {
+                "x": 5.1,
+                "y": 7.64
+              },
+              {
+                "x": 4.34,
+                "y": 7.83
+              },
+              {
+                "x": 3.43,
+                "y": 7.7
+              },
+              {
+                "x": 2.71,
+                "y": 7.96
+              },
+              {
+                "x": 1.86,
+                "y": 7.45
+              },
+              {
+                "x": 1.2,
+                "y": 6.9
+              },
+              {
+                "x": 1.03,
+                "y": 6.03
+              },
+              {
+                "x": 0.79,
+                "y": 5.34
+              },
+              {
+                "x": 0.74,
+                "y": 4.45
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "basalt",
+          "surfaceWidth": 0.22
+        },
+        {
+          "featureId": "tidewatch:tidal-pool",
+          "kind": "cave",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 1.28,
+                "y": 5.2
+              },
+              {
+                "x": 1.78,
+                "y": 4.75
+              },
+              {
+                "x": 2.64,
+                "y": 4.86
+              },
+              {
+                "x": 3.42,
+                "y": 4.7
+              },
+              {
+                "x": 4.23,
+                "y": 5.08
+              },
+              {
+                "x": 5.25,
+                "y": 5.2
+              },
+              {
+                "x": 6.2,
+                "y": 5.62
+              },
+              {
+                "x": 7.37,
+                "y": 5.55
+              },
+              {
+                "x": 8.06,
+                "y": 5.72
+              },
+              {
+                "x": 8.06,
+                "y": 7.18
+              },
+              {
+                "x": 7.24,
+                "y": 7.62
+              },
+              {
+                "x": 6.55,
+                "y": 7.48
+              },
+              {
+                "x": 5.78,
+                "y": 7.19
+              },
+              {
+                "x": 4.94,
+                "y": 7.52
+              },
+              {
+                "x": 4.05,
+                "y": 7.53
+              },
+              {
+                "x": 3.23,
+                "y": 7.43
+              },
+              {
+                "x": 2.58,
+                "y": 7.54
+              },
+              {
+                "x": 1.91,
+                "y": 7.17
+              },
+              {
+                "x": 1.46,
+                "y": 6.58
+              },
+              {
+                "x": 1.4,
+                "y": 6.05
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Flood basin",
+          "materialId": "water"
+        },
+        {
+          "featureId": "tidewatch:service-tunnel",
+          "kind": "tunnel",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 2.1,
+                "y": 3.68
+              },
+              {
+                "x": 3.7,
+                "y": 3.66
+              },
+              {
+                "x": 5.47,
+                "y": 3.65
+              },
+              {
+                "x": 7.42,
+                "y": 3.65
+              },
+              {
+                "x": 8.64,
+                "y": 4.22
+              },
+              {
+                "x": 9.38,
+                "y": 4.8
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Cut-rock tunnel",
+          "materialId": "stone",
+          "surfaceWidth": 0.6
+        },
+        {
+          "featureId": "tidewatch:flood-bridge",
+          "kind": "passage",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 6.04,
+                "y": 4.93
+              },
+              {
+                "x": 6.04,
+                "y": 6.53
+              },
+              {
+                "x": 8.02,
+                "y": 6.53
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Timber crossing",
+          "materialId": "timber",
+          "surfaceWidth": 0.66
+        },
+        {
+          "featureId": "tidewatch:pump-platform",
+          "kind": "room",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 8.03,
+                "y": 5.72
+              },
+              {
+                "x": 10.84,
+                "y": 5.72
+              },
+              {
+                "x": 10.84,
+                "y": 7.57
+              },
+              {
+                "x": 8.03,
+                "y": 7.57
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Pump room",
+          "materialId": "stone"
+        },
+        {
+          "featureId": "tidewatch:pump-west-0",
+          "kind": "wall",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 8.03,
+                "y": 5.72
+              },
+              {
+                "x": 8.03,
+                "y": 6.1450000000000005
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:pump-west-door-0",
+          "kind": "door",
+          "levelId": "level:-1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 8.03,
+                "y": 6.53
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Pump room bridge door",
+          "materialId": "timber",
+          "surfaceAngle": 90,
+          "surfaceWidth": 0.77
+        },
+        {
+          "featureId": "tidewatch:pump-west-end",
+          "kind": "wall",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 8.03,
+                "y": 6.915
+              },
+              {
+                "x": 8.03,
+                "y": 7.57
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:pump-east-end",
+          "kind": "wall",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 10.84,
+                "y": 5.72
+              },
+              {
+                "x": 10.84,
+                "y": 7.57
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:pump-north-0",
+          "kind": "wall",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 8.03,
+                "y": 5.72
+              },
+              {
+                "x": 8.995000000000001,
+                "y": 5.72
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:pump-north-door-0",
+          "kind": "door",
+          "levelId": "level:-1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 9.38,
+                "y": 5.72
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Pump room tunnel door",
+          "materialId": "timber",
+          "surfaceAngle": 180,
+          "surfaceWidth": 0.77
+        },
+        {
+          "featureId": "tidewatch:pump-north-end",
+          "kind": "wall",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 9.765,
+                "y": 5.72
+              },
+              {
+                "x": 10.84,
+                "y": 5.72
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:pump-south-end",
+          "kind": "wall",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 8.03,
+                "y": 7.57
+              },
+              {
+                "x": 10.84,
+                "y": 7.57
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "limestone",
+          "surfaceWidth": 0.19
+        },
+        {
+          "featureId": "tidewatch:pump-landing",
+          "kind": "passage",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 9.38,
+                "y": 4.8
+              },
+              {
+                "x": 9.38,
+                "y": 5.72
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "stone",
+          "surfaceWidth": 0.61
+        },
+        {
+          "featureId": "tidewatch:undercroft-stair",
+          "kind": "stair",
+          "levelId": "level:-1",
+          "layerId": "layer:structure",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 5.47,
+                "y": 3.64
+              },
+              {
+                "x": 5.47,
+                "y": 1.52
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [
+            "tidewatch:lower-stair-entry"
+          ],
+          "mapLabel": "Stair to entry",
+          "materialId": "stone",
+          "surfaceWidth": 0.65
+        },
+        {
+          "featureId": "tidewatch:lift-undercroft",
+          "kind": "elevator",
+          "levelId": "level:-1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 9.82,
+                "y": 6.83
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [
+            "tidewatch:lift-entry",
+            "tidewatch:lift-gallery"
+          ],
+          "mapLabel": "Freight lift · undercroft",
+          "materialId": "steel",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:undercroft-hatch",
+          "kind": "opening",
+          "levelId": "level:-1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 10.25,
+                "y": 5.02
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [
+            "tidewatch:gallery-hatch"
+          ],
+          "mapLabel": "Service hatch · undercroft",
+          "materialId": "steel",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:undercroft-ladder",
+          "kind": "ladder",
+          "levelId": "level:-1",
+          "layerId": "layer:fittings",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 10.25,
+                "y": 5.62
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [
+            "tidewatch:gallery-ladder"
+          ],
+          "mapLabel": "Service ladder · undercroft",
+          "materialId": "timber",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:undercroft-cistern",
+          "kind": "object-placement",
+          "levelId": "level:-1",
+          "layerId": "layer:objects",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 10.36,
+                "y": 7.13
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "materialId": "timber",
+          "surfaceProp": "cistern",
+          "surfaceAngle": 0
+        },
+        {
+          "featureId": "tidewatch:secret-route",
+          "kind": "tunnel",
+          "levelId": "level:-1",
+          "layerId": "layer:gm",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 2.1,
+                "y": 3.68
+              },
+              {
+                "x": 2.1,
+                "y": 2.83
+              },
+              {
+                "x": 2.93,
+                "y": 2.45
+              },
+              {
+                "x": 3.72,
+                "y": 2.58
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Concealed maintenance passage",
+          "materialId": "brick",
+          "surfaceWidth": 0.34
+        },
+        {
+          "featureId": "tidewatch:secret-door",
+          "kind": "door",
+          "levelId": "level:-1",
+          "layerId": "layer:gm",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 2.1,
+                "y": 3.45
+              }
+            ]
+          },
+          "templateId": null,
+          "elevationOffsetMeters": 0,
+          "visualVerticalTargetIds": [],
+          "mapLabel": "Concealed door",
+          "materialId": "timber",
+          "surfaceAngle": 0
+        }
+      ],
+      "views": [
+        {
+          "viewId": "view:tidewatch-plan",
+          "kind": "plan",
+          "levelIds": [
+            "level:0"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:tidewatch-isometric",
+          "kind": "isometric",
+          "levelIds": [
+            "level:-1",
+            "level:0",
+            "level:1"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:tidewatch-staggered",
+          "kind": "staggered",
+          "levelIds": [
+            "level:-1",
+            "level:0",
+            "level:1"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:tidewatch-section",
+          "kind": "section",
+          "levelIds": [
+            "level:-1",
+            "level:0",
+            "level:1"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:tidewatch-cutaway",
+          "kind": "cutaway",
+          "levelIds": [
+            "level:-1",
+            "level:0",
+            "level:1"
+          ],
+          "elevationScale": 1
+        },
+        {
+          "viewId": "view:tidewatch-decks",
+          "kind": "deck-plan",
+          "levelIds": [
+            "level:-1",
+            "level:0",
+            "level:1"
+          ],
+          "elevationScale": 1
+        }
+      ],
+      "surfacePack": {
+        "profile": "vault",
+        "seed": "tidewatch-archive",
+        "density": 2
+      },
+      "interiorFeetPerUnit": 5,
+      "interiorPlanVersion": 2,
+      "presentation": {
+        "schema": 1,
+        "theme": "night",
+        "styles": {},
+        "labels": [],
+        "legend": {
+          "title": "Map key",
+          "position": "lower-right",
+          "entries": []
+        },
+        "frame": {
+          "enabled": false,
+          "title": "Tidewatch Archive",
+          "subtitle": "Reading rooms, gallery and tidal undercroft",
+          "scale": 0,
+          "unit": "ft",
+          "grid": 0
+        },
+        "effect": {
+          "kind": "none",
+          "amount": 0
+        },
+        "page": {
+          "paper": "A4",
+          "orientation": "landscape",
+          "margin": 12,
+          "format": "pdf",
+          "dpi": 300
+        },
+        "atlas": {
+          "title": "",
+          "pages": [],
+          "links": []
+        }
+      },
+      "showcase": {
+        "schema": 1,
+        "id": "catalog03:interior:1",
+        "style": "vault-amber",
+        "palette": {
+          "accent": "#c4974c",
+          "secondary": "#5a8e91",
+          "ink": "#514435",
+          "deep": "#403c35"
+        },
+        "version": 1,
+        "visible": true,
+        "layers": {
+          "detail": true,
+          "labels": true,
+          "ground": true
+        },
+        "title": "Tidewatch Archive",
+        "variant": 1,
+        "seed": 2792292753,
+        "frame": {
+          "width": 12,
+          "height": 9
+        },
+        "elements": [
+          {
+            "id": "interior:1:1",
+            "kind": "scroll",
+            "x": 5.437,
+            "y": 2.99,
+            "size": 0.223,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.85,
+            "seed": 67086,
+            "rotation": -31.4
+          },
+          {
+            "id": "interior:1:2",
+            "kind": "shelf",
+            "x": 6.94,
+            "y": 3.808,
+            "size": 0.372,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.98,
+            "seed": 5777,
+            "rotation": -31
+          },
+          {
+            "id": "interior:1:3",
+            "kind": "crate",
+            "x": 9.633,
+            "y": 1.391,
+            "size": 0.549,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.92,
+            "seed": 16649,
+            "rotation": -21.6
+          },
+          {
+            "id": "interior:1:4",
+            "kind": "scroll",
+            "x": 9.299,
+            "y": 2.274,
+            "size": 0.296,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.91,
+            "seed": 49194,
+            "rotation": -13.9
+          },
+          {
+            "id": "interior:1:5",
+            "kind": "pillar",
+            "x": 5.682,
+            "y": 3.653,
+            "size": 0.373,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.86,
+            "seed": 62514,
+            "rotation": -15.2
+          },
+          {
+            "id": "interior:1:6",
+            "kind": "shelf",
+            "x": 3.491,
+            "y": 6.249,
+            "size": 0.468,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.8,
+            "seed": 79959,
+            "rotation": -3
+          },
+          {
+            "id": "interior:1:7",
+            "kind": "table",
+            "x": 2.277,
+            "y": 2.717,
+            "size": 0.458,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.79,
+            "seed": 6914,
+            "rotation": -26
+          },
+          {
+            "id": "interior:1:8",
+            "kind": "shelf",
+            "x": 1.291,
+            "y": 5.691,
+            "size": 0.356,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.96,
+            "seed": 28990,
+            "rotation": 16.6
+          },
+          {
+            "id": "interior:1:9",
+            "kind": "shelf",
+            "x": 2.786,
+            "y": 4.963,
+            "size": 0.343,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.9,
+            "seed": 89767,
+            "rotation": -6.8
+          },
+          {
+            "id": "interior:1:10",
+            "kind": "table",
+            "x": 8.798,
+            "y": 5.884,
+            "size": 0.346,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.94,
+            "seed": 83008,
+            "rotation": 16.7
+          },
+          {
+            "id": "interior:1:11",
+            "kind": "crate",
+            "x": 8.262,
+            "y": 2.243,
+            "size": 0.439,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.91,
+            "seed": 64047,
+            "rotation": -3.7
+          },
+          {
+            "id": "interior:1:12",
+            "kind": "scroll",
+            "x": 8.26,
+            "y": 5.341,
+            "size": 0.345,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.96,
+            "seed": 8738,
+            "rotation": -16.6
+          },
+          {
+            "id": "interior:1:13",
+            "kind": "rug",
+            "x": 4.187,
+            "y": 4.001,
+            "size": 0.522,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.9,
+            "seed": 96001,
+            "rotation": -31.4
+          },
+          {
+            "id": "interior:1:14",
+            "kind": "scroll",
+            "x": 10.179,
+            "y": 5.605,
+            "size": 0.39,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.79,
+            "seed": 38442,
+            "rotation": -7.8
+          },
+          {
+            "id": "interior:1:15",
+            "kind": "table",
+            "x": 3.509,
+            "y": 5.915,
+            "size": 0.43,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.96,
+            "seed": 64300,
+            "rotation": -27.4
+          },
+          {
+            "id": "interior:1:16",
+            "kind": "pillar",
+            "x": 8.761,
+            "y": 4.655,
+            "size": 0.304,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.8,
+            "seed": 64174,
+            "rotation": -25.2
+          },
+          {
+            "id": "interior:1:17",
+            "kind": "table",
+            "x": 8.573,
+            "y": 7.928,
+            "size": 0.362,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.81,
+            "seed": 4595,
+            "rotation": -24.4
+          },
+          {
+            "id": "interior:1:18",
+            "kind": "table",
+            "x": 4.254,
+            "y": 5.761,
+            "size": 0.367,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.87,
+            "seed": 97186,
+            "rotation": 7.4
+          },
+          {
+            "id": "interior:1:19",
+            "kind": "shelf",
+            "x": 5.28,
+            "y": 6.445,
+            "size": 0.337,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.87,
+            "seed": 70956,
+            "rotation": -23.9
+          },
+          {
+            "id": "interior:1:20",
+            "kind": "rug",
+            "x": 6.073,
+            "y": 6.645,
+            "size": 0.562,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.85,
+            "seed": 73018,
+            "rotation": 8.5
+          },
+          {
+            "id": "interior:1:21",
+            "kind": "shelf",
+            "x": 6.699,
+            "y": 5.384,
+            "size": 0.399,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.83,
+            "seed": 93687,
+            "rotation": -27
+          },
+          {
+            "id": "interior:1:22",
+            "kind": "rug",
+            "x": 7.962,
+            "y": 2.678,
+            "size": 0.236,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.83,
+            "seed": 40863,
+            "rotation": 13.6
+          },
+          {
+            "id": "interior:1:23",
+            "kind": "label",
+            "x": 2.04,
+            "y": 1.71,
+            "size": 0.433,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:0",
+            "alpha": 0.88,
+            "text": "MAIN HALL"
+          },
+          {
+            "id": "interior:1:24",
+            "kind": "label",
+            "x": 8.64,
+            "y": 3.15,
+            "size": 0.433,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:0",
+            "alpha": 0.88,
+            "text": "ARCHIVE WING"
+          },
+          {
+            "id": "interior:1:25",
+            "kind": "label",
+            "x": 9.36,
+            "y": 7.02,
+            "size": 0.433,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:0",
+            "alpha": 0.88,
+            "text": "SERVICE LEVEL"
+          }
+        ]
+      }
+    },
+    "viewport": {
+      "zoom": 1,
+      "panX": 0,
+      "panY": 0,
+      "level": "level:0",
+      "fog": false,
+      "showGM": false,
+      "hiddenLayers": [
+        "layer:floor-traces",
+        "layer:canopy"
+      ]
+    }
+  }
+}
