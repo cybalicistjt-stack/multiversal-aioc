@@ -1,0 +1,2733 @@
+{
+  "format": "multiversal-cartography-tester-v2",
+  "sourceCommit": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+  "document": {
+    "id": "mapdoc:tester:atlas-harbor",
+    "mode": "urban",
+    "title": "Harbor City",
+    "origin": "reference",
+    "sourceRef": "mapdoc:harbor-city@13",
+    "revision": 1,
+    "createdAt": "2026-11-21T01:53:16.115Z",
+    "modifiedAt": "2026-11-21T01:53:16.115Z",
+    "draft": {
+      "workspaceRef": "mcs:offline-tester",
+      "documentRef": "mapdoc:tester:atlas-harbor",
+      "authoringSessionRef": "mapdoc:tester:atlas-harbor:draft",
+      "requestedMode": "author-urban",
+      "layerIds": [
+        "layer:districts",
+        "layer:streets",
+        "layer:structures",
+        "layer:services"
+      ],
+      "styles": [
+        {
+          "styleId": "style:urban-core",
+          "name": "Urban Core",
+          "densityBand": "dense",
+          "tokenRefs": [
+            "token:stone",
+            "token:market"
+          ]
+        },
+        {
+          "styleId": "style:waterfront",
+          "name": "Waterfront",
+          "densityBand": "medium",
+          "tokenRefs": [
+            "token:water",
+            "token:quay"
+          ]
+        }
+      ],
+      "features": [
+        {
+          "featureId": "layout:waterway:2",
+          "kind": "waterway",
+          "layerId": "layer:streets",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 0,
+                "y": 8.22
+              },
+              {
+                "x": 2.9,
+                "y": 7.65
+              },
+              {
+                "x": 5.9,
+                "y": 8.04
+              },
+              {
+                "x": 8.4,
+                "y": 7.59
+              },
+              {
+                "x": 10.1,
+                "y": 7.93
+              },
+              {
+                "x": 12,
+                "y": 7.48
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": null,
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "water",
+          "surfaceWidth": 1.68
+        },
+        {
+          "featureId": "layout:block:3",
+          "kind": "block",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 0.67,
+                "y": 0.92
+              },
+              {
+                "x": 2.88,
+                "y": 0.92
+              },
+              {
+                "x": 2.88,
+                "y": 2.71
+              },
+              {
+                "x": 0.67,
+                "y": 2.71
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Block 1",
+          "urbanParentId": "settlement:district:0",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "cobble"
+        },
+        {
+          "featureId": "layout:building-footprint:4",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 0.86,
+                "y": 1.2402550906501713
+              },
+              {
+                "x": 1.3267896891967004,
+                "y": 1.2402550906501713
+              },
+              {
+                "x": 1.3267896891967004,
+                "y": 2.2953936870404057
+              },
+              {
+                "x": 0.86,
+                "y": 2.2953936870404057
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:3",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "brick"
+        },
+        {
+          "featureId": "layout:building-footprint:5",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 1.5433333333333332,
+                "y": 1.1461265081446619
+              },
+              {
+                "x": 2.0955519635223703,
+                "y": 1.1461265081446619
+              },
+              {
+                "x": 2.0955519635223703,
+                "y": 2.2520106571120677
+              },
+              {
+                "x": 1.5433333333333332,
+                "y": 2.2520106571120677
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:3",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "terracotta"
+        },
+        {
+          "featureId": "layout:building-footprint:6",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 2.226666666666666,
+                "y": 1.1106554414331913
+              },
+              {
+                "x": 2.679855178363737,
+                "y": 1.1106554414331913
+              },
+              {
+                "x": 2.679855178363737,
+                "y": 1.744158378884429
+              },
+              {
+                "x": 2.226666666666666,
+                "y": 1.744158378884429
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:3",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "terracotta"
+        },
+        {
+          "featureId": "layout:block:7",
+          "kind": "block",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 3.37,
+                "y": 0.92
+              },
+              {
+                "x": 5.74,
+                "y": 0.92
+              },
+              {
+                "x": 5.74,
+                "y": 2.7
+              },
+              {
+                "x": 3.37,
+                "y": 2.7
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Block 2",
+          "urbanParentId": "settlement:district:0",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "earth"
+        },
+        {
+          "featureId": "layout:building-footprint:8",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 3.56,
+                "y": 1.1974426142591983
+              },
+              {
+                "x": 4.359516789265385,
+                "y": 1.1974426142591983
+              },
+              {
+                "x": 4.359516789265385,
+                "y": 2.300074600310717
+              },
+              {
+                "x": 3.56,
+                "y": 2.300074600310717
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:7",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "terracotta"
+        },
+        {
+          "featureId": "layout:building-footprint:9",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 4.665,
+                "y": 1.261773511413485
+              },
+              {
+                "x": 5.377956322649203,
+                "y": 1.261773511413485
+              },
+              {
+                "x": 5.377956322649203,
+                "y": 1.94689284999026
+              },
+              {
+                "x": 4.665,
+                "y": 1.94689284999026
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:7",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "terracotta"
+        },
+        {
+          "featureId": "layout:block:10",
+          "kind": "block",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 6.3,
+                "y": 0.92
+              },
+              {
+                "x": 8.58,
+                "y": 0.92
+              },
+              {
+                "x": 8.58,
+                "y": 2.7
+              },
+              {
+                "x": 6.3,
+                "y": 2.7
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Block 3",
+          "urbanParentId": "settlement:district:1",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "earth"
+        },
+        {
+          "featureId": "layout:building-footprint:11",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 6.49,
+                "y": 1.2057532664295287
+              },
+              {
+                "x": 7.32020687091439,
+                "y": 1.2057532664295287
+              },
+              {
+                "x": 7.32020687091439,
+                "y": 2.55182355073737
+              },
+              {
+                "x": 6.49,
+                "y": 2.55182355073737
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:10",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "brick"
+        },
+        {
+          "featureId": "layout:building-footprint:12",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 7.55,
+                "y": 1.2395841274037958
+              },
+              {
+                "x": 8.359077144656656,
+                "y": 1.2395841274037958
+              },
+              {
+                "x": 8.359077144656656,
+                "y": 2.046588839478698
+              },
+              {
+                "x": 7.55,
+                "y": 2.046588839478698
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:10",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "slate"
+        },
+        {
+          "featureId": "layout:block:13",
+          "kind": "block",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 8.98,
+                "y": 0.9500000000000001
+              },
+              {
+                "x": 11.190000000000001,
+                "y": 0.9500000000000001
+              },
+              {
+                "x": 11.190000000000001,
+                "y": 2.71
+              },
+              {
+                "x": 8.98,
+                "y": 2.71
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Block 4",
+          "urbanParentId": "settlement:district:1",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "cobble"
+        },
+        {
+          "featureId": "layout:building-footprint:14",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 9.17,
+                "y": 1.1510167509410532
+              },
+              {
+                "x": 9.613657219371719,
+                "y": 1.1510167509410532
+              },
+              {
+                "x": 9.613657219371719,
+                "y": 1.7657443944681437
+              },
+              {
+                "x": 9.17,
+                "y": 1.7657443944681437
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:13",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "brick"
+        },
+        {
+          "featureId": "layout:building-footprint:15",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 9.853333333333333,
+                "y": 1.1575065742246808
+              },
+              {
+                "x": 10.29116713723521,
+                "y": 1.1575065742246808
+              },
+              {
+                "x": 10.29116713723521,
+                "y": 2.091192570958287
+              },
+              {
+                "x": 9.853333333333333,
+                "y": 2.091192570958287
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:13",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "plaster"
+        },
+        {
+          "featureId": "layout:building-footprint:16",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 10.536666666666667,
+                "y": 1.2981065152119846
+              },
+              {
+                "x": 11.04774615582882,
+                "y": 1.2981065152119846
+              },
+              {
+                "x": 11.04774615582882,
+                "y": 1.9816037520673127
+              },
+              {
+                "x": 10.536666666666667,
+                "y": 1.9816037520673127
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:13",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "brick"
+        },
+        {
+          "featureId": "layout:block:17",
+          "kind": "block",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 0.6900000000000001,
+                "y": 3.27
+              },
+              {
+                "x": 2.91,
+                "y": 3.27
+              },
+              {
+                "x": 2.91,
+                "y": 4.73
+              },
+              {
+                "x": 0.6900000000000001,
+                "y": 4.73
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Block 5",
+          "urbanParentId": "settlement:district:0",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "earth"
+        },
+        {
+          "featureId": "layout:building-footprint:18",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 0.88,
+                "y": 3.584627250954509
+              },
+              {
+                "x": 1.5837662091243314,
+                "y": 3.584627250954509
+              },
+              {
+                "x": 1.5837662091243314,
+                "y": 4.138524403495248
+              },
+              {
+                "x": 0.88,
+                "y": 4.138524403495248
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:17",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "slate"
+        },
+        {
+          "featureId": "layout:building-footprint:19",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 1.9100000000000001,
+                "y": 3.604096324043349
+              },
+              {
+                "x": 2.6123452464012664,
+                "y": 3.604096324043349
+              },
+              {
+                "x": 2.6123452464012664,
+                "y": 4.193369303031359
+              },
+              {
+                "x": 1.9100000000000001,
+                "y": 4.193369303031359
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:17",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "slate"
+        },
+        {
+          "featureId": "layout:block:20",
+          "kind": "block",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 3.37,
+                "y": 3.1999999999999997
+              },
+              {
+                "x": 5.74,
+                "y": 3.1999999999999997
+              },
+              {
+                "x": 5.74,
+                "y": 4.6899999999999995
+              },
+              {
+                "x": 3.37,
+                "y": 4.6899999999999995
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Block 6",
+          "urbanParentId": "settlement:district:0",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "earth"
+        },
+        {
+          "featureId": "layout:building-footprint:21",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 3.56,
+                "y": 3.4370473271794615
+              },
+              {
+                "x": 4.284132755247213,
+                "y": 3.4370473271794615
+              },
+              {
+                "x": 4.284132755247213,
+                "y": 4.007523023805721
+              },
+              {
+                "x": 3.56,
+                "y": 4.007523023805721
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:20",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "brick"
+        },
+        {
+          "featureId": "layout:building-footprint:22",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 4.665,
+                "y": 3.4186704158689825
+              },
+              {
+                "x": 5.5552545176917105,
+                "y": 3.4186704158689825
+              },
+              {
+                "x": 5.5552545176917105,
+                "y": 4.0699146034749685
+              },
+              {
+                "x": 4.665,
+                "y": 4.0699146034749685
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:20",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "slate"
+        },
+        {
+          "featureId": "layout:block:23",
+          "kind": "block",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 6.32,
+                "y": 3.1999999999999997
+              },
+              {
+                "x": 8.540000000000001,
+                "y": 3.1999999999999997
+              },
+              {
+                "x": 8.540000000000001,
+                "y": 4.6899999999999995
+              },
+              {
+                "x": 6.32,
+                "y": 4.6899999999999995
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Block 7",
+          "urbanParentId": "settlement:district:1",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "cobble"
+        },
+        {
+          "featureId": "layout:building-footprint:24",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 6.510000000000001,
+                "y": 3.3823553992435333
+              },
+              {
+                "x": 7.052151824406737,
+                "y": 3.3823553992435333
+              },
+              {
+                "x": 7.052151824406737,
+                "y": 4.129768330432242
+              },
+              {
+                "x": 6.510000000000001,
+                "y": 4.129768330432242
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:23",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "brick"
+        },
+        {
+          "featureId": "layout:building-footprint:25",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 7.196666666666667,
+                "y": 3.4076586590055373
+              },
+              {
+                "x": 7.652684734792154,
+                "y": 3.4076586590055373
+              },
+              {
+                "x": 7.652684734792154,
+                "y": 4.452995262984233
+              },
+              {
+                "x": 7.196666666666667,
+                "y": 4.452995262984233
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:23",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "slate"
+        },
+        {
+          "featureId": "layout:building-footprint:26",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 7.883333333333334,
+                "y": 3.507225146498531
+              },
+              {
+                "x": 8.439099015868036,
+                "y": 3.507225146498531
+              },
+              {
+                "x": 8.439099015868036,
+                "y": 4.29712256775978
+              },
+              {
+                "x": 7.883333333333334,
+                "y": 4.29712256775978
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:23",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "slate"
+        },
+        {
+          "featureId": "layout:block:27",
+          "kind": "block",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 8.98,
+                "y": 3.17
+              },
+              {
+                "x": 11.190000000000001,
+                "y": 3.17
+              },
+              {
+                "x": 11.190000000000001,
+                "y": 4.65
+              },
+              {
+                "x": 8.98,
+                "y": 4.65
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Block 8",
+          "urbanParentId": "settlement:district:1",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "earth"
+        },
+        {
+          "featureId": "layout:building-footprint:28",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 9.17,
+                "y": 3.3996967079024762
+              },
+              {
+                "x": 9.994215247134619,
+                "y": 3.3996967079024762
+              },
+              {
+                "x": 9.994215247134619,
+                "y": 4.026818930451386
+              },
+              {
+                "x": 9.17,
+                "y": 4.026818930451386
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:27",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "brick"
+        },
+        {
+          "featureId": "layout:building-footprint:29",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 10.195,
+                "y": 3.4481379875540736
+              },
+              {
+                "x": 10.855893771171745,
+                "y": 3.4481379875540736
+              },
+              {
+                "x": 10.855893771171745,
+                "y": 4.380698463009112
+              },
+              {
+                "x": 10.195,
+                "y": 4.380698463009112
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:27",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "plaster"
+        },
+        {
+          "featureId": "layout:block:30",
+          "kind": "block",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 0.7200000000000001,
+                "y": 5.28
+              },
+              {
+                "x": 2.8800000000000003,
+                "y": 5.28
+              },
+              {
+                "x": 2.8800000000000003,
+                "y": 6.6
+              },
+              {
+                "x": 0.7200000000000001,
+                "y": 6.6
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Block 9",
+          "urbanParentId": "settlement:district:2",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "earth"
+        },
+        {
+          "featureId": "layout:building-footprint:31",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 0.91,
+                "y": 5.526011159392073
+              },
+              {
+                "x": 1.729387740341481,
+                "y": 5.526011159392073
+              },
+              {
+                "x": 1.729387740341481,
+                "y": 6.506990588254295
+              },
+              {
+                "x": 0.91,
+                "y": 6.506990588254295
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:30",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "slate"
+        },
+        {
+          "featureId": "layout:building-footprint:32",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 1.9100000000000001,
+                "y": 5.525230736527592
+              },
+              {
+                "x": 2.6511090030963533,
+                "y": 5.525230736527592
+              },
+              {
+                "x": 2.6511090030963533,
+                "y": 6.2333169361909855
+              },
+              {
+                "x": 1.9100000000000001,
+                "y": 6.2333169361909855
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:30",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "timber"
+        },
+        {
+          "featureId": "layout:block:33",
+          "kind": "block",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 3.34,
+                "y": 5.29
+              },
+              {
+                "x": 5.8100000000000005,
+                "y": 5.29
+              },
+              {
+                "x": 5.8100000000000005,
+                "y": 6.45
+              },
+              {
+                "x": 3.34,
+                "y": 6.45
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Block 10",
+          "urbanParentId": "settlement:district:2",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "cobble"
+        },
+        {
+          "featureId": "layout:building-footprint:34",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 3.53,
+                "y": 5.563329708939418
+              },
+              {
+                "x": 4.121630983364465,
+                "y": 5.563329708939418
+              },
+              {
+                "x": 4.121630983364465,
+                "y": 6.099871182921342
+              },
+              {
+                "x": 3.53,
+                "y": 6.099871182921342
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:33",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "plaster"
+        },
+        {
+          "featureId": "layout:building-footprint:35",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 4.3,
+                "y": 5.629268259294331
+              },
+              {
+                "x": 4.83981993622554,
+                "y": 5.629268259294331
+              },
+              {
+                "x": 4.83981993622554,
+                "y": 6.08256735544186
+              },
+              {
+                "x": 4.3,
+                "y": 6.08256735544186
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:33",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "terracotta"
+        },
+        {
+          "featureId": "layout:building-footprint:36",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 5.07,
+                "y": 5.57991630689241
+              },
+              {
+                "x": 5.620690163740586,
+                "y": 5.57991630689241
+              },
+              {
+                "x": 5.620690163740586,
+                "y": 6.092959411474876
+              },
+              {
+                "x": 5.07,
+                "y": 6.092959411474876
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:33",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "terracotta"
+        },
+        {
+          "featureId": "layout:block:37",
+          "kind": "block",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 6.32,
+                "y": 5.26
+              },
+              {
+                "x": 8.600000000000001,
+                "y": 5.26
+              },
+              {
+                "x": 8.600000000000001,
+                "y": 6.449999999999999
+              },
+              {
+                "x": 6.32,
+                "y": 6.449999999999999
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Block 11",
+          "urbanParentId": "settlement:district:3",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "earth"
+        },
+        {
+          "featureId": "layout:building-footprint:38",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 6.510000000000001,
+                "y": 5.481741129737347
+              },
+              {
+                "x": 7.219966792742862,
+                "y": 5.481741129737347
+              },
+              {
+                "x": 7.219966792742862,
+                "y": 6.2020486783525435
+              },
+              {
+                "x": 6.510000000000001,
+                "y": 6.2020486783525435
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:37",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "slate"
+        },
+        {
+          "featureId": "layout:building-footprint:39",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 7.570000000000001,
+                "y": 5.454731314731761
+              },
+              {
+                "x": 8.316208465968213,
+                "y": 5.454731314731761
+              },
+              {
+                "x": 8.316208465968213,
+                "y": 5.964795553068025
+              },
+              {
+                "x": 7.570000000000001,
+                "y": 5.964795553068025
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:37",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "slate"
+        },
+        {
+          "featureId": "layout:block:40",
+          "kind": "block",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 9,
+                "y": 5.28
+              },
+              {
+                "x": 11.26,
+                "y": 5.28
+              },
+              {
+                "x": 11.26,
+                "y": 6.44
+              },
+              {
+                "x": 9,
+                "y": 6.44
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Block 12",
+          "urbanParentId": "settlement:district:3",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "earth"
+        },
+        {
+          "featureId": "layout:building-footprint:41",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 9.19,
+                "y": 5.49808828599751
+              },
+              {
+                "x": 10.075212553658405,
+                "y": 5.49808828599751
+              },
+              {
+                "x": 10.075212553658405,
+                "y": 6.009030172335915
+              },
+              {
+                "x": 9.19,
+                "y": 6.009030172335915
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:40",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "plaster"
+        },
+        {
+          "featureId": "layout:building-footprint:42",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 10.24,
+                "y": 5.609716661320999
+              },
+              {
+                "x": 11.02330955656746,
+                "y": 5.609716661320999
+              },
+              {
+                "x": 11.02330955656746,
+                "y": 6.077531926664524
+              },
+              {
+                "x": 10.24,
+                "y": 6.077531926664524
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "layout:block:40",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "terracotta"
+        },
+        {
+          "featureId": "layout:building-footprint:43",
+          "kind": "building-footprint",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 7.91,
+                "y": 5.56
+              },
+              {
+                "x": 8.49,
+                "y": 5.56
+              },
+              {
+                "x": 8.49,
+                "y": 6.09
+              },
+              {
+                "x": 7.91,
+                "y": 6.09
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Old Vault entrance",
+          "urbanParentId": "layout:block:37",
+          "serviceType": null,
+          "linkedMapId": "mapdoc:tester:atlas-vault",
+          "materialId": "slate"
+        },
+        {
+          "featureId": "layout:street:44",
+          "kind": "street",
+          "layerId": "layer:streets",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 0.27,
+                "y": 2.95
+              },
+              {
+                "x": 2.96,
+                "y": 2.96
+              },
+              {
+                "x": 5.96,
+                "y": 2.96
+              },
+              {
+                "x": 8.79,
+                "y": 2.93
+              },
+              {
+                "x": 11.7,
+                "y": 2.93
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": null,
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "cobble",
+          "surfaceWidth": 0.32
+        },
+        {
+          "featureId": "layout:street:45",
+          "kind": "street",
+          "layerId": "layer:streets",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 0.31,
+                "y": 4.94
+              },
+              {
+                "x": 3.14,
+                "y": 4.97
+              },
+              {
+                "x": 5.98,
+                "y": 4.94
+              },
+              {
+                "x": 8.8,
+                "y": 4.91
+              },
+              {
+                "x": 11.68,
+                "y": 4.94
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": null,
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "flagstone",
+          "surfaceWidth": 0.3
+        },
+        {
+          "featureId": "layout:street:46",
+          "kind": "street",
+          "layerId": "layer:streets",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 3.12,
+                "y": 0.42
+              },
+              {
+                "x": 3.0700000000000003,
+                "y": 3.01
+              },
+              {
+                "x": 3.2,
+                "y": 5
+              },
+              {
+                "x": 3.12,
+                "y": 6.7
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "settlement:district:0",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "cobble",
+          "surfaceWidth": 0.23
+        },
+        {
+          "featureId": "layout:street:47",
+          "kind": "street",
+          "layerId": "layer:streets",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 6.04,
+                "y": 0.42
+              },
+              {
+                "x": 5.99,
+                "y": 3.01
+              },
+              {
+                "x": 6.12,
+                "y": 5
+              },
+              {
+                "x": 6.04,
+                "y": 6.7
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": null,
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "cobble",
+          "surfaceWidth": 0.23
+        },
+        {
+          "featureId": "layout:street:48",
+          "kind": "street",
+          "layerId": "layer:streets",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 8.78,
+                "y": 0.42
+              },
+              {
+                "x": 8.729999999999999,
+                "y": 3.01
+              },
+              {
+                "x": 8.86,
+                "y": 5
+              },
+              {
+                "x": 8.78,
+                "y": 6.7
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "settlement:district:1",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "cobble",
+          "surfaceWidth": 0.23
+        },
+        {
+          "featureId": "layout:street:49",
+          "kind": "street",
+          "layerId": "layer:streets",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 0.46,
+                "y": 6.99
+              },
+              {
+                "x": 3.1,
+                "y": 6.58
+              },
+              {
+                "x": 5.95,
+                "y": 6.86
+              },
+              {
+                "x": 8.36,
+                "y": 6.56
+              },
+              {
+                "x": 10.03,
+                "y": 6.95
+              },
+              {
+                "x": 11.6,
+                "y": 6.49
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": "settlement:district:3",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "flagstone",
+          "surfaceWidth": 0.46
+        },
+        {
+          "featureId": "layout:lot:50",
+          "kind": "lot",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 6.98,
+                "y": 4.8
+              },
+              {
+                "x": 7.99,
+                "y": 4.8
+              },
+              {
+                "x": 7.99,
+                "y": 5.2299999999999995
+              },
+              {
+                "x": 6.98,
+                "y": 5.2299999999999995
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": null,
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "flagstone"
+        },
+        {
+          "featureId": "layout:wall:51",
+          "kind": "wall",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 0.38,
+                "y": 2.3
+              },
+              {
+                "x": 0.41,
+                "y": 0.51
+              },
+              {
+                "x": 3.8,
+                "y": 0.51
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "West seawall",
+          "urbanParentId": "settlement:district:0",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "limestone",
+          "surfaceWidth": 0.18
+        },
+        {
+          "featureId": "layout:wall:52",
+          "kind": "wall",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 9.2,
+                "y": 0.63
+              },
+              {
+                "x": 11.51,
+                "y": 0.63
+              },
+              {
+                "x": 11.51,
+                "y": 2.22
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Customs wall",
+          "urbanParentId": "settlement:district:1",
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "brick",
+          "surfaceWidth": 0.21
+        },
+        {
+          "featureId": "layout:wall:53",
+          "kind": "wall",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1.47,
+                "y": 6.9
+              },
+              {
+                "x": 1.63,
+                "y": 8.17
+              },
+              {
+                "x": 2.05,
+                "y": 8.190000000000001
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": null,
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "timber",
+          "surfaceWidth": 0.18
+        },
+        {
+          "featureId": "layout:wall:54",
+          "kind": "wall",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 4.25,
+                "y": 6.99
+              },
+              {
+                "x": 4.41,
+                "y": 8.26
+              },
+              {
+                "x": 4.83,
+                "y": 8.280000000000001
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": null,
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "timber",
+          "surfaceWidth": 0.18
+        },
+        {
+          "featureId": "layout:wall:55",
+          "kind": "wall",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 7.11,
+                "y": 6.9
+              },
+              {
+                "x": 7.2700000000000005,
+                "y": 8.17
+              },
+              {
+                "x": 7.69,
+                "y": 8.190000000000001
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": null,
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "timber",
+          "surfaceWidth": 0.18
+        },
+        {
+          "featureId": "layout:wall:56",
+          "kind": "wall",
+          "layerId": "layer:structures",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 10.66,
+                "y": 6.99
+              },
+              {
+                "x": 10.82,
+                "y": 8.26
+              },
+              {
+                "x": 11.24,
+                "y": 8.280000000000001
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "urbanParentId": null,
+          "serviceType": null,
+          "linkedMapId": null,
+          "materialId": "timber",
+          "surfaceWidth": 0.18
+        },
+        {
+          "featureId": "settlement:district:0",
+          "kind": "district",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 0.45,
+                "y": 0.52
+              },
+              {
+                "x": 5.88,
+                "y": 0.52
+              },
+              {
+                "x": 5.88,
+                "y": 4.789999999999999
+              },
+              {
+                "x": 0.45,
+                "y": 4.789999999999999
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Market Ward",
+          "urbanParentId": null,
+          "serviceType": null,
+          "linkedMapId": null,
+          "urbanTexture": "market"
+        },
+        {
+          "featureId": "settlement:district:1",
+          "kind": "district",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 6.16,
+                "y": 0.52
+              },
+              {
+                "x": 11.58,
+                "y": 0.52
+              },
+              {
+                "x": 11.58,
+                "y": 4.789999999999999
+              },
+              {
+                "x": 6.16,
+                "y": 4.789999999999999
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Foundry Quarter",
+          "urbanParentId": null,
+          "serviceType": null,
+          "linkedMapId": null,
+          "urbanTexture": "industrial"
+        },
+        {
+          "featureId": "settlement:district:2",
+          "kind": "district",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 0.46,
+                "y": 5.08
+              },
+              {
+                "x": 5.82,
+                "y": 5.08
+              },
+              {
+                "x": 5.82,
+                "y": 6.85
+              },
+              {
+                "x": 0.46,
+                "y": 6.85
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Old Port",
+          "urbanParentId": null,
+          "serviceType": null,
+          "linkedMapId": null,
+          "urbanTexture": "waterfront"
+        },
+        {
+          "featureId": "settlement:district:3",
+          "kind": "district",
+          "layerId": "layer:districts",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 6.16,
+                "y": 5.08
+              },
+              {
+                "x": 11.54,
+                "y": 5.08
+              },
+              {
+                "x": 11.54,
+                "y": 6.78
+              },
+              {
+                "x": 6.16,
+                "y": 6.78
+              }
+            ]
+          },
+          "styleId": "style:urban-core",
+          "densityBand": null,
+          "ownerLink": {
+            "mode": "unbound",
+            "ownerAuthority": null,
+            "ownerEntityRef": null,
+            "ownerRevisionRef": null
+          },
+          "mapLabel": "Canal Row",
+          "urbanParentId": null,
+          "serviceType": null,
+          "linkedMapId": null,
+          "urbanTexture": "residential"
+        }
+      ],
+      "surfacePack": {
+        "profile": "harbor",
+        "seed": "harrowfen-old-port",
+        "density": 2
+      },
+      "settlement": {
+        "type": "port",
+        "notes": "A seeded waterfront layout with market streets and an Old Vault entrance."
+      },
+      "presentation": {
+        "schema": 1,
+        "theme": "copper",
+        "styles": {},
+        "labels": [
+          {
+            "labelId": "example:point:0",
+            "text": "Harbor approach",
+            "x": 5.9,
+            "y": 7.7,
+            "role": "place",
+            "rotationDegrees": 0,
+            "path": []
+          }
+        ],
+        "legend": {
+          "title": "Map key",
+          "position": "lower-right",
+          "entries": []
+        },
+        "frame": {
+          "enabled": true,
+          "title": "Harbor City",
+          "subtitle": "Settlement plan",
+          "scale": 30,
+          "unit": "m",
+          "grid": 0
+        },
+        "effect": {
+          "kind": "none",
+          "amount": 0
+        },
+        "page": {
+          "paper": "A4",
+          "orientation": "landscape",
+          "margin": 12,
+          "format": "pdf",
+          "dpi": 300
+        },
+        "atlas": {
+          "title": "",
+          "pages": [],
+          "links": []
+        }
+      },
+      "showcase": {
+        "schema": 1,
+        "id": "catalog03:urban:1",
+        "style": "city-copper",
+        "palette": {
+          "accent": "#39807b",
+          "secondary": "#be7548",
+          "ink": "#5c4a3b",
+          "deep": "#374b48"
+        },
+        "version": 1,
+        "visible": true,
+        "layers": {
+          "detail": true,
+          "labels": true,
+          "ground": true
+        },
+        "title": "Harbor City",
+        "variant": 1,
+        "seed": 1731861205,
+        "frame": {
+          "width": 12,
+          "height": 9
+        },
+        "elements": [
+          {
+            "id": "urban:1:1",
+            "kind": "barrel",
+            "x": 4.74,
+            "y": 5.32,
+            "size": 0.368,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.93,
+            "seed": 17688,
+            "rotation": 0.3
+          },
+          {
+            "id": "urban:1:2",
+            "kind": "market",
+            "x": 7.757,
+            "y": 1.611,
+            "size": 0.55,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.95,
+            "seed": 43984,
+            "rotation": -10.5
+          },
+          {
+            "id": "urban:1:3",
+            "kind": "crate",
+            "x": 9.565,
+            "y": 1.25,
+            "size": 0.418,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.79,
+            "seed": 1375,
+            "rotation": -10.8
+          },
+          {
+            "id": "urban:1:4",
+            "kind": "light",
+            "x": 9.714,
+            "y": 5.74,
+            "size": 0.329,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.95,
+            "seed": 32582,
+            "rotation": -28.8
+          },
+          {
+            "id": "urban:1:5",
+            "kind": "tree",
+            "x": 7.61,
+            "y": 4.201,
+            "size": 0.296,
+            "count": 5,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.8,
+            "seed": 23397,
+            "rotation": -10.3
+          },
+          {
+            "id": "urban:1:6",
+            "kind": "barrel",
+            "x": 4.301,
+            "y": 6.591,
+            "size": 0.426,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.97,
+            "seed": 63432,
+            "rotation": -20
+          },
+          {
+            "id": "urban:1:7",
+            "kind": "barrel",
+            "x": 8.241,
+            "y": 5.956,
+            "size": 0.41,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.88,
+            "seed": 41124,
+            "rotation": -8.6
+          },
+          {
+            "id": "urban:1:8",
+            "kind": "tree",
+            "x": 8.14,
+            "y": 5.669,
+            "size": 0.432,
+            "count": 3,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.8,
+            "seed": 63279,
+            "rotation": -26.2
+          },
+          {
+            "id": "urban:1:9",
+            "kind": "fountain",
+            "x": 1.176,
+            "y": 5.496,
+            "size": 0.319,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.91,
+            "seed": 22709,
+            "rotation": 4.6
+          },
+          {
+            "id": "urban:1:10",
+            "kind": "barrel",
+            "x": 1.76,
+            "y": 1.401,
+            "size": 0.346,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.81,
+            "seed": 79232,
+            "rotation": 17.1
+          },
+          {
+            "id": "urban:1:11",
+            "kind": "light",
+            "x": 6.981,
+            "y": 4.033,
+            "size": 0.512,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.95,
+            "seed": 81607,
+            "rotation": -28.4
+          },
+          {
+            "id": "urban:1:12",
+            "kind": "tree",
+            "x": 5.004,
+            "y": 1.908,
+            "size": 0.442,
+            "count": 3,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.93,
+            "seed": 98133,
+            "rotation": -23.2
+          },
+          {
+            "id": "urban:1:13",
+            "kind": "market",
+            "x": 10.73,
+            "y": 3.829,
+            "size": 0.659,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.83,
+            "seed": 39383,
+            "rotation": -18.7
+          },
+          {
+            "id": "urban:1:14",
+            "kind": "roof",
+            "x": 7.438,
+            "y": 5.043,
+            "size": 0.344,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.78,
+            "seed": 56696,
+            "rotation": -14.2
+          },
+          {
+            "id": "urban:1:15",
+            "kind": "roof",
+            "x": 10.125,
+            "y": 1.762,
+            "size": 0.566,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.92,
+            "seed": 65140,
+            "rotation": -29.9
+          },
+          {
+            "id": "urban:1:16",
+            "kind": "barrel",
+            "x": 6.533,
+            "y": 4.008,
+            "size": 0.446,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.87,
+            "seed": 92557,
+            "rotation": 15.3
+          },
+          {
+            "id": "urban:1:17",
+            "kind": "fountain",
+            "x": 5.077,
+            "y": 6.001,
+            "size": 0.49,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.85,
+            "seed": 88403,
+            "rotation": -7.7
+          },
+          {
+            "id": "urban:1:18",
+            "kind": "barrel",
+            "x": 2.478,
+            "y": 7.322,
+            "size": 0.241,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.8,
+            "seed": 11618,
+            "rotation": -26.8
+          },
+          {
+            "id": "urban:1:19",
+            "kind": "market",
+            "x": 4.11,
+            "y": 1.741,
+            "size": 0.379,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.92,
+            "seed": 67832,
+            "rotation": -19
+          },
+          {
+            "id": "urban:1:20",
+            "kind": "light",
+            "x": 7.725,
+            "y": 1.758,
+            "size": 0.307,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.79,
+            "seed": 26520,
+            "rotation": -12.9
+          },
+          {
+            "id": "urban:1:21",
+            "kind": "fountain",
+            "x": 7.973,
+            "y": 1.433,
+            "size": 0.327,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.94,
+            "seed": 23997,
+            "rotation": 8.4
+          },
+          {
+            "id": "urban:1:22",
+            "kind": "fountain",
+            "x": 1.289,
+            "y": 5.405,
+            "size": 0.521,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.96,
+            "seed": 9842,
+            "rotation": -14.2
+          },
+          {
+            "id": "urban:1:23",
+            "kind": "label",
+            "x": 2.04,
+            "y": 1.71,
+            "size": 0.433,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:0",
+            "alpha": 0.88,
+            "text": "MARKET QUARTER"
+          },
+          {
+            "id": "urban:1:24",
+            "kind": "label",
+            "x": 8.64,
+            "y": 3.15,
+            "size": 0.433,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:0",
+            "alpha": 0.88,
+            "text": "HARBOR WALK"
+          },
+          {
+            "id": "urban:1:25",
+            "kind": "label",
+            "x": 9.36,
+            "y": 7.02,
+            "size": 0.433,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:0",
+            "alpha": 0.88,
+            "text": "EAST WARD"
+          }
+        ]
+      }
+    },
+    "viewport": {
+      "zoom": 1,
+      "panX": 0,
+      "panY": 0,
+      "level": "level:0",
+      "fog": false,
+      "hiddenLayers": []
+    }
+  }
+}

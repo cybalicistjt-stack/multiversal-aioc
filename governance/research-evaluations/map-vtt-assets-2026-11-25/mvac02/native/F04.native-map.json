@@ -1,0 +1,880 @@
+{
+  "format": "multiversal-cartography-tester-v2",
+  "sourceCommit": "db8e2d9b9d6cbc72f4386f6af2a5b98d01936e7f",
+  "document": {
+    "id": "mapdoc:tester:atlas-keep",
+    "mode": "tactical",
+    "title": "The Ruined Keep",
+    "origin": "reference",
+    "sourceRef": "mapdoc:ruined-keep-tactical@15",
+    "revision": 1,
+    "createdAt": "2026-11-21T01:53:16.109Z",
+    "modifiedAt": "2026-11-21T01:53:16.109Z",
+    "draft": {
+      "workspaceRef": "mcs:offline-tester",
+      "documentRef": "mapdoc:tester:atlas-keep",
+      "authoringSessionRef": "mapdoc:tester:atlas-keep:draft",
+      "requestedMode": "author-tactical",
+      "grids": [
+        {
+          "gridId": "grid:square",
+          "mode": "square",
+          "unitName": "ft",
+          "unitsPerCell": 5,
+          "originX": 0,
+          "originY": 0,
+          "rotationDegrees": 0
+        },
+        {
+          "gridId": "grid:hex",
+          "mode": "hex",
+          "unitName": "m",
+          "unitsPerCell": 1.5,
+          "originX": 2,
+          "originY": 2,
+          "rotationDegrees": 30
+        },
+        {
+          "gridId": "grid:gridless",
+          "mode": "gridless",
+          "unitName": "ft",
+          "unitsPerCell": 1,
+          "originX": 0,
+          "originY": 0,
+          "rotationDegrees": 0
+        }
+      ],
+      "measurements": [
+        {
+          "measurementId": "measure:hall",
+          "kind": "distance",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 1,
+                "y": 1
+              },
+              {
+                "x": 6,
+                "y": 1
+              }
+            ]
+          },
+          "gridId": "grid:square"
+        },
+        {
+          "measurementId": "template:burst",
+          "kind": "template",
+          "geometry": {
+            "kind": "circle",
+            "center": {
+              "x": 4,
+              "y": 4
+            },
+            "radius": 3
+          },
+          "gridId": "grid:gridless"
+        }
+      ],
+      "zones": [
+        {
+          "zoneId": "spawn:north",
+          "kind": "spawn",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 2,
+                "y": 0
+              },
+              {
+                "x": 2,
+                "y": 2
+              },
+              {
+                "x": 0,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "zoneId": "waypoint:gate",
+          "kind": "waypoint",
+          "geometry": {
+            "kind": "point",
+            "points": [
+              {
+                "x": 8,
+                "y": 4
+              }
+            ]
+          }
+        }
+      ],
+      "annotations": [
+        {
+          "annotationId": "cover:wall",
+          "kind": "cover",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 2,
+                "y": 2
+              },
+              {
+                "x": 5,
+                "y": 2
+              }
+            ]
+          },
+          "value": "heavy"
+        },
+        {
+          "annotationId": "elevation:tower",
+          "kind": "elevation",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 6,
+                "y": 1
+              },
+              {
+                "x": 8,
+                "y": 1
+              },
+              {
+                "x": 8,
+                "y": 3
+              },
+              {
+                "x": 6,
+                "y": 3
+              }
+            ]
+          },
+          "value": "12m"
+        }
+      ],
+      "hazardInputs": [
+        {
+          "hazardId": "hazard:fire",
+          "ownerRef": "scene-hazard:fire@7",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 3,
+                "y": 3
+              },
+              {
+                "x": 5,
+                "y": 3
+              },
+              {
+                "x": 5,
+                "y": 5
+              },
+              {
+                "x": 3,
+                "y": 5
+              }
+            ]
+          },
+          "label": "fire"
+        }
+      ],
+      "lightInputs": [
+        {
+          "lightId": "light:torch",
+          "ownerRef": "scene-light:torch@3",
+          "x": 2,
+          "y": 2,
+          "radius": 6,
+          "label": "torch"
+        }
+      ],
+      "occlusionBoundaries": [
+        {
+          "boundaryId": "wall:east",
+          "family": "wall",
+          "ownerRef": "scene-boundary:wall:east@2",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 8,
+                "y": 0
+              },
+              {
+                "x": 8,
+                "y": 6
+              }
+            ]
+          }
+        },
+        {
+          "boundaryId": "door:east",
+          "family": "door",
+          "ownerRef": "scene-boundary:door:east@4",
+          "geometry": {
+            "kind": "polyline",
+            "points": [
+              {
+                "x": 8,
+                "y": 3
+              },
+              {
+                "x": 8,
+                "y": 4
+              }
+            ]
+          }
+        }
+      ],
+      "fogPaint": [
+        {
+          "fogPaintId": "fog:room-a",
+          "mode": "conceal-preview",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 4,
+                "y": 0
+              },
+              {
+                "x": 4,
+                "y": 4
+              },
+              {
+                "x": 0,
+                "y": 4
+              }
+            ]
+          }
+        },
+        {
+          "fogPaintId": "fog:room-b",
+          "mode": "reveal-preview",
+          "geometry": {
+            "kind": "polygon",
+            "points": [
+              {
+                "x": 4,
+                "y": 0
+              },
+              {
+                "x": 8,
+                "y": 0
+              },
+              {
+                "x": 8,
+                "y": 4
+              },
+              {
+                "x": 4,
+                "y": 4
+              }
+            ]
+          }
+        }
+      ],
+      "presentation": {
+        "schema": 1,
+        "theme": "night",
+        "styles": {},
+        "labels": [
+          {
+            "labelId": "example:point:0",
+            "text": "Eastern Approach",
+            "x": 5.7,
+            "y": 5.25,
+            "role": "place",
+            "rotationDegrees": 0,
+            "path": []
+          }
+        ],
+        "legend": {
+          "title": "Map key",
+          "position": "lower-right",
+          "entries": []
+        },
+        "frame": {
+          "enabled": true,
+          "title": "The Ruined Keep",
+          "subtitle": "East approach and collapsed wall",
+          "scale": 5,
+          "unit": "ft",
+          "grid": 0
+        },
+        "effect": {
+          "kind": "none",
+          "amount": 0
+        },
+        "page": {
+          "paper": "A4",
+          "orientation": "landscape",
+          "margin": 12,
+          "format": "pdf",
+          "dpi": 300
+        },
+        "atlas": {
+          "title": "",
+          "pages": [],
+          "links": []
+        }
+      },
+      "showcase": {
+        "schema": 1,
+        "id": "catalog03:tactical:1",
+        "style": "ruined-keep",
+        "palette": {
+          "accent": "#b9915c",
+          "secondary": "#8d504e",
+          "ink": "#353c3e",
+          "deep": "#2c3236"
+        },
+        "version": 1,
+        "visible": true,
+        "layers": {
+          "detail": true,
+          "labels": true,
+          "ground": true
+        },
+        "title": "The Ruined Keep",
+        "variant": 1,
+        "seed": 800762523,
+        "frame": {
+          "width": 9,
+          "height": 6
+        },
+        "elements": [
+          {
+            "id": "tactical:1:1",
+            "kind": "stone",
+            "x": 5.363,
+            "y": 3.865,
+            "size": 0.329,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.97,
+            "seed": 43447,
+            "rotation": 2
+          },
+          {
+            "id": "tactical:1:2",
+            "kind": "pillar",
+            "x": 7.024,
+            "y": 3.119,
+            "size": 0.25,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.89,
+            "seed": 79791,
+            "rotation": -29.2
+          },
+          {
+            "id": "tactical:1:3",
+            "kind": "tree",
+            "x": 7.887,
+            "y": 4.634,
+            "size": 0.289,
+            "count": 4,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.94,
+            "seed": 42686,
+            "rotation": -21.7
+          },
+          {
+            "id": "tactical:1:4",
+            "kind": "tent",
+            "x": 6.875,
+            "y": 3.154,
+            "size": 0.295,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.88,
+            "seed": 57429,
+            "rotation": -2.5
+          },
+          {
+            "id": "tactical:1:5",
+            "kind": "rubble",
+            "x": 3.086,
+            "y": 2.527,
+            "size": 0.302,
+            "count": 3,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.78,
+            "seed": 74609,
+            "rotation": -25.3
+          },
+          {
+            "id": "tactical:1:6",
+            "kind": "stone",
+            "x": 1.838,
+            "y": 4.086,
+            "size": 0.263,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.89,
+            "seed": 78814,
+            "rotation": -11.1
+          },
+          {
+            "id": "tactical:1:7",
+            "kind": "rubble",
+            "x": 4.392,
+            "y": 2.819,
+            "size": 0.301,
+            "count": 7,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.89,
+            "seed": 46968,
+            "rotation": -9.1
+          },
+          {
+            "id": "tactical:1:8",
+            "kind": "fire",
+            "x": 3.074,
+            "y": 3.713,
+            "size": 0.408,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.83,
+            "seed": 34580,
+            "rotation": 11.8
+          },
+          {
+            "id": "tactical:1:9",
+            "kind": "rubble",
+            "x": 5.01,
+            "y": 0.958,
+            "size": 0.197,
+            "count": 4,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.91,
+            "seed": 95315,
+            "rotation": -0.2
+          },
+          {
+            "id": "tactical:1:10",
+            "kind": "barricade",
+            "x": 7.773,
+            "y": 0.921,
+            "size": 0.172,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.87,
+            "seed": 84131,
+            "rotation": 6.3
+          },
+          {
+            "id": "tactical:1:11",
+            "kind": "pillar",
+            "x": 3.283,
+            "y": 5.22,
+            "size": 0.262,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.85,
+            "seed": 70649,
+            "rotation": -18
+          },
+          {
+            "id": "tactical:1:12",
+            "kind": "fire",
+            "x": 7.659,
+            "y": 3.369,
+            "size": 0.403,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.91,
+            "seed": 37532,
+            "rotation": -3.2
+          },
+          {
+            "id": "tactical:1:13",
+            "kind": "pillar",
+            "x": 1.177,
+            "y": 4.939,
+            "size": 0.331,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.93,
+            "seed": 3035,
+            "rotation": 13.5
+          },
+          {
+            "id": "tactical:1:14",
+            "kind": "stone",
+            "x": 4.302,
+            "y": 0.664,
+            "size": 0.178,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.8,
+            "seed": 9087,
+            "rotation": 10.5
+          },
+          {
+            "id": "tactical:1:15",
+            "kind": "barricade",
+            "x": 3.866,
+            "y": 0.683,
+            "size": 0.375,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.96,
+            "seed": 68539,
+            "rotation": -29.7
+          },
+          {
+            "id": "tactical:1:16",
+            "kind": "rubble",
+            "x": 2.684,
+            "y": 3.047,
+            "size": 0.229,
+            "count": 7,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.81,
+            "seed": 1903,
+            "rotation": -29.7
+          },
+          {
+            "id": "tactical:1:17",
+            "kind": "tent",
+            "x": 0.922,
+            "y": 5.132,
+            "size": 0.253,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.95,
+            "seed": 63339,
+            "rotation": -16.6
+          },
+          {
+            "id": "tactical:1:18",
+            "kind": "pillar",
+            "x": 0.864,
+            "y": 1.227,
+            "size": 0.353,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.94,
+            "seed": 35299,
+            "rotation": -22.7
+          },
+          {
+            "id": "tactical:1:19",
+            "kind": "tree",
+            "x": 3.655,
+            "y": 1.884,
+            "size": 0.329,
+            "count": 7,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.81,
+            "seed": 53729,
+            "rotation": 17.7
+          },
+          {
+            "id": "tactical:1:20",
+            "kind": "rubble",
+            "x": 1.172,
+            "y": 1.764,
+            "size": 0.4,
+            "count": 7,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.85,
+            "seed": 41406,
+            "rotation": -15.3
+          },
+          {
+            "id": "tactical:1:21",
+            "kind": "tent",
+            "x": 6.228,
+            "y": 2.573,
+            "size": 0.513,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.86,
+            "seed": 33068,
+            "rotation": -20
+          },
+          {
+            "id": "tactical:1:22",
+            "kind": "rubble",
+            "x": 0.822,
+            "y": 4.667,
+            "size": 0.242,
+            "count": 3,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.85,
+            "seed": 23018,
+            "rotation": -24.1
+          },
+          {
+            "id": "tactical:1:23",
+            "kind": "tree",
+            "x": 3.322,
+            "y": 4.15,
+            "size": 0.238,
+            "count": 7,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.97,
+            "seed": 39331,
+            "rotation": -11.9
+          },
+          {
+            "id": "tactical:1:24",
+            "kind": "barricade",
+            "x": 4.753,
+            "y": 4.279,
+            "size": 0.391,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.86,
+            "seed": 89805,
+            "rotation": -24.6
+          },
+          {
+            "id": "tactical:1:25",
+            "kind": "rubble",
+            "x": 7.37,
+            "y": 3.181,
+            "size": 0.311,
+            "count": 8,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.9,
+            "seed": 40943,
+            "rotation": -28.6
+          },
+          {
+            "id": "tactical:1:26",
+            "kind": "rubble",
+            "x": 0.892,
+            "y": 3.348,
+            "size": 0.311,
+            "count": 4,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.79,
+            "seed": 59548,
+            "rotation": -31.5
+          },
+          {
+            "id": "tactical:1:27",
+            "kind": "barricade",
+            "x": 4.504,
+            "y": 0.813,
+            "size": 0.181,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.9,
+            "seed": 18779,
+            "rotation": -18.8
+          },
+          {
+            "id": "tactical:1:28",
+            "kind": "rubble",
+            "x": 3.37,
+            "y": 3.483,
+            "size": 0.24,
+            "count": 6,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.87,
+            "seed": 14282,
+            "rotation": -24.8
+          },
+          {
+            "id": "tactical:1:29",
+            "kind": "rubble",
+            "x": 1.621,
+            "y": 1.172,
+            "size": 0.189,
+            "count": 4,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.85,
+            "seed": 14255,
+            "rotation": -18.9
+          },
+          {
+            "id": "tactical:1:30",
+            "kind": "pillar",
+            "x": 0.796,
+            "y": 5.092,
+            "size": 0.357,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.87,
+            "seed": 56803,
+            "rotation": -24.6
+          },
+          {
+            "id": "tactical:1:31",
+            "kind": "pillar",
+            "x": 6.836,
+            "y": 2.289,
+            "size": 0.194,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.85,
+            "seed": 82955,
+            "rotation": -23.8
+          },
+          {
+            "id": "tactical:1:32",
+            "kind": "tree",
+            "x": 2.062,
+            "y": 3.607,
+            "size": 0.395,
+            "count": 7,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.79,
+            "seed": 77357,
+            "rotation": 1.3
+          },
+          {
+            "id": "tactical:1:33",
+            "kind": "tree",
+            "x": 0.749,
+            "y": 4.452,
+            "size": 0.217,
+            "count": 4,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.8,
+            "seed": 71070,
+            "rotation": 6.6
+          },
+          {
+            "id": "tactical:1:34",
+            "kind": "stone",
+            "x": 4.453,
+            "y": 2.722,
+            "size": 0.342,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.97,
+            "seed": 74307,
+            "rotation": 0.6
+          },
+          {
+            "id": "tactical:1:35",
+            "kind": "barricade",
+            "x": 0.684,
+            "y": 2.081,
+            "size": 0.377,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.86,
+            "seed": 6658,
+            "rotation": -18.3
+          },
+          {
+            "id": "tactical:1:36",
+            "kind": "tent",
+            "x": 5.016,
+            "y": 2.851,
+            "size": 0.522,
+            "count": 1,
+            "layer": "detail",
+            "level": "level:0",
+            "alpha": 0.96,
+            "seed": 36634,
+            "rotation": 8.4
+          },
+          {
+            "id": "tactical:1:37",
+            "kind": "label",
+            "x": 1.53,
+            "y": 1.14,
+            "size": 0.289,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:0",
+            "alpha": 0.88,
+            "text": "EASTERN APPROACH"
+          },
+          {
+            "id": "tactical:1:38",
+            "kind": "label",
+            "x": 6.48,
+            "y": 2.1,
+            "size": 0.289,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:0",
+            "alpha": 0.88,
+            "text": "SUNKEN COURT"
+          },
+          {
+            "id": "tactical:1:39",
+            "kind": "label",
+            "x": 7.02,
+            "y": 4.68,
+            "size": 0.289,
+            "count": 1,
+            "layer": "labels",
+            "level": "level:0",
+            "alpha": 0.88,
+            "text": "BROKEN BASTION"
+          }
+        ]
+      }
+    },
+    "viewport": {
+      "zoom": 1,
+      "panX": 0,
+      "panY": 0,
+      "level": "level:0",
+      "fog": false,
+      "hiddenLayers": []
+    }
+  }
+}
