@@ -61,10 +61,10 @@
     "existing_sheets": 4,
     "new_sheets": 192,
     "families": 32,
-    "described": 4,
+    "described": 3,
     "planned": 174,
     "generated": 14,
-    "revision_needed": 0
+    "revision_needed": 1
   },
   "batch_size": 6,
   "batch_order": "First batch cross-genre pilot; subsequent batches select next six outstanding entries by stable ID unless owner directs otherwise.",
@@ -138,6 +138,17 @@
         ],
         "mode": "RGBA",
         "review": "12 overhead tree canopies in separate sheet; alpha exists; margin, edge contamination, botanical identity, individual extraction and placement not yet validated; owner review pending."
+      },
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 22.722,
+        "fully_opaque_percent": 0.002,
+        "nominal_grid_gutter_alpha_ge_16_percent": 12.15,
+        "alpha_range": [
+          0,
+          255
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
       }
     },
     {
@@ -173,6 +184,10 @@
           "European larch",
           "Mountain hemlock"
         ]
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
       }
     },
     {
@@ -208,6 +223,10 @@
           "Wild bramble",
           "Mixed leafy thicket"
         ]
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
       }
     },
     {
@@ -263,7 +282,18 @@
           "review": "12 separate flower clusters generated, but upright botanical profiles with visible long stems violate direct overhead brief; regenerate as aerial patches. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending.",
           "disposition": "superseded_by_overhead_revision"
         }
-      ]
+      ],
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 32.067,
+        "fully_opaque_percent": 0.004,
+        "nominal_grid_gutter_alpha_ge_16_percent": 0.78,
+        "alpha_range": [
+          0,
+          255
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
+      }
     },
     {
       "id": "MAPA-005",
@@ -318,7 +348,18 @@
           "review": "12 isolated plants and clumps; many upright side-profile fern and grass illustrations violate overhead brief; regenerate as radial overhead footprints. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending.",
           "disposition": "superseded_by_overhead_revision"
         }
-      ]
+      ],
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 17.772,
+        "fully_opaque_percent": 0.001,
+        "nominal_grid_gutter_alpha_ge_16_percent": 0.2,
+        "alpha_range": [
+          0,
+          255
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
+      }
     },
     {
       "id": "MAPA-006",
@@ -353,6 +394,10 @@
           "Cluster of fallen branches",
           "Split decaying log with fungi"
         ]
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
       }
     },
     {
@@ -408,7 +453,18 @@
           "review": "12 distinct tropical trees and palms, predominantly side-on with visible upright trunks rather than overhead crowns. Regenerate with true aerial canopy projection. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending.",
           "disposition": "superseded_by_overhead_revision"
         }
-      ]
+      ],
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 21.67,
+        "fully_opaque_percent": 0,
+        "nominal_grid_gutter_alpha_ge_16_percent": 10.19,
+        "alpha_range": [
+          0,
+          254
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
+      }
     },
     {
       "id": "MAPA-008",
@@ -451,6 +507,17 @@
           "Creeping passionflower vine",
           "Mixed dense jungle understory"
         ]
+      },
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 17.583,
+        "fully_opaque_percent": 0,
+        "nominal_grid_gutter_alpha_ge_16_percent": 4.16,
+        "alpha_range": [
+          0,
+          253
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
       }
     },
     {
@@ -494,14 +561,37 @@
           "Tumbleweed",
           "Dry desert grass tuft"
         ]
+      },
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 30.473,
+        "fully_opaque_percent": 0,
+        "nominal_grid_gutter_alpha_ge_16_percent": 0.59,
+        "alpha_range": [
+          0,
+          254
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
       }
     },
     {
       "id": "MAPA-010",
       "family": "Specialized biomes",
       "title": "Swamp trees, mangroves and marsh plants",
-      "status": "described",
-      "artwork_evidence": null,
+      "status": "revision_needed",
+      "artwork_evidence": {
+        "provider": "ChatGPT image generation",
+        "generation_id": "08dcffc6-b0c6-4aeb-9223-48f1eda73b08",
+        "conversation_file_id": "file_00000000383081f6b5022029f0ebd212",
+        "filename": "a_clean_png_style_illustration_sheet_on_a_transpar.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "sha256": "6de0cb13c447e6df0342db1497db7a011595d088a34febfc7b200af378c6eb17",
+        "review": "Correct subject and count, rejected by owner due to background and glow. Pixel inspection confirms failed alpha mask."
+      },
       "brief": {
         "batch": "MAPA-03",
         "sequence": 3,
@@ -521,6 +611,17 @@
           "Lotus leaf cluster",
           "Duckweed and floating plant patch"
         ]
+      },
+      "alpha_qa": {
+        "status": "failed",
+        "alpha_range": [
+          27,
+          251
+        ],
+        "zero_alpha_percent": 0,
+        "fully_opaque_percent": 0,
+        "nominal_grid_gutter_median_alpha": 121,
+        "nominal_grid_gutter_alpha_ge_16_percent": 100
       }
     },
     {
@@ -766,6 +867,17 @@
           "Stacked barrels",
           "Pottery storage jars"
         ]
+      },
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 39.96,
+        "fully_opaque_percent": 0.074,
+        "nominal_grid_gutter_alpha_ge_16_percent": 0.09,
+        "alpha_range": [
+          0,
+          255
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
       }
     },
     {
@@ -927,6 +1039,10 @@
         "requested_aspect_ratio": "4:3",
         "credits_reported": 0,
         "review": "Visually inspected individual 1024×768 preview: 12 distinct modern furniture props, 4×3, isolated on checkerboard appearance. Full-resolution PNG bytes and alpha channel not independently verified; perspective, edge cleanup, extraction, map placement and owner approval pending."
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
       }
     },
     {
@@ -1249,6 +1365,10 @@
         "requested_aspect_ratio": "4:3",
         "credits_reported": 0,
         "review": "Visually inspected individual 1024×768 preview: 12 distinct cyberpunk streetscape fixtures, 4×3, isolated on checkerboard appearance. Full-resolution PNG bytes and alpha channel not independently verified; perspective, edge cleanup, extraction, map placement and owner approval pending."
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
       }
     },
     {
@@ -1361,6 +1481,10 @@
         "requested_aspect_ratio": "4:3",
         "credits_reported": 0,
         "review": "Visually inspected individual 1024×768 preview: 12 distinct spacecraft command/bridge props, 4×3, isolated on checkerboard appearance. Full-resolution PNG bytes and alpha channel not independently verified; perspective, edge cleanup, extraction, map placement and owner approval pending."
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
       }
     },
     {
@@ -1494,6 +1618,10 @@
         "requested_aspect_ratio": "4:3",
         "credits_reported": 0,
         "review": "Visually inspected individual 1024×768 preview: 12 distinct post-apocalyptic salvage props, 4×3, isolated on checkerboard appearance. Full-resolution PNG bytes and alpha channel not independently verified; perspective, edge cleanup, extraction, map placement and owner approval pending."
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
       }
     },
     {
@@ -2117,7 +2245,7 @@
     "recovery": "Native image generation with separate subject instructions and transparency requested returned separate overhead revisions for both remaining subjects; RGBA, exact dimensions and SHA256 checked locally, and neutral background composites inspected. Generated is not approved or integration verified."
   },
   "batch_three_evidence": {
-    "state": "partial_generation_blocked_by_native_subject_mismatch",
+    "state": "partial_generation_alpha_quality_blocker",
     "sheet_ids": [
       "MAPA-008",
       "MAPA-009",
@@ -2131,7 +2259,6 @@
       "MAPA-009"
     ],
     "pending": [
-      "MAPA-010",
       "MAPA-011",
       "MAPA-012",
       "MAPA-013"
@@ -2163,15 +2290,27 @@
       }
     ],
     "blocker": {
-      "type": "native_image_subject_mismatch_and_alternate_provider_quota",
-      "detail": "Re-entry produced one correct desert sheet, then three repeated desert variants in response to swamp and rock subjects. Alternate provider daily limit remains recorded as exhausted on 2026-11-25; no retry before reset. Further unchanged attempts are not authorized by the failure discipline."
+      "type": "alpha_mask_quality",
+      "detail": "Owner rejected MAPA-010 due to background bleed and glow; decoded RGBA pixel statistics confirm no fully transparent or fully opaque pixels. Prior sheets are also subject to stronger alpha QA. No further images generated in response to this quality correction."
     },
-    "next_action": "Generate four remaining sheets MAPA-010–013 with a changed capable generation route or after the alternate provider free quota resets; use existing briefs. No duplicate credits toward catalog count.",
+    "next_action": "Correct MAPA-010 as standalone artwork with fully opaque cores, zero-alpha background and no glow; validate actual pixel mask and composite on contrasting colors before counting usable artwork. Audit prior sheets before import; then resume MAPA-011–013.",
     "prior_blockers": [
       {
         "type": "native_image_subject_mismatch",
         "detail": "After producing correct MAPA-008, native generation produced a multi-sheet composite and two wrong-subject variants despite individual desert-only instructions. Transparency setting did not resolve subject selection. Alternate provider's previously observed daily quota reset has not occurred; no retry there. Stop blind retries and use a changed generation route/context after availability changes."
+      },
+      {
+        "type": "native_image_subject_mismatch_and_alternate_provider_quota",
+        "detail": "Re-entry produced one correct desert sheet, then three repeated desert variants in response to swamp and rock subjects. Alternate provider daily limit remains recorded as exhausted on 2026-11-25; no retry before reset. Further unchanged attempts are not authorized by the failure discipline."
       }
+    ],
+    "revision_needed": [
+      "MAPA-010"
     ]
+  },
+  "quality_gate": {
+    "owner_direction": "2026-11-25: no background bleed or glow around map assets. Objects must have solid opaque interiors and truly transparent surrounding space.",
+    "required_before_usable": "Inspect decoded RGBA pixels and compositing against light, dark and colored surfaces. Background and gutters alpha=0; opaque object interiors alpha=255; fractional alpha confined to narrow anti-aliased silhouette edges or intentional material translucency. No colored fringe, glow, ambient aura, external shadow or ground plane. Internal shading allowed. Preserve fine foliage through proper foreground masking and color decontamination, not blanket thresholding. Verify twelve independent silhouettes and crop margins. No usability or approval claim from alpha channel presence alone.",
+    "previous_generated_status": "Generated records prove image creation only. All prior sheets require this stronger gate before approval or import."
   }
 }
