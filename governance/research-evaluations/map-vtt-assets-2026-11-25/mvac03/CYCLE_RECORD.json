@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "research-evaluation",
+  "work_item_id": "MVAC-03",
+  "record_date": "2026-11-25",
+  "status": "blocked_external",
+  "milestone": "standalone_prototype_built_with_controlled_evidence",
+  "owner_authority": "Owner Continue on logged MVAC-03 standalone prototype recommendation. No installed product integration selected.",
+  "canonical_selector": "operations/CURRENT.json",
+  "selector_changed": false,
+  "persistent_lane_changed": false,
+  "product_changed": false,
+  "standalone_code_changed": true,
+  "prototype_complete": true,
+  "deliverable_complete": false,
+  "implementation_complete": false,
+  "artifacts": [
+    {
+      "filename": "Multiversal_MVAC03_Author_Prepare_Play.html",
+      "bytes": 11384987,
+      "sha256": "b254dc80a9d69a9c25c6a69d5549537b691939002b799a0e73389ad46be001cc",
+      "library_file_id": "libfile_6811c2c72ed88191910fe7d04048bc6c"
+    },
+    {
+      "filename": "Multiversal_MVAC03_Native_Edit_Before_After.png",
+      "bytes": 403997,
+      "sha256": "45cc9b2a3eeaf04f13286f6f0bd215367485f288294b21b177cc437c9bbf4e1f",
+      "library_file_id": "libfile_5476a9ff1c908191b7e17df10bac30fe"
+    },
+    {
+      "filename": "Multiversal_MVAC03_Prototype_and_Evidence.zip",
+      "bytes": 8706084,
+      "sha256": "7cd02dff0d710d8995f762ef5125cf1564cc70a0f1d67f97cb5ad741bc12e6a3",
+      "library_file_id": "libfile_5324e00b5af481918fc4722269ea968d"
+    },
+    {
+      "filename": "Multiversal_MVAC03_Prototype_and_Validation.md",
+      "bytes": 7522,
+      "sha256": "7ba0bc53bea7107550fccd98c4d000f59784f8a04f47e5649006b256ee6cf256",
+      "library_file_id": "libfile_264e59b9958081918809ef9dab373b3f"
+    }
+  ],
+  "verification_summary": {
+    "scope": "Actual shell handlers + native renderer in controlled DOM and @napi-rs/canvas; browser behavior/layout/accessibility NOT proved",
+    "passed": 48,
+    "failed": 0,
+    "browser_validation": {
+      "status": "BLOCKED_ENVIRONMENT",
+      "local": "Chromium launcher exists but executable /usr/lib/chromium/chromium is missing",
+      "extension": "Originating connected browser context unavailable",
+      "cloud": "Local file URL rejected by browser URL policy; no workaround attempted"
+    },
+    "full_workflow_acceptance": "J01/J03/J10 partial local evidence only; all 40 real-boundary tasks remain NOT_RUN"
+  },
+  "blocker": {
+    "class": "executor_browser_unavailable",
+    "local": "Chromium wrapper target executable is missing",
+    "connected": "Originating browser context unavailable",
+    "cloud": "file URL rejected by URL policy; no workaround attempted",
+    "resume_action": "Open delivered HTML in a capable authorized browser and observe J01/J03/J10, desktop/narrow layout, text undo/Escape and pointer navigation; repair defects before marking complete."
+  },
+  "next_recommendation": "MVAC-03 real-browser validation; MVAC-04 only after acceptance",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 3,
+    "last_material_progress": "Prototype built; native/controlled UI checks green; artifacts saved; browser blocker evidenced",
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "terminal_response_kind": "external_blocker_with_reviewable_deliverable",
+    "independent_authorized_work_remaining": false
+  },
+  "publication_note": "This publishes prototype evidence and blocker, not completion. Exact-head merge/queue proof remains GitHub-owned."
+}
