@@ -61,9 +61,9 @@
     "existing_sheets": 4,
     "new_sheets": 192,
     "families": 32,
-    "described": 5,
+    "described": 0,
     "planned": 186,
-    "generated": 1
+    "generated": 6
   },
   "batch_size": 6,
   "batch_order": "First batch cross-genre pilot; subsequent batches select next six outstanding entries by stable ID unless owner directs otherwise.",
@@ -339,7 +339,7 @@
       "id": "MAPA-030",
       "family": "Fantasy interiors",
       "title": "Chests, barrels, sacks, baskets and crates",
-      "status": "described",
+      "status": "generated",
       "brief": {
         "batch": "MAPA-01",
         "sequence": 2,
@@ -360,7 +360,32 @@
           "Pottery storage jars"
         ]
       },
-      "artwork_evidence": null
+      "artwork_evidence": {
+        "generation_id": "5acfb902-a17f-45e8-abf7-732540436284",
+        "conversation_file_id": "file_00000000506881f6857d0b497162bb3d",
+        "filename": "a_highly_detailed_illustrated_game_asset_sheet_fa.png",
+        "sha256": "f3db66fd4241a905e7a279a1927fe890e2e1c699e895f35a741312a5cebbfeec",
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "mode": "RGBA",
+        "review": "Visually checked 12 isolated fantasy storage sprites; alpha channel range 0–255 confirmed. Actual row order differs from brief. Edge cleanup, extraction, perspective and owner acceptance pending.",
+        "actual_cells_row_major": [
+          "Closed ironbound chest",
+          "Open treasure chest",
+          "Grain sack",
+          "Barrel",
+          "Water cask",
+          "Stack of sacks",
+          "Small crate",
+          "Large shipping crate",
+          "Woven fruit basket",
+          "Decorated trunk",
+          "Stacked barrels",
+          "Pottery storage jars"
+        ]
+      }
     },
     {
       "id": "MAPA-031",
@@ -492,7 +517,7 @@
       "id": "MAPA-049",
       "family": "Modern residential",
       "title": "Sofas, recliners, coffee tables and living room furniture",
-      "status": "described",
+      "status": "generated",
       "brief": {
         "batch": "MAPA-01",
         "sequence": 3,
@@ -513,7 +538,15 @@
           "Ottoman"
         ]
       },
-      "artwork_evidence": null
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "EbcSYTFuuO",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "Visually inspected individual 1024×768 preview: 12 distinct modern furniture props, 4×3, isolated on checkerboard appearance. Full-resolution PNG bytes and alpha channel not independently verified; perspective, edge cleanup, extraction, map placement and owner approval pending."
+      }
     },
     {
       "id": "MAPA-050",
@@ -806,7 +839,7 @@
       "id": "MAPA-091",
       "family": "Cyberpunk",
       "title": "Neon storefronts, kiosks and vending machines",
-      "status": "described",
+      "status": "generated",
       "brief": {
         "batch": "MAPA-01",
         "sequence": 4,
@@ -827,7 +860,15 @@
           "Street utility unit"
         ]
       },
-      "artwork_evidence": null
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "CqWgnvKEEy",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "Visually inspected individual 1024×768 preview: 12 distinct cyberpunk streetscape fixtures, 4×3, isolated on checkerboard appearance. Full-resolution PNG bytes and alpha channel not independently verified; perspective, edge cleanup, extraction, map placement and owner approval pending."
+      }
     },
     {
       "id": "MAPA-092",
@@ -910,7 +951,7 @@
       "id": "MAPA-103",
       "family": "Spacecraft and orbital stations",
       "title": "Bridge stations, pilot seats and navigation consoles",
-      "status": "described",
+      "status": "generated",
       "brief": {
         "batch": "MAPA-01",
         "sequence": 5,
@@ -931,7 +972,15 @@
           "Secondary control station"
         ]
       },
-      "artwork_evidence": null
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "jUI38s1LD0",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "Visually inspected individual 1024×768 preview: 12 distinct spacecraft command/bridge props, 4×3, isolated on checkerboard appearance. Full-resolution PNG bytes and alpha channel not independently verified; perspective, edge cleanup, extraction, map placement and owner approval pending."
+      }
     },
     {
       "id": "MAPA-104",
@@ -1035,7 +1084,7 @@
       "id": "MAPA-118",
       "family": "Post-apocalyptic environments",
       "title": "Scrap piles, wreckage and salvage equipment",
-      "status": "described",
+      "status": "generated",
       "brief": {
         "batch": "MAPA-01",
         "sequence": 6,
@@ -1056,7 +1105,15 @@
           "Scavenger supplies"
         ]
       },
-      "artwork_evidence": null
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "jUI38wOLD0",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "Visually inspected individual 1024×768 preview: 12 distinct post-apocalyptic salvage props, 4×3, isolated on checkerboard appearance. Full-resolution PNG bytes and alpha channel not independently verified; perspective, edge cleanup, extraction, map placement and owner approval pending."
+      }
     },
     {
       "id": "MAPA-119",
@@ -1578,17 +1635,16 @@
     }
   ],
   "batch_one_evidence": {
-    "state": "partial_tooling_blocker",
+    "state": "all_six_generated_pending_owner_review",
     "accepted_as_generated": [
-      "MAPA-001"
-    ],
-    "pending": [
+      "MAPA-001",
       "MAPA-030",
       "MAPA-049",
       "MAPA-091",
       "MAPA-103",
       "MAPA-118"
     ],
+    "pending": [],
     "rejected": [
       {
         "generation_id": "76b3b5d0-f516-47f9-9107-0bfe369ef210",
@@ -1597,8 +1653,18 @@
       {
         "generation_id": "032cb705-1173-4cab-a989-75670602ea4e",
         "reason": "Repeated combined composite, with titles and borders; not individual overhead sheet."
+      },
+      {
+        "generation_id": "48c89dd1-6309-48f4-b1e8-5f9738648e27",
+        "reason": "Additional fantasy storage variant; superseded by selected cleaner storage sheet, not counted separately."
+      },
+      {
+        "generation_id": "269332f4-44ba-4149-bd74-21916ed86ad3",
+        "reason": "Off-brief repeated fantasy storage when modern furniture was requested; not counted."
       }
     ],
-    "blocker": "Image generator repeated off-brief six-panel output despite explicit individual fantasy storage sheet request. No further blind retries; remaining briefs preserved."
+    "blocker": null,
+    "prior_blocker": "Image generator repeated off-brief six-panel output despite explicit individual fantasy storage sheet request. No further blind retries; remaining briefs preserved.",
+    "recovery": "Used individually specified generation calls through alternate provider after repeated off-brief storage outputs. Four distinct creations completed and previews visually inspected. No reported external credits charged. Six subjects generated, no processed/integrated/approved claim."
   }
 }
