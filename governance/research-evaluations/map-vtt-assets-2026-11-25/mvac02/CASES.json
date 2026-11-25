@@ -1,0 +1,214 @@
+[
+  {
+    "id": "ready-door",
+    "objectId": "door",
+    "overrides": {},
+    "expected": "ready",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "ready-tree",
+    "objectId": "tree",
+    "overrides": {},
+    "expected": "ready",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "ready-npc",
+    "objectId": "npc",
+    "overrides": {},
+    "expected": "ready",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "ready-handout-gm",
+    "objectId": "handout",
+    "overrides": {},
+    "expected": "ready",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "stale-native-revision",
+    "objectId": "door",
+    "overrides": {
+      "actualRevision": 2
+    },
+    "expected": "stale-document",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "missing-object",
+    "objectId": "tree",
+    "overrides": {
+      "objectFound": false
+    },
+    "expected": "missing-native-object",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "missing-pack",
+    "objectId": "tree",
+    "overrides": {
+      "packAvailable": false
+    },
+    "expected": "missing-pack",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "wrong-pack-version",
+    "objectId": "tree",
+    "overrides": {
+      "actualPackVersion": "design-pack@2"
+    },
+    "expected": "incompatible-pack-version",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "variant-not-found",
+    "objectId": "npc",
+    "overrides": {
+      "representationFound": false
+    },
+    "expected": "missing-representation",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "unknown-required-feature",
+    "objectId": "door",
+    "overrides": {
+      "unsupportedFeature": true
+    },
+    "expected": "incompatible-schema",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "unbound-npc",
+    "objectId": "npc",
+    "overrides": {
+      "ownerResolved": false
+    },
+    "expected": "unresolved-owner",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "missing-calibration",
+    "objectId": "tree",
+    "overrides": {
+      "requiresDistance": true
+    },
+    "expected": "uncalibrated",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "wrong-coordinate-basis",
+    "objectId": "door",
+    "overrides": {
+      "actualCoordinateSpace": "map-pixel"
+    },
+    "expected": "incompatible-coordinate-space",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "nonfinite-coordinate",
+    "objectId": "tree",
+    "overrides": {
+      "finiteCoordinates": false
+    },
+    "expected": "invalid-coordinate",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "unknown-rights",
+    "objectId": "tree",
+    "overrides": {
+      "capabilityState": "unknown"
+    },
+    "expected": "blocked-rights",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "revoked-rights",
+    "objectId": "door",
+    "overrides": {
+      "capabilityState": "revoked"
+    },
+    "expected": "blocked-rights",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "reference-only-export",
+    "objectId": "npc",
+    "overrides": {
+      "action": "export-original",
+      "byteState": "reference-only"
+    },
+    "expected": "missing-bytes",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "no-redistribution",
+    "objectId": "tree",
+    "overrides": {
+      "action": "export-original",
+      "redistribution": "denied"
+    },
+    "expected": "blocked-redistribution",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "private-handout-player",
+    "objectId": "handout",
+    "overrides": {
+      "audience": "player"
+    },
+    "expected": "excluded-private",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "missing-policy-receipt",
+    "objectId": "door",
+    "overrides": {
+      "policyReceipt": false
+    },
+    "expected": "blocked-policy",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "stale-owner",
+    "objectId": "npc",
+    "overrides": {
+      "expectedOwnerVersion": 1,
+      "actualOwnerVersion": 2
+    },
+    "expected": "stale-owner",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "ambiguous-owner-receipt",
+    "objectId": "door",
+    "overrides": {
+      "ownerReceipt": "ambiguous"
+    },
+    "expected": "query-operation-status",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "duplicate-accepted-operation",
+    "objectId": "npc",
+    "overrides": {
+      "ownerReceipt": "accepted"
+    },
+    "expected": "reuse-owner-receipt",
+    "observed": "NOT_RUN"
+  },
+  {
+    "id": "flattened-map-does-not-grant-raw-export",
+    "objectId": "tree",
+    "overrides": {
+      "action": "export-original",
+      "redistribution": "unknown"
+    },
+    "expected": "blocked-redistribution",
+    "observed": "NOT_RUN"
+  }
+]

@@ -1,0 +1,190 @@
+[
+  {
+    "id": "door",
+    "label": "Archive entrance",
+    "sourceKind": "native-fixture",
+    "nativeDocumentId": "mapdoc:tester:tidewatch-archive",
+    "nativeRevision": 1,
+    "nativeObjectId": "tidewatch:level:0-south-door-0",
+    "sourcePointer": "/draft/features/20",
+    "sourceRecord": {
+      "featureId": "tidewatch:level:0-south-door-0",
+      "kind": "door",
+      "levelId": "level:0",
+      "layerId": "layer:fittings",
+      "geometry": {
+        "kind": "point",
+        "points": [
+          {
+            "x": 6,
+            "y": 8
+          }
+        ]
+      },
+      "templateId": null,
+      "elevationOffsetMeters": 0,
+      "visualVerticalTargetIds": [],
+      "mapLabel": "Archive entrance",
+      "materialId": "timber",
+      "surfaceAngle": 0,
+      "surfaceWidth": 1.12
+    },
+    "owner": "native-structure / existing scene interaction owner",
+    "coordinateSpace": "native-interior-unit",
+    "levelId": "level:0",
+    "physicalCalibration": {
+      "unit": "ft",
+      "unitsPerNativeUnit": 5,
+      "sourcePointer": "/draft/interiorFeetPerUnit",
+      "worldDistanceAuthority": false
+    },
+    "mediaResourceId": "design:media:door",
+    "representationId": "design:representation:door:1",
+    "packVersion": "design-pack@1",
+    "rightsEvidenceId": "synthetic:rights:door",
+    "sceneBindingId": "design:scene-binding:door",
+    "gameplayOwnerRef": null,
+    "visibility": "policy-reference-required",
+    "ownerMutationPerformed": false,
+    "schema": "mvac02.design-sidecar.v1",
+    "requiredFeatures": [
+      "native-reference-v1",
+      "pinned-representation-v1"
+    ],
+    "implementationComplete": false,
+    "stages": {
+      "create": "Keep tidewatch:level:0-south-door-0 under native-structure / existing scene interaction owner. Add references only; no new actor, inventory or media registry entry is inferred.",
+      "save": "Save the native document unchanged, plus a separately versioned sidecar pinning document ID/revision, object pointer, representation, pack version and rights evidence. Save is an author checkpoint, not a live action.",
+      "prepare": "Resolve the exact source pointer, calibration and dependency closure; validate rights and audience policy. Missing calibration permits artwork preview only. An NPC without a resolved actor owner stays visibly unbound.",
+      "play": "Submit an operation ID, expected owner version and current scene revision to the existing authoritative owner; show pending until its accepted/rejected receipt. Query ambiguous operations before retry; local preview cannot grant permission.",
+      "export": "Resolve the requested audience and export capability separately. Flattening, source-byte redistribution and campaign delivery are different actions. GM-only handout is excluded from player output including metadata and dependency lists.",
+      "recovery": "Reopen the native checkpoint and pinned references. Check owner operation status before replay; keep unresolved markers for missing bytes/version/calibration. Relink by reviewed identity and rights, never filename alone."
+    }
+  },
+  {
+    "id": "tree",
+    "label": "Harbor City tree cluster",
+    "sourceKind": "native-fixture",
+    "nativeDocumentId": "mapdoc:tester:atlas-harbor",
+    "nativeRevision": 1,
+    "nativeObjectId": "urban:1:5",
+    "sourcePointer": "/draft/showcase/elements/4",
+    "sourceRecord": {
+      "id": "urban:1:5",
+      "kind": "tree",
+      "x": 7.61,
+      "y": 4.201,
+      "size": 0.296,
+      "count": 5,
+      "layer": "detail",
+      "level": "level:0",
+      "alpha": 0.8,
+      "seed": 23397,
+      "rotation": -10.3
+    },
+    "owner": "native placed artwork / MAI presentation",
+    "coordinateSpace": "native-urban-sketch-unit",
+    "levelId": "level:0",
+    "physicalCalibration": null,
+    "mediaResourceId": "design:media:tree",
+    "representationId": "design:representation:tree:1",
+    "packVersion": "design-pack@1",
+    "rightsEvidenceId": "synthetic:rights:tree",
+    "sceneBindingId": "design:scene-binding:tree",
+    "gameplayOwnerRef": null,
+    "visibility": "policy-reference-required",
+    "ownerMutationPerformed": false,
+    "schema": "mvac02.design-sidecar.v1",
+    "requiredFeatures": [
+      "native-reference-v1",
+      "pinned-representation-v1"
+    ],
+    "implementationComplete": false,
+    "stages": {
+      "create": "Keep urban:1:5 under native placed artwork / MAI presentation. Add references only; no new actor, inventory or media registry entry is inferred.",
+      "save": "Save the native document unchanged, plus a separately versioned sidecar pinning document ID/revision, object pointer, representation, pack version and rights evidence. Save is an author checkpoint, not a live action.",
+      "prepare": "Resolve the exact source pointer, calibration and dependency closure; validate rights and audience policy. Missing calibration permits artwork preview only. An NPC without a resolved actor owner stays visibly unbound.",
+      "play": "Project an authorized presentation only. Tree appearance has no collision/vision truth. GM handout remains absent from player payload until an explicit owner-authorized reveal.",
+      "export": "Resolve the requested audience and export capability separately. Flattening, source-byte redistribution and campaign delivery are different actions. GM-only handout is excluded from player output including metadata and dependency lists.",
+      "recovery": "Reopen the native checkpoint and pinned references. Check owner operation status before replay; keep unresolved markers for missing bytes/version/calibration. Relink by reviewed identity and rights, never filename alone."
+    }
+  },
+  {
+    "id": "npc",
+    "label": "NPC token \u2014 synthetic owner reference",
+    "sourceKind": "synthetic-design-fixture",
+    "nativeDocumentId": "mapdoc:tester:atlas-keep",
+    "nativeRevision": 1,
+    "nativeObjectId": "synthetic:npc-anchor",
+    "sourcePointer": null,
+    "sourceRecord": {
+      "id": "synthetic:npc-anchor",
+      "x": 4,
+      "y": 3
+    },
+    "owner": "A5/A6/A7 encounter owner; ARI token presentation",
+    "coordinateSpace": "synthetic-tactical-unit",
+    "levelId": "level:0",
+    "physicalCalibration": null,
+    "mediaResourceId": "design:media:npc",
+    "representationId": "design:representation:npc:1",
+    "packVersion": "design-pack@1",
+    "rightsEvidenceId": "synthetic:rights:npc",
+    "sceneBindingId": "design:scene-binding:npc",
+    "gameplayOwnerRef": "synthetic:encounter:npc-01@1",
+    "visibility": "policy-reference-required",
+    "ownerMutationPerformed": false,
+    "schema": "mvac02.design-sidecar.v1",
+    "requiredFeatures": [
+      "native-reference-v1",
+      "pinned-representation-v1"
+    ],
+    "implementationComplete": false,
+    "stages": {
+      "create": "Keep synthetic:npc-anchor under A5/A6/A7 encounter owner; ARI token presentation. Add references only; no new actor, inventory or media registry entry is inferred.",
+      "save": "Save the native document unchanged, plus a separately versioned sidecar pinning document ID/revision, object pointer, representation, pack version and rights evidence. Save is an author checkpoint, not a live action.",
+      "prepare": "Resolve the exact source pointer, calibration and dependency closure; validate rights and audience policy. Missing calibration permits artwork preview only. An NPC without a resolved actor owner stays visibly unbound.",
+      "play": "Submit an operation ID, expected owner version and current scene revision to the existing authoritative owner; show pending until its accepted/rejected receipt. Query ambiguous operations before retry; local preview cannot grant permission.",
+      "export": "Resolve the requested audience and export capability separately. Flattening, source-byte redistribution and campaign delivery are different actions. GM-only handout is excluded from player output including metadata and dependency lists.",
+      "recovery": "Reopen the native checkpoint and pinned references. Check owner operation status before replay; keep unresolved markers for missing bytes/version/calibration. Relink by reviewed identity and rights, never filename alone."
+    }
+  },
+  {
+    "id": "handout",
+    "label": "GM handout \u2014 synthetic private media",
+    "sourceKind": "synthetic-design-fixture",
+    "nativeDocumentId": "mapdoc:tester:tidewatch-archive",
+    "nativeRevision": 1,
+    "nativeObjectId": "synthetic:gm-handout",
+    "sourcePointer": null,
+    "sourceRecord": {
+      "id": "synthetic:gm-handout"
+    },
+    "owner": "existing document/media and account/session policy owners",
+    "coordinateSpace": "nonspatial",
+    "levelId": null,
+    "physicalCalibration": null,
+    "mediaResourceId": "design:media:handout",
+    "representationId": "design:representation:handout:1",
+    "packVersion": "design-pack@1",
+    "rightsEvidenceId": "synthetic:rights:handout",
+    "sceneBindingId": "design:scene-binding:handout",
+    "gameplayOwnerRef": null,
+    "visibility": "gm-only",
+    "ownerMutationPerformed": false,
+    "schema": "mvac02.design-sidecar.v1",
+    "requiredFeatures": [
+      "native-reference-v1",
+      "pinned-representation-v1"
+    ],
+    "implementationComplete": false,
+    "stages": {
+      "create": "Keep synthetic:gm-handout under existing document/media and account/session policy owners. Add references only; no new actor, inventory or media registry entry is inferred.",
+      "save": "Save the native document unchanged, plus a separately versioned sidecar pinning document ID/revision, object pointer, representation, pack version and rights evidence. Save is an author checkpoint, not a live action.",
+      "prepare": "Resolve the exact source pointer, calibration and dependency closure; validate rights and audience policy. Missing calibration permits artwork preview only. An NPC without a resolved actor owner stays visibly unbound.",
+      "play": "Project an authorized presentation only. Tree appearance has no collision/vision truth. GM handout remains absent from player payload until an explicit owner-authorized reveal.",
+      "export": "Resolve the requested audience and export capability separately. Flattening, source-byte redistribution and campaign delivery are different actions. GM-only handout is excluded from player output including metadata and dependency lists.",
+      "recovery": "Reopen the native checkpoint and pinned references. Check owner operation status before replay; keep unresolved markers for missing bytes/version/calibration. Relink by reviewed identity and rights, never filename alone."
+    }
+  }
+]
