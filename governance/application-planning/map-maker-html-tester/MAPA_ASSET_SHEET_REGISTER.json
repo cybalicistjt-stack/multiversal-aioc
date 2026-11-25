@@ -61,9 +61,9 @@
     "existing_sheets": 4,
     "new_sheets": 192,
     "families": 32,
-    "described": 5,
+    "described": 4,
     "planned": 174,
-    "generated": 13,
+    "generated": 14,
     "revision_needed": 0
   },
   "batch_size": 6,
@@ -457,8 +457,24 @@
       "id": "MAPA-009",
       "family": "Specialized biomes",
       "title": "Desert cacti, succulents and dry vegetation",
-      "status": "described",
-      "artwork_evidence": null,
+      "status": "generated",
+      "artwork_evidence": {
+        "provider": "ChatGPT image generation",
+        "generation_id": "75727355-d413-42d0-a46b-bab0582b9c56",
+        "conversation_file_id": "file_000000005d9481f68c8cadfbde016e7e",
+        "filename": "a_clean_png_asset_sheet_on_a_transparent_backgroun.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alpha_range": [
+          0,
+          254
+        ],
+        "sha256": "86bb1338e832f08cb610faf1465c793e3281739b8b451032b4078a55c1e99a23",
+        "review": "Standalone 4×3 sheet, 12 isolated desert plants, neutral gray composite inspected, alpha verified locally. Succulent rosettes and scrub are overhead or elevated; taller cacti retain oblique profiles and desert-spoon identification is uncertain. Placement suitability, extraction, edge cleanup, botanical identity and owner approval pending."
+      },
       "brief": {
         "batch": "MAPA-03",
         "sequence": 2,
@@ -2111,10 +2127,10 @@
       "MAPA-013"
     ],
     "accepted_as_generated": [
-      "MAPA-008"
+      "MAPA-008",
+      "MAPA-009"
     ],
     "pending": [
-      "MAPA-009",
       "MAPA-010",
       "MAPA-011",
       "MAPA-012",
@@ -2132,12 +2148,30 @@
       {
         "generation_id": "a4057cd8-3bd1-4b7c-83e3-60d4c8445db3",
         "reason": "MAPA-009 retry returned another unrelated tropical undergrowth variant."
+      },
+      {
+        "generation_id": "e9beeaa3-88ad-484d-83a6-af9d1b991af2",
+        "reason": "MAPA-010 request returned desert duplicate."
+      },
+      {
+        "generation_id": "47b2dc8b-3394-4390-94ee-98d090abe840",
+        "reason": "Second MAPA-010 request returned another desert duplicate."
+      },
+      {
+        "generation_id": "a9410fae-89e8-46b5-b413-2968d731c0bd",
+        "reason": "Changed subject to MAPA-013 but output remained a desert duplicate."
       }
     ],
     "blocker": {
-      "type": "native_image_subject_mismatch",
-      "detail": "After producing correct MAPA-008, native generation produced a multi-sheet composite and two wrong-subject variants despite individual desert-only instructions. Transparency setting did not resolve subject selection. Alternate provider's previously observed daily quota reset has not occurred; no retry there. Stop blind retries and use a changed generation route/context after availability changes."
+      "type": "native_image_subject_mismatch_and_alternate_provider_quota",
+      "detail": "Re-entry produced one correct desert sheet, then three repeated desert variants in response to swamp and rock subjects. Alternate provider daily limit remains recorded as exhausted on 2026-11-25; no retry before reset. Further unchanged attempts are not authorized by the failure discipline."
     },
-    "next_action": "Resume at MAPA-009; generate remaining five individually using previously committed briefs, with output subject verification. Do not count rejected variants."
+    "next_action": "Generate four remaining sheets MAPA-010–013 with a changed capable generation route or after the alternate provider free quota resets; use existing briefs. No duplicate credits toward catalog count.",
+    "prior_blockers": [
+      {
+        "type": "native_image_subject_mismatch",
+        "detail": "After producing correct MAPA-008, native generation produced a multi-sheet composite and two wrong-subject variants despite individual desert-only instructions. Transparency setting did not resolve subject selection. Alternate provider's previously observed daily quota reset has not occurred; no retry there. Stop blind retries and use a changed generation route/context after availability changes."
+      }
+    ]
   }
 }
