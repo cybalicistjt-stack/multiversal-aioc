@@ -4,7 +4,7 @@
   "title": "Map Maker, VTT and Asset Convergence Gap Plan",
   "record_date": "2026-11-25",
   "lane": "research-evaluation",
-  "status": "fixture_baseline_and_shared_contract_design_completed_no_product_execution_selected",
+  "status": "fixture_and_contract_scopes_completed_mvac03_prototype_browser_validation_blocked",
   "canonical_selector": "operations/CURRENT.json",
   "authority": "Owner requested research, combined study, gap steps and OPS5 logging. No product implementation or selector mutation in this record.",
   "baseline": "UHT28 standalone HTML, not installed app parity",
@@ -88,7 +88,7 @@
       "title": "Build one Author / Prepare / Play interaction shell",
       "phase": "A \u2014 contracts and interaction",
       "scope": "standalone prototype",
-      "status": "planned_not_selected",
+      "status": "blocked_external",
       "implementation_complete": false,
       "dependencies": [
         "MVAC-01",
@@ -110,7 +110,20 @@
       "roadmap_coverage": [
         "MME-01"
       ],
-      "authority": "Planning only. CURRENT-backed selection and applicable existing owner authority required before product implementation."
+      "authority": "Planning only. CURRENT-backed selection and applicable existing owner authority required before product implementation.",
+      "prototype_complete": true,
+      "deliverable_complete": false,
+      "last_progress_date": "2026-11-25",
+      "completion_scope": "Standalone prototype built and controlled DOM/native raster checks passed; required real-browser validation remains blocked in this executor.",
+      "evidence_path": "governance/research-evaluations/map-vtt-assets-2026-11-25/mvac03/VERIFICATION.json",
+      "prototype_report": "governance/research-evaluations/map-vtt-assets-2026-11-25/mvac03/MVAC03_REPORT.md",
+      "blocker": {
+        "class": "executor_browser_unavailable",
+        "local": "Chromium wrapper target executable is missing",
+        "connected": "Originating browser context unavailable",
+        "cloud": "file URL rejected by URL policy; no workaround attempted",
+        "resume_action": "Open delivered HTML in a capable authorized browser and observe J01/J03/J10, desktop/narrow layout, text undo/Escape and pointer navigation; repair defects before marking complete."
+      }
     },
     {
       "id": "MVAC-04",
