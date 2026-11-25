@@ -63,8 +63,8 @@
     "families": 32,
     "described": 0,
     "planned": 180,
-    "generated": 10,
-    "revision_needed": 2
+    "generated": 12,
+    "revision_needed": 0
   },
   "batch_size": 6,
   "batch_order": "First batch cross-genre pilot; subsequent batches select next six outstanding entries by stable ID unless owner directs otherwise.",
@@ -269,15 +269,23 @@
       "id": "MAPA-005",
       "family": "Temperate vegetation",
       "title": "Ferns, grasses and groundcover clusters",
-      "status": "revision_needed",
+      "status": "generated",
       "artwork_evidence": {
-        "provider": "Magnific",
-        "provider_creation_id": "P3HT1NL42C",
-        "provider_status": "completed",
-        "requested_resolution": "2k",
-        "requested_aspect_ratio": "4:3",
-        "credits_reported": 0,
-        "review": "12 isolated plants and clumps; many upright side-profile fern and grass illustrations violate overhead brief; regenerate as radial overhead footprints. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending."
+        "provider": "ChatGPT image generation",
+        "generation_id": "2b5512e6-ad8f-487a-b29c-42d18c73d59c",
+        "conversation_file_id": "file_00000000e89481f6b053788fa521be7e",
+        "filename": "a_clean_high_detail_top_down_asset_sheet_spri.png",
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "mode": "RGBA",
+        "alpha_range": [
+          0,
+          255
+        ],
+        "sha256": "12bca87e9827c98af56b846b92ec3c03dbd61834867fd4f17fca828a320f8b60",
+        "review": "Standalone 4×3 sheet of 12 ferns, grasses, groundcover clumps. Visually checked neutral-background composite; alpha verified and cell gutters at central boundaries 99.4–100% alpha<16. Ferns and groundcovers substantially improved overhead footprints; grass clumps and some ferns retain a steep elevated rather than strictly vertical view. Moss includes rocks. Species identification, individual extraction, edge cleanup, map placement and owner acceptance pending."
       },
       "brief": {
         "batch": "MAPA-02",
@@ -298,7 +306,19 @@
           "Moss cushion",
           "Broadleaf groundcover"
         ]
-      }
+      },
+      "artwork_history": [
+        {
+          "provider": "Magnific",
+          "provider_creation_id": "P3HT1NL42C",
+          "provider_status": "completed",
+          "requested_resolution": "2k",
+          "requested_aspect_ratio": "4:3",
+          "credits_reported": 0,
+          "review": "12 isolated plants and clumps; many upright side-profile fern and grass illustrations violate overhead brief; regenerate as radial overhead footprints. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending.",
+          "disposition": "superseded_by_overhead_revision"
+        }
+      ]
     },
     {
       "id": "MAPA-006",
@@ -339,15 +359,23 @@
       "id": "MAPA-007",
       "family": "Specialized biomes",
       "title": "Tropical jungle trees",
-      "status": "revision_needed",
+      "status": "generated",
       "artwork_evidence": {
-        "provider": "Magnific",
-        "provider_creation_id": "TdJCNtYVNR",
-        "provider_status": "completed",
-        "requested_resolution": "2k",
-        "requested_aspect_ratio": "4:3",
-        "credits_reported": 0,
-        "review": "12 distinct tropical trees and palms, predominantly side-on with visible upright trunks rather than overhead crowns. Regenerate with true aerial canopy projection. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending."
+        "provider": "ChatGPT image generation",
+        "generation_id": "eba12010-2966-40b2-98c3-f85d63af213d",
+        "conversation_file_id": "file_00000000863081f6ad542225ac7d9d2e",
+        "filename": "top_down_overhead_png_style_illustration_sheet_a.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alpha_range": [
+          0,
+          254
+        ],
+        "sha256": "eff28e91ff660fd1bd3b983cd927268d40ac7d83d4419ff0c09c2360d2ee924c",
+        "review": "Standalone 4×3 sheet, 12 tropical crowns with substantially corrected overhead perspective. Visually checked neutral-background composite; alpha verified, corners zero and no edge pixels alpha>127. Narrow lower-row gutter means extraction must use silhouette-aware boundaries rather than automatic equal-cell crops. Species identity, edge cleanup, individual extraction, map placement and owner approval pending."
       },
       "brief": {
         "batch": "MAPA-02",
@@ -368,7 +396,19 @@
           "Tropical mahogany",
           "Tree fern"
         ]
-      }
+      },
+      "artwork_history": [
+        {
+          "provider": "Magnific",
+          "provider_creation_id": "TdJCNtYVNR",
+          "provider_status": "completed",
+          "requested_resolution": "2k",
+          "requested_aspect_ratio": "4:3",
+          "credits_reported": 0,
+          "review": "12 distinct tropical trees and palms, predominantly side-on with visible upright trunks rather than overhead crowns. Regenerate with true aerial canopy projection. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending.",
+          "disposition": "superseded_by_overhead_revision"
+        }
+      ]
     },
     {
       "id": "MAPA-008",
@@ -1857,7 +1897,7 @@
     "recovery": "Used individually specified generation calls through alternate provider after repeated off-brief storage outputs. Four distinct creations completed and previews visually inspected. No reported external credits charged. Six subjects generated, no processed/integrated/approved claim."
   },
   "batch_two_evidence": {
-    "state": "six_outputs_produced_two_require_perspective_revision",
+    "state": "six_individual_sheets_generated_pending_owner_review",
     "sheet_ids": [
       "MAPA-002",
       "MAPA-003",
@@ -1870,7 +1910,9 @@
       "MAPA-002",
       "MAPA-003",
       "MAPA-004",
-      "MAPA-006"
+      "MAPA-005",
+      "MAPA-006",
+      "MAPA-007"
     ],
     "pending": [],
     "rejected": [
@@ -1887,10 +1929,7 @@
         "reason": "MAPA-007 correction request returned conifer sheet instead of tropical canopies."
       }
     ],
-    "revision_needed": [
-      "MAPA-005",
-      "MAPA-007"
-    ],
+    "revision_needed": [],
     "all_generated_outputs": [
       "MAPA-002",
       "MAPA-003",
@@ -1899,14 +1938,30 @@
       "MAPA-006",
       "MAPA-007"
     ],
-    "blocker": {
-      "type": "provider_quota_and_native_subject_mismatch",
-      "detail": "Alternate provider daily free limit remains recorded for same date; not retried. Native image tool generated correct MAPA-004 revision, but then a six-panel composite and two off-brief conifer sheets despite individually specified subjects. No more blind retries."
-    },
-    "next_action": "Correct MAPA-005 and MAPA-007 individually before selecting MAPA-008–013; preserve existing generated sheet evidence. Use explicit independent prompts with a capable provider after availability changes.",
+    "blocker": null,
+    "next_action": "MAPA-03: write all six briefs for outstanding MAPA-008 through MAPA-013, then individually generate six sheets.",
     "prior_blocker": {
       "type": "provider_daily_free_limit",
       "detail": "Targeted revised overhead prompt for MAPA-004 could not be submitted: provider reports today's free auto image-generation uses exhausted, no credits charged, reset 00:00 UTC. MAPA-005 and MAPA-007 corrections not submitted. Do not retry same free provider before reset."
-    }
+    },
+    "prior_blockers": [
+      {
+        "type": "provider_daily_free_limit",
+        "detail": "Targeted revised overhead prompt for MAPA-004 could not be submitted: provider reports today's free auto image-generation uses exhausted, no credits charged, reset 00:00 UTC. MAPA-005 and MAPA-007 corrections not submitted. Do not retry same free provider before reset."
+      },
+      {
+        "type": "provider_quota_and_native_subject_mismatch",
+        "detail": "Alternate provider daily free limit remains recorded for same date; not retried. Native image tool generated correct MAPA-004 revision, but then a six-panel composite and two off-brief conifer sheets despite individually specified subjects. No more blind retries."
+      }
+    ],
+    "additional_variants": [
+      {
+        "generation_id": "55fb3a38-0aa0-46ec-aaa1-995ae0d7507d",
+        "conversation_file_id": "file_000000005bf881f699c5a731d99233e8",
+        "sha256": "8e7307d00d0c2cc5c86d45cc5834d767ff2527da52af433ef58b25f496db6da6",
+        "disposition": "Alternate tropical canopy sheet; not counted as separate catalog entry."
+      }
+    ],
+    "recovery": "Native image generation with separate subject instructions and transparency requested returned separate overhead revisions for both remaining subjects; RGBA, exact dimensions and SHA256 checked locally, and neutral background composites inspected. Generated is not approved or integration verified."
   }
 }
