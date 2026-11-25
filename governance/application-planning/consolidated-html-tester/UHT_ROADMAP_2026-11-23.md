@@ -88,3 +88,9 @@ Source corpora containing inferred or proposed content remain references with vi
 - Exact supplied HTML and resolved corpus hashes in the source/audit manifests. Canonical DB blob: `a440dd88b4715bf20e958d34b79b59ea9e62a747`.
 
 This record adds no operational selector, grants no product-lane authority, changes no unrelated lane and claims no installed-app completion. It is the durable standalone delivery and improvement-plan log requested by the owner.
+
+
+
+## Owner-requested research addendum — 25 November 2026
+
+The [combined map-maker, VTT and asset study](../../research-evaluations/map-vtt-assets-2026-11-25/INTEGRATED_STUDY_v3.md) evaluates the later standalone UHT28 baseline and adds a [24-step MVAC gap plan](../map-vtt-asset-convergence/MVAC_PROGRAM.md) with a [dependency/acceptance backlog](../map-vtt-asset-convergence/MVAC_BACKLOG.json). This supplements the historical UHT-01 plan above; it does not replace native documents, existing product owners or operations/CURRENT.json. All MVAC steps are planned_not_selected. No installed, real-player, storage/network or visual-quality acceptance is inferred from the study.
