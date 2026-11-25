@@ -61,9 +61,10 @@
     "existing_sheets": 4,
     "new_sheets": 192,
     "families": 32,
-    "described": 6,
+    "described": 0,
     "planned": 180,
-    "generated": 6
+    "generated": 9,
+    "revision_needed": 3
   },
   "batch_size": 6,
   "batch_order": "First batch cross-genre pilot; subsequent batches select next six outstanding entries by stable ID unless owner directs otherwise.",
@@ -143,8 +144,16 @@
       "id": "MAPA-002",
       "family": "Temperate vegetation",
       "title": "Coniferous trees: pine, spruce, cedar and fir",
-      "status": "described",
-      "artwork_evidence": null,
+      "status": "generated",
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "VXOENPeMMU",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "12 overhead conifer crowns, distinctly colored and individually separated; botanical species identity not validated. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending."
+      },
       "brief": {
         "batch": "MAPA-02",
         "sequence": 1,
@@ -170,8 +179,16 @@
       "id": "MAPA-003",
       "family": "Temperate vegetation",
       "title": "Bushes, shrubs and hedges",
-      "status": "described",
-      "artwork_evidence": null,
+      "status": "generated",
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "CqWgMMXEEy",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "12 individually isolated bushes, shrubs and hedge forms; predominantly overhead, consistent with brief. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending."
+      },
       "brief": {
         "batch": "MAPA-02",
         "sequence": 2,
@@ -197,8 +214,16 @@
       "id": "MAPA-004",
       "family": "Temperate vegetation",
       "title": "Wildflowers and flowering plants",
-      "status": "described",
-      "artwork_evidence": null,
+      "status": "revision_needed",
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "gOvAuxbSXO",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "12 separate flower clusters generated, but upright botanical profiles with visible long stems violate direct overhead brief; regenerate as aerial patches. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending."
+      },
       "brief": {
         "batch": "MAPA-02",
         "sequence": 3,
@@ -224,8 +249,16 @@
       "id": "MAPA-005",
       "family": "Temperate vegetation",
       "title": "Ferns, grasses and groundcover clusters",
-      "status": "described",
-      "artwork_evidence": null,
+      "status": "revision_needed",
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "P3HT1NL42C",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "12 isolated plants and clumps; many upright side-profile fern and grass illustrations violate overhead brief; regenerate as radial overhead footprints. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending."
+      },
       "brief": {
         "batch": "MAPA-02",
         "sequence": 4,
@@ -251,8 +284,16 @@
       "id": "MAPA-006",
       "family": "Temperate vegetation",
       "title": "Fallen trees, dead trees, stumps and exposed roots",
-      "status": "described",
-      "artwork_evidence": null,
+      "status": "generated",
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "SyaGF9XUb8",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "12 isolated deadwood objects; logs and roots detailed, perspective elevated/oblique rather than strictly orthographic. Review orientation in map before approval. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending."
+      },
       "brief": {
         "batch": "MAPA-02",
         "sequence": 5,
@@ -278,8 +319,16 @@
       "id": "MAPA-007",
       "family": "Specialized biomes",
       "title": "Tropical jungle trees",
-      "status": "described",
-      "artwork_evidence": null,
+      "status": "revision_needed",
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "TdJCNtYVNR",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "12 distinct tropical trees and palms, predominantly side-on with visible upright trunks rather than overhead crowns. Regenerate with true aerial canopy projection. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending."
+      },
       "brief": {
         "batch": "MAPA-02",
         "sequence": 6,
@@ -1788,7 +1837,7 @@
     "recovery": "Used individually specified generation calls through alternate provider after repeated off-brief storage outputs. Four distinct creations completed and previews visually inspected. No reported external credits charged. Six subjects generated, no processed/integrated/approved claim."
   },
   "batch_two_evidence": {
-    "state": "briefs_prepared",
+    "state": "six_outputs_produced_three_require_perspective_revision",
     "sheet_ids": [
       "MAPA-002",
       "MAPA-003",
@@ -1797,8 +1846,19 @@
       "MAPA-006",
       "MAPA-007"
     ],
-    "accepted_as_generated": [],
-    "pending": [
+    "accepted_as_generated": [
+      "MAPA-002",
+      "MAPA-003",
+      "MAPA-006"
+    ],
+    "pending": [],
+    "rejected": [],
+    "revision_needed": [
+      "MAPA-004",
+      "MAPA-005",
+      "MAPA-007"
+    ],
+    "all_generated_outputs": [
       "MAPA-002",
       "MAPA-003",
       "MAPA-004",
@@ -1806,6 +1866,10 @@
       "MAPA-006",
       "MAPA-007"
     ],
-    "rejected": []
+    "blocker": {
+      "type": "provider_daily_free_limit",
+      "detail": "Targeted revised overhead prompt for MAPA-004 could not be submitted: provider reports today's free auto image-generation uses exhausted, no credits charged, reset 00:00 UTC. MAPA-005 and MAPA-007 corrections not submitted. Do not retry same free provider before reset."
+    },
+    "next_action": "Complete the three revision-needed sheets with corrected overhead imagery before selecting further planned sheets, unless owner directs otherwise."
   }
 }
