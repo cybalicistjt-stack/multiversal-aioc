@@ -63,8 +63,8 @@
     "families": 32,
     "described": 0,
     "planned": 180,
-    "generated": 9,
-    "revision_needed": 3
+    "generated": 10,
+    "revision_needed": 2
   },
   "batch_size": 6,
   "batch_order": "First batch cross-genre pilot; subsequent batches select next six outstanding entries by stable ID unless owner directs otherwise.",
@@ -214,15 +214,23 @@
       "id": "MAPA-004",
       "family": "Temperate vegetation",
       "title": "Wildflowers and flowering plants",
-      "status": "revision_needed",
+      "status": "generated",
       "artwork_evidence": {
-        "provider": "Magnific",
-        "provider_creation_id": "gOvAuxbSXO",
-        "provider_status": "completed",
-        "requested_resolution": "2k",
-        "requested_aspect_ratio": "4:3",
-        "credits_reported": 0,
-        "review": "12 separate flower clusters generated, but upright botanical profiles with visible long stems violate direct overhead brief; regenerate as aerial patches. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending."
+        "provider": "ChatGPT image generation",
+        "generation_id": "be265217-9e8f-4773-bf4f-57455b936cf1",
+        "conversation_file_id": "file_000000000c7481f6a667c23e05c9204c",
+        "filename": "top_down_digital_illustrative_png_asset_sheet_a_c.png",
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "mode": "RGBA",
+        "alpha_range": [
+          0,
+          255
+        ],
+        "sha256": "f9ac1734f375868b5fbc5ff6d9d72e1f21373c07ddf6cad44d42819d7bb3e75e",
+        "review": "Visually checked standalone 4×3 sheet, overhead or steep elevated flower clusters, 12 distinct types matching the brief; alpha channel verified. Gutters are narrow in places and edge cleanup, botanical identity, extraction, placement and owner approval remain pending."
       },
       "brief": {
         "batch": "MAPA-02",
@@ -243,7 +251,19 @@
           "Pink clover",
           "Mixed wildflower bouquet growing in place"
         ]
-      }
+      },
+      "artwork_history": [
+        {
+          "provider": "Magnific",
+          "provider_creation_id": "gOvAuxbSXO",
+          "provider_status": "completed",
+          "requested_resolution": "2k",
+          "requested_aspect_ratio": "4:3",
+          "credits_reported": 0,
+          "review": "12 separate flower clusters generated, but upright botanical profiles with visible long stems violate direct overhead brief; regenerate as aerial patches. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending.",
+          "disposition": "superseded_by_overhead_revision"
+        }
+      ]
     },
     {
       "id": "MAPA-005",
@@ -1837,7 +1857,7 @@
     "recovery": "Used individually specified generation calls through alternate provider after repeated off-brief storage outputs. Four distinct creations completed and previews visually inspected. No reported external credits charged. Six subjects generated, no processed/integrated/approved claim."
   },
   "batch_two_evidence": {
-    "state": "six_outputs_produced_three_require_perspective_revision",
+    "state": "six_outputs_produced_two_require_perspective_revision",
     "sheet_ids": [
       "MAPA-002",
       "MAPA-003",
@@ -1849,12 +1869,25 @@
     "accepted_as_generated": [
       "MAPA-002",
       "MAPA-003",
+      "MAPA-004",
       "MAPA-006"
     ],
     "pending": [],
-    "rejected": [],
+    "rejected": [
+      {
+        "generation_id": "8a9bb05b-25b3-4123-9521-63ba95bc8b1d",
+        "reason": "MAPA-005 correction request returned six-panel composite, not individual fern sheet."
+      },
+      {
+        "generation_id": "d54d08b4-78dd-4191-9636-602a917d871d",
+        "reason": "MAPA-005 correction retry returned conifer sheet instead of ferns."
+      },
+      {
+        "generation_id": "7877cce5-003a-4227-8446-6aca3648b585",
+        "reason": "MAPA-007 correction request returned conifer sheet instead of tropical canopies."
+      }
+    ],
     "revision_needed": [
-      "MAPA-004",
       "MAPA-005",
       "MAPA-007"
     ],
@@ -1867,9 +1900,13 @@
       "MAPA-007"
     ],
     "blocker": {
+      "type": "provider_quota_and_native_subject_mismatch",
+      "detail": "Alternate provider daily free limit remains recorded for same date; not retried. Native image tool generated correct MAPA-004 revision, but then a six-panel composite and two off-brief conifer sheets despite individually specified subjects. No more blind retries."
+    },
+    "next_action": "Correct MAPA-005 and MAPA-007 individually before selecting MAPA-008–013; preserve existing generated sheet evidence. Use explicit independent prompts with a capable provider after availability changes.",
+    "prior_blocker": {
       "type": "provider_daily_free_limit",
       "detail": "Targeted revised overhead prompt for MAPA-004 could not be submitted: provider reports today's free auto image-generation uses exhausted, no credits charged, reset 00:00 UTC. MAPA-005 and MAPA-007 corrections not submitted. Do not retry same free provider before reset."
-    },
-    "next_action": "Complete the three revision-needed sheets with corrected overhead imagery before selecting further planned sheets, unless owner directs otherwise."
+    }
   }
 }
