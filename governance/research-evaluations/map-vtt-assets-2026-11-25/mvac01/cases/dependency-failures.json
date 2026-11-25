@@ -1,0 +1,73 @@
+[
+  {
+    "id": "D01",
+    "type": "missing_pack",
+    "input": {
+      "packId": "mv:review:owner-sheets:2026-11-25",
+      "assetId": "sha256:715940b4552fe7ee5c76e0fd7eff3c2aa7487085f60283a65ac1d10fd3d48235",
+      "installed": false
+    },
+    "expected": "missing_dependency",
+    "observed": "NOT_RUN",
+    "implementation": "Production dependency/install/rights resolver is not present in UHT28; this is a frozen acceptance input and oracle, not a passing model test"
+  },
+  {
+    "id": "D02",
+    "type": "version_mismatch",
+    "input": {
+      "packId": "mv:review:owner-sheets:2026-11-25",
+      "requestedVersion": 1,
+      "installedVersion": 2,
+      "compatibleMigration": false
+    },
+    "expected": "incompatible_version",
+    "observed": "NOT_RUN",
+    "implementation": "Production dependency/install/rights resolver is not present in UHT28; this is a frozen acceptance input and oracle, not a passing model test"
+  },
+  {
+    "id": "D03",
+    "type": "corrupt_bytes",
+    "input": {
+      "expectedSHA256": "715940b4552fe7ee5c76e0fd7eff3c2aa7487085f60283a65ac1d10fd3d48235",
+      "observedSHA256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "expected": "integrity_failure",
+    "observed": "NOT_RUN",
+    "implementation": "Production dependency/install/rights resolver is not present in UHT28; this is a frozen acceptance input and oracle, not a passing model test"
+  },
+  {
+    "id": "D04",
+    "type": "unknown_distribution_rights",
+    "input": {
+      "rightsEvidence": null,
+      "requestedUse": "raw_pack_distribution"
+    },
+    "expected": "rights_unresolved",
+    "observed": "NOT_RUN",
+    "implementation": "Production dependency/install/rights resolver is not present in UHT28; this is a frozen acceptance input and oracle, not a passing model test"
+  },
+  {
+    "id": "D05",
+    "type": "unsupported_representation",
+    "input": {
+      "mime": "image/avif",
+      "decoderAvailable": false,
+      "fallback": null
+    },
+    "expected": "unsupported_format",
+    "observed": "NOT_RUN",
+    "implementation": "Production dependency/install/rights resolver is not present in UHT28; this is a frozen acceptance input and oracle, not a passing model test"
+  },
+  {
+    "id": "D06",
+    "type": "interrupted_install",
+    "input": {
+      "manifestVerified": true,
+      "blobsComplete": false,
+      "activationCommitted": false
+    },
+    "expected": "not_ready_last_good_retained",
+    "observed": "NOT_RUN",
+    "implementation": "Production dependency/install/rights resolver is not present in UHT28; this is a frozen acceptance input and oracle, not a passing model test"
+  }
+]
