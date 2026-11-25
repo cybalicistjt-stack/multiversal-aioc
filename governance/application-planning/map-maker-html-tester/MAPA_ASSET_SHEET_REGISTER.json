@@ -1,0 +1,1733 @@
+{
+  "program_id": "MAPA",
+  "title": "Map Asset Production & Artwork",
+  "version": "1.0",
+  "owner_direction": "2026-11-25: maintain the sheet production list in OPS5, generate in batches of six individual sheets, write all six descriptions before generating any, and update statuses as generated.",
+  "scope": "Content production supporting MMHT; no product code or changes to existing MMHT or persistent lane selection. This register tracks artwork evidence, not operational authority.",
+  "source": "Multiversal_Map_Asset_Sheet_Registry_v0.1.json, 2026-11-25; 48 embedded sprites audited in UHT24 MME02H",
+  "counts": {
+    "Existing": 4,
+    "P0": 71,
+    "P1": 111,
+    "P2": 37,
+    "P3": 1
+  },
+  "batch_size": 6,
+  "remaining_new_sheets": 220,
+  "format": "Default 4 columns x 3 rows, 12 separate assets, no baked labels/grid, clean margins, overhead for tactical assets; material and modular exceptions by brief. Verify extraction, alpha, seams, scale, rights and import separately.",
+  "status_definitions": {
+    "existing_embedded": "Previously bundled assets",
+    "planned": "Not generated",
+    "described": "Brief prepared before batch generation",
+    "generated": "Individual image produced with durable evidence",
+    "revision_needed": "Correction required",
+    "approved": "Owner approved",
+    "processed": "Individual assets extracted and prepared",
+    "integrated": "Imported and verified in Map Maker"
+  },
+  "batch_policy": "Six separate sheet outputs per batch; final remainder four. Prepare all briefs first. Record evidence for each generated sheet; do not mark approved/processed/integrated without separate evidence. Named-world canon review required before generation. Preserve previous versions. Gameplay ownership remains separate.",
+  "first_batch": [
+    "MAP-MAT-001",
+    "MAP-MAT-003",
+    "MAP-MAT-010",
+    "MAP-ARC-001",
+    "MAP-ARC-003",
+    "MAP-ARC-004"
+  ],
+  "sheets": [
+    {
+      "id": "EXIST-01",
+      "title": "Fantasy / cave / sci-fi starter",
+      "priority": "Existing",
+      "status": "existing_embedded",
+      "artwork_evidence": {
+        "source": "UHT24 MME02H Artwork Export HTML",
+        "sprites": 12
+      }
+    },
+    {
+      "id": "EXIST-02",
+      "title": "Furnished interiors starter",
+      "priority": "Existing",
+      "status": "existing_embedded",
+      "artwork_evidence": {
+        "source": "UHT24 MME02H Artwork Export HTML",
+        "sprites": 12
+      }
+    },
+    {
+      "id": "EXIST-03",
+      "title": "Wilderness / village starter",
+      "priority": "Existing",
+      "status": "existing_embedded",
+      "artwork_evidence": {
+        "source": "UHT24 MME02H Artwork Export HTML",
+        "sprites": 12
+      }
+    },
+    {
+      "id": "EXIST-04",
+      "title": "Architecture / Old Vault starter",
+      "priority": "Existing",
+      "status": "existing_embedded",
+      "artwork_evidence": {
+        "source": "UHT24 MME02H Artwork Export HTML",
+        "sprites": 12
+      }
+    },
+    {
+      "id": "MAP-MAT-001",
+      "title": "Soil, earth and dirt",
+      "priority": "P0",
+      "status": "described",
+      "brief": {
+        "batch": "MAPA-01",
+        "sequence": 1,
+        "description": "Realistic earth textures, natural colors, finely detailed grains, subtle surface relief.",
+        "cells_row_major": [
+          "Rich dark loam",
+          "Dry brown earth",
+          "Compacted dirt",
+          "Pale sandy soil",
+          "Red clay",
+          "Stony soil",
+          "Disturbed earth",
+          "Rutted dirt",
+          "Excavated soil",
+          "Root-filled soil",
+          "Grass-to-earth edge",
+          "Rock-to-earth edge"
+        ]
+      },
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MAT-002",
+      "title": "Grass, turf and meadow",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MAT-003",
+      "title": "Stone, rock and gravel",
+      "priority": "P0",
+      "status": "described",
+      "brief": {
+        "batch": "MAPA-01",
+        "sequence": 2,
+        "description": "Natural geology suitable for caves, trails, ruins and landscaping.",
+        "cells_row_major": [
+          "Gray slate",
+          "Shale",
+          "Granite",
+          "Limestone",
+          "Basalt",
+          "Sandstone",
+          "Loose scree",
+          "Fine gravel",
+          "Coarse gravel",
+          "Rounded cobbles",
+          "Fractured bedrock",
+          "Stone-to-gravel edge"
+        ]
+      },
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MAT-004",
+      "title": "Timber, planking and deck boards",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MAT-005",
+      "title": "Masonry, flagstone and brick flooring",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MAT-006",
+      "title": "Road, concrete and asphalt",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MAT-007",
+      "title": "Sand, dunes and arid ground",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MAT-008",
+      "title": "Snow, ice and frozen ground",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MAT-009",
+      "title": "Mud, swamp and wet earth",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MAT-010",
+      "title": "Metal, composite and sci-fi floors",
+      "priority": "P1",
+      "status": "described",
+      "brief": {
+        "batch": "MAPA-01",
+        "sequence": 3,
+        "description": "Believable manufactured surfaces, neutral alloys, restrained accent lighting.",
+        "cells_row_major": [
+          "Brushed steel",
+          "Riveted steel plates",
+          "Diamond tread",
+          "Industrial grate",
+          "Ribbed deck plating",
+          "Titanium panels",
+          "Ceramic composite",
+          "Polymer floor tiles",
+          "Maintenance access plates",
+          "Hazard-striped deck",
+          "Recessed conduits",
+          "Illuminated deck panels"
+        ]
+      },
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MAT-011",
+      "title": "Ash, slag, volcanic and scorched terrain",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MAT-012",
+      "title": "Alien and fantastical ground materials",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEO-001",
+      "title": "Cliffs, slopes and escarpments",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEO-002",
+      "title": "Rivers, brooks and streams",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEO-003",
+      "title": "Coastlines, beaches and tidal margins",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEO-004",
+      "title": "Hills, ridges and mountain silhouettes",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEO-005",
+      "title": "Lakes, pools and wetlands",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEO-006",
+      "title": "Valleys, canyons and gullies",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEO-007",
+      "title": "Islands, reefs and shallow seas",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEO-008",
+      "title": "Glaciers, permafrost and icefields",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEO-009",
+      "title": "Volcanoes, lava channels and geothermal fields",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-FLR-001",
+      "title": "Temperate broadleaf trees",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-FLR-002",
+      "title": "Coniferous and boreal trees",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-FLR-003",
+      "title": "Shrubs, hedges and undergrowth",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-FLR-004",
+      "title": "Grasses, flowers and groundcover",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-FLR-005",
+      "title": "Rocks, fallen wood and natural obstacles",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-FLR-006",
+      "title": "Tropical rainforest and broadleaf jungle",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-FLR-007",
+      "title": "Swamp, mangrove and riparian plants",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-FLR-008",
+      "title": "Desert, savanna and dry scrub plants",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-FLR-009",
+      "title": "Alpine, tundra and snowline flora",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-FLR-010",
+      "title": "Fungal forests and subterranean biota",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-FLR-011",
+      "title": "Alien and exotic plant morphologies",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-WTH-001",
+      "title": "Surface water and shore foam",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-WTH-002",
+      "title": "Rain, runoff and puddles",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-WTH-003",
+      "title": "Fire, smoke and embers",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-WTH-004",
+      "title": "Fog, mist and obscuring atmosphere",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-WTH-005",
+      "title": "Flood and storm-surge extents",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-WTH-006",
+      "title": "Wind, sandstorm and blizzard marks",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-WTH-007",
+      "title": "Underwater depth and current",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-WTH-008",
+      "title": "Hazardous atmospheric conditions",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAV-001",
+      "title": "Cave chambers and tunnel edges",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAV-002",
+      "title": "Cave floors and speleothems",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAV-003",
+      "title": "Mine shafts, ladders and hoists",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAV-004",
+      "title": "Mine supports, braces and partitions",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAV-005",
+      "title": "Ore seams and resource deposits",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAV-006",
+      "title": "Ore haulage and underground traffic",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAV-007",
+      "title": "Drainage, seepage and sump systems",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAV-008",
+      "title": "Ventilation, gas and dust infrastructure",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAV-009",
+      "title": "Processing and sorting facilities",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAV-010",
+      "title": "Ancient, organic and alien underground spaces",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-001",
+      "title": "Stone and masonry wall kit",
+      "priority": "P0",
+      "status": "described",
+      "brief": {
+        "batch": "MAPA-01",
+        "sequence": 4,
+        "description": "Matching overhead gray-brown masonry, common width, consistent connection points.",
+        "cells_row_major": [
+          "Long straight wall",
+          "Short straight wall",
+          "L-corner",
+          "T-junction",
+          "Cross-junction",
+          "End cap",
+          "Curved section",
+          "Door opening",
+          "Arched opening",
+          "Window opening",
+          "Damaged wall",
+          "Collapsed wall"
+        ]
+      },
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-002",
+      "title": "Timber and plaster wall kit",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-003",
+      "title": "Modern brick, plaster and concrete wall kit",
+      "priority": "P0",
+      "status": "described",
+      "brief": {
+        "batch": "MAPA-01",
+        "sequence": 5,
+        "description": "Matching modern construction pieces, neutral interior finishes, consistent thickness.",
+        "cells_row_major": [
+          "Plaster straight wall",
+          "Short wall segment",
+          "L-corner",
+          "T-junction",
+          "Cross-junction",
+          "End cap",
+          "Exposed brick wall",
+          "Reinforced concrete wall",
+          "Door opening",
+          "Window opening",
+          "Damaged wall",
+          "Demolished wall"
+        ]
+      },
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-004",
+      "title": "Doorways, doors, arches and gates",
+      "priority": "P0",
+      "status": "described",
+      "brief": {
+        "batch": "MAPA-01",
+        "sequence": 6,
+        "description": "Isolated overhead entrances, visible frames and thresholds, clear open/closed states.",
+        "cells_row_major": [
+          "Closed timber door",
+          "Open timber door",
+          "Double timber doors",
+          "Iron dungeon gate",
+          "Stone archway",
+          "Reinforced vault door",
+          "Modern wooden door",
+          "Modern glass door",
+          "Steel security door",
+          "Industrial roller shutter",
+          "Sci-fi sliding door",
+          "Sci-fi airlock hatch"
+        ]
+      },
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-005",
+      "title": "Window, balcony and balcony-access modules",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-006",
+      "title": "Floorplates, thresholds and stairs",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-007",
+      "title": "Roof modules and roof visibility variants",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-008",
+      "title": "Columns, beams and foundations",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-009",
+      "title": "Bridges, walkways and elevated platforms",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-010",
+      "title": "Fortifications and perimeter works",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-011",
+      "title": "Industrial walls, doors and shutters",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-012",
+      "title": "Sci-fi hull partitions and bulkheads",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-013",
+      "title": "Glass, composite and high-tech architectural kit",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARC-014",
+      "title": "Organic, grown and alien structure kit",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-INT-001",
+      "title": "Beds, sleeping rooms and personal storage",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-INT-002",
+      "title": "Dining, kitchens and taverns",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-INT-003",
+      "title": "Libraries, studies and archives",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-INT-004",
+      "title": "Workshops, smithies and fabrication",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-INT-005",
+      "title": "Markets, shops and trade interiors",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-INT-006",
+      "title": "Storage, warehouses and cargo rooms",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-INT-007",
+      "title": "Domestic modern furniture and appliances",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-INT-008",
+      "title": "Offices, schools and institutional interiors",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-INT-009",
+      "title": "Healing, clinics and hospitals",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-INT-010",
+      "title": "Laboratories, research and containment",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-INT-011",
+      "title": "Military, guard, law and secure interiors",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-INT-012",
+      "title": "Religious, ceremonial and ritual spaces",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-INT-013",
+      "title": "Noble, palace and luxury interiors",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-SET-001",
+      "title": "Paths, roads, sidewalks and intersections",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-SET-002",
+      "title": "Village and traditional streetscapes",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-SET-003",
+      "title": "Modern streetscapes",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-SET-004",
+      "title": "Parks, squares and landscaping",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-SET-005",
+      "title": "Fences, walls, gates and land division",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-SET-006",
+      "title": "Docks, ports and waterfront facilities",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-SET-007",
+      "title": "Rail, tram and underground transit",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-SET-008",
+      "title": "Airfields and transport terminals",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-SET-009",
+      "title": "Industrial corridors and freight districts",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-SET-010",
+      "title": "Sewers, drains and subterranean civil works",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AGR-001",
+      "title": "Field rows and cultivated plots",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AGR-002",
+      "title": "Irrigation and farm water",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AGR-003",
+      "title": "Fences, pens and livestock shelters",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AGR-004",
+      "title": "Orchards, vineyards and perennial crops",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AGR-005",
+      "title": "Greenhouses and controlled growth",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AGR-006",
+      "title": "Hydroponic, aeroponic and vertical farms",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AGR-007",
+      "title": "Aquaculture, tanks and aquatic holdings",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AGR-008",
+      "title": "Apiaries, insectaries and small-animal structures",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AGR-009",
+      "title": "Forage, habitat restoration and wildlife sites",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AGR-010",
+      "title": "Seasonal growth and land-use phase variants",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-UTL-001",
+      "title": "Core base modules and site prep",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-UTL-002",
+      "title": "Electrical generation and distribution",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-UTL-003",
+      "title": "Water intake, purification and waste",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-UTL-004",
+      "title": "Heating, ventilation and air-handling",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-UTL-005",
+      "title": "Fuel, thermal, coolant and energy storage",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-UTL-006",
+      "title": "Communications, sensors and control rooms",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-UTL-007",
+      "title": "Storage, logistics and production infrastructure",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-UTL-008",
+      "title": "Security, defense and surveillance infrastructure",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-UTL-009",
+      "title": "Habitation, medical and life-support modules",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-UTL-010",
+      "title": "Mobile and modular base connections",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-VEH-001",
+      "title": "Mounts, tack, carts and animal vehicles",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-VEH-002",
+      "title": "Contemporary cars, motorcycles and cycles",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-VEH-003",
+      "title": "Trucks, buses, service and utility vehicles",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-VEH-004",
+      "title": "Railcars, locomotives and station vehicles",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-VEH-005",
+      "title": "Watercraft, barges and small boats",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-VEH-006",
+      "title": "Sailing ships, pirate and fantasy vessels",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-VEH-007",
+      "title": "Aircraft, drones and lighter-than-air craft",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-VEH-008",
+      "title": "Futuristic hovercraft and speculative vehicles",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-DCK-001",
+      "title": "Deck-plan hulls, corridors and access",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-DCK-002",
+      "title": "Bridge, pilot and navigation stations",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-DCK-003",
+      "title": "Engine rooms and reactor machinery",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-DCK-004",
+      "title": "Cargo, holds and hangar bays",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-DCK-005",
+      "title": "Airlocks, docking collars and transfer links",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-DCK-006",
+      "title": "Crew cabins, galley and sanitation",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-DCK-007",
+      "title": "Space-station corridors and public modules",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-DCK-008",
+      "title": "Mecha outer frames and articulated silhouettes",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-DCK-009",
+      "title": "Mecha interior cockpits and service bays",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-DCK-010",
+      "title": "Alien and bio-organic ship structures",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ENC-001",
+      "title": "Cover, barricades and movable obstacles",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ENC-002",
+      "title": "Treasure, containers and scene interactables",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ENC-003",
+      "title": "Common visible traps and trap dressing",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ENC-004",
+      "title": "Lights, fixtures and decorative light sources",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ENC-005",
+      "title": "Doors and interactable state variants",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ENC-006",
+      "title": "Evidence, documents and clues",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ENC-007",
+      "title": "Damage, fire aftermath and battlefield wear",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ENC-008",
+      "title": "Ritual, summoning and arcane operations",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ENC-009",
+      "title": "Mechanical and environmental hazard props",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-001",
+      "title": "Classic medieval fantasy",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-002",
+      "title": "High fantasy and magical civilization",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-003",
+      "title": "Ancient and classical civilizations",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-004",
+      "title": "Early modern, Renaissance and colonial-age structures",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-005",
+      "title": "Western frontier and frontier settlements",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-006",
+      "title": "Victorian, gothic and 19th-century urban",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-007",
+      "title": "Steampunk and clockwork",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-008",
+      "title": "Dieselpunk and industrial-war era",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-009",
+      "title": "Contemporary residential and rural",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-010",
+      "title": "Contemporary city, corporate and institutional",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-011",
+      "title": "Cyberpunk and corporate megacity",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-012",
+      "title": "Near-future, hard science fiction",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-013",
+      "title": "Space opera and exotic high technology",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-014",
+      "title": "Solarpunk, ecological and regenerative city",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-015",
+      "title": "Post-apocalyptic, ruined and reclaimed",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-016",
+      "title": "Horror, noir and oppressive urban atmosphere",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-017",
+      "title": "Prehistoric and primal settlements",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-GEN-018",
+      "title": "Toon, surreal and deliberately exaggerated worlds",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARCANA-001",
+      "title": "Enchanted woods, fae circles and living terrain",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARCANA-002",
+      "title": "Wizards, alchemists and arcane laboratories",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARCANA-003",
+      "title": "Temples, divine sanctuaries and holy sites",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARCANA-004",
+      "title": "Necropolis, crypts and death magic",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARCANA-005",
+      "title": "Elemental sites: fire, water, air and earth",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARCANA-006",
+      "title": "Planar gates, portals and crossing structures",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARCANA-007",
+      "title": "Cosmic horror and impossible phenomena",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARCANA-008",
+      "title": "Dream, nightmare and mirrored environments",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ARCANA-009",
+      "title": "Time, chaos and reality-fracture decorations",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-001",
+      "title": "Havalaea forests and canopy regions",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-002",
+      "title": "Havalaea distinctive habitats and megafauna traces",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-003",
+      "title": "Vertigon city sectors and megacity infrastructure",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-004",
+      "title": "Black Vegas station and Warden facilities",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-005",
+      "title": "Furashin canopy settlement forms",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-006",
+      "title": "Sharra and distinctive hominin settlement contexts",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-007",
+      "title": "Skoaltarra vampire-dwarf spaces",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-008",
+      "title": "Apogine / Silentium tunnel architecture",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-009",
+      "title": "Moving Loops transit communities",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-010",
+      "title": "Carnival non-Euclidean attractions",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-011",
+      "title": "Convergence, Translimina and Sea of Realities",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-012",
+      "title": "Dreaming Realms: Visium, Somnara and Abyssus Somni",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-013",
+      "title": "Orilaun, drive infrastructure and transit phenomena",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-MVL-014",
+      "title": "Uncatalogued species-built environments",
+      "priority": "P3",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAR-001",
+      "title": "Map labels, legend keys and point-of-interest symbols",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAR-002",
+      "title": "Scale, grids and navigation aides",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAR-003",
+      "title": "Routes, borders and network lines",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAR-004",
+      "title": "Contour, altitude, depth and section symbols",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAR-005",
+      "title": "Space, room and compartment annotation",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAR-006",
+      "title": "Utility and logistics network diagrams",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAR-007",
+      "title": "Environmental and land-use zoning marks",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-CAR-008",
+      "title": "Non-Euclidean graph and portal annotations",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ACT-001",
+      "title": "Neutral actor silhouettes and footprints",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ACT-002",
+      "title": "GM concealment and reveal-safe token states",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ACT-003",
+      "title": "Core species-derived map tokens",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ACT-004",
+      "title": "NPC and civilian role silhouettes",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ACT-005",
+      "title": "Mounts, domestic animals and quadrupeds",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ACT-006",
+      "title": "Wildlife, predators and nonhumanoid creatures",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ACT-007",
+      "title": "Flying, swimming, burrowing and climbing markers",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ACT-008",
+      "title": "Groups, swarms and formation footprints",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ACT-009",
+      "title": "Constructs, drones and robotic companions",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ACT-010",
+      "title": "Condition-sensitive actor projection",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ACT-011",
+      "title": "Giant creatures, kaiju and extreme scale",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-ACT-012",
+      "title": "Spectral, incorporeal and illusory entities",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-LOOT-001",
+      "title": "Containers, packs and general ground loot",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-LOOT-002",
+      "title": "Medical, field and survival supplies",
+      "priority": "P0",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-LOOT-003",
+      "title": "Fantasy melee arms and protective gear",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-LOOT-004",
+      "title": "Modern firearms and ammunition dressing",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-LOOT-005",
+      "title": "Futuristic weapons, tools and hand devices",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-LOOT-006",
+      "title": "Valuables, documents, access and evidence",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-LOOT-007",
+      "title": "Food, containers and everyday loose possessions",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-LOOT-008",
+      "title": "Crafting inputs, components and workpiece sets",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-LOOT-009",
+      "title": "Harvest, mineral and recovered raw materials",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-LOOT-010",
+      "title": "Relics, magical objects and unusual discoveries",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-COS-001",
+      "title": "Starfields and deep-space map backgrounds",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-COS-002",
+      "title": "Planetary disks, moons and limb lighting",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-COS-003",
+      "title": "Asteroids, debris and ring systems",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-COS-004",
+      "title": "Orbital installations, satellites and platforms",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-COS-005",
+      "title": "Spacecraft exterior scale silhouettes",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-COS-006",
+      "title": "Orbital approach, landing and docking diagrams",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-COS-007",
+      "title": "Nebula, plasma, storm and nebular gas fields",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-COS-008",
+      "title": "Interstellar transit and navigation phenomena",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-COS-009",
+      "title": "Celestial anomalies and reality fractures",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AQU-001",
+      "title": "Seafloor, bathymetry and submerged rock",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AQU-002",
+      "title": "Coral gardens, kelp forests and marine flora",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AQU-003",
+      "title": "Underwater wrecks, ruins and construction",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AQU-004",
+      "title": "Aquatic habitats, pens and field research",
+      "priority": "P1",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AQU-005",
+      "title": "Deep abyssal and bioluminescent environments",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAP-AQU-006",
+      "title": "Flooded settlements and tidal transition states",
+      "priority": "P2",
+      "status": "planned",
+      "artwork_evidence": null
+    }
+  ]
+}
