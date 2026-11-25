@@ -61,9 +61,9 @@
     "existing_sheets": 4,
     "new_sheets": 192,
     "families": 32,
-    "described": 6,
+    "described": 5,
     "planned": 174,
-    "generated": 12,
+    "generated": 13,
     "revision_needed": 0
   },
   "batch_size": 6,
@@ -414,8 +414,24 @@
       "id": "MAPA-008",
       "family": "Specialized biomes",
       "title": "Tropical undergrowth, vines and exotic flowers",
-      "status": "described",
-      "artwork_evidence": null,
+      "status": "generated",
+      "artwork_evidence": {
+        "provider": "ChatGPT image generation",
+        "generation_id": "f79eb3bf-bcb0-4c94-ab86-3b03994a0f4c",
+        "conversation_file_id": "file_000000003f6c81f6bab3593c29e12f12",
+        "filename": "a_high_detail_top_down_botanical_asset_sheet_on_a.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alpha_range": [
+          0,
+          253
+        ],
+        "sha256": "5aa83e0e3074f7ab766bbe1377b183e34008cef34c9f48e84a315b32ae687284",
+        "review": "Standalone 4x3, 12 distinct tropical undergrowth silhouettes, reviewed on neutral gray composite. Alpha verified locally; elevated foliage and trailing vines retain some oblique perspective; narrow gutters require silhouette-aware extraction, especially between columns 3 and 4. Species identity, placement and owner approval pending."
+      },
       "brief": {
         "batch": "MAPA-03",
         "sequence": 1,
@@ -2085,7 +2101,7 @@
     "recovery": "Native image generation with separate subject instructions and transparency requested returned separate overhead revisions for both remaining subjects; RGBA, exact dimensions and SHA256 checked locally, and neutral background composites inspected. Generated is not approved or integration verified."
   },
   "batch_three_evidence": {
-    "state": "briefs_prepared",
+    "state": "partial_generation_blocked_by_native_subject_mismatch",
     "sheet_ids": [
       "MAPA-008",
       "MAPA-009",
@@ -2094,15 +2110,34 @@
       "MAPA-012",
       "MAPA-013"
     ],
-    "accepted_as_generated": [],
+    "accepted_as_generated": [
+      "MAPA-008"
+    ],
     "pending": [
-      "MAPA-008",
       "MAPA-009",
       "MAPA-010",
       "MAPA-011",
       "MAPA-012",
       "MAPA-013"
     ],
-    "rejected": []
+    "rejected": [
+      {
+        "generation_id": "34392361-eb41-46d7-a1f0-fd4653e8b72e",
+        "reason": "MAPA-009 request returned six-panel composite, not a standalone desert sprite sheet."
+      },
+      {
+        "generation_id": "be9f4792-6a58-4446-8367-e2850e7e2ef4",
+        "reason": "MAPA-009 retry returned unrelated tropical undergrowth variant."
+      },
+      {
+        "generation_id": "a4057cd8-3bd1-4b7c-83e3-60d4c8445db3",
+        "reason": "MAPA-009 retry returned another unrelated tropical undergrowth variant."
+      }
+    ],
+    "blocker": {
+      "type": "native_image_subject_mismatch",
+      "detail": "After producing correct MAPA-008, native generation produced a multi-sheet composite and two wrong-subject variants despite individual desert-only instructions. Transparency setting did not resolve subject selection. Alternate provider's previously observed daily quota reset has not occurred; no retry there. Stop blind retries and use a changed generation route/context after availability changes."
+    },
+    "next_action": "Resume at MAPA-009; generate remaining five individually using previously committed briefs, with output subject verification. Do not count rejected variants."
   }
 }
