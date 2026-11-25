@@ -61,9 +61,9 @@
     "existing_sheets": 4,
     "new_sheets": 192,
     "families": 32,
-    "described": 6,
+    "described": 5,
     "planned": 186,
-    "generated": 0
+    "generated": 1
   },
   "batch_size": 6,
   "batch_order": "First batch cross-genre pilot; subsequent batches select next six outstanding entries by stable ID unless owner directs otherwise.",
@@ -105,7 +105,7 @@
       "id": "MAPA-001",
       "family": "Temperate vegetation",
       "title": "Deciduous trees: oak, maple, birch, willow and others",
-      "status": "described",
+      "status": "generated",
       "brief": {
         "batch": "MAPA-01",
         "sequence": 1,
@@ -126,7 +126,18 @@
           "Ancient oak"
         ]
       },
-      "artwork_evidence": null
+      "artwork_evidence": {
+        "generation_id": "289ed9ce-a024-4927-8d1c-690cb9a8279f",
+        "conversation_file_id": "file_0000000017b481f6899269a7198b5478",
+        "filename": "a_clean_png_style_asset_sheet_illustration_a_tran.png",
+        "sha256": "ee5c62e793a26a76b9c6d05d0cb66dddd79ba084db2222d48d4f3456487ed465",
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "mode": "RGBA",
+        "review": "12 overhead tree canopies in separate sheet; alpha exists; margin, edge contamination, botanical identity, individual extraction and placement not yet validated; owner review pending."
+      }
     },
     {
       "id": "MAPA-002",
@@ -1565,5 +1576,29 @@
       "status": "planned",
       "artwork_evidence": null
     }
-  ]
+  ],
+  "batch_one_evidence": {
+    "state": "partial_tooling_blocker",
+    "accepted_as_generated": [
+      "MAPA-001"
+    ],
+    "pending": [
+      "MAPA-030",
+      "MAPA-049",
+      "MAPA-091",
+      "MAPA-103",
+      "MAPA-118"
+    ],
+    "rejected": [
+      {
+        "generation_id": "76b3b5d0-f516-47f9-9107-0bfe369ef210",
+        "reason": "Combined all six subjects in one composite instead of separate full-resolution sheet."
+      },
+      {
+        "generation_id": "032cb705-1173-4cab-a989-75670602ea4e",
+        "reason": "Repeated combined composite, with titles and borders; not individual overhead sheet."
+      }
+    ],
+    "blocker": "Image generator repeated off-brief six-panel output despite explicit individual fantasy storage sheet request. No further blind retries; remaining briefs preserved."
+  }
 }
