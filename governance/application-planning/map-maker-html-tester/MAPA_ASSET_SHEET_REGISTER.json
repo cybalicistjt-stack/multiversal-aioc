@@ -1,0 +1,2316 @@
+{
+  "program_id": "MAPA",
+  "version": "2.0",
+  "title": "Map Asset Production & Artwork — placeable object library",
+  "owner_approval": "2026-11-25: owner explicitly approved revised 192-sheet individually placeable object catalog and directed first six individual generated sheets.",
+  "lane": "content-design",
+  "scope": "Artwork only, supports MMHT; no product code, gameplay simulation or selector changes.",
+  "supersedes": {
+    "version": "1.0",
+    "commit": "56d76648bbacd082636b56a0d3e53124228ce744",
+    "reason": "Owner rejected non-seamless texture swatches and planning graphic. Prior list retired, not a production queue. No new artwork credited from rejected attempt.",
+    "rejected_outputs": [
+      "Soil swatch image gen_id 71b0f013-d3b3-41fd-8490-57f87486970e",
+      "Planning infographic gen_id 55d42fd5-88ff-4b79-9579-bbda6acbdf6d"
+    ]
+  },
+  "reference": "UHT24 MME02H existing 48 detailed illustrated sprites; owner-approved revised catalog in conversation.",
+  "existing_sheets": [
+    {
+      "id": "EXIST-01",
+      "title": "Fantasy / cave / sci-fi starter",
+      "priority": "Existing",
+      "status": "existing_embedded",
+      "artwork_evidence": {
+        "source": "UHT24 MME02H Artwork Export HTML",
+        "sprites": 12
+      }
+    },
+    {
+      "id": "EXIST-02",
+      "title": "Furnished interiors starter",
+      "priority": "Existing",
+      "status": "existing_embedded",
+      "artwork_evidence": {
+        "source": "UHT24 MME02H Artwork Export HTML",
+        "sprites": 12
+      }
+    },
+    {
+      "id": "EXIST-03",
+      "title": "Wilderness / village starter",
+      "priority": "Existing",
+      "status": "existing_embedded",
+      "artwork_evidence": {
+        "source": "UHT24 MME02H Artwork Export HTML",
+        "sprites": 12
+      }
+    },
+    {
+      "id": "EXIST-04",
+      "title": "Architecture / Old Vault starter",
+      "priority": "Existing",
+      "status": "existing_embedded",
+      "artwork_evidence": {
+        "source": "UHT24 MME02H Artwork Export HTML",
+        "sprites": 12
+      }
+    }
+  ],
+  "counts": {
+    "existing_sheets": 4,
+    "new_sheets": 192,
+    "families": 32,
+    "described": 3,
+    "planned": 174,
+    "generated": 14,
+    "revision_needed": 1
+  },
+  "batch_size": 6,
+  "batch_order": "First batch cross-genre pilot; subsequent batches select next six outstanding entries by stable ID unless owner directs otherwise.",
+  "format": {
+    "default": "One individual sheet image, exactly 12 separate objects in 4 columns by 3 rows. Larger structures may need fewer objects when specified.",
+    "quality": "Detailed semi-realistic digitally painted sprites; overhead or restrained elevated overhead; intricate textures, visible material and craftsmanship, neutral directional lighting, transparent or clean removable background, generous spacing, complete isolated silhouettes, no external baked shadows.",
+    "exclude": [
+      "Texture swatches",
+      "Continuous terrain or floor materials",
+      "Finished maps",
+      "Planning graphics",
+      "Dashboards",
+      "Text labels, sheet headers, borders and grids",
+      "Character appearance generation",
+      "Weather/lighting renderer assets"
+    ]
+  },
+  "status_definitions": {
+    "planned": "Not generated",
+    "described": "Brief complete before batch generation",
+    "generated": "Correct-type individual image produced, not owner approved or import tested",
+    "revision_needed": "Output failed brief or needs correction",
+    "approved": "Owner accepted",
+    "processed": "Extracted individual sprites with alpha",
+    "integrated": "Map Maker placement and import verified",
+    "existing_embedded": "Previously bundled starter art"
+  },
+  "batch_policy": "All six descriptions before any image generation. Six separately generated artwork outputs, never a collage of sheets. Verify each output visually, attach evidence, do not count off-brief outputs; keep generated distinct from approved, processed and integrated. Named world canon review before briefs.",
+  "first_batch": [
+    "MAPA-001",
+    "MAPA-030",
+    "MAPA-049",
+    "MAPA-091",
+    "MAPA-103",
+    "MAPA-118"
+  ],
+  "sheets": [
+    {
+      "id": "MAPA-001",
+      "family": "Temperate vegetation",
+      "title": "Deciduous trees: oak, maple, birch, willow and others",
+      "status": "generated",
+      "brief": {
+        "batch": "MAPA-01",
+        "sequence": 1,
+        "name": "Deciduous trees",
+        "description": "Twelve distinct directly overhead tree canopies, finely rendered branching and dense individual leaf clusters; varied natural colors and irregular silhouettes. No terrain disks.",
+        "cells_row_major": [
+          "Oak",
+          "Maple",
+          "Birch",
+          "Poplar",
+          "Willow",
+          "Beech",
+          "Chestnut",
+          "Ash",
+          "Elm",
+          "Sycamore",
+          "Autumn oak",
+          "Ancient oak"
+        ]
+      },
+      "artwork_evidence": {
+        "generation_id": "289ed9ce-a024-4927-8d1c-690cb9a8279f",
+        "conversation_file_id": "file_0000000017b481f6899269a7198b5478",
+        "filename": "a_clean_png_style_asset_sheet_illustration_a_tran.png",
+        "sha256": "ee5c62e793a26a76b9c6d05d0cb66dddd79ba084db2222d48d4f3456487ed465",
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "mode": "RGBA",
+        "review": "12 overhead tree canopies in separate sheet; alpha exists; margin, edge contamination, botanical identity, individual extraction and placement not yet validated; owner review pending."
+      },
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 22.722,
+        "fully_opaque_percent": 0.002,
+        "nominal_grid_gutter_alpha_ge_16_percent": 12.15,
+        "alpha_range": [
+          0,
+          255
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
+      }
+    },
+    {
+      "id": "MAPA-002",
+      "family": "Temperate vegetation",
+      "title": "Coniferous trees: pine, spruce, cedar and fir",
+      "status": "generated",
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "VXOENPeMMU",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "12 overhead conifer crowns, distinctly colored and individually separated; botanical species identity not validated. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending."
+      },
+      "brief": {
+        "batch": "MAPA-02",
+        "sequence": 1,
+        "name": "Coniferous trees",
+        "description": "Twelve individually placeable conifer crowns seen directly overhead, with realistic fine needle clusters, layered branch whorls, contrasting species silhouettes and green to blue-green variation. No trunks viewed from the side or ground disks.",
+        "cells_row_major": [
+          "Scots pine",
+          "Eastern white pine",
+          "Ponderosa pine",
+          "Douglas fir",
+          "Norway spruce",
+          "Blue spruce",
+          "Balsam fir",
+          "Silver fir",
+          "Western red cedar",
+          "Deodar cedar",
+          "European larch",
+          "Mountain hemlock"
+        ]
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
+      }
+    },
+    {
+      "id": "MAPA-003",
+      "family": "Temperate vegetation",
+      "title": "Bushes, shrubs and hedges",
+      "status": "generated",
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "CqWgMMXEEy",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "12 individually isolated bushes, shrubs and hedge forms; predominantly overhead, consistent with brief. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending."
+      },
+      "brief": {
+        "batch": "MAPA-02",
+        "sequence": 2,
+        "name": "Bushes, shrubs and hedges",
+        "description": "Overhead shrub silhouettes showing branching, layered leaves and varied growth habits, from compact round shrubs to clipped and loose hedges. Individual isolated foliage objects, not repeating textures. Hedge ends are visible and complete.",
+        "cells_row_major": [
+          "Boxwood sphere",
+          "Long clipped boxwood hedge",
+          "L-shaped clipped hedge",
+          "Loose hawthorn hedge",
+          "Juniper shrub",
+          "Holly bush",
+          "Rhododendron",
+          "Azalea",
+          "Spirea",
+          "Barberry",
+          "Wild bramble",
+          "Mixed leafy thicket"
+        ]
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
+      }
+    },
+    {
+      "id": "MAPA-004",
+      "family": "Temperate vegetation",
+      "title": "Wildflowers and flowering plants",
+      "status": "generated",
+      "artwork_evidence": {
+        "provider": "ChatGPT image generation",
+        "generation_id": "be265217-9e8f-4773-bf4f-57455b936cf1",
+        "conversation_file_id": "file_000000000c7481f6a667c23e05c9204c",
+        "filename": "top_down_digital_illustrative_png_asset_sheet_a_c.png",
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "mode": "RGBA",
+        "alpha_range": [
+          0,
+          255
+        ],
+        "sha256": "f9ac1734f375868b5fbc5ff6d9d72e1f21373c07ddf6cad44d42819d7bb3e75e",
+        "review": "Visually checked standalone 4×3 sheet, overhead or steep elevated flower clusters, 12 distinct types matching the brief; alpha channel verified. Gutters are narrow in places and edge cleanup, botanical identity, extraction, placement and owner approval remain pending."
+      },
+      "brief": {
+        "batch": "MAPA-02",
+        "sequence": 3,
+        "name": "Wildflowers and flowering plants",
+        "description": "Overhead botanical flowering clusters with individually painted blossoms and leaves; natural irregular footprints, high contrast at tactical zoom, distinct species palettes. No underlying soil or meadow rectangles.",
+        "cells_row_major": [
+          "White daisies",
+          "Red poppies",
+          "Blue cornflowers",
+          "Yellow buttercups",
+          "Purple lavender",
+          "Pink foxgloves",
+          "White yarrow",
+          "Wild purple violets",
+          "Orange calendula",
+          "Blue lupines",
+          "Pink clover",
+          "Mixed wildflower bouquet growing in place"
+        ]
+      },
+      "artwork_history": [
+        {
+          "provider": "Magnific",
+          "provider_creation_id": "gOvAuxbSXO",
+          "provider_status": "completed",
+          "requested_resolution": "2k",
+          "requested_aspect_ratio": "4:3",
+          "credits_reported": 0,
+          "review": "12 separate flower clusters generated, but upright botanical profiles with visible long stems violate direct overhead brief; regenerate as aerial patches. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending.",
+          "disposition": "superseded_by_overhead_revision"
+        }
+      ],
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 32.067,
+        "fully_opaque_percent": 0.004,
+        "nominal_grid_gutter_alpha_ge_16_percent": 0.78,
+        "alpha_range": [
+          0,
+          255
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
+      }
+    },
+    {
+      "id": "MAPA-005",
+      "family": "Temperate vegetation",
+      "title": "Ferns, grasses and groundcover clusters",
+      "status": "generated",
+      "artwork_evidence": {
+        "provider": "ChatGPT image generation",
+        "generation_id": "2b5512e6-ad8f-487a-b29c-42d18c73d59c",
+        "conversation_file_id": "file_00000000e89481f6b053788fa521be7e",
+        "filename": "a_clean_high_detail_top_down_asset_sheet_spri.png",
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "mode": "RGBA",
+        "alpha_range": [
+          0,
+          255
+        ],
+        "sha256": "12bca87e9827c98af56b846b92ec3c03dbd61834867fd4f17fca828a320f8b60",
+        "review": "Standalone 4×3 sheet of 12 ferns, grasses, groundcover clumps. Visually checked neutral-background composite; alpha verified and cell gutters at central boundaries 99.4–100% alpha<16. Ferns and groundcovers substantially improved overhead footprints; grass clumps and some ferns retain a steep elevated rather than strictly vertical view. Moss includes rocks. Species identification, individual extraction, edge cleanup, map placement and owner acceptance pending."
+      },
+      "brief": {
+        "batch": "MAPA-02",
+        "sequence": 4,
+        "name": "Ferns, grasses and groundcover clusters",
+        "description": "Overhead individual plants and small clumps, fine leaf detail and naturally irregular margins; differentiated growth patterns and scale. Isolated greenery only, no tile backgrounds.",
+        "cells_row_major": [
+          "Bracken fern",
+          "Sword fern",
+          "Maidenhair fern",
+          "Ostrich fern",
+          "Short meadow grass tuft",
+          "Tall bunchgrass",
+          "Sedge clump",
+          "Dry golden grass clump",
+          "Creeping ivy patch",
+          "Clover patch",
+          "Moss cushion",
+          "Broadleaf groundcover"
+        ]
+      },
+      "artwork_history": [
+        {
+          "provider": "Magnific",
+          "provider_creation_id": "P3HT1NL42C",
+          "provider_status": "completed",
+          "requested_resolution": "2k",
+          "requested_aspect_ratio": "4:3",
+          "credits_reported": 0,
+          "review": "12 isolated plants and clumps; many upright side-profile fern and grass illustrations violate overhead brief; regenerate as radial overhead footprints. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending.",
+          "disposition": "superseded_by_overhead_revision"
+        }
+      ],
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 17.772,
+        "fully_opaque_percent": 0.001,
+        "nominal_grid_gutter_alpha_ge_16_percent": 0.2,
+        "alpha_range": [
+          0,
+          255
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
+      }
+    },
+    {
+      "id": "MAPA-006",
+      "family": "Temperate vegetation",
+      "title": "Fallen trees, dead trees, stumps and exposed roots",
+      "status": "generated",
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "SyaGF9XUb8",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "12 isolated deadwood objects; logs and roots detailed, perspective elevated/oblique rather than strictly orthographic. Review orientation in map before approval. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending."
+      },
+      "brief": {
+        "batch": "MAPA-02",
+        "sequence": 5,
+        "name": "Fallen trees, dead trees, stumps and exposed roots",
+        "description": "Overhead woodland debris and deadwood with weathered bark, split wood fibers, growth rings, moss and distinctive broken silhouettes. Large trunks completely visible in their cells, no ambient scene or extraneous ground.",
+        "cells_row_major": [
+          "Mossy fallen log",
+          "Rotten hollow log",
+          "Freshly snapped trunk",
+          "Fallen branching dead tree",
+          "Standing leafless snag seen overhead",
+          "Dead crown with broken branches",
+          "Fresh-cut stump",
+          "Weathered hollow stump",
+          "Uprooted root ball",
+          "Exposed sprawling roots",
+          "Cluster of fallen branches",
+          "Split decaying log with fungi"
+        ]
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
+      }
+    },
+    {
+      "id": "MAPA-007",
+      "family": "Specialized biomes",
+      "title": "Tropical jungle trees",
+      "status": "generated",
+      "artwork_evidence": {
+        "provider": "ChatGPT image generation",
+        "generation_id": "eba12010-2966-40b2-98c3-f85d63af213d",
+        "conversation_file_id": "file_00000000863081f6ad542225ac7d9d2e",
+        "filename": "top_down_overhead_png_style_illustration_sheet_a.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alpha_range": [
+          0,
+          254
+        ],
+        "sha256": "eff28e91ff660fd1bd3b983cd927268d40ac7d83d4419ff0c09c2360d2ee924c",
+        "review": "Standalone 4×3 sheet, 12 tropical crowns with substantially corrected overhead perspective. Visually checked neutral-background composite; alpha verified, corners zero and no edge pixels alpha>127. Narrow lower-row gutter means extraction must use silhouette-aware boundaries rather than automatic equal-cell crops. Species identity, edge cleanup, individual extraction, map placement and owner approval pending."
+      },
+      "brief": {
+        "batch": "MAPA-02",
+        "sequence": 6,
+        "name": "Tropical jungle trees",
+        "description": "True overhead tropical tree canopies, rich layered foliage with identifiable palm fronds, broad leaves and irregular jungle crowns; distinct plant forms, natural emerald and olive palette, no ground or scene.",
+        "cells_row_major": [
+          "Coconut palm",
+          "Royal palm",
+          "Fan palm",
+          "Date palm",
+          "Banana plant",
+          "Traveler's palm",
+          "Kapok crown",
+          "Strangler fig",
+          "Banyan crown",
+          "Rubber tree",
+          "Tropical mahogany",
+          "Tree fern"
+        ]
+      },
+      "artwork_history": [
+        {
+          "provider": "Magnific",
+          "provider_creation_id": "TdJCNtYVNR",
+          "provider_status": "completed",
+          "requested_resolution": "2k",
+          "requested_aspect_ratio": "4:3",
+          "credits_reported": 0,
+          "review": "12 distinct tropical trees and palms, predominantly side-on with visible upright trunks rather than overhead crowns. Regenerate with true aerial canopy projection. Visually inspected 1024×768 preview; actual full-resolution PNG alpha, extraction and placement unverified. Owner approval pending.",
+          "disposition": "superseded_by_overhead_revision"
+        }
+      ],
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 21.67,
+        "fully_opaque_percent": 0,
+        "nominal_grid_gutter_alpha_ge_16_percent": 10.19,
+        "alpha_range": [
+          0,
+          254
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
+      }
+    },
+    {
+      "id": "MAPA-008",
+      "family": "Specialized biomes",
+      "title": "Tropical undergrowth, vines and exotic flowers",
+      "status": "generated",
+      "artwork_evidence": {
+        "provider": "ChatGPT image generation",
+        "generation_id": "f79eb3bf-bcb0-4c94-ab86-3b03994a0f4c",
+        "conversation_file_id": "file_000000003f6c81f6bab3593c29e12f12",
+        "filename": "a_high_detail_top_down_botanical_asset_sheet_on_a.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alpha_range": [
+          0,
+          253
+        ],
+        "sha256": "5aa83e0e3074f7ab766bbe1377b183e34008cef34c9f48e84a315b32ae687284",
+        "review": "Standalone 4x3, 12 distinct tropical undergrowth silhouettes, reviewed on neutral gray composite. Alpha verified locally; elevated foliage and trailing vines retain some oblique perspective; narrow gutters require silhouette-aware extraction, especially between columns 3 and 4. Species identity, placement and owner approval pending."
+      },
+      "brief": {
+        "batch": "MAPA-03",
+        "sequence": 1,
+        "name": "Tropical undergrowth, vines and exotic flowers",
+        "description": "Richly detailed overhead jungle undergrowth, individually isolated foliage clumps and trailing vines, tropical leaf shapes and blossoms. No ground disks, no upright botanical profiles.",
+        "cells_row_major": [
+          "Monstera clump",
+          "Philodendron clump",
+          "Elephant ear clump",
+          "Heliconia clump",
+          "Bird of paradise clump",
+          "Bromeliad rosette",
+          "Tropical orchid cluster",
+          "Hibiscus shrub",
+          "Trailing jungle vine",
+          "Coiled liana",
+          "Creeping passionflower vine",
+          "Mixed dense jungle understory"
+        ]
+      },
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 17.583,
+        "fully_opaque_percent": 0,
+        "nominal_grid_gutter_alpha_ge_16_percent": 4.16,
+        "alpha_range": [
+          0,
+          253
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
+      }
+    },
+    {
+      "id": "MAPA-009",
+      "family": "Specialized biomes",
+      "title": "Desert cacti, succulents and dry vegetation",
+      "status": "generated",
+      "artwork_evidence": {
+        "provider": "ChatGPT image generation",
+        "generation_id": "75727355-d413-42d0-a46b-bab0582b9c56",
+        "conversation_file_id": "file_000000005d9481f68c8cadfbde016e7e",
+        "filename": "a_clean_png_asset_sheet_on_a_transparent_backgroun.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alpha_range": [
+          0,
+          254
+        ],
+        "sha256": "86bb1338e832f08cb610faf1465c793e3281739b8b451032b4078a55c1e99a23",
+        "review": "Standalone 4×3 sheet, 12 isolated desert plants, neutral gray composite inspected, alpha verified locally. Succulent rosettes and scrub are overhead or elevated; taller cacti retain oblique profiles and desert-spoon identification is uncertain. Placement suitability, extraction, edge cleanup, botanical identity and owner approval pending."
+      },
+      "brief": {
+        "batch": "MAPA-03",
+        "sequence": 2,
+        "name": "Desert cacti, succulents and dry vegetation",
+        "description": "Overhead desert plant sprites, realistic radial succulent rosettes, cactus crowns, dry thorny shrubs and grasses; dusty muted greens, ochres, subtle flowers. No sand tiles or side-view tall cacti.",
+        "cells_row_major": [
+          "Saguaro crown",
+          "Barrel cactus",
+          "Prickly pear cluster",
+          "Organ pipe cactus cluster",
+          "Agave rosette",
+          "Aloe rosette",
+          "Yucca crown",
+          "Desert spoon rosette",
+          "Creosote bush",
+          "Sagebrush clump",
+          "Tumbleweed",
+          "Dry desert grass tuft"
+        ]
+      },
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 30.473,
+        "fully_opaque_percent": 0,
+        "nominal_grid_gutter_alpha_ge_16_percent": 0.59,
+        "alpha_range": [
+          0,
+          254
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
+      }
+    },
+    {
+      "id": "MAPA-010",
+      "family": "Specialized biomes",
+      "title": "Swamp trees, mangroves and marsh plants",
+      "status": "revision_needed",
+      "artwork_evidence": {
+        "provider": "ChatGPT image generation",
+        "generation_id": "08dcffc6-b0c6-4aeb-9223-48f1eda73b08",
+        "conversation_file_id": "file_00000000383081f6b5022029f0ebd212",
+        "filename": "a_clean_png_style_illustration_sheet_on_a_transpar.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "sha256": "6de0cb13c447e6df0342db1497db7a011595d088a34febfc7b200af378c6eb17",
+        "review": "Correct subject and count, rejected by owner due to background and glow. Pixel inspection confirms failed alpha mask."
+      },
+      "brief": {
+        "batch": "MAPA-03",
+        "sequence": 3,
+        "name": "Swamp trees, mangroves and marsh plants",
+        "description": "Individually placeable wetland crowns and clumps from directly overhead; tangled roots, mossy branches, reeds and floating vegetation. No water background or shoreline tile.",
+        "cells_row_major": [
+          "Bald cypress crown",
+          "Tupelo crown",
+          "Red mangrove crown and roots",
+          "Black mangrove crown",
+          "Swamp willow crown",
+          "Spanish moss draped branches",
+          "Cattail clump",
+          "Bulrush clump",
+          "Marsh sedge clump",
+          "Water lily cluster",
+          "Lotus leaf cluster",
+          "Duckweed and floating plant patch"
+        ]
+      },
+      "alpha_qa": {
+        "status": "failed",
+        "alpha_range": [
+          27,
+          251
+        ],
+        "zero_alpha_percent": 0,
+        "fully_opaque_percent": 0,
+        "nominal_grid_gutter_median_alpha": 121,
+        "nominal_grid_gutter_alpha_ge_16_percent": 100
+      }
+    },
+    {
+      "id": "MAPA-011",
+      "family": "Specialized biomes",
+      "title": "Arctic, alpine and snow-covered vegetation",
+      "status": "described",
+      "artwork_evidence": null,
+      "brief": {
+        "batch": "MAPA-03",
+        "sequence": 4,
+        "name": "Arctic, alpine and snow-covered vegetation",
+        "description": "Aerial sprites of snow-laden trees and cold-climate plants with fine needles, ice crystals, white snow on branches, muted winter greens and natural sparse growth. No continuous snow surface.",
+        "cells_row_major": [
+          "Snow-covered spruce crown",
+          "Snow-covered pine crown",
+          "Snow-covered fir crown",
+          "Snow-covered leafless tree",
+          "Dwarf birch shrub",
+          "Arctic willow shrub",
+          "Alpine juniper shrub",
+          "Mountain heather patch",
+          "Arctic moss cushion",
+          "Lichen-covered low shrub",
+          "Alpine cushion plant",
+          "Frozen grass tussock"
+        ]
+      }
+    },
+    {
+      "id": "MAPA-012",
+      "family": "Specialized biomes",
+      "title": "Giant mushrooms, fungi and subterranean vegetation",
+      "status": "described",
+      "artwork_evidence": null,
+      "brief": {
+        "batch": "MAPA-03",
+        "sequence": 5,
+        "name": "Giant mushrooms, fungi and subterranean vegetation",
+        "description": "Detailed overhead fantasy fungal silhouettes from small clusters to giant caps; organic gills only at edges, natural earth tones and restrained bioluminescent color accents. No cave floor or scene.",
+        "cells_row_major": [
+          "Giant red spotted cap",
+          "Giant brown bolete cap",
+          "Giant pale umbrella cap",
+          "Cluster of purple mushrooms",
+          "Golden chanterelle cluster",
+          "Shelf fungus growth",
+          "Blue bioluminescent mushroom cluster",
+          "Green glowing fungal rosette",
+          "Puffball cluster",
+          "Coral fungus cluster",
+          "Mycelium tendril patch",
+          "Subterranean pale plant clump"
+        ]
+      }
+    },
+    {
+      "id": "MAPA-013",
+      "family": "Natural formations",
+      "title": "Individual boulders and rock clusters",
+      "status": "described",
+      "artwork_evidence": null,
+      "brief": {
+        "batch": "MAPA-03",
+        "sequence": 6,
+        "name": "Individual boulders and rock clusters",
+        "description": "Detailed overhead individual natural stones, distinct geological textures, irregular silhouettes and internal dimensional shading. No terrain tiles, surrounding gravel beds or cast shadows extending beyond the object.",
+        "cells_row_major": [
+          "Rounded granite boulder",
+          "Angular granite boulder",
+          "Flat slate slab",
+          "Layered sandstone boulder",
+          "Dark basalt boulder",
+          "Pale limestone boulder",
+          "Moss-covered boulder",
+          "Lichen-speckled boulder",
+          "Cracked boulder",
+          "Three-rock cluster",
+          "Small scattered stone cluster",
+          "Jagged rock outcrop"
+        ]
+      }
+    },
+    {
+      "id": "MAPA-014",
+      "family": "Natural formations",
+      "title": "Cliff outcrops and rock pillars",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-015",
+      "family": "Natural formations",
+      "title": "Crystals, geodes and exposed mineral formations",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-016",
+      "family": "Natural formations",
+      "title": "Small ponds, springs, pools and geysers",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-017",
+      "family": "Natural formations",
+      "title": "Animal nests, burrows, dens and webs",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-018",
+      "family": "Natural formations",
+      "title": "Natural arches, hollow trees and unusual formations",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-019",
+      "family": "Medieval and fantasy exteriors",
+      "title": "Cottages, cabins and rural homes",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-020",
+      "family": "Medieval and fantasy exteriors",
+      "title": "Townhouses and medieval commercial buildings",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-021",
+      "family": "Medieval and fantasy exteriors",
+      "title": "Market stalls, merchant carts and street vendors",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-022",
+      "family": "Medieval and fantasy exteriors",
+      "title": "Wells, fountains, troughs and public fixtures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-023",
+      "family": "Medieval and fantasy exteriors",
+      "title": "Watchtowers, gatehouses and guard posts",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-024",
+      "family": "Medieval and fantasy exteriors",
+      "title": "Windmills, watermills, barns and rural structures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-025",
+      "family": "Fantasy interiors",
+      "title": "Beds, wardrobes, dressers and bedroom furnishings",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-026",
+      "family": "Fantasy interiors",
+      "title": "Tables, chairs, benches and stools",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-027",
+      "family": "Fantasy interiors",
+      "title": "Tavern bars, dining furniture and serving stations",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-028",
+      "family": "Fantasy interiors",
+      "title": "Hearths, ovens, kitchen equipment and cookware",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-029",
+      "family": "Fantasy interiors",
+      "title": "Bookcases, desks, scroll racks and study furniture",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-030",
+      "family": "Fantasy interiors",
+      "title": "Chests, barrels, sacks, baskets and crates",
+      "status": "generated",
+      "brief": {
+        "batch": "MAPA-01",
+        "sequence": 2,
+        "name": "Fantasy storage",
+        "description": "Detailed timber, iron fittings, woven fibers, varied wood grain, weathered storage items consistent with existing fantasy props; overhead with restrained dimensional shading.",
+        "cells_row_major": [
+          "Ironbound chest",
+          "Wooden barrel",
+          "Small crate",
+          "Decorated trunk",
+          "Open treasure chest",
+          "Water cask",
+          "Large shipping crate",
+          "Stacked barrels",
+          "Grain sack",
+          "Stack of sacks",
+          "Woven basket",
+          "Pottery storage jars"
+        ]
+      },
+      "artwork_evidence": {
+        "generation_id": "5acfb902-a17f-45e8-abf7-732540436284",
+        "conversation_file_id": "file_00000000506881f6857d0b497162bb3d",
+        "filename": "a_highly_detailed_illustrated_game_asset_sheet_fa.png",
+        "sha256": "f3db66fd4241a905e7a279a1927fe890e2e1c699e895f35a741312a5cebbfeec",
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "mode": "RGBA",
+        "review": "Visually checked 12 isolated fantasy storage sprites; alpha channel range 0–255 confirmed. Actual row order differs from brief. Edge cleanup, extraction, perspective and owner acceptance pending.",
+        "actual_cells_row_major": [
+          "Closed ironbound chest",
+          "Open treasure chest",
+          "Grain sack",
+          "Barrel",
+          "Water cask",
+          "Stack of sacks",
+          "Small crate",
+          "Large shipping crate",
+          "Woven fruit basket",
+          "Decorated trunk",
+          "Stacked barrels",
+          "Pottery storage jars"
+        ]
+      },
+      "alpha_qa": {
+        "status": "requires_mask_review_and_opaque_core_normalization",
+        "zero_alpha_percent": 39.96,
+        "fully_opaque_percent": 0.074,
+        "nominal_grid_gutter_alpha_ge_16_percent": 0.09,
+        "alpha_range": [
+          0,
+          255
+        ],
+        "caveat": "Nominal gutter crossings can also be actual foliage; visual halo and silhouette inspection remains required."
+      }
+    },
+    {
+      "id": "MAPA-031",
+      "family": "Dungeons, castles and ruins",
+      "title": "Sarcophagi, coffins and burial monuments",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-032",
+      "family": "Dungeons, castles and ruins",
+      "title": "Statues, pedestals and decorative columns",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-033",
+      "family": "Dungeons, castles and ruins",
+      "title": "Thrones, altars, shrines and ceremonial furniture",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-034",
+      "family": "Dungeons, castles and ruins",
+      "title": "Prison cages, cells, restraints and dungeon furnishings",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-035",
+      "family": "Dungeons, castles and ruins",
+      "title": "Pressure plates, spike pits and mechanical trap props",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-036",
+      "family": "Dungeons, castles and ruins",
+      "title": "Collapsed masonry, ruined arches and abandoned structures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-037",
+      "family": "Historical architecture",
+      "title": "Ancient Egyptian buildings and monuments",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-038",
+      "family": "Historical architecture",
+      "title": "Classical Greek and Roman structures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-039",
+      "family": "Historical architecture",
+      "title": "Traditional East Asian architecture",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-040",
+      "family": "Historical architecture",
+      "title": "Traditional Middle Eastern and desert architecture",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-041",
+      "family": "Historical architecture",
+      "title": "Renaissance and early modern European architecture",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-042",
+      "family": "Historical architecture",
+      "title": "Western frontier buildings and settlement structures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-043",
+      "family": "Historical furnishings and equipment",
+      "title": "Ancient household furniture and amphorae",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-044",
+      "family": "Historical furnishings and equipment",
+      "title": "Traditional East Asian furnishings and decorations",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-045",
+      "family": "Historical furnishings and equipment",
+      "title": "Desert tents, carpets, market wares and furnishings",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-046",
+      "family": "Historical furnishings and equipment",
+      "title": "Victorian furniture and household decorations",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-047",
+      "family": "Historical furnishings and equipment",
+      "title": "Western saloon furniture and frontier equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-048",
+      "family": "Historical furnishings and equipment",
+      "title": "Historical workshops, printing presses and artisan tools",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-049",
+      "family": "Modern residential",
+      "title": "Sofas, recliners, coffee tables and living room furniture",
+      "status": "generated",
+      "brief": {
+        "batch": "MAPA-01",
+        "sequence": 3,
+        "name": "Modern living room furniture",
+        "description": "Contemporary upholstered furniture, realistic fabric/leather and cushions; true overhead or restrained elevated overhead, coordinated neutral colors, isolated footprint.",
+        "cells_row_major": [
+          "Fabric sofa",
+          "Leather sofa",
+          "Sectional sofa",
+          "Recliner",
+          "Round coffee table",
+          "Rectangular coffee table",
+          "Side table",
+          "Armchair",
+          "Bookshelf",
+          "Television stand",
+          "Floor lamp",
+          "Ottoman"
+        ]
+      },
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "EbcSYTFuuO",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "Visually inspected individual 1024×768 preview: 12 distinct modern furniture props, 4×3, isolated on checkerboard appearance. Full-resolution PNG bytes and alpha channel not independently verified; perspective, edge cleanup, extraction, map placement and owner approval pending."
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
+      }
+    },
+    {
+      "id": "MAPA-050",
+      "family": "Modern residential",
+      "title": "Modern bedroom furniture",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-051",
+      "family": "Modern residential",
+      "title": "Refrigerators, ovens, counters and kitchen appliances",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-052",
+      "family": "Modern residential",
+      "title": "Toilets, sinks, bathtubs and showers",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-053",
+      "family": "Modern residential",
+      "title": "Laundry equipment and household storage",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-054",
+      "family": "Modern residential",
+      "title": "Patio furniture, grills, pools and garden decorations",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-055",
+      "family": "Commercial and entertainment",
+      "title": "Retail shelving, checkout counters and display cases",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-056",
+      "family": "Commercial and entertainment",
+      "title": "Restaurant booths, tables and commercial kitchens",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-057",
+      "family": "Commercial and entertainment",
+      "title": "Bars, nightclubs and music venue equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-058",
+      "family": "Commercial and entertainment",
+      "title": "Hotel furniture, reception desks and lobby fixtures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-059",
+      "family": "Commercial and entertainment",
+      "title": "Casino tables, slot machines and gaming furniture",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-060",
+      "family": "Commercial and entertainment",
+      "title": "Theater seats, stages, instruments and cinema equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-061",
+      "family": "Institutional and public facilities",
+      "title": "Office desks, cubicles and conference furniture",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-062",
+      "family": "Institutional and public facilities",
+      "title": "School desks, lockers and classroom furnishings",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-063",
+      "family": "Institutional and public facilities",
+      "title": "Hospital beds, wheelchairs and medical equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-064",
+      "family": "Institutional and public facilities",
+      "title": "Scientific laboratory equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-065",
+      "family": "Institutional and public facilities",
+      "title": "Police stations, security desks and holding facilities",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-066",
+      "family": "Institutional and public facilities",
+      "title": "Library, museum and public exhibition furnishings",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-067",
+      "family": "Modern urban exteriors",
+      "title": "Houses, duplexes and suburban buildings",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-068",
+      "family": "Modern urban exteriors",
+      "title": "Apartment buildings and commercial rooftops",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-069",
+      "family": "Modern urban exteriors",
+      "title": "Skyscrapers, offices and major urban structures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-070",
+      "family": "Modern urban exteriors",
+      "title": "Streetlights, traffic signals, signs and hydrants",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-071",
+      "family": "Modern urban exteriors",
+      "title": "Bus shelters, benches, kiosks and dumpsters",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-072",
+      "family": "Modern urban exteriors",
+      "title": "Playground equipment, park fixtures and monuments",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-073",
+      "family": "Industrial equipment",
+      "title": "Lathes, drills, presses and workshop machinery",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-074",
+      "family": "Industrial equipment",
+      "title": "Factory robots and assembly-line equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-075",
+      "family": "Industrial equipment",
+      "title": "Industrial tanks, pumps and boilers",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-076",
+      "family": "Industrial equipment",
+      "title": "Pallets, shipping containers and cargo stacks",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-077",
+      "family": "Industrial equipment",
+      "title": "Forklifts, cranes and loading equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-078",
+      "family": "Industrial equipment",
+      "title": "Compressors, generators and heavy industrial equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-079",
+      "family": "Military and tactical scenery",
+      "title": "Sandbags, concrete barriers and barricades",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-080",
+      "family": "Military and tactical scenery",
+      "title": "Military tents and field command equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-081",
+      "family": "Military and tactical scenery",
+      "title": "Weapon lockers, equipment racks and ammunition crates",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-082",
+      "family": "Military and tactical scenery",
+      "title": "Guard towers, bunkers and fortified emplacements",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-083",
+      "family": "Military and tactical scenery",
+      "title": "Radar installations and communications equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-084",
+      "family": "Military and tactical scenery",
+      "title": "Military supply caches, field medical and logistics equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-085",
+      "family": "Steampunk and dieselpunk",
+      "title": "Steam engines, boilers and pressure machinery",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-086",
+      "family": "Steampunk and dieselpunk",
+      "title": "Clockwork devices, gears and mechanical apparatus",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-087",
+      "family": "Steampunk and dieselpunk",
+      "title": "Brass consoles, scientific instruments and equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-088",
+      "family": "Steampunk and dieselpunk",
+      "title": "Steampunk furniture and decorative fixtures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-089",
+      "family": "Steampunk and dieselpunk",
+      "title": "Steampunk buildings, towers and factory rooftops",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-090",
+      "family": "Steampunk and dieselpunk",
+      "title": "Dieselpunk engines, generators and heavy machinery",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-091",
+      "family": "Cyberpunk",
+      "title": "Neon storefronts, kiosks and vending machines",
+      "status": "generated",
+      "brief": {
+        "batch": "MAPA-01",
+        "sequence": 4,
+        "name": "Cyberpunk streetscape objects",
+        "description": "Futuristic street commerce fixtures with textured worn industrial materials, restrained neon accent lighting, detailed electronics and believable functions; overhead, no street surface or signage panels outside objects.",
+        "cells_row_major": [
+          "Neon vending machine",
+          "Automated dispenser",
+          "Cyberpunk storefront module",
+          "Capsule kiosk",
+          "Food kiosk",
+          "Street market stall",
+          "Repair booth",
+          "Holographic projector",
+          "Public terminal",
+          "Advertising pillar",
+          "Charging station",
+          "Street utility unit"
+        ]
+      },
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "CqWgnvKEEy",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "Visually inspected individual 1024×768 preview: 12 distinct cyberpunk streetscape fixtures, 4×3, isolated on checkerboard appearance. Full-resolution PNG bytes and alpha channel not independently verified; perspective, edge cleanup, extraction, map placement and owner approval pending."
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
+      }
+    },
+    {
+      "id": "MAPA-092",
+      "family": "Cyberpunk",
+      "title": "Cybernetic surgery and augmentation equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-093",
+      "family": "Cyberpunk",
+      "title": "Hacking stations, server racks and computer terminals",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-094",
+      "family": "Cyberpunk",
+      "title": "Holographic advertisements and projection devices",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-095",
+      "family": "Cyberpunk",
+      "title": "Cyberpunk furniture, capsule beds and living pods",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-096",
+      "family": "Cyberpunk",
+      "title": "Rooftop machinery, ventilation units and futuristic street fixtures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-097",
+      "family": "Science-fiction interiors",
+      "title": "Futuristic beds, sleeping pods and habitation furniture",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-098",
+      "family": "Science-fiction interiors",
+      "title": "Futuristic kitchens and automated food dispensers",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-099",
+      "family": "Science-fiction interiors",
+      "title": "Advanced laboratories and research apparatus",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-100",
+      "family": "Science-fiction interiors",
+      "title": "Medical scanners, regeneration tanks and surgery pods",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-101",
+      "family": "Science-fiction interiors",
+      "title": "Futuristic storage lockers, containers and equipment racks",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-102",
+      "family": "Science-fiction interiors",
+      "title": "Command consoles, computers and holographic tables",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-103",
+      "family": "Spacecraft and orbital stations",
+      "title": "Bridge stations, pilot seats and navigation consoles",
+      "status": "generated",
+      "brief": {
+        "batch": "MAPA-01",
+        "sequence": 5,
+        "name": "Spacecraft bridge equipment",
+        "description": "Detailed functional futuristic command stations for individually furnished deck plans; overhead, consistent cool alloy palette, restrained luminous screen accents, visible chair and console geometry, no crew or room background.",
+        "cells_row_major": [
+          "Captain's command chair",
+          "Pilot station",
+          "Copilot station",
+          "Operations desk",
+          "Science console",
+          "Communications console",
+          "Engineering console",
+          "Standing control terminal",
+          "Navigation table",
+          "Holographic display table",
+          "Tactical console",
+          "Secondary control station"
+        ]
+      },
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "jUI38s1LD0",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "Visually inspected individual 1024×768 preview: 12 distinct spacecraft command/bridge props, 4×3, isolated on checkerboard appearance. Full-resolution PNG bytes and alpha channel not independently verified; perspective, edge cleanup, extraction, map placement and owner approval pending."
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
+      }
+    },
+    {
+      "id": "MAPA-104",
+      "family": "Spacecraft and orbital stations",
+      "title": "Reactors, engines and drive-system components",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-105",
+      "family": "Spacecraft and orbital stations",
+      "title": "Life-support machinery and environmental equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-106",
+      "family": "Spacecraft and orbital stations",
+      "title": "Airlocks, docking collars and emergency hatches",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-107",
+      "family": "Spacecraft and orbital stations",
+      "title": "Escape pods, cryogenic chambers and crew capsules",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-108",
+      "family": "Spacecraft and orbital stations",
+      "title": "Hangar equipment, cargo loaders and shuttle maintenance fixtures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-109",
+      "family": "Mecha and advanced robotics",
+      "title": "Light and medium humanoid mecha",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-110",
+      "family": "Mecha and advanced robotics",
+      "title": "Heavy and specialized mecha",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-111",
+      "family": "Mecha and advanced robotics",
+      "title": "Quadrupedal, tracked and unconventional mecha",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-112",
+      "family": "Mecha and advanced robotics",
+      "title": "Ground robots, maintenance bots and industrial drones",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-113",
+      "family": "Mecha and advanced robotics",
+      "title": "Mecha repair platforms, gantries and support equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-114",
+      "family": "Mecha and advanced robotics",
+      "title": "Mecha cockpits, power units and interchangeable machinery",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-115",
+      "family": "Post-apocalyptic environments",
+      "title": "Abandoned and ruined residential buildings",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-116",
+      "family": "Post-apocalyptic environments",
+      "title": "Damaged factories and collapsed commercial buildings",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-117",
+      "family": "Post-apocalyptic environments",
+      "title": "Improvised shelters and scavenger settlements",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-118",
+      "family": "Post-apocalyptic environments",
+      "title": "Scrap piles, wreckage and salvage equipment",
+      "status": "generated",
+      "brief": {
+        "batch": "MAPA-01",
+        "sequence": 6,
+        "name": "Post-apocalyptic salvage",
+        "description": "Individual weathered salvage objects, damaged finishes, exposed wiring, rust and corrosion, distinct silhouettes, overhead and no surrounding ground.",
+        "cells_row_major": [
+          "Scrap metal heap",
+          "Discarded tires",
+          "Broken electronics",
+          "Crushed appliance",
+          "Broken generator",
+          "Salvaged engine",
+          "Fuel drum cluster",
+          "Dismantled machinery",
+          "Broken refrigerator",
+          "Damaged toolbox",
+          "Reclaimed pallet",
+          "Scavenger supplies"
+        ]
+      },
+      "artwork_evidence": {
+        "provider": "Magnific",
+        "provider_creation_id": "jUI38wOLD0",
+        "provider_status": "completed",
+        "requested_resolution": "2k",
+        "requested_aspect_ratio": "4:3",
+        "credits_reported": 0,
+        "review": "Visually inspected individual 1024×768 preview: 12 distinct post-apocalyptic salvage props, 4×3, isolated on checkerboard appearance. Full-resolution PNG bytes and alpha channel not independently verified; perspective, edge cleanup, extraction, map placement and owner approval pending."
+      },
+      "alpha_qa": {
+        "status": "unverified_full_resolution_alpha",
+        "detail": "Provider preview only; original PNG pixels must be inspected."
+      }
+    },
+    {
+      "id": "MAPA-119",
+      "family": "Post-apocalyptic environments",
+      "title": "Makeshift defenses and fortified scrap barriers",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-120",
+      "family": "Post-apocalyptic environments",
+      "title": "Damaged vehicles and abandoned transportation equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-121",
+      "family": "Horror and supernatural scenery",
+      "title": "Gothic furniture and haunted-house furnishings",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-122",
+      "family": "Horror and supernatural scenery",
+      "title": "Gravestones, mausoleums and cemetery decorations",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-123",
+      "family": "Horror and supernatural scenery",
+      "title": "Occult altars, ritual objects and summoning apparatus",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-124",
+      "family": "Horror and supernatural scenery",
+      "title": "Abandoned hospital and asylum equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-125",
+      "family": "Horror and supernatural scenery",
+      "title": "Bone piles, remnants, webs and disturbing environmental props",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-126",
+      "family": "Horror and supernatural scenery",
+      "title": "Corrupted vegetation, organic growths and supernatural formations",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-127",
+      "family": "Ground and air vehicles",
+      "title": "Wagons, carriages, carts and animal-drawn transportation",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-128",
+      "family": "Ground and air vehicles",
+      "title": "Cars, motorcycles and civilian vehicles",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-129",
+      "family": "Ground and air vehicles",
+      "title": "Trucks, buses and emergency vehicles",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-130",
+      "family": "Ground and air vehicles",
+      "title": "Military and armored vehicles",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-131",
+      "family": "Ground and air vehicles",
+      "title": "Aircraft, helicopters and aerial drones",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-132",
+      "family": "Ground and air vehicles",
+      "title": "Hovercars, futuristic ground vehicles and air taxis",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-133",
+      "family": "Maritime and rail transportation",
+      "title": "Rowboats, canoes, rafts and small sailing vessels",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-134",
+      "family": "Maritime and rail transportation",
+      "title": "Traditional sailing ships and pirate vessels",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-135",
+      "family": "Maritime and rail transportation",
+      "title": "Modern civilian boats and maritime vessels",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-136",
+      "family": "Maritime and rail transportation",
+      "title": "Submarines, submersibles and underwater vehicles",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-137",
+      "family": "Maritime and rail transportation",
+      "title": "Locomotives, passenger trains and freight cars",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-138",
+      "family": "Maritime and rail transportation",
+      "title": "Harbor cranes, shipyard equipment and dockside objects",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-139",
+      "family": "Agriculture and husbandry",
+      "title": "Vegetable beds, raised planters and cultivated plants",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-140",
+      "family": "Agriculture and husbandry",
+      "title": "Fruit trees, grapevines and agricultural vegetation",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-141",
+      "family": "Agriculture and husbandry",
+      "title": "Farm machinery, tools and harvesting equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-142",
+      "family": "Agriculture and husbandry",
+      "title": "Animal shelters, feeders, troughs and portable enclosures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-143",
+      "family": "Agriculture and husbandry",
+      "title": "Greenhouses, hydroponic racks and growing equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-144",
+      "family": "Agriculture and husbandry",
+      "title": "Beehives, aquaculture tanks and specialized husbandry equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-145",
+      "family": "Caves and mining",
+      "title": "Stalagmites, stalactites and cavern formations",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-146",
+      "family": "Caves and mining",
+      "title": "Exposed ore deposits, veins and crystal clusters",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-147",
+      "family": "Caves and mining",
+      "title": "Mine carts, hoists, ladders and shaft equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-148",
+      "family": "Caves and mining",
+      "title": "Mine support structures, braces and isolated partitions",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-149",
+      "family": "Caves and mining",
+      "title": "Drilling, excavation and extraction machinery",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-150",
+      "family": "Caves and mining",
+      "title": "Sorting, crushing, smelting and mineral-processing equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-151",
+      "family": "Bases and infrastructure",
+      "title": "Solar panels, wind turbines and power equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-152",
+      "family": "Bases and infrastructure",
+      "title": "Water tanks, wells, pumps and purification equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-153",
+      "family": "Bases and infrastructure",
+      "title": "Fuel reservoirs, batteries and energy-storage equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-154",
+      "family": "Bases and infrastructure",
+      "title": "Communications towers, antennas and sensor installations",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-155",
+      "family": "Bases and infrastructure",
+      "title": "Prefabricated buildings, portable facilities and modular shelters",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-156",
+      "family": "Bases and infrastructure",
+      "title": "Waste management, ventilation and environmental-control equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-157",
+      "family": "Magical and alien objects",
+      "title": "Magical portals, gateways and teleportation structures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-158",
+      "family": "Magical and alien objects",
+      "title": "Enchanting tables, alchemical devices and magical apparatus",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-159",
+      "family": "Magical and alien objects",
+      "title": "Magical crystals, floating objects and arcane machinery",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-160",
+      "family": "Magical and alien objects",
+      "title": "Alien trees and exotic plant forms",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-161",
+      "family": "Magical and alien objects",
+      "title": "Organic buildings and living architectural structures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-162",
+      "family": "Magical and alien objects",
+      "title": "Alien technology, machinery and unfamiliar artifacts",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-163",
+      "family": "Underwater and outer space",
+      "title": "Coral, anemones and underwater vegetation",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-164",
+      "family": "Underwater and outer space",
+      "title": "Underwater ruins, shipwrecks and submerged objects",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-165",
+      "family": "Underwater and outer space",
+      "title": "Underwater habitats and research equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-166",
+      "family": "Underwater and outer space",
+      "title": "Asteroids, meteor fragments and space debris",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-167",
+      "family": "Underwater and outer space",
+      "title": "Satellites, orbital installations and space-station exteriors",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-168",
+      "family": "Underwater and outer space",
+      "title": "Spacecraft exterior sprites and interstellar vessels",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-169",
+      "family": "Multiversal worlds",
+      "title": "Havalaea — distinctive forests and giant vegetation",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-170",
+      "family": "Multiversal worlds",
+      "title": "Furashin — canopy dwellings and elevated structures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-171",
+      "family": "Multiversal worlds",
+      "title": "Vertigon — megacity buildings and street infrastructure",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-172",
+      "family": "Multiversal worlds",
+      "title": "Black Vegas — orbital facilities and station objects",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-173",
+      "family": "Multiversal worlds",
+      "title": "Sharra — distinctive buildings, furnishings and infrastructure",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-174",
+      "family": "Multiversal worlds",
+      "title": "Skoaltarra — architecture, monuments and cultural objects",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-175",
+      "family": "Multiversal realities and travel",
+      "title": "Apogine and Silentium tunnel structures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-176",
+      "family": "Multiversal realities and travel",
+      "title": "Moving Loops — transit facilities and settlement objects",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-177",
+      "family": "Multiversal realities and travel",
+      "title": "Carnival — impossible attractions and surreal structures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-178",
+      "family": "Multiversal realities and travel",
+      "title": "Dreaming Realms — dream and nightmare objects",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-179",
+      "family": "Multiversal realities and travel",
+      "title": "Translimina — convergence and inter-reality structures",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-180",
+      "family": "Multiversal realities and travel",
+      "title": "Orilaun and Multiversal drive-related machinery",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-181",
+      "family": "Architectural objects across genres",
+      "title": "Doors, gates and freestanding entrances",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-182",
+      "family": "Architectural objects across genres",
+      "title": "Staircases, ladders and ramps",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-183",
+      "family": "Architectural objects across genres",
+      "title": "Wooden, stone, steel and futuristic bridges",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-184",
+      "family": "Architectural objects across genres",
+      "title": "Balconies, platforms and elevated walkways",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-185",
+      "family": "Architectural objects across genres",
+      "title": "Fences, freestanding partitions and railings",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-186",
+      "family": "Architectural objects across genres",
+      "title": "Roof modules, awnings, canopies and shelters",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-187",
+      "family": "Recreation, exploration and cartographic scenery",
+      "title": "Camping equipment, tents and expedition supplies",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-188",
+      "family": "Recreation, exploration and cartographic scenery",
+      "title": "Gymnasium and athletic training equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-189",
+      "family": "Recreation, exploration and cartographic scenery",
+      "title": "Sports facilities, goals, benches and arena furnishings",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-190",
+      "family": "Recreation, exploration and cartographic scenery",
+      "title": "Festivals, carnival stalls and fairground equipment",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-191",
+      "family": "Recreation, exploration and cartographic scenery",
+      "title": "Regional cartographic mountains, hills and forest stamps",
+      "status": "planned",
+      "artwork_evidence": null
+    },
+    {
+      "id": "MAPA-192",
+      "family": "Recreation, exploration and cartographic scenery",
+      "title": "Regional settlements, castles, landmarks and wonder stamps",
+      "status": "planned",
+      "artwork_evidence": null
+    }
+  ],
+  "batch_one_evidence": {
+    "state": "all_six_generated_pending_owner_review",
+    "accepted_as_generated": [
+      "MAPA-001",
+      "MAPA-030",
+      "MAPA-049",
+      "MAPA-091",
+      "MAPA-103",
+      "MAPA-118"
+    ],
+    "pending": [],
+    "rejected": [
+      {
+        "generation_id": "76b3b5d0-f516-47f9-9107-0bfe369ef210",
+        "reason": "Combined all six subjects in one composite instead of separate full-resolution sheet."
+      },
+      {
+        "generation_id": "032cb705-1173-4cab-a989-75670602ea4e",
+        "reason": "Repeated combined composite, with titles and borders; not individual overhead sheet."
+      },
+      {
+        "generation_id": "48c89dd1-6309-48f4-b1e8-5f9738648e27",
+        "reason": "Additional fantasy storage variant; superseded by selected cleaner storage sheet, not counted separately."
+      },
+      {
+        "generation_id": "269332f4-44ba-4149-bd74-21916ed86ad3",
+        "reason": "Off-brief repeated fantasy storage when modern furniture was requested; not counted."
+      }
+    ],
+    "blocker": null,
+    "prior_blocker": "Image generator repeated off-brief six-panel output despite explicit individual fantasy storage sheet request. No further blind retries; remaining briefs preserved.",
+    "recovery": "Used individually specified generation calls through alternate provider after repeated off-brief storage outputs. Four distinct creations completed and previews visually inspected. No reported external credits charged. Six subjects generated, no processed/integrated/approved claim."
+  },
+  "batch_two_evidence": {
+    "state": "six_individual_sheets_generated_pending_owner_review",
+    "sheet_ids": [
+      "MAPA-002",
+      "MAPA-003",
+      "MAPA-004",
+      "MAPA-005",
+      "MAPA-006",
+      "MAPA-007"
+    ],
+    "accepted_as_generated": [
+      "MAPA-002",
+      "MAPA-003",
+      "MAPA-004",
+      "MAPA-005",
+      "MAPA-006",
+      "MAPA-007"
+    ],
+    "pending": [],
+    "rejected": [
+      {
+        "generation_id": "8a9bb05b-25b3-4123-9521-63ba95bc8b1d",
+        "reason": "MAPA-005 correction request returned six-panel composite, not individual fern sheet."
+      },
+      {
+        "generation_id": "d54d08b4-78dd-4191-9636-602a917d871d",
+        "reason": "MAPA-005 correction retry returned conifer sheet instead of ferns."
+      },
+      {
+        "generation_id": "7877cce5-003a-4227-8446-6aca3648b585",
+        "reason": "MAPA-007 correction request returned conifer sheet instead of tropical canopies."
+      }
+    ],
+    "revision_needed": [],
+    "all_generated_outputs": [
+      "MAPA-002",
+      "MAPA-003",
+      "MAPA-004",
+      "MAPA-005",
+      "MAPA-006",
+      "MAPA-007"
+    ],
+    "blocker": null,
+    "next_action": "MAPA-03: write all six briefs for outstanding MAPA-008 through MAPA-013, then individually generate six sheets.",
+    "prior_blocker": {
+      "type": "provider_daily_free_limit",
+      "detail": "Targeted revised overhead prompt for MAPA-004 could not be submitted: provider reports today's free auto image-generation uses exhausted, no credits charged, reset 00:00 UTC. MAPA-005 and MAPA-007 corrections not submitted. Do not retry same free provider before reset."
+    },
+    "prior_blockers": [
+      {
+        "type": "provider_daily_free_limit",
+        "detail": "Targeted revised overhead prompt for MAPA-004 could not be submitted: provider reports today's free auto image-generation uses exhausted, no credits charged, reset 00:00 UTC. MAPA-005 and MAPA-007 corrections not submitted. Do not retry same free provider before reset."
+      },
+      {
+        "type": "provider_quota_and_native_subject_mismatch",
+        "detail": "Alternate provider daily free limit remains recorded for same date; not retried. Native image tool generated correct MAPA-004 revision, but then a six-panel composite and two off-brief conifer sheets despite individually specified subjects. No more blind retries."
+      }
+    ],
+    "additional_variants": [
+      {
+        "generation_id": "55fb3a38-0aa0-46ec-aaa1-995ae0d7507d",
+        "conversation_file_id": "file_000000005bf881f699c5a731d99233e8",
+        "sha256": "8e7307d00d0c2cc5c86d45cc5834d767ff2527da52af433ef58b25f496db6da6",
+        "disposition": "Alternate tropical canopy sheet; not counted as separate catalog entry."
+      }
+    ],
+    "recovery": "Native image generation with separate subject instructions and transparency requested returned separate overhead revisions for both remaining subjects; RGBA, exact dimensions and SHA256 checked locally, and neutral background composites inspected. Generated is not approved or integration verified."
+  },
+  "batch_three_evidence": {
+    "state": "partial_generation_alpha_quality_blocker",
+    "sheet_ids": [
+      "MAPA-008",
+      "MAPA-009",
+      "MAPA-010",
+      "MAPA-011",
+      "MAPA-012",
+      "MAPA-013"
+    ],
+    "accepted_as_generated": [
+      "MAPA-008",
+      "MAPA-009"
+    ],
+    "pending": [
+      "MAPA-011",
+      "MAPA-012",
+      "MAPA-013"
+    ],
+    "rejected": [
+      {
+        "generation_id": "34392361-eb41-46d7-a1f0-fd4653e8b72e",
+        "reason": "MAPA-009 request returned six-panel composite, not a standalone desert sprite sheet."
+      },
+      {
+        "generation_id": "be9f4792-6a58-4446-8367-e2850e7e2ef4",
+        "reason": "MAPA-009 retry returned unrelated tropical undergrowth variant."
+      },
+      {
+        "generation_id": "a4057cd8-3bd1-4b7c-83e3-60d4c8445db3",
+        "reason": "MAPA-009 retry returned another unrelated tropical undergrowth variant."
+      },
+      {
+        "generation_id": "e9beeaa3-88ad-484d-83a6-af9d1b991af2",
+        "reason": "MAPA-010 request returned desert duplicate."
+      },
+      {
+        "generation_id": "47b2dc8b-3394-4390-94ee-98d090abe840",
+        "reason": "Second MAPA-010 request returned another desert duplicate."
+      },
+      {
+        "generation_id": "a9410fae-89e8-46b5-b413-2968d731c0bd",
+        "reason": "Changed subject to MAPA-013 but output remained a desert duplicate."
+      }
+    ],
+    "blocker": {
+      "type": "alpha_mask_quality",
+      "detail": "Owner rejected MAPA-010 due to background bleed and glow; decoded RGBA pixel statistics confirm no fully transparent or fully opaque pixels. Prior sheets are also subject to stronger alpha QA. No further images generated in response to this quality correction."
+    },
+    "next_action": "Correct MAPA-010 as standalone artwork with fully opaque cores, zero-alpha background and no glow; validate actual pixel mask and composite on contrasting colors before counting usable artwork. Audit prior sheets before import; then resume MAPA-011–013.",
+    "prior_blockers": [
+      {
+        "type": "native_image_subject_mismatch",
+        "detail": "After producing correct MAPA-008, native generation produced a multi-sheet composite and two wrong-subject variants despite individual desert-only instructions. Transparency setting did not resolve subject selection. Alternate provider's previously observed daily quota reset has not occurred; no retry there. Stop blind retries and use a changed generation route/context after availability changes."
+      },
+      {
+        "type": "native_image_subject_mismatch_and_alternate_provider_quota",
+        "detail": "Re-entry produced one correct desert sheet, then three repeated desert variants in response to swamp and rock subjects. Alternate provider daily limit remains recorded as exhausted on 2026-11-25; no retry before reset. Further unchanged attempts are not authorized by the failure discipline."
+      }
+    ],
+    "revision_needed": [
+      "MAPA-010"
+    ]
+  },
+  "quality_gate": {
+    "owner_direction": "2026-11-25: no background bleed or glow around map assets. Objects must have solid opaque interiors and truly transparent surrounding space.",
+    "required_before_usable": "Inspect decoded RGBA pixels and compositing against light, dark and colored surfaces. Background and gutters alpha=0; opaque object interiors alpha=255; fractional alpha confined to narrow anti-aliased silhouette edges or intentional material translucency. No colored fringe, glow, ambient aura, external shadow or ground plane. Internal shading allowed. Preserve fine foliage through proper foreground masking and color decontamination, not blanket thresholding. Verify twelve independent silhouettes and crop margins. No usability or approval claim from alpha channel presence alone.",
+    "previous_generated_status": "Generated records prove image creation only. All prior sheets require this stronger gate before approval or import."
+  }
+}
