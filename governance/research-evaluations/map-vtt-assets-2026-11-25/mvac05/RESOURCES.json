@@ -1,0 +1,1361 @@
+[
+  {
+    "resourceId": "private-art",
+    "label": "Private-use artwork",
+    "resourceRevision": "1",
+    "mediaKind": "prop",
+    "visibility": "owner-policy",
+    "provenance": {
+      "creator": "Synthetic Studio",
+      "source": "synthetic:source:private-art",
+      "evidenceId": "synthetic:provenance:private-art",
+      "purchaseReceipt": null,
+      "importAccepted": true
+    },
+    "license": {
+      "id": "synthetic-license:private-art",
+      "revision": "1",
+      "state": "recorded",
+      "evidenceId": "synthetic:license:private-art",
+      "sourceReference": "synthetic:terms:private-art",
+      "textSHA256": "132ac9948d56b26d0c6832d3a3e436f592eda37458e894ba677921973338557a"
+    },
+    "capabilityEvidence": [
+      {
+        "evidenceId": "synthetic:cap:private-art:private-use",
+        "source": "synthetic-fixture",
+        "capability": "private-use",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:private-art:transform",
+        "source": "synthetic-fixture",
+        "capability": "transform",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:private-art:campaign-use",
+        "source": "synthetic-fixture",
+        "capability": "campaign-use",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:private-art:export",
+        "source": "synthetic-fixture",
+        "capability": "export",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:private-art:redistribution",
+        "source": "synthetic-fixture",
+        "capability": "redistribution",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:private-art:commercial-use",
+        "source": "synthetic-fixture",
+        "capability": "commercial-use",
+        "state": "unknown"
+      }
+    ],
+    "actionEvidence": [
+      {
+        "evidenceId": "synthetic:action:private-art:private-use",
+        "source": "synthetic-fixture",
+        "action": "private-use",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:private-art:modify",
+        "source": "synthetic-fixture",
+        "action": "modify",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:private-art:session-delivery",
+        "source": "synthetic-fixture",
+        "action": "session-delivery",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "campaign"
+        ],
+        "campaignId": "synthetic:campaign",
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:private-art:flattened-map-export",
+        "source": "synthetic-fixture",
+        "action": "flattened-map-export",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:private-art:raw-redistribution",
+        "source": "synthetic-fixture",
+        "action": "raw-redistribution",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      }
+    ],
+    "attribution": {
+      "state": "not-required",
+      "requiredFields": [],
+      "values": {}
+    },
+    "bytes": {
+      "state": "byte-present",
+      "sha256": "0c5b0737ce033dbde0d73a7e16983f58c46a2774417e7ab5103a47dbf5d4ac67",
+      "byteLength": 22
+    },
+    "parents": [],
+    "actualLicenseClearance": false
+  },
+  {
+    "resourceId": "map-output",
+    "label": "Finished-map output allowed; raw assets denied",
+    "resourceRevision": "1",
+    "mediaKind": "prop",
+    "visibility": "owner-policy",
+    "provenance": {
+      "creator": "Synthetic Studio",
+      "source": "synthetic:source:map-output",
+      "evidenceId": "synthetic:provenance:map-output",
+      "purchaseReceipt": null,
+      "importAccepted": true
+    },
+    "license": {
+      "id": "synthetic-license:map-output",
+      "revision": "1",
+      "state": "recorded",
+      "evidenceId": "synthetic:license:map-output",
+      "sourceReference": "synthetic:terms:map-output",
+      "textSHA256": "a528830ffea6c40e36ce0eb387607b4515feee86d4c061f3b2db5ac2a26a4f24"
+    },
+    "capabilityEvidence": [
+      {
+        "evidenceId": "synthetic:cap:map-output:private-use",
+        "source": "synthetic-fixture",
+        "capability": "private-use",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:map-output:transform",
+        "source": "synthetic-fixture",
+        "capability": "transform",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:map-output:campaign-use",
+        "source": "synthetic-fixture",
+        "capability": "campaign-use",
+        "state": "denied"
+      },
+      {
+        "evidenceId": "synthetic:cap:map-output:export",
+        "source": "synthetic-fixture",
+        "capability": "export",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:map-output:redistribution",
+        "source": "synthetic-fixture",
+        "capability": "redistribution",
+        "state": "denied"
+      },
+      {
+        "evidenceId": "synthetic:cap:map-output:commercial-use",
+        "source": "synthetic-fixture",
+        "capability": "commercial-use",
+        "state": "unknown"
+      }
+    ],
+    "actionEvidence": [
+      {
+        "evidenceId": "synthetic:action:map-output:private-use",
+        "source": "synthetic-fixture",
+        "action": "private-use",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:map-output:modify",
+        "source": "synthetic-fixture",
+        "action": "modify",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:map-output:session-delivery",
+        "source": "synthetic-fixture",
+        "action": "session-delivery",
+        "state": "denied",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "campaign"
+        ],
+        "campaignId": "synthetic:campaign",
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:map-output:flattened-map-export",
+        "source": "synthetic-fixture",
+        "action": "flattened-map-export",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:map-output:raw-redistribution",
+        "source": "synthetic-fixture",
+        "action": "raw-redistribution",
+        "state": "denied",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      }
+    ],
+    "attribution": {
+      "state": "not-required",
+      "requiredFields": [],
+      "values": {}
+    },
+    "bytes": {
+      "state": "byte-present",
+      "sha256": "0c5b0737ce033dbde0d73a7e16983f58c46a2774417e7ab5103a47dbf5d4ac67",
+      "byteLength": 22
+    },
+    "parents": [],
+    "actualLicenseClearance": false
+  },
+  {
+    "resourceId": "campaign-art",
+    "label": "Campaign-scoped delivery",
+    "resourceRevision": "1",
+    "mediaKind": "prop",
+    "visibility": "owner-policy",
+    "provenance": {
+      "creator": "Synthetic Studio",
+      "source": "synthetic:source:campaign-art",
+      "evidenceId": "synthetic:provenance:campaign-art",
+      "purchaseReceipt": null,
+      "importAccepted": true
+    },
+    "license": {
+      "id": "synthetic-license:campaign-art",
+      "revision": "1",
+      "state": "recorded",
+      "evidenceId": "synthetic:license:campaign-art",
+      "sourceReference": "synthetic:terms:campaign-art",
+      "textSHA256": "8407d45013eb6698ce5215a38eb6a9b50057be39e6b3660e6ca257a8686c249d"
+    },
+    "capabilityEvidence": [
+      {
+        "evidenceId": "synthetic:cap:campaign-art:private-use",
+        "source": "synthetic-fixture",
+        "capability": "private-use",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:campaign-art:transform",
+        "source": "synthetic-fixture",
+        "capability": "transform",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:campaign-art:campaign-use",
+        "source": "synthetic-fixture",
+        "capability": "campaign-use",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:campaign-art:export",
+        "source": "synthetic-fixture",
+        "capability": "export",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:campaign-art:redistribution",
+        "source": "synthetic-fixture",
+        "capability": "redistribution",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:campaign-art:commercial-use",
+        "source": "synthetic-fixture",
+        "capability": "commercial-use",
+        "state": "unknown"
+      }
+    ],
+    "actionEvidence": [
+      {
+        "evidenceId": "synthetic:action:campaign-art:private-use",
+        "source": "synthetic-fixture",
+        "action": "private-use",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:campaign-art:modify",
+        "source": "synthetic-fixture",
+        "action": "modify",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:campaign-art:session-delivery",
+        "source": "synthetic-fixture",
+        "action": "session-delivery",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "campaign"
+        ],
+        "campaignId": "synthetic:campaign",
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:campaign-art:flattened-map-export",
+        "source": "synthetic-fixture",
+        "action": "flattened-map-export",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:campaign-art:raw-redistribution",
+        "source": "synthetic-fixture",
+        "action": "raw-redistribution",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      }
+    ],
+    "attribution": {
+      "state": "not-required",
+      "requiredFields": [],
+      "values": {}
+    },
+    "bytes": {
+      "state": "byte-present",
+      "sha256": "0c5b0737ce033dbde0d73a7e16983f58c46a2774417e7ab5103a47dbf5d4ac67",
+      "byteLength": 22
+    },
+    "parents": [],
+    "actualLicenseClearance": false
+  },
+  {
+    "resourceId": "credited-art",
+    "label": "Reusable artwork with attribution",
+    "resourceRevision": "1",
+    "mediaKind": "prop",
+    "visibility": "owner-policy",
+    "provenance": {
+      "creator": "Synthetic Studio",
+      "source": "synthetic:source:credited-art",
+      "evidenceId": "synthetic:provenance:credited-art",
+      "purchaseReceipt": null,
+      "importAccepted": true
+    },
+    "license": {
+      "id": "synthetic-license:credited-art",
+      "revision": "1",
+      "state": "recorded",
+      "evidenceId": "synthetic:license:credited-art",
+      "sourceReference": "synthetic:terms:credited-art",
+      "textSHA256": "91c36bb3f4ebc9776dc8042f4ee54e5fe569061201170c3bb477ed27588ce630"
+    },
+    "capabilityEvidence": [
+      {
+        "evidenceId": "synthetic:cap:credited-art:private-use",
+        "source": "synthetic-fixture",
+        "capability": "private-use",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:credited-art:transform",
+        "source": "synthetic-fixture",
+        "capability": "transform",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:credited-art:campaign-use",
+        "source": "synthetic-fixture",
+        "capability": "campaign-use",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:credited-art:export",
+        "source": "synthetic-fixture",
+        "capability": "export",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:credited-art:redistribution",
+        "source": "synthetic-fixture",
+        "capability": "redistribution",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:credited-art:commercial-use",
+        "source": "synthetic-fixture",
+        "capability": "commercial-use",
+        "state": "allowed"
+      }
+    ],
+    "actionEvidence": [
+      {
+        "evidenceId": "synthetic:action:credited-art:private-use",
+        "source": "synthetic-fixture",
+        "action": "private-use",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:credited-art:modify",
+        "source": "synthetic-fixture",
+        "action": "modify",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:credited-art:session-delivery",
+        "source": "synthetic-fixture",
+        "action": "session-delivery",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "campaign"
+        ],
+        "campaignId": "synthetic:campaign",
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:credited-art:flattened-map-export",
+        "source": "synthetic-fixture",
+        "action": "flattened-map-export",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:credited-art:raw-redistribution",
+        "source": "synthetic-fixture",
+        "action": "raw-redistribution",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      }
+    ],
+    "attribution": {
+      "state": "required",
+      "requiredFields": [
+        "creator",
+        "title",
+        "source",
+        "license",
+        "changes"
+      ],
+      "values": {
+        "creator": "Synthetic Studio",
+        "title": "Test lantern",
+        "source": "synthetic:source:credited-art",
+        "license": "Synthetic attribution terms v1",
+        "changes": "Reduced to a map symbol"
+      }
+    },
+    "bytes": {
+      "state": "byte-present",
+      "sha256": "0c5b0737ce033dbde0d73a7e16983f58c46a2774417e7ab5103a47dbf5d4ac67",
+      "byteLength": 22
+    },
+    "parents": [],
+    "actualLicenseClearance": false
+  },
+  {
+    "resourceId": "unknown-sheet",
+    "label": "Imported sheet; license unknown",
+    "resourceRevision": "1",
+    "mediaKind": "prop",
+    "visibility": "owner-policy",
+    "provenance": {
+      "creator": null,
+      "source": "synthetic:source:unknown-sheet",
+      "evidenceId": "synthetic:provenance:unknown-sheet",
+      "purchaseReceipt": "synthetic:purchase:does-not-grant-rights",
+      "importAccepted": true
+    },
+    "license": {
+      "id": "synthetic-license:unknown-sheet",
+      "revision": "1",
+      "state": "unknown",
+      "evidenceId": "synthetic:license:unknown-sheet",
+      "sourceReference": "synthetic:terms:unknown-sheet",
+      "textSHA256": "e69725c0cda16b9fb1dd110aa3d37c2fb1d5556ecf700429cd11790201f94651"
+    },
+    "capabilityEvidence": [
+      {
+        "evidenceId": "synthetic:cap:unknown-sheet:private-use",
+        "source": "synthetic-fixture",
+        "capability": "private-use",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:unknown-sheet:transform",
+        "source": "synthetic-fixture",
+        "capability": "transform",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:unknown-sheet:campaign-use",
+        "source": "synthetic-fixture",
+        "capability": "campaign-use",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:unknown-sheet:export",
+        "source": "synthetic-fixture",
+        "capability": "export",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:unknown-sheet:redistribution",
+        "source": "synthetic-fixture",
+        "capability": "redistribution",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:unknown-sheet:commercial-use",
+        "source": "synthetic-fixture",
+        "capability": "commercial-use",
+        "state": "unknown"
+      }
+    ],
+    "actionEvidence": [
+      {
+        "evidenceId": "synthetic:action:unknown-sheet:private-use",
+        "source": "synthetic-fixture",
+        "action": "private-use",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:unknown-sheet:modify",
+        "source": "synthetic-fixture",
+        "action": "modify",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:unknown-sheet:session-delivery",
+        "source": "synthetic-fixture",
+        "action": "session-delivery",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "campaign"
+        ],
+        "campaignId": "synthetic:campaign",
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:unknown-sheet:flattened-map-export",
+        "source": "synthetic-fixture",
+        "action": "flattened-map-export",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:unknown-sheet:raw-redistribution",
+        "source": "synthetic-fixture",
+        "action": "raw-redistribution",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      }
+    ],
+    "attribution": {
+      "state": "not-required",
+      "requiredFields": [],
+      "values": {}
+    },
+    "bytes": {
+      "state": "byte-present",
+      "sha256": "0c5b0737ce033dbde0d73a7e16983f58c46a2774417e7ab5103a47dbf5d4ac67",
+      "byteLength": 22
+    },
+    "parents": [],
+    "actualLicenseClearance": false
+  },
+  {
+    "resourceId": "provider-reference",
+    "label": "Provider reference; original bytes absent",
+    "resourceRevision": "1",
+    "mediaKind": "prop",
+    "visibility": "owner-policy",
+    "provenance": {
+      "creator": "Synthetic Studio",
+      "source": "synthetic:source:provider-reference",
+      "evidenceId": "synthetic:provenance:provider-reference",
+      "purchaseReceipt": null,
+      "importAccepted": true
+    },
+    "license": {
+      "id": "synthetic-license:provider-reference",
+      "revision": "1",
+      "state": "recorded",
+      "evidenceId": "synthetic:license:provider-reference",
+      "sourceReference": "synthetic:terms:provider-reference",
+      "textSHA256": "6c528f44fc2681adbe18664e52ba83a5b4eddba90e0839544cb26a96890565f3"
+    },
+    "capabilityEvidence": [
+      {
+        "evidenceId": "synthetic:cap:provider-reference:private-use",
+        "source": "synthetic-fixture",
+        "capability": "private-use",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:provider-reference:transform",
+        "source": "synthetic-fixture",
+        "capability": "transform",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:provider-reference:campaign-use",
+        "source": "synthetic-fixture",
+        "capability": "campaign-use",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:provider-reference:export",
+        "source": "synthetic-fixture",
+        "capability": "export",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:provider-reference:redistribution",
+        "source": "synthetic-fixture",
+        "capability": "redistribution",
+        "state": "unknown"
+      },
+      {
+        "evidenceId": "synthetic:cap:provider-reference:commercial-use",
+        "source": "synthetic-fixture",
+        "capability": "commercial-use",
+        "state": "unknown"
+      }
+    ],
+    "actionEvidence": [
+      {
+        "evidenceId": "synthetic:action:provider-reference:private-use",
+        "source": "synthetic-fixture",
+        "action": "private-use",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:provider-reference:modify",
+        "source": "synthetic-fixture",
+        "action": "modify",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:provider-reference:session-delivery",
+        "source": "synthetic-fixture",
+        "action": "session-delivery",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "campaign"
+        ],
+        "campaignId": "synthetic:campaign",
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:provider-reference:flattened-map-export",
+        "source": "synthetic-fixture",
+        "action": "flattened-map-export",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:provider-reference:raw-redistribution",
+        "source": "synthetic-fixture",
+        "action": "raw-redistribution",
+        "state": "unknown",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "noncommercial",
+        "validUntil": null
+      }
+    ],
+    "attribution": {
+      "state": "not-required",
+      "requiredFields": [],
+      "values": {}
+    },
+    "bytes": {
+      "state": "reference-only",
+      "sha256": null,
+      "byteLength": null
+    },
+    "parents": [],
+    "actualLicenseClearance": false
+  },
+  {
+    "resourceId": "gm-handout",
+    "label": "GM-only handout",
+    "resourceRevision": "1",
+    "mediaKind": "prop",
+    "visibility": "gm-only",
+    "provenance": {
+      "creator": "Synthetic Studio",
+      "source": "synthetic:source:gm-handout",
+      "evidenceId": "synthetic:provenance:gm-handout",
+      "purchaseReceipt": null,
+      "importAccepted": true
+    },
+    "license": {
+      "id": "synthetic-license:gm-handout",
+      "revision": "1",
+      "state": "recorded",
+      "evidenceId": "synthetic:license:gm-handout",
+      "sourceReference": "synthetic:terms:gm-handout",
+      "textSHA256": "4b97049a5c4c7dcaaf7922ee84070d0b5f8e286953a3cfd3417a9460ee071a3b"
+    },
+    "capabilityEvidence": [
+      {
+        "evidenceId": "synthetic:cap:gm-handout:private-use",
+        "source": "synthetic-fixture",
+        "capability": "private-use",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:gm-handout:transform",
+        "source": "synthetic-fixture",
+        "capability": "transform",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:gm-handout:campaign-use",
+        "source": "synthetic-fixture",
+        "capability": "campaign-use",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:gm-handout:export",
+        "source": "synthetic-fixture",
+        "capability": "export",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:gm-handout:redistribution",
+        "source": "synthetic-fixture",
+        "capability": "redistribution",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:gm-handout:commercial-use",
+        "source": "synthetic-fixture",
+        "capability": "commercial-use",
+        "state": "allowed"
+      }
+    ],
+    "actionEvidence": [
+      {
+        "evidenceId": "synthetic:action:gm-handout:private-use",
+        "source": "synthetic-fixture",
+        "action": "private-use",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:gm-handout:modify",
+        "source": "synthetic-fixture",
+        "action": "modify",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:gm-handout:session-delivery",
+        "source": "synthetic-fixture",
+        "action": "session-delivery",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "campaign"
+        ],
+        "campaignId": "synthetic:campaign",
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:gm-handout:flattened-map-export",
+        "source": "synthetic-fixture",
+        "action": "flattened-map-export",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:gm-handout:raw-redistribution",
+        "source": "synthetic-fixture",
+        "action": "raw-redistribution",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      }
+    ],
+    "attribution": {
+      "state": "not-required",
+      "requiredFields": [],
+      "values": {}
+    },
+    "bytes": {
+      "state": "byte-present",
+      "sha256": "0c5b0737ce033dbde0d73a7e16983f58c46a2774417e7ab5103a47dbf5d4ac67",
+      "byteLength": 22
+    },
+    "parents": [],
+    "actualLicenseClearance": false
+  },
+  {
+    "resourceId": "derived-art",
+    "label": "Derivative with a private-only parent",
+    "resourceRevision": "1",
+    "mediaKind": "prop",
+    "visibility": "owner-policy",
+    "provenance": {
+      "creator": "Synthetic Studio",
+      "source": "synthetic:source:derived-art",
+      "evidenceId": "synthetic:provenance:derived-art",
+      "purchaseReceipt": null,
+      "importAccepted": true
+    },
+    "license": {
+      "id": "synthetic-license:derived-art",
+      "revision": "1",
+      "state": "recorded",
+      "evidenceId": "synthetic:license:derived-art",
+      "sourceReference": "synthetic:terms:derived-art",
+      "textSHA256": "f5f037cee7fb4e8f8f7b3afba65d6c8205de2b8bccd6c4697d71e84b5d3f02e8"
+    },
+    "capabilityEvidence": [
+      {
+        "evidenceId": "synthetic:cap:derived-art:private-use",
+        "source": "synthetic-fixture",
+        "capability": "private-use",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:derived-art:transform",
+        "source": "synthetic-fixture",
+        "capability": "transform",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:derived-art:campaign-use",
+        "source": "synthetic-fixture",
+        "capability": "campaign-use",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:derived-art:export",
+        "source": "synthetic-fixture",
+        "capability": "export",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:derived-art:redistribution",
+        "source": "synthetic-fixture",
+        "capability": "redistribution",
+        "state": "allowed"
+      },
+      {
+        "evidenceId": "synthetic:cap:derived-art:commercial-use",
+        "source": "synthetic-fixture",
+        "capability": "commercial-use",
+        "state": "allowed"
+      }
+    ],
+    "actionEvidence": [
+      {
+        "evidenceId": "synthetic:action:derived-art:private-use",
+        "source": "synthetic-fixture",
+        "action": "private-use",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:derived-art:modify",
+        "source": "synthetic-fixture",
+        "action": "modify",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:derived-art:session-delivery",
+        "source": "synthetic-fixture",
+        "action": "session-delivery",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "campaign"
+        ],
+        "campaignId": "synthetic:campaign",
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:derived-art:flattened-map-export",
+        "source": "synthetic-fixture",
+        "action": "flattened-map-export",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:derived-art:raw-redistribution",
+        "source": "synthetic-fixture",
+        "action": "raw-redistribution",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      }
+    ],
+    "attribution": {
+      "state": "not-required",
+      "requiredFields": [],
+      "values": {}
+    },
+    "bytes": {
+      "state": "byte-present",
+      "sha256": "0c5b0737ce033dbde0d73a7e16983f58c46a2774417e7ab5103a47dbf5d4ac67",
+      "byteLength": 22
+    },
+    "parents": [
+      {
+        "resourceId": "private-art",
+        "resourceRevision": "1",
+        "licenseRevision": "1"
+      }
+    ],
+    "actualLicenseClearance": false
+  },
+  {
+    "resourceId": "revoked-art",
+    "label": "Revoked grant",
+    "resourceRevision": "1",
+    "mediaKind": "prop",
+    "visibility": "owner-policy",
+    "provenance": {
+      "creator": "Synthetic Studio",
+      "source": "synthetic:source:revoked-art",
+      "evidenceId": "synthetic:provenance:revoked-art",
+      "purchaseReceipt": null,
+      "importAccepted": true
+    },
+    "license": {
+      "id": "synthetic-license:revoked-art",
+      "revision": "1",
+      "state": "recorded",
+      "evidenceId": "synthetic:license:revoked-art",
+      "sourceReference": "synthetic:terms:revoked-art",
+      "textSHA256": "5b845f9cb0c09409eb9b4d5b3e4eafd0f8662e26278898b9d9279321beaa20ca"
+    },
+    "capabilityEvidence": [
+      {
+        "evidenceId": "synthetic:cap:revoked-art:private-use",
+        "source": "synthetic-fixture",
+        "capability": "private-use",
+        "state": "revoked"
+      },
+      {
+        "evidenceId": "synthetic:cap:revoked-art:transform",
+        "source": "synthetic-fixture",
+        "capability": "transform",
+        "state": "revoked"
+      },
+      {
+        "evidenceId": "synthetic:cap:revoked-art:campaign-use",
+        "source": "synthetic-fixture",
+        "capability": "campaign-use",
+        "state": "revoked"
+      },
+      {
+        "evidenceId": "synthetic:cap:revoked-art:export",
+        "source": "synthetic-fixture",
+        "capability": "export",
+        "state": "revoked"
+      },
+      {
+        "evidenceId": "synthetic:cap:revoked-art:redistribution",
+        "source": "synthetic-fixture",
+        "capability": "redistribution",
+        "state": "revoked"
+      },
+      {
+        "evidenceId": "synthetic:cap:revoked-art:commercial-use",
+        "source": "synthetic-fixture",
+        "capability": "commercial-use",
+        "state": "revoked"
+      }
+    ],
+    "actionEvidence": [
+      {
+        "evidenceId": "synthetic:action:revoked-art:private-use",
+        "source": "synthetic-fixture",
+        "action": "private-use",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:revoked-art:modify",
+        "source": "synthetic-fixture",
+        "action": "modify",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "self"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:revoked-art:session-delivery",
+        "source": "synthetic-fixture",
+        "action": "session-delivery",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "campaign"
+        ],
+        "campaignId": "synthetic:campaign",
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:revoked-art:flattened-map-export",
+        "source": "synthetic-fixture",
+        "action": "flattened-map-export",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      },
+      {
+        "evidenceId": "synthetic:action:revoked-art:raw-redistribution",
+        "source": "synthetic-fixture",
+        "action": "raw-redistribution",
+        "state": "allowed",
+        "resourceRevision": "1",
+        "licenseRevision": "1",
+        "subjectId": "synthetic:owner",
+        "audiences": [
+          "public"
+        ],
+        "campaignId": null,
+        "commercial": "any",
+        "validUntil": null
+      }
+    ],
+    "attribution": {
+      "state": "not-required",
+      "requiredFields": [],
+      "values": {}
+    },
+    "bytes": {
+      "state": "byte-present",
+      "sha256": "0c5b0737ce033dbde0d73a7e16983f58c46a2774417e7ab5103a47dbf5d4ac67",
+      "byteLength": 22
+    },
+    "parents": [],
+    "actualLicenseClearance": false
+  }
+]
