@@ -1,0 +1,1 @@
+clearCaches:()=>{ticket++;release();usePreviews=false;for(const c of sources.values()){c.width=0;c.height=0;}for(const p of previews.values()){p.image.width=0;p.image.height=0;}sources.clear();previews.clear();window.MVAC09_REFRESH?.();return{cachedSources:0,cachedPreviews:0};},
