@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "research-evaluation",
+  "work_item_id": "MVAC-04",
+  "record_date": "2026-11-25",
+  "status": "implemented_validation_partial",
+  "milestone": "standalone_prototype_implementation_delivered",
+  "owner_authority": "User: Then if you can move to the next step, do so. This follows clarification that the deliverable remains one self-contained HTML; browser coverage remains open.",
+  "canonical_selector": "operations/CURRENT.json",
+  "selector_changed": false,
+  "persistent_lane_changed": false,
+  "product_changed": false,
+  "standalone_code_changed": true,
+  "prototype_complete": true,
+  "deliverable_complete": true,
+  "implementation_complete": false,
+  "single_file_requirement_preserved": true,
+  "artifacts": [
+    {
+      "filename": "Multiversal_MVAC04_Selection_History_Checkpoints.html",
+      "bytes": 11395051,
+      "sha256": "aa2b422c31b22c98cc34a2e62adec626c0b19cb8504540c09a0704614e184cd3",
+      "library_file_id": "libfile_b298ff4606748191a79afd5a436b213b"
+    },
+    {
+      "filename": "Multiversal_MVAC04_Group_Move_Before_After.png",
+      "bytes": 390925,
+      "sha256": "bef9960e67d864035362645415775fa8ba1c809a3e63c4a7d8a10613686dfc98",
+      "library_file_id": "libfile_d4ee37e6fe4c819184580fcdf2050b48"
+    },
+    {
+      "filename": "Multiversal_MVAC04_Source_and_Evidence.zip",
+      "bytes": 9464583,
+      "sha256": "59eaae68e5e819d6ac023760ab08c569063ab5afbf789f08cd2c2c1797e08889",
+      "library_file_id": "libfile_b3076a5bd7a081919de9c883fc4b486c"
+    },
+    {
+      "filename": "Multiversal_MVAC04_Implementation_and_Validation.md",
+      "bytes": 7281,
+      "sha256": "48bc74865f8148361954bdad0aabfa2e9106b4795228ad708b3da84afc81bf87",
+      "library_file_id": "libfile_a95c0cb113a88191acdab40a7001be1d"
+    }
+  ],
+  "verification_summary": {
+    "scope": "Actual delivered HTML handlers in controlled DOM with native canvas renderer; no real-browser certification",
+    "passed": 33,
+    "failed": 0,
+    "source": "single self-contained HTML; all scripts/artwork/data inline",
+    "open_validation": [
+      "Actual browser text undo and Escape/focus restoration",
+      "Desktop/narrow layout and touch/pointer usability",
+      "Real authenticated clients and accepted gameplay event boundaries"
+    ],
+    "note": "User explicitly authorized advancing beyond MVAC-03 browser gap. That gap remains open; these are source/controlled-runtime results only."
+  },
+  "regression_summary": {
+    "scope": "Actual shell handlers + native renderer in controlled DOM and @napi-rs/canvas; browser behavior/layout/accessibility NOT proved",
+    "passed": 48,
+    "failed": 0,
+    "browser_validation": {
+      "status": "BLOCKED_ENVIRONMENT",
+      "local": "Chromium launcher exists but executable /usr/lib/chromium/chromium is missing",
+      "extension": "Originating connected browser context unavailable",
+      "cloud": "Local file URL rejected by browser URL policy; no workaround attempted"
+    },
+    "full_workflow_acceptance": "J01/J03/J10 partial local evidence only; all 40 real-boundary tasks remain NOT_RUN"
+  },
+  "full_workflow_acceptance": "40 NOT_RUN; J03/J10/J11 have partial local evidence only",
+  "MVAC03_browser_gap": "Retained, not bypassed or certified. Owner-authorized prototype implementation proceeds independently.",
+  "next_recommendation": "MVAC-05, asset provenance and action-specific rights design; MVAC-03/04 browser validation remains open.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "material_progress_seq": 3,
+    "last_material_progress": "Single-file prototype built; 81 local checks passed; artifacts saved; acceptance boundary recorded",
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "completion_scope": "bounded standalone implementation/source-level validation only; full step acceptance remains partial"
+  },
+  "publication_note": "Exact-head PR/queue evidence is GitHub-owned. No app publication or real-browser acceptance claim."
+}
