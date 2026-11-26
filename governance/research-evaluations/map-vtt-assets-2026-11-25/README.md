@@ -54,3 +54,8 @@ See [the report](mvac10/package/MVAC10_REPORT.md), [catalog metadata](mvac10/pac
 ## MVAC-11 optional pack activation and recovery
 
 See [the report](mvac11/package/MVAC11_REPORT.md), [374 local checks](mvac11/package/VERIFICATION.json), [render/version evidence](mvac11/package/RENDER_EVIDENCE.json) and [receipt](mvac11/CYCLE_RECORD.json). Actual local SQLite failure/restart proof is distinct from unverified browser IndexedDB durability. Optional user data never becomes a requirement for opening the embedded maps. MVAC-11 remains implemented_validation_partial. Next: MVAC-12 storage/cache separation and reference-aware cleanup.
+
+
+## MVAC-12 storage and map continuity
+
+See [report](mvac12/package/MVAC12_REPORT.md), [223 local checks](mvac12/package/VERIFICATION.json), [artifact audit](mvac12/package/ARTIFACT_AUDIT.json) and [receipt](mvac12/CYCLE_RECORD.json). Optional originals survive disposable-preview clearing; reference/rollback protection and two-pass GC are tested with actual SQLite failure/restart boundaries. Off-map roads/landscape authoring and native crop/export are implemented. All embedded artwork is retained. Browser/device/GPU/cross-tenant acceptance remains open. Status implemented_validation_partial; next MVAC-13 portable saves/backup/restore/legacy migration.

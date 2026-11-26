@@ -4,7 +4,7 @@
   "title": "Map Maker, VTT and Asset Convergence Gap Plan",
   "record_date": "2026-11-25",
   "lane": "research-evaluation",
-  "status": "optional_pack_prototype_delivered_with_real_local_storage_proof_and_browser_acceptance_open",
+  "status": "storage_and_map_continuity_prototype_delivered_with_browser_acceptance_open",
   "canonical_selector": "operations/CURRENT.json",
   "authority": "Owner requested research, combined study, gap steps and OPS5 logging. No product implementation or selector mutation in this record.",
   "baseline": "UHT28 standalone HTML, not installed app parity",
@@ -416,7 +416,7 @@
       "title": "Separate durable storage, caches and garbage collection",
       "phase": "C \u2014 library and lifecycle",
       "scope": "shared design and adapter",
-      "status": "planned_not_selected",
+      "status": "implemented_validation_partial",
       "implementation_complete": false,
       "dependencies": [
         "MVAC-06",
@@ -439,7 +439,17 @@
       "roadmap_coverage": [
         "MME-06"
       ],
-      "authority": "Planning only. CURRENT-backed selection and applicable existing owner authority required before product implementation."
+      "authority": "Planning only. CURRENT-backed selection and applicable existing owner authority required before product implementation.",
+      "completion_scope": "Standalone split-store originals/cache adapter and map-edge correction delivered: 223 local checks, actual SQLite process/quota/regeneration proof, native canvas/save/export. Browser IndexedDB durability/migration/eviction, physical devices, native/GPU cache release and authenticated cross-tenant isolation NOT_RUN.",
+      "owner_direction": "Continue on existing standalone MVAC program; user specifically added off-map roads/landscape drawing and example continuity. Preserve every embedded built-in and the native document owner.",
+      "artifacts_ref": "governance/research-evaluations/map-vtt-assets-2026-11-25/mvac12/CYCLE_RECORD.json",
+      "acceptance_open": [
+        "Browser IndexedDB success/migration/strict durability, quota, origin lifecycle and eviction",
+        "OS power failure, real pointer capture, accessibility and physical device acceptance",
+        "Native renderer/GPU decoded-cache accounting/release",
+        "Authenticated cross-tenant isolation; local hash deduplication conveys no rights",
+        "Existing broader workflow/device and installed-product certification"
+      ]
     },
     {
       "id": "MVAC-13",
@@ -834,13 +844,14 @@
     "MVAC-08",
     "MVAC-09"
   ],
-  "planned_steps_remaining": 13,
-  "next_candidate": "MVAC-12",
+  "planned_steps_remaining": 12,
+  "next_candidate": "MVAC-13",
   "open_prototype_steps": [
     "MVAC-03",
     "MVAC-04",
     "MVAC-10",
-    "MVAC-11"
+    "MVAC-11",
+    "MVAC-12"
   ],
-  "rollup_scope": "Seven bounded completed scopes; four prototypes with open acceptance; thirteen planned. Local SQLite proof does not certify browser IndexedDB durability. No installed implementation_complete flags."
+  "rollup_scope": "Seven bounded completed scopes; five prototypes with open acceptance; twelve planned. Real local SQLite proof does not certify browser IndexedDB or GPU/device behavior. No installed implementation_complete flags."
 }
