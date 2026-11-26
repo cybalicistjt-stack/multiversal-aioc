@@ -1,0 +1,697 @@
+{
+  "scope": "Named local Pillow/ImageCms profile, alpha and EXIF fixtures; no browser/GPU/physical-display/print-color certification",
+  "passed": 7,
+  "failed": 0,
+  "results": [
+    {
+      "id": "33 generated PNG profiles remain bounded, tagged and source-preserving",
+      "status": "PASS"
+    },
+    {
+      "id": "real JPEG EXIF orientation normalization swaps axes once",
+      "status": "PASS"
+    },
+    {
+      "id": "real ICC sRGB identity transform retains pixels",
+      "status": "PASS"
+    },
+    {
+      "id": "color/orientation normalization retains original encoded bytes",
+      "status": "PASS"
+    },
+    {
+      "id": "alpha-aware resize does not mix blue transparent RGB into visible edge",
+      "status": "PASS"
+    },
+    {
+      "id": "translucent edge composite 0",
+      "status": "PASS"
+    },
+    {
+      "id": "translucent edge composite 255",
+      "status": "PASS"
+    }
+  ],
+  "profiles": [
+    {
+      "source": "forge_harbor08_broadleaf_oak.png",
+      "sourceSHA256": "14951abf48d458cf3ea242453ff2d9300bb2835cfdd897ceb82414f40969636a",
+      "profile": "thumbnail",
+      "width": 128,
+      "height": 122,
+      "bytes": 32171,
+      "sha256": "ab8cd9a791d836426688af702d82ea9fd6b41ed432789005549603da5f8f2e7d",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.427,
+        0.407
+      ],
+      "path": "work/mvac09/package/profiles/thumbnail/forge_harbor08_broadleaf_oak.png"
+    },
+    {
+      "source": "forge_harbor08_broadleaf_oak.png",
+      "sourceSHA256": "14951abf48d458cf3ea242453ff2d9300bb2835cfdd897ceb82414f40969636a",
+      "profile": "play",
+      "width": 256,
+      "height": 243,
+      "bytes": 111205,
+      "sha256": "b65f9ca3ade883e3e64557e4e7b87f3864cc87f5003b8cfcb5cc768f88d3be8d",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.853,
+        0.81
+      ],
+      "path": "work/mvac09/package/profiles/play/forge_harbor08_broadleaf_oak.png"
+    },
+    {
+      "source": "forge_harbor08_broadleaf_oak.png",
+      "sourceSHA256": "14951abf48d458cf3ea242453ff2d9300bb2835cfdd897ceb82414f40969636a",
+      "profile": "print-source",
+      "width": 320,
+      "height": 304,
+      "bytes": 161070,
+      "sha256": "5bb3d566700b4793160cc99d1c23370af01822a43fe42d1c8efd186a3761a77c",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 300,
+      "maximumPrintInchesAt300Dpi": [
+        1.067,
+        1.013
+      ],
+      "path": "work/mvac09/package/profiles/print-source/forge_harbor08_broadleaf_oak.png"
+    },
+    {
+      "source": "forge_harbor08_cedar_warehouse.png",
+      "sourceSHA256": "6399a07526b5e0226e252eac1d83f66a2cc71ace93128f7bc9cee39be4cb950a",
+      "profile": "thumbnail",
+      "width": 128,
+      "height": 82,
+      "bytes": 24065,
+      "sha256": "0e499110c2f086e96c930fb8164279f12519e6d167be0e706bd684076d98ec1e",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.427,
+        0.273
+      ],
+      "path": "work/mvac09/package/profiles/thumbnail/forge_harbor08_cedar_warehouse.png"
+    },
+    {
+      "source": "forge_harbor08_cedar_warehouse.png",
+      "sourceSHA256": "6399a07526b5e0226e252eac1d83f66a2cc71ace93128f7bc9cee39be4cb950a",
+      "profile": "play",
+      "width": 256,
+      "height": 165,
+      "bytes": 85811,
+      "sha256": "7b6bacce2f32e12a668e154f9e2afe7a631a6afff77a7807011768926da7d206",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.853,
+        0.55
+      ],
+      "path": "work/mvac09/package/profiles/play/forge_harbor08_cedar_warehouse.png"
+    },
+    {
+      "source": "forge_harbor08_cedar_warehouse.png",
+      "sourceSHA256": "6399a07526b5e0226e252eac1d83f66a2cc71ace93128f7bc9cee39be4cb950a",
+      "profile": "print-source",
+      "width": 320,
+      "height": 206,
+      "bytes": 126158,
+      "sha256": "070f75d2a9c5643c147b9de4c57c3bfe544318b2002865c4dfb74ccb8def7717",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 300,
+      "maximumPrintInchesAt300Dpi": [
+        1.067,
+        0.687
+      ],
+      "path": "work/mvac09/package/profiles/print-source/forge_harbor08_cedar_warehouse.png"
+    },
+    {
+      "source": "forge_harbor08_coastal_pine.png",
+      "sourceSHA256": "a4eb43809b8e00ec7e7c010f5175c22d58ca53c792fd6c4eb59d3601bb2b0f08",
+      "profile": "thumbnail",
+      "width": 128,
+      "height": 123,
+      "bytes": 28375,
+      "sha256": "2108c4777cea6580341235984e4f72ebf451f9440c79978bb0ed76279ea93f65",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.427,
+        0.41
+      ],
+      "path": "work/mvac09/package/profiles/thumbnail/forge_harbor08_coastal_pine.png"
+    },
+    {
+      "source": "forge_harbor08_coastal_pine.png",
+      "sourceSHA256": "a4eb43809b8e00ec7e7c010f5175c22d58ca53c792fd6c4eb59d3601bb2b0f08",
+      "profile": "play",
+      "width": 256,
+      "height": 246,
+      "bytes": 98929,
+      "sha256": "ebdfac88630c0e9fbc8d7b229b5dd4a5021936e38fa82cbc539ae554797cc4dd",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.853,
+        0.82
+      ],
+      "path": "work/mvac09/package/profiles/play/forge_harbor08_coastal_pine.png"
+    },
+    {
+      "source": "forge_harbor08_coastal_pine.png",
+      "sourceSHA256": "a4eb43809b8e00ec7e7c010f5175c22d58ca53c792fd6c4eb59d3601bb2b0f08",
+      "profile": "print-source",
+      "width": 320,
+      "height": 307,
+      "bytes": 142781,
+      "sha256": "e3659ed9fe1a6173db5c75abe1f444799796243747d1245a060b62de9aa25cdb",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 300,
+      "maximumPrintInchesAt300Dpi": [
+        1.067,
+        1.023
+      ],
+      "path": "work/mvac09/package/profiles/print-source/forge_harbor08_coastal_pine.png"
+    },
+    {
+      "source": "forge_harbor08_flower_shrub.png",
+      "sourceSHA256": "54c1cdd7d62e73fc5e158c9d784e1cf0aaeef144ca677765bee8fe3ab0c4b43b",
+      "profile": "thumbnail",
+      "width": 128,
+      "height": 118,
+      "bytes": 32015,
+      "sha256": "63543917582f300393a686dc147f2c63f250d0aa825766bcfc5db3961152904c",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.427,
+        0.393
+      ],
+      "path": "work/mvac09/package/profiles/thumbnail/forge_harbor08_flower_shrub.png"
+    },
+    {
+      "source": "forge_harbor08_flower_shrub.png",
+      "sourceSHA256": "54c1cdd7d62e73fc5e158c9d784e1cf0aaeef144ca677765bee8fe3ab0c4b43b",
+      "profile": "play",
+      "width": 256,
+      "height": 236,
+      "bytes": 112045,
+      "sha256": "c5959adcd4f2a55e13bcad7fd3c4f56799c5f6f34a0f162c15ecd2deb4bf334b",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.853,
+        0.787
+      ],
+      "path": "work/mvac09/package/profiles/play/forge_harbor08_flower_shrub.png"
+    },
+    {
+      "source": "forge_harbor08_flower_shrub.png",
+      "sourceSHA256": "54c1cdd7d62e73fc5e158c9d784e1cf0aaeef144ca677765bee8fe3ab0c4b43b",
+      "profile": "print-source",
+      "width": 308,
+      "height": 284,
+      "bytes": 152651,
+      "sha256": "62da9fdd54efc5ed4544ac11cbcc36384d9973e828139f3fc465732b1dadf9b1",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 300,
+      "maximumPrintInchesAt300Dpi": [
+        1.027,
+        0.947
+      ],
+      "path": "work/mvac09/package/profiles/print-source/forge_harbor08_flower_shrub.png"
+    },
+    {
+      "source": "forge_harbor08_oak_table.png",
+      "sourceSHA256": "64b4f10d16d4e1701462410e932e1440dbb86b3aad605dc2998d1a7b41ed3dc8",
+      "profile": "thumbnail",
+      "width": 128,
+      "height": 118,
+      "bytes": 27797,
+      "sha256": "3dc7436818332ee700823479f9fa40b17999e86a65f448f357ae198f1d536c95",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.427,
+        0.393
+      ],
+      "path": "work/mvac09/package/profiles/thumbnail/forge_harbor08_oak_table.png"
+    },
+    {
+      "source": "forge_harbor08_oak_table.png",
+      "sourceSHA256": "64b4f10d16d4e1701462410e932e1440dbb86b3aad605dc2998d1a7b41ed3dc8",
+      "profile": "play",
+      "width": 256,
+      "height": 235,
+      "bytes": 99013,
+      "sha256": "c739c6b8c90bb9d39a4e7ffd0f77cf038e5afe01672baa7fb8827a1bf4a508a2",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.853,
+        0.783
+      ],
+      "path": "work/mvac09/package/profiles/play/forge_harbor08_oak_table.png"
+    },
+    {
+      "source": "forge_harbor08_oak_table.png",
+      "sourceSHA256": "64b4f10d16d4e1701462410e932e1440dbb86b3aad605dc2998d1a7b41ed3dc8",
+      "profile": "print-source",
+      "width": 319,
+      "height": 293,
+      "bytes": 145654,
+      "sha256": "c8062a0f43020ea892d767d1d8ca1f1349c74e827db75f4041202394158cb16f",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 300,
+      "maximumPrintInchesAt300Dpi": [
+        1.063,
+        0.977
+      ],
+      "path": "work/mvac09/package/profiles/print-source/forge_harbor08_oak_table.png"
+    },
+    {
+      "source": "forge_harbor08_rope_crates.png",
+      "sourceSHA256": "e815e264a565ff04a2e03381001754ebc3c5ee7b7c361c6e0a282b5340f135c9",
+      "profile": "thumbnail",
+      "width": 128,
+      "height": 115,
+      "bytes": 28107,
+      "sha256": "76a801701b9f521cfa63d9a6c1bd8a03e73ac19f300a2b76091ae51b300a35bd",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.427,
+        0.383
+      ],
+      "path": "work/mvac09/package/profiles/thumbnail/forge_harbor08_rope_crates.png"
+    },
+    {
+      "source": "forge_harbor08_rope_crates.png",
+      "sourceSHA256": "e815e264a565ff04a2e03381001754ebc3c5ee7b7c361c6e0a282b5340f135c9",
+      "profile": "play",
+      "width": 256,
+      "height": 231,
+      "bytes": 102348,
+      "sha256": "0e5835502bd0872eec96eec92f308edae51204fa14a4c6282d0966642b7a3601",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.853,
+        0.77
+      ],
+      "path": "work/mvac09/package/profiles/play/forge_harbor08_rope_crates.png"
+    },
+    {
+      "source": "forge_harbor08_rope_crates.png",
+      "sourceSHA256": "e815e264a565ff04a2e03381001754ebc3c5ee7b7c361c6e0a282b5340f135c9",
+      "profile": "print-source",
+      "width": 273,
+      "height": 246,
+      "bytes": 112924,
+      "sha256": "a408561adc6237f3e5b6b5a041a2cdad90e08b43fd975ec48f3b5725c8fad309",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 300,
+      "maximumPrintInchesAt300Dpi": [
+        0.91,
+        0.82
+      ],
+      "path": "work/mvac09/package/profiles/print-source/forge_harbor08_rope_crates.png"
+    },
+    {
+      "source": "forge_harbor08_sack_cart.png",
+      "sourceSHA256": "17776a9d4d6127d574856535683cda5b322c311dd90996bb52bc80ae18e44a22",
+      "profile": "thumbnail",
+      "width": 128,
+      "height": 90,
+      "bytes": 19252,
+      "sha256": "dae7b33fefadc293c85ef0150b15e43f94cd6bfcb99f08a7f916a12e52fa40ee",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.427,
+        0.3
+      ],
+      "path": "work/mvac09/package/profiles/thumbnail/forge_harbor08_sack_cart.png"
+    },
+    {
+      "source": "forge_harbor08_sack_cart.png",
+      "sourceSHA256": "17776a9d4d6127d574856535683cda5b322c311dd90996bb52bc80ae18e44a22",
+      "profile": "play",
+      "width": 256,
+      "height": 180,
+      "bytes": 65428,
+      "sha256": "481b5b3ca4b26b2ede3624b32f97f2fd2e42acc865689aa15b335cc9a9b73161",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.853,
+        0.6
+      ],
+      "path": "work/mvac09/package/profiles/play/forge_harbor08_sack_cart.png"
+    },
+    {
+      "source": "forge_harbor08_sack_cart.png",
+      "sourceSHA256": "17776a9d4d6127d574856535683cda5b322c311dd90996bb52bc80ae18e44a22",
+      "profile": "print-source",
+      "width": 320,
+      "height": 225,
+      "bytes": 93894,
+      "sha256": "fd5efbe9e709585cbf3bc6fb7213e42b60a0f786d3aeda55d807097fc2818346",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 300,
+      "maximumPrintInchesAt300Dpi": [
+        1.067,
+        0.75
+      ],
+      "path": "work/mvac09/package/profiles/print-source/forge_harbor08_sack_cart.png"
+    },
+    {
+      "source": "forge_harbor08_slate_cottage.png",
+      "sourceSHA256": "515a6660641c367ef2009ae53db128702130f89ae0265f8ef0d0dd40f42d0c6f",
+      "profile": "thumbnail",
+      "width": 128,
+      "height": 109,
+      "bytes": 30406,
+      "sha256": "115b372fa46988f233de5b28c11fb79ea2727d1e8041037352227e1edd4e56ba",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.427,
+        0.363
+      ],
+      "path": "work/mvac09/package/profiles/thumbnail/forge_harbor08_slate_cottage.png"
+    },
+    {
+      "source": "forge_harbor08_slate_cottage.png",
+      "sourceSHA256": "515a6660641c367ef2009ae53db128702130f89ae0265f8ef0d0dd40f42d0c6f",
+      "profile": "play",
+      "width": 256,
+      "height": 217,
+      "bytes": 109701,
+      "sha256": "c9e8cae7d03af1266871a827bfaebde3950ad5b5e80dab48416c7fc7c75b5910",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.853,
+        0.723
+      ],
+      "path": "work/mvac09/package/profiles/play/forge_harbor08_slate_cottage.png"
+    },
+    {
+      "source": "forge_harbor08_slate_cottage.png",
+      "sourceSHA256": "515a6660641c367ef2009ae53db128702130f89ae0265f8ef0d0dd40f42d0c6f",
+      "profile": "print-source",
+      "width": 303,
+      "height": 257,
+      "bytes": 147156,
+      "sha256": "f571d980ef12c7aaac0f0f83a4259116409c9a2dc597b41f6c86c58f9dc9a214",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 300,
+      "maximumPrintInchesAt300Dpi": [
+        1.01,
+        0.857
+      ],
+      "path": "work/mvac09/package/profiles/print-source/forge_harbor08_slate_cottage.png"
+    },
+    {
+      "source": "forge_harbor08_stone_well.png",
+      "sourceSHA256": "1f7f23748f73fb0b1cba9d1a6244c69bda1bc80e4ab02b78a3c61d5ca9b74045",
+      "profile": "thumbnail",
+      "width": 128,
+      "height": 122,
+      "bytes": 30188,
+      "sha256": "8195d3e6635b14441bd9c0a787f734226d95368319534c32a303bcee7342cbeb",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.427,
+        0.407
+      ],
+      "path": "work/mvac09/package/profiles/thumbnail/forge_harbor08_stone_well.png"
+    },
+    {
+      "source": "forge_harbor08_stone_well.png",
+      "sourceSHA256": "1f7f23748f73fb0b1cba9d1a6244c69bda1bc80e4ab02b78a3c61d5ca9b74045",
+      "profile": "play",
+      "width": 256,
+      "height": 244,
+      "bytes": 106203,
+      "sha256": "992004632f1aef8fc60f52477256721032309790cfa2fbecdd25224633aed3b9",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.853,
+        0.813
+      ],
+      "path": "work/mvac09/package/profiles/play/forge_harbor08_stone_well.png"
+    },
+    {
+      "source": "forge_harbor08_stone_well.png",
+      "sourceSHA256": "1f7f23748f73fb0b1cba9d1a6244c69bda1bc80e4ab02b78a3c61d5ca9b74045",
+      "profile": "print-source",
+      "width": 303,
+      "height": 289,
+      "bytes": 140971,
+      "sha256": "cfadbfad522a56c39d56d06cd54a672ce249d1b874d5918ab362f3d435a4014f",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 300,
+      "maximumPrintInchesAt300Dpi": [
+        1.01,
+        0.963
+      ],
+      "path": "work/mvac09/package/profiles/print-source/forge_harbor08_stone_well.png"
+    },
+    {
+      "source": "forge_harbor08_striped_market.png",
+      "sourceSHA256": "28d524a9730eece6895ef23ead9d5173d2459a9f1a258160f9bcee1d625a73ff",
+      "profile": "thumbnail",
+      "width": 128,
+      "height": 128,
+      "bytes": 33808,
+      "sha256": "b3094666501468b558f936228a79c5132b5f02a65e8cf0216def47f8a9087900",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.427,
+        0.427
+      ],
+      "path": "work/mvac09/package/profiles/thumbnail/forge_harbor08_striped_market.png"
+    },
+    {
+      "source": "forge_harbor08_striped_market.png",
+      "sourceSHA256": "28d524a9730eece6895ef23ead9d5173d2459a9f1a258160f9bcee1d625a73ff",
+      "profile": "play",
+      "width": 256,
+      "height": 256,
+      "bytes": 119570,
+      "sha256": "364a177b146c50cf7c73eb929cff6b3f9a1df60f5f969b45b74cc9a19cb626fb",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.853,
+        0.853
+      ],
+      "path": "work/mvac09/package/profiles/play/forge_harbor08_striped_market.png"
+    },
+    {
+      "source": "forge_harbor08_striped_market.png",
+      "sourceSHA256": "28d524a9730eece6895ef23ead9d5173d2459a9f1a258160f9bcee1d625a73ff",
+      "profile": "print-source",
+      "width": 296,
+      "height": 296,
+      "bytes": 153540,
+      "sha256": "f232a2df6bf6e6a6315bc21f8a22577416d045a082356c28e37dbaf0755fc3db",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 300,
+      "maximumPrintInchesAt300Dpi": [
+        0.987,
+        0.987
+      ],
+      "path": "work/mvac09/package/profiles/print-source/forge_harbor08_striped_market.png"
+    },
+    {
+      "source": "forge_harbor08_teal_bed.png",
+      "sourceSHA256": "65bfb1f750c40d2afa7c698f13a2a2cb1d734e8d81c56902cb5f497f979ec6d3",
+      "profile": "thumbnail",
+      "width": 79,
+      "height": 128,
+      "bytes": 21531,
+      "sha256": "69f343943cee842e87d4e89ea5dcde345ca2a8772937e4c171735ff0ee110803",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.263,
+        0.427
+      ],
+      "path": "work/mvac09/package/profiles/thumbnail/forge_harbor08_teal_bed.png"
+    },
+    {
+      "source": "forge_harbor08_teal_bed.png",
+      "sourceSHA256": "65bfb1f750c40d2afa7c698f13a2a2cb1d734e8d81c56902cb5f497f979ec6d3",
+      "profile": "play",
+      "width": 157,
+      "height": 256,
+      "bytes": 76724,
+      "sha256": "bc0b78701f8fd6d91e93db933ff3ee94fb21b76ad47e43db7818158ac6ad4ef9",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 96,
+      "maximumPrintInchesAt300Dpi": [
+        0.523,
+        0.853
+      ],
+      "path": "work/mvac09/package/profiles/play/forge_harbor08_teal_bed.png"
+    },
+    {
+      "source": "forge_harbor08_teal_bed.png",
+      "sourceSHA256": "65bfb1f750c40d2afa7c698f13a2a2cb1d734e8d81c56902cb5f497f979ec6d3",
+      "profile": "print-source",
+      "width": 189,
+      "height": 308,
+      "bytes": 105973,
+      "sha256": "ba0dac773880967e3963a61b845e25cda463a247dca845bfe540c9ca42b32941",
+      "sourceColor": "untagged assumed sRGB; no source-profile certification",
+      "outputColor": "embedded sRGB ICC",
+      "orientation": "source PNG already normalized",
+      "alpha": "RGBA; alpha-aware LANCZOS in named Pillow runtime",
+      "upscaled": false,
+      "dpiMetadata": 300,
+      "maximumPrintInchesAt300Dpi": [
+        0.63,
+        1.027
+      ],
+      "path": "work/mvac09/package/profiles/print-source/forge_harbor08_teal_bed.png"
+    }
+  ]
+}
