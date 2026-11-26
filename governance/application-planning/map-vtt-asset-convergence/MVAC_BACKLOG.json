@@ -4,7 +4,7 @@
   "title": "Map Maker, VTT and Asset Convergence Gap Plan",
   "record_date": "2026-11-25",
   "lane": "research-evaluation",
-  "status": "asset_discovery_prototype_delivered_with_retained_browser_and_device_acceptance_gaps",
+  "status": "optional_pack_prototype_delivered_with_real_local_storage_proof_and_browser_acceptance_open",
   "canonical_selector": "operations/CURRENT.json",
   "authority": "Owner requested research, combined study, gap steps and OPS5 logging. No product implementation or selector mutation in this record.",
   "baseline": "UHT28 standalone HTML, not installed app parity",
@@ -381,7 +381,7 @@
       "title": "Implement optional packs and crash-safe activation",
       "phase": "C \u2014 library and lifecycle",
       "scope": "standalone adapter",
-      "status": "planned_not_selected",
+      "status": "implemented_validation_partial",
       "implementation_complete": false,
       "dependencies": [
         "MVAC-06",
@@ -404,7 +404,12 @@
         "MME-03",
         "MME-06"
       ],
-      "authority": "Planning only. CURRENT-backed selection and applicable existing owner authority required before product implementation."
+      "authority": "Planning only. CURRENT-backed selection and applicable existing owner authority required before product implementation.",
+      "deliverable_complete": true,
+      "implementation_date": "2026-11-26",
+      "completion_scope": "Standalone optional-pack adapter and native integration delivered with 374 local checks, actual native worker validation and SQLite process/quota failure tests. Browser IndexedDB strict-durability/crash/origin/eviction, target-device and installed acceptance remain open.",
+      "evidence_path": "governance/research-evaluations/map-vtt-assets-2026-11-25/mvac11/package/VERIFICATION.json",
+      "adapter_report": "governance/research-evaluations/map-vtt-assets-2026-11-25/mvac11/package/MVAC11_REPORT.md"
     },
     {
       "id": "MVAC-12",
@@ -829,12 +834,13 @@
     "MVAC-08",
     "MVAC-09"
   ],
-  "planned_steps_remaining": 14,
-  "next_candidate": "MVAC-11",
+  "planned_steps_remaining": 13,
+  "next_candidate": "MVAC-12",
   "open_prototype_steps": [
     "MVAC-03",
     "MVAC-04",
-    "MVAC-10"
+    "MVAC-10",
+    "MVAC-11"
   ],
-  "rollup_scope": "Seven bounded completed scopes; three prototypes with open acceptance; fourteen planned. MVAC-11 is independently ready through MVAC-06/07/09. No browser/device or installed implementation completion inferred."
+  "rollup_scope": "Seven bounded completed scopes; four prototypes with open acceptance; thirteen planned. Local SQLite proof does not certify browser IndexedDB durability. No installed implementation_complete flags."
 }

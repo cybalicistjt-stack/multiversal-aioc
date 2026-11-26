@@ -1,0 +1,146 @@
+{
+  "scope": "Actual delivered HTML handlers in controlled DOM with native canvas renderer; no real-browser certification",
+  "passed": 33,
+  "failed": 0,
+  "results": [
+    {
+      "id": "Shift selection adds two stable native objects",
+      "status": "PASS"
+    },
+    {
+      "id": "multiple selection disables ambiguous single-object edit",
+      "status": "PASS"
+    },
+    {
+      "id": "group move is one command and one revision",
+      "status": "PASS"
+    },
+    {
+      "id": "one Undo restores whole group and preserves monotonic revision",
+      "status": "PASS"
+    },
+    {
+      "id": "one Redo reapplies group atomically",
+      "status": "PASS"
+    },
+    {
+      "id": "lock disables object editing and compound movement",
+      "status": "PASS"
+    },
+    {
+      "id": "locked object rejects programmatic command entry",
+      "status": "PASS"
+    },
+    {
+      "id": "mixed locked/unlocked selection blocks entire compound edit",
+      "status": "PASS"
+    },
+    {
+      "id": "unlock clears the whole selected group",
+      "status": "PASS"
+    },
+    {
+      "id": "isolation filters editing targets without mutating native draft",
+      "status": "PASS"
+    },
+    {
+      "id": "Show all restores other editable objects",
+      "status": "PASS"
+    },
+    {
+      "id": "named checkpoint captures current native revision",
+      "status": "PASS"
+    },
+    {
+      "id": "checkpoint restore is one undoable edit with a fresh revision",
+      "status": "PASS"
+    },
+    {
+      "id": "undo checkpoint restore recovers the intervening author work",
+      "status": "PASS"
+    },
+    {
+      "id": "redo checkpoint restore recovers checkpoint content",
+      "status": "PASS"
+    },
+    {
+      "id": "Play shortcut cannot undo author or prepared state",
+      "status": "PASS"
+    },
+    {
+      "id": "Player redo cannot change either document",
+      "status": "PASS"
+    },
+    {
+      "id": "Author undo leaves prepared snapshot unchanged and makes readiness stale",
+      "status": "PASS"
+    },
+    {
+      "id": "unapplied inspector draft blocks author history",
+      "status": "PASS"
+    },
+    {
+      "id": "text undo is not intercepted by author history",
+      "status": "PASS"
+    },
+    {
+      "id": "cancel discards unapplied field edit without new history",
+      "status": "PASS"
+    },
+    {
+      "id": "dialog keys do not reach map history or tools",
+      "status": "PASS"
+    },
+    {
+      "id": "new author edit after Undo clears redo branch",
+      "status": "PASS"
+    },
+    {
+      "id": "canvas Ctrl-Z undoes rename",
+      "status": "PASS"
+    },
+    {
+      "id": "canvas Ctrl-Shift-Z redoes rename",
+      "status": "PASS"
+    },
+    {
+      "id": "another map starts with separate author history",
+      "status": "PASS"
+    },
+    {
+      "id": "returning to city restores its history and checkpoints",
+      "status": "PASS"
+    },
+    {
+      "id": "checkpoint memory limit is bounded and does not overwrite earlier checkpoints",
+      "status": "PASS"
+    },
+    {
+      "id": "author command history is bounded to 50 entries",
+      "status": "PASS"
+    },
+    {
+      "id": "all original fixture objects remain unchanged",
+      "status": "PASS"
+    },
+    {
+      "id": "deliverable has no external script or stylesheet dependency",
+      "status": "PASS"
+    },
+    {
+      "id": "initial artwork is embedded in the single HTML",
+      "status": "PASS"
+    },
+    {
+      "id": "native save schema remains unchanged",
+      "status": "PASS"
+    }
+  ],
+  "source": "single self-contained HTML; all scripts/artwork/data inline",
+  "open_validation": [
+    "Actual browser text undo and Escape/focus restoration",
+    "Desktop/narrow layout and touch/pointer usability",
+    "Real authenticated clients and accepted gameplay event boundaries"
+  ],
+  "note": "User explicitly authorized advancing beyond MVAC-03 browser gap. That gap remains open; these are source/controlled-runtime results only."
+}
