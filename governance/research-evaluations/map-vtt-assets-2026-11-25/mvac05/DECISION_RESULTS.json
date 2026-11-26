@@ -1,0 +1,1614 @@
+[
+  {
+    "id": "private-art:private-use",
+    "resourceId": "private-art",
+    "action": "private-use",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "private-art",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:private-art:private-use"
+        ]
+      },
+      {
+        "resourceId": "private-art",
+        "kind": "action-scope",
+        "action": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:private-art:private-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "private-art:modify",
+    "resourceId": "private-art",
+    "action": "modify",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "private-art",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:private-art:private-use"
+        ]
+      },
+      {
+        "resourceId": "private-art",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:private-art:transform"
+        ]
+      },
+      {
+        "resourceId": "private-art",
+        "kind": "action-scope",
+        "action": "modify",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:private-art:modify"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "private-art:session-delivery",
+    "resourceId": "private-art",
+    "action": "session-delivery",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "capability-unknown:campaign-use:private-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "private-art",
+        "kind": "ARI-11",
+        "capability": "campaign-use",
+        "state": "unknown",
+        "evidenceIds": [
+          "synthetic:cap:private-art:campaign-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "private-art:flattened-map-export",
+    "resourceId": "private-art",
+    "action": "flattened-map-export",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "capability-unknown:export:private-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "private-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "unknown",
+        "evidenceIds": [
+          "synthetic:cap:private-art:export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "private-art:raw-redistribution",
+    "resourceId": "private-art",
+    "action": "raw-redistribution",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "capability-unknown:export:private-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "private-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "unknown",
+        "evidenceIds": [
+          "synthetic:cap:private-art:export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "map-output:private-use",
+    "resourceId": "map-output",
+    "action": "private-use",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "map-output",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:map-output:private-use"
+        ]
+      },
+      {
+        "resourceId": "map-output",
+        "kind": "action-scope",
+        "action": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:map-output:private-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "map-output:modify",
+    "resourceId": "map-output",
+    "action": "modify",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "map-output",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:map-output:private-use"
+        ]
+      },
+      {
+        "resourceId": "map-output",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:map-output:transform"
+        ]
+      },
+      {
+        "resourceId": "map-output",
+        "kind": "action-scope",
+        "action": "modify",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:map-output:modify"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "map-output:session-delivery",
+    "resourceId": "map-output",
+    "action": "session-delivery",
+    "expected": "blocked",
+    "requestOverrides": {},
+    "observed": "blocked",
+    "reasons": [
+      "capability-denied:campaign-use:map-output"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "map-output",
+        "kind": "ARI-11",
+        "capability": "campaign-use",
+        "state": "denied",
+        "evidenceIds": [
+          "synthetic:cap:map-output:campaign-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "map-output:flattened-map-export",
+    "resourceId": "map-output",
+    "action": "flattened-map-export",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "map-output",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:map-output:export"
+        ]
+      },
+      {
+        "resourceId": "map-output",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:map-output:transform"
+        ]
+      },
+      {
+        "resourceId": "map-output",
+        "kind": "action-scope",
+        "action": "flattened-map-export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:map-output:flattened-map-export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "map-output:raw-redistribution",
+    "resourceId": "map-output",
+    "action": "raw-redistribution",
+    "expected": "blocked",
+    "requestOverrides": {},
+    "observed": "blocked",
+    "reasons": [
+      "capability-denied:redistribution:map-output"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "map-output",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:map-output:export"
+        ]
+      },
+      {
+        "resourceId": "map-output",
+        "kind": "ARI-11",
+        "capability": "redistribution",
+        "state": "denied",
+        "evidenceIds": [
+          "synthetic:cap:map-output:redistribution"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "campaign-art:private-use",
+    "resourceId": "campaign-art",
+    "action": "private-use",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "campaign-art",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:campaign-art:private-use"
+        ]
+      },
+      {
+        "resourceId": "campaign-art",
+        "kind": "action-scope",
+        "action": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:campaign-art:private-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "campaign-art:modify",
+    "resourceId": "campaign-art",
+    "action": "modify",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "capability-unknown:transform:campaign-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "campaign-art",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:campaign-art:private-use"
+        ]
+      },
+      {
+        "resourceId": "campaign-art",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "unknown",
+        "evidenceIds": [
+          "synthetic:cap:campaign-art:transform"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "campaign-art:session-delivery",
+    "resourceId": "campaign-art",
+    "action": "session-delivery",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "campaign-art",
+        "kind": "ARI-11",
+        "capability": "campaign-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:campaign-art:campaign-use"
+        ]
+      },
+      {
+        "resourceId": "campaign-art",
+        "kind": "action-scope",
+        "action": "session-delivery",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:campaign-art:session-delivery"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "campaign-art:flattened-map-export",
+    "resourceId": "campaign-art",
+    "action": "flattened-map-export",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "capability-unknown:export:campaign-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "campaign-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "unknown",
+        "evidenceIds": [
+          "synthetic:cap:campaign-art:export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "campaign-art:raw-redistribution",
+    "resourceId": "campaign-art",
+    "action": "raw-redistribution",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "capability-unknown:export:campaign-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "campaign-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "unknown",
+        "evidenceIds": [
+          "synthetic:cap:campaign-art:export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "credited-art:private-use",
+    "resourceId": "credited-art",
+    "action": "private-use",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "credited-art",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:credited-art:private-use"
+        ]
+      },
+      {
+        "resourceId": "credited-art",
+        "kind": "action-scope",
+        "action": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:credited-art:private-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "credited-art:modify",
+    "resourceId": "credited-art",
+    "action": "modify",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "credited-art",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:credited-art:private-use"
+        ]
+      },
+      {
+        "resourceId": "credited-art",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:credited-art:transform"
+        ]
+      },
+      {
+        "resourceId": "credited-art",
+        "kind": "action-scope",
+        "action": "modify",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:credited-art:modify"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "credited-art:session-delivery",
+    "resourceId": "credited-art",
+    "action": "session-delivery",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [
+      "creator: Synthetic Studio · title: Test lantern · source: synthetic:source:credited-art · license: Synthetic attribution terms v1 · changes: Reduced to a map symbol"
+    ],
+    "traces": [
+      {
+        "resourceId": "credited-art",
+        "kind": "ARI-11",
+        "capability": "campaign-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:credited-art:campaign-use"
+        ]
+      },
+      {
+        "resourceId": "credited-art",
+        "kind": "action-scope",
+        "action": "session-delivery",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:credited-art:session-delivery"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "credited-art:flattened-map-export",
+    "resourceId": "credited-art",
+    "action": "flattened-map-export",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [
+      "creator: Synthetic Studio · title: Test lantern · source: synthetic:source:credited-art · license: Synthetic attribution terms v1 · changes: Reduced to a map symbol"
+    ],
+    "traces": [
+      {
+        "resourceId": "credited-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:credited-art:export"
+        ]
+      },
+      {
+        "resourceId": "credited-art",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:credited-art:transform"
+        ]
+      },
+      {
+        "resourceId": "credited-art",
+        "kind": "action-scope",
+        "action": "flattened-map-export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:credited-art:flattened-map-export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "credited-art:raw-redistribution",
+    "resourceId": "credited-art",
+    "action": "raw-redistribution",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [
+      "creator: Synthetic Studio · title: Test lantern · source: synthetic:source:credited-art · license: Synthetic attribution terms v1 · changes: Reduced to a map symbol"
+    ],
+    "traces": [
+      {
+        "resourceId": "credited-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:credited-art:export"
+        ]
+      },
+      {
+        "resourceId": "credited-art",
+        "kind": "ARI-11",
+        "capability": "redistribution",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:credited-art:redistribution"
+        ]
+      },
+      {
+        "resourceId": "credited-art",
+        "kind": "action-scope",
+        "action": "raw-redistribution",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:credited-art:raw-redistribution"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unknown-sheet:private-use",
+    "resourceId": "unknown-sheet",
+    "action": "private-use",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "license-evidence-unknown:unknown-sheet"
+    ],
+    "credits": [],
+    "traces": []
+  },
+  {
+    "id": "unknown-sheet:modify",
+    "resourceId": "unknown-sheet",
+    "action": "modify",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "license-evidence-unknown:unknown-sheet"
+    ],
+    "credits": [],
+    "traces": []
+  },
+  {
+    "id": "unknown-sheet:session-delivery",
+    "resourceId": "unknown-sheet",
+    "action": "session-delivery",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "license-evidence-unknown:unknown-sheet"
+    ],
+    "credits": [],
+    "traces": []
+  },
+  {
+    "id": "unknown-sheet:flattened-map-export",
+    "resourceId": "unknown-sheet",
+    "action": "flattened-map-export",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "license-evidence-unknown:unknown-sheet"
+    ],
+    "credits": [],
+    "traces": []
+  },
+  {
+    "id": "unknown-sheet:raw-redistribution",
+    "resourceId": "unknown-sheet",
+    "action": "raw-redistribution",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "license-evidence-unknown:unknown-sheet"
+    ],
+    "credits": [],
+    "traces": []
+  },
+  {
+    "id": "provider-reference:private-use",
+    "resourceId": "provider-reference",
+    "action": "private-use",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "provider-reference",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:provider-reference:private-use"
+        ]
+      },
+      {
+        "resourceId": "provider-reference",
+        "kind": "action-scope",
+        "action": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:provider-reference:private-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "provider-reference:modify",
+    "resourceId": "provider-reference",
+    "action": "modify",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "capability-unknown:transform:provider-reference"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "provider-reference",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:provider-reference:private-use"
+        ]
+      },
+      {
+        "resourceId": "provider-reference",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "unknown",
+        "evidenceIds": [
+          "synthetic:cap:provider-reference:transform"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "provider-reference:session-delivery",
+    "resourceId": "provider-reference",
+    "action": "session-delivery",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "source-bytes-unavailable:provider-reference"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "provider-reference",
+        "kind": "ARI-11",
+        "capability": "campaign-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:provider-reference:campaign-use"
+        ]
+      },
+      {
+        "resourceId": "provider-reference",
+        "kind": "action-scope",
+        "action": "session-delivery",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:provider-reference:session-delivery"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "provider-reference:flattened-map-export",
+    "resourceId": "provider-reference",
+    "action": "flattened-map-export",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "capability-unknown:export:provider-reference"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "provider-reference",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "unknown",
+        "evidenceIds": [
+          "synthetic:cap:provider-reference:export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "provider-reference:raw-redistribution",
+    "resourceId": "provider-reference",
+    "action": "raw-redistribution",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "capability-unknown:export:provider-reference"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "provider-reference",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "unknown",
+        "evidenceIds": [
+          "synthetic:cap:provider-reference:export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gm-handout:private-use",
+    "resourceId": "gm-handout",
+    "action": "private-use",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "gm-handout",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:gm-handout:private-use"
+        ]
+      },
+      {
+        "resourceId": "gm-handout",
+        "kind": "action-scope",
+        "action": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:gm-handout:private-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gm-handout:modify",
+    "resourceId": "gm-handout",
+    "action": "modify",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "gm-handout",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:gm-handout:private-use"
+        ]
+      },
+      {
+        "resourceId": "gm-handout",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:gm-handout:transform"
+        ]
+      },
+      {
+        "resourceId": "gm-handout",
+        "kind": "action-scope",
+        "action": "modify",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:gm-handout:modify"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gm-handout:session-delivery",
+    "resourceId": "gm-handout",
+    "action": "session-delivery",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "gm-handout",
+        "kind": "ARI-11",
+        "capability": "campaign-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:gm-handout:campaign-use"
+        ]
+      },
+      {
+        "resourceId": "gm-handout",
+        "kind": "action-scope",
+        "action": "session-delivery",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:gm-handout:session-delivery"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gm-handout:flattened-map-export",
+    "resourceId": "gm-handout",
+    "action": "flattened-map-export",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "gm-handout",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:gm-handout:export"
+        ]
+      },
+      {
+        "resourceId": "gm-handout",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:gm-handout:transform"
+        ]
+      },
+      {
+        "resourceId": "gm-handout",
+        "kind": "action-scope",
+        "action": "flattened-map-export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:gm-handout:flattened-map-export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gm-handout:raw-redistribution",
+    "resourceId": "gm-handout",
+    "action": "raw-redistribution",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "gm-handout",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:gm-handout:export"
+        ]
+      },
+      {
+        "resourceId": "gm-handout",
+        "kind": "ARI-11",
+        "capability": "redistribution",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:gm-handout:redistribution"
+        ]
+      },
+      {
+        "resourceId": "gm-handout",
+        "kind": "action-scope",
+        "action": "raw-redistribution",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:gm-handout:raw-redistribution"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "derived-art:private-use",
+    "resourceId": "derived-art",
+    "action": "private-use",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "derived-art",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:derived-art:private-use"
+        ]
+      },
+      {
+        "resourceId": "derived-art",
+        "kind": "action-scope",
+        "action": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:derived-art:private-use"
+        ]
+      },
+      {
+        "resourceId": "private-art",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:private-art:private-use"
+        ]
+      },
+      {
+        "resourceId": "private-art",
+        "kind": "action-scope",
+        "action": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:private-art:private-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "derived-art:modify",
+    "resourceId": "derived-art",
+    "action": "modify",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {},
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "derived-art",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:derived-art:private-use"
+        ]
+      },
+      {
+        "resourceId": "derived-art",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:derived-art:transform"
+        ]
+      },
+      {
+        "resourceId": "derived-art",
+        "kind": "action-scope",
+        "action": "modify",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:derived-art:modify"
+        ]
+      },
+      {
+        "resourceId": "private-art",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:private-art:private-use"
+        ]
+      },
+      {
+        "resourceId": "private-art",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:private-art:transform"
+        ]
+      },
+      {
+        "resourceId": "private-art",
+        "kind": "action-scope",
+        "action": "modify",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:private-art:modify"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "derived-art:session-delivery",
+    "resourceId": "derived-art",
+    "action": "session-delivery",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "capability-unknown:campaign-use:private-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "derived-art",
+        "kind": "ARI-11",
+        "capability": "campaign-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:derived-art:campaign-use"
+        ]
+      },
+      {
+        "resourceId": "derived-art",
+        "kind": "action-scope",
+        "action": "session-delivery",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:derived-art:session-delivery"
+        ]
+      },
+      {
+        "resourceId": "private-art",
+        "kind": "ARI-11",
+        "capability": "campaign-use",
+        "state": "unknown",
+        "evidenceIds": [
+          "synthetic:cap:private-art:campaign-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "derived-art:flattened-map-export",
+    "resourceId": "derived-art",
+    "action": "flattened-map-export",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "capability-unknown:export:private-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "derived-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:derived-art:export"
+        ]
+      },
+      {
+        "resourceId": "derived-art",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:derived-art:transform"
+        ]
+      },
+      {
+        "resourceId": "derived-art",
+        "kind": "action-scope",
+        "action": "flattened-map-export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:derived-art:flattened-map-export"
+        ]
+      },
+      {
+        "resourceId": "private-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "unknown",
+        "evidenceIds": [
+          "synthetic:cap:private-art:export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "derived-art:raw-redistribution",
+    "resourceId": "derived-art",
+    "action": "raw-redistribution",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "capability-unknown:export:private-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "derived-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:derived-art:export"
+        ]
+      },
+      {
+        "resourceId": "derived-art",
+        "kind": "ARI-11",
+        "capability": "redistribution",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:derived-art:redistribution"
+        ]
+      },
+      {
+        "resourceId": "derived-art",
+        "kind": "action-scope",
+        "action": "raw-redistribution",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:derived-art:raw-redistribution"
+        ]
+      },
+      {
+        "resourceId": "private-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "unknown",
+        "evidenceIds": [
+          "synthetic:cap:private-art:export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "revoked-art:private-use",
+    "resourceId": "revoked-art",
+    "action": "private-use",
+    "expected": "blocked",
+    "requestOverrides": {},
+    "observed": "blocked",
+    "reasons": [
+      "capability-revoked:private-use:revoked-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "revoked-art",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "revoked",
+        "evidenceIds": [
+          "synthetic:cap:revoked-art:private-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "revoked-art:modify",
+    "resourceId": "revoked-art",
+    "action": "modify",
+    "expected": "blocked",
+    "requestOverrides": {},
+    "observed": "blocked",
+    "reasons": [
+      "capability-revoked:private-use:revoked-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "revoked-art",
+        "kind": "ARI-11",
+        "capability": "private-use",
+        "state": "revoked",
+        "evidenceIds": [
+          "synthetic:cap:revoked-art:private-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "revoked-art:session-delivery",
+    "resourceId": "revoked-art",
+    "action": "session-delivery",
+    "expected": "blocked",
+    "requestOverrides": {},
+    "observed": "blocked",
+    "reasons": [
+      "capability-revoked:campaign-use:revoked-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "revoked-art",
+        "kind": "ARI-11",
+        "capability": "campaign-use",
+        "state": "revoked",
+        "evidenceIds": [
+          "synthetic:cap:revoked-art:campaign-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "revoked-art:flattened-map-export",
+    "resourceId": "revoked-art",
+    "action": "flattened-map-export",
+    "expected": "blocked",
+    "requestOverrides": {},
+    "observed": "blocked",
+    "reasons": [
+      "capability-revoked:export:revoked-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "revoked-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "revoked",
+        "evidenceIds": [
+          "synthetic:cap:revoked-art:export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "revoked-art:raw-redistribution",
+    "resourceId": "revoked-art",
+    "action": "raw-redistribution",
+    "expected": "blocked",
+    "requestOverrides": {},
+    "observed": "blocked",
+    "reasons": [
+      "capability-revoked:export:revoked-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "revoked-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "revoked",
+        "evidenceIds": [
+          "synthetic:cap:revoked-art:export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "purchase-and-hash-do-not-grant-export",
+    "resourceId": "unknown-sheet",
+    "action": "raw-redistribution",
+    "expected": "unresolved",
+    "requestOverrides": {},
+    "observed": "unresolved",
+    "reasons": [
+      "license-evidence-unknown:unknown-sheet"
+    ],
+    "credits": [],
+    "traces": []
+  },
+  {
+    "id": "missing-credit-output",
+    "resourceId": "credited-art",
+    "action": "flattened-map-export",
+    "expected": "blocked",
+    "requestOverrides": {
+      "includeAttribution": false
+    },
+    "observed": "blocked",
+    "reasons": [
+      "attribution-output-required:credited-art"
+    ],
+    "credits": [
+      "creator: Synthetic Studio · title: Test lantern · source: synthetic:source:credited-art · license: Synthetic attribution terms v1 · changes: Reduced to a map symbol"
+    ],
+    "traces": [
+      {
+        "resourceId": "credited-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:credited-art:export"
+        ]
+      },
+      {
+        "resourceId": "credited-art",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:credited-art:transform"
+        ]
+      },
+      {
+        "resourceId": "credited-art",
+        "kind": "action-scope",
+        "action": "flattened-map-export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:credited-art:flattened-map-export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "private-policy-player-handout",
+    "resourceId": "gm-handout",
+    "action": "raw-redistribution",
+    "expected": "blocked",
+    "requestOverrides": {
+      "audience": "player"
+    },
+    "observed": "blocked",
+    "reasons": [
+      "private-resource-excluded:gm-handout"
+    ],
+    "credits": [],
+    "traces": []
+  },
+  {
+    "id": "missing-audience-policy",
+    "resourceId": "credited-art",
+    "action": "raw-redistribution",
+    "expected": "blocked",
+    "requestOverrides": {
+      "policyReceipts": {}
+    },
+    "observed": "blocked",
+    "reasons": [
+      "audience-policy-not-allowed:credited-art"
+    ],
+    "credits": [],
+    "traces": []
+  },
+  {
+    "id": "wrong-campaign",
+    "resourceId": "campaign-art",
+    "action": "session-delivery",
+    "expected": "blocked",
+    "requestOverrides": {
+      "campaignId": "synthetic:other-campaign"
+    },
+    "observed": "blocked",
+    "reasons": [
+      "action-scope-mismatch:campaign-art"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "campaign-art",
+        "kind": "ARI-11",
+        "capability": "campaign-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:campaign-art:campaign-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "commercial-map-needs-separate-grant",
+    "resourceId": "map-output",
+    "action": "flattened-map-export",
+    "expected": "unresolved",
+    "requestOverrides": {
+      "commercial": true
+    },
+    "observed": "unresolved",
+    "reasons": [
+      "capability-unknown:commercial-use:map-output"
+    ],
+    "credits": [],
+    "traces": [
+      {
+        "resourceId": "map-output",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:map-output:export"
+        ]
+      },
+      {
+        "resourceId": "map-output",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:map-output:transform"
+        ]
+      },
+      {
+        "resourceId": "map-output",
+        "kind": "ARI-11",
+        "capability": "commercial-use",
+        "state": "unknown",
+        "evidenceIds": [
+          "synthetic:cap:map-output:commercial-use"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "commercial-credited-export",
+    "resourceId": "credited-art",
+    "action": "flattened-map-export",
+    "expected": "permitted-by-sample-evidence",
+    "requestOverrides": {
+      "commercial": true
+    },
+    "observed": "permitted-by-sample-evidence",
+    "reasons": [],
+    "credits": [
+      "creator: Synthetic Studio · title: Test lantern · source: synthetic:source:credited-art · license: Synthetic attribution terms v1 · changes: Reduced to a map symbol"
+    ],
+    "traces": [
+      {
+        "resourceId": "credited-art",
+        "kind": "ARI-11",
+        "capability": "export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:credited-art:export"
+        ]
+      },
+      {
+        "resourceId": "credited-art",
+        "kind": "ARI-11",
+        "capability": "transform",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:credited-art:transform"
+        ]
+      },
+      {
+        "resourceId": "credited-art",
+        "kind": "ARI-11",
+        "capability": "commercial-use",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:cap:credited-art:commercial-use"
+        ]
+      },
+      {
+        "resourceId": "credited-art",
+        "kind": "action-scope",
+        "action": "flattened-map-export",
+        "state": "allowed",
+        "evidenceIds": [
+          "synthetic:action:credited-art:flattened-map-export"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unsupported-action",
+    "resourceId": "map-output",
+    "action": "arbitrary-action",
+    "expected": "blocked",
+    "requestOverrides": {},
+    "observed": "blocked",
+    "reasons": [
+      "unsupported-action"
+    ],
+    "credits": [],
+    "traces": []
+  },
+  {
+    "id": "stale-license",
+    "resourceId": "credited-art",
+    "action": "raw-redistribution",
+    "expected": "unresolved",
+    "requestOverrides": {
+      "expectedLicenseRevisions": {
+        "credited-art": "0"
+      }
+    },
+    "observed": "unresolved",
+    "reasons": [
+      "stale-license-revision:credited-art"
+    ],
+    "credits": [],
+    "traces": []
+  }
+]
