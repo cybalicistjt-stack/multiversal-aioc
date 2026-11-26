@@ -1,0 +1,79 @@
+{
+  "scope": "Actual SQLite WAL/FULL adapter, process interruption, quota failure, native worker decode and split-store lifecycle. Browser IndexedDB successful migration/durability/eviction and target GPU lifetime NOT_RUN.",
+  "passed": 18,
+  "failed": 0,
+  "results": [
+    {
+      "name": "originals and disposable representations occupy separate actual SQLite tables; manifests contain neither raw nor src",
+      "status": "PASS"
+    },
+    {
+      "name": "clear-cache leaves originals, manifest, immutable receipts, current pin and rollback unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "real worker regenerates missing preview from exact original; reopen remains usable after clear",
+      "status": "PASS"
+    },
+    {
+      "name": "repair restores disposable disk entries and preserves previous rollback manifest and revision",
+      "status": "PASS"
+    },
+    {
+      "name": "missing durable original fails closed instead of substituting thumbnail or deleting source",
+      "status": "PASS"
+    },
+    {
+      "name": "corrupt original fails worker/hash verification after cache clear",
+      "status": "PASS"
+    },
+    {
+      "name": "corrupt preview fails verification; clearing it rebuilds from original",
+      "status": "PASS"
+    },
+    {
+      "name": "active, rollback and pinned original records survive repeated garbage passes",
+      "status": "PASS"
+    },
+    {
+      "name": "uninstalled source survives rollback; after rollback retirement two-pass collection removes only retired original",
+      "status": "PASS"
+    },
+    {
+      "name": "reactivating a tombstoned original rescues it before deletion",
+      "status": "PASS"
+    },
+    {
+      "name": "native reference pin blocks uninstall before storage collection can retire originals",
+      "status": "PASS"
+    },
+    {
+      "name": "stale CAS cannot publish a root or delete a previously retained original",
+      "status": "PASS"
+    },
+    {
+      "name": "repair rejects altered manifest",
+      "status": "PASS"
+    },
+    {
+      "name": "malformed root and invalid grace cannot authorize garbage deletion",
+      "status": "PASS"
+    },
+    {
+      "name": "real SQLite quota failure rolls back original, cache and manifest together",
+      "status": "PASS"
+    },
+    {
+      "name": "legacy v1 inline root reads intact and migrates atomically through next normal activation",
+      "status": "PASS"
+    },
+    {
+      "name": "same physical content does not transfer logical rights metadata",
+      "status": "PASS"
+    },
+    {
+      "name": "actual process exits before and after storage commit reopen old or new complete state",
+      "status": "PASS"
+    }
+  ]
+}

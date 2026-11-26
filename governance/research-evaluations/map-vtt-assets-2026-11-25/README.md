@@ -59,3 +59,8 @@ See [the report](mvac11/package/MVAC11_REPORT.md), [374 local checks](mvac11/pac
 ## MVAC-12 storage and map continuity
 
 See [report](mvac12/package/MVAC12_REPORT.md), [223 local checks](mvac12/package/VERIFICATION.json), [artifact audit](mvac12/package/ARTIFACT_AUDIT.json) and [receipt](mvac12/CYCLE_RECORD.json). Optional originals survive disposable-preview clearing; reference/rollback protection and two-pass GC are tested with actual SQLite failure/restart boundaries. Off-map roads/landscape authoring and native crop/export are implemented. All embedded artwork is retained. Browser/device/GPU/cross-tenant acceptance remains open. Status implemented_validation_partial; next MVAC-13 portable saves/backup/restore/legacy migration.
+
+
+## MVAC-13 portable recovery and legacy compatibility
+
+See [report](mvac13/package/MVAC13_REPORT.md), [185 local checks](mvac13/package/VERIFICATION.json), [native render parity](mvac13/package/RENDER_EVIDENCE.json) and [receipt](mvac13/CYCLE_RECORD.json). Linked/portable transports retain native documents and all embedded built-ins. Reviewed new-copy restore, explicit source/rights reports, actual SQLite multi-store failure proof, and reused Forge art migration are delivered. Browser/device/authenticated-rights acceptance remains open; status implemented_validation_partial. Next MVAC-14 general road joins and room/roof/wall/door relationships.
