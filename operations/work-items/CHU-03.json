@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "chu-facs",
+  "program_id": "CHU",
+  "work_item_id": "CHU-03",
+  "attempt_id": "CHU-03-attempt-001",
+  "title": "Reusable Creature Body-Plan Templates",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue following delivery of CHU-02; cumulative standalone HTML scope.",
+  "authority_type": "owner_scoped_standalone_system_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/creature-harvesting-utilization/CHU_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Author reusable proposed structures referencing existing CHU-02 part IDs.",
+      "Separate anatomical structure from ICF-08 type overlays; compose regional hybrid candidate slots with explicit add/exclude overrides.",
+      "Deliver cumulative standalone HTML and portable template library."
+    ],
+    "boundaries": [
+      "No new canonical creature anatomy, species assertion, counts, harvest methods, yields, effects or live mutations.",
+      "Structural and optional candidates are proposals only. Same-region slots merge by region/part ID; different regions preserve distinct slots without proving quantities.",
+      "Four ICF-08 overlays (giant, celestial-divine, infernal-fiendish, aberrant-psychic) are deliberately not structural templates. Independent overlay references grant no effects."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_CHU_03.html",
+    "html_sha256": "7902daad5434a972d7eca2e19fbb67397b3911bd31b79973dc7dca2b7b08b0ba",
+    "html_bytes": 268600,
+    "html_library_file_id": "libfile_8be67b5c5b688191aae14bc13373bee9",
+    "html_library_path": "/Multiversal/CHU/Multiversal_CHU_03.html",
+    "data_filename": "Multiversal_CHU_03_Body_Plans.json",
+    "data_sha256": "a29bc99209dcd54f9fcbd75acb90e2406e147ba12e1de765143deb31cd20ac69",
+    "data_bytes": 109302,
+    "data_library_file_id": "libfile_e88f35baa634819184f0725d08038660",
+    "data_library_path": "/Multiversal/CHU/Multiversal_CHU_03_Body_Plans.json",
+    "predecessor_html_sha256": "bd8f2e7320e7a02202a25a4b9453dc5ce69a33a6769c10a8b9fa17a7b2df6768",
+    "counts": {
+      "templates": 34,
+      "component_references": 403,
+      "distinct_part_refs": 171,
+      "source_overlay_keys": 21,
+      "chu03_checks": 15,
+      "chu02_regression_checks": 12,
+      "chu01_regression_checks": 12,
+      "new_executable_profiles": 0
+    },
+    "validation": "Actual Chromium browser set_content: 15/15 CHU-03, 12/12 CHU-02, 12/12 CHU-01; independent UI search, same-region merge, separate region, required override note, exclusion, overlay isolation, actual JSON download inspected, undo, 390px no horizontal overflow; zero page errors. No native acceptance.",
+    "source_receipts": [
+      {
+        "path": "governance/application-planning/ingredient-cultivation-foodcraft/ICF-08_PART_EFFECT_TAXONOMY.json",
+        "blob": "831c1e335028ce7e67a5334cb428d66a85434efd"
+      },
+      {
+        "path": "/Multiversal/CHU/Multiversal_CHU_02_Anatomy.json",
+        "sha256": "8671617c4a92833fb9a5aaf8553879238b379aa1a683f4e77b68b18d5f5d6baa"
+      }
+    ],
+    "prior_ops5_validation": {
+      "candidate_head": "3e2c6c82e2d342c0cb4616d717f3cd57dfa355b3",
+      "workflow_run": 46147230329,
+      "conclusion": "success",
+      "publication": "not yet merged; superseded by CHU-03 candidate"
+    }
+  },
+  "active_substep": "standalone_html_and_data_delivered",
+  "planned_successor": "CHU-04",
+  "next_action": "On owner Continue, add organ and part quantity rules using CHU-03 regional candidate slots, explicit count/quantity policies, variation and overrides; deliver cumulative CHU-04 HTML.",
+  "successor_rule": "Strict CHU-01..20 before FACS-01..30; no automatic product implementation.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_html_and_data_delivered",
+      "evidence": "34-template library, persistent HTML/JSON and 39 passing cycle/regression checks"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded standalone tester delivered and locally verified; protected-main publication requires exact-head OPS5 acceptance."
+    }
+  }
+}
