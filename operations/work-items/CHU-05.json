@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "chu-facs",
+  "program_id": "CHU",
+  "work_item_id": "CHU-05",
+  "attempt_id": "CHU-05-attempt-001",
+  "title": "Creature Size, Weight and Material Yield Calculations",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue following CHU-04; cumulative standalone HTML scope.",
+  "authority_type": "owner_scoped_standalone_system_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/creature-harvesting-utilization/CHU_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Add explicit body mass, approximate geometry/density and similarity scaling calculations; descriptive size label independent of mass.",
+      "Allocate disjoint part materials using percentage, direct mass, volume/density and validated count times unit mass; project explicit recovery ceilings.",
+      "Preserve CHU-04 quantity snapshot and all predecessor functionality; export material budgets and rules."
+    ],
+    "boundaries": [
+      "ICF-07 prohibits universal mass/yield inference. Eight fixtures are fictional review proposals and not canonical creature rules.",
+      "Known overlap checks are not exhaustive; reviewer must confirm disjoint allocations. Unallocated mass remains unallocated, and unrecovered mass is not automatically waste.",
+      "No harvest authorization, source mutation, safety/edibility, intact item count, renewable yield or native acceptance. Construct recovery still respects ICF/LSS authority boundaries."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_CHU_05.html",
+    "html_sha256": "a3024278edc559da846a990f879354d0e235b0a50cd87e0828cf0d9ffad1b236",
+    "html_bytes": 428193,
+    "html_library_file_id": "libfile_ca4c9546cd5881919ff4483cbf9e0c04",
+    "html_library_path": "/Multiversal/CHU/Multiversal_CHU_05.html",
+    "data_filename": "Multiversal_CHU_05_Mass_Yield_Rules.json",
+    "data_sha256": "0356efa349e52e0b54b93ff2f67aff11567f9fc0ceadece49ed032b8ff309042",
+    "data_bytes": 14846,
+    "data_library_file_id": "libfile_fb7379d2bfe48191b6267b8a49ffa825",
+    "data_library_path": "/Multiversal/CHU/Multiversal_CHU_05_Mass_Yield_Rules.json",
+    "predecessor_html_sha256": "60d932edaa3a412c7d00c8fdd98e4d09bccd22b08ca8a149325c570152e041fc",
+    "counts": {
+      "physical_mass_methods": 3,
+      "physical_allocation_methods": 4,
+      "fictional_fixtures": 8,
+      "physical_fixtures": 7,
+      "nonmaterial_fixture": 1,
+      "chu05_checks": 23,
+      "prior_checks": 55,
+      "total_checks": 78,
+      "new_executable_profiles": 0
+    },
+    "validation": "System Chromium via Playwright set_content. 23/23 CHU-05 and 55/55 prior checks. All seven physical fixture budgets balanced; incorporeal fixture blocked; geometry, density conversion, invalid body budget, actual export JSON, current quantity snapshot, mobile width 390px without overflow, zero page errors. First browser launch failed due to missing bundled executable; system Chromium succeeded. Two draft overlap IDs corrected and final overlap reference check passed. No native acceptance.",
+    "source_receipts": [
+      {
+        "path": "ICF-07_CREATURE_HARVEST_BUTCHERY_BIOLOGICAL_INGREDIENT_SYSTEM.md",
+        "blob": "02663b0e5841770b8fb0a14e22090994cbd61782"
+      },
+      {
+        "path": "/Multiversal/CHU/Multiversal_CHU_04_Quantity_Rules.json",
+        "sha256": "4ecd355371a6de979be955e82fda3aefd7ac1748c362cddff07c6c0505517797"
+      }
+    ],
+    "prior_ops5_validation": {
+      "candidate_head": "88240872831ab3d9bc1c0cc77c36eb289164e081",
+      "workflow_run": 46147738625,
+      "conclusion": "success",
+      "publication": "not yet merged; superseded by CHU-05 candidate"
+    }
+  },
+  "active_substep": "standalone_html_and_data_delivered",
+  "planned_successor": "CHU-06",
+  "next_action": "On owner Continue, add butchery skills, knowledge, tools and procedures. Reuse existing ICF-07 requirements, explicit procedure profiles, mass and recovery ceilings, and cumulative tester.",
+  "successor_rule": "Strict CHU-01..20 before FACS-01..30; no automatic product implementation.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_html_and_data_delivered",
+      "evidence": "Mass and material budget studio, eight fictional fixtures, 78 passing cycle/regression checks and persistent HTML/JSON"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded standalone artifact delivered and locally verified; protected-main publication remains subject to exact-head OPS5 acceptance."
+    }
+  }
+}
