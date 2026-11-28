@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "chu-facs",
+  "program_id": "CHU",
+  "work_item_id": "CHU-09",
+  "attempt_id": "CHU-09-attempt-001",
+  "title": "Renewable and Nonlethal Extraction",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue following CHU-08; cumulative standalone HTML scope.",
+  "authority_type": "owner_scoped_standalone_system_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/creature-harvesting-utilization/CHU_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Twelve fictional living resource profiles: ten renewable and two nonlethal, with capacity, reserve, per-collection ceiling and interval replenishment.",
+      "Explicit campaign-time events with version and idempotency checks; carry of partial confirmed recovery periods; eligibility, permission, welfare, requirements and nonlethal gates.",
+      "Simulated source reserve, inventory receipt and finalization with lost-acknowledgment recovery, precommit release and replay protection; cumulative HTML and JSON library."
+    ],
+    "boundaries": [
+      "ICF-07 milk failure/success/critical amounts 0/2000/2500 mL retained; zero partial is a proposal since source does not specify partial. All reserve, replenishment, other yield values and profiles are provisional game fixtures.",
+      "ICF-13 source production and Base Turn authority remains distinct; no universal species yields, autonomous production, actual welfare determination, physical collection instructions, canonical binding other than milk reference, live D17 or source mutations.",
+      "One simulated source per profile, session-local state; export available but no import/resume or multi-source shared biological reserve. Procedure outcomes supplied rather than rolled; no native acceptance."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_CHU_09.html",
+    "html_sha256": "0cdc372cfc7ecdcf3d879269f08d6041bdee0c492c8b30f4861aa360403ea94b",
+    "html_bytes": 495648,
+    "html_library_file_id": "libfile_d979fe61a1688191bc7ef60c493f2441",
+    "html_library_path": "/Multiversal/CHU/Multiversal_CHU_09.html",
+    "data_filename": "Multiversal_CHU_09_Renewable_Rules.json",
+    "data_sha256": "f8ed4f223f9b35aad301a614d73188c0f960a6c6bbc6253763959c56c8550d55",
+    "data_bytes": 6957,
+    "data_library_file_id": "libfile_12d5f94157d48191b0e52f308489a70e",
+    "data_library_path": "/Multiversal/CHU/Multiversal_CHU_09_Renewable_Rules.json",
+    "predecessor_html_sha256": "d091d4889cd75817a31c1b5572e2beeb5401b5a46b828698cb26b27cef9fd113",
+    "counts": {
+      "profiles": 12,
+      "renewable_profiles": 10,
+      "nonlethal_profiles": 2,
+      "chu09_checks": 30,
+      "prior_checks": 148,
+      "total_checks": 178,
+      "new_executable_canonical_profiles": 0
+    },
+    "validation": "System Chromium via Playwright set_content: 30/30 CHU-09 and 148/148 predecessor checks. Actual UI milk 3000 mL initial → 2000 mL success → lost commit acknowledgement → status lookup → replay → lost finalization → lookup → replay → 1000 mL remaining → 12 campaign hours → 3500 mL. Downloaded JSON parsed; one receipt. Nonlethal gate blocked then allowed 15 mL fictional secretion preview. 390px viewport no horizontal overflow, zero page errors. No native acceptance.",
+    "source_receipts": [
+      {
+        "path": "ICF-07_CREATURE_HARVEST_BUTCHERY_BIOLOGICAL_INGREDIENT_SYSTEM.md",
+        "blob": "02663b0e5841770b8fb0a14e22090994cbd61782"
+      },
+      {
+        "path": "ICF-07_REFERENCE_FIXTURES.json",
+        "blob": "6b5a1b06fc9ef77cebea77c1552ce460d6f064cd"
+      },
+      {
+        "path": "ICF-13_AGRICULTURE_FORAGING_HUSBANDRY_PRODUCTION_INTEGRATION.md",
+        "blob": "06cbd76cce43cf6eda386747963a2c9f423f68de"
+      }
+    ],
+    "prior_ops5_validation": {
+      "candidate_head": "2504991e0f9c327d05e61b27d3580346a5a1c561",
+      "workflow_run": 46149583052,
+      "conclusion": "success",
+      "publication": "not yet merged; superseded by CHU-09 candidate"
+    }
+  },
+  "active_substep": "standalone_html_and_data_delivered",
+  "planned_successor": "CHU-10",
+  "next_action": "On owner Continue, add exotic, magical and unconventional parts; explicit supernatural or nonstandard extraction rules and separate nonphysical units/owner boundaries; preserve all prior functionality.",
+  "successor_rule": "Strict CHU-01..20 before FACS-01..30; no automatic product implementation.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_html_and_data_delivered",
+      "evidence": "12 living resource profiles, 178 passing cycle/regression checks and persistent HTML/JSON"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded standalone artifact delivered and locally verified; protected-main publication remains subject to exact-head OPS5 acceptance."
+    }
+  }
+}

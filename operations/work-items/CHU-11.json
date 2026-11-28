@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "chu-facs",
+  "program_id": "CHU",
+  "work_item_id": "CHU-11",
+  "attempt_id": "CHU-11-attempt-001",
+  "title": "Part Quality, Rarity, Potency and Material Properties",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue following CHU-10; cumulative standalone HTML scope.",
+  "authority_type": "owner_scoped_standalone_system_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/creature-harvesting-utilization/CHU_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "26 proposed typed observation fields and 287 existing CHU-02 part IDs.",
+      "Preserve exact ICF-08 20 baseline, 21 body and 20 trait keys, five quality and five condition bands; explicit evidence-gated affinity projection and override.",
+      "Preserve ICF-02 six rarity and seven availability bands with separate scoped assertions and unresolved conflicts; export review drafts."
+    ],
+    "boundaries": [
+      "Property fields and validation ranges are proposals, not universal material values. No automatic part assignment, measurements, quality grading, rarity, effect, price, scarcity or compatibility.",
+      "Manual evidence references are not authenticated; quality/condition observations are manually entered, not automatically imported from CHU-07/08. Draft exports may contain unresolved projections, clearly marked.",
+      "UI supports one body and one trait selection; resolver accepts multiple. No live D17 state, MIB-13 price or native acceptance."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_CHU_11.html",
+    "html_sha256": "630121ed4ff837a96fa3776f13af51cdf0a209a455e86e83752b3138e39ae2f6",
+    "html_bytes": 585229,
+    "html_library_file_id": "libfile_6049e8482b1081918063965711f32382",
+    "html_library_path": "/Multiversal/CHU/Multiversal_CHU_11.html",
+    "data_filename": "Multiversal_CHU_11_Property_Rules.json",
+    "data_sha256": "e22ccfca446e52dbfee623414a7d8f7036d79e99331ebecef6cb442b3fe1c5b3",
+    "data_bytes": 56371,
+    "data_library_file_id": "libfile_ff64f591161c81918c10876d445bba7e",
+    "data_library_path": "/Multiversal/CHU/Multiversal_CHU_11_Property_Rules.json",
+    "predecessor_html_sha256": "2b91b41b3a39a664d317d1f631d9b3048c0b83c7a94c8cc264a0e1b618bab4cf",
+    "counts": {
+      "properties": 26,
+      "part_ids": 287,
+      "source_baselines": 20,
+      "source_body_profiles": 21,
+      "source_trait_profiles": 20,
+      "rarity_bands": 6,
+      "quality_bands": 5,
+      "chu11_checks": 32,
+      "prior_checks": 206,
+      "total_checks": 238,
+      "new_executable_canonical_profiles": 0
+    },
+    "validation": "Actual system Chromium via Playwright set_content: 32/32 CHU-11 and 206/206 predecessor checks. First UI run exposed duplicate prTests ID with CHU-06; corrected new namespace to mp, reran entire suite. UI fire-draconic heart projection, exact fine/moderate and exceptional/high potency, conflicting rarity null, purity context requirement, actual downloaded JSON parsed, changed quality invalidates export, unbound Phoenix blocked, search, 390px no overflow, zero page errors. No native acceptance.",
+    "source_receipts": [
+      {
+        "path": "ICF-08_PART_EFFECT_TAXONOMY.json",
+        "blob": "831c1e335028ce7e67a5334cb428d66a85434efd"
+      },
+      {
+        "path": "ICF-08_SYSTEM_VALIDATOR.py",
+        "blob": "63d4770650c3f068453fb5c6eef084094b2cb58a"
+      },
+      {
+        "path": "ICF-08_REFERENCE_FIXTURES.json",
+        "blob": "18ead7c67656b1366d87ca8fb582194eafbf4ad0"
+      },
+      {
+        "path": "ICF-02_CANONICAL_INGREDIENT_SCHEMA_AND_TAXONOMY.md",
+        "blob": "2955a803dde2fc5a6f5f661ee5bbda2ed3f559a2"
+      }
+    ],
+    "prior_ops5_validation": {
+      "candidate_head": "c79252d3612207f883e15386cf28cebe4b5012ba",
+      "workflow_run": 46150238918,
+      "conclusion": "success",
+      "publication": "not yet merged; superseded by CHU-11 candidate"
+    }
+  },
+  "active_substep": "standalone_html_and_data_delivered",
+  "planned_successor": "CHU-12",
+  "next_action": "On owner Continue, develop culinary applications of creature parts using ICF-12, ICF-10, ICF-14 and explicit ingredient/recipe identities; preserve prior functionality and no automatic edibility or effects.",
+  "successor_rule": "Strict CHU-01..20 before FACS-01..30; no automatic product implementation.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_html_and_data_delivered",
+      "evidence": "26 property observation fields, exact source quality/rarity bands, 238 passing checks and persistent HTML/JSON"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded standalone artifact delivered and locally verified; protected-main publication remains subject to exact-head OPS5 acceptance."
+    }
+  }
+}

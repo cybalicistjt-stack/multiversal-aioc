@@ -1,0 +1,3 @@
+# CHU-03 — Body-plan templates
+
+34 proposed structures, 403 component references, 171 distinct CHU-02 part IDs, 21 source overlay keys. Distinguish structural and optional candidates from independent affinity overlays. Same-region part IDs merge provenance, separate regions preserve distinct slots, explicit overrides require rationale. No organ counts, exact effects, harvest rights or canonical assignments. 15/15 new and 24/24 prior checks passed; Chromium interaction and export tested. Artifact hashes and persistent library references in operations/work-items/CHU-03.json. CHU-04 handles quantity rules.

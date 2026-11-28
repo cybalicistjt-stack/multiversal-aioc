@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "chu-facs",
+  "program_id": "CHU",
+  "work_item_id": "CHU-04",
+  "attempt_id": "CHU-04-attempt-001",
+  "title": "Organ and Part Quantity Rules",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue following CHU-03; cumulative standalone HTML scope.",
+  "authority_type": "owner_scoped_standalone_system_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/creature-harvesting-utilization/CHU_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Classify 287 proposed parts and 403 template component references by quantity policy.",
+      "Provide conditional template-specific count proposals, region-level conflict detection, explicit rationale-bearing overrides, range validation and quantity draft export.",
+      "Preserve prior anatomy, body-plan, harvest and handoff functionality."
+    ],
+    "boundaries": [
+      "102 fixed-count proposals are not canonical anatomy or universal species rules. Optional presence is not established by count. 56 part-level and 24 template-level policies are unresolved.",
+      "Same-region matching slots are never summed, differing policies require explicit review; separate regions stay independent.",
+      "No stochastic generation, physical mass/volume calculation, harvest yield, exact effect, native execution or inventory mutation. Repeating/batch/network policies classify rather than calculate counts."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_CHU_04.html",
+    "html_sha256": "60d932edaa3a412c7d00c8fdd98e4d09bccd22b08ca8a149325c570152e041fc",
+    "html_bytes": 398083,
+    "html_library_file_id": "libfile_78d731b983048191835cff5638bc5d2a",
+    "html_library_path": "/Multiversal/CHU/Multiversal_CHU_04.html",
+    "data_filename": "Multiversal_CHU_04_Quantity_Rules.json",
+    "data_sha256": "4ecd355371a6de979be955e82fda3aefd7ac1748c362cddff07c6c0505517797",
+    "data_bytes": 159027,
+    "data_library_file_id": "libfile_ecfdff7fa540819195bcda51f07218a8",
+    "data_library_path": "/Multiversal/CHU/Multiversal_CHU_04_Quantity_Rules.json",
+    "predecessor_html_sha256": "7902daad5434a972d7eca2e19fbb67397b3911bd31b79973dc7dca2b7b08b0ba",
+    "counts": {
+      "part_policies": 287,
+      "template_policies": 403,
+      "fixed_count_proposals": 102,
+      "policy_types": 9,
+      "unresolved_part_policies": 56,
+      "unresolved_template_policies": 24,
+      "chu04_checks": 16,
+      "chu03_checks": 15,
+      "chu02_checks": 12,
+      "chu01_checks": 12,
+      "new_executable_profiles": 0
+    },
+    "validation": "Actual Chromium set_content: 16/16 CHU-04, 15/15 CHU-03, 12/12 CHU-02, 12/12 CHU-01. Independent UI proof: nav, search, rationale required, explicit two-heart count, actual JSON download inspected, undo, same-region conflicting legs, explicit range override, 390px no horizontal overflow, zero page errors. No native acceptance.",
+    "source_receipts": [
+      {
+        "path": "/Multiversal/CHU/Multiversal_CHU_03_Body_Plans.json",
+        "sha256": "a29bc99209dcd54f9fcbd75acb90e2406e147ba12e1de765143deb31cd20ac69"
+      },
+      {
+        "path": "/Multiversal/CHU/Multiversal_CHU_02_Anatomy.json",
+        "sha256": "8671617c4a92833fb9a5aaf8553879238b379aa1a683f4e77b68b18d5f5d6baa"
+      },
+      {
+        "path": "ICF-07_CREATURE_HARVEST_BUTCHERY_BIOLOGICAL_INGREDIENT_SYSTEM.md",
+        "blob": "02663b0e5841770b8fb0a14e22090994cbd61782"
+      }
+    ],
+    "prior_ops5_validation": {
+      "candidate_head": "7c375beeec78e3b8f4ca7120e0dc774137c92bd8",
+      "workflow_run": 46147483752,
+      "conclusion": "success",
+      "publication": "not yet merged; superseded by CHU-04 candidate"
+    }
+  },
+  "active_substep": "standalone_html_and_data_delivered",
+  "planned_successor": "CHU-05",
+  "next_action": "On owner Continue, add size, body mass and recoverable material yield calculations as explicitly scoped proposed rules; preserve quantity/yield distinction and cumulative tester.",
+  "successor_rule": "Strict CHU-01..20 before FACS-01..30; no automatic product implementation.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_html_and_data_delivered",
+      "evidence": "287 part and 403 template quantity policies, 55 passing cycle/regression checks, persistent HTML/JSON"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded standalone artifact delivered and locally verified; protected-main publication remains subject to exact-head OPS5 acceptance."
+    }
+  }
+}

@@ -1,0 +1,3 @@
+# CHU-11 — Quality, rarity, potency and properties
+
+26 proposed typed property fields, 287 prior part IDs, 61 source ICF-08 classification keys. Exact ICF-08 quality/condition mappings and ICF-02 rarity/availability bands retained. Evidence required for material, output, mapping, overlays and overrides; tendencies only, no exact effects. Scoped rarity conflict remains null and unique requires explicit singularity assertion. Observation unit, finite range, evidence and required context validated. No automatic measurements, grading, rarity, edibility, value or live state. 32/32 new and 206/206 earlier checks; fixed namespace collision in first UI run and reran. Exact artifact hashes and library IDs in operations/work-items/CHU-11.json. Next CHU-12 culinary applications.

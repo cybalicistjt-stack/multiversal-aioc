@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "chu-facs",
+  "program_id": "CHU",
+  "work_item_id": "CHU-14",
+  "attempt_id": "CHU-14-attempt-001",
+  "title": "Crafting, Equipment and Augmentation Applications",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue following CHU-13; cumulative standalone HTML scope.",
+  "authority_type": "owner_scoped_standalone_system_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/creature-harvesting-utilization/CHU_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "17 proposed application routes (9 crafting, 2 equipment, 2 enchanting, 4 augmentation) referencing CHU-02 anatomy and CHU-11 properties.",
+      "Explicit recipe, output, scope, eligibility, evidence, material receipt, donor lineage, quantity, version, property threshold, substitution and target compatibility gates; aggregate allocations by asset.",
+      "MSWI-07 graft/implant/symbiote/prosthetic and grant/remove/retain/reverse transition references; recipient version, body location, interface, consent, visibility and disposition gates; cumulative HTML and portable rules."
+    ],
+    "boundaries": [
+      "All routes and example quantities and thresholds are review proposals, not canonical recipes or stats. Evidence strings, property measurements, part and unit assignment and owner compatibility are manually supplied/confirmed, not independently verified.",
+      "No automatic armor, weapon, power, enchantment or donor-derived ability effects; no real-world fabrication or medical procedures. One expected material requirement per review, multiple allocations; no multi-component assembly or actual D17 reservation/commit, MIB-14 validation, recipient mutation or native acceptance.",
+      "All modification transitions are review labels only, not implemented installation/removal lifecycle. Consequences remain unresolved without separate authored rules."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_CHU_14.html",
+    "html_sha256": "65ea979502373e9e59a4dcd4944fb8a0fec570428aafe707c0d7252f41436df0",
+    "html_bytes": 654170,
+    "html_library_file_id": "libfile_5a982fd789cc819191c75d7ba381e632",
+    "html_library_path": "/Multiversal/CHU/Multiversal_CHU_14.html",
+    "data_filename": "Multiversal_CHU_14_Crafting_Rules.json",
+    "data_sha256": "f64289a3d0cc6af1f37236647bbe136bfd2e377303609d5e311a98c84f52990c",
+    "data_bytes": 10501,
+    "data_library_file_id": "libfile_09edcb7a0ab481919f701288938bcec7",
+    "data_library_path": "/Multiversal/CHU/Multiversal_CHU_14_Crafting_Rules.json",
+    "predecessor_html_sha256": "ca1c58c467262e32f8b3928cd9c7f7b95eae0144023b0d01a9f639a8d602693e",
+    "counts": {
+      "routes": 17,
+      "crafting": 9,
+      "equipment": 2,
+      "enchanting": 2,
+      "augmentation": 4,
+      "chu14_checks": 37,
+      "prior_checks": 302,
+      "total_checks": 339,
+      "new_executable_canonical_profiles": 0
+    },
+    "validation": "System Chromium via Playwright set_content: 37/37 CHU-14 and 302/302 predecessor checks. Actual UI route selection, two-unit handoff, downloaded JSON parsed, over-allocation rejected, changed input disables export, graft consent missing blocks then allows owner handoff, 390px no horizontal overflow, zero page errors. No native acceptance.",
+    "source_receipts": [
+      {
+        "repository": "cybalicistjt-stack/Multiversal-app",
+        "path": "governance/application-planning/multiversal-implementation-backbone/MIB-12_LIVE_CRAFTING_ENGINE_INVENTORY.md",
+        "blob": "67397633b0b335470a66f55637ee09c80ffcb58a"
+      },
+      {
+        "repository": "cybalicistjt-stack/Multiversal-app",
+        "path": "packages/contracts/src/multiversal-systemic-worldplay-integration/mswi-07-biological-lineage-integration.ts",
+        "blob": "55df6742a54c512324245b60876aed74a29c61b8"
+      },
+      {
+        "repository": "cybalicistjt-stack/Multiversal-app",
+        "path": "governance/application-planning/deep-professions-life-simulation/DPL-05_MEDICINE_DISEASE_INJURY_POISON_LONG_TERM_RECOVERY.md",
+        "blob": "40a32f48cd091790320758d856a652f5af7e1715"
+      }
+    ],
+    "prior_ops5_validation": {
+      "candidate_head": "1a93d231bbfd03d43e0c27e95f4c717d7940c5d9",
+      "workflow_run": 46152473300,
+      "conclusion": "success",
+      "publication": "not yet merged; superseded by CHU-14 candidate"
+    }
+  },
+  "active_substep": "standalone_html_and_data_delivered",
+  "planned_successor": "CHU-15",
+  "next_action": "On owner Continue, begin creature catalog-wide anatomical and harvest population using exact current source catalogs, canonical identity and provenance; distinguish historical 27 crosswalk from wider catalog, retain unresolved gaps, do not assert unsupported yields or executable profiles. Preserve cumulative tester.",
+  "successor_rule": "Strict CHU-01..20 before FACS-01..30; no automatic product implementation.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_html_and_data_delivered",
+      "evidence": "17 review routes, 339 passing cycle/regression checks and persistent HTML/JSON"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded standalone artifact delivered and locally verified; protected-main publication remains subject to exact-head OPS5 acceptance."
+    }
+  }
+}

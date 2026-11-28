@@ -1,0 +1,3 @@
+# CHU-04 — Organ and part quantity rules
+
+287 part policies, 403 template policies, 102 conditional fixed-count proposals, nine policy types. All are review proposals. Same-region shared counts merge without addition, different policies remain unresolved unless explicitly overridden, separate regions remain independent. Rationale required; integer counts and inclusive ranges validated, zero explicit absence. Distributed, continuous, repeating, batch and nonmaterial policies do not imply amounts. No physical yield, actual harvest authorization or canonical creature assignment. Browser proof 16/16 new and 39/39 prior checks. Exact artifact references in operations/work-items/CHU-04.json. CHU-05 handles size, weight and material yield.

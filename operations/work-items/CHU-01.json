@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "chu-facs",
+  "program_id": "CHU",
+  "work_item_id": "CHU-01",
+  "attempt_id": "CHU-01-attempt-001",
+  "title": "Recover and reconcile existing creature harvesting rules",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner ordered CHU start, FACS directly after CHU, and an HTML tester for every completed cycle on 2026-11-28.",
+  "authority_type": "owner_scoped_standalone_system_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/creature-harvesting-utilization/CHU_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Reconcile ICF-07/08/09/15, SGC-07A-Q06 and MSWI-07; inspect CCP and LSS owner boundaries; preserve historical coverage and expose recovered ICF-07 fixtures in an interactive offline artifact."
+    ],
+    "boundaries": [
+      "No invented anatomy, yields or effects; historical 27-record crosswalk is not entire bestiary.",
+      "No live game mutation, native CI or application certification. No persistent implementation slot."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_CHU_01.html",
+    "html_sha256": "a5c381ee2f143f6533a5ba6c61d485dee26391feae52a47a7849dacc0077f1ac",
+    "html_bytes": 25006,
+    "html_library_file_id": "libfile_eb59a63fade8819199cc1fe4470279d8",
+    "html_library_path": "/Multiversal/CHU/Multiversal_CHU_01.html",
+    "counts": {
+      "historical_creature_crosswalk": 27,
+      "anatomy_evidence": 7,
+      "explicit_body_profiles": 2,
+      "trait_profiles": 5,
+      "signature_ingredients": 7,
+      "executable_catalog_profiles": 0,
+      "source_records": 826,
+      "signature_candidates": 324,
+      "unbound_source_identities": 7,
+      "harvest_modes": 6,
+      "fixture_scenarios": 8,
+      "standalone_checks_passed": 12
+    },
+    "validation": "Chromium set_content (file URL blocked by environment policy): 12/12 baseline checks, catalog filter and detail, reserve/commit/lost D17 and finalization recovery, mobile-width 390px no horizontal overflow; no observed page errors. Browser simulation only, not native execution.",
+    "source_receipts": [
+      {
+        "path": "ICF-07_CREATURE_HARVEST_BUTCHERY_BIOLOGICAL_INGREDIENT_SYSTEM.md",
+        "blob": "02663b0e5841770b8fb0a14e22090994cbd61782"
+      },
+      {
+        "path": "ICF-08_CREATURE_PART_EFFECT_TAXONOMY_AND_AFFINITY_GRAMMAR.md",
+        "blob": "dcd8a1b541e95f5cf145380bcf467bfa264305a3"
+      },
+      {
+        "path": "ICF-09_CREATURE_CATALOG_HARVEST_CROSSWALK_AND_SIGNATURE_INGREDIENT_LIBRARY.md",
+        "blob": "0cba60a62ac4da1885890385659d3eb1d7fa2a3c"
+      },
+      {
+        "path": "ICF-15_HARVEST_COVERAGE_REPORT.json",
+        "blob": "d190a222bcf28b95a1009be37fd484da97c96970"
+      },
+      {
+        "path": "SGC_CONFLICT_UNKNOWN_OWNER_DECISION_QUEUE_RESOLUTION.json",
+        "blob": "9feb5ad2eeebda1bd638dceb694e3db482217f2e",
+        "decision": "SGC-07A-Q06"
+      },
+      {
+        "path": "packages/contracts/src/multiversal-systemic-worldplay-integration/mswi-07-biological-lineage-integration.ts",
+        "blob": "55df6742a54c512324245b60876aed74a29c61b8"
+      }
+    ],
+    "findings": [
+      "ICF-07 owns explicit mode/yield and source reservation -> D17 durable receipt -> source finalization; owner status before retry.",
+      "MSWI-07 validates component, source version, event and donor lineage and binds only an authored harvest rule/output reference; does not mutate canon or invent quantity.",
+      "ICF-08 part/type/trait tendencies are not exact effects; ICF-09 binds evidence; SGC-07A-Q06 preserves 27 nonexecutable historical profiles.",
+      "CCP preserves biological harvest under ICF; LSS rejects biological harvest as own-domain loot/salvage. Shared downstream cooking, magical cooking, alchemy, chemistry, medicine, crafting and economy require explicit rules."
+    ]
+  },
+  "active_substep": "standalone_html_delivered",
+  "planned_successor": "CHU-02",
+  "next_action": "On owner Continue, expand anatomical part library using CHU-01 HTML baseline and source evidence; deliver cumulative CHU-02 HTML. FACS starts only after CHU-20.",
+  "successor_rule": "Strict owner-directed sequence; no automatic product implementation.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_html_delivered",
+      "evidence": "Persistent HTML artifact and 12 passing browser checks"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded standalone reference artifact produced and tested; canonical OPS5 publication remains subject to PR acceptance."
+    }
+  }
+}

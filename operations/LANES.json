@@ -357,6 +357,25 @@
       ],
       "cross_lane_reads": "Read existing spatial and gameplay owner contracts only for applicable map features and interface evidence.",
       "implementation_policy": "Owner-selected on demand. Scope is standalone map tester artifacts. Existing application and installed playtest lanes retain their authority."
+    },
+    {
+      "id": "chu-facs",
+      "purpose": "Owner-directed sequential CHU and FACS gameplay rules and cumulative standalone HTML tester cycles.",
+      "intent_examples": [
+        "continue CHU",
+        "continue FACS",
+        "creature harvesting tester",
+        "foodcraft alchemy chemistry tester"
+      ],
+      "current_state_source": "operations/CURRENT.json#/lanes/chu-facs",
+      "source_bundle": [
+        "operations/work-items/CHU-01.json",
+        "governance/application-planning/creature-harvesting-utilization/CHU_PROGRAM.md",
+        "governance/application-planning/foodcraft-alchemy-chemical-systems/FACS_PROGRAM.md",
+        "ICF and DPL source contracts, MSWI-07, SGC harvest decisions and preceding standalone tester artifacts"
+      ],
+      "cross_lane_reads": "Read existing owner contracts for applicable integrations; do not alter persistent product lanes.",
+      "implementation_policy": "Owner-scoped standalone tester and content design; no native application implementation authority. Strict CHU before FACS; one HTML per completed cycle."
     }
   ],
   "persistent_implementation_lanes": [
