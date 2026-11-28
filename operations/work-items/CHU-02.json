@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "chu-facs",
+  "program_id": "CHU",
+  "work_item_id": "CHU-02",
+  "attempt_id": "CHU-02-attempt-001",
+  "title": "Comprehensive anatomical part library",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue following delivery of CHU-01; cumulative standalone HTML scope.",
+  "authority_type": "owner_scoped_standalone_system_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/creature-harvesting-utilization/CHU_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Expand reusable anatomical vocabulary across conventional, botanical, fungal, ooze, synthetic and supernatural forms.",
+      "Preserve exact ICF-08 baseline tendencies as reference; candidate mappings and historical evidence review, no automatic creature assignments.",
+      "Provide searchable, filterable cumulative standalone HTML and portable part library plus proposal queue/export."
+    ],
+    "boundaries": [
+      "All 287 part entries are proposals, not new canonical anatomy or ingredient definitions. 114 candidate mappings are not approved tendency grants; 173 unmapped candidates remain unresolved.",
+      "Historical evidence links include seven signature identities and two explicitly ambiguous candidate mappings for Rift-Touched Animal, not executable harvest profiles.",
+      "No body-plan population, quantity, yield, edibility, exact effects, safety, legality, live game mutations or native certification. Construct components may route to LSS rather than ICF."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_CHU_02.html",
+    "html_sha256": "bd8f2e7320e7a02202a25a4b9453dc5ce69a33a6769c10a8b9fa17a7b2df6768",
+    "html_bytes": 185801,
+    "html_library_file_id": "libfile_638ee73914948191b71e39aed9db072d",
+    "html_library_path": "/Multiversal/CHU/Multiversal_CHU_02.html",
+    "data_filename": "Multiversal_CHU_02_Anatomy.json",
+    "data_sha256": "8671617c4a92833fb9a5aaf8553879238b379aa1a683f4e77b68b18d5f5d6baa",
+    "data_bytes": 198605,
+    "data_library_file_id": "libfile_c9e455e5831881919859f5d96b4c712d",
+    "data_library_path": "/Multiversal/CHU/Multiversal_CHU_02_Anatomy.json",
+    "predecessor_html_sha256": "a5c381ee2f143f6533a5ba6c61d485dee26391feae52a47a7849dacc0077f1ac",
+    "counts": {
+      "proposed_parts": 287,
+      "families": 16,
+      "source_baselines": 20,
+      "candidate_mapped": 114,
+      "unmapped": 173,
+      "historical_evidence_links": 9,
+      "exact_signature_refs": 7,
+      "ambiguous_links": 2,
+      "new_executable_profiles": 0,
+      "chu02_checks": 12,
+      "chu01_regression_checks": 12
+    },
+    "validation": "Actual Chromium browser set_content: CHU-02 12/12 + CHU-01 12/12 checks; catalog search, cross-reference distinction (fungal versus respiratory gill), evidence filter, detail, required proposal note, duplicate rejection, JSON download inspected, queue clear, interrupted D17 recovery and finalize, 390px no horizontal overflow; no page errors. Initial test expected only one match for fungal gill; actual search correctly included the respiratory gill cross-reference. Adjusted test expectation and verified selection. No native acceptance.",
+    "source_receipts": [
+      {
+        "path": "governance/application-planning/ingredient-cultivation-foodcraft/ICF-08_PART_EFFECT_TAXONOMY.json",
+        "blob": "831c1e335028ce7e67a5334cb428d66a85434efd"
+      },
+      {
+        "path": "ICF-08_CREATURE_PART_EFFECT_TAXONOMY_AND_AFFINITY_GRAMMAR.md",
+        "blob": "dcd8a1b541e95f5cf145380bcf467bfa264305a3"
+      },
+      {
+        "path": "ICF-09_CANONICAL_CREATURE_CROSSWALK_PACK_01..04.json",
+        "scope": "historical crosswalk evidence recovered by CHU-01"
+      }
+    ],
+    "prior_ops5_validation": {
+      "candidate_head": "5e44e278dbac891dd75e01ed1b2c4eec4d214ba1",
+      "workflow_run": 46146971276,
+      "conclusion": "success",
+      "publication": "not yet merged; superseded by updated CHU-02 candidate"
+    }
+  },
+  "active_substep": "standalone_html_and_data_delivered",
+  "planned_successor": "CHU-03",
+  "next_action": "On owner Continue, develop reusable body-plan templates that reference the CHU-02 proposed part IDs, supporting multiple forms and explicit overrides; deliver cumulative CHU-03 HTML.",
+  "successor_rule": "Strict CHU-01..20 before FACS-01..30; no automatic product implementation.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_html_and_data_delivered",
+      "evidence": "287-part proposed catalog, persistent HTML/JSON and 24 passing browser checks"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded standalone tester artifact delivered and locally verified; protected-main publication requires exact-head OPS5 acceptance."
+    }
+  }
+}
