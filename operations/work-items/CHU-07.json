@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "chu-facs",
+  "program_id": "CHU",
+  "work_item_id": "CHU-07",
+  "attempt_id": "CHU-07-attempt-001",
+  "title": "Damage, Cause of Death and Part Integrity",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue following CHU-06; cumulative standalone HTML scope.",
+  "authority_type": "owner_scoped_standalone_system_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/creature-harvesting-utilization/CHU_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Localized part/region integrity assessments, distinct cause-of-death metadata, descriptive damage categories, explicit assessment rationale and unique observation IDs.",
+      "Integrity-adjusted CHU-05 recovery ceilings combined with CHU-06 procedure outcomes; fail closed on unknown or unassessed selected parts unless explicitly confirmed intact.",
+      "Cumulative HTML and portable integrity rule library; export review draft, detect changed source/procedure inputs."
+    ],
+    "boundaries": [
+      "All numerical factors and damage labels are review proposals; no inference from damage type, cause of death or HP.",
+      "Most restrictive assessment per target prevents compounding repeated observations; distinct injuries are not cumulatively modeled yet.",
+      "No actual combat import, live source or inventory mutation, anatomy count changes, quality tiers, contamination, food safety, value or native acceptance."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_CHU_07.html",
+    "html_sha256": "06f0739bf02d842e4991662615e2e84b6864e199d841af39b6e08ee2a585c9b1",
+    "html_bytes": 461199,
+    "html_library_file_id": "libfile_059891c49c9c819197448c4b8e99d6f7",
+    "html_library_path": "/Multiversal/CHU/Multiversal_CHU_07.html",
+    "data_filename": "Multiversal_CHU_07_Integrity_Rules.json",
+    "data_sha256": "ac2f335f5d80f2b4e884c310c2948afb3217d9f3c98a31d3dd73fd2a8b864a17",
+    "data_bytes": 2026,
+    "data_library_file_id": "libfile_87e066e6dcd08191a0c046f135960370",
+    "data_library_path": "/Multiversal/CHU/Multiversal_CHU_07_Integrity_Rules.json",
+    "predecessor_html_sha256": "01c78953fe135267be56bfe94cfd9ad60668387387133d1d92503d4ec221505e",
+    "counts": {
+      "integrity_states": 7,
+      "damage_labels": 11,
+      "cause_labels": 7,
+      "chu07_checks": 20,
+      "prior_checks": 105,
+      "total_checks": 125,
+      "new_executable_profiles": 0
+    },
+    "validation": "System Chromium via Playwright set_content: 20/20 CHU-07 plus 105/105 prior checks. Actual UI confirmed unassessed blocked, explicit intact baseline 31.35 kg, moderate localized muscle assessment reduced to 21.75 kg, unaffected rows unchanged; actual JSON download parsed; stale procedure change rejected until refresh; natural 1 failure after refresh; 390px no horizontal overflow, zero page errors. No native acceptance.",
+    "source_receipts": [
+      {
+        "path": "ICF-07_CREATURE_HARVEST_BUTCHERY_BIOLOGICAL_INGREDIENT_SYSTEM.md",
+        "blob": "02663b0e5841770b8fb0a14e22090994cbd61782"
+      },
+      {
+        "path": "/Multiversal/CHU/Multiversal_CHU_06_Procedure_Rules.json",
+        "sha256": "2417b93ede291218daa71fe227a78ea86b89e69c4a07c34a03dc57f30eaf7c21"
+      }
+    ],
+    "prior_ops5_validation": {
+      "candidate_head": "645a0961c5d4329579f51f52c8443c7178d8f16e",
+      "workflow_run": 46148454092,
+      "conclusion": "success",
+      "publication": "not yet merged; superseded by CHU-07 candidate"
+    }
+  },
+  "active_substep": "standalone_html_and_data_delivered",
+  "planned_successor": "CHU-08",
+  "next_action": "On owner Continue, add decomposition, preservation and contamination using explicit campaign-time facts and material-specific policies. Preserve localized integrity and procedure ceilings and all earlier functionality.",
+  "successor_rule": "Strict CHU-01..20 before FACS-01..30; no automatic product implementation.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_html_and_data_delivered",
+      "evidence": "Integrity assessment studio, 125 passing cycle/regression checks and persistent HTML/JSON"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded standalone artifact delivered and locally verified; protected-main publication remains subject to exact-head OPS5 acceptance."
+    }
+  }
+}
