@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "chu-facs",
+  "program_id": "CHU",
+  "work_item_id": "CHU-12",
+  "attempt_id": "CHU-12-attempt-001",
+  "title": "Culinary Applications of Creature Parts",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue following CHU-11; cumulative standalone HTML scope.",
+  "authority_type": "owner_scoped_standalone_system_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/creature-harvesting-utilization/CHU_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Selected 23 ICF-14 records: 12 concrete recipes/preparations, eight source meal gaps, two magical templates and one alchemical handoff.",
+      "Typed quantity and explicit compatibility, receipt/lineage/eligibility and condition gates; ICF-12 ordinary cooking outcome projection and ICF-10 handoff.",
+      "Cumulative offline HTML and review JSON export; preserve 319-record existing corpus."
+    ],
+    "boundaries": [
+      "Manual receipt, evidence, Food DL and grade inputs are simulated review inputs, not authenticated live data. Concrete recipes do not automatically assign Food DL or quality.",
+      "No automatic edibility, ingredient affinity effect, substitutions or magical template effects. Eight source meal input gaps remain blocked; processing yield unresolved.",
+      "No actual inventory, consumption, cooking time advancement or native acceptance; flavor, texture and nutrition are review notes, with detailed mechanics deferred to FACS."
+    ]
+  },
+  "evidence": {
+    "html_filename": "Multiversal_CHU_12.html",
+    "html_sha256": "716aa5382255ec905981c7a9837136e6a64a4f266dd51297538a2c16002ac22c",
+    "html_bytes": 609205,
+    "html_library_file_id": "libfile_d86518ec7d408191a190554f46354e05",
+    "html_library_path": "/Multiversal/CHU/Multiversal_CHU_12.html",
+    "data_filename": "Multiversal_CHU_12_Culinary_Rules.json",
+    "data_sha256": "1c4772d791c6b3e2cdd9cddd9fc994dc8f6a2413b0f8b2e8c624ffd47581f571",
+    "data_bytes": 14290,
+    "data_library_file_id": "libfile_fb5c5ab396c4819184d839628303ab3b",
+    "data_library_path": "/Multiversal/CHU/Multiversal_CHU_12_Culinary_Rules.json",
+    "predecessor_html_sha256": "630121ed4ff837a96fa3776f13af51cdf0a209a455e86e83752b3138e39ae2f6",
+    "counts": {
+      "selected_records": 23,
+      "concrete": 12,
+      "source_meals": 8,
+      "magic_templates": 2,
+      "alchemy_handoff": 1,
+      "chu12_checks": 32,
+      "prior_checks": 238,
+      "total_checks": 270,
+      "new_executable_canonical_profiles": 0
+    },
+    "validation": "System Chromium via Playwright set_content: 32/32 CHU-12 and 238/238 predecessor checks. Actual UI success at total 17 vs DL15, average meal 10 HP; downloaded JSON parsed; insufficient quantity rejected and export invalidated on input change; source Phoenix Egg Omelet gap blocked; magical capability gate tested then unresolved template preview; ICF-10 handoff tested. 390px viewport no horizontal overflow and zero page errors. No native acceptance.",
+    "source_receipts": [
+      {
+        "path": "ICF-12_CULINARY_MAGICAL_CULINARY_RULES.md",
+        "blob": "60007175cb765384982aa38011cabd0b6d619342"
+      },
+      {
+        "path": "ICF-14_RECIPE_CORPUS_SOURCE.json",
+        "blob": "6c8a036b6ee137be4a9734553422cb6e0b3116a5"
+      },
+      {
+        "path": "ICF-14_RECIPE_MATERIALIZER.py",
+        "blob": "dd9c0628da4da285dc02be791e68c106f78dc13b"
+      },
+      {
+        "path": "ICF-14_SOURCE_RECIPES.json",
+        "blob": "286e86f495d95bbaec3a9e74b50c19f0a64a9778"
+      },
+      {
+        "path": "ICF-10_PREPARATION_PROCESSING_DERIVED_INGREDIENTS.md",
+        "blob": "750929ddae52c6a10020a38bcd1cec0617eed8c7"
+      }
+    ],
+    "prior_ops5_validation": {
+      "candidate_head": "1d068473addcd6985eabdc294bcb333d25256ac8",
+      "workflow_run": 46150591656,
+      "conclusion": "success",
+      "publication": "not yet merged; superseded by CHU-12 candidate"
+    }
+  },
+  "active_substep": "standalone_html_and_data_delivered",
+  "planned_successor": "CHU-13",
+  "next_action": "On owner Continue, develop alchemical, medical and ritual applications of creature parts with source-backed eligibility and explicit rule handoffs. Preserve cumulative tester and downstream authority boundaries.",
+  "successor_rule": "Strict CHU-01..20 before FACS-01..30; no automatic product implementation.",
+  "execution_guard": {
+    "continue_turns": 1,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_html_and_data_delivered",
+      "evidence": "23 recipe records, 270 passing cycle/regression checks and persistent HTML/JSON"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": true,
+    "stop_reason": {
+      "kind": "completed",
+      "evidence": "Bounded standalone artifact delivered and locally verified; protected-main publication remains subject to exact-head OPS5 acceptance."
+    }
+  }
+}
