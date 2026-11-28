@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0.0",
+  "system": "OPS5",
+  "lane": "chu-facs",
+  "program_id": "CHU",
+  "work_item_id": "CHU-15",
+  "attempt_id": "CHU-15-attempt-001",
+  "title": "Creature Catalog-Wide Anatomical and Harvest Population",
+  "status": "in_progress",
+  "owner_selected": true,
+  "selected_by_owner": "Owner Continue after CHU-14; owner corrected narrow catalog scope and explicitly directed continuation.",
+  "authority_type": "owner_scoped_standalone_system_tester",
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "source_program": "governance/application-planning/creature-harvesting-utilization/CHU_PROGRAM.md",
+  "scope": {
+    "in_scope": [
+      "Reconcile expanded UHT-01 source corpus, not the 27 historical governed definitions alone.",
+      "Preserve original and expanded record identities, source occurrences, NPC/template distinctions, explicit source material and harvest properties; generate review-only anatomical candidates and manual proposals.",
+      "Continue population and gap reconciliation across the full accessible creature collection before closing CHU-15."
+    ],
+    "boundaries": [
+      "No name-only merging, automatic promotion of a candidate to anatomy, executable harvest, canonical quantity/yield/effect or new identity. NPCs, groups and templates separate.",
+      "Current corpus covers resolved UHT-01 sources; CEW additional libraries and source-only candidates require separate overlap reconciliation. Not exhaustive unique-species total.",
+      "Part mentions and template suggestions are not confirmed part presence. Candidate extraction is incomplete: 2058 of 2996 individual creature-side records lack both generated candidates; even candidates need actual review."
+    ]
+  },
+  "evidence": {
+    "phase": "CHU-15A_catalog_recovery_and_initial_population",
+    "html_filename": "Multiversal_CHU_15.html",
+    "html_sha256": "6718375964e44f42e5c238ebf27a93ba3b0e2578b4e1511a9e7c10da019ff8d4",
+    "html_bytes": 5784945,
+    "html_library_file_id": "libfile_91085f1cb57481919ffb7773c811c35d",
+    "html_library_path": "/Multiversal/CHU/Multiversal_CHU_15.html",
+    "data_filename": "Multiversal_CHU_15_Catalog_Population.json",
+    "data_sha256": "5c0fd025b5551437bca24eda8ef456e81795a6101690d3542ed9c19b5def7270",
+    "data_bytes": 5153206,
+    "data_library_file_id": "libfile_7fd21a71267481919c57ba3cd2ebb241",
+    "data_library_path": "/Multiversal/CHU/Multiversal_CHU_15_Catalog_Population.json",
+    "predecessor_html_sha256": "65ea979502373e9e59a4dcd4944fb8a0fec570428aafe707c0d7252f41436df0",
+    "source_package": {
+      "name": "Multiversal_Consolidated_Source_Package.zip",
+      "library_file_id": "libfile_d4edb7eb19448191bbe3ded1c03e6db6",
+      "sha256": "cf71561df3e12e6b4fa18a9298f7dc9f582829384ec02eac195c75a46120d969",
+      "reference": "UHT-01 AIOC PR #2048"
+    },
+    "counts": {
+      "source_profiles": 4480,
+      "distinct_record_ids": 4453,
+      "exact_id_mirror_occurrences": 27,
+      "creature_side_ids": 3002,
+      "npc_ids": 1303,
+      "template_ids": 148,
+      "individual_creature_records": 2996,
+      "records_with_template_candidates": 584,
+      "records_with_part_mentions": 500,
+      "records_with_either": 938,
+      "records_with_neither": 2058,
+      "part_mentions": 643,
+      "template_suggestions": 606,
+      "supporting_property_rows": 1256,
+      "signature_material_rows": 120,
+      "recommended_harvest_check_rows": 93,
+      "source_tables": 100,
+      "source_files": 26,
+      "chu15_checks": 31,
+      "prior_checks": 339,
+      "total_checks": 370,
+      "new_executable_profiles": 0
+    },
+    "validation": "Rebuilt original UHT package with its build/prepare.py and build/corpus.py; independently compared all 100 table and 26 source audit entries, and exact 4480 source occurrences/4453 IDs. System Chromium Playwright set_content: 31/31 CHU-15 plus 339/339 predecessor checks, actual search, mandatory rationale, draft export parsed, mobile 390px, zero page errors. Initial red test missing population tab observed; later additional checks added after implementation, not full TDD. Native acceptance not run.",
+    "source_receipts": [
+      {
+        "path": "content-db/indexes/by-type.json",
+        "blob": "d48c370c677b9c6302ddc8812e601efc31daa7c5"
+      },
+      {
+        "path": "governance/application-planning/creature-ecology-wildlife/CEW-01_CREATURE_SOURCE_CENSUS_v1.0.0.json",
+        "blob": "6377fe8baac4241dc3c30b8fdeb186de21eb6f50"
+      },
+      {
+        "path": "governance/application-planning/creature-ecology-wildlife/CEW-01_IDENTITY_LEDGER_v1.0.0.json",
+        "blob": "d6267b7994cb25153637a44fae02a88f664dc60b"
+      },
+      {
+        "path": "governance/application-planning/creature-ecology-wildlife/CEW_PROGRAM_BACKLOG.json",
+        "blob": "638a9649d3e257b1b7fe411f8add0932524fd133"
+      },
+      {
+        "path": "governance/application-planning/ingredient-cultivation-foodcraft/ICF-09_SOURCE_COVERAGE.json",
+        "blob": "78fcd73fddc74258347a7252441e058fae2884b2"
+      }
+    ],
+    "prior_ops5_validation": {
+      "candidate_head": "c97771b8961b19c451f87d4841c1ffafb01d3119",
+      "workflow_run": 46152844307,
+      "conclusion": "success",
+      "publication": "not yet merged; superseded by CHU-15A candidate"
+    }
+  },
+  "active_substep": "catalog_recovered_initial_population_verified_remaining_population_open",
+  "planned_successor": "CHU-16",
+  "next_action": "Continue within CHU-15 (CHU-15B): reconcile CEW and other accessible catalog packs, systematically review unresolved individual creature records by source family and derive explicitly labeled anatomy/harvest candidates with provenance and variant-aware policies. Preserve actual source harvest assertions. Do not activate CHU-16 until CHU-15 population scope is reconciled.",
+  "successor_rule": "Strict CHU-01..20 before FACS-01..30; no automatic product implementation. CHU-15 remains in progress.",
+  "execution_guard": {
+    "continue_turns": 2,
+    "stall_nudges": 0,
+    "material_progress_seq": 1,
+    "progress_at_last_owner_command": 0,
+    "no_progress_cycles": 0,
+    "last_material_progress": {
+      "seq": 1,
+      "kind": "standalone_catalog_population_phase_delivered",
+      "evidence": "4480 source occurrences, 4453 exact record IDs, 938 individual records with initial candidates, 370 passing checks, HTML and JSON saved"
+    },
+    "active_stall": false,
+    "terminal_response_allowed": false,
+    "stop_reason": null
+  }
+}
